@@ -4578,17 +4578,17 @@ Sample values include: 1] rubbing; 2] mildew; 3] smoke</a:documentation>
             <choice>
                <value>land</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> paddy</value>
+               <value>paddy</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> goat</value>
+               <value>goat</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> gold</value>
+               <value>gold</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> money</value>
+               <value>money</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> remissionTax</value>
+               <value>remissionTax</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> ritual</value>
+               <value>ritual</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             </choice>
          </attribute>
@@ -4597,23 +4597,23 @@ Sample values include: 1] rubbing; 2] mildew; 3] smoke</a:documentation>
             <choice>
                <value>nontāviḷakku</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> brahmadeya</value>
+               <value>brahmadeya</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> devadāna</value>
+               <value>devadāna</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> sacredFood</value>
+               <value>sacredFood</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> rituals</value>
+               <value>rituals</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> unknown</value>
+               <value>unknown</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> abhiṣeka</value>
+               <value>abhiṣeka</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> mahādāna</value>
+               <value>mahādāna</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> vedicSacrifices</value>
+               <value>vedicSacrifices</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> festivals</value>
+               <value>festivals</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             </choice>
          </attribute>
@@ -11637,9 +11637,9 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <value>human</value>
                   <a:documentation/>
-                  <value> divine</value>
+                  <value>divine</value>
                   <a:documentation/>
-                  <value> personification</value>
+                  <value>personification</value>
                   <a:documentation/>
                </choice>
             </attribute>
@@ -11650,13 +11650,13 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <value>standard</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> coronation</value>
+                  <value>coronation</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> biruda</value>
+                  <value>biruda</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> title</value>
+                  <value>title</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> other</value>
+                  <value>other</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
@@ -11715,27 +11715,27 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
             <choice>
                <value>king</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> chief</value>
+               <value>chief</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> landlord</value>
+               <value>landlord</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> godTemple</value>
+               <value>godTemple</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> merchant</value>
+               <value>merchant</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> sabhāMember</value>
+               <value>sabhāMember</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> nāṭuMember</value>
+               <value>nāṭuMember</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> officer</value>
+               <value>officer</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> dancer</value>
+               <value>dancer</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> singer</value>
+               <value>singer</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> unknown</value>
+               <value>unknown</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value> maṉṟāṭi</value>
+               <value>maṉṟāṭi</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             </choice>
          </attribute>
@@ -11745,23 +11745,23 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <value>donor</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> donee</value>
+                  <value>donee</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> trustee</value>
+                  <value>trustee</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> inChargeDonation</value>
+                  <value>inChargeDonation</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> witness</value>
+                  <value>witness</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> orderGiver</value>
+                  <value>orderGiver</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> orderReceiver</value>
+                  <value>orderReceiver</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> auditor</value>
+                  <value>auditor</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> beneficiaryMerit</value>
+                  <value>beneficiaryMerit</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> commemoratedPerson</value>
+                  <value>commemoratedPerson</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
@@ -11783,7 +11783,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <value>builtPlace</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> territorialDivision</value>
+                  <value>territorialDivision</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
@@ -11794,37 +11794,37 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <value>nāṭu</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> vaḷanāṭu</value>
+                  <value>vaḷanāṭu</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> kūṟṟam</value>
+                  <value>kūṟṟam</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> kōṭṭam</value>
+                  <value>kōṭṭam</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> site</value>
+                  <value>site</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> village</value>
+                  <value>village</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> town</value>
+                  <value>town</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> quarter</value>
+                  <value>quarter</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> hamlet</value>
+                  <value>hamlet</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> cēri</value>
+                  <value>cēri</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> temple</value>
+                  <value>temple</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> shrine</value>
+                  <value>shrine</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> monastery</value>
+                  <value>monastery</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> cālai</value>
+                  <value>cālai</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> tank</value>
+                  <value>tank</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> maṇḍapa</value>
+                  <value>maṇḍapa</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> nandavaṉam</value>
+                  <value>nandavaṉam</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
@@ -11915,15 +11915,15 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <value>mountain</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> river</value>
+                  <value>river</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> tank</value>
+                  <value>tank</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> lake</value>
+                  <value>lake</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> pound</value>
+                  <value>pound</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value> landPart</value>
+                  <value>landPart</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
