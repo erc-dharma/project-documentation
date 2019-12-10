@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>DHARMA Identifiers for project's members</title>
+            <funder>European Research Council</funder>
+            <principal ref="#Francis">Emmanuel Francis</principal>
+            <principal ref="#Griffiths">Arlo Griffiths</principal>
+            <principal ref="#Schmiedchen">Annette Schmiedchen</principal>
+            <respStmt>
+               <name ref="#Janiak">Axelle Janiak</name>
+               <resp>XML-TEI Data Manager</resp>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <authority>ERC-DHARMA</authority>
+            <pubPlace>Paris, France</pubPlace>
+            <date>2019</date>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">Distributed under a Creative Commons Attribution 2.0 CC-BY</licence>
+               <p>Available with prior consent of depositor for purposes of academic research.</p>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Born Digital</p>
+         </sourceDesc>
+      </fileDesc>
+     <profileDesc>
+        <abstract>
+           <p>List of all the members of the DHARMA project associated with their internal identifiers and the autorithies identifiers</p> 
+        </abstract>
+     </profileDesc>
+     <revisionDesc>
+        <change who="#Janiak" when="2019-12-06">Creation of the file, adding some informations and minimal metadata</change>
+     </revisionDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <listPerson>
+            <person xml:id="Francis" role="cpi">
+               <persName>
+                 <surname>Francis</surname>
+                 <forename>Emmanuel</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/156480842</idno>
+               <idno type="IdHAL">https://cv.archives-ouvertes.fr/emmanuel-francis</idno>
+               <idno type="IdRef">https://www.idref.fr/127901175</idno>
+               <idno type="ORCID">https://orcid.org/0000-0001-5405-2269</idno>
+            </person>
+            <person xml:id="Griffiths" role="pi">
+               <persName>
+                  <surname>Griffiths</surname>
+                  <forename>Arlo</forename> 
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/11026260</idno>
+               <idno type="idHAL">https://cv.archives-ouvertes.fr/arlo-griffiths</idno>
+               <idno type="IdRef">https://www.idref.fr/087383462</idno>
+               <idno type="ORCID"/> <!-- to be created -->
+            </person>
+            <person xml:id="Schmiedchen" role="pi">
+               <persName>
+                  <surname>Schmiedchen</surname>
+                  <forename>Annette</forename> 
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/22841678</idno>
+               <idno type="IdRef">https://www.idref.fr/117063657</idno>
+               <idno type="wikidata">https://www.wikidata.org/wiki/Q19804226</idno>
+               <idno type="ORCID"/> <!-- to be created -->
+            </person>
+            <person xml:id="DeSimini" role="pi">
+               <persName>
+                  <surname>De Simini</surname>
+                  <forename>Florinda</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/306369495</idno>
+               <idno type="IdRef">https://www.idref.fr/200880365</idno>
+               <idno type="ORCID">https://orcid.org/0000-0001-9845-1480</idno>
+            </person>
+            <person xml:id="Goodall" role="pi">
+               <persName>
+                  <surname>Goodall</surname>
+                  <forename>Dominic</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/81394618</idno>
+               <idno type="IdRef">https://www.idref.fr/057684251</idno>
+               <idno type="ORCID"/> <!-- to be created -->
+            </person>
+            <person xml:id="Acri" role="editor">
+               <persName>
+                  <surname>Acri</surname>
+                  <forename>Andrea</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/201252222</idno>
+               <idno type="IdRef">https://www.idref.fr/150577419</idno>
+               <idno type="wikidata">https://www.wikidata.org/wiki/Q50221197</idno>
+               <idno type="ORCID">https://orcid.org/0000-0001-9633-829X</idno>
+            </person>
+            <person xml:id="Adam" role="advisor">
+               <persName>
+                  <surname>Adam</surname>
+                  <forename>Cédric</forename> 
+               </persName>
+            </person>
+            <person xml:id="Aditia" role="editor">
+               <persName>
+                  <name>Aditia Gunawan</name>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/215307091</idno> <!-- http://viaf.org/viaf/283969266 -->
+               <idno type="IdRef">https://www.idref.fr/147009324</idno>       
+            </person>
+            <person xml:id="Agustijanto" role="?"><!-- @ role Must be changed -->
+               <persName>
+                  <name>Agustijanto Indrajay</name>
+               </persName>
+            </person>
+            <person xml:id="Moise" role="?"><!-- @xml:id must be choosen and @role must be changed -->
+               <persName>
+                  <name>A. Moise Irudayaraj</name>
+               </persName>
+            </person>
+            <person xml:id="Balogh" role="editor">
+               <persName>
+                  <surname>Balogh</surname>
+                  <forename>Daniel</forename> 
+                  </persName>
+               <idno type="VIAF">http://viaf.org/viaf/90419463</idno>
+               <idno type="IdRef">https://www.idref.fr/151908052</idno>
+               <idno type="ORCID">https://orcid.org/0000-0003-4203-6776</idno>
+            </person>
+            <person xml:id="Berkemer" role="editor">
+               <persName>
+                  <surname>Berkemer</surname>
+                  <forename>Georg</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/233491810</idno>
+               <idno type="IdRef">https://www.idref.fr/068730306</idno>             
+            </person>
+            <person xml:id="Bisschop" role="?"><!-- @role must be updated -->
+               <persName>
+                  <surname>Bisschop</surname>
+                  <forename>Peter</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/52000636</idno>
+               <idno type="IdRef">https://www.idref.fr/117203297</idno>
+               <idno type="wikidata">https://www.wikidata.org/wiki/Q77085917</idno> <!-- à vérifier -->
+            </person>
+            <person xml:id="Bodard" role="advisor">
+               <persName>
+                  <surname>Bodard</surname>
+                  <forename>Gabriel</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/106795353</idno>
+               <idno type="IdRef">https://www.idref.fr/146917901</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-8566-6666</idno>
+            </person>
+            <person xml:id="Bosma" role="editor">
+               <persName>
+                  <surname>Bosma</surname>
+                  <forename>Natasja</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/124153651793655782535</idno>
+               <idno type="IdRef">https://www.idref.fr/22980845X</idno>
+            </person>
+            <person xml:id="Brocquet" role="editor">
+               <persName>
+                  <surname>Brocquet</surname>
+                  <forename>Sylvain</forename> 
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/159939465</idno>
+               <idno type="IdRef">https://www.idref.fr/100933807</idno>
+            </person>
+            <person xml:id="Buriola" role="editor">
+               <persName>
+                  <surname>Buriola</surname>
+                  <forename>Guilia</forename>           
+               </persName>
+            </person>
+            <person xml:id="Cane" role="editor">
+               <persName>
+                  <surname>Cane</surname>
+                  <forename>Nicolas</forename> 
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/55154196826820112429</idno>
+               <idno type="IdRef">https://www.idref.fr/231188013</idno>            
+            </person>
+            <person xml:id="Chea" role="?"><!-- @role must be updated -->
+               <persName>
+                  <surname>Chea</surname>
+                  <forename>Socheat</forename> 
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/194153953223705560160</idno>
+               <idno type="IdRef">https://www.idref.fr/230437257</idno>
+            </person>
+            <person xml:id="Chhom" role="editor">
+               <persName>
+                  <surname>Chhom</surname>
+                  <forename>Kunthea</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/262148704025336930123</idno>
+               <idno type="IdRef">https://www.idref.fr/197571670</idno>
+            </person>
+            <person xml:id="Chollet" role="editor">
+               <persName>
+                  <surname>Chollet</surname>
+                  <forename>Chloé</forename> 
+               </persName>
+            </person>
+            <person xml:id="Degroot" role="archaeologist">
+               <persName>
+                  <surname>Degroot</surname>
+                  <forename>Véronique</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/168944273</idno>
+               <idno type="IdRef">https://www.idref.fr/10481960X</idno>
+            </person>
+            <person xml:id="Dezso" role="?"><!-- @ role must be updated -->
+               <persName>
+                  <surname>Dezsó</surname>
+                  <forename>Csaba</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/119084903</idno>
+               <idno type="IdRef">https://www.idref.fr/119884275</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-3595-0941</idno>
+            </person>
+            <person xml:id="Edward" role="?"><!-- @ role must be updated -->
+               <persName>
+                  <surname>Edward</surname>
+                  <forename>Swenson</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/103600754</idno>
+               <idno type="IdRef">https://www.idref.fr/230438458</idno>
+            </person>
+            <person xml:id="Eko" role="editor">
+               <persName>
+                  <name>Eko Bastiawan</name>
+               </persName>
+            </person>
+            <person xml:id="Elliot" role="advisor">
+               <persName>
+                  <surname>Elliot</surname>
+                  <forename>Tom</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/163074381</idno>
+            </person>
+            <person xml:id="Esteve" role="?"><!-- @role must be updated -->
+               <persName>
+                  <surname>Esteve</surname>
+                  <forename>Julia</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/216403335</idno>
+               <idno type="IdRef">https://www.idref.fr/151150907</idno>
+            </person>
+            <person xml:id="Franceschini" role="editor">
+               <persName>
+                  <surname>Franceschini</surname>
+                  <forename>Marco</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/36746999</idno>
+               <idno type="IdRef">https://www.idref.fr/154017841</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-4135-6893</idno> <!-- To be validated -->
+            </person>
+            <person xml:id="Furui" role="editor">
+               <persName>
+                  <surname>Furui</surname>
+                  <forename>Ryosoke</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
+            </person>
+            <person xml:id="Gillet" role="editor">
+               <persName>
+               <surname>Gillet</surname>
+               <forename>Valérie</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/227078529</idno>
+               <idno type="IdRef">https://www.idref.fr/11025029X</idno>
+               <idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-8403-3111</idno>
+            </person>
+            <person xml:id="Hunter" role="editor">
+               <persName>
+                  <surname>Hunter</surname>
+                  <forename>Thomas</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/14319585</idno>
+               <idno type="IdRef">https://www.idref.fr/11251250X</idno>
+            </person>
+            <person xml:id="Janiak" role="dataManager">
+               <persName>
+                  <surname>Janiak</surname>
+                  <forename>Axelle</forename>
+               </persName>
+               <idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
+            </person>
+            <person xml:id="Kiss" role="?"><!-- @role must be added -->
+               <persName>
+                  <surname>Kiss</surname>
+                  <forename>Csaba</forename>
+               </persName>
+               <idno type="VIAF">ttp://viaf.org/viaf/163770541</idno>
+               <idno type="IdRef">https://www.idref.fr/186191634</idno>
+            </person>
+            <person xml:id="Ladrech" role="?"><!-- @role must be added -->
+               <persName>
+                  <surname>Ladrech</surname>
+                  <forename>karine</forename>
+               </persName>
+                <idno type="VIAF">http://viaf.org/viaf/12622237</idno>
+                <idno type="IdRef">https://www.idref.fr/095075704</idno>
+            </person>
+            <person xml:id="Lefevre" role="archaeologist">
+               <persName>
+                  <surname>Lefevre</surname>
+                  <forename>Vincent</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/76561955</idno>
+               <idno type="IdRef">https://www.idref.fr/080135072</idno>
+               <idno type="wikidata">https://www.wikidata.org/wiki/Q38239987</idno>
+            </person>
+            <person xml:id="Lefrancq" role="archaeologist">
+               <persName>
+                  <surname>Lefrancq</surname>
+                  <forename>Coline</forename>
+               </persName> <!-- nothing found -->
+            </person>
+            <person xml:id="Levivier" role="photosManager">
+               <persName>
+                  <surname>Levivier</surname>
+                  <forename>Adeline</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/131146574008638102599</idno>
+               <idno type="IdRef">https://www.idref.fr/193202719</idno>
+               <!-- add the IdHal -->
+            </person>
+            <person xml:id="Liuzzo" role="advisor">
+               <persName>
+                  <surname>Liuzzo</surname>
+                  <forename>Pietro Maria</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/310697060</idno>
+               <idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
+            </person>
+            <person xml:id="Lubin" role="editor">
+               <persName>
+                  <surname>Lubin</surname>
+                  <forename>Timothy</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/120435268</idno>
+               <idno type="IdRef">https://www.idref.fr/170559610</idno>
+               <idno type="ORCID">https://orcid.org/0000-0001-8352-5870</idno>
+            </person>
+            <person xml:id="Manuel" role="editor">
+               <persName>
+                  <surname>Manuel</surname>
+                  <forename>Indra</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/68558778</idno>
+               <idno type="IdRef">https://www.idref.fr/183697367</idno>
+            </person>
+            <person xml:id="Marimouttou" role="?">
+               <persName>
+                  <surname>Marimouttou</surname>
+                  <forename>Vijayageetha</forename>
+               </persName>
+            </person> <!-- nothing?  -->
+            <person xml:id="Mirnig" role="editor">
+               <persName>
+                  <surname>Mirnig</surname>
+                  <forename>Nina</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/169826577</idno>
+               <idno type="IdRef">https://www.idref.fr/176193774</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-4944-6535</idno>
+            </person>
+            <person xml:id="Morlock" role="advisor">
+               <persName>
+                  <surname>Morlock</surname>
+                  <forename>Emmanuelle</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/316672978</idno>
+               <idno type="IdHAL">https://cv.archives-ouvertes.fr/emmanuelle-morlock</idno>
+               <idno type="IdRef">https://www.idref.fr/185971202</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-1617-8554</idno>
+            </person>
+            <person xml:id="Ramaswamy" role="?"> <!-- @role must be added -->
+               <persName>
+                  <name>N. Ramaswamy</name>
+               </persName>
+               <!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed -->
+            </person>
+            <person xml:id="Ollet" role="?"><!-- editor or advisor -->
+               <persName>
+                  <surname>Ollet</surname>
+                  <forename>Andrew</forename>
+               </persName>
+               <idno type="VIAF">ttp://viaf.org/viaf/372149294434280521495</idno>
+               <idno type="IdRef">https://www.idref.fr/224232371</idno>
+            </person>
+            <person xml:id="Pasedach" role="?"><!-- @role must be updated -->
+               <persName>
+                  <surname>Pasedach</surname>
+                  <forename>Peter</forename>
+               </persName>
+               <!-- nothing -->
+            </person>
+            <person xml:id="Patel" role="manager">
+               <persName>
+                  <surname>Patel</surname>
+                  <forename>Prerana</forename>
+               </persName>
+            </person>
+            <person xml:id="Premkumar" role="?"><!-- @role must be updated -->
+               <persName>
+                  <name>Premukumar S.</name>
+               </persName>
+               <!-- nothing?  -->
+            </person>
+            <person xml:id="Sanyal" role="?"><!-- @role must be updated -->
+               <persName>
+                  <surname>Sanyal</surname>
+                  <forename>Rajat</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/315733752</idno>
+               <idno type="IdRef">https://www.idref.fr/18506194X</idno>
+            </person>
+            <person xml:id="Anjaneya" role="?"><!-- @role must be updated -->
+               <persName>
+                  <name>Anjaneya Sarma</name>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/206189621</idno>
+               <idno type="IdRef">https://www.idref.fr/138870241</idno>
+               
+            </person>
+            <person xml:id="Sarma" role="?"><!-- @role must be updated -->
+               <persName>
+                  <name>Sarma S.A.S</name>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/34006731</idno>
+               <idno type="IdRef">https://www.idref.fr/079236472</idno>
+            </person>
+            <person xml:id="Sathyanarayanan" role="?"><!-- @role must be updated -->
+               <persName>
+                  <name>Sathyanarayanan R.</name>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/304053379</idno>
+               <idno type="IdRef">https://www.idref.fr/169903370</idno>
+            </person>
+            <person xml:id="Schoettel" role="editor">
+               <persName>
+                  <surname>Schoettel</surname>
+                  <forename>Marine</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/237151594453005351072</idno>
+               <idno type="IdRef">https://www.idref.fr/221601880</idno>
+            </person>
+            <person xml:id="Kavitha" role="?"><!-- @role must be updated -->
+               <persName>
+                  <name>S. Kavitha</name>
+               </persName>
+               <!-- nathing? not sure about the identification-->
+            </person>
+            <person xml:id="Soutif" role="archeaologist">
+               <persName>
+                  <surname>Soutif</surname>
+                  <forename>Dominique</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/189739901</idno>
+               <idno type="IdRef">https://www.idref.fr/131352520</idno>
+            </person>
+            <person xml:id="Stoyanova" role="advisor">
+               <persName>
+                  <surname>Stoyanova</surname>
+                  <forename>Simona</forename>
+               </persName>
+               <!-- Nothing?-->
+            </person>
+            <person xml:id="Taverdet" role="manager">
+               <persName>
+                  <surname>Taverdet</surname>
+                  <forename>Audrey</forename>
+               </persName>
+            </person>
+            <person xml:id="Thomas" role="editor">
+               <persName>
+                  <surname>Thomas</surname>
+                  <forename>Jens</forename>
+               </persName>
+               <!-- nothing? Not sure about the identification -->
+            </person>
+            <person xml:id="Tournier" role="editor">
+               <persName>
+                  <surname>Tournier</surname>
+                  <forename>Vincent</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/308304168</idno>
+               <idno type="IdRef">https://www.idref.fr/177429623</idno>
+               <idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
+            </person> 
+            <person xml:id="Veluppilai" role="archeaologist">
+               <persName>
+                  <surname>Veluppilai</surname>
+                  <forename>Uthaya</forename>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/309907661</idno>
+               <idno type="IdRef">https://www.idref.fr/176321616</idno>
+            </person>
+            <person xml:id="Vijayavenugopal" role="?"><!-- @role must be updated -->
+               <persName>
+                  <name>Vijayavenugopal G.</name>
+               </persName>
+               <idno type="VIAF">http://viaf.org/viaf/30722592</idno>
+               <idno type="IdRef">https://www.idref.fr/106412329</idno>
+               <idno type="ORCID">https://orcid.org/0000-0001-6061-0140</idno>
+            </person>
+         </listPerson>
+      </body>
+  </text>
+</TEI>
