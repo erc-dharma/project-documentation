@@ -125,7 +125,7 @@
             <person xml:id="Balogh" role="editor">
                <persName>
                   <surname>Balogh</surname>
-                  <forename>Daniel</forename> 
+                  <forename>Dániel</forename> 
                   </persName>
                <idno type="VIAF">http://viaf.org/viaf/90419463</idno>
                <idno type="IdRef">https://www.idref.fr/151908052</idno>
@@ -219,17 +219,17 @@
             </person>
             <person xml:id="Dezso" role="?"><!-- @ role must be updated -->
                <persName>
-                  <surname>Dezsó</surname>
+                  <surname>Dezsö</surname>
                   <forename>Csaba</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/119084903</idno>
                <idno type="IdRef">https://www.idref.fr/119884275</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-3595-0941</idno>
             </person>
-            <person xml:id="Edward" role="?"><!-- @ role must be updated -->
+            <person xml:id="Swenson" role="?"><!-- @ role must be updated -->
                <persName>
-                  <surname>Edward</surname>
-                  <forename>Swenson</forename>
+                  <surname>Swenson</surname>
+                  <forename>Edward</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/103600754</idno>
                <idno type="IdRef">https://www.idref.fr/230438458</idno>
@@ -248,7 +248,7 @@
             </person>
             <person xml:id="Esteve" role="?"><!-- @role must be updated -->
                <persName>
-                  <surname>Esteve</surname>
+                  <surname>Estève</surname>
                   <forename>Julia</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/216403335</idno>
@@ -266,7 +266,7 @@
             <person xml:id="Furui" role="editor">
                <persName>
                   <surname>Furui</surname>
-                  <forename>Ryosoke</forename>
+                  <forename>Ryosuke</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
             </person>
@@ -306,14 +306,14 @@
             <person xml:id="Ladrech" role="?"><!-- @role must be added -->
                <persName>
                   <surname>Ladrech</surname>
-                  <forename>karine</forename>
+                  <forename>Karine</forename>
                </persName>
                 <idno type="VIAF">http://viaf.org/viaf/12622237</idno>
                 <idno type="IdRef">https://www.idref.fr/095075704</idno>
             </person>
             <person xml:id="Lefevre" role="archaeologist">
                <persName>
-                  <surname>Lefevre</surname>
+                  <surname>Lefèvre</surname>
                   <forename>Vincent</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/76561955</idno>
@@ -391,9 +391,9 @@
                </persName>
                <!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed -->
             </person>
-            <person xml:id="Ollet" role="?"><!-- editor or advisor -->
+            <person xml:id="Ollett" role="?"><!-- editor or advisor -->
                <persName>
-                  <surname>Ollet</surname>
+                  <surname>Ollett</surname>
                   <forename>Andrew</forename>
                </persName>
                <idno type="VIAF">ttp://viaf.org/viaf/372149294434280521495</idno>
@@ -488,7 +488,7 @@
                   <surname>Thomas</surname>
                   <forename>Jens</forename>
                </persName>
-               <!-- nothing? Not sure about the identification -->
+               <!-- must be created-->
             </person>
             <person xml:id="Tournier" role="editor">
                <persName>
@@ -499,9 +499,9 @@
                <idno type="IdRef">https://www.idref.fr/177429623</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
             </person> 
-            <person xml:id="Veluppilai" role="archeaologist">
+            <person xml:id="Veluppillai" role="editor">
                <persName>
-                  <surname>Veluppilai</surname>
+                  <surname>Veluppillai</surname>
                   <forename>Uthaya</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/309907661</idno>
