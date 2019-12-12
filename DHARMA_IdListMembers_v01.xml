@@ -35,9 +35,8 @@
         </abstract>
      </profileDesc>
      <revisionDesc>
-        <change who="#axja" when="2019-12-06">Creation of the file, adding some informations and minimal metadata</change>
-     	<change who="#axja" when="2019-12-06">Corrections requested by Annette Schmiedchen (4ca777f misspelling corrections)</change>
-     	<change who="#argr" when="2019-12-06">Proposed new four-letter IDs, filled in missing roles, posed some questions</change>
+     	<change who="#argr" when="2019-12-06">Proposed new four-letter IDs, filled in missing roles, posed some question</change>
+     	<change who="#axja" when="2019-12-06">Corrections requested by Annette Schmiedchen (4ca777f misspelling correction)</change>  		 <change who="#axja" when="2019-12-06">Creation of the file, adding some informations and minimal metadata</change>
      </revisionDesc>
   </teiHeader>
   <text>
