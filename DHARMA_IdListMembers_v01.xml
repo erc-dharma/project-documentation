@@ -3,46 +3,51 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader><!-- Axelle: don't we need the filename recorded in the Header? -->
+  <teiHeader xml:lang="eng">
       <fileDesc>
          <titleStmt>
             <title>DHARMA Identifiers for project members</title>
             <funder>European Research Council</funder>
-            <principal ref="#Francis">Emmanuel Francis</principal>
-            <principal ref="#Griffiths">Arlo Griffiths</principal>
-            <principal ref="#Schmiedchen">Annette Schmiedchen</principal>
+            <principal ref="#emfr">Emmanuel Francis</principal>
+            <principal ref="#argr">Arlo Griffiths</principal>
+            <principal ref="#ansc">Annette Schmiedchen</principal>
             <respStmt>
-               <name ref="#Janiak">Axelle Janiak</name>
+               <name ref="#axja">Axelle Janiak</name>
                <resp>XML-TEI Data Manager</resp>
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <authority>ERC-DHARMA</authority><!-- Axelle: should grant number also be mentioned? -->
-            <pubPlace>Paris, France</pubPlace>
-            <date>2019</date>
-            <availability>
-               <licence target="https://creativecommons.org/licenses/by/4.0/">Distributed under a Creative Commons Attribution 2.0 CC-BY</licence>
-               <p>Available with prior consent of depositor for purposes of academic research.</p>
+            <authority>DHARMA Project (ERC 809994): The Domestication of “Hindu” Asceticism and the Religious Making of South and Southeast Asia (2019–2025).</authority>
+            <date>2019-2025</date>
+            <idno type="filename">DHARMA_IdListMembers_v01</idno>
+            <availability> 
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>This work is licenced under the Creative Commons Attribution 2.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street,
+                     Suite 900, Mountain View, California, 94041, USA.</p>
+                  <!-- Adding a relevant copyright and the way to quote the file.  -->
+               </licence>
             </availability>
          </publicationStmt>
          <sourceDesc>
-            <p>Born Digital</p><!-- Axelle: is "natively digital" also acceptable? it would sound nicer to me. -->
+            <p>Natively Digital</p>
          </sourceDesc>
       </fileDesc>
      <profileDesc>
         <abstract>
-           <p>List of all the members of the DHARMA project associated with their internal identifiers and the autority identifiers. The internal identifiers are composed by taking the first two letters of the first and the last name element of the person in question.</p><!-- Axelle: I've added the second sentence. -->
+           <p>List of all the members of the DHARMA project associated with their internal identifiers and the autority identifiers. The internal identifiers are composed by taking the first two letters of the first and the last name element of the person in question.</p>
         </abstract>
      </profileDesc>
-     <revisionDesc>
+     <revisionDesc status="draft">
+        <change who="#axja" when="2019-12-12">Updates on the metadata schema and applying Arlo Griffiths's suggestions on the IDs.</change>
      	<change who="#argr" when="2019-12-06">Proposed new four-letter IDs, filled in missing roles, posed some question</change>
-     	<change who="#axja" when="2019-12-06">Corrections requested by Annette Schmiedchen (4ca777f misspelling correction)</change>  		 <change who="#axja" when="2019-12-06">Creation of the file, adding some informations and minimal metadata</change>
+     	<change who="#axja" when="2019-12-06">Corrections requested by Annette Schmiedchen (4ca777f misspelling correction)</change>  		 
+       <change who="#axja" when="2019-12-06">Creation of the file, adding some informations and minimal metadata</change>
      </revisionDesc>
   </teiHeader>
   <text>
       <body>
          <listPerson>
-            <person xml:id="Francis-emfr" role="cpi"><!-- Two questions: (a) better to use caps CPI, or not? (b) I am not satisfied by the distinction (C)PI // Editor, because the PIs of the project are also editors; sould be say role="editor-in-chief"? -->
+            <person xml:id="emfr">
                <persName>
                  <surname>Francis</surname>
                  <forename>Emmanuel</forename>
@@ -52,7 +57,7 @@
                <idno type="IdRef">https://www.idref.fr/127901175</idno>
                <idno type="ORCID">https://orcid.org/0000-0001-5405-2269</idno>
             </person>
-            <person xml:id="Griffiths-argr" role="pi"><!-- same questions as above at "cpi" -->
+            <person xml:id="argr">
                <persName>
                   <surname>Griffiths</surname>
                   <forename>Arlo</forename> 
@@ -62,7 +67,7 @@
                <idno type="IdRef">https://www.idref.fr/087383462</idno>
                <idno type="ORCID"/> <!-- to be created --><!-- Axelle: is this important? If yes, how do Annette and I do it? -->
             </person>
-         	<person xml:id="Schmiedchen-ansc" role="pi"><!-- same questions as above at "cpi" -->
+         	<person xml:id="ansc">
                <persName>
                   <surname>Schmiedchen</surname>
                   <forename>Annette</forename> 
@@ -72,7 +77,7 @@
                <idno type="wikidata">https://www.wikidata.org/wiki/Q19804226</idno>
                <idno type="ORCID"/> <!-- to be created -->
             </person>
-            <person xml:id="DeSimini-flde" role="pi"><!-- Florinda and Dominic are not in fact PIs. If we call them "editor-in-chief" as well, then the problem disappears -->
+            <person xml:id="flde">
                <persName>
                   <surname>De Simini</surname>
                   <forename>Florinda</forename>
@@ -81,7 +86,7 @@
                <idno type="IdRef">https://www.idref.fr/200880365</idno>
                <idno type="ORCID">https://orcid.org/0000-0001-9845-1480</idno>
             </person>
-            <person xml:id="Goodall-dogo" role="pi"><!-- see above under DeSimini -->
+            <person xml:id="dogo">
                <persName>
                   <surname>Goodall</surname>
                   <forename>Dominic</forename>
@@ -90,7 +95,7 @@
                <idno type="IdRef">https://www.idref.fr/057684251</idno>
                <idno type="ORCID"/> <!-- to be created -->
             </person>
-            <person xml:id="Acri-anac" role="editor">
+            <person xml:id="anac">
                <persName>
                   <surname>Acri</surname>
                   <forename>Andrea</forename>
@@ -100,30 +105,30 @@
                <idno type="wikidata">https://www.wikidata.org/wiki/Q50221197</idno>
                <idno type="ORCID">https://orcid.org/0000-0001-9633-829X</idno>
             </person>
-            <person xml:id="Adam" role="advisor"><!-- I suggest removing this person. -->
+            <person xml:id="Adam"><!-- I suggest removing this person. -->
                <persName>
                   <surname>Adam</surname>
                   <forename>Cédric</forename> 
                </persName>
             </person>
-            <person xml:id="Aditia-adgu" role="editor">
+            <person xml:id="adgu">
                <persName>
                   <name>Aditia Gunawan</name>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/215307091</idno> <!-- http://viaf.org/viaf/283969266 -->
                <idno type="IdRef">https://www.idref.fr/147009324</idno>       
             </person>
-            <person xml:id="Agustijanto-agin" role="archaeologist"><!-- Can't we remove this person? -->
+            <person xml:id="agin"><!-- Can't we remove this person? -->
                <persName>
                   <name>Agustijanto Indrajaya</name>
                </persName>
             </person>
-            <person xml:id="Moise-moir" role="?"><!-- Can't we remove this person? -->
+            <person xml:id="moir" role="?"><!-- Can't we remove this person? -->
                <persName>
                   <name>A. Moise Irudayaraj</name>
                </persName>
             </person>
-            <person xml:id="Balogh-daba" role="editor">
+            <person xml:id="daba">
                <persName>
                   <surname>Balogh</surname>
                   <forename>Dániel</forename> 
@@ -132,7 +137,7 @@
                <idno type="IdRef">https://www.idref.fr/151908052</idno>
                <idno type="ORCID">https://orcid.org/0000-0003-4203-6776</idno>
             </person>
-            <person xml:id="Berkemer-gebe" role="editor"><!-- Is any such contribution expected from this person? -->
+            <person xml:id="gebe"><!-- Is any such contribution expected from this person? -->
                <persName>
                   <surname>Berkemer</surname>
                   <forename>Georg</forename>
@@ -140,7 +145,7 @@
                <idno type="VIAF">http://viaf.org/viaf/233491810</idno>
                <idno type="IdRef">https://www.idref.fr/068730306</idno>             
             </person>
-            <person xml:id="Bisschop-pebi" role="advisor"><!-- I think this person can be removed -->
+            <person xml:id="pebi"><!-- I think this person can be removed -->
                <persName>
                   <surname>Bisschop</surname>
                   <forename>Peter</forename>
@@ -149,7 +154,7 @@
                <idno type="IdRef">https://www.idref.fr/117203297</idno>
                <idno type="wikidata">https://www.wikidata.org/wiki/Q77085917</idno> <!-- à vérifier -->
             </person>
-            <person xml:id="Bodard-gabo" role="advisor">
+            <person xml:id="gabo">
                <persName>
                   <surname>Bodard</surname>
                   <forename>Gabriel</forename>
@@ -158,7 +163,7 @@
                <idno type="IdRef">https://www.idref.fr/146917901</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-8566-6666</idno>
             </person>
-            <person xml:id="Bosma-nabo" role="editor">
+            <person xml:id="nabo">
                <persName>
                   <surname>Bosma</surname>
                   <forename>Natasja</forename>
@@ -166,7 +171,7 @@
                <idno type="VIAF">http://viaf.org/viaf/124153651793655782535</idno>
                <idno type="IdRef">https://www.idref.fr/22980845X</idno>
             </person>
-            <person xml:id="Brocquet-sybr" role="editor">
+            <person xml:id="sybr">
                <persName>
                   <surname>Brocquet</surname>
                   <forename>Sylvain</forename> 
@@ -174,13 +179,13 @@
                <idno type="VIAF">http://viaf.org/viaf/159939465</idno>
                <idno type="IdRef">https://www.idref.fr/100933807</idno>
             </person>
-            <person xml:id="Buriola-gubu" role="editor">
+            <person xml:id="gubu">
                <persName>
                   <surname>Buriola</surname>
                   <forename>Guilia</forename>           
                </persName>
             </person>
-            <person xml:id="Cane-nica" role="editor">
+            <person xml:id="nica">
                <persName>
                   <surname>Cane</surname>
                   <forename>Nicolas</forename> 
@@ -188,7 +193,7 @@
                <idno type="VIAF">http://viaf.org/viaf/55154196826820112429</idno>
                <idno type="IdRef">https://www.idref.fr/231188013</idno>            
             </person>
-            <person xml:id="Chea-chso" role="archaeologist">
+            <person xml:id="chso">
                <persName>
                   <surname>Chea</surname>
                   <forename>Socheat</forename> 
@@ -196,7 +201,7 @@
                <idno type="VIAF">http://viaf.org/viaf/194153953223705560160</idno>
                <idno type="IdRef">https://www.idref.fr/230437257</idno>
             </person>
-            <person xml:id="Chhom-kucc" role="editor">
+            <person xml:id="kucc">
                <persName>
                   <surname>Chhom</surname>
                   <forename>Kunthea</forename>
@@ -204,13 +209,13 @@
                <idno type="VIAF">http://viaf.org/viaf/262148704025336930123</idno>
                <idno type="IdRef">https://www.idref.fr/197571670</idno>
             </person>
-            <person xml:id="Chollet-chch" role="editor">
+            <person xml:id="chch">
                <persName>
                   <surname>Chollet</surname>
                   <forename>Chloé</forename> 
                </persName>
             </person>
-            <person xml:id="Degroot-vede" role="archaeologist">
+            <person xml:id="vede">
                <persName>
                   <surname>Degroot</surname>
                   <forename>Véronique</forename>
@@ -218,7 +223,7 @@
                <idno type="VIAF">http://viaf.org/viaf/168944273</idno>
                <idno type="IdRef">https://www.idref.fr/10481960X</idno>
             </person>
-            <person xml:id="Dezso-csde" role="editor">
+            <person xml:id="csde">
                <persName>
                   <surname>Dezsö</surname>
                   <forename>Csaba</forename>
@@ -227,7 +232,7 @@
                <idno type="IdRef">https://www.idref.fr/119884275</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-3595-0941</idno>
             </person>
-            <person xml:id="Swenson-edsw" role="archaeologist">
+            <person xml:id="edsw">
                <persName>
                   <surname>Swenson</surname>
                   <forename>Edward</forename>
@@ -235,19 +240,19 @@
                <idno type="VIAF">http://viaf.org/viaf/103600754</idno>
                <idno type="IdRef">https://www.idref.fr/230438458</idno>
             </person>
-            <person xml:id="Eko-ekba" role="editor">
+            <person xml:id="ekba">
                <persName>
                   <name>Eko Bastiawan</name>
                </persName>
             </person>
-            <person xml:id="Elliot-toel" role="advisor">
+            <person xml:id="toel">
                <persName>
                   <surname>Elliot</surname>
                   <forename>Tom</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/163074381</idno>
             </person>
-            <person xml:id="Esteve-jues" role="editor"><!-- Axelle: is it possible to have two roles? (a) archaeologist, (b) editor? -->
+            <person xml:id="jues">
                <persName>
                   <surname>Estève</surname>
                   <forename>Julia</forename>
@@ -255,7 +260,7 @@
                <idno type="VIAF">http://viaf.org/viaf/216403335</idno>
                <idno type="IdRef">https://www.idref.fr/151150907</idno>
             </person>
-            <person xml:id="Franceschini-mafr" role="editor">
+            <person xml:id="mafr">
                <persName>
                   <surname>Franceschini</surname>
                   <forename>Marco</forename>
@@ -264,14 +269,14 @@
                <idno type="IdRef">https://www.idref.fr/154017841</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-4135-6893</idno> <!-- To be validated -->
             </person>
-            <person xml:id="Furui-ryfu" role="editor">
+            <person xml:id="ryfu">
                <persName>
                   <surname>Furui</surname>
                   <forename>Ryosuke</forename>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
             </person>
-            <person xml:id="Gillet-vagi" role="editor">
+            <person xml:id="vagi">
                <persName>
                <surname>Gillet</surname>
                <forename>Valérie</forename>
@@ -281,7 +286,7 @@
                <idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-8403-3111</idno>
             </person>
-            <person xml:id="Hunter-thhu" role="editor">
+            <person xml:id="thhu">
                <persName>
                   <surname>Hunter</surname>
                   <forename>Thomas</forename>
@@ -289,14 +294,14 @@
                <idno type="VIAF">http://viaf.org/viaf/14319585</idno>
                <idno type="IdRef">https://www.idref.fr/11251250X</idno>
             </person>
-            <person xml:id="Janiak-axja" role="dataManager">
+            <person xml:id="axja">
                <persName>
                   <surname>Janiak</surname>
                   <forename>Axelle</forename>
                </persName>
                <idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
             </person>
-            <person xml:id="Kiss-cski" role="editor">
+            <person xml:id="cski">
                <persName>
                   <surname>Kiss</surname>
                   <forename>Csaba</forename>
@@ -304,7 +309,7 @@
                <idno type="VIAF">ttp://viaf.org/viaf/163770541</idno>
                <idno type="IdRef">https://www.idref.fr/186191634</idno>
             </person>
-            <person xml:id="Ladrech-kala" role="editor">
+            <person xml:id="kala">
                <persName>
                   <surname>Ladrech</surname>
                   <forename>Karine</forename>
@@ -312,7 +317,7 @@
                 <idno type="VIAF">http://viaf.org/viaf/12622237</idno>
                 <idno type="IdRef">https://www.idref.fr/095075704</idno>
             </person>
-            <person xml:id="Lefevre-vile" role="archaeologist">
+            <person xml:id="vile">
                <persName>
                   <surname>Lefèvre</surname>
                   <forename>Vincent</forename>
@@ -321,13 +326,13 @@
                <idno type="IdRef">https://www.idref.fr/080135072</idno>
                <idno type="wikidata">https://www.wikidata.org/wiki/Q38239987</idno>
             </person>
-            <person xml:id="Lefrancq-cole" role="archaeologist">
+            <person xml:id="cole">
                <persName>
                   <surname>Lefrancq</surname>
                   <forename>Coline</forename>
                </persName> <!-- nothing found --><!-- Manu: you may help Coline get a VIAF, idHAL, ORCID... -->
             </person>
-            <person xml:id="Levivier-adle" role="visualDataManager">
+            <person xml:id="adle">
                <persName>
                   <surname>Levivier</surname>
                   <forename>Adeline</forename>
@@ -336,7 +341,7 @@
                <idno type="IdRef">https://www.idref.fr/193202719</idno>
                <!-- add the IdHal -->
             </person>
-            <person xml:id="Liuzzo-pili" role="advisor">
+            <person xml:id="pili">
                <persName>
                   <surname>Liuzzo</surname>
                   <forename>Pietro Maria</forename>
@@ -344,7 +349,7 @@
                <idno type="VIAF">http://viaf.org/viaf/310697060</idno>
                <idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
             </person>
-            <person xml:id="Lubin-tilu" role="editor">
+            <person xml:id="tilu">
                <persName>
                   <surname>Lubin</surname>
                   <forename>Timothy</forename>
@@ -353,7 +358,7 @@
                <idno type="IdRef">https://www.idref.fr/170559610</idno>
                <idno type="ORCID">https://orcid.org/0000-0001-8352-5870</idno>
             </person>
-            <person xml:id="Manuel-inma" role="editor">
+            <person xml:id="inma">
                <persName>
                   <surname>Manuel</surname>
                   <forename>Indra</forename>
@@ -361,13 +366,13 @@
                <idno type="VIAF">http://viaf.org/viaf/68558778</idno>
                <idno type="IdRef">https://www.idref.fr/183697367</idno>
             </person>
-            <person xml:id="Marimouttou" role="researchAssistant"><!-- I think we can remove this person. -->
+            <person xml:id="Marimouttou"><!-- I think we can remove this person. -->
                <persName>
                   <surname>Marimouttou</surname>
                   <forename>Vijayageetha</forename>
                </persName>
             </person> <!-- nothing?  -->
-            <person xml:id="Mirnig-nimi" role="editor">
+            <person xml:id="nimi">
                <persName>
                   <surname>Mirnig</surname>
                   <forename>Nina</forename>
@@ -376,7 +381,7 @@
                <idno type="IdRef">https://www.idref.fr/176193774</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-4944-6535</idno>
             </person>
-            <person xml:id="Morlock-emmo" role="advisor">
+            <person xml:id="emmo">
                <persName>
                   <surname>Morlock</surname>
                   <forename>Emmanuelle</forename>
@@ -386,13 +391,13 @@
                <idno type="IdRef">https://www.idref.fr/185971202</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-1617-8554</idno>
             </person>
-            <person xml:id="Ramaswamy-rama" role="researchAssistant"><!-- Manu: do we need to keep him? -->
+            <person xml:id="rama"><!-- Manu: do we need to keep him? -->
                <persName>
                   <name>N. Ramaswamy</name>
                </persName>
                <!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed -->
             </person>
-            <person xml:id="Ollett-anol" role="editor">
+            <person xml:id="anol">
                <persName>
                   <surname>Ollett</surname>
                   <forename>Andrew</forename>
@@ -400,26 +405,26 @@
                <idno type="VIAF">ttp://viaf.org/viaf/372149294434280521495</idno>
                <idno type="IdRef">https://www.idref.fr/224232371</idno>
             </person>
-            <person xml:id="Pasedach-pepa" role="editor">
+            <person xml:id="pepa">
                <persName>
                   <surname>Pasedach</surname>
                   <forename>Peter</forename>
                </persName>
                <!-- nothing -->
             </person>
-            <person xml:id="Patel" role="administrator"><!-- Can't we remove this person? -->
+            <person xml:id="Patel"><!-- Can't we remove this person? -->
                <persName>
                   <surname>Patel</surname>
                   <forename>Prerana</forename>
                </persName>
             </person>
-            <person xml:id="Premkumar-prem" role="?"><!-- Can't we remove this person? -->
+            <person xml:id="prem" role="?"><!-- Can't we remove this person? -->
                <persName>
                   <name>Premukumar S.</name>
                </persName>
                <!-- nothing?  -->
             </person>
-            <person xml:id="Sanyal-rasa" role="editor">
+            <person xml:id="rasa">
                <persName>
                   <surname>Sanyal</surname>
                   <forename>Rajat</forename>
@@ -427,28 +432,28 @@
                <idno type="VIAF">http://viaf.org/viaf/315733752</idno>
                <idno type="IdRef">https://www.idref.fr/18506194X</idno>
             </person>
-            <person xml:id="Anjaneya-ansa" role="editor">
+            <person xml:id="ansa">
                <persName>
                   <name>Anjaneya Sarma</name>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/206189621</idno>
                <idno type="IdRef">https://www.idref.fr/138870241</idno>
             </person>
-            <person xml:id="Sarma-sass" role="editor">
+            <person xml:id="sass">
                <persName>
                	<name>S.A.S. Sarma</name>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/34006731</idno>
                <idno type="IdRef">https://www.idref.fr/079236472</idno>
             </person>
-            <person xml:id="Sathyanarayanan-sath" role="editor">
+            <person xml:id="sath">
                <persName>
                   <name>R. Sathyanarayanan</name>
                </persName>
                <idno type="VIAF">http://viaf.org/viaf/304053379</idno>
                <idno type="IdRef">https://www.idref.fr/169903370</idno>
             </person>
-            <person xml:id="Schoettel-masc" role="editor">
+            <person xml:id="masc">
                <persName>
                   <surname>Schoettel</surname>
                   <forename>Marine</forename>
@@ -456,13 +461,13 @@
                <idno type="VIAF">http://viaf.org/viaf/237151594453005351072</idno>
                <idno type="IdRef">https://www.idref.fr/221601880</idno>
             </person>
-            <person xml:id="Kavitha-kavi" role="administrator"><!-- Can't we remove this person? -->
+            <person xml:id="kavi"><!-- Can't we remove this person? -->
                <persName>
                   <name>S. Kavitha</name>
                </persName>
                <!-- nathing? not sure about the identification-->
             </person>
-            <person xml:id="Soutif-doso" role="archeaologist"><!-- Axelle: another case where two roles might be come in handy: (a) archaeologist, (b) editor -->
+            <person xml:id="doso">
                <persName>
                   <surname>Soutif</surname>
                   <forename>Dominique</forename>
@@ -470,27 +475,27 @@
                <idno type="VIAF">http://viaf.org/viaf/189739901</idno>
                <idno type="IdRef">https://www.idref.fr/131352520</idno>
             </person>
-            <person xml:id="Stoyanova-sist" role="advisor">
+            <person xml:id="sist">
                <persName>
                   <surname>Stoyanova</surname>
                   <forename>Simona</forename>
                </persName>
                <!-- Nothing?-->
             </person>
-            <person xml:id="Taverdet-auta" role="administrator"><!-- Can this name be removed? -->
+            <person xml:id="auta"><!-- Can this name be removed? -->
                <persName>
                   <surname>Taverdet</surname>
                   <forename>Audrey</forename>
                </persName>
             </person>
-            <person xml:id="Thomas-jeth" role="editor">
+            <person xml:id="jeth">
                <persName>
                   <surname>Thomas</surname>
                   <forename>Jens</forename>
                </persName>
                <!-- must be created-->
             </person>
-            <person xml:id="Tournier-vito" role="editor">
+            <person xml:id="vito">
                <persName>
                   <surname>Tournier</surname>
                   <forename>Vincent</forename>
@@ -499,7 +504,7 @@
                <idno type="IdRef">https://www.idref.fr/177429623</idno>
                <idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
             </person> 
-            <person xml:id="Veluppillai-utve" role="editor">
+            <person xml:id="utve">
                <persName>
                   <surname>Veluppillai</surname>
                   <forename>Uthaya</forename>
@@ -507,7 +512,7 @@
                <idno type="VIAF">http://viaf.org/viaf/309907661</idno>
                <idno type="IdRef">https://www.idref.fr/176321616</idno>
             </person>
-            <person xml:id="Vijayavenugopal-vija" role="editor">
+            <person xml:id="vija">
                <persName>
                   <name>G. Vijayavenugopal</name>
                </persName>
