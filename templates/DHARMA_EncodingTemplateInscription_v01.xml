@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader xml:lang="eng">
+      <fileDesc>
+         <titleStmt>
+            <title>Encoding template for inscription</title><!--Change the title of the file, e.g.Raktamālā grant of the time of Budhagupta, year 159-->
+            <respStmt><!-- Repeat the respStmt for each person involved -->
+               <resp>Creation of the file</resp><!-- work done in the file, e.g. editor ...-->
+               <persName ref="part:axja"> <!-- update the id -->
+                  <forename>Axelle</forename> <!-- possible to use only <name> instead of <foreame> and <surname> -->
+                  <surname>Janiak</surname>
+               </persName>
+            </respStmt>
+         </titleStmt>         
+         <publicationStmt>
+            <authority>DHARMA
+               <note>
+                  <p>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).
+                  </p>
+               </note>
+            </authority>
+            <pubPlace>Paris and Berlin</pubPlace>
+            <idno type="filename">DHARMA_EncodingTemplateInscription</idno><!--Add the filename, e.g. Pallava00001-->
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>This work is licenced under the Creative Commons Attribution 4.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
+                  <p>Copyright (c) 2019 by Emmanuel Francis.</p>
+               </licence>
+            </availability>
+            <date>2019-2025</date>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+     <revisionDesc>
+        <change who="part:axja" when="2019-12-18" status="draft">Creation of the file and basic settings for the template</change><!-- fill a <change> for each intervention on the file. The first change should be the creation of the file. -->
+     </revisionDesc>
+  </teiHeader>
+  <text xml:space="preserve">
+      <body>
+         <div type="edition" xml:lang="san-Latn"><!-- update the @xml:lang value, see EG §7.2-->
+            <!--edition encoded as per §§2−7-->
+         </div>
+         <div type="apparatus">
+           <!--apparatus encoded as per §9.1, basic elements for apparatus below-->
+               <listApp><!-- one <app> for each apparatur entry -->
+                  <app loc="line"><!-- Update the value of @loc.-->
+                     <lem><!-- something to say about the lemmas --></lem>
+                     <rdg source="bib:AuthorYear_01"><!-- update the @source value --></rdg>
+                  </app>
+               </listApp>         
+         </div>
+         <div type="translation" xml:lang="eng">
+            <!-- follow the structure used in the <div type="edition"> -->
+         </div>
+         <div type="commentary">
+            <!--commentary encoded as per section §9.3 Use <p> to structure the content-->
+         </div>
+        <div type="bibliography">
+           <!--bibliography encoded as per section §9.4-->
+           <p n="primary">First edited in <bibl/> with eye copy and English translation. Re-edited in <bibl/> with estampage. Translated into French in <bibl/> with some improvements in the reading. The present edition by Kunthea Chhom based on the estampages.</p>
+           <listBibl type="secondary">
+              <bibl/><!-- one <bibl/> by item -->
+           </listBibl>
+        </div>
+      </body>
+  </text>
+</TEI>
