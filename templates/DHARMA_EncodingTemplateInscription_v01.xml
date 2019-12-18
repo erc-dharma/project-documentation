@@ -16,9 +16,7 @@
          </titleStmt>         
          <publicationStmt>
             <authority>DHARMA
-               <note>
-                  <p>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).
-                  </p>
+               <note>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).
                </note>
             </authority>
             <pubPlace>Paris and Berlin</pubPlace>
