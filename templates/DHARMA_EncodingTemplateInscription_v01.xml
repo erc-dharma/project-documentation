@@ -59,7 +59,7 @@
          </div>
         <div type="bibliography">
            <!--bibliography encoded as per section §9.4-->
-           <p n="primary">First edited in <bibl/> with eye copy and English translation. Re-edited in <bibl/> with estampage. Translated into French in <bibl/> with some improvements in the reading. The present edition by Kunthea Chhom based on the estampages.</p>
+           <p>First edited in <bibl/> with eye copy and English translation. Re-edited in <bibl/> with estampage. Translated into French in <bibl/> with some improvements in the reading. The present edition by Kunthea Chhom based on the estampages.</p>
            <listBibl type="secondary">
               <bibl/><!-- one <bibl/> by item -->
            </listBibl>
