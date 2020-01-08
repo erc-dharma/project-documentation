@@ -151,15 +151,6 @@
 					<idno type="IdRef">https://www.idref.fr/151908052</idno>
 					<idno type="ORCID">https://orcid.org/0000-0003-4203-6776</idno>
 				</person>
-				<person xml:id="gebe">
-					<!-- Is any such contribution expected from this person? -->
-					<persName>
-						<surname>Berkemer</surname>
-						<forename>Georg</forename>
-					</persName>
-					<idno type="VIAF">http://viaf.org/viaf/233491810</idno>
-					<idno type="IdRef">https://www.idref.fr/068730306</idno>
-				</person>
 				<person xml:id="pebi">
 					<!-- I think this person can be removed -->
 					<persName>
