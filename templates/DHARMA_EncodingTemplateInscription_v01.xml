@@ -7,7 +7,7 @@
          <titleStmt>
             <title>Encoding template for inscription</title><!--Change the title of the file, e.g. Raktamālā grant of the time of Budhagupta, year 159-->
             <respStmt><!-- add an element respStmt for each person involved -->
-               <resp>Creation of the file</resp><!-- work done in the file, e.g. editor ...-->
+               <resp>creation of the file</resp><!-- work done in the file, e.g. editor ...-->
                <persName ref="part:jodo"><!-- update the id -->
                   <forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
                   <surname>Doe</surname>
@@ -41,7 +41,7 @@
          </sourceDesc>
       </fileDesc>
      <revisionDesc>
-        <change who="part:axja" when="2019-12-18" status="draft">Creation of the template</change><!-- add a <change> for each change to the file, the first change should replace this one and record your creation of a file using this template. -->
+        <change who="part:axja" when="2019-12-18" status="draft">Creation of the template</change><!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
      </revisionDesc>
   </teiHeader>
   <text xml:space="preserve">
