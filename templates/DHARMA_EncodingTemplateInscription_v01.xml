@@ -7,7 +7,7 @@
          <titleStmt>
             <title>Encoding template for inscription</title><!--Change the title of the file, e.g. Raktamālā grant of the time of Budhagupta, year 159-->
             <respStmt><!-- add an element respStmt for each person involved -->
-               <resp>creation of the file</resp><!-- work done in the file, e.g. editor ...-->
+               <resp>creation of file</resp><!-- work done in the file, e.g. editor ...-->
                <persName ref="part:jodo"><!-- update the id -->
                   <forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
                   <surname>Doe</surname>
