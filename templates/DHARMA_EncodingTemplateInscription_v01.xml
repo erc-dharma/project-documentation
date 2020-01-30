@@ -23,8 +23,7 @@
          </titleStmt>         
          <publicationStmt>
             <authority>DHARMA
-               <note>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).
-               </note>
+               <note>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</note>
             </authority>
             <pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
             <idno type="filename">DHARMA_EncodingTemplateInscription</idno><!-- Replace by filename, e.g. Pallava00001 -->
