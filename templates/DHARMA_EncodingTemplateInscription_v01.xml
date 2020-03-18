@@ -47,7 +47,7 @@
 				<date from="2019" to="2025">2019-2025</date>
 			</publicationStmt>
 			<sourceDesc><!-- only the handDesc can be filled at this stage -->
-				<msDesc><!-- //// NB: the msIdentifier had to be added for validation purposes. It will be edited with /// -->
+				<msDesc><!-- //// NB: the msIdentifier had to be added for validation purposes ///. It will be edited later with the metadata spreadsheets -->
 					<msIdentifier>
 						<repository>DHARMAbase</repository>
 						<idno/>
