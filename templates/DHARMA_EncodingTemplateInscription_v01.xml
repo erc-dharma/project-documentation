@@ -7,20 +7,20 @@
 			<titleStmt>
 				<title>Encoding template for inscription</title>
 				<!--Change the title of the file, e.g. Raktamālā grant of the time of Budhagupta, year 159-->
+				<!-- Add your name in the respStmt matching your involvement -->
 				<respStmt>
-					<!-- add an element respStmt for each person involved -->
 					<resp>creation of file</resp>
-					<!-- work done in the file, e.g. editor ...-->
-					<persName ref="part:jodo"><!-- update the id -->
-						<forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
+					<!-- Work done in the file, e.g. editor ...-->
+					<persName ref="part:jodo"><!-- Update the id -->
+						<forename>John</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
 						<surname>Doe</surname>
 					</persName>
 				</respStmt>
 				<respStmt>
 					<resp>intellectual authorship of edition</resp>
-					<!-- this may be the same as the creator of the file -->
-					<persName ref="part:jodo"><!-- update the id -->
-						<forename>John</forename><!-- fill in the name of the responsible scholar — it possible to use only <name> instead of <foreame> and <surname> -->
+					<!-- This may be the same as the creator of the file -->
+					<persName ref="part:jodo"><!-- Update the id -->
+						<forename>John</forename><!-- Fill in the name of the responsible scholar — it possible to use only <name> instead of <foreame> and <surname> -->
 						<surname>Doe</surname>
 					</persName>
 				</respStmt>
@@ -30,7 +30,7 @@
 						Council (ERC) under the European Union's Horizon 2020 research and
 						innovation programme (grant agreement no 809994).</note>
 				</authority>
-				<pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
+				<pubPlace><!-- Fill in here the place or places where the encoding has been done --></pubPlace>
 				<idno type="filename">DHARMA_EncodingTemplateInscription</idno>
 				<!-- Replace by filename, e.g. Pallava00001 -->
 				<availability>
@@ -41,13 +41,26 @@
 							Creative Commons, 444 Castro Street, Suite 900, Mountain View,
 							California, 94041, USA.</p>
 						<p>Copyright (c) 2019-2025 by John
-						Doe.</p><!-- Replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
+						Doe.</p><!-- replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
 					</licence>
 				</availability>
 				<date from="2019" to="2025">2019-2025</date>
 			</publicationStmt>
-			<sourceDesc>
-				<p><!-- not to be filled in at this stage --></p>
+			<sourceDesc><!-- only the handDesc can be filled at this stage -->
+				<msDesc><!-- //// NB: the msIdentifier had to be added for validation purposes. It will be edited with /// -->
+					<msIdentifier>
+						<repository>DHARMAbase</repository>
+						<idno/>
+					</msIdentifier>
+					<msContents><!-- describe the intellectual content of an inscription -->
+						<summary><!-- //// NOT MANDATORY  ////--></summary> <!-- offer the possibility to give a summary of the content of the inscription -->
+					</msContents>
+					<physDesc>
+						<handDesc>
+							<p><!-- describe the characteristics of the writing observed on the object. --></p>
+						</handDesc>
+					</physDesc>
+				</msDesc>
 			</sourceDesc>
 		</fileDesc>
 		<revisionDesc>
@@ -64,7 +77,7 @@
          <div type="apparatus">
            <!--apparatus encoded as per EG §9.1, basic elements for apparatus below-->
                <listApp><!-- one <app> for each apparatus entry -->
-                  <app loc="line"><!-- Update the value of @loc.-->
+                  <app loc="line"><!-- update the value of @loc.-->
                      <lem><!-- fill in a lemma here --></lem>
                      <rdg source="bib:AuthorYear_01"><!-- update the @source value, fill in variant reading here --></rdg>
                   </app>
