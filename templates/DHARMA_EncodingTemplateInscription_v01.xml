@@ -46,18 +46,18 @@
 				</availability>
 				<date from="2019" to="2025">2019-2025</date>
 			</publicationStmt>
-			<sourceDesc><!-- only the handDesc can be filled at this stage -->
+			<sourceDesc><!-- only the handDesc can be filled in at this stage -->
 				<msDesc><!-- //// NB: the msIdentifier had to be added for validation purposes ///. It will be edited later with the metadata spreadsheet -->
 					<msIdentifier>
 						<repository>DHARMAbase</repository>
-						<idno/>
+						<idno/><!-- don't modify this -->
 					</msIdentifier>
 					<msContents><!-- describe the intellectual content of an inscription -->
-						<summary><!-- //// NOT MANDATORY  ////--></summary> <!-- offer the possibility to give a summary of the inscription's content -->
+						<summary><!-- //// NOT MANDATORY  ////--></summary> <!-- offers the possibility to give a summary of the inscription's content -->
 					</msContents>
 					<physDesc>
 						<handDesc>
-							<p><!-- describe the characteristics of the writing observed on the object. --></p>
+							<p><!-- The script name(s) will be inserted here at a later stage from the metadata spreasheet. At this stage, you can mention here in a free-text paragraph any characteristics of the writing observed more than once in this inscription that seem unusual/uncommon or otherwise noteworthy given the general characteristics of the script in question. See EG 11.2. --></p>
 						</handDesc>
 					</physDesc>
 				</msDesc>
