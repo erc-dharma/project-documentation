@@ -1,6 +1,6 @@
 # DHARMA Stylesheets Documentation
 
-Campa Epidoc Stylesheets initially adapted from Epidoc Stylesheets by Tom Elliot.
+DHARMA Stylesheets adapted from Epidoc Stylesheets.
 
 ## How to use the XSLT
 - Go `Document>Transformation>Configure Transformation Scenarios...` or click on the `Configure Transformation Scenarios` in the tools bar
