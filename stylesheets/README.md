@@ -9,7 +9,7 @@ Campa Epidoc Stylesheets initially adapted from Epidoc Stylesheets by Tom Elliot
 - Select `XML transformation with XSLT`![Click on XML transformation with XSLT](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/transformationScenario03.png)
 - In the XSLT tab
     - You can choose any name you want but use something clear enough not to confuse it with other stylesheets we might add later for the project.
-    - set the value in XML URL as `${currentFileURL}` and in the XSL URL set the path toward  `*[write the path depending the set up of your computer]*/project-documentation/stylesheets/start-edition.xsl` ![Parameters to transformation a file](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/transformationScenario04.png)
+    - set the value in XML URL as `${currentFileURL}` and in the XSL URL set the path toward  `*[write the path depending the set up of your computer]*/project-documentation/stylesheets/inscriptions/start-edition.xsl` ![Parameters to transformation a file](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/transformationScenario04.png)
     - Select `Saxon-PE 9.9.1.5` as a Transformer.![Select a transformateur](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/transformationScenario04.png)
 - In the Output tab
     - click on `save as` and set its value with the folder path of your choice and finish it by `/${cfn}${date(yyyy-MM-dd)}.html`. ![Parameters the output file](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/transformationScenario05.png)
