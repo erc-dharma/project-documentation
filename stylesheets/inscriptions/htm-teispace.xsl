@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Id: htm-teispace.xsl 1725 2012-01-10 16:08:31Z gabrielbodard $ -->
+<!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0"
    exclude-result-prefixes="t" version="2.0">
 
    <xsl:template name="space-content">
-      <xsl:param name="vacat"/>
+       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+       <xsl:param name="vacat"/>
       <xsl:param name="extent"/>
 
       <xsl:choose>
-         <xsl:when test="$leiden-style = 'london'">
+          <xsl:when test="$parm-leiden-style = 'london'">
             <i>
                <!-- Found in teispace.xsl -->
                <xsl:call-template name="space-content-1">
@@ -17,7 +18,7 @@
                </xsl:call-template>
             </i>
          </xsl:when>
-         <xsl:when test="$leiden-style = 'panciera'">
+          <xsl:when test="$parm-leiden-style = 'panciera'">
             <!-- Found in teispace.xsl -->
             <xsl:call-template name="space-content-2">
                <xsl:with-param name="vacat" select="$vacat"/>
@@ -28,6 +29,7 @@
             <!-- Found in teispace.xsl -->
             <xsl:call-template name="space-content-2">
                <xsl:with-param name="vacat" select="$vacat"/>
+               <xsl:with-param name="extent" select="$extent"/>
             </xsl:call-template>
          </xsl:otherwise>
       </xsl:choose>

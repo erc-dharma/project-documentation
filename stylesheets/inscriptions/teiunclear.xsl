@@ -3,8 +3,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
 
-   <xsl:template match="t:unclear">
-      <xsl:param name="text-content">
+    <!--     <xsl:template match="t:unclear">
+     <xsl:param name="text-content">
          <xsl:choose>
             <xsl:when test="ancestor::t:orig[not(ancestor::t:choice)]">
                <xsl:value-of select="translate(., $all-grc, $grc-upper-strip)"/>
@@ -15,20 +15,17 @@
          </xsl:choose>
       </xsl:param>
 
-      <xsl:choose>
-         <xsl:when test="starts-with($leiden-style, 'edh')">
+     <xsl:choose>
+      <xsl:when test="starts-with($leiden-style, 'edh')">
             <xsl:apply-templates/>
          </xsl:when>
          <xsl:when test="$edition-type = 'diplomatic'">
-            <!-- Calculates the number of middots to output -->
             <xsl:variable name="unclear-length">
-               <!-- collects all children text together -->
                <xsl:variable name="un-len-text">
                   <xsl:for-each select="text()">
                      <xsl:value-of select="."/>
                   </xsl:for-each>
                </xsl:variable>
-               <!-- Outputs an 'a' per child <g> -->
                <xsl:variable name="un-len-g">
                   <xsl:for-each select="t:g">
                      <xsl:text>a</xsl:text>
@@ -41,17 +38,16 @@
                <xsl:with-param name="unc-len" select="$unclear-length"/>
             </xsl:call-template>
          </xsl:when>
-          <xsl:when test="$leiden-style = 'campa' and ancestor::t:orig">
-              <xsl:text></xsl:text><span class="italic"><xsl:value-of select="."/></span><xsl:text></xsl:text>
+          <xsl:when test="$leiden-style = 'dharma' and ancestor::t:orig">
+              <xsl:text>(</xsl:text><xsl:value-of select="."/><xsl:text>)</xsl:text>
           </xsl:when>
-          <xsl:when test="$leiden-style = 'campa' and not(ancestor::t:orig)">
-              <xsl:text>(</xsl:text><xsl:apply-templates/><xsl:text>)</xsl:text>
+          <xsl:when test="$leiden-style = 'dharma' and not(ancestor::t:orig)">
+              <xsl:text>(</xsl:text><xsl:value-of select="."/><xsl:text>)</xsl:text>
           </xsl:when>
          <xsl:otherwise>
             <xsl:choose>
                <xsl:when test="t:g">
                   <xsl:apply-templates/>
-                  <!-- templates (including tests for parent::unclear) are in teig.xsl -->
                </xsl:when>
                <xsl:otherwise>
                   <xsl:call-template name="subpunct">
@@ -65,8 +61,7 @@
       </xsl:choose>
    </xsl:template>
 
-
-   <xsl:template name="middot">
+<xsl:template name="middot">
       <xsl:param name="unc-len"/>
 
       <xsl:if test="not($unc-len = 0)">
@@ -91,5 +86,49 @@
          </xsl:call-template>
       </xsl:if>
    </xsl:template>
+-->
+<!-- solution temporaire avec color:black; Mériterait d'être coder plus clean une fois les guidelines fixées -->
+   <xsl:template match="t:unclear[not(ancestor::t:choice)]">
+     <xsl:choose>
+<xsl:when test="@cert='low'">
+  <span style="color:black;">
+  <xsl:text>(</xsl:text>
+</span>
+  <xsl:choose>
+      <xsl:when test="@rend='grantha'">
+        <xsl:element name="span">
+           <xsl:attribute name="style">color:#E74C3C;</xsl:attribute>
+           <xsl:value-of select="."/>
+        </xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="."/>
+      </xsl:otherwise>
+      </xsl:choose>
+      <span style="color:black;">
+  <xsl:text>?)</xsl:text>
+  </span>
+  <!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
+</xsl:when>
+<xsl:when test="@rend='grantha'">
+  <xsl:text>(</xsl:text>
+  <xsl:element name="span">
+     <xsl:attribute name="style">color:#E74C3C;</xsl:attribute>
+     <xsl:value-of select="."/>
+  </xsl:element>
+  <xsl:text>)</xsl:text>
+</xsl:when>
+<xsl:otherwise>
+
+  <span style="color:black;">
+  <xsl:text>(</xsl:text>
+</span>
+    <xsl:value-of select="."/>
+    <span style="color:black;">
+<xsl:text>)</xsl:text>
+</span>
+  </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
 
 </xsl:stylesheet>

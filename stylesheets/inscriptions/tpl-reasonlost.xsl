@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Id: tpl-reasonlost.xsl 1725 2012-01-10 16:08:31Z gabrielbodard $ -->
+<!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t" 
                 version="2.0">
+
+<!-- ****DEPRECATED**** -->
+<!-- As far as I'm aware this stylesheet is not used anywhere any more.
+      The matching of square brackets is now performed by  [htm|txt]-tpl-sqbrackets.xsl
+      which is called after all other processing is completed, just prior to printing the output
+      (and called in start-text.xsl or tpl-structure.xsl)
+   -->
 
   <!-- Templates for opening and closing brackets for gap and supplied [@reason = 'lost'] -->
   
   
   <xsl:template name="lost-opener">
-      <!-- NOTE: calls to this template and its partner have been commented out in teigap.xsl -->
-    <!-- make delimiting characters adjustable, depending on leiden style parameter and other factors -->
-    <xsl:variable name="c-opener">
-        <xsl:choose>
-            <xsl:when test="$leiden-style='campa' and local-name(.)='gap'">
-                <xsl:text></xsl:text>{<xsl:text></xsl:text>
-            </xsl:when>
-            <xsl:when test="$leiden-style='campa' and local-name(.)='supplied'">
-                <xsl:text></xsl:text>[<xsl:text></xsl:text>
-            </xsl:when>
-            <xsl:otherwise>[</xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
-  
-
-      
     <!-- Relationship: start at x going to y -->
     <xsl:choose>
       <!--1.1
@@ -35,7 +26,7 @@
       -->
       <xsl:when test="preceding-sibling::t:*[1][@reason='lost']">
             <xsl:if test="preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
 
@@ -53,7 +44,7 @@
                                        translate(normalize-space(preceding-sibling::text()), ' ', '') = '']
                                    /parent::t:*[preceding-sibling::t:*[1][@reason='lost']]">
             <xsl:if test="parent::t:*[preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -78,7 +69,7 @@
                                              preceding-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]
                                              /parent::t:*[preceding-sibling::t:*[1][@reason='lost']]">
             <xsl:if test="parent::t:*/parent::t:*[preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -97,7 +88,7 @@
                                        /preceding-sibling::t:*[1]/t:*[@reason='lost'][not(following-sibling::t:*)]">
             <xsl:if test="preceding-sibling::t:*[1]/t:*[@reason='lost'][not(following-sibling::t:*)]
                                        [following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
 
@@ -120,7 +111,7 @@
             <xsl:if test="parent::t:*/preceding-sibling::t:*[1]
                                        /t:*[@reason='lost'][not(following-sibling::t:*)]
                                        [following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -149,7 +140,7 @@
                                             /t:*[@reason='lost'][not(following-sibling::t:*)]">
             <xsl:if test="parent::t:*/parent::t:*/preceding-sibling::t:*[1]
                                  /t:*[@reason='lost'][not(following-sibling::t:*)][following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
 
@@ -167,7 +158,7 @@
       -->
       <xsl:when test="current()[not(preceding-sibling::node()[1][self::text()]) or preceding-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]         /preceding-sibling::t:*[1]         /t:*[not(following-sibling::t:*)]         [not(preceding-sibling::node()[1][self::text()]) or preceding-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]         /t:*[@reason='lost'][not(following-sibling::t:*)]">
             <xsl:if test="preceding-sibling::t:*[1]/t:*           /t:*[@reason='lost'][not(following-sibling::t:*)][following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -195,7 +186,7 @@
                                             [self::text() and translate(normalize-space(.), ' ', '') = '']] 
                                             /t:*[@reason='lost'][not(following-sibling::t:*)]">
             <xsl:if test="parent::t:*/preceding-sibling::t:*[1]/t:*           /t:*[@reason='lost'][not(following-sibling::t:*)][following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -227,32 +218,19 @@
                                          /t:*[@reason='lost'][not(following-sibling::t:*)]">
             <xsl:if test="parent::t:*/parent::t:*/preceding-sibling::t:*[1]/t:*
                /t:*[@reason='lost'][not(following-sibling::t:*)][following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+               <xsl:text>[</xsl:text>
             </xsl:if>
          </xsl:when>
             
       
          <xsl:otherwise>
-            <xsl:text></xsl:text><xsl:value-of select="$c-opener"/><xsl:text></xsl:text>
+            <xsl:text>[</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
 
 
   <xsl:template name="lost-closer">
-<!-- make delimiting characters adjustable, depending on leiden style parameter and other factors -->
-    <xsl:variable name="c-closer">
-        <xsl:choose>
-            <xsl:when test="$leiden-style='jakarta' and local-name(.)='gap'">
-                <xsl:text></xsl:text>}<xsl:text></xsl:text>
-            </xsl:when>
-            <xsl:when test="$leiden-style='jakarta' and local-name(.)='supplied'">
-                <xsl:text></xsl:text>]<xsl:text></xsl:text>
-            </xsl:when>
-            <xsl:otherwise>]</xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
-
     <!-- 
       In the diagrams above corresponding to the same number
       Relationship: start at y going to x
@@ -262,7 +240,7 @@
       <!-- 1.1 -->
       <xsl:when test="following-sibling::t:*[1][@reason='lost']">
             <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -271,7 +249,7 @@
       <xsl:when test="current()[not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]
                                    /following-sibling::t:*[1]/t:*[@reason='lost'][not(preceding-sibling::t:*)]">
             <xsl:if test="following-sibling::t:*[1]/t:*[@reason='lost'][not(preceding-sibling::t:*)][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -279,7 +257,7 @@
          <!-- 1.3 -->
       <xsl:when test="current()[not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]         /following-sibling::t:*[1]         /t:*[not(preceding-sibling::t:*)]         [not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]         /t:*[@reason='lost'][not(preceding-sibling::t:*)]">
             <xsl:if test="following-sibling::t:*[1]/t:*           /t:*[@reason='lost'][not(preceding-sibling::t:*)][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -289,7 +267,7 @@
          [not(following-sibling::text()) or translate(normalize-space(following-sibling::text()[1]), ' ', '') = '']
          /parent::t:*[following-sibling::t:*[1][@reason='lost']]">
             <xsl:if test="parent::t:*[following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
 
@@ -304,7 +282,7 @@
                                           /following-sibling::t:*[1]/t:*[@reason='lost'][not(preceding-sibling::t:*)]">
             <xsl:if test="parent::t:*/preceding-sibling::t:*[1]    
                /t:*[@reason='lost'][not(following-sibling::t:*)][following-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -323,7 +301,7 @@
                                           /t:*[@reason='lost'][not(preceding-sibling::t:*)]">
             <xsl:if test="parent::t:*/following-sibling::t:*[1]/t:*    
                /t:*[@reason='lost'][not(preceding-sibling::t:*)][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -332,7 +310,7 @@
       <xsl:when test="current()[not(following-sibling::t:*)]     
          [not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]         /parent::t:*[not(following-sibling::t:*)]         [not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]         /parent::t:*[following-sibling::t:*[1][@reason='lost']]">
             <xsl:if test="parent::t:*/parent::t:*[following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
          
@@ -351,7 +329,7 @@
                                            /t:*[@reason='lost'][not(preceding-sibling::t:*)]">
             <xsl:if test="parent::t:*/parent::t:*/following-sibling::t:*[1]      
                /t:*[@reason='lost'][not(preceding-sibling::t:*)][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
@@ -373,13 +351,13 @@
                                              /t:*[@reason='lost'][not(preceding-sibling::t:*)]">
             <xsl:if test="parent::t:*/parent::t:*/following-sibling::t:*[1]/t:*    
                /t:*[@reason='lost'][not(preceding-sibling::t:*)][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
-               <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+               <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
       
       
          <xsl:otherwise>
-            <xsl:text></xsl:text><xsl:value-of select="$c-closer"/><xsl:text></xsl:text>
+            <xsl:text>]</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
