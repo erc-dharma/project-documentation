@@ -95,13 +95,13 @@
   <parameter> <!--the key of the library-->
     <name>ZoteroKey</name>
     <value on="yes">1633743</value><!--DHARMA group Library ID-->
-    <value>dharma</value> <!--sample value-->
+    <value>ERC-DHARMA</value> <!--sample value-->
   </parameter>
 
   <parameter> <!--the namespace of tags in the zotero library if any-->
     <name>ZoteroNS</name>
-    <value on="yes"/> <!--default on no namespace although the htm-teibibl.xsl takes this value only if selected-->
-    <value>bib:</value>
+    <value/> <!--default on no namespace although the htm-teibibl.xsl takes this value only if selected-->
+    <value on="yes">bib:</value>
   </parameter>
 
 
@@ -119,7 +119,7 @@
 
   <parameter>
     <name>css-loc</name>
-    <value>https://raw.githubusercontent.com/erc-dharma/tfa-documentation/master/tfa-stylesheets/global.css</value>
+    <value>../global.css</value>
   </parameter>
 
 <parameter>
