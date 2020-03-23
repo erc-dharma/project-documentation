@@ -119,7 +119,7 @@
 
   <parameter>
     <name>css-loc</name>
-    <value>https://raw.githubusercontent.com/erc-dharma/tfa-documentation/master/tfa-stylesheets/global.css</value>
+    <value>https://raw.githubusercontent.com/erc-dharma/project-documentation/master/stylesheets/inscriptions/global.css</value>
   </parameter>
 
 <parameter>
