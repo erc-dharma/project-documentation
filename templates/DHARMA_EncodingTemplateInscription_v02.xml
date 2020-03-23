@@ -9,7 +9,7 @@
 				<!--Change the title of the file, e.g. Raktamālā grant of the time of Budhagupta, year 159-->
 				<!-- Add your name in the respStmt matching your involvement -->
 				<respStmt>
-					<resp>creation of file</resp>
+					<resp>Encoding</resp>
 					<!-- Work done in the file, e.g. editor ...-->
 					<persName ref="part:jodo"><!-- Update the id -->
 						<forename>John</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
