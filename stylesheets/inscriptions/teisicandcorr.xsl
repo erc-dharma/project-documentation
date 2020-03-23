@@ -19,11 +19,10 @@
                <xsl:text>)</xsl:text>
             </xsl:if>
          </xsl:when>
-         <!-- Adaptation un peu sale pour mettre en place [sic>corr] pour Manu -->
          <xsl:otherwise>
-             <span style="color:black;"><xsl:text>[</xsl:text></span>
+             <span style="color:black;"><xsl:text>¿</xsl:text></span>
             <xsl:apply-templates/>
-            <span style="color:black;"><xsl:text>&gt;</xsl:text></span>
+            <span style="color:black;"><xsl:text>?</xsl:text></span>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
