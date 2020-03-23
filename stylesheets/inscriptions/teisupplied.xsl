@@ -115,11 +115,11 @@
         <xsl:call-template name="supplied-parallel"/>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:text>&lt;</xsl:text>
+            <span style="color: black;"><xsl:text>&lt;</xsl:text></span>
             <xsl:apply-templates/>
             <!-- Found in tpl-cert-low.xsl -->
         <xsl:call-template name="cert-low"/>
-            <xsl:text>&gt;</xsl:text>
+            <span style="color: black;"><xsl:text>&gt;</xsl:text></span>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
