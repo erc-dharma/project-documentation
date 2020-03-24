@@ -45,9 +45,14 @@
            <xsl:text>⊃</xsl:text>
         </xsl:when>
         <xsl:otherwise>
-           <xsl:text>{</xsl:text>
-           <xsl:apply-imports/>
-           <xsl:text>}</xsl:text>
+            <!--  <xsl:element name="span">
+              <xsl:attribute name="class">symbol</xsl:attribute>
+              <xsl:apply-imports/>
+          </xsl:element>-->
+          <!--will have to be cleaned once the CSS issue has been settled -->
+        <span style="border : 2px solid black;">
+            <xsl:apply-imports/>
+          </span>
          </xsl:otherwise>
       </xsl:choose>
 
