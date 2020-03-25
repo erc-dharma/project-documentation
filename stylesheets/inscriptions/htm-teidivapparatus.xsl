@@ -206,21 +206,27 @@
   </xsl:element>
   <xsl:if test="@source">
 <!-- ajout de la couleur sur rdg et transformation du @source en sigle -->
-    <span style="color:#3498DB;">
+    <span class="tooltip">
       <xsl:text> </xsl:text>
       <xsl:choose>
         <xsl:when test="matches(@source, '\+[a][l]')">
+          <xsl:text> </xsl:text>
           <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> &amp; al.</xsl:text>
+          <span class="tooltiptext"><xsl:value-of select="@source"/></span>
         </xsl:when>
         <xsl:when test="matches(@source, '\+[A-Z]')">
+          <xsl:text> </xsl:text>
           <xsl:value-of select="normalize-space(translate(substring-before(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text>&amp;</xsl:text>
           <xsl:value-of select="normalize-space(translate(substring-after(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> </xsl:text>
+          <span class="tooltiptext"><xsl:value-of select="@source"/></span>
         </xsl:when>
         <xsl:otherwise>
+          <xsl:text> </xsl:text>
        <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
+       <span class="tooltiptext"><xsl:value-of select="@source"/></span>
        </xsl:otherwise>
        </xsl:choose>
   </span>
