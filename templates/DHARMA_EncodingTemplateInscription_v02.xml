@@ -58,8 +58,9 @@
 					<physDesc>
 						<handDesc>
 							<p><!-- The script name(s) will be inserted here at a later stage from the metadata spreasheet. At this stage, you can mention here in a free-text paragraph any characteristics of the writing observed more than once in this inscription that seem unusual/uncommon or otherwise noteworthy given the general characteristics of the script in question. See EG 11.2. --></p>
-							<!-- By default, the <handDesc> structure contains a generic description of paleographical features of the text. If you need to describe hands, create <handNote> elements for each hand and wrap the <p> with <summary>, as follow:
-							 <summary><p><p/></summary>
+							<!-- If you need to identify individual hands (EG §7.5/) in addition to one ore more paragraphs of general palaeographic description, wrap <summary> around the <p> or <p>s above, and outside <summary>, create <handNote> elements for each hand
+as follows:
+						<summary><p><p/></summary>
 						<handNote xml:id="Pallava00001_hand1"></handNote>
 						<handNote xml:id="Pallava00001_hand2"></handNote>
 					 -->
