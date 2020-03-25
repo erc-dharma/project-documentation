@@ -76,8 +76,24 @@
         color: #228B22;
           }
 
+.orig {
+        color: #C71585;
+          }
+
+.reg {
+        color: #4169E1;
+          }
+
+.sic {
+        color: #FF6347;
+      }
+
+.corr {
+        color: #32CD32;
+            }
+
 .tooltip {
-        position: relative;
+        posi  tion: relative;
         color: #1E90FF;
           }
 

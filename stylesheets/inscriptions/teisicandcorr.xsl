@@ -19,6 +19,13 @@
                <xsl:text>)</xsl:text>
             </xsl:if>
          </xsl:when>
+         <xsl:when test="ancestor::t:div[@type='edition']//t:choice/t:sic">
+           <span class="sic">
+             <xsl:text>¿</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>?</xsl:text>
+          </span>
+        </xsl:when>
          <xsl:otherwise>
              <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
@@ -35,11 +42,20 @@
          <xsl:otherwise>
             <xsl:choose>
                 <xsl:when test="$parm-leiden-style = ('seg','iospe','dharma')">
-                  <xsl:text>&lt;</xsl:text>
-                  <xsl:apply-templates/>
-                  <!-- cert-low template found in tpl-certlow.xsl -->
-                  <xsl:call-template name="cert-low"/>
-                  <xsl:text>&gt;</xsl:text>
+                  <xsl:if test="ancestor::t:div[@type='edition']//t:choice/t:corr">
+                    <span class="corr">
+                    <xsl:text>&lt;</xsl:text>
+                    <xsl:apply-templates/>
+                    <!-- cert-low template found in tpl-certlow.xsl -->
+                    <xsl:call-template name="cert-low"/>
+                    <xsl:text>&gt;</xsl:text>
+                  </span>
+                 </xsl:if>
+                 <xsl:text>&lt;</xsl:text>
+                 <xsl:apply-templates/>
+                 <!-- cert-low template found in tpl-certlow.xsl -->
+                 <xsl:call-template name="cert-low"/>
+                 <xsl:text>&gt;</xsl:text>
                </xsl:when>
                 <xsl:when test="starts-with($parm-leiden-style, 'edh')">
                   <xsl:apply-templates/>
@@ -48,7 +64,6 @@
                   <xsl:apply-templates/>
                   <!-- cert-low template found in tpl-certlow.xsl -->
                   <xsl:call-template name="cert-low"/>
-                  <xsl:text>]</xsl:text>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:otherwise>

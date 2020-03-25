@@ -39,15 +39,19 @@
       </xsl:template>-->
 
       <xsl:template match="t:choice/t:orig">
+        <span class="orig">
         <xsl:text>¡</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>!</xsl:text>
+      </span>
       </xsl:template>
 
    <xsl:template match="t:choice/t:reg">
+     <span class="reg">
      <xsl:text>&lt;</xsl:text>
      <xsl:apply-templates/>
      <xsl:text>&gt;</xsl:text>
+   </span>
    </xsl:template>
 
 </xsl:stylesheet>
