@@ -6,7 +6,7 @@
                 exclude-result-prefixes="t EDF"
                 version="2.0">
 
-  <xsl:template match="t:supplied[@reason='lost']">
+  <xsl:template match="t:supplied[@reason=('lost' , 'illegible')]">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="location" />
@@ -41,7 +41,7 @@
            and supplied elements, but this function is now performed by regex in
            [htm|txt]-tpl-sqbrackets.xsl which is called after all other templates are completed.
         -->
-              <span style="color:black;"><xsl:text>[</xsl:text></span>
+              <xsl:text>[</xsl:text>
             <xsl:choose>
                 <xsl:when test="$parm-edition-type = 'diplomatic'">
                   <xsl:variable name="orig-supplied-content">
