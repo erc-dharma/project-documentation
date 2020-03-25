@@ -91,9 +91,7 @@
    <xsl:template match="t:unclear[not(ancestor::t:choice)]">
      <xsl:choose>
 <xsl:when test="@cert='low'">
-  <span style="color:black;">
   <xsl:text>(</xsl:text>
-</span>
   <xsl:choose>
       <xsl:when test="@rend='grantha'">
         <xsl:element name="span">
@@ -105,9 +103,7 @@
         <xsl:value-of select="."/>
       </xsl:otherwise>
       </xsl:choose>
-      <span style="color:black;">
   <xsl:text>?)</xsl:text>
-  </span>
   <!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
 </xsl:when>
 <xsl:when test="@rend='grantha'">
@@ -119,14 +115,9 @@
   <xsl:text>)</xsl:text>
 </xsl:when>
 <xsl:otherwise>
-
-  <span style="color:black;">
   <xsl:text>(</xsl:text>
-</span>
     <xsl:value-of select="."/>
-    <span style="color:black;">
 <xsl:text>)</xsl:text>
-</span>
   </xsl:otherwise>
   </xsl:choose>
 </xsl:template>

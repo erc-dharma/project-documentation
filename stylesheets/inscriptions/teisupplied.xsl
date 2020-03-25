@@ -16,7 +16,7 @@
       <xsl:choose>
          <xsl:when test="@evidence">
             <xsl:if test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch'">
-                 <span style="color:black;"><xsl:text>[</xsl:text></span>
+                 <xsl:text>[</xsl:text>
             </xsl:if>
             <xsl:choose>
                <xsl:when test="@evidence = 'parallel'">
@@ -29,7 +29,7 @@
                </xsl:when>
             </xsl:choose>
             <xsl:if test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch'">
-                 <span style="color:black;"><xsl:text>]</xsl:text></span>
+                 <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
 
@@ -100,7 +100,7 @@
                and supplied elements, but this function is now performed by regex in
                [htm|txt]-tpl-sqbrackets.xsl which is called after all other templates are completed.
            -->
-              <span style="color:black;"><xsl:text>]</xsl:text></span>
+              <xsl:text>]</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
@@ -115,11 +115,11 @@
         <xsl:call-template name="supplied-parallel"/>
          </xsl:when>
          <xsl:otherwise>
-            <span style="color: black;"><xsl:text>&lt;</xsl:text></span>
+            <xsl:text>&lt;</xsl:text>
             <xsl:apply-templates/>
             <!-- Found in tpl-cert-low.xsl -->
         <xsl:call-template name="cert-low"/>
-            <span style="color: black;"><xsl:text>&gt;</xsl:text></span>
+            <xsl:text>&gt;</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>

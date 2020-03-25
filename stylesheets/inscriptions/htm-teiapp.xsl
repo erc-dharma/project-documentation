@@ -201,7 +201,7 @@
             <span class="term">
               <xsl:apply-templates/>
               <span class="gloss" style="display:none">
-              <b><xsl:choose>
+              <p><xsl:choose>
                   <xsl:when test="$lang = 'en'">
                     <xsl:if test=".//t:term[@target]">
                       <xsl:text>Glossary/</xsl:text>
@@ -214,7 +214,7 @@
                     </xsl:if>
                     <xsl:text>Korrektur:</xsl:text>
                   </xsl:when>
-                </xsl:choose></b>
+                </xsl:choose></p>
                 <xsl:for-each select=".//t:term[@target]">
                     <xsl:value-of select="document($parm-hgv-gloss)//t:item[@xml:id = current()/@target]/t:term"/>
                   <xsl:text>. </xsl:text>

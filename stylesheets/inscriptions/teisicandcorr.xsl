@@ -20,9 +20,9 @@
             </xsl:if>
          </xsl:when>
          <xsl:otherwise>
-             <span style="color:black;"><xsl:text>¿</xsl:text></span>
+             <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
-            <span style="color:black;"><xsl:text>?</xsl:text></span>
+            <xsl:text>?</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
@@ -48,7 +48,7 @@
                   <xsl:apply-templates/>
                   <!-- cert-low template found in tpl-certlow.xsl -->
                   <xsl:call-template name="cert-low"/>
-                  <span style="color:black;"><xsl:text>]</xsl:text></span>
+                  <xsl:text>]</xsl:text>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:otherwise>

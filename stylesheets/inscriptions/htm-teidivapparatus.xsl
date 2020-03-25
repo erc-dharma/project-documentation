@@ -201,7 +201,7 @@
   <xsl:template match="t:div[@type = 'apparatus']//t:rdg">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
     <xsl:element name="span">
-       <xsl:attribute name="style">color:#28B463;</xsl:attribute>
+       <xsl:attribute name="class">reading</xsl:attribute>
     <xsl:apply-templates/>
   </xsl:element>
   <xsl:if test="@source">
@@ -237,7 +237,7 @@
 
   <xsl:template match="t:div[@type = 'apparatus']//t:lem">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
-    <xsl:element name="b">
+    <xsl:element name="span">
     <xsl:apply-templates/>
   </xsl:element>
     <xsl:call-template name="sources">

@@ -17,12 +17,11 @@
                <xsl:text>&lt; </xsl:text><xsl:apply-templates/><xsl:text> &gt;</xsl:text>
            </xsl:when>
            <xsl:otherwise>
-             <span style="color: black;">
-               <xsl:text>&lt;&lt;</xsl:text></span>
+               <xsl:text>&lt;&lt;</xsl:text>
                <xsl:apply-templates/>
                <!-- cert-low template found in tpl-certlow.xsl -->
                <xsl:call-template name="cert-low"/>
-               <span style="color: black;"><xsl:text>&gt;&gt;</xsl:text></span>
+               <xsl:text>&gt;&gt;</xsl:text>
            </xsl:otherwise>
        </xsl:choose>
    </xsl:template>
