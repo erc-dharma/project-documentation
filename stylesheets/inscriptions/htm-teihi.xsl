@@ -38,11 +38,11 @@
             </xsl:element>
          </xsl:when>
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-         <!-- @rend='plain'                                                      -->
+         <!-- @rend='grantha'_ CSS inline: font-weight: bold;                                                      -->
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-         <xsl:when test="@rend='grantha'">   
+         <xsl:when test="@rend='grantha'">
                <xsl:element name="span">
-                 <xsl:attribute name="style">color:#E74C3C;</xsl:attribute>
+                 <xsl:attribute name="class">grantha</xsl:attribute>
                  <xsl:apply-templates/>
              </xsl:element>
          </xsl:when>
