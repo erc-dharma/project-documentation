@@ -213,7 +213,9 @@
           <xsl:text> </xsl:text>
           <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> &amp; al.</xsl:text>
-          <span class="tooltiptext"><xsl:value-of select="@source"/></span>
+          <span class="tooltiptext">
+            <xsl:value-of select="replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2')"/>
+          </span>
         </xsl:when>
         <xsl:when test="matches(@source, '\+[A-Z]')">
           <xsl:text> </xsl:text>
@@ -221,12 +223,18 @@
           <xsl:text>&amp;</xsl:text>
           <xsl:value-of select="normalize-space(translate(substring-after(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> </xsl:text>
-          <span class="tooltiptext"><xsl:value-of select="@source"/></span>
+          <span class="tooltiptext">
+            <xsl:value-of select="replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2')"/>
+          </span>
         </xsl:when>
         <xsl:otherwise>
           <xsl:text> </xsl:text>
        <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-       <span class="tooltiptext"><xsl:value-of select="@source"/></span>
+       <span class="tooltiptext">
+       <xsl:value-of select="replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2')"/>
+     </span>
+
+
        </xsl:otherwise>
        </xsl:choose>
   </span>
