@@ -40,7 +40,7 @@
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <!-- @rend='grantha'_ CSS inline: font-weight: bold;                                                      -->
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-         <xsl:when test="@rend='grantha' and not[ancestor::t:div[@xml-lang='tam']]">
+         <xsl:when test="@rend='grantha' and not(ancestor::t:div[@xml-lang='tam'])">
                <xsl:element name="span">
                  <xsl:attribute name="class">grantha</xsl:attribute>
                  <xsl:apply-templates/>
