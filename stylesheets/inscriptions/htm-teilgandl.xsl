@@ -6,19 +6,39 @@
   <xsl:include href="teilgandl.xsl"/>
 
   <xsl:template match="t:lg">
-      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
-        <!-- in IOSPE, if preceded by ab, will be called inside that div (in htm-teiab.xsl) -->
-          <xsl:when test="$parm-leiden-style='iospe' and preceding-sibling::t:*[1][local-name()='ab']"/>
-        <xsl:otherwise>
-        <div class="textpart">
-         <!-- Found in htm-tpl-lang.xsl -->
-         <xsl:call-template name="attr-lang"/>
-            <xsl:apply-templates/>
-         </div>
-        </xsl:otherwise>
-     </xsl:choose>
+          <xsl:when test="$leiden-style='dharma'">
+              <div class="verse-part">
+                <span class="verse-number"><xsl:choose>
+                    <xsl:when test="@n">
+                        <xsl:number value="@n" format="I"/><xsl:text> </xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <!-- this is a hack -->
+                        <xsl:text>no n@ found on this lg element </xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose></span>
+                  <span class="verse-meter">
+                      <xsl:choose>
+                          <xsl:when test="@met">
+                              <xsl:text></xsl:text><xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/><xsl:text></xsl:text>
+                          </xsl:when>
+                          <xsl:otherwise>
+                              <xsl:text></xsl:text><span class="xformerror">no @met found on this lg element</span><xsl:text></xsl:text>
+                          </xsl:otherwise>
+                      </xsl:choose>
+                  </span>
+                  <xsl:apply-templates/>
+              </div>
+          </xsl:when>
+          <xsl:otherwise>
+              <div class="textpart">
+      <!-- Found in htm-tpl-lang.xsl -->
+      <xsl:call-template name="attr-lang"/>
+         <xsl:apply-templates/>
+      </div></xsl:otherwise></xsl:choose>
   </xsl:template>
+
 
 
   <xsl:template match="t:l">
