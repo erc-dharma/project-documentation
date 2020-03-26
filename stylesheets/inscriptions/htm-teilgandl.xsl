@@ -34,7 +34,7 @@
             </xsl:variable>
             <br id="a{$div-loc}l{@n}"/>
               <xsl:if test="number(@n) and @n mod number($parm-line-inc) = 0 and not(@n = 0)">
-               <sup class="linenumber" style="color:purple;">
+               <sup class="versenumber">
                  <xsl:text>(</xsl:text>
                   <xsl:value-of select="@n"/>
                   <xsl:text>) </xsl:text>

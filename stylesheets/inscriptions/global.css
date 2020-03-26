@@ -50,6 +50,10 @@
     text-decoration: blink ;
     }
 
+.versenumber {
+    color: purple;
+}
+
 .petraeligature {
     text-decoration: underline;
     }
