@@ -33,13 +33,13 @@
 
 .textpartnumber {
     padding-right: 0.2em;
-    position: absolute;
+    position: relative;
     }
 
 .linenumber {
-    left: -4em;
-    padding-right: 0.2em;
-    position: absolute;
+    color: black;
+    position: relative;
+    text-decoration: none;
     }
 
 .linenumberbroken {
@@ -116,3 +116,19 @@
 .tooltip:hover .tooltiptext {
         visibility: visible;
           }
+
+div {
+        left: 30px;
+        padding-right: 0.2em;
+        position:relative;
+    }
+
+h2 {
+        left: -18px;
+        padding-right: 0.2em;
+        position: relative;
+        }
+
+P {
+      position: relative;
+      }
