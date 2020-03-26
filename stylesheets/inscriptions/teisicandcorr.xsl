@@ -51,11 +51,6 @@
                     <xsl:text>&gt;</xsl:text>
                   </span>
                  </xsl:if>
-                 <xsl:text>&lt;</xsl:text>
-                 <xsl:apply-templates/>
-                 <!-- cert-low template found in tpl-certlow.xsl -->
-                 <xsl:call-template name="cert-low"/>
-                 <xsl:text>&gt;</xsl:text>
                </xsl:when>
                 <xsl:when test="starts-with($parm-leiden-style, 'edh')">
                   <xsl:apply-templates/>
