@@ -40,7 +40,15 @@
     color: black;
     position: relative;
     text-decoration: none;
+    font-weight: bold;
     }
+
+.linenumberapp {
+        color: black;
+        position: relative;
+        text-decoration: none;
+        font-weight: bold;
+        }    
 
 .linenumberbroken {
     left: -4em;

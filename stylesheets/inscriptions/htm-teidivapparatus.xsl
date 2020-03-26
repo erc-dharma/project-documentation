@@ -174,6 +174,9 @@
   <xsl:template match="t:div[@type='apparatus']//t:app">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
     <sup>
+      <xsl:attribute name="class">
+         <xsl:text>linenumberapp</xsl:text>
+       </xsl:attribute>
       <xsl:text>(</xsl:text>
       <!--<xsl:attribute name="class">-->
         <xsl:value-of select="@loc"/>
