@@ -210,6 +210,9 @@
   <xsl:if test="@source">
 <!-- ajout de la couleur sur rdg et transformation du @source en sigle -->
     <span class="tooltip">
+      <!--<xsl:if test="matches(@source, '\s[b][i][b]')">
+        <xsl:value-of select="replace(@source, ' bib:', ' ')"/>
+      </xsl:if>-->
       <xsl:text> </xsl:text>
       <xsl:choose>
         <xsl:when test="matches(@source, '\+[a][l]')">
@@ -217,7 +220,7 @@
           <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> &amp; al.</xsl:text>
           <span class="tooltiptext">
-            <xsl:value-of select="replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2')"/>
+            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
           </span>
         </xsl:when>
         <xsl:when test="matches(@source, '\+[A-Z]')">
@@ -227,19 +230,18 @@
           <xsl:value-of select="normalize-space(translate(substring-after(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> </xsl:text>
           <span class="tooltiptext">
-            <xsl:value-of select="replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2')"/>
+            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
           </span>
         </xsl:when>
         <xsl:otherwise>
           <xsl:text> </xsl:text>
        <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
        <span class="tooltiptext">
-       <xsl:value-of select="replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2')"/>
+       <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
      </span>
-
-
-       </xsl:otherwise>
+</xsl:otherwise>
        </xsl:choose>
+
   </span>
   </xsl:if>
     <!--<xsl:call-template name="sources">

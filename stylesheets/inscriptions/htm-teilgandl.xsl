@@ -5,42 +5,43 @@
                 version="2.0">
   <xsl:include href="teilgandl.xsl"/>
 
-  <xsl:template match="t:lg">
-      <xsl:choose>
-          <xsl:when test="$leiden-style='dharma'">
-              <div class="verse-part">
-                <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
-                <span class="stanzanumber"><xsl:choose>
-                    <xsl:when test="@n">
-                        <xsl:number value="@n" format="I"/><xsl:text> </xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <!-- this is a hack -->
-                        <xsl:text>no n@ found on this lg element </xsl:text>
-                    </xsl:otherwise>
-                </xsl:choose></span>
-              </xsl:if>
-                  <span class="verse-meter">
-                      <xsl:choose>
-                          <xsl:when test="@met">
-                              <xsl:text></xsl:text><xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/><xsl:text></xsl:text>
-                          </xsl:when>
-                          <xsl:otherwise>
-                              <xsl:text></xsl:text><span class="xformerror">no @met found on this lg element</span><xsl:text></xsl:text>
-                          </xsl:otherwise>
-                      </xsl:choose>
-                  </span>
-                  <xsl:apply-templates/>
-              </div>
-          </xsl:when>
-          <xsl:otherwise>
-              <div class="textpart">
-      <!-- Found in htm-tpl-lang.xsl -->
-      <xsl:call-template name="attr-lang"/>
-         <xsl:apply-templates/>
-      </div></xsl:otherwise></xsl:choose>
-  </xsl:template>
-
+                             <xsl:template match="t:lg">
+                                  <xsl:choose>
+                                      <xsl:when test="$leiden-style='dharma'">
+                                          <div class="verse-part">
+                                            <!-- Deleting the language constraint TO BE DONE -->
+                                           <!-- Adding the @n if more than one <lg> = adding a variable -->
+                                            <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
+                                            <span class="stanzanumber"><xsl:choose>
+                                                <xsl:when test="@n">
+                                                    <xsl:number value="@n" format="I"/><xsl:text> </xsl:text>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <!-- this is a hack -->
+                                                    <xsl:text>no n@ found on this lg element </xsl:text>
+                                                </xsl:otherwise>
+                                            </xsl:choose></span>
+                                          </xsl:if>
+                                              <span class="verse-meter">
+                                                  <xsl:choose>
+                                                      <xsl:when test="@met">
+                                                          <xsl:text></xsl:text><xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/><xsl:text></xsl:text>
+                                                      </xsl:when>
+                                                      <xsl:otherwise>
+                                                          <xsl:text></xsl:text><span class="xformerror">no @met found on this lg element</span><xsl:text></xsl:text>
+                                                      </xsl:otherwise>
+                                                  </xsl:choose>
+                                              </span>
+                                              <xsl:apply-templates/>
+                                          </div>
+                                      </xsl:when>
+                                      <xsl:otherwise>
+                                          <div class="textpart">
+                                  <!-- Found in htm-tpl-lang.xsl -->
+                                  <xsl:call-template name="attr-lang"/>
+                                     <xsl:apply-templates/>
+                                  </div></xsl:otherwise></xsl:choose>
+                              </xsl:template>
 
 
   <xsl:template match="t:l">

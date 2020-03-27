@@ -33,7 +33,7 @@
       <xsl:param name="leidenStyle"></xsl:param>
       <xsl:variable name="maxnum">
          <xsl:choose>
-            <xsl:when test="$leidenStyle = ('ddbdp','sammelbuch','dharm')">
+            <xsl:when test="$leidenStyle = ('ddbdp','sammelbuch','dharma')">
                <xsl:number value="8"/>
             </xsl:when>
             <xsl:otherwise>
