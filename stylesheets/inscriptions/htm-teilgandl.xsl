@@ -9,6 +9,7 @@
       <xsl:choose>
           <xsl:when test="$leiden-style='dharma'">
               <div class="verse-part">
+                <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
                 <span class="stanzanumber"><xsl:choose>
                     <xsl:when test="@n">
                         <xsl:number value="@n" format="I"/><xsl:text> </xsl:text>
@@ -18,6 +19,7 @@
                         <xsl:text>no n@ found on this lg element </xsl:text>
                     </xsl:otherwise>
                 </xsl:choose></span>
+              </xsl:if>
                   <span class="verse-meter">
                       <xsl:choose>
                           <xsl:when test="@met">
