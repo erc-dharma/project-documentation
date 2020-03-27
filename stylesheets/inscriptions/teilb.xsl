@@ -36,14 +36,18 @@
   <xsl:template name="lb-content">
       <xsl:choose>
          <xsl:when test="@break='no' or @type='inWord'">
-          <xsl:text> (</xsl:text>
-            <xsl:value-of select="@n"/>
-            <xsl:text>) </xsl:text>
-         </xsl:when>
-         <xsl:otherwise>
+          <sup class="versenumber">
             <xsl:text> (</xsl:text>
             <xsl:value-of select="@n"/>
             <xsl:text>) </xsl:text>
+          </sup>
+         </xsl:when>
+         <xsl:otherwise>
+           <sup class="versenumber">
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="@n"/>
+            <xsl:text>) </xsl:text>
+          </sup>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>

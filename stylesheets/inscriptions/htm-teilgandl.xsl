@@ -68,16 +68,14 @@
             </xsl:variable>
             <br id="a{$div-loc}l{@n}"/>
               <xsl:if test="number(@n) and @n mod number($parm-line-inc) = 0 and not(@n = 0)">
-               <sup class="versenumber">
                  <xsl:text>(</xsl:text>
                   <xsl:value-of select="@n"/>
                   <xsl:text>) </xsl:text>
-               </sup>
             </xsl:if>
             <!-- found in teilgandl.xsl -->
         <xsl:call-template name="line-context"/>
          </xsl:when>
-         <xsl:otherwise>
+        <xsl:otherwise>
             <xsl:apply-templates/>
          </xsl:otherwise>
       </xsl:choose>
