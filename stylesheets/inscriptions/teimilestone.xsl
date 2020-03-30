@@ -6,7 +6,7 @@
   <!-- General template in [htm|txt]teimilestone.xsl -->
 
   <xsl:template match="t:milestone">
-     <!-- adds pipe for block, flanked by spaces if not within word -->
+     <!-- adds fleuron for block, flanked by spaces if not within word -->
       <xsl:text>&#8225; </xsl:text>
       <xsl:apply-templates/>
   </xsl:template>
