@@ -257,6 +257,7 @@
   <xsl:template match="t:div[@type = 'apparatus']//t:lem">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
     <xsl:element name="span">
+      <xsl:attribute name="class">lemma</xsl:attribute>
     <xsl:apply-templates/>
   </xsl:element>
     <xsl:call-template name="sources">
