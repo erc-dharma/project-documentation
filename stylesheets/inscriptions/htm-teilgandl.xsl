@@ -11,13 +11,12 @@
                                           <div class="verse-part">
                                             <!-- Deleting the language constraint TO BE DONE -->
                                            <!-- Adding the @n if more than one <lg> = adding a variable -->
-                                            <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
+                                             <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
                                             <span class="stanzanumber"><xsl:choose>
                                                 <xsl:when test="@n">
                                                     <xsl:number value="@n" format="I"/><xsl:text> </xsl:text>
                                                 </xsl:when>
                                                 <xsl:otherwise>
-                                                    <!-- this is a hack -->
                                                     <xsl:text>no n@ found on this lg element </xsl:text>
                                                 </xsl:otherwise>
                                             </xsl:choose></span>
@@ -75,8 +74,24 @@
                   <xsl:value-of select="@n"/>
                   <xsl:text>) </xsl:text>
             </xsl:if>
-            <!-- found in teilgandl.xsl -->
+            <!-- div for each l and addition of a class depending the metric pattern -->
+            <xsl:element name="div">
+              <xsl:if test="@n=('ab', 'cd', 'ef', 'gh')">
+                <xsl:attribute name="class">matravitta</xsl:attribute>
+              </xsl:if>
+              <xsl:if test="@n=('a', 'c', 'e', 'g')">
+                <xsl:attribute name="class">varnavritta-odd</xsl:attribute>
+              </xsl:if>
+              <xsl:if test="@n=('b', 'd', 'f', 'h')">
+                <xsl:attribute name="class">varnavritta-even</xsl:attribute>
+              </xsl:if>
+              <!-- metric to be discussed with Manu -->
+              <xsl:if test="matches(@n, '[0-9]+')">
+                <xsl:attribute name="class">tamil-verse</xsl:attribute>
+              </xsl:if>
+              <!-- found in teilgandl.xsl -->
         <xsl:call-template name="line-context"/>
+      </xsl:element>
          </xsl:when>
         <xsl:otherwise>
             <xsl:apply-templates/>

@@ -24,13 +24,13 @@
                <xsl:otherwise>
                   <xsl:text>(</xsl:text>
                   <xsl:value-of select="$pre-lb"/>
-                  <xsl:text>) </xsl:text>
+                  <xsl:text>)</xsl:text>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:if>
       </xsl:if>
       <xsl:apply-templates/>
-      <xsl:if test="local-name(following-sibling::t:*[1])='lb'">
+   <xsl:if test="local-name(following-sibling::t:*[1])='lb'">
          <xsl:text> |</xsl:text>
       </xsl:if>
   </xsl:template>

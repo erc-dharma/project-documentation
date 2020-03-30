@@ -69,6 +69,10 @@
 .verse-meter {
     font-style: italic;
 }
+
+.varnavritta-even{
+    left: 6em;
+}
 .petraeligature {
     text-decoration: underline;
     }
