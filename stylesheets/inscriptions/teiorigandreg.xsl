@@ -38,7 +38,7 @@
           </xsl:choose>
       </xsl:template>-->
 
-      <xsl:template match="t:choice/t:orig">
+      <xsl:template match="t:div[type='edition']//t:choice/t:orig">
         <span class="orig">
         <xsl:text>¡</xsl:text>
         <xsl:apply-templates/>
@@ -46,7 +46,7 @@
       </span>
       </xsl:template>
 
-   <xsl:template match="t:choice/t:reg">
+   <xsl:template match="t:div[type='edition']//t:choice/t:orig">
      <span class="reg">
      <xsl:text>&lt;</xsl:text>
      <xsl:apply-templates/>
