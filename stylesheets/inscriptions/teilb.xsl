@@ -30,7 +30,7 @@
         <xsl:value-of select="@rend"/>
         <xsl:text>) </xsl:text>
      </xsl:if>
-     <xsl:if test="ancestor::t:p">
+     <xsl:if test="ancestor::t:p and not[t:lg]">
        <br/>
        <sup class="cpnumber">
          <xsl:text> (</xsl:text>
