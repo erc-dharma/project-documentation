@@ -10,4 +10,8 @@
       <xsl:text>&#8225; </xsl:text>
       <xsl:apply-templates/>
   </xsl:template>
+
+  <xsl:template match="t:label">
+    <xsl:apply-templates/>
+  </xsl:template>
 </xsl:stylesheet>
