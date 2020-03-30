@@ -23,11 +23,11 @@
                                           </xsl:if>
                                               <span class="verse-meter">
                                                   <xsl:choose>
-                                                      <xsl:when test="@met">
+                                                      <xsl:when test="matches(@met,'[a-z]*')">
                                                           <xsl:text></xsl:text><xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/><xsl:text></xsl:text>
                                                       </xsl:when>
                                                       <xsl:otherwise>
-                                                          <xsl:text></xsl:text><span class="xformerror">no @met found on this lg element</span><xsl:text></xsl:text>
+                                                        <xsl:call-template name="prosodic"/>
                                                       </xsl:otherwise>
                                                   </xsl:choose>
                                               </span>
@@ -97,6 +97,18 @@
             <xsl:apply-templates/>
          </xsl:otherwise>
       </xsl:choose>
+  </xsl:template>
+
+<xsl:template name="prosodic">
+      <xsl:if test="matches(@met,'-')">
+        <xsl:value-of select="replace(@met,'-','⏑')"/>
+      </xsl:if>
+    <xsl:if test="matches(@met,'+')">
+      <xsl:value-of select="replace(@met,'+','-')"/>
+    </xsl:if>
+    <xsl:if test="matches(@met,'=')">
+      <xsl:value-of select="replace(@met,'=','⏓')"/>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
