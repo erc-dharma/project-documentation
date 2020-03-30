@@ -62,6 +62,10 @@
     font-weight: bold;
 }
 
+.cpnumber {
+    font-weight: bold;
+}
+
 .verse-meter {
     font-style: italic;
 }
@@ -80,6 +84,7 @@
 .symbol {
         border: 2px solid black;
         border-radius: 8px;
+        padding: 0.05em;
         }
 
 .grantha {

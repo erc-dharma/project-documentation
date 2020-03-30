@@ -30,8 +30,15 @@
         <xsl:value-of select="@rend"/>
         <xsl:text>) </xsl:text>
      </xsl:if>
+     <xsl:if test="ancestor::t:p">
+       <br/>
+       <sup class="cpnumber">
+         <xsl:text> (</xsl:text>
+         <xsl:value-of select="@n"/>
+         <xsl:text>) </xsl:text>
+       </sup>
+     </xsl:if>
   </xsl:template>
-
 
   <xsl:template name="lb-content">
       <xsl:choose>

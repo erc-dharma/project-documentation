@@ -21,6 +21,9 @@
             <xsl:apply-imports/>
             <!-- use the particular templates in teilb.xsl -->
          </xsl:when>
+         <xsl:when test="ancestor::t:p">
+         <xsl:apply-imports/>
+       </xsl:when>
 
          <xsl:otherwise>
             <xsl:variable name="div-loc">
