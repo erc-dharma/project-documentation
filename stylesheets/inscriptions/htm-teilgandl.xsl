@@ -3,6 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
+
   <xsl:include href="teilgandl.xsl"/>
 
                              <xsl:template match="t:lg">
@@ -72,7 +73,7 @@
               <xsl:if test="number(@n) and @n mod number($parm-line-inc) = 0 and not(@n = 0)">
                  <xsl:text>(</xsl:text>
                   <xsl:value-of select="@n"/>
-                  <xsl:text>) </xsl:text>
+                  <xsl:text>)</xsl:text>
             </xsl:if>
             <!-- div for each l and addition of a class depending the metric pattern -->
             <xsl:element name="div">
@@ -91,6 +92,10 @@
               </xsl:if>
               <!-- found in teilgandl.xsl -->
         <xsl:call-template name="line-context"/>
+        <!-- if next div or ab begins with @enjamb='yes', then add hyphen -->
+         <xsl:if test="following::t:l[1][@enjamb='yes']">
+           <xsl:text>-</xsl:text>
+         </xsl:if>
       </xsl:element>
          </xsl:when>
         <xsl:otherwise>

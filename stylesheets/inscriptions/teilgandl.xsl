@@ -22,7 +22,7 @@
                   <xsl:text>)</xsl:text>
                </xsl:when>
                <xsl:otherwise>
-                  <xsl:text> (</xsl:text>
+                  <xsl:text>(</xsl:text>
                   <xsl:value-of select="$pre-lb"/>
                   <xsl:text>)</xsl:text>
                </xsl:otherwise>

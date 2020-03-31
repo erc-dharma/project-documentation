@@ -109,7 +109,7 @@
 <xsl:when test="@rend='grantha'">
   <xsl:text>(</xsl:text>
   <xsl:element name="span">
-     <xsl:attribute name="style">color:#E74C3C;</xsl:attribute>
+     <xsl:attribute name="style">color: #E74C3C;</xsl:attribute>
      <xsl:value-of select="."/>
   </xsl:element>
   <xsl:text>)</xsl:text>
