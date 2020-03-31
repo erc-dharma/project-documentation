@@ -119,7 +119,7 @@
 
   <parameter>
     <name>css-loc</name>
-    <value>../inscriptions/global.css</value>
+    <value>./../inscriptions/global.css</value>
   </parameter>
 
 <parameter>

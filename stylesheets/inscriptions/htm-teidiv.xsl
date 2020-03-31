@@ -12,7 +12,7 @@
               <xsl:value-of select="@type"/>
             </xsl:attribute>
           </xsl:if>
-          <!-- Temporary headings so we know what is where -->
+          <!-- Headings are necessary for DHARMA -->
           <xsl:if test="not(t:head)">
             <xsl:choose>
               <xsl:when test="@type='commentary' and @subtype='frontmatter'"><h3>Introduction</h3></xsl:when>
@@ -43,7 +43,15 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:if>
-
+          <xsl:if test="t:head">
+            <xsl:choose>
+            <xsl:when test="parent::t:body and @type">
+             <h2>
+             <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+           </h2>
+         </xsl:when>
+         </xsl:choose>
+          </xsl:if>
           <!-- Body of the div -->
           <xsl:apply-templates/>
 
