@@ -39,7 +39,7 @@
                                           <div class="textpart">
                                   <!-- Found in htm-tpl-lang.xsl -->
                                   <xsl:call-template name="attr-lang"/>
-                                     <xsl:apply-templates/>
+                                       <xsl:apply-templates/>
                                   </div></xsl:otherwise></xsl:choose>
                               </xsl:template>
 
@@ -76,30 +76,33 @@
                   <xsl:text>)</xsl:text>
             </xsl:if>
             <!-- div for each l and addition of a class depending the metric pattern -->
-            <xsl:element name="div">
-              <xsl:if test="@n=('ab', 'cd', 'ef', 'gh')">
+            <!-- Pb de trailing space related to the addition of the div -->
+        <xsl:element name="div">
+              <xsl:choose>
+              <xsl:when test="@n=('ab', 'cd', 'ef', 'gh')">
                 <xsl:attribute name="class">matravitta</xsl:attribute>
-              </xsl:if>
-              <xsl:if test="@n=('a', 'c', 'e', 'g')">
+              </xsl:when>
+              <xsl:when test="@n=('a', 'c', 'e', 'g')">
                 <xsl:attribute name="class">varnavritta-odd</xsl:attribute>
-              </xsl:if>
-              <xsl:if test="@n=('b', 'd', 'f', 'h')">
+              </xsl:when>
+              <xsl:when test="@n=('b', 'd', 'f', 'h')">
                 <xsl:attribute name="class">varnavritta-even</xsl:attribute>
-              </xsl:if>
-              <!-- metric to be discussed with Manu -->
-              <xsl:if test="matches(@n, '[0-9]+')">
+              </xsl:when>
+              <!-- metric to be discussed with Manu-->
+              <xsl:otherwise>
                 <xsl:attribute name="class">tamil-verse</xsl:attribute>
-              </xsl:if>
-              <!-- found in teilgandl.xsl -->
+              </xsl:otherwise>
+                 </xsl:choose>
+             <!--found in teilgandl.xsl-->
         <xsl:call-template name="line-context"/>
-        <!-- if next div or ab begins with @enjamb='yes', then add hyphen -->
+      <!-- if next div or ab begins with @enjamb='yes', then add hyphen-->
          <xsl:if test="following::t:l[1][@enjamb='yes']">
            <xsl:text>-</xsl:text>
-         </xsl:if>
+       </xsl:if>
       </xsl:element>
          </xsl:when>
         <xsl:otherwise>
-            <xsl:apply-templates/>
+            <apply-template/>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>

@@ -53,9 +53,37 @@
     <xsl:when test="@type='filler'">
       <xsl:value-of select="."/>
     </xsl:when>
+    <xsl:when test="@type='numeral'">
+      <xsl:choose>
+        <xsl:when test="matches(., '/')">
+          <xsl:call-template name="fraction"/>
+        </xsl:when>
+        <xsl:otherwise>
+        <xsl:value-of select="."/>
+      </xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
       </xsl:choose>
 
       <xsl:call-template name="w-space"/>
   </xsl:template>
+
+<xsl:template name="fraction">
+    <!-- Don't get interpreted-->
+  <!--<xsl:if test="matches(., '[0-9]+/[0-9]+')">
+  <xsl:text disable-output-escaping="yes"><![CDATA[&]]></xsl:text>
+  <xsl:value-of select="replace(.,'([0-9]+)/([0-9]+)','frac$1$2;')"/>-->
+  <xsl:choose>
+    <xsl:when test="matches(., '1/2')">
+    <xsl:text>&#189;</xsl:text>
+  </xsl:when>
+  <xsl:when test="matches(., '1/4')">
+  <xsl:text>&#188;</xsl:text>
+</xsl:when>
+<xsl:otherwise>
+<xsl:text>Fraction not sustained.</xsl:text>
+</xsl:otherwise>
+</xsl:choose>
+</xsl:template>
 
 </xsl:stylesheet>
