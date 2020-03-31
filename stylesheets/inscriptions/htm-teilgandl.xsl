@@ -10,7 +10,7 @@
                                       <xsl:when test="$leiden-style='dharma'">
                                           <div class="verse-part">
                                             <!-- Deleting the language constraint TO BE DONE -->
-                                           <!-- Adding the @n if more than one <lg> = adding a variable -->
+                                           <!-- TO BE DONE : Adding the @n if more than one <lg> = adding a variable -->
                                              <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
                                             <span class="stanzanumber"><xsl:choose>
                                                 <xsl:when test="@n">
@@ -23,11 +23,11 @@
                                           </xsl:if>
                                               <span class="verse-meter">
                                                   <xsl:choose>
-                                                      <xsl:when test="matches(@met,'[a-z]*')">
-                                                          <xsl:text></xsl:text><xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/><xsl:text></xsl:text>
-                                                      </xsl:when>
+                                                    <xsl:when test="matches(@met,'[\+\-]+')">
+                                                      <xsl:call-template name="prosodic"/>
+                                                    </xsl:when>
                                                       <xsl:otherwise>
-                                                        <xsl:call-template name="prosodic"/>
+                                                        <xsl:text></xsl:text><xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/><xsl:text></xsl:text>
                                                       </xsl:otherwise>
                                                   </xsl:choose>
                                               </span>
@@ -100,15 +100,9 @@
   </xsl:template>
 
 <xsl:template name="prosodic">
-      <xsl:if test="matches(@met,'-')">
-        <xsl:value-of select="replace(@met,'-','⏑')"/>
+      <xsl:if test="matches(@met,'[\+\-]+')">
+        <xsl:value-of select="replace(replace(replace(@met,'-','⏑'),'=','⏓'),'\+','-')"/>
       </xsl:if>
-    <xsl:if test="matches(@met,'+')">
-      <xsl:value-of select="replace(@met,'+','-')"/>
-    </xsl:if>
-    <xsl:if test="matches(@met,'=')">
-      <xsl:value-of select="replace(@met,'=','⏓')"/>
-    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
