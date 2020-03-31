@@ -19,10 +19,9 @@
               <xsl:when test="@type='commentary' and @subtype='linebyline'"><h3>Notes</h3></xsl:when>
               <xsl:when test="@type = 'translation'">
                   <h2>
-                     <xsl:value-of select="/t:TEI/t:teiHeader/t:profileDesc/t:langUsage/t:language[@ident = current()/@xml:lang]"/>
-                     <xsl:text> </xsl:text>
-                     <!-- Changing the first letter of @ref in uppercase-->
-                     <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+                    <!-- Changing the first letter of @ref in uppercase-->
+                    <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+                    <xsl:call-template name="language"/>
                   </h2>
               </xsl:when>
                <xsl:when test="parent::t:body and @type">
@@ -48,6 +47,7 @@
             <xsl:when test="parent::t:body and @type">
              <h2>
              <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+             <xsl:call-template name="language"/>
            </h2>
          </xsl:when>
          </xsl:choose>
@@ -57,6 +57,23 @@
 
         </div>
 
+  </xsl:template>
+
+  <xsl:template name="language">
+    <xsl:if test="@xml:lang">
+      <xsl:text> in </xsl:text>
+      <xsl:value-of select="/t:TEI/t:teiHeader/t:profileDesc/t:langUsage/t:language[@ident = current()/@xml:lang]"/>
+      <xsl:if test="not(/t:TEI/t:teiHeader/t:profileDesc/t:langUsage/t:language[@ident = current()/@xml:lang])">
+        <xsl:choose>
+            <xsl:when test="@xml:lang='eng'">
+            <xsl:text>English</xsl:text>
+          </xsl:when>
+          <xsl:when test="@xml:lang='fre'">
+          <xsl:text>French</xsl:text>
+        </xsl:when>
+        </xsl:choose>
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
