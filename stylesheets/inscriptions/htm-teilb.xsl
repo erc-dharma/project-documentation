@@ -221,7 +221,7 @@
                   </xsl:choose>
                   <xsl:text>(</xsl:text>
                <xsl:value-of select="@n"/>
-                 <xsl:text>)  </xsl:text>
+                 <xsl:text>)</xsl:text>
             </sup>
          </xsl:otherwise>
       </xsl:choose>
