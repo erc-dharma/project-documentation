@@ -60,8 +60,8 @@
 			<listPerson>
 				<person xml:id="emfr">
 					<persName>
-						<surname>Francis</surname>
 						<forename>Emmanuel</forename>
+						<surname>Francis</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/156480842</idno>
 					<idno type="IdHAL">https://cv.archives-ouvertes.fr/emmanuel-francis</idno>
@@ -70,8 +70,8 @@
 				</person>
 				<person xml:id="argr">
 					<persName>
-						<surname>Griffiths</surname>
 						<forename>Arlo</forename>
+						<surname>Griffiths</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/11026260</idno>
 					<idno type="idHAL">https://cv.archives-ouvertes.fr/arlo-griffiths</idno>
@@ -83,8 +83,8 @@
 				</person>
 				<person xml:id="ansc">
 					<persName>
-						<surname>Schmiedchen</surname>
 						<forename>Annette</forename>
+						<surname>Schmiedchen</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/22841678</idno>
 					<idno type="IdRef">https://www.idref.fr/117063657</idno>
@@ -94,8 +94,8 @@
 				</person>
 				<person xml:id="flde">
 					<persName>
-						<surname>De Simini</surname>
 						<forename>Florinda</forename>
+						<surname>De Simini</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/306369495</idno>
 					<idno type="IdRef">https://www.idref.fr/200880365</idno>
@@ -103,8 +103,8 @@
 				</person>
 				<person xml:id="dogo">
 					<persName>
-						<surname>Goodall</surname>
 						<forename>Dominic</forename>
+						<surname>Goodall</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/81394618</idno>
 					<idno type="IdRef">https://www.idref.fr/057684251</idno>
@@ -113,8 +113,8 @@
 				</person>
 				<person xml:id="anac">
 					<persName>
-						<surname>Acri</surname>
 						<forename>Andrea</forename>
+						<surname>Acri</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/201252222</idno>
 					<idno type="IdRef">https://www.idref.fr/150577419</idno>
@@ -144,8 +144,8 @@
 					</persName>
 				</person><person xml:id="daba">
 					<persName>
-						<surname>Balogh</surname>
 						<forename>Dániel</forename>
+						<surname>Balogh</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/90419463</idno>
 					<idno type="IdRef">https://www.idref.fr/151908052</idno>
@@ -154,8 +154,8 @@
 				<person xml:id="pebi">
 					<!-- I think this person can be removed -->
 					<persName>
-						<surname>Bisschop</surname>
 						<forename>Peter</forename>
+						<surname>Bisschop</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/52000636</idno>
 					<idno type="IdRef">https://www.idref.fr/117203297</idno>
@@ -164,8 +164,8 @@
 				</person>
 				<person xml:id="gabo">
 					<persName>
-						<surname>Bodard</surname>
 						<forename>Gabriel</forename>
+						<surname>Bodard</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/106795353</idno>
 					<idno type="IdRef">https://www.idref.fr/146917901</idno>
@@ -173,68 +173,68 @@
 				</person>
 				<person xml:id="nabo">
 					<persName>
-						<surname>Bosma</surname>
 						<forename>Natasja</forename>
+						<surname>Bosma</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/124153651793655782535</idno>
 					<idno type="IdRef">https://www.idref.fr/22980845X</idno>
 				</person>
 				<person xml:id="sybr">
 					<persName>
-						<surname>Brocquet</surname>
 						<forename>Sylvain</forename>
+						<surname>Brocquet</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/159939465</idno>
 					<idno type="IdRef">https://www.idref.fr/100933807</idno>
 				</person>
 				<person xml:id="gubu">
 					<persName>
-						<surname>Buriola</surname>
 						<forename>Guilia</forename>
+						<surname>Buriola</surname>
 					</persName>
 				</person>
 				<person xml:id="nica">
 					<persName>
-						<surname>Cane</surname>
 						<forename>Nicolas</forename>
+						<surname>Cane</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/55154196826820112429</idno>
 					<idno type="IdRef">https://www.idref.fr/231188013</idno>
 				</person>
 				<person xml:id="chso">
 					<persName>
-						<surname>Chea</surname>
 						<forename>Socheat</forename>
+						<surname>Chea</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/194153953223705560160</idno>
 					<idno type="IdRef">https://www.idref.fr/230437257</idno>
 				</person>
 				<person xml:id="kuch">
 					<persName>
-						<surname>Chhom</surname>
 						<forename>Kunthea</forename>
+						<surname>Chhom</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/262148704025336930123</idno>
 					<idno type="IdRef">https://www.idref.fr/197571670</idno>
 				</person>
 				<person xml:id="chch">
 					<persName>
-						<surname>Chollet</surname>
 						<forename>Chloé</forename>
+							<surname>Chollet</surname>
 					</persName>
 				</person>
 				<person xml:id="vede">
 					<persName>
-						<surname>Degroot</surname>
 						<forename>Véronique</forename>
+						<surname>Degroot</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/168944273</idno>
 					<idno type="IdRef">https://www.idref.fr/10481960X</idno>
 				</person>
 				<person xml:id="csde">
 					<persName>
-						<surname>Dezsö</surname>
 						<forename>Csaba</forename>
+						<surname>Dezsö</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/119084903</idno>
 					<idno type="IdRef">https://www.idref.fr/119884275</idno>
@@ -242,8 +242,8 @@
 				</person>
 				<person xml:id="edsw">
 					<persName>
-						<surname>Swenson</surname>
 						<forename>Edward</forename>
+						<surname>Swenson</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/103600754</idno>
 					<idno type="IdRef">https://www.idref.fr/230438458</idno>
@@ -255,23 +255,23 @@
 				</person>
 				<person xml:id="toel">
 					<persName>
-						<surname>Elliot</surname>
 						<forename>Tom</forename>
+						<surname>Elliot</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/163074381</idno>
 				</person>
 				<person xml:id="jues">
 					<persName>
-						<surname>Estève</surname>
 						<forename>Julia</forename>
+						<surname>Estève</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/216403335</idno>
 					<idno type="IdRef">https://www.idref.fr/151150907</idno>
 				</person>
 				<person xml:id="mafr">
 					<persName>
-						<surname>Franceschini</surname>
 						<forename>Marco</forename>
+						<surname>Franceschini</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/36746999</idno>
 					<idno type="IdRef">https://www.idref.fr/154017841</idno>
@@ -280,15 +280,15 @@
 				</person>
 				<person xml:id="ryfu">
 					<persName>
-						<surname>Furui</surname>
 						<forename>Ryosuke</forename>
+						<surname>Furui</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
 				</person>
 				<person xml:id="vagi">
 					<persName>
-						<surname>Gillet</surname>
 						<forename>Valérie</forename>
+						<surname>Gillet</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/227078529</idno>
 					<idno type="IdRef">https://www.idref.fr/11025029X</idno>
@@ -297,39 +297,39 @@
 				</person>
 				<person xml:id="thhu">
 					<persName>
-						<surname>Hunter</surname>
 						<forename>Thomas</forename>
+						<surname>Hunter</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/14319585</idno>
 					<idno type="IdRef">https://www.idref.fr/11251250X</idno>
 				</person>
 				<person xml:id="axja">
 					<persName>
-						<surname>Janiak</surname>
 						<forename>Axelle</forename>
+						<surname>Janiak</surname>
 					</persName>
 					<idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
 				</person>
 				<person xml:id="cski">
 					<persName>
-						<surname>Kiss</surname>
 						<forename>Csaba</forename>
+						<surname>Kiss</surname>
 					</persName>
 					<idno type="VIAF">ttp://viaf.org/viaf/163770541</idno>
 					<idno type="IdRef">https://www.idref.fr/186191634</idno>
 				</person>
 				<person xml:id="kala">
 					<persName>
-						<surname>Ladrech</surname>
 						<forename>Karine</forename>
+						<surname>Ladrech</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/12622237</idno>
 					<idno type="IdRef">https://www.idref.fr/095075704</idno>
 				</person>
 				<person xml:id="vile">
 					<persName>
-						<surname>Lefèvre</surname>
 						<forename>Vincent</forename>
+						<surname>Lefèvre</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/76561955</idno>
 					<idno type="IdRef">https://www.idref.fr/080135072</idno>
@@ -337,8 +337,8 @@
 				</person>
 				<person xml:id="cole">
 					<persName>
-						<surname>Lefrancq</surname>
 						<forename>Coline</forename>
+						<surname>Lefrancq</surname>
 					</persName>
 					<!-- nothing found -->
 					<!-- Manu: you may help Coline get a VIAF, idHAL, ORCID... -->
@@ -346,8 +346,8 @@
 				</person>
 				<person xml:id="adle">
 					<persName>
-						<surname>Levivier</surname>
 						<forename>Adeline</forename>
+						<surname>Levivier</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/131146574008638102599</idno>
 					<idno type="IdRef">https://www.idref.fr/193202719</idno>
@@ -355,16 +355,16 @@
 				</person>
 				<person xml:id="pili">
 					<persName>
-						<surname>Liuzzo</surname>
 						<forename>Pietro Maria</forename>
+						<surname>Liuzzo</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/310697060</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
 				</person>
 				<person xml:id="tilu">
 					<persName>
-						<surname>Lubin</surname>
 						<forename>Timothy</forename>
+						<surname>Lubin</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/120435268</idno>
 					<idno type="IdRef">https://www.idref.fr/170559610</idno>
@@ -372,8 +372,8 @@
 				</person>
 				<person xml:id="inma">
 					<persName>
-						<surname>Manuel</surname>
 						<forename>Indra</forename>
+						<surname>Manuel</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/68558778</idno>
 					<idno type="IdRef">https://www.idref.fr/183697367</idno>
@@ -381,8 +381,8 @@
 				<!-- nothing?  -->
 				<person xml:id="nimi">
 					<persName>
-						<surname>Mirnig</surname>
 						<forename>Nina</forename>
+						<surname>Mirnig</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/169826577</idno>
 					<idno type="IdRef">https://www.idref.fr/176193774</idno>
@@ -390,8 +390,8 @@
 				</person>
 				<person xml:id="emmo">
 					<persName>
-						<surname>Morlock</surname>
 						<forename>Emmanuelle</forename>
+						<surname>Morlock</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/316672978</idno>
 					<idno type="IdHAL">https://cv.archives-ouvertes.fr/emmanuelle-morlock</idno>
@@ -408,16 +408,16 @@
 				</person>
 				<person xml:id="anol">
 					<persName>
-						<surname>Ollett</surname>
 						<forename>Andrew</forename>
+						<surname>Ollett</surname>
 					</persName>
 					<idno type="VIAF">ttp://viaf.org/viaf/372149294434280521495</idno>
 					<idno type="IdRef">https://www.idref.fr/224232371</idno>
 				</person>
 				<person xml:id="pepa">
 					<persName>
-						<surname>Pasedach</surname>
 						<forename>Peter</forename>
+						<surname>Pasedach</surname>
 					</persName>
 					<!-- nothing -->
 				</person>
@@ -431,8 +431,8 @@
 				</person>
 				<person xml:id="rasa">
 					<persName>
-						<surname>Sanyal</surname>
 						<forename>Rajat</forename>
+						<surname>Sanyal</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/315733752</idno>
 					<idno type="IdRef">https://www.idref.fr/18506194X</idno>
@@ -460,8 +460,8 @@
 				</person>
 				<person xml:id="masc">
 					<persName>
-						<surname>Schoettel</surname>
 						<forename>Marine</forename>
+						<surname>Schoettel</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/237151594453005351072</idno>
 					<idno type="IdRef">https://www.idref.fr/221601880</idno>
@@ -476,30 +476,30 @@
 				</person>
 				<person xml:id="doso">
 					<persName>
-						<surname>Soutif</surname>
 						<forename>Dominique</forename>
+						<surname>Soutif</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/189739901</idno>
 					<idno type="IdRef">https://www.idref.fr/131352520</idno>
 				</person>
 				<person xml:id="sist">
 					<persName>
-						<surname>Stoyanova</surname>
 						<forename>Simona</forename>
+						<surname>Stoyanova</surname>
 					</persName>
 					<!-- Nothing?-->
 				</person>
 				<person xml:id="jeth">
 					<persName>
-						<surname>Thomas</surname>
 						<forename>Jens</forename>
+						<surname>Thomas</surname>
 					</persName>
 					<!-- must be created-->
 				</person>
 				<person xml:id="vito">
 					<persName>
-						<surname>Tournier</surname>
 						<forename>Vincent</forename>
+						<surname>Tournier</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/308304168</idno>
 					<idno type="IdRef">https://www.idref.fr/177429623</idno>
@@ -507,8 +507,8 @@
 				</person>
 				<person xml:id="utve">
 					<persName>
-						<surname>Veluppillai</surname>
 						<forename>Uthaya</forename>
+						<surname>Veluppillai</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/309907661</idno>
 					<idno type="IdRef">https://www.idref.fr/176321616</idno>

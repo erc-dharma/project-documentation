@@ -122,7 +122,8 @@
                           <xsl:choose>
                              <xsl:when test="local-name()='person'">
                                <xsl:text> by </xsl:text>
-                              <xsl:value-of select="./node()[2]"></xsl:value-of>
+                              <xsl:value-of select="./node()[2]"/>
+
                            </xsl:when>
                              <xsl:otherwise>
                              <xsl:text>Error at this level</xsl:text>
