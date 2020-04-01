@@ -121,8 +121,12 @@
         color: #32CD32;
             }
 
+.resp{
+        font-variant: small-caps;
+}
+
 .tooltip {
-        posi  tion: relative;
+        position: relative;
         color: #1E90FF;
           }
 
