@@ -96,11 +96,7 @@
        </xsl:choose>
      </xsl:if>
      <xsl:if test="@resp">
-       <xsl:text> by </xsl:text>
-       <xsl:element name="span">
-         <xsl:attribute name="class">resp</xsl:attribute>
        <xsl:call-template name="respID"/>
-       </xsl:element>
      </xsl:if>
   </xsl:template>
 
@@ -125,7 +121,14 @@
                        <xsl:for-each select="document($dharma-path)/*/descendant-or-self::*[@xml:id=$sought][1]">
                           <xsl:choose>
                              <xsl:when test="local-name()='person'">
-                              <xsl:value-of select="./node()[2]"/>
+                               <xsl:text> by </xsl:text>
+                               <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[1]"/>
+                               <xsl:text> </xsl:text>
+                               <xsl:element name="span">
+                                 <xsl:attribute name="class">resp</xsl:attribute>
+                                 <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[2]"/>
+                               </xsl:element>
+                            <!--  <xsl:value-of select="./child::*/node()[2]"/>-->
                            </xsl:when>
                              <xsl:otherwise>
                              <xsl:text>Error at this level</xsl:text>
