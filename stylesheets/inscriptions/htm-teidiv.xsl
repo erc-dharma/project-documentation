@@ -79,20 +79,19 @@
   </xsl:template>
 
   <xsl:template name="responsability">
+    <!-- The responsability template could probably be used in several part, rather than repeating the code. Need to be cleaned at some point-->
     <xsl:if test="@source">
       <xsl:text> by </xsl:text>
       <xsl:choose>
         <xsl:when test="matches(@source, '\+[a][l]')">
-            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+            <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
         </xsl:when>
         <xsl:when test="matches(@source, '\+[A-Z]')">
-            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+            <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:text> </xsl:text>
-       <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-
-</xsl:otherwise>
+       <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
+     </xsl:otherwise>
        </xsl:choose>
      </xsl:if>
      <xsl:if test="@resp">
@@ -100,6 +99,9 @@
      </xsl:if>
   </xsl:template>
 
+
+<!-- Template to display members of the project when they use their ID inside a @resp-->
+<!-- The code has been adapted from a part of a code written by Tom Elliot for Campa-->
   <xsl:template name="respID">
      <xsl:variable name="referrer" select="."/>
      <xsl:choose>
