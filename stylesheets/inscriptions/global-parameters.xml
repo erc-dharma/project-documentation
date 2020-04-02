@@ -100,8 +100,8 @@
 
   <parameter> <!--the namespace of tags in the zotero library if any-->
     <name>ZoteroNS</name>
-    <value on="yes"/> <!--default on no namespace although the htm-teibibl.xsl takes this value only if selected-->
-    <value>bib:</value>
+    <value/> <!--default on no namespace although the htm-teibibl.xsl takes this value only if selected-->
+    <value on="yes">bib:</value>
   </parameter>
 
 

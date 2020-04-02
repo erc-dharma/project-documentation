@@ -270,31 +270,25 @@ bibliography. All examples only cater for book and article.
 	</xsl:template>
 
 
-<!--<xsl:template match="//t:bibl/t:ptr">
-	<xsl:choose>
-	<xsl:when test="@target">
-			<xsl:choose>
-				<xsl:when test="matches(@target, '\+[a][l]')">
-					<xsl:value-of select="normalize-space(translate(@target,'bib:0123456789+-_:',''))"></xsl:value-of>
-					<xsl:text> and al. </xsl:text>
-					<xsl:value-of select="normalize-space(translate(substring-before(@target, '_'),'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-_:',''))"> </xsl:value-of>
-					<xsl:text> (</xsl:text>
-					<xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-					<xsl:text> &amp; al.)</xsl:text>
-				</xsl:when>
-				<xsl:when test="matches(@target, '\+[A-Z]')">
-					<xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-					<xsl:text>&amp;</xsl:text>
-					<xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-					<xsl:text> </xsl:text>
-				</xsl:when>
-				<xsl:otherwise>
-			 <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-			 </xsl:otherwise>
-			 </xsl:choose>
-</xsl:when>
-</xsl:choose>
-</xsl:template>-->
+<xsl:template match="//t:p/t:bibl/t:ptr">
+		<!--<xsl:if test="matches(@source, '\s[b][i][b]')">
+			<xsl:value-of select="replace(@source, ' bib:', ' ')"/>
+		</xsl:if>-->
+		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="matches(@target, '\+[a][l]')">
+					<xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@target, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
+			</xsl:when>
+			<xsl:when test="matches(@target, '\+[A-Z]')">
+					<xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@target, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+		 <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@target, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
+</xsl:otherwise>
+		 </xsl:choose>
+</xsl:template>
+
 
 
 </xsl:stylesheet>

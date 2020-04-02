@@ -241,7 +241,6 @@
      </span>
 </xsl:otherwise>
        </xsl:choose>
-
   </span>
   </xsl:if>
     <!--<xsl:call-template name="sources">
