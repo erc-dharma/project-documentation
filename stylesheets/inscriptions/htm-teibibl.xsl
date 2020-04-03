@@ -154,7 +154,7 @@ bibliography. All examples only cater for book and article.
 											</xsl:matching-substring>
 										</xsl:analyze-string>
 									</xsl:variable>
-									<xsl:value-of select="$citation"/>
+									<xsl:value-of select="replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)')"/>
 									<xsl:if test="t:citedRange">
 										<xsl:text>, </xsl:text>
 										<xsl:value-of select="t:citedRange"/>
