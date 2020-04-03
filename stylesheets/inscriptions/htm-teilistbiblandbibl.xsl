@@ -5,8 +5,13 @@
                 version="2.0">
 
   <xsl:template match="t:listBibl">
-      <ul>
-         <xsl:apply-templates/>
+    <ul>
+    <xsl:if test="@type">
+      <h3>
+      <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+    </h3>
+  </xsl:if>
+  <xsl:apply-templates/>
       </ul>
   </xsl:template>
 
