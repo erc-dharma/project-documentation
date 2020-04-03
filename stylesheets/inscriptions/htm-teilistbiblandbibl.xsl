@@ -5,6 +5,7 @@
                 version="2.0">
 
   <xsl:template match="t:listBibl">
+    <xsl:if test="descendant::t:bibl">
     <ul>
     <xsl:if test="@type">
       <h3>
@@ -13,6 +14,7 @@
   </xsl:if>
   <xsl:apply-templates/>
       </ul>
+    </xsl:if>
   </xsl:template>
 
 <!-- It seems, it is not display -->
