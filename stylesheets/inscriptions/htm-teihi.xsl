@@ -42,7 +42,7 @@
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <xsl:when test="@rend='grantha'">
            <xsl:choose>
-           <xsl:when test="ancestor::t:div[@xml:lang='tam']">
+           <xsl:when test="ancestor::t:div[@xml:lang='tam'] and ancestor::t:div[@xml:lang='tam-tam']">
              <xsl:apply-templates/>
            </xsl:when>
            <xsl:otherwise>
@@ -51,7 +51,7 @@
                  <xsl:apply-templates/>
              </xsl:element>
              </xsl:otherwise>
-             </xsl:choose>
+             </xsl:choose> 
          </xsl:when>
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <!-- @rend='strong'                                                     -->

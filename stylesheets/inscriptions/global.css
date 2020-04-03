@@ -125,6 +125,10 @@
         font-variant: small-caps;
 }
 
+.notbold{
+    font-weight:normal
+}​
+
 .tooltip {
         position: relative;
         color: #1E90FF;

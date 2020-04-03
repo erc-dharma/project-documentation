@@ -16,6 +16,19 @@
            <xsl:when test="$parm-leiden-style = 'rib'">
                <xsl:text>&lt; </xsl:text><xsl:apply-templates/><xsl:text> &gt;</xsl:text>
            </xsl:when>
+           <xsl:when test="$parm-leiden-style = 'dharma'">
+             <xsl:element name="span">
+               <xsl:attribute name="class">notbold</xsl:attribute>
+                <xsl:text>{</xsl:text>
+             </xsl:element>
+             <xsl:apply-templates/>
+             <!-- cert-low template found in tpl-certlow.xsl -->
+             <xsl:call-template name="cert-low"/>
+             <xsl:element name="span">
+               <xsl:attribute name="class">notbold</xsl:attribute>
+                <xsl:text>}</xsl:text>
+             </xsl:element>
+           </xsl:when>
            <xsl:otherwise>
                <xsl:text>{</xsl:text>
                <xsl:apply-templates/>
