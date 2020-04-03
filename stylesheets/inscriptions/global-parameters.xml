@@ -75,9 +75,9 @@
 
   <parameter><!--old paramter for local tests to be removed soon... -->
     <name>bibliography</name>
-    <value on="yes">none</value>
+    <value>none</value>
     <value>localTEI</value> <!--looks up a local TEI bibliography-->
-    <value>zotero</value> <!--looks at the api and renders the html from there-->
+    <value on="yes">zotero</value> <!--looks at the api and renders the html from there-->
   </parameter>
 
   <parameter> <!--path to local TEI XML bibliography if this is the bibliography used-->
@@ -95,13 +95,13 @@
   <parameter> <!--the key of the library-->
     <name>ZoteroKey</name>
     <value on="yes">1633743</value><!--DHARMA group Library ID-->
-    <value>dharma</value> <!--sample value-->
+    <value>ERC-DHARMA</value> <!--sample value-->
   </parameter>
 
   <parameter> <!--the namespace of tags in the zotero library if any-->
     <name>ZoteroNS</name>
-    <value/> <!--default on no namespace although the htm-teibibl.xsl takes this value only if selected-->
-    <value on="yes">bib:</value>
+    <value on="yes"/> <!--default on no namespace although the htm-teibibl.xsl takes this value only if selected-->
+    <value>bib:</value>
   </parameter>
 
 
