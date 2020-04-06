@@ -19,14 +19,14 @@
                <xsl:text>)</xsl:text>
             </xsl:if>
          </xsl:when>
-         <xsl:when test="ancestor::t:div[@type='edition']//t:choice/t:sic">
+         <xsl:when test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
            <span class="sic">
              <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
             <xsl:text>?</xsl:text>
           </span>
         </xsl:when>
-         <xsl:otherwise>
+      <xsl:otherwise>
              <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
             <xsl:text>?</xsl:text>
@@ -42,7 +42,7 @@
          <xsl:otherwise>
             <xsl:choose>
                 <xsl:when test="$parm-leiden-style = ('seg','iospe','dharma')">
-                  <xsl:if test="ancestor::t:div[@type='edition']//t:choice/t:corr">
+                  <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
                     <span class="corr">
                     <xsl:text>&lt;</xsl:text>
                     <xsl:apply-templates/>
