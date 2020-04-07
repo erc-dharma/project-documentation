@@ -160,8 +160,15 @@ bibliography. All examples only cater for book and article.
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
 								<xsl:copy-of
-									select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
-
+									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>
+									<xsl:if test="t:citedRange">
+										<xsl:for-each select="t:citedRange">
+										<xsl:value-of select="."/>
+										<xsl:if test="following-sibling::t:citedRange">
+											<xsl:text>, </xsl:text>
+										</xsl:if>
+										</xsl:for-each>
+									</xsl:if>
 							</xsl:otherwise>
 						</xsl:choose>
 
@@ -263,6 +270,5 @@ bibliography. All examples only cater for book and article.
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-
 
 </xsl:stylesheet>
