@@ -82,12 +82,7 @@ bibliography. All examples only cater for book and article.
 
 						<!--						check if a namespace is provided for tags/xml:ids and use it as part of the tag for zotero-->
 						<xsl:variable name="biblentry"
-							select="
-								if ($parm-zoteroNS)
-								then
-									concat($parm-zoteroNS, ./t:ptr/@target)
-								else
-									./t:ptr/@target"/>
+							select="substring-after(./t:ptr/@target, ':')"/>
 									<xsl:message>biblentry= <xsl:value-of select="$biblentry"/></xsl:message>
 
 						<xsl:variable name="zoteroapitei">

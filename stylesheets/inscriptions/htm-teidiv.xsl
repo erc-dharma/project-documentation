@@ -7,6 +7,7 @@
 
   <xsl:template match="t:div">
     <!-- div[@type = 'edition']" and div[@type='textpart'] can be found in htm-teidivedition.xsl -->
+    <xsl:if test="descendant::*">
         <div>
           <xsl:if test="parent::t:body and @type">
             <xsl:attribute name="id">
@@ -58,7 +59,7 @@
           <xsl:apply-templates/>
 
         </div>
-
+</xsl:if>
   </xsl:template>
 
   <xsl:template name="language">
