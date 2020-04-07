@@ -149,12 +149,12 @@ bibliography. All examples only cater for book and article.
 											</xsl:matching-substring>
 										</xsl:analyze-string>
 									</xsl:variable>
-									<xsl:value-of select="replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)')"/>
-									<xsl:if test="t:citedRange">
-										<xsl:text>, </xsl:text>
-										<xsl:value-of select="t:citedRange"/>
-									</xsl:if>
+									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
 								</a>
+								<xsl:if test="t:citedRange">
+									<xsl:text>, </xsl:text>
+									<xsl:value-of select="t:citedRange"/>
+								</xsl:if>
 							</xsl:when>
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
