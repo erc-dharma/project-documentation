@@ -163,12 +163,14 @@
 
   <xsl:template match="t:div[@type='apparatus']" priority="1">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
+  <xsl:if test="descendant::*">
     <div id="apparatus">
       <h2>Apparatus</h2>
       <p>
         <xsl:apply-templates/>
       </p>
     </div>
+  </xsl:if>
   </xsl:template>
 
   <xsl:template match="t:div[@type='apparatus']//t:app">

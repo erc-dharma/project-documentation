@@ -91,33 +91,28 @@
    <xsl:template match="t:unclear[not(ancestor::t:choice)]">
      <xsl:choose>
 <xsl:when test="@cert='low'">
-  <xsl:text>(</xsl:text>
-  <xsl:choose>
-      <xsl:when test="@rend='grantha'">
-        <xsl:element name="span">
-           <xsl:attribute name="style">color:#E74C3C;</xsl:attribute>
-           <xsl:value-of select="."/>
-        </xsl:element>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="."/>
-      </xsl:otherwise>
-      </xsl:choose>
-  <xsl:text>?)</xsl:text>
+  <xsl:element name="span">
+  <xsl:attribute name="class">notBold</xsl:attribute>
+<xsl:text>(</xsl:text>
+</xsl:element>
+    <xsl:value-of select="."/>
+    <xsl:call-template name="cert-low"/>
+      <xsl:element name="span">
+      <xsl:attribute name="class">notBold</xsl:attribute>
+    <xsl:text>)</xsl:text>
+    </xsl:element>
   <!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
 </xsl:when>
-<xsl:when test="@rend='grantha'">
-  <xsl:text>(</xsl:text>
-  <xsl:element name="span">
-     <xsl:attribute name="style">color: #E74C3C;</xsl:attribute>
-     <xsl:value-of select="."/>
-  </xsl:element>
-  <xsl:text>)</xsl:text>
-</xsl:when>
 <xsl:otherwise>
-  <xsl:text>(</xsl:text>
+  <xsl:element name="span">
+  <xsl:attribute name="class">notBold</xsl:attribute>
+<xsl:text>(</xsl:text>
+</xsl:element>
     <xsl:value-of select="."/>
-<xsl:text>)</xsl:text>
+    <xsl:element name="span">
+    <xsl:attribute name="class">notBold</xsl:attribute>
+    <xsl:text>)</xsl:text>
+  </xsl:element>
   </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
