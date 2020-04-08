@@ -138,6 +138,7 @@ bibliography. All examples only cater for book and article.
 
 								</xsl:variable>
 
+
 								<a href="{$pointerurl}">
 
 									<xsl:variable name="citation">
@@ -159,6 +160,28 @@ bibliography. All examples only cater for book and article.
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
+								<xsl:element name="span">
+									<xsl:attribute name="class">sigla</xsl:attribute>
+									<xsl:choose>
+						        <xsl:when test="matches(t:ptr/@target, '\+[a][l]')">
+						          <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+						          <xsl:text> &amp; al.</xsl:text>
+											<xsl:text> : </xsl:text>
+						        </xsl:when>
+						        <xsl:when test="matches(t:ptr/@target, '\+[A-Z]')">
+						          <xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+						          <xsl:text>&amp;</xsl:text>
+						          <xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+						          <xsl:text> : </xsl:text>
+						        </xsl:when>
+						        <xsl:otherwise>
+						       <xsl:value-of select="normalize-space(translate(t:ptr/@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
+									 <xsl:text> : </xsl:text>
+								 </xsl:otherwise>
+							 </xsl:choose>
+								</xsl:element>
+								<xsl:element name="span">
+									<xsl:attribute name="class">refBibl</xsl:attribute>
 								<xsl:copy-of
 									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>
 									<xsl:if test="t:citedRange">
@@ -169,6 +192,7 @@ bibliography. All examples only cater for book and article.
 										</xsl:if>
 										</xsl:for-each>
 									</xsl:if>
+									</xsl:element>
 							</xsl:otherwise>
 						</xsl:choose>
 
