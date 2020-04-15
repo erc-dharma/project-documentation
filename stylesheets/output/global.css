@@ -1,0 +1,163 @@
+.latinnum {
+    border-top: thin black solid;
+     }
+
+.supraline {
+    border-top: thin black solid;
+     }
+
+.previouslyread {
+    text-decoration: underline;
+     }
+
+*[lang="la"] {
+    font-family: "GentiumAlt", "Gentium","Palatino Linotype", "Palatino", "Times New Roman", "Times", "Arial Unicode MS", serif;
+}
+
+*[lang="grc"] {
+    font-family: "Lucida Grande", "Arial Unicode MS","Galilee Unicode Gk", "New Athena Unicode", "Athena Unicode",
+    "Palatino Linotype", "Titus Cyberbit Basic", "Cardo", "Vusillus Old Face", "Alphabetum", "Galatia SIL",
+    "Code 2000", "GentiumAlt", "Gentium", "Minion Pro", "GeorgiaGreek", "Vusillus Old Face Italic",
+    "Everson Mono", "Aristarcoj", "Porson", "Legendum", "Aisa Unicode", "Hindsight Unicode", "Caslon",
+    "Verdana", "Tahoma";
+   }
+
+.textpart {
+    left: 6em;
+    line-height: 1.4;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    padding-right: 2em;
+}
+
+.textpartnumber {
+    padding-right: 0.2em;
+    position: relative;
+    }
+
+.linenumber {
+    color: black;
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+    }
+
+.linenumberapp {
+        color: black;
+        position: relative;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+.linenumberbroken {
+    left: -4em;
+    padding-right: 0.2em;
+    position: absolute;
+    color: red ;
+    text-decoration: blink ;
+    }
+
+.versenumber {
+    font-weight: bold;
+}
+
+.cpnumber {
+    font-weight: bold;
+}
+
+.verse-meter {
+    font-style: italic;
+}
+
+.varnavritta-even{
+    left: 6em;
+}
+.petraeligature {
+    text-decoration: underline;
+    }
+
+.underline {
+    text-decoration: underline;
+    }
+
+.italic {
+    font-style: italic;
+    }
+
+.symbol {
+        border: 2px solid black;
+        border-radius: 8px;
+        padding: 0.05em;
+        }
+
+.grantha {
+        font-weight: bold;
+        }
+
+.reading {
+        font-style: italic;
+        color: #228B22;
+          }
+
+.lemme {
+      color: black;
+      font-style: normal;
+}
+
+.orig {
+        color: #C71585;
+          }
+
+.reg {
+        color: #4169E1;
+          }
+
+.sic {
+        color: #FF6347;
+      }
+
+.corr {
+        color: #32CD32;
+            }
+
+.tooltip {
+        posi  tion: relative;
+        color: #1E90FF;
+          }
+
+          /* Tooltip text */
+.tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+            /* Position the tooltip text*/
+        position: absolute;
+        z-index: 1;
+          }
+
+          /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+        visibility: visible;
+          }
+
+div {
+        left: 30px;
+        padding-right: 0.2em;
+        position:relative;
+    }
+
+h2 {
+        left: -18px;
+        padding-right: 0.2em;
+        position: relative;
+        }
+
+P {
+      position: relative;
+      }
