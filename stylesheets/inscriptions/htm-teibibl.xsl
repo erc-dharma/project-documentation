@@ -154,7 +154,12 @@ bibliography. All examples only cater for book and article.
 								</a>
 								<xsl:if test="t:citedRange">
 									<xsl:text>, </xsl:text>
-									<xsl:value-of select="t:citedRange"/>
+									<xsl:for-each select="t:citedRange">
+									<xsl:value-of select="."/>
+									<xsl:if test="following-sibling::t:citedRange">
+										<xsl:text>, </xsl:text>
+									</xsl:if>
+									</xsl:for-each>
 								</xsl:if>
 							</xsl:when>
 							<!--	if it is in the bibliography print styled reference-->
