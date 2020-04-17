@@ -22,6 +22,11 @@
     "Verdana", "Tahoma";
    }
 
+   .sigle {
+           font-weight: bold;
+           color: #1E90FF;
+             }
+
 .textpart {
     left: 6em;
     line-height: 1.4;

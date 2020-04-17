@@ -161,25 +161,23 @@ bibliography. All examples only cater for book and article.
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
 								<xsl:element name="span">
-									<xsl:attribute name="class">sigla</xsl:attribute>
+									<xsl:attribute name="class">sigle</xsl:attribute>
 									<xsl:choose>
 						        <xsl:when test="matches(t:ptr/@target, '\+[a][l]')">
 						          <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
 						          <xsl:text> &amp; al.</xsl:text>
-											<xsl:text> : </xsl:text>
 						        </xsl:when>
 						        <xsl:when test="matches(t:ptr/@target, '\+[A-Z]')">
 						          <xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
 						          <xsl:text>&amp;</xsl:text>
 						          <xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-						          <xsl:text> : </xsl:text>
 						        </xsl:when>
 						        <xsl:otherwise>
 						       <xsl:value-of select="normalize-space(translate(t:ptr/@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-									 <xsl:text> : </xsl:text>
 								 </xsl:otherwise>
 							 </xsl:choose>
 								</xsl:element>
+								<xsl:text>.</xsl:text>
 								<xsl:element name="span">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
 								<xsl:copy-of
@@ -193,7 +191,7 @@ bibliography. All examples only cater for book and article.
 										</xsl:for-each>
 									</xsl:if>
 									</xsl:element>
-									<br/>
+								<xsl:element name="br"/>
 							</xsl:otherwise>
 						</xsl:choose>
 
