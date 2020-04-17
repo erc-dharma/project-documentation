@@ -190,6 +190,7 @@ bibliography. All examples only cater for book and article.
 										</xsl:if>
 										</xsl:for-each>
 									</xsl:if>
+									<xsl:text>.</xsl:text>
 									</xsl:element>
 								<xsl:element name="br"/>
 							</xsl:otherwise>
