@@ -193,6 +193,7 @@ bibliography. All examples only cater for book and article.
 										</xsl:for-each>
 									</xsl:if>
 									</xsl:element>
+									<br/>
 							</xsl:otherwise>
 						</xsl:choose>
 
