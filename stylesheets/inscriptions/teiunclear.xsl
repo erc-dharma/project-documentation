@@ -3,7 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
 
-    <!--     <xsl:template match="t:unclear">
+    <!-- <xsl:template match="t:unclear">
      <xsl:param name="text-content">
          <xsl:choose>
             <xsl:when test="ancestor::t:orig[not(ancestor::t:choice)]">
@@ -116,5 +116,4 @@
   </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
-
 </xsl:stylesheet>

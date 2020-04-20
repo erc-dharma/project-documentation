@@ -128,7 +128,7 @@
       <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
          <xsl:when test="@unit='line'">
-            <sup><xsl:text>(</xsl:text></sup>
+            <sup><xsl:text>[</xsl:text></sup>
          </xsl:when>
          <xsl:when test="@unit='character' and @ extent">
             <xsl:text>[</xsl:text>
@@ -170,18 +170,18 @@
       <!-- certainty --> <!-- Suppression de xsl:if-->
          <xsl:choose>
             <xsl:when test="child::t:certainty[@match='..']"> <!-- vieux paramètre: $parm-leiden-style = ('ddbdp','sammelbuch') -->
-               <sup><xsl:text>?</xsl:text></sup>
+               <sup><xsl:text>possibly</xsl:text></sup>
             </xsl:when>
          </xsl:choose>
 
-      <!--<xsl:if
+      <xsl:if
          test="$parm-leiden-style='london' and following-sibling::node()[1][@part='M' or @part='F'] and not($parm-edition-type='diplomatic')">
          <xsl:text>-</xsl:text>
-      </xsl:if>-->
+      </xsl:if>
 
       <xsl:choose>
         <xsl:when test="@unit = 'line'">
-            <sup><xsl:text>)</xsl:text></sup>
+            <sup><xsl:text>]</xsl:text></sup>
          </xsl:when>
          <xsl:when test="@unit='character' and @ extent">
             <xsl:text>]</xsl:text>
@@ -216,10 +216,10 @@
          <xsl:choose>
             <xsl:when
                test="@precision='low' or (@unit='character' and number(@quantity) &gt; $cur-max)">
-               <xsl:text>?</xsl:text> <!-- ancienen valuer = ca. -->
+               <xsl:text>ca.</xsl:text> 
             </xsl:when>
             <xsl:when test="@precision='low' and not(starts-with($parm-leiden-style, 'edh'))">
-               <xsl:text>?</xsl:text> <!-- ancienne valuer = c -->
+               <xsl:text>c.</xsl:text>
             </xsl:when>
          </xsl:choose>
       </xsl:variable>
@@ -230,7 +230,7 @@
                      <!-- lines lost -->
                      <xsl:when test="@reason='lost' and @unit='line'">
                         <!--and (not(preceding-sibling::t:lb[2]) or not(following-sibling::*))-->
-                        <sup><xsl:text>line/lines lost</xsl:text></sup>
+                        <sup><xsl:text>unknown number of lines lost</xsl:text></sup>
                      </xsl:when>
                      <!-- characters lost -->
                      <xsl:when test="@reason='lost' or @reason = 'illegible' and @unit='character'">

@@ -5,7 +5,7 @@
                 version="2.0">
 
   <xsl:template match="t:orig[not(parent::t:choice)]">
-      <span class="orig">
+        <span class="orig">
         <xsl:text>¡</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>!</xsl:text>
