@@ -194,8 +194,8 @@ bibliography. All examples only cater for book and article.
 											<xsl:text>, </xsl:text>
 										</xsl:if>
 										</xsl:for-each>
+										<xsl:text>.</xsl:text>
 									</xsl:if>
-									<xsl:text>.</xsl:text>
 									</xsl:element>
 								<xsl:element name="br"/>
 							</xsl:otherwise>

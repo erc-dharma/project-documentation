@@ -39,21 +39,33 @@
       </xsl:template>-->
 
       <xsl:template match="t:choice/t:orig">
+        <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
         <span class="orig">
         <xsl:text>¡</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>!</xsl:text>
       </span>
+    </xsl:if>
+    <xsl:if test="ancestor::t:div[@type='apparatus']">
+      <xsl:text>¡</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>!</xsl:text>
+    </xsl:if>
       </xsl:template>
 
    <xsl:template match="t:choice/t:reg">
-
+<xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
      <span class="reg">
      <xsl:text>&lt;</xsl:text>
      <xsl:apply-templates/>
      <xsl:text>&gt;</xsl:text>
    </span>
-
+</xsl:if>
+  <xsl:if test="ancestor::t:div[@type='apparatus']">
+    <xsl:text>&lt;</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>&gt;</xsl:text>
+  </xsl:if>
    </xsl:template>
 
 </xsl:stylesheet>
