@@ -418,7 +418,7 @@
             <xsl:when test="$childtype=('appbl','apppn','apped')">
                <xsl:copy-of select="child::t:*[local-name()=('orig','sic','add','lem')]/t:app[@type='editorial']/child::*"/>
             </xsl:when>
-            <!-- <xsl:when test="$apptype=('siccorr')"><xsl:value-of select="t:corr/node()"/></xsl:when> -->
+             <!--<xsl:when test="$apptype=('siccorr')"><xsl:value-of select="t:corr/node()"/></xsl:when> -->
             <xsl:otherwise>
                <xsl:copy-of select="node()"/>
             </xsl:otherwise>

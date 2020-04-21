@@ -285,6 +285,11 @@
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
 				</person>
+				<person xml:id="gege">
+					<persName>
+					<forename>Gerdi</forename>
+					<surname>Gerschheimer</surname>
+				</persName></person>
 				<person xml:id="vagi">
 					<persName>
 						<forename>Valérie</forename>

@@ -478,6 +478,7 @@ choice with sic and corr
 
         <xsl:text>sic, orig. </xsl:text>
         <xsl:value-of select="t:sic"/>
+        
   </xsl:template>
 
   <!-- Regularization
