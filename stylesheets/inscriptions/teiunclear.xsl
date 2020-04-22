@@ -88,7 +88,7 @@
    </xsl:template>
 -->
 <!-- solution temporaire avec color:black; Mériterait d'être coder plus clean une fois les guidelines fixées -->
-   <xsl:template match="t:unclear[not(ancestor::t:choice)]">
+   <xsl:template match="t:unclear[not(parent::t:choice)]">
      <xsl:choose>
 <xsl:when test="@cert='low'">
   <xsl:element name="span">
