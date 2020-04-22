@@ -12,17 +12,17 @@
                                           <div class="verse-part">
                                             <!-- Deleting the language constraint TO BE DONE -->
                                            <!-- TO BE DONE : Adding the @n if more than one <lg> = adding a variable -->
-                                             <xsl:if test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam'])">
+                                            <xsl:if test="(count(//t:div[@type='edition']//t:lg) &gt; 1)">
                                             <span class="stanzanumber"><xsl:choose>
                                                 <xsl:when test="@n">
                                                     <xsl:number value="@n" format="I"/><xsl:text> </xsl:text>
                                                 </xsl:when>
-                                                <xsl:otherwise>
-                                                    <xsl:text>no n@ found on this lg element </xsl:text>
-                                                </xsl:otherwise>
+                                                <xsl:when test="not(ancestor::t:div[@xml:lang='tam-Latn']) and not(ancestor::t:div[@xml:lang='tam-tam']) and not(t:lg/@n)">
+                                                    <xsl:text>the @n is missing on the stanza</xsl:text>
+                                                </xsl:when>
                                             </xsl:choose></span>
                                           </xsl:if>
-                                              <span class="verse-meter">
+                                                  <span class="verse-meter">
                                                   <xsl:choose>
                                                     <xsl:when test="matches(@met,'[\+\-]+')">
                                                       <xsl:call-template name="prosodic"/>
