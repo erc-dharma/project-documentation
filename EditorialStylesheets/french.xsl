@@ -5,6 +5,17 @@
    exclude-result-prefixes="t" version="2.0">
    <xsl:output method="xml" encoding="UTF-8"/>
 
+   <!-- Possibilité de réduire le code lorsque des comportements sont semblables-->
+   <xsl:template match="t:*">
+       <xsl:copy>
+           <xsl:apply-templates select="@*"/>
+           <xsl:apply-templates select="t:* | comment() | text()"/>
+       </xsl:copy>
+   </xsl:template>
+   <xsl:template match="@*|processing-instruction()|comment()">
+       <xsl:copy/>
+   </xsl:template>
+
 <xsl:template match="//t:div[@xml:lang='fra']">
   <!--Control on comma - official pattern: no blankspace , U+0020-->
   <xsl:analyze-string select="t:div[@xml:lang='fra']" regex="[\w\&gt;]\,[\s\&lt;]">
