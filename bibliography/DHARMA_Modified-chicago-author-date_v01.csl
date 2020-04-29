@@ -5,9 +5,9 @@
       <!-- based on Chicago Manual of Style 17th edition (author-date) <id>http://www.zotero.org/styles/chicago-author-date</id>
       written initialy by Julian Onions, Sebastian Karcher, Richard Karnesky, Andrew Dunning, Matthew Roth and Brenton M. Wiernik
   -->
-    <id></id>
+    <id>https://github.com/erc-dharma/project-documentation/blob/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl</id>
     <!-- For now the file will only be available on github-->
-    <link href="" rel="self"/>
+    <link href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl" rel="self"/>
     <link href="https://github.com/erc-dharma/project-documentation/blob/master/bibliography/DHARMA_AddingCSLZotero_v01.md" rel="documentation"/>
     <link href="http://www.chicagomanualofstyle.org/tools_citationguide.html" rel="documentation"/>
     <author>
@@ -30,7 +30,7 @@
     <contributor>
       <name>Matthew Roth</name>
       <email>matthew.g.roth@yale.edu</email>
-      <uri> https://orcid.org/0000-0001-7902-6331</uri>
+      <uri>https://orcid.org/0000-0001-7902-6331</uri>
     </contributor>
     <contributor>
       <name>Brenton M. Wiernik</name>
