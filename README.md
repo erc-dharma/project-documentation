@@ -6,6 +6,7 @@ This repository is storing all the current documentation of the DHARMA Project.
 |Task Force|Corpus Designation|Repository name|
 |--|--|--|
 |Task Force A|Pallava|tfa-pallava-epigraphy|
+|Task Force A||tfa-avanam-epigraphy|
 |Task Force A|Cōḻa|tfa-cola-epigraphy|
 |Task Force A|Uttiramērūr|tfa-uttiramerur-epigraphy|
 |Task Force A|Koṭumpāḷūr|tfa-kotumpalur-epigraphy|
