@@ -207,7 +207,7 @@
       <xsl:variable name="circa">
          <xsl:choose>
             <xsl:when
-               test="$parm-leiden-style = ('ddbdp','sammelbuch') and
+               test="$parm-leiden-style = ('ddbdp','sammelbuch', 'dharma') and
                (@precision='low' or (@unit='character' and number(@quantity) &gt; $cur-max))">
                <xsl:text>ca.</xsl:text>
             </xsl:when>
@@ -278,7 +278,7 @@
                   <xsl:choose>
                      <!-- lines lost -->
                      <xsl:when test="@reason='lost' and @unit='line'">
-                        <xsl:text>...</xsl:text>
+                        <xsl:text>unknown number of lines lost</xsl:text>
                      </xsl:when>
                      <!--     unknown charcaters lost-->
                      <xsl:when test="@reason='lost' and @unit='character'">
@@ -311,6 +311,12 @@
                         <xsl:value-of select="@quantity"/>
                      </xsl:otherwise>
                   </xsl:choose>
+               </xsl:when>
+               <xsl:when test="$parm-leiden-style= 'dharma'">
+                 <xsl:value-of select="@quantity"/>
+                 <xsl:if test="@reason='lost'">
+                   <xsl:text>+</xsl:text> 
+                 </xsl:if>
                </xsl:when>
                <xsl:when test="number(@quantity) &gt; $cur-max or (number(@quantity) &gt; 1 and @precision='low')">
                   <xsl:choose>
