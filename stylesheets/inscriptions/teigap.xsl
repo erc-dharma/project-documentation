@@ -107,9 +107,35 @@
       </xsl:choose>
    </xsl:template>
 
+   <xsl:template match="t:gap[@reason='undefined']">
+   <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+      <xsl:if test="$parm-leiden-style = 'dharma'">
+        <xsl:text>[</xsl:text>
+      </xsl:if>
+
+    <!-- certainty -->
+      <xsl:if test="child::t:certainty[@match='..']">
+         <xsl:text>?</xsl:text>
+      </xsl:if>
+
+      <xsl:if
+         test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='undefined']]])
+         and not(preceding::node()[1][self::t:gap[@reason='undefined']])">
+         <xsl:call-template name="extent-string"/>
+      </xsl:if>
+
+      <xsl:if test="$parm-leiden-style = 'dharma'">
+        <xsl:text>]</xsl:text>
+      </xsl:if>
+   </xsl:template>
 
    <xsl:template match="t:gap[@reason='illegible']">
-      <!-- certainty -->
+<xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+      <xsl:if test="$parm-leiden-style = 'dharma'">
+        <xsl:text>[</xsl:text>
+      </xsl:if>
+
+    <!-- certainty -->
       <xsl:if test="child::t:certainty[@match='..']">
          <xsl:text>?</xsl:text>
       </xsl:if>
@@ -118,6 +144,10 @@
          test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='illegible']]])
          and not(preceding::node()[1][self::t:gap[@reason='illegible']])">
          <xsl:call-template name="extent-string"/>
+      </xsl:if>
+
+      <xsl:if test="$parm-leiden-style = 'dharma'">
+        <xsl:text>]</xsl:text>
       </xsl:if>
    </xsl:template>
 
@@ -284,8 +314,8 @@
                      <xsl:when test="@reason='lost' and @unit='line'">
                         <xsl:text>unknown number of lines lost</xsl:text>
                      </xsl:when>
-                     <!--     unknown charcaters lost-->
-                     <xsl:when test="@reason='lost' and @unit='character'">
+                     <!--  unknown charcaters lost or illegible-->
+                     <xsl:when test="@unit='character'">
                         <xsl:text>...</xsl:text>
                      </xsl:when>
                   </xsl:choose>
@@ -321,6 +351,9 @@
                  <xsl:value-of select="@quantity"/>
                  <xsl:if test="@reason='lost'">
                    <xsl:text>+</xsl:text>
+                 </xsl:if>
+                 <xsl:if test="@reason='illegible'">
+                   <xsl:text>x</xsl:text>
                  </xsl:if>
                </xsl:when>
                <xsl:when test="number(@quantity) &gt; $cur-max or (number(@quantity) &gt; 1 and @precision='low')">
