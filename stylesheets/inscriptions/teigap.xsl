@@ -534,6 +534,18 @@
                       </xsl:if>
                       <xsl:text> illegible</xsl:text>
                    </xsl:when>
+                   <xsl:when test="@reason='undefined'">
+                      <xsl:value-of select="$circa"/>
+                      <xsl:value-of select="@quantity"/>
+                      <xsl:text> line</xsl:text>
+                      <xsl:if test="number(@quantity) &gt; 1">
+                         <xsl:text>s</xsl:text>
+                      </xsl:if>
+                      <xsl:if test="child::t:certainty[@match='..']">
+                         <xsl:text> possibly</xsl:text>
+                      </xsl:if>
+                      <xsl:text> lost or illegible</xsl:text>
+                   </xsl:when>
                  </xsl:choose>
                </xsl:when>
                <xsl:when test="$parm-leiden-style = ('ddbdp','sammelbuch')">
