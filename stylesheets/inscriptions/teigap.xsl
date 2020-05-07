@@ -355,6 +355,9 @@
                  <xsl:if test="@reason='illegible'">
                    <xsl:text>x</xsl:text>
                  </xsl:if>
+                 <xsl:if test="@reason='undefined'">
+                   <xsl:text>*</xsl:text>
+                 </xsl:if>
                </xsl:when>
                <xsl:when test="number(@quantity) &gt; $cur-max or (number(@quantity) &gt; 1 and @precision='low')">
                   <xsl:choose>
