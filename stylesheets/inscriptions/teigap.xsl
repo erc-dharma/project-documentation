@@ -198,7 +198,9 @@
                <xsl:text>(?)</xsl:text>
             </xsl:when>
             <xsl:otherwise>
+              <xsl:if test="not($parm-leiden-style ='dharma')">
                <xsl:text>?</xsl:text>
+             </xsl:if>
             </xsl:otherwise>
          </xsl:choose>
       </xsl:if>
@@ -506,6 +508,22 @@
 
          <xsl:when test="@quantity and @unit='line'">
             <xsl:choose>
+              <xsl:when test="$parm-leiden-style = 'dharma'">
+                 <xsl:choose>
+                   <xsl:when test="@reason='lost'">
+                      <xsl:value-of select="$circa"/>
+                      <xsl:value-of select="@quantity"/>
+                      <xsl:text> line</xsl:text>
+                      <xsl:if test="number(@quantity) &gt; 1">
+                         <xsl:text>s</xsl:text>
+                      </xsl:if>
+                      <xsl:if test="child::t:certainty[@match='..']">
+                         <xsl:text> possibly</xsl:text>
+                      </xsl:if>
+                      <xsl:text> lost</xsl:text>
+                   </xsl:when>
+                 </xsl:choose>
+               </xsl:when>
                <xsl:when test="$parm-leiden-style = ('ddbdp','sammelbuch')">
                   <xsl:choose>
                      <xsl:when test="desc = 'vestiges' and @reason = 'illegible'">
