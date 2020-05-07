@@ -211,6 +211,10 @@
                (@precision='low' or (@unit='character' and number(@quantity) &gt; $cur-max))">
                <xsl:text>ca.</xsl:text>
             </xsl:when>
+            <xsl:when
+               test="$parm-leiden-style = 'dharma' and @precision='low'">
+               <xsl:text>ca.</xsl:text>
+            </xsl:when>
             <xsl:when test="@precision='low' and not(starts-with($parm-leiden-style, 'edh'))">
                <xsl:text>c. </xsl:text>
             </xsl:when>
@@ -313,9 +317,10 @@
                   </xsl:choose>
                </xsl:when>
                <xsl:when test="$parm-leiden-style= 'dharma'">
+                 <xsl:value-of select="$circa"/>
                  <xsl:value-of select="@quantity"/>
                  <xsl:if test="@reason='lost'">
-                   <xsl:text>+</xsl:text> 
+                   <xsl:text>+</xsl:text>
                  </xsl:if>
                </xsl:when>
                <xsl:when test="number(@quantity) &gt; $cur-max or (number(@quantity) &gt; 1 and @precision='low')">
