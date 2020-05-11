@@ -109,7 +109,7 @@
 
 <xsl:template name="prosodic">
       <xsl:if test="matches(@met,'[\+\-]+')">
-        <xsl:value-of select="replace(replace(replace(@met,'-','⏑'),'=','⏓'),'\+','-')"/>
+        <xsl:value-of select="replace(replace(replace(@met,'-','⏑'),'=','⏓'),'\+','–')"/>
       </xsl:if>
   </xsl:template>
 

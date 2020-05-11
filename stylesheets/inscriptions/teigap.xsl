@@ -108,7 +108,9 @@
    </xsl:template>
 
    <xsl:template match="t:gap[@reason='undefined']">
-   <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+     <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+     <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>[</xsl:text>
       </xsl:if>
@@ -120,11 +122,18 @@
        </xsl:if>
       </xsl:if>
 
+      <xsl:choose>
+         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real] and not(@unit='component')">
+            <xsl:call-template name="verse-string"/>
+         </xsl:when>
+         <xsl:otherwise>
       <xsl:if
          test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='undefined']]])
          and not(preceding::node()[1][self::t:gap[@reason='undefined']])">
          <xsl:call-template name="extent-string"/>
       </xsl:if>
+      </xsl:otherwise>
+      </xsl:choose>
 
       <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>]</xsl:text>
@@ -132,7 +141,9 @@
    </xsl:template>
 
    <xsl:template match="t:gap[@reason='illegible']">
-   <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+     <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+     <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>[</xsl:text>
       </xsl:if>
@@ -144,11 +155,18 @@
        </xsl:if>
       </xsl:if>
 
+      <xsl:choose>
+         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real] and not(@unit='component')">
+            <xsl:call-template name="verse-string"/>
+         </xsl:when>
+         <xsl:otherwise>
       <xsl:if
          test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='illegible']]])
          and not(preceding::node()[1][self::t:gap[@reason='illegible']])">
          <xsl:call-template name="extent-string"/>
       </xsl:if>
+      </xsl:otherwise>
+      </xsl:choose>
 
       <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>]</xsl:text>
@@ -182,7 +200,7 @@
       </xsl:if>
 
       <xsl:choose>
-         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real]">
+         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real] and not(@unit='component')">
             <xsl:call-template name="verse-string"/>
          </xsl:when>
          <xsl:otherwise>
