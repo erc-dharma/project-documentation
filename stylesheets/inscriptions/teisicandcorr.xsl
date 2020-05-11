@@ -46,7 +46,7 @@
            <xsl:when test="$parm-edition-type='diplomatic' or $parm-leiden-style=('ddbdp','sammelbuch')"/>
          <xsl:otherwise>
             <xsl:choose>
-                <xsl:when test="$parm-leiden-style = ('seg','iospe','dharma')">
+                <xsl:when test="$parm-leiden-style = ('seg','iospe')">
                   <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
                     <span class="corr">
                     <xsl:text>&lt;</xsl:text>
@@ -64,6 +64,24 @@
                    <xsl:text>&gt;</xsl:text>
                 </xsl:if>
                </xsl:when>
+               <xsl:when test="$parm-leiden-style = 'dharma'">
+                 <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+                   <span class="corr">
+                   <xsl:text>⟨</xsl:text>
+                   <xsl:apply-templates/>
+                   <!-- cert-low template found in tpl-certlow.xsl -->
+                   <xsl:call-template name="cert-low"/>
+                   <xsl:text>⟩</xsl:text>
+                 </span>
+                </xsl:if>
+                <xsl:if test="ancestor::t:div[@type='apparatus']">
+                  <xsl:text>⟨</xsl:text>
+                  <xsl:apply-templates/>
+                  <!-- cert-low template found in tpl-certlow.xsl -->
+                  <xsl:call-template name="cert-low"/>
+                  <xsl:text>⟩</xsl:text>
+               </xsl:if>
+              </xsl:when>
                 <xsl:when test="starts-with($parm-leiden-style, 'edh')">
                   <xsl:apply-templates/>
                </xsl:when>

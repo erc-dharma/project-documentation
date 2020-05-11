@@ -108,11 +108,19 @@
 
   <xsl:template match="t:supplied[@reason='omitted']">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
           <xsl:when test="$parm-edition-type='diplomatic'"/>
          <xsl:when test="@evidence = 'parallel'">
         <!-- Found in [htm|txt]-teisupplied.xsl -->
         <xsl:call-template name="supplied-parallel"/>
+         </xsl:when>
+         <xsl:when test="$parm-leiden-style = 'dharma'">
+           <xsl:text>⟨</xsl:text>
+           <xsl:apply-templates/>
+           <!-- Found in tpl-cert-low.xsl -->
+       <xsl:call-template name="cert-low"/>
+           <xsl:text>⟩</xsl:text>
          </xsl:when>
          <xsl:otherwise>
             <xsl:text>&lt;</xsl:text>

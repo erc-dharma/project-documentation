@@ -5,7 +5,7 @@
    exclude-result-prefixes="t" version="2.0">
    <!-- Contains templates for choice/orig and choice/reg and surplus -->
 
-    <!--  <xsl:template match="t:choice/t:orig">
+    <xsl:template match="t:choice/t:orig">
           <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
           <xsl:param name="parm-edn-structure" tunnel="yes" required="no"></xsl:param>
           <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
@@ -13,6 +13,20 @@
               <xsl:when test="$parm-edn-structure = 'rib'">
 
               </xsl:when>
+              <xsl:when test="$parm-leiden-style='dharma'">
+                <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+                <span class="orig">
+                <xsl:text>¡</xsl:text>
+                <xsl:apply-templates/>
+                <xsl:text>!</xsl:text>
+              </span>
+            </xsl:if>
+            <xsl:if test="ancestor::t:div[@type='apparatus']">
+              <xsl:text>¡</xsl:text>
+              <xsl:apply-templates/>
+              <xsl:text>!</xsl:text>
+            </xsl:if>
+          </xsl:when>
               <xsl:otherwise>
                   <xsl:apply-templates/>
                   <xsl:if test="$parm-leiden-style = 'ddbdp'">
@@ -36,36 +50,23 @@
                   </xsl:if>
               </xsl:otherwise>
           </xsl:choose>
-      </xsl:template>-->
-
-      <xsl:template match="t:choice/t:orig">
-        <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
-        <span class="orig">
-        <xsl:text>¡</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>!</xsl:text>
-      </span>
-    </xsl:if>
-    <xsl:if test="ancestor::t:div[@type='apparatus']">
-      <xsl:text>¡</xsl:text>
-      <xsl:apply-templates/>
-      <xsl:text>!</xsl:text>
-    </xsl:if>
       </xsl:template>
 
+
    <xsl:template match="t:choice/t:reg">
-<xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+<xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart'] and $parm-leiden-style='dharma'">
      <span class="reg">
-     <xsl:text>&lt;</xsl:text>
+     <xsl:text>⟨</xsl:text>
      <xsl:apply-templates/>
-     <xsl:text>&gt;</xsl:text>
+     <xsl:text>⟩</xsl:text>
    </span>
 </xsl:if>
-  <xsl:if test="ancestor::t:div[@type='apparatus']">
-    <xsl:text>&lt;</xsl:text>
+  <xsl:if test="ancestor::t:div[@type='apparatus'] and $parm-leiden-style='dharma'">
+    <xsl:text>⟨</xsl:text>
     <xsl:apply-templates/>
-    <xsl:text>&gt;</xsl:text>
+    <xsl:text>⟩</xsl:text>
   </xsl:if>
-   </xsl:template>
+</xsl:template>
 
 </xsl:stylesheet>

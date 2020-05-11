@@ -115,7 +115,9 @@
 
     <!-- certainty -->
       <xsl:if test="child::t:certainty[@match='..']">
+        <xsl:if test="not($parm-leiden-style ='dharma')">
          <xsl:text>?</xsl:text>
+       </xsl:if>
       </xsl:if>
 
       <xsl:if
@@ -137,7 +139,9 @@
 
     <!-- certainty -->
       <xsl:if test="child::t:certainty[@match='..']">
+        <xsl:if test="not($parm-leiden-style ='dharma')">
          <xsl:text>?</xsl:text>
+       </xsl:if>
       </xsl:if>
 
       <xsl:if
@@ -313,8 +317,20 @@
                <xsl:when test="$parm-leiden-style = 'dharma'">
                   <xsl:choose>
                      <!-- lines lost -->
-                     <xsl:when test="@reason='lost' and @unit='line'">
-                        <xsl:text>unknown number of lines lost</xsl:text>
+                     <xsl:when test="@reason and @unit='line'">
+                        <xsl:text>unknown number of lines</xsl:text>
+                        <xsl:if test="child::t:certainty[@match='..']">
+                           <xsl:text> possibly</xsl:text>
+                        </xsl:if>
+                        <xsl:if test="@reason='lost'">
+                        <xsl:text> lost</xsl:text>
+                      </xsl:if>
+                      <xsl:if test="@reason='illegible'">
+                      <xsl:text> illegible</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="@reason='undefined'">
+                    <xsl:text> lost or illegible</xsl:text>
+                  </xsl:if>
                      </xsl:when>
                      <!--  unknown charcaters lost or illegible-->
                      <xsl:when test="@unit='character'">
