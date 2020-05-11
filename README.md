@@ -5,20 +5,16 @@ This repository is storing all the current documentation of the DHARMA Project.
 
 |Task Force|Corpus Designation|Repository name|
 |--|--|--|
-|Task Force A|Pallava|tfa-pallava-epigraphy|
-|Task Force A||tfa-avanam-epigraphy|
-|Task Force A|Cōḻa|tfa-cola-epigraphy|
-|Task Force A|Uttiramērūr|tfa-uttiramerur-epigraphy|
-|Task Force A|Koṭumpāḷūr|tfa-kotumpalur-epigraphy|
-|Task Force A|Mēlappaḻuvūr & kilappaluvur|tfa-meppalavulur-kilappaluvur-epigraphy|
-|Task Force A|Kāvēri Delta sites|tfa-kaveri-epigraphy|
-|Task Force A|Sanskrit|tfa-sanskrit-epigraphy|
-|Task Force A|Cīrkāḻi|tfa-cirkali-epigraphy|
 |Task Force A|Accāḷpuram|tfa-accalpuram-epigraphy|
-|Task Force A|Jaina sites|tfa-jaina-epigraphy|
-|Task Force A|Uṭaiyārkuṭi|tfa-utaiyarkuti-epigraphy|
-|Task Force A|Tirunaḷḷāṟu|tfa-tirunallaru-epigraphy|
-|Task Force A|Pirāṉmalai|tfa-piranmalai-epigraphy|
+|Task Force A|Cempiyaṉ Mahādevī|tfa-cempiyan-mahadevi-epigraphy|
+|Task Force A|Cīrkāḻi|tfa-cirkali-epigraphy|
+|Task Force A|Koṭumpāḷūr|tfa-kotumpalur-epigraphy|
+|Task Force A|Mēlappaḻuvūr & Kīḻappaḻuvūr|tfa-melappaluvur-kilappaluvur-epigraphy|
+|Task Force A|Pallava|tfa-pallava-epigraphy|
+|Task Force A|Pāṇḍya|tfa-pandya-epigraphy|
+|Task Force A|South Indian Inscriptions|tfa-sii-epigraphy|
+|Task Force A|Tamil Nadu (varia)|tfa-tamilnadu-epigraphy|
+|Task Force A|Uttiramērūr|tfa-uttiramerur-epigraphy|
 |Task Force B|Śailodbhava|tfb-sailodbhava-epigraphy|
 |Task Force B|Bhaumakara|tfb-bhaumakara-epigraphy|
 |Task Force B|Eastern Gaṅga|tfb-gangaeast-epigraphy|
