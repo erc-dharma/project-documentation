@@ -132,7 +132,7 @@
    </xsl:template>
 
    <xsl:template match="t:gap[@reason='illegible']">
-<xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+   <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>[</xsl:text>
       </xsl:if>
@@ -573,12 +573,12 @@
                      </xsl:when>
                      <xsl:otherwise>
                         <xsl:choose>
-                           <!--<xsl:when test="@extent='unknown' and @reason='lost'">
+                           <xsl:when test="@extent='unknown' and @reason='lost'">
                               <xsl:text>Text breaks</xsl:text>
-                           </xsl:when>-->
-                           <!--<xsl:when test="@extent='unknown' and @reason='illegible'">
+                           </xsl:when>
+                          <xsl:when test="@extent='unknown' and @reason='illegible'">
                               <xsl:text>Traces</xsl:text>
-                           </xsl:when>-->
+                           </xsl:when>
                            <xsl:when test="@reason='lost'">
                               <xsl:value-of select="$circa"/>
                               <xsl:value-of select="@quantity"/>
@@ -674,6 +674,7 @@
 
    <!-- Template for lost verse, metre known -->
    <xsl:template name="verse-string">
+       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
          <xsl:when test="parent::t:seg[contains(@real,'+') or contains(@real,'-')]">
             <xsl:call-template name="scansion">
@@ -683,11 +684,20 @@
             </xsl:call-template>
          </xsl:when>
          <xsl:when test="parent::t:seg[contains(@met,'+') or contains(@met,'-')]">
+           <xsl:if test="$parm-leiden-style ='dharma'">
+           <xsl:call-template name="scansion">
+              <xsl:with-param name="met-string" select="translate(parent::t:seg/@met, '+-','–⏑')"/>
+              <xsl:with-param name="string-len" select="string-length(parent::t:seg/@met)"/>
+              <xsl:with-param name="string-pos" select="string-length(parent::t:seg/@met) - 1"/>
+           </xsl:call-template>
+        </xsl:if>
+         <xsl:if test="not($parm-leiden-style ='dharma')">
             <xsl:call-template name="scansion">
                <xsl:with-param name="met-string" select="translate(parent::t:seg/@met, '+-','ˉ˘')"/>
                <xsl:with-param name="string-len" select="string-length(parent::t:seg/@met)"/>
                <xsl:with-param name="string-pos" select="string-length(parent::t:seg/@met) - 1"/>
             </xsl:call-template>
+          </xsl:if>
          </xsl:when>
          <xsl:otherwise>
             <xsl:call-template name="extent-string"/>
@@ -700,10 +710,15 @@
       <xsl:param name="met-string"/>
       <xsl:param name="string-len"/>
       <xsl:param name="string-pos"/>
+      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="$string-pos > -1">
+          <xsl:if test="not($parm-leiden-style ='dharma')">
          <xsl:text>&#xa0;</xsl:text>
+       </xsl:if>
          <xsl:value-of select="substring($met-string, number($string-len - $string-pos), 1)"/>
-         <xsl:text>&#xa0;</xsl:text>
+         <xsl:if test="not($parm-leiden-style ='dharma')">
+        <xsl:text>&#xa0;</xsl:text>
+      </xsl:if>
          <xsl:call-template name="scansion">
             <xsl:with-param name="met-string" select="$met-string"/>
             <xsl:with-param name="string-len" select="$string-len"/>
