@@ -26,6 +26,8 @@ If the installation have been successful, you will have the bottom toolbar, at t
 ![location of the linter infos](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom04.png)
 
 ## Optional packages
-- [wrap-in-tag](https://atom.io/packages/atom-wrap-in-tag) a very simple package allowing you to wrap tags around the text, like the `surroundings with tags...` function of Oxygen. To use it: just select a word or phrase and hit `Alt + Shift + w` or right click and select `Wrap in tag` in the menu. ![Use from the right Click](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom05.png) It will appear by default as `<p>text</p>`, then write the name of the tag you want.
+- [wrap-in-tag](https://atom.io/packages/atom-wrap-in-tag) a very simple package allowing you to wrap tags around the text, like the `surroundings with tags...` function of Oxygen. To use it: just select a word or phrase and hit `Alt + Shift + w` or right click and select `Wrap in tag` in the menu.
+![Use from the right Click](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom05.png)
+ It will appear by default as `<p>text</p>`, then write the name of the tag you want.
 
 - [select-text-between-tags](https://atom.io/packages/select-text-between-tags) this package allows you to select all the text between two tags.
