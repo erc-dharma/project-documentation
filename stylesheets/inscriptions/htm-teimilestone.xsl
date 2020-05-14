@@ -5,8 +5,8 @@
    exclude-result-prefixes="t" version="2.0">
    <!-- More specific templates in teimilestone.xsl -->
 
-   <xsl:template match="t:milestone">
-       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>      
+<!--   <xsl:template match="t:milestone">
+       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
        <xsl:choose>
          <xsl:when
              test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch') and ancestor::t:div[@type = 'translation']">
@@ -48,8 +48,8 @@
             <xsl:value-of select="@rend"/>
          </xsl:otherwise>
       </xsl:choose>
-   </xsl:template>
-   
+   </xsl:template>-->
+
    <xsl:template match="t:cb">
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <xsl:if test="$parm-leiden-style='iospe'">

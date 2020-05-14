@@ -1,6 +1,5 @@
 
 # EpiDoc Reference Stylesheets
-## DHARMA - tfa stylesheets
 
 
 XSLT for transformation of EpiDoc XML files into HTML. Includes various XML files containing parameters and other options.

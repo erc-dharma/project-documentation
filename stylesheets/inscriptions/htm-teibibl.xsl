@@ -82,30 +82,26 @@ bibliography. All examples only cater for book and article.
 
 						<!--						check if a namespace is provided for tags/xml:ids and use it as part of the tag for zotero-->
 						<xsl:variable name="biblentry"
-							select="
-								if ($parm-zoteroNS)
-								then
-									concat($parm-zoteroNS, ./t:ptr/@target)
-								else
-									./t:ptr/@target"/>
+							select="substring-after(./t:ptr/@target, ':')"/>
+									<xsl:message>biblentry= <xsl:value-of select="$biblentry"/></xsl:message>
 
 						<xsl:variable name="zoteroapitei">
 
 							<xsl:value-of
-								select="concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=tei')"/>
+								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
 							<!-- to go to the json with the escaped html included  use &amp;format=json&amp;include=bib,data and the code below: the result is anyway escaped... -->
 
 						</xsl:variable>
-
+						<xsl:message>zoteroapitei= <xsl:value-of select="$zoteroapitei"/></xsl:message>
 						<xsl:variable name="zoteroapijson">
 							<xsl:value-of
-								select="concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation')"
+								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
 							/>
 						</xsl:variable>
-
+						<xsl:message>zoteroapijson= <xsl:value-of select="$zoteroapijson"/></xsl:message>
 
 						<xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
-						<xsl:variable name="zoteroitemKEY">
+						<!--<xsl:variable name="zoteroitemKEY">
 
 							<xsl:analyze-string select="$unparsedtext"
 								regex="(\[\s+\{{\s+&quot;key&quot;:\s&quot;)(.+)&quot;">
@@ -114,11 +110,11 @@ bibliography. All examples only cater for book and article.
 								</xsl:matching-substring>
 							</xsl:analyze-string>
 
-						</xsl:variable>
+						</xsl:variable>-->
 
 						<xsl:choose>
 							<!--this will print a citation according to the selected style with a link around it pointing to the resource DOI, url or zotero item view-->
-							<xsl:when test="not(ancestor::t:div[@type = 'bibliography'])">
+							<xsl:when test="not(ancestor::t:div[@type = 'bibliography']) or ancestor::t:p">
 								<xsl:variable name="pointerurl">
 									<xsl:choose>
 										<xsl:when
@@ -142,6 +138,7 @@ bibliography. All examples only cater for book and article.
 
 								</xsl:variable>
 
+
 								<a href="{$pointerurl}">
 
 									<xsl:variable name="citation">
@@ -153,19 +150,54 @@ bibliography. All examples only cater for book and article.
 											</xsl:matching-substring>
 										</xsl:analyze-string>
 									</xsl:variable>
-									<xsl:value-of select="$citation"/>
-									<xsl:if test="t:citedRange">
-										<xsl:text>, </xsl:text>
-										<xsl:value-of select="t:citedRange"/>
-									</xsl:if>
+									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
 								</a>
+								<xsl:if test="t:citedRange">
+									<xsl:text>, </xsl:text>
+									<xsl:for-each select="t:citedRange">
+									<xsl:value-of select="."/>
+									<xsl:if test="following-sibling::t:citedRange">
+										<xsl:text>, </xsl:text>
+									</xsl:if>
+									</xsl:for-each>
+								</xsl:if>
 							</xsl:when>
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
+								<xsl:element name="span">
+									<xsl:attribute name="class">sigle</xsl:attribute>
+									<xsl:choose>
+						        <xsl:when test="matches(t:ptr/@target, '\+[a][l]')">
+						          <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+						          <xsl:text> &amp; al.</xsl:text>
+						        </xsl:when>
+						        <xsl:when test="matches(t:ptr/@target, '\+[A-Z]')">
+						          <xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+						          <xsl:text>&amp;</xsl:text>
+						          <xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+						        </xsl:when>
+						        <xsl:otherwise>
+						       <xsl:value-of select="normalize-space(translate(t:ptr/@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
+								 </xsl:otherwise>
+							 </xsl:choose>
+								</xsl:element>
+								<xsl:text>.</xsl:text>
+								<xsl:element name="span">
+									<xsl:attribute name="class">refBibl</xsl:attribute>
 								<xsl:copy-of
-									select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
-
+									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>
+									<xsl:if test="t:citedRange">
+										<xsl:for-each select="t:citedRange">
+										<xsl:value-of select="."/>
+										<xsl:if test="following-sibling::t:citedRange">
+											<xsl:text>, </xsl:text>
+										</xsl:if>
+										</xsl:for-each>
+										<xsl:text>.</xsl:text>
+									</xsl:if>
+									</xsl:element>
+								<xsl:element name="br"/>
 							</xsl:otherwise>
 						</xsl:choose>
 
@@ -221,7 +253,6 @@ bibliography. All examples only cater for book and article.
 									<xsl:value-of select="$textref//t:biblScope"/>
 
 								</xsl:when>
-
 								<xsl:otherwise>
 									<!--if this appears the id do not really correspond to each other,
 									ther might be a typo or a missing entry in the bibliography-->
@@ -268,33 +299,5 @@ bibliography. All examples only cater for book and article.
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-
-
-<!--<xsl:template match="//t:bibl/t:ptr">
-	<xsl:choose>
-	<xsl:when test="@target">
-			<xsl:choose>
-				<xsl:when test="matches(@target, '\+[a][l]')">
-					<xsl:value-of select="normalize-space(translate(@target,'bib:0123456789+-_:',''))"></xsl:value-of>
-					<xsl:text> and al. </xsl:text>
-					<xsl:value-of select="normalize-space(translate(substring-before(@target, '_'),'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-_:',''))"> </xsl:value-of>
-					<xsl:text> (</xsl:text>
-					<xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-					<xsl:text> &amp; al.)</xsl:text>
-				</xsl:when>
-				<xsl:when test="matches(@target, '\+[A-Z]')">
-					<xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-					<xsl:text>&amp;</xsl:text>
-					<xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-					<xsl:text> </xsl:text>
-				</xsl:when>
-				<xsl:otherwise>
-			 <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-			 </xsl:otherwise>
-			 </xsl:choose>
-</xsl:when>
-</xsl:choose>
-</xsl:template>-->
-
 
 </xsl:stylesheet>

@@ -9,7 +9,7 @@
 				<!--Change the title of the file, e.g. Raktamālā grant of the time of Budhagupta, year 159-->
 				<!-- Add your name in the respStmt matching your involvement -->
 				<respStmt>
-					<resp>creation of file</resp>
+					<resp>EpiDoc Encoding</resp>
 					<!-- Work done in the file, e.g. editor ...-->
 					<persName ref="part:jodo"><!-- Update the id -->
 						<forename>John</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
@@ -58,8 +58,8 @@
 					<physDesc>
 						<handDesc>
 							<p><!-- The script name(s) will be inserted here at a later stage from the metadata spreasheet. At this stage, you can mention here in a free-text paragraph any characteristics of the writing observed more than once in this inscription that seem unusual/uncommon or otherwise noteworthy given the general characteristics of the script in question. See EG 11.2. --></p>
-							<!-- By default, the <handDesc> structure contains a generic description of paleographical features of the text. If you need to describe hands, create <handNote> elements for each hand and change the <p> in the <handDesc> to <summary>. The structure is given in the following commentary -->
-							<!-- <summary></summary>
+							<!-- If you need to identify individual hands (EG §7.5/) in addition to one or more paragraphs of general palaeographic description, wrap <summary> around the <p> or <p>s above, and, outside <summary>, create <handNote> elements for each hand as follows:
+						<summary><p><p/></summary>
 						<handNote xml:id="Pallava00001_hand1"></handNote>
 						<handNote xml:id="Pallava00001_hand2"></handNote>
 					 -->
@@ -99,6 +99,9 @@
 	<!--bibliography encoded as per section §9.4 -->
 	<!-- NB: you are encouraged to experiment with encoding bibliography to the extent you have the bibliographic data available, but it is not mandatory at this stage, because our bibliographic data are normally assembled along with other metadata in spreadsheets and will be imported from there into our xml files by a semi-automated process at a later stage. -->
            <p><!-- formulate epigraphic lemma here, using the items of primary bibliography --></p>
+        	<listBibl type="primary">
+				<bibl/><!-- one <bibl/> per item of primary bibliography -->
+			</listBibl>
            <listBibl type="secondary">
               <bibl/><!-- one <bibl/> per item of secondary bibliography -->
            </listBibl>

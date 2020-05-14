@@ -163,17 +163,22 @@
 
   <xsl:template match="t:div[@type='apparatus']" priority="1">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
+  <xsl:if test="descendant::*">
     <div id="apparatus">
       <h2>Apparatus</h2>
       <p>
         <xsl:apply-templates/>
       </p>
     </div>
+  </xsl:if>
   </xsl:template>
 
   <xsl:template match="t:div[@type='apparatus']//t:app">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
     <sup>
+      <xsl:attribute name="class">
+         <xsl:text>linenumberapp</xsl:text>
+       </xsl:attribute>
       <xsl:text>(</xsl:text>
       <!--<xsl:attribute name="class">-->
         <xsl:value-of select="@loc"/>
@@ -201,27 +206,42 @@
   <xsl:template match="t:div[@type = 'apparatus']//t:rdg">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
     <xsl:element name="span">
-       <xsl:attribute name="style">color:#28B463;</xsl:attribute>
+       <xsl:attribute name="class">reading</xsl:attribute>
     <xsl:apply-templates/>
   </xsl:element>
   <xsl:if test="@source">
 <!-- ajout de la couleur sur rdg et transformation du @source en sigle -->
-    <span style="color:#3498DB;">
+    <span class="tooltip">
+      <!--<xsl:if test="matches(@source, '\s[b][i][b]')">
+        <xsl:value-of select="replace(@source, ' bib:', ' ')"/>
+      </xsl:if>-->
       <xsl:text> </xsl:text>
       <xsl:choose>
         <xsl:when test="matches(@source, '\+[a][l]')">
+          <xsl:text> </xsl:text>
           <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> &amp; al.</xsl:text>
+          <span class="tooltiptext">
+            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+          </span>
         </xsl:when>
         <xsl:when test="matches(@source, '\+[A-Z]')">
+          <xsl:text> </xsl:text>
           <xsl:value-of select="normalize-space(translate(substring-before(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text>&amp;</xsl:text>
           <xsl:value-of select="normalize-space(translate(substring-after(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
           <xsl:text> </xsl:text>
+          <span class="tooltiptext">
+            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+          </span>
         </xsl:when>
         <xsl:otherwise>
+          <xsl:text> </xsl:text>
        <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-       </xsl:otherwise>
+       <span class="tooltiptext">
+       <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+     </span>
+</xsl:otherwise>
        </xsl:choose>
   </span>
   </xsl:if>
@@ -237,7 +257,8 @@
 
   <xsl:template match="t:div[@type = 'apparatus']//t:lem">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
-    <xsl:element name="b">
+    <xsl:element name="span">
+      <xsl:attribute name="class">lemma</xsl:attribute>
     <xsl:apply-templates/>
   </xsl:element>
     <xsl:call-template name="sources">

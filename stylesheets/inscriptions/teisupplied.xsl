@@ -6,7 +6,7 @@
                 exclude-result-prefixes="t EDF"
                 version="2.0">
 
-  <xsl:template match="t:supplied[@reason='lost']">
+  <xsl:template match="t:supplied[@reason=('lost' , 'illegible')]">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="location" />
@@ -16,7 +16,7 @@
       <xsl:choose>
          <xsl:when test="@evidence">
             <xsl:if test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch'">
-                 <span style="color:black;"><xsl:text>[</xsl:text></span>
+                 <xsl:text>[</xsl:text>
             </xsl:if>
             <xsl:choose>
                <xsl:when test="@evidence = 'parallel'">
@@ -29,7 +29,7 @@
                </xsl:when>
             </xsl:choose>
             <xsl:if test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch'">
-                 <span style="color:black;"><xsl:text>]</xsl:text></span>
+                 <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
 
@@ -41,7 +41,7 @@
            and supplied elements, but this function is now performed by regex in
            [htm|txt]-tpl-sqbrackets.xsl which is called after all other templates are completed.
         -->
-              <span style="color:black;"><xsl:text>[</xsl:text></span>
+              <xsl:text>[</xsl:text>
             <xsl:choose>
                 <xsl:when test="$parm-edition-type = 'diplomatic'">
                   <xsl:variable name="orig-supplied-content">
@@ -100,7 +100,7 @@
                and supplied elements, but this function is now performed by regex in
                [htm|txt]-tpl-sqbrackets.xsl which is called after all other templates are completed.
            -->
-              <span style="color:black;"><xsl:text>]</xsl:text></span>
+              <xsl:text>]</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
@@ -108,11 +108,19 @@
 
   <xsl:template match="t:supplied[@reason='omitted']">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
           <xsl:when test="$parm-edition-type='diplomatic'"/>
          <xsl:when test="@evidence = 'parallel'">
         <!-- Found in [htm|txt]-teisupplied.xsl -->
         <xsl:call-template name="supplied-parallel"/>
+         </xsl:when>
+         <xsl:when test="$parm-leiden-style = 'dharma'">
+           <xsl:text>⟨</xsl:text>
+           <xsl:apply-templates/>
+           <!-- Found in tpl-cert-low.xsl -->
+       <xsl:call-template name="cert-low"/>
+           <xsl:text>⟩</xsl:text>
          </xsl:when>
          <xsl:otherwise>
             <xsl:text>&lt;</xsl:text>

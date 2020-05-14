@@ -22,11 +22,13 @@
 
    <xsl:template match="t:add">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-       <xsl:choose>
-          <!-- <xsl:when test="$parm-leiden-style=('ddbdp','sammelbuch', 'dharma')">
-            <xsl:choose>
-               <xsl:when test="parent::t:subst"/>-->
-               <xsl:when test="@place = 'above'">
+    <xsl:choose>
+         <xsl:when test="$parm-leiden-style=('ddbdp','sammelbuch', 'dharma')">
+               <xsl:text>&lt;&lt;</xsl:text>
+                 <xsl:apply-imports/>
+                 <xsl:text>&gt;&gt;</xsl:text>
+
+               <!--<xsl:when test="@place = 'above'">
                  <xsl:text>\</xsl:text>
                </xsl:when>
                <xsl:when test="@place = 'below'">
@@ -34,8 +36,7 @@
                </xsl:when>
                <xsl:otherwise>
                   <xsl:text>|</xsl:text>
-               </xsl:otherwise>
-            <!--</xsl:choose>
+               </xsl:otherwise>-->
          </xsl:when>
            <xsl:when test="$parm-leiden-style=('petrae','iospe')">
             <xsl:text>\</xsl:text>
@@ -49,10 +50,8 @@
                   <xsl:text>`</xsl:text>
                </xsl:otherwise>
             </xsl:choose>
-         </xsl:otherwise>-->
+         </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates/>
-      <xsl:call-template name="cert-low"/>
 
       <xsl:choose>
         <!--  <xsl:when test="$parm-leiden-style=('ddbdp','sammelbuch')">
@@ -62,7 +61,7 @@
                <xsl:when test="parent::t:subst and ancestor::t:*[local-name()=('reg','corr','rdg')
                   or self::t:del[@rend='corrected']]">
                   <!-- If add contains app, *only* render del (because add is rendered before the subst by app templates) -->
-                  <xsl:text> (</xsl:text><xsl:choose>
+                  <xsl:text>&lt;&lt;</xsl:text><xsl:choose>
                      <xsl:when test="t:app"><xsl:call-template name="resolvesubst">
                            <!-- From tpl-apparatus.xsl -->
                            <xsl:with-param name="delpath" select="../t:del/node()"/>
@@ -71,10 +70,10 @@
                            <!-- From tpl-apparatus.xsl -->
                            <xsl:with-param name="delpath" select="../t:del/node()"/>
                            <xsl:with-param name="addpath" select="node()"/>
-                        </xsl:call-template></xsl:otherwise></xsl:choose><xsl:text>)</xsl:text>
+                        </xsl:call-template></xsl:otherwise></xsl:choose><xsl:text>&gt;&gt;</xsl:text>
                </xsl:when>
               <!-- <xsl:when test="parent::t:subst"/>-->
-               <xsl:when test="@place = 'above'">
+                <!--  <xsl:when test="@place = 'above'">
                   <xsl:text>/</xsl:text>
                </xsl:when>
                <xsl:when test="@place = 'below'">
@@ -83,7 +82,7 @@
                <xsl:otherwise>
                   <xsl:text>|</xsl:text>
                </xsl:otherwise>
-          <!--  </xsl:choose>
+         </xsl:choose>
          </xsl:when>
           <xsl:when test="$parm-leiden-style=('petrae','iospe')">
             <xsl:text>/</xsl:text>
@@ -116,6 +115,11 @@
             <xsl:apply-templates/>
             <xsl:text>]]</xsl:text>
          </xsl:when>
+         <xsl:when test="$parm-leiden-style=('dharma')">
+           <xsl:text>{{</xsl:text>
+           <xsl:apply-templates/>
+           <xsl:text>}}</xsl:text>
+        </xsl:when>
           <xsl:when test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch') and @rend='slashes'">
             <xsl:apply-templates/>
          </xsl:when>

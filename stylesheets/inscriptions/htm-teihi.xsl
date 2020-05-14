@@ -38,13 +38,20 @@
             </xsl:element>
          </xsl:when>
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-         <!-- @rend='plain'                                                      -->
+         <!-- @rend='grantha'_ CSS inline: font-weight: bold;                                                      -->
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-         <xsl:when test="@rend='grantha'">   
+         <xsl:when test="@rend='grantha'">
+           <xsl:choose>
+           <xsl:when test="ancestor::t:div[@xml:lang='tam'] and ancestor::t:div[@xml:lang='tam-tam']">
+             <xsl:apply-templates/>
+           </xsl:when>
+           <xsl:otherwise>
                <xsl:element name="span">
-                 <xsl:attribute name="style">color:#E74C3C;</xsl:attribute>
+                 <xsl:attribute name="class">grantha</xsl:attribute>
                  <xsl:apply-templates/>
              </xsl:element>
+             </xsl:otherwise>
+             </xsl:choose> 
          </xsl:when>
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <!-- @rend='strong'                                                     -->

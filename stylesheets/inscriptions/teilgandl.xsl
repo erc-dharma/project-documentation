@@ -16,7 +16,7 @@
          </xsl:variable>
          <xsl:if test="number($pre-lb) and $pre-lb mod number($parm-line-inc) = 0 and not($pre-lb = 0)">
             <xsl:choose>
-               <xsl:when test="@break='no' or @type='inWord'">
+               <xsl:when test="@break='no'">
                   <xsl:text>(</xsl:text>
                   <xsl:value-of select="$pre-lb"/>
                   <xsl:text>)</xsl:text>
@@ -24,14 +24,14 @@
                <xsl:otherwise>
                   <xsl:text>(</xsl:text>
                   <xsl:value-of select="$pre-lb"/>
-                  <xsl:text>) </xsl:text>
+                  <xsl:text>)</xsl:text>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:if>
       </xsl:if>
       <xsl:apply-templates/>
-      <xsl:if test="local-name(following-sibling::t:*[1])='lb'">
+  <!-- <xsl:if test="local-name(following-sibling::t:*[1])='lb'">
          <xsl:text> |</xsl:text>
-      </xsl:if>
+      </xsl:if>-->
   </xsl:template>
 </xsl:stylesheet>

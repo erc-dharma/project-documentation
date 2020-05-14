@@ -85,6 +85,5 @@
    <xsl:template match="t:div[@type='edition']//t:pb[@n]">
           <sup><xsl:text>⎘ plate </xsl:text>
             <xsl:value-of select="@n"/></sup>
-            <br/>
    </xsl:template>
 </xsl:stylesheet>

@@ -27,7 +27,7 @@
       </xsl:if>
   </xsl:template>
 
-  <xsl:template match="//t:seg[@type='component']">
+<!--  <xsl:template match="//t:seg[@type='component']">
     <span style="color:black;">
     <xsl:choose>
     <xsl:when test="@subtype='body'">
@@ -40,7 +40,7 @@
     </xsl:when>
   </xsl:choose>
 </span>
-  </xsl:template>
+</xsl:template>-->
 
 
 

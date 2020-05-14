@@ -8,11 +8,11 @@
   <xsl:template match="t:lb">
       <xsl:if test="ancestor::t:l">
          <xsl:choose>
-            <xsl:when test="@break='no' or @type='inWord'">
-               <xsl:text>|</xsl:text>
+            <xsl:when test="@break='no'">
+               <xsl:text></xsl:text> <!--no space-->
             </xsl:when>
             <xsl:otherwise>
-               <xsl:text> | </xsl:text>
+               <xsl:text> </xsl:text>
             </xsl:otherwise>
          </xsl:choose>
          <xsl:choose>
@@ -26,24 +26,35 @@
          </xsl:choose>
       </xsl:if>
      <xsl:if test="$leiden-style=('ddbdp','sammelbuch') and @rend">
-        <xsl:text> (</xsl:text>
+        <xsl:text>(</xsl:text>
         <xsl:value-of select="@rend"/>
-        <xsl:text>) </xsl:text>
+        <xsl:text>)</xsl:text>
+     </xsl:if>
+     <xsl:if test="ancestor::t:p and not(ancestor::t:l) and not(ancestor::t:lg)">
+       <br/>
+       <sup class="cpnumber">
+         <xsl:text>(</xsl:text>
+         <xsl:value-of select="@n"/>
+         <xsl:text>)</xsl:text>
+       </sup>
      </xsl:if>
   </xsl:template>
-
 
   <xsl:template name="lb-content">
       <xsl:choose>
          <xsl:when test="@break='no' or @type='inWord'">
-          <xsl:text> (</xsl:text>
+          <sup class="versenumber">
+            <xsl:text>(</xsl:text>
             <xsl:value-of select="@n"/>
-            <xsl:text>) </xsl:text>
+            <xsl:text>)</xsl:text>
+          </sup>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:text> (</xsl:text>
+           <sup class="versenumber">
+            <xsl:text>(</xsl:text>
             <xsl:value-of select="@n"/>
-            <xsl:text>) </xsl:text>
+            <xsl:text>)</xsl:text>
+          </sup>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>

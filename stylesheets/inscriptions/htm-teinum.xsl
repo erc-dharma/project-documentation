@@ -10,7 +10,7 @@
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:choose>
          <xsl:when
-             test="$parm-leiden-style=('ddbdp','sammelbuch') 
+             test="$parm-leiden-style=('ddbdp','sammelbuch')
             and string(.)">
             <span>
                <xsl:attribute name="title">
@@ -51,6 +51,13 @@
             <span class="latinnum">
                <xsl:apply-imports/>
             </span>
+         </xsl:when>
+         <xsl:when test="$parm-leiden-style = 'dharma' and parent::t:fw">
+           <xsl:element name="sup">
+             <xsl:text>[fw: </xsl:text>
+             <xsl:value-of select="."/>
+             <xsl:text>]</xsl:text>
+           </xsl:element>
          </xsl:when>
          <xsl:otherwise>
             <xsl:apply-imports/>

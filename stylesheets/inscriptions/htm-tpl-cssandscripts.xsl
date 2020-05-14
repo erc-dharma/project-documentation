@@ -10,7 +10,7 @@
    <xsl:template name="css-script">
       <xsl:param name="parm-css-loc" tunnel="yes" required="no"></xsl:param>
 
-      <link rel="stylesheet" type="css">
+      <link rel="stylesheet" type="text/css">
          <xsl:attribute name="href">
             <xsl:value-of select="$parm-css-loc"/>
          </xsl:attribute>

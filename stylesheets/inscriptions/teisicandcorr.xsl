@@ -19,11 +19,22 @@
                <xsl:text>)</xsl:text>
             </xsl:if>
          </xsl:when>
-         <!-- Adaptation un peu sale pour mettre en place [sic>corr] pour Manu -->
-         <xsl:otherwise>
-             <span style="color:black;"><xsl:text>[</xsl:text></span>
+         <xsl:when test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+           <span class="sic">
+             <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
-            <span style="color:black;"><xsl:text>&gt;</xsl:text></span>
+            <xsl:text>?</xsl:text>
+          </span>
+        </xsl:when>
+        <xsl:when test="ancestor::t:div[@type='apparatus']">
+            <xsl:text>¿</xsl:text>
+           <xsl:apply-templates/>
+           <xsl:text>?</xsl:text>
+       </xsl:when>
+      <xsl:otherwise>
+             <xsl:text>¿</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>?</xsl:text>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
@@ -36,12 +47,41 @@
          <xsl:otherwise>
             <xsl:choose>
                 <xsl:when test="$parm-leiden-style = ('seg','iospe')">
-                  <xsl:text>&lt;</xsl:text>
+                  <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+                    <span class="corr">
+                    <xsl:text>&lt;</xsl:text>
+                    <xsl:apply-templates/>
+                    <!-- cert-low template found in tpl-certlow.xsl -->
+                    <xsl:call-template name="cert-low"/>
+                    <xsl:text>&gt;</xsl:text>
+                  </span>
+                 </xsl:if>
+                 <xsl:if test="ancestor::t:div[@type='apparatus']">
+                   <xsl:text>&lt;</xsl:text>
+                   <xsl:apply-templates/>
+                   <!-- cert-low template found in tpl-certlow.xsl -->
+                   <xsl:call-template name="cert-low"/>
+                   <xsl:text>&gt;</xsl:text>
+                </xsl:if>
+               </xsl:when>
+               <xsl:when test="$parm-leiden-style = 'dharma'">
+                 <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+                   <span class="corr">
+                   <xsl:text>⟨</xsl:text>
+                   <xsl:apply-templates/>
+                   <!-- cert-low template found in tpl-certlow.xsl -->
+                   <xsl:call-template name="cert-low"/>
+                   <xsl:text>⟩</xsl:text>
+                 </span>
+                </xsl:if>
+                <xsl:if test="ancestor::t:div[@type='apparatus']">
+                  <xsl:text>⟨</xsl:text>
                   <xsl:apply-templates/>
                   <!-- cert-low template found in tpl-certlow.xsl -->
                   <xsl:call-template name="cert-low"/>
-                  <xsl:text>&gt;</xsl:text>
-               </xsl:when>
+                  <xsl:text>⟩</xsl:text>
+               </xsl:if>
+              </xsl:when>
                 <xsl:when test="starts-with($parm-leiden-style, 'edh')">
                   <xsl:apply-templates/>
                </xsl:when>
@@ -49,7 +89,6 @@
                   <xsl:apply-templates/>
                   <!-- cert-low template found in tpl-certlow.xsl -->
                   <xsl:call-template name="cert-low"/>
-                  <span style="color:black;"><xsl:text>]</xsl:text></span>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:otherwise>
