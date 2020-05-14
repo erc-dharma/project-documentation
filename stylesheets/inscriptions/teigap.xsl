@@ -111,7 +111,7 @@
      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
-      <xsl:if test="$parm-leiden-style = 'dharma'">
+      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
         <xsl:text>[</xsl:text>
       </xsl:if>
 
@@ -135,7 +135,7 @@
       </xsl:otherwise>
       </xsl:choose>
 
-      <xsl:if test="$parm-leiden-style = 'dharma'">
+      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
         <xsl:text>]</xsl:text>
       </xsl:if>
    </xsl:template>
@@ -144,7 +144,7 @@
      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
-      <xsl:if test="$parm-leiden-style = 'dharma'">
+      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
         <xsl:text>[</xsl:text>
       </xsl:if>
 
@@ -168,7 +168,7 @@
       </xsl:otherwise>
       </xsl:choose>
 
-      <xsl:if test="$parm-leiden-style = 'dharma'">
+      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
         <xsl:text>]</xsl:text>
       </xsl:if>
    </xsl:template>
@@ -191,7 +191,9 @@
            but this function is now performed by regex in [htm|txt]-tpl-sqbrackets.xsl
            which is called after all other templates are completed.
         -->
+            <xsl:if test="not(@unit='component') and $parm-leiden-style = 'dharma'">
             <xsl:text>[</xsl:text>
+          </xsl:if>
          </xsl:otherwise>
       </xsl:choose>
       <xsl:if
@@ -245,7 +247,9 @@
            but this function is now performed by regex in [htm|txt]-tpl-sqbrackets.xsl
            which is called after all other templates are completed.
         -->
-            <xsl:text>]</xsl:text>
+        <xsl:if test="not(@unit='component') and $parm-leiden-style = 'dharma'">
+        <xsl:text>]</xsl:text>
+      </xsl:if>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
@@ -666,6 +670,17 @@
             </xsl:choose>
          </xsl:when>
 
+         <xsl:when test="@unit='component' and $parm-leiden-style='dharma'">
+           <xsl:choose>
+           <xsl:when test="not(parent::t:seg[@met]) and parent::t:seg[@subtype='vowel']">
+             <xsl:text>⏓</xsl:text>
+           </xsl:when>
+           <xsl:otherwise>
+           <xsl:text>*</xsl:text>
+         </xsl:otherwise>
+         </xsl:choose>
+         </xsl:when>
+
          <xsl:otherwise>
             <xsl:choose>
                <xsl:when
@@ -701,10 +716,10 @@
                <xsl:with-param name="string-pos" select="string-length(parent::t:seg/@real) - 1"/>
             </xsl:call-template>
          </xsl:when>
-         <xsl:when test="parent::t:seg[contains(@met,'+') or contains(@met,'-')]">
+         <xsl:when test="parent::t:seg[contains(@met,'+') or contains(@met,'-') or contains(@met,'=')]">
            <xsl:if test="$parm-leiden-style ='dharma'">
            <xsl:call-template name="scansion">
-              <xsl:with-param name="met-string" select="translate(parent::t:seg/@met, '+-','–⏑')"/>
+              <xsl:with-param name="met-string" select="translate(parent::t:seg/@met, '+-=','–⏑⏓')"/>
               <xsl:with-param name="string-len" select="string-length(parent::t:seg/@met)"/>
               <xsl:with-param name="string-pos" select="string-length(parent::t:seg/@met) - 1"/>
            </xsl:call-template>

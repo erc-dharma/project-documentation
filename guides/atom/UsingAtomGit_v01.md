@@ -1,4 +1,4 @@
-# Using Git from within Atom Teletype to encode XML files
+# Using Git from within Atom
 
 Written by Axelle Janiak, version 1 (2020-05-14)
 
