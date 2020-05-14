@@ -20,9 +20,9 @@ It is also possible to install the packages from the Atom website.
 
 ## Necessary packages
 You will need the following packages to be able to work:
-- [linter-autocomplete-jing](https://atom.io/packages/linter-autocomplete-jing) in order to validate and get schema support. Please note that the package need **Java (Java Runtime Environment (JRE) v1.6 or above)** to be installed on your computer as well as the additional packages: busy-signal, intentions, linter and linter-ui-default. All those dependencies should be installed for you by default by linter-autocomplete-jing. While Java can be download from [here](https://www.java.com/fr/) 
+- [linter-autocomplete-jing](https://atom.io/packages/linter-autocomplete-jing) in order to validate and get schema support. Please note that the package need **Java (Java Runtime Environment (JRE) v1.6 or above)** to be installed on your computer as well as the additional packages: busy-signal, intentions, linter and linter-ui-default. All those dependencies should be installed for you by default by linter-autocomplete-jing. While Java can be download from [here](https://www.java.com/fr/)
 You might get errors messages, but it will still work. It might be necessary to restart the editor.  
-If the installation have been successful, you will have the bottom toolbar, at the left the litter info, after the path of the file.  
+If the installation have been successful, you will have the bottom toolbar, at the left, after the path of the file, the linter info.  
 ![location of the linter infos](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom04.png)
 
 ## Optional packages
