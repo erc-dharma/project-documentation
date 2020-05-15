@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:t="http://www.tei-c.org/ns/1.0"
-   exclude-result-prefixes="t" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:t="http://www.tei-c.org/ns/1.0"
+  xmlns:EDF="http://epidoc.sourceforge.net/ns/functions" exclude-result-prefixes="t EDF" version="2.0">
 
    <!-- Other div matches can be found in htm-teidiv*.xsl -->
 
@@ -83,6 +82,9 @@
 
 <!-- Ajout DHARMA pour les <pb/> -->
    <xsl:template match="t:div[@type='edition']//t:pb[@n]">
+     <xsl:if test="EDF:f-wwrap(.) = true()">
+        <xsl:text>- </xsl:text>
+     </xsl:if>
           <sup><xsl:text>⎘ plate </xsl:text>
             <xsl:value-of select="@n"/></sup>
    </xsl:template>
