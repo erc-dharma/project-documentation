@@ -10,6 +10,8 @@
 
    <xsl:output method="xml" encoding="UTF-8" use-character-maps="myChars"/>
 
+<!-- Handling english features -->
+ <xsl:include href="english.xsl"/>
 
    <xsl:template match="t:*">
        <xsl:copy>
