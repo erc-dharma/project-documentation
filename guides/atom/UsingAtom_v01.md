@@ -4,14 +4,14 @@ Written by Axelle Janiak, version 1 (2020-05-14)
 
 ****
 
-If you want to use [Atom](https://atom.io/) to edit XML files. You will need to add new packages not in the core packages set by default while installing the editor.
+If you want to use [Atom](https://atom.io/) to edit XML files, you will need to add new packages that are not among the core packages that you get by default while installing the editor.
 
 ## Installing
-Once you have installed Atom, go to the `settings` or `Atom > preferences...` depending your computer, in your toolbar. In the opening settings, go to the tab  `+install` at the bottom of the left panel.
+Once you have installed Atom, go in your toolbar to the `settings` or `Atom > preferences...`, depending on your computer. In the opening settings, go to the tab  `+install` at the bottom of the left panel.
 
 ![install tag](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom01.png)
 
-Search the name of packages, see the list of possibilities in the following sections. Once it has found the package. Click on install and agree to each dependency installation request.
+Search the name of packages, see the list of possibilities in the following sections. Once it has found the package, click on install and agree to each dependency installation request.
 
 ![search and install a package](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom02.png)
 
@@ -20,9 +20,9 @@ It is also possible to install the packages from the Atom website.
 
 ## Necessary packages
 You will need the following packages to be able to work:
-- [linter-autocomplete-jing](https://atom.io/packages/linter-autocomplete-jing) in order to validate and get schema support. Please note that the package need **Java (Java Runtime Environment (JRE) v1.6 or above)** to be installed on your computer as well as the additional packages: busy-signal, intentions, linter and linter-ui-default. All those dependencies should be installed for you by default by linter-autocomplete-jing. While Java can be download from [here](https://www.java.com/fr/)
-You might get errors messages, but it will still work. It might be necessary to restart the editor.  
-If the installation have been successful, you will have the bottom toolbar, at the left, after the path of the file, the linter info.  
+- [linter-autocomplete-jing](https://atom.io/packages/linter-autocomplete-jing) in order to validate and get schema support. Please note that the package needs **Java (Java Runtime Environment (JRE) v1.6 or above)** to be installed on your computer as well as the additional packages: busy-signal, intentions, linter and linter-ui-default. All those dependencies should be installed for you by default by linter-autocomplete-jing, while Java can be download from [here](https://www.java.com/fr/).
+You might get error messages, but it will still work. It might be necessary to restart the editor.  
+If the installation have been successful, you will have a bottom toolbar that shows, at the left, after the path of the file, the linter info.  
 ![location of the linter infos](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom04.png)
 
 ## Optional packages
@@ -30,6 +30,6 @@ If the installation have been successful, you will have the bottom toolbar, at t
 
 ![Use from the right Click](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtom05.png)
 
- It will appear by default as `<p>text</p>`, then write the name of the tag you want.
+ This will insert `<p>...</p>` around the selected text. You can then write the name of the tag you want in stead of `<p>` and make use of autocomplete.
 
 - [select-text-between-tags](https://atom.io/packages/select-text-between-tags) this package allows you to select all the text between two tags.
