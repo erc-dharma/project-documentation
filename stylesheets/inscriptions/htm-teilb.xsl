@@ -161,6 +161,7 @@
                </xsl:when>
                <xsl:otherwise>
                   <br id="a{$div-loc}l{$line}"/>
+                  <xsl:call-template name="cPlate"></xsl:call-template>
                </xsl:otherwise>
             </xsl:choose>
             <xsl:choose>
@@ -227,5 +228,43 @@
       </xsl:choose>
    </xsl:template>
 
+   <xsl:template name="cPlate">
+     <xsl:choose>
+<xsl:when test="preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw' or
+                   (normalize-space(.)=''
+                            and preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw'])]">
+     <xsl:if test="EDF:f-wwrap(.) = true()">
+        <xsl:text>- </xsl:text>
+     </xsl:if>
+          <sup><xsl:text>⎘ plate </xsl:text>
+            <xsl:value-of select="preceding-sibling::t:pb[1]/@n"/>
+            <xsl:text> </xsl:text>
+          </sup>
+          <xsl:if test="preceding-sibling::t:fw[1]">
+            <xsl:element name="sup">
+              <xsl:text>[fw: </xsl:text>
+              <xsl:value-of select="preceding-sibling::t:fw[1]/t:g"/>
+              <xsl:text>]</xsl:text>
+            </xsl:element>
+          </xsl:if>
+        </xsl:when>
+      <!--  <xsl:when test="preceding-sibling::t:pb[following-sibling::t:fw][self::lb]">
+          <xsl:if test="EDF:f-wwrap(.) = true()">
+            <xsl:text>- </xsl:text>
+          </xsl:if>
+              <sup><xsl:text>⎘ plate </xsl:text>
+                  <xsl:value-of select="preceding-sibling::t:pb/@*[local-name()='n']"/>
+                                      <xsl:text> </xsl:text>
+                </sup>
+              <xsl:if test="preceding-sibling::t:fw/t:g">
+                <xsl:element name="sup">
+                  <xsl:text>[fw: </xsl:text>
+                  <xsl:value-of select="preceding-sibling::t:fw/t:g"/>
+                  <xsl:text>]</xsl:text>
+                </xsl:element>
+              </xsl:if>
+          </xsl:when>-->
+        </xsl:choose>
+   </xsl:template>
 
 </xsl:stylesheet>

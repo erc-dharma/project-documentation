@@ -58,15 +58,17 @@
         <xsl:when test="matches(., '/')">
           <xsl:call-template name="fraction"/>
         </xsl:when>
-        <xsl:when test="parent::t:fw">
+        <!--<xsl:when test="parent::t:fw">
         <xsl:element name="sup">
           <xsl:text>[fw: </xsl:text>
           <xsl:value-of select="."/>
           <xsl:text>]</xsl:text>
         </xsl:element>
-      </xsl:when>
+      </xsl:when>-->
         <xsl:otherwise>
+          <xsl:if test="not(parent::t:fw)">
         <xsl:value-of select="."/>
+      </xsl:if>
       </xsl:otherwise>
       </xsl:choose>
     </xsl:when>

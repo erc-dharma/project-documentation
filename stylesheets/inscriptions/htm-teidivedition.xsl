@@ -81,11 +81,11 @@
    </xsl:template>
 
 <!-- Ajout DHARMA pour les <pb/> -->
-   <xsl:template match="t:div[@type='edition']//t:pb[@n]">
+   <!--<xsl:template match="t:div[@type='edition']//t:pb[@n]">
      <xsl:if test="EDF:f-wwrap(.) = true()">
         <xsl:text>- </xsl:text>
      </xsl:if>
           <sup><xsl:text>⎘ plate </xsl:text>
             <xsl:value-of select="@n"/></sup>
-   </xsl:template>
+   </xsl:template>-->
 </xsl:stylesheet>
