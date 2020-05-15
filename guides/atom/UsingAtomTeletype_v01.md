@@ -10,7 +10,7 @@ Before following this procedure, see the previous guide to [install Atom](https:
 Go in your toolbar to the `settings` or `Atom > preferences...`, depending your computer. In the opening settings, go to the tab  `+install` at the bottom of the left panel.
  Search for `teletype` and click on the `install` button.
 
- Or install Teletype with the following link: 
+ Or install Teletype with the following link:
 [atom://settings-view/show-package?package=teletype](atom://settings-view/show-package?package=teletype) and click `Open Atom` in the box that pops up.
 
 ## Share a portal
@@ -39,3 +39,6 @@ You click on `Join Portal` and enter the link that the host just sent.
 
 The portal opens and all collaborators can edit together in real time.
 An avatar for each collaborator connected will appear on the right side of the screen. If you click one, you will then be following the person's work.
+
+## Ending a session
+Once the collaborative working session is done. The **host must save the changes, stage, commit and push them on GitHub**, otherwise the work won't be stored and shared on DHARMA repositories. To do so, you can use your usual tool or operate with the git and GitHub possibilities provided by Atom. See the [Git and Atom Guide](https://github.com/erc-dharma/project-documentation/blob/master/guides/atom/UsingAtomGit_v01.md) to know more about it.   
