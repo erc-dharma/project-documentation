@@ -236,21 +236,39 @@
      <xsl:if test="EDF:f-wwrap(.) = true()">
         <xsl:text>- </xsl:text>
      </xsl:if>
-          <sup><xsl:text>⎘ plate </xsl:text>
+          <xsl:element name="sup">
+            <xsl:text>⎘ plate </xsl:text>
             <xsl:value-of select="preceding-sibling::t:pb[1]/@n"/>
             <xsl:text> </xsl:text>
-          </sup>
+          </xsl:element>
           <xsl:if test="preceding-sibling::node()[1][local-name() ='fw' or
                              (normalize-space(.)=''
-                                      and preceding-sibling::node()[1][local-name() ='fw'])]"> <!-- pb -->
+                                      and preceding-sibling::node()[1][local-name() ='fw'])]">
             <xsl:element name="sup">
               <xsl:text>[fw: </xsl:text>
-              <xsl:value-of select="preceding-sibling::t:fw[1]/t:g"/>
+              <xsl:value-of select="preceding-sibling::t:fw[1]/child::node()"/>
               <xsl:text>] </xsl:text>
             </xsl:element>
           </xsl:if>
         </xsl:when>
         </xsl:choose>
    </xsl:template>
+
+      <xsl:template match="//t:pb">
+        <xsl:if test="not(following-sibling::t:lb[1])">
+          <xsl:element name="sup">
+            <xsl:text>⎘ plate </xsl:text>
+            <xsl:value-of select="@n"/>
+            <xsl:text> </xsl:text>
+          </xsl:element>
+          <xsl:if test="following-sibling::t:fw[1]">
+            <xsl:element name="sup">
+              <xsl:text>[fw: </xsl:text>
+              <xsl:value-of select="following-sibling::t:fw[1]/child::node()"/>
+              <xsl:text>]</xsl:text>
+            </xsl:element>
+          </xsl:if>
+        </xsl:if>
+      </xsl:template>
 
 </xsl:stylesheet>
