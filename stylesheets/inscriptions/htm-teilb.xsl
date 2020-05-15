@@ -56,9 +56,6 @@
                         (normalize-space(.)=''
                                  and preceding-sibling::node()[1][local-name() = 'space' or
                                  local-name() = 'g' or (local-name()='supplied' and @reason='lost')])]"/>
-                         <xsl:when test="preceding-sibling::node()[1][local-name() = 'pb' or
-                                       (normalize-space(.)=''
-                                                and preceding-sibling::node()[1][local-name() = 'pb'])]"/>
                   <!-- *or unless* this break is accompanied by a paragraphos mark -->
                   <!-- in which case the hypen will be inserted before the paragraphos by code in htm-teimilestone.xsl -->
                   <xsl:when test="preceding-sibling::node()[not(self::text() and normalize-space(self::text())='')][1]/self::t:milestone[@rend='paragraphos']"/>
@@ -131,6 +128,9 @@
                   <a id="a{$div-loc}l{$line}">
                      <xsl:comment>0</xsl:comment>
                   </a>
+                  <xsl:if test="$parm-leiden-style = 'dharma'">
+                  <xsl:call-template name="cPlate"/>
+                </xsl:if>
                   <!-- for the first lb in a div, create an empty anchor instead of a line-break -->
                </xsl:when>
                <xsl:when
@@ -161,7 +161,9 @@
                </xsl:when>
                <xsl:otherwise>
                   <br id="a{$div-loc}l{$line}"/>
-                  <xsl:call-template name="cPlate"></xsl:call-template>
+                  <xsl:if test="$parm-leiden-style = 'dharma'">
+                  <xsl:call-template name="cPlate"/>
+                </xsl:if>
                </xsl:otherwise>
             </xsl:choose>
             <xsl:choose>
@@ -254,6 +256,7 @@
         </xsl:choose>
    </xsl:template>
 
+<!-- Display the pb for the blank pages-->
       <xsl:template match="//t:pb">
         <xsl:if test="not(following-sibling::t:lb[1])">
           <xsl:element name="sup">
