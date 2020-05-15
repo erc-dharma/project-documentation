@@ -159,6 +159,16 @@
                      </xsl:otherwise>
                   </xsl:choose>
                </xsl:when>
+
+               <xsl:when
+                   test="$parm-leiden-style = 'dharma' and ancestor::t:lem">
+                  <xsl:choose>
+                     <xsl:when test="@break='no'">
+                        <xsl:text>/</xsl:text>
+                     </xsl:when>
+                  </xsl:choose>
+               </xsl:when>
+
                <xsl:otherwise>
                   <br id="a{$div-loc}l{$line}"/>
                   <xsl:if test="$parm-leiden-style = 'dharma'">
@@ -205,6 +215,7 @@
             or ancestor::t:reg
             or ancestor::t:rdg or ancestor::t:del[ancestor::t:choice])
             or ancestor::t:del[@rend='corrected'][parent::t:subst]"/>
+            <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:lem"/>
          <xsl:otherwise>
             <sup>
                   <xsl:choose>
