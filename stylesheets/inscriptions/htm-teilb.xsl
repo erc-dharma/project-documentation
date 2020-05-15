@@ -59,6 +59,7 @@
                   <!-- *or unless* this break is accompanied by a paragraphos mark -->
                   <!-- in which case the hypen will be inserted before the paragraphos by code in htm-teimilestone.xsl -->
                   <xsl:when test="preceding-sibling::node()[not(self::text() and normalize-space(self::text())='')][1]/self::t:milestone[@rend='paragraphos']"/>
+                  <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:lem"/>
                   <xsl:otherwise>
                       <xsl:text>-</xsl:text>
                   </xsl:otherwise>
@@ -160,7 +161,7 @@
                   </xsl:choose>
                </xsl:when>
 
-               <xsl:when
+            <xsl:when
                    test="$parm-leiden-style = 'dharma' and ancestor::t:lem">
                   <xsl:choose>
                      <xsl:when test="@break='no'">
@@ -269,6 +270,7 @@
 
 <!-- Display the pb for the blank pages-->
       <xsl:template match="//t:pb">
+        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
         <xsl:if test="not(following-sibling::t:lb[1])">
           <xsl:element name="sup">
             <xsl:text>⎘ plate </xsl:text>
@@ -282,6 +284,9 @@
               <xsl:text>]</xsl:text>
             </xsl:element>
           </xsl:if>
+        </xsl:if>
+        <xsl:if test="$parm-leiden-style = 'dharma' and ancestor::t:lem">
+          <xsl:text>/</xsl:text>
         </xsl:if>
       </xsl:template>
 
