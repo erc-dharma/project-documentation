@@ -36,3 +36,10 @@ Then enter a commit message and click on the `Commit to master` button.
 To add co-authors to a commit, click the `👤➕` icon in the bottom left corner of the commit message editor. You can search by name or GitHub username.
 
 ![Add co-authors](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtomGit05.png)
+
+## Push
+To push your changes click on the `Push` icon in the status bar at the right bottom corner of the editor. It can be named `Publish` if the system hasn't identified commit yet. 
+![Push](https://github.com/erc-dharma/project-documentation/blob/master/guides/images/UsingAtomGit06.png)
+
+## Pull
+To pull changes made by others, click on the `Pull` icon in the status bar. It can be named `Fetch` if the system hasn't identified changes yet.
