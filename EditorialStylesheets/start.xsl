@@ -12,6 +12,7 @@
 
 <!-- Handling english features -->
  <xsl:include href="english.xsl"/>
+ <xsl:include href="french.xsl"/>
 
    <xsl:template match="t:*">
        <xsl:copy>
