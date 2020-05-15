@@ -5,7 +5,7 @@
    exclude-result-prefixes="t" version="2.0">
    <!-- More specific templates in teimilestone.xsl -->
 
-<!--   <xsl:template match="t:milestone">
+  <xsl:template match="t:milestone">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
        <xsl:choose>
          <xsl:when
@@ -43,12 +43,17 @@
                </xsl:when>
             </xsl:choose>
          </xsl:when>
+         <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:lem">
+           <xsl:text>/</xsl:text>
+         </xsl:when>
          <xsl:otherwise>
+           <xsl:if test="not($parm-leiden-style = 'dharma')">
             <br/>
             <xsl:value-of select="@rend"/>
+          </xsl:if>
          </xsl:otherwise>
       </xsl:choose>
-   </xsl:template>-->
+   </xsl:template>
 
    <xsl:template match="t:cb">
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
