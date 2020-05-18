@@ -33,14 +33,6 @@
      </xsl:if>
   </xsl:template>
 
-  <xsl:template match="t:lb">
-    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-    <xsl:if test="$leiden-style = 'dharma'">
-      <br/>
-      <xsl:call-template name="lb-content"/>
-    </xsl:if>
-  </xsl:template>
-
   <xsl:template name="lb-content">
       <xsl:choose>
          <xsl:when test="@break='no' or @type='inWord'">
