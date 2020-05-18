@@ -33,3 +33,7 @@ If the installation have been successful, you will have a bottom toolbar that sh
  This will insert `<p>...</p>` around the selected text. You can then write the name of the tag you want in stead of `<p>` and make use of autocomplete.
 
 - [select-text-between-tags](https://atom.io/packages/select-text-between-tags) this package allows you to select all the text between two tags.
+
+- [double-tag](https://atom.io/packages/double-tag) edit one tag and the other is automatically changed to match.
+- [tag](https://atom.io/packages/tag) automatically closes your tags.
+- [atom-beautify](https://atom.io/packages/atom-beautify) automatically indents your markup.
