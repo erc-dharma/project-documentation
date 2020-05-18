@@ -74,6 +74,9 @@
           <xsl:when test="@xml:lang='fra'">
           <xsl:text>French</xsl:text>
         </xsl:when>
+        <xsl:when test="@xml:lang='ndl'">
+        <xsl:text>Dutch</xsl:text>
+      </xsl:when>
         </xsl:choose>
       </xsl:if>
       </xsl:if>
