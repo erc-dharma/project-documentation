@@ -64,10 +64,13 @@
       <xsl:if test="@n"><!-- prints div number -->
          <h3 class="textpartnumber" id="{$div-type}ab{$div-loc}{@n}">
            <!-- add ancestor textparts -->
-             <xsl:if test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch' or $parm-leiden-style = 'dharma') and @subtype">
-               <xsl:text>Textpart: </xsl:text>
+             <xsl:if test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch' or $parm-leiden-style = 'dharma')">
+               <xsl:text>Textpart </xsl:text>
+               <xsl:if test="@subtype">
+                 <xsl:text>: </xsl:text>
               <xsl:value-of select="@subtype"/>
               <xsl:text> </xsl:text>
+            </xsl:if>
            </xsl:if>
               <xsl:value-of select="@n"/>
          </h3>

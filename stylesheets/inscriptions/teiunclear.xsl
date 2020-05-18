@@ -87,32 +87,19 @@
       </xsl:if>
    </xsl:template>
 -->
-<!-- solution temporaire avec color:black; Mériterait d'être coder plus clean une fois les guidelines fixées -->
    <xsl:template match="t:unclear[not(parent::t:choice)]">
      <xsl:choose>
 <xsl:when test="@cert='low'">
-  <xsl:element name="span">
-  <xsl:attribute name="class">notBold</xsl:attribute>
 <xsl:text>(</xsl:text>
-</xsl:element>
     <xsl:value-of select="."/>
     <xsl:call-template name="cert-low"/>
-      <xsl:element name="span">
-      <xsl:attribute name="class">notBold</xsl:attribute>
     <xsl:text>)</xsl:text>
-    </xsl:element>
   <!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
 </xsl:when>
 <xsl:otherwise>
-  <xsl:element name="span">
-  <xsl:attribute name="class">notBold</xsl:attribute>
 <xsl:text>(</xsl:text>
-</xsl:element>
     <xsl:value-of select="."/>
-    <xsl:element name="span">
-    <xsl:attribute name="class">notBold</xsl:attribute>
     <xsl:text>)</xsl:text>
-  </xsl:element>
   </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
