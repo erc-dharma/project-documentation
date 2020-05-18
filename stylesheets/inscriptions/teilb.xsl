@@ -6,6 +6,7 @@
   <!-- Imported by [htm|txt]-teilb.xsl -->
 
   <xsl:template match="t:lb">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="ancestor::t:l">
          <xsl:choose>
             <xsl:when test="@break='no'">
@@ -23,21 +24,21 @@
           <xsl:when test="number(@n) and @n mod $line-inc = 0 and not(@n = 0) and not(starts-with($leiden-style, 'edh'))">
                <xsl:call-template name="lb-content"/>
             </xsl:when>
-         </xsl:choose>
+        </xsl:choose>
       </xsl:if>
      <xsl:if test="$leiden-style=('ddbdp','sammelbuch') and @rend">
         <xsl:text>(</xsl:text>
         <xsl:value-of select="@rend"/>
         <xsl:text>)</xsl:text>
      </xsl:if>
-     <xsl:if test="ancestor::t:p and not(ancestor::t:l) and not(ancestor::t:lg)">
-       <br/>
-       <sup class="cpnumber">
-         <xsl:text>(</xsl:text>
-         <xsl:value-of select="@n"/>
-         <xsl:text>)</xsl:text>
-       </sup>
-     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="t:lb">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:if test="$leiden-style = 'dharma'">
+      <br/>
+      <xsl:call-template name="lb-content"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="lb-content">

@@ -180,7 +180,7 @@
             <xsl:choose>
                <xsl:when test="$location = 'apparatus'" />
                <xsl:when
-                   test="not(number(@n)) and ($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch')">
+                   test="not(number(@n)) and ($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch' or $parm-leiden-style = 'dharma')">
                   <!--         non-numerical line-nos always printed in DDbDP         -->
                   <xsl:call-template name="margin-num"/>
                </xsl:when>
@@ -234,7 +234,7 @@
                          </xsl:attribute>
                      </xsl:otherwise>
                   </xsl:choose>
-                  <xsl:text>(</xsl:text>
+              <xsl:text>(</xsl:text>
                <xsl:value-of select="@n"/>
                  <xsl:text>)</xsl:text>
             </sup>
