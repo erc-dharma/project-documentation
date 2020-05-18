@@ -224,9 +224,9 @@
                <xsl:if test="./parent::*[1]/@n">
                <xsl:value-of select="./parent::*[1]/@n"/>
                </xsl:if>
-               <xsl:if test="not(./parent::*[1]/@n)">
+               <!--<xsl:if test="not(./parent::*[1]/@n)">
                  <xsl:text>No sigla</xsl:text>
-               </xsl:if>
+               </xsl:if>-->
            </xsl:when>
           </xsl:choose>
        </xsl:for-each>
