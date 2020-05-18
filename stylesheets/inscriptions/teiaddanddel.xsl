@@ -24,9 +24,9 @@
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <xsl:choose>
          <xsl:when test="$parm-leiden-style=('ddbdp','sammelbuch', 'dharma')">
-               <xsl:text>&lt;&lt;</xsl:text>
+               <xsl:text>⟨⟨</xsl:text>
                  <xsl:apply-imports/>
-                 <xsl:text>&gt;&gt;</xsl:text>
+                 <xsl:text>⟩⟩</xsl:text>
 
                <!--<xsl:when test="@place = 'above'">
                  <xsl:text>\</xsl:text>
