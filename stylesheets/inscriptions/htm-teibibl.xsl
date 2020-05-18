@@ -167,20 +167,29 @@ bibliography. All examples only cater for book and article.
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
 								<xsl:element name="span">
 									<xsl:attribute name="class">sigle</xsl:attribute>
-									<xsl:choose>
+									<xsl:if test="ancestor-or-self::t:bibl/@n">
+										<xsl:value-of select="ancestor-or-self::t:bibl/@n"/>
+									</xsl:if>
+									<xsl:if test="not(ancestor-or-self::t:bibl/@n)">
+										<xsl:text>No Sigla : </xsl:text>
+										<xsl:choose>
 						        <xsl:when test="matches(t:ptr/@target, '\+[a][l]')">
 						          <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
 						          <xsl:text> &amp; al.</xsl:text>
+											<xsl:text>?</xsl:text>
 						        </xsl:when>
 						        <xsl:when test="matches(t:ptr/@target, '\+[A-Z]')">
 						          <xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
 						          <xsl:text>&amp;</xsl:text>
 						          <xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+											<xsl:text>?</xsl:text>
 						        </xsl:when>
 						        <xsl:otherwise>
 						       <xsl:value-of select="normalize-space(translate(t:ptr/@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
+									 <xsl:text>?</xsl:text>
 								 </xsl:otherwise>
 							 </xsl:choose>
+						 </xsl:if>
 								</xsl:element>
 								<xsl:text>.</xsl:text>
 								<xsl:element name="span">
