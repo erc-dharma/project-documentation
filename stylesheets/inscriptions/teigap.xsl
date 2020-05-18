@@ -265,13 +265,13 @@
       <xsl:variable name="circa">
          <xsl:choose>
             <xsl:when
-               test="$parm-leiden-style = ('ddbdp','sammelbuch', 'dharma') and
+               test="$parm-leiden-style = ('ddbdp','sammelbuch') and
                (@precision='low' or (@unit='character' and number(@quantity) &gt; $cur-max))">
                <xsl:text>ca.</xsl:text>
             </xsl:when>
             <xsl:when
                test="$parm-leiden-style = 'dharma' and @precision='low'">
-               <xsl:text>ca.</xsl:text>
+               <xsl:text>ca. </xsl:text>
             </xsl:when>
             <xsl:when test="@precision='low' and not(starts-with($parm-leiden-style, 'edh'))">
                <xsl:text>c. </xsl:text>
