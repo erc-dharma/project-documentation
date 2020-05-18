@@ -261,6 +261,7 @@
 
   <xsl:template match="t:div[@type = 'apparatus']//t:lem">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <xsl:element name="span">
       <xsl:attribute name="class">lemma</xsl:attribute>
     <xsl:apply-templates/>
@@ -271,7 +272,11 @@
 
 <!-- Ask Manu, if he wants to delete the : for ◇. Arlo susggested also just a blank space -->
     <xsl:if
-      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and not(@source)">
+      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and not(@source) and not($parm-leiden-style='dharma')">
+      <xsl:text>: </xsl:text>
+    </xsl:if>
+    <xsl:if
+      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and $parm-leiden-style='dharma'">
       <xsl:text>◇ </xsl:text>
     </xsl:if>
   </xsl:template>
