@@ -214,11 +214,43 @@
     <xsl:apply-templates/>
   </xsl:element>
   <xsl:if test="@source">
-<!-- ajout de la couleur sur rdg et transformation du @source en sigle -->
+    <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
     <span class="tooltip">
-      <!--<xsl:if test="matches(@source, '\s[b][i][b]')">
-        <xsl:value-of select="replace(@source, ' bib:', ' ')"/>
-      </xsl:if>-->
+       <xsl:variable name="biblID" select="@source"/>
+       <xsl:for-each select="//t:listBibl/descendant::t:*[@target=$biblID][1]">
+          <xsl:choose>
+             <xsl:when test="local-name()='ptr'">
+               <xsl:text> </xsl:text>
+               <xsl:if test="./parent::*[1]/@n">
+               <xsl:value-of select="./parent::*[1]/@n"/>
+               </xsl:if>
+               <xsl:if test="not(./parent::*[1]/@n)">
+                 <xsl:text>No sigla </xsl:text>
+               </xsl:if>
+           </xsl:when>
+          </xsl:choose>
+       </xsl:for-each>
+       <xsl:choose>
+         <xsl:when test="matches(@source, '\+[a][l]')">
+           <span class="tooltiptext">
+             <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+           </span>
+         </xsl:when>
+         <xsl:when test="matches(@source, '\+[A-Z]')">
+           <span class="tooltiptext">
+             <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+           </span>
+         </xsl:when>
+         <xsl:otherwise>
+           <span class="tooltiptext">
+           <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+         </span>
+    </xsl:otherwise>
+           </xsl:choose>
+
+     </span>
+<!-- Old system; to be deleted after validation -->
+   <!--<span class="tooltip">
       <xsl:text> </xsl:text>
       <xsl:choose>
         <xsl:when test="matches(@source, '\+[a][l]')">
@@ -247,7 +279,7 @@
      </span>
 </xsl:otherwise>
        </xsl:choose>
-  </span>
+  </span>-->
   </xsl:if>
     <!--<xsl:call-template name="sources">
       <xsl:with-param name="root" select="ancestor-or-self::t:TEI"/>
