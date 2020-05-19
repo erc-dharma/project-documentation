@@ -184,7 +184,7 @@ bibliography. All examples only cater for book and article.
 									</xsl:if>
 									</xsl:element>
 									<xsl:element name="span">
-										<xsl:attribute name="class">sigle</xsl:attribute>
+										<xsl:attribute name="class">siglum</xsl:attribute>
 										<xsl:if test="ancestor-or-self::t:bibl/@n">
 											<xsl:text> [siglum </xsl:text>
 											<strong><xsl:value-of select="ancestor-or-self::t:bibl/@n"/></strong>
