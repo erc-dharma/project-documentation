@@ -83,7 +83,8 @@ bibliography. All examples only cater for book and article.
 						<!--						check if a namespace is provided for tags/xml:ids and use it as part of the tag for zotero-->
 						<xsl:variable name="biblentry"
 							select="substring-after(./t:ptr/@target, ':')"/>
-									<xsl:message>biblentry= <xsl:value-of select="$biblentry"/></xsl:message>
+							<!-- Debugging message-->
+								<!--	<xsl:message>biblentry= <xsl:value-of select="$biblentry"/></xsl:message>-->
 
 						<xsl:variable name="zoteroapitei">
 
@@ -92,13 +93,15 @@ bibliography. All examples only cater for book and article.
 							<!-- to go to the json with the escaped html included  use &amp;format=json&amp;include=bib,data and the code below: the result is anyway escaped... -->
 
 						</xsl:variable>
-						<xsl:message>zoteroapitei= <xsl:value-of select="$zoteroapitei"/></xsl:message>
+							<!-- Debugging message-->
+						<!--<xsl:message>zoteroapitei= <xsl:value-of select="$zoteroapitei"/></xsl:message>-->
 						<xsl:variable name="zoteroapijson">
 							<xsl:value-of
 								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
 							/>
 						</xsl:variable>
-						<xsl:message>zoteroapijson= <xsl:value-of select="$zoteroapijson"/></xsl:message>
+							<!-- Debugging message-->
+					<!--	<xsl:message>zoteroapijson= <xsl:value-of select="$zoteroapijson"/></xsl:message>-->
 
 						<xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
 						<!--<xsl:variable name="zoteroitemKEY">
@@ -165,33 +168,7 @@ bibliography. All examples only cater for book and article.
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
-								<xsl:element name="span">
-									<xsl:attribute name="class">sigle</xsl:attribute>
-									<xsl:if test="ancestor-or-self::t:bibl/@n">
-										<xsl:value-of select="ancestor-or-self::t:bibl/@n"/>
-									</xsl:if>
-									<xsl:if test="not(ancestor-or-self::t:bibl/@n)">
-										<xsl:text>No Sigla : </xsl:text>
-										<xsl:choose>
-						        <xsl:when test="matches(t:ptr/@target, '\+[a][l]')">
-						          <xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-						          <xsl:text> &amp; al.</xsl:text>
-											<xsl:text>?</xsl:text>
-						        </xsl:when>
-						        <xsl:when test="matches(t:ptr/@target, '\+[A-Z]')">
-						          <xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-						          <xsl:text>&amp;</xsl:text>
-						          <xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-											<xsl:text>?</xsl:text>
-						        </xsl:when>
-						        <xsl:otherwise>
-						       <xsl:value-of select="normalize-space(translate(t:ptr/@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-									 <xsl:text>?</xsl:text>
-								 </xsl:otherwise>
-							 </xsl:choose>
-						 </xsl:if>
-								</xsl:element>
-								<xsl:text>.</xsl:text>
+
 								<xsl:element name="span">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
 								<xsl:copy-of
@@ -205,6 +182,35 @@ bibliography. All examples only cater for book and article.
 										</xsl:for-each>
 										<xsl:text>.</xsl:text>
 									</xsl:if>
+									</xsl:element>
+									<xsl:element name="span">
+										<xsl:attribute name="class">sigle</xsl:attribute>
+										<xsl:if test="ancestor-or-self::t:bibl/@n">
+											<xsl:text> [siglum </xsl:text>
+											<strong><xsl:value-of select="ancestor-or-self::t:bibl/@n"/></strong>
+											<xsl:text>]</xsl:text>
+										</xsl:if>
+										<!-- Deleting the display for siglum proposition-->
+									<!--	<xsl:if test="not(ancestor-or-self::t:bibl/@n)">
+											<xsl:text>No Siglum : </xsl:text>
+											<xsl:choose>
+											<xsl:when test="matches(t:ptr/@target, '\+[a][l]')">
+												<xsl:value-of select="normalize-space(translate(@target,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+												<xsl:text> &amp; al.</xsl:text>
+												<xsl:text>?</xsl:text>
+											</xsl:when>
+											<xsl:when test="matches(t:ptr/@target, '\+[A-Z]')">
+												<xsl:value-of select="normalize-space(translate(substring-before(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+												<xsl:text>&amp;</xsl:text>
+												<xsl:value-of select="normalize-space(translate(substring-after(@target, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+												<xsl:text>?</xsl:text>
+											</xsl:when>
+											<xsl:otherwise>
+										 <xsl:value-of select="normalize-space(translate(t:ptr/@target,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
+										 <xsl:text>?</xsl:text>
+									 </xsl:otherwise>
+								 </xsl:choose>
+							 </xsl:if>-->
 									</xsl:element>
 								<xsl:element name="br"/>
 							</xsl:otherwise>
