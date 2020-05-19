@@ -13,8 +13,13 @@
    <xsl:template match="t:abbr">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+       <xsl:if test="$parm-leiden-style='dharma'">
+         <xsl:element name="span">
+           <xsl:attribute name="class">abbreviation</xsl:attribute>
        <xsl:apply-templates/>
-       <xsl:if test="not(ancestor::t:expan) and not($parm-edition-type='diplomatic')">
+       </xsl:element>
+       </xsl:if>
+       <xsl:if test="not(ancestor::t:expan) and not($parm-edition-type='diplomatic') and not($parm-leiden-style='dharma')">
          <xsl:text>(</xsl:text><xsl:choose>
              <xsl:when test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch'">
                <xsl:text>&#xa0;&#xa0;</xsl:text>
@@ -44,7 +49,7 @@
          </xsl:when>
          <xsl:otherwise>
              <!--<xsl:if test="not(($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch') and ancestor::t:corr[parent::t:choice])">-->
-               
+
 <!--            </xsl:if>-->
             <!-- at one point we wanted to suppress abbreviations inside corrected text; we no longer agree with this,
                but are leaving the code here in case it turns out to have been a good idea after all -->
@@ -57,7 +62,7 @@
                <xsl:text>-</xsl:text>
             </xsl:if><xsl:text>)</xsl:text>
              <!--            <xsl:if test="not(($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch') and ancestor::t:corr[parent::t:choice])">-->
-               
+
 <!--            </xsl:if>-->
          </xsl:otherwise>
       </xsl:choose>
