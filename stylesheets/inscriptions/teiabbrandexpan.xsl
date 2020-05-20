@@ -14,10 +14,15 @@
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
        <xsl:if test="$parm-leiden-style='dharma'">
+         <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
          <xsl:element name="span">
            <xsl:attribute name="class">abbreviation</xsl:attribute>
        <xsl:apply-templates/>
        </xsl:element>
+     </xsl:if>
+     <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
+       <xsl:apply-templates/>
+     </xsl:if>
        </xsl:if>
        <xsl:if test="not(ancestor::t:expan) and not($parm-edition-type='diplomatic') and not($parm-leiden-style='dharma')">
          <xsl:text>(</xsl:text><xsl:choose>

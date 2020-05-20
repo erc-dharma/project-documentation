@@ -19,8 +19,8 @@
                                                 <xsl:when test="@n">
                                                     <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
                                                 </xsl:when>
-                                                <xsl:when test="not(t:lg/@n)">
-                                                    <xsl:text>the @n is missing on the stanza</xsl:text>
+                                              <xsl:when test="not(t:lg/@n)">
+                                                    <xsl:message>the @n is missing on the stanza</xsl:message>
                                                 </xsl:when>
                                             </xsl:choose>
                                           </span>
@@ -57,24 +57,24 @@
       <xsl:param name="parm-line-inc" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-      <xsl:choose>
-           <xsl:when test="$parm-verse-lines = 'on'">
-             <xsl:element name="div">
-                 <xsl:attribute name="class">verse-line</xsl:attribute>
-                 <xsl:apply-templates/>
-                 <!-- Pb de trailing space related to the addition of the div -->
-                 <xsl:if test="following::t:l[1][@enjamb='yes']">
-                   <xsl:text>-</xsl:text>
-               </xsl:if>
-             </xsl:element>
-             </xsl:when>
-           <xsl:otherwise>
-             <xsl:element name="span">
-                 <xsl:attribute name="class">verse-line-error</xsl:attribute>
-                 <xsl:apply-templates/>
-             </xsl:element>
-           </xsl:otherwise>
-       </xsl:choose>
+        <xsl:choose>
+               <xsl:when test="$parm-verse-lines = 'on'">
+                 <xsl:element name="div">
+                     <xsl:attribute name="class">verse-line</xsl:attribute>
+                     <xsl:apply-templates/>
+                     <!-- Pb de trailing space related to the addition of the div -->
+                     <xsl:if test="following::t:l[1][@enjamb='yes']">
+                       <xsl:text>-</xsl:text>
+                   </xsl:if>
+                 </xsl:element>
+                 </xsl:when>
+               <xsl:otherwise>
+                 <xsl:element name="span">
+                     <xsl:attribute name="class">verse-line-error</xsl:attribute>
+                     <xsl:apply-templates/>
+                 </xsl:element>
+               </xsl:otherwise>
+           </xsl:choose>
       <xsl:choose>
           <xsl:when test="$parm-verse-lines = 'on'  and not($leiden-style='dharma')">
             <xsl:variable name="div-loc">
