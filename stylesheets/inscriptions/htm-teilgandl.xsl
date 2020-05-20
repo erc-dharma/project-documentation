@@ -60,7 +60,12 @@
         <xsl:choose>
                <xsl:when test="$parm-verse-lines = 'on'">
                  <xsl:element name="div">
+                   <xsl:if test="count(preceding-sibling::t:l) = 0">
+                     <xsl:attribute name="class">first-line</xsl:attribute>
+                   </xsl:if>
+                   <xsl:if test="count(preceding-sibling::t:l) &gt;= 1">
                      <xsl:attribute name="class">verse-line</xsl:attribute>
+                   </xsl:if>
                      <xsl:apply-templates/>
                      <!-- Pb de trailing space related to the addition of the div -->
                      <xsl:if test="following::t:l[1][@enjamb='yes']">

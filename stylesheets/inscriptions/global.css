@@ -118,6 +118,11 @@ P {
 .verse-part{
   left: -1px;
 }
+
+.first-line{
+      margin-top: 15px;
+}
+
 .petraeligature {
     text-decoration: underline;
     }
