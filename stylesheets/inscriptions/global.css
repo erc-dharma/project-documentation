@@ -115,8 +115,8 @@ P {
     font-style: italic;
 }
 
-.varnavritta-even{
-    left: 6em;
+.verse-part{
+  left: -1px;
 }
 .petraeligature {
     text-decoration: underline;
@@ -144,11 +144,6 @@ P {
         font-style: italic;
         color: #228B22;
           }
-
-.lemme {
-      color: black;
-      font-style: normal;
-}
 
 .orig {
         color: #C71585;

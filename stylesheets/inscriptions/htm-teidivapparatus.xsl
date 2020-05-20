@@ -213,6 +213,60 @@
        <xsl:attribute name="class">reading</xsl:attribute>
     <xsl:apply-templates/>
   </xsl:element>
+  <xsl:call-template name="sigla"/>
+    <!--<xsl:call-template name="sources">
+      <xsl:with-param name="root" select="ancestor-or-self::t:TEI"/>
+    </xsl:call-template>-->
+
+    <xsl:if test="following-sibling::t:rdg and not(following-sibling::*[1][self::t:note])">
+      <xsl:text>; </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+
+  <xsl:template match="t:div[@type = 'apparatus']//t:lem">
+    <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:element name="span">
+      <xsl:attribute name="class">lemma</xsl:attribute>
+    <xsl:apply-templates/>
+  </xsl:element>
+  <xsl:if test="$parm-leiden-style='dharma'">
+  <xsl:call-template name="sigla"/>
+</xsl:if>
+    <!--<xsl:call-template name="sources">
+      <xsl:with-param name="root" select="ancestor-or-self::t:TEI"/>
+    </xsl:call-template>-->
+
+<!-- Ask Manu, if he wants to delete the : for ◇. Arlo susggested also just a blank space -->
+    <xsl:if
+      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and not(@source) and not($parm-leiden-style='dharma')">
+      <xsl:text>: </xsl:text>
+    </xsl:if>
+    <xsl:if
+      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and $parm-leiden-style='dharma'">
+      <xsl:text>◇ </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+<!-- addition of a • before any note made in the apparatus.-->
+  <xsl:template match="t:div[@type = 'apparatus']//t:note">
+    <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
+    <span>
+      <xsl:if test="ancestor::t:app">
+        <xsl:text>• </xsl:text>
+        <xsl:apply-templates/>
+        <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
+          <xsl:text>• </xsl:text>
+        </xsl:if>
+        <xsl:if test="t:note/child::t:ptr">
+          <xsl:value-of select="@target"></xsl:value-of>
+        </xsl:if>
+      </xsl:if>
+    </span>
+  </xsl:template>
+
+<xsl:template name="sigla">
   <xsl:if test="@source">
     <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
     <span class="tooltip">
@@ -221,10 +275,10 @@
           <xsl:choose>
              <xsl:when test="local-name()='ptr'">
                <xsl:text> </xsl:text>
-               <xsl:if test="./parent::*[1]/@n">
-               <xsl:value-of select="./parent::*[1]/@n"/>
+               <xsl:if test="./parent::*/@n">
+               <xsl:value-of select="./parent::*/@n"/>
                </xsl:if>
-               <xsl:if test="not(./parent::*[1]/@n)">
+               <xsl:if test="not(./parent::*/@n)">
                  <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
                </xsl:if>
            </xsl:when>
@@ -281,53 +335,5 @@
        </xsl:choose>
   </span>-->
   </xsl:if>
-    <!--<xsl:call-template name="sources">
-      <xsl:with-param name="root" select="ancestor-or-self::t:TEI"/>
-    </xsl:call-template>-->
-
-    <xsl:if test="following-sibling::t:rdg and not(following-sibling::*[1][self::t:note])">
-      <xsl:text>; </xsl:text>
-    </xsl:if>
-  </xsl:template>
-
-
-  <xsl:template match="t:div[@type = 'apparatus']//t:lem">
-    <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
-    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-    <xsl:element name="span">
-      <xsl:attribute name="class">lemma</xsl:attribute>
-    <xsl:apply-templates/>
-  </xsl:element>
-    <xsl:call-template name="sources">
-      <xsl:with-param name="root" select="ancestor-or-self::t:TEI"/>
-    </xsl:call-template>
-
-<!-- Ask Manu, if he wants to delete the : for ◇. Arlo susggested also just a blank space -->
-    <xsl:if
-      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and not(@source) and not($parm-leiden-style='dharma')">
-      <xsl:text>: </xsl:text>
-    </xsl:if>
-    <xsl:if
-      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and $parm-leiden-style='dharma'">
-      <xsl:text>◇ </xsl:text>
-    </xsl:if>
-  </xsl:template>
-
-<!-- addition of a • before any note made in the apparatus.-->
-  <xsl:template match="t:div[@type = 'apparatus']//t:note">
-    <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
-    <span>
-      <xsl:if test="ancestor::t:app">
-        <xsl:text>• </xsl:text>
-        <xsl:apply-templates/>
-        <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
-          <xsl:text>• </xsl:text>
-        </xsl:if>
-        <xsl:if test="t:note/child::t:ptr">
-          <xsl:value-of select="@target"></xsl:value-of>
-        </xsl:if>
-      </xsl:if>
-    </span>
-  </xsl:template>
-
+</xsl:template>
 </xsl:stylesheet>
