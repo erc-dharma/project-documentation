@@ -63,8 +63,7 @@ P {
     "Verdana", "Tahoma";
    }
 
-   .sigle {
-           font-weight: bold;
+   .siglum {
            color: #1E90FF;
              }
 
@@ -116,9 +115,14 @@ P {
     font-style: italic;
 }
 
-.varnavritta-even{
-    left: 6em;
+.verse-part{
+  left: 2px;
 }
+
+.first-line{
+      margin-top: 10px;
+}
+
 .petraeligature {
     text-decoration: underline;
     }
@@ -146,11 +150,6 @@ P {
         color: #228B22;
           }
 
-.lemme {
-      color: black;
-      font-style: normal;
-}
-
 .orig {
         color: #C71585;
           }
@@ -171,6 +170,9 @@ P {
         font-variant: small-caps;
 }
 
+.abbreviation {
+  color: #a57659;
+}
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 @media screen and (min-width: 601px) {
   div.example {

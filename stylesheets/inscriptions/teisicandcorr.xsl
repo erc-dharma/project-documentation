@@ -19,14 +19,14 @@
                <xsl:text>)</xsl:text>
             </xsl:if>
          </xsl:when>
-         <xsl:when test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+         <xsl:when test="ancestor::t:div[@type='edition'] or ancestor::t:lem and $parm-leiden-style='dharma'">
            <span class="sic">
              <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
             <xsl:text>?</xsl:text>
           </span>
         </xsl:when>
-        <xsl:when test="ancestor::t:div[@type='apparatus']">
+        <xsl:when test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem) and $parm-leiden-style='dharma'">
             <xsl:text>¿</xsl:text>
            <xsl:apply-templates/>
            <xsl:text>?</xsl:text>
@@ -65,7 +65,7 @@
                 </xsl:if>
                </xsl:when>
                <xsl:when test="$parm-leiden-style = 'dharma'">
-                 <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+                 <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
                    <span class="corr">
                    <xsl:text>⟨</xsl:text>
                    <xsl:apply-templates/>
@@ -74,7 +74,7 @@
                    <xsl:text>⟩</xsl:text>
                  </span>
                 </xsl:if>
-                <xsl:if test="ancestor::t:div[@type='apparatus']">
+                <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
                   <xsl:text>⟨</xsl:text>
                   <xsl:apply-templates/>
                   <!-- cert-low template found in tpl-certlow.xsl -->

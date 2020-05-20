@@ -112,8 +112,9 @@
         <xsl:when test="contains(@resp, ':')">
            <xsl:variable name="prefix" select="substring-before(@resp, ':')"/>
            <xsl:variable name="sought" select="substring-after(@resp, ':')"/>
-           <xsl:message>prefix = <xsl:value-of select="$prefix"/></xsl:message>
-           <xsl:message>sought = <xsl:value-of select="$sought"/></xsl:message>
+           	<!-- Debugging message-->
+           <!--<xsl:message>prefix = <xsl:value-of select="$prefix"/></xsl:message>
+           <xsl:message>sought = <xsl:value-of select="$sought"/></xsl:message>-->
            <xsl:choose>
               <xsl:when test="$edn-structure='default'">
                  <xsl:variable name="dharma-path">

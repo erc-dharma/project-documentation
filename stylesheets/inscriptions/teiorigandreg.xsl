@@ -14,14 +14,14 @@
 
               </xsl:when>
               <xsl:when test="$parm-leiden-style='dharma'">
-                <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart']">
+                <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
                 <span class="orig">
                 <xsl:text>¡</xsl:text>
                 <xsl:apply-templates/>
                 <xsl:text>!</xsl:text>
               </span>
             </xsl:if>
-            <xsl:if test="ancestor::t:div[@type='apparatus']">
+            <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
               <xsl:text>¡</xsl:text>
               <xsl:apply-templates/>
               <xsl:text>!</xsl:text>
