@@ -44,7 +44,7 @@
            <xsl:apply-imports/>
            <xsl:text>⊃</xsl:text>
         </xsl:when>
-      <xsl:when test="$parm-leiden-style = 'dharma' and not(following::t:l[1][@enjamb='yes'])">
+      <xsl:when test="$parm-leiden-style = 'dharma' and not(@enjamb='yes')">
         <xsl:call-template name="g-dharma"/>
     </xsl:when>
 <xsl:otherwise>
