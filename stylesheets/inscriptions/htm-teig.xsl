@@ -44,11 +44,22 @@
            <xsl:apply-imports/>
            <xsl:text>⊃</xsl:text>
         </xsl:when>
-        <xsl:when test="@type='symbol'">
+        <xsl:when test="$parm-leiden-style = 'dharma'">
+          <xsl:choose>
+        <!--<xsl:when test="@type='symbol'">
           <xsl:element name="span">
             <xsl:attribute name="class">symbol</xsl:attribute>
             <xsl:apply-imports/>
         </xsl:element>
+      </xsl:when>-->
+      <xsl:when test="contains(.,'.')">
+        <xsl:element name="span">
+          <xsl:attribute name="class">symbol</xsl:attribute>
+          <xsl:text>pc</xsl:text>
+      </xsl:element>
+      </xsl:when>
+      <xsl:when test="contains(.,'§')">
+        <xsl:apply-templates/>
       </xsl:when>
     <xsl:when test="@type='filler'">
       <xsl:value-of select="."/>
@@ -72,7 +83,15 @@
       </xsl:otherwise>
       </xsl:choose>
     </xsl:when>
+    <xsl:otherwise>
+      <xsl:element name="span">
+        <xsl:attribute name="class">symbol</xsl:attribute>
+        <xsl:text>Symbol</xsl:text>
+    </xsl:element>
+  </xsl:otherwise>
       </xsl:choose>
+      </xsl:when>
+    </xsl:choose>
 
       <xsl:call-template name="w-space"/>
   </xsl:template>
