@@ -252,9 +252,12 @@
 <!-- addition of a • before any note made in the apparatus.-->
   <xsl:template match="t:div[@type = 'apparatus']//t:note">
     <xsl:param name="parm-external-app-style" tunnel="yes" required="no"/>
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <span>
       <xsl:if test="ancestor::t:app">
+        <xsl:if test="preceding-sibling::t:lem and $parm-leiden-style='dharma'">
         <xsl:text>• </xsl:text>
+      </xsl:if>
         <xsl:apply-templates/>
         <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
           <xsl:text>• </xsl:text>
