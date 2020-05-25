@@ -24,6 +24,9 @@
           <xsl:when test="number(@n) and @n mod $line-inc = 0 and not(@n = 0) and not(starts-with($leiden-style, 'edh'))">
                <xsl:call-template name="lb-content"/>
             </xsl:when>
+            <xsl:when test="$leiden-style = 'dharma'">
+              <xsl:call-template name="lb-content"/>
+            </xsl:when>
         </xsl:choose>
       </xsl:if>
      <xsl:if test="$leiden-style=('ddbdp','sammelbuch') and @rend">
