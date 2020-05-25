@@ -272,40 +272,47 @@
 <xsl:template name="sigla">
   <xsl:if test="@source">
     <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
-    <span class="tooltip">
-       <xsl:variable name="biblID" select="@source"/>
-       <xsl:for-each select="//t:listBibl/descendant::t:*[@target=$biblID][1]">
-          <xsl:choose>
-             <xsl:when test="local-name()='ptr'">
-               <xsl:text> </xsl:text>
-               <xsl:if test="./parent::*/@n">
-               <xsl:value-of select="./parent::*/@n"/>
-               </xsl:if>
-               <xsl:if test="not(./parent::*/@n)">
-                 <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
-               </xsl:if>
-           </xsl:when>
-          </xsl:choose>
-       </xsl:for-each>
-       <xsl:choose>
-         <xsl:when test="matches(@source, '\+[a][l]')">
-           <span class="tooltiptext">
-             <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-           </span>
-         </xsl:when>
-         <xsl:when test="matches(@source, '\+[A-Z]')">
-           <span class="tooltiptext">
-             <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-           </span>
-         </xsl:when>
-         <xsl:otherwise>
-           <span class="tooltiptext">
-           <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-         </span>
-    </xsl:otherwise>
-           </xsl:choose>
 
-     </span>
+      <xsl:choose>
+        <xsl:when test="contains(@source, ' bib:')">
+          <xsl:message>Double sigla are still worked on</xsl:message>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="biblID" select="@source"/>
+          <span class="tooltip">
+          <xsl:for-each select="//t:listBibl/descendant::t:*[@target=$biblID][1]">
+             <xsl:choose>
+                <xsl:when test="local-name()='ptr'">
+                  <xsl:text> </xsl:text>
+                  <xsl:if test="./parent::*/@n">
+                  <xsl:value-of select="./parent::*/@n"/>
+                  </xsl:if>
+                  <xsl:if test="not(./parent::*/@n)">
+                    <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
+                  </xsl:if>
+              </xsl:when>
+             </xsl:choose>
+          </xsl:for-each>
+          <xsl:choose>
+            <xsl:when test="matches(@source, '\+[a][l]')">
+              <span class="tooltiptext">
+                <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+              </span>
+            </xsl:when>
+            <xsl:when test="matches(@source, '\+[A-Z]')">
+              <span class="tooltiptext">
+                <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+              </span>
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="tooltiptext">
+              <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+            </span>
+       </xsl:otherwise>
+              </xsl:choose>
+              </span>
+        </xsl:otherwise>
+      </xsl:choose>
 <!-- Old system; to be deleted after validation -->
    <!--<span class="tooltip">
       <xsl:text> </xsl:text>
