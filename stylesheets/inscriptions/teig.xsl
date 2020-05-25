@@ -465,6 +465,72 @@
       </xsl:choose>
    </xsl:template>
 
+   <xsl:template name="g-dharma">
+       <xsl:choose>
+     <!--<xsl:when test="@type='symbol'">
+       <xsl:element name="span">
+         <xsl:attribute name="class">symbol</xsl:attribute>
+         <xsl:apply-imports/>
+     </xsl:element>
+   </xsl:when>-->
+   <xsl:when test="contains(.,'.')">
+     <xsl:element name="span">
+       <xsl:attribute name="class">symbol</xsl:attribute>
+       <xsl:text>pc</xsl:text>
+   </xsl:element>
+   </xsl:when>
+   <xsl:when test="contains(.,'§')">
+     <xsl:apply-templates/>
+   </xsl:when>
+  <xsl:when test="@type='filler'">
+   <xsl:value-of select="."/>
+  </xsl:when>
+  <xsl:when test="@type='numeral'">
+   <xsl:choose>
+     <xsl:when test="matches(., '/')">
+       <xsl:call-template name="fraction"/>
+     </xsl:when>
+     <!--<xsl:when test="parent::t:fw">
+     <xsl:element name="sup">
+       <xsl:text>[fw: </xsl:text>
+       <xsl:value-of select="."/>
+       <xsl:text>]</xsl:text>
+     </xsl:element>
+   </xsl:when>-->
+     <xsl:otherwise>
+       <xsl:if test="not(parent::t:fw)">
+     <xsl:value-of select="."/>
+   </xsl:if>
+   </xsl:otherwise>
+   </xsl:choose>
+  </xsl:when>
+  <xsl:otherwise>
+   <xsl:element name="span">
+     <xsl:attribute name="class">symbol</xsl:attribute>
+     <xsl:text>Symbol</xsl:text>
+  </xsl:element>
+  </xsl:otherwise>
+   </xsl:choose>
+</xsl:template>
+
+<xsl:template name="fraction">
+    <!-- Don't get interpreted-->
+  <!--<xsl:if test="matches(., '[0-9]+/[0-9]+')">
+  <xsl:text disable-output-escaping="yes"><![CDATA[&]]></xsl:text>
+  <xsl:value-of select="replace(.,'([0-9]+)/([0-9]+)','frac$1$2;')"/>-->
+  <xsl:choose>
+    <xsl:when test="matches(., '1/2')">
+    <xsl:text>&#189;</xsl:text>
+  </xsl:when>
+  <xsl:when test="matches(., '1/4')">
+  <xsl:text>&#188;</xsl:text>
+</xsl:when>
+<xsl:otherwise>
+<xsl:text>Fraction not sustained.</xsl:text>
+</xsl:otherwise>
+</xsl:choose>
+</xsl:template>
+
    <xsl:template name="g-unclear-symbol">
       <!-- adds underdot below symbol if parent:unclear -->
       <xsl:if test="parent::t:unclear">

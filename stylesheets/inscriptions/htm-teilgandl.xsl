@@ -4,6 +4,7 @@
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
 
+  <xsl:import href="teig.xsl"/>
   <xsl:include href="teilgandl.xsl"/>
 
                              <xsl:template match="t:lg">
@@ -68,8 +69,16 @@
                    </xsl:if>
                      <xsl:apply-templates/>
                      <!-- Pb de trailing space related to the addition of the div -->
-                     <xsl:if test="following::t:l[1][@enjamb='yes']">
+                     <xsl:if test="following::t:l[1][@enjamb='yes'] and $leiden-style='dharma'">
+                       <xsl:choose>
+                       <xsl:when test="child::t:g">
+                         <xsl:text>- </xsl:text>
+                         <xsl:call-template name="g-dharma"/>
+                       </xsl:when>
+                       <xsl:otherwise>
                        <xsl:text>-</xsl:text>
+                       </xsl:otherwise>
+                     </xsl:choose>
                    </xsl:if>
                  </xsl:element>
                  </xsl:when>
