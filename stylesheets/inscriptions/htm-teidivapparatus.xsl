@@ -245,7 +245,7 @@
     </xsl:if>
     <xsl:if
       test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and $parm-leiden-style='dharma'">
-      <xsl:text>◇ </xsl:text>
+      <xsl:text> ◇ </xsl:text>
     </xsl:if>
   </xsl:template>
 
