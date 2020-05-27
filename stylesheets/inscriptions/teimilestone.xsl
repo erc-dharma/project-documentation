@@ -5,13 +5,12 @@
                 version="2.0">
   <!-- General template in [htm|txt]teimilestone.xsl -->
 
-  <xsl:template match="t:milestone">
-     <!-- adds fleuron for block, flanked by spaces if not within word -->
+  <!--<xsl:template match="t:milestone">
       <xsl:text>&#8225; </xsl:text>
       <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="t:label">
     <xsl:apply-templates/>
-  </xsl:template>
+  </xsl:template>-->
 </xsl:stylesheet>

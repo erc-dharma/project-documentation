@@ -5,10 +5,22 @@
                 version="2.0">
 
   <xsl:template match="t:orig[not(parent::t:choice)]">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:choose>
+      <xsl:when test="$parm-leiden-style='dharma'">
+        <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
         <span class="orig">
         <xsl:text>¡</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>!</xsl:text>
       </span>
+    </xsl:if>
+    <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
+      <xsl:text>¡</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>!</xsl:text>
+    </xsl:if>
+  </xsl:when>
+</xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
