@@ -474,10 +474,7 @@
      </xsl:element>
    </xsl:when>-->
    <xsl:when test="contains(.,'.')">
-     <xsl:element name="span">
-       <xsl:attribute name="class">symbol</xsl:attribute>
-       <xsl:text>pc</xsl:text>
-   </xsl:element>
+     <xsl:value-of select="replace(., '.', '|')"></xsl:value-of>
    </xsl:when>
    <xsl:when test="contains(.,'§')">
      <xsl:apply-templates/>
