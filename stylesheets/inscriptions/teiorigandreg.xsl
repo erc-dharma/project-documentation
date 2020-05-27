@@ -55,14 +55,14 @@
 
    <xsl:template match="t:choice/t:reg">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-<xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:div[@type='textpart'] and $parm-leiden-style='dharma'">
+<xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem and $parm-leiden-style='dharma'">
      <span class="reg">
      <xsl:text>⟨</xsl:text>
      <xsl:apply-templates/>
      <xsl:text>⟩</xsl:text>
    </span>
 </xsl:if>
-  <xsl:if test="ancestor::t:div[@type='apparatus'] and $parm-leiden-style='dharma'">
+  <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem) and $parm-leiden-style='dharma'">
     <xsl:text>⟨</xsl:text>
     <xsl:apply-templates/>
     <xsl:text>⟩</xsl:text>
