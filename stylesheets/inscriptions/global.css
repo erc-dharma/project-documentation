@@ -115,6 +115,11 @@ P {
     font-style: italic;
 }
 
+.label-meter{
+    font-weight: bold;
+    font-style: italic;
+}
+
 .verse-part{
   left: 2px;
 }
