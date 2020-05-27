@@ -11,6 +11,13 @@
                                   <xsl:choose>
                                       <xsl:when test="$leiden-style='dharma'">
                                           <div class="verse-part">
+                                            <span class="label">
+                                            <xsl:if test="descendant::t:milestone or descendant::t:label">
+                                              <xsl:text>&#8225; </xsl:text>
+                                              <xsl:value-of select="descendant::t:label"/>
+                                            </xsl:if>
+                                          </span>
+                                              <br/>
                                             <!-- Deleting the language constraint TO BE DONE -->
                                            <!-- TO BE DONE : Adding the @n if more than one <lg> = adding a variable -->
                                             <xsl:if test="(count(//t:div[@type='edition']//t:lg) &gt; 1)">

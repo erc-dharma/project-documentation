@@ -6,11 +6,15 @@
   <!-- General template in [htm|txt]teimilestone.xsl -->
 
   <xsl:template match="t:milestone">
+    <xsl:if test="not(ancestor::t:lg)">
       <xsl:text>&#8225; </xsl:text>
       <xsl:apply-templates/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="t:label">
+    <xsl:if test="not(ancestor::t:lg and preceding-sibling::t:milestone[1])">
     <xsl:apply-templates/>
+    </xsl:if>
   </xsl:template>
 </xsl:stylesheet>
