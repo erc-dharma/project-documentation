@@ -269,81 +269,76 @@
     </span>
   </xsl:template>
 
-<xsl:template name="sigla">
-  <xsl:if test="@source">
-    <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
-
-      <xsl:choose>
-        <xsl:when test="contains(@source, ' bib:')">
-          <xsl:message>Double sigla are still worked on</xsl:message>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:variable name="biblID" select="@source"/>
-          <span class="tooltip">
-          <xsl:for-each select="//t:listBibl/descendant::t:*[@target=$biblID][1]">
-             <xsl:choose>
-                <xsl:when test="local-name()='ptr'">
-                  <xsl:text> </xsl:text>
-                  <xsl:if test="./parent::*/@n">
-                  <xsl:value-of select="./parent::*/@n"/>
-                  </xsl:if>
-                  <xsl:if test="not(./parent::*/@n)">
-                    <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
-                  </xsl:if>
-              </xsl:when>
+  <xsl:template name="sigla">
+      <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
+<xsl:if test="@source">
+  <span class="tooltip">
+  <xsl:variable name="vDoc" select="//t:listBibl"/>
+  <xsl:variable name="biblID" select="tokenize(@source, ' ')"/>
+   <xsl:if test="count($biblID) &gt;= 1">
+         <xsl:message>biblID for sigla: <xsl:value-of select="$biblID"/> and <xsl:value-of select="count($biblID)"/></xsl:message>
+         <xsl:choose>
+               <xsl:when test="$vDoc//t:ptr[@target=$biblID]">
+               <xsl:message><xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/></xsl:message>
+               <xsl:text> </xsl:text>
+               <xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/>
+             </xsl:when>
+               <xsl:otherwise>
+                 <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
+               </xsl:otherwise>
              </xsl:choose>
-          </xsl:for-each>
+       </xsl:if>
+
           <xsl:choose>
-            <xsl:when test="matches(@source, '\+[a][l]')">
-              <span class="tooltiptext">
-                <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-              </span>
-            </xsl:when>
-            <xsl:when test="matches(@source, '\+[A-Z]')">
-              <span class="tooltiptext">
-                <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-              </span>
-            </xsl:when>
-            <xsl:otherwise>
-              <span class="tooltiptext">
-              <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+                <xsl:when test="matches(@source, '\+[a][l]')">
+                  <span class="tooltiptext">
+                    <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+                  </span>
+                </xsl:when>
+                <xsl:when test="matches(@source, '\+[A-Z]')">
+                  <span class="tooltiptext">
+                    <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+                  </span>
+                </xsl:when>
+                <xsl:otherwise>
+                  <span class="tooltiptext">
+                  <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+                </span>
+              </xsl:otherwise>
+            </xsl:choose>
+          </span>
+</xsl:if>
+  <!-- Old system; to be deleted after validation -->
+     <!--<span class="tooltip">
+        <xsl:text> </xsl:text>
+        <xsl:choose>
+          <xsl:when test="matches(@source, '\+[a][l]')">
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+            <xsl:text> &amp; al.</xsl:text>
+            <span class="tooltiptext">
+              <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
             </span>
-       </xsl:otherwise>
-              </xsl:choose>
-              </span>
-        </xsl:otherwise>
-      </xsl:choose>
-<!-- Old system; to be deleted after validation -->
-   <!--<span class="tooltip">
-      <xsl:text> </xsl:text>
-      <xsl:choose>
-        <xsl:when test="matches(@source, '\+[a][l]')">
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-          <xsl:text> &amp; al.</xsl:text>
-          <span class="tooltiptext">
-            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-          </span>
-        </xsl:when>
-        <xsl:when test="matches(@source, '\+[A-Z]')">
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="normalize-space(translate(substring-before(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-          <xsl:text>&amp;</xsl:text>
-          <xsl:value-of select="normalize-space(translate(substring-after(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
-          <xsl:text> </xsl:text>
-          <span class="tooltiptext">
-            <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-          </span>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text> </xsl:text>
-       <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
-       <span class="tooltiptext">
-       <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-     </span>
-</xsl:otherwise>
-       </xsl:choose>
-  </span>-->
-  </xsl:if>
-</xsl:template>
+          </xsl:when>
+          <xsl:when test="matches(@source, '\+[A-Z]')">
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="normalize-space(translate(substring-before(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+            <xsl:text>&amp;</xsl:text>
+            <xsl:value-of select="normalize-space(translate(substring-after(@source, '+'),'abcdefghijklmnopqrstuvwxyz0123456789+-_:',''))"/>
+            <xsl:text> </xsl:text>
+            <span class="tooltiptext">
+              <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text> </xsl:text>
+         <xsl:value-of select="normalize-space(translate(@source,'abcdefghijklmnopqrstuvwxyz0123456789-_:',''))"/>
+         <span class="tooltiptext">
+         <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+       </span>
+  </xsl:otherwise>
+         </xsl:choose>
+    </span>-->
+
+  </xsl:template>
 </xsl:stylesheet>
