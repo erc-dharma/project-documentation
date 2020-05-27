@@ -476,9 +476,6 @@
    <xsl:when test="contains(.,'.')">
      <xsl:value-of select="replace(., '.', '|')"></xsl:value-of>
    </xsl:when>
-   <xsl:when test="contains(.,'§')">
-     <xsl:apply-templates/>
-   </xsl:when>
   <xsl:when test="@type='filler'">
    <xsl:value-of select="."/>
   </xsl:when>
@@ -504,7 +501,7 @@
   <xsl:otherwise>
    <xsl:element name="span">
      <xsl:attribute name="class">symbol</xsl:attribute>
-     <xsl:text>Symbol</xsl:text>
+     <xsl:value-of select="@type"/>
   </xsl:element>
   </xsl:otherwise>
    </xsl:choose>
