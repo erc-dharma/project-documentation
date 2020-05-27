@@ -276,10 +276,12 @@
   <xsl:variable name="vDoc" select="//t:listBibl"/>
   <xsl:variable name="biblID" select="tokenize(@source, ' ')"/>
    <xsl:if test="count($biblID) &gt;= 1">
-         <xsl:message>biblID for sigla: <xsl:value-of select="$biblID"/> and <xsl:value-of select="count($biblID)"/></xsl:message>
+     <!-- Handling possible debugging-->
+        <!-- <xsl:message>biblID for sigla: <xsl:value-of select="$biblID"/> and <xsl:value-of select="count($biblID)"/></xsl:message>-->
          <xsl:choose>
                <xsl:when test="$vDoc//t:ptr[@target=$biblID]">
-               <xsl:message><xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/></xsl:message>
+                 <!-- Handling possible debugging-->
+               <!--<xsl:message><xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/></xsl:message>-->
                <xsl:text> </xsl:text>
                <xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/>
              </xsl:when>
