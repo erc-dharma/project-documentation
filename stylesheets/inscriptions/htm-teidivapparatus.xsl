@@ -8,8 +8,6 @@
   <!-- only triggered if there is a <div type="apparatus"> (i.e. "external appartus") in the XML -->
 
   <!--<xsl:import href="teidivapparatus.xsl"/>-->
-  <!-- import for the citation-->
-  <xsl:include href="htm-teibibl.xsl"/>
 
   <!-- Other div matches can be found in htm-teidiv.xsl -->
   <xsl:param name="parm-internal-app-style" />
