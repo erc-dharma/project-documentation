@@ -61,4 +61,4 @@ If the installation have been successful, you will have a bottom toolbar that sh
 - [latex](https://atom.io/packages/latex) to compile the .tex files.
 
 ## Known Issues related to packages
-- The package “copy-with-style” : ABCextended keyboard in Atom no longer seems to allow putting macron-marks over the long vowels
+- The package “copy-with-style” : ABCextended keyboard in Atom no longer seems to allow putting macron-marks over the long vowels. Some problems are also known with EasyUnicode keyboard.
