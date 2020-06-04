@@ -5,7 +5,8 @@
                 version="2.0">
 
   <xsl:template match="t:listBibl">
-    <xsl:if test="descendant::t:bibl">
+    <!-- ajout de la condition text() pour ignorer la présence d'un élément vide et ainsi éviter l'affichage du titre-->
+    <xsl:if test="descendant::t:bibl/text()">
     <ul>
     <xsl:if test="@type">
       <h3>
