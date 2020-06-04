@@ -96,6 +96,17 @@
     <xsl:text>)</xsl:text>
   <!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
 </xsl:when>
+<xsl:when test="parent::t:hi[@rend='grantha']">
+  <xsl:element name="span">
+    <xsl:attribute name="class">notBold</xsl:attribute>
+  <xsl:text>(</xsl:text>
+  </xsl:element>
+      <xsl:value-of select="."/>
+      <xsl:element name="span">
+        <xsl:attribute name="class">notBold</xsl:attribute>
+      <xsl:text>)</xsl:text>
+      </xsl:element>
+</xsl:when>
 <xsl:otherwise>
 <xsl:text>(</xsl:text>
     <xsl:value-of select="."/>

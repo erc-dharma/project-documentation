@@ -10,15 +10,16 @@
                                  <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
                                   <xsl:choose>
                                       <xsl:when test="$leiden-style='dharma'">
-
-                                            <xsl:if test="descendant::t:milestone or descendant::t:label">
+                                        <xsl:choose>
+                                            <xsl:when test="//t:lg/t:l/t:milestone/t:lb or //t:lg/t:l/t:milestone/t:label/t:lb">
                                             <xsl:element name="h3">
-                                              
+
                                               <xsl:text>&#8225; </xsl:text>
                                               <xsl:value-of select="descendant::t:label"/>
                                             <hr/>
                                           </xsl:element>
-                                        </xsl:if>
+                                        </xsl:when>
+                                      </xsl:choose>
                                             <!-- Deleting the language constraint TO BE DONE -->
                                            <!-- TO BE DONE : Adding the @n if more than one <lg> = adding a variable -->
                                            <div class="verse-part">

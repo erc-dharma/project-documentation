@@ -171,6 +171,10 @@ P {
         color: #32CD32;
             }
 
+.notBold{
+  font-weight:normal;
+}
+
 .resp{
         font-variant: small-caps;
 }
