@@ -43,9 +43,27 @@
                </xsl:when>
             </xsl:choose>
          </xsl:when>
-         <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:lem">
+         <xsl:when test="$parm-leiden-style = 'dharma'">
+           <xsl:choose>
+             <xsl:when test="ancestor::t:lem">
            <xsl:text>/</xsl:text>
          </xsl:when>
+         <xsl:when test="not(ancestor::t:lg)">
+           <xsl:if test="@break='no'">
+           </xsl:if>
+           <xsl:text>&#8225; </xsl:text>
+           <xsl:if test="not(following-sibling::t:label)">
+             <xsl:element name="sup">
+               <xsl:text>[</xsl:text>
+               <xsl:value-of select="@unit"/>
+               <xsl:text> </xsl:text>
+               <xsl:value-of select="@n"/>
+               <xsl:text>]</xsl:text>
+             </xsl:element>
+           </xsl:if>
+         </xsl:when>
+       </xsl:choose>
+     </xsl:when>
          <xsl:otherwise>
            <xsl:if test="not($parm-leiden-style = 'dharma')">
             <br/>

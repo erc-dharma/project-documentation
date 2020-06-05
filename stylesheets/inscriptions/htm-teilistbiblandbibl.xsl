@@ -6,7 +6,7 @@
 
   <xsl:template match="t:listBibl">
     <!-- ajout de la condition text() pour ignorer la présence d'un élément vide et ainsi éviter l'affichage du titre-->
-    <xsl:if test="normalize-space(descendant::t:bibl/text())">
+    <xsl:if test="descendant::t:bibl/text()">
     <ul>
     <xsl:if test="@type">
       <h3>
