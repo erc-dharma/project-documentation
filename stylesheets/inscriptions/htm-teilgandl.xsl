@@ -11,9 +11,8 @@
                                   <xsl:choose>
                                       <xsl:when test="$leiden-style='dharma'">
                                         <xsl:choose>
-                                            <xsl:when test="//t:lg/t:l/t:milestone/t:lb">
+                                            <xsl:when test="child::t:l/descendant::t:milestone[following-sibling::t:lb] or child::t:l/descendant::t:milestone[following-sibling::t:label and following-sibling::t:lb]">
                                             <xsl:element name="h3">
-
                                               <xsl:text>&#8225; </xsl:text>
                                               <xsl:value-of select="descendant::t:label"/>
                                             <hr/>
