@@ -11,7 +11,7 @@
                                   <xsl:choose>
                                       <xsl:when test="$leiden-style='dharma'">
                                         <xsl:choose>
-                                            <xsl:when test="//t:lg/t:l/t:milestone/t:lb or //t:lg/t:l/t:milestone/t:label/t:lb">
+                                            <xsl:when test="//t:lg/t:l/t:milestone/t:lb">
                                             <xsl:element name="h3">
 
                                               <xsl:text>&#8225; </xsl:text>
@@ -34,7 +34,7 @@
                                                 </xsl:when>
                                             </xsl:choose>
                                           </span>
-                                          </xsl:if>
+                                        </xsl:if>
                                           <span class="verse-meter">
                                                   <xsl:choose>
                                                     <xsl:when test="matches(@met,'[\+\-]+')">
