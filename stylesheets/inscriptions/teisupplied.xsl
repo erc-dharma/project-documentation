@@ -41,7 +41,18 @@
            and supplied elements, but this function is now performed by regex in
            [htm|txt]-tpl-sqbrackets.xsl which is called after all other templates are completed.
         -->
-              <xsl:text>[</xsl:text>
+            <xsl:choose>
+              <xsl:when test="parent::t:hi[@rend='grantha']">
+                <xsl:element name="span">
+                  <xsl:attribute name="class">notBold</xsl:attribute>
+                <xsl:text>[</xsl:text>
+                </xsl:element>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>[</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+
             <xsl:choose>
                 <xsl:when test="$parm-edition-type = 'diplomatic'">
                   <xsl:variable name="orig-supplied-content">
@@ -100,7 +111,17 @@
                and supplied elements, but this function is now performed by regex in
                [htm|txt]-tpl-sqbrackets.xsl which is called after all other templates are completed.
            -->
-              <xsl:text>]</xsl:text>
+           <xsl:choose>
+             <xsl:when test="parent::t:hi[@rend='grantha'] and not(following::t:supplied)">
+               <xsl:element name="span">
+                 <xsl:attribute name="class">notBold</xsl:attribute>
+               <xsl:text>]</xsl:text>
+               </xsl:element>
+             </xsl:when>
+             <xsl:otherwise>
+               <xsl:text>]</xsl:text>
+           </xsl:otherwise>
+         </xsl:choose>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
@@ -123,11 +144,28 @@
            <xsl:text>⟩</xsl:text>
          </xsl:when>
          <xsl:otherwise>
+           <xsl:choose>
+             <xsl:when test="parent::t:hi[@rend='grantha']">
+               <xsl:element name="span">
+                 <xsl:attribute name="class">notBold</xsl:attribute>
+               <xsl:text>&lt;</xsl:text>
+               </xsl:element>
+               <xsl:apply-templates/>
+               <!-- Found in tpl-cert-low.xsl -->
+           <xsl:call-template name="cert-low"/>
+                   <xsl:element name="span">
+                     <xsl:attribute name="class">notBold</xsl:attribute>
+                   <xsl:text>&gt;</xsl:text>
+                   </xsl:element>
+             </xsl:when>
+             <xsl:otherwise>
             <xsl:text>&lt;</xsl:text>
             <xsl:apply-templates/>
             <!-- Found in tpl-cert-low.xsl -->
         <xsl:call-template name="cert-low"/>
             <xsl:text>&gt;</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
