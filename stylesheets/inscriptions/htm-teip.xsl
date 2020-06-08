@@ -7,19 +7,19 @@
   <xsl:template match="t:p">
       <p>
         <xsl:if test="@n and not(@rend)">
-          <sup class="versenumber">
+          <sup class="linenumber">
            <xsl:text>(</xsl:text>
            <xsl:value-of select="@n"/>
            <xsl:text>) </xsl:text>
          </sup>
        </xsl:if>
-          <xsl:if test="@rend='stanza'">
-          <span class="stanzanumber">
-              <xsl:if test="@n">
-                  <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
-              </xsl:if>
-        </span>
-      </xsl:if>
+       <xsl:if test="@rend='stanza'">
+       <div class="translated-stanzanumber">
+           <xsl:if test="@n">
+               <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
+           </xsl:if>
+     </div>
+   </xsl:if>
          <xsl:apply-templates/>
       </p>
   </xsl:template>

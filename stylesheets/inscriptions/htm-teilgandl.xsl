@@ -22,7 +22,7 @@
                                             <!-- Deleting the language constraint TO BE DONE -->
                                            <!-- TO BE DONE : Adding the @n if more than one <lg> = adding a variable -->
                                            <div class="verse-part">
-                                            <xsl:if test="(count(//t:div[@type='edition']//t:lg) &gt; 1)">
+                                            <xsl:if test="(count(//t:lg[ancestor::t:div[@type='edition']]) &gt; 1)">
                                             <span class="stanzanumber">
                                               <xsl:choose>
                                                 <xsl:when test="@n">
@@ -67,7 +67,7 @@
       <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
         <xsl:choose>
-               <xsl:when test="$parm-verse-lines = 'on'">
+               <xsl:when test="$parm-verse-lines = 'on' and ancestor::t:div[@type='edition']">
                  <xsl:element name="div">
                    <xsl:if test="count(preceding-sibling::t:l) = 0">
                      <xsl:attribute name="class">first-line</xsl:attribute>
@@ -83,8 +83,8 @@
                  </xsl:element>
                  </xsl:when>
                <xsl:otherwise>
-                 <xsl:element name="span">
-                     <xsl:attribute name="class">verse-line-error</xsl:attribute>
+                 <xsl:element name="div">
+                     <xsl:attribute name="class">translated-verse</xsl:attribute>
                      <xsl:apply-templates/>
                  </xsl:element>
                </xsl:otherwise>
