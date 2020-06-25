@@ -108,24 +108,22 @@
 <!-- The code has been adapted from a part of a code written by Tom Elliot for Campa-->
   <xsl:template name="respID">
      <xsl:variable name="referrer" select="."/>
-     <xsl:choose>
-        <xsl:when test="contains(@resp, ':')">
-           <xsl:variable name="prefix" select="substring-before(@resp, ':')"/>
-           <xsl:variable name="sought" select="substring-after(@resp, ':')"/>
-           	<!-- Debugging message-->
+     <xsl:variable name="sought" select="for $token in tokenize(@resp, ' ') return substring($token, 6)"/>
+     <xsl:message>sought = <xsl:value-of select="$sought"/> and <xsl:value-of select="count($sought)"/></xsl:message>
+     <xsl:variable name="dharma-path">
+        <xsl:choose>
+           <xsl:when test="$edn-structure='default'">../../DHARMA_IdListMembers_v01.xml</xsl:when>
+           <xsl:otherwise>https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml</xsl:otherwise>
+        </xsl:choose>
+     </xsl:variable>
+                   	<!-- Debugging message-->
            <!--<xsl:message>prefix = <xsl:value-of select="$prefix"/></xsl:message>
            <xsl:message>sought = <xsl:value-of select="$sought"/></xsl:message>-->
-           <xsl:choose>
-              <xsl:when test="$edn-structure='default'">
-                 <xsl:variable name="dharma-path">
-                    <xsl:choose>
-                       <xsl:when test="$prefix = 'part'">../../DHARMA_IdListMembers_v01.xml</xsl:when>
-                       <xsl:otherwise>https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml</xsl:otherwise>
-                    </xsl:choose>
-                 </xsl:variable>
+           <!-- Pb ne prend en compte qu'un seul resp. -->
                  <xsl:choose>
                     <xsl:when test="count(document($dharma-path)/*/descendant-or-self::*[@xml:id=$sought]) &gt; 0">
-                       <xsl:for-each select="document($dharma-path)/*/descendant-or-self::*[@xml:id=$sought][1]">
+                       <xsl:for-each select="document($dharma-path)/*/descendant-or-self::*[@xml:id=$sought]">
+                         <xsl:sort select="./child::*[1]/child::node()[1]/following-sibling::*[2]"/>
                           <xsl:choose>
                              <xsl:when test="local-name()='person'">
                                <xsl:text> by </xsl:text>
@@ -147,16 +145,6 @@
                        <span class="xformerror">failed to find content in file for xml:id='<xsl:value-of select="$sought"/>'</span>
                     </xsl:otherwise>
                  </xsl:choose>
-              </xsl:when>
-              <xsl:otherwise>
-                 <span class="xformerror">external pointers not implemented for the choosen template (target='<xsl:value-of select="@resp"/>')</span>
-              </xsl:otherwise>
-           </xsl:choose>
-        </xsl:when>
-        <xsl:otherwise>
-           <span class="xformerror">external pointers not implemented for ref like '<xsl:value-of select="@resp"/>'</span>
-        </xsl:otherwise>
-     </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>
