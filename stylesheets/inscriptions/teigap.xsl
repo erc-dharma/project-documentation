@@ -692,6 +692,9 @@
                <xsl:when test="$parm-leiden-style = 'edh-itx'">
                   <xsl:text>6</xsl:text>
                </xsl:when>
+               <xsl:when test="$parm-leiden-style ='dharma'">
+                 <xsl:text>...</xsl:text>
+               </xsl:when>
                <xsl:otherwise>
                   <xsl:value-of select="$cur-dot"/>
                   <xsl:value-of select="$cur-dot"/>
