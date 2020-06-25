@@ -13,6 +13,12 @@
          and not($parm-edition-type='diplomatic')">
          <xsl:text>-</xsl:text>
       </xsl:if>
+      <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']">
+        <xsl:element name="span">
+          <xsl:attribute name="class">certlow</xsl:attribute>
+          <xsl:text>¿</xsl:text>
+        </xsl:element>
+      </xsl:if>
 
       <xsl:apply-templates/>
 
@@ -24,6 +30,12 @@
          and not(descendant::ex[last()])
          and not($parm-edition-type='diplomatic')">
          <xsl:text>-</xsl:text>
+      </xsl:if>
+      <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']">
+        <xsl:element name="span">
+          <xsl:attribute name="class">certlow</xsl:attribute>
+          <xsl:text>?</xsl:text>
+        </xsl:element>
       </xsl:if>
   </xsl:template>
 

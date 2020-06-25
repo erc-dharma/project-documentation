@@ -87,6 +87,9 @@
       </xsl:if>
    </xsl:template>
 -->
+<!-- <xsl:if
+   test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='illegible']]])
+   and not(preceding::node()[1][self::t:gap[@reason='illegible']])"> -->
    <xsl:template match="t:unclear[not(parent::t:choice)]">
      <xsl:choose>
 <xsl:when test="@cert='low'">

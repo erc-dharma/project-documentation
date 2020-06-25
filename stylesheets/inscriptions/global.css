@@ -179,6 +179,9 @@ P {
   font-weight:normal;
   color: black;
 }
+.certlow{
+  color:red;
+}
 
 .resp{
         font-variant: small-caps;
