@@ -69,6 +69,7 @@
     <xsl:include href="htm-tpl-struct-iospe.xsl"/>
     <xsl:include href="htm-tpl-struct-sigidoc.xsl"/>
     <xsl:include href="htm-tpl-struct-ecg.xsl"/>
+    <xsl:include href="htm-tpl-struct-dharma.xsl"/>
 
     <!-- global named templates with no html, also used by start-txt  -->
    <xsl:include href="tpl-certlow.xsl"/>
@@ -206,6 +207,27 @@
                       <xsl:with-param name="parm-line-inc" select="$line-inc" tunnel="yes" as="xs:double"/>
                       <xsl:with-param name="parm-verse-lines" select="$verse-lines" tunnel="yes"/>
                       <xsl:with-param name="parm-css-loc" select="$css-loc" tunnel="yes"/>
+                  </xsl:call-template>
+              </div>
+          </xsl:when>
+          <xsl:when test="$edn-structure = 'dharma'">
+              <div>
+                  <xsl:call-template name="dharma-structure">
+                    <xsl:with-param name="parm-internal-app-style" select="$internal-app-style" tunnel="yes"/>
+                    <xsl:with-param name="parm-external-app-style" select="$external-app-style" tunnel="yes"/>
+                   <xsl:with-param name="parm-edn-structure" select="$edn-structure" tunnel="yes"/>
+                   <xsl:with-param name="parm-edition-type" select="$edition-type" tunnel="yes"/>
+                   <xsl:with-param name="parm-hgv-gloss" select="$hgv-gloss" tunnel="yes"/>
+                   <xsl:with-param name="parm-leiden-style" select="$leiden-style" tunnel="yes"/>
+                   <xsl:with-param name="parm-line-inc" select="$line-inc" tunnel="yes" as="xs:double"/>
+                    <xsl:with-param name="parm-verse-lines" select="$verse-lines" tunnel="yes"/>
+                    <xsl:with-param name="parm-css-loc" select="$css-loc" tunnel="yes"/>
+                    <xsl:with-param name="parm-bib" select="$bibliography" tunnel="yes"/>
+                    <xsl:with-param name="parm-bibloc" select="$localbibl" tunnel="yes"/>
+                    <xsl:with-param name="parm-zoteroUorG" select="$ZoteroUorG" tunnel="yes"/>
+                    <xsl:with-param name="parm-zoteroKey" select="$ZoteroKey" tunnel="yes"/>
+                    <xsl:with-param name="parm-zoteroNS" select="$ZoteroNS" tunnel="yes"/>
+                    <xsl:with-param name="parm-zoteroStyle" select="$ZoteroStyle" tunnel="yes"/>
                   </xsl:call-template>
               </div>
           </xsl:when>

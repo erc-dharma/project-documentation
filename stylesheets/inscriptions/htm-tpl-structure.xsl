@@ -36,17 +36,16 @@
 
    <xsl:template name="default-body-structure">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-       <!-- Heading for a ddb style file -->
+       <!-- Heading for a ddb and dharma style file -->
          <h1>
                   <xsl:value-of select="//t:teiHeader//t:title"/>
                   <xsl:text> (</xsl:text>
                   <xsl:value-of select="//t:idno[@type='filename']"/>
                   <xsl:text>)</xsl:text>
         </h1>
-
-
       <!-- Main text output -->
       <xsl:variable name="maintxt">
+
          <xsl:apply-templates/>
       </xsl:variable>
       <!-- Moded templates found in htm-tpl-sqbrackets.xsl -->
@@ -59,7 +58,7 @@
       <xsl:call-template name="license"/>
    </xsl:template>
 
-   <xsl:template name="default-title">
+<xsl:template name="default-title">
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
          <xsl:when test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch')">

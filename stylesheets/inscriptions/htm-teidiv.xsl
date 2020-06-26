@@ -128,12 +128,16 @@
                                  <xsl:choose>
                              <xsl:when test="local-name()='person'">
                                <xsl:choose>
-                                 <xsl:when test="position()=last()">
+                                 <xsl:when test="position()= 1">
+                                   <xsl:text> by </xsl:text>
+                                 </xsl:when>
+                                 <xsl:when test="position() > 1">
+                                   <xsl:text>, </xsl:text>
+                                 </xsl:when>
+                                 <xsl:when test="position()=last() and preceding::t:*">
                                     <xsl:text> and </xsl:text>
                                     </xsl:when>
-                                    <xsl:when test="position() > 1">
-                                      <xsl:text>, </xsl:text>
-                                    </xsl:when>
+                                  
                                     <xsl:otherwise>
                                     <xsl:text> by </xsl:text>
                                   </xsl:otherwise>
