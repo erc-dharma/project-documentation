@@ -28,7 +28,7 @@
 
   <parameter>
     <name>edn-structure</name>
-    <value on="yes">default</value>
+    <value>default</value>
     <value>ddbdp</value>
     <value>hgv</value>
     <value>inslib</value>
@@ -39,6 +39,7 @@
     <value>sammelbuch</value>
     <value>eagle</value>
     <value>igcyr</value>
+    <value on="yes">dharma</value>
   </parameter>
 
   <parameter>
