@@ -123,10 +123,19 @@
                  <xsl:choose>
                     <xsl:when test="count(document($dharma-path)/*/descendant-or-self::*[@xml:id=$sought]) &gt; 0">
                        <xsl:for-each select="document($dharma-path)/*/descendant-or-self::*[@xml:id=$sought]">
-                         <xsl:sort select="./child::*[1]/child::node()[1]/following-sibling::*[2]"/>
                           <xsl:choose>
                              <xsl:when test="local-name()='person'">
-                               <xsl:text> by </xsl:text>
+                               <xsl:choose>
+                                 <xsl:when test="position()=last()">
+                                    <xsl:text> and </xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="position() > 1">
+                                      <xsl:text>, </xsl:text>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                    <xsl:text> by </xsl:text>
+                                  </xsl:otherwise>
+                                  </xsl:choose>
                                <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[1]"/>
                                <xsl:text> </xsl:text>
                                <xsl:element name="span">
