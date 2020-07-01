@@ -131,15 +131,11 @@
                                  <xsl:when test="position()= 1">
                                    <xsl:text> by </xsl:text>
                                  </xsl:when>
-                                 <xsl:when test="position() > 1">
-                                   <xsl:text>, </xsl:text>
-                                 </xsl:when>
-                                 <xsl:when test="position()=last() and preceding::t:*">
+                                 <xsl:when test="position()=last()">
                                     <xsl:text> and </xsl:text>
                                     </xsl:when>
-                                  
                                     <xsl:otherwise>
-                                    <xsl:text> by </xsl:text>
+                                    <xsl:text> , </xsl:text>
                                   </xsl:otherwise>
                                   </xsl:choose>
                                <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[1]"/>
