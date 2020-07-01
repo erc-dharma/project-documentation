@@ -60,11 +60,9 @@
                <xsl:when test="//t:handDesc/t:handNote/t:p">
                  <xsl:value-of select="//t:handDesc/t:handNote/t:p"/>
                </xsl:when>
-               <xsl:otherwise>
-                 <xsl:if test="//t:handDesc/t:p">
+               <xsl:when test="//t:handDesc/t:p">
                    <xsl:value-of select="//t:handDesc/t:p"/>
-                 </xsl:if>
-                 </xsl:otherwise>
+                 </xsl:when>
              </xsl:choose>
              </p>
            </xsl:if>
