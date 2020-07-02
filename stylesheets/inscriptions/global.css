@@ -4,7 +4,7 @@ html{
 }
 body{
     height:100%;
-    width: 95%;/* force the BODY element to match the height of the HTML element */
+    width: 950px;/* force the BODY element to match the height of the HTML element */
 }
 
 .tooltip {
