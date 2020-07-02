@@ -87,34 +87,31 @@
       </xsl:if>
    </xsl:template>
 -->
-<!-- <xsl:if
-   test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='illegible']]])
-   and not(preceding::node()[1][self::t:gap[@reason='illegible']])"> -->
-   <xsl:template match="t:unclear[not(parent::t:choice)]">
-     <xsl:choose>
+<xsl:template match="t:unclear[not(parent::t:choice)]">
+   <xsl:choose>
 <xsl:when test="@cert='low'">
 <xsl:text>(</xsl:text>
+  <xsl:value-of select="."/>
+  <xsl:call-template name="cert-low"/>
+  <xsl:text>)</xsl:text>
+<!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
+</xsl:when>
+<!--<xsl:when test="parent::t:hi[@rend='grantha']">
+<xsl:element name="span">
+  <xsl:attribute name="class">notBold</xsl:attribute>
+<xsl:text>(</xsl:text>
+</xsl:element>
     <xsl:value-of select="."/>
-    <xsl:call-template name="cert-low"/>
+    <xsl:element name="span">
+      <xsl:attribute name="class">notBold</xsl:attribute>
     <xsl:text>)</xsl:text>
-  <!-- Faire appel du tpl-certlow : <xsl:call-template name="cert-low"/> -->
-</xsl:when>
-<xsl:when test="parent::t:hi[@rend='grantha']">
-  <xsl:element name="span">
-    <xsl:attribute name="class">notBold</xsl:attribute>
-  <xsl:text>(</xsl:text>
-  </xsl:element>
-      <xsl:value-of select="."/>
-      <xsl:element name="span">
-        <xsl:attribute name="class">notBold</xsl:attribute>
-      <xsl:text>)</xsl:text>
-      </xsl:element>
-</xsl:when>
+    </xsl:element>
+</xsl:when>-->
 <xsl:otherwise>
 <xsl:text>(</xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text>)</xsl:text>
-  </xsl:otherwise>
-  </xsl:choose>
+  <xsl:value-of select="."/>
+  <xsl:text>)</xsl:text>
+</xsl:otherwise>
+</xsl:choose>
 </xsl:template>
 </xsl:stylesheet>
