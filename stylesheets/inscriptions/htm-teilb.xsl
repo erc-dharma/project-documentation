@@ -166,6 +166,7 @@
 
                <xsl:when
                       test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']">
+
                      <xsl:choose>
                        <!--<xsl:when test="@break='no'">
                           <xsl:text>/</xsl:text>
