@@ -44,7 +44,8 @@
               <xsl:value-of select="//t:teiHeader//t:title"/>
               <xsl:text> (</xsl:text>
               <xsl:value-of select="//t:idno[@type='filename']"/>
-              <xsl:text>)</xsl:text>
+              <xsl:text>) &#x1F1E7;&#x1F1EA;</xsl:text>
+
             </h1>
 
             <xsl:element name="div">
