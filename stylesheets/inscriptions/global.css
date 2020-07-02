@@ -95,13 +95,29 @@ P {
     position: relative;
     text-decoration: none;
     font-weight: bold;
+    height: 75px;
+    background: #f0f0f5;
+    border-radius: 50%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding-right: 2px;
+    padding-left: 2px;
     }
+/*border: 1px solid black;
+
+text-align:center;*/
 
 .linenumberapp {
         color: black;
         position: relative;
         text-decoration: none;
         font-weight: bold;
+        background: #f0f0f5;
+        border-radius: 50%;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+        padding-right: 2px;
+        padding-left: 2px;
         }
 
 .linenumberbroken {

@@ -179,7 +179,7 @@
       <xsl:attribute name="class">
          <xsl:text>linenumberapp</xsl:text>
        </xsl:attribute>
-      <xsl:text>(</xsl:text>
+    <!--  <xsl:text>(</xsl:text>-->
       <!--<xsl:attribute name="class">-->
         <xsl:value-of select="@loc"/>
       <!--</xsl:attribute>
@@ -192,7 +192,7 @@
         <xsl:text>–</xsl:text>
         <xsl:value-of select="child::t:lem/t:lb/@n"/>
       </xsl:if>
-      <xsl:text>)</xsl:text>
+      <!--<xsl:text>)</xsl:text>-->
     </sup>
       <xsl:apply-templates/>
 

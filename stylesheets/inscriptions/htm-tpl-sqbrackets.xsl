@@ -72,7 +72,6 @@
 
             </xsl:when>
             <xsl:when test="$firstletter = '(' or $lastletter = ')'">
-
                 <xsl:variable name="previous" select="preceding::text()[1]" />
                 <xsl:variable name="after" select="following::text()[1]" />
 

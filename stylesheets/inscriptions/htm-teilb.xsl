@@ -241,9 +241,9 @@
                          </xsl:attribute>
                      </xsl:otherwise>
                   </xsl:choose>
-              <xsl:text>(</xsl:text>
+              <!--<xsl:text>&#40;</xsl:text>-->
                <xsl:value-of select="@n"/>
-                 <xsl:text>)</xsl:text>
+                <!-- <xsl:text>&#41;</xsl:text>-->
             </sup>
          </xsl:otherwise>
       </xsl:choose>
@@ -296,9 +296,5 @@
           <xsl:text>/</xsl:text>
         </xsl:if>
       </xsl:template>
-
-      <xsl:template match="text">
-  <xsl:value-of select="replace(text(), '/ ', '/')" />
- </xsl:template>
 
 </xsl:stylesheet>

@@ -8,9 +8,9 @@
       <p>
         <xsl:if test="@n and not(@rend)">
           <sup class="linenumber">
-           <xsl:text>(</xsl:text>
+           <!--<xsl:text>(</xsl:text>-->
            <xsl:value-of select="@n"/>
-           <xsl:text>) </xsl:text>
+           <!--<xsl:text>) </xsl:text>-->
          </sup>
        </xsl:if>
        <xsl:if test="@rend='stanza'">
