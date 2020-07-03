@@ -69,10 +69,10 @@
             <projectDesc>
                 <p>This project DHARMA has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
             </projectDesc>
-            <schemaRef type="guide" key="EGDv01" url="https://github.com/erc-dharma/project-documentation/tree/master/guides/encoding-diplomatic"/> <!-- UPDATE the link once the release is made official -->
+            <schemaRef type="guide" key="EGDv01" url="https://halshs.archives-ouvertes.fr/halshs-02888186"/> <!-- UPDATE the link once the release is made official -->
         </encodingDesc>
         <revisionDesc>
-            <change who="part:axja" when="2020-07-02">Version 3: adding the encodingDesc for projectDesc and schemaRef</change>          
+            <change who="part:axja" when="2020-07-02">Version 3: adding the encodingDesc for projectDesc and schemaRef</change>
             <change who="part:axja" when="2020-03-18">Version 2: addition of handDesc and summary</change>
             <change who="part:axja" when="2019-12-18" status="draft">Creation of the
                 template</change>
