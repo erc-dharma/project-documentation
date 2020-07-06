@@ -8,11 +8,10 @@
    <!-- Called from htm-tpl-structure.xsl -->
 
    <xsl:template name="dharma-body-structure">
-     <!-- Main text output -->
+     <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
      <xsl:variable name="maintxt">
-
-        <xsl:apply-templates/>
-     </xsl:variable>
+       <xsl:apply-templates/>
+    </xsl:variable>
      <!-- Moded templates found in htm-tpl-sqbrackets.xsl -->
      <xsl:variable name="maintxt2">
      <xsl:apply-templates select="$maintxt" mode="sqbrackets"/>

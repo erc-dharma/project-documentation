@@ -46,12 +46,12 @@
              <xsl:apply-templates/>
            </xsl:when>
            <xsl:otherwise>
-               <xsl:element name="span">
+              <xsl:element name="span">
                  <xsl:attribute name="class">grantha</xsl:attribute>
                  <xsl:apply-templates/>
              </xsl:element>
              </xsl:otherwise>
-             </xsl:choose> 
+             </xsl:choose>
          </xsl:when>
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
          <!-- @rend='strong'                                                     -->

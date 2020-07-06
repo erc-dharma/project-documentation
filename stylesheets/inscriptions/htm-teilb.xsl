@@ -153,7 +153,7 @@
                   </xsl:choose>
                </xsl:when>
                <xsl:when
-                   test="$parm-leiden-style = 'ddbdp' and ((not(ancestor::*[name() = 'TEI']))  or $location='apparatus')">
+                   test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'dharma' and ((not(ancestor::*[name() = 'TEI']))  or $location='apparatus')">
                   <xsl:choose>
                      <xsl:when test="@break='no' or @type='inWord'">
                         <xsl:text>|</xsl:text>
@@ -171,11 +171,13 @@
                        <!--<xsl:when test="@break='no'">
                           <xsl:text>/</xsl:text>
                        </xsl:when>-->
-                        <xsl:when test="not(@break='no')">
-                           <xsl:text> / </xsl:text>
+                      <xsl:when test="not(@break='no')">
+                           <xsl:text> /  </xsl:text>
                         </xsl:when>
                      </xsl:choose>
                   </xsl:when>
+
+
 
                <xsl:otherwise>
                   <br id="a{$div-loc}l{$line}"/>

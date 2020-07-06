@@ -27,17 +27,16 @@
     </xsl:template>
 
     <xsl:template match="text()" mode="sqbrackets">
-        <xsl:variable name="me" select="."/>
+        <xsl:variable name="me"/>
         <xsl:variable name="startspace" select="if (matches(substring(.,1,1),'[\n\r\s\t]')) then ' ' else ''"/>
         <xsl:variable name="endspace" select="if (matches(substring(.,string-length(.)),'[\n\r\s\t]')) then ' ' else ''"/>
         <xsl:variable name="current" select="replace(normalize-space(.), '([^\]])\](\s*)\[([^\[])', '$1$2$3')" />
         <xsl:variable name="strlength" select="string-length($current)"/>
         <xsl:variable name="firstletter" select="substring($current, 1, 1)"/>
         <xsl:variable name="lastletter" select="substring($current, $strlength)"/>
-
+        <xsl:variable name="input">
 
         <xsl:value-of select="$startspace"/>
-
         <xsl:choose>
             <xsl:when test="$firstletter = '[' or $lastletter = ']'">
 
@@ -106,7 +105,21 @@
             </xsl:otherwise>
         </xsl:choose>
         <xsl:value-of select="$endspace"/>
+      </xsl:variable>
+<!--([a-z\)\]])/[\n\r\s\t]', '$1/')-->
+<!-- ([a-z$&#62;\)\]])/[\n\r\s\t]([a-z$&#60;\(\[]+)-->
+<xsl:apply-templates select="replace($input, '([a-z\)\]&gt;])/[\n\r\s\t]([a-z\(\[&lt;]+)', '$1/$2')"/>
 
     </xsl:template>
+
+<!-- not sure how to add it yet
+([a-z\)\]])/\s+([a-z\)\]])
+
+<xsl:template match="text()" >
+    <xsl:value-of select="replace(., '/\s+', '/')" />
+</xsl:template>
+-->
+
+
 
 </xsl:stylesheet>
