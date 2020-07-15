@@ -3371,7 +3371,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
                             text</sch:report>
             </sch:rule>
          </pattern>
-         <ref name="tei_att.dimensions.attribute.quantity"/>
+         <!--<ref name="tei_att.dimensions.attribute.quantity"/>-->
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="precision"
