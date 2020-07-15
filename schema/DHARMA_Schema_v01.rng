@@ -3347,15 +3347,15 @@ Normalization 12. Critical Apparatus]</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-gap-gap-constraint-rule-10">
+            id="tei-epidoc-gap-gap-constraint-rule-11">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:gap">
+               xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+               context="tei:gap">
                <sch:report test="@quantity and @extent">gap may have @quantity (a
-                                    figure) or @extent (a descriptive text value) but not
-                                    both</sch:report>
+                  figure) or @extent (a descriptive text value) but not
+                  both</sch:report>
                <sch:report test="@quantity and not(@unit)">If gap has @quantity
-                                    then @unit is required</sch:report>
+                  then @unit is required</sch:report>
                <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
             </sch:rule>
          </pattern>
