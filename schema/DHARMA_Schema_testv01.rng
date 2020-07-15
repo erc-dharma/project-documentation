@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-07-15T13:40:29Z. .
+Schema generated from ODD source 2020-07-15T13:57:51Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3156,6 +3156,21 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
       </report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.n"/>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
+Sample values include: 1] stanza</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <empty/>
       </element>
    </define>
    <define name="tei_foreign">
@@ -3648,10 +3663,8 @@ attributes @target and @cRef may be supplied on <name/>.</report>
             </rule>
          </pattern>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="target"
-                       a:defaultValue="bib:">
-               <a:documentation>specifies the destination of the reference by supplying one or more URI References</a:documentation>
+            <attribute name="target">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the destination of the reference by supplying one or more URI References</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="anyURI"/>
@@ -3822,10 +3835,8 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
             </attribute>
          </optional>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="resp"
-                       a:defaultValue="part:">
-               <a:documentation>(responsible party) indicates the agency responsible for the intervention or interpretation, for example an editor or transcriber.</a:documentation>
+            <attribute name="resp">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(responsible party) indicates the agency responsible for the intervention or interpretation, for example an editor or transcriber.</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="anyURI"/>
@@ -3834,10 +3845,8 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
             </attribute>
          </optional>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="source"
-                       a:defaultValue="bib:">
-               <a:documentation>specifies the source from which some aspect of this element is drawn.</a:documentation>
+            <attribute name="source">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="anyURI"/>
@@ -4262,23 +4271,11 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="unit"
                        a:defaultValue="page">
-               <a:documentation>identifies the unit of information conveyed by the element, e.g. columns, pages, volume, entry.</a:documentation>
-               <choice>
-                  <value>page</value>
-                  <a:documentation/>
-                  <value>volume</value>
-                  <a:documentation/>
-                  <value>item</value>
-                  <a:documentation/>
-                  <value>figure</value>
-                  <a:documentation/>
-                  <value>plate</value>
-                  <a:documentation/>
-                  <value>table</value>
-                  <a:documentation/>
-                  <value>appendix</value>
-                  <a:documentation/>
-               </choice>
+               <a:documentation>identifies the unit of information conveyed by the element, e.g. columns, pages, volume, entry.
+Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] table; 7] appendix; 8] note</a:documentation>
+               <data type="token">
+                  <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+               </data>
             </attribute>
          </optional>
          <empty/>
@@ -4306,6 +4303,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.n"/>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="rend"
@@ -4371,6 +4369,16 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                <empty/>
             </zeroOrMore>
          </group>
+         <attribute name="type">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
+            <choice>
+               <value>primary</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>secondary</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            </choice>
+         </attribute>
+         <empty/>
       </element>
    </define>
    <define name="tei_l">
@@ -4395,10 +4403,12 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </rule>
          </pattern>
          <ref name="tei_att.metrical.attribute.real"/>
-         <attribute name="n">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <data type="string"/>
-         </attribute>
+         <optional>
+            <attribute name="n">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="met">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.</a:documentation>
@@ -5872,10 +5882,8 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
       <element name="change">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.7. Identifying Changes and Revisions]</a:documentation>
          <ref name="tei_macro.specialPara"/>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="who"
-                    a:defaultValue="part:">
-            <a:documentation>indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
+         <attribute name="who">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
             <list>
                <oneOrMore>
                   <data type="anyURI"/>
@@ -6225,6 +6233,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
          </pattern>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.responsibility.attribute.resp"/>
          <optional>
             <attribute name="rend">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
@@ -9618,11 +9627,8 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                <ref name="tei_model.rdgPart"/>
             </choice>
          </zeroOrMore>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="source"
-                    a:defaultValue="bib:">
-            <a:documentation>specifies the source from which some aspect of this element is drawn.
-Sample values include: 1] bib:</a:documentation>
+         <attribute name="source">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
             <list>
                <oneOrMore>
                   <data type="anyURI"/>
