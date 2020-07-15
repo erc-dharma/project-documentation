@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-07-15T13:29:44Z. .
+Schema generated from ODD source 2020-07-15T13:40:29Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -4447,6 +4447,8 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>drutavilambita</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>pramitākṣarā</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>vaṁśamālā</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>vaṁśastha</value>
@@ -4567,7 +4569,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          <optional>
             <attribute name="met">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.
-Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] vaṁśamālā; 24] vaṁśastha; 25] vaiśvadevī; 26] puṣpitāgrā; 27] mañjubhāṣiṇī; 28] mattamayūra; 29] praharṣiṇī; 30] rucirā; 31] asaṁbādhā; 32] praharaṇakalikā; 33] vasantatilakā; 34] mālinī; 35] hariṇī; 36] mandākrāntā; 37] nardaṭaka; 38] prthvī; 39] śikharinī; 40] śārdūlavikrīḍita; 41] sumadhurā; 42] mattebhavikrīḍita; 43] suvadanā; 44] sragdharā</a:documentation>
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā</a:documentation>
                <data type="token"/>
             </attribute>
          </optional>
@@ -7181,7 +7183,7 @@ Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded</a:documentatio
          <optional>
             <attribute name="met">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.
-Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] vaṁśamālā; 24] vaṁśastha; 25] vaiśvadevī; 26] puṣpitāgrā; 27] mañjubhāṣiṇī; 28] mattamayūra; 29] praharṣiṇī; 30] rucirā; 31] asaṁbādhā; 32] praharaṇakalikā; 33] vasantatilakā; 34] mālinī; 35] hariṇī; 36] mandākrāntā; 37] nardaṭaka; 38] prthvī; 39] śikharinī; 40] śārdūlavikrīḍita; 41] sumadhurā; 42] mattebhavikrīḍita; 43] suvadanā; 44] sragdharā</a:documentation>
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā</a:documentation>
                <data type="token"/>
             </attribute>
          </optional>
