@@ -19,6 +19,9 @@
           <xsl:text>¿</xsl:text>
         </xsl:element>
       </xsl:if>
+      <xsl:if test="$parm-leiden-style='dharma' and @rend='pun' and ancestor::t:div[@type='translation']">
+      <xsl:text>{</xsl:text>
+    </xsl:if>
 
       <xsl:apply-templates/>
 
@@ -37,6 +40,9 @@
           <xsl:text>?</xsl:text>
         </xsl:element>
       </xsl:if>
+      <xsl:if test="$parm-leiden-style='dharma' and @rend='pun' and ancestor::t:div[@type='translation']">
+      <xsl:text>}</xsl:text>
+    </xsl:if>
   </xsl:template>
 
 <!--  <xsl:template match="//t:seg[@type='component']">
