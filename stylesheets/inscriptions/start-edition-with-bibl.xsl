@@ -51,6 +51,7 @@
    <xsl:include href="teisupplied.xsl"/>
    <xsl:include href="teisurplus.xsl"/>
    <xsl:include href="teiunclear.xsl"/>
+   <xsl:include href="teititle.xsl"/>
 
    <!-- html related stylesheets for named templates -->
    <xsl:include href="htm-tpl-cssandscripts.xsl"/>
