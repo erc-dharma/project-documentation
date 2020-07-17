@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-07-15T14:33:36Z. .
+Schema generated from ODD source 2020-07-17T14:31:19Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -524,6 +524,9 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
             </list>
          </attribute>
       </optional>
+   </define>
+   <define name="tei_att.fragmentable.attributes">
+      <ref name="tei_att.fragmentable.attribute.part"/>
    </define>
    <define name="tei_att.fragmentable.attribute.part">
       <optional>
@@ -1355,44 +1358,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             </sch:assert>
           </sch:rule>
    </pattern>
-   <define name="tei_att.transcriptional.attributes">
-      <ref name="tei_att.editLike.attributes"/>
-      <ref name="tei_att.written.attributes"/>
-      <ref name="tei_att.transcriptional.attribute.status"/>
-      <ref name="tei_att.transcriptional.attribute.cause"/>
-      <ref name="tei_att.transcriptional.attribute.seq"/>
-   </define>
-   <define name="tei_att.transcriptional.attribute.status">
-      <optional>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="status"
-                    a:defaultValue="unremarkable">
-            <a:documentation>indicates the effect of the intervention, for example in the case of a deletion, strikeouts which include too much or too little text, or in the case of an addition, an insertion which duplicates some of the text already present.
-Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] excessEnd; 5] shortStart; 6] shortEnd; 7] partial; 8] unremarkable</a:documentation>
-            <data type="token">
-               <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-            </data>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.transcriptional.attribute.cause">
-      <optional>
-         <attribute name="cause">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">documents the presumed cause for the intervention.</a:documentation>
-            <data type="token">
-               <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-            </data>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.transcriptional.attribute.seq">
-      <optional>
-         <attribute name="seq">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(sequence) assigns a sequence number related to the order in which the encoded features carrying this attribute are believed to have occurred.</a:documentation>
-            <data type="nonNegativeInteger"/>
-         </attribute>
-      </optional>
-   </define>
    <define name="tei_model.nameLike.agent">
       <choice>
          <ref name="tei_name"/>
@@ -1484,6 +1449,7 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          <ref name="tei_gloss"/>
          <ref name="tei_term"/>
          <ref name="tei_title"/>
+         <ref name="tei_code"/>
       </choice>
    </define>
    <define name="tei_model.emphLike_alternation">
@@ -1492,6 +1458,7 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          <ref name="tei_gloss"/>
          <ref name="tei_term"/>
          <ref name="tei_title"/>
+         <ref name="tei_code"/>
       </choice>
    </define>
    <define name="tei_model.emphLike_sequence">
@@ -1499,6 +1466,7 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       <ref name="tei_gloss"/>
       <ref name="tei_term"/>
       <ref name="tei_title"/>
+      <ref name="tei_code"/>
    </define>
    <define name="tei_model.emphLike_sequenceOptional">
       <optional>
@@ -1512,6 +1480,9 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       </optional>
       <optional>
          <ref name="tei_title"/>
+      </optional>
+      <optional>
+         <ref name="tei_code"/>
       </optional>
    </define>
    <define name="tei_model.emphLike_sequenceOptionalRepeatable">
@@ -1527,6 +1498,9 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       <zeroOrMore>
          <ref name="tei_title"/>
       </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_code"/>
+      </zeroOrMore>
    </define>
    <define name="tei_model.emphLike_sequenceRepeatable">
       <oneOrMore>
@@ -1540,6 +1514,9 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_title"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_code"/>
       </oneOrMore>
    </define>
    <define name="tei_model.highlighted">
@@ -2038,7 +2015,9 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       <notAllowed/>
    </define>
    <define name="tei_model.phrase.xml">
-      <notAllowed/>
+      <choice>
+         <ref name="tei_gi"/>
+      </choice>
    </define>
    <define name="tei_model.specDescLike">
       <notAllowed/>
@@ -3157,7 +3136,34 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
             </rule>
          </pattern>
          <ref name="tei_att.global.attribute.n"/>
-         <ref name="tei_att.global.rendition.attribute.rend"/>
+         <ref name="tei_att.fragmentable.attributes"/>
+         <optional>
+            <attribute name="xml:lang">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(language) indicates the language of the element content using a tag generated according to <a xmlns="http://www.w3.org/1999/xhtml"
+                     href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.
+Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] x-oldcham; 6] ndl; 7] eng; 8] fra; 9] ind; 10] jpn; 11] jav; 12] kaw; 13] kan; 14] khm; 15] x-oldkhmer; 16] zlm; 17] x-oldmalay; 18] omx; 19] pli; 20] pra; 21] pyx; 22] san; 23] x-oldsun; 24] tam; 25] tel; 26] vie</a:documentation>
+               <choice>
+                  <data type="language"/>
+                  <choice>
+                     <value/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  </choice>
+               </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
+Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6] small; 7] wide</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3199,6 +3205,10 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] x-oldcham; 6] ndl;
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>expanded</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>small</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <value>wide</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>italic</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>bold</value>
@@ -3236,37 +3246,7 @@ Sample values include: 1] block</a:documentation>
       <element name="q">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(quoted) contains material which is distinguished from the surrounding text using quotation marks or a similar method, for any one of a variety of reasons including, but not limited to: direct speech or thought, technical terms or jargon, authorial distance, quotations from elsewhere, and passages that are mentioned but not used. [3.3.3. Quotation]</a:documentation>
          <ref name="tei_macro.specialPara"/>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.ascribed.directed.attributes"/>
-         <optional>
-            <attribute name="type">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">may be used to indicate whether the offset passage is spoken or thought, or to characterize it more finely.
-Suggested values include: 1] spoken; 2] thought; 3] written; 4] soCalled; 5] foreign; 6] distinct; 7] term; 8] emph; 9] mentioned</a:documentation>
-               <choice>
-                  <value>spoken</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">representation of speech</a:documentation>
-                  <value>thought</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">representation of thought, e.g. internal monologue</a:documentation>
-                  <value>written</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">quotation from a written source</a:documentation>
-                  <value>soCalled</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">authorial distance</a:documentation>
-                  <value>foreign</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>distinct</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">linguistically distinct</a:documentation>
-                  <value>term</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">technical term</a:documentation>
-                  <value>emph</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">rhetorically emphasized</a:documentation>
-                  <value>mentioned</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">refering to itself, not its normal referent</a:documentation>
-                  <data type="token">
-                     <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-                  </data>
-               </choice>
-            </attribute>
-         </optional>
+         <ref name="tei_att.global.attribute.xmllang"/>
          <empty/>
       </element>
    </define>
@@ -3347,16 +3327,16 @@ Normalization 12. Critical Apparatus]</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tei-epidoc-gap-gap-constraint-rule-11">
+                  id="dharma-gap-gap-constraint-rule-10">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-               xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-               context="tei:gap">
-               <sch:report test="@quantity and @extent">gap may have @quantity (a
-                  figure) or @extent (a descriptive text value) but not
-                  both</sch:report>
-               <sch:report test="@quantity and not(@unit)">If gap has @quantity
-                  then @unit is required</sch:report>
-               <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:gap">
+               <sch:report test="@quantity and @extent">gap may have @quantity (a figure) or
+                            @extent (a descriptive text value) but not both</sch:report>
+               <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is
+                            required</sch:report>
+               <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied
+                            text</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.dimensions.attribute.quantity"/>
@@ -3374,7 +3354,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
          <optional>
             <attribute name="unit">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">names the unit used for the measurement
-Sample values include: 1] character; 2] component; 3] line</a:documentation>
+Sample values include: 1] character; 2] component; 3] line; 4] page; 5] plate; 6] folio</a:documentation>
                <data type="token">
                   <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
                </data>
@@ -3419,10 +3399,6 @@ Sample values include: 1] character; 2] component; 3] line</a:documentation>
                      <choice>
                         <value>mark</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>mark-insertion</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>mark-both</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                      </choice>
                   </oneOrMore>
                </list>
@@ -3460,10 +3436,25 @@ Sample values include: 1] character; 2] component; 3] line</a:documentation>
       <element name="del">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(deletion) contains a letter, word, or passage deleted, marked as deleted, or otherwise indicated as superfluous or spurious in the copy text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.transcriptional.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
-         <ref name="tei_att.dimensions.attributes"/>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>strikeout</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>other</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>ui</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>corrected</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3485,7 +3476,7 @@ Sample values include: 1] character; 2] component; 3] line</a:documentation>
          <optional>
             <attribute name="reason">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates why the material is hard to transcribe.
-Sample values include: 1] form</a:documentation>
+Sample values include: 1] eccentric_ductus</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="token">
@@ -3893,7 +3884,7 @@ Elements]</a:documentation>
          </attribute>
          <attribute name="unit">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a conventional name for the kind of section changing at this milestone.
-Sample values include: 1] fragment; 2] face; 3] facet; 4] faces; 5] facets; 6] zone; 7] column; 8] block; 9] surface</a:documentation>
+Sample values include: 1] fragment; 2] face; 3] facet; 4] faces; 5] facets; 6] zone; 7] column; 8] block; 9] surface; 10] item; 11] area</a:documentation>
             <data type="token">
                <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
             </data>
@@ -3964,6 +3955,26 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                   <value>bt-upright</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>tb-upright</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>rl-upright</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>rl-flipper</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>rl-rotated</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>grantha</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>ornate</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>large</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>tall</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>expanded</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>small</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>wide</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
@@ -4190,12 +4201,34 @@ Elements 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <ref name="tei_att.typed.attribute.subtype"/>
          <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>plain</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the title according to some convenient typology.
 Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] short; 5] desc (descriptive)</a:documentation>
                <data type="token">
                   <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
                </data>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="level">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the bibliographic level for a title, that is, whether it identifies an article, book, journal, series, or unpublished material.</a:documentation>
+               <choice>
+                  <value>a</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
             </attribute>
          </optional>
          <empty/>
@@ -4260,7 +4293,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                        name="unit"
                        a:defaultValue="page">
                <a:documentation>identifies the unit of information conveyed by the element, e.g. columns, pages, volume, entry.
-Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] table; 7] appendix; 8] note</a:documentation>
+Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] table; 7] appendix; 8] note; 9] part; 10] entry</a:documentation>
                <data type="token">
                   <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
                </data>
@@ -4293,15 +4326,15 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
          </zeroOrMore>
          <ref name="tei_att.global.attribute.n"/>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="rend"
-                       a:defaultValue="omitname">
-               <a:documentation>(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
                <list>
                   <oneOrMore>
                      <choice>
                         <value>omitname</value>
-                        <a:documentation/>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>ibid</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                      </choice>
                   </oneOrMore>
                </list>
@@ -4383,102 +4416,25 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
             </rule>
          </pattern>
          <ref name="tei_att.global.attribute.n"/>
-         <ref name="tei_att.metrical.attribute.real"/>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
+Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6] small; 7] wide</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="met">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.</a:documentation>
-               <choice>
-                  <value>sumānikā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>anuṣṭubh</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vegavatī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>viyoginī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>triṣṭubh</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dodhaka</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>indravajrā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>rathoddhatā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>śālinī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>svāgatā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>upajāti</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>upendravajrā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>toṭaka</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vātormī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>upacitra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>aparavaktra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hariṇaplutā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mālabhāriṇī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>jagatī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>bhujaṅgaprayāta</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>maṇimālā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>drutavilambita</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pramitākṣarā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vaṁśamālā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vaṁśastha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vaiśvadevī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>puṣpitāgrā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mañjubhāṣiṇī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mattamayūra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>praharṣiṇī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>rucirā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>asaṁbādhā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>praharaṇakalikā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vasantatilakā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mālinī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hariṇī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mandākrāntā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>nardaṭaka</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>prthvī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>śikharinī</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>śārdūlavikrīḍita</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sumadhurā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mattebhavikrīḍita</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>suvadanā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sragdharā</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā; 46] uncertain</a:documentation>
+               <data type="token"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="real">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, realized) contains a user-specified encoding for the actual realization of the conventional metrical structure applicable to the element.
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā</a:documentation>
+               <data type="token"/>
             </attribute>
          </optional>
          <optional>
@@ -4547,14 +4503,38 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
       </report>
             </rule>
          </pattern>
-         <attribute name="n">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <data type="string"/>
-         </attribute>
+         <ref name="tei_att.global.attribute.n"/>
+         <optional>
+            <attribute name="xml:lang">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(language) indicates the language of the element content using a tag generated according to <a xmlns="http://www.w3.org/1999/xhtml"
+                     href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.
+Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] x-oldcham; 6] ndl; 7] eng; 8] fra; 9] ind; 10] jpn; 11] jav; 12] kaw; 13] kan; 14] khm; 15] x-oldkhmer; 16] zlm; 17] x-oldmalay; 18] omx; 19] pli; 20] pra; 21] pyx; 22] san; 23] x-oldsun; 24] tam; 25] tel; 26] vie</a:documentation>
+               <choice>
+                  <data type="language"/>
+                  <choice>
+                     <value/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  </choice>
+               </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
+Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6] small; 7] wide</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="met">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.
-Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā</a:documentation>
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā; 46] uncertain</a:documentation>
                <data type="token"/>
             </attribute>
          </optional>
@@ -4668,20 +4648,7 @@ Suggested values include: 1] setting; 2] entrance; 3] exit; 4] business; 5] nove
                <ref name="tei_revisionDesc"/>
             </optional>
          </group>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="xml:lang"
-                    a:defaultValue="eng">
-            <a:documentation>(language) indicates the language of the element content using a tag generated according to <a xmlns="http://www.w3.org/1999/xhtml"
-                  href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.
-Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documentation>
-            <choice>
-               <data type="language"/>
-               <choice>
-                  <value/>
-                  <a:documentation/>
-               </choice>
-            </choice>
-         </attribute>
+         <ref name="tei_att.global.attribute.xmllang"/>
          <empty/>
       </element>
    </define>
@@ -4832,15 +4799,17 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
                <ref name="tei_idno"/>
             </choice>
          </zeroOrMore>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="type"
-                    a:defaultValue="filename">
-            <a:documentation>categorizes the identifier, for example as an ISBN, Social Security number, etc.
+         <optional>
+            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                       name="type"
+                       a:defaultValue="filename">
+               <a:documentation>categorizes the identifier, for example as an ISBN, Social Security number, etc.
 Sample values include: 1] filename</a:documentation>
-            <data type="token">
-               <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-            </data>
-         </attribute>
+               <data type="token">
+                  <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+               </data>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -5956,6 +5925,8 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
              xmlns:sch="http://purl.oclc.org/dsdl/schematron"
              prefix="rng"
              uri="http://relaxng.org/ns/structure/1.0"/>
+         <ref name="tei_att.global.attribute.xmllang"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_text">
@@ -6207,8 +6178,21 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </rule>
          </pattern>
          <ref name="tei_att.global.attribute.n"/>
-         <ref name="tei_att.global.attribute.xmllang"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
+         <optional>
+            <attribute name="xml:lang">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(language) indicates the language of the element content using a tag generated according to <a xmlns="http://www.w3.org/1999/xhtml"
+                     href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.
+Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] x-oldcham; 6] ndl; 7] eng; 8] fra; 9] ind; 10] jpn; 11] jav; 12] kaw; 13] kan; 14] khm; 15] x-oldkhmer; 16] zlm; 17] x-oldmalay; 18] omx; 19] pli; 20] pra; 21] pyx; 22] san; 23] x-oldsun; 24] tam; 25] tel; 26] vie</a:documentation>
+               <choice>
+                  <data type="language"/>
+                  <choice>
+                     <value/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  </choice>
+               </choice>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="rend">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
@@ -6222,6 +6206,12 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
                         <value>bt-upright</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>tb-upright</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>rl-upright</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>rl-flipper</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>rl-rotated</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                      </choice>
                   </oneOrMore>
@@ -6263,7 +6253,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
          <optional>
             <attribute name="subtype">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a sub-categorization of the element, if needed
-Sample values include: 1] fragment; 2] face; 3] facet; 4] faces; 5] facets; 6] zone; 7] column</a:documentation>
+Sample values include: 1] fragment; 2] face; 3] facet; 4] faces; 5] facets; 6] zone; 7] column; 8] item</a:documentation>
                <data type="token">
                   <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
                </data>
@@ -6660,20 +6650,36 @@ Sample values include: 1] glued; 2] pinned; 3] sewn</a:documentation>
          <optional>
             <attribute name="rend">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
-               <list>
-                  <oneOrMore>
-                     <choice>
-                        <value>bt-rotated</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>tb-rotated</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>bt-upright</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>tb-upright</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     </choice>
-                  </oneOrMore>
-               </list>
+               <choice>
+                  <value>bt-rotated</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>tb-rotated</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>bt-upright</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>tb-upright</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>rl-upright</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>rl-flipper</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>rl-rotated</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>grantha</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>ornate</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>large</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>tall</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>expanded</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>small</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>wide</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
             </attribute>
          </optional>
          <optional>
@@ -6775,17 +6781,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             <attribute name="unit">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">names the unit used for the measurement</a:documentation>
                <choice>
-                  <value>chars</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>word</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>line</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>leaf</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>quire</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>indeterminate</value>
+                  <value>character</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
@@ -6999,15 +6995,11 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <ref name="tei_att.typed.attribute.subtype"/>
          <optional>
             <attribute name="type">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
-               <choice>
-                  <value>filler</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>symbole</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>numeral</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.
+Sample values include: 1] numeral</a:documentation>
+               <data type="token">
+                  <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+               </data>
             </attribute>
          </optional>
          <empty/>
@@ -7140,14 +7132,25 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             </rule>
          </pattern>
          <ref name="tei_att.global.attribute.xmlid"/>
-         <ref name="tei_att.global.attribute.xmllang"/>
          <ref name="tei_att.global.attribute.xmlspace"/>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="rend"
-                       a:defaultValue="ornate,large,tall,expanded">
-               <a:documentation>(rendition) indicates how the element in question was rendered or presented in the source text.
-Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded</a:documentation>
+            <attribute name="xml:lang">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(language) indicates the language of the element content using a tag generated according to <a xmlns="http://www.w3.org/1999/xhtml"
+                     href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.
+Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] x-oldcham; 6] ndl; 7] eng; 8] fra; 9] ind; 10] jpn; 11] jav; 12] kaw; 13] kan; 14] khm; 15] x-oldkhmer; 16] zlm; 17] x-oldmalay; 18] omx; 19] pli; 20] pra; 21] pyx; 22] san; 23] x-oldsun; 24] tam; 25] tel; 26] vie</a:documentation>
+               <choice>
+                  <data type="language"/>
+                  <choice>
+                     <value/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  </choice>
+               </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
+Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded; 5] small; 6] wide</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="token">
@@ -7165,9 +7168,31 @@ Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded</a:documentatio
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>pun</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="cert">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
+               <choice>
+                  <value>low</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
+            </attribute>
+         </optional>
+         <optional>
             <attribute name="met">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.
-Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā</a:documentation>
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā; 46] uncertain</a:documentation>
                <data type="token"/>
             </attribute>
          </optional>
@@ -9736,6 +9761,18 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
    </define>
    <define name="tei_model.ptrLike.form">
       <notAllowed/>
+   </define>
+   <define name="tei_code">
+      <element name="code">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains literal code from some formal language such as a programming language. [22.1.1. Phrase Level Terms]</a:documentation>
+         <text/>
+      </element>
+   </define>
+   <define name="tei_gi">
+      <element name="gi">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(element name) contains the name (generic identifier) of an element. [22. Documentation Elements 22.5. Element Specifications]</a:documentation>
+         <data type="Name"/>
+      </element>
    </define>
    <start>
       <choice>
