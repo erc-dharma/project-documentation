@@ -35,6 +35,7 @@
    <xsl:include href="htm-teisupplied.xsl"/>
    <xsl:include href="htm-teiterm.xsl"/>
    <xsl:include href="htm-teiref.xsl"/>
+   <xsl:include href="htm-teiquote.xsl"/>
 
    <!-- tei stylesheets that are also used by start-txt -->
    <xsl:include href="teiabbrandexpan.xsl"/>
