@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-07-20T12:40:19Z. .
+Schema generated from ODD source 2020-07-20T12:43:58Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -9681,7 +9681,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                   id="dharma-app-one-lem-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      contex="tei:app">
+                      context="tei:app">
                <sch:report test="not(count(child::tei:lem) &gt;= 1)">An apparatus entry must always contain a lem element</sch:report>
                <sch:report test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)">When the apparatus entry contains only a lem, the @source is mandatory</sch:report>
             </sch:rule>

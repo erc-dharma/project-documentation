@@ -859,7 +859,7 @@
                 <elementSpec ident="app" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="one-lem">
                         <constraint>
-                            <sch:rule contex="tei:app">
+                            <sch:rule context="tei:app">
                                 <sch:report test="not(count(child::tei:lem) >= 1)">An apparatus entry must always contain a lem element</sch:report>
                                 <sch:report test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)">When the apparatus entry contains only a lem, the @source is mandatory</sch:report>
                             </sch:rule>                      
