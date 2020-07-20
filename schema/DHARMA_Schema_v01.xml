@@ -73,6 +73,7 @@
                         <sch:rule context="@resp">
                             <sch:report test="not(matches(.,'part:')">Project members prefex is part:</sch:report>
                         </sch:rule>
+                        
                     </constraint>
                 </constraintSpec>
                 <!--        CHANGED ELEMENT SPECS        -->
@@ -2710,6 +2711,11 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="persName" module="namesdates" mode="change">
+                    <constraintSpec scheme="schematron" ident="reference">
+                        <sch:rule context="tei:persName">
+                            <sch:report test="not(matches(tei:persName[@re]f,'part:') ">Project members prefex is part:</sch:report>
+                        </sch:rule>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
