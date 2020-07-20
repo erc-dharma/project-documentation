@@ -540,8 +540,10 @@
                         <constraint><sch:rule context="tei:space"><sch:report
                             test="@quantity and @extent">space may have @quantity (a figure) or
                             @extent (a descriptive text value) but not
-                            both</sch:report><!--<sch:report test="@quantity and not(@unit)">If space has @quantity then @unit is
-                            required</sch:report>--><!-- not kept for DHARMA since this part of the Epidoc schema has not been followed --></sch:rule></constraint>
+                            both</sch:report>
+                            <sch:report test="@quantity and not(@unit)">If space has @quantity then @unit is
+                            required</sch:report>
+                        </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -576,7 +578,7 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="quantity" mode="change" usage="req"/>
+                        <attDef ident="quantity" mode="change"/>
                         <attDef ident="type" mode="change">
                             <valList type="closed" mode="replace">
                                 <valItem ident="vacat"/>
@@ -2712,9 +2714,11 @@
                 </elementSpec>
                 <elementSpec ident="persName" module="namesdates" mode="change">
                     <constraintSpec scheme="schematron" ident="reference">
-                        <sch:rule context="tei:persName">
+                        <constraint>                        
+                            <sch:rule context="tei:persName">
                             <sch:report test="not(matches(tei:persName[@re]f,'part:') ">Project members prefex is part:</sch:report>
-                        </sch:rule>
+                            </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
