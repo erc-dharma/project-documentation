@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-07-20T12:43:58Z. .
+Schema generated from ODD source 2020-07-20T12:56:19Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3122,7 +3122,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:p">
-               <sch:report test="@rend='stanza and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])">@rend='stanza' can only be used in div[@type='translation'] and in div[@type='commentary']</sch:report>
+               <sch:report test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])">@rend='stanza' can only be used in div[@type='translation'] and in div[@type='commentary']</sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3852,9 +3852,9 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note">
-               <sch:report test="not(ancestor::tei:div[@type='translation] or ancestor::tei:div[@type='commentary] or ancestor::tei:div[@type='apparatus]')">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
-               <sch:report test="ancestor::tei:div[@type='commentary] and not(parent::tei:p)">Inside div[@type='commentray', note should be wrapped inside a p element</sch:report>
-               <sch:report test="ancestor::tei:div[@type='apparatus] and not(parent::tei:app)">Inside div[@type='apparatus', note should be wrapped inside an app element</sch:report>
+               <sch:report test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'])">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
+               <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)">Inside div[@type='commentray', note should be wrapped inside a p element</sch:report>
+               <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus', note should be wrapped inside an app element</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.typed.attribute.type"/>
@@ -4017,7 +4017,7 @@ Elements 7.2.5. Speech Contents]</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lb[ancestor::tei:div/@type='edition']">
-               <sch:report test="count(tei::lb[@n]) != count(distinct-values(tei::lb[@n]))"> The content of the attribute @n for the element line
+               <sch:report test="count(tei:lb[@n]) != count(distinct-values(tei:lb[@n]))"> The content of the attribute @n for the element line
                                     beginnning must be unique in all the edition division.
                                     </sch:report>
             </sch:rule>
@@ -6244,9 +6244,9 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
                       context="tei:div">
                <sch:report test="@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"> Divs other than @type=textpart may not nest in divs of different @type
                             </sch:report>
-               <sch:report test="count(@type='textpart'[parent::tei:div/@type='edition') eq 1"> At least two divs
+               <sch:report test="count(@type='textpart'[parent::tei:div/@type='edition'] eq 1"> At least two divs
                             @type=textpart are expected in the edition</sch:report>
-               <sch:report test="count(@type='textpart'[parent::tei:div/@type='edition']) != count(@type='textpart'[parent::tei:div/@type='apparatus'])">The textpart structure in edition and in apparatus must be identical.</sch:report>
+               <sch:report test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) != count(tei:div[@type='textpart'][parent::tei:div/@type='apparatus'])">The textpart structure in edition and in apparatus must be identical.</sch:report>
                <sch:report test="@type='translation' and not(@xml:lang)">@xml:lang is mandotory on div[@type='translation']</sch:report>
                <sch:report test="@type='translation' and @resp and @source">@resp and @source can not be used together</sch:report>
                <sch:report test="@type='translation' and not(@resp or @source)">@resp or @source is expected for div[@type='translation']</sch:report>
@@ -8976,7 +8976,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:persName">
-               <sch:report test="not(matches(tei:persName[@re]f,'part:') ">Project members prefex is part:</sch:report>
+               <sch:report test="not(matches(tei:persName[@ref],'part:') ">Project members prefex is part:</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.attribute.xmlid"/>
@@ -9928,22 +9928,22 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 context="@source">
-         <sch:report test="not(matches(.,'bib:')">Bibliographic prefix is bib:</sch:report>
+         <sch:report test="not(matches(.,'bib:'))">Bibliographic prefix is bib:</sch:report>
       </sch:rule>
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 context="@target">
-         <sch:report test="not(matches(.,'bib:')">Bibliographic prefix is bib:</sch:report>
+         <sch:report test="not(matches(.,'bib:'))">Bibliographic prefix is bib:</sch:report>
       </sch:rule>
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 context="@who">
-         <sch:report test="not(matches(.,'part:')">Project members prefex is part:</sch:report>
+         <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
       </sch:rule>
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 context="@resp">
-         <sch:report test="not(matches(.,'part:')">Project members prefex is part:</sch:report>
+         <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
       </sch:rule>
    </pattern>
 </grammar>

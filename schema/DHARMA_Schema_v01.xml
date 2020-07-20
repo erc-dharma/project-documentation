@@ -62,16 +62,16 @@
                 <constraintSpec ident="source" scheme="schematron">
                     <constraint>
                         <sch:rule context="@source">
-                            <sch:report test="not(matches(.,'bib:')">Bibliographic prefix is bib:</sch:report>
+                            <sch:report test="not(matches(.,'bib:'))">Bibliographic prefix is bib:</sch:report>
                         </sch:rule>
                         <sch:rule context="@target">
-                            <sch:report test="not(matches(.,'bib:')">Bibliographic prefix is bib:</sch:report>
+                            <sch:report test="not(matches(.,'bib:'))">Bibliographic prefix is bib:</sch:report>
                         </sch:rule>
                         <sch:rule context="@who">
-                            <sch:report test="not(matches(.,'part:')">Project members prefex is part:</sch:report>
+                            <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
                         </sch:rule>
                         <sch:rule context="@resp">
-                            <sch:report test="not(matches(.,'part:')">Project members prefex is part:</sch:report>
+                            <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
                         </sch:rule>
                         
                     </constraint>
@@ -148,9 +148,9 @@
                             > Divs other than @type=textpart may not nest in divs of different @type
                             </sch:report>
                             <sch:report
-                            test="count(@type='textpart'[parent::tei:div/@type='edition') eq 1"> At least two divs
+                            test="count(@type='textpart'[parent::tei:div/@type='edition'] eq 1"> At least two divs
                             @type=textpart are expected in the edition</sch:report>
-                                <sch:report test="count(@type='textpart'[parent::tei:div/@type='edition']) != count(@type='textpart'[parent::tei:div/@type='apparatus'])">The textpart structure in edition and in apparatus must be identical.</sch:report>
+                                <sch:report test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) != count(tei:div[@type='textpart'][parent::tei:div/@type='apparatus'])">The textpart structure in edition and in apparatus must be identical.</sch:report>
                                 <sch:report test="@type='translation' and not(@xml:lang)">@xml:lang is mandotory on div[@type='translation']</sch:report>
                                 <sch:report test="@type='translation' and @resp and @source">@resp and @source can not be used together</sch:report>
                                 <sch:report test="@type='translation' and not(@resp or @source)">@resp or @source is expected for div[@type='translation']</sch:report>
@@ -453,7 +453,7 @@
                             <constraintSpec scheme="schematron" ident="uniquenessOfAttN">
                                 <constraint><sch:rule
                                     context="tei:lb[ancestor::tei:div/@type='edition']"><sch:report
-                                    test="count(tei::lb[@n]) != count(distinct-values(tei::lb[@n]))"
+                                    test="count(tei:lb[@n]) != count(distinct-values(tei:lb[@n]))"
                                     > The content of the attribute @n for the element line
                                     beginnning must be unique in all the edition division.
                                     </sch:report></sch:rule></constraint>
@@ -2489,9 +2489,9 @@
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint>
                             <sch:rule context="tei:note">
-                                <sch:report test="not(ancestor::tei:div[@type='translation] or ancestor::tei:div[@type='commentary] or ancestor::tei:div[@type='apparatus]')">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
-                                <sch:report test="ancestor::tei:div[@type='commentary] and not(parent::tei:p)">Inside div[@type='commentray', note should be wrapped inside a p element</sch:report>
-                                <sch:report test="ancestor::tei:div[@type='apparatus] and not(parent::tei:app)">Inside div[@type='apparatus', note should be wrapped inside an app element</sch:report>
+                                <sch:report test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'])">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
+                                <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)">Inside div[@type='commentray', note should be wrapped inside a p element</sch:report>
+                                <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus', note should be wrapped inside an app element</sch:report>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -2605,7 +2605,7 @@
                     <constraintSpec scheme="schematron" ident="p">
                         <constraint>
                             <sch:rule context="tei:p">
-                                <sch:report test="@rend='stanza and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])">@rend='stanza' can only be used in div[@type='translation'] and in div[@type='commentary']</sch:report>
+                                <sch:report test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])">@rend='stanza' can only be used in div[@type='translation'] and in div[@type='commentary']</sch:report>
                             </sch:rule>
                             <sch:report test="not(@n) and ancestor::tei:div[@type='translation']"> @n is mandatory on p element in div[@type='translation']</sch:report>
                         </constraint>
@@ -2716,7 +2716,7 @@
                     <constraintSpec scheme="schematron" ident="reference">
                         <constraint>                        
                             <sch:rule context="tei:persName">
-                            <sch:report test="not(matches(tei:persName[@re]f,'part:') ">Project members prefex is part:</sch:report>
+                            <sch:report test="not(matches(tei:persName[@ref],'part:') ">Project members prefex is part:</sch:report>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
