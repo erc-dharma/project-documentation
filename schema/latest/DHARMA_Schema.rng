@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-07-17T14:31:19Z. .
+Schema generated from ODD source 2020-07-20T08:03:07Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -4534,7 +4534,7 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
          <optional>
             <attribute name="met">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical structure, conventional) contains a user-specified encoding for the conventional metrical structure of the element.
-Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā; 46] uncertain</a:documentation>
+Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyoginī; 5] triṣṭubh; 6] dodhaka; 7] indravajrā; 8] rathoddhatā; 9] śālinī; 10] svāgatā; 11] upajāti; 12] upendravajrā; 13] toṭaka; 14] vātormī; 15] upacitra; 16] aparavaktra; 17] hariṇaplutā; 18] mālabhāriṇī; 19] jagatī; 20] bhujaṅgaprayāta; 21] maṇimālā; 22] drutavilambita; 23] pramitākṣarā; 24] vaṁśamālā; 25] vaṁśastha; 26] vaiśvadevī; 27] puṣpitāgrā; 28] mañjubhāṣiṇī; 29] mattamayūra; 30] praharṣiṇī; 31] rucirā; 32] asaṁbādhā; 33] praharaṇakalikā; 34] vasantatilakā; 35] mālinī; 36] hariṇī; 37] mandākrāntā; 38] nardaṭaka; 39] prthvī; 40] śikharinī; 41] śārdūlavikrīḍita; 42] sumadhurā; 43] mattebhavikrīḍita; 44] suvadanā; 45] sragdharā; 46] uncertain; 47] āryā; 48] gīti; 49] upagīti; 50] udgīti; 51] āryāgīti; 52] veṇpā; 53] āciriyappā; 54] kalippā; 55] vañcippā; 56] maruṭpā</a:documentation>
                <data type="token"/>
             </attribute>
          </optional>

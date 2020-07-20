@@ -18,7 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-            <change who="#AJ" when="2019-07-13">Creating a chained ODD</change>
+            <change who="#AJ" when="2019-07-13">Creating an ODD with legacy from the Epidoc Guidelines</change>
         </revisionDesc>
     </teiHeader>
     <text>
@@ -2082,7 +2082,7 @@
                                 <valItem ident="udgīti"/>
                                 <valItem ident="āryāgīti"/>
                                 <valItem ident="veṇpā"/>
-                                <valitem ident="āciriyappā"/>
+                                <valItem ident="āciriyappā"/>
                                 <valItem ident="kalippā"/>
                                 <valItem ident="vañcippā"/>
                                 <valItem ident="maruṭpā"/>
