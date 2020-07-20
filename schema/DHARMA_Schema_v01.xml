@@ -61,12 +61,7 @@
                     except="case colloc def dictScrap entry                     entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
                 <constraintSpec ident="source" scheme="schematron">
                     <constraint>
-                        <sch:rule context="@source">
-                            <sch:report test="not(matches(.,'bib:'))">Bibliographic prefix is bib:</sch:report>
-                        </sch:rule>
-                        <sch:rule context="@target">
-                            <sch:report test="not(matches(.,'bib:'))">Bibliographic prefix is bib:</sch:report>
-                        </sch:rule>
+                        
                         <sch:rule context="@who">
                             <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
                         </sch:rule>
@@ -148,14 +143,22 @@
                             > Divs other than @type=textpart may not nest in divs of different @type
                             </sch:report>
                             <sch:report
-                            test="count(@type='textpart'[parent::tei:div/@type='edition'] eq 1"> At least two divs
+                                test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"> At least two divs
                             @type=textpart are expected in the edition</sch:report>
                                 <sch:report test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) != count(tei:div[@type='textpart'][parent::tei:div/@type='apparatus'])">The textpart structure in edition and in apparatus must be identical.</sch:report>
                                 <sch:report test="@type='translation' and not(@xml:lang)">@xml:lang is mandotory on div[@type='translation']</sch:report>
                                 <sch:report test="@type='translation' and @resp and @source">@resp and @source can not be used together</sch:report>
                                 <sch:report test="@type='translation' and not(@resp or @source)">@resp or @source is expected for div[@type='translation']</sch:report>
-                                <sch:report test="@type='translation' and not(child::tei:note[@type='credit'])">Only note[@type='credit'] is allowed inside the div[@type='translation']</sch:report>
-                            </sch:rule></constraint>
+                                
+                            </sch:rule>
+                            <sch:rule context="tei:div[@source]">
+                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
+                            </sch:rule>
+                            <sch:rule context="tei:div[@resp]">
+                                <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
+                            </sch:rule>
+                            
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="type" mode="change" usage="req">
@@ -188,7 +191,6 @@
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="sample" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
-                        <attDef ident="source" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
@@ -285,9 +287,12 @@
                             >gap may not appear within supplied text</sch:report><sch:report
                             test="@precision and not(@quantity)">@precision can be use only with
                             @quantity</sch:report>
-                            <sch:report test="@reason='ellipsis' and not(ancestor::tei:div[@type='aparatus'])"> The element gap with @reason='ellipsis' can only be used inside the apparatus.</sch:report>
-                            <sch:report test="ancestor::tei:div[@type='aparatus'] and not(@reason)">Only @reason is mandatory in div[@type='translation']</sch:report>
+                                                        <sch:report test="ancestor::tei:div[@type='aparatus'] and not(@reason)">Only @reason is mandatory in div[@type='translation']</sch:report>
                         </sch:rule>
+                            <sch:rule context="tei:gap[@reason='ellipsis']">
+                                <sch:report test="not(ancestor::tei:div[@type='apparatus'] or ancestor::tei:div[@type='translation'])"> The element gap with @reason='ellipsis' can only be used inside the apparatus or in translation.</sch:report>
+                                
+                            </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <!-- constraining values of gap/@reason -->
@@ -955,7 +960,7 @@
                     <constraintSpec scheme="schematron" ident="siglum">
                         <constraint>
                             <sch:rule context="tei:bibl">
-                                <sch:report test="@type='primary' and not(@n)">@n mandatory in the primary bibliography to declare sigla</sch:report>
+                                <sch:report test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in the primary bibliography to declare sigla</sch:report>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -1100,6 +1105,13 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="change" module="header" mode="change">
+                     <constraintSpec scheme="schematron" ident="responsability">
+                         <constraint>
+                             <sch:rule context="tei:change[@who]">
+                                 <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
+                             </sch:rule>
+                         </constraint>
+                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -1159,9 +1171,12 @@
                 </elementSpec>
                 <elementSpec ident="choice" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="unclear-limit">
-                        <constraint><sch:rule context="tei:choice"><sch:report
-                            test="not(count(child::tei:unclear) eq 2)">Choice can contained only two
-                            unclear elements</sch:report></sch:rule></constraint>
+                        <constraint>
+                            <sch:rule context="tei:choice">
+                                <sch:report
+                            test="child::tei:unclear and count(child::tei:unclear) != 2">Choice can contained only two
+                            unclear elements</sch:report>
+                            </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1746,9 +1761,9 @@
                 </elementSpec>
                 <elementSpec ident="head" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="head-childs">
-                        <constraint><sch:rule context="tei:head"><sch:report
+                        <constraint><sch:rule context="tei:head"><sch:assert
                             test="not(child::tei:foreign)">Foreign is the only element allowed as
-                            child of the element head</sch:report></sch:rule></constraint>
+                            child of the element head</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2489,9 +2504,16 @@
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint>
                             <sch:rule context="tei:note">
-                                <sch:report test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'])">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
-                                <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)">Inside div[@type='commentray', note should be wrapped inside a p element</sch:report>
-                                <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus', note should be wrapped inside an app element</sch:report>
+                                <sch:report test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader)">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
+                                <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)">Inside div[@type='commentary'], note should be wrapped inside a p element</sch:report>
+                                <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus'], note should be wrapped inside an app element</sch:report>
+                                <sch:report test="ancestor::tei:div[@type='translation'] and not(@type='credit')">Only note[@type='credit'] is allowed inside the div[@type='translation']</sch:report>
+                            </sch:rule>
+                                <sch:rule context="tei:note[@source]">
+                                    <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
+                                </sch:rule>
+                            <sch:rule context="tei:note[@resp]">
+                                <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -2715,8 +2737,8 @@
                 <elementSpec ident="persName" module="namesdates" mode="change">
                     <constraintSpec scheme="schematron" ident="reference">
                         <constraint>                        
-                            <sch:rule context="tei:persName">
-                            <sch:report test="not(matches(tei:persName[@ref],'part:') ">Project members prefex is part:</sch:report>
+                            <sch:rule context="tei:persName[@ref][ancestor::tei:teiHeader]">
+                            <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -2816,6 +2838,13 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="ptr" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="target">
+                        <constraint>
+                            <sch:rule context="tei:ptr[@target]">
+                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
+                            </sch:rule>
+                        </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cRef" mode="delete"/>
@@ -2947,6 +2976,9 @@
                                 <sch:report test="child::tei:ab">The element ab is not allowed in rdg</sch:report>
                                 <sch:report test="child::tei:lg">The element lg is not allowed in rdg</sch:report>
                                 <sch:report test="child::tei:l">The element l is not allowed in rdg</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:rdg[@source]">
+                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -3882,6 +3914,9 @@
                                 <sch:report test="child::tei:ab">The element ab is not allowed in lem</sch:report>
                                 <sch:report test="child::tei:lg">The element lg is not allowed in lem</sch:report>
                                 <sch:report test="child::tei:l">The element l is not allowed in lem</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:lem[@source]">
+                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
