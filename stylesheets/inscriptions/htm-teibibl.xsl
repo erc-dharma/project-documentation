@@ -155,8 +155,12 @@ bibliography. All examples only cater for book and article.
 									<xsl:choose>
 										<xsl:when test="@rend='omitname' and $leiden-style = 'dharma'">
 											<xsl:value-of select="document($zoteroapitei)//t:imprint/t:date"/>
-											<xsl:text>: </xsl:text>
 										</xsl:when>
+										<xsl:when test="@rend='ibid'">
+											<xsl:element name="i">
+										<xsl:text>ibid.</xsl:text>
+										</xsl:element>
+									</xsl:when>
 										<xsl:otherwise>
 									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
 								</xsl:otherwise>
