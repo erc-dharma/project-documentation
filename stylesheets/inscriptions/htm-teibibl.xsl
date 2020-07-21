@@ -55,6 +55,7 @@ bibliography. All examples only cater for book and article.
 		<xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroNS" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroStyle" tunnel="yes" required="no"/>
+		<xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
 
 
 		<xsl:choose>
@@ -143,9 +144,7 @@ bibliography. All examples only cater for book and article.
 
 
 								<a href="{$pointerurl}">
-
 									<xsl:variable name="citation">
-
 										<xsl:analyze-string select="$unparsedtext"
 											regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
 											<xsl:matching-substring>
@@ -153,8 +152,16 @@ bibliography. All examples only cater for book and article.
 											</xsl:matching-substring>
 										</xsl:analyze-string>
 									</xsl:variable>
+									<xsl:choose>
+										<xsl:when test="@rend='omitname' and $leiden-style = 'dharma'">
+											<xsl:value-of select="document($zoteroapitei)//t:imprint/t:date"/>
+											<xsl:text>: </xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
 									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
-								</a>
+								</xsl:otherwise>
+							</xsl:choose>
+						</a>
 								<xsl:if test="t:citedRange">
 									<xsl:text>, </xsl:text>
 									<xsl:for-each select="t:citedRange">
