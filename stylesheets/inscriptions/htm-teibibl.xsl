@@ -94,14 +94,14 @@ bibliography. All examples only cater for book and article.
 
 						</xsl:variable>
 							<!-- Debugging message-->
-						<xsl:message>zoteroapitei= <xsl:value-of select="$zoteroapitei"/></xsl:message>
+						<!--<xsl:message>zoteroapitei= <xsl:value-of select="$zoteroapitei"/></xsl:message>-->
 						<xsl:variable name="zoteroapijson">
 							<xsl:value-of
 								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
 							/>
 						</xsl:variable>
 							<!-- Debugging message-->
-					<xsl:message>zoteroapijson= <xsl:value-of select="$zoteroapijson"/></xsl:message>
+					<!--<xsl:message>zoteroapijson= <xsl:value-of select="$zoteroapijson"/></xsl:message>-->
 
 						<xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
 						<!--<xsl:variable name="zoteroitemKEY">
