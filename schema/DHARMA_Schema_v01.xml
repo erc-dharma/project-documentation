@@ -1914,7 +1914,7 @@
                             </valList>
                         </attDef>
                         <attDef ident="met" mode="change">
-                            <valList type="open" mode="replace">
+                            <valList type="closed" mode="replace">
                                 <valItem ident="sumānikā"/>
                                 <valItem ident="anuṣṭubh"/>
                                 <valItem ident="vegavatī"/>
@@ -2128,7 +2128,7 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="met" mode="change">
-                            <valList type="open" mode="replace">
+                            <valList type="closed" mode="replace">
                                 <valItem ident="sumānikā"/>
                                 <valItem ident="anuṣṭubh"/>
                                 <valItem ident="vegavatī"/>
@@ -3326,7 +3326,7 @@
                             </valList>
                         </attDef>
                         <attDef ident="met" mode="change">
-                            <valList type="open" mode="replace">
+                            <valList type="closed" mode="replace">
                                 <valItem ident="sumānikā"/>
                                 <valItem ident="anuṣṭubh"/>
                                 <valItem ident="vegavatī"/>
