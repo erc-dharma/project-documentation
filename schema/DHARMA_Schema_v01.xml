@@ -59,18 +59,7 @@
                     except="activity channel constitution derivation domain factuality interaction locale partieDesc                     preparedness purpose setting settingDesc textDesc"/>
                 <moduleRef key="dictionaries"
                     except="case colloc def dictScrap entry                     entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
-                <constraintSpec ident="source" scheme="schematron">
-                    <constraint>
-                        
-                        <sch:rule context="@who">
-                            <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
-                        </sch:rule>
-                        <sch:rule context="@resp">
-                            <sch:report test="not(matches(.,'part:'))">Project members prefex is part:</sch:report>
-                        </sch:rule>
-                        
-                    </constraint>
-                </constraintSpec>
+               
                 <!--        CHANGED ELEMENT SPECS        -->
                 <elementSpec ident="add" module="core" mode="change">
                     <attList>
@@ -151,11 +140,11 @@
                                 <sch:report test="@type='translation' and not(@resp or @source)">@resp or @source is expected for div[@type='translation']</sch:report>
                                 
                             </sch:rule>
-                            <sch:rule context="tei:div[@source]">
-                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
+                            <sch:rule context="@source">
+                                <sch:assert test="starts-with(.,'bib:')">Bibliographic prefix is bib:</sch:assert>
                             </sch:rule>
-                            <sch:rule context="tei:div[@resp]">
-                                <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
+                            <sch:rule context="@resp">
+                                <sch:assert test="starts-with(.,'part:')">Project members prefix is part:</sch:assert>
                             </sch:rule>
                             
                         </constraint>
@@ -1107,8 +1096,8 @@
                 <elementSpec ident="change" module="header" mode="change">
                      <constraintSpec scheme="schematron" ident="responsability">
                          <constraint>
-                             <sch:rule context="tei:change[@who]">
-                                 <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
+                             <sch:rule context="@who">
+                                 <sch:assert test="starts-with(.,'part:')">Project members prefix is part:</sch:assert>
                              </sch:rule>
                          </constraint>
                      </constraintSpec>
@@ -2509,12 +2498,6 @@
                                 <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus'], note should be wrapped inside an app element</sch:report>
                                 <sch:report test="ancestor::tei:div[@type='translation'] and not(@type='credit')">Only note[@type='credit'] is allowed inside the div[@type='translation']</sch:report>
                             </sch:rule>
-                                <sch:rule context="tei:note[@source]">
-                                    <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
-                                </sch:rule>
-                            <sch:rule context="tei:note[@resp]">
-                                <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
-                            </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -2737,8 +2720,8 @@
                 <elementSpec ident="persName" module="namesdates" mode="change">
                     <constraintSpec scheme="schematron" ident="reference">
                         <constraint>                        
-                            <sch:rule context="tei:persName[@ref][ancestor::tei:teiHeader]">
-                            <sch:assert test="not(starts-with(.,'part:'))">Project members prefix is part:</sch:assert>
+                            <sch:rule context="tei:persName/@ref[ancestor::tei:teiHeader]">
+                            <sch:assert test="starts-with(.,'part:')">Project members prefix is part:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -2840,8 +2823,8 @@
                 <elementSpec ident="ptr" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="target">
                         <constraint>
-                            <sch:rule context="tei:ptr[@target]">
-                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
+                            <sch:rule context="tei:ptr/@target">
+                                <sch:assert test="starts-with(.,'bib:')">Bibliographic prefix is bib:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -2976,9 +2959,6 @@
                                 <sch:report test="child::tei:ab">The element ab is not allowed in rdg</sch:report>
                                 <sch:report test="child::tei:lg">The element lg is not allowed in rdg</sch:report>
                                 <sch:report test="child::tei:l">The element l is not allowed in rdg</sch:report>
-                            </sch:rule>
-                            <sch:rule context="tei:rdg[@source]">
-                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -3914,9 +3894,6 @@
                                 <sch:report test="child::tei:ab">The element ab is not allowed in lem</sch:report>
                                 <sch:report test="child::tei:lg">The element lg is not allowed in lem</sch:report>
                                 <sch:report test="child::tei:l">The element l is not allowed in lem</sch:report>
-                            </sch:rule>
-                            <sch:rule context="tei:lem[@source]">
-                                <sch:assert test="not(starts-with(.,'bib:'))">Bibliographic prefix is bib:</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
