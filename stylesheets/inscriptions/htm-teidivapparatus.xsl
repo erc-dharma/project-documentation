@@ -259,7 +259,7 @@
         <xsl:text>• </xsl:text>
       </xsl:if>
         <xsl:apply-templates/>
-        <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
+<xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
           <xsl:text>• </xsl:text>
         </xsl:if>
         <xsl:if test="t:note/child::t:ptr">

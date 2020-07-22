@@ -4,7 +4,7 @@
    xmlns:t="http://www.tei-c.org/ns/1.0"
    exclude-result-prefixes="t" version="2.0">
 
-   <xsl:template match="t:choice">
+<xsl:template match="t:choice">
        <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:choose>
@@ -15,14 +15,14 @@
              <xsl:value-of select="translate(t:sic, $all-grc, $grc-upper-strip)"/>
             <xsl:text>&gt;</xsl:text>
          </xsl:when>
-          <xsl:when test="child::t:unclear[2] and not(child::t:reg or child::t:sic or child::t:corr or child::t:orig)">
-              <xsl:text>(</xsl:text>
-             <xsl:apply-templates select="child::t:unclear[1]"/>
-               <xsl:text>/</xsl:text>
-               <xsl:apply-templates select="child::t:unclear[2]"/>
-               <xsl:text>)</xsl:text>
-          </xsl:when>
-         <xsl:otherwise>
+         <xsl:when test="$leiden-style ='dharma' and child::t:unclear[2]">
+             <xsl:text>(</xsl:text>
+            <xsl:apply-templates select="child::t:unclear[1]"/>
+              <xsl:text>/</xsl:text>
+              <xsl:apply-templates select="child::t:unclear[2]"/>
+              <xsl:text>)</xsl:text>
+         </xsl:when>
+       <xsl:otherwise>
             <xsl:apply-templates/>
          </xsl:otherwise>
       </xsl:choose>

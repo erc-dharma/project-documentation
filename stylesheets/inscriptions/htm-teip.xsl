@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
-                version="2.0">
+   xmlns:t="http://www.tei-c.org/ns/1.0"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   exclude-result-prefixes="#all" version="2.0">
 
   <xsl:template match="t:p">
       <p>
@@ -21,7 +22,9 @@
      </div>
    </xsl:if>
          <xsl:apply-templates/>
+
       </p>
+
   </xsl:template>
 
 </xsl:stylesheet>

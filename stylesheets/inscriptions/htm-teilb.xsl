@@ -6,6 +6,15 @@
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    exclude-result-prefixes="#all" version="2.0">
    <!-- Actual display and increment calculation found in teilb.xsl -->
+   <!--
+Pb de lb[@break=no] entre deux textpart
+         <xsl:if test="$parm-leiden-style = 'dharma' and following::div[@type='textpart'][1]/descendant::lb[@break='no'][1]">
+           <xsl:if test="EDF:f-wwrap(.) = true()">
+              <xsl:text>- </xsl:text>
+           </xsl:if>
+         </xsl:if>
+           -->
+
    <xsl:import href="teilb.xsl"/>
 
    <xsl:template match="t:lb">
@@ -65,7 +74,7 @@
                   </xsl:when>
                   <xsl:otherwise>
                         <xsl:text>-</xsl:text>
-                  </xsl:otherwise>
+                      </xsl:otherwise>
                </xsl:choose>
             </xsl:if>
 

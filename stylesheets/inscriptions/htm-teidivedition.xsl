@@ -76,7 +76,8 @@
          </h3>
           <xsl:if test="child::*[1][self::t:div[@type='textpart'][@n]]"><br /></xsl:if>
       </xsl:if>
-      <xsl:apply-templates/>
+
+        <xsl:apply-templates/>
         <xsl:if test="$parm-internal-app-style = 'iospe' and @n">
            <!-- Template found in htm-tpl-apparatus.xsl -->
            <xsl:call-template name="tpl-iospe-apparatus"/>

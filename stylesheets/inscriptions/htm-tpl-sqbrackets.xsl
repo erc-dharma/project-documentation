@@ -108,7 +108,7 @@
       </xsl:variable>
 <!--([a-z\)\]])/[\n\r\s\t]', '$1/')-->
 <!-- ([a-z$&#62;\)\]])/[\n\r\s\t]([a-z$&#60;\(\[]+)-->
-<xsl:apply-templates select="replace($input, '([a-z\)\]&gt;])/[\n\r\s\t]([a-z\(\[&lt;]+)', '$1/$2')"/>
+<xsl:apply-templates select="replace($input, '([\S\)\]&gt;])/[\n\r\s\t]([\S\(\[&lt;]+)', '$1/$2')"/>
 
     </xsl:template>
 
