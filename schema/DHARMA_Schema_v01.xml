@@ -134,7 +134,7 @@
                             <sch:report
                                 test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"> At least two divs
                             @type=textpart are expected in the edition</sch:report>
-                                <sch:report test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) != count(tei:div[@type='textpart'][parent::tei:div/@type='apparatus'])">The textpart structure in edition and in apparatus must be identical.</sch:report>
+                                
                                 <sch:report test="@type='translation' and not(@xml:lang)">@xml:lang is mandotory on div[@type='translation']</sch:report>
                                 <sch:report test="@type='translation' and @resp and @source">@resp and @source can not be used together</sch:report>
                                 <sch:report test="@type='translation' and not(@resp or @source)">@resp or @source is expected for div[@type='translation']</sch:report>
@@ -146,7 +146,10 @@
                             <sch:rule context="@resp">
                                 <sch:assert test="starts-with(.,'part:')">Project members prefix is part:</sch:assert>
                             </sch:rule>
-                            
+                           
+                                    <sch:rule context="tei:body">
+                                        <sch:assert test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])">The textpart structure in edition and in apparatus must be identical.</sch:assert>
+                                    </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -1016,6 +1019,7 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="body" module="textstructure" mode="change">
+                    
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
