@@ -39,7 +39,37 @@
             </xsl:call-template>
          </xsl:when>
           <xsl:when test="$leiden-style ='dharma' and not(ancestor::t:choice)">
-              <xsl:text>(</xsl:text><xsl:value-of select="."/><xsl:text>)</xsl:text>
+            <!--<xsl:choose>
+              <xsl:when test="parent::t:hi[@rend='grantha']">
+              <xsl:element name="span">
+              <xsl:attribute name="class">notBold</xsl:attribute>
+              <xsl:text>(</xsl:text>
+            </xsl:element>
+          </xsl:when>
+              <xsl:otherwise><xsl:text>(</xsl:text></xsl:otherwise>
+            </xsl:choose>-->
+            <xsl:text>(</xsl:text>
+              <xsl:choose>
+                <xsl:when test="@rend='grantha' or child::t:hi[@rend='grantha']">
+                  <xsl:element name="b">
+                  <!--<xsl:attribute name="class">grantha</xsl:attribute>-->
+                  <xsl:value-of select="."/>
+                </xsl:element>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="."/>
+                </xsl:otherwise>
+              </xsl:choose>
+              <!--<xsl:choose>
+                <xsl:when test="parent::t:hi[@rend='grantha']">
+                <xsl:element name="span">
+                <xsl:attribute name="class">notBold</xsl:attribute>
+                <xsl:text>)</xsl:text>
+              </xsl:element>
+            </xsl:when>
+                <xsl:otherwise><xsl:text>)</xsl:text></xsl:otherwise>
+              </xsl:choose>-->
+              <xsl:text>)</xsl:text>
           </xsl:when>
 
          <xsl:otherwise>

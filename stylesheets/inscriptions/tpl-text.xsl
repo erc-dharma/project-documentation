@@ -57,14 +57,13 @@
             <xsl:if test="matches(.,'\s$') and not(following-sibling::t:*[1][self::t:lb[@break='no']])">
                <xsl:text> </xsl:text>
             </xsl:if>
+            <!--<xsl:if test="matches(.,'([a-z\)\]])/\s+([a-z\)\]])') and $parm-leiden-style='dharma'">
+              <xsl:value-of select="replace(., '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')" />
+            </xsl:if>-->
 
             <!-- not sure how to add it yet
-            ([a-z\)\]])/\s+([a-z\)\]])
+            ([a-z\)\]])/\s+([a-z\)\]])  -->
 
-            <xsl:template match="text()" >
-                <xsl:value-of select="replace(., '/\s+', '/')" />
-            </xsl:template>
-            -->
 
          </xsl:otherwise>
       </xsl:choose>
