@@ -41,7 +41,9 @@
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>The author-date variant of the Chicago style for the DHARMA project</summary>
-    <updated>2020-04-29</updated>
+    <updated>2020-07-21</updated>
+    <!-- Changes v01 : display the the date ranges
+        Changes v01.1: deleting the "Vol." the content  -->
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="en">
@@ -324,8 +326,10 @@
       <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
         <group prefix=". " delimiter=". ">
           <group>
-            <text term="volume" form="short" text-case="capitalize-first" suffix=" "/>
-            <number variable="volume" form="numeric"/>
+            <!-- Deleted the Vol. display -->
+            <!--<text term="volume" text-case="capitalize-first" suffix=" "/>
+            <number variable="volume" form="numeric"/>-->
+            <text variable="volume" font-style="italic"/>
           </group>
           <group>
             <number variable="number-of-volumes" form="numeric"/>
