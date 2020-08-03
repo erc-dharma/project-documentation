@@ -188,9 +188,14 @@
         <xsl:value-of select="translate(@loc, ' ', '.')"/>
         <xsl:text>)</xsl:text>
       </xsl:if>-->
-      <xsl:if test="child::t:lem/t:lb and @loc != child::t:lem/t:lb/@n">
+      <!-- Changing the numbering process since @n is deleted from the lemma fro declutering purposes. -->
+      <!--  <xsl:if test="child::t:lem/t:lb and @loc != child::t:lem/t:lb/@n">
         <xsl:text>–</xsl:text>
         <xsl:value-of select="child::t:lem/t:lb/@n"/>
+      </xsl:if>-->
+      <xsl:if test="child::t:lem/t:lb">
+        <xsl:text>-</xsl:text>
+        <xsl:value-of select="number(sum(@loc+1))"/>
       </xsl:if>
       <!--<xsl:text>)</xsl:text>-->
     </sup>
