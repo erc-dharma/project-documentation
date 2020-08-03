@@ -2500,7 +2500,6 @@
                                 <sch:report test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader)">Note is prohibited in div[@type='edition'] and in div[@type='bibliography']</sch:report>
                                 <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)">Inside div[@type='commentary'], note should be wrapped inside a p element</sch:report>
                                 <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus'], note should be wrapped inside an app element</sch:report>
-                                <sch:report test="ancestor::tei:div[@type='translation'] and not(@type='credit')">Only note[@type='credit'] is allowed inside the div[@type='translation']</sch:report>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
