@@ -445,16 +445,16 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="n" mode="change" usage="req">
+                        <attDef ident="n" mode="change" usage="opt">
                             <!-- Adding some schematron to make sure the value of @n is unique -->
-                            <constraintSpec scheme="schematron" ident="uniquenessOfAttN">
+                            <!--<constraintSpec scheme="schematron" ident="uniquenessOfAttN">
                                 <constraint><sch:rule
                                     context="tei:lb[ancestor::tei:div/@type='edition']"><sch:report
                                     test="count(tei:lb[@n]) != count(distinct-values(tei:lb[@n]))"
                                     > The content of the attribute @n for the element line
                                     beginnning must be unique in all the edition division.
                                     </sch:report></sch:rule></constraint>
-                            </constraintSpec>
+                            </constraintSpec>-->
                         </attDef>
                         <attDef ident="rend" mode="change">
                             <datatype minOccurs="1" maxOccurs="1">
