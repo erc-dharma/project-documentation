@@ -278,7 +278,14 @@
                             context="tei:gap[@reason='ellipsis']"><sch:report
                             test="not(ancestor::tei:div[@type='apparatus'] or ancestor::tei:div[@type='translation'])"
                             > The element gap with @reason='ellipsis' can only be used inside the
-                            apparatus or in translation.</sch:report></sch:rule></constraint>
+                            apparatus or in translation.</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:gap[@unit='component']">
+                            <sch:assert test="parent::tei:seg[@type='component']">Gap with the attribute @unit="component" can only be used inside seg with the @type="component". </sch:assert>
+                        </sch:rule>
+                            <sch:rule context="tei:gap[@unit='line' and @quantity] ">
+                                <sch:assert test="@precision='low' or child::tei:certainty">The element gap with @quantity and @unit="line" expect either the use of @precision="low" or the element certainty.</sch:assert>
+                            </sch:rule></constraint>
                     </constraintSpec>
                     <!-- constraining values of gap/@reason -->
                     <attList>
