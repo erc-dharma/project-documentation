@@ -111,7 +111,7 @@
      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
-      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
+      <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>[</xsl:text>
       </xsl:if>
 
@@ -123,19 +123,20 @@
       </xsl:if>
 
       <xsl:choose>
-         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real] and not(@unit='component')">
+         <xsl:when test="$parm-verse-lines='on' and not(@unit='component')">
             <xsl:call-template name="verse-string"/>
          </xsl:when>
          <xsl:otherwise>
-      <xsl:if
+  <!--  <xsl:if
          test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='undefined']]])
          and not(preceding::node()[1][self::t:gap[@reason='undefined']])">
          <xsl:call-template name="extent-string"/>
-      </xsl:if>
+      </xsl:if>-->
+      <xsl:call-template name="extent-string"/>
       </xsl:otherwise>
       </xsl:choose>
 
-      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
+      <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>]</xsl:text>
       </xsl:if>
    </xsl:template>
@@ -144,7 +145,7 @@
      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
      <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
-      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
+      <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>[</xsl:text>
       </xsl:if>
 
@@ -156,19 +157,20 @@
       </xsl:if>
 
       <xsl:choose>
-         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real] and not(@unit='component')">
+         <xsl:when test="$parm-verse-lines='on' and not(@unit='component')">
             <xsl:call-template name="verse-string"/>
          </xsl:when>
          <xsl:otherwise>
-      <xsl:if
+    <!--  <xsl:if
          test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='illegible']]])
          and not(preceding::node()[1][self::t:gap[@reason='illegible']])">
          <xsl:call-template name="extent-string"/>
-      </xsl:if>
+      </xsl:if>-->
+      <xsl:call-template name="extent-string"/>
       </xsl:otherwise>
       </xsl:choose>
 
-      <xsl:if test="$parm-leiden-style = 'dharma' and not(@unit='component')">
+      <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>]</xsl:text>
       </xsl:if>
    </xsl:template>
@@ -191,7 +193,7 @@
            but this function is now performed by regex in [htm|txt]-tpl-sqbrackets.xsl
            which is called after all other templates are completed.
         -->
-            <xsl:if test="not(@unit='component') and $parm-leiden-style = 'dharma'">
+            <xsl:if test="$parm-leiden-style = 'dharma'">
             <xsl:text>[</xsl:text>
           </xsl:if>
          </xsl:otherwise>
@@ -202,16 +204,17 @@
       </xsl:if>
 
       <xsl:choose>
-         <xsl:when test="$parm-verse-lines='on' and parent::t:seg[@met or @real] and not(@unit='component')">
+         <xsl:when test="$parm-verse-lines='on' and not(@unit='component')">
             <xsl:call-template name="verse-string"/>
          </xsl:when>
          <xsl:otherwise>
             <!-- Don't display again if there is a preceding adjecent gap of the same kind -->
-            <xsl:if
+            <!--<xsl:if
                test="not(preceding::node()[1][self::text()][normalize-space(.)=''][preceding-sibling::node()[1][self::t:gap[@reason='lost']]])
                and not(preceding::node()[1][self::t:gap[@reason='lost']])">
                <xsl:call-template name="extent-string"/>
-            </xsl:if>
+            </xsl:if>-->
+            <xsl:call-template name="extent-string"/>
          </xsl:otherwise>
       </xsl:choose>
 
@@ -247,7 +250,7 @@
            but this function is now performed by regex in [htm|txt]-tpl-sqbrackets.xsl
            which is called after all other templates are completed.
         -->
-        <xsl:if test="not(@unit='component') and $parm-leiden-style = 'dharma'">
+        <xsl:if test="$parm-leiden-style = 'dharma'">
         <xsl:text>]</xsl:text>
       </xsl:if>
          </xsl:otherwise>
@@ -269,10 +272,12 @@
                (@precision='low' or (@unit='character' and number(@quantity) &gt; $cur-max))">
                <xsl:text>ca.</xsl:text>
             </xsl:when>
-            <xsl:when
-               test="$parm-leiden-style = 'dharma' and @precision='low'">
-               <xsl:text>ca. </xsl:text>
-            </xsl:when>
+            <xsl:when test="$parm-leiden-style ='dharma' and @precision='low' and @unit='character'">
+            <xsl:text>?</xsl:text>
+          </xsl:when>
+          <xsl:when test="$parm-leiden-style ='dharma' and @precision='low' and @unit='line'">
+          <xsl:text>ca. </xsl:text>
+        </xsl:when>
             <xsl:when test="@precision='low' and not(starts-with($parm-leiden-style, 'edh'))">
                <xsl:text>c. </xsl:text>
             </xsl:when>
@@ -341,7 +346,7 @@
                      <!-- lines lost -->
                      <xsl:when test="@reason and @unit='line'">
                         <xsl:text>unknown number of lines</xsl:text>
-                        <xsl:if test="child::t:certainty[@match='..']">
+                        <xsl:if test="child::t:certainty">
                            <xsl:text> possibly</xsl:text>
                         </xsl:if>
                         <xsl:if test="@reason='lost'">
@@ -555,7 +560,7 @@
                       <xsl:if test="number(@quantity) &gt; 1">
                          <xsl:text>s</xsl:text>
                       </xsl:if>
-                      <xsl:if test="child::t:certainty[@match='..']">
+                      <xsl:if test="child::t:certainty">
                          <xsl:text> possibly</xsl:text>
                       </xsl:if>
                       <xsl:text> lost</xsl:text>
@@ -567,7 +572,7 @@
                       <xsl:if test="number(@quantity) &gt; 1">
                          <xsl:text>s</xsl:text>
                       </xsl:if>
-                      <xsl:if test="child::t:certainty[@match='..']">
+                      <xsl:if test="child::t:certainty">
                          <xsl:text> possibly</xsl:text>
                       </xsl:if>
                       <xsl:text> illegible</xsl:text>
@@ -670,17 +675,6 @@
             </xsl:choose>
          </xsl:when>
 
-         <xsl:when test="@unit='component' and $parm-leiden-style='dharma'">
-           <xsl:choose>
-           <xsl:when test="not(parent::t:seg[@met]) and parent::t:seg[@subtype='vowel']">
-             <xsl:text>⏓</xsl:text>
-           </xsl:when>
-           <xsl:otherwise>
-           <xsl:text>*</xsl:text>
-         </xsl:otherwise>
-         </xsl:choose>
-         </xsl:when>
-
          <xsl:otherwise>
             <xsl:choose>
                <xsl:when
@@ -693,7 +687,14 @@
                   <xsl:text>6</xsl:text>
                </xsl:when>
                <xsl:when test="$parm-leiden-style ='dharma'">
+                 <xsl:choose>
+                 <xsl:when test="@unit='component'">
+                   <xsl:text>.</xsl:text>
+                 </xsl:when>
+                 <xsl:otherwise>
                  <xsl:text>...</xsl:text>
+                 </xsl:otherwise>
+               </xsl:choose>
                </xsl:when>
                <xsl:otherwise>
                   <xsl:value-of select="$cur-dot"/>
