@@ -41,21 +41,28 @@
          <body>
             <h1>
               <xsl:value-of select="//t:teiHeader//t:title"/>
-              <xsl:text> (</xsl:text>
-              <xsl:value-of select="//t:idno[@type='filename']"/>
-              <xsl:text>) 🇧🇪 🍺</xsl:text>
+              <xsl:text> 🇧🇪 🍺</xsl:text>
 
             </h1>
 
             <xsl:element name="div">
           <xsl:attribute name="id">metadatadiv</xsl:attribute>
         <h2>Metadata</h2>
+        <xsl:if test="//t:idno[@type='filename']">
+          <xsl:element name="p">
+        <xsl:text>Identifier: </xsl:text>
+        <xsl:value-of select="replace(//t:idno[@type='filename'], 'DHARMA_', '')"/>
+        </xsl:element>
+      </xsl:if>
            <xsl:if test="//t:teiHeader/t:fileDesc/t:sourceDesc/t:msDesc/t:msContents/t:summary">
+             <xsl:element name="p">
              <xsl:text>Summary: </xsl:text>
               <xsl:value-of select="//t:teiHeader/t:fileDesc/t:sourceDesc/t:msDesc/t:msContents/t:summary"/>
+            </xsl:element>
            </xsl:if>
            <xsl:if test="//t:teiHeader/t:fileDesc/t:sourceDesc/t:msDesc/t:physDesc/t:handDesc">
-             <p><xsl:text>Hands: </xsl:text>
+            <xsl:element name="p">
+              <xsl:text>Hands: </xsl:text>
              <xsl:choose>
                <xsl:when test="//t:handDesc/t:handNote/t:p">
                  <xsl:value-of select="//t:handDesc/t:handNote/t:p"/>
@@ -64,7 +71,7 @@
                    <xsl:value-of select="//t:handDesc/t:p"/>
                  </xsl:when>
              </xsl:choose>
-             </p>
+           </xsl:element>
            </xsl:if>
       </xsl:element>
             <xsl:call-template name="dharma-body-structure" />
@@ -76,16 +83,6 @@
    <xsl:template name="dharma-title">
          <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
          <xsl:choose>
-            <xsl:when test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch')">
-               <xsl:choose>
-                  <xsl:when test="//t:sourceDesc//t:bibl/text()">
-                     <xsl:value-of select="//t:sourceDesc//t:bibl"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                     <xsl:value-of select="//t:idno[@type='filename']"/>
-                  </xsl:otherwise>
-               </xsl:choose>
-            </xsl:when>
             <xsl:when test="//t:titleStmt/t:title/text()">
                <xsl:if test="//t:idno[@type='filename']/text()">
                   <xsl:value-of select="//t:idno[@type='filename']"/>
@@ -94,7 +91,7 @@
                <xsl:value-of select="//t:titleStmt/t:title"/>
             </xsl:when>
             <xsl:otherwise>
-               <xsl:text>EpiDoc example output, default style</xsl:text>
+               <xsl:text>EpiDoc encoding inscription output, ERC-DHARMA</xsl:text>
             </xsl:otherwise>
          </xsl:choose>
       </xsl:template>
