@@ -533,11 +533,19 @@
                 <elementSpec ident="space" module="transcr" mode="change">
                     <!-- testing for <space> with both quantity/extent or no unit -->
                     <constraintSpec ident="space" scheme="isoschematron">
-                        <constraint><sch:rule context="tei:space"><sch:report
+                        <constraint>
+                            <sch:rule context="tei:space">
+                                <!--<sch:report
                             test="@quantity and @extent">space may have @quantity (a figure) or
-                            @extent (a descriptive text value) but not both</sch:report><sch:report
+                            @extent (a descriptive text value) but not both</sch:report>-->
+                                <sch:report
                             test="@quantity and not(@unit)">If space has @quantity then @unit is
-                            required</sch:report></sch:rule></constraint>
+                            required</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:space">
+                                <sch:assert test="@type='binding-hole' or @type='descender' or @type='ascender' and @quantity and @unit">Space can't have @quantity and @unit attributes with @type='binding-hole' or @type='descender' or @type='ascender', the only @type possible is @type='defect'.</sch:assert>
+                            </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
