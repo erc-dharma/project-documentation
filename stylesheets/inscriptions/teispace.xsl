@@ -3,7 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0"
    xmlns:EDF="http://epidoc.sourceforge.net/ns/functions"
-  
+
    exclude-result-prefixes="t EDF" version="2.0">
    <!-- Found in [htm|txt]-teispace.xsl -->
 
@@ -78,12 +78,12 @@
                            <xsl:text>s</xsl:text>
                         </xsl:if>
                      </xsl:if>
-                  
+
                   <xsl:if test="child::t:certainty[@match='..']">
                      <xsl:text>(?)</xsl:text>
                   </xsl:if>
                </xsl:when>
-               
+
                 <xsl:when test="$parm-leiden-style='london'">
                   <xsl:choose>
                      <xsl:when test="@extent = 'unknown'">
@@ -223,11 +223,44 @@
                      </xsl:when>
                      <xsl:when test="@unit='line'">
                         <i>vacat</i>
-                     </xsl:when>                
+                     </xsl:when>
                   </xsl:choose>
                   <xsl:if test="@cert='low'">
                      <i>?</i>
                   </xsl:if>
+               </xsl:when>
+               <xsl:when test="$parm-edn-structure = 'dharma'">
+                 <xsl:choose>
+                   <xsl:when test="@quantity and @unit='character'">
+                     <xsl:choose>
+                       <xsl:when test="@type='defect'">
+                         <xsl:text>□</xsl:text>
+                         <xsl:value-of select="@quantity"/>
+                         <xsl:text>□</xsl:text>
+                       </xsl:when>
+                       <xsl:otherwise>
+                         <xsl:text>_</xsl:text>
+                         <xsl:value-of select="@quantity"/>
+                         <xsl:text>_</xsl:text>
+                       </xsl:otherwise>
+                     </xsl:choose>
+                   </xsl:when>
+                   <xsl:when test="@type='binding-hole'">
+                     <xsl:text>◯</xsl:text>
+                   </xsl:when>
+                   <xsl:when test="@type='defect'">
+                   <xsl:text>□</xsl:text>
+                 </xsl:when>
+                 <xsl:when test="@type='descender'">
+                   <xsl:text>⊔</xsl:text>
+                 </xsl:when>
+                 <xsl:when test="@type='ascender'">
+                 <xsl:text>⊓</xsl:text>
+               </xsl:when>
+               <xsl:otherwise>
+               <xsl:text>_</xsl:text>
+             </xsl:otherwise>
+                 </xsl:choose>
                </xsl:when>
 
                <xsl:otherwise>
