@@ -71,6 +71,7 @@
               </xsl:choose>-->
               <xsl:text>)</xsl:text>
           </xsl:when>
+          <xsl:when test="$leiden-style ='dharma' and ancestor::t:choice"/>
 
          <xsl:otherwise>
             <xsl:choose>
