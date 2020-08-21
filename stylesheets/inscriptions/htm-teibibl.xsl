@@ -193,6 +193,15 @@ bibliography. All examples only cater for book and article.
 										</xsl:for-each>
 										<xsl:text>.</xsl:text>
 									</xsl:if>
+										<!--<xsl:if test="child::t:note">
+											<xsl:text> • </xsl:text>
+											<xsl:value-of select="child::t:note"/>
+										</xsl:if>-->
+
+									<!--<xsl:if test="following-sibling::t:note">
+									<xsl:text> • </xsl:text>
+									<xsl:value-of select="following-sibling::t:note"/>
+								</xsl:if>-->
 									</xsl:element>
 									<xsl:if test="ancestor::t:listBibl and ancestor-or-self::t:bibl/@n"> <!-- [@type='primary'] -->
 									<xsl:element name="span">
