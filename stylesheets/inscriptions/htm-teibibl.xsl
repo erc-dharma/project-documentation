@@ -181,6 +181,10 @@ bibliography. All examples only cater for book and article.
 									</xsl:if>
 									</xsl:for-each>
 								</xsl:if>
+								<!-- Display for t:cit  -->
+								<xsl:if test="following::t:quote[1] and ancestor::t:cit">
+								<xsl:text>: </xsl:text>
+							</xsl:if>
 							</xsl:when>
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
