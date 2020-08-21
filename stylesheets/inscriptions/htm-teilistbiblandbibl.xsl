@@ -13,7 +13,7 @@
       <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
     </h3>
   </xsl:if>
-  <xsl:apply-templates mode="app-dharma"/>
+  <xsl:apply-templates mode="dharma"/>
       </ul>
     </xsl:if>
   </xsl:template>
@@ -22,7 +22,7 @@
 <!-- To be investigted-->
   <xsl:template match="t:listBibl//t:bibl">
       <li>
-         <xsl:apply-templates mode="app-dharma"/>
+         <xsl:apply-templates mode="dharma"/>
       </li>
   </xsl:template>
 

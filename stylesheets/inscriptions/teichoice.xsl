@@ -17,9 +17,9 @@
          </xsl:when>
          <xsl:when test="$leiden-style ='dharma' and child::t:unclear[2]">
              <xsl:text>(</xsl:text>
-            <xsl:apply-templates select="child::t:unclear[1]" mode="app-dharma"/>
+            <xsl:apply-templates select="child::t:unclear[1]" mode="dharma"/>
               <xsl:text>/</xsl:text>
-              <xsl:apply-templates select="child::t:unclear[2]" mode="app-dharma"/>
+              <xsl:apply-templates select="child::t:unclear[2]" mode="dharma"/>
               <xsl:text>)</xsl:text>
     </xsl:when>
        <xsl:otherwise>

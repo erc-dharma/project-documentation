@@ -267,10 +267,10 @@
                 <xsl:text>• </xsl:text>
               </xsl:if>
               <xsl:if test="t:note/child::t:ptr">
-                <xsl:apply-templates select="@target" mode="app-dharma"/>
+                <xsl:apply-templates select="@target" mode="dharma"/>
               </xsl:if>
             </xsl:if>
-      <xsl:apply-templates mode="app-dharma"/>
+      <xsl:apply-templates mode="dharma"/>
     </span>
   </xsl:template>
 

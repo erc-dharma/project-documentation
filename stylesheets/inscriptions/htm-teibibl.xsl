@@ -48,7 +48,7 @@ bibliography. All examples only cater for book and article.
 
 	-->
 
-	<xsl:template match="t:bibl" priority="1" mode="app-dharma">
+	<xsl:template match="t:bibl" priority="1" mode="dharma">
 		<xsl:param name="parm-bib" tunnel="yes" required="no"/>
 		<xsl:param name="parm-bibloc" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
