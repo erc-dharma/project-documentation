@@ -7,11 +7,42 @@
 
    <!-- Called from htm-tpl-structure.xsl -->
 
+<xsl:template match="t:teiHeader//t:foreign" mode="dharma"><i><xsl:apply-templates/></i></xsl:template>
+
    <xsl:template name="dharma-body-structure">
      <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
-     <xsl:variable name="maintxt">
-       <xsl:apply-templates/>
-    </xsl:variable>
+                <xsl:element name="div">
+              <xsl:attribute name="id">metadatadiv</xsl:attribute>
+            <h2>Metadata</h2>
+            <xsl:if test="//t:idno[@type='filename']">
+              <xsl:element name="p">
+            <xsl:text>Identifier: </xsl:text>
+            <xsl:value-of select="replace(//t:idno[@type='filename'], 'DHARMA_', '')"/>
+            </xsl:element>
+          </xsl:if>
+               <xsl:if test="//t:msContents//text()">
+                 <xsl:element name="p">
+                 <xsl:text>Summary: </xsl:text>
+                  <xsl:apply-templates select="//t:msContents/t:summary" mode="dharma"/>
+                </xsl:element>
+               </xsl:if>
+               <xsl:if test="//t:handDesc//text()">
+                <xsl:element name="p">
+                  <xsl:text>Hands: </xsl:text>
+                 <xsl:choose>
+                   <xsl:when test="//t:handDesc/t:handNote/t:p">
+                     <xsl:apply-templates select="//t:handDesc/t:handNote/t:p" mode="dharma"/>
+                   </xsl:when>
+                   <xsl:when test="//t:handDesc/t:p">
+                       <xsl:apply-templates select="//t:handDesc/t:p" mode="dharma"/>
+                     </xsl:when>
+                 </xsl:choose>
+               </xsl:element>
+               </xsl:if>
+          </xsl:element>
+          <xsl:variable name="maintxt">
+            <xsl:apply-templates/>
+         </xsl:variable>
      <!-- Moded templates found in htm-tpl-sqbrackets.xsl -->
      <xsl:variable name="maintxt2">
      <xsl:apply-templates select="$maintxt" mode="sqbrackets"/>
@@ -42,43 +73,11 @@
             <h1>
               <xsl:value-of select="//t:teiHeader//t:title"/>
               <xsl:text> 🇧🇪 🍺</xsl:text>
-
             </h1>
-
-            <xsl:element name="div">
-          <xsl:attribute name="id">metadatadiv</xsl:attribute>
-        <h2>Metadata</h2>
-        <xsl:if test="//t:idno[@type='filename']">
-          <xsl:element name="p">
-        <xsl:text>Identifier: </xsl:text>
-        <xsl:value-of select="replace(//t:idno[@type='filename'], 'DHARMA_', '')"/>
-        </xsl:element>
-      </xsl:if>
-           <xsl:if test="//t:teiHeader/t:fileDesc/t:sourceDesc/t:msDesc/t:msContents/t:summary">
-             <xsl:element name="p">
-             <xsl:text>Summary: </xsl:text>
-              <xsl:value-of select="//t:teiHeader/t:fileDesc/t:sourceDesc/t:msDesc/t:msContents/t:summary"/>
-            </xsl:element>
-           </xsl:if>
-           <xsl:if test="//t:teiHeader/t:fileDesc/t:sourceDesc/t:msDesc/t:physDesc/t:handDesc">
-            <xsl:element name="p">
-              <xsl:text>Hands: </xsl:text>
-             <xsl:choose>
-               <xsl:when test="//t:handDesc/t:handNote/t:p">
-                 <xsl:value-of select="//t:handDesc/t:handNote/t:p"/>
-               </xsl:when>
-               <xsl:when test="//t:handDesc/t:p">
-                   <xsl:value-of select="//t:handDesc/t:p"/>
-                 </xsl:when>
-             </xsl:choose>
-           </xsl:element>
-           </xsl:if>
-      </xsl:element>
-            <xsl:call-template name="dharma-body-structure" />
+            <xsl:call-template name="dharma-body-structure"/>
          </body>
       </html>
    </xsl:template>
-
 
    <xsl:template name="dharma-title">
          <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
@@ -95,5 +94,8 @@
             </xsl:otherwise>
          </xsl:choose>
       </xsl:template>
+
+
+
 
    </xsl:stylesheet>
