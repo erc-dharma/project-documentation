@@ -48,7 +48,7 @@ bibliography. All examples only cater for book and article.
 
 	-->
 
-	<xsl:template match="t:bibl" priority="1" mode="app-dharma">
+	<xsl:template match="t:bibl" priority="1">
 		<xsl:param name="parm-bib" tunnel="yes" required="no"/>
 		<xsl:param name="parm-bibloc" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
@@ -161,14 +161,8 @@ bibliography. All examples only cater for book and article.
 										<xsl:text>ibid.</xsl:text>
 										</xsl:element>
 									</xsl:when>
-									<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
-										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
-										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
-												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
-											</xsl:if>
-									</xsl:when>
 										<xsl:otherwise>
-											<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9]+)[\)]+$', '($1)')"/>
+									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</a>
@@ -181,10 +175,6 @@ bibliography. All examples only cater for book and article.
 									</xsl:if>
 									</xsl:for-each>
 								</xsl:if>
-								<!-- Display for t:cit  -->
-								<xsl:if test="following::t:quote[1] and ancestor::t:cit">
-								<xsl:text>: </xsl:text>
-							</xsl:if>
 							</xsl:when>
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
@@ -203,15 +193,6 @@ bibliography. All examples only cater for book and article.
 										</xsl:for-each>
 										<xsl:text>.</xsl:text>
 									</xsl:if>
-										<!--<xsl:if test="child::t:note">
-											<xsl:text> • </xsl:text>
-											<xsl:value-of select="child::t:note"/>
-										</xsl:if>-->
-
-									<!--<xsl:if test="following-sibling::t:note">
-									<xsl:text> • </xsl:text>
-									<xsl:value-of select="following-sibling::t:note"/>
-								</xsl:if>-->
 									</xsl:element>
 									<xsl:if test="ancestor::t:listBibl and ancestor-or-self::t:bibl/@n"> <!-- [@type='primary'] -->
 									<xsl:element name="span">

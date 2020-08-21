@@ -70,7 +70,7 @@
                 </xsl:choose>
 
             </xsl:when>
-            <xsl:when test="$firstletter = '(' or $lastletter = ')'">
+           <xsl:when test="$firstletter = '(' or $lastletter = ')'">
                 <xsl:variable name="previous" select="preceding::text()[1]" />
                 <xsl:variable name="after" select="following::text()[1]" />
 
@@ -108,10 +108,16 @@
       </xsl:variable>
 <!--([a-z\)\]])/[\n\r\s\t]', '$1/')-->
 <!-- ([a-z$&#62;\)\]])/[\n\r\s\t]([a-z$&#60;\(\[]+)-->
-<xsl:apply-templates select="replace(replace($input, '([\S\)\]&gt;])/[\n\r\s\t]([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
+<xsl:apply-templates select="replace($input, '([\S\)\]\p{S}])/[\n\r\s\t]([\S\(\[\p{S}]+)', '$1/$2')"/>
+
+
+<!--<xsl:choose>
+  <xsl:when test="matches($input, '[\(\)]')">
+    <xsl:apply-templates select="replace($input, '([\(\)]+)', '&lt;span class=&#34;notBold&#34;&gt;$1&lt;/span&gt;' )"/>
+</xsl:when>
+</xsl:choose>-->
 
     </xsl:template>
-
 <!-- not sure how to add it yet
 ([a-z\)\]])/\s+([a-z\)\]])
 

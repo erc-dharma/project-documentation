@@ -140,10 +140,12 @@
                             context="@source"><sch:assert test="starts-with(.,'bib:')">Bibliographic
                             prefix is bib:</sch:assert></sch:rule><sch:rule context="@resp"
                             ><sch:assert test="starts-with(.,'part:')">Project members prefix is
-                            part:</sch:assert></sch:rule><sch:rule context="tei:body"><sch:assert
+                            part:</sch:assert></sch:rule>
+                            <!--<sch:rule context="tei:body">
+                                <sch:assert
                             test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
                             >The textpart structure in edition and in apparatus must be
-                            identical.</sch:assert></sch:rule></constraint>
+                            identical.</sch:assert></sch:rule>--></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="type" mode="change" usage="req">
@@ -298,6 +300,7 @@
                                 <valItem ident="illegible"/>
                                 <valItem ident="omitted"/>
                                 <valItem ident="ellipsis"/>
+                                <valItem ident="undefined"/>
                             </valList>
                         </attDef>
                         <!-- removing gap/@dur (not needed in EpiDoc) -->
@@ -1165,8 +1168,8 @@
                 <elementSpec ident="choice" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="unclear-limit">
                         <constraint><sch:rule context="tei:choice"><sch:report
-                            test="child::tei:unclear and count(child::tei:unclear) != 2">Choice can
-                            contained only two unclear elements</sch:report></sch:rule></constraint>
+                            test="child::tei:unclear and count(child::tei:unclear) &gt; 3">Choice can
+                            contained only maximum 3 unclear elements</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2547,7 +2550,7 @@
                 <elementSpec ident="num" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="valeur-or-interval">
                         <constraint><sch:rule context="tei:num"><sch:report
-                            test="@value and @atMost or @atLeast">@value can not be used with the
+                            test="@value and (@atMost or @atLeast)">@value can not be used with the
                             attributes of date range</sch:report><sch:report
                             test="@atMost and not(@atLeast)">@atLeast is expected with
                             @atMost</sch:report><sch:report test="@atLeast and not(@atMost)">@atMost
@@ -2613,10 +2616,12 @@
                         <constraint><sch:rule context="tei:p"><sch:report
                             test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])"
                             >@rend='stanza' can only be used in div[@type='translation'] and in
-                            div[@type='commentary']</sch:report></sch:rule><sch:report
+                            div[@type='commentary']</sch:report></sch:rule>
+                            <!--<sch:report
                             test="not(@n) and ancestor::tei:div[@type='translation']"> @n is
                             mandatory on p element in
-                            div[@type='translation']</sch:report></constraint>
+                            div[@type='translation']</sch:report>-->
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>

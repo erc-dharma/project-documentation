@@ -1,0 +1,300 @@
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
+body{
+    height:100%;
+    width: 950px;/* force the BODY element to match the height of the HTML element */
+}
+
+.lem:hover ~ .tooltipApp:nth-of-type(1){ background-color: yellow; }
+
+.lem:hover { background-color: yellow; }
+
+.tooltip {
+        position: relative;
+          }
+
+          /* Tooltip text */
+.tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+            /* Position the tooltip text*/
+        position: absolute;
+        z-index: 1;
+          }
+
+          /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+        visibility: visible;
+          }
+
+          .tooltipApp {
+                  position: relative;
+                    }
+                    /* Tooltip text */
+          .tooltipApp .tooltiptext {
+                  visibility: hidden;
+                  width: 300px;
+                  background-color: black;
+                  color: #fff;
+                  text-align: center;
+                  padding: 5px 0;
+                  border-radius: 6px;
+
+                      /* Position the tooltip text*/
+                  position: absolute;
+                  z-index: 1;
+                    }
+
+                    /* Show the tooltip text when you mouse over the tooltip container */
+          .tooltipApp:hover .tooltiptext {
+                  visibility: visible;
+                    }
+
+                    .tooltipPB {
+                            position: relative;
+                              }
+
+                              /* Tooltip text */
+                    .tooltipPB .tooltiptextPB {
+                            visibility: hidden;
+                            width: 300px;
+                            background-color: black;
+                            color: #fff;
+                            text-align: center;
+                            padding: 5px 0;
+                            border-radius: 6px;
+
+                                /* Position the tooltip text*/
+                            position: absolute;
+                            z-index: 1;
+                              }
+
+                              /* Show the tooltip text when you mouse over the tooltip container */
+                    .tooltipPB:hover .tooltiptextPB {
+                            visibility: visible;
+                              }
+
+div {
+        left: 30px;
+        padding-right: 0.2em;
+        position:relative;
+        text-align: justify;
+    }
+
+h2 {
+        left: -18px;
+        padding-right: 0.2em;
+        position: relative;
+        }
+
+P {
+      position: relative;
+      }
+
+.latinnum {
+    border-top: thin black solid;
+     }
+
+.supraline {
+    border-top: thin black solid;
+     }
+
+.previouslyread {
+    text-decoration: underline;
+     }
+
+*[lang="la"] {
+    font-family: "GentiumAlt", "Gentium","Palatino Linotype", "Palatino", "Times New Roman", "Times", "Arial Unicode MS", serif;
+}
+
+*[lang="grc"] {
+    font-family: "Lucida Grande", "Arial Unicode MS","Galilee Unicode Gk", "New Athena Unicode", "Athena Unicode",
+    "Palatino Linotype", "Titus Cyberbit Basic", "Cardo", "Vusillus Old Face", "Alphabetum", "Galatia SIL",
+    "Code 2000", "GentiumAlt", "Gentium", "Minion Pro", "GeorgiaGreek", "Vusillus Old Face Italic",
+    "Everson Mono", "Aristarcoj", "Porson", "Legendum", "Aisa Unicode", "Hindsight Unicode", "Caslon",
+    "Verdana", "Tahoma";
+   }
+
+.siglum {
+           color: #1E90FF;
+             }
+
+.textpart {
+    left: 6em;
+    line-height: 1.4;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    padding-right: 2em;
+    width: 845px;
+
+}
+
+.textpartnumber {
+    padding-right: 0.2em;
+    position: relative;
+    }
+
+.linenumber {
+    color: black;
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+    height: 75px;
+    background: #f0f0f5;
+    border-radius: 50%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding-right: 2px;
+    padding-left: 2px;
+    }
+/*border: 1px solid black;
+
+text-align:center;*/
+
+.linenumberapp {
+        color: black;
+        position: relative;
+        text-decoration: none;
+        font-weight: bold;
+        background: #f0f0f5;
+        border-radius: 50%;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+        padding-right: 2px;
+        padding-left: 2px;
+        }
+
+.linenumberbroken {
+    left: -4em;
+    padding-right: 0.2em;
+    position: absolute;
+    color: red ;
+    text-decoration: blink ;
+    }
+
+.versenumber {
+  color: black;
+  position: relative;
+  text-decoration: none;
+  font-weight: bold;
+  height: 75px;
+  background: #f0f0f5;
+  border-radius: 50%;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+.cpnumber {
+    font-weight: bold;
+}
+
+.verse-meter {
+    font-style: italic;
+}
+
+.label-meter{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.verse-part{
+  left: 2px;
+
+}
+
+.first-line{
+      margin-top: 10px;
+
+}
+
+.translated-stanzanumber{
+  font-weight: bold;
+}
+
+.petraeligature {
+    text-decoration: underline;
+    }
+
+.underline {
+    text-decoration: underline;
+    }
+
+.italic {
+    font-style: italic;
+    }
+
+.symbol {
+        border: 2px solid black;
+        border-radius: 8px;
+        padding: 0.03em;
+        }
+
+.grantha {
+        font-weight: bold;
+        }
+
+.readings {
+        font-style: italic;
+        color: #228B22;
+          }
+
+.orig {
+        color: #C71585;
+          }
+
+.reg {
+        color: #4169E1;
+          }
+
+.sic {
+        color: #FF6347;
+      }
+
+.corr {
+        color: #32CD32;
+            }
+
+.notBold{
+  font-weight:normal;
+  color: black;
+}
+
+.certlow{
+  color:red;
+}
+
+.resp{
+        font-variant: small-caps;
+}
+
+.abbreviation {
+  color: #a57659;
+}
+
+.block{
+  text-align:center;
+}
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+  div.example {
+    font-size: 80px;
+  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  div.example {
+    font-size: 30px;
+  }
+}

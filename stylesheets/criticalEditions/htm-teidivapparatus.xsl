@@ -179,20 +179,20 @@
       <xsl:attribute name="class">
          <xsl:text>linenumberapp</xsl:text>
        </xsl:attribute>
-    <!--  <xsl:text>(</xsl:text>-->
-      <!--<xsl:attribute name="class">-->
+    <xsl:text>(</xsl:text>
+    <xsl:attribute name="class">
         <xsl:value-of select="@loc"/>
-      <!--</xsl:attribute>
+      </xsl:attribute>
       <xsl:if
         test="@loc and (not(preceding-sibling::t:app) or @loc != preceding-sibling::t:app[1]/@loc)">
         <xsl:value-of select="translate(@loc, ' ', '.')"/>
         <xsl:text>)</xsl:text>
-      </xsl:if>-->
+      </xsl:if>
       <!-- Changing the numbering process since @n is deleted from the lemma fro declutering purposes. -->
-      <!--  <xsl:if test="child::t:lem/t:lb and @loc != child::t:lem/t:lb/@n">
+      <xsl:if test="child::t:lem/t:lb and @loc != child::t:lem/t:lb/@n">
         <xsl:text>–</xsl:text>
         <xsl:value-of select="child::t:lem/t:lb/@n"/>
-      </xsl:if>-->
+      </xsl:if>
       <xsl:if test="child::t:lem/t:lb">
         <xsl:text>-</xsl:text>
         <xsl:value-of select="number(sum(@loc+1))"/>
@@ -236,7 +236,7 @@
       <xsl:attribute name="class">lemma</xsl:attribute>
     <xsl:apply-templates/>
   </xsl:element>
-  <xsl:if test="$parm-leiden-style='dharma'">
+  <xsl:if test="$parm-leiden-style='ddbdp'">
   <xsl:call-template name="sigla"/>
 </xsl:if>
     <!--<xsl:call-template name="sources">
@@ -245,11 +245,11 @@
 
 <!-- Ask Manu, if he wants to delete the : for ◇. Arlo susggested also just a blank space -->
     <xsl:if
-      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and not(@source) and not($parm-leiden-style='dharma')">
+      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and not(@source) and not($parm-leiden-style='ddbdp')">
       <xsl:text>: </xsl:text>
     </xsl:if>
     <xsl:if
-      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and $parm-leiden-style='dharma'">
+      test="following-sibling::t:* and not(following-sibling::t:*[1][self::t:note]) and $parm-leiden-style='ddbdp'">
       <xsl:text> ◇ </xsl:text>
     </xsl:if>
   </xsl:template>
@@ -260,17 +260,17 @@
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <span>
       <xsl:if test="ancestor::t:app">
-        <xsl:if test="preceding-sibling::t:lem and $parm-leiden-style='dharma'">
+        <xsl:if test="preceding-sibling::t:lem and $parm-leiden-style='ddbdp'">
         <xsl:text>• </xsl:text>
       </xsl:if>
-      <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
-                <xsl:text>• </xsl:text>
-              </xsl:if>
-              <xsl:if test="t:note/child::t:ptr">
-                <xsl:apply-templates select="@target" mode="app-dharma"/>
-              </xsl:if>
-            </xsl:if>
-      <xsl:apply-templates mode="app-dharma"/>
+        <xsl:apply-templates/>
+<xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
+          <xsl:text>• </xsl:text>
+        </xsl:if>
+        <xsl:if test="t:note/child::t:ptr">
+          <xsl:value-of select="@target"></xsl:value-of>
+        </xsl:if>
+      </xsl:if>
     </span>
   </xsl:template>
 
