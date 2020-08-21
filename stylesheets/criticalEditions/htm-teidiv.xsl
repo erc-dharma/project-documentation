@@ -35,8 +35,12 @@
 
           <!-- Body of the div -->
           <xsl:apply-templates/>
-          <hr/>
-
+          <xsl:choose>
+          <xsl:when test="child::t:ab[1]"/>
+          <xsl:otherwise>
+          <hr style="width:50%"/>
+        </xsl:otherwise>
+      </xsl:choose>
         </div>
 </xsl:if>
   </xsl:template>
