@@ -15,11 +15,15 @@
          </sup>
        </xsl:if>
        <xsl:if test="@rend='stanza'">
+         <xsl:choose>
+           <xsl:when test="@n='1' and not(following-sibling::t:*)"/>
+              <!--<xsl:when test="count(@n) &gt;= 2">-->
+              <xsl:otherwise>
        <div class="translated-stanzanumber">
-           <xsl:if test="@n">
                <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
-           </xsl:if>
      </div>
+  </xsl:otherwise>
+  </xsl:choose>
    </xsl:if>
          <xsl:apply-templates/>
 
