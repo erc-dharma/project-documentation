@@ -161,6 +161,12 @@ bibliography. All examples only cater for book and article.
 										<xsl:text>ibid.</xsl:text>
 										</xsl:element>
 									</xsl:when>
+									<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
+										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
+										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
+												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
+											</xsl:if>
+									</xsl:when>
 										<xsl:otherwise>
 									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
 								</xsl:otherwise>
