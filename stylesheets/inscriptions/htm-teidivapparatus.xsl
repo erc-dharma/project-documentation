@@ -263,14 +263,14 @@
         <xsl:if test="preceding-sibling::t:lem and $parm-leiden-style='dharma'">
         <xsl:text>• </xsl:text>
       </xsl:if>
-        <xsl:apply-templates/>
-<xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
-          <xsl:text>• </xsl:text>
-        </xsl:if>
-        <xsl:if test="t:note/child::t:ptr">
-          <xsl:value-of select="@target"></xsl:value-of>
-        </xsl:if>
-      </xsl:if>
+      <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
+                <xsl:text>• </xsl:text>
+              </xsl:if>
+              <xsl:if test="t:note/child::t:ptr">
+                <xsl:apply-templates select="@target" mode="app-dharma"/>
+              </xsl:if>
+            </xsl:if>
+      <xsl:apply-templates mode="app-dharma"/>
     </span>
   </xsl:template>
 

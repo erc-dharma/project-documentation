@@ -48,7 +48,7 @@ bibliography. All examples only cater for book and article.
 
 	-->
 
-	<xsl:template match="t:bibl" priority="1">
+	<xsl:template match="t:bibl" priority="1" mode="app-dharma">
 		<xsl:param name="parm-bib" tunnel="yes" required="no"/>
 		<xsl:param name="parm-bibloc" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
@@ -168,7 +168,7 @@ bibliography. All examples only cater for book and article.
 											</xsl:if>
 									</xsl:when>
 										<xsl:otherwise>
-									<xsl:value-of select="replace(replace(replace(replace($citation, '[\(]+', '') , '[\)]+', ''), '([0-9\-]+)', '($1)'),'[&lt;/]*[a-z]+[&gt;]', '')"/>
+											<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9]+)[\)]+$', '($1)')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</a>
