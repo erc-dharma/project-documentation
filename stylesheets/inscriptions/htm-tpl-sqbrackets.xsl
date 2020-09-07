@@ -70,7 +70,7 @@
                 </xsl:choose>
 
             </xsl:when>
-            <xsl:when test="$firstletter = '(' or $lastletter = ')'">
+          <!--  <xsl:when test="$firstletter = '(' or $lastletter = ')'">
                 <xsl:variable name="previous" select="preceding::text()[1]" />
                 <xsl:variable name="after" select="following::text()[1]" />
 
@@ -99,27 +99,16 @@
                     </xsl:otherwise>
                 </xsl:choose>
 
-            </xsl:when>
+            </xsl:when>-->
             <xsl:otherwise>
                 <xsl:value-of select="$current"/>
             </xsl:otherwise>
         </xsl:choose>
         <xsl:value-of select="$endspace"/>
       </xsl:variable>
-<!--([a-z\)\]])/[\n\r\s\t]', '$1/')-->
-<!-- ([a-z$&#62;\)\]])/[\n\r\s\t]([a-z$&#60;\(\[]+)-->
 <xsl:apply-templates select="replace(replace($input, '([\S\)\]&gt;])/[\n\r\s\t]([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
 
     </xsl:template>
-
-<!-- not sure how to add it yet
-([a-z\)\]])/\s+([a-z\)\]])
-
-<xsl:template match="text()" >
-    <xsl:value-of select="replace(., '/\s+', '/')" />
-</xsl:template>
--->
-
 
 
 </xsl:stylesheet>

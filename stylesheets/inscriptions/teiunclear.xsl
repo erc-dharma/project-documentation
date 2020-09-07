@@ -48,16 +48,16 @@
           </xsl:when>
               <xsl:otherwise><xsl:text>(</xsl:text></xsl:otherwise>
             </xsl:choose>-->
-            <xsl:text>(</xsl:text>
+            <xsl:call-template name="brackets-opener"/>
               <xsl:choose>
                 <xsl:when test="@rend='grantha' or child::t:hi[@rend='grantha']">
-                  <xsl:element name="b">
-                  <!--<xsl:attribute name="class">grantha</xsl:attribute>-->
-                  <xsl:value-of select="."/>
+                  <xsl:element name="span">
+                  <xsl:attribute name="class">grantha</xsl:attribute>
+                  <xsl:apply-templates select="." mode="dharma-n"/>
                 </xsl:element>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:value-of select="."/>
+                  <xsl:apply-templates select="." mode="dharma-n"/>
                 </xsl:otherwise>
               </xsl:choose>
               <!--<xsl:choose>
@@ -69,7 +69,7 @@
             </xsl:when>
                 <xsl:otherwise><xsl:text>)</xsl:text></xsl:otherwise>
               </xsl:choose>-->
-              <xsl:text>)</xsl:text>
+            <xsl:call-template name="brackets-closer"/>
           </xsl:when>
           <xsl:when test="$leiden-style ='dharma' and ancestor::t:choice"/>
 
