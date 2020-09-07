@@ -118,7 +118,7 @@ bibliography. All examples only cater for book and article.
 
 						<xsl:choose>
 							<!--this will print a citation according to the selected style with a link around it pointing to the resource DOI, url or zotero item view-->
-							<xsl:when test="not(//t:div[@type = 'bibliography']/t:listBibl) or ancestor::t:p">
+							<xsl:when test="not(//t:div[@type = 'bibliography']/t:listBibl) or ancestor::t:p or ancestor::t:note">
 								<xsl:variable name="pointerurl">
 									<xsl:choose>
 										<xsl:when

@@ -265,10 +265,7 @@
       </xsl:if>
       <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
                 <xsl:text>• </xsl:text>
-              </xsl:if>
-              <xsl:if test="t:note/child::t:ptr">
-                <xsl:apply-templates select="@target" mode="dharma"/>
-              </xsl:if>
+      </xsl:if>
             </xsl:if>
       <xsl:apply-templates mode="dharma"/>
     </span>
