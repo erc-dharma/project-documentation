@@ -248,7 +248,7 @@
          <!-- 1.2 -->
       <xsl:when test="current()[not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]
                                    /following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*)]">
-            <xsl:if test="following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*)][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
+            <xsl:if test="following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*[local-name() = ('lb', 'supplied', 'gap')])][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
                <xsl:text>)</xsl:text>
             </xsl:if>
          </xsl:when>

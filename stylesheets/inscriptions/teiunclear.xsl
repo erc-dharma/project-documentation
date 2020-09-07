@@ -53,11 +53,11 @@
                 <xsl:when test="@rend='grantha' or child::t:hi[@rend='grantha']">
                   <xsl:element name="span">
                   <xsl:attribute name="class">grantha</xsl:attribute>
-                  <xsl:apply-templates select="." mode="dharma-n"/>
+                  <xsl:value-of select="."/>
                 </xsl:element>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:apply-templates select="." mode="dharma-n"/>
+                  <xsl:value-of select="."/>
                 </xsl:otherwise>
               </xsl:choose>
               <!--<xsl:choose>
