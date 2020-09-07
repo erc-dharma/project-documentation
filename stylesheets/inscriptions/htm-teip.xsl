@@ -25,7 +25,7 @@
   </xsl:otherwise>
   </xsl:choose>
    </xsl:if>
-         <xsl:apply-templates/>
+         <xsl:apply-templates mode="dharma"/>
 
       </p>
 
