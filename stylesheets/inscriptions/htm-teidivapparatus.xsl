@@ -266,7 +266,7 @@
       <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
                 <xsl:text>• </xsl:text>
       </xsl:if>
-            </xsl:if>
+    </xsl:if>
       <xsl:apply-templates mode="dharma"/>
     </span>
   </xsl:template>

@@ -22,6 +22,33 @@
               <xsl:apply-templates select="child::t:unclear[2]" mode="dharma"/>
               <xsl:text>)</xsl:text>
     </xsl:when>
+    <xsl:when test="$leiden-style ='dharma' and child::t:hi[@rend='grantha'] and descendant::t:unclear">
+      <xsl:text>(</xsl:text>
+      <xsl:choose>
+      <xsl:when test="child::t:hi[@rend='grantha'][1]">
+        <xsl:element name="span">
+           <xsl:attribute name="class">grantha</xsl:attribute>
+     <xsl:apply-templates select="descendant::t:unclear[1]" mode="dharma"/>
+   </xsl:element>
+ </xsl:when>
+ <xsl:otherwise>
+  <xsl:apply-templates select="child::t:unclear[1]" mode="dharma"/>
+  </xsl:otherwise>
+</xsl:choose>
+       <xsl:text>/</xsl:text>
+<xsl:choose>
+       <xsl:when test="child::t:hi[@rend='grantha'][2]">
+         <xsl:element name="span">
+            <xsl:attribute name="class">grantha</xsl:attribute>
+      <xsl:apply-templates select="child::t:unclear" mode="dharma"/>
+    </xsl:element>
+  </xsl:when>
+  <xsl:otherwise>
+ <xsl:apply-templates select="child::t:unclear" mode="dharma"/>
+  </xsl:otherwise>
+</xsl:choose>
+       <xsl:text>)</xsl:text>
+    </xsl:when>
        <xsl:otherwise>
             <xsl:apply-templates/>
          </xsl:otherwise>
