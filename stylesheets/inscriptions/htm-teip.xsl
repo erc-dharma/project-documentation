@@ -25,7 +25,14 @@
   </xsl:otherwise>
   </xsl:choose>
    </xsl:if>
-         <xsl:apply-templates mode="dharma"/>
+   <xsl:choose>
+     <xsl:when test="descendant::t:bibl">
+       <xsl:apply-templates mode="dharma"/>
+         </xsl:when>
+         <xsl:otherwise>
+         <xsl:apply-templates/>
+       </xsl:otherwise>
+       </xsl:choose>
 
       </p>
 
