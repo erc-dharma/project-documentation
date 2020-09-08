@@ -17,13 +17,13 @@
                 <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
                 <span class="orig">
                 <xsl:text>¡</xsl:text>
-                <xsl:apply-templates/>
+                <xsl:value-of select="."/>
                 <xsl:text>!</xsl:text>
               </span>
             </xsl:if>
             <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
               <xsl:text>¡</xsl:text>
-              <xsl:apply-templates/>
+              <xsl:value-of select="."/>
               <xsl:text>!</xsl:text>
             </xsl:if>
           </xsl:when>
