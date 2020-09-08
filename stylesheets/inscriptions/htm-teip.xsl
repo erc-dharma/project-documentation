@@ -18,10 +18,29 @@
          <xsl:choose>
            <xsl:when test="@n='1' and not(following-sibling::t:*)"/>
               <!--<xsl:when test="count(@n) &gt;= 2">-->
+              <xsl:when test="matches(@n, ',')">
+                <xsl:element name="div">
+                  <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+                <xsl:number value="substring-before(@n, ',')" format="I"/>
+                <xsl:text>, </xsl:text>
+                <xsl:number value="substring-after(@n, ',')" format="I"/>
+                <xsl:text>. </xsl:text>
+                </xsl:element>
+              </xsl:when>
+              <xsl:when test="matches(@n, '-')">
+                <xsl:element name="div">
+                  <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+                <xsl:number value="substring-before(@n, '-')" format="I"/>
+                <xsl:text>, </xsl:text>
+                <xsl:number value="substring-after(@n, '-')" format="I"/>
+                <xsl:text>. </xsl:text>
+                </xsl:element>
+              </xsl:when>
               <xsl:otherwise>
-       <div class="translated-stanzanumber">
+                <xsl:element name="div">
+                  <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
                <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
-     </div>
+     </xsl:element>
   </xsl:otherwise>
   </xsl:choose>
    </xsl:if>
