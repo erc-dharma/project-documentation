@@ -329,7 +329,7 @@
             <!-- Deleted the Vol. display -->
             <!--<text term="volume" text-case="capitalize-first" suffix=" "/>
             <number variable="volume" form="numeric"/>-->
-            <text variable="volume" font-style="italic"/>
+            <text variable="volume"/>
           </group>
           <!--<group>
             <number variable="number-of-volumes" form="numeric"/>
