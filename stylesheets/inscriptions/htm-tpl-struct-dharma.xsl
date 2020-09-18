@@ -31,7 +31,7 @@
                   <xsl:text>Hands: </xsl:text>
                  <xsl:choose>
                    <xsl:when test="//t:handDesc/t:handNote/t:p">
-                     <xsl:apply-templates select="//t:handDesc/t:handNote/t:p" mode="dharma"/>
+                    <xsl:apply-templates select="//t:handDesc/t:handNote/t:p" mode="dharma"/>
                    </xsl:when>
                    <xsl:when test="//t:handDesc/t:p">
                        <xsl:apply-templates select="//t:handDesc/t:p" mode="dharma"/>
@@ -72,7 +72,6 @@
          <body>
             <h1>
               <xsl:value-of select="//t:teiHeader//t:title"/>
-              <xsl:text> 🇧🇪 🍺</xsl:text>
             </h1>
             <xsl:call-template name="dharma-body-structure"/>
          </body>
