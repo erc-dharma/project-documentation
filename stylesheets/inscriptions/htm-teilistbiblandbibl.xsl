@@ -22,7 +22,7 @@
 <!-- To be investigted-->
   <xsl:template match="t:listBibl//t:bibl">
       <li>
-         <xsl:apply-templates mode="dharma"/>
+         <xsl:apply-templates/>
       </li>
   </xsl:template>
 
