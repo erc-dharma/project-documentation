@@ -39,6 +39,7 @@
   <xsl:template name="lb-content">
       <xsl:choose>
          <xsl:when test="@break='no' or @type='inWord'">
+           <xsl:call-template name="cPlate"/>
           <sup class="versenumber">
             <!--<xsl:text>(</xsl:text>-->
             <xsl:value-of select="@n"/>
@@ -46,6 +47,7 @@
           </sup>
          </xsl:when>
          <xsl:otherwise>
+           <xsl:call-template name="cPlate"/>
            <sup class="versenumber">
             <!--<xsl:text>(</xsl:text>-->
             <xsl:value-of select="@n"/>
