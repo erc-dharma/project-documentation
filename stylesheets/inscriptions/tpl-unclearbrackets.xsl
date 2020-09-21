@@ -4,15 +4,7 @@
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
 
-<!-- ****DEPRECATED**** -->
-<!-- As far as I'm aware this stylesheet is not used anywhere any more.
-      The matching of square brackets is now performed by  [htm|txt]-tpl-sqbrackets.xsl
-      which is called after all other processing is completed, just prior to printing the output
-      (and called in start-text.xsl or tpl-structure.xsl)
-   -->
-
-  <!-- Templates for opening and closing brackets for gap and supplied [@reason = 'lost'] -->
-
+<!-- Inspired bu the deprecated way to deal with the square brackets. Adapting the new code for () is not possible. -->
 
   <xsl:template name="brackets-opener">
     <!-- Relationship: start at x going to y -->
@@ -25,7 +17,7 @@
         If y is 'lost' then nothing
       -->
       <xsl:when test="preceding-sibling::t:unclear[1]">
-            <xsl:if test="preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or preceding-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb')]">
+            <xsl:if test="preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or preceding-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone')]">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>(</xsl:text>
@@ -46,7 +38,7 @@
       <xsl:when test="current()[not(preceding-sibling::t:*)][not(preceding-sibling::text()) or
                                        translate(normalize-space(preceding-sibling::text()), ' ', '') = '']
                                    /parent::t:*[preceding-sibling::t:unclear[1]]">
-            <xsl:if test="parent::t:*[preceding-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb')] or preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
+         <xsl:if test="parent::t:*[preceding-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone')] or preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
                      <xsl:element name="span">
                         <xsl:attribute name="class">notBold</xsl:attribute>
                         <xsl:text>(</xsl:text>
@@ -248,7 +240,7 @@
     <xsl:choose>
       <!-- 1.1 -->
       <xsl:when test="following-sibling::t:unclear[1]">
-            <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb')]">
+         <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone')]">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>)</xsl:text>
@@ -260,7 +252,7 @@
          <!-- 1.2 -->
       <xsl:when test="current()[not(following-sibling::node()[1][self::text()]) or following-sibling::node()[1][self::text() and translate(normalize-space(.), ' ', '') = '']]
                                    /following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*)]">
-            <xsl:if test="following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*[local-name() = ('lb', 'supplied', 'gap', 'pb')])][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
+         <xsl:if test="following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*[local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone')])][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>)</xsl:text>
