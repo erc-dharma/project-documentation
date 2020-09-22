@@ -224,8 +224,11 @@
          </xsl:when>-->
 
 
-         <xsl:otherwise> 
-               <xsl:text>(</xsl:text>
+         <xsl:otherwise>
+           <xsl:element name="span">
+              <xsl:attribute name="class">notBold</xsl:attribute>
+              <xsl:text>(</xsl:text>
+           </xsl:element>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
