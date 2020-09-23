@@ -161,12 +161,30 @@ bibliography. All examples only cater for book and article.
 										<xsl:text>ibid.</xsl:text>
 										</xsl:element>
 									</xsl:when>
+									<!-- Code added regardung Manu's request in pallava00042 -->
 									<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
 										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
 										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
 												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
 											</xsl:if>
 									</xsl:when>
+									<!-- Code added for Arlo's request regarding BEFEO36_1936 in K00868.xml-->
+									<!-- Handles also JBG, NBG -->
+									<xsl:when test="@rend='journalNumDate' and $leiden-style = 'dharma'">
+										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
+										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
+												<xsl:value-of select="replace(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9]*)_([0-9\-]+)', '$1 $2 ($3)')"/>
+											</xsl:if>
+									</xsl:when>
+									<!-- Code added to follow ARIE's bibliographic pattern after Arlo's request for BEFEO36_1936. ARIE1886-1887 or ARIE1890-1891_02 -->
+									<!-- Handles also OV, ROC, ROD -->
+									<xsl:when test="@rend='journalDate' and $leiden-style = 'dharma'">
+										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
+										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
+												<xsl:value-of select="replace(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*', '$1 ($2)')"/>
+											</xsl:if>
+									</xsl:when>
+									<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01 / TBG1924_64 – not tested  -->
 										<xsl:otherwise>
 											<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>
 								</xsl:otherwise>
@@ -203,10 +221,10 @@ bibliography. All examples only cater for book and article.
 										</xsl:for-each>
 										<xsl:text>.</xsl:text>
 									</xsl:if>
-										<!--<xsl:if test="child::t:note">
+										<xsl:if test="child::t:note">
 											<xsl:text> • </xsl:text>
 											<xsl:value-of select="child::t:note"/>
-										</xsl:if>-->
+										</xsl:if>
 
 									<!--<xsl:if test="following-sibling::t:note">
 									<xsl:text> • </xsl:text>
