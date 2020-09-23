@@ -398,7 +398,7 @@
                    <xsl:text>+</xsl:text>
                  </xsl:if>
                  <xsl:if test="@reason='illegible'">
-                   <xsl:text>x</xsl:text>
+                   <xsl:text>×</xsl:text>
                  </xsl:if>
                  <xsl:if test="@reason='undefined'">
                    <xsl:text>*</xsl:text>
