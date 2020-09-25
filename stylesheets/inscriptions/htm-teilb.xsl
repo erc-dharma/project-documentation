@@ -68,10 +68,13 @@ Pb de lb[@break=no] entre deux textpart
                   <!-- *or unless* this break is accompanied by a paragraphos mark -->
                   <!-- in which case the hypen will be inserted before the paragraphos by code in htm-teimilestone.xsl -->
                   <xsl:when test="preceding-sibling::node()[not(self::text() and normalize-space(self::text())='')][1]/self::t:milestone[@rend='paragraphos']"/>
+                  <!-- Trying to avoid the unexpected trimming if comments after a lb break='no' -->
+                  <!-- Not working  -->
+                  <xsl:when test="$parm-leiden-style = 'dharma' and following::node()[self::comment()][1]"/>
                   <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']"/>-->
-                  <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and following-sibling::node() or following::node()[string-join(following::text() or following::node(), ' ')][1]/self::t:lb[@break='no']">
+                  <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and following::node()[string-join(following::text() or following::node(), ' ')][1]/self::t:lb[@break='no']">
                     <xsl:text>/</xsl:text>
-                  </xsl:when>
+                  </xsl:when>-->
                   <xsl:otherwise>
                         <xsl:text>-</xsl:text>
                       </xsl:otherwise>
@@ -177,9 +180,9 @@ Pb de lb[@break=no] entre deux textpart
                       test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']">
 
                      <xsl:choose>
-                       <!--<xsl:when test="@break='no'">
+                      <xsl:when test="@break='no'">
                           <xsl:text>/</xsl:text>
-                       </xsl:when>-->
+                       </xsl:when>
                       <xsl:when test="not(@break='no')">
                            <xsl:text> /  </xsl:text>
                         </xsl:when>
