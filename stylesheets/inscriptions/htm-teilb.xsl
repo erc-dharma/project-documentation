@@ -24,13 +24,11 @@ Pb de lb[@break=no] entre deux textpart
        <xsl:param name="parm-line-inc" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-verse-lines" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="location"/>
-
       <xsl:choose>
           <xsl:when test="ancestor::t:lg and $parm-verse-lines = 'on'">
             <xsl:apply-imports/>
             <!-- use the particular templates in teilb.xsl -->
          </xsl:when>
-
          <xsl:otherwise>
             <xsl:variable name="div-loc">
                <xsl:for-each select="ancestor::t:div[@type= 'textpart']">
@@ -43,7 +41,6 @@ Pb de lb[@break=no] entre deux textpart
                   <xsl:value-of select="@n"/>
                </xsl:if>
             </xsl:variable>
-
             <!-- print hyphen if break=no  -->
             <xsl:if test="(@break='no' or @type='inWord')">
                <xsl:choose>
@@ -68,19 +65,15 @@ Pb de lb[@break=no] entre deux textpart
                   <!-- *or unless* this break is accompanied by a paragraphos mark -->
                   <!-- in which case the hypen will be inserted before the paragraphos by code in htm-teimilestone.xsl -->
                   <xsl:when test="preceding-sibling::node()[not(self::text() and normalize-space(self::text())='')][1]/self::t:milestone[@rend='paragraphos']"/>
-                  <!-- Trying to avoid the unexpected trimming if comments after a lb break='no' -->
-                  <!-- Not working  -->
-                  <xsl:when test="$parm-leiden-style = 'dharma' and following::node()[self::comment()][1]"/>
                   <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']"/>-->
-                  <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and following::node()[string-join(following::text() or following::node(), ' ')][1]/self::t:lb[@break='no']">
+                  <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and following-sibling::node() or following::node()[string-join(following::text() or following::node(), ' ')][1]/self::t:lb[@break='no']">
                     <xsl:text>/</xsl:text>
-                  </xsl:when>-->
+                  </xsl:when>
                   <xsl:otherwise>
                         <xsl:text>-</xsl:text>
                       </xsl:otherwise>
                </xsl:choose>
             </xsl:if>
-
             <xsl:choose>
                <xsl:when test="$parm-leiden-style=('edh-itx','edh-names')">
                   <xsl:variable name="cur_anc" select="generate-id(ancestor::node()[local-name()='lg' or local-name()='ab'])"/>
@@ -101,12 +94,10 @@ Pb de lb[@break=no] entre deux textpart
                      </xsl:choose>
                   </xsl:if>
                </xsl:when>
-
                <xsl:when test="$parm-leiden-style='eagletxt'">
                   <xsl:variable name="cur_anc" select="generate-id(ancestor::node()[local-name()='lg' or local-name()='ab'])"/>
                   <xsl:if
                      test="preceding::t:lb[1][generate-id(ancestor::node()[local-name()='lg' or local-name()='ab'])=$cur_anc]">
-
                <xsl:choose>
 <xsl:when test="not(@break='no' or ancestor::t:w | ancestor::t:name | ancestor::t:placeName | ancestor::t:geogName)">
                   <xsl:text> / </xsl:text>
@@ -117,14 +108,10 @@ Pb de lb[@break=no] entre deux textpart
               </xsl:choose>
                   </xsl:if>
                </xsl:when>
-
                <xsl:otherwise>
                   <xsl:text>&#xd;</xsl:text>
                </xsl:otherwise>
             </xsl:choose>
-
-
-
             <!-- print arrows right of line if R2L or explicitly L2R -->
             <!-- arrows after final line handled in htm-teiab.xsl -->
             <xsl:if test="not($parm-leiden-style=('ddbdp','sammelbuch'))
@@ -137,7 +124,6 @@ Pb de lb[@break=no] entre deux textpart
                and preceding::t:lb[1][@rend='right-to-left']">
                <xsl:text>&#xa0;&#xa0;←</xsl:text>
             </xsl:if>
-
             <xsl:choose>
                <!-- replaced test using generate-id() with 'is' -->
                <xsl:when test="self::t:lb is ancestor::t:div[1]/t:*[child::t:lb][1]/t:lb[1]">
@@ -175,22 +161,17 @@ Pb de lb[@break=no] entre deux textpart
                      </xsl:otherwise>
                   </xsl:choose>
                </xsl:when>
-
                <xsl:when
                       test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']">
-
                      <xsl:choose>
-                      <xsl:when test="@break='no'">
+                       <!--<xsl:when test="@break='no'">
                           <xsl:text>/</xsl:text>
-                       </xsl:when>
+                       </xsl:when>-->
                       <xsl:when test="not(@break='no')">
                            <xsl:text> /  </xsl:text>
                         </xsl:when>
                      </xsl:choose>
                   </xsl:when>
-
-
-
                <xsl:otherwise>
                   <br id="a{$div-loc}l{$line}"/>
                   <xsl:if test="$parm-leiden-style = 'dharma'">
@@ -225,7 +206,6 @@ Pb de lb[@break=no] entre deux textpart
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-
    <xsl:template name="margin-num">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:choose>
@@ -262,7 +242,6 @@ Pb de lb[@break=no] entre deux textpart
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-
    <xsl:template name="cPlate">
      <xsl:choose>
 <xsl:when test="preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw' or
@@ -288,7 +267,6 @@ Pb de lb[@break=no] entre deux textpart
         </xsl:when>
         </xsl:choose>
    </xsl:template>
-
 <!-- Display the pb for the blank pages-->
       <xsl:template match="//t:pb">
         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
