@@ -210,6 +210,7 @@ bibliography. All examples only cater for book and article.
 
 								<xsl:element name="span">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
+									<xsl:apply-templates select="./text()"/>
 								<xsl:copy-of
 									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>
 									<xsl:if test="t:citedRange">

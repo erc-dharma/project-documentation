@@ -106,7 +106,7 @@
         </xsl:choose>
         <xsl:value-of select="$endspace"/>
       </xsl:variable>
-<xsl:apply-templates select="replace(replace($input, '([\S\)\]&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
+<xsl:apply-templates select="replace(replace($input, '([\S\)\]&gt;])/[\n\r\s\t]([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
 
     </xsl:template>
 

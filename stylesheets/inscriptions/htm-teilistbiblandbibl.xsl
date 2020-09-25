@@ -20,7 +20,7 @@
 
 <!-- It seems, it is not display -->
 <!-- To be investigted-->
-  <xsl:template match="t:listBibl//t:bibl">
+  <xsl:template match="t:listBibl/t:bibl">
       <li>
          <xsl:apply-templates/>
       </li>
