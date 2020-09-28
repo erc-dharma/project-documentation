@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:t="http://www.tei-c.org/ns/1.0" xmlns:f="http://example.com/ns/functions"
-	xmlns:html="http://www.w3.org/1999/html" exclude-result-prefixes="t f" version="2.0">
+	xmlns:t="http://www.tei-c.org/ns/1.0"
+	xmlns:f="http://example.com/ns/functions"
+	xmlns:html="http://www.w3.org/1999/html"
+	exclude-result-prefixes="#all" version="2.0">
 	<!--
 
 Pietro notes on 14/8/2015 work on this template, from mail to Gabriel.
@@ -193,6 +195,7 @@ bibliography. All examples only cater for book and article.
 								<xsl:if test="t:citedRange">
 									<xsl:text>, </xsl:text>
 									<xsl:for-each select="t:citedRange">
+										<xsl:call-template name="citedRange-unit"/>
 									<xsl:value-of select="."/>
 									<xsl:if test="following-sibling::t:citedRange">
 										<xsl:text>, </xsl:text>
@@ -211,11 +214,14 @@ bibliography. All examples only cater for book and article.
 								<xsl:element name="span">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
 									<xsl:apply-templates select="./text()"/>
-								<xsl:copy-of
-									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>
+								<!--<xsl:copy-of
+									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>-->
+									<xsl:copy-of
+										select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
-										<xsl:value-of select="."/>
+											<xsl:call-template name="citedRange-unit"/>
+										<xsl:value-of select="normalize-space(.)"/>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
 										</xsl:if>
@@ -364,6 +370,58 @@ bibliography. All examples only cater for book and article.
 				<xsl:apply-templates/>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="citedRange-unit">
+		<xsl:choose>
+		<xsl:when test="@unit='page'">
+			<xsl:choose>
+			<xsl:when test="matches(., '[\-]+')">
+				<xsl:text>pages </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+			<xsl:text>page </xsl:text>
+		</xsl:otherwise>
+		</xsl:choose>
+		</xsl:when>
+		<xsl:when test="@unit='part'">
+			<xsl:text>part </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='volume'">
+			<xsl:text>volume </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='note'">
+			<xsl:text>note </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='item'">
+			<xsl:text>item </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='entry'">
+			<xsl:text>entry </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='figure'">
+			<xsl:text>figure </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='plate'">
+			<xsl:text>plate </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='table'">
+			<xsl:text>table </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='appendix'">
+			<xsl:text>appendix </xsl:text>
+		</xsl:when>
+		<xsl:otherwise>
+		<xsl:choose>
+			<xsl:when test="matches(., '[\-]+')">
+				<xsl:text>pages </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+			<xsl:text>page </xsl:text>
+		</xsl:otherwise>
+		</xsl:choose>
+	</xsl:otherwise>
+	</xsl:choose>
 	</xsl:template>
 
 </xsl:stylesheet>
