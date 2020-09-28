@@ -379,6 +379,9 @@ bibliography. All examples only cater for book and article.
 			<xsl:when test="matches(., '[\-]+')">
 				<xsl:text>pages </xsl:text>
 			</xsl:when>
+			<xsl:when test="matches(., ',')">
+				<xsl:text>pages </xsl:text>
+			</xsl:when>
 			<xsl:otherwise>
 			<xsl:text>page </xsl:text>
 		</xsl:otherwise>
@@ -414,6 +417,9 @@ bibliography. All examples only cater for book and article.
 		<xsl:otherwise>
 		<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
+				<xsl:text>pages </xsl:text>
+			</xsl:when>
+			<xsl:when test="matches(., ',')">
 				<xsl:text>pages </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
