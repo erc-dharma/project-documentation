@@ -57,6 +57,15 @@ P {
     border-top: thin black solid;
      }
 
+.csl-entry{
+  left: -30px;
+  display: inline;
+}
+
+.csl-bib-body{
+  display: inline;
+  text-indent: -10px;
+}
 .previouslyread {
     text-decoration: underline;
      }
