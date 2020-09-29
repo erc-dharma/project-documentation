@@ -216,7 +216,7 @@
               </div>
           </xsl:when>
           <xsl:when test="$edn-structure = 'dharma'">
-              <div>
+             
                   <xsl:call-template name="dharma-structure">
                     <xsl:with-param name="parm-internal-app-style" select="$internal-app-style" tunnel="yes"/>
                     <xsl:with-param name="parm-external-app-style" select="$external-app-style" tunnel="yes"/>
@@ -234,7 +234,7 @@
                     <xsl:with-param name="parm-zoteroNS" select="$ZoteroNS" tunnel="yes"/>
                     <xsl:with-param name="parm-zoteroStyle" select="$ZoteroStyle" tunnel="yes"/>
                   </xsl:call-template>
-              </div>
+              
           </xsl:when>
           <xsl:otherwise>
              <xsl:call-template name="default-structure">
