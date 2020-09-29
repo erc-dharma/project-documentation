@@ -397,7 +397,7 @@ bibliography. All examples only cater for book and article.
 			<xsl:text>note </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='item'">
-			<xsl:text>item </xsl:text>
+			<xsl:text>n° </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='entry'">
 			<xsl:text>entry </xsl:text>
