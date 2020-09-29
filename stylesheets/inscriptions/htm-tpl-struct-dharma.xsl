@@ -7,17 +7,15 @@
 
    <!-- Called from htm-tpl-structure.xsl -->
 
-<xsl:template match="t:teiHeader//t:foreign" mode="dharma"><i><xsl:apply-templates/></i></xsl:template>
-
    <xsl:template name="dharma-body-structure">
      <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
                 <xsl:element name="div">
               <xsl:attribute name="id">metadatadiv</xsl:attribute>
             <h2>Metadata</h2>
-            <xsl:if test="//t:idno[@type='filename']">
+            <xsl:if test="//t:fileDesc/t:pubicationStmt/t:idno[@type='filename'][1]">
               <xsl:element name="p">
             <xsl:text>Identifier: </xsl:text>
-            <xsl:value-of select="replace(//t:idno[@type='filename'], 'DHARMA_', '')"/>
+            <xsl:value-of select="replace(//t:fileDesc/t:pubicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
                <xsl:if test="//t:msContents//text()">
@@ -38,6 +36,10 @@
                      </xsl:when>
                  </xsl:choose>
                </xsl:element>
+               </xsl:if>
+               <xsl:if test="//t:sourceDesc/t:biblFull/t:editionStmt/t:p">
+                 <xsl:text>First edition of the file: </xsl:text>
+                 <xsl:apply-templates select="//t:sourceDesc/t:biblFull/t:editionStmt/t:p" mode="dharma"/>
                </xsl:if>
           </xsl:element>
           <xsl:variable name="maintxt">
