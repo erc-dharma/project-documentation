@@ -211,7 +211,7 @@ bibliography. All examples only cater for book and article.
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
 
-								<xsl:element name="span">
+								<xsl:element name="div">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
 									<xsl:apply-templates select="./text()"/>
 								<!--<xsl:copy-of
@@ -377,13 +377,13 @@ bibliography. All examples only cater for book and article.
 		<xsl:when test="@unit='page'">
 			<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
-				<xsl:text>pages </xsl:text>
+				<xsl:call-template name="severalPages"/>
 			</xsl:when>
 			<xsl:when test="matches(., ',')">
-				<xsl:text>pages </xsl:text>
+				<xsl:call-template name="severalPages"/>
 			</xsl:when>
 			<xsl:otherwise>
-			<xsl:text>page </xsl:text>
+			<xsl:call-template name="singlePage"/>
 		</xsl:otherwise>
 		</xsl:choose>
 		</xsl:when>
@@ -417,17 +417,39 @@ bibliography. All examples only cater for book and article.
 		<xsl:otherwise>
 		<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
-				<xsl:text>pages </xsl:text>
+				<xsl:call-template name="severalPages"/>
 			</xsl:when>
 			<xsl:when test="matches(., ',')">
-				<xsl:text>pages </xsl:text>
+				<xsl:call-template name="severalPages"/>
 			</xsl:when>
 			<xsl:otherwise>
-			<xsl:text>page </xsl:text>
+			<xsl:call-template name="singlePage"/>
 		</xsl:otherwise>
 		</xsl:choose>
 	</xsl:otherwise>
 	</xsl:choose>
 	</xsl:template>
+
+	<xsl:template name="severalPages">
+		<xsl:choose>
+		<xsl:when test="ancestor::t:listBibl">
+			<xsl:text>Pages </xsl:text>
+		</xsl:when>
+		<xsl:otherwise>
+		<xsl:text>pages </xsl:text>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
+<xsl:template name="singlePage">
+	<xsl:choose>
+	<xsl:when test="ancestor::t:listBibl">
+		<xsl:text>Page </xsl:text>
+	</xsl:when>
+	<xsl:otherwise>
+	<xsl:text>page </xsl:text>
+	</xsl:otherwise>
+</xsl:choose>
+</xsl:template>
 
 </xsl:stylesheet>

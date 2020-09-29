@@ -68,6 +68,12 @@ P {
   display: inline;
   text-indent: -10px;
 }
+
+.refBibl{
+  display: inline;
+  position: relative;
+  left: -1px;
+}
 .previouslyread {
     text-decoration: underline;
      }
