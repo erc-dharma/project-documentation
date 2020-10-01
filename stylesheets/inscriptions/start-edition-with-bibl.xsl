@@ -4,7 +4,7 @@
    xmlns:t="http://www.tei-c.org/ns/1.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    exclude-result-prefixes="t" version="2.0">
-   <xsl:output method="xml" encoding="UTF-8"/>
+   <xsl:output method="html" encoding="UTF-8"/>
    <!--use-character-maps="myChars"-->
    <xsl:include href="global-varsandparams.xsl"/>
 
@@ -216,7 +216,7 @@
               </div>
           </xsl:when>
           <xsl:when test="$edn-structure = 'dharma'">
-             
+
                   <xsl:call-template name="dharma-structure">
                     <xsl:with-param name="parm-internal-app-style" select="$internal-app-style" tunnel="yes"/>
                     <xsl:with-param name="parm-external-app-style" select="$external-app-style" tunnel="yes"/>
@@ -234,7 +234,7 @@
                     <xsl:with-param name="parm-zoteroNS" select="$ZoteroNS" tunnel="yes"/>
                     <xsl:with-param name="parm-zoteroStyle" select="$ZoteroStyle" tunnel="yes"/>
                   </xsl:call-template>
-              
+
           </xsl:when>
           <xsl:otherwise>
              <xsl:call-template name="default-structure">

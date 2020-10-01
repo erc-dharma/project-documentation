@@ -215,7 +215,6 @@
               </div>
           </xsl:when>
           <xsl:when test="$edn-structure = 'dharma'">
-              <div>
                   <xsl:call-template name="dharma-structure">
                     <xsl:with-param name="parm-internal-app-style" select="$internal-app-style" tunnel="yes"/>
                     <xsl:with-param name="parm-external-app-style" select="$external-app-style" tunnel="yes"/>
@@ -227,7 +226,6 @@
                     <xsl:with-param name="parm-verse-lines" select="$verse-lines" tunnel="yes"/>
                     <xsl:with-param name="parm-css-loc" select="$css-loc" tunnel="yes"/>
                   </xsl:call-template>
-              </div>
           </xsl:when>
           <xsl:otherwise>
              <xsl:call-template name="default-structure">
