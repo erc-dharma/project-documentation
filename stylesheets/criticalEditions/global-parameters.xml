@@ -121,7 +121,8 @@
 
   <parameter>
     <name>css-loc</name>
-    <value>./../criticalEditions/global.css</value>
+    <!--<value>./../criticalEditions/global.css</value>-->
+    <value>https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/global.css</value>
   </parameter>
 
 <parameter>
