@@ -70,6 +70,9 @@
                 <xsl:otherwise><xsl:text>)</xsl:text></xsl:otherwise>
               </xsl:choose>-->
             <xsl:call-template name="brackets-closer"/>
+            <xsl:if test="parent::t:l[@enjamb='yes'] and self::t:unclear[position()=last()]">
+            <xsl:text>-</xsl:text>
+          </xsl:if>
           </xsl:when>
           <xsl:when test="$leiden-style ='dharma' and ancestor::t:choice"/>
 

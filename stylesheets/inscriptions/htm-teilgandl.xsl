@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
+                xmlns:t="http://www.tei-c.org/ns/1.0"
+                exclude-result-prefixes="t"
                 version="2.0">
 
   <xsl:include href="teilgandl.xsl"/>
@@ -77,9 +78,10 @@
                    </xsl:if>
                      <xsl:apply-templates/>
                      <!-- Pb de trailing space related to the addition of the div -->
-                     <xsl:if test="@enjamb='yes' and $leiden-style='dharma'">
-                       <xsl:text>-</xsl:text>
+                     <xsl:if test="@enjamb='yes' and $leiden-style='dharma' and not(child::t:unclear[position()=last()])">
+                          <xsl:text>-</xsl:text>
                    </xsl:if>
+                   <xsl:if test="@enjamb='yes' and $leiden-style='dharma' and child::t:unclear[position()=last()]"/>
                  </xsl:element>
                  </xsl:when>
                <xsl:otherwise>
