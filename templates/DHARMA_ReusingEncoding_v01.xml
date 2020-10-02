@@ -53,16 +53,11 @@
                     <editionStmt><p><!-- Add a description of this first edition in prose. Eventually add a lie toward the site or the original files. --></p></editionStmt>
                     <publicationStmt>
                         <!-- Give the elements regarding their copyright – structured or in prose depending what have been chosen by the project. See the following example taken form Campa. Note that if you are reusing a file without those elements, contact the ingenieurs to help you create a correct reference. -->
-                        <authority>École française d'Extrême-Orient (EFEO)</authority>
-                        <idno type="filename">C0001</idno>
+                        <authority><!-- Keeping the original authority --></authority>
+                        <idno type="filename"><!-- keeping the original filename --></idno>
                         <availability>
                             <licence target="http://creativecommons.org/licenses/by/3.0/">
-                                <p>Copyright (c) 2012 by Arlo Griffiths.</p>
-                                <p>This work is licensed under the Creative Commons Attribution 3.0 Unported
-                                    License. To view a copy of this license, visit
-                                    http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
-                                    Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
-                                    USA.</p>
+                                <!-- reproducing the copyright and the licence if given in prose as well -->
                             </licence>
                         </availability>
                     </publicationStmt>
@@ -103,6 +98,7 @@
             </listPrefixDef>
         </encodingDesc>
         <revisionDesc>
+            <change who="part:axja" when="2020-10-02">Upating the template after the transformation of the EIAD files.</change>
             <change who="part:axja" when="2020-09-15">Version 1: adding some elements to finish the template used to export the files made by Campa for DHARMA. Kept as reference for the expected conversion fro EIAD.</change>
             <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
         </revisionDesc>
