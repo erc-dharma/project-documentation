@@ -3,7 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
 
-<xsl:template match="t:unclear">
+<xsl:template match="t:unclear" mode="#all">
      <xsl:param name="text-content">
          <xsl:choose>
             <xsl:when test="ancestor::t:orig[not(ancestor::t:choice)]">
@@ -49,7 +49,8 @@
               <xsl:otherwise><xsl:text>(</xsl:text></xsl:otherwise>
             </xsl:choose>-->
             <xsl:call-template name="brackets-opener"/>
-              <xsl:choose>
+            <xsl:value-of select="."/>
+              <!--<xsl:choose>
                 <xsl:when test="@rend='grantha' or child::t:hi[@rend='grantha']">
                   <xsl:element name="span">
                   <xsl:attribute name="class">grantha</xsl:attribute>
@@ -59,7 +60,7 @@
                 <xsl:otherwise>
                   <xsl:value-of select="."/>
                 </xsl:otherwise>
-              </xsl:choose>
+              </xsl:choose>-->
               <!--<xsl:choose>
                 <xsl:when test="parent::t:hi[@rend='grantha']">
                 <xsl:element name="span">
