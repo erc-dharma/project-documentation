@@ -60,7 +60,7 @@
       <xsl:variable name="title">
          <xsl:call-template name="dharma-title" />
       </xsl:variable>
-
+      
       <html>
          <head>
             <title>
