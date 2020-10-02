@@ -16,38 +16,56 @@
             <xsl:text>&gt;</xsl:text>
          </xsl:when>
          <xsl:when test="$leiden-style ='dharma' and child::t:unclear[2]">
-             <xsl:text>(</xsl:text>
-            <xsl:apply-templates select="child::t:unclear[1]" mode="dharma"/>
-              <xsl:text>/</xsl:text>
-              <xsl:apply-templates select="child::t:unclear[2]" mode="dharma"/>
-              <xsl:text>)</xsl:text>
+           <xsl:element name="span">
+              <xsl:attribute name="class">notBold</xsl:attribute>
+              <xsl:text>(</xsl:text>
+           </xsl:element>
+            <xsl:value-of select="child::t:unclear[1]"/>
+            <xsl:element name="span">
+               <xsl:attribute name="class">notBold</xsl:attribute>
+               <xsl:text>/</xsl:text>
+            </xsl:element>
+              <xsl:value-of select="child::t:unclear[2]"/>
+              <xsl:element name="span">
+                 <xsl:attribute name="class">notBold</xsl:attribute>
+                 <xsl:text>)</xsl:text>
+              </xsl:element>
     </xsl:when>
     <xsl:when test="$leiden-style ='dharma' and child::t:hi[@rend='grantha'] and descendant::t:unclear">
-      <xsl:text>(</xsl:text>
+      <xsl:element name="span">
+         <xsl:attribute name="class">notBold</xsl:attribute>
+         <xsl:text>(</xsl:text>
+      </xsl:element>
       <xsl:choose>
       <xsl:when test="child::t:hi[@rend='grantha'][1]">
         <xsl:element name="span">
            <xsl:attribute name="class">grantha</xsl:attribute>
-     <xsl:apply-templates select="descendant::t:unclear[1]" mode="dharma"/>
+     <xsl:value-of select="descendant::t:unclear[1]"/>
    </xsl:element>
  </xsl:when>
  <xsl:otherwise>
-  <xsl:apply-templates select="child::t:unclear[1]" mode="dharma"/>
+  <xsl:apply-templates select="child::t:unclear[1]"/>
   </xsl:otherwise>
 </xsl:choose>
-       <xsl:text>/</xsl:text>
+<xsl:element name="span">
+   <xsl:attribute name="class">notBold</xsl:attribute>
+   <xsl:text>/</xsl:text>
+</xsl:element>
 <xsl:choose>
        <xsl:when test="child::t:hi[@rend='grantha'][2]">
          <xsl:element name="span">
             <xsl:attribute name="class">grantha</xsl:attribute>
-      <xsl:apply-templates select="child::t:unclear" mode="dharma"/>
+      <xsl:value-of select="child::t:unclear"/>
     </xsl:element>
   </xsl:when>
   <xsl:otherwise>
- <xsl:apply-templates select="child::t:unclear" mode="dharma"/>
+ <xsl:value-of select="child::t:unclear"/>
   </xsl:otherwise>
 </xsl:choose>
-       <xsl:text>)</xsl:text>
+<xsl:element name="span">
+   <xsl:attribute name="class">notBold</xsl:attribute>
+   <xsl:text>)</xsl:text>
+</xsl:element>
     </xsl:when>
        <xsl:otherwise>
             <xsl:apply-templates/>
