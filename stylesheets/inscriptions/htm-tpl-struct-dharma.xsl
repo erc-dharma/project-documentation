@@ -12,10 +12,10 @@
                 <xsl:element name="div">
               <xsl:attribute name="id">metadatadiv</xsl:attribute>
             <h2>Metadata</h2>
-            <xsl:if test="//t:fileDesc/t:pubicationStmt/t:idno[@type='filename'][1]">
+            <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
               <xsl:element name="p">
             <xsl:text>Identifier: </xsl:text>
-            <xsl:value-of select="replace(//t:fileDesc/t:pubicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
+            <xsl:value-of select="replace(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
                <xsl:if test="//t:msContents//text()">
