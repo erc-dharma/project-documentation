@@ -156,7 +156,9 @@ bibliography. All examples only cater for book and article.
 									</xsl:variable>
 									<xsl:choose>
 										<xsl:when test="@rend='omitname' and $leiden-style = 'dharma'">
+											<xsl:text>(</xsl:text>
 											<xsl:value-of select="document($zoteroapitei)//t:imprint/t:date"/>
+											<xsl:text>)</xsl:text>
 										</xsl:when>
 										<xsl:when test="@rend='ibid'">
 											<xsl:element name="i">
@@ -171,7 +173,8 @@ bibliography. All examples only cater for book and article.
 											</xsl:if>
 									</xsl:when>
 										<xsl:otherwise>
-											<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>
+											<!--<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>-->
+											<xsl:value-of select="replace(replace($citation, '\(', '') , '\)', '')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</a>
@@ -446,7 +449,7 @@ bibliography. All examples only cater for book and article.
 			<xsl:text>n° </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='entry'">
-			<xsl:text>entry </xsl:text>
+			<xsl:text>s.v. </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='figure'">
 			<xsl:text>figure </xsl:text>
