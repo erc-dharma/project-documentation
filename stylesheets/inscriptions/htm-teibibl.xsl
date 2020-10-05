@@ -170,23 +170,6 @@ bibliography. All examples only cater for book and article.
 												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
 											</xsl:if>
 									</xsl:when>
-									<!-- Code added for Arlo's request regarding BEFEO36_1936 in K00868.xml-->
-									<!-- Handles also JBG, NBG -->
-									<xsl:when test="@rend='journalNumDate' and $leiden-style = 'dharma'">
-										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
-										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
-												<xsl:value-of select="replace(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9]*)_([0-9\-]+)', '$1 $2 ($3)')"/>
-											</xsl:if>
-									</xsl:when>
-									<!-- Code added to follow ARIE's bibliographic pattern after Arlo's request for BEFEO36_1936. ARIE1886-1887 or ARIE1890-1891_02 -->
-									<!-- Handles also OV, ROC, ROD -->
-									<xsl:when test="@rend='journalDate' and $leiden-style = 'dharma'">
-										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
-										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
-												<xsl:value-of select="replace(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*', '$1 ($2)')"/>
-											</xsl:if>
-									</xsl:when>
-									<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01 / TBG1924_64 – not tested  -->
 										<xsl:otherwise>
 											<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>
 								</xsl:otherwise>
@@ -213,11 +196,74 @@ bibliography. All examples only cater for book and article.
 
 								<xsl:element name="div">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
-									<xsl:apply-templates select="./text()"/>
+									<xsl:if test="@rend='journal'">
+										<!-- Adding a style to match the CSS style imported from Zotero added by the API -->
+										<xsl:attribute name="style">line-height: 1.35; padding-left: 1em; text-indent:-1em;</xsl:attribute>
+								</xsl:if>
+								<xsl:apply-templates select="./text()"/>
 								<!--<xsl:copy-of
 									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>-->
+									<xsl:choose>
+										<xsl:when test="@rend='journal' and $leiden-style = 'dharma'">
+											<xsl:variable name="soughtSiglum" select="./child::t:ptr/@target"/>
+											<!-- Code added for Arlo's request regarding BEFEO36_1936 in K00868.xml-->
+											<!-- Handles also JBG, NBG -->
+											<xsl:choose>
+											 <xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
+												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
+                    			<xsl:matching-substring>
+                        					<xsl:value-of select="regex-group(1)"/>
+																	<xsl:text> </xsl:text>
+																	<xsl:value-of select="regex-group(2)"/>
+																	<xsl:text> (</xsl:text>
+																	<xsl:value-of select="regex-group(3)"/>
+																	<xsl:text>).  </xsl:text>
+                    					</xsl:matching-substring>
+                						</xsl:analyze-string>
+												</xsl:when>
+												<!-- Handles also OV, ROC, ROD ARIE1886-1887 or ARIE1890-1891_02 -->
+												<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
+ 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
+                     			<xsl:matching-substring>
+                         					<xsl:value-of select="regex-group(1)"/>
+ 																	<xsl:text> (</xsl:text>
+ 																	<xsl:value-of select="regex-group(2)"/>
+ 																	<xsl:text>).  </xsl:text>
+                     					</xsl:matching-substring>
+                 						</xsl:analyze-string>
+ 												</xsl:when>
+													<!-- TBG1924_64 -->
+													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
+	 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
+	                     			<xsl:matching-substring>
+	                         					<xsl:value-of select="regex-group(1)"/>
+																		<xsl:text> </xsl:text>
+																		<xsl:value-of select="regex-group(3)"/>
+	 																	<xsl:text> (</xsl:text>
+	 																	<xsl:value-of select="regex-group(2)"/>
+	 																	<xsl:text>).  </xsl:text>
+	                     					</xsl:matching-substring>
+	                 						</xsl:analyze-string>
+	 												</xsl:when>
+													<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  -->
+													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
+	 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
+	                     			<xsl:matching-substring>
+	                         					<xsl:value-of select="regex-group(1)"/>
+																		<xsl:text> (</xsl:text>
+	 																	<xsl:value-of select="regex-group(2)"/>
+	 																	<xsl:text>).  </xsl:text>
+	                     					</xsl:matching-substring>
+	                 						</xsl:analyze-string>
+	 												</xsl:when>
+												</xsl:choose>
+										</xsl:when>
+										<xsl:otherwise>
 									<xsl:copy-of
 										select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+										</xsl:otherwise>
+									</xsl:choose>
+
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
 											<xsl:call-template name="citedRange-unit"/>
