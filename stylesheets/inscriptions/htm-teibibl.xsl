@@ -118,6 +118,14 @@ bibliography. All examples only cater for book and article.
 							</xsl:analyze-string>
 
 						</xsl:variable>-->
+						<xsl:variable name="zoteroapijournal">
+							<xsl:value-of
+								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle), 'amp;', '')"
+							/>
+						</xsl:variable>
+						<xsl:variable name="unparsedjournal" select="unparsed-text($zoteroapijournal)"/>
+						<!--<xsl:message> unparsedjournal = <xsl:value-of select="$unparsedjournal"/></xsl:message>-->
+
 
 						<xsl:choose>
 							<!--this will print a citation according to the selected style with a link around it pointing to the resource DOI, url or zotero item view-->
@@ -209,10 +217,46 @@ bibliography. All examples only cater for book and article.
 									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>-->
 									<xsl:choose>
 										<xsl:when test="@rend='journal' and $leiden-style = 'dharma'">
-											<xsl:variable name="soughtSiglum" select="./child::t:ptr/@target"/>
+											<!-- For the cases handled with regularly entry in Zotero-->
+											<!-- journal abbreviation -->
+											<xsl:variable name="journalAbbreviation">
+												<xsl:analyze-string regex="(&quot;journalAbbreviation&quot;:\s&quot;)(.+)&quot;" select="$unparsedjournal">
+													<xsl:matching-substring>
+													<xsl:value-of select="regex-group(2)"/>
+												</xsl:matching-substring>
+												</xsl:analyze-string>
+											</xsl:variable>
+											<!--<xsl:message>journalAbb = <xsl:value-of select="$journalAbbreviation"/></xsl:message>-->
+											<!-- volume number -->
+											<xsl:variable name="journalVolume">
+												<xsl:analyze-string regex="(&quot;volume&quot;:\s&quot;)(.+)&quot;" select="$unparsedjournal">
+													<xsl:matching-substring>
+													<xsl:value-of select="regex-group(2)"/>
+												</xsl:matching-substring>
+												</xsl:analyze-string>
+											</xsl:variable>
+											<!--<xsl:message>journalVolume = <xsl:value-of select="$journalVolume"/></xsl:message>-->
+											<!-- Date  -->
+											<xsl:variable name="journalDate">
+												<xsl:analyze-string regex="(&quot;date&quot;:\s&quot;)(.+)&quot;" select="$unparsedjournal">
+													<xsl:matching-substring>
+													<xsl:value-of select="regex-group(2)"/>
+												</xsl:matching-substring>
+												</xsl:analyze-string>
+											</xsl:variable>
+										<!--	<xsl:message>journalDate = <xsl:value-of select="$journalDate"/></xsl:message>-->
+										<xsl:variable name="journalName">
+											<xsl:analyze-string regex="(&quot;lastName&quot;:\s&quot;)(.+)&quot;" select="$unparsedjournal">
+												<xsl:matching-substring>
+												<xsl:value-of select="regex-group(2)"/>
+											</xsl:matching-substring>
+											</xsl:analyze-string>
+										</xsl:variable>
 											<!-- Code added for Arlo's request regarding BEFEO36_1936 in K00868.xml-->
-											<!-- Handles also JBG, NBG -->
-											<xsl:choose>
+
+											<xsl:variable name="soughtSiglum" select="./child::t:ptr/@target"/>
+													<!-- Handles also JBG, NBG -->
+													<xsl:choose>
 											 <xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
                     			<xsl:matching-substring>
@@ -260,6 +304,16 @@ bibliography. All examples only cater for book and article.
 	                     					</xsl:matching-substring>
 	                 						</xsl:analyze-string>
 	 												</xsl:when>
+													<xsl:otherwise>
+														<xsl:value-of select="$journalName"/>
+														<xsl:text> in </xsl:text>
+														<i><xsl:value-of select="$journalAbbreviation"/></i>
+														<xsl:text> </xsl:text>
+														<xsl:value-of select="$journalVolume"/>
+														<xsl:text> (</xsl:text>
+														<xsl:value-of select="$journalDate"/>
+														<xsl:text>). </xsl:text>
+													</xsl:otherwise>
 												</xsl:choose>
 										</xsl:when>
 										<xsl:otherwise>
@@ -267,13 +321,12 @@ bibliography. All examples only cater for book and article.
 										select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
 										</xsl:otherwise>
 									</xsl:choose>
-
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
 											<b>
 											<xsl:call-template name="citedRange-unit"/>
-																						<xsl:value-of select="replace(normalize-space(.), '-', '–')"/>
-																					</b>
+											<xsl:value-of select="replace(normalize-space(.), '-', '–')"/>
+											</b>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
 										</xsl:if>
