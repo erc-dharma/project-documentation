@@ -109,7 +109,7 @@
   <xsl:template name="respID">
      <xsl:variable name="referrer" select="."/>
      <xsl:variable name="sought" select="for $token in tokenize(@resp, ' ') return substring($token, 6)"/>
-     <xsl:message>sought = <xsl:value-of select="$sought"/> and <xsl:value-of select="count($sought)"/></xsl:message>
+    <!-- <xsl:message>sought = <xsl:value-of select="$sought"/> and <xsl:value-of select="count($sought)"/></xsl:message>-->
      <xsl:variable name="dharma-path">
         <xsl:choose>
            <xsl:when test="$edn-structure='default'">../../DHARMA_IdListMembers_v01.xml</xsl:when>
