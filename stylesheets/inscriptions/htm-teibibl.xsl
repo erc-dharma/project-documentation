@@ -3,6 +3,7 @@
 	xmlns:t="http://www.tei-c.org/ns/1.0"
 	xmlns:f="http://example.com/ns/functions"
 	xmlns:html="http://www.w3.org/1999/html"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="#all" version="2.0">
 	<!--
 
@@ -270,11 +271,11 @@ bibliography. All examples only cater for book and article.
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
 											<xsl:call-template name="citedRange-unit"/>
-										<xsl:value-of select="normalize-space(.)"/>
+																						<xsl:value-of select="normalize-space(.)"/>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
 										</xsl:if>
-										</xsl:for-each>
+									</xsl:for-each>
 										<xsl:text>.</xsl:text>
 									</xsl:if>
 										<xsl:if test="child::t:note">
@@ -424,18 +425,20 @@ bibliography. All examples only cater for book and article.
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="citedRange-unit">
+<xsl:template name="citedRange-unit">
+	<xsl:variable name="CurPosition" select="position()"/>
+	<xsl:variable name="unit-value">
 		<xsl:choose>
 		<xsl:when test="@unit='page'">
 			<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
-				<xsl:call-template name="severalPages"/>
+				<xsl:text>pages </xsl:text>
 			</xsl:when>
 			<xsl:when test="matches(., ',')">
-				<xsl:call-template name="severalPages"/>
+				<xsl:text>pages </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-			<xsl:call-template name="singlePage"/>
+			<xsl:text>page </xsl:text>
 		</xsl:otherwise>
 		</xsl:choose>
 		</xsl:when>
@@ -467,41 +470,28 @@ bibliography. All examples only cater for book and article.
 			<xsl:text>appendix </xsl:text>
 		</xsl:when>
 		<xsl:otherwise>
-		<xsl:choose>
+			<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
-				<xsl:call-template name="severalPages"/>
+				<xsl:text>pages </xsl:text>
 			</xsl:when>
 			<xsl:when test="matches(., ',')">
-				<xsl:call-template name="severalPages"/>
+				<xsl:text>pages </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-			<xsl:call-template name="singlePage"/>
+			<xsl:text>page </xsl:text>
 		</xsl:otherwise>
 		</xsl:choose>
 	</xsl:otherwise>
-	</xsl:choose>
-	</xsl:template>
-
-	<xsl:template name="severalPages">
-		<xsl:choose>
-		<xsl:when test="ancestor::t:listBibl">
-			<xsl:text>Pages </xsl:text>
+</xsl:choose>
+	</xsl:variable>
+	<xsl:choose>
+		<xsl:when test="$CurPosition = 1">
+			<xsl:value-of select="concat(upper-case(substring($unit-value,1,1)), substring($unit-value, 2),' '[not(last())] )"/>
 		</xsl:when>
 		<xsl:otherwise>
-		<xsl:text>pages </xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:template>
-
-<xsl:template name="singlePage">
-	<xsl:choose>
-	<xsl:when test="ancestor::t:listBibl">
-		<xsl:text>Page </xsl:text>
-	</xsl:when>
-	<xsl:otherwise>
-	<xsl:text>page </xsl:text>
+		<xsl:value-of select="$unit-value"/>
 	</xsl:otherwise>
-</xsl:choose>
+	</xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>
