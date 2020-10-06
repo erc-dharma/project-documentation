@@ -175,7 +175,7 @@ bibliography. All examples only cater for book and article.
 									</xsl:when>
 										<xsl:otherwise>
 											<!--<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>-->
-											<xsl:value-of select="replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', '')"/>
+											<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]+$', ''), '\)', '')"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</a>
