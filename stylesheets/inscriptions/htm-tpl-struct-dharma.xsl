@@ -13,29 +13,36 @@
               <xsl:attribute name="id">metadatadiv</xsl:attribute>
             <h2>Metadata</h2>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
-              <xsl:element name="p">
-            <xsl:text>Identifier: </xsl:text>
+            <h3>Identifier: </h3>
+            <xsl:element name="p">
             <xsl:value-of select="replace(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
-               <xsl:if test="//t:msContents//text()">
+               <xsl:if test="//t:msContents//t:summary/text()">
+                  <h3>Summary: </h3>
                  <xsl:element name="p">
-                 <xsl:text>Summary: </xsl:text>
                   <xsl:apply-templates select="//t:msContents/t:summary" mode="dharma"/>
                 </xsl:element>
                </xsl:if>
                <xsl:if test="//t:handDesc//text()">
-                <xsl:element name="p">
-                  <xsl:text>Hands: </xsl:text>
+                  <h3>Hands: </h3>
                  <xsl:choose>
                    <xsl:when test="//t:handDesc/t:handNote/t:p">
+                     <xsl:for-each select="//t:handDesc/t:handNote/t:p">
+                       <p>
+                     <xsl:apply-templates mode="dharma"/>
+                   </p>
+                   </xsl:for-each>
                     <xsl:apply-templates select="//t:handDesc/t:handNote/t:p" mode="dharma"/>
                    </xsl:when>
-                   <xsl:when test="//t:handDesc/t:p">
-                       <xsl:apply-templates select="//t:handDesc/t:p" mode="dharma"/>
-                     </xsl:when>
+                   <xsl:otherwise>
+                     <xsl:for-each select="//t:handDesc/t:p">
+                       <p>
+                     <xsl:apply-templates mode="dharma"/>
+                   </p>
+                   </xsl:for-each>
+                     </xsl:otherwise>
                  </xsl:choose>
-               </xsl:element>
                </xsl:if>
                <xsl:if test="//t:sourceDesc/t:biblFull/t:editionStmt/t:p">
                  <xsl:text>First edition of the file: </xsl:text>
@@ -60,7 +67,7 @@
       <xsl:variable name="title">
          <xsl:call-template name="dharma-title" />
       </xsl:variable>
-      
+
       <html>
          <head>
             <title>
