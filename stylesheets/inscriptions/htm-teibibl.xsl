@@ -183,7 +183,7 @@ bibliography. All examples only cater for book and article.
 									<xsl:text>, </xsl:text>
 									<xsl:for-each select="t:citedRange">
 										<xsl:call-template name="citedRange-unit"/>
-									<xsl:value-of select="."/>
+									<xsl:value-of select="replace(normalize-space(.), '-', '–')"/>
 									<xsl:if test="following-sibling::t:citedRange">
 										<xsl:text>, </xsl:text>
 									</xsl:if>
@@ -216,7 +216,7 @@ bibliography. All examples only cater for book and article.
 											 <xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
                     			<xsl:matching-substring>
-                        					<xsl:value-of select="regex-group(1)"/>
+																	<i><xsl:value-of select="regex-group(1)"/></i>
 																	<xsl:text> </xsl:text>
 																	<xsl:value-of select="regex-group(2)"/>
 																	<xsl:text> (</xsl:text>
@@ -229,7 +229,7 @@ bibliography. All examples only cater for book and article.
 												<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
  												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
                      			<xsl:matching-substring>
-                         					<xsl:value-of select="regex-group(1)"/>
+                         					<i><xsl:value-of select="regex-group(1)"/></i>
  																	<xsl:text> (</xsl:text>
  																	<xsl:value-of select="regex-group(2)"/>
  																	<xsl:text>).  </xsl:text>
@@ -240,7 +240,7 @@ bibliography. All examples only cater for book and article.
 													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
 	 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
 	                     			<xsl:matching-substring>
-	                         					<xsl:value-of select="regex-group(1)"/>
+	                         					<i><xsl:value-of select="regex-group(1)"/></i>
 																		<xsl:text> </xsl:text>
 																		<xsl:value-of select="regex-group(3)"/>
 	 																	<xsl:text> (</xsl:text>
@@ -253,7 +253,7 @@ bibliography. All examples only cater for book and article.
 													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
 	 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
 	                     			<xsl:matching-substring>
-	                         					<xsl:value-of select="regex-group(1)"/>
+	                         					<i><xsl:value-of select="regex-group(1)"/></i>
 																		<xsl:text> (</xsl:text>
 	 																	<xsl:value-of select="regex-group(2)"/>
 	 																	<xsl:text>).  </xsl:text>
@@ -270,8 +270,10 @@ bibliography. All examples only cater for book and article.
 
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
+											<b>
 											<xsl:call-template name="citedRange-unit"/>
-																						<xsl:value-of select="normalize-space(.)"/>
+																						<xsl:value-of select="replace(normalize-space(.), '-', '–')"/>
+																					</b>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
 										</xsl:if>
