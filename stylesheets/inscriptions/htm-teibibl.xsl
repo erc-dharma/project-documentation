@@ -286,7 +286,7 @@ bibliography. All examples only cater for book and article.
 									<xsl:text> • </xsl:text>
 									<xsl:value-of select="following-sibling::t:note"/>
 								</xsl:if>-->
-									</xsl:element>
+
 									<xsl:if test="ancestor::t:listBibl and ancestor-or-self::t:bibl/@n"> <!-- [@type='primary'] -->
 									<xsl:element name="span">
 										<xsl:attribute name="class">siglum</xsl:attribute>
@@ -295,6 +295,7 @@ bibliography. All examples only cater for book and article.
 											<strong><xsl:value-of select="ancestor-or-self::t:bibl/@n"/></strong>
 											<xsl:text>]</xsl:text>
 										</xsl:if>
+											</xsl:element>
 										<!-- Deleting the display for siglum proposition-->
 									<!--	<xsl:if test="not(ancestor-or-self::t:bibl/@n)">
 											<xsl:text>No Siglum : </xsl:text>
@@ -316,9 +317,11 @@ bibliography. All examples only cater for book and article.
 									 </xsl:otherwise>
 								 </xsl:choose>
 							 </xsl:if>-->
-									</xsl:element>
+
+
 								</xsl:if>
 								<xsl:element name="br"/>
+								</xsl:element>
 							</xsl:otherwise>
 						</xsl:choose>
 
@@ -446,7 +449,7 @@ bibliography. All examples only cater for book and article.
 			<xsl:text>note </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='item'">
-			<xsl:text>n° </xsl:text>
+			<xsl:text>&#8470; </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='entry'">
 			<xsl:text>s.v. </xsl:text>

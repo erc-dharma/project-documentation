@@ -61,7 +61,6 @@ P {
 
 .csl-entry{
   left: -30px;
-  display: inline;
 }
 
 .csl-bib-body{
@@ -90,6 +89,8 @@ P {
 
    .siglum {
            color: #1E90FF;
+           position: relative;
+           display: inline;
              }
 
 .textpart {
