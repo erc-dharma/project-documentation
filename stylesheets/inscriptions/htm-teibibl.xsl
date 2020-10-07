@@ -165,9 +165,7 @@ bibliography. All examples only cater for book and article.
 									</xsl:variable>
 									<xsl:choose>
 										<xsl:when test="@rend='omitname' and $leiden-style = 'dharma'">
-											<xsl:text>(</xsl:text>
 											<xsl:value-of select="document($zoteroapitei)//t:imprint/t:date"/>
-											<xsl:text>)</xsl:text>
 										</xsl:when>
 										<xsl:when test="@rend='ibid'">
 											<xsl:element name="i">
