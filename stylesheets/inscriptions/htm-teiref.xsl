@@ -68,23 +68,26 @@
        <!--<xsl:variable name="pathTree" select="functx:substring-before-last-match(substring-after($fileLoc, '-epigraphy'), '/')"/>-->
 
            <!-- file we are looking for -->
-           <xsl:variable name="fileFetched" select="./@target"/>
+          <!-- <xsl:variable name="fileFetched" select="./@target"/>-->
+
            <!-- only work if the file is in the same repository -->
-           <xsl:variable name="pathTree">
-             <xsl:choose>
+           <!--<xsl:variable name="pathTree">
+             <xsl:choose>-->
                <!-- files not in the repository -->
-               <xsl:when test="./@n"/>
+               <!-- <xsl:when test="./@n">
+                   <xsl:value-of select="base-uri($fileFetched)"/>
+               </xsl:when>
                <xsl:otherwise>
              <xsl:value-of select="functx:substring-before-last-match(substring-after($fileLoc, '-epigraphy'), '/')"/>
            </xsl:otherwise>
          </xsl:choose>
-           </xsl:variable>
+       </xsl:variable>-->
            <!--Debugging messages -->
-         <!--<xsl:message>fileloc = <xsl:value-of select="$fileLoc"/></xsl:message>
+      <!--  <xsl:message>fileloc = <xsl:value-of select="$fileLoc"/></xsl:message>
          <xsl:message>repository = <xsl:value-of select="$identityRepository"/></xsl:message>
          <xsl:message>filefetched = <xsl:value-of select="$fileFetched"/></xsl:message>
          <xsl:message>pathTree = <xsl:value-of select="$pathTree"/></xsl:message>-->
-         <xsl:variable name="pointerGithub" select="concat('https://github.com/erc-dharma/',$identityRepository,'/blob/master',$pathTree, '/', $fileFetched)"/>
+         <xsl:variable name="pointerGithub" select="concat('https://github.com/erc-dharma/',$identityRepository)"/><!-- ,'/blob/master',$pathTree, '/', $fileFetched -->
          <!--<xsl:message>pointerGithub = <xsl:value-of select="$pointerGithub"/></xsl:message>-->
 
          <a href="{$pointerGithub}">
