@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- //// PLEASE NOTE THAT THIS TEMPLATE IS NOT TO BE USED FOR YOUR ENCODING /// -->
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
     <teiHeader>
         <fileDesc>
@@ -73,15 +72,16 @@
             <schemaRef type="guide" key="EGDv01" url="https://halshs.archives-ouvertes.fr/halshs-02888186"/><!-- UPDATE the link once the release is made official -->
             <listPrefixDef>
                 <prefixDef ident="bib" matchPattern="([a-zA-Z0-9\-\_]+)" replacementPattern="https://www.zotero.org/groups/1633743/erc-dharma/items/tag/$1">
-                    <p>Public URIs with the prefix <code>bib</code> to point to a Zotero Group Library named ERC-DHARMA whose data are open to the public.</p>
+                    <p>Public URIs with the prefix bib to point to a Zotero Group Library named ERC-DHARMA whose data are open to the public.</p>
                 </prefixDef>
                 <prefixDef ident="part" matchPattern="([a-z]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml#$1">
-                    <p>Internal URIs using the <code>part</code> prefix to point to <gi>person</gi> elements in the <ref>DHARMA_IdListMembers_V01.xml</ref> file.</p>
+                    <p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_V01.xml</ref> file.</p>
                 </prefixDef>
             </listPrefixDef>
         </encodingDesc>
         <revisionDesc>
-            <change who="part:axja" when="2020-07-02">Version 3: adding the encodingDesc and linking the template with the DHARMA Schema</change>
+            <change who="part:axja" when="2020-10-12">Version 3.2 : movinng the xml:lang to the root</change>
+            <change who="part:axja" when="2020-07-02">Version 3.1: adding the encodingDesc and linking the template with the DHARMA Schema</change>
             <change who="part:axja" when="2020-03-18">Version 2: addition of handDesc and summary</change>
             <change who="part:axja" when="2019-12-18" status="draft">Creation of the
                 template</change>
