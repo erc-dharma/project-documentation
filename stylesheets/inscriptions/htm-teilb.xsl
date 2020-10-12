@@ -289,4 +289,9 @@ Pb de lb[@break=no] entre deux textpart
         </xsl:if>
       </xsl:template>
 
+<xsl:template match="comment()">
+<xsl:if test="self::comment()[preceding::t:lb[@break='no']][1]">
+<xsl:text> </xsl:text>
+</xsl:if>
+</xsl:template>
 </xsl:stylesheet>
