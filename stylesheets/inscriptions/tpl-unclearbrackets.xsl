@@ -243,7 +243,7 @@
     <xsl:choose>
       <!-- 1.1 -->
       <xsl:when test="following-sibling::t:unclear[1]">
-         <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone')]">
+         <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::t:*[1](not)[local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice')]">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>)</xsl:text>
