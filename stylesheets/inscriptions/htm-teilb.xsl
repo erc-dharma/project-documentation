@@ -284,7 +284,7 @@ Pb de lb[@break=no] entre deux textpart
             </xsl:element>
           </xsl:if>
         </xsl:if>
-        <xsl:if test="$parm-leiden-style = 'dharma' and ancestor::t:duv[@type='apparatus']">
+        <xsl:if test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']">
           <xsl:text>/</xsl:text>
         </xsl:if>
       </xsl:template>
