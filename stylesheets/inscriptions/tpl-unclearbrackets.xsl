@@ -283,17 +283,11 @@
          /parent::t:*[following-sibling::t:unclear[1]]">
             <xsl:if test="parent::t:*[following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::node()[1]
             [self::text() and translate(normalize-space(.), ' ', '') = '']] or following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*[local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice', 'hi')])][preceding-sibling::text()[not(translate(normalize-space(.), ' ', '') = '')]]
-            /following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*)]">
+            /following-sibling::t:*[1]/t:unclear[not(preceding-sibling::t:*)] or parent::t:*[following-sibling::node()[1]]/following-sibling::t:*[1]/t:*[not(self::t:unclear)] or parent::t:*[following-sibling::node()[1]]/following-sibling::t:*[not(self::t:unclear)]">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>)</xsl:text>
                </xsl:element>
-            </xsl:if>
-            <xsl:if test="current()[parent::t:hi][following-sibling::t:lb]">
-              <xsl:element name="span">
-                 <xsl:attribute name="class">notBold</xsl:attribute>
-                 <xsl:text>)</xsl:text>
-              </xsl:element>
             </xsl:if>
          </xsl:when>
 
