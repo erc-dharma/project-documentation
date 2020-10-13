@@ -70,6 +70,7 @@
                 </xsl:choose>
 
             </xsl:when>
+
           <!--  <xsl:when test="$firstletter = '(' or $lastletter = ')'">
                 <xsl:variable name="previous" select="preceding::text()[1]" />
                 <xsl:variable name="after" select="following::text()[1]" />
@@ -106,8 +107,13 @@
         </xsl:choose>
         <xsl:value-of select="$endspace"/>
       </xsl:variable>
-<xsl:apply-templates select="replace(replace($input, '([\S\)\]&gt;])/[\n\r\s\t]([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
+<xsl:apply-templates select="replace(replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
+    </xsl:template>
 
+  <xsl:template match="text()[ancestor::div[@id='apparatus']]" mode="sqbrackets">
+    <xsl:if test="./preceding::span[@class='notBold'][1]">
+    <xsl:apply-templates select="replace(., '\s+(/[\S]+)', '$1')"/>
+  </xsl:if>
     </xsl:template>
 
 

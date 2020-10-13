@@ -65,10 +65,10 @@ Pb de lb[@break=no] entre deux textpart
                   <!-- *or unless* this break is accompanied by a paragraphos mark -->
                   <!-- in which case the hypen will be inserted before the paragraphos by code in htm-teimilestone.xsl -->
                   <xsl:when test="preceding-sibling::node()[not(self::text() and normalize-space(self::text())='')][1]/self::t:milestone[@rend='paragraphos']"/>
-                  <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']"/>-->
-                  <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and following-sibling::node() or following::node()[string-join(following::text() or following::node(), ' ')][1]/self::t:lb[@break='no']">
+                  <xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']"/>
+                  <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and following-sibling::node() or following::node()[string-join(following::text() or following::node(), ' ')][1]/self::t:lb[@break='no']">
                     <xsl:text>/</xsl:text>
-                  </xsl:when>
+                  </xsl:when>-->
                   <xsl:otherwise>
                         <xsl:text>-</xsl:text>
                       </xsl:otherwise>
@@ -151,7 +151,7 @@ Pb de lb[@break=no] entre deux textpart
                   </xsl:choose>
                </xsl:when>
                <xsl:when
-                   test="$parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'dharma' and ((not(ancestor::*[name() = 'TEI']))  or $location='apparatus')">
+                   test="$parm-leiden-style = 'ddbdp' and ((not(ancestor::*[name() = 'TEI'])) or $location='apparatus')">
                   <xsl:choose>
                      <xsl:when test="@break='no' or @type='inWord'">
                         <xsl:text>|</xsl:text>
@@ -164,9 +164,9 @@ Pb de lb[@break=no] entre deux textpart
                <xsl:when
                       test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']">
                      <xsl:choose>
-                       <!--<xsl:when test="@break='no'">
+                       <xsl:when test="@break='no'">
                           <xsl:text>/</xsl:text>
-                       </xsl:when>-->
+                       </xsl:when>
                       <xsl:when test="not(@break='no')">
                            <xsl:text> /  </xsl:text>
                         </xsl:when>
@@ -294,4 +294,5 @@ Pb de lb[@break=no] entre deux textpart
 <xsl:text> </xsl:text>
 </xsl:if>
 </xsl:template>
+
 </xsl:stylesheet>
