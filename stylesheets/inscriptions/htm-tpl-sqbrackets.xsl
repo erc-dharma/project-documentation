@@ -110,9 +110,9 @@
 <xsl:apply-templates select="replace(replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
     </xsl:template>
 
-  <xsl:template match="text()[ancestor::div[@id='apparatus']]" mode="sqbrackets">
-    <xsl:if test="./preceding::span[@class='notBold'][1]">
-    <xsl:apply-templates select="replace(., '\s+(/[\S]+)', '$1')"/>
+  <xsl:template match="text()[ancestor::div[@id='apparatus']][preceding::span[@class='notBold'][1]]" mode="sqbrackets">
+    <xsl:if test=".">
+    <xsl:apply-templates select="replace(., '\s(/\S)', '$1')"/>
   </xsl:if>
     </xsl:template>
 
