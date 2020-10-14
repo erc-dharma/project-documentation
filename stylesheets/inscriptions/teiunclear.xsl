@@ -38,6 +38,18 @@
                <xsl:with-param name="unc-len" select="$unclear-length"/>
             </xsl:call-template>
          </xsl:when>
+       <xsl:when test="$leiden-style ='dharma' and ancestor::t:choice">
+         <!-- Part to be discussed with Manu -->
+           <!--<xsl:element name="span">
+           <xsl:attribute name="class">notChoice</xsl:attribute>-->
+           <xsl:text>(</xsl:text>
+        <!-- </xsl:element>-->
+           <xsl:value-of select="."/>
+           <!--<xsl:element name="span">
+           <xsl:attribute name="class">notChoice</xsl:attribute>-->
+           <xsl:text>)</xsl:text>
+         <!--</xsl:element>-->
+       </xsl:when>
           <xsl:when test="$leiden-style ='dharma' and not(ancestor::t:choice)">
             <!--<xsl:choose>
               <xsl:when test="parent::t:hi[@rend='grantha']">
