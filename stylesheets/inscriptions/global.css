@@ -193,6 +193,11 @@ text-align:center;*/
 .notBold{
   font-weight:normal;
 }
+
+/*.notChoice{
+  color:black;
+}*/
+
 .certlow{
   color:red;
 }
