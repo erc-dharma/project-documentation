@@ -7,6 +7,22 @@ body{
     height:100%;
     width: 950px;/* force the BODY element to match the height of the HTML element */
 }
+
+@font-face {
+  font-family: 'e-VatteluttuOT', monospace;
+  src: url(https://github.com/erc-dharma/project-documentation/blob/master/guides/fonts/e-VatteluttuOT.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSansTamil-Regular', monospace;
+  src: url(https://github.com/erc-dharma/project-documentation/blob/master/guides/fonts/NotoSansTamil-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSansGrantha-Regular', monospace;
+  src: url(https://github.com/erc-dharma/project-documentation/blob/master/guides/fonts/NotoSansGrantha-Regular.ttf) format('truetype');
+}
+
 .tooltip {
         position: relative;
         color: #1E90FF;
@@ -76,6 +92,15 @@ P {
     "Everson Mono", "Aristarcoj", "Porson", "Legendum", "Aisa Unicode", "Hindsight Unicode", "Caslon",
     "Verdana", "Tahoma";
    }
+
+*[lang="tam-vat"]{
+  font-family: "e-VatteluttuOT";
+}
+
+*[lang="tam-tam"]{
+  font-family: "NotoSansTamil-Regular", "NotoSansGrantha-Regular";
+}
+
    .siglum {
            color: #1E90FF;
              }
