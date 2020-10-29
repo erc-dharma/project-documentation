@@ -17,7 +17,7 @@
         If y is 'lost' then nothing
       -->
       <xsl:when test="preceding-sibling::t:unclear[1]">
-            <xsl:if test="preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or preceding-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'hi', 'choice')]">
+            <xsl:if test="preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or preceding-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'hi', 'choice', 'g')]">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>(</xsl:text>
@@ -248,7 +248,7 @@
     <xsl:choose>
       <!-- 1.1 -->
       <xsl:when test="following-sibling::t:unclear[1]">
-         <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice', 'hi')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice', 'hi')]/text()">
+         <xsl:if test="following-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice', 'hi', 'g')] or following-sibling::t:*[1][local-name() = ('lb', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice', 'hi')]/text()">
                <xsl:element name="span">
                   <xsl:attribute name="class">notBold</xsl:attribute>
                   <xsl:text>)</xsl:text>
