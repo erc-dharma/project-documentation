@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- // Validation schema TEI-ALL must be update in favor the DHARMA manuscript schema once it has been established// -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+      <title type="main">Encoding Template for Critical Editions</title><!--Change the title of the file with the name of your text-->
+        <title type="subtitle">Digital Critical Edition of...</title><!-- fill in the subtitle if necessary -->
+        <!-- Possibility to add the <editor> tag:
+        <editor ref="part:ID">
+					<forename></forename>
+					<surname></surname>
+				</editor>
+				OR
+				<editor ref="part:ID">
+					<name></name>
+				</editor>
+        -->
+      <respStmt> <!-- repeat the respStmt when necessary -->
+        <resp>creation of the file</resp><!-- work done in the file, e.g. editor, intellectual authorship of edition ...-->
+        <persName ref="part:jodo"><!-- update the id -->
+          <forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
+          <surname>Doe</surname>
+        </persName>
+      </respStmt>
+      </titleStmt>         
+      <publicationStmt>
+        <authority>DHARMA</authority>
+        <pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
+        <idno type="filename">DHARMA_templateCriticalEdition_v01</idno><!-- Replace by filename, e.g. Pallava00001 -->
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by/4.0/">
+            <p>This work is licenced under the Creative Commons Attribution 4.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
+            <p>Copyright (c) 2019-2025 by John Doe.</p><!-- Replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
+          </licence>
+        </availability>
+        <date from="2019" to="2025">2019-2025</date>
+      </publicationStmt>
+      <sourceDesc>
+         <listWit><!-- Stuctured data or just text? -->
+            <!-- One witness for each manuscript. Update the content -->
+           <witness xml:id="fakeID"> <!-- Give your witness an unique identifier -->
+             <msDesc>  
+               <msIdentifier> 
+                 <settlement>Leiden</settlement>
+                 <institution>University Library (UB)</institution>
+                 <repository>Lontar</repository>
+                 <idno>Or. 23732</idno>
+               </msIdentifier>  
+               <msContents> <!-- the msContents isn't mandatory --> 
+                 <msItem>    
+                   <author>Śāntarakṣita</author>    
+                   <title>Vipañcitārthā</title>   
+                 </msItem>  
+               </msContents>  
+               <physDesc>   
+                 <objectDesc>  <!-- Here you can give a physical description of the manuscript in prose-->  
+                   <p>Palm-leaf manuscript. 89 leaves in Kuṭilā script. Apparently written in 1152 A.C.</p>
+                 </objectDesc>  
+               </physDesc>  
+               <history>   <!-- Here you can decribe the history of the manuscript in prose. Use <origDate> and <origPlace> to emphasize the place and date of creation -->
+                 <p>In June 1934, Sāṅkṛtyāyana found this manuscript in the monastery of Kun-de-ling (Lhasa).</p>
+               </history> 
+             </msDesc>
+           </witness>
+    </listWit>
+      </sourceDesc> 
+   </fileDesc>
+    <encodingDesc>
+      <projectDesc> <!-- Part mandatory -->
+        <p>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
+      	<!-- Optionally add here a second <p> to describe the specifics of the subproject that has led to this edition. -->
+      </projectDesc>
+      <editorialDecl> <!-- This part can be structured depending your need to explain some of your editorial work. Among the following elements, keep only the useful one for your edition. -->
+        <correction> 
+          <p></p>
+        </correction>
+        <normalization>
+          <p>Original spelling and typography is retained, except that long s and ligatured forms are not encoded.</p>
+        </normalization>
+      	<!-- The elements <hyphenation>, <punctuation>, and <quotation> can be added if needed -->
+      </editorialDecl>
+      <samplingDecl> <!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
+        <p></p>
+      </samplingDecl>
+      <schemaRef type="guide" key=" EGCv01" url="https://docs.google.com/document/d/15HFxHJTOzIU1UDyVrB2yQYJ5wI6JyEshEkYgg5qwj8M/edit#"/> <!-- Will need to be updated once a more official realase is done -->
+      <variantEncoding method="parallel-segmentation" location="internal"/>
+      <!-- Part mandatory -->
+    </encodingDesc>
+      <profileDesc>
+	<langUsage><!-- choose the language(s) of your text -->
+      	  <language ident="san-Latn">Sanskrit, romanized</language>
+      	  <language ident="kaw-Latn">Old Javanese, romanized</language>
+      	  <language ident="tam-Latn">Tamil, romanized</language>
+      	  <language ident="kan-Latn">Kannada, romanized</language>
+      	  <language ident="tel-Latn">Telugu, romanized</language>
+	</langUsage>
+        <textClass>
+          <keywords><!-- Add a term for each keyword -->
+            <term></term> <!-- Choose your keywords in the established list. -->
+          </keywords>
+        </textClass>
+      </profileDesc>
+    <revisionDesc>
+    	<change who="part:argr" when="2020-11-03" status="draft">Modifications of the template</change>
+            <change who="part:axja" when="2020-01-06" status="draft">Creation of the template</change><!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="edition" xml:space="preserve" xml:lang="lg-code"><!-- update the language code -->
+	  <!-- Structure as necessary with <p>, <ab>, <lg> depending the nature of the text -->
+      </div>
+      <div type="bibliography"> <!-- to keep? -->
+        <p>bibliography of previous editions, discussion, etc.</p>
+      </div>
+    </body>
+  </text>
+</TEI>
