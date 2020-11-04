@@ -5,7 +5,7 @@
    exclude-result-prefixes="t" version="2.0">
    <!-- Contains templates for choice/orig and choice/reg and surplus -->
 
-    <xsl:template match="t:choice/t:orig">
+    <xsl:template match="t:choice/t:orig" mode="#all">
           <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
           <xsl:param name="parm-edn-structure" tunnel="yes" required="no"></xsl:param>
           <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
@@ -17,13 +17,13 @@
                 <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
                 <span class="orig">
                 <xsl:text>¡</xsl:text>
-                <xsl:apply-templates select="." mode="dharma"/>
+                <xsl:apply-templates mode="dharma"/>
                 <xsl:text>!</xsl:text>
               </span>
             </xsl:if>
             <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
               <xsl:text>¡</xsl:text>
-              <xsl:apply-templates select="." mode="dharma"/>
+              <xsl:apply-templates mode="dharma"/>
               <xsl:text>!</xsl:text>
             </xsl:if>
           </xsl:when>

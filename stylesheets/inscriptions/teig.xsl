@@ -473,8 +473,8 @@
          <xsl:apply-imports/>
      </xsl:element>
    </xsl:when>-->
-   <xsl:when test="contains(.,'.')">
-     <xsl:value-of select="replace(., '.', '|')"></xsl:value-of>
+   <xsl:when test="@type='danda'">
+     <xsl:text>|</xsl:text>
    </xsl:when>
   <xsl:when test="@type='filler'">
    <xsl:value-of select="."/>

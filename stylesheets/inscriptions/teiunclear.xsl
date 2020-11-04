@@ -3,6 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
 
+
 <xsl:template match="t:unclear" mode="#all">
      <xsl:param name="text-content">
          <xsl:choose>
@@ -61,7 +62,9 @@
               <xsl:otherwise><xsl:text>(</xsl:text></xsl:otherwise>
             </xsl:choose>-->
             <xsl:call-template name="brackets-opener"/>
-            <xsl:value-of select="."/>
+
+            <xsl:apply-templates/>
+
               <!--<xsl:choose>
                 <xsl:when test="@rend='grantha' or child::t:hi[@rend='grantha']">
                   <xsl:element name="span">
@@ -90,19 +93,12 @@
           <xsl:when test="$leiden-style ='dharma' and ancestor::t:choice"/>
 
          <xsl:otherwise>
-            <xsl:choose>
-               <xsl:when test="t:g">
-                  <xsl:apply-templates/>
-               </xsl:when>
-               <xsl:otherwise>
                   <xsl:call-template name="subpunct">
                      <xsl:with-param name="unc-len" select="string-length($text-content)"/>
                      <xsl:with-param name="abs-len" select="string-length($text-content)+1"/>
                      <xsl:with-param name="text-content" select="$text-content"/>
                   </xsl:call-template>
                </xsl:otherwise>
-            </xsl:choose>
-         </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
 
