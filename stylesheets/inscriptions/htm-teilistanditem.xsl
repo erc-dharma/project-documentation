@@ -28,11 +28,18 @@
 
 <!--Adding a mode on item requires adding modes on all the list container application-->
   <xsl:template match="t:item" mode="dharma">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <li>
         <xsl:choose>
           <xsl:when test="descendant::t:bibl">
             <xsl:apply-templates mode="dharma"/>
           </xsl:when>
+          <xsl:when test="ancestor::t:div[@type='translation'] and @n and $parm-leiden-style = 'dharma'">
+            <sup class="linenumber">
+             <xsl:value-of select="@n"/>
+           </sup>
+           <xsl:apply-templates mode="dharma"/>
+         </xsl:when>
               <xsl:otherwise>
               <xsl:apply-templates/>
             </xsl:otherwise>
