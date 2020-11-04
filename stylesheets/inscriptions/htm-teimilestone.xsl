@@ -48,7 +48,7 @@
              <xsl:when test="ancestor::t:lem">
            <xsl:text>/</xsl:text>
          </xsl:when>
-         <xsl:when test="not(ancestor::t:lg)">
+         <xsl:when test="not(ancestor::t:lg or ancestor::t:div[@type='translation'])">
            <xsl:if test="@break='no'">
            </xsl:if>
            <xsl:text>&#8225; </xsl:text>
@@ -61,6 +61,18 @@
                <xsl:text>]</xsl:text>
              </xsl:element>
            </xsl:if>
+         </xsl:when>
+         <xsl:when test="ancestor::t:div[@type='translation'] and @type='ref'">
+           <xsl:if test="@n and @unit='line'">
+             <sup class="linenumber">
+              <xsl:value-of select="@n"/>
+            </sup>
+          </xsl:if>
+          <xsl:if test="@n and @unit='stanza'">
+            <sup class="linenumber">
+           <xsl:number value="@n" format="I"/>
+         </sup>
+       </xsl:if>
          </xsl:when>
        </xsl:choose>
      </xsl:when>
