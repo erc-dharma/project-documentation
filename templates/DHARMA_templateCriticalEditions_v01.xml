@@ -78,9 +78,9 @@
           <p></p>
         </correction>
         <normalization>
-          <p>Original spelling and typography is retained, except that long s and ligatured forms are not encoded.</p>
+          <p></p>
         </normalization>
-      	<!-- The elements <hyphenation>, <punctuation>, and <quotation> can be added if needed -->
+      	<!-- The  elements <hyphenation>, <punctuation>, <quotation> and <interpretation> can be added if needed -->
       </editorialDecl>
       <samplingDecl> <!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
         <p></p>
