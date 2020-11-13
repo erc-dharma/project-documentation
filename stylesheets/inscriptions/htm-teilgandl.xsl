@@ -78,10 +78,10 @@
                    </xsl:if>
                      <xsl:apply-templates/>
                      <!-- Pb de trailing space related to the addition of the div -->
-                     <xsl:if test="@enjamb='yes' and $leiden-style='dharma' and not(child::t:unclear[position()=last()])">
+                     <!--  and not(child::t:unclear[position()=last()])-->
+                    <xsl:if test="@enjamb='yes'">
                           <xsl:text>-</xsl:text>
                    </xsl:if>
-                   <xsl:if test="@enjamb='yes' and $leiden-style='dharma' and child::t:unclear[position()=last()]"/>
                  </xsl:element>
                  </xsl:when>
                <xsl:otherwise>

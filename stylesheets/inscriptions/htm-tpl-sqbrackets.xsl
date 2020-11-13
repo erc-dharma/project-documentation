@@ -107,7 +107,7 @@
         </xsl:choose>
         <xsl:value-of select="$endspace"/>
       </xsl:variable>
-<xsl:apply-templates select="replace(replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2'), '(\S)\s+(\-)$','$1$2')"/>
+<xsl:apply-templates select="replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2')"/>
     </xsl:template>
 
   <xsl:template match="text()[ancestor::div[@id='apparatus']][preceding::span[@class='notBold'][1]]" mode="sqbrackets">
@@ -116,5 +116,10 @@
   </xsl:if>
     </xsl:template>
 
+    <xsl:template match="text()[preceding::span[@class='notBold'][1]]" mode="sqbrackets">
+      <xsl:if test=".">
+      <xsl:apply-templates select="replace(., '\s\-', '-')"/>
+    </xsl:if>
+      </xsl:template>
 
 </xsl:stylesheet>

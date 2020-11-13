@@ -16,7 +16,7 @@
 
    <xsl:template name="lb-dash">
       <!-- function EDF:f-wwrap declared in htm-teilb.xsl; tests if lb break=no immediately follows g -->
-      <xsl:if test="EDF:f-wwrap(.) = true()">
+   <xsl:if test="EDF:f-wwrap(.) = true()">
          <xsl:text>- </xsl:text>
       </xsl:if>
    </xsl:template>
