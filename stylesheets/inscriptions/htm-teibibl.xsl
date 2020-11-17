@@ -99,6 +99,13 @@ bibliography. All examples only cater for book and article.
 						</xsl:variable>
 							<!-- Debugging message-->
 						<!--<xsl:message>zoteroapitei= <xsl:value-of select="$zoteroapitei"/></xsl:message>-->
+						<xsl:variable name="zoteroapijsonomitname">
+							<xsl:value-of
+								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json'), 'amp;', '')"
+							/>
+						</xsl:variable>
+						<xsl:variable name="unparsedomitname" select="unparsed-text($zoteroapijsonomitname)"/>
+
 						<xsl:variable name="zoteroapijson">
 							<xsl:value-of
 								select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
@@ -165,7 +172,14 @@ bibliography. All examples only cater for book and article.
 									</xsl:variable>
 									<xsl:choose>
 										<xsl:when test="@rend='omitname' and $leiden-style = 'dharma'">
-											<xsl:value-of select="document($zoteroapitei)//t:imprint/t:date"/>
+											<!-- Omitname ne peut pas passer par $soteroapitei car ne parse que la première date d'un intervalle -->
+											<!--<xsl:value-of select="document($zoteroapitei)//t:imprint/t:date"/>-->
+											<xsl:analyze-string select="$unparsedomitname"
+												regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+												<xsl:matching-substring>
+													<xsl:value-of select="regex-group(2)"/>
+												</xsl:matching-substring>
+											</xsl:analyze-string>
 										</xsl:when>
 										<xsl:when test="@rend='ibid'">
 											<xsl:element name="i">
