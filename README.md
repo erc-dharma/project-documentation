@@ -31,7 +31,6 @@ This repository is storing all the current documentation of the DHARMA Project.
 |Task Force B|Satavahana|tfb-satavahana-epigraphy|
 |Task Force B|Maitraka|tfb-maitraka-epigraphy|
 |Task Force B|Viṣṇukuṇḍin|tfb-visnukundin-epigraphy|
-|Task Force B|Śālaṅkāyana|tfb-salankayana-epigraphy|
 |Task Force B|Licchavi|tfb-licchavi-epigraphy|
 |Task Force C|Campa|tfc-campa-epigraphy|
 |Task Force C|Khmer|tfc-khmer-epigraphy|
