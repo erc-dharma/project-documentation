@@ -473,12 +473,21 @@
          <xsl:apply-imports/>
      </xsl:element>
    </xsl:when>-->
-   <xsl:when test="@type='danda'">
+   <xsl:when test="matches(., '..')">
+     <xsl:text>||</xsl:text>
+   </xsl:when>
+   <xsl:when test="matches(., '.')">
+     <xsl:text>|</xsl:text>
+   </xsl:when>
+   <xsl:when test="matches(., '§')">
+   <xsl:apply-templates/>
+ </xsl:when>
+  <!-- <xsl:when test="@type='danda'">
      <xsl:text>|</xsl:text>
    </xsl:when>
   <xsl:when test="@type='filler'">
-   <xsl:value-of select="."/>
-  </xsl:when>
+   <xsl:apply-templates/>
+ </xsl:when>-->
   <xsl:when test="@type='numeral'">
    <xsl:choose>
      <xsl:when test="matches(., '/')">
