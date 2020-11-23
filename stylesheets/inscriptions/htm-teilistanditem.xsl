@@ -4,7 +4,7 @@
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
 
-  <xsl:template match="t:list">
+  <xsl:template match="t:list" mode="#all">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <xsl:choose>
          <xsl:when test="@type = 'ordered'">
