@@ -5,23 +5,30 @@
                 version="2.0">
 
   <xsl:template match="t:list">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <xsl:choose>
          <xsl:when test="@type = 'ordered'">
             <ol>
-               <xsl:apply-templates mode="dharma"/>
+               <xsl:apply-templates/>
             </ol>
          </xsl:when>
+         <xsl:when test="@rend='bulleted' and $parm-leiden-style = 'dharma'">
+           <ul>
+                 <xsl:apply-templates mode="dharma"/>
+           </ul>
+         </xsl:when>
+         <xsl:when test="@rend='numbered' and $parm-leiden-style = 'dharma'">
+           <ol>
+             <xsl:apply-templates mode="dharma"/>
+           </ol>
+         </xsl:when>
          <xsl:otherwise>
-            <ul>
-              <xsl:choose>
-                <xsl:when test="descendant::t:bibl">
+           <xsl:if test="$parm-leiden-style = 'dharma'">
+            <xsl:element name="ul">
+              <xsl:attribute name="class">notBulleted</xsl:attribute>
                   <xsl:apply-templates mode="dharma"/>
-                </xsl:when>
-                    <xsl:otherwise>
-                    <xsl:apply-templates mode="dharma"/>
-                  </xsl:otherwise>
-                  </xsl:choose>
-            </ul>
+            </xsl:element>
+          </xsl:if>
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
