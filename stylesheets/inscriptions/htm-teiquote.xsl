@@ -5,19 +5,39 @@
                 version="2.0">
 
   <xsl:template match="t:quote">
-      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-      <xsl:choose>
-    <xsl:when test="$parm-leiden-style='dharma' and @rend='block'">
-      <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-    <xsl:value-of select="."/>
-  </xsl:element>
+    <xsl:choose>
+    <xsl:when test="@rend='block'">
+<xsl:apply-templates/>
 </xsl:when>
 <xsl:otherwise>
   <xsl:text>"</xsl:text>
-<xsl:value-of select="."/>
-<xsl:text>" </xsl:text>
+  <xsl:apply-templates/>
+  <xsl:text>" </xsl:text>
 </xsl:otherwise>
 </xsl:choose>
     </xsl:template>
-  </xsl:stylesheet>
+
+
+<xsl:template match="t:cit" mode="#all">
+  <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+  <xsl:choose>
+<xsl:when test="$parm-leiden-style='dharma' and child::t:quote[@rend='block']">
+  <br/>
+  <xsl:element name="div">
+  <xsl:attribute name="class">block</xsl:attribute>
+<xsl:apply-templates select="child::t:quote"/>
+  <xsl:if test="child::t:*[2][local-name () = 'bibl']">
+      <xsl:element name="span">
+        <xsl:attribute name="class">citRef</xsl:attribute>
+        <xsl:text> (</xsl:text>
+        <xsl:apply-templates select="child::t:bibl" mode="dharma"/>
+<xsl:text>)</xsl:text>
+</xsl:element>
+</xsl:if>
+</xsl:element>
+<br/>
+</xsl:when>
+</xsl:choose>
+</xsl:template>
+
+</xsl:stylesheet>
