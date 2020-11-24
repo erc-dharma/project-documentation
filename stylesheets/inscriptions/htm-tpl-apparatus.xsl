@@ -151,7 +151,7 @@
             <xsl:value-of select="$app-num"/>
           </xsl:attribute>
           <sup>
-          <xsl:number count="t:note[preceding::t:div[@type='translation']]"/>
+          <xsl:number count="t:note[preceding::t:div[@type='translation'] and not(@type='credit')]"/>
         </sup>
         </a>
       </xsl:when>
@@ -183,7 +183,7 @@
         <!-- An entry is created for-each of the following instances
                   * notes.
         -->
-        <xsl:for-each select=".//t:note">
+        <xsl:for-each select=".//t:note[not(@type='credit')]">
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:variable name="div-loc">
              <xsl:for-each select="ancestor::t:div[@type='textpart'][@n]">
