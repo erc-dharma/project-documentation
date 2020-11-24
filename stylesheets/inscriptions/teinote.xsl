@@ -6,10 +6,21 @@
   <!-- Imported from [htm|txt]-teinote.xsl -->
 
   <xsl:template match="t:note">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
+
+    <xsl:choose>
+      <xsl:when test="ancestor::t:div[@type='translation'] and $leiden-style='dharma'">
+        <xsl:call-template name="dharma-app-link">
+           <xsl:with-param name="location" select="'text'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
         <xsl:text>(</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>)</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
-
-
 </xsl:stylesheet>
