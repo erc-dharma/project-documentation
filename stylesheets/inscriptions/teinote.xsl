@@ -10,11 +10,14 @@
     <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
 
     <xsl:choose>
-      <xsl:when test="ancestor::t:div[@type='translation'] and $leiden-style='dharma'">
+      <xsl:when test="ancestor::t:div[@type='translation'] and $leiden-style='dharma' and not(@type='credit')">
         <xsl:call-template name="dharma-app-link">
            <xsl:with-param name="location" select="'text'"/>
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$leiden-style='dharma' and @type='credit'">
+      <xsl:apply-templates/>
+    </xsl:when>
       <xsl:otherwise>
         <xsl:text>(</xsl:text>
       <xsl:apply-templates/>
