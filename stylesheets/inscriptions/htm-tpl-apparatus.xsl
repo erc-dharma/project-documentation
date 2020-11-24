@@ -88,6 +88,19 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template name="dharma-app-link">
+    <!-- location defines the direction of linking -->
+    <xsl:param name="location"/>
+        <xsl:variable name="app-num">
+          <xsl:value-of select="name()"/>
+          <xsl:number level="any" format="01"/>
+        </xsl:variable>
+        <xsl:call-template name="dharma-generate-app-link">
+          <xsl:with-param name="location" select="$location"/>
+          <xsl:with-param name="app-num" select="$app-num"/>
+        </xsl:call-template>
+  </xsl:template>
+
   <!-- Called by app-link to generate the actual HTML, so other projects can override this template for their own style -->
   <xsl:template name="generate-app-link">
     <xsl:param name="location"/>
@@ -121,6 +134,76 @@
         <xsl:text> </xsl:text>
       </xsl:when>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="dharma-generate-app-link">
+    <xsl:param name="location"/>
+    <xsl:param name="app-num"/>
+    <xsl:choose>
+      <xsl:when test="$location = 'text'">
+        <a>
+          <xsl:attribute name="href">
+            <xsl:text>#to-app-</xsl:text>
+            <xsl:value-of select="$app-num"/>
+          </xsl:attribute>
+          <xsl:attribute name="id">
+            <xsl:text>from-app-</xsl:text>
+            <xsl:value-of select="$app-num"/>
+          </xsl:attribute>
+          <sup>
+          <xsl:number count="t:note[preceding::t:div[@type='translation']]"/>
+        </sup>
+        </a>
+      </xsl:when>
+      <xsl:when test="$location = 'apparatus'">
+        <a>
+          <xsl:attribute name="id">
+            <xsl:text>to-app-</xsl:text>
+            <xsl:value-of select="$app-num"/>
+          </xsl:attribute>
+          <xsl:attribute name="href">
+            <xsl:text>#from-app-</xsl:text>
+            <xsl:value-of select="$app-num"/>
+          </xsl:attribute>
+          <xsl:text>↑</xsl:text>
+          <xsl:number count="t:note[preceding::t:div[@type='translation']]"/>
+          <xsl:text>.</xsl:text>
+        </a>
+        <xsl:text> </xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+
+  <xsl:template name="tpl-dharma-apparatus">
+    <!-- An apparatus is only created if one of the following is true -->
+    <xsl:if test=".//t:note[ancestor::t:div[@type='translation']]">
+      <h3>Notes</h3>
+      <p id="notes-translation">
+        <!-- An entry is created for-each of the following instances
+                  * notes.
+        -->
+        <xsl:for-each select=".//t:note">
+          <!-- Found in tpl-apparatus.xsl -->
+          <xsl:variable name="div-loc">
+             <xsl:for-each select="ancestor::t:div[@type='textpart'][@n]">
+                <xsl:value-of select="@n"/>
+                <xsl:text>.</xsl:text>
+             </xsl:for-each>
+          </xsl:variable>
+
+                <!-- either <br/> in htm-tpl-apparatus or \r\n in txt-tpl-apparatus -->
+                <!--<xsl:call-template name="lbrk-app"/>-->
+                <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
+                <xsl:call-template name="dharma-app-link">
+                   <xsl:with-param name="location" select="'apparatus'"/>
+                </xsl:call-template>
+                <span>
+          <xsl:apply-templates/>
+        </span>
+        </xsl:for-each>
+      </p>
+    </xsl:if>
   </xsl:template>
 
   <!-- IOSPE "mini apparatus" framework  -->
@@ -478,7 +561,7 @@ choice with sic and corr
 
         <xsl:text>sic, orig. </xsl:text>
         <xsl:value-of select="t:sic"/>
-        
+
   </xsl:template>
 
   <!-- Regularization
