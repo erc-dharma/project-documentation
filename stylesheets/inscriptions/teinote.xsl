@@ -16,7 +16,7 @@
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="$leiden-style='dharma' and @type='credit'">
-      <xsl:apply-templates/>
+      <p><xsl:apply-templates/></p>
     </xsl:when>
       <xsl:otherwise>
         <xsl:text>(</xsl:text>
