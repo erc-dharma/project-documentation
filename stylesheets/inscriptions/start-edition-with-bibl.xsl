@@ -4,8 +4,14 @@
    xmlns:t="http://www.tei-c.org/ns/1.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    exclude-result-prefixes="t" version="2.0">
-   <xsl:output method="html" encoding="UTF-8"/>
-   <!--use-character-maps="myChars"-->
+   <xsl:output method="html" encoding="UTF-8" use-character-maps="htmlDoc"/>
+
+
+   <xsl:character-map name="htmlDoc">
+     <xsl:output-character character="&apos;" string="&amp;rsquo;" />
+   </xsl:character-map>
+
+
    <xsl:include href="global-varsandparams.xsl"/>
 
    <!-- html related stylesheets, these may import tei{element} stylesheets if relevant eg. htm-teigap and teigap -->
@@ -258,14 +264,5 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-
-<!-- essai pour gérer les guillemets à completer avec Manu -->
-   <!--<xsl:character-map name="myChars">
-<xsl:output-character character="&#39;" string="&quot;"/>
-<xsl:output-character character="&#96;" string="&quot;"/>
-<xsl:output-character character="&#65282;" string="&quot;"/>
-<xsl:output-character character="&#65287;" string="&quot;"/>
-<xsl:output-character character="&apos;" string="&amp;apos;"/>
-</xsl:character-map>-->
 
 </xsl:stylesheet>
