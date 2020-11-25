@@ -139,6 +139,9 @@
   <xsl:template name="dharma-generate-app-link">
     <xsl:param name="location"/>
     <xsl:param name="app-num"/>
+    <xsl:variable name="number">
+    <xsl:number format="1" from="//t:div[@type='translation']" count="t:note[not(@type='credit')]" level="any"/>
+</xsl:variable>
     <xsl:choose>
       <xsl:when test="$location = 'text'">
         <a>
@@ -151,9 +154,10 @@
             <xsl:value-of select="$app-num"/>
           </xsl:attribute>
           <sup>
-          <xsl:number count="t:note[preceding::t:div[@type='translation'] and not(@type='credit')]"/>
-        </sup>
-        </a>
+              <xsl:text>↓</xsl:text>
+            <xsl:value-of select="$number"/>
+            </sup>
+          </a>
       </xsl:when>
       <xsl:when test="$location = 'apparatus'">
         <a>
@@ -166,7 +170,7 @@
             <xsl:value-of select="$app-num"/>
           </xsl:attribute>
           <xsl:text>↑</xsl:text>
-          <xsl:number count="t:note[preceding::t:div[@type='translation']]"/>
+          <xsl:value-of select="$number"/>
           <xsl:text>.</xsl:text>
         </a>
         <xsl:text> </xsl:text>

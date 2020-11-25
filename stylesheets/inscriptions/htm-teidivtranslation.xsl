@@ -22,6 +22,7 @@
              </h2>
          <xsl:apply-templates/>
 
+
            <xsl:choose>
                <!-- Apparatus creation: look in tpl-apparatus.xsl for documentation and templates -->
                <xsl:when test="$parm-internal-app-style = 'dharma'">
@@ -29,7 +30,7 @@
                    <xsl:call-template name="tpl-dharma-apparatus"/>
                </xsl:when>
            </xsl:choose>
-      </div>
+         </div>
    </xsl:template>
 
    <xsl:template name="language">
