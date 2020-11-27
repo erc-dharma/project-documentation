@@ -92,18 +92,9 @@
 				<normalization>
 					<p/>
 				</normalization>
-				<hyphenation>
-					<p/>
-				</hyphenation>
 				<punctuation>
 					<p/>
 				</punctuation>
-				<quotation>
-					<p/>
-				</quotation>
-				<interpretation>
-					<p/>
-				</interpretation>
 			</editorialDecl>
 			<samplingDecl>
 				<!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
@@ -132,7 +123,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
-			<change who="part:argr" when="2020-11-03" status="draft">Modifications of the template</change>
+			<change who="part:argr" when="2020-11-27" status="draft">Modifications of the template</change>
 			<change who="part:axja" when="2020-01-06" status="draft">Creation of the template</change>
 			<!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
 		</revisionDesc>
