@@ -203,7 +203,17 @@ bibliography. All examples only cater for book and article.
 									<xsl:text>: </xsl:text>
 									<xsl:for-each select="t:citedRange">
 										<xsl:call-template name="citedRange-unit"/>
-									<xsl:value-of select="replace(normalize-space(.), '-', '–')"/>
+										<xsl:choose>
+											<xsl:when test="child::t:foreign">
+											<i>
+												<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+											</i>
+										</xsl:when>
+										<xsl:otherwise>
+										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+									</xsl:otherwise>
+										</xsl:choose>
+
 									<xsl:if test="following-sibling::t:citedRange">
 										<xsl:text>, </xsl:text>
 									</xsl:if>
@@ -338,7 +348,7 @@ bibliography. All examples only cater for book and article.
 										<xsl:for-each select="t:citedRange">
 											<b>
 											<xsl:call-template name="citedRange-unit"/>
-											<xsl:value-of select="replace(normalize-space(.), '-', '–')"/>
+										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')" mode="italic-citedRange"/>
 											</b>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
