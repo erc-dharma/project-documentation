@@ -203,6 +203,8 @@ bibliography. All examples only cater for book and article.
 									<xsl:text>: </xsl:text>
 									<xsl:for-each select="t:citedRange">
 										<xsl:call-template name="citedRange-unit"/>
+										<!-- NEED TO BE REVISED AT SOME POINT TO RENDER THE ITALIC
+										not the best solution but hierarchy too instabled to force it with mode without breaking the current display - necessary to revise the code once the encoding is stable enough probably need to use the foreign element as the base rather than the bibl element -->
 										<xsl:choose>
 											<xsl:when test="child::t:foreign">
 											<i>
