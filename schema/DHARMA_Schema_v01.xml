@@ -27,7 +27,7 @@
             <p>DHARMA TEI Customization written by Daniel Balogh and Arlo Griffiths based on&#13;
                 Epidoc&#13; schema. </p>
             <schemaSpec ident="dharma" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
-                source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
+                source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml http://epidoc.stoa.org/schema/9.2/tei-epidoc.compiled.xml">
                 <!--source="https://svn.code.sf.net/p/epidoc/code/trunk/schema/tei-epidoc.xml"-->
                 <!--       MODULES USED BY THE DHARMA SCHEMA       -->
                 <moduleRef key="core"
