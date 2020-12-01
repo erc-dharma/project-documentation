@@ -95,6 +95,7 @@
           <xsl:value-of select="name()"/>
           <xsl:number level="any" format="01"/>
         </xsl:variable>
+
         <xsl:call-template name="dharma-generate-app-link">
           <xsl:with-param name="location" select="$location"/>
           <xsl:with-param name="app-num" select="$app-num"/>
@@ -105,6 +106,7 @@
   <xsl:template name="generate-app-link">
     <xsl:param name="location"/>
     <xsl:param name="app-num"/>
+
     <xsl:choose>
       <xsl:when test="$location = 'text'">
         <a>
@@ -141,7 +143,7 @@
     <xsl:param name="app-num"/>
     <xsl:variable name="number">
     <xsl:number format="1" from="//t:div[@type='translation']" count="t:note[not(@type='credit')]" level="any"/>
-</xsl:variable>
+    </xsl:variable>
     <xsl:choose>
       <xsl:when test="$location = 'text'">
         <a>
@@ -153,10 +155,15 @@
             <xsl:text>from-app-</xsl:text>
             <xsl:value-of select="$app-num"/>
           </xsl:attribute>
+          <span class="tooltip-notes">
           <sup>
               <xsl:text>↓</xsl:text>
             <xsl:value-of select="$number"/>
             </sup>
+            <span class="tooltiptext-notes">
+              <xsl:apply-templates/>
+            </span>
+          </span>
           </a>
       </xsl:when>
       <xsl:when test="$location = 'apparatus'">
@@ -178,7 +185,6 @@
     </xsl:choose>
   </xsl:template>
 
-
   <xsl:template name="tpl-dharma-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if test=".//t:note[ancestor::t:div[@type='translation']]">
@@ -195,6 +201,8 @@
                 <xsl:text>.</xsl:text>
              </xsl:for-each>
           </xsl:variable>
+
+
 
                 <!-- either <br/> in htm-tpl-apparatus or \r\n in txt-tpl-apparatus -->
                 <!--<xsl:call-template name="lbrk-app"/>-->
