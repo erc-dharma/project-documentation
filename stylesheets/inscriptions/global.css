@@ -44,6 +44,26 @@ body{
 .tooltip:hover .tooltiptext {
         visibility: visible;
           }
+
+.tooltip-notes {
+                  position: relative;
+                    }
+
+.tooltip-notes .tooltiptext-notes {
+                            visibility: hidden;
+                            width: 200px;
+                            background-color: black;
+                            color: #fff;
+                            text-align: center;
+                            padding: 5px 0;
+                            border-radius: 6px;
+                                /* Position the tooltip text*/
+                            position: absolute;
+                            z-index: 1;
+                              }
+.tooltip-notes:hover .tooltiptext-notes{
+                            visibility: visible;
+                              }
 div {
         left: 30px;
         padding-right: 0.2em;
