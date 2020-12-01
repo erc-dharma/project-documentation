@@ -205,6 +205,7 @@
                 <span>
           <xsl:apply-templates/>
         </span>
+        <br/>
         </xsl:for-each>
       </p>
     </xsl:if>
