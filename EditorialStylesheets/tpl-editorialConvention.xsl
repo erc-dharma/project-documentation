@@ -51,11 +51,11 @@ No space before + space after for closing quotation mark. -->
             <change>$1</change>
         </regex>
         <regex>
-            <find>\s([’”]+)</find>
-            <change>$1</change>
+            <find>(\w)\s([’”]+)</find>
+            <change>$1$2</change>
         </regex>
         <regex>
-            <find>([’”]+)(\w)</find>
+            <find>(\w[’”]+)(\w)</find>
             <change>$1 $2</change>
         </regex>
         <!-- No space before + space after any punctuation, e.g. ! ? ; : -->
