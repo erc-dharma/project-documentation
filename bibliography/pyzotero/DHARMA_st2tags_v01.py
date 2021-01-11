@@ -1,3 +1,4 @@
+# Written by Axelle Janiak for DHARMA - march 2020
 from pyzotero import zotero
 zot = zotero.Zotero('1633743', 'group', 'SNTOlhPbtO3n21oq1Son78B1')
 items = zot.everything(zot.top()) #collection Tamil: items = zot.everything(zot.collection_items('NYLTL87Y'))
