@@ -17,6 +17,12 @@
        <xsl:if test="@rend='stanza'">
          <xsl:choose>
            <xsl:when test="@n='1' and not(following-sibling::t:*)"/>
+           <xsl:when test="matches(@n, '[rv]+')">
+             <xsl:element name="div">
+               <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+             <xsl:value-of select="@n"/>
+             </xsl:element>
+           </xsl:when>
               <!--<xsl:when test="count(@n) &gt;= 2">-->
               <xsl:when test="matches(@n, ',')">
                 <xsl:element name="div">
@@ -36,6 +42,7 @@
                 <xsl:text>. </xsl:text>
                 </xsl:element>
               </xsl:when>
+           
               <xsl:otherwise>
                 <xsl:element name="div">
                   <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>

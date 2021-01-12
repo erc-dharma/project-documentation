@@ -26,9 +26,21 @@
                                             <xsl:if test="(count(//t:lg[ancestor::t:div[@type='edition']]) &gt; 1)">
                                             <span class="stanzanumber">
                                               <xsl:choose>
+                                                
                                                 <xsl:when test="@n">
-                                                    <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
+                                                  <xsl:choose>
+                                                    <xsl:when test="contains(@n, 'seal')">
+                                                      <xsl:value-of select="@n"/>
+                                                      <xsl:text>. </xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                      <xsl:number value="@n" format="I"/>
+                                                      <xsl:text>. </xsl:text>
+                                                    </xsl:otherwise>
+                                                  </xsl:choose>
+                                                  
                                                 </xsl:when>
+                                                
                                               <xsl:when test="not(t:lg/@n)">
                                                     <xsl:message>the @n is missing on the stanza</xsl:message>
                                                 </xsl:when>
