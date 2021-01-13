@@ -2831,14 +2831,14 @@
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:placeName">
-                            <sch:assert test="@type='builtPlace' and @subtype='temple|shrine|monastery|feedingHall|tank|pavillion|garden">For @type="builtPlace", the @subtype should be one of the following values: "temple"
+                            <sch:assert test="@type='builtPlace' and @subtype='temple' @subtype='shrine' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion' or @subtype='garden'">For @type="builtPlace", the @subtype should be one of the following values: "temple"
                                 "shrine" (e.g. for a secondary shrine in a temple complex)
                                 "monastery" (e.g. vihāra, maṭha)
                                 "feedingHall" (cālai, Skt. śālā, mess for devotee pilgrims)
                                 "tank" (artificial)
                                 "pavillion" (maṇḍapa)
                                 "garden" (nandavaṉam)</sch:assert>
-                            <sch:assert test="@type='territorialDivision' and @subtype='province|disctrict|site|sitePart'">For @type="territorialDivision", the @subtype should be one of the following values: "province" (kōṭṭam, rāṣṭra, maṇḍala, vaḷanāṭu, etc.)
+                            <sch:assert test="@type='territorialDivision' and @subtype='province' or @subtype='disctrict' or @subtype='site' or @subtype='sitePart'">For @type="territorialDivision", the @subtype should be one of the following values: "province" (kōṭṭam, rāṣṭra, maṇḍala, vaḷanāṭu, etc.)
                                 "district" (viṣaya, nāṭu, kūṟṟam)
                                 "site" (town, village)
                                 "sitePart" (e.g. quarter, hamlet, cēri)</sch:assert>
