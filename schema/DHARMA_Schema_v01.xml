@@ -2831,7 +2831,7 @@
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:placeName">
-                            <sch:assert test="@type='builtPlace' and @subtype='temple' @subtype='shrine' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion' or @subtype='garden'">For @type="builtPlace", the @subtype should be one of the following values: "temple"
+                            <sch:assert test="@type='builtPlace' and @subtype='temple' or @subtype='shrine' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion' or @subtype='garden'">For @type="builtPlace", the @subtype should be one of the following values: "temple"
                                 "shrine" (e.g. for a secondary shrine in a temple complex)
                                 "monastery" (e.g. vihāra, maṭha)
                                 "feedingHall" (cālai, Skt. śālā, mess for devotee pilgrims)
