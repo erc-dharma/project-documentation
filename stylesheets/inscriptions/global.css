@@ -45,6 +45,28 @@ body{
         visibility: visible;
           }
 
+.tooltip-bibl {
+                  position: relative;
+                  color: #1E90FF;
+                    }
+                    /* Tooltip text */
+.tooltip-bibl .tooltiptext-bibl {
+                  visibility: hidden;
+                  width: 200px;
+                  background-color: black;
+                  color: #fff;
+                  text-align: center;
+                  padding: 5px 0;
+                  border-radius: 6px;
+                      /* Position the tooltip text*/
+                  position: absolute;
+                  z-index: 1;
+                    }
+                    /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-bibl:hover .tooltiptext-bibl {
+                  visibility: visible;
+                    }
+
 .tooltip-notes {
                   position: relative;
                     }
