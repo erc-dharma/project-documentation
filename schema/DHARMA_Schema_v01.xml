@@ -2377,16 +2377,22 @@
                 </elementSpec>
                 <elementSpec ident="milestone" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="att-unit-n">
-                        <constraint><sch:rule context="tei:milestone"><sch:report
+                        <constraint>
+                            <sch:rule context="tei:milestone">
+                                <sch:report
                             test="not(@unit and @n)"> for milestone using the attribut @unit, the
-                            attribute @n is mandatory</sch:report><sch:assert
-                            test="@type='yati' and @break='no'">Caesuras cab be markup with both
-                            @type='yati' and @break='no' used
-                            together.</sch:assert>
-                        <sch:assert test="@type='ref' and ancestor::tei:div[@type='translation']">@type='ref' can only be used inside the translation part of the edition</sch:assert>
+                            attribute @n is mandatory</sch:report>
+                                </sch:rule>
+                            <sch:rule context="tei:milestone[@type='yati']">
+                                <sch:assert
+                            test="@type='yati' and @break='no'">Caesuras work with both
+                            @type='yati' and @break='no'.</sch:assert>
+                            </sch:rule>
+                            <sch:rule context="tei:milestone[@type='ref']">
+                        <sch:assert test="ancestor::tei:div[@type='translation']">@type='ref' can only be used inside the translation part of the edition</sch:assert>
                         </sch:rule>
-                            <sch:assert test="@type='ref' and @unit='stanza|line'">@type='ref' requires the use of @unit="stanza" or @unit="line'</sch:assert>
-                            <sch:assert test="@type='ref' and @n">@n is mandatory with milestone/@type="ref"</sch:assert></constraint>
+                            <sch:assert test="@unit='stanza' or @unit='line'">@type='ref' requires the use of @unit="stanza" or @unit="line'</sch:assert>
+                            <sch:report test="not(@n)">@n is mandatory with milestone/@type="ref"</sch:report></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>

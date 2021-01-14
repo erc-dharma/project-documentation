@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-01-14T14:34:28Z. .
+Schema generated from ODD source 2021-01-14T15:31:28Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3993,18 +3993,25 @@ Elements]</a:documentation>
                       context="tei:milestone">
                <sch:report test="not(@unit and @n)"> for milestone using the attribut @unit, the
                             attribute @n is mandatory</sch:report>
-               <sch:assert test="@type='yati' and @break='no'">Caesuras cab be markup with both
-                            @type='yati' and @break='no' used
-                            together.</sch:assert>
-               <sch:assert test="@type='ref' and ancestor::tei:div[@type='translation']">@type='ref' can only be used inside the translation part of the edition</sch:assert>
+            </sch:rule>
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:milestone[@type='yati']">
+               <sch:assert test="@type='yati' and @break='no'">Caesuras work with both
+                            @type='yati' and @break='no'.</sch:assert>
+            </sch:rule>
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:milestone[@type='ref']">
+               <sch:assert test="ancestor::tei:div[@type='translation']">@type='ref' can only be used inside the translation part of the edition</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="dharma-milestone-att-unit-n-constraint-assert-14">
             <rule context="tei:milestone">
                <sch:assert xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                           test="@type='ref' and @unit='stanza|line'">@type='ref' requires the use of @unit="stanza" or @unit="line'</sch:assert>
-               <sch:assert xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@type='ref' and @n">@n is mandatory with milestone/@type="ref"</sch:assert>
+                           test="@unit='stanza' or @unit='line'">@type='ref' requires the use of @unit="stanza" or @unit="line'</sch:assert>
+               <sch:report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="not(@n)">@n is mandatory with milestone/@type="ref"</sch:report>
             </rule>
          </pattern>
          <ref name="tei_att.global.attribute.n"/>
@@ -4412,7 +4419,7 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-bibl-siglum-constraint-rule-24">
+                  id="dharma-bibl-siglum-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:bibl">
@@ -4504,7 +4511,7 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-l-abstractModel-structure-l-constraint-report-26">
+                  id="dharma-l-abstractModel-structure-l-constraint-report-27">
             <rule context="tei:l">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:l[. = current()])]">
@@ -4586,7 +4593,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lg-atleast1oflggapl-constraint-assert-16">
+                  id="dharma-lg-atleast1oflggapl-constraint-assert-15">
             <rule context="tei:lg">
                <sch:assert xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4595,7 +4602,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lg-abstractModel-structure-l-constraint-report-27">
+                  id="dharma-lg-abstractModel-structure-l-constraint-report-28">
             <rule context="tei:lg">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:lg[. = current()])]">
@@ -5182,7 +5189,7 @@ Sample values include: 1] filename</a:documentation>
             <ref name="tei_model.pLike"/>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-quotation-quotationContents-constraint-report-28">
+                  id="dharma-quotation-quotationContents-constraint-report-29">
             <rule context="tei:quotation">
                <report xmlns:xi="http://www.w3.org/2001/XInclude"
                        xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5941,7 +5948,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.7. Identifying Changes and Revisions]</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-change-responsability-constraint-rule-25">
+                  id="dharma-change-responsability-constraint-rule-27">
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
@@ -6259,7 +6266,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </optional>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-div-constraint-rule-26">
+                  id="dharma-div-div-constraint-rule-28">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:div">
@@ -6288,7 +6295,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-abstractModel-structure-l-constraint-report-34">
+                  id="dharma-div-abstractModel-structure-l-constraint-report-35">
             <rule context="tei:div">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="ancestor::tei:l">
         Abstract model violation: Lines may not contain higher-level structural elements such as div.
@@ -6296,7 +6303,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-abstractModel-structure-p-constraint-report-35">
+                  id="dharma-div-abstractModel-structure-p-constraint-report-36">
             <rule context="tei:div">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:p or ancestor::tei:ab and not(ancestor::tei:floatingText)">
@@ -6861,7 +6868,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-space-space-constraint-rule-29">
+                  id="dharma-space-space-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:space">
@@ -6930,7 +6937,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             </choice>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-subst-substContents1-constraint-assert-21">
+                  id="dharma-subst-substContents1-constraint-assert-20">
             <rule context="tei:subst">
                <assert xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="child::tei:add and child::tei:del">
@@ -7081,7 +7088,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-certainty-usage-certainty-constraint-rule-31">
+                  id="dharma-certainty-usage-certainty-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:certainty">
@@ -7242,7 +7249,7 @@ Sample values include: 1] numeral</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-ab-constraint-report-40">
+                  id="dharma-ab-abstractModel-structure-ab-constraint-report-41">
             <rule context="tei:ab">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="not(ancestor::tei:floatingText) and (ancestor::tei:p or ancestor::tei:ab)          and not(parent::tei:exemplum         |parent::tei:item         |parent::tei:note         |parent::tei:q         |parent::tei:quote         |parent::tei:remarks         |parent::tei:said         |parent::tei:sp         |parent::tei:stage         |parent::tei:cell         |parent::tei:figure)">
@@ -7251,7 +7258,7 @@ Sample values include: 1] numeral</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-l-constraint-report-41">
+                  id="dharma-ab-abstractModel-structure-l-constraint-report-42">
             <rule context="tei:ab">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l or ancestor::tei:lg">
@@ -7296,7 +7303,7 @@ Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded; 5] small; 6] w
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-seg-att-type-subtype-constraint-rule-32">
+                  id="dharma-seg-att-type-subtype-constraint-rule-34">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:seg">
@@ -7440,7 +7447,7 @@ Sample values include: 1] body; 2] superscript; 3] subscript; 4] prescript; 5] p
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-dimensions-duplicateDim-constraint-report-45">
+                  id="dharma-dimensions-duplicateDim-constraint-report-46">
             <rule context="tei:dimensions">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="count(tei:width)&gt; 1">
 The element <name/> may appear once only
@@ -7715,7 +7722,7 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains discussion of the leaf or quire signatures found within a codex or similar object. [10.3.7. Catchwords, Signatures, Secundo Folio]</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-signatures-signatures_in_msDesc-constraint-assert-23">
+                  id="dharma-signatures-signatures_in_msDesc-constraint-assert-22">
             <rule context="tei:signatures">
                <sch:assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -7772,7 +7779,7 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-msIdentifier-msId_minimal-constraint-report-48">
+                  id="dharma-msIdentifier-msId_minimal-constraint-report-49">
             <rule context="tei:msIdentifier">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="not(parent::tei:msPart) and (local-name(*[1])='idno' or local-name(*[1])='altIdentifier' or normalize-space(.)='')">An msIdentifier must contain either a repository or location.</report>
@@ -8847,7 +8854,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(personal name) contains a proper noun or proper-noun phrase referring to a person, possibly including one or more of the person's forenames, surnames, honorifics, added names, etc. [13.2.1. Personal Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-persName-reference-constraint-rule-33">
+                  id="dharma-persName-reference-constraint-rule-35">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:persName/@ref[ancestor::tei:teiHeader]">
@@ -8983,7 +8990,7 @@ Sample values include: 1] coronation; 2] sobriquet; 3] title; 4] other</a:docume
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an absolute or relative place name. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-placeName-div-constraint-rule-34">
+                  id="dharma-placeName-div-constraint-rule-36">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:placeName">
@@ -9572,7 +9579,7 @@ Sample values include: 1] coronation; 2] sobriquet; 3] title; 4] other</a:docume
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-objectIdentifier-objectIdentifier_minimal-constraint-report-49">
+                  id="dharma-objectIdentifier-objectIdentifier_minimal-constraint-report-50">
             <rule context="tei:objectIdentifier">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="not(count(*) gt 0)">An objectIdentifier must contain at minimum a single piece of locating or identifying information.</report>
             </rule>
@@ -9655,7 +9662,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-app-one-lem-constraint-rule-35">
+                  id="dharma-app-one-lem-constraint-rule-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:app">
@@ -9710,7 +9717,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lem-exclusion-inside-lem-constraint-rule-36">
+                  id="dharma-lem-exclusion-inside-lem-constraint-rule-38">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem">
@@ -9744,7 +9751,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-37">
+                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg">
@@ -9785,7 +9792,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-rdgGrp-only1lem-constraint-assert-27">
+                  id="dharma-rdgGrp-only1lem-constraint-assert-26">
             <rule context="tei:rdgGrp">
                <sch:assert xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -9823,7 +9830,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
             </choice>
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-variantEncoding-location-variantEncodingLocation-constraint-rule-38">
+                  id="dharma-variantEncoding-location-variantEncodingLocation-constraint-rule-40">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
