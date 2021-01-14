@@ -59,7 +59,7 @@ bibliography. All examples only cater for book and article.
 		<xsl:param name="parm-zoteroNS" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroStyle" tunnel="yes" required="no"/>
 		<xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-
+		<xsl:variable name="var-zoteroStyle-abb">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_Abbreviation_v01.csl</xsl:variable>
 
 		<xsl:choose>
 			<!-- default general zotero behaviour prints
@@ -342,8 +342,14 @@ bibliography. All examples only cater for book and article.
 												</xsl:choose>
 										</xsl:when>
 										<xsl:otherwise>
+										<span class="tooltip-bibl">
+												<xsl:copy-of
+													select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
+												<span class="tooltiptext-bibl">
 									<xsl:copy-of
 										select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+										</span>
+									</span>
 										</xsl:otherwise>
 									</xsl:choose>
 									<xsl:if test="t:citedRange">
