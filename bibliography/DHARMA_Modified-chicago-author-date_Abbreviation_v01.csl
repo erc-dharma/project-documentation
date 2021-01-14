@@ -117,7 +117,7 @@
       <name and="text" delimiter=", "/>
     </names>
   </macro>
-  <macro name="substitute-title">
+<macro name="substitute-title">
     <choose>
       <if type="article-magazine article-newspaper review review-book" match="any">
         <text macro="container-title"/>
@@ -427,11 +427,18 @@
   </macro>
   <macro name="container-title">
     <choose>
-      <if type="chapter entry-dictionary entry-encyclopedia paper-conference" match="any">
-        <text macro="container-prefix" suffix=" "/>
+      <if type="article-journal article-magazine chapter paper-conference article-newspaper review review-book entry-dictionary entry-encyclopedia" match="any">
+        <group delimiter=" "> <!-- suffix="."-->
+          <choose>
+            <if type="article-journal review review-book" match="any">
+              <text variable="container-title" form="short" strip-periods="true" font-style="italic"/>
+            </if>
+            <else>
+              <text variable="container-title" strip-periods="true" font-style="italic"/>
+            </else>
+          </choose>
+        </group>
       </if>
-    </choose>
-    <choose>
       <if type="webpage">
         <text variable="container-title" text-case="title"/>
       </if>
