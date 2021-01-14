@@ -47,7 +47,6 @@ body{
 
 .tooltip-bibl {
                   position: relative;
-                  color: #1E90FF;
                     }
                     /* Tooltip text */
 .tooltip-bibl .tooltiptext-bibl {
@@ -60,6 +59,7 @@ body{
                   border-radius: 6px;
                       /* Position the tooltip text*/
                   position: absolute;
+                  display: block;
                   z-index: 1;
                     }
                     /* Show the tooltip text when you mouse over the tooltip container */
