@@ -187,11 +187,77 @@ bibliography. All examples only cater for book and article.
 										</xsl:element>
 									</xsl:when>
 									<!-- Code added regardung Manu's request in pallava00042 -->
-									<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
+									<!--<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
 										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
 										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
 												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
 											</xsl:if>
+									</xsl:when>-->
+									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
+										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
+										<xsl:choose>
+								 <xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
+									 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
+										<xsl:matching-substring>
+														<i><xsl:value-of select="regex-group(1)"/></i>
+														<xsl:text> </xsl:text>
+														<xsl:value-of select="regex-group(2)"/>
+														<xsl:text> (</xsl:text>
+														<xsl:value-of select="regex-group(3)"/>
+														<xsl:text>)</xsl:text>
+												</xsl:matching-substring>
+											</xsl:analyze-string>
+									</xsl:when>
+									<!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
+									<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
+										<xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
+											<xsl:matching-substring>
+															<i><xsl:value-of select="regex-group(1)"/></i>
+															<xsl:text> </xsl:text>
+															<xsl:value-of select="regex-group(2)"/>
+													</xsl:matching-substring>
+												</xsl:analyze-string>
+									</xsl:when>
+									<!-- Handles OV, ROC, ROD -->
+									<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
+									 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
+										<xsl:matching-substring>
+														<i><xsl:value-of select="regex-group(1)"/></i>
+														<xsl:text> (</xsl:text>
+														<xsl:value-of select="regex-group(2)"/>
+														<xsl:text>)</xsl:text>
+												</xsl:matching-substring>
+											</xsl:analyze-string>
+									</xsl:when>
+										<!-- TBG1924_64 -->
+										<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
+										 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
+											<xsl:matching-substring>
+															<i><xsl:value-of select="regex-group(1)"/></i>
+															<xsl:text> </xsl:text>
+															<xsl:value-of select="regex-group(3)"/>
+															<xsl:text> (</xsl:text>
+															<xsl:value-of select="regex-group(2)"/>
+															<xsl:text>)</xsl:text>
+													</xsl:matching-substring>
+												</xsl:analyze-string>
+										</xsl:when>
+										<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  -->
+										<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
+										 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
+											<xsl:matching-substring>
+															<i><xsl:value-of select="regex-group(1)"/></i>
+															<xsl:text> (</xsl:text>
+															<xsl:value-of select="regex-group(2)"/>
+															<xsl:text>)</xsl:text>
+													</xsl:matching-substring>
+												</xsl:analyze-string>
+												<span class="tooltiptext-bibl">
+													<xsl:copy-of
+														select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+											</span>
+										</xsl:when>
+									</xsl:choose>
 									</xsl:when>
 										<xsl:otherwise>
 											<!--<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>-->
@@ -232,17 +298,20 @@ bibliography. All examples only cater for book and article.
 
 								<xsl:element name="div">
 									<xsl:attribute name="class">refBibl</xsl:attribute>
-									<xsl:if test="@rend='journal'">
+									<xsl:if test="matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
 										<!-- Adding a style to match the CSS style imported from Zotero added by the API -->
 										<xsl:attribute name="style">line-height: 1.35; padding-left: 1em; text-indent:-1em;</xsl:attribute>
 								</xsl:if>
-								<xsl:apply-templates select="./text()"/>
+								<span class="tooltip-bibl">
+								<!--<xsl:apply-templates select="./text()"/>-->
+								<xsl:if test="./child::t:author">
+								<xsl:value-of select="./child::t:author"/>
+							<xsl:text> in </xsl:text></xsl:if>
 								<!--<xsl:copy-of
 									select="replace(document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div, '[\.]$', ':')"/>-->
 									<xsl:choose>
-										<xsl:when test="@rend='journal' and $leiden-style = 'dharma'">
+										<xsl:when test="matches(./child::t:ptr/@target, 'bib:[A-Z][A-Z]') and $leiden-style = 'dharma'">
 											<!-- Code added for Arlo's request regarding BEFEO36_1936 in K00868.xml-->
-
 											<xsl:variable name="soughtSiglum" select="./child::t:ptr/@target"/>
 													<!-- Handles also JBG, NBG -->
 													<xsl:choose>
@@ -257,8 +326,27 @@ bibliography. All examples only cater for book and article.
 																	<xsl:text>).  </xsl:text>
                     					</xsl:matching-substring>
                 						</xsl:analyze-string>
+														<span class="tooltiptext-bibl">
+															<xsl:copy-of
+																select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+													</span>
 												</xsl:when>
-												<!-- Handles also OV, ROC, ROD ARIE1886-1887 or ARIE1890-1891_02 -->
+												<!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
+												<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
+													<xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
+														<xsl:matching-substring>
+																		<i><xsl:value-of select="regex-group(1)"/></i>
+																		<xsl:text> </xsl:text>
+																		<xsl:value-of select="regex-group(2)"/>
+																		<xsl:text>. </xsl:text>
+																</xsl:matching-substring>
+															</xsl:analyze-string>
+															<span class="tooltiptext-bibl">
+																<xsl:copy-of
+																	select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+														</span>
+												</xsl:when>
+												<!-- Handles OV, ROC, ROD -->
 												<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
  												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
                      			<xsl:matching-substring>
@@ -268,6 +356,10 @@ bibliography. All examples only cater for book and article.
  																	<xsl:text>).  </xsl:text>
                      					</xsl:matching-substring>
                  						</xsl:analyze-string>
+														<span class="tooltiptext-bibl">
+															<xsl:copy-of
+																select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+													</span>
  												</xsl:when>
 													<!-- TBG1924_64 -->
 													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
@@ -281,6 +373,10 @@ bibliography. All examples only cater for book and article.
 	 																	<xsl:text>).  </xsl:text>
 	                     					</xsl:matching-substring>
 	                 						</xsl:analyze-string>
+															<span class="tooltiptext-bibl">
+																<xsl:copy-of
+																	select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+														</span>
 	 												</xsl:when>
 													<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  -->
 													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
@@ -292,6 +388,10 @@ bibliography. All examples only cater for book and article.
 	 																	<xsl:text>).  </xsl:text>
 	                     					</xsl:matching-substring>
 	                 						</xsl:analyze-string>
+															<span class="tooltiptext-bibl">
+																<xsl:copy-of
+																	select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+														</span>
 	 												</xsl:when>
 													<xsl:otherwise>
 														<!-- For the cases handled with regularly entry in Zotero-->
@@ -338,20 +438,23 @@ bibliography. All examples only cater for book and article.
 														<xsl:text> (</xsl:text>
 														<xsl:value-of select="$journalDate"/>
 														<xsl:text>). </xsl:text>
+														<span class="tooltiptext-bibl">
+															<xsl:copy-of
+																select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+													</span>
 													</xsl:otherwise>
 												</xsl:choose>
 										</xsl:when>
 										<xsl:otherwise>
-										<span class="tooltip-bibl">
 												<xsl:copy-of
 													select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
 												<span class="tooltiptext-bibl">
 									<xsl:copy-of
 										select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
 										</span>
-									</span>
 										</xsl:otherwise>
 									</xsl:choose>
+								</span>
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
 											<b>
