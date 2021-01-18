@@ -18,9 +18,9 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-            <change who="#AJ" when="2021-01">Updating the ODD to match the evolution of the
+            <change who="part:axja" when="2021-01">Updating the ODD to match the evolution of the
                 EGD</change>
-            <change who="#AJ" when="2020-07-13">Creating an ODD with legacy from the Epidoc
+            <change who="part:axja" when="2020-07-13">Creating an ODD with legacy from the Epidoc
                 Guidelines</change>
         </revisionDesc>
     </teiHeader>
@@ -2250,7 +2250,7 @@
                 <elementSpec ident="list" module="core" mode="change">
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:list">
-                            <sch:assert test="ancestor::tei:div[@type='edition' or @type='translation']">List can only be used inside the edition or the translation part of your file</sch:assert></sch:rule>
+                            <sch:assert test="ancestor::tei:div[@type='edition' or @type='translation'  or @type='commentary']">List can only be used inside the edition or the translation part of your file</sch:assert></sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
