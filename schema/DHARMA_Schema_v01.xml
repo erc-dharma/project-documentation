@@ -788,7 +788,6 @@
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
                         <attDef ident="hand" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="part" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
@@ -1065,14 +1064,24 @@
                 </elementSpec>
                 <elementSpec ident="certainty" module="certainty" mode="change">
                     <constraintSpec scheme="schematron" ident="usage-certainty">
-                        <constraint><sch:rule context="tei:certainty"><sch:report
+                        <constraint><sch:rule context="tei:certainty">
+                            <sch:report
                             test="@match='../@met' and not(parent::tei:lg)">The pattern used in
-                            @match works with the element lg[@met]</sch:report><sch:report
+                            @match works with the element lg[@met]</sch:report>
+                        </sch:rule>
+                            <sch:rule context="tei:certainty">
+                                <sch:report
                             test="@match='..' and not(parent::tei:gap)">The pattern used in @match
-                            works with the element gap</sch:report><sch:assert
+                            works within the element gap</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:certainty">
+                            <sch:assert
                             test="@match='../@met' and @locus='value'"> @match="../@met" and
                             @locus="value" always work together.
-                            </sch:assert></sch:rule></constraint>
+                            </sch:assert></sch:rule>
+                            <sch:rule context="tei:certainty">
+                                <sch:assert test="@match='..' and @locus='name'">@match='..' and @locus='name' always work together</sch:assert>
+                            </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
