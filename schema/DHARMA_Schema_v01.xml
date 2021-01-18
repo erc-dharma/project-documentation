@@ -556,7 +556,7 @@
                             @type='binding-hole' or @type='descender' or @type='ascender', the only
                             @type possible is @type='defect'.</sch:assert>
                                 </sch:rule>
-                            <sch:rule context="tei:space"><sch:assert test="@unit='page'">Please note that the use of "space" for blank copperplate pages has been discarded; encode only a "pb" for the blank page</sch:assert></sch:rule></constraint>
+                            <sch:rule context="tei:space"><sch:report test="@unit='page'">Please note that the use of "space" for blank copperplate pages has been discarded; encode only a "pb" for the blank page</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
