@@ -150,7 +150,8 @@
                                 <sch:assert
                             test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
                             >The textpart structure in edition and in apparatus must be
-                            identical.</sch:assert></sch:rule>--></constraint>
+                            identical.</sch:assert></sch:rule>-->
+                       </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="type" mode="change" usage="req">
@@ -2391,8 +2392,11 @@
                             <sch:rule context="tei:milestone[@type='ref']">
                         <sch:assert test="ancestor::tei:div[@type='translation']">@type='ref' can only be used inside the translation part of the edition</sch:assert>
                         </sch:rule>
+                            <sch:rule context="tei:milestone[@type='ref']">
                             <sch:assert test="@unit='stanza' or @unit='line'">@type='ref' requires the use of @unit="stanza" or @unit="line'</sch:assert>
-                            <sch:report test="not(@n)">@n is mandatory with milestone/@type="ref"</sch:report></constraint>
+                            </sch:rule>
+                            <sch:rule context="tei:milestone[@type='ref']">
+                            <sch:report test="not(@n)">@n is mandatory with milestone/@type="ref"</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2836,19 +2840,24 @@
                 <elementSpec ident="placeName" module="namesdates" mode="change">
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
-                        <constraint><sch:rule context="tei:placeName">
-                            <sch:assert test="@type='builtPlace' and @subtype='temple' or @subtype='shrine' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion' or @subtype='garden'">For @type="builtPlace", the @subtype should be one of the following values: "temple"
+                        <constraint>
+                            <sch:rule context="tei:placeName[@type='builtPlace']">
+                            <sch:assert test="@subtype='temple' or @subtype='shrine' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion' or @subtype='garden'">For @type="builtPlace", the @subtype should be one of the following values: "temple"
                                 "shrine" (e.g. for a secondary shrine in a temple complex)
                                 "monastery" (e.g. vihāra, maṭha)
                                 "feedingHall" (cālai, Skt. śālā, mess for devotee pilgrims)
                                 "tank" (artificial)
                                 "pavillion" (maṇḍapa)
                                 "garden" (nandavaṉam)</sch:assert>
-                            <sch:assert test="@type='territorialDivision' and @subtype='province' or @subtype='disctrict' or @subtype='site' or @subtype='sitePart'">For @type="territorialDivision", the @subtype should be one of the following values: "province" (kōṭṭam, rāṣṭra, maṇḍala, vaḷanāṭu, etc.)
+                            </sch:rule>
+                            <sch:rule context="tei:placeName[@type='territorialDivision']">
+                                
+                            <sch:assert test="@subtype='province' or @subtype='disctrict' or @subtype='site' or @subtype='sitePart'">For @type="territorialDivision", the @subtype should be one of the following values: "province" (kōṭṭam, rāṣṭra, maṇḍala, vaḷanāṭu, etc.)
                                 "district" (viṣaya, nāṭu, kūṟṟam)
                                 "site" (town, village)
                                 "sitePart" (e.g. quarter, hamlet, cēri)</sch:assert>
-                        </sch:rule></constraint></constraintSpec>
+                        </sch:rule>
+                        </constraint></constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
