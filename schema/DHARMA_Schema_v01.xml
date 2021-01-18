@@ -5,7 +5,7 @@
         <fileDesc>
             <titleStmt>
                 <title>DHARMA Encoding schema</title>
-                <author xml:id="AJ">Axelle Janiak</author>
+                <author>Axelle Janiak</author>
             </titleStmt>
             <publicationStmt>
                 <p>Released under GNU GPL 3.0</p>
@@ -554,7 +554,9 @@
                             test="@type='binding-hole' or @type='descender' or @type='ascender' and @quantity and @unit"
                             >Space can't have @quantity and @unit attributes with
                             @type='binding-hole' or @type='descender' or @type='ascender', the only
-                            @type possible is @type='defect'.</sch:assert></sch:rule></constraint>
+                            @type possible is @type='defect'.</sch:assert>
+                                </sch:rule>
+                            <sch:rule context="tei:space"><sch:assert test="@unit='page'">Please note that the use of "space" for blank copperplate pages has been discarded; encode only a "pb" for the blank page</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3974,8 +3976,7 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
-                <moduleRef key="tagdocs"
-                    except="altIdent alternate anyElement att attDef attList attRef classRef classSpec classes constraint constraintSpec content dataFacet dataRef dataSpec datatype defaultVal eg egXML elementRef elementSpec empty equiv exemplum ident listRef macroRef macroSpec memberOf model modelGrp modelSequence moduleRef moduleSpec outputRendition param paramList paramSpec remarks schemaSpec sequence specDesc specGrp specGrpRef specList tag textNode val valDesc valItem valList"/>
+                
                 <elementSpec ident="code" module="tagdocs" mode="change">
                     <attList>
                         <attDef ident="ana" mode="delete"/>
