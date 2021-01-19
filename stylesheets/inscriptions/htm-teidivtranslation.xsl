@@ -34,7 +34,7 @@
    </xsl:template>
 
    <xsl:template name="language">
-     <xsl:if test="@xml:lang">
+     <xsl:if test="@xml:lang and not(@xml:lang='eng')">
        <xsl:text> into </xsl:text>
        <xsl:value-of select="/t:TEI/t:teiHeader/t:profileDesc/t:langUsage/t:language[@ident = current()/@xml:lang]"/>
        <xsl:if test="not(/t:TEI/t:teiHeader/t:profileDesc/t:langUsage/t:language[@ident = current()/@xml:lang])">
