@@ -37,6 +37,17 @@
 </xsl:element>
 <br/>
 </xsl:when>
+<xsl:when test="$parm-leiden-style='dharma' and child::t:quote">
+  <i><xsl:apply-templates select="child::t:quote"/></i>
+  <xsl:if test="child::t:*[2][local-name () = 'bibl']">
+      <xsl:element name="span">
+        <xsl:attribute name="class">citRef</xsl:attribute>
+        <xsl:text> (</xsl:text>
+        <xsl:apply-templates select="child::t:bibl" mode="dharma"/>
+<xsl:text>) </xsl:text>
+</xsl:element>
+</xsl:if>
+</xsl:when>
 </xsl:choose>
 </xsl:template>
 
