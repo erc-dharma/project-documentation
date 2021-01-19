@@ -133,7 +133,9 @@
       <xsl:analyze-string select="$unparsedresp"
         regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
         <xsl:matching-substring>
+          <xsl:text> (</xsl:text>
           <xsl:value-of select="regex-group(2)"/>
+          <xsl:text>) </xsl:text>
         </xsl:matching-substring>
       </xsl:analyze-string>
       </xsl:otherwise>
