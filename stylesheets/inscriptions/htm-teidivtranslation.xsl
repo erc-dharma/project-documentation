@@ -54,8 +54,61 @@
    </xsl:template>
 
    <xsl:template name="responsability">
+     	<xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
+      	<xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>
      <!-- The responsability template could probably be used in several part, rather than repeating the code. Need to be cleaned at some point-->
-     <xsl:if test="@source">
+     <xsl:variable name="biblresp"
+        select="replace(substring-after(@source, ':'), '\+', '%2B')"/>
+
+     <xsl:variable name="zoteroapijsonresp">
+       <xsl:value-of
+         select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblresp, '&amp;format=json'), 'amp;', '')"
+       />
+     </xsl:variable>
+     <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>
+
+     <!-- CURRENTLY reworking the code for @source, effective  if only one author-->
+            <!--<xsl:if test="@source">
+         <xsl:text> by </xsl:text>
+         <xsl:element name="span">
+           <xsl:attribute name="class">resp</xsl:attribute>
+           <xsl:choose>
+              <xsl:when test="matches(@source, '\+[a][l]')">
+                  <xsl:analyze-string select="$unparsedresp"
+                    regex="(^\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+                    <xsl:matching-substring>
+                      <xsl:value-of select="regex-group(2)"/>
+                    </xsl:matching-substring>
+                  </xsl:analyze-string>
+                  <xsl:text> &amp; al </xsl:text>
+              </xsl:when>
+               <xsl:when test="matches(@source, '\+[A-Z]')">
+                 <xsl:analyze-string select="$unparsedresp"
+                   regex="(^\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+                   <xsl:matching-substring>
+                     <xsl:value-of select="regex-group(2)"/>
+                   </xsl:matching-substring>
+                 </xsl:analyze-string>
+               </xsl:when>
+               <xsl:otherwise>
+         <xsl:analyze-string select="$unparsedresp"
+           regex="(\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+           <xsl:matching-substring>
+             <xsl:value-of select="regex-group(2)"/>
+           </xsl:matching-substring>
+         </xsl:analyze-string>
+       </xsl:otherwise>
+       </xsl:choose>
+       </xsl:element>
+         <xsl:text> </xsl:text>
+         <xsl:analyze-string select="$unparsedresp"
+           regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+           <xsl:matching-substring>
+             <xsl:value-of select="regex-group(2)"/>
+           </xsl:matching-substring>
+         </xsl:analyze-string>
+       </xsl:if>-->
+    <xsl:if test="@source">
        <xsl:text> by </xsl:text>
        <xsl:choose>
          <xsl:when test="matches(@source, '\+[a][l]')">
@@ -65,7 +118,24 @@
              <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
          </xsl:when>
          <xsl:otherwise>
-        <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
+        <!--<xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>-->
+        <xsl:element name="span">
+          <xsl:attribute name="class">resp</xsl:attribute>
+          <xsl:analyze-string select="$unparsedresp"
+          regex="(\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+          <xsl:matching-substring>
+            <xsl:value-of select="regex-group(2)"/>
+          </xsl:matching-substring>
+        </xsl:analyze-string>
+      </xsl:element>
+      <!-- La date sera à bouger une fois les autres sections résolues -->
+      <xsl:text> </xsl:text>
+      <xsl:analyze-string select="$unparsedresp"
+        regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+        <xsl:matching-substring>
+          <xsl:value-of select="regex-group(2)"/>
+        </xsl:matching-substring>
+      </xsl:analyze-string>
       </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
