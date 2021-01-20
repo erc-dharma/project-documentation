@@ -93,4 +93,24 @@
             </sqf:fix>  
         </sch:rule>
     </sch:pattern>
+    
+    <sch:pattern>
+        <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
+        <sch:rule context="/">
+            <sch:assert test="starts-with($fileName, 'DHARMA_INS')">The filename should starts with DHARMA_INS, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
+        </sch:rule>
+        <sch:rule context="publicationStmt">
+            <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
+            <sch:assert test="idno[@type='filename'] eq $idno-fileName">The idno[@type='filename'] must match the filename of the file without the extension ".xml". the filename is currently <sch:value-of select="$fileName"/></sch:assert>
+        </sch:rule>
+
+    </sch:pattern>
+    
+    <sch:pattern>
+        <sch:rule context="persName/@ref">
+            <sch:let name="sought" value="substring-after(@ref, 'part:')"/>
+            <sch:let name="list-id" value="document(../DHARMA_IdListMembers_v01.xml)//person[@xml:id]"/>
+            <sch:assert test="$sought = $list-id">The id of the person hasn't been declared.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
 </sch:schema>
