@@ -874,7 +874,9 @@
                             contain a lem element</sch:report><sch:report
                             test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)"
                             >When the apparatus entry contains only a lem, the @source is
-                            mandatory</sch:report></sch:rule></constraint>
+                            mandatory</sch:report>
+                            </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2580,6 +2582,9 @@
                             <sch:report
                                 test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
                                 >Note should the last element of the biliography</sch:report>
+                            <sch:report
+                                test="parent::tei:app and following-sibling::tei:*"
+                                >Note should the last element of the apparatus entry</sch:report>
                         </sch:rule>
                         </constraint>
                     </constraintSpec>
