@@ -128,6 +128,7 @@
                 <!-- constraining values of div/@type -->
                 <elementSpec ident="div" mode="change" module="textstructure">
                     <constraintSpec scheme="isoschematron" ident="div">
+                        <!-- SQF add to delete @xml:lang='eng'. -->
                         <constraint><sch:rule context="tei:div"><sch:report
                             test="@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"
                             > Divs other than @type=textpart may not nest in divs of different @type
@@ -137,16 +138,12 @@
                             edition</sch:report><!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
                             div[@type='translation']</sch:report>--><sch:report
-                            test="@type='translation' and @xml:lang='eng'">@xml:lang="eng" shouldn't
-                            be used with div[@type='translation']</sch:report><sch:report
                             test="@type='translation' and @resp and @source">@resp and @source can
                             not be used together</sch:report><sch:report
                             test="@type='translation' and not(@resp or @source)">@resp or @source is
-                            expected for div[@type='translation']</sch:report></sch:rule><sch:rule
-                            context="@source"><sch:assert test="starts-with(.,'bib:')">Bibliographic
-                            prefix is bib:</sch:assert></sch:rule><sch:rule context="@resp"
-                            ><sch:assert test="starts-with(.,'part:')">Project members prefix is
-                            part:</sch:assert></sch:rule><!--<sch:rule context="tei:body">
+                            expected for div[@type='translation']</sch:report></sch:rule>
+                            <!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch-->
+                            <!--<sch:rule context="tei:body">
                                 <sch:assert
                             test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
                             >The textpart structure in edition and in apparatus must be
@@ -970,7 +967,13 @@
                         <constraint><sch:rule context="tei:bibl"><sch:report
                             test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
                             the primary bibliography to declare
-                            sigla</sch:report></sch:rule></constraint>
+                            sigla</sch:report></sch:rule>
+                            <sch:rule context="tei:bibl[ancestor::tei:listBibl]">
+                                <sch:report test="child::tei:note[following-sibling::tei:*]">Note should be the last element of the bibl</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:bibl[child::tei:note]"> 
+                                <sch:report test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]">In the commentary, apparatus and the epigraphic lemma, note inside bibl is prohibited. Add the note element right after the bibl element.</sch:report>
+                            </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1221,6 +1224,14 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="citedRange" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="note">
+                        <constraint>
+                            <sch:rule context="tei:citedRange">
+                        <sch:report test="child::tei:note and ancestor::tei:listBibl">Note can not be used as a child of the element citedRange, only as a sibling of this element</sch:report>
+                    </sch:rule>
+                            
+                        </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2553,7 +2564,7 @@
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:note"><sch:report
-                            test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader)"
+                            test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
                             >Note is prohibited in div[@type='edition'] and in
                             div[@type='bibliography']</sch:report><sch:report
                             test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)"
@@ -2561,7 +2572,16 @@
                             element</sch:report><sch:report
                             test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)"
                             >Inside div[@type='apparatus'], note should be wrapped inside an app
-                            element</sch:report></sch:rule></constraint>
+                            element</sch:report>
+                            <sch:report
+                                test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
+                                >Inside div[@type='bibliography'], note should be wrapped inside an p
+                                element for the epigraphic lemma</sch:report>
+                            <sch:report
+                                test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
+                                >Note should the last element of the biliography</sch:report>
+                        </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2781,10 +2801,11 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="persName" module="namesdates" mode="change">
-                    <constraintSpec scheme="schematron" ident="reference">
+                    <!-- Constraint moved and complete with SQF in DHARMA_SQF.sch -->
+                   <constraintSpec scheme="schematron" ident="reference">
                         <constraint><sch:rule context="tei:persName/@ref[ancestor::tei:teiHeader]"
-                            ><sch:assert test="starts-with(.,'part:')">Project members prefix is
-                            part:</sch:assert></sch:rule></constraint>
+                            ><sch:assert test="starts-with(.,'part:') or starts-with(.,'http')">Project members prefix is
+                            part: et non-members should be a URL</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
