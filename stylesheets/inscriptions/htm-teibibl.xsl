@@ -194,10 +194,20 @@ bibliography. All examples only cater for book and article.
 											</xsl:if>
 									</xsl:when>
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
-										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
+										<!--<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>-->
 										<xsl:choose>
-								 <xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
-									 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
+											<!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
+											<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
+												<xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
+													<xsl:matching-substring>
+																	<i><xsl:value-of select="regex-group(1)"/></i>
+																	<xsl:text> </xsl:text>
+																	<xsl:value-of select="regex-group(2)"/>
+															</xsl:matching-substring>
+														</xsl:analyze-string>
+											</xsl:when>
+								<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
+									 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
 										<xsl:matching-substring>
 														<i><xsl:value-of select="regex-group(1)"/></i>
 														<xsl:text> </xsl:text>
@@ -208,19 +218,9 @@ bibliography. All examples only cater for book and article.
 												</xsl:matching-substring>
 											</xsl:analyze-string>
 									</xsl:when>
-									<!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
-									<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
-										<xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
-											<xsl:matching-substring>
-															<i><xsl:value-of select="regex-group(1)"/></i>
-															<xsl:text> </xsl:text>
-															<xsl:value-of select="regex-group(2)"/>
-													</xsl:matching-substring>
-												</xsl:analyze-string>
-									</xsl:when>
 									<!-- Handles OV, ROC, ROD -->
-									<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
-									 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
+									<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
+									 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
 										<xsl:matching-substring>
 														<i><xsl:value-of select="regex-group(1)"/></i>
 														<xsl:text> (</xsl:text>
@@ -230,8 +230,8 @@ bibliography. All examples only cater for book and article.
 											</xsl:analyze-string>
 									</xsl:when>
 										<!-- TBG1924_64 -->
-										<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
-										 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
+										<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
+										 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
 											<xsl:matching-substring>
 															<i><xsl:value-of select="regex-group(1)"/></i>
 															<xsl:text> </xsl:text>
@@ -243,8 +243,8 @@ bibliography. All examples only cater for book and article.
 												</xsl:analyze-string>
 										</xsl:when>
 										<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  -->
-										<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
-										 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
+										<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
+										 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
 											<xsl:matching-substring>
 															<i><xsl:value-of select="regex-group(1)"/></i>
 															<xsl:text> (</xsl:text>
@@ -312,11 +312,11 @@ bibliography. All examples only cater for book and article.
 									<xsl:choose>
 										<xsl:when test="matches(./child::t:ptr/@target, 'bib:[A-Z][A-Z]') and $leiden-style = 'dharma'">
 											<!-- Code added for Arlo's request regarding BEFEO36_1936 in K00868.xml-->
-											<xsl:variable name="soughtSiglum" select="./child::t:ptr/@target"/>
+											<!--<xsl:variable name="soughtSiglum" select="./child::t:ptr/@target"/>-->
 													<!-- Handles also JBG, NBG -->
 													<xsl:choose>
-											 <xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
-												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
+											 <xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
+												 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
                     			<xsl:matching-substring>
 																	<i><xsl:value-of select="regex-group(1)"/></i>
 																	<xsl:text> </xsl:text>
@@ -332,8 +332,8 @@ bibliography. All examples only cater for book and article.
 													</span>
 												</xsl:when>
 												<!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
-												<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
-													<xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
+												<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
+													<xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
 														<xsl:matching-substring>
 																		<i><xsl:value-of select="regex-group(1)"/></i>
 																		<xsl:text> </xsl:text>
@@ -347,8 +347,8 @@ bibliography. All examples only cater for book and article.
 														</span>
 												</xsl:when>
 												<!-- Handles OV, ROC, ROD -->
-												<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
- 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
+												<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
+ 												 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
                      			<xsl:matching-substring>
                          					<i><xsl:value-of select="regex-group(1)"/></i>
  																	<xsl:text> (</xsl:text>
@@ -362,8 +362,8 @@ bibliography. All examples only cater for book and article.
 													</span>
  												</xsl:when>
 													<!-- TBG1924_64 -->
-													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
-	 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
+													<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
+	 												 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
 	                     			<xsl:matching-substring>
 	                         					<i><xsl:value-of select="regex-group(1)"/></i>
 																		<xsl:text> </xsl:text>
@@ -379,8 +379,8 @@ bibliography. All examples only cater for book and article.
 														</span>
 	 												</xsl:when>
 													<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  -->
-													<xsl:when test="matches(//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
-	 												 <xsl:analyze-string select="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
+													<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
+	 												 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
 	                     			<xsl:matching-substring>
 	                         					<i><xsl:value-of select="regex-group(1)"/></i>
 																		<xsl:text> (</xsl:text>
