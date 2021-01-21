@@ -191,7 +191,7 @@ bibliography. All examples only cater for book and article.
 										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
 										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
 											<span class="tooltip-bibl">
-												<xsl:value-of select="replace(//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n, '_', ' ')"/>
+												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
 												<span class="tooltiptext-bibl">
 													<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
 											</span>
