@@ -193,7 +193,14 @@ bibliography. All examples only cater for book and article.
 											<span class="tooltip-bibl">
 												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
 												<span class="tooltiptext-bibl">
+													<xsl:choose>
+														<xsl:when test="matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
+															<xsl:call-template name="journalTitle"/>
+														</xsl:when>
+														<xsl:otherwise>
 													<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+													</xsl:otherwise>
+												</xsl:choose>
 											</span>
 											</span>
 											</xsl:if>
@@ -259,6 +266,7 @@ bibliography. All examples only cater for book and article.
 													<xsl:choose>
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
 															<xsl:call-template name="journalTitle"/>
+															<xsl:text>. </xsl:text>
 																	<span class="tooltiptext-bibl">
 																		<xsl:copy-of
 																			select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
