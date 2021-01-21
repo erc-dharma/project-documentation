@@ -190,7 +190,7 @@ bibliography. All examples only cater for book and article.
 								<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
 										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
 										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
-												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
+												<xsl:value-of select="replace(//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n, '_', ' ')"/>
 											</xsl:if>
 									</xsl:when>
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
