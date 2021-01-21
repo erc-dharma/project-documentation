@@ -187,12 +187,12 @@ bibliography. All examples only cater for book and article.
 										</xsl:element>
 									</xsl:when>
 									<!-- Code added regardung Manu's request in pallava00042 -->
-									<!--<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
+								<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
 										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
 										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
 												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
 											</xsl:if>
-									</xsl:when>-->
+									</xsl:when>
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
 										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
 										<xsl:choose>
