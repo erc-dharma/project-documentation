@@ -98,17 +98,17 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:rule context="t:div[@type='edition']">
-            <sch:assert test="descendant::t:l[@n]">Line verses should be numered with @n attribute</sch:assert>
+        <sch:rule context="t:l[ancestor::t:div[@type='edition']]">
+            <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
-        <sch:rule context="t:div[@type='edition']">
-            <sch:assert test="descendant::t:l[parent::t:lg]">Line verses should be wrapped into lg element</sch:assert>
+        <sch:rule context="t:l[ancestor::t:div[@type='edition']]">
+            <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
         </sch:rule>
         
     </sch:pattern>
     <sch:pattern>
-        <sch:rule context="t:div[@type='translation']">
-            <sch:assert test="descendant::t:l[parent::t:p]">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
+        <sch:rule context="t:l[ancestor::t:div[@type='translation']]">
+            <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
     </sch:pattern>
     
     <sch:pattern>
@@ -125,12 +125,11 @@
     
     <sch:pattern>
         <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>
-       
+        
         <sch:rule context="@resp |@ref">
             <sch:let name="tokens" value="for $i in tokenize(substring-after(.,'part:'), '\s+') return $i"/>
             <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
         </sch:rule>
         
     </sch:pattern>
-   
 </sch:schema>
