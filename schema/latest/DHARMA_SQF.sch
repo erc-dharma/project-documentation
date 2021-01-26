@@ -50,7 +50,7 @@
             </sqf:fix>  
         </sch:rule>
         <sch:rule context="t:div[@type='translation']"> 
-            <sch:assert test="@resp or @source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
+            <sch:assert test="@resp|@source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
             <sqf:fix id="resp-translation">
                 <sqf:description>
                     <sqf:title>Add @resp for a DHARMA member author of the translation</sqf:title>
@@ -65,14 +65,10 @@
                 <sqf:add node-type="attribute" target="source"/>
             </sqf:fix>  
         </sch:rule>
-        <sch:rule context="t:div[@type='translation']">
-            <sch:report test="@resp and @source">@resp and @source can
-                not be used together</sch:report>
-        </sch:rule>
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="t:listBibl[@type='primary']/t:bibl">
+        <sch:rule context="t:bibl[parent::t:listBibl[@type='primary']]">
             <sch:assert test="@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
                 sigla</sch:assert>
@@ -102,7 +98,7 @@
             <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
         <!-- not working -->
-       <!-- <sch:rule context="t:l">
+        <!--<sch:rule context="t:l">
             <sch:assert test="t:l[ancestor::t:div[@type='edition']/t:lg]">Line verses should be wrapped into lg element</sch:assert>
         </sch:rule>   
         <sch:rule context="t:l">
