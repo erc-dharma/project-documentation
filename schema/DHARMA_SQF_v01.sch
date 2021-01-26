@@ -97,10 +97,13 @@
         <sch:rule context="t:div[@type='edition']//t:l">
             <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
+    </sch:pattern>
         <!-- not working -->
-        <sch:rule context="t:div[@type='edition']//t:l">
+        <sch:pattern>
+            <sch:rule context="t:div[@type='edition']//t:l">
             <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
-        </sch:rule>   
+        </sch:rule> </sch:pattern>
+    <sch:pattern>
         <sch:rule context="t:div[@type='translation']//t:l">
             <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
     </sch:pattern>
