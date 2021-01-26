@@ -72,8 +72,8 @@
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="t:listBibl[@type='primary']">
-            <sch:assert test="child::t:bibl[@n]" sqf:fix="add-siglum">@n mandatory in
+        <sch:rule context="t:listBibl[@type='primary']/t:bibl">
+            <sch:assert test="@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
                 sigla</sch:assert>
             
