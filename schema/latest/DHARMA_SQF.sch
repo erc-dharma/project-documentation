@@ -98,7 +98,11 @@
     
     <sch:pattern>
         <sch:rule context="div[@type='edition']">
-            <sch:assert test="descendant::l[@n]">Line verses should be numered with @n attribute</sch:assert></sch:rule>
+            <sch:assert test="descendant::l[@n]">Line verses should be numered with @n attribute</sch:assert>
+        </sch:rule>
+        <sch:rule context="div[@type='edition']">
+            <sch:assert test="descendant::l[parent::lg]">Line verses should be wrapped into lg element</sch:assert>
+        </sch:rule>
     </sch:pattern>
     <sch:pattern>
         <sch:rule context="div[@type='translation']">
