@@ -72,8 +72,8 @@
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="t:listBibl[@type='primary']">
-            <sch:assert test="child::t:bibl[@n]" sqf:fix="add-siglum">@n mandatory in
+        <sch:rule context="t:listBibl[@type='primary']/t:bibl">
+            <sch:assert test="@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
                 sigla</sch:assert>
             
@@ -87,7 +87,7 @@
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="app">
+        <sch:rule context="t:app">
             <sch:assert test="@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
             <sqf:fix id="add-loc">
                 <sqf:description>
@@ -98,17 +98,15 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:rule context="t:div[@type='edition']">
-            <sch:assert test="descendant::t:l[@n]">Line verses should be numered with @n attribute</sch:assert>
+        <sch:rule context="t:l[ancestor::t:div[@type='edition']]">
+            <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
-        <sch:rule context="t:div[@type='edition']">
-            <sch:assert test="descendant::t:l[parent::t:lg]">Line verses should be wrapped into lg element</sch:assert>
-        </sch:rule>
-        
-    </sch:pattern>
-    <sch:pattern>
-        <sch:rule context="t:div[@type='translation']">
-            <sch:assert test="descendant::t:l[parent::t:p]">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
+        <!-- not working -->
+        <!--<sch:rule context="t:l">
+            <sch:assert test="t:l[ancestor::t:div[@type='edition']/t:lg]">Line verses should be wrapped into lg element</sch:assert>
+        </sch:rule>   
+        <sch:rule context="t:l">
+            <sch:assert test="t:l[ancestor::t:div[@type='translation']/t:p]">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>-->
     </sch:pattern>
     
     <sch:pattern>
@@ -123,12 +121,13 @@
         
     </sch:pattern>
     
-    
     <sch:pattern>
-        <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')//t:person/@xml:id"/>
-        <sch:rule context="@ref | @resp">
-            <sch:let name="tokens" value="for $i in tokenize(., '\s+') return substring-after($i,'part:')"/>
-            <sch:assert test="every $token in $tokens satisfies $token = $list-id">The attribute (after part:) must match a defined @xml:id in DHARMA list members</sch:assert>
+        <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>
+        
+        <sch:rule context="@resp |@ref">
+            <sch:let name="tokens" value="for $i in tokenize(substring-after(.,'part:'), '\s+') return $i"/>
+            <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
         </sch:rule>
+        
     </sch:pattern>
 </sch:schema>

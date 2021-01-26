@@ -2592,6 +2592,7 @@
                                 test="parent::tei:app and following-sibling::tei:*"
                                 >Note should the last element of the apparatus entry</sch:report>
                         </sch:rule>
+                            
                         </constraint>
                     </constraintSpec>
                     <attList>
