@@ -95,6 +95,10 @@
             </sqf:fix>  
         </sch:rule>
     </sch:pattern>
+    <sch:pattern>
+        <sch:rule context="div[@type='edition']">
+            <sch:assert test="descendant::l[@n]">Line verses should be numered with @n attribute</sch:assert></sch:rule>
+    </sch:pattern>
     
     <sch:pattern>
         <sch:rule context="/">

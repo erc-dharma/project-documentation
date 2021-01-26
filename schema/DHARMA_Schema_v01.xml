@@ -1916,6 +1916,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="l" module="core" mode="change">
+                    <constraintSpec scheme="isoschematron" ident="div">
+                        <constraint>
+                            <sch:rule context="tei:l">
+                            <sch:assert test="ancestor::tei:div[@type='translation'] and parent::tei:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
+                        </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1944,7 +1950,7 @@
                                 <valItem ident="yes"/>
                             </valList>
                         </attDef>
-                        <attDef ident="n" mode="change" usage="req"/>
+                        <attDef ident="n" mode="change"/>
                         <attDef ident="met" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="sumānikā"/>
@@ -2316,6 +2322,11 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="listApp" module="textcrit" mode="change">
+                    <constraintSpec scheme="isoschematron" ident="div">
+                        <constraint><sch:rule context="tei:listApp">
+                            <sch:assert test="ancestor::tei:div[@type='apparatus']">ListApp can only be used inside the apparatus.</sch:assert></sch:rule>
+                        </constraint>
+                    </constraintSpec>                    
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>

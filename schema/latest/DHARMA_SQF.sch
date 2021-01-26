@@ -97,6 +97,11 @@
     </sch:pattern>
     
     <sch:pattern>
+        <sch:rule context="div[@type='edition']">
+            <sch:assert test="descendant::l[@n]">Line verses should be numered with @n attribute</sch:assert></sch:rule>
+    </sch:pattern>
+    
+    <sch:pattern>
         <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
             <sch:assert test="starts-with($fileName, 'DHARMA_INS')">The filename should starts with DHARMA_INS, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
