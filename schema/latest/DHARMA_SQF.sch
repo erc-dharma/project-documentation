@@ -69,6 +69,8 @@
             <sch:report test="@resp and @source">@resp and @source can
                 not be used together</sch:report>
         </sch:rule>
+        <sch:rule context="t:div[@type='translation']/t:p">
+            <sch:assert test="child::t:l">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
     </sch:pattern>
     
     <sch:pattern>
@@ -87,7 +89,7 @@
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="app">
+        <sch:rule context="t:app">
             <sch:assert test="@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
             <sqf:fix id="add-loc">
                 <sqf:description>
@@ -103,12 +105,7 @@
         </sch:rule>
         <sch:rule context="t:l[ancestor::t:div[@type='edition']]">
             <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
-        </sch:rule>
-        
-    </sch:pattern>
-    <sch:pattern>
-        <sch:rule context="t:l[ancestor::t:div[@type='translation']]">
-            <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
+        </sch:rule>   
     </sch:pattern>
     
     <sch:pattern>
