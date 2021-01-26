@@ -135,13 +135,15 @@
                             </sch:report><sch:report
                             test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
                             > At least two divs @type=textpart are expected in the
-                            edition</sch:report><!--<sch:report
+                            edition</sch:report>
+                            </sch:rule>
+                            <!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
-                            div[@type='translation']</sch:report>--><sch:report
+                            div[@type='translation']</sch:report>--><!--<sch:report
                             test="@type='translation' and @resp and @source">@resp and @source can
                             not be used together</sch:report><sch:report
                             test="@type='translation' and not(@resp or @source)">@resp or @source is
-                            expected for div[@type='translation']</sch:report></sch:rule>
+                            expected for div[@type='translation']</sch:report></sch:rule>-->
                             <!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch-->
                             <!--<sch:rule context="tei:body">
                                 <sch:assert

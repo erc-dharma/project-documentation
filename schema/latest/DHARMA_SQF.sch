@@ -49,7 +49,6 @@
         </sch:rule>
         <sch:rule context="div[@type='translation']"> 
             <sch:assert test="@resp or @source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
-            
             <sqf:fix id="resp-translation">
                 <sqf:description>
                     <sqf:title>Add @resp for a DHARMA member author of the translation</sqf:title>
@@ -64,7 +63,10 @@
                 <sqf:add node-type="attribute" target="source"/>
             </sqf:fix>  
         </sch:rule>
-        
+        <sch:rule context="div[@type='translation']">
+            <sch:report test="@resp and @source">@resp and @source can
+                not be used together</sch:report>
+        </sch:rule>
     </sch:pattern>
     
     <sch:pattern>
@@ -105,4 +107,5 @@
         </sch:rule>
 
     </sch:pattern>
+
 </sch:schema>
