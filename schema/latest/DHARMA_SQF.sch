@@ -123,12 +123,14 @@
         
     </sch:pattern>
     
-    
     <sch:pattern>
         <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>
-        <sch:rule context="@ref | @resp">
-            <sch:let name="tokens" value="for $i in tokenize(., '\s+') return substring-after($i,'part:')"/>
-            <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute (after part:) must match a defined @xml:id in DHARMA list members</sch:assert>
+       
+        <sch:rule context="@resp |@ref">
+            <sch:let name="tokens" value="for $i in tokenize(substring-after(.,'part:'), '\s+') return $i"/>
+            <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
         </sch:rule>
+        
     </sch:pattern>
+   
 </sch:schema>
