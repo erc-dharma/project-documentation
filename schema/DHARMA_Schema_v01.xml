@@ -1915,13 +1915,7 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
-                <elementSpec ident="l" module="core" mode="change">
-                    <constraintSpec scheme="isoschematron" ident="div">
-                        <constraint>
-                            <sch:rule context="tei:l">
-                            <sch:assert test="ancestor::tei:div[@type='translation'] and parent::tei:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
-                        </constraint>
-                    </constraintSpec>
+                <elementSpec ident="l" module="core" mode="change">             
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
