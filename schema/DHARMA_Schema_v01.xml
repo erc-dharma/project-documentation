@@ -2567,8 +2567,7 @@
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:note"><sch:report
                             test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
-                            >Note is prohibited in div[@type='edition'] and in
-                            div[@type='bibliography']</sch:report><sch:report
+                            >Note is prohibited in div[@type='edition']</sch:report><sch:report
                             test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)"
                             >Inside div[@type='commentary'], note should be wrapped inside a p
                             element</sch:report><sch:report
