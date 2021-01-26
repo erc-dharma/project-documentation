@@ -101,11 +101,11 @@
         <sch:rule context="t:l[ancestor::t:div[@type='edition']]">
             <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
-        <sch:rule context="t:l[ancestor::t:div[@type='edition']]">
-            <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
+        <sch:rule context="t:l">
+            <sch:assert test="t:l[parent::t:lg and ancestor::t:div[@type='edition']]">Line verses should be wrapped into lg element</sch:assert>
         </sch:rule>   
-        <sch:rule context="t:l[ancestor::t:div[@type='translation']]">
-            <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
+        <sch:rule context="t:l">
+            <sch:assert test="t:l[ancestor::t:div[@type='translation'] and parent::t:p]">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
     </sch:pattern>
     
     <sch:pattern>
