@@ -5,7 +5,7 @@
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
     
     <sch:pattern>
-        <sch:rule context="@source|@target"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-addition">Bibliographic
+        <sch:rule context="@source|@target[not(parent::t:licence)]"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-addition">Bibliographic
             prefix is bib:</sch:assert>
             
             <sqf:fix id="bib-prefix-addition">
@@ -116,7 +116,7 @@
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="t:publicationStmt">
+        <sch:rule context="t:publicationStmt/t:idno[@type='filename']">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
             <sch:assert test="t:idno[@type='filename'] eq $idno-fileName">The idno[@type='filename'] must match the filename of the file without the extension ".xml"</sch:assert>
         </sch:rule>
