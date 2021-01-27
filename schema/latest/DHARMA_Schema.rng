@@ -3689,7 +3689,7 @@ Measures]</a:documentation>
       <element name="ptr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(pointer) defines a pointer to another location. [3.6. Simple Links and Cross-References 16.1. Links]</a:documentation>
          <empty/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+        <!-- <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="dharma-ptr-target-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3697,7 +3697,7 @@ Measures]</a:documentation>
                <sch:assert test="starts-with(.,'bib:')">Bibliographic prefix is
                             bib:</sch:assert>
             </sch:rule>
-         </pattern>
+         </pattern>-->
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="dharma-ptr-ptrAtts-constraint-report-19">
             <rule context="tei:ptr">
@@ -4419,13 +4419,13 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="dharma-bibl-siglum-constraint-rule-29">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+            <!--<sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:bibl">
                <sch:report test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
                             the primary bibliography to declare
                             sigla</sch:report>
-            </sch:rule>
+            </sch:rule>-->
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:bibl[ancestor::tei:listBibl]">
