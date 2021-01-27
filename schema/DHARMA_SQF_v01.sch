@@ -111,13 +111,15 @@
     <sch:pattern>
         <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
-            <sch:assert test="starts-with($fileName, 'DHARMA_INS')">The filename should starts with DHARMA_INS, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
+            <sch:assert test="starts-with($fileName, 'DHARMA_INS')">The filename should start with DHARMA_INS, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
-        <sch:rule context="publicationStmt">
+    </sch:pattern>
+    
+    <sch:pattern>
+        <sch:rule context="t:publicationStmt">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
             <sch:assert test="t:idno[@type='filename'] eq $idno-fileName">The idno[@type='filename'] must match the filename of the file without the extension ".xml"</sch:assert>
         </sch:rule>
-        
     </sch:pattern>
     
     <sch:pattern>
