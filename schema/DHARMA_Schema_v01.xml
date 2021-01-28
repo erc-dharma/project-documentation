@@ -35,7 +35,7 @@
                 -->
                 <!--       MODULES USED BY THE DHARMA SCHEMA       -->
                 <moduleRef key="core"
-                    except="addrLine address analytic biblScope binaryObject cb desc distinct divGen emph gb headItem headLabel measureGrp media meeting mentioned postBox postCode relatedItem said soCalled sp street teiCorpus"/>
+                    except="addrLine address analytic biblScope binaryObject cb distinct divGen emph gb headItem headLabel measureGrp media meeting mentioned postBox postCode relatedItem said soCalled sp street teiCorpus"/>
                 <moduleRef key="tei"/>
                 <!-- No reduction of the module Header-->
                 <moduleRef key="header" except="appInfo application"/>
