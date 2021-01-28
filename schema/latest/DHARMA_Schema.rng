@@ -4429,7 +4429,7 @@ Sample values include: 1] page; 2] volume; 3] item; 4] figure; 5] plate; 6] tabl
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:bibl[ancestor::tei:listBibl]">
-               <sch:report test="child::tei:note[following-sibling::tei:*]">Note should be the last element of the bibl</sch:report>
+               <sch:report test="child::tei:note[not(following-sibling::tei:note)]">Note should be the last element of the bibl</sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"

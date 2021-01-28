@@ -105,7 +105,7 @@
         </sch:rule> </sch:pattern>
     <sch:pattern>
         <sch:rule context="t:div[@type='translation']//t:l">
-            <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation.</sch:assert></sch:rule>
+            <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation as parent, lg element is not expected inside translations.</sch:assert></sch:rule>
     </sch:pattern>
     
     <sch:pattern>

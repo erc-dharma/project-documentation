@@ -976,7 +976,7 @@
                             the primary bibliography to declare
                             sigla</sch:report></sch:rule>-->
                             <sch:rule context="tei:bibl[ancestor::tei:listBibl]">
-                                <sch:report test="child::tei:note[following-sibling::tei:*]">Note should be the last element of the bibl</sch:report>
+                                <sch:report test="child::tei:note[not(following-sibling::tei:note)]">Note should be the last element of the bibl</sch:report>
                             </sch:rule>
                             <sch:rule context="tei:bibl[child::tei:note]"> 
                                 <sch:report test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]">In the commentary, apparatus and the epigraphic lemma, note inside bibl is prohibited. Add the note element right after the bibl element.</sch:report>
