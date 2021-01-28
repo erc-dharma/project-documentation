@@ -1131,7 +1131,7 @@
                             <defaultVal>..</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident=".."/>
-                                <valItem ident="../@attribute"/>
+                                <valItem ident="../@met"/>
                             </valList>
                         </attDef>
                     </attList>
