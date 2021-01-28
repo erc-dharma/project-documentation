@@ -2591,9 +2591,11 @@
                             <sch:report
                                 test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
                                 >Note should the last element of the biliography</sch:report>
-                            <sch:report
-                                test="parent::tei:app and not(following-sibling::tei:note)"
-                                >Note should the last element of the apparatus entry</sch:report>
+                            </sch:rule>
+                            <sch:rule context="tei:note[parent::tei:app]">
+                                <sch:report
+                                test="not(following-sibling::tei:note)"
+                                >Note(s) should the last element of the apparatus entry</sch:report>
                         </sch:rule>
                             
                         </constraint>
