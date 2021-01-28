@@ -3,20 +3,27 @@
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt2"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
-    
+
     <sch:pattern>
-        <sch:rule context="//t:text//t:ptr/@target|@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-addition">Bibliographic
+        <sch:rule context="//t:text//t:ptr/@target|@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
             prefix is bib:</sch:assert>
-            
-            <sqf:fix id="bib-prefix-addition">
+
+            <sqf:fix id="bib-prefix-source">
                 <sqf:description>
                     <sqf:title>Add the bibliographic prefix</sqf:title>
                 </sqf:description>
                 <sqf:replace match="." node-type="attribute" target="source" select="concat('bib:', .)"/>
-            </sqf:fix>                            
+            </sqf:fix>
+
+            <sqf:fix id="bib-prefix-target">
+                <sqf:description>
+                    <sqf:title>Add the bibliographic prefix</sqf:title>
+                </sqf:description>
+                <sqf:replace match="." node-type="attribute" target="target" select="concat('bib:', .)"/>
+            </sqf:fix>
         </sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <sch:rule context="@resp">
             <sch:assert test="starts-with(.,'part:') or starts-with(.,'http')" sqf:fix="part-prefix-addition http-prefix-addition">Project members prefix is
@@ -26,62 +33,62 @@
                     <sqf:title>Add prefix part: for project members</sqf:title>
                 </sqf:description>
                 <sqf:replace match="." node-type="attribute" target="resp" select="concat('part:', .)"/>
-            </sqf:fix>   
-            
+            </sqf:fix>
+
             <sqf:fix id="http-prefix-addition">
                 <sqf:description>
                     <sqf:title>Add "http://" to start creating a link  for non-members project</sqf:title>
                 </sqf:description>
                 <sqf:replace match="." node-type="attribute" target="resp" select="concat('http', .)"/>
-            </sqf:fix>  
+            </sqf:fix>
         </sch:rule>
-        
-    </sch:pattern>  
+
+    </sch:pattern>
     <sch:pattern>
-        <sch:rule context="t:div[@type='translation']"> 
+        <sch:rule context="t:div[@type='translation']">
             <sch:report test="@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't
                 be used with div[@type='translation']</sch:report>
-            
+
             <sqf:fix id="eng-translation">
                 <sqf:description>
                     <sqf:title>Delete @xml:lang="eng"</sqf:title>
                 </sqf:description>
                 <sqf:delete match="."/>
-            </sqf:fix>  
+            </sqf:fix>
         </sch:rule>
-        <sch:rule context="t:div[@type='translation']"> 
+        <sch:rule context="t:div[@type='translation']">
             <sch:assert test="@resp|@source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
             <sqf:fix id="resp-translation">
                 <sqf:description>
                     <sqf:title>Add @resp for a DHARMA member author of the translation</sqf:title>
                 </sqf:description>
                 <sqf:add node-type="attribute" target="resp"/>
-            </sqf:fix>  
-            
+            </sqf:fix>
+
             <sqf:fix id="source-translation">
                 <sqf:description>
                     <sqf:title>Add @source for translation taken from a published source</sqf:title>
                 </sqf:description>
                 <sqf:add node-type="attribute" target="source"/>
-            </sqf:fix>  
+            </sqf:fix>
         </sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <sch:rule context="t:bibl[parent::t:listBibl[@type='primary']]">
             <sch:assert test="@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
                 sigla</sch:assert>
-            
+
             <sqf:fix id="add-siglum">
                 <sqf:description>
                     <sqf:title>Add @n for the siglum</sqf:title>
                 </sqf:description>
                 <sqf:add node-type="attribute" target="n"/>
-            </sqf:fix>  
+            </sqf:fix>
         </sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <sch:rule context="t:app">
             <sch:assert test="@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
@@ -90,7 +97,7 @@
                     <sqf:title>Add @loc on app</sqf:title>
                 </sqf:description>
                 <sqf:add node-type="attribute" target="loc"/>
-            </sqf:fix>  
+            </sqf:fix>
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
@@ -107,28 +114,28 @@
         <sch:rule context="t:div[@type='translation']//t:l">
             <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation as parent, lg element is not expected inside translations.</sch:assert></sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
             <sch:assert test="starts-with($fileName, 'DHARMA_INS')">The filename should start with DHARMA_INS, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <sch:rule context="//t:idno[@type='filename']">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
             <sch:assert test="./text() eq $idno-fileName">The idno[@type='filename'] must match the filename of the file "<sch:value-of select="$idno-fileName"/>"; without the extension ".xml"  </sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>
-        
+
         <sch:rule context="//t:teiHeader//t:persName/@ref|@resp">
             <sch:let name="tokens" value="for $i in tokenize(., ' ') return substring($i, 6)"/>
             <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
         </sch:rule>
-        
+
     </sch:pattern>
 </sch:schema>
