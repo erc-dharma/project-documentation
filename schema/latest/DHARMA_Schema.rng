@@ -3894,7 +3894,7 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
                <sch:report test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)">Inside div[@type='bibliography'], note should be wrapped inside an p
                                 element for the epigraphic lemma</sch:report>
                <sch:report test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*">Note should the last element of the biliography</sch:report>
-               <sch:report test="parent::tei:app and following-sibling::tei:*">Note should the last element of the apparatus entry</sch:report>
+               <sch:report test="parent::tei:app and not(following-sibling::tei:note)">Note should the last element of the apparatus entry</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.typed.attribute.type"/>
