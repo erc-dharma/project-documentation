@@ -135,20 +135,24 @@
                             </sch:report><sch:report
                             test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
                             > At least two divs @type=textpart are expected in the
-                            edition</sch:report><!--<sch:report
+                            edition</sch:report>
+                            <!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
-                            div[@type='translation']</sch:report>--><sch:report
+                            div[@type='translation']</sch:report>-->
+                            <sch:report
                             test="@type='translation' and @resp and @source">@resp and @source can
-                            not be used together</sch:report><sch:report
+                            not be used together</sch:report>
+                            <!--<sch:report
                             test="@type='translation' and not(@resp or @source)">@resp or @source is
-                            expected for div[@type='translation']</sch:report></sch:rule>
+                            expected for div[@type='translation']</sch:report></sch:rule>-->
                             <!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch-->
                             <!--<sch:rule context="tei:body">
                                 <sch:assert
                             test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
                             >The textpart structure in edition and in apparatus must be
-                            identical.</sch:assert></sch:rule>-->
-                       </constraint>
+                            identical.</sch:assert>-->
+                              </sch:rule>                       
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="type" mode="change" usage="req">
@@ -966,10 +970,11 @@
                 </elementSpec>
                 <elementSpec ident="bibl" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="siglum">
-                        <constraint><sch:rule context="tei:bibl"><sch:report
+                        <constraint>
+                            <!--<sch:rule context="tei:bibl"><sch:report
                             test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
                             the primary bibliography to declare
-                            sigla</sch:report></sch:rule>
+                            sigla</sch:report></sch:rule>-->
                             <sch:rule context="tei:bibl[ancestor::tei:listBibl]">
                                 <sch:report test="child::tei:note[following-sibling::tei:*]">Note should be the last element of the bibl</sch:report>
                             </sch:rule>
@@ -1913,7 +1918,7 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
-                <elementSpec ident="l" module="core" mode="change">
+                <elementSpec ident="l" module="core" mode="change">             
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1942,7 +1947,7 @@
                                 <valItem ident="yes"/>
                             </valList>
                         </attDef>
-                        <attDef ident="n" mode="change" usage="req"/>
+                        <attDef ident="n" mode="change"/>
                         <attDef ident="met" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="sumānikā"/>
@@ -2314,6 +2319,11 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="listApp" module="textcrit" mode="change">
+                    <constraintSpec scheme="isoschematron" ident="div">
+                        <constraint><sch:rule context="tei:listApp">
+                            <sch:assert test="ancestor::tei:div[@type='apparatus']">ListApp can only be used inside the apparatus.</sch:assert></sch:rule>
+                        </constraint>
+                    </constraintSpec>                    
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2567,8 +2577,7 @@
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:note"><sch:report
                             test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
-                            >Note is prohibited in div[@type='edition'] and in
-                            div[@type='bibliography']</sch:report><sch:report
+                            >Note is prohibited in div[@type='edition']</sch:report><sch:report
                             test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)"
                             >Inside div[@type='commentary'], note should be wrapped inside a p
                             element</sch:report><sch:report
@@ -2586,6 +2595,7 @@
                                 test="parent::tei:app and following-sibling::tei:*"
                                 >Note should the last element of the apparatus entry</sch:report>
                         </sch:rule>
+                            
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -2964,11 +2974,11 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="ptr" module="core" mode="change">
-                    <constraintSpec scheme="schematron" ident="target">
+                    <!--<constraintSpec scheme="schematron" ident="target">
                         <constraint><sch:rule context="tei:ptr/@target"><sch:assert
                             test="starts-with(.,'bib:')">Bibliographic prefix is
                             bib:</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
+                    </constraintSpec>-->
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cRef" mode="delete"/>
