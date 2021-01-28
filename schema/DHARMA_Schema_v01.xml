@@ -2583,7 +2583,7 @@
                             element</sch:report><sch:report
                             test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)"
                             >Inside div[@type='apparatus'], note should be wrapped inside an app
-                            element</sch:report>
+                                element. Please note that note(s) may not contain further notes.</sch:report>
                             <sch:report
                                 test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
                                 >Inside div[@type='bibliography'], note should be wrapped inside an p
@@ -2597,7 +2597,9 @@
                                 test="not(following-sibling::tei:note)"
                                 >Note(s) should the last element of the apparatus entry</sch:report>
                         </sch:rule>
-                            
+                            <sch:rule context="tei:note">
+                                <sch:report test="child::tei:note">Note(s) may not contain further notes (this is not a technical requirement but a convention we shall observe to reduce complication)</sch:report>
+                            </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
