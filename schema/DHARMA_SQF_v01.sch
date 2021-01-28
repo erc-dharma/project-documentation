@@ -5,7 +5,7 @@
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
     
     <sch:pattern>
-        <sch:rule context="//t:text//@target|@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-addition">Bibliographic
+        <sch:rule context="//t:text//t:ptr/@target|@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-addition">Bibliographic
             prefix is bib:</sch:assert>
             
             <sqf:fix id="bib-prefix-addition">
