@@ -37,6 +37,7 @@
    <xsl:include href="htm-teinote.xsl"/>
    <xsl:include href="htm-teinum.xsl"/>
    <xsl:include href="htm-teip.xsl"/>
+   <xsl:include href="htm-teiptr.xsl"/>
    <xsl:include href="htm-teiseg.xsl"/>
    <xsl:include href="htm-teispace.xsl"/>
    <xsl:include href="htm-teisupplied.xsl"/>

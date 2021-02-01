@@ -186,25 +186,6 @@ bibliography. All examples only cater for book and article.
 										<xsl:text>ibid.</xsl:text>
 										</xsl:element>
 									</xsl:when>
-									<!-- Code added regardung Manu's request in pallava00042 -->
-								<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
-										<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
-										<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
-											<span class="tooltip-bibl">
-												<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
-												<span class="tooltiptext-bibl">
-													<xsl:choose>
-														<xsl:when test="matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
-															<xsl:call-template name="journalTitle"/>
-														</xsl:when>
-														<xsl:otherwise>
-													<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
-													</xsl:otherwise>
-												</xsl:choose>
-											</span>
-											</span>
-											</xsl:if>
-									</xsl:when>
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
 										<xsl:call-template name="journalTitle"/>
 									</xsl:when>
@@ -627,4 +608,23 @@ bibliography. All examples only cater for book and article.
 </xsl:choose>
 </xsl:template>
 
+<!-- Code added regardung Manu's request in pallava00042 for siglum with @rend='siglum'-->
+<!--<xsl:when test="@rend='siglum' and $leiden-style = 'dharma'">
+	<xsl:variable name="soughtSiglum" select="child::t:ptr/@target"/>
+	<xsl:if test="//t:listBibl/descendant::t:ptr[@target=$soughtSiglum]">
+		<span class="tooltip-bibl">
+			<xsl:value-of select="//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n"/>
+			<span class="tooltiptext-bibl">
+				<xsl:choose>
+					<xsl:when test="matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
+						<xsl:call-template name="journalTitle"/>
+					</xsl:when>
+					<xsl:otherwise>
+				<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</span>
+		</span>
+		</xsl:if>
+</xsl:when>-->
 </xsl:stylesheet>

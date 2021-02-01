@@ -9,7 +9,7 @@
    <xsl:character-map name="htmlDoc">
      <xsl:output-character character="&apos;" string="&amp;rsquo;" />
    </xsl:character-map>
-   
+
    <xsl:include href="global-varsandparams.xsl"/>
 
    <!-- html related stylesheets, these may import tei{element} stylesheets if relevant eg. htm-teigap and teigap -->
@@ -35,6 +35,7 @@
    <xsl:include href="htm-teinote.xsl"/>
    <xsl:include href="htm-teinum.xsl"/>
    <xsl:include href="htm-teip.xsl"/>
+   <!--<xsl:include href="htm-teiptr.xsl"/>-->
    <xsl:include href="htm-teiseg.xsl"/>
    <xsl:include href="htm-teispace.xsl"/>
    <xsl:include href="htm-teisupplied.xsl"/>
