@@ -87,13 +87,13 @@ body {
     clear:both;
     font-size:200%;
 }
-#footer .pror { 
+#footer .pror {
     font-family:"Printers Ornaments";
     font-size:48pt!important;
 }
 #footer {
     margin: 0 auto 20px auto;
-    text-align:center; 
+    text-align:center;
     padding-top:4rem;
 }
 
@@ -465,7 +465,7 @@ h3 {
     border-top:2px solid #800000;
 }
 .week h4, .week h6 {
-     font-family:"IndUni-H";   
+     font-family:"IndUni-H";
 }
 .week h5 {
     writing-mode: vertical-rl;
@@ -546,3 +546,9 @@ a:hover, a i.fas:hover {
 .gap:after {
     content:"]";
 }
+
+/* Additions for dharma */
+
+.lem:hover ~ .popover:nth-of-type(1){ background-color: yellow; }
+
+.lem:hover { background-color: yellow; }
