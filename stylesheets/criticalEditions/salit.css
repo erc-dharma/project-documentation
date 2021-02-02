@@ -1,0 +1,548 @@
+/* CSS file based on salit.css written by Andrew Ollett */
+/* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
+/* For the tables and stuff */
+.schedule {
+    margin-bottom:0;
+}
+.schedule .sch-heading {
+    background: url("../../images/peacock-tiling.png");
+    opacity: 0.7;
+    padding:0.5rem;
+}
+.schedule .sch-heading h4 {
+    color:white;
+    padding-bottom:0;
+    margin-bottom:0
+}
+.schedule .sch-heading h4 a {
+    color:white;
+}
+.schedule .row.sch-heading, .schedule .row.session {
+    padding:0.5rem 0;
+    border-left:1px solid #040404;
+    border-right:1px solid #040404;
+    border-bottom:1px solid #040404;
+}
+.schedule .sch-heading.first {
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-top:1px solid #040404;
+}
+.schedule .sch-heading.last {
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    border-bottom:1px solid #040404;
+    height:1rem;
+}
+body {
+    background-color:#eeeeee;
+    font-family:"IndUni-H";
+}
+.container {
+    /*width:1280px;*/
+    padding:0;
+    background-color:white;
+    box-hsadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius:6px;
+    margin-top:-7rem;
+}
+#subheader {
+    display:block;
+    width:100%;
+    height:auto;
+    padding-bottom:12rem;
+    background-color:#444444;
+}
+.navbar-brand img:hover {
+    -webkit-filter: brightness(125%);
+}
+
+/* lines and line groups */
+.lg { display:inline; line-height:1.75rem;}
+.lg .l {  display:block; margin-left:30px; }
+.lg .l+.lg .l:last-child { display:inline-block; }
+.l:last-child, .l:last-of-type { margin-bottom:10px; }
+.lg .l .caesura:after {
+  content: "\A\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0" !important;
+  white-space:pre;
+}
+/* in the analyzed portion*/
+.lg .l .odd_pada:after {
+  content: "\A\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0" !important;
+  white-space:pre;
+}
+.lg .l .even_pada:after {
+  content: "\A" !important;
+  white-space:pre;
+}
+
+
+/* css for fleurons */
+.printorn {
+    font-family: "Printers Ornaments";
+    text-align:center;
+    width:100px;
+    margin:0 auto;
+    padding:20px 0;
+    clear:both;
+    font-size:200%;
+}
+#footer .pror { 
+    font-family:"Printers Ornaments";
+    font-size:48pt!important;
+}
+#footer {
+    margin: 0 auto 20px auto;
+    text-align:center; 
+    padding-top:4rem;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+.border-bottom {
+    border-bottom: 1px solid #dee2e6!important;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(222, 226, 230);
+}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+    margin-bottom: 0;
+    margin-left:-4px;
+    margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+    border-top-right-radius:0;
+    border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+    border-top-right-radius:4px;
+    border-bottom-left-radius:0;
+}
+
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+.dropdown-toggle::after {
+    margin-left:0.4rem;
+    vertical-align:0.15rem;
+}
+a {
+    color:#006bb3;
+}
+a:hover {
+    text-decoration:none;
+    color:#1aa3ff;
+}
+/* css for fleurons */
+.printorn {
+    font-family: "Printers Ornaments"!important;
+    text-align:center;
+    width:100px;
+    margin:0 auto;
+    padding:20px 0;
+    clear:both;
+    font-size:200%;
+}
+.big-fleuron {
+  color:rgba(0,0,0,0.5);
+  font-size:200%;
+  font-family:"Printers Ornaments"!important;
+  padding:1rem;
+}
+/* section headings */
+.section-head {
+  margin-right:0.5rem;
+}
+.subsection-head {
+  margin-right:0.5rem;
+}
+.subsection .card-header .nav-tabs li a {
+  padding: 0.25em 0.5em;
+}
+/* other fonts */
+.pica {
+    font-family:"IM FELL DW Pica";
+}
+.small-caps {
+    font-family:"EB Garamond";
+    font-variant:small-caps;
+}
+.prakrit-heading {
+    border-bottom: 3px double #dee2e6!important;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(222, 226, 230);
+    padding:0 1rem;
+    margin-top:2rem;
+}
+.prakrit-heading .pra-Deva {
+    font-size:2rem;
+}
+.prakrit-heading .separator {
+    font-family: "Printers Ornaments"!important;
+}
+.separator-block {
+    display:block;
+    margin:1rem 0 0.5rem 0;
+}
+.separator-inline {
+    vertical-align:middle;
+    margin:0 0.5rem;
+    font-size:90%;
+}
+.prakrit-heading .courseinfo {
+    font-family:"EB Garamond";
+    font-variant:small-caps;
+    font-size:1.25rem;
+}
+.navigator, .navigator a {
+    color:rgba(0,0,0,0.5);
+}
+.navigator a:hover {
+    color:rgba(0,0,0,0.35);
+}
+.navigator .current-el {
+    color:rgba(0,0,0,0.35);
+}
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(222, 226, 230);
+}
+.border-bottom {
+    border-bottom: 1px solid #dee2e6!important;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(222, 226, 230);
+}
+ul.stabaka {
+  list-style:none;
+  margin-bottom:0;
+}
+ul.stabaka li:before {
+  content: "e";
+  font-family: 'Printers Ornaments'!important;
+  font-size: 0.6rem;
+  float: left;
+  margin-top: 0.3rem;
+  margin-left: -1rem;
+}
+ul.stabaka ul.stabaka {
+  list-style:none;
+}
+ul.stabaka ul.stabaka li:before {
+  content: "f";
+  font-family: 'Printers Ornaments'!important;
+  font-size: 0.6rem;
+  float: left;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem;
+}
+.indic-text {
+    font-size:1.15rem;
+}
+.sortable {
+    margin-bottom:0;
+}
+.sortable dt .translit {
+    color:#800000;
+}
+.sortable dd {
+    margin-left:1rem;
+}
+.sortable .sortable {
+    margin-left:1.6rem;
+    font-size:0.9rem;
+}
+/* For the alphabetical index */
+ul.sgt-index {
+  font-size:1rem;
+  columns:3;
+  .webkit-columns:3;
+}
+.indexterm a .translit {
+    color:#800000;
+}
+.indexterm a:hover .translit {
+    color:#b30000;
+}
+/* Formats line-groups (verses):
+      These are inline so that following
+      <ref> elements can be inline with the
+      last line of a verse. */
+.lg {
+  display:inline;
+}
+/* Format individual lines as block elements */
+.lg .l {
+  display:block;
+  margin-left:1rem;;
+  padding-left:2rem;
+  text-indent:-2rem;
+}
+.lg .l+.lg .l:last-child {
+  display:inline-block;
+}
+.l:last-child, .l:last-of-type {
+  margin-bottom:10px;
+}
+.lg .l .caesura:after {
+  content: "\A\0000a0\0000a0" !important;
+  white-space:pre;
+}
+.verse_offset {
+  content: "\00a0";
+  width:180px;
+  display:inline-block;
+}
+/* for the cards in the reader */
+.wl-checkbox, .tr-checkbox {
+    margin-top:0.5rem;
+    margin-left:0;
+}
+.wl-toggle, .tr-toggle, .comm-toggle {
+    margin-left:0.5rem;
+    font-size:0.8rem;
+}
+.word-list-cols {
+    column-count:3;
+}
+.word-list ul {
+    margin-left:1rem;
+    padding-left:2rem;
+}
+.word-list ul li {
+    text-indent:-1rem;
+}
+.author-string, .imprint-string, .idno-string, .notes-string, .edition-string, .journal-info {
+    padding-right:0.5em;
+}
+.notes-string {
+    color:#868e96!important;
+}
+.notes-string:before,
+.idno-string:before {
+    content:"[";
+}
+.notes-string:after,
+.idno-string:after {
+    content:"]";
+}
+.title-monogr, .title-journal {
+    font-style:italic;
+    padding-right:0.5em;
+}
+.title-journal-article, journal {
+    padding-right:0.5em;
+}
+.title-journal-article:before {
+    content:"“";
+}
+.title-journal-article:after {
+    content:"”";
+}
+.base-text {
+    font-size:1.20em;
+}
+.chaya {
+    color:rgba(0,0,0,0.5)!important;
+}
+.note-marker:after {
+    content:"*";
+}
+.footnote:before {
+    content:"*";
+}
+.footnote {
+    display:block;
+}
+.footnotes {
+    font-size:0.9rem;
+    padding-top:0.4rem;
+    border-top: 1px solid #dee2e6!important;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(222, 226, 230);
+}
+.reconstructed, .root {
+    font-style:italic;
+}
+.reconstructed:before {
+    content:"*";
+}
+.root:before {
+    content:"√";
+}
+blockquote {
+    margin-left:2rem;
+    padding-left:1rem;
+    border-left: 4px solid #dee2e6!important;
+}
+blockquote .plain-ref {
+    display:block;
+    padding-top:0.5rem;
+    margin-left:3rem;
+    color:rgba(0,0,0,0.6)!important;
+}
+.quote.single:before {
+    content:"‘";
+}
+.quote.single:after {
+    content:"’";
+}
+.stage {
+    float:left;
+    padding-right:0.25rem;
+    color:rgba(0,0,0,0.6)!important;
+}
+.stage:before {
+    content:"(";
+}
+.stage:after {
+    content:")";
+}
+.speaker {
+    font-family:"EB Garamond";
+    font-variant:small-caps;
+    text-transform:lowercase;
+    float:left;
+    padding-right:0.25rem;
+}
+.speaker:after {
+    content:": ";
+}
+.speaker.translit:after {
+    content:"";
+}
+.speaker.translit {
+    color:rgba(0,0,0,0.6)!important;
+    font-size:0.9rem;
+    padding-top:0.2rem;
+}
+.speaker.translit .san-Latn {
+    font-family:"Junicode"!important;
+    font-style:normal;
+    font-variant:normal;
+    text-transform:uppercase;
+
+}
+.sp .lg {
+    display:block;
+    clear:both;
+}
+/* TYPOGRAPHY */
+.san-Latn, .tel-Latn, .kan-Latn, .Latn {
+}
+sup.sup {
+    font-style:italic;
+    font-size:80%;
+}
+h1 {
+    font-weight:700;
+}
+h2 {
+    font-weight:600;
+}
+h3 {
+    font-weight:500;
+}
+.week {
+    border-top:2px solid #800000;
+}
+.week h4, .week h6 {
+     font-family:"IndUni-H";   
+}
+.week h5 {
+    writing-mode: vertical-rl;
+    color:#800000;
+    padding:0;
+    margin:0.75rem 0.25rem;
+}
+.phw, .hw {
+    margin:0;
+    padding:0;
+    color:#752222;
+}
+.phw, .hw {
+    font-weight:bold;
+}
+.info h5 {
+    margin-bottom:1.5rem;
+}
+a, a i.fas {
+    color:#a34545;
+}
+a:hover, a i.fas:hover {
+    color:#b56060;
+}
+.info h1 {
+    font-family:"IndUni-T";
+}
+.info {
+    border-bottom: 2px black solid;
+    padding:0px;
+    margin-bottom:1.5rem;
+}
+
+.popover {
+    max-width:18rem!important;
+}
+.siglum {
+    padding-left:0.20rem;
+}
+.danda {
+    padding-left:0.35rem;
+    padding-right:0.35rem;
+}
+.popover-content {
+    display:none;
+}
+.lemma-line, .reading-line, .note-line {
+    display:block;
+}
+.app-lem {
+    color:#336600;
+}
+.app-rdg {
+    color:#b38600;
+}
+
+.lineation {
+    font-size:90%;
+}
+.lineation:before,.foliation:before {
+    content:"[";
+    padding-left:0.1rem;
+}
+.lineation:after,.foliation:after {
+    content:"]";
+    padding-right:0.1rem;
+}
+
+.ed-insertion:before,.supplied:before {
+    content:"⟨";
+}
+.ed-insertion:after,.supplied:after {
+    content:"⟩";
+}
+.gap:before {
+    content:"[";
+}
+.gap:after {
+    content:"]";
+}
