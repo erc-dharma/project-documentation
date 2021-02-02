@@ -146,7 +146,14 @@
                         <xsl:choose>
                             <xsl:when test="tei:lem/@type">
                                 <xsl:text> </xsl:text>
-                                <xsl:value-of select="tei:lem/@type"/>
+                                <xsl:call-template name="apparatus-type"/>
+                            </xsl:when>
+                            <xsl:when test="tei:lem/@wit">
+                                <xsl:element name="b">
+                                    <xsl:call-template name="tokenize-witness-list">
+                                        <xsl:with-param name="string" select="tei:lem/@wit"/>
+                                </xsl:call-template>
+                                </xsl:element>
                             </xsl:when>
                         </xsl:choose>
                     </xsl:if>
@@ -163,14 +170,15 @@
                                     <xsl:attribute name="class">
                                         <xsl:text>translit </xsl:text>
                                         <xsl:value-of select="$script"/>
-                                    </xsl:attribute>
-                                    <xsl:apply-templates/>
+                                    </xsl:attribute>  
+                                            <xsl:apply-templates/>
                                 </xsl:element>
                             </xsl:element>
                             <xsl:text> </xsl:text>
-                            <xsl:call-template name="tokenize-witness-list">
+                            <xsl:element name="b">
+                                <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
-                            </xsl:call-template>
+                            </xsl:call-template></xsl:element>
                             <!--<xsl:if test="./following-sibling::tei:rdg">
                                 <xsl:text>; </xsl:text>
                             </xsl:if>-->
@@ -1379,17 +1387,7 @@
                     <xsl:value-of select="$path/tei:lem"/>
                     <xsl:if test="@type">
                         <xsl:text>: </xsl:text>
-                        <xsl:choose>
-                            <xsl:when test="@type='emn'">
-                                <xsl:text>em.</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="@type='norm'">
-                                <xsl:text>norm.</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="@type='conj'">
-                                <xsl:text>conj.</xsl:text>
-                            </xsl:when>
-                        </xsl:choose>
+                        <xsl:call-template name="apparatus-type"/>
                     </xsl:if>
                     <xsl:if test="$path/tei:lem[following-sibling::tei:rdg]">
                         <xsl:text> ◇ </xsl:text>
@@ -1416,7 +1414,7 @@
                     <xsl:choose>
                         <xsl:when test="child::tei:pb"/>
                         <xsl:when test="(not(.//text())) and (not(.//tei:gap))">
-                            <xsl:text>∅ </xsl:text>
+                            <xsl:text>om. </xsl:text>
                         </xsl:when>
                     </xsl:choose>
                     <xsl:apply-templates/>
@@ -1470,6 +1468,20 @@
         <xsl:if test="position()!=last()">
             <xsl:text>, </xsl:text>
         </xsl:if>
+    </xsl:template>
+    
+    <xsl:template name="apparatus-type">
+        <xsl:choose>
+            <xsl:when test="tei:lem/@type='emn'">
+                <xsl:text>em.</xsl:text>
+            </xsl:when>
+            <xsl:when test="tei:lem/@type='norm'">
+                <xsl:text>norm.</xsl:text>
+            </xsl:when>
+            <xsl:when test="tei:lem/@type='conj'">
+                <xsl:text>conj.</xsl:text>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
     
 </xsl:stylesheet>
