@@ -5,7 +5,7 @@ function initializePopovers() {
             $('[data-toggle="popover"]').popover({
             html : true,
             container: 'body',
-            trigger : 'focus',
+            trigger : 'hover',
             content: function() {
             var idtarget = $(this).attr("data-target");
             console.log($('#'+idtarget));
