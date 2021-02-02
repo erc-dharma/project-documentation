@@ -142,9 +142,10 @@
                         </xsl:element>
                     </xsl:element>
                     <xsl:if test="tei:lem/@*">
-                        <xsl:text>] </xsl:text>
+                        <!--<xsl:text>] </xsl:text>-->
                         <xsl:choose>
                             <xsl:when test="tei:lem/@type">
+                                <xsl:text> </xsl:text>
                                 <xsl:value-of select="tei:lem/@type"/>
                             </xsl:when>
                         </xsl:choose>
@@ -170,9 +171,9 @@
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
                             </xsl:call-template>
-                            <xsl:if test="./following-sibling::tei:rdg">
+                            <!--<xsl:if test="./following-sibling::tei:rdg">
                                 <xsl:text>; </xsl:text>
-                            </xsl:if>
+                            </xsl:if>-->
                         </xsl:element>
                     </xsl:for-each>
                 </xsl:if>
@@ -198,7 +199,9 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="1"/>
         </xsl:variable>
-        <xsl:element name="a">
+        <xsl:element name="span"> 
+            <xsl:attribute name="lem"></xsl:attribute>
+            <xsl:element name="a">
             <xsl:attribute name="tabindex">0</xsl:attribute>
             <xsl:attribute name="data-toggle">popover</xsl:attribute>
             <xsl:attribute name="data-html">true</xsl:attribute>
@@ -206,10 +209,14 @@
                 <xsl:value-of select="generate-id()"/>
             </xsl:attribute>
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-            <xsl:attribute name="title">Apparatus</xsl:attribute>
+            <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
             <xsl:apply-templates select="tei:lem"/>    
                     
                     </xsl:element>
+        </xsl:element>
+        
+        <xsl:element name="div">
+            <xsl:attribute name="class">float-right</xsl:attribute>
         <xsl:element name="span">
             <xsl:attribute name="class">tooltipApp</xsl:attribute>
             <a>
@@ -220,15 +227,11 @@
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
-                </xsl:attribute>
-                <sup>
-                    <xsl:text>(</xsl:text>
-                    <xsl:value-of select="replace($app-num, 'app', '')"/>
-                    <xsl:text>)</xsl:text>
-                </sup>
+                </xsl:attribute>           
+                    <xsl:text>&#128172;</xsl:text>
             </a>
         </xsl:element>
-        
+        </xsl:element>
         
         
     </xsl:template>
@@ -345,7 +348,7 @@
                 <xsl:attribute name="class">col</xsl:attribute>
                 <xsl:if test="@met">
                     <xsl:element name="div">
-                        <xsl:attribute name="class">float-right</xsl:attribute>
+                        <xsl:attribute name="class">float-center</xsl:attribute>
                         <xsl:element name="small">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">text-muted</xsl:attribute>
@@ -591,7 +594,7 @@
                         <xsl:attribute name="class">btn btn-secondary btn-sm met-btn</xsl:attribute>
                         <xsl:attribute name="data-toggle">popover</xsl:attribute>
                         <xsl:attribute name="data-title">Meter</xsl:attribute>
-                        <xsl:attribute name="data-trigger">focus</xsl:attribute>
+                        <xsl:attribute name="data-trigger">hover</xsl:attribute>
                         <xsl:attribute name="data-placement">left</xsl:attribute>
                         <xsl:attribute name="data-content">
                             <xsl:element name="a">
