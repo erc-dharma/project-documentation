@@ -5,7 +5,7 @@
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
 
     <sch:pattern>
-        <sch:rule context="//t:text//t:ptr/@target|@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
+        <sch:rule context="//t:text//t:ptr/@target| t:*/@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
             prefix is bib:</sch:assert>
 
             <sqf:fix id="bib-prefix-source">
@@ -25,7 +25,7 @@
     </sch:pattern>
 
     <sch:pattern>
-        <sch:rule context="@resp">
+        <sch:rule context="t:*/@resp">
             <sch:assert test="starts-with(.,'part:') or starts-with(.,'http')" sqf:fix="part-prefix-addition http-prefix-addition">Project members prefix is
                 part: or a http/https link for people not associated with the project.</sch:assert>
             <sqf:fix id="part-prefix-addition">
