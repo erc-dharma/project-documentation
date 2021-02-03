@@ -1452,7 +1452,7 @@
                 
                 <xsl:for-each select="tei:rdg">
                     <xsl:if test="position()!=1">
-                        <xsl:text>; </xsl:text>
+                        <xsl:text>, </xsl:text>
                     </xsl:if>
                    
                     <xsl:choose>
@@ -1464,19 +1464,13 @@
                             </xsl:element>
                         </xsl:when>
                     </xsl:choose>
-                    <xsl:text> </xsl:text>
                     <xsl:apply-templates/>
+                    <xsl:text> </xsl:text>
                     <xsl:if test="@wit">
-                        <xsl:variable name="witnesses" select="tokenize(@wit, '#')"/>
-                        <xsl:for-each select="$witnesses">
-                            <xsl:apply-templates select="replace(., ' ', '')"/>
-                            <xsl:choose>
-                                <xsl:when test="position()=last()[1]"/>
-                                <xsl:when test="position()!=1">
-                                    <xsl:text>, </xsl:text>
-                                </xsl:when>
-                            </xsl:choose>
-                        </xsl:for-each>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:value-of select="replace(@wit, '#', '')"/>
+                            </xsl:element>
                     </xsl:if>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
                         <xsl:text> • </xsl:text>
