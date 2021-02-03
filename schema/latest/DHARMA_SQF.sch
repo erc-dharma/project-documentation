@@ -3,7 +3,7 @@
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt2"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:t="http://www.tei-c.org/ns/1.0">
-    <sch:ns uri="" prefix="t"/>
+    <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
 
     <sch:pattern>
         <sch:rule context="//t:text//t:ptr/@target| //t:*/@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
