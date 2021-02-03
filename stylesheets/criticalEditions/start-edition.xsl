@@ -955,9 +955,8 @@
                  <xsl:value-of select="$app-num"/>
              </xsl:attribute>
              <xsl:text>^</xsl:text>
-             <xsl:value-of select="replace($app-num, 'app', '')"/>
+             <xsl:value-of select="substring-after($app-num, 'app')"/>
          </a>
-         <xsl:text> </xsl:text>
     </xsl:if>
   </xsl:template>
 
@@ -1424,6 +1423,11 @@
             <xsl:when test="$apptype='app'">
                 <!-- **ALT - <xsl:value-of select="$path/tei:rdg"/>** -->
                 <xsl:for-each select="$path/tei:lem">
+                    <xsl:value-of select="$path/tei:lem"/>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        <xsl:text>] </xsl:text>
+                    </xsl:element>
                     <xsl:choose>
                         <xsl:when test="@wit">
                             <xsl:variable name="witnesses" select="tokenize(@wit, '#')"/>
@@ -1436,16 +1440,13 @@
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:for-each>
-                            <xsl:text>:&#x202F;</xsl:text>
                         </xsl:when>
                     </xsl:choose>
-                    <xsl:value-of select="$path/tei:lem"/>
                     <xsl:if test="@type">
-                        <xsl:text>: </xsl:text>
                         <xsl:call-template name="apparatus-type"/>
                     </xsl:if>
                     <xsl:if test="$path/tei:lem[following-sibling::tei:rdg]">
-                        <xsl:text> ◇ </xsl:text>
+                        <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
                 
@@ -1453,6 +1454,18 @@
                     <xsl:if test="position()!=1">
                         <xsl:text>; </xsl:text>
                     </xsl:if>
+                   
+                    <xsl:choose>
+                        <xsl:when test="child::tei:pb"/>
+                        <xsl:when test="(not(.//text())) and (not(.//tei:gap))">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                                <xsl:text>om.</xsl:text> 
+                            </xsl:element>
+                        </xsl:when>
+                    </xsl:choose>
+                    <xsl:text> </xsl:text>
+                    <xsl:apply-templates/>
                     <xsl:if test="@wit">
                         <xsl:variable name="witnesses" select="tokenize(@wit, '#')"/>
                         <xsl:for-each select="$witnesses">
@@ -1464,15 +1477,7 @@
                                 </xsl:when>
                             </xsl:choose>
                         </xsl:for-each>
-                        <xsl:text>:&#x202F;</xsl:text>
                     </xsl:if>
-                    <xsl:choose>
-                        <xsl:when test="child::tei:pb"/>
-                        <xsl:when test="(not(.//text())) and (not(.//tei:gap))">
-                            <xsl:text>om. </xsl:text>
-                        </xsl:when>
-                    </xsl:choose>
-                    <xsl:apply-templates/>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
                         <xsl:text> • </xsl:text>
                         <xsl:value-of select="following-sibling::tei:note"/>
@@ -1527,13 +1532,13 @@
     
     <xsl:template name="apparatus-type">
         <xsl:choose>
-            <xsl:when test="tei:lem/@type='emn'">
+            <xsl:when test="./@type='emn' or tei:lem/@type='emn'">
                 <xsl:text>em.</xsl:text>
             </xsl:when>
-            <xsl:when test="tei:lem/@type='norm'">
+            <xsl:when test="./@type='norm' or tei:lem/@type='norm'">
                 <xsl:text>norm.</xsl:text>
             </xsl:when>
-            <xsl:when test="tei:lem/@type='conj'">
+            <xsl:when test="./@type='conj' or tei:lem/@type='conj'">
                 <xsl:text>conj.</xsl:text>
             </xsl:when>
         </xsl:choose>
