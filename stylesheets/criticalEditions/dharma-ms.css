@@ -492,6 +492,11 @@ a, a i.fas {
 span.lem >a{
     color:#a34545;
 }
+
+#apparatus >a{
+    color:#a34545;
+}
+
 a:hover, a i.fas:hover {
     color:#b56060;
 }
