@@ -171,11 +171,19 @@
                                         <xsl:text>translit </xsl:text>
                                         <xsl:value-of select="$script"/>
                                     </xsl:attribute>  
-                                            <xsl:apply-templates/>
+                                            <xsl:choose>
+                                                <xsl:when test="not(text())">
+                                                    <xsl:text>om.</xsl:text>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:apply-templates/>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
                                 </xsl:element>
                             </xsl:element>
                             <xsl:text> </xsl:text>
-                            <xsl:element name="b">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
                             </xsl:call-template></xsl:element>
@@ -208,7 +216,7 @@
             <xsl:number level="any" format="1"/>
         </xsl:variable>
         <xsl:element name="span"> 
-            <xsl:attribute name="lem"></xsl:attribute>
+            <xsl:attribute name="class">lem</xsl:attribute>
             <xsl:element name="a">
             <xsl:attribute name="tabindex">0</xsl:attribute>
             <xsl:attribute name="data-toggle">popover</xsl:attribute>
