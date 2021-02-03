@@ -46,7 +46,7 @@
     </sch:pattern>
     <sch:pattern>
         <sch:rule context="t:div[@type='translation']">
-            <sch:report test="@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't
+            <sch:report test="./@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't
                 be used with div[@type='translation']</sch:report>
 
             <sqf:fix id="eng-translation">
@@ -57,7 +57,7 @@
             </sqf:fix>
         </sch:rule>
         <sch:rule context="t:div[@type='translation']">
-            <sch:assert test="@resp|@source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
+            <sch:assert test="./@resp|./@source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
             <sqf:fix id="resp-translation">
                 <sqf:description>
                     <sqf:title>Add @resp for a DHARMA member author of the translation</sqf:title>
@@ -76,7 +76,7 @@
 
     <sch:pattern>
         <sch:rule context="t:bibl[parent::t:listBibl[@type='primary']]">
-            <sch:assert test="@n" sqf:fix="add-siglum">@n mandatory in
+            <sch:assert test="./@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
                 sigla</sch:assert>
 
@@ -91,7 +91,7 @@
 
     <sch:pattern>
         <sch:rule context="t:app">
-            <sch:assert test="@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
+            <sch:assert test="./@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
             <sqf:fix id="add-loc">
                 <sqf:description>
                     <sqf:title>Add @loc on app</sqf:title>
@@ -102,7 +102,7 @@
     </sch:pattern>
     <sch:pattern>
         <sch:rule context="t:div[@type='edition']//t:l">
-            <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
+            <sch:assert test="./@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
     </sch:pattern>
         <!-- not working -->
