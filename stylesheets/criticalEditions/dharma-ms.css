@@ -484,7 +484,12 @@ h3 {
 .info h5 {
     margin-bottom:1.5rem;
 }
+/* color:#a34545; ancienne couleur */
 a, a i.fas {
+    color:black;
+}
+/* Ajouter pour remettre la couleur seulement ds le corps et plus dans les popovers */
+span.lem >a{
     color:#a34545;
 }
 a:hover, a i.fas:hover {
