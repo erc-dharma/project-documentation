@@ -941,7 +941,7 @@
                   * del or milestone.
         -->
         <xsl:for-each
-          select=".//tei:app[not(ancestor::tei:*[local-name()=('choice','subst','app')])]">
+          select=".//tei:app[not(ancestor::tei:*[local-name()=('choice'|'subst'|'app')])]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -993,16 +993,16 @@
         <xsl:param name="apptype"/>
         <xsl:variable name="childtype">
             <xsl:choose>
-                <xsl:when test="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:choice[child::tei:orig and child::tei:reg]">
+                <xsl:when test="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
                     <xsl:text>origreg</xsl:text>
                 </xsl:when>
-                <xsl:when test="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:choice[child::tei:sic and child::tei:corr]">
+                <xsl:when test="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:choice[child::tei:sic and child::tei:corr]">
                     <xsl:text>siccorr</xsl:text>
                 </xsl:when>
-                <xsl:when test="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:subst">
+                <xsl:when test="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:subst">
                     <xsl:text>subst</xsl:text>
                 </xsl:when>
-                <xsl:when test="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:app">
+                <xsl:when test="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:app">
                     <xsl:text>app</xsl:text>
                 </xsl:when>
                 <xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>
@@ -1046,13 +1046,13 @@
         <xsl:variable name="path">
             <xsl:choose>
                 <xsl:when test="$childtype='origreg' or $childtype=('siccorr')">
-                    <xsl:copy-of select="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:choice/child::*"/>
+                    <xsl:copy-of select="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:choice/child::*"/>
                 </xsl:when>
                 <xsl:when test="$childtype='subst'">
-                    <xsl:copy-of select="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:subst/child::*"/>
+                    <xsl:copy-of select="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:subst/child::*"/>
                 </xsl:when>
                 <xsl:when test="$childtype='app'">
-                    <xsl:copy-of select="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:app/child::*"/>
+                    <xsl:copy-of select="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:app/child::*"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:copy-of select="node()"/>
@@ -1060,9 +1060,9 @@
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="parent-lang">
-            <xsl:if test="(child::tei:*[local-name()=('orig','sic','add','lem')]/tei:choice/child::tei:reg[@xml:lang] and $childtype = 'origreg') or (child::tei:reg[@xml:lang] and $apptype = 'origreg')">
+            <xsl:if test="(child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:choice/child::tei:reg[@xml:lang] and $childtype = 'origreg') or (child::tei:reg[@xml:lang] and $apptype = 'origreg')">
                 <xsl:if test="$childtype = 'origreg'">
-                    <xsl:value-of select="child::tei:*[local-name()=('orig','sic','add','lem')]/tei:choice/child::tei:reg/ancestor::tei:*[@xml:lang][1]/@xml:lang" />
+                    <xsl:value-of select="child::tei:*[local-name()=('orig'|'sic'|'add'|'lem')]/tei:choice/child::tei:reg/ancestor::tei:*[@xml:lang][1]/@xml:lang" />
                 </xsl:if>
                 <xsl:if test="$apptype = 'origreg'">
                     <xsl:value-of select="child::tei:reg/ancestor::tei:*[@xml:lang][1]/@xml:lang" />
@@ -1107,7 +1107,7 @@
                         <xsl:text>] </xsl:text>
                     <xsl:choose>
                         <xsl:when test="@wit">
-                            <xsl:variable name="witnesses" select="tokenize(@wit, '#')"/>
+                            <xsl:variable name="witnesses" select="fn:tokenize(@wit, '#')"/>
                             <xsl:for-each select="$witnesses">
                                 <xsl:apply-templates select="."/>
                             </xsl:for-each>
@@ -1144,7 +1144,7 @@
                     <xsl:if test="@wit">
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            <xsl:value-of select="replace(@wit, '#', '')"/>
+                            <xsl:value-of select="fn:replace(@wit, '#', '')"/>
                             </xsl:element>
                     </xsl:if>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
