@@ -12,40 +12,7 @@
         <xsl:value-of
             select="substring-after(//tei:profileDesc/tei:langUsage/tei:language/@ident, '-')"/>
     </xsl:variable>
-    
-    
-    <xsl:template name="dharma-head">
-        <xsl:variable name="title">
-            <xsl:if test="//tei:titleStmt/tei:title/text()">
-                <xsl:if test="//tei:idno[@type='filename']/text()">
-                    <xsl:value-of select="//tei:idno[@type='filename']"/>
-                    <xsl:text>. </xsl:text>
-                </xsl:if>
-                <xsl:value-of select="//tei:titleStmt/tei:title"/>
-            </xsl:if>
-        </xsl:variable>
-            <head>
-                <title>
-                    <xsl:value-of select="$title"/>
-                </title>
-               
-                <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                    <!-- Bootstrap CSS -->
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-                    <!-- site-specific css !-->
-                    <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>
-                </meta>
-            </head>
-    </xsl:template>
-    
-    <xsl:template name="dharma-script">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
-        <script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>
-    </xsl:template>
-            
+   
     <xsl:template match="/tei:TEI">
         <xsl:element name="html">
         <xsl:call-template name="dharma-head"/>
@@ -57,6 +24,7 @@
                 <xsl:attribute name="class">col</xsl:attribute>
                 <xsl:apply-templates select="./tei:text"/>
                 <xsl:apply-templates select=".//tei:listWit"/>
+                <xsl:apply-templates select=".//tei:listBibl"/>
                 <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
             </xsl:element>
@@ -159,6 +127,15 @@
                                 </xsl:call-template>
                                 </xsl:element>
                             </xsl:when>
+                            <!-- working in  -->
+                            <!--<xsl:when test="tei:lem/@source">
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                    <xsl:call-template name="tokenize-witness-list">
+                                        <xsl:with-param name="string" select="tei:lem/@wit"/>
+                                    </xsl:call-template>
+                                </xsl:element>
+                            </xsl:when>-->
                         </xsl:choose>
                     </xsl:if>
                 </xsl:element>
@@ -407,6 +384,30 @@
         <xsl:element name="div">
             <xsl:attribute name="class">lg</xsl:attribute>
             <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    <!--  listBibl -->
+    <!-- Must be reworked -->
+    <xsl:template match="tei:listBibl">
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <xsl:element name="h4">List of Edited Sources</xsl:element>
+            <xsl:element name="ul">
+                <xsl:for-each select="tei:biblStruct">
+                    <xsl:element name="li">
+                        <xsl:element name="a">
+                            <xsl:attribute name="id">
+                                <xsl:value-of select="@xml:id"/>
+                            </xsl:attribute>
+                        </xsl:element>
+                        <xsl:element name="b">
+                            <xsl:value-of select="@xml:id"/>
+                        </xsl:element>
+                        <xsl:text>: </xsl:text>
+                        <xsl:apply-templates select="."/>
+                    </xsl:element>
+                </xsl:for-each>
+            </xsl:element>
         </xsl:element>
     </xsl:template>
     <!--  listWit ! -->
@@ -889,7 +890,41 @@
         <xsl:copy/>
     </xsl:template>
     
-
+    <!-- DHARMA html prolog -->
+    <xsl:template name="dharma-head">
+        <xsl:variable name="title">
+            <xsl:if test="//tei:titleStmt/tei:title/text()">
+                <xsl:if test="//tei:idno[@type='filename']/text()">
+                    <xsl:value-of select="//tei:idno[@type='filename']"/>
+                    <xsl:text>. </xsl:text>
+                </xsl:if>
+                <xsl:value-of select="//tei:titleStmt/tei:title"/>
+            </xsl:if>
+        </xsl:variable>
+        <head>
+            <title>
+                <xsl:value-of select="$title"/>
+            </title>
+            
+            <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <!-- Bootstrap CSS -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <!-- site-specific css !-->
+                <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>
+            </meta>
+        </head>
+    </xsl:template>
+    
+    <!-- DHARMA html JS scripts  -->
+    <xsl:template name="dharma-script">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
+        <script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>
+    </xsl:template>
+    
+    <!-- Templates for Apparatus at the botton of the page -->
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
@@ -1004,8 +1039,8 @@
           </xsl:element>  
     </xsl:template>
  
+    <!-- prints the content of apparatus-->
     <xsl:template name="appcontent">
-        <!-- prints the content of apparatus-->
         <xsl:param name="apptype"/>
         <xsl:param name="childtype"/>
         <xsl:variable name="path">
@@ -1078,11 +1113,13 @@
                             </xsl:for-each>
                         </xsl:when>
                     </xsl:choose>
-                        <xsl:if test="@type">
-                            <xsl:call-template name="apparatus-type"/>
-                        </xsl:if>
                     </xsl:element>
-                    
+                    <xsl:if test="@type">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-italic</xsl:attribute>
+                            <xsl:call-template name="apparatus-type"/>
+                        </xsl:element>
+                    </xsl:if>
                     <xsl:if test="$path/tei:lem[following-sibling::tei:rdg]">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
