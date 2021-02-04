@@ -137,7 +137,9 @@
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
                                     </xsl:call-template>-\->-->
                            <xsl:if test="tei:lem/@source">
-                                <xsl:call-template name="source-siglum"/>
+                                <xsl:call-template name="source-siglum">
+                                    <xsl:with-param name="string-to-siglum" select="tei:lem/@source"/>
+                                </xsl:call-template>
                             </xsl:if>
                     </xsl:if>
                 </xsl:element>
@@ -178,7 +180,9 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
                                 <xsl:if test="./@source">
-                                    <xsl:call-template name="source-siglum"/>
+                                    <xsl:call-template name="source-siglum">
+                                        <xsl:with-param name="string-to-siglum" select="./@source"/>
+                                    </xsl:call-template>
                                 </xsl:if>
                             </xsl:element>
                             <!--<xsl:if test="./following-sibling::tei:rdg">
@@ -1126,9 +1130,9 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
                             </xsl:if>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:if test="@wit">
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:variable name="witnesses" select="fn:tokenize(@wit, '#')"/>
                             <xsl:for-each select="$witnesses">
                                 <xsl:apply-templates select="."/>
@@ -1136,11 +1140,13 @@
                                 <xsl:if test="attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
+                                </xsl:element>
                             </xsl:if>
-                                <xsl:if test="@source">
-                                    <xsl:call-template name="source-siglum"/>
+                                <xsl:if test="@source"> 
+                                    <xsl:call-template name="source-siglum">
+                                        <xsl:with-param name="string-to-siglum" select="@source"/>
+                                    </xsl:call-template>
                                 </xsl:if>
-                            </xsl:element>
                         </xsl:when>
                     </xsl:choose>
                     
@@ -1173,7 +1179,9 @@
                             </xsl:element>
                         </xsl:if>
                             <xsl:if test="@source">
-                                <xsl:call-template name="source-siglum"/>
+                                <xsl:call-template name="source-siglum">
+                                    <xsl:with-param name="string-to-siglum" select="@source"/>
+                                </xsl:call-template>
                             </xsl:if>
                     </xsl:if>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
@@ -1221,16 +1229,20 @@
             </xsl:when>
             <xsl:when test="./@type='conj' or tei:lem/@type='conj'">
                 <xsl:text>conj.</xsl:text>
-            </xsl:when>   
+           </xsl:when>   
         </xsl:choose>
     </xsl:template>
     
     <xsl:template name="source-siglum">
-        <xsl:if test="./@source or tei:lem|tei:rdg/@source">
+        <xsl:param name="string-to-siglum"/>
+        <xsl:message><xsl:value-of select="$string-to-siglum"/></xsl:message>
             <xsl:element name="span">
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
             <xsl:text>Ed</xsl:text>
+                <xsl:element name="sup">
+                    <xsl:attribute name="class">ed-siglum</xsl:attribute>
+                    <xsl:value-of select="//tei:sourceDesc/tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
+                </xsl:element>
         </xsl:element>
-        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
