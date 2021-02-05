@@ -35,8 +35,7 @@
         If y is a text() then output '['
         If y is 'lost' then nothing
       -->
-      <xsl:when test="current()[not(preceding-sibling::t:*)][not(preceding-sibling::text()) or
-                                       translate(normalize-space(preceding-sibling::text()), ' ', '') = '']
+      <xsl:when test="current()[not(preceding-sibling::t:*)][not(preceding-sibling::text())]
                                    /parent::t:*[preceding-sibling::t:unclear[1]]">
          <xsl:if test="parent::t:*[preceding-sibling::t:*[1][local-name() = ('lb','seg', 'supplied', 'gap', 'pb', 'space', 'milestone', 'choice', 'g', 'orig', 'num', 'surplus')] or preceding-sibling::node()[1][self::text()][not(translate(normalize-space(.), ' ', '') = '')]]">
                      <xsl:element name="span">
