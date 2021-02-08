@@ -46,9 +46,30 @@
   <text>
       <body>
          <listWit>
-            <witness>
+            <!-- 
+- full text titles, in an alphabetically organized list
+e.g. Mānava-dharma-śāstra
+- the corresponding Zotero entry for edition of reference (or entries if more than one edition ever needs to be cited)
+e.g. Olivelle2005_01 and Mandlik1886_01
+- the corresponding abbreviation of text title to be used in display (with differentiation of abbreviations per edition if relevant)
+e.g. MDhŚ-O, MDhŚ-M
+- if relevant, a reference to the Library and shelfmark of the manuscript witness underlying the cited edition or, in the absence of a published edition, a reference to the Library and shelfmark of the manuscript used for citing the given text
+- URL for any available online digital resource (txt or xml representation of an edition of the text) -->
+            <witness corresp="bib:Atja+SalehDanasasmita1981_01">
                <abbr type="siglum">AG</abbr>
-               Perpusnas L 632a, Amanat Galuṅguṅ, published in Atja &amp; Saleh Danasasmita 1981a</witness>
+               <msDesc>  
+                  <msIdentifier> 
+                  <repository>Perpusnas</repository> 
+                     <idno>L 632a</idno>
+                     </msIdentifier> 
+                  <msContents> 
+                     <msItem>   
+                        <title>Amanat Galuṅguṅ</title>
+                        </msItem>
+                     </msContents>
+               </msDesc>
+            </witness>
+            
            <witness> 
               <abbr type="siglum">BM</abbr>       
             Bodleian Library, Oxford, Ms.Jav.3, published as Bujangga Manik  in Noorduyn &amp; Teeuw 2006.</witness>
