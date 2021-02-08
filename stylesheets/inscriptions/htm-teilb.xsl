@@ -270,7 +270,7 @@ Pb de lb[@break=no] entre deux textpart
 <!-- Display the pb for the blank pages-->
       <xsl:template match="//t:pb">
         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-        <xsl:if test="not(following-sibling::t:lb[1])">
+        <xsl:if test="not(following-sibling::t:lb[1]) or following-sibling::t:gap[1]">
           <xsl:element name="sup">
             <xsl:text>⎘ plate </xsl:text>
             <xsl:value-of select="@n"/>
