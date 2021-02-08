@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>DHARMA List of manuscripts for parallels</title>
+         </titleStmt>
+         <publicationStmt>
+            <authority>DHARMA</authority>
+            <idno type="filename">DHARMA_ManuscriptsList_v01</idno>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>This work is licensed under the Creative Commons Attribution 4.0 Unported
+                     Licence. To view a copy of the licence, visit
+                     https://creativecommons.org/licenses/by/4.0/ or send a letter to
+                     Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+                     California, 94041, USA.</p>                  
+               </licence>
+            </availability>
+            <date from="2021" to="2025">2021-2025</date>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Natively Digital</p>
+         </sourceDesc>
+      </fileDesc>
+     <encodingDesc>
+        <projectDesc>
+           <p>This project DHARMA has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
+        </projectDesc>
+        <listPrefixDef>
+           <prefixDef ident="bib" matchPattern="([a-zA-Z0-9\-\_]+)" replacementPattern="https://www.zotero.org/groups/1633743/erc-dharma/items/tag/$1">
+              <p>Public URIs with the prefix bib to point to a Zotero Group Library named ERC-DHARMA whose data are open to the public.</p>
+           </prefixDef>
+           <prefixDef ident="part" matchPattern="([a-z]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml#$1">
+              <p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_V01.xml</ref> file.</p>
+           </prefixDef>
+        </listPrefixDef>
+     </encodingDesc>
+     <revisionDesc>
+        <change who="part:axja" when="2021-02-08">Creating a first encoded list</change>
+     </revisionDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <listWit>
+            <witness>
+               <abbr type="siglum">AG</abbr>
+               Perpusnas L 632a, Amanat Galuṅguṅ, published in Atja &amp; Saleh Danasasmita 1981a</witness>
+           <witness> 
+              <abbr type="siglum">BM</abbr>       
+            Bodleian Library, Oxford, Ms.Jav.3, published as Bujangga Manik  in Noorduyn &amp; Teeuw 2006.</witness>
+           <witness> 
+              <abbr type="siglum">CP</abbr>         
+            Perpusnas L 406, Carita Parahyangan, published in Atja &amp; Saleh Danasasmita 1981b.</witness>
+           <witness> 
+              <abbr type="siglum">CRP</abbr>
+            Perpusnas L 410 (now lost), Carita Ratu Pakuan, in Atja 1970.</witness>
+            <witness>
+               <abbr type="siglum">FCP</abbr>      
+            Perpusnas L 406, published as Fragmen Carita Parahyangan in Undang Ahmad Darsa &amp; Edi S Ekadjati 1995.</witness>
+           <witness> 
+              <abbr type="siglum">JMP</abbr>
+            L 624b, Saṅ Hyaṅ Jati Maha Pitutur, published in Tien Wartini et al. 2010.</witness>
+           <witness> 
+              <abbr type="siglum">KK</abbr>
+            Ciburuy no. Cb.Ltr-17, Kavih Katanian, edition in preparation by Ilham Nurwansah.</witness>
+           <witness> 
+              <abbr type="siglum">KP</abbr>         
+            Perpusnas L 419 and L 420, Kawih Paniṅkes, published as Kosmologi Sunda Kuna in Undang Darsa 2006 (edition based on ms. Perpusnas L 420).</witness>
+           <witness> 
+              <abbr type="siglum">KS</abbr>
+            Kaputusan Saṅ Hyaṅ, romanized typewriting, ms. Perpusnas no. 280 Peti 89.</witness>
+           <witness> 
+              <abbr type="siglum">PJ</abbr>
+            Perpusnas L 610, Pituturniṅ Jalma, published in Tien Wartini et al. 2010.</witness>
+           <witness> 
+              <abbr type="siglum">PR</abbr> 
+            Perpusnas L 1099, Pakeǝn Raga, published as Sanghyang Tatwa Ajnyana in Tien Wartini et al. 2011.</witness>
+            <witness>
+               <abbr type="siglum">CPV</abbr>
+            Carita Purnavijaya, published in Pleyte 1914.</witness>
+           <witness> 
+              <abbr type="siglum">RR</abbr>      
+            Museum Sri Baduga 1101, The Sons of Rama and Rawana, in Noorduyn &amp; Teeuw 2006.</witness>
+            <witness>
+               <abbr type="siglum">SA</abbr>   
+            Perpusnas L 625, Sri Ajñana, published in Noorduyn &amp; Teeuw 2006.</witness>
+            <witness>
+               <abbr type="siglum">SD</abbr>         
+            Perpusnas L 408, Sevaka Darma, in Saleh Danasasmita et al. 1987.</witness>
+           <witness> 
+              <abbr type="siglum">SC</abbr>         
+            Perpusnas L 626, Saṅ Hyaṅ Svavarcinta, published in Tien Wartini et al. 2011.</witness>
+           <witness> 
+              <abbr type="siglum">SHH</abbr>
+            Saṅ Hyaṅ Hayu (Old Javanese), published in Undang Ahmad Darsa 1998, based on mss Perpusnas L 634, L 637, L 638. </witness>
+           <witness> 
+              <abbr type="siglum">SKK</abbr>      
+            Perpusnas L 630, Saṅ Hyaṅ Siksa Kandaṅ Karǝsian, published in Atja &amp; Saleh Danasasmita 1981c, new edition in preparation by Aditia Gunawan.</witness>
+            <witness>
+               <abbr type="siglum">SMG</abbr>     
+            Perpusnas L 621, Saṅ Hyaṅ Sasana Mahaguru, published in Aditia Gunawan 2009, new edition in preparation by the same author.</witness>
+            <witness>
+               <abbr type="siglum">TB</abbr>      
+            Perpusnas L 620, Tutur Bvana, published in Tien Wartini et al. 2010.</witness>
+            <witness>
+               <abbr type="siglum">VL</abbr>
+            Perpusnas L 622, Varugan Lǝmah, published in Aditia Gunawan 2010.</witness>        
+         </listWit>
+      </body>
+  </text>
+</TEI>
