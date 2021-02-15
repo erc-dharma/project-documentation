@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:fn="http://www.w3.org/2005/xpath-functions" version="1.0"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions" version="2.0"
     exclude-result-prefixes="tei xi fn">
-    <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
+    <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0" use-character-maps="htmlDoc"/>
+    
+    <xsl:character-map name="htmlDoc">
+        <xsl:output-character character="&apos;" string="&amp;rsquo;" />
+    </xsl:character-map>
     
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
     
     <xsl:variable name="script">
-        <xsl:value-of
-            select="substring-after(//tei:profileDesc/tei:langUsage/tei:language/@ident, '-')"/>
+        <xsl:for-each select="//tei:profileDesc/tei:langUsage/tei:language">
+           <xsl:value-of select="substring-after(@ident, '-')"/>
+        </xsl:for-each>
     </xsl:variable>
    
     <xsl:template match="/tei:TEI">
@@ -692,7 +697,7 @@
                         <xsl:attribute name="data-toggle">popover</xsl:attribute>
                         <xsl:attribute name="data-title">Meter</xsl:attribute>
                         <xsl:attribute name="data-trigger">hover</xsl:attribute>
-                        <xsl:attribute name="data-placement">left</xsl:attribute>
+                        <xsl:attribute name="data-placement">right</xsl:attribute>
                         <xsl:attribute name="data-content">
                             <xsl:element name="a">
                                 <xsl:attribute name="href">
