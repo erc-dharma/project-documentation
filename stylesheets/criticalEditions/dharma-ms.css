@@ -37,6 +37,8 @@
 body {
     background-color:#eeeeee;
     font-family:"IndUni-H";
+    height:100%;
+    width: 75%;
 }
 .container {
     /*width:1280px;*/
