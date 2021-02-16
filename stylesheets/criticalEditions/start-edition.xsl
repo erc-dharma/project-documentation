@@ -472,9 +472,39 @@
         </xsl:element>
     </xsl:template>
     <!--  note ! -->
-    <xsl:template match="tei:note[@type = 'reference']">
-        <xsl:element name="span">
-            <xsl:attribute name="class">san reference</xsl:attribute>
+    <xsl:template match="tei:note[@type = 'parallels']">
+        <xsl:element name="div">
+            <xsl:attribute name="id">parallels</xsl:attribute>
+            <xsl:for-each select="descendant::tei:item"> 
+                <xsl:element name="div">
+                    <xsl:attribute name="class">card</xsl:attribute>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">card-header</xsl:attribute>
+                        <xsl:element name="h5">
+                            <xsl:attribute name="class">mb-0</xsl:attribute>
+                            <xsl:element name="button">
+                                <xsl:attribute name="class">btn btn-link</xsl:attribute>
+                                <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                                <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
+                                <xsl:attribute name="aria-expanded">true</xsl:attribute>
+                                <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                                <xsl:text>Parallels</xsl:text>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                        
+                            <xsl:element name="div">
+                            <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                            <xsl:attribute name="class">collapse show</xsl:attribute>
+                            <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
+                            <xsl:attribute name="data-parent">#accordion</xsl:attribute>
+                            <xsl:element name="div">
+                            <xsl:attribute name="class">card-body</xsl:attribute>
+                                <xsl:value-of select="@*"/>
+                        </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+            </xsl:for-each>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
