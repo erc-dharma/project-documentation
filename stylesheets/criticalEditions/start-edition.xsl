@@ -291,7 +291,7 @@
     </xsl:template>
     <!--  D ! -->
     <!--  div ! -->
-    <xsl:template match="tei:div[@type = 'chapter']">
+    <xsl:template match="tei:div[@type = 'chapter' or @type = 'dyad']">
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
@@ -488,8 +488,14 @@
             <xsl:attribute name="class">float-left</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">text-muted</xsl:attribute>
-                <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
+                <xsl:if test="ancestor::tei:div[@type = 'chapter']">
+                    <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
+                    <xsl:text>.</xsl:text>
+                </xsl:if>
+                <xsl:if test="ancestor::tei:div[@type = 'dyad']">
+                    <xsl:value-of select="ancestor::tei:div[@type = 'dyad']/@n"/>
                 <xsl:text>.</xsl:text>
+                </xsl:if>
                 <xsl:value-of select="$p-num"/>
             </xsl:element>
             </xsl:element>
@@ -527,14 +533,13 @@
     <!--  quote ! -->
     <xsl:template match="tei:quote">
         <xsl:choose>
-            <!-- A priori pas dans DHARMA -->
-            <xsl:when test="tei:quote[@type = 'base-text']">
+            <xsl:when test="tei:quote[@type = 'basetext']">
                 <xsl:element name="div">
-            <xsl:attribute name="class">base-text</xsl:attribute>
+            <xsl:attribute name="class">basetext</xsl:attribute>
             <xsl:apply-templates/>
                 </xsl:element>
             </xsl:when>
-            <xsl:when test="tei:quote[ancestor::tei:list]">
+            <xsl:when test="tei:quote[descendant::tei:list]">
                 <xsl:apply-templates/>
             </xsl:when>
             <xsl:when test="ancestor-or-self::tei:app">
@@ -553,7 +558,7 @@
         <xsl:text>’</xsl:text>
     </xsl:template>
     <!--  R ! -->
-    <xsl:template match="tei:text[@xml:id = 'RaMa']//tei:ref">
+    <xsl:template match="tei:text//tei:ref">
         <xsl:element name="span">
             <xsl:attribute name="class">ref san</xsl:attribute>
             <xsl:apply-templates/>
