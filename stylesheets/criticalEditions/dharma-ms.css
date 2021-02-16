@@ -546,12 +546,12 @@ a:hover, a i.fas:hover {
     padding-right:0.1rem;
 }
 
-.ed-insertion:before,.supplied:before {
+/*.ed-insertion:before,.supplied:before {
     content:"⟨";
 }
 .ed-insertion:after,.supplied:after {
     content:"⟩";
-}
+}*/
 .gap:before {
     content:"[";
 }
