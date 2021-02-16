@@ -488,7 +488,7 @@
             <xsl:attribute name="class">float-left</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">text-muted</xsl:attribute>
-                <xsl:if test="ancestor::tei:div[@type = 'chapter']">
+                <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad'])">
                     <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                     <xsl:text>.</xsl:text>
                 </xsl:if>
