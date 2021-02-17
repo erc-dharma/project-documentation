@@ -473,9 +473,7 @@
         </xsl:element>
     </xsl:template>
     <!--  note ! -->
-    <xsl:template match="tei:note">
-        <xsl:choose>
-            <xsl:when test="tei:note[@type = 'parallels']">
+    <xsl:template match="tei:note[@type = 'parallels']">
         <xsl:element name="div">
             <xsl:attribute name="id">parallels</xsl:attribute>
             <xsl:if test="descendant::tei:item"> 
@@ -509,11 +507,6 @@
                     </xsl:element>
             </xsl:if>
         </xsl:element>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates/>
-            </xsl:otherwise>
-        </xsl:choose>
       
     </xsl:template>
     <!--  P ! -->
