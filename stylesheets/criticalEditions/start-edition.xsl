@@ -475,7 +475,7 @@
     <xsl:template match="tei:note[@type = 'parallels']">
         <xsl:element name="div">
             <xsl:attribute name="id">parallels</xsl:attribute>
-            <xsl:for-each select="descendant::tei:item"> 
+            <xsl:if test="descendant::tei:item"> 
                 <xsl:element name="div">
                     <xsl:attribute name="class">card</xsl:attribute>
                     <xsl:element name="div">
@@ -486,7 +486,7 @@
                                 <xsl:attribute name="class">btn btn-link</xsl:attribute>
                                 <xsl:attribute name="data-toggle">collapse</xsl:attribute>
                                 <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
-                                <xsl:attribute name="aria-expanded">true</xsl:attribute>
+                                <xsl:attribute name="aria-expanded">false</xsl:attribute>
                                 <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
                                 <xsl:text>Parallels</xsl:text>
                             </xsl:element>
@@ -495,17 +495,17 @@
                         
                             <xsl:element name="div">
                             <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                            <xsl:attribute name="class">collapse show</xsl:attribute>
+                            <xsl:attribute name="class">collapse</xsl:attribute>
                             <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
                             <xsl:attribute name="data-parent">#accordion</xsl:attribute>
                             <xsl:element name="div">
                             <xsl:attribute name="class">card-body</xsl:attribute>
-                                <xsl:value-of select="@*"/>
+                                <xsl:call-template name="parallels-content"/>
                         </xsl:element>
                         </xsl:element>
                     </xsl:element>
-            </xsl:for-each>
-            <xsl:apply-templates/>
+            </xsl:if>
+           <!-- <xsl:apply-templates/>-->
         </xsl:element>
     </xsl:template>
     <!--  P ! -->
@@ -1264,6 +1264,19 @@
             <xsl:value-of select="//tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
         </xsl:element>
             </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="parallels-content">
+       <xsl:element name="dl"> 
+           <xsl:for-each select="descendant-or-self::tei:item">
+            <xsl:element name="dt">
+                <xsl:value-of select="@*"/>
+            </xsl:element>
+               <xsl:element name="dd">
+                   <xsl:apply-templates/>
+               </xsl:element>
+        </xsl:for-each>
+       </xsl:element>
     </xsl:template>
     
 </xsl:stylesheet>
