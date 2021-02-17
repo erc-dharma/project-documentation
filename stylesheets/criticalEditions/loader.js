@@ -13,3 +13,7 @@ function initializePopovers() {
             }
             });
 };
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
