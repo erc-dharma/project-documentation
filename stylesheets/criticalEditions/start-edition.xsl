@@ -22,6 +22,7 @@
         <xsl:element name="html">
         <xsl:call-template name="dharma-head"/>
         <xsl:element name="body">
+            <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:apply-templates select="./tei:teiHeader"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
@@ -977,6 +978,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>
+                <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Serif"/>
             </meta>
         </head>
     </xsl:template>
