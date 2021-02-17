@@ -319,6 +319,7 @@
                 <xsl:text>translit </xsl:text>
                 <xsl:value-of select="@xml:lang"/>
             </xsl:attribute>
+            <xsl:attribute name="class">font-italic</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
