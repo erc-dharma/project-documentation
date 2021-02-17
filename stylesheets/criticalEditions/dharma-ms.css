@@ -564,6 +564,13 @@ a:hover, a i.fas:hover {
     content:"]";
 }
 
+.unclear:before {
+    content:"(";
+}
+
+.unclear:after {
+    content:")";
+}
 /* Additions for dharma */
 
 .lem:hover ~ .popover:nth-of-type(1){ background-color: yellow; }
