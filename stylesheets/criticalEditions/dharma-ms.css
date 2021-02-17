@@ -1,6 +1,7 @@
 /* CSS file based on salit.css written by Andrew Ollett */
 /* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
 /* For the tables and stuff */
+
 .schedule {
     margin-bottom:0;
 }
@@ -36,7 +37,7 @@
 }
 body {
     background-color:#eeeeee;
-    font-family:"IndUni-H";
+    font-family:"Noto Serif";
     height:100%;
     width: 75%;
 }
