@@ -540,17 +540,28 @@
     <xsl:template match="tei:pb">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted foliation</xsl:attribute>
-            <xsl:value-of select="@n"/>
+                <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                <xsl:attribute name="data-placement">top</xsl:attribute>
+                <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>
+                <xsl:value-of select="@n"/>
         </xsl:element>
     </xsl:template>
+   
+    
     <xsl:template match="tei:pc">
         <xsl:element name="span">
             <xsl:attribute name="class">danda</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  Q ! -->
     <!--  q ! -->
+    <xsl:template match="tei:q">
+        <xsl:text>‘</xsl:text>
+        <xsl:apply-templates/>
+        <xsl:text>’</xsl:text>
+    </xsl:template>
     <xsl:template match="tei:q[@type = 'lemma']">
         <xsl:element name="b">
             <xsl:element name="span">
@@ -584,11 +595,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <xsl:template match="tei:q">
-        <xsl:text>‘</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>’</xsl:text>
-    </xsl:template>
+
     <!--  R ! -->
     <xsl:template match="tei:text//tei:ref">
         <xsl:element name="span">
