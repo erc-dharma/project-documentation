@@ -204,4 +204,15 @@
       </xsl:choose>
    </xsl:template>
 
+   <xsl:template match="t:supplied[@reason='undefined' and not(@evidence)]">
+         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+         <xsl:choose>
+         <xsl:when test="$parm-leiden-style='dharma'">
+           <xsl:text>[</xsl:text>
+           <xsl:apply-templates/>
+           <xsl:text>]</xsl:text>
+         </xsl:when>
+       </xsl:choose>
+      </xsl:template>
+
 </xsl:stylesheet>
