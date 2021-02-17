@@ -522,6 +522,10 @@ a:hover, a i.fas:hover {
     padding-left:0.35rem;
     padding-right:0.35rem;
 }
+
+.popover-body{
+        font-family:"Noto Serif";
+}
 .popover-content {
     display:none;
 }
