@@ -710,6 +710,14 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    <!--  U ! -->
+    <!--  unclear -->
+    <xsl:template match="tei:unclear">
+        <xsl:element name="span">
+            <xsl:attribute name="class">unclear</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
     <!--  W ! -->
     <xsl:template match="tei:w">
         <xsl:element name="span">
