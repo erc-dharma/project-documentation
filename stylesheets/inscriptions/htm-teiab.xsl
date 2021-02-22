@@ -7,6 +7,14 @@
   <xsl:template match="t:ab">
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+     <xsl:choose> 
+         <xsl:when test="$parm-leiden-style='dharma'">
+             <xsl:element name="p">
+                 <xsl:attribute name="class">ab</xsl:attribute>
+                 <xsl:apply-templates/>
+             </xsl:element>
+         </xsl:when>
+         <xsl:otherwise>
       <div class="textpart">
       	<!-- transfers the  @xml:lang attribute of the ab element to the textpart-->
       	<!-- a div[@type='textpart'] is created for each ab element, independant of the textpart / ab hierarchical structure -->
@@ -27,7 +35,7 @@
              </xsl:if>
              <xsl:apply-templates/>
              <!-- if next div or ab begins with lb[break=no], then add hyphen -->
-            <xsl:if test="following::t:lb[1][@break='no' or @type='inWord'] and not($parm-edition-type='diplomatic') and not($parm-leiden-style='dharma')">
+            <xsl:if test="following::t:lb[1][@break='no' or @type='inWord'] and not($parm-edition-type='diplomatic')">
                 <xsl:text>-</xsl:text>
              </xsl:if>
              <!-- if final lb in ab is L2R or R2L, then print arrow here -->
@@ -45,6 +53,8 @@
               </xsl:if>
           </span>
       </div>
+         </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>
