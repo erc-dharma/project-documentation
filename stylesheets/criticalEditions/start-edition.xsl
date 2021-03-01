@@ -356,6 +356,17 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    <!--  hi ! -->
+    <xsl:template match="tei:hi">
+        <xsl:choose>
+            <xsl:when test="@rend='superscript'">
+                <xsl:element name="sup">
+                    <xsl:attribute name="class">ed-siglum</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
     <!--  L ! -->
     <!--  l ! -->
     <xsl:template match="tei:l">
@@ -1069,7 +1080,7 @@
 
     <xsl:template name="dharma-app">
         <xsl:param name="apptype"/>
-       <xsl:variable name="childtype">
+       <!--<xsl:variable name="childtype">
             <xsl:choose>
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
                     <xsl:text>origreg</xsl:text>
@@ -1085,7 +1096,7 @@
                 </xsl:when>
                 <xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>
             </xsl:choose>
-        </xsl:variable>
+        </xsl:variable>-->
         <xsl:variable name="div-loc">
             <xsl:for-each select="ancestor::tei:div[@type='textpart'][@n]">
                 <xsl:value-of select="@n"/>
@@ -1119,20 +1130,20 @@
     <!-- prints the content of apparatus-->
     <xsl:template name="appcontent">
         <xsl:param name="apptype"/>
-        <xsl:param name="childtype"/>
+     <xsl:param name="childtype"/>
         <xsl:variable name="path">
-            <xsl:choose>
+           <xsl:choose>
                 <xsl:when test="$childtype='origreg' or $childtype=('siccorr')">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice/child::*"/>
                 </xsl:when>
                 <xsl:when test="$childtype='subst'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst/child::*"/>
                 </xsl:when>
-                <xsl:when test="$childtype='app'">
-                    <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
+               <xsl:when test="$childtype='app'">
+                    <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
                 </xsl:when>
-                <xsl:otherwise>
-                    <xsl:copy-of select="node()"/>
+                <xsl:otherwise>-->
+                        <xsl:copy-of select="node()"/>
                </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -1146,15 +1157,20 @@
                 </xsl:if>
             </xsl:if>
         </xsl:variable>
-     <xsl:choose>
+       <xsl:choose>
            <xsl:when test="$childtype != '' and $apptype != $childtype">
                 <xsl:call-template name="appchoice">
-                    <xsl:with-param name="apptype"><xsl:value-of select="$childtype"/></xsl:with-param>
+                    <xsl:with-param name="apptype">
+                        <xsl:value-of select="$childtype"/>
+                    </xsl:with-param>
                     <xsl:with-param name="path">
                         <xsl:copy-of select="$path"/>
                     </xsl:with-param>
-                   <xsl:with-param name="parent-lang"><xsl:value-of select="$parent-lang" /></xsl:with-param>
-                </xsl:call-template><xsl:text> </xsl:text>
+                   <xsl:with-param name="parent-lang">
+                       <xsl:value-of select="$parent-lang" />
+                   </xsl:with-param>
+                </xsl:call-template>
+               <xsl:text> </xsl:text>
             </xsl:when>
              <xsl:otherwise>
                 <xsl:call-template name="appchoice">
@@ -1163,7 +1179,6 @@
                     <xsl:with-param name="path"><xsl:copy-of select="$path"/></xsl:with-param>
                    <xsl:with-param name="parent-lang"><xsl:value-of select="$parent-lang" /></xsl:with-param>
                 </xsl:call-template>
-                
         </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -1176,13 +1191,13 @@
         <xsl:choose>
             <xsl:when test="$apptype='app'">
                 <!-- **ALT - <xsl:value-of select="$path/tei:rdg"/>** -->
-                <xsl:for-each select="$path/tei:lem">
+                <xsl:for-each select="tei:lem">
                     <xsl:value-of select="$path/tei:lem"/>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:text>] </xsl:text>
                     </xsl:element>                
-                        <xsl:if test="@*">
+                    <xsl:if test="@*">
                             <xsl:if test="@type">
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-italic</xsl:attribute>
@@ -1193,7 +1208,7 @@
                                 </xsl:if>
                             </xsl:if>
                             
-                            <xsl:if test="@wit">
+                        <xsl:if test="@wit">
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:variable name="witnesses" select="fn:tokenize(@wit, '#')"/>
@@ -1205,7 +1220,7 @@
                                 </xsl:if>
                                 </xsl:element>
                             </xsl:if>
-                            <xsl:if test="@source">
+                        <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
                                 </xsl:call-template>
@@ -1239,6 +1254,9 @@
                             <xsl:value-of select="fn:replace(@wit, '#', '')"/>
                             </xsl:element>
                         </xsl:if>
+                        <xsl:if test="attribute::wit or attribute::source">
+                            <xsl:text> </xsl:text>
+                        </xsl:if>
                             <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
@@ -1271,16 +1289,45 @@
            </xsl:when>   
         </xsl:choose>
     </xsl:template>
-    
+    <xsl:template name="lem-type">
+        <xsl:choose>
+            <xsl:when test="./@rend='hyphenfront' or tei:lem/@rend='hyphenfront'">
+                <xsl:text>–</xsl:text>
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:when test="./@rend='hyphenback' or tei:lem/@rend='hyphenback'">
+                <xsl:apply-templates/>
+                <xsl:text>–</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='hyphenaround' or tei:lem/@rend='hyphenaround'">
+                <xsl:text>–</xsl:text>
+                <xsl:apply-templates/>
+                <xsl:text>–</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='circlefront' or tei:lem/@rend='circlefront'">
+                <xsl:text>°</xsl:text>
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:when test="./@rend='circleback' or tei:lem/@rend='circleback'">
+                <xsl:apply-templates/>
+                <xsl:text>°</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='circlearound' or tei:lem/@rend='circlearound'">
+                <xsl:text>°</xsl:text>
+                <xsl:apply-templates/>
+                <xsl:text>–</xsl:text>
+            </xsl:when>   
+        </xsl:choose>
+    </xsl:template>
     <xsl:template name="source-siglum">
         <xsl:param name="string-to-siglum"/>
             <xsl:element name="span">
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-            <xsl:text>Ed</xsl:text>
-        <xsl:element name="sup">
-            <xsl:attribute name="class">ed-siglum</xsl:attribute>
-            <xsl:value-of select="//tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
-        </xsl:element>
+                <xsl:text>Ed</xsl:text>
+                <xsl:element name="sup">
+                    <xsl:attribute name="class">ed-siglum</xsl:attribute>             
+                <xsl:value-of select="//tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
+            </xsl:element>
             </xsl:element>
     </xsl:template>
     
