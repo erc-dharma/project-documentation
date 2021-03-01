@@ -5,7 +5,7 @@
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
 
     <sch:pattern>
-        <sch:rule context="//t:text//t:ptr/@target|@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
+        <sch:rule context="//t:text//t:ptr/@target| //t:*/@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
             prefix is bib:</sch:assert>
 
             <sqf:fix id="bib-prefix-source">
@@ -25,7 +25,7 @@
     </sch:pattern>
 
     <sch:pattern>
-        <sch:rule context="@resp">
+        <sch:rule context="t:*/@resp">
             <sch:assert test="starts-with(.,'part:') or starts-with(.,'http')" sqf:fix="part-prefix-addition http-prefix-addition">Project members prefix is
                 part: or a http/https link for people not associated with the project.</sch:assert>
             <sqf:fix id="part-prefix-addition">
@@ -46,7 +46,7 @@
     </sch:pattern>
     <sch:pattern>
         <sch:rule context="t:div[@type='translation']">
-            <sch:report test="@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't
+            <sch:report test="./@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't
                 be used with div[@type='translation']</sch:report>
 
             <sqf:fix id="eng-translation">
@@ -57,7 +57,7 @@
             </sqf:fix>
         </sch:rule>
         <sch:rule context="t:div[@type='translation']">
-            <sch:assert test="@resp|@source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
+            <sch:assert test="./@resp|./@source" sqf:fix="resp-translation source-translation">An attribute @resp or @source is mandatory</sch:assert>
             <sqf:fix id="resp-translation">
                 <sqf:description>
                     <sqf:title>Add @resp for a DHARMA member author of the translation</sqf:title>
@@ -76,7 +76,7 @@
 
     <sch:pattern>
         <sch:rule context="t:bibl[parent::t:listBibl[@type='primary']]">
-            <sch:assert test="@n" sqf:fix="add-siglum">@n mandatory in
+            <sch:assert test="./@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
                 sigla</sch:assert>
 
@@ -91,7 +91,7 @@
 
     <sch:pattern>
         <sch:rule context="t:app">
-            <sch:assert test="@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
+            <sch:assert test="./@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
             <sqf:fix id="add-loc">
                 <sqf:description>
                     <sqf:title>Add @loc on app</sqf:title>
@@ -102,12 +102,12 @@
     </sch:pattern>
     <sch:pattern>
         <sch:rule context="t:div[@type='edition']//t:l">
-            <sch:assert test="@n">Line verses should be numered with @n attribute</sch:assert>
+            <sch:assert test="./@n">Line verses should be numered with @n attribute</sch:assert>
         </sch:rule>
     </sch:pattern>
-        <!-- not working -->
-        <sch:pattern>
-            <sch:rule context="t:div[@type='edition']//t:l">
+    <!-- not working -->
+    <sch:pattern>
+        <sch:rule context="t:div[@type='edition']//t:l">
             <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
         </sch:rule> </sch:pattern>
     <sch:pattern>
@@ -130,12 +130,23 @@
     </sch:pattern>
 
     <sch:pattern>
-        <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>
-
-        <sch:rule context="//t:teiHeader//t:persName/@ref[contains(., 'part:')]|@resp">
+      <!--<sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>-->
+      <sch:let name="list-id" value="doc('https://gitcdn.link/repo/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml')"/>
+        <sch:rule context="//t:teiHeader//t:persName/@ref[contains(., 'part:')]|//t:*/@resp">
             <sch:let name="tokens" value="for $i in tokenize(., ' ') return substring($i, 6)"/>
             <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
         </sch:rule>
 
+    </sch:pattern>
+
+    <sch:pattern>
+        <!-- Still under construction -->
+        <sch:rule context="@source|@target[starts-with(., 'bib:')]">
+            <sch:let name="zoteroapitags" value="unparsed-text(doc('https://api.zotero.org/groups/1633743/items/tags'))"/>
+            <sch:let name="biblentries" value="for $w in tokenize(., '\s+') return substring($w, 5)"/>
+            <!-- &quot;tag&quot;:\s&quot;)($biblentry)&quot;" -->
+            <sch:assert test="every $biblentry in $biblentries satisfies $biblentry = ">The Zotero Short Title needs to match an entry in the DHARMA Zotero group Library.</sch:assert>
+
+        </sch:rule>
     </sch:pattern>
 </sch:schema>
