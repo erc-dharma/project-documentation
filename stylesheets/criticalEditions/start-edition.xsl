@@ -448,6 +448,18 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    <!--  List -->
+    <xsl:template match="tei:list">
+        <xsl:element name="ul">
+            <xsl:attribute name="class">list-unstyled</xsl:attribute>
+            <xsl:for-each select="child::tei:item">
+                <xsl:element name="li">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:for-each>
+            
+        </xsl:element>
+    </xsl:template>
     <!--  listBibl -->
     <!-- Must be reworked -->
     <xsl:template match="tei:listBibl">
