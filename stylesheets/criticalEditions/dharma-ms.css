@@ -580,3 +580,11 @@ a:hover, a i.fas:hover {
 .title {
     font-style:italic;
 }
+
+.surplus:before {
+    content:"{";
+}
+
+.surplus:after {
+    content:"}";
+}
