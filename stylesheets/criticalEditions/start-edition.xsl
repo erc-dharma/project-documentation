@@ -215,7 +215,7 @@
                     <xsl:for-each select="tei:note">
                         <xsl:element name="span">
                             <xsl:attribute name="class">note-line</xsl:attribute>
-                            <xsl:apply-templates select="."/>
+                            <xsl:apply-templates/>
                         </xsl:element>
                     </xsl:for-each>
                 </xsl:if>
@@ -1080,12 +1080,12 @@
 
     <xsl:template name="dharma-app">
         <xsl:param name="apptype"/>
-       <!--<xsl:variable name="childtype">
+       <xsl:variable name="childtype">
             <xsl:choose>
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
                     <xsl:text>origreg</xsl:text>
                 </xsl:when>
-                <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:sic and child::tei:corr]">
+                <!--<xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:sic and child::tei:corr]">
                     <xsl:text>siccorr</xsl:text>
                 </xsl:when>
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst">
@@ -1093,10 +1093,10 @@
                 </xsl:when>
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app">
                     <xsl:text>app</xsl:text>
-                </xsl:when>
+                </xsl:when>-->
                 <xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>
             </xsl:choose>
-        </xsl:variable>-->
+        </xsl:variable>
         <xsl:variable name="div-loc">
             <xsl:for-each select="ancestor::tei:div[@type='textpart'][@n]">
                 <xsl:value-of select="@n"/>
@@ -1136,13 +1136,13 @@
                 <xsl:when test="$childtype='origreg' or $childtype=('siccorr')">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice/child::*"/>
                 </xsl:when>
-                <xsl:when test="$childtype='subst'">
+                <!--<xsl:when test="$childtype='subst'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst/child::*"/>
                 </xsl:when>
                <xsl:when test="$childtype='app'">
                     <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
-                </xsl:when>
-                <xsl:otherwise>-->
+                </xsl:when>-->
+                <xsl:otherwise>
                         <xsl:copy-of select="node()"/>
                </xsl:otherwise>
             </xsl:choose>
@@ -1265,7 +1265,7 @@
                     </xsl:if>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
                         <xsl:text> • </xsl:text>
-                        <xsl:value-of select="following-sibling::tei:note"/>
+                        <xsl:apply-templates select="following-sibling::tei:note"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:if test="not(tei:rdg) and tei:note">
