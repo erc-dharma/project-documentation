@@ -608,3 +608,20 @@ a:hover, a i.fas:hover {
 .mark {
     background-color: yellow;
 }
+
+.hyphenfront:before,.hyphenaround:before {
+    content:"-";
+}
+
+.hyphenback:after,.hyphenaround:after {
+    content:"-";
+}
+
+.circlefront:before,.circlearound:before {
+    content:"°";
+}
+
+.circleback:after,.circlearound:after {
+    content:"°";
+}
+

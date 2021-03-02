@@ -123,6 +123,8 @@
                             <xsl:attribute name="class">
                                 <xsl:text>translit </xsl:text>
                                 <xsl:value-of select="$script"/>
+                                <xsl:text> </xsl:text>
+                                <xsl:call-template name="lem-type"/>
                             </xsl:attribute>
                             <xsl:apply-templates select="tei:lem"/>
                         </xsl:element>
@@ -233,6 +235,7 @@
         </xsl:variable>
         <xsl:element name="span"> 
             <xsl:attribute name="class">lem</xsl:attribute>
+            
             <xsl:element name="a">
             <xsl:attribute name="tabindex">0</xsl:attribute>
             <xsl:attribute name="data-toggle">popover</xsl:attribute>
@@ -242,8 +245,7 @@
             </xsl:attribute>
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
-            <xsl:apply-templates select="tei:lem"/>    
-                    
+            <xsl:apply-templates select="tei:lem"/>
                     </xsl:element>
         </xsl:element>
         
@@ -1260,7 +1262,12 @@
             <xsl:when test="$apptype='app'">
                 <!-- **ALT - <xsl:value-of select="$path/tei:rdg"/>** -->
                 <xsl:for-each select="tei:lem">
-                    <xsl:value-of select="$path/tei:lem"/>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">
+                            <xsl:call-template name="lem-type"/>
+                        </xsl:attribute>
+                    <xsl:apply-templates select="$path/tei:lem"/>
+                    </xsl:element>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:text>] </xsl:text>
@@ -1344,6 +1351,7 @@
         </xsl:choose>
     </xsl:template>
     
+    <!-- Apparatus: type to display -->
     <xsl:template name="apparatus-type">
         <xsl:choose>
             <xsl:when test="./@type='emn' or tei:lem/@type='emn'">
@@ -1357,36 +1365,8 @@
            </xsl:when>   
         </xsl:choose>
     </xsl:template>
-    <xsl:template name="lem-type">
-        <xsl:choose>
-            <xsl:when test="./@rend='hyphenfront' or tei:lem/@rend='hyphenfront'">
-                <xsl:text>–</xsl:text>
-                <xsl:apply-templates/>
-            </xsl:when>
-            <xsl:when test="./@rend='hyphenback' or tei:lem/@rend='hyphenback'">
-                <xsl:apply-templates/>
-                <xsl:text>–</xsl:text>
-            </xsl:when>
-            <xsl:when test="./@rend='hyphenaround' or tei:lem/@rend='hyphenaround'">
-                <xsl:text>–</xsl:text>
-                <xsl:apply-templates/>
-                <xsl:text>–</xsl:text>
-            </xsl:when>
-            <xsl:when test="./@rend='circlefront' or tei:lem/@rend='circlefront'">
-                <xsl:text>°</xsl:text>
-                <xsl:apply-templates/>
-            </xsl:when>
-            <xsl:when test="./@rend='circleback' or tei:lem/@rend='circleback'">
-                <xsl:apply-templates/>
-                <xsl:text>°</xsl:text>
-            </xsl:when>
-            <xsl:when test="./@rend='circlearound' or tei:lem/@rend='circlearound'">
-                <xsl:text>°</xsl:text>
-                <xsl:apply-templates/>
-                <xsl:text>–</xsl:text>
-            </xsl:when>   
-        </xsl:choose>
-    </xsl:template>
+    
+    <!-- Siglum : fetch the siglum to display -->
     <xsl:template name="source-siglum">
         <xsl:param name="string-to-siglum"/>
             <xsl:element name="span">
@@ -1399,6 +1379,7 @@
             </xsl:element>
     </xsl:template>
     
+    <!-- Parallels: generate the content  -->
     <xsl:template name="parallels-content">
        <xsl:element name="dl"> 
            <xsl:for-each select="descendant-or-self::tei:item">
@@ -1410,6 +1391,30 @@
                </xsl:element>
         </xsl:for-each>
        </xsl:element>
+    </xsl:template>
+    
+    <!-- lem: render the compound in the apparatus entries -->
+    <xsl:template name="lem-type">
+        <xsl:choose>
+            <xsl:when test="./@rend='hyphenfront' or tei:lem/@rend='hyphenfront'">
+                <xsl:text>hyphenfront</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='hyphenback' or tei:lem/@rend='hyphenback'">
+                <xsl:text>hyphenback</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='hyphenaround' or tei:lem/@rend='hyphenaround'">
+                <xsl:text>hyphenaround</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='circlefront' or tei:lem/@rend='circlefront'">
+                <xsl:text>circlefront</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='circleback' or tei:lem/@rend='circleback'">
+                <xsl:text>circleback</xsl:text>
+            </xsl:when>
+            <xsl:when test="./@rend='circlearound' or tei:lem/@rend='circlearound'">
+                <xsl:text>circlearound</xsl:text>
+            </xsl:when> 
+        </xsl:choose>
     </xsl:template>
     
 </xsl:stylesheet>
