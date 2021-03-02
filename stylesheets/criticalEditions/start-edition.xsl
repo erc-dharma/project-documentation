@@ -736,7 +736,7 @@
     <xsl:template match="tei:stage" mode="in-modal">
         <xsl:apply-templates select="."/>
     </xsl:template>
-    <!--  SUBST -->
+    <!--  subst -->
     <xsl:template match="tei:subst">
         <xsl:element name="a">
             <xsl:attribute name="class">ed-subst</xsl:attribute>
@@ -750,7 +750,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    <!--  SUPPLIED ! -->
+    <!--  supplied ! -->
     <xsl:template match="tei:supplied">
         <xsl:element name="a">
             <xsl:attribute name="class">text-muted supplied</xsl:attribute>
@@ -780,7 +780,7 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-    <!--  SURPLUS ! -->
+    <!--  surplus ! -->
     <xsl:template match="tei:surplus">
         <xsl:element name="span">
             <xsl:attribute name="class">surplus</xsl:attribute>
@@ -791,6 +791,13 @@
     <!--  TEI ! -->
     <xsl:template match="tei:TEI">
         <xsl:element name="div">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    <!--  term ! -->
+    <xsl:template match="tei:term">
+        <xsl:element name="span">
+            <xsl:attribute name="class">term font-weight-bold</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
