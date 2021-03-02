@@ -604,3 +604,7 @@ a:hover, a i.fas:hover {
 .surplus:after {
     content:"}";
 }
+
+.mark {
+    background-color: yellow;
+}

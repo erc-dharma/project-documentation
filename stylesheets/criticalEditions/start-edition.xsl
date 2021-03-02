@@ -1043,6 +1043,14 @@
         <xsl:copy/>
     </xsl:template>
     
+    <!-- Check feature -->
+    <xsl:template match="tei:*[@rend='check']">
+        <xsl:element name="span">
+            <xsl:attribute name="class">mark</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- DHARMA html prolog -->
     <xsl:template name="dharma-head">
         <xsl:variable name="title">
