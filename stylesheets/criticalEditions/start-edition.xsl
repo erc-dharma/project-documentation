@@ -291,6 +291,19 @@
         </xsl:element>
     </xsl:template>
     <!--  D ! -->
+    <!--  del ! -->
+    <xsl:template match="tei:del">
+        <xsl:element name="a">
+            <xsl:attribute name="class">ed-deletion</xsl:attribute>
+            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
+            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+            <xsl:attribute name="data-placement">top</xsl:attribute>
+            <xsl:attribute name="title">Editorial deletion.</xsl:attribute>
+            <xsl:element name="del">
+                <xsl:apply-templates/>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
     <!--  div ! -->
     <xsl:template match="tei:div[@type = 'chapter' or @type = 'dyad']">
         <xsl:element name="div">
