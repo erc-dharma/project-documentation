@@ -707,6 +707,13 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    <!--  SURPLUS ! -->
+    <xsl:template match="tei:surplus">
+        <xsl:element name="span">
+            <xsl:attribute name="class">surplus</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
     <!--  T ! -->
     <!--  TEI ! -->
     <xsl:template match="tei:TEI">
@@ -727,6 +734,9 @@
         <xsl:element name="span">
             <xsl:attribute name="class">unclear</xsl:attribute>
             <xsl:apply-templates/>
+            <xsl:if test="@cert='low'">
+                <xsl:text>?</xsl:text>
+            </xsl:if>
         </xsl:element>
     </xsl:template>
     <!--  W ! -->
