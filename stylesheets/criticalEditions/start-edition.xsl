@@ -704,7 +704,26 @@
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
             <xsl:attribute name="title">Supplied by the editor.</xsl:attribute>
-            <xsl:apply-templates/>
+            <xsl:choose>
+                <xsl:when test="@reason='omitted'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">omitted</xsl:attribute>
+                    <xsl:apply-templates/>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:when test="@reason='lost' or @reason='illegible'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">lost-illegible</xsl:attribute>
+                        <xsl:apply-templates/>
+                        <xsl:if test="@cert='low'">
+                            <xsl:text>?</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
     <!--  SURPLUS ! -->

@@ -557,6 +557,23 @@ a:hover, a i.fas:hover {
 .ed-insertion:after,.supplied:after {
     content:"⟩";
 }*/
+
+.omitted:before {
+    content:"⟨";
+}
+
+.omitted:after {
+    content:"⟩";
+}
+
+.lost-illegible:before {
+    content:"[";
+}
+
+.lost-illegible:after {
+    content:"]";
+}
+
 .gap:before {
     content:"[";
 }
