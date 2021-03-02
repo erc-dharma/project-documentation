@@ -576,3 +576,7 @@ a:hover, a i.fas:hover {
 .lem:hover ~ .popover:nth-of-type(1){ background-color: yellow; }
 
 .lem:hover { background-color: yellow; }
+
+.title {
+    font-style:italic;
+}
