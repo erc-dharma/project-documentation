@@ -25,13 +25,14 @@
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:apply-templates select="./tei:teiHeader"/>
         <xsl:element name="div">
-            <xsl:attribute name="class">row</xsl:attribute>
+            <xsl:attribute name="class">row</xsl:attribute>   
             <xsl:element name="div">
                 <xsl:attribute name="class">col</xsl:attribute>
+                <xsl:attribute name="id">mainText</xsl:attribute>
                 <xsl:apply-templates select="./tei:text"/>
+                <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:apply-templates select=".//tei:listWit"/>
                 <xsl:apply-templates select=".//tei:listBibl"/>
-                <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
             </xsl:element>
         </xsl:element>
@@ -421,7 +422,7 @@
                         </xsl:element>
                     </xsl:element>
                 </xsl:if>
-                <xsl:if test="ancestor::tei:item">
+                <!--<xsl:if test="ancestor::tei:item">
                     <xsl:element name="div">
                         <xsl:attribute name="class">float-center</xsl:attribute>
                         <xsl:element name="small">
@@ -431,7 +432,7 @@
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
-                </xsl:if>
+                </xsl:if>-->
                 <xsl:element name="div">
                     <xsl:attribute name="class">lg</xsl:attribute>
                     <xsl:attribute name="id">
@@ -577,8 +578,9 @@
         <xsl:element name="p">
             <xsl:apply-templates/>
         </xsl:element>
-        
     </xsl:template>
+    
+    <!--  p ! -->
     <xsl:template match="tei:pb">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted foliation</xsl:attribute>
@@ -589,7 +591,7 @@
         </xsl:element>
     </xsl:template>
    
-    
+    <!--  pc ! -->
     <xsl:template match="tei:pc">
         <xsl:element name="span">
             <xsl:attribute name="class">danda</xsl:attribute>
@@ -597,6 +599,13 @@
         </xsl:element>
     </xsl:template>
     
+    <!-- ptr -->
+    <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
+            <xsl:element name="span">
+                <xsl:attribute name="class">ref-siglum</xsl:attribute>
+                <xsl:value-of select="substring-after(./@target, '#')"/>
+            </xsl:element> 
+    </xsl:template>
     <!--  Q ! -->
     <!--  q ! -->
     <xsl:template match="tei:q">
@@ -637,7 +646,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
+    
     <!--  R ! -->
     <xsl:template match="tei:text//tei:ref">
         <xsl:element name="span">
@@ -1393,16 +1402,46 @@
     
     <!-- Parallels: generate the content  -->
     <xsl:template name="parallels-content">
-       <xsl:element name="dl"> 
+       <!--<xsl:element name="dl"> 
            <xsl:for-each select="descendant-or-self::tei:item">
             <xsl:element name="dt">
-                <xsl:value-of select="@*"/>
+                <xsl:value-of select="replace(descendant-or-self::tei:item/@corresp, 'txt:', '')"/>
             </xsl:element>
                <xsl:element name="dd">
                    <xsl:apply-templates/>
                </xsl:element>
         </xsl:for-each>
-       </xsl:element>
+       </xsl:element>-->
+        <xsl:element name="ul">
+            <xsl:attribute name="class">list-unstyled</xsl:attribute>
+            <xsl:for-each select="descendant-or-self::tei:item">
+                <xsl:element name="li">
+                    <xsl:choose>
+                        <xsl:when test="@*">
+                            <xsl:element name="blockquote">
+                        <xsl:attribute name="class">blockquote text-center</xsl:attribute>
+                        <xsl:element name="p">
+                            <xsl:attribute name="class">mb-0</xsl:attribute>
+                            <xsl:apply-templates/>
+                        </xsl:element>
+                        <xsl:element name="footer">
+                            <xsl:attribute name="class">blockquote-footer</xsl:attribute>
+                            <xsl:element name="cite">
+                                <xsl:value-of select="replace(descendant-or-self::tei:item/@*, 'txt:', '')"/>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:element name="p">
+                                <xsl:attribute name="class">mb-0</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:element>
+            </xsl:for-each>
+        </xsl:element>
     </xsl:template>
     
     <!-- lem: render the compound in the apparatus entries -->
