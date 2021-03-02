@@ -551,12 +551,12 @@ a:hover, a i.fas:hover {
     padding-right:0.1rem;
 }
 
-/*.ed-insertion:before,.supplied:before {
-    content:"⟨";
+.ed-insertion:before {
+    content:"⟨⟨";
 }
-.ed-insertion:after,.supplied:after {
-    content:"⟩";
-}*/
+.ed-insertion:after {
+    content:"⟩⟩";
+}
 
 .omitted:before {
     content:"⟨";
@@ -588,7 +588,6 @@ a:hover, a i.fas:hover {
 .unclear:after {
     content:")";
 }
-/* Additions for dharma */
 
 .lem:hover ~ .popover:nth-of-type(1){ background-color: yellow; }
 

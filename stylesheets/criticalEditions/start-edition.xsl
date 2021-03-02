@@ -327,7 +327,7 @@
     <xsl:template match="tei:gap">
         <xsl:element name="span">
             <xsl:attribute name="class">gap</xsl:attribute>
-            <xsl:if test="@quantity > 6">
+            <xsl:choose><xsl:when test="@quantity > 6">
                 <xsl:text> — — — </xsl:text>
                 <xsl:value-of select="@quantity"/>
                 <xsl:choose>
@@ -341,7 +341,11 @@
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:text> — — — </xsl:text>
-            </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>...</xsl:text>
+            </xsl:otherwise>
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
     <!--  H ! -->
@@ -711,7 +715,7 @@
                     <xsl:apply-templates/>
                     </xsl:element>
                 </xsl:when>
-                <xsl:when test="@reason='lost' or @reason='illegible'">
+                <xsl:when test="@reason='lost ' or @reason='illegible'">
                     <xsl:element name="span">
                         <xsl:attribute name="class">lost-illegible</xsl:attribute>
                         <xsl:apply-templates/>
