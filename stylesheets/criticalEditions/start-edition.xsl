@@ -665,7 +665,16 @@
     <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
             <xsl:element name="span">
                 <xsl:attribute name="class">ref-siglum</xsl:attribute>
-                <xsl:value-of select="substring-after(./@target, '#')"/>
+                <xsl:choose>
+                    <xsl:when test="fn:contains(@target, '#')">
+                    <xsl:value-of select="substring-after(./@target, '#')"/>
+                </xsl:when>
+                    <xsl:when test="fn:contains(@target, 'bib:')">
+                        <xsl:call-template name="source-siglum">
+                            <xsl:with-param name="string-to-siglum" select="@target"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                </xsl:choose>
             </xsl:element> 
     </xsl:template>
     <!--  Q ! -->
@@ -1296,12 +1305,12 @@
                 <xsl:when test="$childtype='origreg' or $childtype=('siccorr')">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice/child::*"/>
                 </xsl:when>
-                <!--<xsl:when test="$childtype='subst'">
+                <xsl:when test="$childtype='subst'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst/child::*"/>
                 </xsl:when>
                <xsl:when test="$childtype='app'">
                     <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
-                </xsl:when>-->
+                </xsl:when>
                 <xsl:otherwise>
                         <xsl:copy-of select="node()"/>
                </xsl:otherwise>
@@ -1537,6 +1546,7 @@
         </xsl:choose>
     </xsl:template>
     
+    <!-- Metadata tab - special template in order to avoid the conflict with an apply-templates on teiHeader -->
     <xsl:template name="tab-metadata">
         <xsl:element name="div">
             <xsl:attribute name="class">tab-pane fade</xsl:attribute>
@@ -1582,7 +1592,6 @@
                 <xsl:element name="li">
                     <xsl:value-of select="replace(//tei:licence/tei:p[2], '\(c\)', '©')"/>
                 </xsl:element>
-                
             </xsl:element>
             <xsl:element name="p">
                 <xsl:attribute name="class">text-justify</xsl:attribute>
