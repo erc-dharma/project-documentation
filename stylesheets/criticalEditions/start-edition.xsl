@@ -364,7 +364,7 @@
         </xsl:element>
     </xsl:template>
     <!--  div ! -->
-    <xsl:template match="tei:div[@type = 'chapter' or @type = 'dyad']">
+    <xsl:template match="tei:div[@type = 'chapter' or @type = 'dyad' or @type = 'interpolation']">
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
@@ -625,13 +625,17 @@
             <xsl:attribute name="class">float-left</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">text-muted</xsl:attribute>
-                <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad'])">
+                <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
                     <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                     <xsl:text>.</xsl:text>
                 </xsl:if>
-                <xsl:if test="ancestor::tei:div[@type = 'dyad']">
-                    <xsl:value-of select="ancestor::tei:div[@type = 'dyad']/@n"/>
+                <xsl:if test="parent::tei:div[@type = 'dyad']">
+                    <xsl:value-of select="parent::tei:div[@type = 'dyad']/@n"/>
                 <xsl:text>.</xsl:text>
+                </xsl:if>
+                <xsl:if test="parent::tei:div[@type = 'interpolation']">
+                    <xsl:value-of select="parent::tei:div[@type = 'interpolation']/@n"/>
+                    <xsl:text>.</xsl:text>
                 </xsl:if>
                 <xsl:value-of select="$p-num"/>
             </xsl:element>
@@ -642,7 +646,7 @@
         </xsl:element>
     </xsl:template>
     
-    <!--  p ! -->
+    <!--  pb ! -->
     <xsl:template match="tei:pb">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted foliation</xsl:attribute>
