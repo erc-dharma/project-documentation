@@ -492,7 +492,7 @@ a, a i.fas {
     color:black;
 }
 /* Ajouter pour remettre la couleur seulement ds le corps et plus dans les popovers */
-span.lem >a{
+span.lem >a, .lem{
     color:#a34545;
 }
 
@@ -532,7 +532,7 @@ a:hover, a i.fas:hover {
 .lemma-line, .reading-line, .note-line {
     display:block;
 }
-.app-lem {
+.app-lem{
     color:#336600;
 }
 .app-rdg {
