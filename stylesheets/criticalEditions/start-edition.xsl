@@ -807,7 +807,15 @@
     <xsl:template match="tei:stage" mode="in-modal">
         <xsl:apply-templates select="."/>
     </xsl:template>
-    <!--  subst -->
+    <!-- space ! -->
+    <xsl:template match="tei:space">
+        <xsl:choose>
+            <xsl:when test="@type='binding-hole'">
+                <xsl:text>◯</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    <!--  subst ! -->
     <xsl:template match="tei:subst">
         <xsl:element name="a">
             <xsl:attribute name="class">ed-subst</xsl:attribute>
