@@ -24,12 +24,9 @@
         <xsl:element name="body">
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:apply-templates select="./tei:teiHeader"/>
-        <xsl:element name="div">
-            <xsl:attribute name="class">row</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-md-3 text-justify</xsl:attribute>
-            
-                    <xsl:element name="ul">
+                            <xsl:element name="div">
+                            <xsl:attribute name="class">wrapper</xsl:attribute>
+                            <xsl:element name="ul">
                         <xsl:attribute name="class">nav nav-tabs nav-justified</xsl:attribute>
                     <xsl:attribute name="id">tab</xsl:attribute>
                     <xsl:attribute name="role">tablist</xsl:attribute>
@@ -44,7 +41,10 @@
                             <xsl:attribute name="role">tab</xsl:attribute>
                             <xsl:attribute name="aria-controls">witnesses</xsl:attribute>
                             <xsl:attribute name="aria-selected">true</xsl:attribute>
-                            <xsl:element name="h4">List of Witnesses</xsl:element>
+                            <xsl:element name="div">
+                                <xsl:attribute name="class">panel</xsl:attribute>
+                            <xsl:text>Witnesses</xsl:text>
+                            </xsl:element>
                         </xsl:element> 
                     </xsl:element>
                     <xsl:element name="li">
@@ -58,24 +58,24 @@
                             <xsl:attribute name="role">tab</xsl:attribute>
                             <xsl:attribute name="aria-controls">sources</xsl:attribute>
                             <xsl:attribute name="aria-selected">false</xsl:attribute>
-                            <xsl:element name="h4">List of Edited Sources</xsl:element>
+                            <xsl:element name="div">
+                                <xsl:attribute name="class">panel</xsl:attribute>
+                                    <xsl:text>Sources</xsl:text>
                         </xsl:element>
                     </xsl:element>
                 </xsl:element>
+                            </xsl:element>                     
                 <xsl:element name="div">
                     <xsl:attribute name="class">tab-content</xsl:attribute>
                     <xsl:apply-templates select=".//tei:listBibl"/>
                     <xsl:apply-templates select=".//tei:listWit"/>
                 </xsl:element>
-            </xsl:element>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-md-9</xsl:attribute>
-                <xsl:apply-templates select="./tei:text"/>
+                        </xsl:element></xsl:element>      
+                  <xsl:apply-templates select="./tei:text"/>
                 <xsl:apply-templates select=".//tei:app" mode="modals"/>                 
                 <xsl:call-template name="tpl-apparatus"/>
-        </xsl:element></xsl:element>
+        
             <xsl:call-template name="dharma-script"/>
-        </xsl:element>
         </xsl:element>
     </xsl:template>
     <!--  teiHeader ! -->
@@ -507,6 +507,7 @@
             <xsl:attribute name="id">sources</xsl:attribute>
             <xsl:attribute name="role">tabpanel</xsl:attribute>
             <xsl:attribute name="aria-labelledby">sources-tab</xsl:attribute> 
+            <xsl:element name="h4">List of Edited Sources</xsl:element>
             <xsl:element name="ul">
                 <xsl:for-each select="tei:biblStruct">
                     <xsl:element name="li">
@@ -532,6 +533,7 @@
             <xsl:attribute name="id">witnesses</xsl:attribute>
         <xsl:attribute name="role">tabpanel</xsl:attribute>
         <xsl:attribute name="aria-labelledby">witnesses-tab</xsl:attribute>
+            <xsl:element name="h4">List of Witnesses</xsl:element>
             <xsl:element name="ul">
                 <xsl:for-each select="tei:witness">
                     <xsl:element name="li">

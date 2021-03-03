@@ -170,7 +170,7 @@ a:hover {
 .subsection-head {
   margin-right:0.5rem;
 }
-.subsection .card-header .nav-tabs li a {
+.subsection .card-header li a {
   padding: 0.25em 0.5em;
 }
 /* other fonts */
@@ -625,3 +625,42 @@ a:hover, a i.fas:hover {
     content:"°";
 }
 
+.wrapper{
+  width: 450px;
+  height: auto;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.nav-tabs{
+  width: 450px;
+}
+.nav-item{
+  width: 50%;
+}
+.nav-tabs .nav-link{
+  font-weight: bold;
+  padding-top: 13px;
+  text-align: center;
+  background: #343436;
+  color: #fff;
+  border-radius: 30px;
+  height: 100px;
+}
+.nav-tabs .nav-link.active{
+  background: #fff;
+  color: #000;
+}
+.tab-content{
+  position: relative;
+  width: 450px;
+  height: auto;
+  margin-top: -50px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  z-index: 1000;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  margin-bottom: 50px;
+}
