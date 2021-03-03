@@ -25,17 +25,55 @@
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:apply-templates select="./tei:teiHeader"/>
         <xsl:element name="div">
-            <xsl:attribute name="class">row</xsl:attribute>   
+            <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col</xsl:attribute>
-                <xsl:attribute name="id">mainText</xsl:attribute>
-                <xsl:apply-templates select="./tei:text"/>
-                <xsl:apply-templates select=".//tei:app" mode="modals"/>
-                <xsl:apply-templates select=".//tei:listWit"/>
-                <xsl:apply-templates select=".//tei:listBibl"/>
-                <xsl:call-template name="tpl-apparatus"/>
+                <xsl:attribute name="class">col-md-3 text-justify</xsl:attribute>
+            
+                    <xsl:element name="ul">
+                        <xsl:attribute name="class">nav nav-tabs nav-justified</xsl:attribute>
+                    <xsl:attribute name="id">tab</xsl:attribute>
+                    <xsl:attribute name="role">tablist</xsl:attribute>
+                    <xsl:element name="li">
+                        <xsl:attribute name="class">nav-item</xsl:attribute>
+                        <xsl:attribute name="role">presentation</xsl:attribute>
+                        <xsl:element name="a">
+                            <xsl:attribute name="class">nav-link active</xsl:attribute>
+                            <xsl:attribute name="id">witnesses-tab</xsl:attribute>
+                            <xsl:attribute name="data-toggle">tab</xsl:attribute>
+                            <xsl:attribute name="href">#witnesses</xsl:attribute>
+                            <xsl:attribute name="role">tab</xsl:attribute>
+                            <xsl:attribute name="aria-controls">witnesses</xsl:attribute>
+                            <xsl:attribute name="aria-selected">true</xsl:attribute>
+                            <xsl:element name="h4">List of Witnesses</xsl:element>
+                        </xsl:element> 
+                    </xsl:element>
+                    <xsl:element name="li">
+                        <xsl:attribute name="class">nav-item</xsl:attribute>
+                        <xsl:attribute name="role">presentation</xsl:attribute>
+                        <xsl:element name="a">
+                            <xsl:attribute name="class">nav-link</xsl:attribute>
+                            <xsl:attribute name="id">sources-tab</xsl:attribute>
+                            <xsl:attribute name="data-toggle">tab</xsl:attribute>
+                            <xsl:attribute name="href">#sources</xsl:attribute>
+                            <xsl:attribute name="role">tab</xsl:attribute>
+                            <xsl:attribute name="aria-controls">sources</xsl:attribute>
+                            <xsl:attribute name="aria-selected">false</xsl:attribute>
+                            <xsl:element name="h4">List of Edited Sources</xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">tab-content</xsl:attribute>
+                    <xsl:apply-templates select=".//tei:listBibl"/>
+                    <xsl:apply-templates select=".//tei:listWit"/>
+                </xsl:element>
             </xsl:element>
-        </xsl:element>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-md-9</xsl:attribute>
+                <xsl:apply-templates select="./tei:text"/>
+                <xsl:apply-templates select=".//tei:app" mode="modals"/>                 
+                <xsl:call-template name="tpl-apparatus"/>
+        </xsl:element></xsl:element>
             <xsl:call-template name="dharma-script"/>
         </xsl:element>
         </xsl:element>
@@ -465,8 +503,10 @@
     <!-- Must be reworked -->
     <xsl:template match="tei:listBibl">
         <xsl:element name="div">
-            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-            <xsl:element name="h4">List of Edited Sources</xsl:element>
+            <xsl:attribute name="class">tab-pane fade</xsl:attribute>
+            <xsl:attribute name="id">sources</xsl:attribute>
+            <xsl:attribute name="role">tabpanel</xsl:attribute>
+            <xsl:attribute name="aria-labelledby">sources-tab</xsl:attribute> 
             <xsl:element name="ul">
                 <xsl:for-each select="tei:biblStruct">
                     <xsl:element name="li">
@@ -488,8 +528,10 @@
     <!--  listWit ! -->
     <xsl:template match="tei:listWit">
         <xsl:element name="div">
-            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-            <xsl:element name="h4">List of Witnesses</xsl:element>
+            <xsl:attribute name="class">tab-pane active</xsl:attribute>
+            <xsl:attribute name="id">witnesses</xsl:attribute>
+        <xsl:attribute name="role">tabpanel</xsl:attribute>
+        <xsl:attribute name="aria-labelledby">witnesses-tab</xsl:attribute>
             <xsl:element name="ul">
                 <xsl:for-each select="tei:witness">
                     <xsl:element name="li">
@@ -1112,7 +1154,7 @@
     <xsl:template name="dharma-script">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>
     </xsl:template>
     
