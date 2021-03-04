@@ -589,10 +589,8 @@ a:hover, a i.fas:hover {
     content:")";
 }
 
-.tooltipApp {
-    cursor: pointer;
-}
-.tooltipApp:hover ~ .lem {
+
+.tooltipApp:hover ~ .lem{
     background-color: yellow;
 }
 
