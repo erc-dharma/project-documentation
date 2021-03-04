@@ -290,9 +290,26 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="1"/>
         </xsl:variable>
+       <!--  <xsl:element name="div">
+           <xsl:attribute name="class">float-right</xsl:attribute>-->
+           <xsl:element name="span">
+               <xsl:attribute name="class">tooltipApp float-right</xsl:attribute>
+               <xsl:element name="a">
+                   <xsl:attribute name="tabindex">0</xsl:attribute>
+                   <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                   <xsl:attribute name="data-html">true</xsl:attribute>
+                   <xsl:attribute name="data-target">
+                       <xsl:value-of select="generate-id()"/>
+                   </xsl:attribute>
+                   <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
+                   <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
+                   <xsl:text>&#128172;</xsl:text>
+               </xsl:element>
+           </xsl:element>
+           <!--</xsl:element>-->
+           
        <xsl:element name="span"> 
            <xsl:attribute name="class">lem</xsl:attribute>
-           
            <xsl:element name="a">
                <xsl:attribute name="tabindex">0</xsl:attribute>
                <xsl:attribute name="data-toggle">popover</xsl:attribute>
@@ -304,24 +321,6 @@
                <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
                <xsl:apply-templates select="tei:lem"/>
            </xsl:element>
-       </xsl:element>
-            
-       <xsl:element name="div">
-           <xsl:attribute name="class">float-right</xsl:attribute>
-           <xsl:element name="span">
-               <xsl:attribute name="class">tooltipApp</xsl:attribute>
-            <xsl:element name="a">
-            <xsl:attribute name="tabindex">0</xsl:attribute>
-            <xsl:attribute name="data-toggle">popover</xsl:attribute>
-            <xsl:attribute name="data-html">true</xsl:attribute>
-            <xsl:attribute name="data-target">
-                <xsl:value-of select="generate-id()"/>
-            </xsl:attribute>
-            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-            <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
-                <xsl:text>&#128172;</xsl:text>
-                    </xsl:element>
-        </xsl:element>
        </xsl:element>
 
         

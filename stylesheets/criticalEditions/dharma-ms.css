@@ -589,9 +589,12 @@ a:hover, a i.fas:hover {
     content:")";
 }
 
-.lem:hover ~ .popover:nth-of-type(1){ background-color: yellow; }
-
-.lem:hover { background-color: yellow; }
+.tooltipApp {
+    cursor: pointer;
+}
+.tooltipApp:hover ~ .lem {
+    background-color: yellow;
+}
 
 .title {
     font-style:italic;
