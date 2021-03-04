@@ -77,6 +77,7 @@
                                 <valItem ident="left"/>
                                 <valItem ident="right"/>
                                 <valItem ident="overstrike"/>
+                                <valItem ident="unspecified"/>
                             </valList>
                         </attDef>
                         <attDef ident="ana" mode="delete"/>
