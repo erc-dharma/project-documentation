@@ -139,14 +139,23 @@
 
     </sch:pattern>
 
+    <!-- Still under construction -->
+    
     <sch:pattern>
-        <!-- Still under construction -->
-        <sch:rule context="@source|@target[starts-with(., 'bib:')]">
-            <sch:let name="zoteroapitags" value="unparsed-text(doc('https://api.zotero.org/groups/1633743/items/tags'))"/>
-            <sch:let name="biblentries" value="for $w in tokenize(., '\s+') return substring($w, 5)"/>
-            <!-- &quot;tag&quot;:\s&quot;)($biblentry)&quot;" -->
-            <sch:assert test="every $biblentry in $biblentries satisfies $biblentry = ">The Zotero Short Title needs to match an entry in the DHARMA Zotero group Library.</sch:assert>
-
+        <!-- Check if the ST exists in Zotero -->
+        <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
+            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))"/>
+            <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
         </sch:rule>
     </sch:pattern>
+    
+    <sch:pattern>
+        <!-- Make sure the ST matches one item and not several -->
+        <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
+            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
+            <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
 </sch:schema>
