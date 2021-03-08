@@ -137,6 +137,23 @@
             <sch:let name="tokens" value="for $i in tokenize(., ' ') return substring($i, 6)"/>
             <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
         </sch:rule>
-
     </sch:pattern>
+    
+    <sch:pattern>
+        <!-- Check if the ST exists in Zotero -->
+        <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
+            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))"/>
+            <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
+        </sch:rule>
+    </sch:pattern>
+    
+    <sch:pattern>
+        <!-- Make sure the ST matches one item and not several -->
+        <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
+            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
+            <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
 </sch:schema>
