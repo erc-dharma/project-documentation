@@ -184,8 +184,8 @@
                                 <xsl:call-template name="lem-type"/>
                             </xsl:attribute>
                             <xsl:choose>
-                                <xsl:when test="following-sibling::tei:note[@type='altLem'][1]">
-                                    <xsl:apply-templates select="following-sibling::tei:note[@type='altLem'][1]"/>
+                                <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
+                                    <xsl:apply-templates select="tei:lem/following-sibling::tei:note[@type='altLem']"/>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:apply-templates select="tei:lem"/>
