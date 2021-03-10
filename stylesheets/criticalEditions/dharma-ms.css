@@ -589,7 +589,6 @@ a:hover, a i.fas:hover {
     content:")";
 }
 
-
 .tooltipApp:hover ~ .lem{
     background-color: yellow;
 }
