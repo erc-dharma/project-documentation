@@ -183,7 +183,14 @@
                                 <xsl:text> </xsl:text>
                                 <xsl:call-template name="lem-type"/>
                             </xsl:attribute>
-                            <xsl:apply-templates select="tei:lem"/>
+                            <xsl:choose>
+                                <xsl:when test="following-sibling::tei:note[@type='altLem'][1]">
+                                    <xsl:apply-templates select="following-sibling::tei:note[@type='altLem'][1]"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:apply-templates select="tei:lem"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:element>
                     </xsl:element>
                     <xsl:if test="tei:lem/@*">
@@ -269,9 +276,9 @@
                     </xsl:for-each>
                 </xsl:if>
                 <!--  Notes ! -->
-                <xsl:if test="tei:note">
+                <xsl:if test="tei:note[fn:not(@type='altLem')]">
                     <xsl:element name="hr"/>
-                    <xsl:for-each select="tei:note">
+                    <xsl:for-each select="tei:note[fn:not(@type='altLem')]">
                         <xsl:element name="span">
                             <xsl:attribute name="class">note-line</xsl:attribute>
                             <xsl:apply-templates/>
