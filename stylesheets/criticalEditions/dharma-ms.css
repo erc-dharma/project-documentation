@@ -294,9 +294,9 @@ ul.sgt-index {
 /* Format individual lines as block elements */
 .lg .l {
   display:block;
-  margin-left:1rem;;
+  margin-left:1rem;
   padding-left:2rem;
-  text-indent:-2rem;
+  /*text-indent:-2rem;*/
 }
 .lg .l+.lg .l:last-child {
   display:inline-block;
