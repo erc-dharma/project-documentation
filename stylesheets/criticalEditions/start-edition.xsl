@@ -89,11 +89,12 @@
                     <xsl:call-template name="tab-metadata"/>
                 </xsl:element>
                         </xsl:element>
-                    </xsl:element>      
+                        
                   <xsl:apply-templates select="./tei:text"/>
                 <xsl:apply-templates select=".//tei:app" mode="modals"/>                 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="dharma-script"/>
+        </xsl:element>  
         </xsl:element>
     </xsl:template>
     <!--  teiHeader ! -->
@@ -325,7 +326,10 @@
                </xsl:attribute>
                <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
                <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
-               <xsl:text>&#128172;</xsl:text>
+               <!--<xsl:text>&#128172;</xsl:text>-->
+                   <xsl:text>(</xsl:text>
+               <xsl:value-of select="substring-after($app-num, 'app')"/>
+               <xsl:text>)</xsl:text>
            </xsl:element>
        </xsl:element>
        <!--</xsl:element>-->
@@ -1499,18 +1503,35 @@
                     <xsl:text> </xsl:text>
                     <xsl:if test="@*">
                         <xsl:if test="@wit">
-                            <xsl:variable name="witnesses" select="fn:tokenize(@wit, '#')"/>
+                            <xsl:variable name="witnesses">
+                                <xsl:choose>
+                                    <xsl:when test="contains(@wit, '#')">
+                                        <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 2)"/>
+                                    </xsl:when>
+                                    <xsl:when test="contains(@wit, 'bib:')">
+                                        <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 5)"/>
+                                    </xsl:when>
+                                </xsl:choose>
+                            </xsl:variable>
+                            <xsl:variable name="witDetail-content">
+                                <xsl:choose>
+                                    <xsl:when test="contains($path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@wit, '#')">
+                                        <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 2)"/>
+                                    </xsl:when>
+                                </xsl:choose>
+                            </xsl:variable>
+                         
                             <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        <xsl:for-each select="$witnesses">
-                            <xsl:apply-templates select="."/>
-                        </xsl:for-each>
-                                <xsl:if test="$witnesses = replace(following-sibling::tei:witDetail[1]/@wit, '#', '')">
-                                    <xsl:text> </xsl:text>
-                                    <xsl:element name="sub">
-                                    <xsl:value-of select="following-sibling::tei:witDetail[1]/@type"/>
-                                    </xsl:element>
-                                </xsl:if>
+                                <xsl:for-each select="$witnesses">
+                                    <xsl:apply-templates select="."/>
+                                    <xsl:if test="$witnesses = $witDetail-content">
+                                        <xsl:call-template name="witDetail-display">
+                                            <xsl:with-param name="witDetail-type" select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
+                                        </xsl:call-template>
+                                    </xsl:if>
+                                 </xsl:for-each>
+                                
                             </xsl:element>
                         </xsl:if>
                         <xsl:if test="attribute::wit or attribute::source">
@@ -1684,5 +1705,14 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
+    
+    <xsl:template name="witDetail-display">
+        <xsl:param name="witDetail-type"/>
+        <xsl:text> </xsl:text>
+        <xsl:element name="sub">
+            <xsl:value-of select="$witDetail-type"/>
+        </xsl:element>
+    </xsl:template>
+
     
 </xsl:stylesheet>
