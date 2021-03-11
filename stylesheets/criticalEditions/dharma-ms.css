@@ -594,6 +594,9 @@ a:hover, a i.fas:hover {
     background-color: yellow;
 }
 
+.tooltipApp a{
+    color: #a34545;
+}
 .title {
     font-style:italic;
 }
