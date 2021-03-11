@@ -559,7 +559,7 @@
     <!--  List -->
     <xsl:template match="tei:list">
         <xsl:element name="ul">
-            <xsl:attribute name="class">list-unstyled</xsl:attribute>
+            <xsl:attribute name="class">list-unstyle</xsl:attribute>
             <xsl:for-each select="child::tei:item">
                 <xsl:element name="li">
                     <xsl:apply-templates/>
@@ -1432,7 +1432,14 @@
                         <xsl:attribute name="class">
                             <xsl:call-template name="lem-type"/>
                         </xsl:attribute>
-                    <xsl:apply-templates select="$path/tei:lem"/>
+                        <xsl:choose>
+                            <xsl:when test="$path/tei:lem/following-sibling::tei:note[@type='altLem']">
+                                <xsl:apply-templates select="replace($path/tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:apply-templates select="$path/tei:lem"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:element>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -1524,7 +1531,10 @@
                                 <xsl:for-each select="$witnesses">
                                     <xsl:apply-templates select="."/>
                                     <xsl:if test="$witnesses = $witDetail-content">
-                                        <xsl:call-template name="witDetail-display">
+                                <xsl:text> </xsl:text>
+                                        <xsl:element name="sub">
+                                            <xsl:value-of select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
+                                        </xsl:element>        <xsl:call-template name="witDetail-display">
                                             <xsl:with-param name="witDetail-type" select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
                                         </xsl:call-template>
                                     </xsl:if>
