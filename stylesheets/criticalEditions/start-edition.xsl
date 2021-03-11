@@ -257,7 +257,6 @@
                                             </xsl:choose>
                                     <xsl:if test="@cause='eyeskip'">
                                         <xsl:element name="span">
-                                            <xsl:attribute name="class">font-italic</xsl:attribute> 
                                             <xsl:attribute name="style">color:black;</xsl:attribute>
                                         <xsl:text> (eye-skip)</xsl:text>
                                         </xsl:element>
@@ -1495,7 +1494,6 @@
                     </xsl:choose>
                     <xsl:if test="@cause='eyeskip'">
                         <xsl:element name="span">
-                            <xsl:attribute name="class">font-italic</xsl:attribute> 
                             <xsl:text> (eye-skip)</xsl:text>
                         </xsl:element>
                     </xsl:if>
