@@ -666,7 +666,7 @@ a:hover, a i.fas:hover {
   margin-bottom: 50px;
 }
 
-li{
+.list-unstyled li{
    margin-left: 40px;
    padding: 5px;
 }
