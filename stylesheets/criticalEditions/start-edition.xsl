@@ -185,7 +185,7 @@
                             </xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
-                                    <xsl:apply-templates select="tei:lem/following-sibling::tei:note[@type='altLem']"/>
+                                    <xsl:apply-templates select="replace(tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:apply-templates select="tei:lem"/>
@@ -245,13 +245,20 @@
                                                     <xsl:element name="span">
                                                         <xsl:attribute name="class">font-italic</xsl:attribute> 
                                                         <xsl:attribute name="style">color:black;</xsl:attribute>
-                                                        <xsl:text>om.</xsl:text> 
+                                                        <xsl:text>om.</xsl:text>                                                       
                                                     </xsl:element>
                                                 </xsl:when>
                                                 <xsl:otherwise>
                                                     <xsl:apply-templates/>
                                                 </xsl:otherwise>
                                             </xsl:choose>
+                                    <xsl:if test="@cause='eyeskip'">
+                                        <xsl:element name="span">
+                                            <xsl:attribute name="class">font-italic</xsl:attribute> 
+                                            <xsl:attribute name="style">color:black;</xsl:attribute>
+                                        <xsl:text> (eye-skip)</xsl:text>
+                                        </xsl:element>
+                                    </xsl:if>
                                 </xsl:element>
                             </xsl:element>
                             <xsl:text> </xsl:text>
@@ -1469,6 +1476,12 @@
                             </xsl:element>
                         </xsl:when>
                     </xsl:choose>
+                    <xsl:if test="@cause='eyeskip'">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-italic</xsl:attribute> 
+                            <xsl:text> (eye-skip)</xsl:text>
+                        </xsl:element>
+                    </xsl:if>
                     <xsl:apply-templates/>
                     <xsl:text> </xsl:text>
                     <xsl:if test="@*">
