@@ -1526,24 +1526,24 @@
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:variable>
-                            <xsl:variable name="witDetail-content">
+                            <!--<xsl:variable name="witDetail-content">
                                 <xsl:choose>
                                     <xsl:when test="contains($path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@wit, '#')">
                                         <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 2)"/>
                                     </xsl:when>
                                 </xsl:choose>
-                            </xsl:variable>
+                            </xsl:variable>-->
                          
                             <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:for-each select="$witnesses">
                                     <xsl:apply-templates select="."/>
-                                    <xsl:if test="$witnesses = $witDetail-content">
+                                    <!--<xsl:if test="$witnesses = $witDetail-content">
                                 <xsl:text> </xsl:text>
                                         <xsl:element name="sub">
                                             <xsl:value-of select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
                                         </xsl:element>       
-                                    </xsl:if>
+                                    </xsl:if>-->
                                  </xsl:for-each>
                                 
                             </xsl:element>
