@@ -206,15 +206,19 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
                             </xsl:if>
-                            <xsl:if test="tei:lem/@wit">
+                            <xsl:if test="tei:lem/@wit">                    
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
-                                        <xsl:with-param name="witDetail-wit" select="following-sibling::tei:witDetail[1]/@wit"/>
-                                        <xsl:with-param name="witDetail-type" select="following-sibling::tei:witDetail[1]/@type"/>
                                 </xsl:call-template>
                                 </xsl:element>
+                                <xsl:if test="following-sibling::*[local-name()='witDetail']">
+                                   <xsl:element name="sub"> 
+                                       <xsl:text> </xsl:text>
+                                    <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                   </xsl:element>
+                                </xsl:if>
                                 <xsl:if test="tei:lem/attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
@@ -268,9 +272,13 @@
                                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
-                                    <xsl:with-param name="witDetail-wit" select="./following-sibling::tei:witDetail[1]/@wit"/>
-                                    <xsl:with-param name="witDetail-type" select="./following-sibling::tei:witDetail[1]/@type"/>
                             </xsl:call-template>
+                                <xsl:if test="following-sibling::*[local-name()='witDetail']">
+                                    <xsl:element name="sub">
+                                        <xsl:text> </xsl:text>
+                                    <xsl:apply-templates select="following-sibling::*[local-name()='witDetail']/@type"/>
+                                    </xsl:element>
+                                </xsl:if>
                                 <xsl:if test="attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
@@ -1164,8 +1172,8 @@
     <!--  NAMED TEMPLATES ! -->
     <xsl:template name="tokenize-witness-list">
         <xsl:param name="string"/>
-        <xsl:param name="witDetail-wit"/>
-        <xsl:param name="witDetail-type"/>
+      <!--  <xsl:param name="witDetail-content"/>
+        <xsl:message><xsl:value-of select="$string"/><xsl:value-of select="$witDetail-content"/></xsl:message>-->
         <xsl:choose>
             <xsl:when test="contains($string, ' ')">
                 <xsl:variable name="first-item"
@@ -1182,7 +1190,7 @@
             <xsl:otherwise>
                 <xsl:choose>
                     <xsl:when test="$string = ''">
-                        <xsl:text/> 
+                       <xsl:text/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="make-bibl-link">
@@ -1192,7 +1200,6 @@
                 </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
-        
     </xsl:template>
     <!--  Make bibliography link ! -->
     <xsl:template name="make-bibl-link">
@@ -1206,6 +1213,7 @@
             <xsl:value-of select="$target"/>
         </xsl:element>
     </xsl:template>
+    
     <!-- Identity template -->
     <xsl:template match="@* | text() | comment()" mode="copy">
         <xsl:copy/>
@@ -1534,9 +1542,7 @@
                                 <xsl:text> </xsl:text>
                                         <xsl:element name="sub">
                                             <xsl:value-of select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
-                                        </xsl:element>        <xsl:call-template name="witDetail-display">
-                                            <xsl:with-param name="witDetail-type" select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
-                                        </xsl:call-template>
+                                        </xsl:element>       
                                     </xsl:if>
                                  </xsl:for-each>
                                 
@@ -1714,13 +1720,13 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template name="witDetail-display">
+    <!--<xsl:template name="witDetail-display">
         <xsl:param name="witDetail-type"/>
         <xsl:text> </xsl:text>
         <xsl:element name="sub">
             <xsl:value-of select="$witDetail-type"/>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
 
     
 </xsl:stylesheet>
