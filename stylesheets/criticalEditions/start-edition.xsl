@@ -417,7 +417,8 @@
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
             <xsl:attribute name="title">Editorial deletion.</xsl:attribute>
-            <xsl:element name="del">
+            <xsl:element name="span">
+                <xsl:attribute name="class">scribe-deletion</xsl:attribute>
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:element>
