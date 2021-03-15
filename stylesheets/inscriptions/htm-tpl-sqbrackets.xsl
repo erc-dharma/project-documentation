@@ -107,19 +107,35 @@
         </xsl:choose>
         <xsl:value-of select="$endspace"/>
       </xsl:variable>
+      <xsl:if test="text()[ancestor::div[@id='apparatus']][preceding::span[@class='notBold'][1]]">
+        <xsl:apply-templates select="replace($input, '\s(/\S)', '$1')"/>
+      </xsl:if>
+      <xsl:if test="text()[preceding::span[@class='notBold'][1]]">
+        <xsl:apply-templates select="replace($input, '\s\-', '-')"/>
+      </xsl:if>
 <xsl:apply-templates select="replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2')"/>
     </xsl:template>
 
-  <xsl:template match="text()[ancestor::div[@id='apparatus']][preceding::span[@class='notBold'][1]]" mode="sqbrackets">
-    <xsl:if test=".">
+<!--  <xsl:template match="text()[ancestor::div[@id='apparatus']][preceding::span[@class='notBold'][1]]" mode="sqbrackets">
+    <xsl:choose>
+    <xsl:when test=".">
     <xsl:apply-templates select="replace(., '\s(/\S)', '$1')"/>
-  </xsl:if>
-    </xsl:template>
+  </xsl:when>
+  <xsl:otherwise>
+  <xsl:apply-templates/>
+  </xsl:otherwise>
+</xsl:choose>
+</xsl:template>
 
     <xsl:template match="text()[preceding::span[@class='notBold'][1]]" mode="sqbrackets">
-      <xsl:if test=".">
+      <xsl:choose>
+      <xsl:when test=".">
       <xsl:apply-templates select="replace(., '\s\-', '-')"/>
-    </xsl:if>
-      </xsl:template>
+    </xsl:when>
+    <xsl:otherwise>
+    <xsl:apply-templates/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>-->
 
 </xsl:stylesheet>
