@@ -341,7 +341,8 @@
        </xsl:element>
        <!--</xsl:element>-->
        
-           <xsl:element name="span"> 
+       <!-- tooltip display in the body -->
+           <!--<xsl:element name="span"> 
                <xsl:attribute name="class">lem</xsl:attribute>
                <xsl:element name="a">
                    <xsl:attribute name="tabindex">0</xsl:attribute>
@@ -354,8 +355,15 @@
                    <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
                    <xsl:apply-templates select="tei:lem"/>
                </xsl:element>
+           </xsl:element>-->
+           
+           <!-- Version without the tooltip display in the body-->
+           <xsl:element name="span"> 
+               <xsl:attribute name="class">lem</xsl:attribute>
+               <xsl:apply-templates select="tei:lem"/>
            </xsl:element>
            
+           <!-- Version with the bulle at the end of the line-->
         <!--<xsl:element name="div">
             <xsl:attribute name="class">float-right</xsl:attribute>
         <xsl:element name="span">
@@ -373,15 +381,7 @@
             </a>
         </xsl:element>
         </xsl:element>-->
-       <!--<xsl:element name="button">
-           <xsl:attribute name="class">btn</xsl:attribute>
-           <xsl:attribute name="data-toogle">modal</xsl:attribute>
-           <xsl:attribute name="data-target">
-               <xsl:text>#to-app-</xsl:text>
-               <xsl:value-of select="$app-num"/>
-           </xsl:attribute>
-           <xsl:text>&#128172;</xsl:text>
-       </xsl:element>--></xsl:element>
+        </xsl:element>
         
     </xsl:template>
     <!--  C ! -->
