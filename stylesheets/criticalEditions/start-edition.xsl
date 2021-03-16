@@ -11,14 +11,21 @@
         <xsl:output-character character="&apos;" string="&amp;rsquo;" />
     </xsl:character-map>
     
-    <xsl:function name="functx:escape-for-regex" as="xs:string">
-        <xsl:param name="arg" as="xs:string?"/>
-        <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
+    <xsl:function name="functx:escape-for-regex" as="xs:string"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>  
+        <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>     
     </xsl:function>
     <xsl:function name="functx:substring-after-last" as="xs:string?">
         <xsl:param name="arg" as="xs:string?"/>
         <xsl:param name="delim" as="xs:string"/>
         <xsl:sequence select="replace($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
+    </xsl:function>
+    <xsl:function name="functx:substring-before-last-match" as="xs:string?"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="regex" as="xs:string"/>
+        <xsl:sequence select="replace($arg,concat('^(.*)',$regex,'.*'),'$1')"/>   
     </xsl:function>
     
     
@@ -742,14 +749,30 @@
                             <xsl:attribute name="class">fake-lem</xsl:attribute>
                                <xsl:choose>
                                    <xsl:when test="parent::tei:p">
-                                       <xsl:value-of select="substring-before(parent::tei:p, ' ')"/>
-                                       <xsl:text> [...] </xsl:text>
-                                       <!--<xsl:value-of select="functx:substring-after-last(./parent::tei:p, ' ')"/>-->
+                                               <xsl:value-of select="substring-before(parent::tei:p, ' ')"/>       
+                                       <xsl:text> [&#8230;] </xsl:text>
+                                       <xsl:choose>
+                                           <xsl:when test="parent::tei:p/tei:*[last()-1]/not(text())">
+                                               <xsl:choose>
+                                                   <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']"><xsl:value-of select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
+                                                   </xsl:when>
+                                                   <xsl:otherwise>
+                                                       <xsl:value-of select="parent::tei:p/tei:*[last()-1]"/>
+                                                   </xsl:otherwise>
+                                               </xsl:choose>
+                                           </xsl:when>
+                                               <xsl:otherwise>
+                                                   <xsl:value-of select="functx:substring-after-last(parent::tei:p, ' ')"/>
+                                               </xsl:otherwise>
+                                       </xsl:choose>
                                    </xsl:when>
                                    <xsl:when test="parent::tei:lg">
                                        <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
-                                       <xsl:text> [...] </xsl:text>
-                                      <!-- <xsl:value-of select="functx:substring-after-last(./parent::tei:lg/child::tei:l[last()], ' ')"/>-->
+                                       <xsl:text> [&#8230;] </xsl:text>
+                                       <xsl:choose>
+                                           <xsl:when test="ends-with(parent::tei:lg/child::tei:l[last()], '|')">
+                                               <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(parent::tei:lg/child::tei:l[last()], '\s\|'), ' ')"/>
+                                           </xsl:when><xsl:otherwise><xsl:value-of select="functx:substring-after-last(parent::tei:lg/child::tei:l[last()], ' ')"/></xsl:otherwise></xsl:choose>
                                    </xsl:when>
                                </xsl:choose>
                         </xsl:element>
@@ -1368,7 +1391,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[parent::tei:p or parent::tei:lg]">
+            select=".//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -1377,9 +1400,6 @@
                 <xsl:when test="self::tei:app">
                   <xsl:text>app</xsl:text>
                 </xsl:when>
-                  <xsl:when test="self::tei:note">
-                      <xsl:text>note</xsl:text>
-                  </xsl:when>
               </xsl:choose>
             </xsl:with-param>
           </xsl:call-template>
@@ -1516,13 +1536,21 @@
                 <xsl:text>:&#x202F;</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
-          <xsl:element name="span">  
+          <xsl:choose>
+                  <xsl:when test="local-name() = 'note'">
+                      <xsl:apply-templates/>
+                  </xsl:when>
+              
+              <xsl:otherwise>
+                  <xsl:element name="span">  
               <xsl:attribute name="class">app</xsl:attribute>
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>
                <!-- <xsl:with-param name="childtype" select="$childtype" />-->
             </xsl:call-template>
           </xsl:element>  
+              </xsl:otherwise>
+          </xsl:choose>
     </xsl:template>
  
     <!-- prints the content of apparatus-->
@@ -1722,7 +1750,9 @@
                 </xsl:if>
             </xsl:when>
             <xsl:when test="$apptype='note'">
-                <xsl:apply-templates select="$path/tei:note"/>
+                <xsl:for-each select="$path/tei:note">
+                <xsl:apply-templates/>
+                </xsl:for-each>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
