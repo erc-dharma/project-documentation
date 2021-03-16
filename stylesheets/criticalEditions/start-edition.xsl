@@ -747,34 +747,7 @@
                         <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
                         <xsl:element name="span">
                             <xsl:attribute name="class">fake-lem</xsl:attribute>
-                               <xsl:choose>
-                                   <xsl:when test="parent::tei:p">
-                                               <xsl:value-of select="substring-before(parent::tei:p, ' ')"/>       
-                                       <xsl:text> [&#8230;] </xsl:text>
-                                       <xsl:choose>
-                                           <xsl:when test="parent::tei:p/tei:*[last()-1]/not(text())">
-                                               <xsl:choose>
-                                                   <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']"><xsl:value-of select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
-                                                   </xsl:when>
-                                                   <xsl:otherwise>
-                                                       <xsl:value-of select="parent::tei:p/tei:*[last()-1]"/>
-                                                   </xsl:otherwise>
-                                               </xsl:choose>
-                                           </xsl:when>
-                                               <xsl:otherwise>
-                                                   <xsl:value-of select="functx:substring-after-last(parent::tei:p, ' ')"/>
-                                               </xsl:otherwise>
-                                       </xsl:choose>
-                                   </xsl:when>
-                                   <xsl:when test="parent::tei:lg">
-                                       <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
-                                       <xsl:text> [&#8230;] </xsl:text>
-                                       <xsl:choose>
-                                           <xsl:when test="ends-with(parent::tei:lg/child::tei:l[last()], '|')">
-                                               <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(parent::tei:lg/child::tei:l[last()], '\s\|'), ' ')"/>
-                                           </xsl:when><xsl:otherwise><xsl:value-of select="functx:substring-after-last(parent::tei:lg/child::tei:l[last()], ' ')"/></xsl:otherwise></xsl:choose>
-                                   </xsl:when>
-                               </xsl:choose>
+                                       <xsl:call-template name="fake-lem-making"/>
                         </xsl:element>
                         <xsl:element name="hr"/>
                         <xsl:for-each select="self::tei:note">
@@ -1538,6 +1511,11 @@
         </xsl:choose>
           <xsl:choose>
                   <xsl:when test="local-name() = 'note'">
+                      <xsl:call-template name="fake-lem-making"/>
+                      <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          <xsl:text>] </xsl:text>
+                      </xsl:element>    
                       <xsl:apply-templates/>
                   </xsl:when>
               
@@ -1915,5 +1893,35 @@
         </xsl:element>
     </xsl:template>-->
 
+<xsl:template name="fake-lem-making">
+    <xsl:choose>
+        <xsl:when test="parent::tei:p">
+            <xsl:value-of select="substring-before(parent::tei:p, ' ')"/>       
+            <xsl:text> [&#8230;] </xsl:text>
+            <xsl:choose>
+                <xsl:when test="parent::tei:p/tei:*[last()-1]/not(text())">
+                    <xsl:choose>
+                        <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']"><xsl:value-of select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="parent::tei:p/tei:*[last()-1]"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="functx:substring-after-last(parent::tei:p, ' ')"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:when>
+        <xsl:when test="parent::tei:lg">
+            <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
+            <xsl:text> [&#8230;] </xsl:text>
+            <xsl:choose>
+                <xsl:when test="ends-with(parent::tei:lg/child::tei:l[last()], '|')">
+                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(parent::tei:lg/child::tei:l[last()], '\s\|'), ' ')"/>
+                </xsl:when><xsl:otherwise><xsl:value-of select="functx:substring-after-last(parent::tei:lg/child::tei:l[last()], ' ')"/></xsl:otherwise></xsl:choose>
+        </xsl:when>
+    </xsl:choose>
+</xsl:template>
     
 </xsl:stylesheet>
