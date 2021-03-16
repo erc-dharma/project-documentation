@@ -160,9 +160,6 @@
               <xsl:text>↓</xsl:text>
             <xsl:value-of select="$number"/>
             </sup>
-            <span class="tooltiptext-notes">
-              <xsl:apply-templates/>
-            </span>
           </span>
           </a>
       </xsl:when>
@@ -210,9 +207,9 @@
                 <xsl:call-template name="dharma-app-link">
                    <xsl:with-param name="location" select="'apparatus'"/>
                 </xsl:call-template>
-                <span>
-          <xsl:apply-templates/>
-        </span>
+                  <span class="tooltiptext-notes">
+                  <xsl:copy-of select="node()"/>
+                  </span>
         <br/>
         </xsl:for-each>
       </p>
