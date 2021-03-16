@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:fn="http://www.w3.org/2005/xpath-functions" version="2.0"
-    exclude-result-prefixes="tei xi fn">
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:functx="http://www.functx.com"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0"
+    exclude-result-prefixes="tei xi fn functx">
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0" use-character-maps="htmlDoc"/>
     
     <xsl:character-map name="htmlDoc">
         <xsl:output-character character="&apos;" string="&amp;rsquo;" />
     </xsl:character-map>
+    
+    <xsl:function name="functx:escape-for-regex" as="xs:string">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
+    </xsl:function>
+    <xsl:function name="functx:substring-after-last" as="xs:string?">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="delim" as="xs:string"/>
+        <xsl:sequence select="replace($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
+    </xsl:function>
+    
+    
     
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
@@ -91,7 +105,8 @@
                         </xsl:element>
                         
                   <xsl:apply-templates select="./tei:text"/>
-                <xsl:apply-templates select=".//tei:app" mode="modals"/>                 
+                <xsl:apply-templates select=".//tei:app" mode="modals"/>  
+                <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="dharma-script"/>
         </xsl:element>  
@@ -334,9 +349,18 @@
                <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
                <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
                <!--<xsl:text>&#128172;</xsl:text>-->
+               
+               <xsl:element name="span">
+                   <xsl:attribute name="class">tooltipApp</xsl:attribute>
+                   <xsl:attribute name="type">button</xsl:attribute>
+                   <xsl:attribute  name="href">
+                       <xsl:text>#to-app-</xsl:text>
+                       <xsl:value-of select="$app-num"/>
+                   </xsl:attribute>
                    <xsl:text>(</xsl:text>
                <xsl:value-of select="substring-after($app-num, 'app')"/>
                <xsl:text>)</xsl:text>
+               </xsl:element>        
            </xsl:element>
        </xsl:element>
        <!--</xsl:element>-->
@@ -353,6 +377,7 @@
                    </xsl:attribute>
                    <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
                    <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
+                   
                    <xsl:apply-templates select="tei:lem"/>
                </xsl:element>
            </xsl:element>-->
@@ -674,6 +699,74 @@
             </xsl:if>
         </xsl:element>
       
+    </xsl:template>
+    <xsl:template match="tei:note">
+        <xsl:choose>
+            <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg]">
+              <xsl:element name="span">
+                  <xsl:attribute name="class">lem-last-note float-right</xsl:attribute>
+                        <xsl:element name="a">
+                            <xsl:attribute name="tabindex">0</xsl:attribute>
+                            <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                            <xsl:attribute name="data-html">true</xsl:attribute>
+                            <xsl:attribute name="data-target">
+                                <xsl:value-of select="generate-id()"/>
+                            </xsl:attribute>
+                            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
+                          
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">tooltipApp</xsl:attribute>
+                                <xsl:attribute name="type">button</xsl:attribute>                              
+                                <xsl:text>(&#128172;)</xsl:text> 
+                            </xsl:element>        
+                        </xsl:element>
+                
+             <!--   <xsl:element name="span">
+                    <xsl:attribute name="class">last-note</xsl:attribute>
+                    <xsl:text>&#128172;</xsl:text>
+                </xsl:element>-->
+              </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+   <xsl:template match="tei:note" mode="modals">
+        <xsl:variable name="apparatus-note">
+            <xsl:if test="self::tei:note[position()=last()][parent::tei:p or parent::tei:lg or not(@type='parallels' or parent::tei:app or @type='altLem')]">
+                <xsl:element name="span">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">fake-lem</xsl:attribute>
+                               <xsl:choose>
+                                   <xsl:when test="parent::tei:p">
+                                       <xsl:value-of select="substring-before(parent::tei:p, ' ')"/>
+                                       <xsl:text> [...] </xsl:text>
+                                       <!--<xsl:value-of select="functx:substring-after-last(./parent::tei:p, ' ')"/>-->
+                                   </xsl:when>
+                                   <xsl:when test="parent::tei:lg">
+                                       <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
+                                       <xsl:text> [...] </xsl:text>
+                                      <!-- <xsl:value-of select="functx:substring-after-last(./parent::tei:lg/child::tei:l[last()], ' ')"/>-->
+                                   </xsl:when>
+                               </xsl:choose>
+                        </xsl:element>
+                        <xsl:element name="hr"/>
+                        <xsl:for-each select="self::tei:note">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">note-line</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:for-each>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:if>
+        </xsl:variable>
+       <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$apparatus-note"/>
+        </span>      
     </xsl:template>
     <!--  P ! -->
     <!--  p ! -->
@@ -1267,7 +1360,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app | .//tei:note"> <!-- .//tei:choice | .//tei:subst |  -->
 
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -1275,7 +1368,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-          select=".//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])]">
+            select=".//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[parent::tei:p or parent::tei:lg]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -1284,6 +1377,9 @@
                 <xsl:when test="self::tei:app">
                   <xsl:text>app</xsl:text>
                 </xsl:when>
+                  <xsl:when test="self::tei:note">
+                      <xsl:text>note</xsl:text>
+                  </xsl:when>
               </xsl:choose>
             </xsl:with-param>
           </xsl:call-template>
@@ -1298,12 +1394,12 @@
   </xsl:template>
 
   <!-- Used in htm-{element} and above to add linking to and from apparatus -->
-  <xsl:template name="app-link">
-    <!-- location defines the direction of linking -->
+<!--  <xsl:template name="app-link">
+    <!-\- location defines the direction of linking -\->
     <xsl:param name="location"/>
-    <!-- Does not produce links for translations -->
+    <!-\- Does not produce links for translations -\->
      <xsl:if
-        test="not((local-name() = 'app') and ancestor::tei:app)">
+         test="not((local-name() = 'app') and ancestor::tei:app)">
         <xsl:variable name="app-num">
         <xsl:value-of select="name()"/>
           <xsl:number level="any" format="1"/>
@@ -1321,7 +1417,64 @@
              <xsl:value-of select="substring-after($app-num, 'app')"/>
          </a>
     </xsl:if>
-  </xsl:template>
+  </xsl:template>-->
+    
+    <xsl:template name="app-link">
+        <!-- location defines the direction of linking -->
+        <xsl:param name="location"/>
+        <!-- Does not produce links for translations -->
+        <xsl:if test="not(ancestor::tei:div[@type = 'translation'])">
+            <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
+            <xsl:if
+                test="not((local-name() = 'choice' or local-name() = 'subst' or local-name() = 'app')
+                and (ancestor::tei:choice or ancestor::tei:subst or ancestor::tei:app))">
+                <xsl:variable name="app-num">
+                    <xsl:value-of select="name()"/>
+                    <xsl:number level="any" format="01"/>
+                </xsl:variable>
+                <xsl:call-template name="generate-app-link">
+                    <xsl:with-param name="location" select="$location"/>
+                    <xsl:with-param name="app-num" select="$app-num"/>
+                </xsl:call-template>
+            </xsl:if>
+        </xsl:if>
+    </xsl:template>
+    
+    <xsl:template name="generate-app-link">
+        <xsl:param name="location"/>
+        <xsl:param name="app-num"/>
+        
+        <xsl:choose>
+            <xsl:when test="$location = 'text'">
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:text>#to-app-</xsl:text>
+                        <xsl:value-of select="$app-num"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="id">
+                        <xsl:text>from-app-</xsl:text>
+                        <xsl:value-of select="$app-num"/>
+                    </xsl:attribute>
+                    <xsl:text>(*)</xsl:text>
+                </a>
+            </xsl:when>
+            <xsl:when test="$location = 'apparatus'">
+                <a>
+                    <xsl:attribute name="id">
+                        <xsl:text>to-app-</xsl:text>
+                        <xsl:value-of select="$app-num"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="href">
+                        <xsl:text>#from-app-</xsl:text>
+                        <xsl:value-of select="$app-num"/>
+                    </xsl:attribute>
+                    <xsl:text>^</xsl:text>
+                    <xsl:value-of select="substring-after($app-num, 'app')"/>
+                </a>
+                <xsl:text> </xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
 
     <xsl:template name="dharma-app">
         <xsl:param name="apptype"/>
@@ -1339,7 +1492,7 @@
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app">
                     <xsl:text>app</xsl:text>
                 </xsl:when>-->
-                <xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>
+              <!--  <xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>-->
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="div-loc">
@@ -1567,6 +1720,9 @@
                     <xsl:text> • </xsl:text>
                     <xsl:apply-templates select="tei:note"/>
                 </xsl:if>
+            </xsl:when>
+            <xsl:when test="$apptype='note'">
+                <xsl:apply-templates select="$path/tei:note"/>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
