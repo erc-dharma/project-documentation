@@ -533,7 +533,7 @@ a:hover, a i.fas:hover {
 .lemma-line, .reading-line, .note-line {
     display:block;
 }
-.app-lem{
+.app-lem, .fake-lem{
     color:#336600;
 }
 .app-rdg {
@@ -602,7 +602,7 @@ a:hover, a i.fas:hover {
     background-color: yellow;
 }
 
-.tooltipApp a{
+.tooltipApp, .lem-last-note {
     color: #a34545;
 }
 .title {
