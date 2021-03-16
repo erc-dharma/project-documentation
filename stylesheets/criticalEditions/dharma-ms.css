@@ -70,7 +70,7 @@ body {
   white-space:pre;
 }
 /* in the analyzed portion*/
-/*.lg .l .odd_pada:after {
+.lg .l .odd_pada:after {
   content: "\A\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0" !important;
   white-space:pre;
 }
@@ -78,7 +78,7 @@ body {
   content: "\A" !important;
   white-space:pre;
 }
-*/
+
 
 /* css for fleurons */
 .printorn {
@@ -293,17 +293,17 @@ ul.sgt-index {
 }
 /* Format individual lines as block elements */
 .lg .l {
-/*  display:block;*/
+  display:block;
   margin-left:1rem;
   padding-left:2rem;
   /*text-indent:-2rem;*/
 }
-/*.lg .l+.lg .l:last-child {
+.lg .l+.lg .l:last-child {
   display:inline-block;
 }
 .l:last-child, .l:last-of-type {
   margin-bottom:10px;
-}*/
+}
 .lg .l .caesura:after {
   content: "\A\0000a0\0000a0" !important;
   white-space:pre;
@@ -680,8 +680,4 @@ a:hover, a i.fas:hover {
 .list-unstyled li{
    margin-left: 40px;
    padding: 5px;
-}
-
-.lem-tooltipApp{
-    float: right;
 }
