@@ -671,7 +671,14 @@
                             </xsl:choose>
                         </xsl:element>
                         <xsl:text>: </xsl:text>
-                        <xsl:apply-templates/>
+                        <xsl:choose>
+                            <xsl:when test="child::tei:abbr[1]">
+                                <xsl:apply-templates select="child::tei:*[position() > 1]"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:apply-templates/>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:element>
                 </xsl:for-each>
             </xsl:element>
