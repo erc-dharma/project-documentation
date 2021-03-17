@@ -68,7 +68,7 @@
                             </xsl:element>
                         </xsl:element> 
                     </xsl:element>
-                    <xsl:element name="li">
+                   <!-- <xsl:element name="li">
                         <xsl:attribute name="class">nav-item</xsl:attribute>
                         <xsl:attribute name="role">presentation</xsl:attribute>
                         <xsl:element name="a">
@@ -84,7 +84,7 @@
                                     <xsl:text>Sources</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                </xsl:element>
+                </xsl:element>-->
                                 <xsl:element name="li">
                                     <xsl:attribute name="class">nav-item</xsl:attribute>
                                     <xsl:attribute name="role">presentation</xsl:attribute>
@@ -105,7 +105,7 @@
                             </xsl:element>                     
                 <xsl:element name="div">
                     <xsl:attribute name="class">tab-content</xsl:attribute>
-                    <xsl:apply-templates select=".//tei:listBibl"/>
+                    <!--<xsl:apply-templates select=".//tei:listBibl"/>-->
                     <xsl:apply-templates select=".//tei:listWit"/>
                     <xsl:call-template name="tab-metadata"/>
                 </xsl:element>
@@ -657,7 +657,14 @@
                             </xsl:attribute>
                         </xsl:element>
                         <xsl:element name="b">
-                            <xsl:value-of select="@xml:id"/>
+                            <xsl:choose>
+                                <xsl:when test="child::tei:abbr[1]">
+                                    <xsl:apply-templates select="."/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="@xml:id"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:element>
                         <xsl:text>: </xsl:text>
                         <xsl:apply-templates select="."/>
@@ -826,14 +833,18 @@
             <xsl:element name="span">
                 <xsl:attribute name="class">ref-siglum</xsl:attribute>
                 <xsl:choose>
-                    <xsl:when test="fn:contains(@target, '#')">
-                    <xsl:value-of select="substring-after(./@target, '#')"/>
-                </xsl:when>
+                    <xsl:when test="fn:contains(@target, '_')">
+                        <xsl:value-of select="substring-after(./@target, '#')"/>
+                    </xsl:when>
+                    
                     <xsl:when test="fn:contains(@target, 'bib:')">
                         <xsl:call-template name="source-siglum">
                             <xsl:with-param name="string-to-siglum" select="@target"/>
                         </xsl:call-template>
                     </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="substring-after(./@target, '#')"/>
+                    </xsl:otherwise>
                 </xsl:choose>
             </xsl:element> 
     </xsl:template>
