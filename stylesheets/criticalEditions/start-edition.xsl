@@ -724,6 +724,7 @@
                                 <xsl:value-of select="generate-id()"/>
                             </xsl:attribute>
                             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
+                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                           
                             <xsl:element name="span">
                                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
