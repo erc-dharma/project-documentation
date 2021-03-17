@@ -228,31 +228,23 @@
                                     <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:call-template name="apparatus-type"/>
                                 </xsl:element>
-                                <xsl:if test="tei:lem/attribute::source">
+                                <!--<xsl:if test="tei:lem/attribute::source">
                                     <xsl:text> </xsl:text>
-                                </xsl:if>
+                                </xsl:if>-->
                             </xsl:if>
                             <xsl:if test="tei:lem/@wit">                    
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
+                                        <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                 </xsl:call-template>                                  
                                 </xsl:element>
-                                <xsl:if test="following-sibling::*[local-name()='witDetail']">
-                                   <xsl:element name="sub"> 
-                                       <xsl:text> </xsl:text>
-                                    <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                   </xsl:element>
-                                </xsl:if>
-                                <xsl:if test="tei:lem/attribute::source">
+                                <!--<xsl:if test="tei:lem/attribute::source">
                                     <xsl:text> </xsl:text>
-                                </xsl:if>
+                                </xsl:if>-->
                             </xsl:if>
-                           <!-- working to add a tokenize list to such this feature 
-                                <!-\-<xsl:call-template name="tokenize-source-list">
-                                        <xsl:with-param name="string" select="tei:lem/@wit"/>
-                                    </xsl:call-template>-\->-->
                            <xsl:if test="tei:lem/@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="tei:lem/@source"/>
@@ -298,16 +290,12 @@
                                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
+                                    <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                    <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                             </xsl:call-template>
-                                <xsl:if test="following-sibling::*[local-name()='witDetail']">
-                                    <xsl:element name="sub">
-                                        <xsl:text> </xsl:text>
-                                    <xsl:apply-templates select="following-sibling::*[local-name()='witDetail']/@type"/>
-                                    </xsl:element>
-                                </xsl:if>
-                                <xsl:if test="attribute::source">
+                                <!--<xsl:if test="attribute::source">
                                     <xsl:text> </xsl:text>
-                                </xsl:if>
+                                </xsl:if>-->
                                 <xsl:if test="./@source">
                                     <xsl:call-template name="source-siglum">
                                         <xsl:with-param name="string-to-siglum" select="./@source"/>
@@ -1281,8 +1269,8 @@
     
     <xsl:template name="tokenize-witness-list">
         <xsl:param name="string"/>
-      <!--  <xsl:param name="witDetail-content"/>
-        <xsl:message><xsl:value-of select="$string"/><xsl:value-of select="$witDetail-content"/></xsl:message>-->
+        <xsl:param name="witdetail-string"/>
+        <xsl:param name="witdetail-type"/>
         <xsl:choose>
             <xsl:when test="contains($string, ' ')">
                 <xsl:variable name="first-item"
@@ -1290,6 +1278,8 @@
                 <xsl:if test="$first-item">
                     <xsl:call-template name="make-bibl-link">
                         <xsl:with-param name="target" select="$first-item"/>
+                        <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
+                        <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                     </xsl:call-template>
                     <xsl:call-template name="tokenize-witness-list">
                         <xsl:with-param name="string" select="substring-after($string, ' ')"/>
@@ -1304,6 +1294,8 @@
                     <xsl:otherwise>
                         <xsl:call-template name="make-bibl-link">
                             <xsl:with-param name="target" select="translate($string, '#', '')"/>
+                            <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
+                            <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                         </xsl:call-template>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -1313,6 +1305,8 @@
     <!--  Make bibliography link ! -->
     <xsl:template name="make-bibl-link">
         <xsl:param name="target"/>
+        <xsl:param name="witdetail-string"/>
+        <xsl:param name="witdetail-type"/>
         <xsl:element name="a">
             <xsl:attribute name="class">siglum</xsl:attribute>
             <xsl:attribute name="href">
@@ -1328,6 +1322,12 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
+        <xsl:if test="$target = $witdetail-string">
+            <xsl:element name="sub"> 
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="normalize-space($witdetail-type)"/>
+            </xsl:element>
+        </xsl:if>
     </xsl:template>
     
     <!-- Identity template -->
@@ -1611,19 +1611,14 @@
                         <xsl:if test="@wit">
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                                <xsl:variable name="witnesses" select="fn:tokenize(@wit, '#')"/>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="@wit"/>
+                                        <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                     </xsl:call-template>
-                                    <xsl:if test="$witnesses = replace($path/tei:lem/following-sibling::tei:witDetail[1]/@wit, '#', '')">
-                                        <xsl:text> </xsl:text>
-                                        <xsl:element name="sub">
-                                        <xsl:value-of select="$path/tei:lem/following-sibling::tei:witDetail[1]/@type"/>
-                                        </xsl:element>
-                                    </xsl:if>
-                                <xsl:if test="attribute::source">
+                               <!-- <xsl:if test="attribute::source">
                                     <xsl:text> </xsl:text>
-                                </xsl:if>
+                                </xsl:if>-->
                                 </xsl:element>
                             </xsl:if>
                         <xsl:if test="@source">
@@ -1659,36 +1654,20 @@
                     <xsl:apply-templates/>
                     <xsl:text> </xsl:text>
                     <xsl:if test="@*">
-                        <xsl:if test="@wit">
-                            <xsl:variable name="witnesses">
-                                <xsl:choose>
-                                    <xsl:when test="contains(@wit, '#')">
-                                        <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 2)"/>
-                                    </xsl:when>
-                                    <xsl:when test="contains(@wit, 'bib:')">
-                                        <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 5)"/>
-                                    </xsl:when>
-                                </xsl:choose>
-                            </xsl:variable>
-                            <!--<xsl:variable name="witDetail-content">
-                                <xsl:choose>
-                                    <xsl:when test="contains($path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@wit, '#')">
-                                        <xsl:value-of select="for $token in tokenize(@wit, ' ') return substring($token, 2)"/>
-                                    </xsl:when>
-                                </xsl:choose>
-                            </xsl:variable>-->
-                         
+                        <xsl:if test="@wit">                       
                             <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                     <xsl:with-param name="string" select="@wit"/>
+                                    <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                    <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                 </xsl:call-template>
                                 
                             </xsl:element>
                         </xsl:if>
-                        <xsl:if test="attribute::wit or attribute::source">
+                        <!--<xsl:if test="attribute::wit or attribute::source">
                             <xsl:text> </xsl:text>
-                        </xsl:if>
+                        </xsl:if>-->
                             <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
@@ -1863,14 +1842,6 @@
         </xsl:element>
     </xsl:template>
     
-    <!--<xsl:template name="witDetail-display">
-        <xsl:param name="witDetail-type"/>
-        <xsl:text> </xsl:text>
-        <xsl:element name="sub">
-            <xsl:value-of select="$witDetail-type"/>
-        </xsl:element>
-    </xsl:template>-->
-
 <xsl:template name="fake-lem-making">
     <xsl:choose>
         <xsl:when test="parent::tei:p">
