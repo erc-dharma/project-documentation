@@ -1390,37 +1390,9 @@
     <br/>
   </xsl:template>
 
-  <!-- Used in htm-{element} and above to add linking to and from apparatus -->
-<!--  <xsl:template name="app-link">
-    <!-\- location defines the direction of linking -\->
-    <xsl:param name="location"/>
-    <!-\- Does not produce links for translations -\->
-     <xsl:if
-         test="not((local-name() = 'app') and ancestor::tei:app)">
-        <xsl:variable name="app-num">
-        <xsl:value-of select="name()"/>
-          <xsl:number level="any" format="1"/>
-        </xsl:variable>
-         <a>
-             <xsl:attribute name="id">
-                 <xsl:text>to-app-</xsl:text>
-                 <xsl:value-of select="$app-num"/>
-             </xsl:attribute>
-             <xsl:attribute name="href">
-                 <xsl:text>#from-app-</xsl:text>
-                 <xsl:value-of select="$app-num"/>
-             </xsl:attribute>
-             <xsl:text>^</xsl:text>
-             <xsl:value-of select="substring-after($app-num, 'app')"/>
-         </a>
-    </xsl:if>
-  </xsl:template>-->
-    
     <xsl:template name="app-link">
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
-        <!-- Does not produce links for translations -->
-        <xsl:if test="not(ancestor::tei:div[@type = 'translation'])">
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
             <xsl:if
                 test="not((local-name() = 'choice' or local-name() = 'subst' or local-name() = 'app')
@@ -1434,28 +1406,12 @@
                     <xsl:with-param name="app-num" select="$app-num"/>
                 </xsl:call-template>
             </xsl:if>
-        </xsl:if>
     </xsl:template>
     
     <xsl:template name="generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
-        
-        <xsl:choose>
-            <xsl:when test="$location = 'text'">
-                <a>
-                    <xsl:attribute name="href">
-                        <xsl:text>#to-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="id">
-                        <xsl:text>from-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/>
-                    </xsl:attribute>
-                    <xsl:text>(*)</xsl:text>
-                </a>
-            </xsl:when>
-            <xsl:when test="$location = 'apparatus'">
+            <xsl:if test="$location = 'apparatus'">
                 <a>
                     <xsl:attribute name="id">
                         <xsl:text>to-app-</xsl:text>
@@ -1466,11 +1422,11 @@
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
-                    <xsl:value-of select="substring-after($app-num, 'app')"/>
+                   <!-- <xsl:value-of select="$app-num"/>-->
+                    <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                 </a>
                 <xsl:text> </xsl:text>
-            </xsl:when>
-        </xsl:choose>
+            </xsl:if>
     </xsl:template>
 
     <xsl:template name="dharma-app">
