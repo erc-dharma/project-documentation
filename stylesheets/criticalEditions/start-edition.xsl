@@ -413,8 +413,10 @@
         <xsl:variable name="biblentry" select="replace(substring-after(tei:ptr/@target, ':'), '\+', '%2B')"/>
         <xsl:variable name="parm-zoteroStyle" select="chicago-author-date"/>
  
-        <xsl:apply-templates
+        <xsl:if test="ancestor::tei:witness">
+            <xsl:apply-templates
             select="document(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+        </xsl:if>
     </xsl:template>
     <!--  C ! -->
     <!--  caesura ! -->
@@ -661,7 +663,7 @@
                         <xsl:element name="b">
                             <xsl:choose>
                                 <xsl:when test="child::tei:abbr[1]">
-                                    <xsl:apply-templates select="."/>
+                                    <xsl:apply-templates select="child::tei:abbr[1]"/>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="@xml:id"/>
