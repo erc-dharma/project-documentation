@@ -1612,9 +1612,9 @@
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:variable name="witnesses" select="fn:tokenize(@wit, '#')"/>
-                            <xsl:for-each select="$witnesses">
-                                <xsl:apply-templates select="."/>
-                            </xsl:for-each>
+                                    <xsl:call-template name="tokenize-witness-list">
+                                        <xsl:with-param name="string" select="@wit"/>
+                                    </xsl:call-template>
                                     <xsl:if test="$witnesses = replace($path/tei:lem/following-sibling::tei:witDetail[1]/@wit, '#', '')">
                                         <xsl:text> </xsl:text>
                                         <xsl:element name="sub">
@@ -1680,15 +1680,9 @@
                          
                             <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                                <xsl:for-each select="$witnesses">
-                                    <xsl:apply-templates select="."/>
-                                    <!--<xsl:if test="$witnesses = $witDetail-content">
-                                <xsl:text> </xsl:text>
-                                        <xsl:element name="sub">
-                                            <xsl:value-of select="$path/tei:lem/following-sibling::tei:rdg/following-sibling::tei:witDetail[1]/@type"/>
-                                        </xsl:element>       
-                                    </xsl:if>-->
-                                 </xsl:for-each>
+                                <xsl:call-template name="tokenize-witness-list">
+                                    <xsl:with-param name="string" select="@wit"/>
+                                </xsl:call-template>
                                 
                             </xsl:element>
                         </xsl:if>
