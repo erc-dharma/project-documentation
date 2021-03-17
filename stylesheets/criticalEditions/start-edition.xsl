@@ -203,8 +203,12 @@
                             <xsl:attribute name="class">
                                 <xsl:text>translit </xsl:text>
                                 <xsl:value-of select="$script"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:call-template name="lem-type"/>
+                                    <xsl:if test="not(child::tei:lem/following-sibling::tei:note[@type='altLem'])">
+                                   
+                                        <xsl:text> </xsl:text>
+                                        <xsl:call-template name="lem-type"/>
+                            </xsl:if>
+                                
                             </xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
@@ -1598,7 +1602,9 @@
                 <xsl:for-each select="tei:lem">
                     <xsl:element name="span">
                         <xsl:attribute name="class">
-                            <xsl:call-template name="lem-type"/>
+                            <xsl:if test="not($path/tei:lem/following-sibling::tei:note[@type='altLem'])">
+                                <xsl:call-template name="lem-type"/>
+                            </xsl:if>
                         </xsl:attribute>
                         <xsl:choose>
                             <xsl:when test="$path/tei:lem/following-sibling::tei:note[@type='altLem']">
