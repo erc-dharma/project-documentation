@@ -408,6 +408,14 @@
         </xsl:element>
         
     </xsl:template>
+    <!--  B ! -->
+    <xsl:template match="tei:bibl">
+        <xsl:variable name="biblentry" select="replace(substring-after(tei:ptr/@target, ':'), '\+', '%2B')"/>
+        <xsl:variable name="parm-zoteroStyle" select="chicago-author-date"/>
+ 
+        <xsl:apply-templates
+            select="document(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+    </xsl:template>
     <!--  C ! -->
     <!--  caesura ! -->
     <xsl:template match="tei:caesura">
@@ -661,7 +669,7 @@
                             </xsl:choose>
                         </xsl:element>
                         <xsl:text>: </xsl:text>
-                        <xsl:apply-templates select="."/>
+                        <xsl:apply-templates/>
                     </xsl:element>
                 </xsl:for-each>
             </xsl:element>
