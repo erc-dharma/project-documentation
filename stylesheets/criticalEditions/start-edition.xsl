@@ -525,6 +525,12 @@
                     <xsl:apply-templates/>
                 </xsl:element>
             </xsl:when>
+            <xsl:when test="@rend='subscript'">
+                <xsl:element name="sub">
+                    <xsl:attribute name="class">ed-siglum</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
     <!--  L ! -->
@@ -822,9 +828,9 @@
                 <xsl:attribute name="class">ref-siglum</xsl:attribute>
                 <xsl:choose>
                     <xsl:when test="fn:contains(@target, '_')">
-                        <xsl:value-of select="substring-after(./@target, '#')"/>
+                        <xsl:variable name="hand-id" select="substring-after(./@target, '#')"/>
+                        <xsl:apply-templates select="//tei:listWit/tei:witness/tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
                     </xsl:when>
-                    
                     <xsl:when test="fn:contains(@target, 'bib:')">
                         <xsl:call-template name="source-siglum">
                             <xsl:with-param name="string-to-siglum" select="@target"/>
