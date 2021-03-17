@@ -358,7 +358,7 @@
                    <xsl:value-of select="generate-id()"/>
                </xsl:attribute>
                <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-               <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
+               <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                <!--<xsl:text>&#128172;</xsl:text>-->
                
                <xsl:element name="span">
@@ -369,7 +369,7 @@
                        <xsl:value-of select="$app-num"/>
                    </xsl:attribute>
                    <xsl:text>(</xsl:text>
-               <xsl:value-of select="substring-after($app-num, 'app')"/>
+                   <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                <xsl:text>)</xsl:text>
                </xsl:element>        
            </xsl:element>
@@ -728,7 +728,9 @@
                             <xsl:element name="span">
                                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
                                 <xsl:attribute name="type">button</xsl:attribute>                              
-                                <xsl:text>(&#128172;)</xsl:text> 
+                                <xsl:text>(</xsl:text>
+                                <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                                <xsl:text>)</xsl:text> 
                             </xsl:element>        
                         </xsl:element>
                 
