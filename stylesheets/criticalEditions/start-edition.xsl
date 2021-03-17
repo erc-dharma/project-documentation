@@ -237,7 +237,7 @@
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
-                                </xsl:call-template>
+                                </xsl:call-template>                                  
                                 </xsl:element>
                                 <xsl:if test="following-sibling::*[local-name()='witDetail']">
                                    <xsl:element name="sub"> 
@@ -1278,6 +1278,7 @@
         </xsl:choose>
     </xsl:template>
     <!--  NAMED TEMPLATES ! -->
+    
     <xsl:template name="tokenize-witness-list">
         <xsl:param name="string"/>
       <!--  <xsl:param name="witDetail-content"/>
@@ -1318,7 +1319,14 @@
                 <xsl:text>#</xsl:text>
                 <xsl:value-of select="$target"/>
             </xsl:attribute>
-            <xsl:value-of select="$target"/>
+            <xsl:choose>
+                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr">
+                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$target"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
     
