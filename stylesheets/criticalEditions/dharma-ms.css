@@ -598,6 +598,14 @@ a:hover, a i.fas:hover {
     content:")";
 }
 
+.sic:before {
+    content:"†";
+}
+
+.sic:after {
+    content:"†";
+}
+
 .tooltipApp:hover ~ .lem{
     background-color: yellow;
 }
