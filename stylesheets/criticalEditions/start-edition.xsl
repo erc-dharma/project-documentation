@@ -266,7 +266,7 @@
                                         <xsl:value-of select="$script"/>
                                     </xsl:attribute>  
                                             <xsl:choose>
-                                                <xsl:when test="not(text())">
+                                                <xsl:when test="(not(.//text())) and (not(.//tei:gap))">
                                                     <xsl:element name="span">
                                                         <xsl:attribute name="class">font-italic</xsl:attribute> 
                                                         <xsl:attribute name="style">color:black;</xsl:attribute>
