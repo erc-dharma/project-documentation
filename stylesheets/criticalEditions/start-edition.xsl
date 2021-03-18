@@ -351,7 +351,6 @@
                
                <xsl:element name="span">
                    <xsl:attribute name="class">tooltipApp</xsl:attribute>
-                   <xsl:attribute name="type">button</xsl:attribute>
                    <xsl:attribute  name="href">
                        <xsl:text>#to-app-</xsl:text>
                        <xsl:value-of select="$app-num"/>
@@ -933,6 +932,13 @@
     </xsl:template>
     <xsl:template match="tei:s" mode="in-modal">
         <xsl:apply-templates select="."/>
+    </xsl:template>
+    <!--  sic ! -->
+    <xsl:template match="tei:sic[not(parent::tei:choice)]">
+        <xsl:element name="span">
+            <xsl:attribute name="class">sic</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
     </xsl:template>
     <!--  sp ! -->
     <xsl:template match="tei:sp">
