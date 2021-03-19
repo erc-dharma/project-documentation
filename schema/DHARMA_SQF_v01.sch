@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-    xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt2"
+    xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt3"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
+    
+    <!--  Written by Axelle Janiak for ERC-DHARMA, 2021-->
 
     <sch:pattern>
         <sch:rule context="//t:text//t:ptr/@target| //t:*/@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
@@ -121,7 +123,16 @@
             <sch:assert test="starts-with($fileName, 'DHARMA_INS')">The filename should start with DHARMA_INS, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
-
+    
+    <!-- Adding feature to check if another file has the same name per Arlo's request -->
+    <sch:pattern>
+        <sch:rule context="/"> 
+            <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
+            <sch:let name="path" value="substring-before(document-uri(/), $fileName)"/>
+            <sch:assert test="distinct-values(for $fileName in /folders/folder/uri-collection(iri-to-uri(concat(@name, '/?select=*.xml'))) return tokenize($fileName, '/')[last()])">The context is <sch:value-of select="$path"/>.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
     <sch:pattern>
         <sch:rule context="//t:idno[@type='filename']">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
@@ -139,7 +150,7 @@
 
     </sch:pattern>
 
-    <!-- Still under construction -->
+    <!-- Still under construction: when ST missing in Zotero also apply the code for controlling the entry numbers -->
     
     <sch:pattern>
         <!-- Check if the ST exists in Zotero -->
@@ -157,5 +168,5 @@
             <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+ 
 </sch:schema>
