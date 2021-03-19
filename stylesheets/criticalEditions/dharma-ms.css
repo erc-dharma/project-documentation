@@ -610,7 +610,7 @@ a:hover, a i.fas:hover {
     background-color: yellow;
 }
 
-.tooltipApp, .lem-last-note {
+.tooltipApp, .tooltipApp-num, .lem-last-note {
     color: #a34545;
 }
 .title {
