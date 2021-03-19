@@ -46,7 +46,7 @@
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
-                            <xsl:attribute name="class">wrapper</xsl:attribute>
+                            <xsl:attribute name="class">row wrapper</xsl:attribute>
                             <xsl:element name="ul">
                         <xsl:attribute name="class">nav nav-tabs nav-justified</xsl:attribute>
                     <xsl:attribute name="id">tab</xsl:attribute>
@@ -346,19 +346,19 @@
                    <xsl:value-of select="generate-id()"/>
                </xsl:attribute>
                <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-               <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+               <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                <!--<xsl:text>&#128172;</xsl:text>-->
                
                <xsl:element name="span">
-                   <xsl:attribute name="class">tooltipApp</xsl:attribute>
+                   <xsl:attribute name="class">tooltipApp-num</xsl:attribute>
                    <xsl:attribute  name="href">
                        <xsl:text>#to-app-</xsl:text>
                        <xsl:value-of select="$app-num"/>
                    </xsl:attribute>
                    <xsl:text>(</xsl:text>
-                   <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-               <xsl:text>)</xsl:text>
-               </xsl:element>        
+                   <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                   <xsl:text>)</xsl:text>
+               </xsl:element>      
            </xsl:element>
        </xsl:element>
        <!--</xsl:element>-->
@@ -741,13 +741,13 @@
                                 <xsl:value-of select="generate-id()"/>
                             </xsl:attribute>
                             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                           
                             <xsl:element name="span">
                                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
                                 <xsl:attribute name="type">button</xsl:attribute>                              
                                 <xsl:text>(</xsl:text>
-                                <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                                <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                                 <xsl:text>)</xsl:text> 
                             </xsl:element>        
                         </xsl:element>
@@ -1419,7 +1419,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]">
+            select=".//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -1474,7 +1474,7 @@
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
                    <!-- <xsl:value-of select="$app-num"/>-->
-                    <xsl:number level="any" count="//tei:app[not(ancestor::tei:*[local-name()=('choice' , 'subst' , 'app')])] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                    <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                 </a>
                 <xsl:text> </xsl:text>
             </xsl:if>
