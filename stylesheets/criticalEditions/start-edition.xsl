@@ -149,13 +149,13 @@
                     <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:editor">
                             <xsl:choose>
                                 <xsl:when test="position()= 1">
-                                    <xsl:text>Edited by </xsl:text>
+                                    <xsl:text>Edited by </xsl:text>
                                 </xsl:when>
                                 <xsl:when test="position()=last()">
-                                    <xsl:text> &amp; </xsl:text>
+                                    <xsl:text> &amp; </xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>, </xsl:text>
+                                    <xsl:text>, </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
                         <xsl:apply-templates select="fn:normalize-space(.)"/>
@@ -328,7 +328,7 @@
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
-            <xsl:number level="any" format="1"/>
+            <xsl:number level="any" format="0001"/>
         </xsl:variable>
       
            
@@ -351,6 +351,10 @@
                
                <xsl:element name="span">
                    <xsl:attribute name="class">tooltipApp-num</xsl:attribute>
+                   <xsl:attribute name="id">
+                       <xsl:text>from-app-</xsl:text>
+                       <xsl:value-of select="$app-num"/>
+                   </xsl:attribute>
                    <xsl:attribute  name="href">
                        <xsl:text>#to-app-</xsl:text>
                        <xsl:value-of select="$app-num"/>
@@ -1450,7 +1454,7 @@
                 and (ancestor::tei:choice or ancestor::tei:subst or ancestor::tei:app))">
                 <xsl:variable name="app-num">
                     <xsl:value-of select="name()"/>
-                    <xsl:number level="any" format="01"/>
+                    <xsl:number level="any" format="0001"/>
                 </xsl:variable>
                 <xsl:call-template name="generate-app-link">
                     <xsl:with-param name="location" select="$location"/>
@@ -1847,14 +1851,14 @@
                             <xsl:choose>
                                 <xsl:when test="position()= 1">
                                     <xsl:element name="b">
-                                    <xsl:text>Edited by </xsl:text>
+                                    <xsl:text>Edited by </xsl:text>
                                     </xsl:element>                                  
                                 </xsl:when>
                                 <xsl:when test="position()=last()">
-                                    <xsl:text> &amp; </xsl:text>
+                                    <xsl:text> &amp; </xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>, </xsl:text>
+                                    <xsl:text>, </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
                             <xsl:apply-templates select="fn:normalize-space(.)"/>
