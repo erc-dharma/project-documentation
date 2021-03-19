@@ -468,7 +468,7 @@
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-11</xsl:attribute>
+                <xsl:attribute name="class">col-10</xsl:attribute>
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:element>
