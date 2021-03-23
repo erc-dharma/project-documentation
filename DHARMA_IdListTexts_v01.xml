@@ -10,7 +10,7 @@
          </titleStmt>
          <publicationStmt>
             <authority>DHARMA</authority>
-            <idno type="filename">DHARMA_TextList_v01</idno>
+            <idno type="filename">DHARMA_IdListTexts_v01</idno>
             <availability>
                <licence target="https://creativecommons.org/licenses/by/4.0/">
                   <p>This work is licensed under the Creative Commons Attribution 4.0 Unported
@@ -57,7 +57,7 @@ e.g. MDhŚ-O, MDhŚ-M
 - URL for any available online digital resource (txt or xml representation of an edition of the text) -->
             
             <!-- solution 1 -  with bibl-->
-            <bibl corresp="bib:Atja+SalehDanasasmita1981_01">
+            <bibl corresp="bib:Atja+SalehDanasasmita1981_01" xml:id="EdAmGa1981">
                <abbr type="siglum">AmGa</abbr>
                <title>Amanat Galuṅguṅ</title>
             	<ptr target="https://github.com/arlogriffiths/jawakuno/blob/master/texts/xml/AmanatGalunggung_inprocess.xml"/>
