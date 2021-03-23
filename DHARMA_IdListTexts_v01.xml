@@ -67,17 +67,6 @@ e.g. MDhŚ-O, MDhŚ-M
                      <idno>L 632a</idno>
                   </msIdentifier>   
             </bibl>
-            <!-- solution 2 - with biblStruct. note that for this solution the imprint is mandatory-->
-            <biblStruct corresp="bib:Atja+SalehDanasasmita1981_01" n="AG">
-               <monogr>  
-                  <title>Amanat Galuṅguṅ</title>
-                     <idno type="repository">Perpusnas</idno> 
-                     <idno type="identifier">L 632a</idno>
-                  <imprint>
-                     <date/>
-                  </imprint>
-               </monogr>
-            </biblStruct>
             
           <!-- <biblStruct> 
               <monogr><abbr type="siglum">BM</abbr>       
