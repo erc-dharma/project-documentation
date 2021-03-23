@@ -53,10 +53,9 @@ e.g. Mānava-dharma-śāstra
 e.g. Olivelle2005_01 and Mandlik1886_01
 - the corresponding abbreviation of text title to be used in display (with differentiation of abbreviations per edition if relevant)
 e.g. MDhŚ-O, MDhŚ-M
-- if relevant, a reference to the Library and shelfmark of the manuscript biblStruct underlying the cited edition or, in the absence of a published edition, a reference to the Library and shelfmark of the manuscript used for citing the given text
+- if relevant, a reference to the Library and shelfmark of the manuscript bibl underlying the cited edition or, in the absence of a published edition, a reference to the Library and shelfmark of the manuscript used for citing the given text
 - URL for any available online digital resource (txt or xml representation of an edition of the text) -->
             
-            <!-- solution 1 -  with bibl-->
             <bibl corresp="bib:Atja+SalehDanasasmita1981_01" xml:id="EdAmGa1981">
                <abbr type="siglum">AmGa</abbr>
                <title>Amanat Galuṅguṅ</title>
@@ -68,66 +67,191 @@ e.g. MDhŚ-O, MDhŚ-M
                   </msIdentifier>   
             </bibl>
             
-          <!-- <biblStruct> 
-              <monogr><abbr type="siglum">BM</abbr>       
-            Bodleian Library, Oxford, Ms.Jav.3, published as Bujangga Manik  in Noorduyn &amp; Teeuw 2006.</monogr></biblStruct>
-           <biblStruct> 
-             <monogr> <abbr type="siglum">CP</abbr>         
-            Perpusnas L 406, Carita Parahyangan, published in Atja &amp; Saleh Danasasmita 1981b.</monogr></biblStruct>
-           <biblStruct> 
+            <bibl corresp="bib:Noorduyn+Teeuw2006_01" xml:id="EdBuMa2006"> 
+              <abbr type="siglum">BM</abbr>
+              <title>Bujangga Manik</title>
+            <msIdentifier>
+               <settlement>Oxford</settlement>
+               <repository>Bodleian Library</repository>
+                <idno>Ms.Jav.3</idno></msIdentifier>
+              <ptr/></bibl>
+            <bibl corresp="bib:Atja+SalehDanasasmita1981_02" xml:id="EdCaPa1981"> 
+              <abbr type="siglum">CP</abbr> 
+              <title>Carita Parahyangan</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 406</idno></msIdentifier>
+              <ptr/>
+</bibl>
+            <bibl corresp="bib:Atja1970_01" xml:id="EdCaRaPa1970"> 
               <abbr type="siglum">CRP</abbr>
-            <monogr>Perpusnas L 410 (now lost), Carita Ratu Pakuan, in Atja 1970.</monogr></biblStruct>
-            <biblStruct>
-               <abbr type="siglum">FCP</abbr>      
-            <monogr>Perpusnas L 406, published as Fragmen Carita Parahyangan in Undang Ahmad Darsa &amp; Edi S Ekadjati 1995.</monogr></biblStruct>
-           <biblStruct> 
+              <title>Carita Ratu Pakuan</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 410 (now lost)</idno>
+                 </msIdentifier>
+              <ptr/>
+              </bibl>
+            <bibl>
+               <abbr type="siglum">FCP</abbr> 
+               <title>Fragmen Carita Parahyangan</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 406</idno>
+               </msIdentifier>
+               <ptr/>
+           published in Undang Ahmad Darsa &amp; Edi S Ekadjati 1995.</bibl>
+            <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdSaHyJaMaPi2010"> 
               <abbr type="siglum">JMP</abbr>
-            <monogr>L 624b, Saṅ Hyaṅ Jati Maha Pitutur, published in Tien Wartini et al. 2010.</monogr></biblStruct>
-           <biblStruct> 
+              <title>Saṅ Hyaṅ Jati Maha Pitutur</title>
+              <msIdentifier>
+                 <settlement/>
+                 <repository/>
+                 <idno>L 624b</idno>
+              </msIdentifier>
+           <ptr/></bibl>
+           <bibl> 
               <abbr type="siglum">KK</abbr>
-            <monogr>Ciburuy no. Cb.Ltr-17, Kavih Katanian, edition in preparation by Ilham Nurwansah.</monogr></biblStruct>
-           <biblStruct> 
-              <abbr type="siglum">KP</abbr>         
-            <monogr>Perpusnas L 419 and L 420, Kawih Paniṅkes, published as Kosmologi Sunda Kuna in Undang Darsa 2006 (edition based on ms. Perpusnas L 420).</monogr></biblStruct>
-           <biblStruct> 
+              <title>Kavih Katanian</title>
+              <msIdentifier>
+                 <settlement/>
+                 <repository/>
+                 <idno>Ciburuy no. Cb.Ltr-17</idno>
+              </msIdentifier>
+            edition in preparation by Ilham Nurwansah.</bibl>
+           <bibl> 
+              <abbr type="siglum">KP</abbr>  
+              <title>Kosmologi Sunda Kuna</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 419 and L 420</idno>
+              </msIdentifier>
+              <ptr/>
+           Kawih Paniṅkes, published in Undang Darsa 2006 (edition based on ms. Perpusnas L 420).</bibl>
+           <bibl> 
               <abbr type="siglum">KS</abbr>
-            <monogr>Kaputusan Saṅ Hyaṅ, romanized typewriting, ms. Perpusnas no. 280 Peti 89.</monogr></biblStruct>
-           <biblStruct> 
+            <title>Kaputusan Saṅ Hyaṅ</title>,
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>280 Peti 89</idno>
+              </msIdentifier>
+              <ptr/>
+              romanized typewriting</bibl>
+            <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdPiJa2010"> 
               <abbr type="siglum">PJ</abbr>
-            <monogr>Perpusnas L 610, Pituturniṅ Jalma, published in Tien Wartini et al. 2010.</monogr></biblStruct>
-           <biblStruct> 
+              <title>Pituturniṅ Jalma</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 610</idno>
+              </msIdentifier>
+              <ptr/>
+           </bibl>
+            <bibl corresp="bib:TienWartini+al2011_02" xml:id="EdSaTaAj2011"> 
               <abbr type="siglum">PR</abbr> 
-            <monogr>Perpusnas L 1099, Pakeǝn Raga, published as Sanghyang Tatwa Ajnyana in Tien Wartini et al. 2011.</monogr></biblStruct>
-            <biblStruct>
+               <title>Pakeǝn Raga</title>
+              <title>Sanghyang Tatwa Ajnyana</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 1099</idno>
+              </msIdentifier>
+              <ptr/>
+              Pakeǝn Raga, published as Sanghyang Tatwa Ajnyana in Tien Wartini et al. 2011.</bibl>
+            <bibl>
                <abbr type="siglum">CPV</abbr>
-            <monogr>Carita Purnavijaya, published in Pleyte 1914.</monogr></biblStruct>
-           <biblStruct> 
-              <abbr type="siglum">RR</abbr>      
-            <monogr>Museum Sri Baduga 1101, The Sons of Rama and Rawana, in Noorduyn &amp; Teeuw 2006.</monogr></biblStruct>
-            <biblStruct>
-               <abbr type="siglum">SA</abbr>   
-            <monogr>Perpusnas L 625, Sri Ajñana, published in Noorduyn &amp; Teeuw 2006.</monogr></biblStruct>
-            <biblStruct>
-               <abbr type="siglum">SD</abbr>         
-            <monogr>Perpusnas L 408, Sevaka Darma, in Saleh Danasasmita et al. 1987.</monogr></biblStruct>
-           <biblStruct> 
-              <abbr type="siglum">SC</abbr>         
-            <monogr>Perpusnas L 626, Saṅ Hyaṅ Svavarcinta, published in Tien Wartini et al. 2011.</monogr></biblStruct>
-           <biblStruct> 
+            <title>Carita Purnavijaya</title>
+               <ptr/>
+               published in Pleyte 1914.</bibl>
+            <bibl corresp="bib:Noorduyn+Teeuw2006_01"> 
+              <abbr type="siglum">RR</abbr> 
+               <title>The Sons of Rama and Rawana</title>
+            Museum Sri Baduga 1101 in Noorduyn &amp; Teeuw 2006.</bibl>
+            <bibl corresp="bib:Noorduyn+Teeuw2006_01" xml:id="EdSrAj2006">
+               <abbr type="siglum">SA</abbr>
+               <title>Sri Ajñana</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 625</idno>
+               </msIdentifier>
+               <ptr/>
+            </bibl>
+            <bibl corresp="bib:SalehDanasasmita+al1987_01" xml:id="EdSeDa1987">
+               <abbr type="siglum">SD</abbr>  
+               <title>Sevaka Darma</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 408</idno>
+               </msIdentifier>
+               <ptr/>
+           </bibl>
+            <bibl corresp="bib:TienWartini+al2011_01" xml:id="EdSaHYSv2011"> 
+              <abbr type="siglum">SC</abbr> 
+              <title>Saṅ Hyaṅ Svavarcinta</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 626</idno>
+              </msIdentifier>
+              <ptr/>
+            </bibl>
+            <bibl corresp="bib:UndangADarsa1998_01" xml:id="EdSaHYHa1998"> 
               <abbr type="siglum">SHH</abbr>
-            <monogr>Saṅ Hyaṅ Hayu (Old Javanese), published in Undang Ahmad Darsa 1998, based on mss Perpusnas L 634, L 637, L 638.</monogr> </biblStruct>
-           <biblStruct> 
-              <abbr type="siglum">SKK</abbr>      
-            <monogr>Perpusnas L 630, Saṅ Hyaṅ Siksa Kandaṅ Karǝsian, published in Atja &amp; Saleh Danasasmita 1981c, new edition in preparation by Aditia Gunawan.</monogr></biblStruct>
-            <biblStruct>
-               <abbr type="siglum">SMG</abbr>     
-            <monogr>Perpusnas L 621, Saṅ Hyaṅ Sasana Mahaguru, published in Aditia Gunawan 2009, new edition in preparation by the same author.</monogr></biblStruct>
-            <biblStruct>
-               <abbr type="siglum">TB</abbr>      
-            <monogr>Perpusnas L 620, Tutur Bvana, published in Tien Wartini et al. 2010.</monogr></biblStruct>
-            <biblStruct>
+              <title>Saṅ Hyaṅ Hayu (Old Javanese)</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 634, L 637, L 638</idno>
+              </msIdentifier>
+              <ptr/>
+            </bibl>
+            <bibl corresp="bib:Atja+SalehDanasasmita1981_03" xml:id="EdSaHySiKaKa1981"> 
+              <abbr type="siglum">SKK</abbr>
+              <title>Saṅ Hyaṅ Siksa Kandaṅ Karǝsian</title>
+              <msIdentifier>
+                 <settlement>Jakarta</settlement>
+                 <repository>Perpusnas</repository>
+                 <idno>L 630</idno>
+              </msIdentifier>
+              <ptr/>
+          new edition in preparation by Aditia Gunawan.</bibl>
+            <bibl corresp="bibAditiaGunawan2009_01" xml:id="EdSaHySaMa2009">
+               <abbr type="siglum">SMG</abbr>    
+               <title>Saṅ Hyaṅ Sasana Mahaguru</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 621</idno>
+               </msIdentifier>
+               <ptr/>
+             new edition in preparation by the same author.</bibl>
+            <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdTuBv2010">
+               <abbr type="siglum">TB</abbr> 
+               <title>Tutur Bvana</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 620</idno>
+               </msIdentifier>
+               <ptr/>
+            </bibl>
+            <bibl corresp="bib:AditiaGunawan2010_01" xml:id="EdVaLe2010">
                <abbr type="siglum">VL</abbr>
-            <monogr>Perpusnas L 622, Varugan Lǝmah, published in Aditia Gunawan 2010.</monogr></biblStruct>   -->     
+               <title>Varugan Lǝmah</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 622</idno>
+               </msIdentifier>
+               <ptr/>
+            </bibl>      
          </listBibl>
       </body>
   </text>
