@@ -405,10 +405,10 @@
            <xsl:element name="span"> 
                <xsl:attribute name="class">lem</xsl:attribute>
                <xsl:apply-templates select="tei:lem"/>
-               <xsl:element name="span">
+               <!--<xsl:element name="span">
                    <xsl:attribute name="class">anchor</xsl:attribute>
                    <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-               </xsl:element>
+               </xsl:element>-->
            </xsl:element>
            
            <!-- Version with the bulle at the end of the line-->
@@ -870,6 +870,17 @@
             <xsl:element name="span">
                 <xsl:attribute name="class">ref-siglum</xsl:attribute>
                 <xsl:choose>
+                    <xsl:when test="fn:contains(@target, 'txt:')">
+                        <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml
+                        </xsl:variable>
+                        <xsl:variable name="MSlink" select="substring-after(./@target, 'txt:')"/>
+                        <xsl:element name="a">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink]/child::tei:ptr[1]/@target"/>
+                            </xsl:attribute>
+                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink]/child::tei:abbr[@type='siglum']"/>
+                        </xsl:element>
+                    </xsl:when>
                     <xsl:when test="fn:contains(@target, '_')">
                         <xsl:variable name="hand-id" select="substring-after(./@target, '#')"/>
                         <xsl:apply-templates select="//tei:listWit/tei:witness/tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
