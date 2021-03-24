@@ -786,7 +786,6 @@
                         <attDef ident="facs" mode="delete"/>
                         <attDef ident="hand" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
-                        <attDef ident="part" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
@@ -836,6 +835,15 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="part" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="Y"/>
+                                <valItem ident="N"/>
+                                <valItem ident="I"/>
+                                <valItem ident="M"/>
+                                <valItem ident="F"/>
                             </valList>
                         </attDef>
                     </attList>
