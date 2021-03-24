@@ -27,7 +27,14 @@
         <xsl:param name="regex" as="xs:string"/>
         <xsl:sequence select="replace($arg,concat('^(.*)',$regex,'.*'),'$1')"/>   
     </xsl:function>
-    
+    <xsl:function name="functx:sort" as="item()*"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="seq" as="item()*"/>
+        <xsl:for-each select="$seq">
+            <xsl:sort select="."/>
+            <xsl:copy-of select="."/>
+        </xsl:for-each>  
+    </xsl:function>
     
     
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
@@ -173,10 +180,10 @@
                 <xsl:attribute name="class">col mx-5</xsl:attribute>
                 <xsl:apply-templates/>
             </xsl:element>
-            <xsl:element name="div">
+            <!--<xsl:element name="div">
                 <xsl:attribute name="id">modals</xsl:attribute>
                 <xsl:call-template name="build-modals"/>
-            </xsl:element>
+            </xsl:element>-->
         </xsl:element>
     </xsl:template>
     <!--  A ! -->
@@ -331,7 +338,6 @@
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
       
-           
        <xsl:element name="span">
            <xsl:attribute name="class">lem-tooltipApp</xsl:attribute>
            <!--  <xsl:element name="div">
@@ -399,6 +405,10 @@
            <xsl:element name="span"> 
                <xsl:attribute name="class">lem</xsl:attribute>
                <xsl:apply-templates select="tei:lem"/>
+               <xsl:element name="span">
+                   <xsl:attribute name="class">anchor</xsl:attribute>
+                   <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+               </xsl:element>
            </xsl:element>
            
            <!-- Version with the bulle at the end of the line-->
@@ -420,6 +430,7 @@
         </xsl:element>
         </xsl:element>-->
         </xsl:element>
+        
         
     </xsl:template>
     <!--  B ! -->
@@ -810,7 +821,7 @@
             <xsl:number level="single" format="1"/>
         </xsl:variable>
         <xsl:element name="div">
-            <xsl:attribute name="class">float-left</xsl:attribute>
+            <xsl:attribute name="class">text-container float-left</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">text-muted</xsl:attribute>
                 <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
@@ -830,6 +841,7 @@
             </xsl:element>
         <br/>
         <xsl:element name="p">
+            <xsl:attribute name="class">textContent</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -1776,12 +1788,17 @@
                </xsl:element>
         </xsl:for-each>
        </xsl:element>-->
+
+        <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml
+        </xsl:variable>
+       
         <xsl:element name="ul">
             <xsl:attribute name="class">list-unstyled</xsl:attribute>
             <xsl:for-each select="descendant-or-self::tei:item">
                 <xsl:element name="li">
                     <xsl:choose>
                         <xsl:when test="@*">
+                            <xsl:variable name="soughtMS" select="substring-after(@*, 'txt:')"/>
                             <xsl:element name="blockquote">
                         <xsl:attribute name="class">blockquote text-center</xsl:attribute>
                         <xsl:element name="p">
@@ -1791,7 +1808,12 @@
                         <xsl:element name="footer">
                             <xsl:attribute name="class">blockquote-footer</xsl:attribute>
                             <xsl:element name="cite">
-                                <xsl:value-of select="replace(descendant-or-self::tei:item/@*, 'txt:', '')"/>
+                                <xsl:choose>
+                                    <xsl:when test="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]">
+                                        <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]/child::tei:abbr[@type='siglum']"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="replace(descendant-or-self::tei:item/@*, 'txt:', '')"/></xsl:otherwise></xsl:choose>
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
@@ -1916,5 +1938,40 @@
         </xsl:when>
     </xsl:choose>
 </xsl:template>
+    
+    <xsl:template name="app-tooltip-content">
+        <xsl:param name="location"/>
+        <xsl:variable name="app-num">
+            <xsl:value-of select="name()"/>
+            <xsl:number level="any" format="0001"/>
+        </xsl:variable>
+            <xsl:element name="span">
+                <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
+                <xsl:element name="a">
+                    <xsl:attribute name="tabindex">0</xsl:attribute>
+                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                    <xsl:attribute name="data-html">true</xsl:attribute>
+                    <xsl:attribute name="data-target">
+                        <xsl:value-of select="generate-id()"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                        <xsl:value-of select="$app-num"/></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                    <xsl:attribute name="id">
+                        <xsl:text>from-app-</xsl:text>
+                        <xsl:value-of select="$app-num"/>
+                    </xsl:attribute>
+                    <xsl:text>(</xsl:text>
+                    <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                    <xsl:text>)</xsl:text>
+                </xsl:element>
+            </xsl:element>
+
+            <!-- Version without the tooltip display in the body-->
+           <!-- <xsl:element name="span"> 
+                <xsl:attribute name="class">lem</xsl:attribute>
+                <xsl:apply-templates select="tei:lem"/>
+            </xsl:element>-->
+    </xsl:template>
     
 </xsl:stylesheet>
