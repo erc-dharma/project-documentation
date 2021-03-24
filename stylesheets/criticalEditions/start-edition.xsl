@@ -1798,7 +1798,8 @@
                 <xsl:element name="li">
                     <xsl:choose>
                         <xsl:when test="@*">
-                            <xsl:variable name="soughtMS" select="substring-after(@*, 'txt:')"/>
+                            <xsl:variable name="soughtMS" select="substring-before(substring-after(@*, 'txt:'), '_')"/>
+                            <xsl:variable name="refMS" select="substring-after(@*, '_')"/>
                             <xsl:element name="blockquote">
                         <xsl:attribute name="class">blockquote text-center</xsl:attribute>
                         <xsl:element name="p">
@@ -1810,7 +1811,14 @@
                             <xsl:element name="cite">
                                 <xsl:choose>
                                     <xsl:when test="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]">
+                                        <xsl:element name="a">
+                                            <xsl:attribute name="href">
+                                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]/child::tei:ptr[1]/@target"/>
+                                            </xsl:attribute>
                                         <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]/child::tei:abbr[@type='siglum']"/>
+                                            <xsl:text> </xsl:text>
+                                            <xsl:value-of select="$refMS"/>
+                                        </xsl:element>
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:value-of select="replace(descendant-or-self::tei:item/@*, 'txt:', '')"/></xsl:otherwise></xsl:choose>
