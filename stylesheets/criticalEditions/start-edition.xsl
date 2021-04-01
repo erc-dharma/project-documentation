@@ -272,8 +272,8 @@
                                         <xsl:text>translit </xsl:text>
                                         <xsl:value-of select="$script"/>
                                     </xsl:attribute>  
-                                            <xsl:choose>
-                                                <xsl:when test="(not(.//text())) and (not(.//tei:gap))">
+                                         <xsl:choose>
+                                                <xsl:when test="tei:gap[@reason='omitted']">
                                                     <xsl:element name="span">
                                                         <xsl:attribute name="class">font-italic</xsl:attribute> 
                                                         <xsl:attribute name="style">color:black;</xsl:attribute>
@@ -282,14 +282,11 @@
                                                 </xsl:when>
                                                 <xsl:otherwise>
                                                     <xsl:apply-templates/>
-                                                </xsl:otherwise>
+                                               </xsl:otherwise>
                                             </xsl:choose>
-                                    <xsl:if test="@cause='eyeskip'">
-                                        <xsl:element name="span">
-                                            <xsl:attribute name="style">color:black;</xsl:attribute>
-                                        <xsl:text> (eye-skip)</xsl:text>
-                                        </xsl:element>
-                                    </xsl:if>
+                                    
+                                    <xsl:apply-templates/>
+                                    
                                 </xsl:element>
                             </xsl:element>
                             <xsl:text> </xsl:text>
@@ -300,6 +297,12 @@
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                             </xsl:call-template>
+                                <xsl:if test="tei:gap[@ana='eyeskip']">
+                                    <xsl:element name="span">
+                                        <xsl:attribute name="style">color:black;</xsl:attribute>
+                                        <xsl:text> (eye-skip)</xsl:text>
+                                    </xsl:element>
+                                </xsl:if>
                                 <!--<xsl:if test="attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>-->
@@ -516,9 +519,13 @@
     </xsl:template>
     <!--  G ! -->
     <xsl:template match="tei:gap">
-        <xsl:element name="span">
+        <xsl:choose>
+            <xsl:when test="@reason='omitted'"/>
+            <xsl:otherwise>
+                <xsl:element name="span">
             <xsl:attribute name="class">gap</xsl:attribute>
-            <xsl:choose><xsl:when test="@quantity > 6">
+            <xsl:choose> 
+                <xsl:when test="@quantity > 6">
                 <xsl:text> — — — </xsl:text>
                 <xsl:value-of select="@quantity"/>
                 <xsl:choose>
@@ -538,6 +545,8 @@
             </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
+            </xsl:otherwise></xsl:choose>
+     
     </xsl:template>
     <!--  H ! -->
     <!--  head ! -->
@@ -1706,18 +1715,14 @@
                    
                     <xsl:choose>
                         <xsl:when test="child::tei:pb"/>
-                        <xsl:when test="(not(.//text())) and (not(.//tei:gap))">
+                        <xsl:when test="child::tei:gap[@reason='omitted']">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:text>om.</xsl:text> 
                             </xsl:element>
                         </xsl:when>
                     </xsl:choose>
-                    <xsl:if test="@cause='eyeskip'">
-                        <xsl:element name="span">
-                            <xsl:text> (eye-skip)</xsl:text>
-                        </xsl:element>
-                    </xsl:if>
+                    
                     <xsl:apply-templates/>
                     <xsl:text> </xsl:text>
                     <xsl:if test="@*">
@@ -1735,6 +1740,11 @@
                         <!--<xsl:if test="attribute::wit or attribute::source">
                             <xsl:text> </xsl:text>
                         </xsl:if>-->
+                        <xsl:if test="child::tei:gap[@ana='eyeskip']">
+                            <xsl:element name="span">
+                                <xsl:text> (eye-skip)</xsl:text>
+                            </xsl:element>
+                        </xsl:if>
                             <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
