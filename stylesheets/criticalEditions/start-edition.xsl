@@ -280,6 +280,13 @@
                                                         <xsl:text>om.</xsl:text>                                                       
                                                     </xsl:element>
                                                 </xsl:when>
+                                             <xsl:when test="child::tei:gap[@reason='lost']">
+                                                 <xsl:element name="span">
+                                                     <xsl:attribute name="class">font-italic</xsl:attribute>
+                                                     <xsl:attribute name="style">color:black;</xsl:attribute>
+                                                     <xsl:text>lac.</xsl:text> 
+                                                 </xsl:element>
+                                             </xsl:when>
                                                 <xsl:otherwise>
                                                     <xsl:apply-templates/>
                                                </xsl:otherwise>
@@ -528,6 +535,7 @@
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'"/>
+            <xsl:when test="@reason='lost'"/>
             <xsl:otherwise>
                 <xsl:element name="span">
             <xsl:attribute name="class">gap</xsl:attribute>
@@ -1726,6 +1734,12 @@
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:text>om.</xsl:text> 
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="child::tei:gap[@reason='lost']">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                                <xsl:text>lac.</xsl:text> 
                             </xsl:element>
                         </xsl:when>
                     </xsl:choose>
