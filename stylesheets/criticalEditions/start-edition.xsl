@@ -280,16 +280,13 @@
                                                         <xsl:text>om.</xsl:text>                                                       
                                                     </xsl:element>
                                                 </xsl:when>
-                                             <xsl:when test="child::tei:gap[@reason='lost']">
+                                             <xsl:when test="child::tei:gap[@reason='lost' and not(@quantity or @unit)]">
                                                  <xsl:element name="span">
                                                      <xsl:attribute name="class">font-italic</xsl:attribute>
                                                      <xsl:attribute name="style">color:black;</xsl:attribute>
                                                      <xsl:text>lac.</xsl:text> 
                                                  </xsl:element>
                                              </xsl:when>
-                                                <xsl:otherwise>
-                                                    <xsl:apply-templates/>
-                                               </xsl:otherwise>
                                             </xsl:choose>
                                     
                                     <xsl:apply-templates/>
@@ -535,25 +532,18 @@
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'"/>
-            <xsl:when test="@reason='lost'"/>
+            <xsl:when test="@reason='lost' and not(@quantity or @unity)"/>
             <xsl:otherwise>
                 <xsl:element name="span">
             <xsl:attribute name="class">gap</xsl:attribute>
             <xsl:choose> 
-                <xsl:when test="@quantity > 6">
-                <xsl:text> — — — </xsl:text>
+                <xsl:when test="@quantity">
                 <xsl:value-of select="@quantity"/>
                 <xsl:choose>
                     <xsl:when test="@unit = 'character'">
-                        <xsl:element name="i">
-                            <xsl:text> akṣaras</xsl:text>
-                        </xsl:element>
+                        <xsl:text>+</xsl:text>
                     </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:text> </xsl:text>
-                    </xsl:otherwise>
                 </xsl:choose>
-                <xsl:text> — — — </xsl:text>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:text>...</xsl:text>
@@ -1736,7 +1726,7 @@
                                 <xsl:text>om.</xsl:text> 
                             </xsl:element>
                         </xsl:when>
-                        <xsl:when test="child::tei:gap[@reason='lost']">
+                        <xsl:when test="child::tei:gap[@reason='lost' and not(@quantity or @unit)]">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:text>lac.</xsl:text> 
