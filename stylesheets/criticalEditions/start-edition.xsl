@@ -1513,7 +1513,7 @@
         <xsl:param name="location"/>
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
             <xsl:if
-                test="not((local-name() = 'choice' or local-name() = 'subst' or local-name() = 'app')
+                test="not((local-name() = 'choice' or local-name() = 'subst')
                 and (ancestor::tei:choice or ancestor::tei:subst or ancestor::tei:app))">
                 <xsl:variable name="app-num">
                     <xsl:value-of select="name()"/>
@@ -1573,7 +1573,7 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:choose>
-            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst or ancestor::tei:app)">
+            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst)">
                 <!-- either <br/> in htm-tpl-apparatus or \r\n in txt-tpl-apparatus -->
                 <xsl:call-template name="lbrk-app"/>
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
