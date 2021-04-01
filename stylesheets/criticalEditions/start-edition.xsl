@@ -303,6 +303,13 @@
                                         <xsl:text> (eye-skip)</xsl:text>
                                     </xsl:element>
                                 </xsl:if>
+                                <xsl:if test="child::tei:gap[@ana='line_omission']">
+                                    <xsl:element name="span">
+                                        <xsl:text> (</xsl:text>
+                                        <xsl:value-of select="replace(child::tei:gap/@ana, '_', ' ')"/>
+                                        <xsl:text>) </xsl:text>
+                                    </xsl:element>
+                                </xsl:if>
                                 <!--<xsl:if test="attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>-->
@@ -1743,6 +1750,13 @@
                         <xsl:if test="child::tei:gap[@ana='eyeskip']">
                             <xsl:element name="span">
                                 <xsl:text> (eye-skip)</xsl:text>
+                            </xsl:element>
+                        </xsl:if>
+                        <xsl:if test="child::tei:gap[@ana='line_omission']">
+                            <xsl:element name="span">
+                                <xsl:text> (</xsl:text>
+                                <xsl:value-of select="replace(child::tei:gap/@ana, '_', ' ')"/>
+                                <xsl:text>) </xsl:text>
                             </xsl:element>
                         </xsl:if>
                             <xsl:if test="@source">
