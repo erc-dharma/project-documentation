@@ -1274,6 +1274,7 @@
                                 <valItem ident="note"/>
                                 <valItem ident="part"/>
                                 <valItem ident="entry"/>
+                                <valItem ident="line"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -3413,7 +3414,6 @@
                 </elementSpec>
                 <elementSpec ident="rs" module="core" mode="change">
                     <attList>
-                        <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
