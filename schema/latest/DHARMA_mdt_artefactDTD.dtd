@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT artefactMetadataTemplate (resourceManagement, artefactDescription)>
+  <!ELEMENT resourceManagement (resourceID, metadataOrigin, metadataEditor, metadataContribution+, metadataReview+, project, corpus, metadataRights)>
+  <!ELEMENT resourceID EMPTY>
+  <!ATTLIST resourceID
+  digitalID ID #REQUIRED
+  >
+    <!ELEMENT metadataOrigin (#PCDATA)>
+    <!ELEMENT metadataEditor (creation+)>
+      <!ELEMENT creation EMPTY>
+
+      <!ATTLIST creation
+      who CDATA #REQUIRED
+     when CDATA #REQUIRED
+      >
+      <!-- ajouter un pointeur vers la liste des membres du projet -->
+    <!ELEMENT metadataContribution (change+)>
+      <!ELEMENT change (#PCDATA)>
+      <!ATTLIST change
+      who CDATA #REQUIRED><!-- ajouter un pointeur vers la liste des membres du projet -->
+      <!ATTLIST change
+      when CDATA #REQUIRED
+    status CDATA #REQUIRED><!-- ajouter les valeurs possibles pour le workflow -->
+
+    <!ELEMENT metadataReview EMPTY>
+    <!ATTLIST metadataReview
+    who CDATA #REQUIRED
+    when CDATA #REQUIRED>
+
+    <!ELEMENT project (#PCDATA)>
+    <!ELEMENT corpus (#PCDATA)>
+    <!ELEMENT metadataRights EMPTY>
+    <!ATTLIST metadataRights
+    target CDATA #FIXED "CC0 1.0"
+    >
+<!ELEMENT artefactDescription (artefactID,compositeArtefactID,material+,artefactType+,decoDesc,artefactFormat,lettering,copperplateFormat?,condition,artefactHistory,originPlace,discoveryPlace,preservationPlace,artefactRights,relatedResources)>
+<!-- AJ: changement de statut pour materiel-->
+<!-- PRECISER LES CHAMPS OBLIGATOIRES OU OPTIONNELS -->
+  <!ELEMENT artefactID EMPTY>
+  <!ATTLIST artefactID
+  idno ID #REQUIRED
+  >
+  <!ELEMENT compositeArtefactID EMPTY>
+  <!ATTLIST compositeArtefactID
+  idno ID #IMPLIED
+  >
+  <!ELEMENT material EMPTY>
+  <!-- AJ: l'occurence ne peut pas être déclaré pour materiel sur l'élément lui-même. Il faut le déclarer lorsqu'il est l'enfant. Donc materiel+ devient materiel-->
+  <!ATTLIST material value (unknown|metal|copper_alloy|gold|iron_steel|silver|tin|other_alloy|mineral_based|clay|glass|stucco|terracotta|modern_material|paper|plaster|resin|wax|organic|bone|wood|horn|stone|andesite|basalt|granite|laterite|limestone|marble|precious_stone|sandstone|schist|semi_precious_stone|agate|carnelian|lapis_lazuli|quartz|steatite|tufa) "unknown">
+  <!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+
+
+  <!ELEMENT artefactType EMPTY>
+  <!--AJ:je bouge la déclarartion de l'occurence.  -->
+  <!ATTLIST artefactType
+  value (unknown|architectural_element|base|block|brick|column|doorjamb|doorstep|lintel|makara|pilaster|railing_coping|railing_crossbar|railing_post|slab|wall|documentary|cylinder_seal|foil|foundation_deposit|copperplate|seal|seal_impression|jewellery|amulet|bead|ring|monument|gravestone|menhir|miniature_stupa|pillar|ring_stone|stele|tablet|natural_object|boulder|cliff_face|river_stone|sculpture|relief|statue|statue_base|utensil|bowl|chalice|cup|grinding_stone|kendi|millstone|plate|potsherd|tripod) "unknown">
+  <!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+
+  <!ELEMENT decoDesc (decoration+,decorationRemarks)>
+    <!ELEMENT decoration EMPTY>
+    <!ATTLIST decoration
+    value (none|valeur1|valeur2|...) "none"><!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+
+    <!ELEMENT decorationRemarks (p?)>
+      <!ELEMENT p (#PCDATA)>
+
+  <!ELEMENT artefactFormat (height+,width+,depth+,diameter+,circumference)>
+    <!ELEMENT height (#PCDATA)>
+    <!ATTLIST height
+    unit (m|cm) "cm">
+
+    <!ELEMENT width (#PCDATA)>
+    <!ATTLIST width
+    unit (m|cm) "cm">
+
+    <!ELEMENT depth (#PCDATA)>
+    <!ATTLIST depth
+    unit (m|cm) "cm">
+
+    <!ELEMENT diameter (#PCDATA)>
+    <!ATTLIST diameter
+    unit (m|cm) "cm">
+
+    <!ELEMENT circumference (#PCDATA)>
+    <!ATTLIST circumference
+    unit (m|cm) "cm">
+
+  <!ELEMENT lettering (letteringTechnique,textHeight+,textWidth+,linesNumber+,glyphHeight+,glyphWidth+,letteringRemarks)>
+    <!ELEMENT letteringTechnique EMPTY>
+    <!ATTLIST letteringTechnique
+    value (engraved | relief | painted | unknown) "unknown"><!-- liste à revoir -->
+
+    <!ELEMENT textHeight (#PCDATA)>
+    <!ATTLIST textHeight
+    unit (m|cm) "cm">
+
+    <!ELEMENT textWidth (#PCDATA)>
+   <!ATTLIST textWidth
+   unit (m|cm) "cm">
+
+    <!ELEMENT linesNumber (#PCDATA)>
+    <!ELEMENT glyphHeight (#PCDATA)>
+   <!ATTLIST glyphHeight
+    unit (m|cm) "cm">
+
+    <!ELEMENT glyphWidth (#PCDATA)>
+      <!ATTLIST glyphWidth
+     unit (m|cm) "cm">
+
+    <!ELEMENT letteringRemarks (p)>
+      <!--<!ELEMENT p (#PCDATA)>-->
+  <!ELEMENT copperplateFormat (copperplateWeight, copperplateWeightOther?, bindingHole, sealPreservation, sealingTechnique, sealHeight, sealWidth)>
+    <!ELEMENT copperplateWeight (#PCDATA)>
+    <!ATTLIST copperplateWeight
+    unit (kg|g) "g"
+    >
+    <!ELEMENT copperplateWeightOther (#PCDATA)>
+    <!-- AJ: il n'y a pas copperplateWeightOther dans le template seulement copperplateWeight -->
+    <!ATTLIST copperplateWeightOther
+     unit (kg|g) "g">
+
+    <!ELEMENT bindingHole EMPTY>
+    <!ATTLIST bindingHole
+    number CDATA #IMPLIED>
+
+    <!ELEMENT sealPreservation EMPTY>
+    <!ATTLIST sealPreservation
+    value (yes|no) "yes">
+
+    <!ELEMENT sealingTechnique EMPTY>
+   <!ATTLIST sealingTechnique value (seal_stamped_onto_body_of_plate|seal_stamped_onto_binding_ring|seal_stamped_onto_plate_projection|seal_stamped_into_other_seal|seal-like_engraving_into_artefact|unknown|not_applicable) "not_applicable"><!-- liste à définir -->
+
+    <!ELEMENT sealHeight (#PCDATA)>
+    <!ATTLIST sealHeight
+    unit (m | cm) "cm">
+
+    <!ELEMENT sealWidth (#PCDATA)>
+    <!ATTLIST sealWidth
+    unit (m | cm) "cm">
+
+  <!ELEMENT condition EMPTY>
+  <!ATTLIST condition
+  value (intact_and_complete|intact_and_incomplete|fragmented_and_complete|fragmented_and_incomplete|unknown) "unknown"> <!-- liste à revoir -->
+
+  <!ELEMENT artefactHistory (p)>
+   <!-- <!ELEMENT p (#PCDATA)>-->
+
+  <!ELEMENT originPlace (originPlaceName,originPlaceID,originPlaceRemarks)>
+    <!ELEMENT originPlaceName (#PCDATA)>
+    <!ELEMENT originPlaceID EMPTY>
+    <!ATTLIST originPlaceID
+    idno ID #REQUIRED>
+
+    <!ELEMENT originPlaceRemarks (p)>
+  <!--    <!ELEMENT p (#PCDATA)>-->
+  <!ELEMENT discoveryPlace (discoveryPlaceName,discoveryPlaceID,discoveryCoordinates,discoveryEvents*)>
+    <!ELEMENT discoveryPlaceName (#PCDATA)>
+    <!ELEMENT discoveryPlaceID EMPTY>
+    <!ATTLIST discoveryPlaceID
+    idno ID #REQUIRED>
+
+    <!ELEMENT discoveryCoordinates (#PCDATA)>
+    <!ELEMENT discoveryEvents (p)>
+    <!ATTLIST discoveryEvents
+    type (excavation|find|survey|purchase|observed|unknown) "unknown"
+    when CDATA #REQUIRED>
+    <!-- liste à revoir -->
+
+      <!--<!ELEMENT p (#PCDATA)>-->
+  <!ELEMENT preservationPlace (preservationPlaceName,inventoryNumber+,preservationPlaceID,preservationCoordinates,inSituStatus?,preservationEvents*)>
+    <!ELEMENT preservationPlaceName (#PCDATA)>
+    <!ELEMENT inventoryNumber (#PCDATA)>
+    <!ELEMENT preservationPlaceID EMPTY>
+    <!ATTLIST preservationPlaceID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT preservationCoordinates (#PCDATA)>
+    <!ELEMENT inSituStatus EMPTY>
+    <!ATTLIST inSituStatus
+    value (yes|no) "no">
+
+    <!ELEMENT preservationEvents (p)>
+    <!ATTLIST preservationEvents
+    type (acquisition|move|destruction|inventory|observed) "move"
+     when CDATA #REQUIRED>
+
+    <!--  <!ELEMENT p (#PCDATA)>-->
+  <!ELEMENT artefactRights (governmentalHolder,institutionalHolder,artefactDistributionRights)>
+    <!ELEMENT governmentalHolder (#PCDATA)>
+    <!ELEMENT institutionalHolder (#PCDATA)>
+    <!ELEMENT artefactDistributionRights EMPTY>
+    <!ATTLIST artefactDistributionRights
+    target CDATA  #FIXED "All rights reserved">
+
+  <!ELEMENT relatedResources (textID+,surrogateID+,imageID+)>
+    <!ELEMENT textID EMPTY>
+    <!ATTLIST textID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT surrogateID EMPTY>
+    <!ATTLIST surrogateID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT imageID EMPTY>
+    <!ATTLIST imageID
+    idno ID #REQUIRED>
