@@ -537,20 +537,35 @@
                 <xsl:element name="span">
             <xsl:attribute name="class">gap</xsl:attribute>
             <xsl:choose> 
-                <xsl:when test="@quantity">
+                <xsl:when test="@quantity and @unit">
+                    <xsl:if test="@precision='low'">
+                        <xsl:text>ca. </xsl:text>
+                    </xsl:if>
                 <xsl:value-of select="@quantity"/>
-                <xsl:choose>
-                    <xsl:when test="@unit = 'character'">
+                <xsl:if test="@unit='character'">
+                    <xsl:choose>
+                    <xsl:when test="@reason='lost'">
                         <xsl:text>+</xsl:text>
                     </xsl:when>
+                    <xsl:when test="@reason='illegible'">
+                        <xsl:text>×</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="@reason='undefined'">
+                        <xsl:text>*</xsl:text>
+                    </xsl:when>
                 </xsl:choose>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:text>...</xsl:text>
-            </xsl:otherwise>
-            </xsl:choose>
+                </xsl:if> 
+                </xsl:when>
+                <xsl:when test="@extent">
+                    <xsl:text>...</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>...</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>         
         </xsl:element>
-            </xsl:otherwise></xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
      
     </xsl:template>
     <!--  H ! -->
