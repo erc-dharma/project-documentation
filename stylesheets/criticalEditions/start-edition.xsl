@@ -239,7 +239,10 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>-->
                             </xsl:if>
-                            <xsl:if test="tei:lem/@wit">                    
+                            <xsl:if test="tei:lem/@wit"> 
+                                <xsl:if test="tei:lem/@ana='#absent_elsewhere'">
+                                    <xsl:text> only in </xsl:text>
+                                </xsl:if>
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
@@ -301,13 +304,13 @@
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                             </xsl:call-template>
-                                <xsl:if test="tei:gap[@ana='eyeskip']">
+                                <xsl:if test="tei:gap[@ana='#eyeskip']">
                                     <xsl:element name="span">
                                         <xsl:attribute name="style">color:black;</xsl:attribute>
                                         <xsl:text> (eye-skip)</xsl:text>
                                     </xsl:element>
                                 </xsl:if>
-                                <xsl:if test="child::tei:gap[@ana='line_omission']">
+                                <xsl:if test="child::tei:gap[@ana='#line_omission']">
                                     <xsl:element name="span">
                                         <xsl:text> (line omission)</xsl:text>
                                     </xsl:element>
@@ -1703,7 +1706,10 @@
                             </xsl:if>
                             
                         <xsl:if test="@wit">
-                                <xsl:element name="span">
+                            <xsl:if test="@ana='#absent_elsewhere'">
+                                <xsl:text>only in </xsl:text>
+                                </xsl:if>
+                              <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="@wit"/>
@@ -1764,12 +1770,12 @@
                         <!--<xsl:if test="attribute::wit or attribute::source">
                             <xsl:text> </xsl:text>
                         </xsl:if>-->
-                        <xsl:if test="child::tei:gap[@ana='eyeskip']">
+                        <xsl:if test="child::tei:gap[@ana='#eyeskip']">
                             <xsl:element name="span">
                                 <xsl:text> (eye-skip)</xsl:text>
                             </xsl:element>
                         </xsl:if>
-                        <xsl:if test="child::tei:gap[@ana='line_omission']">
+                        <xsl:if test="child::tei:gap[@ana='#line_omission']">
                             <xsl:element name="span">
                                 <xsl:text> (line omission)</xsl:text>
                             </xsl:element>
