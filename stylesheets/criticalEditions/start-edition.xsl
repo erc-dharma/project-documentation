@@ -264,7 +264,10 @@
                 </xsl:element>
                 <!--  Variant readings ! -->
                 <xsl:if test="tei:rdg">
-                    <xsl:element name="hr"/>
+                    <xsl:choose>
+                        <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@ana='#absent_elsewhere'"/>
+                        <xsl:otherwise>
+                            <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg">
                         <xsl:element name="span">
                             <xsl:attribute name="class">reading-line</xsl:attribute>
@@ -328,7 +331,7 @@
                                 <xsl:text>; </xsl:text>
                             </xsl:if>-->
                         </xsl:element>
-                    </xsl:for-each>
+                    </xsl:for-each></xsl:otherwise></xsl:choose>
                 </xsl:if>
                 <!--  Notes ! -->
                 <xsl:if test="tei:note[fn:not(@type='altLem')]">
@@ -1727,13 +1730,16 @@
                                 </xsl:call-template>
                             </xsl:if>
                         </xsl:if>
-                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg]">
+                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg and not(@ana='#absent_elsewhere')]">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
                 
                 <xsl:for-each select="tei:rdg">
-                    <xsl:if test="position()!=1">
+                    <xsl:choose>
+                        <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@ana='#absent_elsewhere'"/>
+                        <xsl:otherwise>
+                            <xsl:if test="position()!=1">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                    
@@ -1786,6 +1792,7 @@
                                 </xsl:call-template>
                             </xsl:if>
                     </xsl:if>
+                    </xsl:otherwise></xsl:choose>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
                         <xsl:text> • </xsl:text>
                         <xsl:apply-templates select="following-sibling::tei:note"/>
