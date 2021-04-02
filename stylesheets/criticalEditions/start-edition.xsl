@@ -309,9 +309,7 @@
                                 </xsl:if>
                                 <xsl:if test="child::tei:gap[@ana='line_omission']">
                                     <xsl:element name="span">
-                                        <xsl:text> (</xsl:text>
-                                        <xsl:value-of select="replace(child::tei:gap/@ana, '_', ' ')"/>
-                                        <xsl:text>) </xsl:text>
+                                        <xsl:text> (line omission)</xsl:text>
                                     </xsl:element>
                                 </xsl:if>
                                 <!--<xsl:if test="attribute::source">
@@ -1773,9 +1771,7 @@
                         </xsl:if>
                         <xsl:if test="child::tei:gap[@ana='line_omission']">
                             <xsl:element name="span">
-                                <xsl:text> (</xsl:text>
-                                <xsl:value-of select="replace(child::tei:gap/@ana, '_', ' ')"/>
-                                <xsl:text>) </xsl:text>
+                                <xsl:text> (line omission)</xsl:text>
                             </xsl:element>
                         </xsl:if>
                             <xsl:if test="@source">
