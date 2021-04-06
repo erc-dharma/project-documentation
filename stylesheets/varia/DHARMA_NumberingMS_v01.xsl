@@ -48,7 +48,7 @@
                 <xsl:attribute name="xml:id">
                 <xsl:value-of select="$numberDiv"/>
                 <xsl:text>.</xsl:text>
-                <xsl:value-of select="name()"/>
+                <!--<xsl:value-of select="name()"/>-->
                 <xsl:number count="tei:p | tei:ab | tei:lg" level="multiple" 
                     format="01"/>
             </xsl:attribute>
