@@ -617,17 +617,36 @@ a:hover, a i.fas:hover {
     color: #a34545;
 }
 
-p{
-    text-align: justify;
-    left: 0px;    
-    position:relative;
-         }
-.tooltipApp a {
-     color: #a34545; 
-      width : 100px;
-      height: 100px;
+.textContent {
+  display: block;
+  width: 100%;
 }
 
+p{
+    text-align: justify;  
+    clear:both;
+    
+         }
+         
+.tooltipApp a {
+     color: #a34545; 
+     right: -750px;
+position: relative;
+ clear: none;
+      
+}
+/*.tooltipApp a:not(first-child) {
+  position: relative; 
+  display: inline;
+}*/
+.tooltipApp  { 
+width: 250%;
+ display: inline;
+}
+
+.text-muted .siglum {
+    color: grey;
+}
 .title {
     font-style:italic;
 }

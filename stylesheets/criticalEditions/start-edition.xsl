@@ -361,7 +361,7 @@
            <!--  <xsl:element name="div">
            <xsl:attribute name="class">float-right</xsl:attribute>-->
            <xsl:element name="span">
-               <xsl:attribute name="class">tooltipApp float-right</xsl:attribute>
+               <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
                <xsl:element name="a">
                    <xsl:attribute name="tabindex">0</xsl:attribute>
                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
@@ -624,7 +624,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col</xsl:attribute>
+                <xsl:attribute name="class">testconteneur col</xsl:attribute>
                 <xsl:if test="@met">
                     <xsl:element name="div">
                         <xsl:attribute name="class">float-center</xsl:attribute>
@@ -885,9 +885,12 @@
     <xsl:template match="tei:pb">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted foliation</xsl:attribute>
-                <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                <!--<xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                 <xsl:attribute name="data-placement">top</xsl:attribute>
-                <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>
+                <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>-->
+            <xsl:call-template name="tokenize-witness-list">
+                <xsl:with-param name="string" select="@edRef"/>
+            </xsl:call-template>
                 <xsl:value-of select="@n"/>
         </xsl:element>
     </xsl:template>
