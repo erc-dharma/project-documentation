@@ -1095,7 +1095,7 @@
     </xsl:template>
     <!--  supplied ! -->
     <xsl:template match="tei:supplied">
-        <xsl:element name="a">
+        <xsl:element name="span">
             <xsl:attribute name="class">text-muted supplied</xsl:attribute>
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
