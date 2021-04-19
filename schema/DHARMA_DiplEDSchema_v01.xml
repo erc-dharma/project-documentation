@@ -2519,9 +2519,6 @@
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule
-                            context="tei:note[parent::tei:app]"><sch:report
-                            test="not(following-sibling::tei:note)">Note(s) should the last element
-                            of the apparatus entry</sch:report></sch:rule><sch:rule
                             context="tei:note"><sch:report test="child::tei:note">Note(s) may not
                             contain further notes (this is not a technical requirement but a
                             convention we shall observe to reduce

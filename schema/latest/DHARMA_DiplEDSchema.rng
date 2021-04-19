@@ -3920,12 +3920,6 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
                   id="dharma-note-note-constraint-rule-21">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:note[parent::tei:app]">
-               <sch:report test="not(following-sibling::tei:note)">Note(s) should the last element
-                            of the apparatus entry</sch:report>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note">
                <sch:report test="child::tei:note">Note(s) may not
                             contain further notes (this is not a technical requirement but a
