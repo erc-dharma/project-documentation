@@ -44,10 +44,6 @@
                 <date from="2019" to="2025">2019-2025</date>
             </publicationStmt>
             <sourceDesc>
-                <listWit>
-                    <!-- Stuctured data or just text? -->
-                    <!-- One witness for each manuscript. Update the content -->
-                    <witness xml:id="fakeID">
                         <!-- Give your witness an unique identifier -->
                         <msDesc>
                             <msIdentifier>
@@ -74,8 +70,6 @@
                                 <p>In June 1934, Sāṅkṛtyāyana found this manuscript in the monastery of Kun-de-ling (Lhasa).</p>
                             </history>
                         </msDesc>
-                    </witness>
-                </listWit>
             </sourceDesc>
         </fileDesc>
         <encodingDesc>
