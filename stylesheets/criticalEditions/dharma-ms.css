@@ -625,15 +625,14 @@ a:hover, a i.fas:hover {
 p{
     text-align: justify;  
     clear:both;
-    
          }
          
-.tooltipApp a {
+.tooltipApp a{
     color: #a34545; 
-     right: -850px;
-     height:0;
+     right: -150px;
+     height: 0px;
      clear:both;
-     position: relative;
+     position: absolute;
       
 }
 /*.tooltipApp a:not(first-child) {
@@ -641,8 +640,7 @@ p{
   
 }*/
 .tooltipApp  { 
-display: inline-block;
-width: 250%;
+ display:inline-block;
 }
 
 .text-muted .siglum {
