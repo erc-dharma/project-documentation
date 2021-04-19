@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-04-01T10:15:27Z. .
+Schema generated from ODD source 2021-04-19T08:43:39Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -2158,6 +2158,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_listPerson"/>
          <ref name="tei_listPlace"/>
          <ref name="tei_listApp"/>
+         <ref name="tei_listWit"/>
       </choice>
    </define>
    <define name="tei_model.listLike_alternation">
@@ -2166,6 +2167,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_listPerson"/>
          <ref name="tei_listPlace"/>
          <ref name="tei_listApp"/>
+         <ref name="tei_listWit"/>
       </choice>
    </define>
    <define name="tei_model.listLike_sequence">
@@ -2173,6 +2175,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <ref name="tei_listPerson"/>
       <ref name="tei_listPlace"/>
       <ref name="tei_listApp"/>
+      <ref name="tei_listWit"/>
    </define>
    <define name="tei_model.listLike_sequenceOptional">
       <optional>
@@ -2186,6 +2189,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </optional>
       <optional>
          <ref name="tei_listApp"/>
+      </optional>
+      <optional>
+         <ref name="tei_listWit"/>
       </optional>
    </define>
    <define name="tei_model.listLike_sequenceOptionalRepeatable">
@@ -2201,6 +2207,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <zeroOrMore>
          <ref name="tei_listApp"/>
       </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_listWit"/>
+      </zeroOrMore>
    </define>
    <define name="tei_model.listLike_sequenceRepeatable">
       <oneOrMore>
@@ -2214,6 +2223,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_listApp"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_listWit"/>
       </oneOrMore>
    </define>
    <define name="tei_model.noteLike">
@@ -9955,6 +9967,44 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </pattern>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.textCritical.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_listWit">
+      <element name="listWit">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(witness list) lists definitions for all the witnesses referred to by a critical apparatus, optionally grouped hierarchically. [12.1. The Apparatus Entry, Readings, and Witnesses]</a:documentation>
+         <group>
+            <optional>
+               <ref name="tei_model.headLike"/>
+            </optional>
+            <zeroOrMore>
+               <ref name="tei_desc"/>
+            </zeroOrMore>
+            <oneOrMore>
+               <choice>
+                  <ref name="tei_witness"/>
+                  <ref name="tei_listWit"/>
+               </choice>
+            </oneOrMore>
+         </group>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.sortable.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_witness">
+      <element name="witness">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains either a description of a single witness referred to within the critical apparatus, or a list of witnesses which is to be referred to by a single sigil. [12.1. The Apparatus Entry, Readings, and Witnesses]</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tei_model.limitedPhrase"/>
+               <ref name="tei_model.inter"/>
+               <ref name="tei_note"/>
+            </choice>
+         </zeroOrMore>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.sortable.attributes"/>
          <empty/>
       </element>
    </define>
