@@ -838,15 +838,7 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
-                <elementSpec ident="app" module="textcrit" mode="change">
-                    <constraintSpec scheme="schematron" ident="one-lem">
-                        <constraint><sch:rule context="tei:app"><sch:report
-                            test="not(count(child::tei:lem) &gt;= 1)">An apparatus entry must always
-                            contain a lem element</sch:report><sch:report
-                            test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)"
-                            >When the apparatus entry contains only a lem, the @source is
-                            mandatory</sch:report></sch:rule></constraint>
-                    </constraintSpec>
+                <elementSpec ident="app" module="textcrit" mode="change">                 
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -874,7 +866,7 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="loc" mode="change" usage="req"/>
+                        <attDef ident="loc" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="authority" module="header" mode="change">
@@ -1191,13 +1183,7 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="citedRange" module="core" mode="change">
-                    <constraintSpec scheme="schematron" ident="note">
-                        <constraint><sch:rule context="tei:citedRange"><sch:report
-                            test="child::tei:note and ancestor::tei:listBibl">Note can not be used
-                            as a child of the element citedRange, only as a sibling of this
-                            element</sch:report></sch:rule></constraint>
-                    </constraintSpec>
-                    <attList>
+                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
@@ -2242,12 +2228,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="list" module="core" mode="change">
-                    <constraintSpec scheme="isoschematron" ident="div">
-                        <constraint><sch:rule context="tei:list"><sch:assert
-                            test="ancestor::tei:div[@type='edition' or @type='translation'  or @type='commentary']"
-                            >List can only be used inside the edition or the translation part of
-                            your file</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2538,22 +2518,7 @@
                 </elementSpec>
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
-                        <constraint><sch:rule context="tei:note"><sch:report
-                            test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
-                            >Note is prohibited in div[@type='edition']</sch:report><sch:report
-                            test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)"
-                            >Inside div[@type='commentary'], note should be wrapped inside a p
-                            element</sch:report><sch:report
-                            test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)"
-                            >Inside div[@type='apparatus'], note should be wrapped inside an app
-                            element. Please note that note(s) may not contain further
-                            notes.</sch:report><sch:report
-                            test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
-                            >Inside div[@type='bibliography'], note should be wrapped inside an p
-                            element for the epigraphic lemma</sch:report><sch:report
-                            test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
-                            >Note should the last element of the
-                            biliography</sch:report></sch:rule><sch:rule
+                        <constraint><sch:rule
                             context="tei:note[parent::tei:app]"><sch:report
                             test="not(following-sibling::tei:note)">Note(s) should the last element
                             of the apparatus entry</sch:report></sch:rule><sch:rule
