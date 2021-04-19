@@ -91,7 +91,7 @@
         </sch:rule>
     </sch:pattern>
 
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:app">
             <sch:assert test="./@loc" sqf:fix="add-loc">@loc is mandatory on the app element</sch:assert>
             <sqf:fix id="add-loc">
@@ -101,7 +101,7 @@
                 <sqf:add node-type="attribute" target="loc"/>
             </sqf:fix>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     <sch:pattern>
         <sch:rule context="t:div[@type='edition']//t:l">
             <sch:assert test="./@n">Line verses should be numered with @n attribute</sch:assert>
