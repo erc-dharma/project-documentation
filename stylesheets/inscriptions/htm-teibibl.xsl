@@ -232,7 +232,7 @@ bibliography. All examples only cater for book and article.
 										<!-- Adding a style to match the CSS style imported from Zotero added by the API -->
 										<xsl:attribute name="style">line-height: 1.35; padding-left: 1em; text-indent:-1em;</xsl:attribute>
 								</xsl:if>
-								<span class="tooltip-bibl">
+								<!--<span class="tooltip-bibl">-->
 								<!--<xsl:apply-templates select="./text()"/>-->
 								<xsl:if test="./child::t:author">
 								<xsl:value-of select="./child::t:author"/>
@@ -248,10 +248,10 @@ bibliography. All examples only cater for book and article.
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
 															<xsl:call-template name="journalTitle"/>
 															<xsl:text>. </xsl:text>
-																	<span class="tooltiptext-bibl">
+																	<!--<span class="tooltiptext-bibl">
 																		<xsl:copy-of
 																			select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
-																</span>
+																</span>-->
 												</xsl:when>
 												<!-- For the cases handled with regularly entry in Zotero-->
 												<!-- journal abbreviation -->
@@ -309,13 +309,13 @@ bibliography. All examples only cater for book and article.
 										<xsl:otherwise>
 												<xsl:copy-of
 													select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
-												<span class="tooltiptext-bibl">
+												<!--<span class="tooltiptext-bibl">
 									<xsl:copy-of
 										select="document(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
-										</span>
+										</span>-->
 										</xsl:otherwise>
 									</xsl:choose>
-								</span>
+								<!--</span>-->
 									<xsl:if test="t:citedRange">
 										<xsl:for-each select="t:citedRange">
 											<b>
