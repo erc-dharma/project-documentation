@@ -188,9 +188,9 @@
 					<idno type="VIAF">http://viaf.org/viaf/159939465</idno>
 					<idno type="IdRef">https://www.idref.fr/100933807</idno>
 				</person>
-				<person xml:id="gubu">
+				<person xml:id="gibu">
 					<persName>
-						<forename>Guilia</forename>
+						<forename>Giulia</forename>
 						<surname>Buriola</surname>
 					</persName>
 				</person>
@@ -322,6 +322,7 @@
 						<surname>Janiak</surname>
 					</persName>
 					<idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
+					<idno type="IdHAL">https://cv.archives-ouvertes.fr/axelle-janiak</idno>
 				</person>
 				<person xml:id="cski">
 					<persName>
@@ -353,6 +354,8 @@
 						<forename>Coline</forename>
 						<surname>Lefrancq</surname>
 					</persName>
+					<idno type="VIAF">http://viaf.org/viaf/72161511995670560688</idno>
+					<idno type="IdRef">https://www.idref.fr/253581214</idno>
 					<!-- nothing found -->
 					<!-- Manu: you may help Coline get a VIAF, idHAL, ORCID... -->
 					<!-- Manu dixit: will do for idHAL and ORCID -->
@@ -364,7 +367,7 @@
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/131146574008638102599</idno>
 					<idno type="IdRef">https://www.idref.fr/193202719</idno>
-					<!-- add the IdHal -->
+					<idno type="IdHAL">https://cv.archives-ouvertes.fr/adeline-levivier</idno>
 				</person>
 				<person xml:id="pili">
 					<persName>
@@ -540,6 +543,12 @@
 					<idno type="VIAF">http://viaf.org/viaf/30722592</idno>
 					<idno type="IdRef">https://www.idref.fr/106412329</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-6061-0140</idno>
+				</person>
+				<person xml:id="rozo">
+					<persName>
+						<forename>Roberta</forename>
+						<surname>Zollo</surname>
+					</persName>
 				</person>
 			</listPerson>
 		</body>
