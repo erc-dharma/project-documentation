@@ -629,10 +629,10 @@ p{
          
 .tooltipApp a{
     color: #a34545; 
-     right: -150px;
+     right: -850px;
      height: 0px;
      clear:both;
-     position: absolute;
+     position: relative;
       
 }
 /*.tooltipApp a:not(first-child) {
@@ -641,6 +641,7 @@ p{
 }*/
 .tooltipApp  { 
  display:inline-block;
+ width: 100%;
 }
 
 .text-muted .siglum {
