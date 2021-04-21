@@ -65,7 +65,7 @@
 						<surname>Francis</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/156480842</idno>
-					<idno type="IdHAL">https://cv.archives-ouvertes.fr/emmanuel-francis</idno>
+					<idno type="IdHAL">emmanuel-francis</idno>
 					<idno type="IdRef">https://www.idref.fr/127901175</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-5405-2269</idno>
 				</person>
@@ -75,7 +75,7 @@
 						<surname>Griffiths</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/11026260</idno>
-					<idno type="idHAL">https://cv.archives-ouvertes.fr/arlo-griffiths</idno>
+					<idno type="idHAL">arlo-griffiths</idno>
 					<idno type="IdRef">https://www.idref.fr/087383462</idno>
 					<idno type="ORCID"/>
 					<!-- to be created -->
@@ -121,6 +121,7 @@
 					<idno type="IdRef">https://www.idref.fr/150577419</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q50221197</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-9633-829X</idno>
+					<idno type="IdHAL">andrea-acri</idno>
 				</person>
 				<person xml:id="adgu">
 					<persName>
@@ -130,6 +131,7 @@
 					<!-- http://viaf.org/viaf/283969266 -->
 					<!-- EF dixit: So he has 2 VIAF -->
 					<idno type="IdRef">https://www.idref.fr/147009324</idno>
+					<idno type="IdHAL">aditia-gunawan</idno>
 				</person>
 				<person xml:id="agin">
 					<!-- Can't we remove this person? -->
@@ -322,7 +324,7 @@
 						<surname>Janiak</surname>
 					</persName>
 					<idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
-					<idno type="IdHAL">https://cv.archives-ouvertes.fr/axelle-janiak</idno>
+					<idno type="IdHAL">axelle-janiak</idno>
 				</person>
 				<person xml:id="cski">
 					<persName>
@@ -356,6 +358,8 @@
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/72161511995670560688</idno>
 					<idno type="IdRef">https://www.idref.fr/253581214</idno>
+					<idno type="IdHAL">coline-lefrancq</idno>
+					<idno type="ORCID">https://orcid.org/0000-0001-8609-6119</idno>
 					<!-- nothing found -->
 					<!-- Manu: you may help Coline get a VIAF, idHAL, ORCID... -->
 					<!-- Manu dixit: will do for idHAL and ORCID -->
@@ -367,7 +371,7 @@
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/131146574008638102599</idno>
 					<idno type="IdRef">https://www.idref.fr/193202719</idno>
-					<idno type="IdHAL">https://cv.archives-ouvertes.fr/adeline-levivier</idno>
+					<idno type="IdHAL">adeline-levivier</idno>
 				</person>
 				<person xml:id="pili">
 					<persName>
@@ -410,7 +414,7 @@
 						<surname>Morlock</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/316672978</idno>
-					<idno type="IdHAL">https://cv.archives-ouvertes.fr/emmanuelle-morlock</idno>
+					<idno type="IdHAL">emmanuelle-morlock</idno>
 					<idno type="IdRef">https://www.idref.fr/185971202</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-1617-8554</idno>
 				</person>
@@ -527,6 +531,7 @@
 					<idno type="VIAF">http://viaf.org/viaf/308304168</idno>
 					<idno type="IdRef">https://www.idref.fr/177429623</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
+					<idno type="IdHAL">vincent-tournier</idno>
 				</person>
 				<person xml:id="utve">
 					<persName>
@@ -549,6 +554,7 @@
 						<forename>Roberta</forename>
 						<surname>Zollo</surname>
 					</persName>
+					<idno type="ORCID">https://orcid.org/0000-0002-1014-4660</idno>
 				</person>
 			</listPerson>
 		</body>
