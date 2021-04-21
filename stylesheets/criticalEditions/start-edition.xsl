@@ -293,8 +293,12 @@
                                                      <xsl:text>lac.</xsl:text> 
                                                  </xsl:element>
                                              </xsl:when>
-                                             <xsl:when test="child::tei:lacunaStart"><xsl:text>[...</xsl:text></xsl:when>
-                                             <xsl:when test="child::tei:lacunaEnd"><xsl:text>...]</xsl:text></xsl:when>
+                                             <xsl:when test="child::tei:lacunaStart">
+                                                 <xsl:text>[...</xsl:text>
+                                             </xsl:when>
+                                             <xsl:when test="child::tei:lacunaEnd">
+                                                 <xsl:text>...]</xsl:text>
+                                             </xsl:when>
                                             </xsl:choose>
                                     
                                     <xsl:apply-templates/>
@@ -1766,6 +1770,12 @@
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:text>lac.</xsl:text> 
                             </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="child::tei:lacunaStart">
+                            <xsl:text>[...</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="child::tei:lacunaEnd">
+                            <xsl:text>...]</xsl:text>
                         </xsl:when>
                     </xsl:choose>
                     
