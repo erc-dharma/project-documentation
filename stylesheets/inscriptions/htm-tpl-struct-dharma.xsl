@@ -79,6 +79,52 @@
          </head>
 
          <body>
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             <!--<img src="logo.png" alt="DHARMA" class="img-fluid"/>-->
+             <a class="navbar-brand" href="https://erc-dharma.github.io/">ERC-DHARMA</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                   <a class="nav-link" href="https://erc-dharma.github.io/">Home <span class="sr-only">(current)</span></a>
+                 </li>
+                 <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Collections
+                   </a>
+                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="#tfa-collection">Task-Force A</a>
+                     <a class="dropdown-item" href="#tfb-collection">Task-Force B</a>
+                     <a class="dropdown-item" href="#tfc-collection">Task-Force C</a>
+                     <a class="dropdown-item" href="#tfd-collection">Task-Force D</a>
+                   </div>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="editorial">Editorial Conventions</a>
+                 </li>
+                 <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Controlled Vocabularies
+                   </a>
+                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                     <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
+                     <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
+                     <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
+                     <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
+                   </div>
+                 </li>
+               </ul>
+               <!--<form id="search_form" class="form-inline my-2 my-lg-0">
+                 <input id="search_input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+               </form>-->
+             </div>
+           </nav>
+           
             <h1>
               <xsl:value-of select="//t:teiHeader//t:title"/>
             </h1>
