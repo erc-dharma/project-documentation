@@ -248,7 +248,7 @@ Pb de lb[@break=no] entre deux textpart
                    (normalize-space(.)=''
                             and preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw'])]">
      <xsl:if test="EDF:f-wwrap(.) = true()">
-        <xsl:text>- </xsl:text>
+        <xsl:text>-</xsl:text>
      </xsl:if>
           <xsl:element name="sup">
             <xsl:text>⎘ plate </xsl:text>
@@ -268,7 +268,7 @@ Pb de lb[@break=no] entre deux textpart
         </xsl:choose>
    </xsl:template>
 <!-- Display the pb for the blank pages-->
-      <xsl:template match="//t:pb">
+      <xsl:template match="//t:pb[not(preceding::node()/text())]">
         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
         <xsl:if test="not(following-sibling::t:lb[1]) or following-sibling::t:gap[1]">
           <xsl:element name="sup">
