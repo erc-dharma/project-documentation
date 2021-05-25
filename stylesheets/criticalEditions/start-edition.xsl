@@ -355,14 +355,14 @@
             <xsl:copy-of select="$apparatus"/>
         </span>
     </xsl:template>
-   <xsl:template match="tei:app">
+    <xsl:template match="tei:app[not(parent::tei:lem)]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
       
-       <xsl:element name="span">
+           <xsl:element name="span">
            <xsl:attribute name="class">lem-tooltipApp</xsl:attribute>
            <!--  <xsl:element name="div">
            <xsl:attribute name="class">float-right</xsl:attribute>-->
@@ -434,6 +434,7 @@
                    <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
                </xsl:element>-->
            </xsl:element>
+           </xsl:element>
            
            <!-- Version with the bulle at the end of the line-->
         <!--<xsl:element name="div">
@@ -453,9 +454,6 @@
             </a>
         </xsl:element>
         </xsl:element>-->
-        </xsl:element>
-        
-        
     </xsl:template>
     <!--  B ! -->
     <xsl:template match="tei:bibl">
@@ -894,9 +892,10 @@
                 <!--<xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                 <xsl:attribute name="data-placement">top</xsl:attribute>
                 <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>-->
-            <xsl:call-template name="tokenize-witness-list">
+           <!-- <xsl:call-template name="tokenize-witness-list">
                 <xsl:with-param name="string" select="@edRef"/>
-            </xsl:call-template>
+            </xsl:call-template>-->
+                <xsl:value-of select="substring-after(@edRef, '#')"/>
                 <xsl:value-of select="@n"/>
         </xsl:element>
     </xsl:template>
@@ -1581,7 +1580,7 @@
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app">
                     <xsl:text>app</xsl:text>
                 </xsl:when>-->
-              <!--  <xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>-->
+              <!--<xsl:when test="child::tei:*[local-name()=('note')]/tei:app"/>-->
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="div-loc">
