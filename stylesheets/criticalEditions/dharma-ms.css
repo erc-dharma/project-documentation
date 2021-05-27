@@ -629,9 +629,9 @@ p{
          
 .tooltipApp a{
     color: #a34545; 
-     right: -950px;
+      right: -950px;
    position:relative;
-      
+      font-style: normal;
 }
 /*.tooltipApp a:not(first-child) {
   display: inline;
@@ -642,7 +642,11 @@ p{
  width: 100%;
 
 }
-
+.lem-last-note a{
+    color: #a34545; 
+     right: -950px;
+      position:relative;
+}
 .text-muted .siglum {
     color: grey;
 }
