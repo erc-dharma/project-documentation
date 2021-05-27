@@ -652,7 +652,8 @@
                     </xsl:element>
                 </xsl:if>-->
                 <xsl:element name="div">
-                    <xsl:attribute name="class">lg
+                    <xsl:attribute name="class">
+                        <xsl:text>lg</xsl:text>
                     <xsl:if test="@met='anuṣṭubh'"><xsl:text> anustubh</xsl:text></xsl:if>
                     </xsl:attribute>
                     <xsl:attribute name="id">
@@ -680,6 +681,43 @@
             </xsl:for-each>
             
         </xsl:element>
+    </xsl:template>
+    <!--  listApp ! -->
+    <xsl:template match="tei:listApp[@type = 'parallels']">
+        <xsl:element name="div">
+            <xsl:attribute name="id">parallels</xsl:attribute>
+            <xsl:if test="descendant::tei:note"> 
+                <xsl:element name="div">
+                    <xsl:attribute name="class">card</xsl:attribute>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">card-header</xsl:attribute>
+                        <xsl:element name="h5">
+                            <xsl:attribute name="class">mb-0</xsl:attribute>
+                            <xsl:element name="button">
+                                <xsl:attribute name="class">btn btn-link</xsl:attribute>
+                                <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                                <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
+                                <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                                <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                                <xsl:text>Parallels</xsl:text>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    
+                    <xsl:element name="div">
+                        <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                        <xsl:attribute name="class">collapse</xsl:attribute>
+                        <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
+                        <xsl:attribute name="data-parent">#accordion</xsl:attribute>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">card-body</xsl:attribute>
+                            <xsl:call-template name="parallels-content"/>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:if>
+        </xsl:element>
+        
     </xsl:template>
     <!--  listBibl -->
     <!-- Must be reworked -->
@@ -756,43 +794,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    <!--  note ! -->
-    <xsl:template match="tei:note[@type = 'parallels']">
-        <xsl:element name="div">
-            <xsl:attribute name="id">parallels</xsl:attribute>
-            <xsl:if test="descendant::tei:item"> 
-                <xsl:element name="div">
-                    <xsl:attribute name="class">card</xsl:attribute>
-                    <xsl:element name="div">
-                        <xsl:attribute name="class">card-header</xsl:attribute>
-                        <xsl:element name="h5">
-                            <xsl:attribute name="class">mb-0</xsl:attribute>
-                            <xsl:element name="button">
-                                <xsl:attribute name="class">btn btn-link</xsl:attribute>
-                                <xsl:attribute name="data-toggle">collapse</xsl:attribute>
-                                <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
-                                <xsl:attribute name="aria-expanded">false</xsl:attribute>
-                                <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                                <xsl:text>Parallels</xsl:text>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
-                        
-                            <xsl:element name="div">
-                            <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                            <xsl:attribute name="class">collapse</xsl:attribute>
-                            <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
-                            <xsl:attribute name="data-parent">#accordion</xsl:attribute>
-                            <xsl:element name="div">
-                            <xsl:attribute name="class">card-body</xsl:attribute>
-                                <xsl:call-template name="parallels-content"/>
-                        </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
-            </xsl:if>
-        </xsl:element>
-      
-    </xsl:template>
+    
     <xsl:template match="tei:note">
         <xsl:choose>
             <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg]">
@@ -892,10 +894,10 @@
                 <!--<xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                 <xsl:attribute name="data-placement">top</xsl:attribute>
                 <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>-->
-           <!-- <xsl:call-template name="tokenize-witness-list">
+            <!--<xsl:call-template name="tokenize-witness-list">
                 <xsl:with-param name="string" select="@edRef"/>
             </xsl:call-template>-->
-                <xsl:value-of select="substring-after(@edRef, '#')"/>
+              <xsl:value-of select="substring-after(@edRef, '#')"/>
                 <xsl:value-of select="@n"/>
         </xsl:element>
     </xsl:template>
@@ -1876,7 +1878,7 @@
        
         <xsl:element name="ul">
             <xsl:attribute name="class">list-unstyled</xsl:attribute>
-            <xsl:for-each select="descendant-or-self::tei:item">
+            <xsl:for-each select="descendant-or-self::tei:note">
                 <xsl:element name="li">
                     <xsl:choose>
                         <xsl:when test="@*">
@@ -1903,7 +1905,7 @@
                                         </xsl:element>
                                     </xsl:when>
                                     <xsl:otherwise>
-                                        <xsl:value-of select="replace(descendant-or-self::tei:item/@*, 'txt:', '')"/></xsl:otherwise></xsl:choose>
+                                        <xsl:value-of select="replace(descendant-or-self::tei:note/@*, 'txt:', '')"/></xsl:otherwise></xsl:choose>
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
