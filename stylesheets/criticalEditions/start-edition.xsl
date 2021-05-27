@@ -134,7 +134,7 @@
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
                 <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='main']|./tei:fileDesc/tei:titleStmt/tei:title"/>
+                    <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
                 </xsl:element>
                 <xsl:element name="h2">
                     <xsl:attribute name="class">display-5</xsl:attribute>
@@ -244,7 +244,7 @@
                                     <xsl:text> only in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                    <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -286,15 +286,12 @@
                                                         <xsl:text>om.</xsl:text>                                                       
                                                     </xsl:element>
                                                 </xsl:when>
-                                             <xsl:when test="child::tei:gap[@reason='lost' and not(@quantity or @unit)]">
+                                             <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity or @unit)]">
                                                  <xsl:element name="span">
                                                      <xsl:attribute name="class">font-italic</xsl:attribute>
                                                      <xsl:attribute name="style">color:black;</xsl:attribute>
                                                      <xsl:text>lac.</xsl:text> 
                                                  </xsl:element>
-                                             </xsl:when>
-                                             <xsl:when test="child::tei:lacunaStart">
-                                                 <xsl:text>[...</xsl:text>
                                              </xsl:when>
                                              <xsl:when test="child::tei:lacunaEnd">
                                                  <xsl:text>...]</xsl:text>
@@ -302,12 +299,18 @@
                                             </xsl:choose>
                                     
                                     <xsl:apply-templates/>
+                                    <xsl:choose>
+                                        <xsl:when test="child::tei:lacunaStart">
+                                        <xsl:text>[...</xsl:text>
+                                    </xsl:when>
+                                    
+                                    </xsl:choose>
                                     
                                 </xsl:element>
                             </xsl:element>
                             <xsl:text> </xsl:text>
                             <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -340,7 +343,7 @@
                     </xsl:for-each></xsl:otherwise></xsl:choose>
                 </xsl:if>
                 <!--  Notes ! -->
-                <xsl:if test="tei:note[fn:not(@type='altLem')]">
+                <xsl:if test="tei:note[fn:not(@type='altLem') or ancestor::tei:listApp]">
                     <xsl:element name="hr"/>
                     <xsl:for-each select="tei:note[fn:not(@type='altLem')]">
                         <xsl:element name="span">
@@ -348,7 +351,7 @@
                             <xsl:apply-templates/>
                         </xsl:element>
                     </xsl:for-each>
-                </xsl:if>
+                </xsl:if>           
             </xsl:element>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
@@ -1728,7 +1731,7 @@
                                 <xsl:text>only in </xsl:text>
                                 </xsl:if>
                               <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                  <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -1772,20 +1775,21 @@
                                 <xsl:text>lac.</xsl:text> 
                             </xsl:element>
                         </xsl:when>
-                        <xsl:when test="child::tei:lacunaStart">
-                            <xsl:text>[...</xsl:text>
-                        </xsl:when>
+                        
                         <xsl:when test="child::tei:lacunaEnd">
                             <xsl:text>...]</xsl:text>
                         </xsl:when>
                     </xsl:choose>
                     
                     <xsl:apply-templates/>
+                            <xsl:if test="child::tei:lacunaStart">
+                                <xsl:text>[...</xsl:text>
+                            </xsl:if>
                     <xsl:text> </xsl:text>
                     <xsl:if test="@*">
                         <xsl:if test="@wit">                       
                             <xsl:element name="span">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                     <xsl:with-param name="string" select="@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
