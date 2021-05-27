@@ -377,13 +377,13 @@
                    </xsl:attribute>
                    <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                        <xsl:value-of select="$app-num"/></xsl:attribute>
-                   <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                   <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                    <xsl:attribute name="id">
                        <xsl:text>from-app-</xsl:text>
                        <xsl:value-of select="$app-num"/>
                    </xsl:attribute>
                    <xsl:text>(</xsl:text>
-                   <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                   <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                    <xsl:text>)</xsl:text>
                </xsl:element>
            </xsl:element>
@@ -685,7 +685,7 @@
     <!--  listApp ! -->
     <xsl:template match="tei:listApp[@type = 'parallels']">
         <xsl:element name="div">
-            <xsl:attribute name="id">parallels</xsl:attribute>
+            <xsl:attribute name="class">parallels</xsl:attribute>
             <xsl:if test="descendant::tei:note"> 
                 <xsl:element name="div">
                     <xsl:attribute name="class">card</xsl:attribute>
@@ -808,13 +808,13 @@
                                 <xsl:value-of select="generate-id()"/>
                             </xsl:attribute>
                             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                           
                             <xsl:element name="span">
                                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
                                 <xsl:attribute name="type">button</xsl:attribute>                              
                                 <xsl:text>(</xsl:text>
-                                <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                                 <xsl:text>)</xsl:text> 
                             </xsl:element>        
                         </xsl:element>
@@ -1560,7 +1560,7 @@
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
                    <!-- <xsl:value-of select="$app-num"/>-->
-                    <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                 </a>
                 <xsl:text> </xsl:text>
             </xsl:if>
@@ -2048,13 +2048,13 @@
                     </xsl:attribute>
                     <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
                     <xsl:attribute name="id">
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
                     <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                     <xsl:text>)</xsl:text>
                 </xsl:element>
             </xsl:element>
