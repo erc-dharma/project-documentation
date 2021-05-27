@@ -1497,7 +1497,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app | .//tei:note"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app[not(parent::tei:listApp)] | .//tei:note"> <!-- .//tei:choice | .//tei:subst |  -->
 
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -1505,7 +1505,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]">
+            select=".//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
