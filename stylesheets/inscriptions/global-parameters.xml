@@ -127,7 +127,7 @@
     <!-- Using  https://gitcdn.link/ to generate a CSS readable on server. raw.github transforming the content as text/plain. Chrome and FireFox dpn't apply the style to the html page-->
     <!-- Issue of SSH on gitcdn.link switch to gitcdn.xyz -->
     <!-- <value>https://gitcdn.xyz/repo/erc-dharma/project-documentation/master/stylesheets/inscriptions/global.css</value>-->
-    <value>https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/inscriptions/global.css</value>
+    <value>https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/inscriptions/global.css</value>
   </parameter>
 
 <parameter>
