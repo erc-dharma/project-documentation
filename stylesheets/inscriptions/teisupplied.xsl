@@ -32,6 +32,7 @@
                  <xsl:text>]</xsl:text>
             </xsl:if>
          </xsl:when>
+         <xsl:when test="$parm-leiden-style = 'dharma' and parent::t:fw"/>
 
          <xsl:otherwise>
         <!--
