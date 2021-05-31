@@ -2122,7 +2122,7 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="xml:lang" mode="change" usage="req">
+                        <attDef ident="xml:lang" mode="change">
                             <defaultVal>eng</defaultVal>
                             <valList type="open" mode="replace">
                                 <valItem ident="ndl"/>
