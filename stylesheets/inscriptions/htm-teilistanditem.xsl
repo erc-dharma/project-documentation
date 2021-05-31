@@ -22,6 +22,11 @@
              <xsl:apply-templates mode="dharma"/>
            </ol>
          </xsl:when>
+         <xsl:when test="$parm-leiden-style = 'dharma' and child::t:label">
+           <dl>
+             <xsl:apply-templates mode="dharma"/>
+           </dl>
+         </xsl:when>
          <xsl:otherwise>
            <xsl:if test="$parm-leiden-style = 'dharma'">
             <xsl:element name="ul">
@@ -36,22 +41,40 @@
 <!--Adding a mode on item requires adding modes on all the list container application-->
   <xsl:template match="t:item" mode="dharma">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
-      <li>
+    <!-- <li> -->
         <xsl:choose>
           <xsl:when test="descendant::t:bibl">
-            <xsl:apply-templates mode="dharma"/>
+            <li>
+              <xsl:apply-templates mode="dharma"/>
+            </li>
           </xsl:when>
+          <xsl:when test="ancestor::t:div[@type='translation'] and $parm-leiden-style = 'dharma' and preceding-sibling::t:label">
+          <dd>
+            <xsl:apply-templates mode="dharma"/>
+          </dd>
+        </xsl:when>
           <xsl:when test="ancestor::t:div[@type='translation'] and @n and $parm-leiden-style = 'dharma'">
+            <li>
             <sup class="linenumber">
              <xsl:value-of select="@n"/>
            </sup>
            <xsl:apply-templates mode="dharma"/>
+         </li>
          </xsl:when>
+
               <xsl:otherwise>
+                <li>
               <xsl:apply-templates/>
+            </li>
             </xsl:otherwise>
             </xsl:choose>
-      </li>
+    <!-- </li> -->
   </xsl:template>
+
+  <xsl:template match="t:label[ancestor-or-self::t:list]" mode="dharma">
+    <xsl:element name="dt">
+    <xsl:apply-templates/>
+  </xsl:element>
+</xsl:template>
 
 </xsl:stylesheet>
