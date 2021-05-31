@@ -202,6 +202,9 @@ Pb de lb[@break=no] entre deux textpart
                   <!-- always print line-no when broken orig in line, in ddbdp -->
                   <xsl:call-template name="margin-num"/>
                </xsl:when>
+               <xsl:when test="number(@n) and $parm-leiden-style = 'dharma'">
+                 <xsl:call-template name="margin-num"/>
+               </xsl:when>
             </xsl:choose>
          </xsl:otherwise>
       </xsl:choose>
