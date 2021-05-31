@@ -7,7 +7,7 @@
 
 
     <xsl:template match="t:label">
-        <xsl:if test="not(ancestor::t:lg)">
+        <xsl:if test="not(ancestor::t:lg or ancestor::t:list)">
           <xsl:apply-templates/>
       </xsl:if>
       </xsl:template>
