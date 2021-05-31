@@ -284,6 +284,31 @@ text-align:center;*/
   list-style-type: none;
 }
 
+dl{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+dl:after {content:"";display:table;clear:both;}
+
+dt {
+    float: left;
+    width: 10%;
+    text-align: left;
+    padding: .25em;
+    clear: left;
+    font-weight:bold;
+}
+dd {
+    float: left;
+    width: 60%;
+    padding: .25em 0;
+}
+
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 @media screen and (min-width: 601px) {
 
