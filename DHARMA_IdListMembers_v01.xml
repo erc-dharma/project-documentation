@@ -45,8 +45,9 @@
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
-			<change who="#argr" when="2020-05-20">Added Wayan Jarrah Sastrawan's ID.</change>
-			<change who="#argr" when="2020-03-01">Added Roberta Zollo's ID.</change>
+			<change who="#argr" when="2021-06-01">Added Amandine Wattelier-Bricout's ID.</change>
+			<change who="#argr" when="2021-05-20">Added Wayan Jarrah Sastrawan's ID.</change>
+			<change who="#argr" when="2021-03-01">Added Roberta Zollo's ID.</change>
 			<change who="#argr" when="2020-08-27">Added Salomé Pichon's ID.</change>
 			<change who="#axja" when="2019-12-12">Updates on the metadata schema and applying Arlo
 				Griffiths's suggestions on the IDs.</change>
@@ -559,6 +560,13 @@
 					<idno type="VIAF">http://viaf.org/viaf/30722592</idno>
 					<idno type="IdRef">https://www.idref.fr/106412329</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-6061-0140</idno>
+				</person>
+				<person xml:id="amwb">
+					<persName>
+						<forename>Amandine</forename>
+						<surname>Wattelier-Bricout</surname>
+					</persName>
+					<idno type="IdHAL">amandine-wattelier-bricout</idno>
 				</person>
 				<person xml:id="rozo">
 					<persName>
