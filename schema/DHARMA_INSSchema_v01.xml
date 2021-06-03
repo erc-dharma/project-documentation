@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-06-03">Adding the @corresp on div, p, ab, lg, l and seg elements</change>
             <change who="part:axja" when="2021-03-10">Adding the @part on element l</change>
             <change who="part:axja" when="2021-01">Updating the ODD to match the evolution of the
                 EGD</change>
@@ -166,7 +167,6 @@
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="decls" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
@@ -780,7 +780,6 @@
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="decls" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
@@ -1919,7 +1918,6 @@
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
@@ -2141,7 +2139,6 @@
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="decls" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
@@ -2279,7 +2276,7 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="list" module="core" mode="change">
-                    <constraintSpec scheme="isoschematron" ident="div">
+                    <constraintSpec scheme="isoschematron" ident="lists">
                         <constraint><sch:rule context="tei:list"><sch:assert
                             test="ancestor::tei:div[@type='edition' or @type='translation'  or @type='commentary']"
                             >List can only be used inside the edition or the translation part of
@@ -2720,7 +2717,6 @@
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="decls" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
@@ -3459,7 +3455,6 @@
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="datcat" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
