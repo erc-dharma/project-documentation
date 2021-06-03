@@ -156,4 +156,11 @@
         </sch:rule>
     </sch:pattern>
     
+    <!-- Adding codes to check the content of the attribute @corresp -->
+    <sch:pattern>
+        <sch:rule context="t:*/@corresp">
+            <sch:assert test="starts-with(.,'class:') and starts-with(.,'maturity:')">The content of the attribute @corresp should start contained coded for both script classification sh and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
 </sch:schema>
