@@ -5,7 +5,7 @@
                 version="2.0">
   <!-- Imported from [htm|txt]-teinote.xsl -->
 
-  <xsl:template match="t:note">
+  <xsl:template match="t:note" mode="dharma">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
 
@@ -15,7 +15,7 @@
            <xsl:with-param name="location" select="'text'"/>
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$leiden-style='dharma' and @type='credit'">
+      <xsl:when test="ancestor::t:div[@type='translation'] and $leiden-style='dharma' and @type='credit'">
       <p><xsl:apply-templates/></p>
     </xsl:when>
       <xsl:otherwise>
