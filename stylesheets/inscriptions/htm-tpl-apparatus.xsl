@@ -208,7 +208,8 @@
                    <xsl:with-param name="location" select="'apparatus'"/>
                 </xsl:call-template>
                   <span class="tooltiptext-notes">
-                  <xsl:copy-of select="node()"/>
+                  <!--<xsl:copy-of select="node()"/>-->
+                  <xsl:apply-templates mode="dharma"/>
                   </span>
         <br/>
         </xsl:for-each>
