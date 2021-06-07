@@ -249,92 +249,92 @@
                             </valList>
                         </attDef>
                         <attDef ident="corresp" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="57471">
+                            <valList type="open" mode="replace">
+                                <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
                                 </valItem>
-                                <valItem ident="70417">
+                                <valItem ident="class:70417">
                                     <desc>Jawi script - Narrower concept of Arabic Script</desc>
                                 </valItem>
-                                <valItem ident="83217">
+                                <valItem ident="class:83217">
                                     <desc>Brāhmī and derivatives</desc>
                                 </valItem>
-                                <valItem ident="83223">
+                                <valItem ident="class:83223">
                                     <desc>northern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83229">
+                                <valItem ident="class:83229">
                                     <desc>Gauḍī</desc>
                                 </valItem>
-                                <valItem ident="38771">
+                                <valItem ident="class:38771">
                                     <desc>Nāgarī</desc>
                                 </valItem>
-                                <valItem ident="38774">
+                                <valItem ident="class:38774">
                                     <desc>Siddhamātr̥kā </desc>
                                 </valItem>
-                                <valItem ident="83227">
+                                <valItem ident="class:83227">
                                     <desc>southeast Asian Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83239">
+                                <valItem ident="class:83239">
                                     <desc>Balinese script</desc>
                                 </valItem>
-                                <valItem ident="38767">
+                                <valItem ident="class:38767">
                                     <desc>Batak script </desc>
                                 </valItem>
-                                <valItem ident="83233">
+                                <valItem ident="class:83233">
                                     <desc>Cam script</desc>
                                 </valItem>
-                                <valItem ident="38769">
+                                <valItem ident="class:38769">
                                     <desc>Kawi script</desc>
                                 </valItem>
-                                <valItem ident="83231">
+                                <valItem ident="class:83231">
                                     <desc>Khmer script</desc>
                                 </valItem>
-                                <valItem ident="83235">
+                                <valItem ident="class:83235">
                                     <desc>Mon-Burmese script</desc>
                                 </valItem>
-                                <valItem ident="83241">
+                                <valItem ident="class:83241">
                                     <desc>Old West Javanese script</desc>
                                 </valItem>
-                                <valItem ident="83237">
+                                <valItem ident="class:83237">
                                     <desc>Pyu script</desc>
                                 </valItem>
-                                <valItem ident=" 57470">
+                                <valItem ident="class:57470">
                                     <desc>Sundanese script</desc>
                                 </valItem>
-                                <valItem ident="83225">
+                                <valItem ident="class:83225">
                                     <desc>southern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="38768">
+                                <valItem ident="class:38768">
                                     <desc>Grantha</desc>
                                 </valItem>
-                                <valItem ident="38776">
+                                <valItem ident="class:38776">
                                     <desc>Tamil script</desc>
                                 </valItem>
-                                <valItem ident="57475">
+                                <valItem ident="class:57475">
                                     <desc>Tamil with Grantha</desc>
                                 </valItem>
-                                <valItem ident="70420">
+                                <valItem ident="class:70420">
                                     <desc>Vaṭṭeḻuṭṭu</desc>
                                 </valItem>
-                                <valItem ident="83221">
+                                <valItem ident="class:83221">
                                     <desc>Chinese Script</desc>
                                 </valItem>
-                                <valItem ident="83219">
+                                <valItem ident="class:83219">
                                     <desc>Kharoṣṭhī</desc>
                                 </valItem>
-                                <valItem ident="83207">
+                                <valItem ident="maturity:83207">
                                     <desc>early Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83211">
+                                <valItem ident="maturity:83211">
                                     <desc>late Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83209">
+                                <valItem ident="maturity:83209">
                                     <desc>middle Brāhmi</desc>
                                 </valItem>
-                                <valItem ident="83213">
+                                <valItem ident="maturity:83213">
                                     <desc>regional Brāhmī-derived script</desc>
                                 </valItem>
-                                <valItem ident="83215">
+                                <valItem ident="maturity:83215">
                                     <desc>vernacular Brāhmī-derived script</desc>
                                 </valItem>
                             </valList>
@@ -937,92 +937,92 @@
                             </valList>
                         </attDef>
                         <attDef ident="corresp" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="57471">
+                            <valList type="open" mode="replace">
+                                <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
                                 </valItem>
-                                <valItem ident="70417">
+                                <valItem ident="class:70417">
                                     <desc>Jawi script - Narrower concept of Arabic Script</desc>
                                 </valItem>
-                                <valItem ident="83217">
+                                <valItem ident="class:83217">
                                     <desc>Brāhmī and derivatives</desc>
                                 </valItem>
-                                <valItem ident="83223">
+                                <valItem ident="class:83223">
                                     <desc>northern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83229">
+                                <valItem ident="class:83229">
                                     <desc>Gauḍī</desc>
                                 </valItem>
-                                <valItem ident="38771">
+                                <valItem ident="class:38771">
                                     <desc>Nāgarī</desc>
                                 </valItem>
-                                <valItem ident="38774">
+                                <valItem ident="class:38774">
                                     <desc>Siddhamātr̥kā </desc>
                                 </valItem>
-                                <valItem ident="83227">
+                                <valItem ident="class:83227">
                                     <desc>southeast Asian Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83239">
+                                <valItem ident="class:83239">
                                     <desc>Balinese script</desc>
                                 </valItem>
-                                <valItem ident="38767">
+                                <valItem ident="class:38767">
                                     <desc>Batak script </desc>
                                 </valItem>
-                                <valItem ident="83233">
+                                <valItem ident="class:83233">
                                     <desc>Cam script</desc>
                                 </valItem>
-                                <valItem ident="38769">
+                                <valItem ident="class:38769">
                                     <desc>Kawi script</desc>
                                 </valItem>
-                                <valItem ident="83231">
+                                <valItem ident="class:83231">
                                     <desc>Khmer script</desc>
                                 </valItem>
-                                <valItem ident="83235">
+                                <valItem ident="class:83235">
                                     <desc>Mon-Burmese script</desc>
                                 </valItem>
-                                <valItem ident="83241">
+                                <valItem ident="class:83241">
                                     <desc>Old West Javanese script</desc>
                                 </valItem>
-                                <valItem ident="83237">
+                                <valItem ident="class:83237">
                                     <desc>Pyu script</desc>
                                 </valItem>
-                                <valItem ident=" 57470">
+                                <valItem ident="class:57470">
                                     <desc>Sundanese script</desc>
                                 </valItem>
-                                <valItem ident="83225">
+                                <valItem ident="class:83225">
                                     <desc>southern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="38768">
+                                <valItem ident="class:38768">
                                     <desc>Grantha</desc>
                                 </valItem>
-                                <valItem ident="38776">
+                                <valItem ident="class:38776">
                                     <desc>Tamil script</desc>
                                 </valItem>
-                                <valItem ident="57475">
+                                <valItem ident="class:57475">
                                     <desc>Tamil with Grantha</desc>
                                 </valItem>
-                                <valItem ident="70420">
+                                <valItem ident="class:70420">
                                     <desc>Vaṭṭeḻuṭṭu</desc>
                                 </valItem>
-                                <valItem ident="83221">
+                                <valItem ident="class:83221">
                                     <desc>Chinese Script</desc>
                                 </valItem>
-                                <valItem ident="83219">
+                                <valItem ident="class:83219">
                                     <desc>Kharoṣṭhī</desc>
                                 </valItem>
-                                <valItem ident="83207">
+                                <valItem ident="maturity:83207">
                                     <desc>early Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83211">
+                                <valItem ident="maturity:83211">
                                     <desc>late Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83209">
+                                <valItem ident="maturity:83209">
                                     <desc>middle Brāhmi</desc>
                                 </valItem>
-                                <valItem ident="83213">
+                                <valItem ident="maturity:83213">
                                     <desc>regional Brāhmī-derived script</desc>
                                 </valItem>
-                                <valItem ident="83215">
+                                <valItem ident="maturity:83215">
                                     <desc>vernacular Brāhmī-derived script</desc>
                                 </valItem>
                             </valList>
@@ -2274,92 +2274,92 @@
                             </valList>
                         </attDef>
                         <attDef ident="corresp" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="57471">
+                            <valList type="open" mode="replace">
+                                <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
                                 </valItem>
-                                <valItem ident="70417">
+                                <valItem ident="class:70417">
                                     <desc>Jawi script - Narrower concept of Arabic Script</desc>
                                 </valItem>
-                                <valItem ident="83217">
+                                <valItem ident="class:83217">
                                     <desc>Brāhmī and derivatives</desc>
                                 </valItem>
-                                <valItem ident="83223">
+                                <valItem ident="class:83223">
                                     <desc>northern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83229">
+                                <valItem ident="class:83229">
                                     <desc>Gauḍī</desc>
                                 </valItem>
-                                <valItem ident="38771">
+                                <valItem ident="class:38771">
                                     <desc>Nāgarī</desc>
                                 </valItem>
-                                <valItem ident="38774">
+                                <valItem ident="class:38774">
                                     <desc>Siddhamātr̥kā </desc>
                                 </valItem>
-                                <valItem ident="83227">
+                                <valItem ident="class:83227">
                                     <desc>southeast Asian Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83239">
+                                <valItem ident="class:83239">
                                     <desc>Balinese script</desc>
                                 </valItem>
-                                <valItem ident="38767">
+                                <valItem ident="class:38767">
                                     <desc>Batak script </desc>
                                 </valItem>
-                                <valItem ident="83233">
+                                <valItem ident="class:83233">
                                     <desc>Cam script</desc>
                                 </valItem>
-                                <valItem ident="38769">
+                                <valItem ident="class:38769">
                                     <desc>Kawi script</desc>
                                 </valItem>
-                                <valItem ident="83231">
+                                <valItem ident="class:83231">
                                     <desc>Khmer script</desc>
                                 </valItem>
-                                <valItem ident="83235">
+                                <valItem ident="class:83235">
                                     <desc>Mon-Burmese script</desc>
                                 </valItem>
-                                <valItem ident="83241">
+                                <valItem ident="class:83241">
                                     <desc>Old West Javanese script</desc>
                                 </valItem>
-                                <valItem ident="83237">
+                                <valItem ident="class:83237">
                                     <desc>Pyu script</desc>
                                 </valItem>
-                                <valItem ident=" 57470">
+                                <valItem ident="class:57470">
                                     <desc>Sundanese script</desc>
                                 </valItem>
-                                <valItem ident="83225">
+                                <valItem ident="class:83225">
                                     <desc>southern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="38768">
+                                <valItem ident="class:38768">
                                     <desc>Grantha</desc>
                                 </valItem>
-                                <valItem ident="38776">
+                                <valItem ident="class:38776">
                                     <desc>Tamil script</desc>
                                 </valItem>
-                                <valItem ident="57475">
+                                <valItem ident="class:57475">
                                     <desc>Tamil with Grantha</desc>
                                 </valItem>
-                                <valItem ident="70420">
+                                <valItem ident="class:70420">
                                     <desc>Vaṭṭeḻuṭṭu</desc>
                                 </valItem>
-                                <valItem ident="83221">
+                                <valItem ident="class:83221">
                                     <desc>Chinese Script</desc>
                                 </valItem>
-                                <valItem ident="83219">
+                                <valItem ident="class:83219">
                                     <desc>Kharoṣṭhī</desc>
                                 </valItem>
-                                <valItem ident="83207">
+                                <valItem ident="maturity:83207">
                                     <desc>early Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83211">
+                                <valItem ident="maturity:83211">
                                     <desc>late Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83209">
+                                <valItem ident="maturity:83209">
                                     <desc>middle Brāhmi</desc>
                                 </valItem>
-                                <valItem ident="83213">
+                                <valItem ident="maturity:83213">
                                     <desc>regional Brāhmī-derived script</desc>
                                 </valItem>
-                                <valItem ident="83215">
+                                <valItem ident="maturity:83215">
                                     <desc>vernacular Brāhmī-derived script</desc>
                                 </valItem>
                             </valList>
@@ -2547,92 +2547,92 @@
                             </valList>
                         </attDef>
                         <attDef ident="corresp" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="57471">
+                            <valList type="open" mode="replace">
+                                <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
                                 </valItem>
-                                <valItem ident="70417">
+                                <valItem ident="class:70417">
                                     <desc>Jawi script - Narrower concept of Arabic Script</desc>
                                 </valItem>
-                                <valItem ident="83217">
+                                <valItem ident="class:83217">
                                     <desc>Brāhmī and derivatives</desc>
                                 </valItem>
-                                <valItem ident="83223">
+                                <valItem ident="class:83223">
                                     <desc>northern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83229">
+                                <valItem ident="class:83229">
                                     <desc>Gauḍī</desc>
                                 </valItem>
-                                <valItem ident="38771">
+                                <valItem ident="class:38771">
                                     <desc>Nāgarī</desc>
                                 </valItem>
-                                <valItem ident="38774">
+                                <valItem ident="class:38774">
                                     <desc>Siddhamātr̥kā </desc>
                                 </valItem>
-                                <valItem ident="83227">
+                                <valItem ident="class:83227">
                                     <desc>southeast Asian Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83239">
+                                <valItem ident="class:83239">
                                     <desc>Balinese script</desc>
                                 </valItem>
-                                <valItem ident="38767">
+                                <valItem ident="class:38767">
                                     <desc>Batak script </desc>
                                 </valItem>
-                                <valItem ident="83233">
+                                <valItem ident="class:83233">
                                     <desc>Cam script</desc>
                                 </valItem>
-                                <valItem ident="38769">
+                                <valItem ident="class:38769">
                                     <desc>Kawi script</desc>
                                 </valItem>
-                                <valItem ident="83231">
+                                <valItem ident="class:83231">
                                     <desc>Khmer script</desc>
                                 </valItem>
-                                <valItem ident="83235">
+                                <valItem ident="class:83235">
                                     <desc>Mon-Burmese script</desc>
                                 </valItem>
-                                <valItem ident="83241">
+                                <valItem ident="class:83241">
                                     <desc>Old West Javanese script</desc>
                                 </valItem>
-                                <valItem ident="83237">
+                                <valItem ident="class:83237">
                                     <desc>Pyu script</desc>
                                 </valItem>
-                                <valItem ident=" 57470">
+                                <valItem ident="class:57470">
                                     <desc>Sundanese script</desc>
                                 </valItem>
-                                <valItem ident="83225">
+                                <valItem ident="class:83225">
                                     <desc>southern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="38768">
+                                <valItem ident="class:38768">
                                     <desc>Grantha</desc>
                                 </valItem>
-                                <valItem ident="38776">
+                                <valItem ident="class:38776">
                                     <desc>Tamil script</desc>
                                 </valItem>
-                                <valItem ident="57475">
+                                <valItem ident="class:57475">
                                     <desc>Tamil with Grantha</desc>
                                 </valItem>
-                                <valItem ident="70420">
+                                <valItem ident="class:70420">
                                     <desc>Vaṭṭeḻuṭṭu</desc>
                                 </valItem>
-                                <valItem ident="83221">
+                                <valItem ident="class:83221">
                                     <desc>Chinese Script</desc>
                                 </valItem>
-                                <valItem ident="83219">
+                                <valItem ident="class:83219">
                                     <desc>Kharoṣṭhī</desc>
                                 </valItem>
-                                <valItem ident="83207">
+                                <valItem ident="maturity:83207">
                                     <desc>early Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83211">
+                                <valItem ident="maturity:83211">
                                     <desc>late Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83209">
+                                <valItem ident="maturity:83209">
                                     <desc>middle Brāhmi</desc>
                                 </valItem>
-                                <valItem ident="83213">
+                                <valItem ident="maturity:83213">
                                     <desc>regional Brāhmī-derived script</desc>
                                 </valItem>
-                                <valItem ident="83215">
+                                <valItem ident="maturity:83215">
                                     <desc>vernacular Brāhmī-derived script</desc>
                                 </valItem>
                             </valList>
@@ -3139,92 +3139,92 @@
                             </valList>
                         </attDef>
                         <attDef ident="corresp" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="57471">
+                            <valList type="open" mode="replace">
+                                <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
                                 </valItem>
-                                <valItem ident="70417">
+                                <valItem ident="class:70417">
                                     <desc>Jawi script - Narrower concept of Arabic Script</desc>
                                 </valItem>
-                                <valItem ident="83217">
+                                <valItem ident="class:83217">
                                     <desc>Brāhmī and derivatives</desc>
                                 </valItem>
-                                <valItem ident="83223">
+                                <valItem ident="class:83223">
                                     <desc>northern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83229">
+                                <valItem ident="class:83229">
                                     <desc>Gauḍī</desc>
                                 </valItem>
-                                <valItem ident="38771">
+                                <valItem ident="class:38771">
                                     <desc>Nāgarī</desc>
                                 </valItem>
-                                <valItem ident="38774">
+                                <valItem ident="class:38774">
                                     <desc>Siddhamātr̥kā </desc>
                                 </valItem>
-                                <valItem ident="83227">
+                                <valItem ident="class:83227">
                                     <desc>southeast Asian Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83239">
+                                <valItem ident="class:83239">
                                     <desc>Balinese script</desc>
                                 </valItem>
-                                <valItem ident="38767">
+                                <valItem ident="class:38767">
                                     <desc>Batak script </desc>
                                 </valItem>
-                                <valItem ident="83233">
+                                <valItem ident="class:83233">
                                     <desc>Cam script</desc>
                                 </valItem>
-                                <valItem ident="38769">
+                                <valItem ident="class:38769">
                                     <desc>Kawi script</desc>
                                 </valItem>
-                                <valItem ident="83231">
+                                <valItem ident="class:83231">
                                     <desc>Khmer script</desc>
                                 </valItem>
-                                <valItem ident="83235">
+                                <valItem ident="class:83235">
                                     <desc>Mon-Burmese script</desc>
                                 </valItem>
-                                <valItem ident="83241">
+                                <valItem ident="class:83241">
                                     <desc>Old West Javanese script</desc>
                                 </valItem>
-                                <valItem ident="83237">
+                                <valItem ident="class:83237">
                                     <desc>Pyu script</desc>
                                 </valItem>
-                                <valItem ident=" 57470">
+                                <valItem ident="class:57470">
                                     <desc>Sundanese script</desc>
                                 </valItem>
-                                <valItem ident="83225">
+                                <valItem ident="class:83225">
                                     <desc>southern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="38768">
+                                <valItem ident="class:38768">
                                     <desc>Grantha</desc>
                                 </valItem>
-                                <valItem ident="38776">
+                                <valItem ident="class:38776">
                                     <desc>Tamil script</desc>
                                 </valItem>
-                                <valItem ident="57475">
+                                <valItem ident="class:57475">
                                     <desc>Tamil with Grantha</desc>
                                 </valItem>
-                                <valItem ident="70420">
+                                <valItem ident="class:70420">
                                     <desc>Vaṭṭeḻuṭṭu</desc>
                                 </valItem>
-                                <valItem ident="83221">
+                                <valItem ident="class:83221">
                                     <desc>Chinese Script</desc>
                                 </valItem>
-                                <valItem ident="83219">
+                                <valItem ident="class:83219">
                                     <desc>Kharoṣṭhī</desc>
                                 </valItem>
-                                <valItem ident="83207">
+                                <valItem ident="maturity:83207">
                                     <desc>early Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83211">
+                                <valItem ident="maturity:83211">
                                     <desc>late Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83209">
+                                <valItem ident="maturity:83209">
                                     <desc>middle Brāhmi</desc>
                                 </valItem>
-                                <valItem ident="83213">
+                                <valItem ident="maturity:83213">
                                     <desc>regional Brāhmī-derived script</desc>
                                 </valItem>
-                                <valItem ident="83215">
+                                <valItem ident="maturity:83215">
                                     <desc>vernacular Brāhmī-derived script</desc>
                                 </valItem>
                             </valList>
@@ -4013,92 +4013,92 @@
                             </valList>
                         </attDef>
                         <attDef ident="corresp" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="57471">
+                            <valList type="open" mode="replace">
+                                <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
                                 </valItem>
-                                <valItem ident="70417">
+                                <valItem ident="class:70417">
                                     <desc>Jawi script - Narrower concept of Arabic Script</desc>
                                 </valItem>
-                                <valItem ident="83217">
+                                <valItem ident="class:83217">
                                     <desc>Brāhmī and derivatives</desc>
                                 </valItem>
-                                <valItem ident="83223">
+                                <valItem ident="class:83223">
                                     <desc>northern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83229">
+                                <valItem ident="class:83229">
                                     <desc>Gauḍī</desc>
                                 </valItem>
-                                <valItem ident="38771">
+                                <valItem ident="class:38771">
                                     <desc>Nāgarī</desc>
                                 </valItem>
-                                <valItem ident="38774">
+                                <valItem ident="class:38774">
                                     <desc>Siddhamātr̥kā </desc>
                                 </valItem>
-                                <valItem ident="83227">
+                                <valItem ident="class:83227">
                                     <desc>southeast Asian Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83239">
+                                <valItem ident="class:83239">
                                     <desc>Balinese script</desc>
                                 </valItem>
-                                <valItem ident="38767">
+                                <valItem ident="class:38767">
                                     <desc>Batak script </desc>
                                 </valItem>
-                                <valItem ident="83233">
+                                <valItem ident="class:83233">
                                     <desc>Cam script</desc>
                                 </valItem>
-                                <valItem ident="38769">
+                                <valItem ident="class:38769">
                                     <desc>Kawi script</desc>
                                 </valItem>
-                                <valItem ident="83231">
+                                <valItem ident="class:83231">
                                     <desc>Khmer script</desc>
                                 </valItem>
-                                <valItem ident="83235">
+                                <valItem ident="class:83235">
                                     <desc>Mon-Burmese script</desc>
                                 </valItem>
-                                <valItem ident="83241">
+                                <valItem ident="class:83241">
                                     <desc>Old West Javanese script</desc>
                                 </valItem>
-                                <valItem ident="83237">
+                                <valItem ident="class:83237">
                                     <desc>Pyu script</desc>
                                 </valItem>
-                                <valItem ident=" 57470">
+                                <valItem ident="class:57470">
                                     <desc>Sundanese script</desc>
                                 </valItem>
-                                <valItem ident="83225">
+                                <valItem ident="class:83225">
                                     <desc>southern class Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="38768">
+                                <valItem ident="class:38768">
                                     <desc>Grantha</desc>
                                 </valItem>
-                                <valItem ident="38776">
+                                <valItem ident="class:38776">
                                     <desc>Tamil script</desc>
                                 </valItem>
-                                <valItem ident="57475">
+                                <valItem ident="class:57475">
                                     <desc>Tamil with Grantha</desc>
                                 </valItem>
-                                <valItem ident="70420">
+                                <valItem ident="class:70420">
                                     <desc>Vaṭṭeḻuṭṭu</desc>
                                 </valItem>
-                                <valItem ident="83221">
+                                <valItem ident="class:83221">
                                     <desc>Chinese Script</desc>
                                 </valItem>
-                                <valItem ident="83219">
+                                <valItem ident="class:83219">
                                     <desc>Kharoṣṭhī</desc>
                                 </valItem>
-                                <valItem ident="83207">
+                                <valItem ident="maturity:83207">
                                     <desc>early Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83211">
+                                <valItem ident="maturity:83211">
                                     <desc>late Brāhmī</desc>
                                 </valItem>
-                                <valItem ident="83209">
+                                <valItem ident="maturity:83209">
                                     <desc>middle Brāhmi</desc>
                                 </valItem>
-                                <valItem ident="83213">
+                                <valItem ident="maturity:83213">
                                     <desc>regional Brāhmī-derived script</desc>
                                 </valItem>
-                                <valItem ident="83215">
+                                <valItem ident="maturity:83215">
                                     <desc>vernacular Brāhmī-derived script</desc>
                                 </valItem>
                             </valList>
