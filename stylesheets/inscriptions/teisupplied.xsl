@@ -185,7 +185,7 @@
 
   <xsl:template match="t:supplied[@reason='explanation']">
       <xsl:text>(</xsl:text>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="dharma"/>
       <xsl:call-template name="cert-low"/>
       <xsl:text>)</xsl:text>
   </xsl:template>
