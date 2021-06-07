@@ -43,11 +43,6 @@
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
     <!-- <li> -->
         <xsl:choose>
-          <xsl:when test="descendant::t:bibl">
-            <li>
-              <xsl:apply-templates mode="dharma"/>
-            </li>
-          </xsl:when>
           <xsl:when test="ancestor::t:div[@type='translation'] and $parm-leiden-style = 'dharma' and preceding-sibling::t:label">
           <dd>
             <xsl:apply-templates mode="dharma"/>
@@ -61,6 +56,11 @@
            <xsl:apply-templates mode="dharma"/>
          </li>
          </xsl:when>
+          <xsl:when test="descendant::t:bibl">
+            <li>
+              <xsl:apply-templates mode="dharma"/>
+            </li>
+          </xsl:when>
 
               <xsl:otherwise>
                 <li>
