@@ -558,8 +558,8 @@ bibliography. All examples only cater for book and article.
 						</xsl:matching-substring>
 					</xsl:analyze-string>
 		</xsl:when>
-<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)')">
- <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9])_([0-9\-]+)">
+<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([A-Z]+)([0-9][0-9]+[0-9\-]*)_([0-9]+[\-]*)')">
+ <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9]+[0-9\-]*)_([0-9]+[\-]*)">
 	<xsl:matching-substring>
 					<i><xsl:value-of select="regex-group(1)"/></i>
 					<xsl:text> </xsl:text>
@@ -581,8 +581,8 @@ bibliography. All examples only cater for book and article.
 			</xsl:matching-substring>
 		</xsl:analyze-string>
 </xsl:when>
-	<!-- TBG1924_64 -->
-	<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
+	<!-- TBG1924_64 transformed into TBG64_1924 so the following lines are necessary anymore-->
+	<!--<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])')">
 	 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([T][G][B])([0-9\-]*)(_[0-9][0-9])">
 		<xsl:matching-substring>
 						<i><xsl:value-of select="regex-group(1)"/></i>
@@ -593,9 +593,9 @@ bibliography. All examples only cater for book and article.
 						<xsl:text>)</xsl:text>
 				</xsl:matching-substring>
 			</xsl:analyze-string>
-	</xsl:when>
-	<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  -->
-	<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
+	</xsl:when>-->
+	<!-- BCAI_1912 and BCAI_1917-1930 / Avanam1993_01   – not tested  transformed into BCAI1912 folliwing lines not necessary anymore-->
+	<!--<xsl:when test="matches(./child::t:ptr/@target, '[a-z]+:([B][C][A][I])(_[0-9\-]*)')">
 	 <xsl:analyze-string select="./child::t:ptr/@target" regex="[a-z]+:([B][C][A][I])(_[0-9\-]*)">
 		<xsl:matching-substring>
 						<i><xsl:value-of select="regex-group(1)"/></i>
@@ -604,7 +604,7 @@ bibliography. All examples only cater for book and article.
 						<xsl:text>)</xsl:text>
 				</xsl:matching-substring>
 			</xsl:analyze-string>
-	</xsl:when>
+	</xsl:when>-->
 </xsl:choose>
 </xsl:template>
 
