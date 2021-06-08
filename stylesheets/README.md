@@ -1,6 +1,6 @@
 # DHARMA Stylesheets Documentation
 
-DHARMA Stylesheets adapted from Epidoc Stylesheets.
+Before starting, you must clone the project-documentation repository in order to have a version of the Stylesheets on your computer. Remember to regularly update it to access the latest version of the codes. 
 
 ## How to use the XSLT for inscriptions
 - Go `Document>Transformation>Configure Transformation Scenarios...` or click on the `Configure Transformation Scenarios` in the tools bar
