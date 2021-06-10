@@ -44,7 +44,8 @@
     <updated>2020-07-21T21:01:24+00:00</updated>
     <!-- Changes v01 : display the the date ranges
         Changes v01.1: deleting the "Vol." the content, adding an italic. Deleting the #of volumes from the rendering
-        Changes v01.2: Adding the #of volumes, changing the short form for a full form. moving the locator macro to obtain the dispaly of # of volumes after the collection titles-->
+        Changes v01.2: Adding the #of volumes, changing the short form for a full form. moving the locator macro to obtain the dispaly of # of volumes after the collection titles
+        Changes v01.3: Deleting the double date display for website, deleting the dispaly of the access date as well-->
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="en">
@@ -176,11 +177,11 @@
           <text macro="archive"/>
         </else-if>
       </choose>
-      <choose>
+      <!--<choose>
         <if type="webpage post-weblog" match="any">
           <date variable="issued" form="text"/>
         </if>
-      </choose>
+      </choose>-->
       <choose>
         <if variable="issued" match="none">
           <group delimiter=" ">
@@ -468,6 +469,8 @@
       <else-if variable="status">
         <text variable="status" text-case="capitalize-first"/>
       </else-if>
+      <else-if type="webpage">
+      </else-if>
       <else>
         <text term="no date" form="short"/>
       </else>
@@ -485,6 +488,8 @@
       </if>
       <else-if variable="status">
         <text variable="status"/>
+      </else-if>
+      <else-if type="webpage">
       </else-if>
       <else>
         <text term="no date" form="short"/>
