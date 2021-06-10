@@ -55,16 +55,10 @@
            </sup>
            <xsl:apply-templates mode="dharma"/>
          </li>
-         </xsl:when>
-          <xsl:when test="descendant::t:bibl">
-            <li>
-              <xsl:apply-templates mode="dharma"/>
-            </li>
-          </xsl:when>
-
-              <xsl:otherwise>
+       </xsl:when>    
+          <xsl:otherwise>
                 <li>
-              <xsl:apply-templates/>
+              <xsl:apply-templates mode="dharma"/>
             </li>
             </xsl:otherwise>
             </xsl:choose>
