@@ -12,9 +12,9 @@
         <xsl:when test="$parm-leiden-style='iospe' and (ancestor::t:p or ancestor::t:l or ancestor::t:ab)">
            <xsl:apply-imports/>
         </xsl:when>
-        <xsl:when test="$parm-leiden-style='dharma' and (ancestor::t:item)">
+        <xsl:when test="$parm-leiden-style='dharma' and ((ancestor::t:item) or ancestor::t:p or ancestor::t:l or ancestor::t:ab)">
           <xsl:choose>
-            <xsl:when test="ancestor::t:item[ancestor::t:div[@type='translation']]">
+            <xsl:when test="ancestor::t:item[ancestor::t:div[@type='translation']] or ancestor::t:p[ancestor::t:div[@type='translation']]">
               <span class="note">
               <xsl:apply-imports/>
             </span>
@@ -25,7 +25,6 @@
             </i>
           </xsl:otherwise>
           </xsl:choose>
-
         </xsl:when>
         <xsl:when test="ancestor::t:p or ancestor::t:l or ancestor::t:ab">
            <i><xsl:apply-imports/></i>
