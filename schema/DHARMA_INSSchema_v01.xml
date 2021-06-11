@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+             <change who="part:axja" when="2021-06-11">Adding @unit="line" and @exntent for space element</change>
             <change who="part:axja" when="2021-06-03">Adding the @corresp on div, p, ab, lg, l and seg elements</change>
             <change who="part:axja" when="2021-03-10">Adding the @part on element l</change>
             <change who="part:axja" when="2021-01">Updating the ODD to match the evolution of the
@@ -658,7 +659,6 @@
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="dim" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
-                        <attDef ident="extent" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
                         <attDef ident="max" mode="delete"/>
                         <attDef ident="min" mode="delete"/>
@@ -694,6 +694,13 @@
                         <attDef ident="unit" mode="change">
                             <valList type="closed" mode="replace">
                                 <valItem ident="character"/>
+                                <valItem ident="line"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="extent" mode="change">
+                            <defaultVal>unknown</defaultVal>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="unknown"/>
                             </valList>
                         </attDef>
                     </attList>
