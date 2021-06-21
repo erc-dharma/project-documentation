@@ -183,7 +183,7 @@
   </xsl:template>
 
 
-  <xsl:template match="t:supplied[@reason='explanation']" mode="dharma">
+  <xsl:template match="t:supplied[@reason='explanation']" mode="#all">
       <xsl:text>(</xsl:text>
       <xsl:apply-templates/>
       <xsl:call-template name="cert-low"/>
