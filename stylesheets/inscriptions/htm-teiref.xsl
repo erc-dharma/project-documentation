@@ -42,7 +42,7 @@
          <!-- Beginning of the code for ref for DHARMA -->
          <!-- https://github.com/erc-dharma/tfc-nusantara-epigraphy/blob/master/provisional/Java04Balitung2Sindok/Guntur.xml -->
          <!-- fileloc = file:/Users/axellejaniak/Documents/github/tfc-nusantara-epigraphy/provisional/Java04Balitung2Sindok/Guntur.xml -->
-         <xsl:when test="$parm-leiden-style = 'dharma' and parent::t:note[ancestor::t:div[@type='translation']]"/>
+        <!-- <xsl:when test="$parm-leiden-style = 'dharma' and parent::t:note[ancestor::t:div[@type='translation']]"/>-->
          <xsl:when test="$parm-leiden-style = 'dharma'">
              <!-- Retriving the path from the launcher computer. -->
            <xsl:variable name="fileLoc" >
