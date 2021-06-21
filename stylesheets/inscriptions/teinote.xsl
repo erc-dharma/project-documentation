@@ -5,7 +5,7 @@
                 version="2.0">
   <!-- Imported from [htm|txt]-teinote.xsl -->
 
-  <xsl:template match="t:note" mode="dharma">
+  <xsl:template match="t:note" mode="#all">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
 
