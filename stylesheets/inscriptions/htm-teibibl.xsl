@@ -196,7 +196,14 @@ bibliography. All examples only cater for book and article.
 							</xsl:choose>
 						</a>
 								<xsl:if test="t:citedRange">
+									<xsl:choose>
+									<xsl:when test="t:citedRange and not(ancestor::t:cit)">
 									<xsl:text>: </xsl:text>
+								</xsl:when>
+								<xsl:when test="t:citedRange and ancestor::t:cit">
+									<xsl:text>, </xsl:text>
+								</xsl:when>
+							</xsl:choose>
 									<xsl:for-each select="t:citedRange">
 										<xsl:call-template name="citedRange-unit"/>
 										<!-- NEED TO BE REVISED AT SOME POINT TO RENDER THE ITALIC
@@ -218,7 +225,7 @@ bibliography. All examples only cater for book and article.
 									</xsl:for-each>
 								</xsl:if>
 								<!-- Display for t:cit  -->
-								<xsl:if test="following::t:quote[1] and ancestor::t:cit">
+								<xsl:if test="following::t:quote">
 								<xsl:text>: </xsl:text>
 							</xsl:if>
 							</xsl:when>
