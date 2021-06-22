@@ -17,9 +17,19 @@
                 <xsl:text>'</xsl:text>
             </xsl:when>
             <xsl:when test="$parm-leiden-style = 'dharma'">
+              <xsl:choose>
+                <xsl:when test="@rend='block'">
+                  <xsl:element name="span">
+                  <xsl:attribute name="class">block</xsl:attribute>
+                  <xsl:apply-templates/>
+                </xsl:element>
+                </xsl:when>
+                <xsl:otherwise>
               <xsl:text>‘</xsl:text>
               <xsl:apply-templates/>
               <xsl:text>’</xsl:text>
+            </xsl:otherwise>
+            </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
