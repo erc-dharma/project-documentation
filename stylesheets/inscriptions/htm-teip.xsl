@@ -5,16 +5,17 @@
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    exclude-result-prefixes="#all" version="2.0">
 
-  <xsl:template match="t:p">
+  <xsl:template match="t:p" mode="#all">
       <p>
-        <xsl:if test="@n and not(@rend)">
+        <xsl:choose>
+        <xsl:when test="@n and not(@rend)">
           <sup class="linenumber">
            <!--<xsl:text>(</xsl:text>-->
            <xsl:value-of select="@n"/>
            <!--<xsl:text>) </xsl:text>-->
          </sup>
-       </xsl:if>
-       <xsl:if test="@rend='stanza'">
+       </xsl:when>
+       <xsl:when test="@rend='stanza'">
          <xsl:choose>
            <xsl:when test="@n='1' and not(following-sibling::t:*)"/>
            <xsl:when test="matches(@n, '[rv]+')">
@@ -42,7 +43,7 @@
                 <xsl:text>. </xsl:text>
                 </xsl:element>
               </xsl:when>
-           
+
               <xsl:otherwise>
                 <xsl:element name="div">
                   <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
@@ -50,16 +51,12 @@
      </xsl:element>
   </xsl:otherwise>
   </xsl:choose>
-   </xsl:if>
-   <xsl:choose>
-     <xsl:when test="descendant::t:bibl">
-       <xsl:apply-templates mode="dharma"/>
-         </xsl:when>
+</xsl:when>
+
          <xsl:otherwise>
          <xsl:apply-templates/>
        </xsl:otherwise>
-       </xsl:choose>
-
+</xsl:choose>
       </p>
 
   </xsl:template>
