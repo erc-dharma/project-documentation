@@ -1091,17 +1091,11 @@
     </xsl:template>
     <!--  subst ! -->
     <xsl:template match="tei:subst">
-        <xsl:element name="a">
-            <xsl:attribute name="class">ed-subst</xsl:attribute>
-            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-            <xsl:attribute name="data-placement">top</xsl:attribute>
-            <xsl:attribute name="title">Editorial substitution: <xsl:apply-templates select="child::tei:del"/> </xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">ed-insertion</xsl:attribute>
+                <xsl:apply-templates select="child::tei:del"/>
                 <xsl:value-of select="child::tei:add"/>
             </xsl:element>
-        </xsl:element>
     </xsl:template>
     <!--  supplied ! -->
     <xsl:template match="tei:supplied">
