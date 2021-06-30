@@ -89,6 +89,7 @@
          </listPrefixDef>
       </encodingDesc>
       <revisionDesc>
+         <change who="part:axja" when="2021-06-30">Beta version 4: adding facsimile for Chloe's encoding</change>
          <change who="part:axja" when="2021-06-02">Beta version 4 : starting adding elements to handle the resolution for ids linked to thesaurus concepts</change>
          <change who="part:axja" when="2020-10-12">Version 3.2 : movinng the xml:lang to the root</change>
          <change who="part:axja" when="2020-07-02">Version 3.1: adding the encodingDesc and linking the template with the DHARMA Schema</change>
@@ -98,6 +99,15 @@
          <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
       </revisionDesc>
    </teiHeader>
+   <!-- Part to be used only, if you want to declare and link some photos with your encoding -->
+   <facsimile>
+      <graphic url="filename.jpg" xml:id="photo1"/>
+      <!-- graphic should take at least an attribute @url containing either the https where the photo is stored or the filename of the file itself. An @xml:id can be declared if you want to link part of your encoding with a facsimile using the attribute @facs. -->
+      <!-- If you want to provide a description, use the following pattern 
+      <graphic url="filename.jpg" xml:id="photo1">
+      <desc>Some description</desc>
+      </graphic>-->
+   </facsimile>
    <text xml:space="preserve">
       <body>
          <div type="edition" xml:lang="san-Latn"><!-- update the @xml:lang value, see EGD §7.2-->
