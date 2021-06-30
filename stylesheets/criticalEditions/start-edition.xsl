@@ -358,7 +358,8 @@
             <xsl:copy-of select="$apparatus"/>
         </span>
     </xsl:template>
-    <xsl:template match="tei:app[not(parent::tei:lem)]">
+    
+    <xsl:template match="tei:app[not(ancestor-or-self::tei:lem)]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
@@ -385,9 +386,9 @@
                        <xsl:text>from-app-</xsl:text>
                        <xsl:value-of select="$app-num"/>
                    </xsl:attribute>
-                   <xsl:text>(</xsl:text>
-                   <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-                   <xsl:text>)</xsl:text>
+                           <xsl:text>(</xsl:text>
+                           <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                           <xsl:text>)</xsl:text>
                </xsl:element>
            </xsl:element>
                    <!--<xsl:text>&#128172;</xsl:text>-->
@@ -815,10 +816,10 @@
                           
                             <xsl:element name="span">
                                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
-                                <xsl:attribute name="type">button</xsl:attribute>                              
-                                <xsl:text>(</xsl:text>
-                                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-                                <xsl:text>)</xsl:text> 
+                                <xsl:attribute name="type">button</xsl:attribute>           
+                                    <xsl:text>(</xsl:text>
+                                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                                    <xsl:text>)</xsl:text>
                             </xsl:element>        
                         </xsl:element>
                 
@@ -2051,9 +2052,13 @@
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
-                    <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-                    <xsl:text>)</xsl:text>
+                    <xsl:choose>
+                        <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:lem]"/>
+                        <xsl:otherwise>
+                            <xsl:text>(</xsl:text>
+                        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                        <xsl:text>)</xsl:text></xsl:otherwise>
+                    </xsl:choose>
                 </xsl:element>
             </xsl:element>
 
