@@ -116,9 +116,9 @@
             <xsl:text>]]</xsl:text>
          </xsl:when>
          <xsl:when test="$parm-leiden-style=('dharma')">
-           <xsl:text>{{</xsl:text>
+           <xsl:text>⟦</xsl:text>
            <xsl:apply-templates/>
-           <xsl:text>}}</xsl:text>
+           <xsl:text>⟧</xsl:text>
         </xsl:when>
           <xsl:when test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch') and @rend='slashes'">
             <xsl:apply-templates/>
