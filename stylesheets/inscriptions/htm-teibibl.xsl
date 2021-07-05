@@ -488,7 +488,7 @@ bibliography. All examples only cater for book and article.
 		<xsl:choose>
 		<xsl:when test="@unit='page' and ancestor::t:listBibl">
 			<xsl:choose>
-			<xsl:when test="matches(., '[\-]+')">
+			<xsl:when test="matches(., '[–\-]+')">
 				<xsl:text>pages </xsl:text>
 			</xsl:when>
 			<xsl:when test="matches(., ',')">
@@ -525,6 +525,19 @@ bibliography. All examples only cater for book and article.
 		</xsl:when>
 		<xsl:when test="@unit='appendix'">
 			<xsl:text>appendix </xsl:text>
+		</xsl:when>
+		<xsl:when test="@unit='line'">
+			<xsl:choose>
+			<xsl:when test="matches(., '[–\-]+')">
+				<xsl:text>lines </xsl:text>
+			</xsl:when>
+			<xsl:when test="matches(., ',')">
+				<xsl:text>lines </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+			<xsl:text>line </xsl:text>
+		</xsl:otherwise>
+		</xsl:choose>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:if test="ancestor::t:listBibl">
