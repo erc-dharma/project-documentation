@@ -486,7 +486,7 @@ bibliography. All examples only cater for book and article.
 	<xsl:variable name="CurPosition" select="position()"/>
 	<xsl:variable name="unit-value">
 		<xsl:choose>
-		<xsl:when test="@unit='page' and ancestor::t:listBibl">
+		<xsl:when test="@unit='page'"><!-- and ancestor::t:listBibl -->
 			<xsl:choose>
 			<xsl:when test="matches(., '[–\-]+')">
 				<xsl:text>pages </xsl:text>
@@ -540,7 +540,7 @@ bibliography. All examples only cater for book and article.
 		</xsl:choose>
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:if test="ancestor::t:listBibl">
+			<!--<xsl:if test="ancestor::t:listBibl">-->
 			<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
 				<xsl:text>pages </xsl:text>
@@ -552,7 +552,7 @@ bibliography. All examples only cater for book and article.
 			<xsl:text>page </xsl:text>
 		</xsl:otherwise>
 		</xsl:choose>
-	</xsl:if>
+	<!--</xsl:if>-->
 	</xsl:otherwise>
 </xsl:choose>
 	</xsl:variable>
