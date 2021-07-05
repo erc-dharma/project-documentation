@@ -169,9 +169,9 @@
         </sch:rule>
     </sch:pattern>
  
-    <!-- Adding codes to check the content of the attribute @corresp -->
+    <!-- Adding codes to check the content of the attribute @rendition - juillet 2021 -->
     <sch:pattern>
-        <sch:rule context="t:*/@corresp">
+        <sch:rule context="t:*/@rendition">
             <sch:assert test="contains(.,'class:') and contains(.,'maturity:')">The content of the attribute @corresp should contained ids for both script classification and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
         </sch:rule>
     </sch:pattern>

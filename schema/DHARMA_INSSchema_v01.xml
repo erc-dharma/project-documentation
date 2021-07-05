@@ -18,7 +18,8 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-             <change who="part:axja" when="2021-06-11">Adding @unit="line" and @exntent for space element</change>
+            <change who="part:axja" when="2021-07-05">Changing the @corresp on div, p, ab, lg, l and seg elements in favor of @rendition</change>
+             <change who="part:axja" when="2021-06-11">Adding @unit="line" and @extent for space element</change>
             <change who="part:axja" when="2021-06-03">Adding the @corresp on div, p, ab, lg, l and seg elements</change>
             <change who="part:axja" when="2021-03-10">Adding the @part on element l</change>
             <change who="part:axja" when="2021-01">Updating the ODD to match the evolution of the
@@ -178,7 +179,7 @@
                         <attDef ident="part" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="sample" mode="delete"/>
@@ -249,7 +250,7 @@
                                 <valItem ident="vie"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="change">
+                        <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
@@ -884,7 +885,7 @@
                         <attDef ident="hand" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
@@ -943,7 +944,7 @@
                                 <valItem ident="F"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="change">
+                        <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
@@ -2111,7 +2112,7 @@
                         <attDef ident="facs" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -2280,7 +2281,7 @@
                                 <valItem ident="F"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="change">
+                        <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
@@ -2426,7 +2427,7 @@
                         <attDef ident="org" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -2553,7 +2554,7 @@
                                 <valItem ident="F"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="change">
+                        <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
@@ -3105,7 +3106,7 @@
                                 <valItem ident="wide"/>
                             </valList>
                         </attDef>
-                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
@@ -3145,7 +3146,7 @@
                                 <valItem ident="vie"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="change">
+                        <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
@@ -3928,7 +3929,7 @@
                         <attDef ident="part" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -4019,7 +4020,7 @@
                                 <valItem ident="component"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="change">
+                        <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>

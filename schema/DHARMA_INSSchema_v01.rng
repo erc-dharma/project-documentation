@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-06-11T12:00:59Z. .
+Schema generated from ODD source 2021-07-05T10:16:00Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3186,8 +3186,8 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
             </attribute>
          </optional>
          <optional>
-            <attribute name="corresp">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(corresponds) points to elements that correspond to the current element in some way.
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
 Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
                <list>
                   <oneOrMore>
@@ -4621,8 +4621,8 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
             </attribute>
          </optional>
          <optional>
-            <attribute name="corresp">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(corresponds) points to elements that correspond to the current element in some way.
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
 Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
                <list>
                   <oneOrMore>
@@ -4768,8 +4768,8 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
             </attribute>
          </optional>
          <optional>
-            <attribute name="corresp">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(corresponds) points to elements that correspond to the current element in some way.
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
 Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
                <list>
                   <oneOrMore>
@@ -6494,8 +6494,8 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
             </attribute>
          </optional>
          <optional>
-            <attribute name="corresp">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(corresponds) points to elements that correspond to the current element in some way.
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
 Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
                <list>
                   <oneOrMore>
@@ -7470,8 +7470,8 @@ Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded; 5] small; 6] w
             </attribute>
          </optional>
          <optional>
-            <attribute name="corresp">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(corresponds) points to elements that correspond to the current element in some way.
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
 Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
                <list>
                   <oneOrMore>
@@ -7533,8 +7533,8 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
             </attribute>
          </optional>
          <optional>
-            <attribute name="corresp">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(corresponds) points to elements that correspond to the current element in some way.
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
 Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
                <list>
                   <oneOrMore>
