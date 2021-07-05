@@ -137,6 +137,8 @@
 				<!-- to keep? -->
 				<p>bibliography of previous editions, discussion, etc.</p>
 			</div>
+			    <!--<xi:include href="a.xml" xpointer="a1"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/>-->
 		</body>
 	</text>
 </TEI>

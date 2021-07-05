@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- // Validation schema TEI-ALL must be update in favor the DHARMA manuscript schema once it has been established// -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master. -->
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main" subtype="translation">Encoding Template for Critical Editions</title>
+            <!--Change the title of the file with a title for the translation-->
+            <title type="subtitle" subtype="translation">Digital Critical Edition of...</title>
+            <!-- fill in the subtitle if necessary -->
+            <!-- Possibility to add the <editor> tag:
+        <editor ref="part:ID">
+					<forename></forename>
+					<surname></surname>
+				</editor>
+				OR
+				<editor ref="part:ID">
+					<name></name>
+				</editor>
+        -->
+            <respStmt>
+               <!-- repeat the respStmt when necessary -->
+               <resp>Encoding of the translation</resp>
+               <!-- work done in the file, e.g. editor, intellectual authorship of edition ...-->
+               <persName ref="part:jodo"><!-- update the id -->
+                  <forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
+                  <surname>Doe</surname>
+               </persName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <authority>DHARMA</authority>
+            <pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
+            <idno type="filename">DHARMA_templateCritEdTranslation_v01</idno>
+            <!-- Replace by filename following FNC -->
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>This work is licenced under the Creative Commons Attribution 4.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
+                  <p>Copyright (c) 2019-2025 by John Doe.</p><!-- Replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
+               </licence>
+            </availability>
+            <date from="2019" to="2025">2019-2025</date>
+         </publicationStmt>
+        <!-- <notesStmt><note><bibl>Digital translation of <bibl><ptr target="bib:"></ptr></bibl>.<relatedItem target=""></relatedItem></bibl></note></notesStmt>-->
+         <!-- provide a notesStmt if you need to add some precision regarding the establishement of the translation -->
+         <sourceDesc>
+            <biblFull> <!-- Copy and paste the titleStmt and publicationStmt of the edition file -->           <titleStmt></titleStmt>
+                    <publicationStmt></publicationStmt>
+            </biblFull>
+            <!-- if your translation is a copy of already published one: fill a biblStruct -->
+         </sourceDesc>
+      </fileDesc>
+     <encodingDesc> 
+        <projectDesc>
+         <!-- Part mandatory -->
+         <p>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
+         <p></p>
+      </projectDesc>
+     </encodingDesc>
+      <revisionDesc>
+         <change who="part:axja" when="2021-06-12" status="draft">Creation of the template</change>
+         <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
+      </revisionDesc>
+  </teiHeader>
+   <text xml:space="preserve">
+      <body>
+         <div type="translation" xml:id=""> <!-- add an @xml:lang if you translated it -->
+            <!-- Structure as necessary with <div>, <p> depending the nature of the text -->
+         </div>
+      </body>
+  </text>
+</TEI>
