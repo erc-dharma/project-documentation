@@ -219,13 +219,13 @@ bibliography. All examples only cater for book and article.
 									</xsl:otherwise>
 										</xsl:choose>
 
-									<xsl:if test="following-sibling::t:citedRange">
+									<xsl:if test="following-sibling::t:citedRange[1]">
 										<xsl:text>, </xsl:text>
 									</xsl:if>
 									</xsl:for-each>
 								</xsl:if>
 								<!-- Display for t:cit  -->
-								<xsl:if test="following::t:quote">
+								<xsl:if test="following::t:quote[1] and ancestor::t:cit">
 								<xsl:text>: </xsl:text>
 							</xsl:if>
 							</xsl:when>
