@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-07-05T10:16:00Z. .
+Schema generated from ODD source 2021-07-06T12:25:15Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3932,7 +3932,7 @@ Sample values include: 1] ndl; 2] eng; 3] fra; 4] jpn; 5] jav; 6] vie</a:documen
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note">
                <sch:report test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])">Note is prohibited in div[@type='edition']</sch:report>
-               <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)">Inside div[@type='commentary'], note should be wrapped inside a p
+               <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)">Inside div[@type='commentary'], note should be wrapped inside a p or an item
                             element</sch:report>
                <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus'], note should be wrapped inside an app
                             element. Please note that note(s) may not contain further

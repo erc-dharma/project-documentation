@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-07-06">Adding the possibility to add a note inside a item, in the section commentary</change>
             <change who="part:axja" when="2021-07-05">Changing the @corresp on div, p, ab, lg, l and seg elements in favor of @rendition</change>
              <change who="part:axja" when="2021-06-11">Adding @unit="line" and @extent for space element</change>
             <change who="part:axja" when="2021-06-03">Adding the @corresp on div, p, ab, lg, l and seg elements</change>
@@ -2947,8 +2948,8 @@
                         <constraint><sch:rule context="tei:note"><sch:report
                             test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
                             >Note is prohibited in div[@type='edition']</sch:report><sch:report
-                            test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p)"
-                            >Inside div[@type='commentary'], note should be wrapped inside a p
+                            test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)"
+                            >Inside div[@type='commentary'], note should be wrapped inside a p or an item
                             element</sch:report><sch:report
                             test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)"
                             >Inside div[@type='apparatus'], note should be wrapped inside an app
