@@ -13,7 +13,8 @@
 
 
    <xsl:include href="global-varsandparams.xsl"/>
-
+   <!-- addition for DHARMA for teipersName and placeName -->
+   <xsl:include href="htm-indexable.xsl"/>
    <!-- html related stylesheets, these may import tei{element} stylesheets if relevant eg. htm-teigap and teigap -->
    <xsl:include href="htm-teiab.xsl"/>
    <xsl:include href="htm-teiaddanddel.xsl"/>
