@@ -1982,9 +1982,9 @@
                 </elementSpec>
                 <elementSpec ident="head" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="head-childs">
-                        <constraint><sch:rule context="tei:head"><sch:report
-                            test="not(child::tei:foreign)">Foreign is the only element allowed as
-                            child of the element head</sch:report></sch:rule></constraint>
+                        <constraint><sch:rule context="tei:head/child::tei:*"><sch:assert
+                            test="local-name()= ('foreign')">Foreign is the only element allowed as
+                            child of the element head</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
