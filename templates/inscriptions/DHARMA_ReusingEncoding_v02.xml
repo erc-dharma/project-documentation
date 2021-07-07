@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Add DHARMA PIs -->
 <?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- //// PLEASE DO NOT USE THIS TEMPLATE FOR YOUR ENCODING. IT IS ONLY A MODEL CREATED TO HANDLE CONVERTING AN ALREADY EXISTING XML FILE TO DHARMA CONVENTIONS. CONTACT THE INGENIEURS OF THE PROJECT IF YOU WANT TO REUSE FILES./// -->
@@ -91,12 +92,6 @@
             <listPrefixDef>
                 <prefixDef ident="bib" matchPattern="([a-zA-Z0-9\-\_]+)" replacementPattern="https://www.zotero.org/groups/1633743/erc-dharma/items/tag/$1">
                     <p>Public URIs with the prefix bib to point to a Zotero Group Library named ERC-DHARMA whose data are open to the public.</p>
-                </prefixDef>
-                <prefixDef ident="class" matchPattern="([0-9]+)" replacementPattern="">
-                    <p>Internal IDs with the prefix class for script classification declared inside OpenTheso to be mapped with ARK URIs opened to the public</p>
-                </prefixDef>
-                <prefixDef ident="maturity" matchPattern="([0-9]+)" replacementPattern="">
-                    <p>Internal IDs with the prefix maturity for script maturity declared inside OpenTheso to be mapped with ARK URIs opened to the public</p>
                 </prefixDef>
                 <prefixDef ident="part" matchPattern="([a-z]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml#$1">
                     <p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_V01.xml</ref> file.</p>

@@ -2,7 +2,7 @@
 <?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- // Validation schema TEI-ALL must be update in favor the DHARMA manuscript schema once it has been established// -->
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master. -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" type="translation"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master? -->
    <teiHeader>
       <fileDesc>
          <titleStmt>
