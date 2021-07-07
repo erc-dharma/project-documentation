@@ -55,10 +55,10 @@
 
  <!-- CURRENTLY reworking the code for @source, effective  if only one author-->
    <xsl:template name="responsability">
-     <!--	<xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
-      	<xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>-->
+  <xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
+      	<xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>
      <!-- The responsability template could probably be used in several part, rather than repeating the code. Need to be cleaned at some point-->
-      <!--  <xsl:variable name="biblresp"
+      <xsl:variable name="biblresp"
         select="replace(substring-after(@source, ':'), '\+', '%2B')"/>
 
 
@@ -67,10 +67,10 @@
          select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblresp, '&amp;format=json'), 'amp;', '')"
        />
      </xsl:variable>
-     <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>-->
+     <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>
 
 
-            <!--<xsl:if test="@source">
+            <xsl:if test="@source">
          <xsl:text> by </xsl:text>
          <xsl:element name="span">
            <xsl:attribute name="class">resp</xsl:attribute>
@@ -109,8 +109,8 @@
              <xsl:value-of select="regex-group(2)"/>
            </xsl:matching-substring>
          </xsl:analyze-string>
-       </xsl:if>-->
-    <xsl:if test="@source">
+       </xsl:if>
+  <!--  <xsl:if test="@source">
        <xsl:text> by </xsl:text>
        <xsl:choose>
          <xsl:when test="matches(@source, '\+[a][l]')">
@@ -123,7 +123,7 @@
         <xsl:value-of select="replace(replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' '), '([0-9\-]+)', '($1)')"/>
       </xsl:otherwise>
         </xsl:choose>
-      </xsl:if>
+      </xsl:if>-->
       <xsl:if test="@resp">
         <xsl:call-template name="respID"/>
       </xsl:if>
