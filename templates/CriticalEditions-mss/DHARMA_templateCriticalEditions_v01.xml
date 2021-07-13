@@ -68,6 +68,13 @@
 									<!-- Here you can give a physical description of the manuscript in prose-->
 									<p>Palm-leaf manuscript. 89 leaves in Kuṭilā script. Apparently written in 1152 A.C.</p>
 								</objectDesc>
+								<handDesc> <!-- Add an attribute @hands if you have more than one hand -->
+									<!-- Create a handNote for each hand -->
+									<handNote xml:id= "A1_H1" scriptRef="class:57470 maturity:83215"> <!-- update the content of the @xml:id and the @scriptRef -->
+										<abbr type="hand">A<hi rend="superscript">1</hi>H<hi rend="subscript">1</hi></abbr><!-- Give the abbreviation siglum for the hand build on siglum-of-the-manuscript_H1, the number being incremental -->
+										<p>main hand of the manuscript, black ink, Sundanese script</p><!-- provide a description of the hand -->
+									</handNote>
+								</handDesc>
 							</physDesc>
 							<history>
 								<!-- Here you can decribe the history of the manuscript in prose. Use <origDate> and <origPlace> to emphasize the place and date of creation -->
@@ -113,6 +120,12 @@
 				</prefixDef>
 				<prefixDef ident="txt" matchPattern="([A-Za-z0-9]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml#$1">
 					<p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_v01.xml</ref> file.</p>
+				</prefixDef>
+				<prefixDef ident="class" matchPattern="([0-9]+)" replacementPattern="tba">
+					<p>Referential with the prefix class for script classification declared inside OpenTheso to be mapped with ARK URIs opened to the public.</p>
+				</prefixDef>
+				<prefixDef ident="maturiy" matchPattern="(0-9]+)" replacementPattern="tba">
+					<p>Referential with the prefix maturity for script maturity declared inside OpenTheso to be mapped with ARK URIs opened to the public</p>
 				</prefixDef>
 			</listPrefixDef>
 		</encodingDesc>
