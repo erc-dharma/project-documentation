@@ -161,6 +161,8 @@
         <sch:rule context="t:*/@rendition">
             <sch:assert test="contains(.,'class:') and contains(.,'maturity:')">The content of the attribute @corresp should contained ids for both script classification and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
         </sch:rule>
+        
+        <!-- need to add a section to check the rendition values -->
     </sch:pattern>
     
 </sch:schema>
