@@ -2930,6 +2930,8 @@
                                 <valItem ident="tank"/>
                                 <valItem ident="pavillion"/>
                                 <valItem ident="garden"/>
+                                <valItem ident="village"/>
+                                <valItem ident="unknown"/>
                             </valList>
                         </attDef>
                     </attList>
