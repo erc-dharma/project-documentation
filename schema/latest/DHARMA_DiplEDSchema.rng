@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-07-19T09:11:33Z. .
+Schema generated from ODD source 2021-07-19T09:29:09Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -7210,6 +7210,9 @@ Sample values include: 1] numeral</a:documentation>
                <ref name="tei_charProp"/>
             </zeroOrMore>
             <zeroOrMore>
+               <ref name="tei_mapping"/>
+            </zeroOrMore>
+            <zeroOrMore>
                <ref name="tei_model.graphicLike"/>
             </zeroOrMore>
             <zeroOrMore>
@@ -7217,6 +7220,22 @@ Sample values include: 1] numeral</a:documentation>
             </zeroOrMore>
          </group>
          <ref name="tei_att.global.attribute.xmlid"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_mapping">
+      <element name="mapping">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character mapping) contains one or more characters which are related to the parent character or glyph in some respect, as specified by the <code xmlns="http://www.w3.org/1999/xhtml">@type</code> attribute. [5.2. Markup Constructs for Representation of Characters and Glyphs]</a:documentation>
+         <ref name="tei_macro.xtext"/>
+         <optional>
+            <attribute name="type">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
+               <choice>
+                  <value>siglum</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>

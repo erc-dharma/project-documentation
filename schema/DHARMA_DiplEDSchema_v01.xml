@@ -19,7 +19,7 @@
         </fileDesc>
         <revisionDesc>
             <change who="part:axja" when="2021-07-19"
-                >Addition for the batak diplEd files.Adding value for attributes @type and @subtype for roleName; adding @subtype for placeName; adding @type for the element div; allowing @ref for g; adding charDecl in the schema; updating the pattern for the TEI rote as well as for child of head</change>
+                >Addition for the batak diplEd files.Adding value for attributes @type and @subtype for roleName; adding @subtype for placeName; adding @type for the element div; allowing @ref for g; adding charDecl in the schema; updating the pattern for the TEI rote as well as for child of head, adding mapping for siglum of glyph</change>
             <change who="part:axja" when="2021-04-19"
                 >Creating a validation schema for Diplomatic editions based on DHARMA schema used for inscriptions</change>
         </revisionDesc>
@@ -45,7 +45,7 @@
                 <moduleRef key="analysis" except="c cl interp m pc phr s span spanGrp w"/>
                 <moduleRef key="certainty" except="precision respons"/>
                 <moduleRef key="gaiji"
-                    except="char charName glyphName localName localProp mapping unicodeName unicodeProp unihanProp value"/>
+                    except="char charName glyphName localName localProp unicodeName unicodeProp unihanProp value"/>
                 <moduleRef key="linking"
                     except="alt altGrp anchor join joinGrp link linkGroup standOff timeline when"/>
                 <moduleRef key="msdescription"
@@ -4202,6 +4202,38 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="mapping" module="gaiji" mode="change">
+                    <attList>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="type" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="siglum"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
             </schemaSpec>
