@@ -19,7 +19,7 @@
         </fileDesc>
         <revisionDesc>
             <change who="part:axja" when="2021-07-19"
-                >Addition for the batak diplEd files.Adding value for attributes @type and @subtype for roleName; adding @subtype for placeName; adding @type for the element div; allowing @ref for g; adding charDecl in the schema</change>
+                >Addition for the batak diplEd files.Adding value for attributes @type and @subtype for roleName; adding @subtype for placeName; adding @type for the element div; allowing @ref for g; adding charDecl in the schema; updating the pattern for the TEI rote as well as for child of head</change>
             <change who="part:axja" when="2021-04-19"
                 >Creating a validation schema for Diplomatic editions based on DHARMA schema used for inscriptions</change>
         </revisionDesc>
@@ -1019,11 +1019,17 @@
                         <attDef ident="style" mode="delete"/>
                         <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="type" mode="delete"/>
                         <attDef ident="version" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="type" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="edition"/>
+                                <valItem ident="translation"/>
+                                <valItem ident="commentary"/>
+                                <valItem ident="bibliography"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="body" module="textstructure" mode="change">
@@ -1769,7 +1775,8 @@
                 <elementSpec ident="head" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="head-childs">
                         <constraint><sch:rule context="tei:head/child::tei:*"><sch:assert
-                            test="local-name()= ('foreign')">Foreign is the only element allowed as
+                            test="local-name()= ('foreign')"
+                            >Foreign is the only element allowed as
                             child of the element head</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
