@@ -340,11 +340,7 @@
            <!-- Version without the tooltip display in the body-->
                    <xsl:element name="span"> 
                <xsl:attribute name="class">lem</xsl:attribute>
-               <xsl:apply-templates select="tei:lem">
-                   <xsl:with-param name="line-break">
-                       <xsl:value-of select="'no-break'"/>
-                   </xsl:with-param>
-               </xsl:apply-templates>
+               <xsl:apply-templates select="tei:lem"/>
            </xsl:element>
            </xsl:element>
     </xsl:template>
