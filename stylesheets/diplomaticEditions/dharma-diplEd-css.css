@@ -1,0 +1,47 @@
+/* CSS file based on salit.css written by Andrew Ollett */
+/* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
+.symbol {
+        border: 2px solid black;
+        border-radius: 8px;
+        padding: 0.03em;
+        }
+       
+.text-muted .siglum {
+    color: grey;
+}
+.title {
+    font-style:italic;
+}
+
+.surplus:before {
+    content:"{";
+}
+
+.surplus:after {
+    content:"}";
+}
+
+.mark {
+    background-color: yellow;
+} 
+
+.lost-illegible:before {
+    content:"[";
+}
+
+.lost-illegible:after {
+    content:"]";
+}
+
+.tooltipApp:hover ~ .sic{
+    background-color: yellow;
+}
+
+.sic{
+    color:#a34545;
+}
+
+.p-note{
+    display: inline-block;
+    margin: 0 !important; 
+}
