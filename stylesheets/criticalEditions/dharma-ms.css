@@ -601,11 +601,11 @@ a:hover, a i.fas:hover {
     content:")";
 }
 
-.sic:before {
+.sic-crux:before {
     content:"†";
 }
 
-.sic:after {
+.sic-crux:after {
     content:"†";
 }
 
