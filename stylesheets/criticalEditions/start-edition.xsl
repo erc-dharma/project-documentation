@@ -1113,7 +1113,7 @@
                     <xsl:apply-templates/>
                     </xsl:element>
                 </xsl:when>
-                <xsl:when test="@reason='lost ' or @reason='illegible'">
+                <xsl:when test="@reason='lost' or @reason='illegible'">
                     <xsl:element name="span">
                         <xsl:attribute name="class">lost-illegible</xsl:attribute>
                         <xsl:apply-templates/>
@@ -2054,6 +2054,7 @@
                     </xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:lem]"/>
+                        <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:listApp]"/>
                         <xsl:otherwise>
                             <xsl:text>(</xsl:text>
                         <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
