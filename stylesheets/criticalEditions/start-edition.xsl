@@ -1023,7 +1023,7 @@
     <!--  sic ! -->
     <xsl:template match="tei:sic[not(parent::tei:choice)]">
         <xsl:element name="span">
-            <xsl:attribute name="class">sic</xsl:attribute>
+            <xsl:attribute name="class">sic-crux</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
