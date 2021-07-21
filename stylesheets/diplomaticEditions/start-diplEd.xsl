@@ -844,7 +844,7 @@
                 
             </xsl:element>
             </xsl:element>
-        <br/>
+        <!--<br/>-->
         <xsl:element name="p">
             <xsl:attribute name="class">textContent</xsl:attribute>
             <xsl:apply-templates/>
