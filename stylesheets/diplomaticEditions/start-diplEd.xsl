@@ -1458,7 +1458,7 @@
                 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/dharma-diplEd-css.css"/>
-                <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Serif"/>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
             </meta>
         </head>
     </xsl:template>
