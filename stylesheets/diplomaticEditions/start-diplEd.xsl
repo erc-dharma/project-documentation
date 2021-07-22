@@ -52,12 +52,57 @@
    
     <xsl:template match="/tei:TEI">
         <xsl:element name="html">
-        <xsl:call-template name="dharma-head"/>
-        <xsl:element name="body">
-            <xsl:attribute name="class">font-weight-light</xsl:attribute>
+            <xsl:call-template name="dharma-head"/>
+            <xsl:element name="body">
+                <xsl:attribute name="class">font-weight-light</xsl:attribute>
                 <xsl:apply-templates select="./tei:teiHeader"/>
-                <xsl:call-template name="tab-metadata"/>
-            <xsl:call-template name="tab-witness"/>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">row wrapper</xsl:attribute>
+                    <xsl:element name="ul">
+                        <xsl:attribute name="class">nav nav-tabs nav-justified</xsl:attribute>
+                        <xsl:attribute name="id">tab</xsl:attribute>
+                        <xsl:attribute name="role">tablist</xsl:attribute>
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item</xsl:attribute>
+                            <xsl:attribute name="role">presentation</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link active</xsl:attribute>
+                                <xsl:attribute name="id">witnesses-tab</xsl:attribute>
+                                <xsl:attribute name="data-toggle">tab</xsl:attribute>
+                                <xsl:attribute name="href">#witnesses</xsl:attribute>
+                                <xsl:attribute name="role">tab</xsl:attribute>
+                                <xsl:attribute name="aria-controls">witnesses</xsl:attribute>
+                                <xsl:attribute name="aria-selected">true</xsl:attribute>
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">panel</xsl:attribute>
+                                    <xsl:text>Witness</xsl:text>
+                                </xsl:element>
+                            </xsl:element> 
+                        </xsl:element>
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item</xsl:attribute>
+                            <xsl:attribute name="role">presentation</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link</xsl:attribute>
+                                <xsl:attribute name="id">metadata-tab</xsl:attribute>
+                                <xsl:attribute name="data-toggle">tab</xsl:attribute>
+                                <xsl:attribute name="href">#metadata</xsl:attribute>
+                                <xsl:attribute name="role">tab</xsl:attribute>
+                                <xsl:attribute name="aria-controls">metadata</xsl:attribute>
+                                <xsl:attribute name="aria-selected">false</xsl:attribute>
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">panel</xsl:attribute>
+                                    <xsl:text>Metadata</xsl:text>
+                                </xsl:element>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>                     
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">tab-content</xsl:attribute>
+                        <xsl:call-template name="tab-witness"/>
+                        <xsl:call-template name="tab-metadata"/>
+                    </xsl:element>
+                </xsl:element>
                 <xsl:apply-templates select="./tei:text"/>
             <xsl:apply-templates select=".//tei:app | .//tei:choice[child::tei:sic and child::tei:corr]" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
@@ -1879,10 +1924,11 @@
     
     <!-- Metadata tab - special template in order to avoid the conflict with an apply-templates on teiHeader -->
     <xsl:template name="tab-metadata">
-        <xsl:element name="aside">
-            <xsl:attribute name="class">row-md-4</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">p-4 mb-3 rounded</xsl:attribute>
+        <xsl:element name="div">
+            <xsl:attribute name="class">tab-pane fade</xsl:attribute>
+            <xsl:attribute name="id">metadata</xsl:attribute>
+            <xsl:attribute name="role">tabpanel</xsl:attribute>
+            <xsl:attribute name="aria-labelledby">metadata-tab</xsl:attribute> 
             <xsl:element name="h4">Metadata of the Edition</xsl:element>
             <xsl:element name="ul">
                     <xsl:element name="li">
@@ -1950,14 +1996,14 @@
                 <xsl:value-of select="//tei:projectDesc/tei:p[1]"/>
             </xsl:element>
         </xsl:element>
-        </xsl:element>
     </xsl:template>
     
     <xsl:template name="tab-witness">
-        <xsl:element name="aside">
-            <xsl:attribute name="class">row-md-4</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">p-4 mb-3 rounded</xsl:attribute>
+        <xsl:element name="div">
+            <xsl:attribute name="class">tab-pane active</xsl:attribute>
+            <xsl:attribute name="id">witnesses</xsl:attribute>
+            <xsl:attribute name="role">tabpanel</xsl:attribute>
+            <xsl:attribute name="aria-labelledby">witnesses-tab</xsl:attribute>
                 <xsl:element name="h4">Description of the witness</xsl:element>
                 <xsl:element name="ul">
                     <xsl:if test="//tei:msDesc/tei:msIdentifier//text()">
@@ -2030,10 +2076,51 @@
                                 <xsl:text>Physical Description</xsl:text>
                             </xsl:element>
                             <xsl:text>: </xsl:text>
-                            <xsl:apply-templates select="normalize-space(//tei:objectDesc)"/>
+                            <xsl:choose>
+                                <xsl:when test="not(child::tei:p)">
+                                    <xsl:element name="ul">
+                                        <xsl:if test="//tei:objectDesc/tei:supportDesc/tei:support">
+                                            <xsl:element name="li">
+                                                <xsl:element name="b">
+                                                    <xsl:text>Support</xsl:text>
+                                                </xsl:element>
+                                                <xsl:text>: </xsl:text>
+                                                <xsl:apply-templates select="//tei:objectDesc/tei:supportDesc/tei:support"/>
+                                            </xsl:element>
+                                        </xsl:if>
+                                        <xsl:if test="//tei:objectDesc/tei:supportDesc/tei:extent">
+                                            <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>Extent</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:apply-templates select="//tei:objectDesc/tei:supportDesc/tei:extent/text()"/>
+                                                <xsl:text>, </xsl:text>
+                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/tei:height"/>
+                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/@unit"/>
+                                                <xsl:text> x </xsl:text>
+                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/tei:width"/>
+                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/@unit"/>
+                                    </xsl:element>
+                                        </xsl:if>
+                                    </xsl:element>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:apply-templates select="normalize-space(//tei:objectDesc)"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:element>
                     </xsl:if>
-        <xsl:if test="//tei:handDesc//text()">
+                    <xsl:if test="//tei:layoutDesc//text()">
+                        <xsl:element name="li">
+                            <xsl:element name="b">
+                                <xsl:text>Layout Description</xsl:text>
+                            </xsl:element>
+                            <xsl:text>: </xsl:text>
+                            <xsl:apply-templates select="//tei:layoutDesc/child::*"/>
+                        </xsl:element>
+                    </xsl:if>
+                    <xsl:if test="//tei:handDesc//text()">
             <xsl:element name="li">
                 <xsl:element name="b">
                     <xsl:text>Hand Description</xsl:text>
@@ -2053,7 +2140,6 @@
                     </xsl:if>
                 </xsl:element>
             </xsl:element>
-        </xsl:element>
     </xsl:template>
     
 <xsl:template name="fake-lem-making">
