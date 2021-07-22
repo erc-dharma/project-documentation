@@ -683,14 +683,14 @@ p{
 }
 
 .wrapper{
-  width: 450px;
+  width: 650px;
   height: auto;
   margin: 0 auto;
   padding: 30px;
 }
 
 .nav-tabs{
-  width: 450px;
+  width: 650px;
 }
 .nav-item{
   width: 50%;
@@ -710,7 +710,7 @@ p{
 }
 .tab-content{
   position: relative;
-  width: 450px;
+  width: 650px;
   height: auto;
   margin-top: -50px;
   background: #fff;
