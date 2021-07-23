@@ -6,7 +6,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0"
     exclude-result-prefixes="tei xi fn functx">
     
-    <xsl:param name="type-edition" required="yes" as="xs:string"/>
+    <xsl:param name="edition-type" required="yes"/>
     
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
     
