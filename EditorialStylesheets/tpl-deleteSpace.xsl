@@ -15,7 +15,7 @@
     </xsl:template>
     
     <!-- Deleting space - must be refined in order to match as best as possible the pipeline -->
-    <xsl:template match="text()">
+    <xsl:template match="t:text//text()">
         <xsl:apply-templates select="translate(., ' ', '')"/>
     </xsl:template>
     
