@@ -15,8 +15,8 @@
     </xsl:template>
     
     <!-- Deleting space - must be refined in order to match as best as possible the pipeline -->
-    <xsl:template match="t:text//text()">
-        <xsl:apply-templates select="translate(., ' ', '')"/>
+    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note' ))]/text()">
+            <xsl:apply-templates select="translate(., ' ', '')"/>
     </xsl:template>
     
 </xsl:stylesheet>
