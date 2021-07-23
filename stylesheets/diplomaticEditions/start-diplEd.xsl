@@ -5,6 +5,9 @@
     xmlns:functx="http://www.functx.com"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0"
     exclude-result-prefixes="tei xi fn functx">
+    
+    <xsl:param name="type-edition" required="yes" as="xs:string"/>
+    
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
     
     <xsl:function name="functx:escape-for-regex" as="xs:string"
@@ -421,16 +424,23 @@
     </xsl:template>
     <!--  C ! -->
     <!--  choice ! -->
-   <!-- <xsl:template match="tei:choice[child::tei:orig and child::tei:corr]">
-        <xsl:element name="span">
+  <xsl:template match="tei:choice[child::tei:orig and child::tei:corr]">
+      <xsl:param name="edition-type"/>
+        <xsl:choose>
+            <xsl:when test="$edition-type='diplomatic'">
+                <xsl:element name="span">
             <xsl:attribute name="class">orig</xsl:attribute>
             <xsl:apply-templates select="tei:orig"/>
         </xsl:element>
-        <!-\-<xsl:element name="span">
-            <xsl:attribute name="class">sanskritword san</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="$edition-type='logical'"> 
+           <xsl:element name="span">
+            <xsl:attribute name="class">reg</xsl:attribute>
             <xsl:apply-templates select="tei:reg"/>
-        </xsl:element>-\->
-    </xsl:template>-->
+        </xsl:element>
+       </xsl:when>
+        </xsl:choose>
+    </xsl:template>
     <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
@@ -649,8 +659,9 @@
     <!--  lb ! -->
     <xsl:template match="tei:lb">
         <xsl:param name="line-break"/>
+        <xsl:param name="edition-type"/>
         <xsl:choose>
-            <xsl:when test="$line-break='no-break'"/>
+            <xsl:when test="$line-break='no-break' or $edition-type='logical'"/>
             <xsl:otherwise>
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
