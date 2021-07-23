@@ -426,18 +426,18 @@
     </xsl:template>
     <!--  C ! -->
     <!--  choice ! -->
-  <xsl:template match="tei:choice[child::tei:orig and child::tei:corr]">
+  <xsl:template match="tei:choice[child::tei:orig and child::tei:reg]">
         <xsl:choose>
             <xsl:when test="$edition-type='diplomatic'">
                 <xsl:element name="span">
             <xsl:attribute name="class">orig</xsl:attribute>
-            <xsl:apply-templates select="tei:orig"/>
+                    <xsl:apply-templates select="tei:orig"/>
         </xsl:element>
             </xsl:when>
             <xsl:when test="$edition-type='logical'"> 
            <xsl:element name="span">
             <xsl:attribute name="class">reg</xsl:attribute>
-            <xsl:apply-templates select="tei:reg"/>
+               <xsl:apply-templates select="tei:reg"/>
         </xsl:element>
        </xsl:when>
         </xsl:choose>
@@ -1608,9 +1608,9 @@
         <xsl:param name="apptype"/>
        <xsl:variable name="childtype">
             <xsl:choose>
-                <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
+                <!--<xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
                     <xsl:text>origreg</xsl:text>
-                </xsl:when>
+                </xsl:when>-->
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:sic and child::tei:corr]">
                     <xsl:text>siccorr</xsl:text>
                 </xsl:when>
