@@ -431,13 +431,13 @@
             <xsl:when test="$edition-type='diplomatic'">
                 <xsl:element name="span">
             <xsl:attribute name="class">orig</xsl:attribute>
-                    <xsl:apply-templates select="tei:orig"/>
+                    <xsl:apply-templates select="child::tei:orig"/>
         </xsl:element>
             </xsl:when>
             <xsl:when test="$edition-type='logical'"> 
            <xsl:element name="span">
             <xsl:attribute name="class">reg</xsl:attribute>
-               <xsl:apply-templates select="tei:reg"/>
+               <xsl:apply-templates select="child::tei:reg"/>
         </xsl:element>
        </xsl:when>
         </xsl:choose>
