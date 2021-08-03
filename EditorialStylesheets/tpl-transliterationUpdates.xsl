@@ -44,7 +44,7 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note' ))]/text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note'))]/text()[string-length(normalize-space(.))>0]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="normalize-space(.)"/>
             <xsl:with-param name="regex" select="$batak-regexes"/>
