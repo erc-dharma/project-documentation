@@ -15,8 +15,8 @@
     </xsl:template>
     
     <!-- Deleting punctuation mark for the diplomatic version -->
-    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note', 'app' ))]//text()">
-        <xsl:apply-templates select="translate(., '.,; ', '')"/>
+    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note', 'app' ))]/text()">
+        <xsl:apply-templates select="translate(., '.,;', '')"/>
     </xsl:template>
     
 </xsl:stylesheet>
