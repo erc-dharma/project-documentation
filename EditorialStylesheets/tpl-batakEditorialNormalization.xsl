@@ -39,16 +39,12 @@
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
     
-    <xsl:template match="t:text/text()">
-        <xsl:param name="data"/>
-        <xsl:if test="$data">
-            <xsl:choose>
-                <xsl:when test="starts-with($data,'. ')"> 
+    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note', 'app' ))]/text()">
+        <xsl:param name="data" select="text()"/>
+        <xsl:if test="starts-with($data,'. ')">
                     <xsl:text>. </xsl:text> 
                     <xsl:value-of select="translate(substring($data,3,1),
                         'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-                </xsl:when>
-            </xsl:choose>
         </xsl:if>  
     </xsl:template>
 
