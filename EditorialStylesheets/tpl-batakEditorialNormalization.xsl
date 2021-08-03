@@ -39,37 +39,18 @@
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
     
-    <xsl:template name="caseUp">
+    <xsl:template match="t:text/text()">
         <xsl:param name="data"/>
         <xsl:if test="$data">
             <xsl:choose>
                 <xsl:when test="starts-with($data,'. ')"> 
-                    <xsl:text> </xsl:text> 
-                    <xsl:call-template name="caseDown">
-                        <xsl:with-param name="data" select="substring($data,3)"/>
-                    </xsl:call-template>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="translate(substring($data,1,1),
+                    <xsl:text>. </xsl:text> 
+                    <xsl:value-of select="translate(substring($data,3,1),
                         'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-                    <!-- put all the chars you want to change 
-                 into the last two strings -->        
-                    <xsl:call-template name="caseDown">
-                        <xsl:with-param name="data" select="substring($data,2)"/>
-                    </xsl:call-template>
-                </xsl:otherwise>
+                </xsl:when>
             </xsl:choose>
         </xsl:if>  
     </xsl:template>
-    
-    <xsl:template name="caseDown">
-        <xsl:param name="data"/>
-        <xsl:if test="$data">
-            <xsl:value-of select="substring($data,1,1)"/>
-            <xsl:call-template name="caseUp"> 
-                <xsl:with-param name="data" select="substring($data,2)"/>
-            </xsl:call-template>
-        </xsl:if>
-    </xsl:template>
+
     
 </xsl:stylesheet>
