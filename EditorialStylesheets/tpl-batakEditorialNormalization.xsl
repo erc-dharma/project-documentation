@@ -39,7 +39,7 @@
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
     
-    <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note', 'app' ))]/text()">
+    <!--<xsl:template>
         <xsl:param name="data" select="text()"/>
         <xsl:choose>
             <xsl:when test="starts-with($data,'. ')">
@@ -52,6 +52,6 @@
             </xsl:otherwise>
         </xsl:choose>  
     </xsl:template>
-
+-->
     
 </xsl:stylesheet>
