@@ -41,11 +41,16 @@
     
     <xsl:template match="t:text/descendant-or-self::*[not(local-name()=('head', 'note', 'app' ))]/text()">
         <xsl:param name="data" select="text()"/>
-        <xsl:if test="starts-with($data,'. ')">
+        <xsl:choose>
+            <xsl:when test="starts-with($data,'. ')">
                     <xsl:text>. </xsl:text> 
-                    <xsl:value-of select="translate(substring($data,3,1),
+                    <xsl:apply-templates select="translate(substring($data,3,1),
                         'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-        </xsl:if>  
+        </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>  
     </xsl:template>
 
     
