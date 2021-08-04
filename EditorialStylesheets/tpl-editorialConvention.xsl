@@ -153,21 +153,21 @@ n. (although there shouldn't be any of encoders follow the EG) -->
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="t:div[@xml:lang='fra']/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[@xml:lang='fra' and not(@type='edition')]/descendant::text()[string-length(normalize-space(.))>0]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$french-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:div[not(@xml:lang='fra')]/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[not(@xml:lang='fra') and not(@type='edition')]/descendant::text()[string-length(normalize-space(.))>0]">
             <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$english-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:div[@type='edition' and not(@xml:lang=('fra','eng','deu'))]/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[@type='edition']/descendant::text()[string-length(normalize-space(.))>0]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$translit-regexes"/>
