@@ -138,6 +138,15 @@ n. (although there shouldn't be any of encoders follow the EG) -->
         
     </xsl:param>
     
+    <!-- regexes to apply transliteration rules -->
+    <xsl:param name="translit-regexes" as="element(regex)*">
+        <!-- pas d'espace après : -->
+        <regex>
+            <find>\s*([:])\s*</find>
+            <change>$1</change>
+        </regex>
+    </xsl:param>
+    
     <xsl:template match="@*|node()">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
@@ -155,6 +164,13 @@ n. (although there shouldn't be any of encoders follow the EG) -->
             <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$english-regexes"/>
+        </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:template match="t:div[@type='edition' and not(@xml:lang=('fra','eng','deu'))]/descendant::text()[string-length(normalize-space(.))>0]">
+        <xsl:call-template name="applyRegexes">
+            <xsl:with-param name="nodeText" select="."/>
+            <xsl:with-param name="regex" select="$translit-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
