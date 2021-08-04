@@ -139,10 +139,10 @@ n. (although there shouldn't be any of encoders follow the EG) -->
     </xsl:param>
     
     <!-- regexes to apply transliteration rules -->
-    <xsl:param name="translit-regexes" as="element(regex)*">
+    <xsl:param name="javanese-regexes" as="element(regex)*">
         <!-- pas d'espace après : -->
         <regex>
-            <find>\s*([:])\s*</find>
+            <find>([:])\s+</find>
             <change>$1</change>
         </regex>
     </xsl:param>
@@ -153,24 +153,24 @@ n. (although there shouldn't be any of encoders follow the EG) -->
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="t:div[@xml:lang='fra' and not(@type='edition')]/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[@xml:lang='fra']/descendant::text()[string-length(normalize-space(.))>0]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$french-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:div[not(@xml:lang='fra') and not(@type='edition')]/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[not(@xml:lang='fra')]/descendant::text()[string-length(normalize-space(.))>0]">
             <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$english-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:div[@type='edition']/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]/descendant::text()[string-length(normalize-space(.))>0]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
-            <xsl:with-param name="regex" select="$translit-regexes"/>
+            <xsl:with-param name="regex" select="$javanese-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
