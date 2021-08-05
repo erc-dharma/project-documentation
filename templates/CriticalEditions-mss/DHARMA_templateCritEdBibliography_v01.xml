@@ -2,12 +2,12 @@
 <?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- // Validation schema TEI-ALL must be update in favor the DHARMA manuscript schema once it has been established// -->
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" type="commentary"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master? -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" type="bibliography"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master? -->
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Encoding Template for Commentary on Critical Editions</title>
-                <!--Change the title of the file with a title for the commentary, you don't see any use of attributes here, but if you need some to add a subtitle for instance, please use @type="main" and @subtype="commentary"-->
+                <title>Encoding Template for Bibliography on Critical Editions</title>
+                <!--Change the title of the file with a title for the bibliography, you don't see any use of attributes here, but if you need some to add a subtitle for instance, please use @type="main" and @subtype="bibliography"-->
                 <!-- Possibility to add the <editor> tag:
         <editor ref="part:ID">
 					<forename></forename>
@@ -20,7 +20,7 @@
         -->
                 <respStmt>
                     <!-- repeat the respStmt when necessary -->
-                    <resp>Encoding of the commentary</resp>
+                    <resp>Encoding of the bibliography</resp>
                     <!-- work done in the file, e.g. editor, intellectual authorship of edition ...-->
                     <persName ref="part:jodo"><!-- update the id -->
                         <forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
@@ -31,7 +31,7 @@
             <publicationStmt>
                 <authority>DHARMA</authority>
                 <pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
-                <idno type="filename">DHARMA_templateCritEdCommentary_v01</idno>
+                <idno type="filename">DHARMA_templateCritEdBibliography_v01</idno>
                 <!-- Replace by filename following FNC -->
                 <availability>
                     <licence target="https://creativecommons.org/licenses/by/4.0/">
@@ -41,9 +41,9 @@
                 </availability>
                 <date from="2019" to="2025">2019-2025</date>
             </publicationStmt>
-            <notesStmt><note><bibl>Digital Commentary of <bibl><ptr target="bib:"></ptr></bibl>.<relatedItem target=""></relatedItem></bibl></note></notesStmt>
+            <notesStmt><note><bibl>Bibliography of <bibl><ptr target="bib:"></ptr></bibl>.<relatedItem target=""></relatedItem></bibl></note></notesStmt>
             <sourceDesc>
-                <biblFull> <!-- Copy and paste the titleStmt and publicationStmt of the edition file -->           <titleStmt></titleStmt>
+                <biblFull> <!-- Copy and paste the titleStmt and publicationStmt of the edition file -->    <titleStmt></titleStmt>
                     <publicationStmt></publicationStmt>
                 </biblFull>
                 
@@ -57,15 +57,15 @@
             </projectDesc>
         </encodingDesc>
         <revisionDesc>
-            <change who="part:axja" when="2021-07-01" status="draft">Creation of the template</change>
+            <change who="part:axja" when="2021-08-04" status="draft">Creation of the template</change>
             <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
         </revisionDesc>
     </teiHeader>
     <text xml:space="preserve">
       <body>
-         <div type="commentary"> 
-            <!-- Structure as necessary <p> -->
-         </div>
+        	<listBibl>
+				<bibl n="siglum"/><!-- one <bibl/> per item of primary bibliography. Every entry mentionned in apparatus  should have a @n to declare its sigla -->
+			</listBibl>
       </body>
   </text>
 </TEI>
