@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en" n="testms">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>DHARMA Schema for Critical Editions</title>
+        <author>Axelle Janiak (EHESS-CNRS, ERC-DHARMA)</author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>TEI Consortium</publisher>
+        <availability status="free">
+          <licence target="http://creativecommons.org/licenses/by-sa/3.0/">
+          Distributed under a Creative Commons Attribution-ShareAlike
+          3.0 Unported License</licence>
+          <licence target="http://www.opensource.org/licenses/BSD-2-Clause"
+            ><p>Copyright 2013 TEI Consortium.</p><p>All rights reserved.</p><p>Redistribution and use in source and binary forms, with
+            or without modification, are permitted provided that the
+            following conditions are met:</p><list>
+            <item>Redistributions of source code must retain the
+              above copyright notice, this list of conditions and the
+              following disclaimer.</item>
+            <item>Redistributions in binary form must reproduce the
+              above copyright notice, this list of conditions and the
+              following disclaimer in the documentation and/or other
+              materials provided with the distribution.</item>
+            </list><p>This software is provided by the copyright holders and
+            contributors "as is" and any express or implied
+            warranties, including, but not limited to, the implied
+            warranties of merchantability and fitness for a particular
+            purpose are disclaimed. In no event shall the copyright
+            holder or contributors be liable for any direct, indirect,
+            incidental, special, exemplary, or consequential damages
+            (including, but not limited to, procurement of substitute
+            goods or services; loss of use, data, or profits; or
+            business interruption) however caused and on any theory of
+            liability, whether in contract, strict liability, or tort
+            (including negligence or otherwise) arising in any way out
+            of the use of this software, even if advised of the
+            possibility of such damage.</p></licence>
+          <p>TEI material can be licensed differently depending on the
+          use you intend to make of it. Hence it is made available
+          under both the CC+BY and BSD-2 licences. The CC+BY licence
+          is generally appropriate for usages which treat TEI content
+          as data or documentation. The BSD-2 licence is generally
+          appropriate for usage of TEI content in a software
+          environment. For further information or clarification,
+          please contact the <ref target="mailto:info@tei-c.org">TEI
+          Consortium</ref>.</p>
+        </availability>
+      </publicationStmt>
+      <notesStmt>
+        <note type="ns">http://www.example.org/ns/nonTEI</note>
+      </notesStmt>
+      <sourceDesc>
+        <p>Written from scratch.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p>Validation Schema to go with DHARMA Encoding guide for Critical Editions</p>
+      <schemaSpec ident="DHARMA_CritEdSchema_v01" start="TEI teiCorpus" prefix="tei_" docLang="en">
+        <moduleRef key="header"
+          except="abstract appInfo application cRefPattern calendar calendarDesc catDesc catRef category citeData citeStructure classCode classDecl conversion correction correspAction correspContext correspDesc creation distributor funder geoDecl interpretation listChange listPrefixDef namespace notesStmt principal quotation refState refsDecl segmentation sponsor stdVals styleDefDecl tagUsage tagsDecl taxonomy textClass unitDecl unitDef xenoData"/>
+        <moduleRef key="linking"
+          except="alt altGrp anchor annotation joinGrp link linkGrp listAnnotation standOff timeline"/>
+        <moduleRef key="core"
+          except="addrLine address analytic binaryObject cb desc distinct divGen email emph expan gb gloss graphic headItem headLabel imprint index measure measureGrp media meeting mentioned monogr noteGrp postBox postCode rb relatedItem rs rt ruby said series soCalled street teiCorpus textLang time"/>
+        <moduleRef key="tei"/>
+        <moduleRef key="textstructure"
+          except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText group imprimatur opener postscript salute signed titlePage titlePart trailer"/>
+        <moduleRef key="namesdates"
+          except="addName affiliation age birth bloc climate country death district education event faith floruit genName geo geogFeat geogName langKnowledge langKnown listEvent listNym listObject listOrg listPerson listPlace listRelation location nameLink nationality nym occupation offset org orgName persPronouns personGrp persona population region relation residence settlement sex socecStatus state terrain trait"/>
+        <moduleRef key="transcr"
+          except="addSpan am damage damageSpan delSpan ex fw handShift line listTranspose metamark mod path redo restore retrace secl sourceDoc substJoin surface surfaceGrp transpose undo zone"/>
+        <moduleRef key="msdescription"
+          except="accMat acquisition additional additions adminInfo catchwords collation collection colophon condition custEvent custodialHist decoDesc decoNote depth explicit filiation finalRubric foliation handDesc heraldry incipit institution locus locusGrp material msItemStruct musicNotation provenance recordHist rubric seal sealDesc secFol signatures stamp summary surrogates typeDesc typeNote watermark"/>
+        <moduleRef key="certainty" except="precision respons"/>
+        <moduleRef key="gaiji"
+          except="charName charProp localName localProp mapping unicodeName unicodeProp unihanProp value"/>
+        <moduleRef key="textcrit" except="rdgGrp witEnd witStart"/>
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>
