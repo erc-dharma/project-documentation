@@ -41,7 +41,7 @@
                 </availability>
                 <date from="2019" to="2025">2019-2025</date>
             </publicationStmt>
-            <notesStmt><note><bibl>Bibliography of <bibl><ptr target="bib:"></ptr></bibl>.<relatedItem target=""></relatedItem></bibl></note></notesStmt>
+            <!--<notesStmt><note><bibl>Bibliography of <bibl><ptr target="bib:"></ptr></bibl>.<relatedItem target=""></relatedItem></bibl></note></notesStmt>-->
             <sourceDesc>
                 <biblFull> <!-- Copy and paste the titleStmt and publicationStmt of the edition file -->    <titleStmt></titleStmt>
                     <publicationStmt></publicationStmt>
