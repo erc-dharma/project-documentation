@@ -66,7 +66,7 @@
   </teiHeader>
    <text xml:space="preserve">
       <body>
-         <div type="translation" xml:id=""> <!-- add an @xml:lang if you translated it -->
+         <div> <!-- add an @xml:lang if you translated it in another language than English -->
             <!-- Structure as necessary with <div>, <p> depending the nature of the text -->
          </div>
       </body>
