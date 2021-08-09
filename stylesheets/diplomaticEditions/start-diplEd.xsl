@@ -943,7 +943,8 @@
     <!--  pb ! -->
     <xsl:template match="tei:pb">
         <xsl:choose>
-            <xsl:when test="tei:pb[not(preceding::node()/text())] or $corpus-type='batak'"/>
+            <xsl:when test="tei:pb[not(preceding::node()/text())]"/>
+            <xsl:when test="$corpus-type='batak'"/>
             <xsl:otherwise>
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
