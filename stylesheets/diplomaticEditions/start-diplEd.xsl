@@ -2113,7 +2113,7 @@
                                                 <xsl:text>Extent</xsl:text>
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
-                                            <xsl:apply-templates select="//tei:objectDesc/tei:supportDesc/tei:extent/text()"/>
+                                            <xsl:apply-templates select="normalize-space(//tei:objectDesc/tei:supportDesc/tei:extent/text())"/>
                                                 <xsl:text>, </xsl:text>
                                                 <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/tei:height"/>
                                                 <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/@unit"/>
