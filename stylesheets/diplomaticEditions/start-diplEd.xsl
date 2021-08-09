@@ -941,11 +941,17 @@
     
     <!--  pb ! -->
     <xsl:template match="tei:pb">
-        <xsl:element name="span">
-            <xsl:attribute name="class">text-muted foliation</xsl:attribute>
-                <xsl:text>Folio </xsl:text>
-                <xsl:value-of select="@n"/>
-        </xsl:element>
+        <xsl:choose>
+            <xsl:when test="tei:pb[not(preceding::node()/text())]"/>
+            <xsl:otherwise>
+                <xsl:call-template name="lbrk-app"/>
+            </xsl:otherwise>
+        </xsl:choose>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted foliation</xsl:attribute>
+                    <xsl:text>Folio </xsl:text>
+                    <xsl:value-of select="@n"/>
+                </xsl:element>
     </xsl:template>
   
     <!-- ptr -->
@@ -1509,12 +1515,12 @@
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
                 <!-- site-specific css !-->
                 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/dharma-diplEd-css.css"/>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/dharma-diplEd-css.css"></link>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
     </xsl:template>
