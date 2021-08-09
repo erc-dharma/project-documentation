@@ -730,3 +730,19 @@ p{
 .parallels{
      padding: 25px;
 }
+
+.explanation:before {
+    content:"(";
+}
+
+.explanation:after {
+    content:")";
+}
+
+.subaudible:before {
+    content:"[";
+}
+
+.subaudible:after {
+    content:"]";
+}
