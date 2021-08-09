@@ -121,6 +121,7 @@
             <xsl:apply-templates select=".//tei:app | .//tei:choice[child::tei:sic and child::tei:corr]" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
+                <xsl:call-template name="tpl-translation"/>
                 <xsl:call-template name="dharma-script"/>
         </xsl:element>  
         </xsl:element>
@@ -2264,4 +2265,36 @@
             </xsl:element>-->
     </xsl:template>
     
+    <!-- tpl-translation -->
+    <xsl:template name="tpl-translation">
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
+        <xsl:variable name="document-trans">
+            <xsl:choose>
+                <xsl:when test="$corpus-type='nusantara'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
+                </xsl:when>
+                <xsl:when test="$corpus-type='batak'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/batak/', $filename, '_transEng01.xml')"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <xsl:element name="h4">Translation</xsl:element>
+            <xsl:choose>
+                <xsl:when test="document($document-trans)">
+                    <xsl:apply-templates select="document($document-trans)//tei:text"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">textContent</xsl:attribute>
+                        <xsl:text>No translation available yet for </xsl:text>
+                        <xsl:value-of select="$filename"/>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
 </xsl:stylesheet>
