@@ -1989,7 +1989,7 @@
                         </xsl:for-each>
                 </xsl:element>
                 <xsl:element name="li">
-                    <xsl:value-of select="replace(//tei:licence/tei:p[2], '\(c\)', '©')"/>
+                    <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="p">
