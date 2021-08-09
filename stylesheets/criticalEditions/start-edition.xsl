@@ -45,6 +45,10 @@
            <xsl:value-of select="substring-after(@ident, '-')"/>
         </xsl:for-each>
     </xsl:variable>
+    
+    <xsl:variable name="edition-id">
+        <xsl:value-of select="tei:TEI[@type='edition']/@xml:id"/>
+    </xsl:variable>
    
     <xsl:template match="/tei:TEI">
         <xsl:element name="html">
@@ -122,7 +126,8 @@
                 <xsl:apply-templates select=".//tei:app" mode="modals"/>  
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
-                <xsl:call-template name="dharma-script"/>
+                <xsl:call-template name="tpl-translation"/>
+                <xsl:call-template name="dharma-script"/>            
         </xsl:element>  
         </xsl:element>
     </xsl:template>
@@ -2068,6 +2073,33 @@
                 <xsl:attribute name="class">lem</xsl:attribute>
                 <xsl:apply-templates select="tei:lem"/>
             </xsl:element>-->
+    </xsl:template>
+    
+    <!-- tpl-translation -->
+    <xsl:template name="tpl-translation">
+        <!-- https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/ -->
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
+        <xsl:variable name="document-trans">
+            <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
+        </xsl:variable>
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <xsl:element name="h4">Translation</xsl:element>
+            <xsl:choose>
+                <xsl:when test="document($document-trans)">
+                <xsl:apply-templates select="document($document-trans)//tei:text"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">textContent</xsl:attribute>
+                        <xsl:text>No translation available yet for </xsl:text>
+                        <xsl:value-of select="$filename"/>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
     </xsl:template>
     
 </xsl:stylesheet>
