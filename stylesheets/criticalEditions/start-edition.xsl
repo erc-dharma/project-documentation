@@ -1127,6 +1127,24 @@
                         </xsl:if>
                     </xsl:element>
                 </xsl:when>
+                <xsl:when test="@reason='subaudible'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">subaudible</xsl:attribute>
+                        <xsl:apply-templates/>
+                        <xsl:if test="@cert='low'">
+                            <xsl:text>?</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:when test="@reason='explanation'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">explanation</xsl:attribute>
+                        <xsl:apply-templates/>
+                        <xsl:if test="@cert='low'">
+                            <xsl:text>?</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:when>
                 <xsl:otherwise>
                     <xsl:apply-templates/>
                 </xsl:otherwise>
