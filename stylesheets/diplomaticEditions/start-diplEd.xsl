@@ -520,6 +520,17 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
+    <!-- dimensions -->
+    <xsl:template match="tei:dimensions">
+        <xsl:if test="preceding::text()">
+            <xsl:text>, </xsl:text>
+        </xsl:if>
+        <xsl:value-of select="child::tei:height"/>
+        <xsl:value-of select="@unit"/>
+        <xsl:text> x </xsl:text>
+        <xsl:value-of select="child::tei:width"/>
+        <xsl:value-of select="@unit"/>
+    </xsl:template>
     <!--  div ! -->
     <xsl:template match="tei:div">
         <xsl:element name="div">
@@ -2117,13 +2128,7 @@
                                                 <xsl:text>Extent</xsl:text>
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
-                                            <xsl:apply-templates select="functx:trim(//tei:objectDesc/tei:supportDesc/tei:extent/text())"/>
-                                                <xsl:text>, </xsl:text>
-                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/tei:height"/>
-                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/@unit"/>
-                                                <xsl:text> x </xsl:text>
-                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/tei:width"/>
-                                                <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/@unit"/>
+                                            <xsl:apply-templates select="//tei:objectDesc/tei:supportDesc/tei:extent"/>
                                     </xsl:element>
                                         </xsl:if>
                                     </xsl:element>
