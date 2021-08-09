@@ -7,6 +7,7 @@
     exclude-result-prefixes="tei xi fn functx">
     
     <xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>
     
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
     
@@ -942,7 +943,7 @@
     <!--  pb ! -->
     <xsl:template match="tei:pb">
         <xsl:choose>
-            <xsl:when test="tei:pb[not(preceding::node()/text())]"/>
+            <xsl:when test="tei:pb[not(preceding::node()/text())] or $corpus-type='batak'"/>
             <xsl:otherwise>
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
