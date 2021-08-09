@@ -57,6 +57,10 @@
            <xsl:value-of select="substring-after(@ident, '-')"/>
         </xsl:for-each>
     </xsl:variable>
+    
+    <xsl:variable name="edition-id">
+        <xsl:value-of select="tei:TEI/@xml:id"/>
+    </xsl:variable>
    
     <xsl:template match="/tei:TEI">
         <xsl:element name="html">
@@ -1176,6 +1180,24 @@
                 <xsl:when test="@reason='lost' or @reason='illegible'">
                     <xsl:element name="span">
                         <xsl:attribute name="class">lost-illegible</xsl:attribute>
+                        <xsl:apply-templates/>
+                        <xsl:if test="@cert='low'">
+                            <xsl:text>?</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:when test="@reason='subaudible'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">subaudible</xsl:attribute>
+                        <xsl:apply-templates/>
+                        <xsl:if test="@cert='low'">
+                            <xsl:text>?</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:when test="@reason='explanation'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">explanation</xsl:attribute>
                         <xsl:apply-templates/>
                         <xsl:if test="@cert='low'">
                             <xsl:text>?</xsl:text>
