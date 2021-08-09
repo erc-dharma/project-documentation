@@ -37,16 +37,20 @@
     </xsl:function>
     <xsl:function name="functx:capitalize-first" as="xs:string?">
         <xsl:param name="arg" as="xs:string?"/>
-        
         <xsl:sequence select="
             concat(upper-case(substring($arg,1,1)),
             substring($arg,2))"/>
-        
     </xsl:function>
-    
+    <xsl:function name="functx:trim" as="xs:string">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="
+            replace(replace($arg,'\s+$',''),'^\s+','')
+            "/>
+    </xsl:function>   
     
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
+       <!-- Updated and reworked For DHARMA diplomatic edition by Axelle Janiak, starting summer 2021 -->
     
     <xsl:variable name="script">
         <xsl:for-each select="//tei:profileDesc/tei:langUsage/tei:language">
@@ -2113,7 +2117,7 @@
                                                 <xsl:text>Extent</xsl:text>
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
-                                            <xsl:apply-templates select="normalize-space(//tei:objectDesc/tei:supportDesc/tei:extent/text())"/>
+                                            <xsl:apply-templates select="functx:trim(//tei:objectDesc/tei:supportDesc/tei:extent/text())"/>
                                                 <xsl:text>, </xsl:text>
                                                 <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/tei:height"/>
                                                 <xsl:value-of select="//tei:objectDesc/tei:supportDesc/tei:extent/tei:dimensions/@unit"/>
