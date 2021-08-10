@@ -983,7 +983,7 @@
     <!--  quote ! -->
     <xsl:template match="tei:quote">
         <xsl:choose>
-            <xsl:when test="tei:quote[@type = 'basetext']">
+            <xsl:when test="tei:quote[@type = 'base-text']">
                 <xsl:element name="div">
             <xsl:attribute name="class">basetext</xsl:attribute>
             <xsl:apply-templates/>
