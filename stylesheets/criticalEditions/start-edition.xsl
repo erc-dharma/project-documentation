@@ -482,7 +482,15 @@
         </xsl:element>
     </xsl:template>
     <!--  choice ! -->
-    <xsl:template match="tei:choice[@type = 'chaya']">
+    <xsl:template match="tei:choice[child::tei:unclear]">
+        <xsl:element name="span">
+            <xsl:attribute name="class">unclear</xsl:attribute>
+            <xsl:apply-templates select="child::tei:unclear[1]"/>
+            <xsl:text>/</xsl:text>
+            <xsl:apply-templates select="child::tei:unclear[2]"/>
+        </xsl:element>
+    </xsl:template>
+    <!--<xsl:template match="tei:choice[@type = 'chaya']">
         <xsl:element name="span">
             <xsl:attribute name="class">prakritword san</xsl:attribute>
             <xsl:apply-templates select="tei:orig"/>
@@ -497,7 +505,7 @@
             <xsl:attribute name="class">prakritword san</xsl:attribute>
             <xsl:apply-templates select="tei:orig"/>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     <!--  D ! -->
     <!--  del ! -->
     <xsl:template match="tei:del">

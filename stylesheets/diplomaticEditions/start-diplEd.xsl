@@ -491,7 +491,6 @@
                     </xsl:element>
         </xsl:element>
     </xsl:template>
-    
     <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
         <xsl:variable name="apparatus">
             <xsl:element name="span">
@@ -509,7 +508,15 @@
             <xsl:copy-of select="$apparatus"/>
         </span>
     </xsl:template>
-
+    <!-- choice with two unclears -->
+    <xsl:template match="tei:choice[child::tei:unclear]">
+        <xsl:element name="span">
+            <xsl:attribute name="class">unclear</xsl:attribute>
+            <xsl:apply-templates select="child::tei:unclear[1]"/>
+            <xsl:text>/</xsl:text>
+            <xsl:apply-templates select="child::tei:unclear[2]"/>
+        </xsl:element>
+    </xsl:template>
     <!--  D ! -->
     <!--  del ! -->
     <xsl:template match="tei:del">
