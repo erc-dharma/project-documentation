@@ -461,10 +461,32 @@
     <!--  B ! -->
     <xsl:template match="tei:bibl">
         <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
-       
-           <xsl:if test="ancestor-or-self::tei:witness"> 
-               <xsl:copy-of            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=chicago-author-date'), 'amp;', ''))/div"/></xsl:if>
+        <xsl:variable name="zoteroomitname">
+            <xsl:value-of
+                select="unparsed-text(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+            />
            
+        </xsl:variable>
+       
+           <xsl:choose>
+                <xsl:when test="@rend='omitname'">
+                    <xsl:analyze-string select="$zoteroomitname"
+                        regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(2)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+               <xsl:when test="@rend='ibid'">
+                       <xsl:element name="i">
+                           <xsl:text>ibid.</xsl:text>
+                       </xsl:element>
+               </xsl:when>
+               <xsl:otherwise>
+                   <xsl:copy-of            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=chicago-author-date'), 'amp;', ''))/div"/>
+               </xsl:otherwise>
+           
+           </xsl:choose>
         
         
     </xsl:template>
