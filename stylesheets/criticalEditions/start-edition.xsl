@@ -773,7 +773,8 @@
                                 <xsl:value-of select="@xml:id"/>
                             </xsl:attribute>
                         </xsl:element>
-                        <xsl:element name="b">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="child::tei:abbr[1]">
                                     <xsl:apply-templates select="child::tei:abbr[1]"/>
@@ -785,8 +786,134 @@
                         </xsl:element>
                         <xsl:text>: </xsl:text>
                         <xsl:choose>
-                            <xsl:when test="child::tei:abbr[1]">
-                                <xsl:apply-templates select="child::tei:*[position() > 1]"/>
+                            <xsl:when test="child::tei:*">
+                                <!--<xsl:apply-templates select="child::tei:*[position() > 1]"/>-->
+                                <xsl:element name="ul">
+                                    <xsl:if test="./tei:msDesc/tei:msIdentifier//text()">
+                                        <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>Manuscript Identity</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:element name="ul">
+                                                <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:settlement">
+                                                    <xsl:element name="li">
+                                                        <xsl:element name="b">
+                                                            <xsl:text>Settlement</xsl:text>
+                                                        </xsl:element>
+                                                        <xsl:text>: </xsl:text>
+                                                        <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:settlement"/>
+                                                    </xsl:element>
+                                                </xsl:if>
+                                                <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:institution">
+                                                    <xsl:element name="li">
+                                                        <xsl:element name="b">
+                                                            <xsl:text>Institution</xsl:text>
+                                                        </xsl:element>
+                                                        <xsl:text>: </xsl:text>
+                                                        <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:institution"/>
+                                                    </xsl:element>
+                                                </xsl:if>
+                                                <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:repository">
+                                                    <xsl:element name="li">
+                                                        <xsl:element name="b">
+                                                            <xsl:text>Repository</xsl:text>
+                                                        </xsl:element>
+                                                        <xsl:text>: </xsl:text>
+                                                        <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:repository"/>
+                                                    </xsl:element>
+                                                </xsl:if>
+                                                <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:idno">
+                                                    <xsl:element name="li">
+                                                        <xsl:element name="b">
+                                                            <xsl:text>Identifier</xsl:text>
+                                                        </xsl:element>
+                                                        <xsl:text>: </xsl:text>
+                                                        <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:idno"/>
+                                                    </xsl:element>
+                                                </xsl:if>
+                                            </xsl:element>
+                                        </xsl:element> 
+                                    </xsl:if>
+                                    <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem//text()">
+                                        <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>Content</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:element name="ul">
+                                                <xsl:for-each select="./tei:msDesc/tei:msContents/tei:msItem">
+                                                <xsl:element name="li">
+                                                    <xsl:if test="./tei:locus">
+                                                        <xsl:apply-templates select="./tei:locus"/>
+                                                        <xsl:text>: </xsl:text>
+                                                    </xsl:if>
+                                                    <xsl:element name="span">
+                                                        <xsl:attribute name="class">font-italic</xsl:attribute>
+                                                        <xsl:apply-templates select="./tei:title"/>
+                                                    </xsl:element>
+                                                    <xsl:if test="./tei:author">
+                                                        <xsl:text> by </xsl:text>
+                                                        <xsl:apply-templates select="./tei:author"/>
+                                                    </xsl:if>     
+                                                </xsl:element>                                                                          </xsl:for-each>
+                                            </xsl:element>
+                                        </xsl:element>
+                                    </xsl:if>
+                                    <xsl:if test="./tei:msDesc/tei:physDesc//text()">
+                                        <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>Physical Description</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:choose>
+                                                <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc">
+                                                    <xsl:element name="ul">
+                                                        <xsl:if test="./tei:objectDesc/tei:supportDesc/tei:support">
+                                                            <xsl:element name="li">
+                                                                <xsl:element name="b">
+                                                                    <xsl:text>Support</xsl:text>
+                                                                </xsl:element>
+                                                                <xsl:text>: </xsl:text>
+                                                                <xsl:apply-templates select="./tei:objectDesc/tei:supportDesc/tei:support"/>
+                                                            </xsl:element>
+                                                        </xsl:if>
+                                                        <xsl:if test="./tei:objectDesc/tei:supportDesc/tei:extent">
+                                                            <xsl:element name="li">
+                                                                <xsl:element name="b">
+                                                                    <xsl:text>Extent</xsl:text>
+                                                                </xsl:element>
+                                                                <xsl:text>: </xsl:text>
+                                                                <xsl:apply-templates select="./tei:objectDesc/tei:supportDesc/tei:extent"/>
+                                                            </xsl:element>
+                                                        </xsl:if>
+                                                    </xsl:element>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:apply-templates select="normalize-space(./tei:msDesc/tei:physDesc/tei:p)"/>
+                                               </xsl:otherwise>
+                                            </xsl:choose>
+                                        </xsl:element>
+                                    </xsl:if>
+                                    <xsl:if test="./tei:msDesc/tei:physDesc/tei:handDesc//text()">
+                                        <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>Hand Description</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:apply-templates select="./tei:msDesc/tei:physDesc/tei:handDesc/child::*"/>
+                                        </xsl:element>
+                                    </xsl:if>
+                                    <xsl:if test="./tei:msDesc/tei:history//text()">
+                                        <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>History</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:apply-templates select="normalize-space(./tei:msDesc/tei:history)"/>
+                                        </xsl:element>
+                                    </xsl:if>
+                                </xsl:element>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:apply-templates/>
