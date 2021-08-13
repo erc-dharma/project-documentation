@@ -45,6 +45,29 @@ body{
         visibility: visible;
           }
 
+.abbreviation {
+  color: #a57659;
+  position: relative;
+}
+
+          /* Tooltip text */
+.abbreviation .abbreviation-tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+            /* Position the tooltip text*/
+        position: absolute;
+        z-index: 1;
+          }
+          /* Show the tooltip text when you mouse over the tooltip container */
+.abbreviation:hover .abbreviation-tooltiptext {
+        visibility: visible;
+          }
+
 .tooltip-bibl {
                   position: relative;
                     }
@@ -270,9 +293,6 @@ text-align:center;*/
 }
 .resp{
         font-variant: small-caps;
-}
-.abbreviation {
-  color: #a57659;
 }
 
 .block{
