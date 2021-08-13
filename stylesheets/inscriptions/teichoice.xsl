@@ -8,6 +8,7 @@
        <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:choose>
+          
            <xsl:when test="child::t:sic and child::t:corr and $parm-leiden-style=('edh-names','edh-itx')">
             <xsl:text>&lt;</xsl:text>
             <xsl:apply-templates select="t:corr"/>
@@ -15,6 +16,16 @@
              <xsl:value-of select="translate(t:sic, $all-grc, $grc-upper-strip)"/>
             <xsl:text>&gt;</xsl:text>
          </xsl:when>
+          <xsl:when test="$leiden-style ='dharma' and child::t:abbr and child::t:expan">
+             <xsl:element name="span">
+                <xsl:attribute name="class">abbreviation</xsl:attribute>
+                <xsl:apply-templates select="t:abbr"/>
+                <xsl:element name="span">
+                   <xsl:attribute name="class">abbreviation-tooltiptext</xsl:attribute>
+                   <xsl:apply-templates select="t:expan"/>
+                </xsl:element>
+             </xsl:element>
+          </xsl:when>
          <xsl:when test="$leiden-style ='dharma' and child::t:unclear[2]">
            <xsl:element name="span">
               <xsl:attribute name="class">notBold</xsl:attribute>
