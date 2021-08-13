@@ -460,13 +460,13 @@
     </xsl:template>
     <!--  B ! -->
     <xsl:template match="tei:bibl">
-        <xsl:variable name="biblentry" select="replace(substring-after(tei:ptr/@target, ':'), '\+', '%2B')"/>
-        <xsl:variable name="parm-zoteroStyle" select="chicago-author-date"/>
- 
-        <xsl:if test="ancestor::tei:witness">
-            <xsl:apply-templates
-            select="document(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
-        </xsl:if>
+        <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+       
+           <xsl:if test="ancestor-or-self::tei:witness"> 
+               <xsl:copy-of            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=chicago-author-date'), 'amp;', ''))/div"/></xsl:if>
+           
+        
+        
     </xsl:template>
     <!--  C ! -->
     <!--  caesura ! -->
@@ -786,7 +786,7 @@
                         </xsl:element>
                         <xsl:text>: </xsl:text>
                         <xsl:choose>
-                            <xsl:when test="child::tei:*">
+                            <xsl:when test="child::tei:msDesc">
                                 <!--<xsl:apply-templates select="child::tei:*[position() > 1]"/>-->
                                 
                                     <xsl:if test="./tei:msDesc/tei:msIdentifier//text()">
@@ -890,6 +890,9 @@
                                         </xsl:element>
                                     </xsl:if>
                                 </xsl:element>
+                            </xsl:when>
+                            <xsl:when test="child::tei:bibl">
+                                <xsl:apply-templates select="tei:bibl"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:apply-templates/>
