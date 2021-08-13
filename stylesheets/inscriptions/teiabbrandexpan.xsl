@@ -4,23 +4,32 @@
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
    <!-- Contains templates for expan and abbr -->
 
-   <xsl:template match="t:expan">
+  <xsl:template match="t:expan">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:if test="not(parent::t:choice)">
       <xsl:apply-templates/>
       <!-- Found in tpl-certlow.xsl -->
       <xsl:call-template name="cert-low"/>
+    </xsl:if>
+    <xsl:if test="parent::t:choice and $parm-leiden-style='dharma'">
+      <xsl:apply-templates/>
+    </xsl:if>
    </xsl:template>
 
    <xsl:template match="t:abbr">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
        <xsl:if test="$parm-leiden-style='dharma'">
-         <xsl:if test="ancestor::t:div[@type='edition'] or ancestor::t:lem">
+         <xsl:if test="(ancestor::t:div[@type='edition'] or ancestor::t:lem) and not(parent::t:choice)">
          <xsl:element name="span">
            <xsl:attribute name="class">abbreviation</xsl:attribute>
        <xsl:apply-templates/>
        </xsl:element>
      </xsl:if>
-     <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem)">
+         <xsl:if test="parent::t:choice">
+           <xsl:apply-templates/>
+         </xsl:if>
+     <xsl:if test="not(ancestor::t:div[@type='edition'] or ancestor::t:lem or parent::t:choice)">
        <xsl:apply-templates/>
      </xsl:if>
        </xsl:if>
