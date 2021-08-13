@@ -788,53 +788,29 @@
                         <xsl:choose>
                             <xsl:when test="child::tei:*">
                                 <!--<xsl:apply-templates select="child::tei:*[position() > 1]"/>-->
-                                <xsl:element name="ul">
+                                
                                     <xsl:if test="./tei:msDesc/tei:msIdentifier//text()">
-                                        <xsl:element name="li">
-                                            <xsl:element name="b">
-                                                <xsl:text>Manuscript Identity</xsl:text>
-                                            </xsl:element>
-                                            <xsl:text>: </xsl:text>
-                                            <xsl:element name="ul">
+                                        <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:institution">
+                                            
+                                            <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:institution"/>
+                                            <xsl:text>, </xsl:text>
+                                        </xsl:if>
                                                 <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:settlement">
-                                                    <xsl:element name="li">
-                                                        <xsl:element name="b">
-                                                            <xsl:text>Settlement</xsl:text>
-                                                        </xsl:element>
-                                                        <xsl:text>: </xsl:text>
                                                         <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:settlement"/>
-                                                    </xsl:element>
+                                                    <xsl:text>, </xsl:text>
                                                 </xsl:if>
-                                                <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:institution">
-                                                    <xsl:element name="li">
-                                                        <xsl:element name="b">
-                                                            <xsl:text>Institution</xsl:text>
-                                                        </xsl:element>
-                                                        <xsl:text>: </xsl:text>
-                                                        <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:institution"/>
-                                                    </xsl:element>
-                                                </xsl:if>
+                                                
                                                 <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:repository">
-                                                    <xsl:element name="li">
-                                                        <xsl:element name="b">
-                                                            <xsl:text>Repository</xsl:text>
-                                                        </xsl:element>
-                                                        <xsl:text>: </xsl:text>
                                                         <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:repository"/>
-                                                    </xsl:element>
+                                                    <xsl:text>, </xsl:text>
                                                 </xsl:if>
                                                 <xsl:if test="./tei:msDesc/tei:msIdentifier/tei:idno">
-                                                    <xsl:element name="li">
-                                                        <xsl:element name="b">
-                                                            <xsl:text>Identifier</xsl:text>
-                                                        </xsl:element>
-                                                        <xsl:text>: </xsl:text>
+                                                    
                                                         <xsl:apply-templates select="./tei:msDesc/tei:msIdentifier/tei:idno"/>
-                                                    </xsl:element>
+                                                    
                                                 </xsl:if>
-                                            </xsl:element>
-                                        </xsl:element> 
                                     </xsl:if>
+                                    <xsl:element name="ul">
                                     <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem//text()">
                                         <xsl:element name="li">
                                             <xsl:element name="b">
