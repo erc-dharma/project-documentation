@@ -481,7 +481,16 @@
             <xsl:variable name="pointerurl">
                <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
             </xsl:variable>
-								<a href="{$pointerurl}">
+            <xsl:variable name="bibwitness">
+                <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+            </xsl:variable>
+			<xsl:choose>
+			    <xsl:when test="ancestor-or-self::tei:witness">
+			        <xsl:value-of
+			            select="document($bibwitness)/div"/>
+			    </xsl:when>
+			    <xsl:when test="not(ancestor::tei:listBibl) or ancestor::tei:p or ancestor::tei:note">			
+            <a href="{$pointerurl}">
 									<xsl:variable name="citation">
 										<xsl:analyze-string select="$unparsedtext"
 											regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
@@ -534,7 +543,11 @@
 								<xsl:text>: </xsl:text>
 							</xsl:if>
 							<!--	if it is in the bibliography print styled reference-->	
-		</xsl:when>
+		
+        </xsl:when>
+			    
+    </xsl:choose>
+        </xsl:when>
 					<!-- if there is no ptr, print simply what is inside bibl and a warning message-->
 			<xsl:otherwise>
 			    <xsl:apply-templates/>
