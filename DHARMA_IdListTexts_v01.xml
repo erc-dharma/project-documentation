@@ -66,7 +66,10 @@ e.g. MDhŚ-O, MDhŚ-M
                      <idno>L 632a</idno>
                   </msIdentifier>   
             </bibl>
-            
+            <bibl>
+               <abbr>Baudh</abbr>
+               <title>Baudhāyana Dharmasūtra</title>
+            </bibl>
             <bibl corresp="bib:Noorduyn+Teeuw2006_01" xml:id="EdBuMa2006"> 
               <abbr type="siglum">BM</abbr>
               <title>Bujangga Manik</title>
@@ -75,6 +78,17 @@ e.g. MDhŚ-O, MDhŚ-M
                <repository>Bodleian Library</repository>
                 <idno>Ms.Jav.3</idno></msIdentifier>
               <ptr/></bibl>
+            <bibl>
+               <abbr>BndP</abbr>
+            </bibl>
+            <bibl>
+               <abbr>Brh</abbr>
+               <title>Br̥haspatismr̥ti</title>
+            </bibl>
+            <bibl>
+               <abbr>Br̥S</abbr>
+               <title>Bṛhaspatisaṁhita</title>
+            </bibl>
             <bibl corresp="bib:Atja+SalehDanasasmita1981_02" xml:id="EdCaPa1981"> 
               <abbr type="siglum">CP</abbr> 
               <title>Carita Parahyangan</title>
@@ -84,6 +98,11 @@ e.g. MDhŚ-O, MDhŚ-M
                  <idno>L 406</idno></msIdentifier>
               <ptr/>
 </bibl>
+            <bibl>
+               <abbr type="siglum">CPV</abbr>
+               <title>Carita Purnavijaya</title>
+               <ptr/>
+               published in Pleyte 1914.</bibl>
             <bibl corresp="bib:Atja1970_01" xml:id="EdCaRaPa1970"> 
               <abbr type="siglum">CRP</abbr>
               <title>Carita Ratu Pakuan</title>
@@ -104,6 +123,10 @@ e.g. MDhŚ-O, MDhŚ-M
                </msIdentifier>
                <ptr/>
            published in Undang Ahmad Darsa &amp; Edi S Ekadjati 1995.</bibl>
+            <bibl>
+               <abbr>Hbhv</abbr>
+               <title>Haribhaktivilasa</title>
+            </bibl>
             <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdSaHyJaMaPi2010"> 
               <abbr type="siglum">JMP</abbr>
               <title>Saṅ Hyaṅ Jati Maha Pitutur</title>
@@ -142,6 +165,9 @@ e.g. MDhŚ-O, MDhŚ-M
               </msIdentifier>
               <ptr/>
               romanized typewriting</bibl>
+            <bibl>
+               <abbr>MatPCP</abbr>
+            </bibl>
             <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdPiJa2010"> 
               <abbr type="siglum">PJ</abbr>
               <title>Pituturniṅ Jalma</title>
@@ -152,6 +178,10 @@ e.g. MDhŚ-O, MDhŚ-M
               </msIdentifier>
               <ptr/>
            </bibl>
+            <bibl>
+               <abbr>PPa</abbr>
+               <title>Padmapurāṇa</title>
+            </bibl>
             <bibl corresp="bib:TienWartini+al2011_02" xml:id="EdSaTaAj2011"> 
               <abbr type="siglum">PR</abbr> 
                <title>Pakeǝn Raga</title>
@@ -163,11 +193,6 @@ e.g. MDhŚ-O, MDhŚ-M
               </msIdentifier>
               <ptr/>
               Pakeǝn Raga, published as Sanghyang Tatwa Ajnyana in Tien Wartini et al. 2011.</bibl>
-            <bibl>
-               <abbr type="siglum">CPV</abbr>
-            <title>Carita Purnavijaya</title>
-               <ptr/>
-               published in Pleyte 1914.</bibl>
             <bibl corresp="bib:Noorduyn+Teeuw2006_01"> 
               <abbr type="siglum">RR</abbr> 
                <title>The Sons of Rama and Rawana</title>
@@ -182,16 +207,6 @@ e.g. MDhŚ-O, MDhŚ-M
                </msIdentifier>
                <ptr/>
             </bibl>
-            <bibl corresp="bib:SalehDanasasmita+al1987_01" xml:id="EdSeDa1987">
-               <abbr type="siglum">SD</abbr>  
-               <title>Sevaka Darma</title>
-               <msIdentifier>
-                  <settlement>Jakarta</settlement>
-                  <repository>Perpusnas</repository>
-                  <idno>L 408</idno>
-               </msIdentifier>
-               <ptr/>
-           </bibl>
             <bibl corresp="bib:TienWartini+al2011_01" xml:id="EdSaHYSv2011"> 
               <abbr type="siglum">SC</abbr> 
               <title>Saṅ Hyaṅ Svavarcinta</title>
@@ -201,6 +216,16 @@ e.g. MDhŚ-O, MDhŚ-M
                  <idno>L 626</idno>
               </msIdentifier>
               <ptr/>
+            </bibl>
+            <bibl corresp="bib:SalehDanasasmita+al1987_01" xml:id="EdSeDa1987">
+               <abbr type="siglum">SD</abbr>  
+               <title>Sevaka Darma</title>
+               <msIdentifier>
+                  <settlement>Jakarta</settlement>
+                  <repository>Perpusnas</repository>
+                  <idno>L 408</idno>
+               </msIdentifier>
+               <ptr/>
             </bibl>
             <bibl corresp="bib:UndangADarsa1998_01" xml:id="EdSaHYHa1998"> 
               <abbr type="siglum">SHH</abbr>
@@ -232,6 +257,9 @@ e.g. MDhŚ-O, MDhŚ-M
                </msIdentifier>
                <ptr/>
              new edition in preparation by the same author.</bibl>
+            <bibl>
+               <abbr>SSMG</abbr>
+            </bibl>
             <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdTuBv2010">
                <abbr type="siglum">TB</abbr> 
                <title>Tutur Bvana</title>
@@ -242,7 +270,11 @@ e.g. MDhŚ-O, MDhŚ-M
                </msIdentifier>
                <ptr/>
             </bibl>
-            <bibl corresp="bib:AditiaGunawan2010_01" xml:id="EdVaLe2010">
+
+            <bibl>
+               <abbr>VDh</abbr>
+               <title>Vasiṣṭhasaṁhita</title>
+            </bibl>            <bibl corresp="bib:AditiaGunawan2010_01" xml:id="EdVaLe2010">
                <abbr type="siglum">VL</abbr>
                <title>Varugan Lǝmah</title>
                <msIdentifier>
@@ -251,7 +283,7 @@ e.g. MDhŚ-O, MDhŚ-M
                   <idno>L 622</idno>
                </msIdentifier>
                <ptr/>
-            </bibl>      
+            </bibl>     
          </listBibl>
       </body>
   </text>
