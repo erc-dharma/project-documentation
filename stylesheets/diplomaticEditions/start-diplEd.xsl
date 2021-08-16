@@ -426,13 +426,99 @@
     </xsl:template>
     <!--  B ! -->
     <xsl:template match="tei:bibl">
-        <xsl:variable name="biblentry" select="replace(substring-after(tei:ptr/@target, ':'), '\+', '%2B')"/>
-        <xsl:variable name="parm-zoteroStyle" select="chicago-author-date"/>
- 
-        <xsl:if test="ancestor::tei:witness">
-            <xsl:apply-templates
-            select="document(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test=".[tei:ptr]">
+                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl</xsl:variable>
+                <xsl:variable name="zoteroomitname">
+                    <xsl:value-of
+                        select="unparsed-text(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+                    />
+                </xsl:variable>
+                <xsl:variable name="zoteroapitei">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:variable name="zoteroapijson">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
+                <xsl:variable name="pointerurl">
+                    <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
+                </xsl:variable>
+                <xsl:variable name="bibwitness">
+                    <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:choose>
+                    <xsl:when test="ancestor-or-self::tei:witness">
+                        <xsl:value-of
+                            select="document($bibwitness)/div"/>
+                    </xsl:when>
+                    <xsl:when test="not(ancestor::tei:listBibl) or ancestor::tei:p or ancestor::tei:note">			
+                        <a href="{$pointerurl}">
+                            <xsl:variable name="citation">
+                                <xsl:analyze-string select="$unparsedtext"
+                                    regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(2)"/>
+                                    </xsl:matching-substring>
+                                </xsl:analyze-string>
+                            </xsl:variable>
+                            <xsl:choose>
+                                <xsl:when test="@rend='omitname'">
+                                    <xsl:analyze-string select="$zoteroomitname"
+                                        regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+                                        <xsl:matching-substring>
+                                            <xsl:value-of select="regex-group(2)"/>
+                                        </xsl:matching-substring>
+                                    </xsl:analyze-string>
+                                </xsl:when>
+                                <xsl:when test="@rend='ibid'">
+                                    <xsl:element name="i">
+                                        <xsl:text>ibid.</xsl:text>
+                                    </xsl:element>
+                                </xsl:when>
+                                <xsl:when test="matches(./child::tei:ptr/@target, '[A-Z][A-Z]')">
+                                    <xsl:call-template name="journalTitle"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </a>
+                        <xsl:if test="tei:citedRange">
+                            <xsl:choose>
+                                <xsl:when test="tei:citedRange and not(ancestor::tei:cit)">
+                                    <xsl:text>: </xsl:text>
+                                </xsl:when>
+                                <xsl:when test="tei:citedRange and ancestor::tei:cit">
+                                    <xsl:text>, </xsl:text>
+                                </xsl:when>
+                            </xsl:choose>
+                            <xsl:for-each select="tei:citedRange">
+                                <xsl:call-template name="citedRange-unit"/>
+                                <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                                <xsl:if test="following-sibling::tei:citedRange[1]">
+                                    <xsl:text>, </xsl:text>
+                                </xsl:if>
+                            </xsl:for-each>
+                        </xsl:if>
+                        <!-- Display for t:cit  -->
+                        <xsl:if test="following::tei:quote[1] and ancestor::tei:cit">
+                            <xsl:text>: </xsl:text>
+                        </xsl:if>
+                        <!--	if it is in the bibliography print styled reference-->	
+                        
+                    </xsl:when>
+                    
+                </xsl:choose>
+            </xsl:when>
+            <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>		
+        </xsl:choose>
     </xsl:template>
     <!--  C ! -->
     <!--  choice ! -->
