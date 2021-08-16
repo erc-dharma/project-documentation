@@ -603,6 +603,17 @@
             <xsl:apply-templates select="child::tei:unclear[2]"/>
         </xsl:element>
     </xsl:template>
+    <!-- citedRange -->
+    <xsl:template match="tei:citedRange"> 
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            <xsl:call-template name="citedRange-unit"/>
+            <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+        </xsl:element>
+        <xsl:if test="following-sibling::tei:citedRange">
+            <xsl:text>, </xsl:text>
+        </xsl:if>
+    </xsl:template>
     <!--  D ! -->
     <!--  del ! -->
     <xsl:template match="tei:del">
