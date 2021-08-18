@@ -11,7 +11,7 @@
      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:choose>
          <xsl:when test="$leiden-style = 'dharma'">
-            <xsl:apply-templates select="t:availability/t:licence/t:p[2]"/>
+            <xsl:apply-templates select="replace(t:availability/t:licence/t:p[2], '\(c\)', '©')"/>
          </xsl:when>
          <xsl:otherwise><div id="license">
          <xsl:choose>
