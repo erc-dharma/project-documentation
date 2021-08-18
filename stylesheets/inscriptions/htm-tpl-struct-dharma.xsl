@@ -10,7 +10,7 @@
    <xsl:template name="dharma-body-structure">
      <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
                 <xsl:element name="div">
-              <xsl:attribute name="id">metadatadiv</xsl:attribute>
+              <xsl:attribute name="id">metadatadiv</xsl:attribute> 
             <h2>Metadata</h2>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
             <h3>Identifier: </h3>
@@ -59,7 +59,6 @@
      <xsl:apply-templates select="$maintxt2" mode="sqbrackets"/>
 
      <!-- Found in htm-tpl-license.xsl -->
-     <xsl:call-template name="license"/>
   </xsl:template>
 
    <!-- Called from htm-tpl-structure.xsl -->
@@ -78,19 +77,27 @@
             <xsl:call-template name="css-script"/>
            <!-- Bootstrap CSS -->
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-           <!-- site-specific css !-->
-           <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
-           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-           
-           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
          </head>
 
          <body>
            <xsl:call-template name="nav-bar"/>
-            <h1>
-              <xsl:value-of select="//t:teiHeader//t:title"/>
-            </h1>
-            <xsl:call-template name="dharma-body-structure"/>
+            
+           <xsl:element name="div">
+             <xsl:attribute name="class">container</xsl:attribute>
+           <xsl:element name="div">
+             <xsl:attribute name="class">edition-content col-10</xsl:attribute>
+             <h1>
+               <xsl:value-of select="//t:teiHeader//t:title"/>
+             </h1>
+             <xsl:call-template name="dharma-body-structure"/>
+           </xsl:element>
+           </xsl:element>
+           <xsl:element name="footer">
+             <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
+             <xsl:element name="div">
+               <xsl:call-template name="license"/>
+             </xsl:element>
+           </xsl:element>
            <xsl:call-template name="dharma-script"/>    
          </body>
       </html>
@@ -112,12 +119,10 @@
          </xsl:choose>
       </xsl:template>
   
-  <xsl:template name="dharma-script">    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
-    <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"/>
+  <xsl:template name="dharma-script">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"></script>    
   </xsl:template>
   
   <!-- Nav bar template -->
