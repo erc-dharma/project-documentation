@@ -274,16 +274,16 @@
   <xsl:template name="sigla">
       <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
 <xsl:if test="@source">
-  <span class="tooltip">
+  <!--<span class="tooltip">
   <xsl:variable name="vDoc" select="//t:listBibl"/>
   <xsl:variable name="biblID" select="tokenize(@source, ' ')"/>
    <xsl:if test="count($biblID) &gt;= 1">
-     <!-- Handling possible debugging-->
-        <!-- <xsl:message>biblID for sigla: <xsl:value-of select="$biblID"/> and <xsl:value-of select="count($biblID)"/></xsl:message>-->
+     <!-\- Handling possible debugging-\->
+        <!-\- <xsl:message>biblID for sigla: <xsl:value-of select="$biblID"/> and <xsl:value-of select="count($biblID)"/></xsl:message>-\->
          <xsl:choose>
                <xsl:when test="$vDoc//t:ptr[@target=$biblID]">
-                 <!-- Handling possible debugging-->
-               <!--<xsl:message><xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/></xsl:message>-->
+                 <!-\- Handling possible debugging-\->
+               <!-\-<xsl:message><xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/></xsl:message>-\->
                <xsl:text> </xsl:text>
                <xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/>
              </xsl:when>
@@ -310,7 +310,39 @@
                 </span>
               </xsl:otherwise>
             </xsl:choose>
-          </span>
+          </span>-->
+  <xsl:element name="span">
+    <xsl:variable name="vDoc" select="//t:listBibl"/>
+    <xsl:variable name="biblID" select="tokenize(@source, ' ')"/>
+    <xsl:attribute name="class">tooltipSiglum</xsl:attribute>
+    <xsl:attribute name="trigger">hover</xsl:attribute>
+    <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+    <xsl:attribute name="data-placement">top</xsl:attribute>
+    <xsl:attribute name="title">
+      <xsl:choose>
+      <xsl:when test="matches(@source, '\+[a][l]')">     
+          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>      
+      </xsl:when>
+      <xsl:when test="matches(@source, '\+[A-Z]')">      
+          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>    
+      </xsl:when>
+      <xsl:otherwise>
+          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    </xsl:attribute>
+    <xsl:if test="count($biblID) &gt;= 1">
+      <xsl:choose>
+        <xsl:when test="$vDoc//t:ptr[@target=$biblID]">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:element>
 </xsl:if>
   <!-- Old system; to be deleted after validation -->
      <!--<span class="tooltip">
