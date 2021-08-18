@@ -56,7 +56,9 @@
         <xsl:element name="body">
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:call-template name="nav-bar"/>
-        <xsl:apply-templates select="./tei:teiHeader"/>
+        <xsl:element name="div">
+            <xsl:attribute name="class">container</xsl:attribute>
+            <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
                             <xsl:attribute name="class">row wrapper</xsl:attribute>
                             <xsl:element name="ul">
@@ -128,6 +130,13 @@
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-translation"/>
+        </xsl:element>
+            <xsl:element name="footer">
+                <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
+                <xsl:element name="div">
+                    <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
+                </xsl:element>
+            </xsl:element>
                 <xsl:call-template name="dharma-script"/>            
         </xsl:element>  
         </xsl:element>
