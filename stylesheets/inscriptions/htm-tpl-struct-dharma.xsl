@@ -58,7 +58,6 @@
      </xsl:variable>
      <xsl:apply-templates select="$maintxt2" mode="sqbrackets"/>
 
-     <!-- Found in htm-tpl-license.xsl -->
   </xsl:template>
 
    <!-- Called from htm-tpl-structure.xsl -->
@@ -95,6 +94,7 @@
            <xsl:element name="footer">
              <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
              <xsl:element name="div">
+               <!-- Found in htm-tpl-license.xsl -->
                <xsl:call-template name="license"/>
              </xsl:element>
            </xsl:element>

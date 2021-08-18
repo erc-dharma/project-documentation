@@ -8,7 +8,12 @@
   </xsl:template>
   
   <xsl:template match="t:publicationStmt" mode="license">
-      <div id="license">
+     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+      <xsl:choose>
+         <xsl:when test="$leiden-style = 'dharma'">
+            <xsl:apply-templates select="t:availability/t:licence/t:p[2]"/>
+         </xsl:when>
+         <xsl:otherwise><div id="license">
          <xsl:choose>
             <xsl:when test="p">
                <xsl:if test="contains(t:p/t:ref[@type='license']/@href,'creativecommons')">
@@ -27,7 +32,7 @@
                <xsl:apply-templates select="t:availability"/>
             </xsl:otherwise>
          </xsl:choose>
-      </div>
+      </div></xsl:otherwise></xsl:choose>
   </xsl:template>
   
   <xsl:template match="t:ref[@type='license']">
