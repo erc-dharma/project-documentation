@@ -17,14 +17,25 @@
             <xsl:text>&gt;</xsl:text>
          </xsl:when>
           <xsl:when test="$leiden-style ='dharma' and child::t:abbr and child::t:expan">
-             <xsl:element name="span">
+             <!--<xsl:element name="span">
                 <xsl:attribute name="class">abbreviation</xsl:attribute>
                 <xsl:apply-templates select="t:abbr"/>
                 <xsl:element name="span">
                    <xsl:attribute name="class">abbreviation-tooltiptext</xsl:attribute>
                    <xsl:apply-templates select="t:expan"/>
                 </xsl:element>
+             </xsl:element>-->
+             <xsl:element name="span">
+                <xsl:attribute name="trigger">hover</xsl:attribute>
+                <xsl:attribute name="class">abbreviation</xsl:attribute>
+                <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                <xsl:attribute name="data-placement">top</xsl:attribute>
+                <xsl:attribute name="title">
+                   <xsl:apply-templates select="t:expan"/>
+                </xsl:attribute>
+                <xsl:apply-templates select="t:abbr"/>
              </xsl:element>
+             
           </xsl:when>
          <xsl:when test="$leiden-style ='dharma' and child::t:unclear[2]">
            <xsl:element name="span">
