@@ -39,17 +39,18 @@ body{
     background-color:#eeeeee;
     font-family:"Noto Serif";
     height:100%;
-    width: 75%;
+    width: 100%;
     position: absolute;
     display: grid;
 }
 .container {
+    width: 75%;
     /*width:1280px;*/
-    padding:0;
+    /*padding:0;
     background-color:white;
     box-hsadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius:6px;
-    margin-top:-7rem;
+    margin-top:-7rem;*/
 }
 #subheader {
     display:block;
@@ -57,9 +58,6 @@ body{
     height:auto;
     padding-bottom:12rem;
     background-color:#444444;
-}
-.navbar-brand img:hover {
-    -webkit-filter: brightness(125%);
 }
 
 /* lines and line groups */
