@@ -36,7 +36,7 @@
       </xsl:variable>
 
 
-     <span class="tooltip-bibl">
+    <!-- <span class="tooltip-bibl">
         <xsl:value-of select="replace(//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n, '\+', '&amp;')"/>
        <span class="tooltiptext-bibl">
           <xsl:choose>
@@ -48,7 +48,22 @@
           </xsl:otherwise>
         </xsl:choose>
       </span>
-      </span>
+      </span>-->
+	  <xsl:element name="span">
+	    <xsl:attribute name="data-toogle">tooltip</xsl:attribute>
+	    <xsl:attribute name="data-placement">top</xsl:attribute>
+	    <xsl:attribute name="title">
+	      <xsl:choose>
+	      <xsl:when test="matches(@target, '[A-Z][A-Z]')">
+	        <xsl:call-template name="journalTitleSiglum"/>
+	      </xsl:when>
+	      <xsl:otherwise>
+	        <xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	    </xsl:attribute>
+	    <xsl:value-of select="replace(//t:listBibl/t:bibl[t:ptr/@target=$soughtSiglum]/@n, '\+', '&amp;')"/>
+	  </xsl:element>
 
 	</xsl:if>
 
