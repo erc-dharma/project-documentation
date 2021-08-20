@@ -25,33 +25,22 @@
         
     <xsl:template match="t:p/descendant-or-self::text()[1]">
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
+        <!--  and functx:capitalize-first(substring-after(., '. ')) -->
     </xsl:template>
     
     <xsl:template match="t:ab/descendant-or-self::text()[1]">
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
+        <!--  and functx:capitalize-first(substring-after(., '. ')) -->
     </xsl:template>
     
     <xsl:template match="t:persName/descendant-or-self::text()[1]">
+        <xsl:text> </xsl:text>
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
     
     <xsl:template match="t:placeName/descendant::text()[1]">
+        <xsl:text> </xsl:text>
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
-    
-    <!--<xsl:template>
-        <xsl:param name="data" select="text()"/>
-        <xsl:choose>
-            <xsl:when test="starts-with($data,'. ')">
-                    <xsl:text>. </xsl:text> 
-                    <xsl:apply-templates select="translate(substring($data,3,1),
-                        'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-        </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates/>
-            </xsl:otherwise>
-        </xsl:choose>  
-    </xsl:template>
--->
     
 </xsl:stylesheet>
