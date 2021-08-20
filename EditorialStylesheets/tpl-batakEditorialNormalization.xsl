@@ -34,12 +34,12 @@
     </xsl:template>
     
     <xsl:template match="t:persName/descendant-or-self::text()[1]">
-        <xsl:text> </xsl:text>
+        
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
     
     <xsl:template match="t:placeName/descendant::text()[1]">
-        <xsl:text> </xsl:text>
+        
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
     </xsl:template>
     
