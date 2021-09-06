@@ -522,8 +522,21 @@
                         <!--	if it is in the bibliography print styled reference-->	
                         
                     </xsl:when>
-                    
+                    <xsl:otherwise>
+                        <xsl:copy-of
+                            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+                    </xsl:otherwise>
                 </xsl:choose>
+                <xsl:if test="ancestor::t:listBibl and ancestor-or-self::t:bibl/@n"> <!-- [@type='primary'] -->
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">siglum</xsl:attribute>
+                        <xsl:if test="ancestor-or-self::t:bibl/@n">
+                            <xsl:text> [siglum </xsl:text>
+                            <strong><xsl:value-of select="ancestor-or-self::t:bibl/@n"/></strong>
+                            <xsl:text>]</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:if>
             </xsl:when>
             <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
             <xsl:otherwise>
@@ -912,29 +925,7 @@
     <!--  listBibl -->
     <!-- Must be reworked -->
     <xsl:template match="tei:listBibl">
-        <xsl:element name="div">
-            <xsl:attribute name="class">tab-pane fade</xsl:attribute>
-            <xsl:attribute name="id">sources</xsl:attribute>
-            <xsl:attribute name="role">tabpanel</xsl:attribute>
-            <xsl:attribute name="aria-labelledby">sources-tab</xsl:attribute> 
-            <xsl:element name="h4">List of Edited Sources</xsl:element>
-            <xsl:element name="ul">
-                <xsl:for-each select="tei:biblStruct">
-                    <xsl:element name="li">
-                        <xsl:element name="a">
-                            <xsl:attribute name="id">
-                                <xsl:value-of select="@xml:id"/>
-                            </xsl:attribute>
-                        </xsl:element>
-                        <xsl:element name="b">
-                            <xsl:value-of select="@xml:id"/>
-                        </xsl:element>
-                        <xsl:text>: </xsl:text>
-                        <xsl:apply-templates select="."/>
-                    </xsl:element>
-                </xsl:for-each>
-            </xsl:element>
-        </xsl:element>
+       <xsl:apply-templates/>
     </xsl:template>
     <!--  listWit ! -->
     <xsl:template match="tei:listWit">
@@ -2623,7 +2614,7 @@
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
-        <xsl:variable name="document-trans">
+        <xsl:variable name="document-biblio">
             <xsl:choose>
                 <xsl:when test="$corpus-type='nusantara'">
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_biblio.xml')"/>
@@ -2637,8 +2628,8 @@
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
             <xsl:element name="h4">Bibliography</xsl:element>
             <xsl:choose>
-                <xsl:when test="document($document-trans)">
-                    <xsl:apply-templates select="document($document-trans)//tei:text"/>
+                <xsl:when test="document($document-biblio)">
+                    <xsl:apply-templates select="document($document-biblio)//tei:text"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="p">
