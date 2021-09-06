@@ -67,11 +67,11 @@
                 <xsl:call-template name="applyRegexes">
                     <xsl:with-param name="nodeText" select="$temp"/>
                     <xsl:with-param name="regex"
-                        select="lower-case($regex[position()>1])"/>
+                        select="$regex[position()>1]"/>
                 </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:apply-templates select="$nodeText"/>
+                <xsl:apply-templates select="lower-case($nodeText)"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
