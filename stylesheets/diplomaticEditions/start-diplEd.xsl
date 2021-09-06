@@ -527,12 +527,12 @@
                             select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
                     </xsl:otherwise>
                 </xsl:choose>
-                <xsl:if test="ancestor::t:listBibl and ancestor-or-self::t:bibl/@n"> <!-- [@type='primary'] -->
+                <xsl:if test="ancestor::tei:listBibl and ancestor-or-self::tei:bibl/@n"> <!-- [@type='primary'] -->
                     <xsl:element name="span">
                         <xsl:attribute name="class">siglum</xsl:attribute>
-                        <xsl:if test="ancestor-or-self::t:bibl/@n">
+                        <xsl:if test="ancestor-or-self::tei:bibl/@n">
                             <xsl:text> [siglum </xsl:text>
-                            <strong><xsl:value-of select="ancestor-or-self::t:bibl/@n"/></strong>
+                            <strong><xsl:value-of select="ancestor-or-self::tei:bibl/@n"/></strong>
                             <xsl:text>]</xsl:text>
                         </xsl:if>
                     </xsl:element>
