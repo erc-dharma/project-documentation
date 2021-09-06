@@ -39,8 +39,24 @@
     </xsl:template>
     
     <xsl:template match="t:placeName/descendant::text()[1]">
-        
         <xsl:apply-templates select="functx:capitalize-first(.)"/>
+    </xsl:template>
+    
+    <xsl:template match="t:lb">
+        <xsl:copy-of select="."/>
+        <xsl:if test="ends-with(./preceding::text()[1], '.')">
+            <xsl:analyze-string select="./following::text()[1]" regex="(\w)">
+                <xsl:matching-substring>
+                    <xsl:variable name="firstChar" select="regex-group(1)"/>
+                    <xsl:value-of select="translate($firstChar,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                </xsl:matching-substring>
+                <xsl:non-matching-substring>
+                    <xsl:copy>
+                        <xsl:apply-templates select="."/>
+                    </xsl:copy>
+                </xsl:non-matching-substring>
+            </xsl:analyze-string>
+        </xsl:if>
     </xsl:template>
     
 </xsl:stylesheet>
