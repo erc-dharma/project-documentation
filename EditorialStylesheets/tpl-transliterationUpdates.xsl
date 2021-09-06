@@ -35,6 +35,10 @@
             <find>[a](\w)([eiou])[·]</find>
             <change>$2$1</change>
         </regex>
+        <!--<regex>
+            <find>(\.[\n\r\s\t])([a-z])</find>
+            <change>$1\u$2</change>
+        </regex>-->
     </xsl:param>
     
     
@@ -63,11 +67,11 @@
                 <xsl:call-template name="applyRegexes">
                     <xsl:with-param name="nodeText" select="$temp"/>
                     <xsl:with-param name="regex"
-                        select="$regex[position()>1]"/>
+                        select="lower-case($regex[position()>1])"/>
                 </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:apply-templates select="lower-case($nodeText)"/>
+                <xsl:apply-templates select="$nodeText"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
