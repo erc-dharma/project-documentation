@@ -124,7 +124,9 @@
             <xsl:apply-templates select=".//tei:app | .//tei:choice[child::tei:sic and child::tei:corr]" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
-                <xsl:call-template name="tpl-translation"/></xsl:element>
+                <xsl:call-template name="tpl-translation"/>
+                    <xsl:call-template name="tpl-biblio"/>
+                </xsl:element>
                 <xsl:element name="footer">
                     <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                     <xsl:element name="div">
