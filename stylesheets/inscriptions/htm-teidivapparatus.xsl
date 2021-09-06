@@ -275,44 +275,59 @@
     <xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
     <xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>
       <!-- ajout d'un nouveau système pour les sigles bibliographiques-->
-<xsl:if test="@source">
-  <!--<span class="tooltip">
-  <xsl:variable name="vDoc" select="//t:listBibl"/>
-  <xsl:variable name="biblID" select="tokenize(@source, ' ')"/>
-   <xsl:if test="count($biblID) &gt;= 1">
-     <!-\- Handling possible debugging-\->
-        <!-\- <xsl:message>biblID for sigla: <xsl:value-of select="$biblID"/> and <xsl:value-of select="count($biblID)"/></xsl:message>-\->
-         <xsl:choose>
-               <xsl:when test="$vDoc//t:ptr[@target=$biblID]">
-                 <!-\- Handling possible debugging-\->
-               <!-\-<xsl:message><xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/></xsl:message>-\->
-               <xsl:text> </xsl:text>
-               <xsl:value-of select="$vDoc/t:bibl[t:ptr/@target=$biblID]/@n"/>
-             </xsl:when>
-               <xsl:otherwise>
-                 <xsl:message>No siglum for <xsl:value-of select="$biblID"/></xsl:message>
-               </xsl:otherwise>
-             </xsl:choose>
-       </xsl:if>
-
-          <xsl:choose>
-                <xsl:when test="matches(@source, '\+[a][l]')">
-                  <span class="tooltiptext">
-                    <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-                  </span>
-                </xsl:when>
-                <xsl:when test="matches(@source, '\+[A-Z]')">
-                  <span class="tooltiptext">
-                    <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-                  </span>
-                </xsl:when>
-                <xsl:otherwise>
-                  <span class="tooltiptext">
-                  <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
-                </span>
+    <xsl:variable name="authors">
+      <xsl:choose>
+        <xsl:when test="./@source">
+        <xsl:variable name="bibl-resp" select="tokenize(./@source,' ')"/>
+          <xsl:for-each select="$bibl-resp">
+          <xsl:variable name="indresp">
+            <xsl:sequence select="replace(substring-after(., ':'), '\+', '%2B')"/>
+          </xsl:variable>
+            <xsl:variable name="zoteroapijsonresp">
+              <xsl:value-of
+                select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $indresp, '&amp;format=json'), 'amp;', '')"
+              />
+            </xsl:variable>
+            <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>
+            <xsl:choose>
+              <xsl:when test="matches(., '\+[a][l]')">
+                <xsl:analyze-string select="$unparsedresp"
+                  regex="(^\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+                  <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(2)"/>
+                  </xsl:matching-substring>
+                </xsl:analyze-string>
+                <xsl:text> &amp; al </xsl:text>
+              </xsl:when>
+              <xsl:when test="matches(., '\+[A-Z]')">
+                <xsl:analyze-string select="$unparsedresp"
+                  regex="(^\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+                  <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(2)"/>
+                  </xsl:matching-substring>
+                </xsl:analyze-string>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:analyze-string select="$unparsedresp"
+                  regex="(\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
+                  <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(2)"/>
+                  </xsl:matching-substring>
+                </xsl:analyze-string>
               </xsl:otherwise>
             </xsl:choose>
-          </span>-->
+            <xsl:text> </xsl:text>
+            <xsl:analyze-string select="$unparsedresp"
+              regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+              <xsl:matching-substring>
+                <xsl:value-of select="regex-group(2)"/>
+              </xsl:matching-substring>
+            </xsl:analyze-string>
+            <xsl:text> </xsl:text>
+          </xsl:for-each>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
   <xsl:element name="span">
     <xsl:variable name="vDoc" select="//t:listBibl"/>
     <xsl:variable name="biblID" select="tokenize(@source, ' ')"/>
@@ -321,6 +336,7 @@
     <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
     <xsl:attribute name="data-placement">top</xsl:attribute>
     <xsl:attribute name="title">
+      <xsl:value-of select="$authors"/>
       <!--<xsl:choose>
       <xsl:when test="matches(@source, '\+[a][l]')">     
           <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>      
@@ -332,51 +348,6 @@
           <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
       </xsl:otherwise>
     </xsl:choose>-->
-      <!-- The responsability template could probably be used in several part, rather than repeating the code. Need to be cleaned at some point-->
-      <xsl:variable name="biblresp"
-        select="replace(substring-after(@source, ':'), '\+', '%2B')"/>
-      
-      
-      <xsl:variable name="zoteroapijsonresp">
-        <xsl:value-of
-          select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblresp, '&amp;format=json'), 'amp;', '')"
-        />
-      </xsl:variable>
-      <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>
-          <xsl:choose>
-            <xsl:when test="matches(@source, '\+[a][l]')">
-              <xsl:analyze-string select="$unparsedresp"
-                regex="(^\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
-                <xsl:matching-substring>
-                  <xsl:value-of select="regex-group(2)"/>
-                </xsl:matching-substring>
-              </xsl:analyze-string>
-              <xsl:text> &amp; al </xsl:text>
-            </xsl:when>
-            <xsl:when test="matches(@source, '\+[A-Z]')">
-              <xsl:analyze-string select="$unparsedresp"
-                regex="(^\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
-                <xsl:matching-substring>
-                  <xsl:value-of select="regex-group(2)"/>
-                </xsl:matching-substring>
-              </xsl:analyze-string>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:analyze-string select="$unparsedresp"
-                regex="(\s+&quot;lastName&quot;:\s&quot;)(.+)(&quot;)">
-                <xsl:matching-substring>
-                  <xsl:value-of select="regex-group(2)"/>
-                </xsl:matching-substring>
-              </xsl:analyze-string>
-            </xsl:otherwise>
-          </xsl:choose>
-        <xsl:text> </xsl:text>
-        <xsl:analyze-string select="$unparsedresp"
-          regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
-          <xsl:matching-substring>
-            <xsl:value-of select="regex-group(2)"/>
-          </xsl:matching-substring>
-        </xsl:analyze-string>
     </xsl:attribute>
     <xsl:if test="count($biblID) &gt;= 1">
       <xsl:choose>
@@ -390,7 +361,6 @@
       </xsl:choose>
     </xsl:if>
   </xsl:element>
-</xsl:if>
   <!-- Old system; to be deleted after validation -->
      <!--<span class="tooltip">
         <xsl:text> </xsl:text>
