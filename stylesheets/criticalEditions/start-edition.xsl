@@ -573,10 +573,6 @@
                 </xsl:element>
             </xsl:if>
         </xsl:when>
-        <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
-        <xsl:otherwise>
-    </xsl:choose>
-        </xsl:when>
 					<!-- if there is no ptr, print simply what is inside bibl and a warning message-->
 			<xsl:otherwise>
 			    <xsl:apply-templates/>
@@ -2572,15 +2568,8 @@
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
-        <xsl:variable name="document-com">
-            <xsl:choose>
-                <xsl:when test="$corpus-type='nusantara'">
+        <xsl:variable name="document-com">git
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_com.xml')"/>
-                </xsl:when>
-                <xsl:when test="$corpus-type='batak'">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/batak/', $filename, '_com.xml')"/>
-                </xsl:when>
-            </xsl:choose>
         </xsl:variable>
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -2606,14 +2595,7 @@
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
         <xsl:variable name="document-biblio">
-            <xsl:choose>
-                <xsl:when test="$corpus-type='nusantara'">
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_biblio.xml')"/>
-                </xsl:when>
-                <xsl:when test="$corpus-type='batak'">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/batak/', $filename, '_biblio.xml')"/>
-                </xsl:when>
-            </xsl:choose>
         </xsl:variable>
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
