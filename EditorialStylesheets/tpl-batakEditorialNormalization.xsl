@@ -45,7 +45,7 @@
     <xsl:template match="t:lb">
         <xsl:copy-of select="."/>
         <xsl:if test="ends-with(./preceding::text()[1], '.')">
-            <xsl:analyze-string select="./following::text()[1]" regex="(\w)">
+            <xsl:analyze-string select="./following::text()[1]" regex="(^\w)">
                 <xsl:matching-substring>
                     <xsl:variable name="firstChar" select="regex-group(1)"/>
                     <xsl:value-of select="translate($firstChar,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
