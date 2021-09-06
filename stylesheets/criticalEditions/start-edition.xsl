@@ -1113,7 +1113,10 @@
     
     <!--  pb ! -->
     <xsl:template match="tei:pb">
-        <xsl:element name="span">
+        <xsl:choose>
+            <xsl:when test="ancestor-or-self::tei:lem|ancestor-or-self::tei:rdg"/>
+            <xsl:otherwise>
+                <xsl:element name="span">
             <xsl:attribute name="class">text-muted foliation</xsl:attribute>
                 <!--<xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                 <xsl:attribute name="data-placement">top</xsl:attribute>
@@ -1124,6 +1127,8 @@
               <xsl:value-of select="substring-after(@edRef, '#')"/>
                 <xsl:value-of select="@n"/>
         </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
    
     <!--  pc ! -->
