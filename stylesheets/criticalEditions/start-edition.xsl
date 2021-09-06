@@ -130,6 +130,8 @@
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-translation"/>
+                <xsl:call-template name="tpl-com"/>  
+                <xsl:call-template name="tpl-biblio"/>
         </xsl:element>
             <xsl:element name="footer">
                 <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
@@ -555,7 +557,24 @@
 							<!--	if it is in the bibliography print styled reference-->	
 		
         </xsl:when>
-			    
+			    <xsl:otherwise>
+			        <xsl:copy-of
+			            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+			    </xsl:otherwise>
+			</xsl:choose>
+            <xsl:if test="ancestor::tei:listBibl and ancestor-or-self::tei:bibl/@n"> <!-- [@type='primary'] -->
+                <xsl:element name="span">
+                    <xsl:attribute name="class">siglum</xsl:attribute>
+                    <xsl:if test="ancestor-or-self::tei:bibl/@n">
+                        <xsl:text> [siglum </xsl:text>
+                        <strong><xsl:value-of select="ancestor-or-self::tei:bibl/@n"/></strong>
+                        <xsl:text>]</xsl:text>
+                    </xsl:if>
+                </xsl:element>
+            </xsl:if>
+        </xsl:when>
+        <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
+        <xsl:otherwise>
     </xsl:choose>
         </xsl:when>
 					<!-- if there is no ptr, print simply what is inside bibl and a warning message-->
@@ -846,7 +865,9 @@
     <!--  listBibl -->
     <!-- Must be reworked -->
     <xsl:template match="tei:listBibl">
-        <xsl:element name="div">
+        <xsl:choose>
+            <xsl:when test="ancestor::tei:teiHeader">
+                <xsl:element name="div">
             <xsl:attribute name="class">tab-pane fade</xsl:attribute>
             <xsl:attribute name="id">sources</xsl:attribute>
             <xsl:attribute name="role">tabpanel</xsl:attribute>
@@ -869,6 +890,11 @@
                 </xsl:for-each>
             </xsl:element>
         </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <!--  listWit ! -->
     <xsl:template match="tei:listWit">
@@ -2539,5 +2565,71 @@
                 </xsl:analyze-string>
             </xsl:when>
         </xsl:choose>
+    </xsl:template>
+    
+    <!-- tpl-com -->
+    <xsl:template name="tpl-com">
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
+        <xsl:variable name="document-com">
+            <xsl:choose>
+                <xsl:when test="$corpus-type='nusantara'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_com.xml')"/>
+                </xsl:when>
+                <xsl:when test="$corpus-type='batak'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/batak/', $filename, '_com.xml')"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <xsl:element name="h4">Commentary</xsl:element>
+            <xsl:choose>
+                <xsl:when test="document($document-com)">
+                    <xsl:apply-templates select="document($document-com)//tei:text"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">textContent</xsl:attribute>
+                        <xsl:text>No commentary available yet for </xsl:text>
+                        <xsl:value-of select="$filename"/>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- tpl-biblio -->
+    <xsl:template name="tpl-biblio">
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
+        <xsl:variable name="document-biblio">
+            <xsl:choose>
+                <xsl:when test="$corpus-type='nusantara'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_biblio.xml')"/>
+                </xsl:when>
+                <xsl:when test="$corpus-type='batak'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/batak/', $filename, '_biblio.xml')"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <xsl:element name="h4">Bibliography</xsl:element>
+            <xsl:choose>
+                <xsl:when test="document($document-biblio)">
+                    <xsl:apply-templates select="document($document-biblio)//tei:text"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">textContent</xsl:attribute>
+                        <xsl:text>No bibliography available yet for </xsl:text>
+                        <xsl:value-of select="$filename"/>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
