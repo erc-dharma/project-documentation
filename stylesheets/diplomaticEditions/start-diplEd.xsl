@@ -125,7 +125,8 @@
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-translation"/>
-                    <xsl:call-template name="tpl-biblio"/>
+                <xsl:call-template name="tpl-com"/>  
+                <xsl:call-template name="tpl-biblio"/>
                 </xsl:element>
                 <xsl:element name="footer">
                     <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
@@ -2607,6 +2608,39 @@
                 </ul> 
             </div>
         </nav>
+    </xsl:template>
+    
+    <!-- tpl-com -->
+    <xsl:template name="tpl-com">
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
+        <xsl:variable name="document-com">
+            <xsl:choose>
+                <xsl:when test="$corpus-type='nusantara'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_com.xml')"/>
+                </xsl:when>
+                <xsl:when test="$corpus-type='batak'">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/batak/', $filename, '_com.xml')"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <xsl:element name="h4">Commentary</xsl:element>
+            <xsl:choose>
+                <xsl:when test="document($document-com)">
+                    <xsl:apply-templates select="document($document-com)//tei:text"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">textContent</xsl:attribute>
+                        <xsl:text>No commentary available yet for </xsl:text>
+                        <xsl:value-of select="$filename"/>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
     </xsl:template>
     
     <!-- tpl-biblio -->
