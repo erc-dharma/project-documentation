@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- // Validation schema TEI-ALL must be update in favor the DHARMA manuscript schema once it has been established// -->
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" xml:id="id" type="edition"><!-- update the @xml:id at the base with the DHARMA ID, see FNC. -->
 	<teiHeader>
@@ -102,6 +102,9 @@
 				<punctuation>
 					<p/>
 				</punctuation>
+				<interpretation>
+					<p>The asterisk * is used to flag lemmata or forms of lemmata not recorded in the <title>Old Javanese-English Dictionary</title>.</p>
+				</interpretation>
 			</editorialDecl>
 			<samplingDecl>
 				<!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
@@ -147,6 +150,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
+			<change who="part:axja" when="2021-09-08">Adding the interpreation element in editorialDecl and importing the paragraph about asterisk</change>
 			<change who="part:argr" when="2020-11-27" status="draft">Modifications of the template</change>
 			<change who="part:axja" when="2020-01-06" status="draft">Creation of the template</change>
 			<!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
