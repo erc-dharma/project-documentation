@@ -32,10 +32,12 @@
     <xsl:template match="H1">
         <xsl:element name="h1">
             <xsl:attribute name="class">text-center</xsl:attribute>
-            <xsl:text>ARIE vol.</xsl:text>
-            <xsl:value-of select="arie/@n"/>
-            <xsl:text>, </xsl:text>
+            <xsl:text>ARIE </xsl:text>
             <xsl:value-of select="substring-before(substring-after(./string(), '('), ')')"/>
+            <xsl:text> [vol. </xsl:text>
+            <xsl:value-of select="arie/@n"/>
+            <xsl:text>]</xsl:text>
+            
         </xsl:element>
         <br/>
     </xsl:template>
@@ -98,28 +100,46 @@
             <xsl:text>ARIE/</xsl:text>
             <xsl:value-of select="substring-before(substring-after(//H1/string(), '('), ')')"/>
             <xsl:text>/</xsl:text>
-            <xsl:if test="preceding::H2[1]"><xsl:value-of select="substring-before(preceding::H2[1], '.')"/></xsl:if>
+            <xsl:choose>
+                <xsl:when test="preceding::H2[1]">
+                    <xsl:value-of select="replace(replace(substring-before(preceding::H2[1], '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
+                </xsl:when>
             <!-- substring-before(preceding::HC[1], '.') -->
-            <xsl:if test="preceding::HC[1]"><xsl:value-of select="substring-before(preceding::HC[1], '.')"/></xsl:if>
+            <xsl:otherwise>
+                <xsl:value-of select="replace(replace(substring-before(preceding::HC[1], '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
+            </xsl:otherwise>
+            </xsl:choose>
             <xsl:text>/</xsl:text>
-            <xsl:if test="matches(preceding::H2[1], '[0-9\-]+')">
+            <xsl:choose>
+                <xsl:when test="matches(preceding::H2[1], '[0-9\-]+')">
                 <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+[0-9\-]*)">
                     <xsl:matching-substring>
                         <xsl:value-of select="regex-group(1)"/>
                     </xsl:matching-substring>
                 </xsl:analyze-string>
-            </xsl:if>
-            <xsl:if test="matches(preceding::HC[1], '[0-9\-]+')">
+            </xsl:when>
+            <!--<xsl:if test="matches(preceding::HC[1], '[0-9\-]+')">-->
+                    <xsl:otherwise>
                 <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+[0-9\-]*)">
                     <xsl:matching-substring>
                         <xsl:value-of select="regex-group(1)"/>
                     </xsl:matching-substring>
                 </xsl:analyze-string>
-            </xsl:if>
+                    </xsl:otherwise>
+            </xsl:choose>
             <xsl:text>/</xsl:text>
             <xsl:value-of select="S"/>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="substring-after(preceding::pb[1]/@n, ':')"/>
+            <xsl:text> (page </xsl:text>
+            <xsl:choose>
+                <xsl:when test="starts-with(substring-after(preceding::pb[1]/@n, ':'), '0')">
+                    <xsl:value-of select="substring-after(preceding::pb[1]/@n, ':0')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="substring-after(preceding::pb[1]/@n, ':')"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            
+            <xsl:text>)</xsl:text>
         </xsl:element>
     </xsl:template>
     
@@ -139,7 +159,7 @@
     <xsl:template match="Y">
     <xsl:element name="dt">
         <xsl:attribute name="class">col</xsl:attribute>
-        <xsl:text>Year</xsl:text>
+        <xsl:text>Dynasty</xsl:text>
     </xsl:element>
     <xsl:element name="dd">
         <xsl:attribute name="class">col</xsl:attribute>
@@ -175,7 +195,7 @@
     <xsl:template match="L">
     <xsl:element name="dt">
         <xsl:attribute name="class">col</xsl:attribute>
-        <xsl:text>Language and Script</xsl:text>
+        <xsl:text>Language</xsl:text>
     </xsl:element>
     <xsl:element name="dd">
         <xsl:attribute name="class">col</xsl:attribute>
