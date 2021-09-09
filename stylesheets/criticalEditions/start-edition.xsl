@@ -1835,6 +1835,9 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="https://www.zotero.org/groups/1633743/erc-dharma/library">Zotero Library</a>
                     </li>
                 </ul> 
