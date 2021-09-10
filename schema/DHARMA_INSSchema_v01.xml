@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
             <change who="part:axja" when="2021-08-13">Updating the encoding pattern for expan</change>
             <change who="part:axja" when="2021-07-07">Updating the constraints for children of head element</change>
             <change who="part:axja" when="2021-07-06">Adding the possibility to add a note inside a item, in the section commentary</change>
@@ -1493,6 +1494,7 @@
                                 <valItem ident="part"/>
                                 <valItem ident="entry"/>
                                 <valItem ident="line"/>
+                                <valItem ident="section"/>
                             </valList>
                         </attDef>
                     </attList>

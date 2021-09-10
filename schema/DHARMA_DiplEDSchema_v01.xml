@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
             <change who="part:axja" when="2021-07-19"
                 >Addition for the batak diplEd files.Adding value for attributes @type and @subtype for roleName; adding @subtype for placeName; adding @type for the element div; allowing @ref for g; adding charDecl in the schema; updating the pattern for the TEI rote as well as for child of head, adding mapping for siglum of glyph</change>
             <change who="part:axja" when="2021-04-19"
@@ -1257,6 +1258,7 @@
                                 <valItem ident="part"/>
                                 <valItem ident="entry"/>
                                 <valItem ident="line"/>
+                                <valItem ident="section"/>
                             </valList>
                         </attDef>
                     </attList>
