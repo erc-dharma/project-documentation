@@ -539,6 +539,16 @@ bibliography. All examples only cater for book and article.
 		</xsl:otherwise>
 		</xsl:choose>
 		</xsl:when>
+			<xsl:when test="@unit='section'">
+				<xsl:choose>
+					<xsl:when test="matches(., '[–\-]+')">
+						<xsl:text>§§</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>§</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
 		<xsl:otherwise>
 			<!--<xsl:if test="ancestor::t:listBibl">-->
 			<xsl:choose>
