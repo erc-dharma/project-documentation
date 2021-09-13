@@ -37,6 +37,20 @@
         </xsl:copy>
     </xsl:template>
     
+    <!--<xsl:template match="tei:lem" mode="numerotation">
+        <xsl:copy>
+            <xsl:if test="@*">
+                <xsl:copy-of select="@*"/>
+            </xsl:if>
+            <xsl:attribute name="xml:id"> 
+                <xsl:value-of select="name()"/>
+                <xsl:number count="tei:lem" level="any" 
+                    format="00001"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node()|@*" mode="numerotation"/>
+        </xsl:copy>
+    </xsl:template>-->
+    
     <xsl:template match="tei:note" mode="numerotation">
         <xsl:copy>
             <xsl:if test="@*">
@@ -50,6 +64,20 @@
             <xsl:apply-templates select="node()|@*" mode="numerotation"/>
         </xsl:copy>
     </xsl:template>
+    
+    <!--<xsl:template match="tei:rdg" mode="numerotation">
+        <xsl:copy>
+            <xsl:if test="@*">
+                <xsl:copy-of select="@*"/>
+            </xsl:if>
+            <xsl:attribute name="xml:id"> 
+                <xsl:value-of select="name()"/>
+                <xsl:number count="tei:rdg" level="any" 
+                    format="00001"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node()|@*" mode="numerotation"/>
+        </xsl:copy>
+    </xsl:template>-->
    
     <xsl:template match="tei:term" mode="numerotation">
             <xsl:copy>
