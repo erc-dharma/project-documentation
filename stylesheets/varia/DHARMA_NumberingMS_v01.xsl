@@ -6,7 +6,9 @@
     version="2.0">
     
     <!-- Written by Axelle Janiak for ERC-DHARMA, 2021-03-25 -->
+    <!-- Updates by AJ 2021-09-13 -->
     <xsl:output method="xml" indent="no"/>
+    
    
     <xsl:template match="/">
         <xsl:copy>
@@ -19,55 +21,81 @@
             <xsl:apply-templates select="node()|@*" mode="numerotation"/>
         </xsl:copy>
     </xsl:template>
-        
     
-    <!-- Numéroter les div en prenant en compte les @type pour les dénominations-->
-    
+ 
     <xsl:template match="tei:div" mode="numerotation">
+        <xsl:variable name="fileId">
+            <xsl:value-of select="//tei:TEI/@xml:id"/>
+            <xsl:text>-</xsl:text>
+        </xsl:variable>
         <xsl:for-each select=".">
-            <xsl:variable name="numberDiv">
-                    <xsl:value-of select="name()"/>
-                    <xsl:number format="01" count="tei:div" level="single"/> 
-            </xsl:variable>
           <xsl:copy>
               <xsl:if test="@*">
                   <xsl:copy-of select="@*"/>
               </xsl:if>
-                <xsl:attribute name="xml:id" select="$numberDiv"/>
-              <xsl:call-template name="internal-numbering">
-                  <xsl:with-param name="numberDiv" select="$numberDiv"/>
-              </xsl:call-template>  
+                <xsl:attribute name="xml:id">
+                    <xsl:value-of select="$fileId"/>
+                    <xsl:number from="tei:body" count="tei:div | tei:p | tei:ab | tei:lg |tei:quote" level="multiple" format="01"/>
+                </xsl:attribute>
+              <xsl:apply-templates select="@*|node()" mode="numerotation"/>
           </xsl:copy>
         </xsl:for-each> 
     </xsl:template>
    
-    <xsl:template name="internal-numbering">
-        <xsl:param name="numberDiv"/>
-        <xsl:for-each select="tei:p | tei:ab | tei:lg">
-            <xsl:copy>
-                <xsl:attribute name="xml:id">
-                <xsl:value-of select="$numberDiv"/>
-                <xsl:text>.</xsl:text>
-                <!--<xsl:value-of select="name()"/>-->
-                <xsl:number count="tei:p | tei:ab | tei:lg" level="multiple" 
-                    format="01"/>
-            </xsl:attribute>
-            <xsl:apply-templates select="@*|node()" mode="numerotation"/>
-            </xsl:copy>
-        </xsl:for-each>
-    </xsl:template>
-    
-        <!--<xsl:variable name="number">
-            <xsl:number format="01" level="multiple" from="//tei:body" count="tei:div | tei:p | tei:ab | tei:lg"/>
+    <xsl:template match="tei:ab[ancestor::tei:body]" mode="numerotation">
+        <xsl:variable name="fileId">
+            <xsl:value-of select="//tei:TEI/@xml:id"/>
+            <xsl:text>-</xsl:text>
         </xsl:variable>
         <xsl:copy>
-            <xsl:attribute name="xml:id" select="concat(name(),$number)"/>
+            <xsl:attribute name="xml:id">
+                <xsl:value-of select="$fileId"/>
+                <xsl:number from="tei:body" count="tei:div | tei:p | tei:ab | tei:lg |tei:quote" level="multiple" format="01"/>
+            </xsl:attribute>
             <xsl:apply-templates select="@*|node()" mode="numerotation"/>
         </xsl:copy>
->-->
+    </xsl:template>
     
+    <xsl:template match="tei:lg[not(ancestor::tei:listApp)]" mode="numerotation">
+        <xsl:variable name="fileId">
+            <xsl:value-of select="//tei:TEI/@xml:id"/>
+            <xsl:text>-</xsl:text>
+        </xsl:variable>
+        <xsl:copy>
+            <xsl:attribute name="xml:id">
+                <xsl:value-of select="$fileId"/>
+                <xsl:number from="tei:body" count="tei:div | tei:p | tei:ab | tei:lg |tei:quote" level="multiple" format="01"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@*|node()" mode="numerotation"/>
+        </xsl:copy>
+    </xsl:template>
     
+    <xsl:template match="tei:quote" mode="numerotation">
+        <xsl:variable name="fileId">
+            <xsl:value-of select="//tei:TEI/@xml:id"/>
+            <xsl:text>-</xsl:text>
+        </xsl:variable>
+            <xsl:copy>
+                <xsl:attribute name="xml:id">
+                    <xsl:value-of select="$fileId"/>
+                    <xsl:number from="tei:body" count="tei:div | tei:p | tei:ab | tei:lg |tei:quote" level="multiple" format="01"/>
+                </xsl:attribute>
+                <xsl:apply-templates select="@*|node()" mode="numerotation"/>
+            </xsl:copy>
+    </xsl:template>
     
-    
+    <xsl:template match="tei:p[ancestor::tei:body]" mode="numerotation">
+        <xsl:variable name="fileId">
+            <xsl:value-of select="//tei:TEI/@xml:id"/>
+            <xsl:text>-</xsl:text>
+        </xsl:variable>
+        <xsl:copy>
+            <xsl:attribute name="xml:id">
+                <xsl:value-of select="$fileId"/>
+                <xsl:number from="tei:body" count="tei:div | tei:p | tei:ab | tei:lg |tei:quote" level="multiple" format="01"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@*|node()" mode="numerotation"/>
+        </xsl:copy>
+    </xsl:template>
     
 </xsl:stylesheet>
