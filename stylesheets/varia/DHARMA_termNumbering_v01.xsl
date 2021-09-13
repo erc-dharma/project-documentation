@@ -6,6 +6,7 @@
     version="2.0">
     
     <!-- Written by Axelle Janiak for ERC-DHARMA, 2021-04-14 -->
+    <!-- Updated for note and app, 2021-09-13 -->
     <xsl:output method="xml" indent="no"/>
     
     <xsl:template match="/">
@@ -20,7 +21,36 @@
         </xsl:copy>
     </xsl:template>
     
+    <!-- App numbering works for any level: the embedded app element are numbered the same way as the embedding app -->
+    <!-- App numbering might need to be updated to a 4-digits pattern -->
+    <xsl:template match="tei:app" mode="numerotation">
+        <xsl:copy>
+            <xsl:if test="@*">
+                <xsl:copy-of select="@*"/>
+            </xsl:if>
+            <xsl:attribute name="xml:id"> 
+                <xsl:value-of select="name()"/>
+                <xsl:number count="tei:app" level="any" 
+                    format="001"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node()|@*" mode="numerotation"/>
+        </xsl:copy>
+    </xsl:template>
     
+    <xsl:template match="tei:note" mode="numerotation">
+        <xsl:copy>
+            <xsl:if test="@*">
+                <xsl:copy-of select="@*"/>
+            </xsl:if>
+            <xsl:attribute name="xml:id"> 
+                <xsl:value-of select="name()"/>
+                <xsl:number count="tei:note" level="any" 
+                    format="001"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node()|@*" mode="numerotation"/>
+        </xsl:copy>
+    </xsl:template>
+   
     <xsl:template match="tei:term" mode="numerotation">
             <xsl:copy>
                 <xsl:if test="@*">
@@ -29,10 +59,11 @@
                 <xsl:attribute name="xml:id"> 
                     <xsl:value-of select="name()"/>
                     <xsl:number count="tei:term" level="any" 
-                        format="01"/>
+                        format="001"/>
                 </xsl:attribute>
                 <xsl:apply-templates select="node()|@*" mode="numerotation"/>
             </xsl:copy>
     </xsl:template>
+   
     
 </xsl:stylesheet>
