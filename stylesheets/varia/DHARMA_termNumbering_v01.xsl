@@ -51,7 +51,7 @@
         </xsl:copy>
     </xsl:template>-->
     
-    <xsl:template match="tei:note" mode="numerotation">
+    <!--<xsl:template match="tei:note" mode="numerotation">
         <xsl:copy>
             <xsl:if test="@*">
                 <xsl:copy-of select="@*"/>
@@ -63,7 +63,7 @@
             </xsl:attribute>
             <xsl:apply-templates select="node()|@*" mode="numerotation"/>
         </xsl:copy>
-    </xsl:template>
+    </xsl:template>-->
     
     <!--<xsl:template match="tei:rdg" mode="numerotation">
         <xsl:copy>
