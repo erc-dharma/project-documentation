@@ -3,7 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     
     <!-- Written by Axelle Janiak for ERC-DHARMA, 2021-03-25 -->
-    <xsl:output method="xml" indent="no"/>
+    <xsl:output method="xml" indent="yes"/>
     
     <xsl:param name="removeAttributesNamed" select="'xml:id'"/>
     

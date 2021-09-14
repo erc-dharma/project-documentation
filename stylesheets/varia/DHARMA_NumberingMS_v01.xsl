@@ -7,7 +7,7 @@
     
     <!-- Written by Axelle Janiak for ERC-DHARMA, 2021-03-25 -->
     <!-- Updates by AJ 2021-09-13 -->
-    <xsl:output method="xml" indent="no"/>
+    <xsl:output method="xml" indent="yes"/>
     
    
     <xsl:template match="/">

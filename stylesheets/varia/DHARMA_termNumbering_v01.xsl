@@ -7,7 +7,7 @@
     
     <!-- Written by Axelle Janiak for ERC-DHARMA, 2021-04-14 -->
     <!-- Updated for note and app, 2021-09-13 -->
-    <xsl:output method="xml" indent="no"/>
+    <xsl:output method="xml" indent="yes"/>
     
     <xsl:template match="/">
         <xsl:copy>
@@ -31,7 +31,7 @@
             <xsl:attribute name="xml:id"> 
                 <xsl:value-of select="name()"/>
                 <xsl:number count="tei:app" level="any" 
-                    format="001"/>
+                    format="00001"/>
             </xsl:attribute>
             <xsl:apply-templates select="node()|@*" mode="numerotation"/>
         </xsl:copy>
