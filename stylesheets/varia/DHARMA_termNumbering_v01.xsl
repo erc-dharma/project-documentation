@@ -22,7 +22,7 @@
     </xsl:template>
     
     <!-- App numbering works for any level: the embedded app element are numbered the same way as the embedding app -->
-    <!-- App numbering might need to be updated to a 4-digits pattern -->
+    <!-- App numbering might need to be updated to a 5-digits pattern -->
     <xsl:template match="tei:app" mode="numerotation">
         <xsl:copy>
             <xsl:if test="@*">
