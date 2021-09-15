@@ -193,9 +193,19 @@
     
     <!-- L -->
     <xsl:template match="L">
+        <xsl:variable name="volume">
+            <xsl:value-of select="substring-before(substring-after(//root/@id, '_'), '_')"/>
+        </xsl:variable>
     <xsl:element name="dt">
         <xsl:attribute name="class">col</xsl:attribute>
-        <xsl:text>Language</xsl:text>
+        <xsl:choose>
+            <xsl:when test="number($volume) gt 16">
+                <xsl:text>Language &amp; Alphabet</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>Language</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:element>
     <xsl:element name="dd">
         <xsl:attribute name="class">col</xsl:attribute>
