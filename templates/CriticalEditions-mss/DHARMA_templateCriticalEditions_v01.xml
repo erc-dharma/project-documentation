@@ -137,6 +137,7 @@
 				<!-- choose the language(s) of your text, remove the others -->
 				<language ident="san-Latn">Sanskrit, romanized</language>
 				<language ident="kaw-Latn">Old Javanese, romanized</language>
+				<language ident="osn-Latn">Old Sundanese, romanized</language>
 				<language ident="tam-Latn">Tamil, romanized</language>
 				<language ident="kan-Latn">Kannada, romanized</language>
 				<language ident="tel-Latn">Telugu, romanized</language>
