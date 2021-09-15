@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-09-15">closing list attributes for unit with gap</change>
             <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
             <change who="part:axja" when="2021-08-13">Updating the encoding pattern for expan</change>
             <change who="part:axja" when="2021-07-07">Updating the constraints for children of head element</change>
