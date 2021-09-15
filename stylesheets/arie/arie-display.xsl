@@ -147,7 +147,7 @@
     <xsl:template match="P">
         <xsl:element name="dt">
             <xsl:attribute name="class">col</xsl:attribute>
-            <xsl:text>Placement</xsl:text>
+            <xsl:text>Place</xsl:text>
         </xsl:element>
         <xsl:element name="dd">
             <xsl:attribute name="class">col</xsl:attribute>
