@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-09-16">Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
             <change who="part:axja" when="2021-09-15">closing list attributes for unit with gap</change>
             <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
             <change who="part:axja" when="2021-08-13">Updating the encoding pattern for expan</change>
@@ -489,6 +490,10 @@
                                 <valItem ident="page"/>
                                 <valItem ident="plate"/>
                                 <valItem ident="folio"/>
+                                <!-- Addition possible after the update of the status of the list -->
+                                <!--<valItem ident="vowel"/>
+                                <valItem ident="number"/>
+                                <valItem ident="subscript"/>-->
                             </valList>
                         </attDef>
                     </attList>
@@ -4660,8 +4665,7 @@
                             element p is not allowed in lem</sch:report><sch:report
                             test="child::tei:ab">The element ab is not allowed in
                             lem</sch:report><sch:report test="child::tei:lg">The element lg is not
-                            allowed in lem</sch:report><sch:report test="child::tei:l">The element l
-                            is not allowed in lem</sch:report></sch:rule></constraint>
+                            allowed in lem</sch:report><sch:report test="count(child::tei:l) eq 1">Don't keep the l element in lem if you have only one of them</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>

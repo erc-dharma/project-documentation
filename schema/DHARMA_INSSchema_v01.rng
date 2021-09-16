@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-09-15T13:49:51Z. .
+Schema generated from ODD source 2021-09-16T08:41:59Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -9962,8 +9962,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                             lem</sch:report>
                <sch:report test="child::tei:lg">The element lg is not
                             allowed in lem</sch:report>
-               <sch:report test="child::tei:l">The element l
-                            is not allowed in lem</sch:report>
+               <sch:report test="count(child::tei:l) eq 1">Don't keep the l element in lem if you have only one of them</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.source.attribute.source"/>
