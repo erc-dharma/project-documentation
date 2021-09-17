@@ -376,13 +376,51 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
+        
+        <xsl:element name="a">
+            <!--<xsl:attribute name="tabindex">0</xsl:attribute>
+            <xsl:attribute name="data-toggle">popover</xsl:attribute>
+            <xsl:attribute name="data-html">true</xsl:attribute>
+            <xsl:attribute name="data-target">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                <xsl:value-of select="$app-num"/></xsl:attribute>
+            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:text>from-app-</xsl:text>
+                <xsl:value-of select="$app-num"/>
+            </xsl:attribute>-->
+                <xsl:apply-templates select="tei:lem"/>
+            <xsl:element name="span">
+                <xsl:attribute name="class">
+                    <xsl:text>move-to-right</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                <xsl:attribute name="data-html">true</xsl:attribute>
+                <xsl:attribute name="data-target">
+                    <xsl:value-of select="generate-id()"/>
+                </xsl:attribute>
+                <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                    <xsl:value-of select="$app-num"/></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                <xsl:attribute name="id">
+                    <xsl:text>from-app-</xsl:text>
+                    <xsl:value-of select="$app-num"/>
+                </xsl:attribute>
+                <xsl:text>(</xsl:text>
+            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+            <xsl:text>)</xsl:text>
+            </xsl:element>
+            
+        </xsl:element>
       
+           <!--<xsl:element name="span">
+           <!-\-<xsl:attribute name="class">lem-tooltipApp</xsl:attribute>-\->
+           <!-\-  <xsl:element name="div">
+           <xsl:attribute name="class">float-right</xsl:attribute>-\->
            <xsl:element name="span">
-           <xsl:attribute name="class">lem-tooltipApp</xsl:attribute>
-           <!--  <xsl:element name="div">
-           <xsl:attribute name="class">float-right</xsl:attribute>-->
-           <xsl:element name="span">
-               <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
+               <xsl:attribute name="class">tooltipApp</xsl:attribute>
                <xsl:element name="a">
                    <xsl:attribute name="tabindex">0</xsl:attribute>
                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
@@ -402,9 +440,9 @@
                            <xsl:text>)</xsl:text>
                </xsl:element>
            </xsl:element>
-                   <!--<xsl:text>&#128172;</xsl:text>-->
+                   <!-\-<xsl:text>&#128172;</xsl:text>-\->
                
-               <!--<xsl:element name="span">
+               <!-\-<xsl:element name="span">
                    <xsl:attribute name="class">tooltipApp-num</xsl:attribute>
                    <xsl:element name="a">
                        <xsl:attribute name="id">
@@ -420,11 +458,11 @@
                    <xsl:text>)</xsl:text></xsl:element>
                </xsl:element>      
            </xsl:element>
-       </xsl:element>-->
-       <!--</xsl:element>-->
+       </xsl:element>-\->
+       <!-\-</xsl:element>-\->
        
-       <!-- tooltip display in the body -->
-           <!--<xsl:element name="span"> 
+       <!-\- tooltip display in the body -\->
+           <xsl:element name="span"> 
                <xsl:attribute name="class">lem</xsl:attribute>
                <xsl:element name="a">
                    <xsl:attribute name="tabindex">0</xsl:attribute>
@@ -438,37 +476,20 @@
                    
                    <xsl:apply-templates select="tei:lem"/>
                </xsl:element>
+           </xsl:element>
            </xsl:element>-->
            
-           <!-- Version without the tooltip display in the body-->
+           <!--<!-\- Version without the tooltip display in the body-\->
            <xsl:element name="span"> 
                <xsl:attribute name="class">lem</xsl:attribute>
                <xsl:apply-templates select="tei:lem"/>
-               <!--<xsl:element name="span">
+               <!-\-<xsl:element name="span">
                    <xsl:attribute name="class">anchor</xsl:attribute>
                    <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-               </xsl:element>-->
+               </xsl:element>-\->
            </xsl:element>
-           </xsl:element>
+           </xsl:element>-->
            
-           <!-- Version with the bulle at the end of the line-->
-        <!--<xsl:element name="div">
-            <xsl:attribute name="class">float-right</xsl:attribute>
-        <xsl:element name="span">
-            <xsl:attribute name="class">tooltipApp</xsl:attribute>
-            <a>
-                <xsl:attribute name="href">
-                    <xsl:text>#to-app-</xsl:text>
-                    <xsl:value-of select="$app-num"/>
-                </xsl:attribute>
-                <xsl:attribute name="id">
-                    <xsl:text>from-app-</xsl:text>
-                    <xsl:value-of select="$app-num"/>
-                </xsl:attribute>           
-                    <xsl:text>&#128172;</xsl:text>
-            </a>
-        </xsl:element>
-        </xsl:element>-->
     </xsl:template>
     <!--  B ! -->
     <xsl:template match="tei:bibl">
@@ -652,6 +673,11 @@
                 <xsl:attribute name="class">col-10</xsl:attribute>
                 <xsl:apply-templates/>
             </xsl:element>
+            <!-- test to display the numbering of the apparatus -->
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+                
+        </xsl:element>
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
@@ -1776,6 +1802,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"/>
+        <!--<script src="./../criticalEditions/loader.js"></script>-->
     </xsl:template>
     
     <!-- Nav bar template -->
@@ -2386,7 +2413,7 @@
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
             <xsl:element name="span">
-                <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
+                <xsl:attribute name="class">tooltipApp</xsl:attribute>
                 <xsl:element name="a">
                     <xsl:attribute name="tabindex">0</xsl:attribute>
                     <xsl:attribute name="data-toggle">popover</xsl:attribute>
