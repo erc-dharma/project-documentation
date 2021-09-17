@@ -377,7 +377,10 @@
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
         
-        <xsl:element name="a">
+        <xsl:element name="span">
+            <xsl:attribute name="class">
+                <xsl:text>lem</xsl:text>
+            </xsl:attribute>
             <!--<xsl:attribute name="tabindex">0</xsl:attribute>
             <xsl:attribute name="data-toggle">popover</xsl:attribute>
             <xsl:attribute name="data-html">true</xsl:attribute>
@@ -392,7 +395,7 @@
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
                 <xsl:apply-templates select="tei:lem"/>
-            <xsl:element name="span">
+            <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
                 </xsl:attribute>
@@ -1789,7 +1792,7 @@
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                
+                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
             </meta>
         </head>
