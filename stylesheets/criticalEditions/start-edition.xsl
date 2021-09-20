@@ -663,14 +663,16 @@
         </xsl:element>
     </xsl:template>
     <!--  div ! -->
-    <xsl:template match="tei:div[@type = 'chapter' or @type = 'dyad' or @type = 'interpolation']">
+    <xsl:template match="tei:div">
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-1 text-center</xsl:attribute>
                 <xsl:element name="p">
+                    <xsl:if test="@n">
                     <xsl:value-of select="@n"/>
                     <xsl:text>. </xsl:text>
+                    </xsl:if>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
