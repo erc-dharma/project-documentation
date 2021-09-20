@@ -607,9 +607,14 @@ a:hover, a i.fas:hover {
     content:"†";
 }
 
-.tooltipApp:hover ~ .lem{
+/*.move-to-right:hover ~ .lem{
     background-color: yellow;
 }
+
+.lem:hover ~ .move-to-right{
+    background-color: yellow;
+}*/
+
 
 .tooltipApp, .lem-last-note {
     color: #a34545;
@@ -627,19 +632,23 @@ p{
          
 .tooltipApp a{
     color: #a34545; 
-      right: -950px;
-   position:relative;
       font-style: normal;
 }
 /*.tooltipApp a:not(first-child) {
   display: inline;
   
-}*/
-.tooltipApp  { 
- display:inline-block;
- width: 100%;
-
 }
+ * 
+ * 
+
+}*/
+.apparat-col {
+   display: inline-block;
+   position: relative;
+   font-size: 75%;
+}
+
+
 .lem-last-note a{
     color: #a34545; 
      right: -950px;

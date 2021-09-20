@@ -280,7 +280,7 @@
                     </xsl:if>
                 </xsl:element>
                 <!--  Variant readings ! -->
-                <xsl:if test="tei:rdg">
+                <xsl:if test="tei:rdg[fn:not(@type='paradosis')]">
                     <xsl:choose>
                         <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@type='#absent_elsewhere'"/>
                         <xsl:otherwise>
@@ -342,7 +342,7 @@
                                     <xsl:element name="span">
                                         <xsl:attribute name="style">color:black;</xsl:attribute>
                                         <xsl:text> (</xsl:text>
-                                        <xsl:value-of select="replace(@cause, '_', ' ')"/>
+                                        <xsl:value-of select="replace(./@cause, '_', ' ')"/>
                                         <xsl:text>)</xsl:text>
                                     </xsl:element>
                                 </xsl:if>
@@ -352,6 +352,26 @@
                             </xsl:if>-->
                         </xsl:element>
                     </xsl:for-each></xsl:otherwise></xsl:choose>
+                </xsl:if>
+                <xsl:if test="tei:rdg[@type='paradosis']">
+                    <xsl:element name="hr"/>
+                    <xsl:for-each select="tei:rdg[@type='paradosis']">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">paradosis-line</xsl:attribute>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-style-italic</xsl:attribute>
+                                <xsl:text>Paradosis</xsl:text>
+                            </xsl:element>
+                            <xsl:text> of </xsl:text>
+                            <xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="@wit"/>
+                                <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                            </xsl:call-template>
+                            <xsl:text>: </xsl:text>                            
+                            <xsl:apply-templates/>
+                        </xsl:element>
+                    </xsl:for-each>
                 </xsl:if>
                 <!--  Notes ! -->
                 <xsl:if test="tei:note[fn:not(@type='altLem') or ancestor::tei:listApp]">
@@ -370,7 +390,7 @@
         </span>
     </xsl:template>
     
-    <xsl:template match="tei:app[not(ancestor-or-self::tei:lem)]">
+    <xsl:template match="tei:app[not(parent::tei:listApp)]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
@@ -398,6 +418,7 @@
             <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
+                    
                 </xsl:attribute>
                 <xsl:attribute name="data-toggle">popover</xsl:attribute>
                 <xsl:attribute name="data-html">true</xsl:attribute>
@@ -410,6 +431,9 @@
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
+                </xsl:attribute>
+                <xsl:attribute name="data-sort">
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]" format="00001"/>
                 </xsl:attribute>
                 <xsl:text>(</xsl:text>
             <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
@@ -668,12 +692,20 @@
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-1 text-center</xsl:attribute>
-                <xsl:element name="p">
+                <xsl:choose>
+                    <xsl:when test="@type='interpolation'">
+                        <xsl:value-of select="preceding::tei:div[1]/@n"/>
+                        <xsl:text>*. </xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:element name="p">
                     <xsl:if test="@n">
                     <xsl:value-of select="@n"/>
                     <xsl:text>. </xsl:text>
                     </xsl:if>
                 </xsl:element>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-10</xsl:attribute>
@@ -682,7 +714,7 @@
             <!-- test to display the numbering of the apparatus -->
             <xsl:if test="not(child::tei:div)">
                 <xsl:element name="div">
-                    <xsl:attribute name="class">col-1 apparat-col align-middle</xsl:attribute>
+                    <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
                 
         </xsl:element>
             </xsl:if>
@@ -1159,14 +1191,14 @@
                     <xsl:value-of select="parent::tei:div[@type = 'dyad']/@n"/>
                 <xsl:text>.</xsl:text>
                 </xsl:if>
-                <xsl:if test="parent::tei:div[@type = 'interpolation']">
+                <xsl:if test="ancestor-or-self::tei:div[@type = 'interpolation']">
                     <xsl:choose>
-                        <xsl:when test="parent::tei:div[@type = 'interpolation']/@n">
-                            <xsl:value-of select="parent::tei:div[@type = 'interpolation']/@n"/>
+                        <xsl:when test="ancestor-or-self::tei:div[@type = 'interpolation']/@n">
+                            <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/@n"/>
                             <xsl:text>.</xsl:text>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:value-of select="parent::tei:div[@type = 'interpolation']/preceding::tei:div[1]/@n"/>
+                            <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[1]/@n"/>
                             <xsl:text>*.</xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>
@@ -2228,7 +2260,26 @@
                             </xsl:element>
                         </xsl:if>
                     </xsl:if>
-                    </xsl:otherwise></xsl:choose>
+                    </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:if test="@type='paradosis'">
+                        <xsl:text> • </xsl:text>
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">paradosis-line</xsl:attribute>
+                                    <xsl:element name="span">
+                                        <xsl:attribute name="class">font-style-italic</xsl:attribute>
+                                        <xsl:text>Paradosis</xsl:text>
+                                    </xsl:element>
+                                    <xsl:text> of </xsl:text>
+                                    <xsl:call-template name="tokenize-witness-list">
+                                        <xsl:with-param name="string" select="@wit"/>
+                                        <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    </xsl:call-template>
+                                    <xsl:text>: </xsl:text>                            
+                                    <xsl:apply-templates/>
+                                </xsl:element>
+                    </xsl:if>
                     <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
                         <xsl:text> • </xsl:text>
                         <xsl:apply-templates select="following-sibling::tei:note"/>
