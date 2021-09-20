@@ -257,7 +257,7 @@
                                 </xsl:if>-->
                             </xsl:if>
                             <xsl:if test="tei:lem/@wit"> 
-                                <xsl:if test="tei:lem/@ana='#absent_elsewhere'">
+                                <xsl:if test="tei:lem/@type='#absent_elsewhere'">
                                     <xsl:text> only in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
@@ -282,7 +282,7 @@
                 <!--  Variant readings ! -->
                 <xsl:if test="tei:rdg">
                     <xsl:choose>
-                        <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@ana='#absent_elsewhere'"/>
+                        <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@type='#absent_elsewhere'"/>
                         <xsl:otherwise>
                             <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg">
@@ -414,6 +414,7 @@
                 <xsl:text>(</xsl:text>
             <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
             <xsl:text>)</xsl:text>
+                
             </xsl:element>
             
         </xsl:element>
@@ -677,10 +678,12 @@
                 <xsl:apply-templates/>
             </xsl:element>
             <!-- test to display the numbering of the apparatus -->
-            <xsl:element name="div">
+            <xsl:if test="not(child::tei:div)">
+                <xsl:element name="div">
                 <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
                 
         </xsl:element>
+            </xsl:if>
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
@@ -1791,8 +1794,8 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
             </meta>
         </head>
@@ -2106,7 +2109,7 @@
                             </xsl:if>
                             
                         <xsl:if test="@wit">
-                            <xsl:if test="@ana='#absent_elsewhere'">
+                            <xsl:if test="@type='#absent_elsewhere'">
                                 <xsl:text>only in </xsl:text>
                                 </xsl:if>
                               <xsl:element name="span">
@@ -2127,14 +2130,14 @@
                                 </xsl:call-template>
                             </xsl:if>
                         </xsl:if>
-                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg and not(@ana='#absent_elsewhere')]">
+                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg and not(@type='#absent_elsewhere')]">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
                 
                 <xsl:for-each select="tei:rdg">
                     <xsl:choose>
-                        <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@ana='#absent_elsewhere'"/>
+                        <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@type='#absent_elsewhere'"/>
                         <xsl:otherwise>
                             <xsl:if test="position()!=1">
                         <xsl:text>, </xsl:text>
