@@ -1420,6 +1420,9 @@
             <xsl:apply-templates/>
         </xsl:element>
             </xsl:when>
+            <xsl:when test="@type='interpolation'">
+                <xsl:apply-templates/>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
     <!--  sic ! -->
