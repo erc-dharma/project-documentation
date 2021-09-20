@@ -184,7 +184,7 @@ e.g. MDhŚ-O, MDhŚ-M
             </bibl>
             <bibl corresp="bib:TienWartini+al2011_02" xml:id="EdSaTaAj2011"> 
               <abbr type="siglum">PR</abbr> 
-               <title>Pakeǝn Raga</title>
+               <title>Pakeən Raga</title>
               <title>Sanghyang Tatwa Ajnyana</title>
               <msIdentifier>
                  <settlement>Jakarta</settlement>
@@ -192,7 +192,7 @@ e.g. MDhŚ-O, MDhŚ-M
                  <idno>L 1099</idno>
               </msIdentifier>
               <ptr/>
-              Pakeǝn Raga, published as Sanghyang Tatwa Ajnyana in Tien Wartini et al. 2011.</bibl>
+              Pakeən Raga, published as Sanghyang Tatwa Ajnyana in Tien Wartini et al. 2011.</bibl>
             <bibl corresp="bib:Noorduyn+Teeuw2006_01"> 
               <abbr type="siglum">RR</abbr> 
                <title>The Sons of Rama and Rawana</title>
@@ -239,7 +239,7 @@ e.g. MDhŚ-O, MDhŚ-M
             </bibl>
             <bibl corresp="bib:Atja+SalehDanasasmita1981_03" xml:id="EdSaHySiKaKa1981"> 
               <abbr type="siglum">SKK</abbr>
-              <title>Saṅ Hyaṅ Siksa Kandaṅ Karǝsian</title>
+              <title>Saṅ Hyaṅ Siksa Kandaṅ Karəsian</title>
               <msIdentifier>
                  <settlement>Jakarta</settlement>
                  <repository>Perpusnas</repository>
@@ -276,7 +276,7 @@ e.g. MDhŚ-O, MDhŚ-M
                <title>Vasiṣṭhasaṁhita</title>
             </bibl>            <bibl corresp="bib:AditiaGunawan2010_01" xml:id="EdVaLe2010">
                <abbr type="siglum">VL</abbr>
-               <title>Varugan Lǝmah</title>
+               <title>Varugan Ləmah</title>
                <msIdentifier>
                   <settlement>Jakarta</settlement>
                   <repository>Perpusnas</repository>
