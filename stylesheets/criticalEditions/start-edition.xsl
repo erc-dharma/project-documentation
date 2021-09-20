@@ -682,7 +682,7 @@
             <!-- test to display the numbering of the apparatus -->
             <xsl:if test="not(child::tei:div)">
                 <xsl:element name="div">
-                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+                    <xsl:attribute name="class">col-1 apparat-col align-middle</xsl:attribute>
                 
         </xsl:element>
             </xsl:if>
@@ -1160,8 +1160,18 @@
                 <xsl:text>.</xsl:text>
                 </xsl:if>
                 <xsl:if test="parent::tei:div[@type = 'interpolation']">
-                    <xsl:value-of select="parent::tei:div[@type = 'interpolation']/@n"/>
-                    <xsl:text>.</xsl:text>
+                    <xsl:choose>
+                        <xsl:when test="parent::tei:div[@type = 'interpolation']/@n">
+                            <xsl:value-of select="parent::tei:div[@type = 'interpolation']/@n"/>
+                            <xsl:text>.</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="parent::tei:div[@type = 'interpolation']/preceding::tei:div[1]/@n"/>
+                            <xsl:text>*.</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    
+                    
                 </xsl:if>
                 <xsl:value-of select="$p-num"/>
             </xsl:element>
@@ -1269,7 +1279,7 @@
             <xsl:apply-templates/>
                 </xsl:element>
             </xsl:when>
-            <xsl:when test="tei:quote[descendant::tei:list]">
+            <xsl:when test="tei:quote[descendant::tei:listApp]">
                 <xsl:apply-templates/>
             </xsl:when>
             <xsl:when test="ancestor-or-self::tei:app">
@@ -1322,6 +1332,17 @@
     </xsl:template>
     <xsl:template match="tei:s" mode="in-modal">
         <xsl:apply-templates select="."/>
+    </xsl:template>
+    <!--  seg ! -->
+    <xsl:template match="tei:seg">
+        <xsl:choose>
+            <xsl:when test="@type='highlight'">
+                <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
     <!--  sic ! -->
     <xsl:template match="tei:sic[not(parent::tei:choice)]">
@@ -1426,13 +1447,24 @@
                     </xsl:element>
                 </xsl:when>
                 <xsl:when test="@reason='subaudible'">
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">subaudible</xsl:attribute>
-                        <xsl:apply-templates/>
-                        <xsl:if test="@cert='low'">
-                            <xsl:text>?</xsl:text>
-                        </xsl:if>
-                    </xsl:element>
+                    <xsl:choose>
+                        <xsl:when test="not(parent::tei:quote[@type='base-text'])">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">subaudible</xsl:attribute>
+                                <xsl:apply-templates/>
+                                <xsl:if test="@cert='low'">
+                                    <xsl:text>?</xsl:text>
+                                </xsl:if>
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">text-muted</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    
                 </xsl:when>
                 <xsl:when test="@reason='explanation'">
                     <xsl:element name="span">
@@ -1796,8 +1828,8 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
+               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
             </meta>
         </head>
