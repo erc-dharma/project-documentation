@@ -212,6 +212,46 @@
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
             <xsl:attribute name="title">Editorial insertion.</xsl:attribute>
+            <xsl:if test="@hand">
+                <xsl:text>H</xsl:text>
+                <xsl:element name="sub">
+                <xsl:value-of select="fn:substring-after(@hand, '_H')"/>
+                </xsl:element>
+                <xsl:if test="@place">
+                    <xsl:text> </xsl:text>
+                </xsl:if>
+            </xsl:if>
+            <xsl:if test="@place and not(@place='unspecified')">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:choose>
+                        <xsl:when test="@place='inline'">
+                                <xsl:text>in textu </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='below'">
+                            <xsl:text>subscr. </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='above'">
+                            <xsl:text>suprascr. </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='top'">
+                            <xsl:text>in mg. sup. </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='bottom'">
+                            <xsl:text>in mg. inf. </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='left'">
+                            <xsl:text>in mg. </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='right'">
+                            <xsl:text>in mg. </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="@place='overstrike'">
+                            <xsl:text>in ras. </xsl:text>
+                        </xsl:when>
+            </xsl:choose>
+                </xsl:element>
+            </xsl:if>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -319,10 +359,16 @@
                                     <xsl:choose>
                                         <xsl:when test="child::tei:lacunaStart">
                                         <xsl:text>[...</xsl:text>
-                                    </xsl:when>
-                                    
+                                    </xsl:when>                                     
                                     </xsl:choose>
-                                    
+                                    <!--<xsl:if test="tei:rdg[preceding::rdg[child::lacunaStart] and following::rdg[child::lacunaEnd]]">
+                                        <xsl:element name="span">
+                                            <xsl:attribute name="class">font-italic</xsl:attribute>
+                                            <xsl:attribute name="style">color:black;</xsl:attribute>
+                                            <xsl:text>lac.</xsl:text>
+                                            <xsl:value-of select="preceding::rdg[child::lacunaStart][1]/@wit"/>
+                                        </xsl:element>
+                                    </xsl:if>-->
                                 </xsl:element>
                             </xsl:element>
                             <xsl:text> </xsl:text>
@@ -359,7 +405,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">paradosis-line</xsl:attribute>
                             <xsl:element name="span">
-                                <xsl:attribute name="class">font-style-italic</xsl:attribute>
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:text>Paradosis</xsl:text>
                             </xsl:element>
                             <xsl:text> of </xsl:text>
@@ -2223,17 +2269,20 @@
                                 <xsl:text>lac.</xsl:text> 
                             </xsl:element>
                         </xsl:when>
-                        
-                        <xsl:when test="child::tei:lacunaEnd">
+                        <!-- Je vais devoir complexifier ça pour omissionEnd -->
+                        <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">
                             <xsl:text>...]</xsl:text>
                         </xsl:when>
                     </xsl:choose>
                     
                     <xsl:apply-templates/>
-                            <xsl:if test="child::tei:lacunaStart">
+                            <!-- Je vais devoir complexifier ça pour omissionStart -->
+                            <xsl:choose>
+                                <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">
                                 <xsl:text>[...</xsl:text>
-                            </xsl:if>
-                    <xsl:text> </xsl:text>
+                            </xsl:when>
+                            </xsl:choose>
+              
                     <xsl:if test="@*">
                         <xsl:if test="@wit">                       
                             <xsl:element name="span">
@@ -2267,7 +2316,7 @@
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">paradosis-line</xsl:attribute>
                                     <xsl:element name="span">
-                                        <xsl:attribute name="class">font-style-italic</xsl:attribute>
+                                        <xsl:attribute name="class">font-italic</xsl:attribute>
                                         <xsl:text>Paradosis</xsl:text>
                                     </xsl:element>
                                     <xsl:text> of </xsl:text>
