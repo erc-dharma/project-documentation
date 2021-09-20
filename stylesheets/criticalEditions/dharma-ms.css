@@ -537,7 +537,7 @@ a:hover, a i.fas:hover {
 .app-lem, .fake-lem{
     color:#336600;
 }
-.app-rdg {
+.app-rdg, .app-rdg *{
     color:#b38600;
 }
 
