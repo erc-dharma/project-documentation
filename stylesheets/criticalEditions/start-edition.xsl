@@ -2509,7 +2509,12 @@
                             <xsl:text>Title</xsl:text>
                         </xsl:element>
                         <xsl:text>: </xsl:text>
-                        <xsl:apply-templates select="//tei:title[@type='main']"/>
+                        <xsl:for-each select="//tei:title[@type='main']">
+                            <xsl:apply-templates/>
+                                <xsl:if test="following-sibling::tei:title[@type='main'][1]">
+                                    <xsl:text>, </xsl:text>
+                                </xsl:if> 
+                        </xsl:for-each>
                         <xsl:text>. </xsl:text>
                         <xsl:apply-templates select="//tei:title[@type='sub']"/>
                     </xsl:element>
