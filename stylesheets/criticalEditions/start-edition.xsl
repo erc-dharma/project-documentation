@@ -220,7 +220,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col</xsl:attribute>
+                <xsl:attribute name="class">col text-col</xsl:attribute>
                 <xsl:element name="p">
                     <xsl:apply-templates/>
                 </xsl:element>
@@ -473,6 +473,10 @@
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
             </xsl:attribute>
+            <xsl:attribute name="data-app">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            
             <!--<xsl:attribute name="tabindex">0</xsl:attribute>
             <xsl:attribute name="data-toggle">popover</xsl:attribute>
             <xsl:attribute name="data-html">true</xsl:attribute>
@@ -487,6 +491,7 @@
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
                 <xsl:apply-templates select="tei:lem"/>
+            
             <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
@@ -504,15 +509,16 @@
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
                 </xsl:attribute>
-                <xsl:attribute name="data-sort">
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]" format="00001"/>
+                <xsl:attribute name="data-app">
+                    <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                 <xsl:if test="not(ancestor-or-self::tei:lem)">
                     <xsl:text>(</xsl:text>
-            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-            <xsl:text>)</xsl:text>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                    <xsl:text>)</xsl:text>
                 </xsl:if>             
             </xsl:element>
+            
         </xsl:element>
       
            <!--<xsl:element name="span">
@@ -910,7 +916,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col</xsl:attribute><!-- testconteneur -->
+                <xsl:attribute name="class">col text-col</xsl:attribute><!-- testconteneur -->
                 <!--<xsl:if test="ancestor::tei:item">
                     <xsl:element name="div">
                         <xsl:attribute name="class">float-center</xsl:attribute>
@@ -1280,7 +1286,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col</xsl:attribute>
+                <xsl:attribute name="class">col text-col</xsl:attribute>
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
             <xsl:apply-templates/>
