@@ -204,6 +204,32 @@
         </xsl:element>
     </xsl:template>
     <!--  A ! -->
+    <!--  ab ! -->
+    <xsl:template match="tei:ab">
+        <xsl:if test="@type">
+            <xsl:element name="p">
+                <xsl:attribute name="class">float-center</xsl:attribute>
+                <xsl:element name="small">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">text-muted</xsl:attribute>
+                        <xsl:value-of select="@type"/>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:element>
+        </xsl:if>
+        <xsl:element name="div">
+            <xsl:attribute name="class">row mt-2</xsl:attribute>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col</xsl:attribute>
+                <xsl:element name="p">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:element>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
     <!--  add ! -->
     <xsl:template match="tei:add">
         <xsl:element name="a">
@@ -481,12 +507,12 @@
                 <xsl:attribute name="data-sort">
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]" format="00001"/>
                 </xsl:attribute>
-                <xsl:text>(</xsl:text>
+                <xsl:if test="not(ancestor-or-self::tei:lem)">
+                    <xsl:text>(</xsl:text>
             <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
             <xsl:text>)</xsl:text>
-                
+                </xsl:if>             
             </xsl:element>
-            
         </xsl:element>
       
            <!--<xsl:element name="span">
@@ -754,16 +780,10 @@
                 </xsl:choose>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-10</xsl:attribute>
+                <xsl:attribute name="class">col-11</xsl:attribute>
                 <xsl:apply-templates/>
             </xsl:element>
-            <!-- test to display the numbering of the apparatus -->
-            <xsl:if test="not(child::tei:div)">
-                <xsl:element name="div">
-                    <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
-                
-        </xsl:element>
-            </xsl:if>
+            
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
@@ -876,21 +896,21 @@
     </xsl:template>
     <!--  lg ! -->
     <xsl:template match="tei:lg">
+        <xsl:if test="@met">
+            <xsl:element name="p">
+                <xsl:attribute name="class">float-center</xsl:attribute>
+                <xsl:element name="small">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">text-muted</xsl:attribute>
+                        <xsl:value-of select="@met"/>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:element>
+        </xsl:if>
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">testconteneur col</xsl:attribute>
-                <xsl:if test="@met">
-                    <xsl:element name="div">
-                        <xsl:attribute name="class">float-center</xsl:attribute>
-                        <xsl:element name="small">
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">text-muted</xsl:attribute>
-                                <xsl:value-of select="@met"/>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
-                </xsl:if>
+                <xsl:attribute name="class">col</xsl:attribute><!-- testconteneur -->
                 <!--<xsl:if test="ancestor::tei:item">
                     <xsl:element name="div">
                         <xsl:attribute name="class">float-center</xsl:attribute>
@@ -912,6 +932,9 @@
                     </xsl:attribute>
                     <xsl:apply-templates/>
                 </xsl:element>
+            </xsl:element>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -1225,39 +1248,47 @@
         <xsl:variable name="p-num">
             <xsl:number level="single" format="1"/>
         </xsl:variable>
-        <xsl:element name="div">
-            <xsl:attribute name="class">text-container float-left</xsl:attribute>
-            <xsl:element name="span">
-                <xsl:attribute name="class">text-muted</xsl:attribute>
-                <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
-                    <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
-                    <xsl:text>.</xsl:text>
-                </xsl:if>
-                <xsl:if test="parent::tei:div[@type = 'dyad']">
-                    <xsl:value-of select="parent::tei:div[@type = 'dyad']/@n"/>
-                <xsl:text>.</xsl:text>
-                </xsl:if>
-                <xsl:if test="ancestor-or-self::tei:div[@type = 'interpolation']">
-                    <xsl:choose>
-                        <xsl:when test="ancestor-or-self::tei:div[@type = 'interpolation']/@n">
-                            <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/@n"/>
-                            <xsl:text>.</xsl:text>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[1]/@n"/>
-                            <xsl:text>*.</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    
-                    
-                </xsl:if>
-                <xsl:value-of select="$p-num"/>
-            </xsl:element>
-            </xsl:element>
-        <br/>
         <xsl:element name="p">
-            <xsl:attribute name="class">textContent</xsl:attribute>
+            <xsl:attribute name="class">float-center</xsl:attribute><!--text-container -->
+            <xsl:element name="small">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted</xsl:attribute>
+                    <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
+                        <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
+                        <xsl:text>.</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="parent::tei:div[@type = 'dyad']">
+                        <xsl:value-of select="parent::tei:div[@type = 'dyad']/@n"/>
+                        <xsl:text>.</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="ancestor-or-self::tei:div[@type = 'interpolation']">
+                        <xsl:choose>
+                            <xsl:when test="ancestor-or-self::tei:div[@type = 'interpolation']/@n">
+                                <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/@n"/>
+                                <xsl:text>.</xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[1]/@n"/>
+                                <xsl:text>*.</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:if>
+                    <xsl:value-of select="$p-num"/>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
+        <xsl:element name="div">
+            <xsl:attribute name="class">row mt-2</xsl:attribute>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:element name="p">
+            <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
             <xsl:apply-templates/>
+        </xsl:element>
+            </xsl:element>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+                </xsl:element>
         </xsl:element>
     </xsl:template>
     
