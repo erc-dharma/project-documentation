@@ -455,7 +455,7 @@ blockquote .plain-ref {
 }
 sup.sup {
     font-style:italic;
-    font-size:80%;
+    font-size:75%;
 }
 h1 {
     font-weight:700;
@@ -498,6 +498,10 @@ span.lem >a, .lem{
     color:#a34545;
 }
 
+.app span{
+        color: black;
+}
+
 #apparatus >a{
     color:#a34545;
 }
@@ -534,6 +538,11 @@ a:hover, a i.fas:hover {
 .lemma-line, .reading-line, .note-line {
     display:block;
 }
+
+.app-lem span{
+    color:#336600;
+}
+
 .app-lem, .fake-lem{
     color:#336600;
 }
