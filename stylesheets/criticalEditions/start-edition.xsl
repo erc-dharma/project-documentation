@@ -323,8 +323,11 @@
                                 </xsl:if>-->
                             </xsl:if>
                             <xsl:if test="tei:lem/@wit"> 
-                                <xsl:if test="tei:lem/@type='#absent_elsewhere'">
+                                <xsl:if test="tei:lem/@type='absent_elsewhere'">
                                     <xsl:text> only in </xsl:text>
+                                </xsl:if>
+                                <xsl:if test="tei:lem/@type='reformulated_elsewhere'">
+                                    <xsl:text> thus formulated in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
@@ -348,7 +351,7 @@
                 <!--  Variant readings ! -->
                 <xsl:if test="tei:rdg[fn:not(@type='paradosis')]">
                     <xsl:choose>
-                        <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@type='#absent_elsewhere'"/>
+                        <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@type='absent_elsewhere'"/>
                         <xsl:otherwise>
                             <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg">
@@ -2261,9 +2264,12 @@
                             </xsl:if>
                             
                         <xsl:if test="@wit">
-                            <xsl:if test="@type='#absent_elsewhere'">
+                            <xsl:if test="@type='absent_elsewhere'">
                                 <xsl:text>only in </xsl:text>
                                 </xsl:if>
+                            <xsl:if test="@type='reformulated_elsewhere'">
+                                <xsl:text>Thus formulated in </xsl:text>
+                            </xsl:if>
                               <xsl:element name="span">
                                   <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
@@ -2282,14 +2288,14 @@
                                 </xsl:call-template>
                             </xsl:if>
                         </xsl:if>
-                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg and not(@type='#absent_elsewhere')]">
+                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg and not(@type='absent_elsewhere')]">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
                 
                 <xsl:for-each select="tei:rdg">
                     <xsl:choose>
-                        <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@type='#absent_elsewhere'"/>
+                        <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@type='absent_elsewhere'"/>
                         <xsl:otherwise>
                             <xsl:if test="position()!=1">
                         <xsl:text>, </xsl:text>
