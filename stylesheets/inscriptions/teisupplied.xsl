@@ -6,7 +6,7 @@
                 exclude-result-prefixes="t EDF"
                 version="2.0">
 
-  <xsl:template match="t:supplied[@reason=('lost' , 'illegible')]">
+  <xsl:template match="t:supplied[@reason=('lost' , 'illegible')]" mode="#all">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="location" />
@@ -49,6 +49,9 @@
                 <xsl:text>[</xsl:text>
                 </xsl:element>
               </xsl:when>
+              <!--<xsl:when test="$parm-leiden-style = 'dharma' and ancestor-or-self::t:div[@type='translation']">
+                <xsl:text>[</xsl:text>
+              </xsl:when>-->
               <xsl:otherwise>
                 <xsl:text>[</xsl:text>
             </xsl:otherwise>
@@ -119,6 +122,9 @@
                <xsl:text>]</xsl:text>
                </xsl:element>
              </xsl:when>
+            <!-- <xsl:when test="$parm-leiden-style = 'dharma' and ancestor-or-self::t:div[@type='translation']">
+               <xsl:text>]</xsl:text>
+             </xsl:when>-->
              <xsl:otherwise>
                <xsl:text>]</xsl:text>
            </xsl:otherwise>
