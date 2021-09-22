@@ -8,8 +8,10 @@
     <xsl:output indent="yes" encoding="UTF-8" use-character-maps="all-languages"/>
     
     <!-- Transform ' to ’ (apostrophe) in all contextes -->
+    <!-- Transform U+01DD to be replaced  by U+0259 -->
     <xsl:character-map name="all-languages">
         <xsl:output-character character="'" string="’" />
+        <xsl:output-character character="ǝ" string="ə"/>
     </xsl:character-map>
     
     <!-- pattern to copy-paste
