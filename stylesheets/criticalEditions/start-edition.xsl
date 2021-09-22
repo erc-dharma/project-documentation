@@ -1182,6 +1182,16 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
+    <!-- locus -->
+    <xsl:template match="tei:locus">
+            <xsl:text>[</xsl:text>
+            <xsl:value-of select="@type"/>
+            <xsl:text> from </xsl:text>
+            <xsl:value-of select="@from"/>
+            <xsl:text> to </xsl:text>
+            <xsl:value-of select="@to"/>
+            <xsl:text>]</xsl:text>
+    </xsl:template>
     <!--  N ! -->
     <!--  name ! -->
     <xsl:template match="tei:name">
