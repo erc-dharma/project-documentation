@@ -220,26 +220,40 @@
     <!--  A ! -->
     <!--  add ! -->
     <xsl:template match="tei:add">
-        <xsl:element name="a">
+        <xsl:choose>
+            <xsl:when test="@place='right' or @place='left'">
+                <!--<xsl:text>in mg.</xsl:text>-->
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted float-left</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+                
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="a">
             <xsl:attribute name="class">ed-insertion</xsl:attribute>
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
-            <xsl:attribute name="title">Editorial insertion
-            <xsl:if test="@place"> 
+            <xsl:attribute name="title">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
             <xsl:choose>
                 <xsl:when test="@place='above'">
-                    <xsl:text> above</xsl:text>
+                    <xsl:text>suprascr.</xsl:text>
                 </xsl:when>
                 <xsl:when test="@place='below'">
-                    <xsl:text> below</xsl:text>
+                    <xsl:text>subscr.</xsl:text>
                 </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>.</xsl:text>
+                </xsl:otherwise>
             </xsl:choose>
-                <xsl:text> the line.</xsl:text>
-            </xsl:if>
+                </xsl:element>
             </xsl:attribute>
             <xsl:apply-templates/>
-        </xsl:element>
+        </xsl:element></xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <!--  app ! -->
     <xsl:template match="tei:app" mode="modals">
