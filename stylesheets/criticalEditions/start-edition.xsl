@@ -227,7 +227,7 @@
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-1 apparat-col text-right</xsl:attribute>
+                <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -970,7 +970,7 @@
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-1 apparat-col text-right</xsl:attribute>
+                <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -1338,7 +1338,7 @@
         </xsl:element>
             </xsl:element>
                 <xsl:element name="div">
-                    <xsl:attribute name="class">col-1 apparat-col text-right</xsl:attribute>
+                    <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
                 </xsl:element>
         </xsl:element>
     </xsl:template>
