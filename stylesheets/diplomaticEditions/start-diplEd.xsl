@@ -218,6 +218,21 @@
         </xsl:element>
     </xsl:template>
     <!--  A ! -->
+    <!--  ab ! -->
+    <xsl:template match="tei:ab">
+        <xsl:element name="div">
+            <xsl:attribute name="class">row mt-2</xsl:attribute>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col text-col</xsl:attribute>
+                <xsl:element name="p">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:element>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
     <!--  add ! -->
     <xsl:template match="tei:add">
         <xsl:choose>
@@ -421,46 +436,63 @@
         </span>
     </xsl:template>
     
-    <xsl:template match="tei:app[not(ancestor-or-self::tei:lem)]">
-        <xsl:param name="line-break"/>
+    <xsl:template match="tei:app[not(parent::tei:listApp)]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
-      
-           <xsl:element name="span">
-           <xsl:attribute name="class">lem-tooltipApp</xsl:attribute>
-           <!--  <xsl:element name="div">
-           <xsl:attribute name="class">float-right</xsl:attribute>-->
-           <xsl:element name="span">
-               <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
-               <xsl:element name="a">
-                   <xsl:attribute name="tabindex">0</xsl:attribute>
-                   <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                   <xsl:attribute name="data-html">true</xsl:attribute>
-                   <xsl:attribute name="data-target">
-                       <xsl:value-of select="generate-id()"/>
-                   </xsl:attribute>
-                   <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                       <xsl:value-of select="$app-num"/></xsl:attribute>
-                   <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:choice[child::tei:sic and child::tei:corr]"/></xsl:attribute>
-                   <xsl:attribute name="id">
-                       <xsl:text>from-app-</xsl:text>
-                       <xsl:value-of select="$app-num"/>
-                   </xsl:attribute>
-                           <xsl:text>(</xsl:text>
-                   <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
-                           <xsl:text>)</xsl:text>
-               </xsl:element>
-           </xsl:element>
-           
-           <!-- Version without the tooltip display in the body-->
-                   <xsl:element name="span"> 
-               <xsl:attribute name="class">lem</xsl:attribute>
-               <xsl:apply-templates select="tei:lem"/>
-           </xsl:element>
-           </xsl:element>
+        
+        <xsl:element name="span">
+            <xsl:attribute name="class">
+                <xsl:text>lem</xsl:text>
+            </xsl:attribute>
+            <xsl:attribute name="data-app">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            
+            <!--<xsl:attribute name="tabindex">0</xsl:attribute>
+            <xsl:attribute name="data-toggle">popover</xsl:attribute>
+            <xsl:attribute name="data-html">true</xsl:attribute>
+            <xsl:attribute name="data-target">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                <xsl:value-of select="$app-num"/></xsl:attribute>
+            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:text>from-app-</xsl:text>
+                <xsl:value-of select="$app-num"/>
+            </xsl:attribute>-->
+            <xsl:apply-templates select="tei:lem"/>
+            
+            <xsl:element name="a">
+                <xsl:attribute name="class">
+                    <xsl:text>move-to-right</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                <xsl:attribute name="data-html">true</xsl:attribute>
+                <xsl:attribute name="data-target">
+                    <xsl:value-of select="generate-id()"/>
+                </xsl:attribute>
+                <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                    <xsl:value-of select="$app-num"/></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                <xsl:attribute name="id">
+                    <xsl:text>from-app-</xsl:text>
+                    <xsl:value-of select="$app-num"/>
+                </xsl:attribute>
+                <xsl:attribute name="data-app">
+                    <xsl:value-of select="generate-id()"/>
+                </xsl:attribute>
+                <xsl:if test="not(ancestor-or-self::tei:lem)">
+                    <xsl:text>(</xsl:text>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                    <xsl:text>)</xsl:text>
+                </xsl:if>             
+            </xsl:element>
+            
+        </xsl:element>
     </xsl:template>
     <!--  B ! -->
     <xsl:template match="tei:bibl">
@@ -1726,7 +1758,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"/>
+        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
     </xsl:template>
     
     <!-- Templates for Apparatus at the botton of the page -->
