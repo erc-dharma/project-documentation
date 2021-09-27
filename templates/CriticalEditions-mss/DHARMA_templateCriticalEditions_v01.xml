@@ -153,6 +153,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
+			<change who="part:axja" when="2021-09-27">Adding the colophon in msItem of witness</change>
 			<change who="part:axja" when="2021-09-08">Adding the interpreation element in editorialDecl and importing the paragraph about asterisk</change>
 			<change who="part:argr" when="2020-11-27" status="draft">Modifications of the template</change>
 			<change who="part:axja" when="2020-01-06" status="draft">Creation of the template</change>
