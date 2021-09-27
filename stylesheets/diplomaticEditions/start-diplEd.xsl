@@ -225,7 +225,19 @@
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
-            <xsl:attribute name="title">Editorial insertion.</xsl:attribute>
+            <xsl:attribute name="title">Editorial insertion
+            <xsl:if test="@place"> 
+            <xsl:choose>
+                <xsl:when test="@place='above'">
+                    <xsl:text> above</xsl:text>
+                </xsl:when>
+                <xsl:when test="@place='below'">
+                    <xsl:text> below</xsl:text>
+                </xsl:when>
+            </xsl:choose>
+                <xsl:text> the line.</xsl:text>
+            </xsl:if>
+            </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
