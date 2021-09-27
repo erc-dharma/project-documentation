@@ -61,6 +61,8 @@
 								<msItem>
 									<author>Śāntarakṣita</author>
 									<title>Vipañcitārthā</title>
+									<!-- You can also add a colophon if needed -->
+									<!--<colophon></colophon> -->
 								</msItem>
 							</msContents>
 							<physDesc>
