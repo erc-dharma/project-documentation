@@ -2376,7 +2376,7 @@
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
             <xsl:element name="span">
-                <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
+                <xsl:attribute name="class">tooltipApp</xsl:attribute>
                 <xsl:element name="a">
                     <xsl:attribute name="tabindex">0</xsl:attribute>
                     <xsl:attribute name="data-toggle">popover</xsl:attribute>
