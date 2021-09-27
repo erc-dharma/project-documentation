@@ -227,7 +227,7 @@
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+                <xsl:attribute name="class">col-1 apparat-col text-right</xsl:attribute>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -970,7 +970,7 @@
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+                <xsl:attribute name="class">col-1 apparat-col text-right</xsl:attribute>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -995,7 +995,7 @@
     <!--  listApp ! -->
     <xsl:template match="tei:listApp[@type = 'parallels']">
         <xsl:element name="div">
-            <xsl:attribute name="class">parallels</xsl:attribute>
+            <xsl:attribute name="class">parallels col</xsl:attribute>
             <xsl:if test="descendant::tei:note"> 
                 <xsl:element name="div">
                     <xsl:attribute name="class">card</xsl:attribute>
@@ -1338,7 +1338,7 @@
         </xsl:element>
             </xsl:element>
                 <xsl:element name="div">
-                    <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
+                    <xsl:attribute name="class">col-1 apparat-col text-right</xsl:attribute>
                 </xsl:element>
         </xsl:element>
     </xsl:template>
