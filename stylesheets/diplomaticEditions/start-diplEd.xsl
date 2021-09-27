@@ -218,33 +218,8 @@
         </xsl:element>
     </xsl:template>
     <!--  A ! -->
-    <!--  ab ! -->
-    <xsl:template match="tei:ab">
-        <xsl:element name="div">
-            <xsl:attribute name="class">row mt-2</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col text-col</xsl:attribute>
-                <xsl:element name="p">
-                    <xsl:apply-templates/>
-                </xsl:element>
-            </xsl:element>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-1 apparat-col</xsl:attribute>
-            </xsl:element>
-        </xsl:element>
-    </xsl:template>
     <!--  add ! -->
     <xsl:template match="tei:add">
-        <xsl:choose>
-            <xsl:when test="@place='right' or @place='left'">
-                <!--<xsl:text>in mg.</xsl:text>-->
-                <xsl:element name="span">
-                    <xsl:attribute name="class">text-muted float-left</xsl:attribute>
-                    <xsl:apply-templates/>
-                </xsl:element>
-                
-            </xsl:when>
-            <xsl:otherwise>
                 <xsl:element name="a">
             <xsl:attribute name="class">ed-insertion</xsl:attribute>
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
@@ -260,6 +235,9 @@
                 <xsl:when test="@place='below'">
                     <xsl:text>subscr.</xsl:text>
                 </xsl:when>
+                <xsl:when test="@place='right' or @place='left'">
+                    <xsl:text>in mg.</xsl:text>
+                </xsl:when>
                 <xsl:otherwise>
                     <xsl:text>.</xsl:text>
                 </xsl:otherwise>
@@ -267,8 +245,7 @@
                 </xsl:element>
             </xsl:attribute>
             <xsl:apply-templates/>
-        </xsl:element></xsl:otherwise>
-        </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <!--  app ! -->
     <xsl:template match="tei:app" mode="modals">
@@ -441,35 +418,8 @@
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
-        </xsl:variable>
-        
-        <xsl:element name="span">
-            <xsl:attribute name="class">
-                <xsl:text>lem</xsl:text>
-            </xsl:attribute>
-            <xsl:attribute name="data-app">
-                <xsl:value-of select="generate-id()"/>
-            </xsl:attribute>
-            
-            <!--<xsl:attribute name="tabindex">0</xsl:attribute>
-            <xsl:attribute name="data-toggle">popover</xsl:attribute>
-            <xsl:attribute name="data-html">true</xsl:attribute>
-            <xsl:attribute name="data-target">
-                <xsl:value-of select="generate-id()"/>
-            </xsl:attribute>
-            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                <xsl:value-of select="$app-num"/></xsl:attribute>
-            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
-            <xsl:attribute name="id">
-                <xsl:text>from-app-</xsl:text>
-                <xsl:value-of select="$app-num"/>
-            </xsl:attribute>-->
-            <xsl:apply-templates select="tei:lem"/>
-            
+        </xsl:variable>   
             <xsl:element name="a">
-                <xsl:attribute name="class">
-                    <xsl:text>move-to-right</xsl:text>
-                </xsl:attribute>
                 <xsl:attribute name="data-toggle">popover</xsl:attribute>
                 <xsl:attribute name="data-html">true</xsl:attribute>
                 <xsl:attribute name="data-target">
@@ -485,14 +435,21 @@
                 <xsl:attribute name="data-app">
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
-                <xsl:if test="not(ancestor-or-self::tei:lem)">
-                    <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-                    <xsl:text>)</xsl:text>
-                </xsl:if>             
+                
+                <xsl:element name="span">
+                    <xsl:attribute name="class">
+                        <xsl:text>lem</xsl:text>
+                    </xsl:attribute>
+                <xsl:apply-templates select="tei:lem"/>
+                    <xsl:if test="not(ancestor-or-self::tei:lem)">
+                        <xsl:element name="sup">
+                            <xsl:text>(</xsl:text>
+                        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
+                        <xsl:text>)</xsl:text>
+                        </xsl:element>
+                    </xsl:if>
+            </xsl:element>   
             </xsl:element>
-            
-        </xsl:element>
     </xsl:template>
     <!--  B ! -->
     <xsl:template match="tei:bibl">
