@@ -126,8 +126,7 @@
                         </xsl:element>
                         
                  <xsl:apply-templates select="./tei:text"/>
-            <xsl:call-template name="colophon"/>
-                <xsl:apply-templates select=".//tei:app" mode="modals"/>  
+            <xsl:apply-templates select=".//tei:app | .//tei:lacunaStart" mode="modals"/>  
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-translation"/>
@@ -380,26 +379,12 @@
                                                      <xsl:text>lac.</xsl:text> 
                                                  </xsl:element>
                                              </xsl:when>
-                                             <xsl:when test="child::tei:lacunaEnd"/>
-                                                 
-                                             <xsl:when test="child::tei:span[@type='omissionEnd']">
-                                                 <xsl:text>...]</xsl:text>
-                                             </xsl:when>
-                                            </xsl:choose>
-                                    
+                                             <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']"/>
+                                            </xsl:choose>                            
                                     <xsl:apply-templates/>
                                     <xsl:choose>
-                                        <xsl:when test="child::tei:lacunaStart"/>
-                                       
-                                        <xsl:when test="child::tei:span[@type='omissionStart']">
-                                            <xsl:text>[...</xsl:text>
-                                        </xsl:when>
-                                        <!--<xsl:when test="child::tei:lacunaStart/following::tei:app[descendant::tei:lacunaEnd[1]]">
-                                            <xsl:element name="span">
-                                                <xsl:attribute name="class">font-italic</xsl:attribute>
-                                                <xsl:text>lac.</xsl:text> 
-                                            </xsl:element>
-                                        </xsl:when>-->
+                                        <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']"/>
+                                        
                                     </xsl:choose>
                                 </xsl:element>
                             </xsl:element>
@@ -463,6 +448,21 @@
                 </xsl:if>           
             </xsl:element>
         </xsl:variable>
+        <!--<xsl:variable name="apparatus-2">
+            <xsl:variable name="lacuna-start">
+                <xsl:if test="$apparatus/child::tei:rdg/tei:lacunaStart">
+                    <xsl:value-of select="$apparatus/tei:rdg[child::tei:lacunaStart]/following-sibling::*"/>
+                </xsl:if>
+            </xsl:variable>
+            <xsl:variable name="lacuna-end">
+                <xsl:if test="$apparatus/child::tei:rdg/tei:lacunaEnd">
+                    <xsl:value-of select="$apparatus/tei:rdg[child::tei:lacunaEnd]/preceding-sibling::*"/>
+                </xsl:if>
+            </xsl:variable>
+            <xsl:if test="$lacuna-start[count(.|$lacuna-end) = count($lacuna-end)]">
+                <xsl:text>lacuna Test</xsl:text>
+            </xsl:if>
+        </xsl:variable>-->
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus"/>
         </span>
@@ -756,7 +756,7 @@
                 </xsl:if>
     </xsl:template>
     <!-- colophon -->
-    <xsl:template name="colophon">
+   <!-- <xsl:template name="colophon">
         <xsl:if test="//tei:colophon">
             <xsl:element name="hr"/>
         <xsl:element name="div">
@@ -783,7 +783,7 @@
                 </xsl:for-each>
             </xsl:element>
         </xsl:element></xsl:if>
-    </xsl:template>
+    </xsl:template>-->
     <!--  D ! -->
     <!--  del ! -->
     <xsl:template match="tei:del">
@@ -939,7 +939,14 @@
     </xsl:template>
     <!-- lacunaStart -->
     <xsl:template match="tei:lacunaStart">
-        <xsl:text>[...</xsl:text>
+        <xsl:choose>
+            <xsl:when test="./ancestor-or-self::tei:app/following-sibling::node()[following-sibling::tei:LacunaEnd]">
+                <xsl:text>test</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>[...</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>       
     </xsl:template>
     <!--  lb ! -->
     <xsl:template match="tei:lb">
@@ -1135,14 +1142,14 @@
                                                 </xsl:if>
                                     </xsl:if>
                                     <xsl:element name="ul">
-                                    <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem//text()">
+                                        <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem[child::*/text()]">
                                         <xsl:element name="li">
                                             <xsl:element name="b">
                                                 <xsl:text>Content</xsl:text>
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
                                             <xsl:element name="ul">
-                                                <xsl:for-each select="./tei:msDesc/tei:msContents/tei:msItem">
+                                                <xsl:for-each select="./tei:msDesc/tei:msContents/tei:msItem[child::tei:locus|child::tei:author|child::tei:title/text()]">
                                                     <xsl:element name="li">
                                                     <xsl:if test="./tei:locus">
                                                         <xsl:apply-templates select="./tei:locus"/>
@@ -1155,12 +1162,24 @@
                                                     <xsl:if test="./tei:author">
                                                         <xsl:text> by </xsl:text>
                                                         <xsl:apply-templates select="./tei:author"/>
-                                                    </xsl:if>   
-                                                        <xsl:if test="./tei:colophon">
-                                                            <xsl:apply-templates select="./tei:colophon"/>
-                                                        </xsl:if>
+                                                    </xsl:if>                                                        
                                                 </xsl:element> 
-                                                    
+                                                </xsl:for-each>
+                                            </xsl:element>
+                                        </xsl:element>
+                                        <xsl:element name="li">
+                                            <xsl:element name="b">
+                                                <xsl:text>Colophon</xsl:text>
+                                            </xsl:element>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:element name="ul">
+                                                <xsl:for-each select="./tei:msDesc/tei:msContents/tei:msItem[child::tei:colophon/text()]">
+                                                <xsl:element name="li">
+                                                    <xsl:element name="span">
+                                                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                                            <xsl:apply-templates select="./tei:colophon"/>
+                                                    </xsl:element>
+                                                </xsl:element>
                                                 </xsl:for-each>
                                             </xsl:element>
                                         </xsl:element>
@@ -1593,6 +1612,17 @@
         <xsl:choose>
             <xsl:when test="@type='binding-hole'">
                 <xsl:text>◯</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    <!-- span ! -->
+    <xsl:template match="tei:span">
+        <xsl:choose>
+            <xsl:when test="@type='omissionEnd'">
+                <xsl:text>...]</xsl:text>
+            </xsl:when>
+            <xsl:when test="@type='omissionStart'">
+                <xsl:text>[...</xsl:text>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
@@ -2376,18 +2406,14 @@
                                 <xsl:text>lac.</xsl:text> 
                             </xsl:element>
                         </xsl:when>
-                        <!-- Je vais devoir complexifier ça pour omissionEnd -->
-                        <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">
-                            <xsl:text>...]</xsl:text>
-                        </xsl:when>
+                        <xsl:when test="child::tei:lacunaEnd"/>
+                        <xsl:when test="child::tei:span[@type='omissionEnd']"/>
                     </xsl:choose>
                     
                     <xsl:apply-templates/>
-                            <!-- Je vais devoir complexifier ça pour omissionStart -->
                             <xsl:choose>
-                                <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">
-                                <xsl:text>[...</xsl:text>
-                            </xsl:when>
+                                <xsl:when test="child::tei:lacunaStart"/> 
+                                <xsl:when test="child::tei:span[@type='omissionStart']"/>
                             </xsl:choose>
               
                     <xsl:if test="@*">
