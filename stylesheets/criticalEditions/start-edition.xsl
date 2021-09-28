@@ -380,16 +380,26 @@
                                                      <xsl:text>lac.</xsl:text> 
                                                  </xsl:element>
                                              </xsl:when>
-                                             <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">
+                                             <xsl:when test="child::tei:lacunaEnd"/>
+                                                 
+                                             <xsl:when test="child::tei:span[@type='omissionEnd']">
                                                  <xsl:text>...]</xsl:text>
                                              </xsl:when>
                                             </xsl:choose>
                                     
                                     <xsl:apply-templates/>
                                     <xsl:choose>
-                                        <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">
-                                        <xsl:text>[...</xsl:text>
-                                    </xsl:when>                                     
+                                        <xsl:when test="child::tei:lacunaStart"/>
+                                       
+                                        <xsl:when test="child::tei:span[@type='omissionStart']">
+                                            <xsl:text>[...</xsl:text>
+                                        </xsl:when>
+                                        <!--<xsl:when test="child::tei:lacunaStart/following::tei:app[descendant::tei:lacunaEnd[1]]">
+                                            <xsl:element name="span">
+                                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                                                <xsl:text>lac.</xsl:text> 
+                                            </xsl:element>
+                                        </xsl:when>-->
                                     </xsl:choose>
                                 </xsl:element>
                             </xsl:element>
@@ -923,6 +933,14 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    <!-- lacunaEnd -->
+    <xsl:template match="tei:lacunaEnd">
+            <xsl:text>...]</xsl:text>
+    </xsl:template>
+    <!-- lacunaStart -->
+    <xsl:template match="tei:lacunaStart">
+        <xsl:text>[...</xsl:text>
+    </xsl:template>
     <!--  lb ! -->
     <xsl:template match="tei:lb">
         <xsl:element name="span">
@@ -1357,7 +1375,7 @@
                 <xsl:with-param name="string" select="@edRef"/>
             </xsl:call-template>-->
               <xsl:value-of select="substring-after(@edRef, '#')"/>
-                    <xsl:text> </xsl:text>
+                    <!--<xsl:text> </xsl:text>-->
                 <xsl:value-of select="@n"/>
         </xsl:element>
             </xsl:otherwise>
