@@ -126,7 +126,7 @@
                         </xsl:element>
                         
                  <xsl:apply-templates select="./tei:text"/>
-            <xsl:apply-templates select=".//tei:app | .//tei:lacunaStart" mode="modals"/>  
+            <xsl:apply-templates select=".//tei:app" mode="modals"/>  
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-translation"/>
@@ -2523,7 +2523,6 @@
 
         <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml
         </xsl:variable>
-       
         <xsl:element name="ul">
             <xsl:attribute name="class">list-unstyled</xsl:attribute>
             <xsl:for-each select="descendant-or-self::tei:note">
@@ -2532,37 +2531,26 @@
                         <xsl:when test="@*">
                             <xsl:variable name="soughtMS" select="substring-before(substring-after(@*, 'txt:'), '_')"/>
                             <xsl:variable name="refMS" select="substring-after(@*, '_')"/>
-                            <xsl:element name="blockquote">
-                        <xsl:attribute name="class">blockquote text-center</xsl:attribute>
-                        <xsl:element name="p">
-                            <xsl:attribute name="class">mb-0</xsl:attribute>
-                            <xsl:apply-templates/>
-                        </xsl:element>
-                        <xsl:element name="footer">
-                            <xsl:attribute name="class">blockquote-footer</xsl:attribute>
-                            <xsl:element name="cite">
-                                <xsl:choose>
-                                    <xsl:when test="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]">
-                                        <xsl:element name="a">
-                                            <xsl:attribute name="href">
-                                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]/child::tei:ptr[1]/@target"/>
-                                            </xsl:attribute>
+                            <xsl:choose>
+                                <xsl:when test="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]">
+                                    <xsl:element name="a">
+                                        <xsl:attribute name="href">
+                                            <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]/child::tei:ptr[1]/@target"/>
+                                        </xsl:attribute>
                                         <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]/child::tei:abbr[@type='siglum']"/>
-                                            <xsl:text> </xsl:text>
-                                            <xsl:value-of select="$refMS"/>
-                                        </xsl:element>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:value-of select="replace(descendant-or-self::tei:note/@*, 'txt:', '')"/></xsl:otherwise></xsl:choose>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
+                                        <xsl:text> </xsl:text>
+                                        <xsl:value-of select="$refMS"/>
+                                    </xsl:element>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="replace(descendant-or-self::tei:note/@*, 'txt:', '')"/>
+                                    <xsl:text> </xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                            <xsl:apply-templates/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:element name="p">
-                                <xsl:attribute name="class">mb-0</xsl:attribute>
                                 <xsl:apply-templates/>
-                            </xsl:element>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:element>
