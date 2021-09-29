@@ -2531,6 +2531,12 @@
                         </xsl:if>
         <xsl:element name="ul">
             <xsl:attribute name="class">list-unstyled</xsl:attribute>
+            <xsl:if test="descendant-or-self::tei:lem">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:apply-templates select="descendant-or-self::tei:lem"/>
+                </xsl:element>
+            </xsl:if>
             <xsl:for-each select="descendant-or-self::tei:note">
                 <xsl:element name="li">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
