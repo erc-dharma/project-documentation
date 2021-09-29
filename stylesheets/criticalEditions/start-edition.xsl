@@ -927,10 +927,11 @@
     <xsl:template match="tei:l">
           <xsl:element name="span">
             <xsl:attribute name="class">
-                <xsl:text>l translit </xsl:text>
+                <xsl:text>l translit</xsl:text> 
+                <xsl:text> </xsl:text>
                 <xsl:value-of select="$script"/>
             </xsl:attribute>
-            <xsl:apply-templates/>
+            <xsl:apply-templates/>      
         </xsl:element>
     </xsl:template>
     <!-- lacunaEnd -->
@@ -987,11 +988,12 @@
                     <xsl:attribute name="class">
                         <xsl:text>lg</xsl:text>
                     <xsl:if test="@met='anuṣṭubh'"><xsl:text> anustubh</xsl:text></xsl:if>
+                    <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"><xsl:text> omitted</xsl:text></xsl:if>
                     </xsl:attribute>
                     <xsl:attribute name="id">
                         <xsl:value-of select="@xml:id"/>
                     </xsl:attribute>
-                    <xsl:apply-templates/>
+                        <xsl:apply-templates/>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
@@ -1649,7 +1651,7 @@
             <xsl:attribute name="data-placement">top</xsl:attribute>
             <xsl:attribute name="title">Supplied by the editor.</xsl:attribute>
             <xsl:choose>
-                <xsl:when test="@reason='omitted'">
+                <xsl:when test="@reason='omitted' and not(child::tei:lg)">
                     <xsl:element name="span">
                         <xsl:attribute name="class">omitted</xsl:attribute>
                     <xsl:apply-templates/>
