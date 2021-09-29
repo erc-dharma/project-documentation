@@ -770,7 +770,10 @@ p{
 
 .card{
     font-size: small;
-    width: 80%;
+}
+
+.card-body{
+    font-size: small;
 }
 
 .parallel-text{
