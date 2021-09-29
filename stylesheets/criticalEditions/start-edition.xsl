@@ -1023,20 +1023,19 @@
             <xsl:attribute name="class">parallels col</xsl:attribute>
             <xsl:if test="descendant::tei:note"> 
                 <xsl:element name="div">
-                    <xsl:attribute name="class">card</xsl:attribute>
+                    <xsl:attribute name="class">card h-80</xsl:attribute>
                     <xsl:element name="div">
                         <xsl:attribute name="class">card-header</xsl:attribute>
-                        <xsl:element name="h5">
-                            <xsl:attribute name="class">mb-0</xsl:attribute>
                             <xsl:element name="button">
                                 <xsl:attribute name="class">btn btn-link</xsl:attribute>
                                 <xsl:attribute name="data-toggle">collapse</xsl:attribute>
                                 <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
                                 <xsl:attribute name="aria-expanded">false</xsl:attribute>
                                 <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                                <xsl:text>Parallels</xsl:text>
+                                <xsl:element name="small">
+                                    <xsl:text>Parallels</xsl:text>
+                                </xsl:element>
                             </xsl:element>
-                        </xsl:element>
                     </xsl:element>
                     
                     <xsl:element name="div">
@@ -2041,7 +2040,7 @@
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
             </meta>
         </head>
@@ -2523,10 +2522,18 @@
 
         <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml
         </xsl:variable>
+                    <xsl:for-each select="descendant-or-self::tei:app">             
+                        <xsl:if test="@type">
+                            <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        <xsl:value-of select="@type"/>
+                        </xsl:element>
+                        </xsl:if>
         <xsl:element name="ul">
             <xsl:attribute name="class">list-unstyled</xsl:attribute>
             <xsl:for-each select="descendant-or-self::tei:note">
                 <xsl:element name="li">
+                    <xsl:attribute name="class">text-muted</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="@*">
                             <xsl:variable name="soughtMS" select="substring-before(substring-after(@*, 'txt:'), '_')"/>
@@ -2547,15 +2554,22 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            <xsl:apply-templates/>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">parallel-text</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
                         </xsl:when>
                         <xsl:otherwise>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">parallel-text</xsl:attribute>
                                 <xsl:apply-templates/>
+                            </xsl:element>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:element>
             </xsl:for-each>
         </xsl:element>
+                    </xsl:for-each>
     </xsl:template>
     
     <!-- lem: render the compound in the apparatus entries -->
