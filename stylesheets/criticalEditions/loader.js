@@ -31,6 +31,11 @@ $(document).ready(function() {
         $(this).parents('div').next('.apparat-col').append(this);
     }); 
 });
+$(document).ready(function() {
+    $('.move-to-right').each(function() {
+        $(this).prev('div').children('.apparat-col').append(this);
+    }); 
+});
 
 /* Highlighting function in JQuery */
 $('.move-to-right').on({
