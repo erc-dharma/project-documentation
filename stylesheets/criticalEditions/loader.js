@@ -26,17 +26,25 @@ $(function () {
 /* next sibling => .next(); */
 /* JS working */
 
+/* move the main apparatus notes */
 $(document).ready(function() {
     $('.move-to-right').each(function() {
         $(this).parents('div').next('.apparat-col').append(this);
     }); 
 });
+
+/* move the note for whole paragraph */
 $(document).ready(function() {
     $('.move-to-right').each(function() {
         $(this).prev('div').children('.apparat-col').append(this);
     }); 
 });
-
+/* move sub into the previous <a> element of siglum */
+$(document).ready(function() {
+    $('sub').each(function() {
+        $(this).prev('a').append(this);
+    }); 
+});
 /* Highlighting function in JQuery */
 $('.move-to-right').on({
   mouseenter: function () {
