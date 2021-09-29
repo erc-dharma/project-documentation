@@ -1020,7 +1020,14 @@
     <!--  listApp ! -->
     <xsl:template match="tei:listApp[@type = 'parallels']">
         <xsl:element name="div">
-            <xsl:attribute name="class">parallels col</xsl:attribute>
+            <xsl:attribute name="class">parallels
+             <xsl:choose>
+                 <xsl:when test="ancestor::tei:p | ancestor::tei:ab"/>
+                 <xsl:otherwise>
+                     <xsl:text>col-10</xsl:text>
+                 </xsl:otherwise>
+             </xsl:choose>
+            </xsl:attribute>
             <xsl:if test="descendant::tei:note"> 
                 <xsl:element name="div">
                     <xsl:attribute name="class">card h-80</xsl:attribute>
