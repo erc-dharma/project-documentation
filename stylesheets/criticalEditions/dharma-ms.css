@@ -767,3 +767,8 @@ p{
   left: 35px;
   max-width: 96%;
 }
+
+.card{
+    font-size: small;
+    width: 80%;
+}
