@@ -37,7 +37,7 @@
 }
 body{
     background-color:#eeeeee;
-    font-family:"Noto Serif";
+    font-family:"IndUni-H";
     height:100%;
     width: 100%;
     position: absolute;
@@ -299,6 +299,7 @@ ul.sgt-index {
   padding-left:2rem;
   /*text-indent:-2rem;*/
 }
+
 .lg .l+.lg .l:last-child {
   display:inline-block;
 }
@@ -309,6 +310,7 @@ ul.sgt-index {
   content: "\A\0000a0\0000a0" !important;
   white-space:pre;
 }
+
 .verse_offset {
   content: "\00a0";
   width:180px;
