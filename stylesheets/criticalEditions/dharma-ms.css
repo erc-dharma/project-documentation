@@ -781,3 +781,17 @@ p{
 .parallel-text{
     color: black;
 }
+
+.supsub sup+sub {
+    position: relative;
+    display: block;
+    right: -25px; 
+    top: -10px
+    
+}
+
+
+.supsub {
+    display: inline-block;
+    vertical-align: middle;
+}
