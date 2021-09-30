@@ -306,7 +306,7 @@
           </if>
           <else-if variable="issue">
             <group delimiter=" " prefix=", ">
-              <text term="issue" form="short"/>
+              <!--<text term="issue" form="short"/>-->
               <text variable="issue"/>
               <date variable="issued" prefix="(" suffix=")">
                 <date-part name="month"/>
