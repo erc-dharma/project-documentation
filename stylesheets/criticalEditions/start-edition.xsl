@@ -330,7 +330,8 @@
                                     <xsl:text> thus formulated in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
+                                    <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
+                                    </xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -390,7 +391,7 @@
                             </xsl:element>
                             <xsl:text> </xsl:text>
                             <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
+                                <xsl:attribute name="class">font-weight-bold <xsl:if test="following-sibling::*[local-name()='witDetail'] or ./@varSeq"> supsub</xsl:if></xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="./@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -2365,7 +2366,7 @@
                                 <xsl:text>Thus formulated in </xsl:text>
                             </xsl:if>
                               <xsl:element name="span">
-                                  <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
+                                  <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -2422,7 +2423,7 @@
                     <xsl:if test="@*">
                         <xsl:if test="@wit">                       
                             <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold supsub</xsl:attribute>
+                                <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
                                     <xsl:with-param name="string" select="@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -2716,14 +2717,14 @@
                     </xsl:attribute>
                     <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp or parent::tei:term)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/></xsl:attribute>
                     <xsl:attribute name="id">
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
                     <xsl:choose>
-                        <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:lem]"/>
                         <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:listApp]"/>
+                        <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:term]"/>
                         <xsl:otherwise>
                             <xsl:text>(</xsl:text>
                             <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
