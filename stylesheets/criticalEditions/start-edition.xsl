@@ -2046,7 +2046,7 @@
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
                 <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
+               <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
     </xsl:template>
