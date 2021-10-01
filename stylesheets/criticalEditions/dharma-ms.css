@@ -37,7 +37,8 @@
 }
 body{
     background-color:#eeeeee;
-    font-family:"IndUni-P";
+    font-family:"IndUni-C", "Noto Serif";
+    font-size: medium;
     height:100%;
     width: 100%;
     position: absolute;
@@ -532,7 +533,7 @@ a:hover, a i.fas:hover {
 }
 
 .popover-body{
-        font-family:"Noto Serif";
+        font-family:"IndUni-C", "Noto Serif";
 }
 .popover-content {
     display:none;
