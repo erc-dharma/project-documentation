@@ -37,7 +37,7 @@
 }
 body{
     background-color:#eeeeee;
-    font-family:"IndUni-H";
+    font-family:"IndUni-P";
     height:100%;
     width: 100%;
     position: absolute;
@@ -786,12 +786,11 @@ p{
     position: relative;
     display: block;
     right: -25px; 
-    top: -10px
+    top: -7px
     
 }
 
-
 .supsub {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
 }
