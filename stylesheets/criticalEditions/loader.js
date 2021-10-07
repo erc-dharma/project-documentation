@@ -81,14 +81,15 @@ $(document).ready(function(){
 $(document).ready(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
     $( ".lacunaStart" ).each(function() {
-        var newRdg =$('<br/><span class="app-rdg"><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span></span>')
+        var newRdg =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu textuel - nodetype 3 s"assure qu'il s'agit bien d'une chaîne de caractère  */
-        var siglum= $(this).find(".siglum:first").contents().clone().filter(function(){
-                return this.nodeType === 3;})     
+        var siglum= $(this).find(".siglum:first").contents().clone().wrap( '<span class="font-weight-bold "><a class="siglum" href="#"></a></span>').filter(function(){
+                return this.nodeType === 3;})
+        /*var wrappedSiglum = $(siglum).wrap( '<span class="font-weight-bold "><a class="siglum" href="#"></a></span>' )*/
     /* wrap the siglum textual content into its html structure !!! CAREFUL about the integration of the the siglum into the @href with $(this) and concat:
      * .wrap( '<span class="font-weight-bold "><a class="siglum" href="#"></a></span>' ) */
         /*$(this).parents('.popover-content').nextAll('.popover-content').find('.reading-line:last').after().append(newRdg, siglum);*/
-               $(this).parents('.popover-content').nextUntil('.popover-content:has(.lacunaEnd)').find('.reading-line:last').after().append(newRdg, siglum);
+               $(this).parents('.popover-content').nextUntil('.popover-content:has(.lacunaEnd)').find('.reading-line:last').after().append(newRdg, siglum.wrap( '<a class="siglum" href="#"></a>').parent().wrap( '<span class="font-weight-bold "></span>').parent());
         
     }); 
 });
