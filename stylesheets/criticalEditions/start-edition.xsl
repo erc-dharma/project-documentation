@@ -334,7 +334,21 @@
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                </xsl:call-template>                                  
+                                </xsl:call-template>
+                                    <xsl:if test="tei:lem/@varSeq">
+                                        <xsl:choose>
+                                            <xsl:when test="tei:lem/@varSeq='1'">
+                                                <xsl:element name="sub">
+                                                    <xsl:text>ac</xsl:text>
+                                                </xsl:element>
+                                            </xsl:when>
+                                            <xsl:when test="tei:lem/@varSeq='2'">
+                                                <xsl:element name="sub">
+                                                    <xsl:text>pc</xsl:text>
+                                                </xsl:element>
+                                            </xsl:when>
+                                        </xsl:choose>
+                                    </xsl:if>
                                 </xsl:element>
                                 <!--<xsl:if test="tei:lem/attribute::source">
                                     <xsl:text> </xsl:text>
@@ -396,6 +410,20 @@
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                             </xsl:call-template>
+                                <xsl:if test="./@varSeq">
+                                    <xsl:choose>
+                                        <xsl:when test="./@varSeq='1'">
+                                            <xsl:element name="sub">
+                                                <xsl:text>ac</xsl:text>
+                                            </xsl:element>
+                                        </xsl:when>
+                                        <xsl:when test="./@varSeq='2'">
+                                            <xsl:element name="sub">
+                                                <xsl:text>pc</xsl:text>
+                                            </xsl:element>
+                                        </xsl:when>
+                                    </xsl:choose>
+                                </xsl:if>
                                 <xsl:if test="./@source">
                                     <xsl:call-template name="source-siglum">
                                         <xsl:with-param name="string-to-siglum" select="./@source"/>
@@ -2367,9 +2395,20 @@
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                     </xsl:call-template>
-                               <!-- <xsl:if test="attribute::source">
-                                    <xsl:text> </xsl:text>
-                                </xsl:if>-->
+                                  <xsl:if test="@varSeq">
+                                      <xsl:choose>
+                                          <xsl:when test="@varSeq='1'">
+                                              <xsl:element name="sub">
+                                                  <xsl:text>ac</xsl:text>
+                                              </xsl:element>
+                                          </xsl:when>
+                                          <xsl:when test="@varSeq='2'">
+                                              <xsl:element name="sub">
+                                                  <xsl:text>pc</xsl:text>
+                                              </xsl:element>
+                                          </xsl:when>
+                                      </xsl:choose>
+                                  </xsl:if>
                                 </xsl:element>
                             </xsl:if>
                         <xsl:if test="@source">
@@ -2424,7 +2463,20 @@
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                 </xsl:call-template>
-                                
+                                <xsl:if test="@varSeq">
+                                    <xsl:choose>
+                                        <xsl:when test="@varSeq='1'">
+                                            <xsl:element name="sub">
+                                                <xsl:text>ac</xsl:text>
+                                            </xsl:element>
+                                        </xsl:when>
+                                        <xsl:when test="@varSeq='2'">
+                                            <xsl:element name="sub">
+                                                <xsl:text>pc</xsl:text>
+                                            </xsl:element>
+                                        </xsl:when>
+                                    </xsl:choose>
+                                </xsl:if>
                             </xsl:element>
                         </xsl:if>
                             <xsl:if test="@source">
