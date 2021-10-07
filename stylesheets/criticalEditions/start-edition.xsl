@@ -2077,8 +2077,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>-->
+        <script src="./../criticalEditions/loader.js"></script>
     </xsl:template>
     
     <!-- Nav bar template -->
@@ -2350,10 +2350,10 @@
                 <xsl:for-each select="tei:lem">
                     <xsl:element name="span">
                         <xsl:attribute name="class">
+                            <xsl:text>bottom-lemma-reading</xsl:text>
                             <xsl:if test="not($path/tei:lem/following-sibling::tei:note[@type='altLem'])">
                                 <xsl:call-template name="lem-type"/>
-                            </xsl:if>
-                        </xsl:attribute>
+                            </xsl:if></xsl:attribute>
                         <xsl:choose>
                             <xsl:when test="$path/tei:lem/following-sibling::tei:note[@type='altLem']">
                                 <xsl:apply-templates select="replace($path/tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
@@ -2420,6 +2420,9 @@
                 </xsl:for-each>
                 
                 <xsl:for-each select="tei:rdg">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd</xsl:when></xsl:choose>
+                        </xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@type='absent_elsewhere'"/>
                         <xsl:otherwise>
@@ -2515,6 +2518,7 @@
                         <xsl:text> • </xsl:text>
                         <xsl:apply-templates select="following-sibling::tei:note"/>
                     </xsl:if>
+                    </xsl:element>
                 </xsl:for-each>
                 <xsl:if test="not(tei:rdg) and tei:note">
                     <xsl:text> • </xsl:text>
