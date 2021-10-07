@@ -55,3 +55,42 @@ $('.move-to-right').on({
     $('.lem[data-app="'+id+'"]').css({'background-color': 'transparent'});
   }
 });
+
+/* Trying to add the lac. $siglum between lacunaStart and lacunaEnd 
+$( ".lacunaStart" )
+  .contents()
+  .filter(function(){
+    return this.nodeType !== 1;
+  })
+  .wrap( "<b></b>" );
+
+$(document).ready(function(){
+    var newHeading = "<h2>Important Note:</h2>";
+    var newParagraph = document.createElement("p");
+    newParagraph.innerHTML = "<em>Lorem Ipsum is dummy text...</em>";
+    var newImage = $('<img src="images/smiley.png" alt="Symbol">');
+    $("p").before(newHeading, newParagraph, newImage);
+});*/
+
+/*
+    /\* wrapping the newRdg and the siglum part if the reading line into the main span container *\/
+    $(newRdg, siglum).wrap('<span class="reading-line"></span>'); 
+});*/
+
+
+$(document).ready(function() {
+    /* newRDG create the lac. textual content always the same so added as such directly */
+    
+    $( ".lacunaStart" ).after(function() {
+        var newRdg =$('<br/><span class="app-rdg"><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span></span>')
+        
+        /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu textuel - nodetype 3 s"assure qu'il s'agit bien d'une chaîne de caractère  */
+        var siglum= $(this).find(".siglum:first").contents().filter(function(){
+                return this.nodeType === 3;})
+                
+    /* wrap the siglum textual content into its html structure !!! CAREFUL about the integration of the the siglum into the @href with $(this) and concat:
+     * .wrap( '<span class="font-weight-bold "><a class="siglum" href="#"></a></span>' ) */
+        
+        $(this).parents('.popover-content').next('.popover-content').find('.reading-line').after().append(newRdg, siglum);
+    }); 
+});
