@@ -369,7 +369,7 @@
                             <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg">
                         <xsl:element name="span">
-                            <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when></xsl:choose>
+                            <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> omissionEnd</xsl:when></xsl:choose>
                             </xsl:attribute>
                             <xsl:element name="span">
                                 <xsl:attribute name="class">app-rdg</xsl:attribute>
@@ -965,10 +965,7 @@
     </xsl:template>
     <!-- lacunaEnd & lacunaStart -->    
  <xsl:template match="tei:lacunaStart">
-       <xsl:element name="span">
-           <xsl:attribute name="class">lacunaStartSiglum</xsl:attribute>
            <xsl:text>[...</xsl:text>
-       </xsl:element>
     </xsl:template>    
     <xsl:template match="tei:lacunaEnd">
         <xsl:text>...]</xsl:text>
