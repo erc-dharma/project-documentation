@@ -22,10 +22,6 @@ $(function () {
 
 /* Need to add the move the element to the following-sibling[1] of the ancestor <div> of apparat-col.  */
 
-/* ancestor => .parents(); */
-/* next sibling => .next(); */
-/* JS working */
-
 /* move the main apparatus notes */
 $(document).ready(function() {
     $('.move-to-right').each(function() {
@@ -43,10 +39,9 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('sub').each(function() {
         $(this).prev('a').append(this);
-    }); 
-});
-/* Highlighting function in JQuery */
-$('.move-to-right').on({
+    });
+    /* Highlighting function in JQuery */
+    $('.move-to-right').on({
   mouseenter: function () {
     id = $(this).attr('data-app');
     $('.lem[data-app="'+id+'"]').css({'background-color': 'yellow'});
@@ -55,21 +50,6 @@ $('.move-to-right').on({
     $('.lem[data-app="'+id+'"]').css({'background-color': 'transparent'});
   }
 });
-
-/* Trying to add the lac. $siglum between lacunaStart and lacunaEnd 
-Code only for the lateral tooltip*/
-
-    $( ".lacunaStart" ).each(function() {
-    /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdg =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span>')
-        /* Cherche le premier element suivant avec la class siglum, récupere son contenu textuel - nodetype 3 s"assure qu'il s'agit bien d'une chaîne de caractère  */
-        var siglum= $(this).find(".siglum:first").contents().clone().filter(function(){
-                return this.nodeType === 3;})
-        
-    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.popover-content').nextUntil('.popover-content:has(.lacunaEnd)').find('.reading-line:last').after().append(newRdg, siglum.wrap( '<a class="siglum" href="#"></a>').parent().wrap( '<span class="font-weight-bold "></span>').parent());
-    }); 
-    
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
 $( ".omissionStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
@@ -80,4 +60,18 @@ $( ".omissionStart" ).each(function() {
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
             $(this).parents('.popover-content').nextUntil('.popover-content:has(.omissionEnd)').find('.reading-line:last').after().append(newRdg, siglum.wrap( '<a class="siglum" href="#"></a>').parent().wrap( '<span class="font-weight-bold "></span>').parent());
+    });
+    
+    /* Trying to add the lac. $siglum between lacunaStart and lacunaEnd 
+Code only for the lateral tooltip*/
+    $( ".lacunaStart" ).each(function() {
+    /* newRDG create the lac. textual content always the same so added as such directly */
+        var newRdg =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span>')
+        /* Cherche le premier element suivant avec la class siglum, récupere son contenu textuel - nodetype 3 s"assure qu'il s'agit bien d'une chaîne de caractère  */
+        var siglum= $(this).find(".siglum:first").contents().clone().filter(function(){
+                return this.nodeType === 3;})
+        
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
+            $(this).parents('.popover-content').nextUntil('.popover-content:has(.lacunaEnd)').find('.reading-line:last').after().append(newRdg, siglum.wrap( '<a class="siglum" href="#"></a>').parent().wrap( '<span class="font-weight-bold "></span>').parent());
     }); 
+});
