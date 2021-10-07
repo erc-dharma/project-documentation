@@ -126,7 +126,7 @@
                         </xsl:element>
                         
                  <xsl:apply-templates select="./tei:text"/>
-            <xsl:apply-templates select=".//tei:app" mode="modals"/>  
+            <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/> 
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-translation"/>
@@ -284,7 +284,7 @@
     <!--  app ! -->
     <xsl:template match="tei:app" mode="modals">
         <xsl:variable name="apparatus">
-            <xsl:element name="span">
+            <!--<xsl:element name="span">-->
                 <xsl:element name="span">
                     <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
                     <xsl:element name="span">
@@ -294,11 +294,9 @@
                                 <xsl:text>translit </xsl:text>
                                 <xsl:value-of select="$script"/>
                                     <xsl:if test="not(child::tei:lem/following-sibling::tei:note[@type='altLem'])">
-                                   
                                         <xsl:text> </xsl:text>
                                         <xsl:call-template name="lem-type"/>
                             </xsl:if>
-                                
                             </xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
@@ -357,7 +355,8 @@
                             <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg">
                         <xsl:element name="span">
-                            <xsl:attribute name="class">reading-line</xsl:attribute>
+                            <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when></xsl:choose>
+                            </xsl:attribute>
                             <xsl:element name="span">
                                 <xsl:attribute name="class">app-rdg</xsl:attribute>
                                 <xsl:element name="span">
@@ -381,11 +380,11 @@
                                                  </xsl:element>
                                              </xsl:when>
                                              <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']"/>
-                                            </xsl:choose>                            
+                                            </xsl:choose> 
+                                    
                                     <xsl:apply-templates/>
                                     <xsl:choose>
                                         <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']"/>
-                                        
                                     </xsl:choose>
                                 </xsl:element>
                             </xsl:element>
@@ -414,10 +413,12 @@
                             <!--<xsl:if test="./following-sibling::tei:rdg">
                                 <xsl:text>; </xsl:text>
                             </xsl:if>-->
-                        </xsl:element>
-                    </xsl:for-each></xsl:otherwise></xsl:choose>
+                        </xsl:element>              
+                    </xsl:for-each>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:if>
-                <xsl:if test="tei:rdg[@type='paradosis']">
+                 <xsl:if test="tei:rdg[@type='paradosis']">
                     <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg[@type='paradosis']">
                         <xsl:element name="span">
@@ -447,26 +448,13 @@
                         </xsl:element>
                     </xsl:for-each>
                 </xsl:if>           
-            </xsl:element>
+            <!--</xsl:element>-->
         </xsl:variable>
-        <!--<xsl:variable name="apparatus-2">
-            <xsl:variable name="lacuna-start">
-                <xsl:if test="$apparatus/child::tei:rdg/tei:lacunaStart">
-                    <xsl:value-of select="$apparatus/tei:rdg[child::tei:lacunaStart]/following-sibling::*"/>
-                </xsl:if>
-            </xsl:variable>
-            <xsl:variable name="lacuna-end">
-                <xsl:if test="$apparatus/child::tei:rdg/tei:lacunaEnd">
-                    <xsl:value-of select="$apparatus/tei:rdg[child::tei:lacunaEnd]/preceding-sibling::*"/>
-                </xsl:if>
-            </xsl:variable>
-            <xsl:if test="$lacuna-start[count(.|$lacuna-end) = count($lacuna-end)]">
-                <xsl:text>lacuna Test</xsl:text>
-            </xsl:if>
-        </xsl:variable>-->
+        
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus"/>
         </span>
+        
     </xsl:template>
     
     <xsl:template match="tei:app[not(parent::tei:listApp)]">
@@ -604,7 +592,19 @@
            </xsl:element>-->
            
     </xsl:template>
-    <!--  B ! -->
+    <!--      <xsl:template name="lacunaRange">            
+         <xsl:variable name="startingPoint" select="tei:app/tei:rdg[child::tei:lacunaStart]"/>
+        <xsl:variable name="following-range" select="$startingPoint/following::node()"/>
+        <xsl:variable name="endingPoint" select="$following-range/tei:app[child::tei:rdg[tei:lacunaEnd]][1]"/>-->
+        <!--<xsl:variable name="preceding-range" select="$endingPoint/preceding-sibling::node()"/> => pas forcément besoin de cela-->
+    
+   <!-- <xsl:message>start: <xsl:value-of select="$startingPoint"/></xsl:message>
+    <xsl:message>end: <xsl:value-of select="$endingPoint"/></xsl:message>
+    <xsl:for-each-group select="$following-range/tei:app/tei:rdg" group-ending-with="$endingPoint">
+        <xsl:text>lac.test</xsl:text>
+    </xsl:for-each-group>
+    </xsl:template>-->
+     <!--  B ! -->
     <xsl:template match="tei:bibl">
     <xsl:choose>
         <xsl:when test=".[tei:ptr]">
@@ -935,20 +935,15 @@
             <xsl:apply-templates/>      
         </xsl:element>
     </xsl:template>
-    <!-- lacunaEnd -->
+    <!-- lacunaEnd & lacunaStart -->    
+ <xsl:template match="tei:lacunaStart">
+       <xsl:element name="span">
+           <xsl:attribute name="class">lacunaStartSiglum</xsl:attribute>
+           <xsl:text>[...</xsl:text>
+       </xsl:element>
+    </xsl:template>    
     <xsl:template match="tei:lacunaEnd">
-            <xsl:text>...]</xsl:text>
-    </xsl:template>
-    <!-- lacunaStart -->
-    <xsl:template match="tei:lacunaStart">
-        <xsl:choose>
-            <xsl:when test="./ancestor-or-self::tei:app/following-sibling::node()[following-sibling::tei:LacunaEnd]">
-                <xsl:text>test</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:text>[...</xsl:text>
-            </xsl:otherwise>
-        </xsl:choose>       
+        <xsl:text>...]</xsl:text>
     </xsl:template>
     <!--  lb ! -->
     <xsl:template match="tei:lb">
@@ -2446,8 +2441,9 @@
                             </xsl:element>
                         </xsl:if>
                     </xsl:if>
+                          
                     </xsl:otherwise>
-                    </xsl:choose>
+                    </xsl:choose>                   
                     <xsl:if test="@type='paradosis'">
                         <xsl:text> • </xsl:text>
                                 <xsl:element name="span">
@@ -2483,6 +2479,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
+    
     
     <!-- Apparatus: type to display -->
     <xsl:template name="apparatus-type">
