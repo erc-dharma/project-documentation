@@ -2077,8 +2077,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>-->
+        <script src="./../criticalEditions/loader.js"></script>
     </xsl:template>
     
     <!-- Nav bar template -->
@@ -2514,20 +2514,31 @@
                                     <xsl:apply-templates/>
                                 </xsl:element>
                     </xsl:if>
-                    <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
-                        <xsl:text> • </xsl:text>
-                        <xsl:apply-templates select="following-sibling::tei:note"/>
-                    </xsl:if>
                     </xsl:element>
                 </xsl:for-each>
+                <xsl:if test="tei:rdg/following-sibling::tei:note and not(tei:rdg/following-sibling::tei:rdg)">
+                        <xsl:text> • </xsl:text>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">bottom-note-line</xsl:attribute>
+                            <xsl:apply-templates select="tei:rdg/following-sibling::tei:note"/>
+                        </xsl:element>
+                    </xsl:if>
+                    
+                
                 <xsl:if test="not(tei:rdg) and tei:note">
                     <xsl:text> • </xsl:text>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">bottom-note-line</xsl:attribute>
                     <xsl:apply-templates select="tei:note"/>
+                    </xsl:element>
                 </xsl:if>
             </xsl:when>
             <xsl:when test="$apptype='note'">
                 <xsl:for-each select="$path/tei:note">
-                <xsl:apply-templates/>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">bottom-note-line</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
                 </xsl:for-each>
             </xsl:when>
         </xsl:choose>
