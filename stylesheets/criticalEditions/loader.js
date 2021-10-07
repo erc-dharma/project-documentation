@@ -85,7 +85,7 @@ $(document).ready(function() {
         var newRdg =$('<br/><span class="app-rdg"><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span></span>')
         
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu textuel - nodetype 3 s"assure qu'il s'agit bien d'une chaîne de caractère  */
-        var siglum= $(this).find(".siglum:first").contents().filter(function(){
+        var siglum= $(this).find(".siglum:first").contents().clone().filter(function(){
                 return this.nodeType === 3;})
                 
     /* wrap the siglum textual content into its html structure !!! CAREFUL about the integration of the the siglum into the @href with $(this) and concat:
