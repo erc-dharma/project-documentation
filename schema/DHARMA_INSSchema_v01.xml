@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-10-08">Adding a @type="feature" on space</change>
             <change who="part:axja" when="2021-09-16">Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
             <change who="part:axja" when="2021-09-15">closing list attributes for unit with gap</change>
             <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
@@ -725,6 +726,7 @@
                                 <valItem ident="binding-hole"/>
                                 <valItem ident="descender"/>
                                 <valItem ident="ascender"/>
+                                <valItem ident="feature"/>
                                 <valItem ident="other"/>
                             </valList>
                         </attDef>
