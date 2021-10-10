@@ -2198,8 +2198,7 @@
                     <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
                 </xsl:element>
             </xsl:element>
-            <xsl:if test="//tei:projectDesc/tei:p">
-                
+            <xsl:if test="//tei:projectDesc/tei:p"> 
                 <xsl:apply-templates select="//tei:projectDesc/tei:p"/>
             </xsl:if>
         </xsl:element>
