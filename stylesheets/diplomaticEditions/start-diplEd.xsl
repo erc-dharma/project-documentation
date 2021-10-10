@@ -1051,6 +1051,12 @@
             <xsl:number level="single" format="1"/>
         </xsl:variable>
         <xsl:choose>
+            <xsl:when test="ancestor::tei:projectDesc">
+                <xsl:element name="p">
+                    <xsl:attribute name="class">text-justify</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
             <xsl:when test="not(ancestor-or-self::tei:note |ancestor-or-self::tei:handDesc)">
         <xsl:element name="div">
             <xsl:attribute name="class">text-container float-left</xsl:attribute>
@@ -2192,10 +2198,10 @@
                     <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
                 </xsl:element>
             </xsl:element>
-            <xsl:element name="p">
-                <xsl:attribute name="class">text-justify</xsl:attribute>
-                <xsl:value-of select="//tei:projectDesc/tei:p[1]"/>
-            </xsl:element>
+            <xsl:if test="//tei:projectDesc/tei:p">
+                
+                <xsl:apply-templates select="//tei:projectDesc/tei:p"/>
+            </xsl:if>
         </xsl:element>
     </xsl:template>
     
