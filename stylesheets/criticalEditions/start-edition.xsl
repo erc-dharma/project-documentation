@@ -1360,7 +1360,14 @@
         <xsl:variable name="p-num">
             <xsl:number level="single" format="1"/>
         </xsl:variable>
-        <xsl:element name="p">
+        <xsl:choose>
+            <xsl:when test="ancestor::tei:projectDesc">
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">text-justify</xsl:attribute>
+                        <xsl:apply-templates/>
+                    </xsl:element>
+            </xsl:when>
+            <xsl:otherwise><xsl:element name="p">
             <xsl:attribute name="class">float-center</xsl:attribute><!--text-container -->
             <xsl:element name="small">
                 <xsl:element name="span">
@@ -1388,6 +1395,7 @@
                     <xsl:value-of select="$p-num"/>
                 </xsl:element>
             </xsl:element>
+            
         </xsl:element>
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
@@ -1402,6 +1410,8 @@
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
                 </xsl:element>
         </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <!--  pb ! -->
@@ -2720,10 +2730,10 @@
                     <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
                 </xsl:element>
             </xsl:element>
-            <xsl:element name="p">
-                <xsl:attribute name="class">text-justify</xsl:attribute>
-                <xsl:value-of select="//tei:projectDesc/tei:p[1]"/>
-            </xsl:element>
+                <xsl:if test="//tei:projectDesc/tei:p">
+                    
+                    <xsl:apply-templates select="//tei:projectDesc/tei:p"/>
+                </xsl:if>
         </xsl:element>
     </xsl:template>
     
