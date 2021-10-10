@@ -260,6 +260,11 @@ e.g. MDhŚ-O, MDhŚ-M
             <bibl>
                <abbr>SSMG</abbr>
             </bibl>
+         	<bibl corresp="bib:Hooykaas1931_01" xml:id="EdTaKa1931">
+         		<abbr type="siglum">TaKa</abbr>
+         		<title>Tantri Kamandaka</title>
+         		<ptr target="https://github.com/arlogriffiths/jawakuno/blob/master/texts/xml/tantrikamandaka_inprocess.xml"/>
+         	</bibl>  
             <bibl corresp="bib:TienWartiniEtAl2010_01" xml:id="EdTuBv2010">
                <abbr type="siglum">TB</abbr> 
                <title>Tutur Bvana</title>
@@ -270,11 +275,11 @@ e.g. MDhŚ-O, MDhŚ-M
                </msIdentifier>
                <ptr/>
             </bibl>
-
             <bibl>
                <abbr>VDh</abbr>
                <title>Vasiṣṭhasaṁhita</title>
-            </bibl>            <bibl corresp="bib:AditiaGunawan2010_01" xml:id="EdVaLe2010">
+            </bibl>            
+            <bibl corresp="bib:AditiaGunawan2010_01" xml:id="EdVaLe2010">
                <abbr type="siglum">VL</abbr>
                <title>Varugan Ləmah</title>
                <msIdentifier>
