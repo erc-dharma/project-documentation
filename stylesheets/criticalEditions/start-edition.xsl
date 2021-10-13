@@ -328,12 +328,12 @@
                                     <xsl:text> thus formulated in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
+                                    <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
                                     </xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
-                                        <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        <xsl:with-param name="witdetail-string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                        <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                 </xsl:call-template>
                                     <xsl:if test="tei:lem/@varSeq">
                                         <xsl:choose>
@@ -1992,6 +1992,8 @@
                     </xsl:call-template>
                     <xsl:call-template name="tokenize-witness-list">
                         <xsl:with-param name="string" select="substring-after($string, ' ')"/>
+                        <xsl:with-param name="witdetail-string" select="$witdetail-string"/>
+                        <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                     </xsl:call-template>
                 </xsl:if>
             </xsl:when>
@@ -2011,6 +2013,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
     <!--  Make bibliography link ! -->
     <xsl:template name="make-bibl-link">
         <xsl:param name="target"/>
@@ -2027,14 +2030,15 @@
                     <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="$target"/>
+                    <xsl:value-of select="$target"/>       
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
         <xsl:if test="$target = $witdetail-string">
             <xsl:element name="sub"> 
                 <xsl:text> </xsl:text>
-                <xsl:value-of select="normalize-space($witdetail-type)"/>
+                <xsl:value-of select="$witdetail-type"/>
+                <xsl:message><xsl:value-of select="$target"/><xsl:value-of select="$witdetail-type"/></xsl:message>
             </xsl:element>
         </xsl:if>
     </xsl:template>
