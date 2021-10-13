@@ -1445,32 +1445,34 @@
     
     <!-- ptr -->
     <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
+        <!-- Need to update the code -->
             <xsl:element name="span">
                 <xsl:attribute name="class">ref-siglum</xsl:attribute>
-                <xsl:choose>
-                    <xsl:when test="fn:contains(@target, 'txt:')">
-                        <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml
-                        </xsl:variable>
-                        <xsl:variable name="MSlink" select="substring-after(./@target, 'txt:')"/>
+                <xsl:variable name="rootHand" select="//tei:handDesc"/>
+                <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml</xsl:variable>
+                <xsl:variable name="MSlink" select="@target"/>
+               <xsl:choose>
+                   <xsl:when test="contains($MSlink, 'txt:')">
+                       <xsl:variable name="MSlink-part" select="substring-after($MSlink, 'txt:')"/>
                         <xsl:element name="a">
                             <xsl:attribute name="href">
-                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink]/child::tei:ptr[1]/@target"/>
+                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:ptr[1]/@target"/>
                             </xsl:attribute>
-                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink]/child::tei:abbr[@type='siglum']"/>
+                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:abbr[@type='siglum']"/>
                         </xsl:element>
                     </xsl:when>
-                    <xsl:when test="fn:contains(@target, '_')">
-                        <xsl:variable name="hand-id" select="substring-after(./@target, '#')"/>
-                        <xsl:apply-templates select="//tei:listWit/tei:witness/tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
+                   <xsl:when test="contains($MSlink, '_')">
+                       <xsl:variable name="hand-id" select="substring-after($MSlink, '#')"/>
+                       <xsl:apply-templates select="$rootHand/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
                     </xsl:when>
-                    <xsl:when test="fn:contains(@target, 'bib:')">
+                   <xsl:when test="contains($MSlink, 'bib:')">
                         <xsl:call-template name="source-siglum">
-                            <xsl:with-param name="string-to-siglum" select="@target"/>
+                            <xsl:with-param name="string-to-siglum" select="$MSlink"/>
                         </xsl:call-template>
                     </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="substring-after(./@target, '#')"/>
-                    </xsl:otherwise>
+                   <xsl:otherwise>
+                        <xsl:value-of select="replace($MSlink, '#', '')"/>
+                   </xsl:otherwise>
                 </xsl:choose>
             </xsl:element> 
     </xsl:template>
