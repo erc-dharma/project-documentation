@@ -514,7 +514,6 @@
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
                 <xsl:apply-templates select="tei:lem"/>
-            
             <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
@@ -535,11 +534,9 @@
                 <xsl:attribute name="data-app">
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
-                <xsl:if test="not(ancestor::tei:lem)">
-                    <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
-                    <xsl:text>)</xsl:text>
-                </xsl:if>           
+                        <xsl:text>(</xsl:text>
+                        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
+                        <xsl:text>)</xsl:text>
             </xsl:element>
             
         </xsl:element>
@@ -914,8 +911,8 @@
         </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
-     
     </xsl:template>
+    
     <!--  H ! -->
     <!--  head ! -->
     <xsl:template match="tei:head">
@@ -951,6 +948,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
+    
     <!--  L ! -->
     <!--  l ! -->
     <xsl:template match="tei:l">
@@ -1081,7 +1079,6 @@
                 </xsl:element>
             </xsl:if>
         </xsl:element>
-        
     </xsl:template>
     <!--  listBibl -->
     <!-- Must be reworked -->
@@ -1290,6 +1287,7 @@
             <xsl:value-of select="@to"/>
             <xsl:text>]</xsl:text>
     </xsl:template>
+    
     <!--  N ! -->
     <!--  name ! -->
     <xsl:template match="tei:name">
@@ -1300,29 +1298,32 @@
     </xsl:template>
     
     <xsl:template match="tei:note">
+        <xsl:variable name="app-num">
+            <xsl:value-of select="name()"/>
+            <xsl:number level="any" format="0001"/>
+        </xsl:variable>
         <xsl:choose>
             <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
-              <xsl:element name="span">
-                  <xsl:attribute name="class">lem-last-note</xsl:attribute>
                         <xsl:element name="a">
-                            <xsl:attribute name="tabindex">0</xsl:attribute>
+                            <xsl:attribute name="class">lem-last-note</xsl:attribute>
+                            <!--<xsl:attribute name="tabindex">0</xsl:attribute>-->
                             <xsl:attribute name="data-toggle">popover</xsl:attribute>
                             <xsl:attribute name="data-html">true</xsl:attribute>
+                            <xsl:attribute name="id">
+                                <xsl:text>from-app-</xsl:text>
+                                <xsl:value-of select="$app-num"/>
+                            </xsl:attribute>
                             <xsl:attribute name="data-target">
                                 <xsl:value-of select="generate-id()"/>
                             </xsl:attribute>
-                            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
+                            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                                <xsl:value-of select="$app-num"/></xsl:attribute>
                             <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/></xsl:attribute>
-                          
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">tooltipApp</xsl:attribute>
-                                <xsl:attribute name="type">button</xsl:attribute>           
+                             
                                     <xsl:text>(</xsl:text>
                                 <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
                                     <xsl:text>)</xsl:text>
-                            </xsl:element>        
                         </xsl:element>
-              </xsl:element>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
@@ -1354,6 +1355,7 @@
             <xsl:copy-of select="$apparatus-note"/>
         </span>      
     </xsl:template>
+    
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
@@ -1395,7 +1397,6 @@
                     <xsl:value-of select="$p-num"/>
                 </xsl:element>
             </xsl:element>
-            
         </xsl:element>
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
@@ -1499,6 +1500,7 @@
                    </xsl:otherwise>
                 </xsl:choose>
     </xsl:template>
+    
     <!--  Q ! -->
     <!--  q ! -->
     <xsl:template match="tei:q">
@@ -1736,7 +1738,6 @@
                             </xsl:element>
                         </xsl:otherwise>
                     </xsl:choose>
-                    
                 </xsl:when>
                 <xsl:when test="@reason='explanation'">
                     <xsl:element name="span">
@@ -1760,6 +1761,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  T ! -->
     <!--  TEI ! -->
     <xsl:template match="tei:TEI">
@@ -1781,6 +1783,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  U ! -->
     <!--  unclear -->
     <xsl:template match="tei:unclear">
@@ -1792,6 +1795,7 @@
             </xsl:if>
         </xsl:element>
     </xsl:template>
+    
     <!--  W ! -->
     <xsl:template match="tei:w">
         <xsl:element name="span">
@@ -2103,8 +2107,8 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
@@ -2116,8 +2120,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>-->
+        <script src="./../criticalEditions/loader.js"></script>
     </xsl:template>
     
     <!-- Nav bar template -->
@@ -2191,7 +2195,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app[not(parent::tei:listApp)] | .//tei:note"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"> <!-- .//tei:choice | .//tei:subst |  -->
 
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -2208,6 +2212,9 @@
                 <xsl:when test="self::tei:app">
                   <xsl:text>app</xsl:text>
                 </xsl:when>
+                  <xsl:when test="self::tei:note">
+                      <xsl:text>note</xsl:text>
+                  </xsl:when>
               </xsl:choose>
             </xsl:with-param>
           </xsl:call-template>
@@ -2254,7 +2261,7 @@
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
                    <!-- <xsl:value-of select="$app-num"/>-->
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
                 </a>
                 <xsl:text> </xsl:text>
             </xsl:if>
@@ -2286,7 +2293,7 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:choose>
-            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst)">
+            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst) or //tei:note[last()][parent::tei:p or parent::tei:lg] ">
                 <!-- either <br/> in htm-tpl-apparatus or \r\n in txt-tpl-apparatus -->
                 <xsl:call-template name="lbrk-app"/>
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
@@ -2300,6 +2307,8 @@
                 <xsl:text>:&#x202F;</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
+        <xsl:element name="span">  
+            <xsl:attribute name="class">app</xsl:attribute>
           <xsl:choose>
                   <xsl:when test="local-name() = 'note'">
                       <xsl:call-template name="fake-lem-making"/>
@@ -2308,18 +2317,15 @@
                           <xsl:text>] </xsl:text>
                       </xsl:element>    
                       <xsl:apply-templates/>
-                  </xsl:when>
-              
+                  </xsl:when>          
               <xsl:otherwise>
-                  <xsl:element name="span">  
-              <xsl:attribute name="class">app</xsl:attribute>
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>
                <!-- <xsl:with-param name="childtype" select="$childtype" />-->
             </xsl:call-template>
-          </xsl:element>  
               </xsl:otherwise>
           </xsl:choose>
+        </xsl:element>
     </xsl:template>
  
     <!-- prints the content of apparatus-->

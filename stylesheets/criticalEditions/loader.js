@@ -34,6 +34,9 @@ $(document).ready(function() {
     $('.move-to-right').each(function() {
         $(this).prev('div').children('.apparat-col').append(this);
     }); 
+    $('.lem-last-note').each(function() {
+        $(this).parents('div').children('.apparat-col').append(this);
+    }); 
 });
 /* move sub into the previous <a> element of siglum */
 $(document).ready(function() {

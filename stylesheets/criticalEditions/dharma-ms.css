@@ -629,7 +629,7 @@ a:hover, a i.fas:hover {
 }*/
 
 
-.tooltipApp, .lem-last-note {
+.tooltipApp {
     color: #a34545;
 }
 
@@ -645,8 +645,12 @@ p{
          
 .tooltipApp a{
     color: #a34545; 
-      font-style: normal;
+    font-style: normal;
 }
+.lem-last-note{
+    color: black;
+    font-style: normal;
+    }
 /*.tooltipApp a:not(first-child) {
   display: inline;
   
