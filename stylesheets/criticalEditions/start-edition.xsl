@@ -1445,12 +1445,34 @@
     
     <!-- ptr -->
     <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
-        <!-- Need to update the code -->
-            <xsl:element name="span">
-                <xsl:attribute name="class">ref-siglum</xsl:attribute>
-                <xsl:variable name="rootHand" select="//tei:handDesc"/>
-                <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml</xsl:variable>
-                <xsl:variable name="MSlink" select="@target"/>
+        <xsl:variable name="MSlink" select="@target"/>
+        <xsl:element name="span">
+            <xsl:attribute name="class">ref-siglum</xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="contains($MSlink, ' ')">
+                    <xsl:variable name="first-item"
+                        select="normalize-space(substring-before($MSlink, ' '))"/>
+                    <xsl:if test="$first-item">
+                        <xsl:call-template name="content-ptr">
+                            <xsl:with-param name="MSlink" select="$first-item"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="content-ptr">
+                            <xsl:with-param name="MSlink" select="substring-after($MSlink, ' ')"/>
+                        </xsl:call-template>
+                    </xsl:if>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="content-ptr">
+                          <xsl:with-param name="MSlink" select="$MSlink"/>
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="content-ptr">
+        <xsl:param name="MSlink"/>
+        <xsl:variable name="rootHand" select="//tei:handDesc"/>
+        <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml</xsl:variable>
                <xsl:choose>
                    <xsl:when test="contains($MSlink, 'txt:')">
                        <xsl:variable name="MSlink-part" select="substring-after($MSlink, 'txt:')"/>
@@ -1471,10 +1493,11 @@
                         </xsl:call-template>
                     </xsl:when>
                    <xsl:otherwise>
-                        <xsl:value-of select="replace($MSlink, '#', '')"/>
+                       <xsl:call-template name="tokenize-witness-list">
+                           <xsl:with-param name="string" select="$MSlink"/>
+                       </xsl:call-template>
                    </xsl:otherwise>
                 </xsl:choose>
-            </xsl:element> 
     </xsl:template>
     <!--  Q ! -->
     <!--  q ! -->
@@ -1548,6 +1571,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  S ! -->
     <!--  s ! -->
     <xsl:template match="tei:s">
@@ -2531,20 +2555,19 @@
                     </xsl:if>
                     </xsl:element>
                 </xsl:for-each>
-                <xsl:if test="tei:rdg/following-sibling::tei:note and not(tei:rdg/following-sibling::tei:rdg)">
-                        <xsl:text> • </xsl:text>
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">bottom-note-line</xsl:attribute>
-                            <xsl:apply-templates select="tei:rdg/following-sibling::tei:note"/>
-                        </xsl:element>
-                    </xsl:if>
-                    
                 
-                <xsl:if test="not(tei:rdg) and tei:note">
+                    <xsl:for-each select="tei:rdg/following-sibling::tei:note"><xsl:element name="span">
+                            <xsl:attribute name="class">bottom-note-line</xsl:attribute>
+                            <xsl:text> • </xsl:text>
+                            <xsl:apply-templates/>
+                    </xsl:element>
+                    </xsl:for-each>
+                
+                <xsl:if test="not(tei:rdg) and tei:lem/following-sibling::tei:note">
                     <xsl:text> • </xsl:text>
                     <xsl:element name="span">
                         <xsl:attribute name="class">bottom-note-line</xsl:attribute>
-                    <xsl:apply-templates select="tei:note"/>
+                        <xsl:apply-templates select="tei:lem/following-sibling::tei:note"/>
                     </xsl:element>
                 </xsl:if>
             </xsl:when>
@@ -2552,7 +2575,7 @@
                 <xsl:for-each select="$path/tei:note">
                 <xsl:element name="span">
                     <xsl:attribute name="class">bottom-note-line</xsl:attribute>
-                    <xsl:apply-templates/>
+                    <xsl:apply-templates select="$path/tei:note"/>
                 </xsl:element>
                 </xsl:for-each>
             </xsl:when>
