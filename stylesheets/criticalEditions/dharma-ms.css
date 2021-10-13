@@ -783,15 +783,15 @@ p{
     color: black;
 }
 
-.supsub sup+sub {
+.supsub a sup+sub {
     position: relative;
     display: block;
-    right: -25px; 
+    right: -20px; 
     top: -7px
     
 }
 
-.supsub {
+.supsub a{
     display: inline-block;
     vertical-align: top;
 }
