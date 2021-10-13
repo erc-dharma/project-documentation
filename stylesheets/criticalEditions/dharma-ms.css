@@ -35,9 +35,10 @@
     border-bottom:1px solid #040404;
     height:1rem;
 }
+
 body{
     background-color:#eeeeee;
-    font-family:"IndUni-C", "Noto Serif";
+    font-family:"IndUni-T", "Noto Serif";
     font-size: medium;
     height:100%;
     width: 100%;
@@ -175,11 +176,11 @@ a:hover {
   padding: 0.25em 0.5em;
 }*/
 /* other fonts */
-.pica {
+/*.pica {
     font-family:"IM FELL DW Pica";
-}
+}*/
 .small-caps {
-    font-family:"EB Garamond";
+    /*font-family:"EB Garamond";*/
     font-variant:small-caps;
 }
 .prakrit-heading {
@@ -193,9 +194,9 @@ a:hover {
 .prakrit-heading .pra-Deva {
     font-size:2rem;
 }
-.prakrit-heading .separator {
+/*.prakrit-heading .separator {
     font-family: "Printers Ornaments"!important;
-}
+}*/
 .separator-block {
     display:block;
     margin:1rem 0 0.5rem 0;
@@ -206,7 +207,7 @@ a:hover {
     font-size:90%;
 }
 .prakrit-heading .courseinfo {
-    font-family:"EB Garamond";
+    /*font-family:"EB Garamond";*/
     font-variant:small-caps;
     font-size:1.25rem;
 }
@@ -425,7 +426,7 @@ blockquote .plain-ref {
     content:")";
 }
 .speaker {
-    font-family:"EB Garamond";
+    /*font-family:"EB Garamond";*/
     font-variant:small-caps;
     text-transform:lowercase;
     float:left;
@@ -443,7 +444,7 @@ blockquote .plain-ref {
     padding-top:0.2rem;
 }
 .speaker.translit .san-Latn {
-    font-family:"Junicode"!important;
+    /*font-family:"Junicode"!important;*/
     font-style:normal;
     font-variant:normal;
     text-transform:uppercase;
@@ -473,7 +474,7 @@ h3 {
     border-top:2px solid #800000;
 }
 .week h4, .week h6 {
-     font-family:"IndUni-H";
+     font-family:"IndUni-T";
 }
 .week h5 {
     writing-mode: vertical-rl;
@@ -533,7 +534,7 @@ a:hover, a i.fas:hover {
 }
 
 .popover-body{
-        font-family:"IndUni-C", "Noto Serif";
+        font-family:"IndUni-T", "Noto Serif";
 }
 .popover-content {
     display:none;
