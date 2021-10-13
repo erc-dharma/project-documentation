@@ -535,11 +535,11 @@
                 <xsl:attribute name="data-app">
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
-                <!--<xsl:if test="not(ancestor-or-self::tei:lem)">-->
+                <xsl:if test="not(ancestor::tei:lem)">
                     <xsl:text>(</xsl:text>
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
                     <xsl:text>)</xsl:text>
-                <!--</xsl:if>-->             
+                </xsl:if>           
             </xsl:element>
             
         </xsl:element>
@@ -2038,7 +2038,6 @@
             <xsl:element name="sub"> 
                 <xsl:text> </xsl:text>
                 <xsl:value-of select="$witdetail-type"/>
-                <xsl:message><xsl:value-of select="$target"/><xsl:value-of select="$witdetail-type"/></xsl:message>
             </xsl:element>
         </xsl:if>
     </xsl:template>
