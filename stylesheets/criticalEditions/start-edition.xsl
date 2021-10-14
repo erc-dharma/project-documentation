@@ -1494,9 +1494,12 @@
                         </xsl:call-template>
                     </xsl:when>
                    <xsl:otherwise>
+                       <xsl:element name="span">
+                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                        <xsl:call-template name="tokenize-witness-list">
                            <xsl:with-param name="string" select="$MSlink"/>
                        </xsl:call-template>
+                       </xsl:element>
                    </xsl:otherwise>
                 </xsl:choose>
     </xsl:template>
