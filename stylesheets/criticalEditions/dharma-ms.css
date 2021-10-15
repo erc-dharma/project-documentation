@@ -2,6 +2,18 @@
 /* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
 /* For the tables and stuff */
 
+/* Roman-script fonts */
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Regular.otf") format("opentype"); }
+
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Bold.otf") format("opentype"); font-weight: bold; }
+
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Oblique.otf") format("opentype"); font-style: italic; }
+
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-BoldOblique.otf") format("opentype"); font-style: italic; font-weight: bold; }
+
+html{
+    font-family:"IndUni-H";
+}
 .schedule {
     margin-bottom:0;
 }
@@ -38,7 +50,7 @@
 
 body{
     background-color:#eeeeee;
-    font-family:"IndUni-T", "Noto Serif";
+    font-family:"IndUni-H";
     font-size: medium;
     height:100%;
     width: 100%;
@@ -474,7 +486,7 @@ h3 {
     border-top:2px solid #800000;
 }
 .week h4, .week h6 {
-     font-family:"IndUni-T";
+     font-family:"IndUni-H";
 }
 .week h5 {
     writing-mode: vertical-rl;
@@ -514,7 +526,7 @@ a:hover, a i.fas:hover {
     color:#b56060;
 }
 .info h1 {
-    font-family:"IndUni-T";
+    font-family:"IndUni-H";
 }
 .info {
     border-bottom: 2px black solid;
@@ -533,8 +545,11 @@ a:hover, a i.fas:hover {
     padding-right:0.35rem;
 }
 
+a[data-toggle='popover']{
+    font-family:"IndUni-H";
+}
 .popover-body{
-        font-family:"IndUni-T", "Noto Serif";
+        font-family:"IndUni-H";
 }
 .popover-content {
     display:none;
@@ -792,8 +807,7 @@ p{
     position: relative;
     display: block;
     right: -20px; 
-    top: -7px
-    
+    top: -7px  
 }
 
 .supsub a{
