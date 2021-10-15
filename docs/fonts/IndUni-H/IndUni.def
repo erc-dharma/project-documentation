@@ -1,0 +1,507 @@
+# IndUni encoding for mkt1font and vpl2vpl
+#
+# Encoded characters are ASCII/ISO-Latin1 (iso8859-1)
+#
+# Unencoded characters are intended to represent a complete set of
+# those required for use with Indian languages in transliteration,
+# also Pinyin and other exotica, together with all characters required
+# to provide a (more-or-less) complete version of Multilingual
+# European Subset 1.
+
+# ISO-Latin1
+
+127	.notdef
+128	.notdef
+129	.notdef
+130	.notdef
+131	.notdef
+132	.notdef
+133	.notdef
+134	.notdef
+135	.notdef
+136	.notdef
+137	.notdef
+138	.notdef
+139	.notdef
+140	.notdef
+141	.notdef
+142	.notdef
+143	.notdef
+144	dotlessi
+145	grave
+146	acute
+147	circumflex
+148	tilde
+149	.notdef
+150	breve
+151	dotaccent
+152	.notdef
+153	.notdef
+154	ring
+155	.notdef
+156	.notdef
+157	hungarumlaut
+158	ogonek
+159	caron
+161	exclamdown
+162	cent
+163	sterling
+164	currency
+165	yen
+166	brokenbar
+167	section
+168	dieresis
+169	copyright
+170	ordfeminine
+171	guillemotleft
+172	logicalnot
+174	registered
+175	macron
+176	degree
+177	plusminus
+178	twosuperior
+179	threesuperior
+180	acute
+181	mu
+182	paragraph
+183	periodcentered
+184	cedilla
+185	onesuperior
+186	ordmasculine
+187	guillemotright
+188	onequarter
+189	onehalf
+190	threequarters
+191	questiondown
+192	A grave
+193	A acute
+194	A circumflex
+195	A tilde
+196	A dieresis
+197	A ring
+198	AE
+199	C cedilla
+200	E grave
+201	E acute
+202	E circumflex
+203	E dieresis
+204	I grave
+205	I acute
+206	I circumflex
+207	I dieresis
+208	Eth
+209	N tilde
+210	O grave
+211	O acute
+212	O circumflex
+213	O tilde
+214	O dieresis
+215	multiply
+216	Oslash
+217	U grave
+218	U acute
+219	U circumflex
+220	U dieresis
+221	Y acute
+222	Thorn
+223	germandbls
+224	a grave
+225	a acute
+226	a circumflex
+227	a tilde
+228	a dieresis
+229	a ring
+230	ae
+231	c cedilla
+232	e grave
+233	e acute
+234	e circumflex
+235	e dieresis
+236	i grave
+237	i acute
+238	i circumflex
+239	i dieresis
+240	eth
+241	n tilde
+242	o grave
+243	o acute
+244	o circumflex
+245	o tilde
+246	o dieresis
+247	divide
+248	oslash
+249	u grave
+250	u acute
+251	u circumflex
+252	u dieresis
+253	y acute
+254	thorn
+255	y dieresis
+
+# Bare accents (to go in U+0300 range)
+
+127	space cedilla
+127	space ogonek
+127	space commaaccent
+127	space acute
+127	space grave
+127	space circumflex
+127	space tilde
+127	space macron
+127	space breve
+127	space overdot
+127	space dieresis
+127	space ring
+127	space hungarumlaut
+127	space caron
+127	space candrabindu
+127	space underbar
+127	space underbreve
+127	space underdieresis
+127	space undertilde
+127	space underdot
+127	space underring
+
+# Indian and MES1 letter characters
+
+# Characters commented out and flagged with a "*" are included for the
+# sake of completeness, but cannot be built by mkt1font (or are best
+# not built by it), because they have unexpected shapes or are unitary
+# objects like the non-letter characters (see below).
+
+127	A breve
+127	A caron
+127	A macron
+127	AE acute
+127	AE macron
+# 127	A ogonek						# *
+127	Amacron tilde
+127	Amacron ring
+127	Aogonek overdot
+127	Atilde acute
+127	C acute
+127	C caron
+127	C circumflex
+127	C macron
+127	C overdot
+127	C underdot
+127	Cunderdot caron
+127	D caron
+# 127	Dcroat							# *
+127	D underdot
+127	D underbar
+127	Dunderdot acute
+127	E breve
+127	E caron
+127	E macron
+# 127	E ogonek						# *
+127	E overdot
+127	E tilde
+127	Emacron tilde
+127	Etilde acute
+127	uni018F macron					# Schwa macron
+127	G acute
+127	G circumflex
+127	G commaaccent
+127	G overdot
+127	Gacute macron
+127	Gamma caron
+127	H acute
+127	H circumflex
+127	H overdot
+# 127	Hbar							# *
+127	H underbar
+127	H underbreve
+127	H underdieresis
+127	H underdot
+127	I breve
+127	I caron
+127	I macron
+# 127	I ogonek						# *
+# 127	I overdot						# *
+127	I tilde
+# 127	IJ							# *
+127	Imacron tilde
+127	Itilde acute
+127	J caron
+127	J circumflex
+127	J macron
+127	K commaaccent
+127	K h
+127	K H
+127	K underbar
+127	K underdot
+127	Kh underbar
+127	KH underbar
+127	L acute
+# 127	L caron							# *
+127	L commaaccent
+# 127	L middot						# *
+127	L underbar
+127	L underdot
+127	L underring
+127	Lslash
+127	Lunderdot macron
+127	Lunderring macron
+127	M breve
+127	M candrabindu
+127	M overdot
+127	M ogonek
+127	M underdot
+127	N acute
+127	N breve
+127	N caron
+127	N commaaccent
+127	N overdot
+127	N underbar
+127	N underdot
+# 127	Eng							# *
+127	Eng acute
+127	O breve
+127	O caron
+127	O hungarumlaut
+127	O macron
+127	OE
+127	Omacron tilde
+127	Otilde acute
+127	P acute
+127	R acute
+127	R breve
+127	R caron
+127	R commaaccent
+127	R underbar
+127	R underdot
+127	R underring
+127	Runderdot macron
+127	Runderring macron
+127	S acute
+127	S caron
+127	S cedilla
+127	S circumflex
+127	S underbar
+127	S underdieresis
+127	S underdot
+127	Sacute macron
+127	Scaron acute
+127	Scaron underdot
+127	Sunderdot macron
+127	T caron
+127	T cedilla
+127	T underbar
+# 127	Tbar							# *
+127	T underdieresis
+127	T undertilde
+127	T underdot
+127	Tunderdot acute
+127	U breve
+127	U caron
+127	U hungarumlaut
+127	U macron
+# 127	U ogonek						# *
+127	U ring
+127	U tilde
+127	Udieresis acute
+127	Udieresis caron
+127	Udieresis grave
+127	Udieresis macron
+127	Umacron tilde
+127	Utilde acute
+127	V acute
+127	W circumflex
+127	W underdot
+127	X acute
+127	X caron
+127	Y circumflex
+127	Y dieresis
+127	Y overdot
+127	Z acute
+127	Z caron
+127	Z overdot
+127	Z underbar
+127	Z underdieresis
+127	Z underdot
+127	Zunderdot caron
+
+127	a breve
+127	a caron
+127	a macron
+# 127	a ogonek						# *
+127	ae acute
+127	ae macron
+127	amacron acute
+127	amacron breve
+127	amacron grave
+127	amacron ring
+127	amacron tilde
+127	aogonek overdot
+127	atilde acute
+127	c acute
+127	c caron
+127	c circumflex
+127	c macron
+127	c overdot
+127	c underdot
+127	cunderdot caron
+# 127	d caron							# *
+# 127	dcroat							# *
+127	d underdot
+127	d underbar
+127	dunderdot acute
+127	e breve
+127	e caron
+127	e macron
+# 127	e ogonek						# *
+127	e overdot
+127	e tilde
+127	emacron acute
+127	emacron breve
+127	emacron tilde
+127	etilde acute
+127	uni0259 macron					# schwa macron
+127	g acute
+127	g circumflex
+# 127	g commaaccent						# *
+127	g overdot
+127	gacute macron
+127	gamma caron
+127	h acute
+127	h circumflex
+127	h overdot
+# 127	hbar							# *
+127	h underbar
+127	h underbreve
+127	h underdieresis
+127	h underdot
+127	i breve
+127	i caron
+127	i macron
+# 127	i ogonek						# *
+127	i tilde
+127	imacron acute
+127	imacron breve
+127	imacron grave
+127	imacron tilde
+127	itilde acute
+# 127	dotlessi						# *
+# 127	ij							# *
+127	j caron
+127	j circumflex
+127	j macron
+127	k commaaccent
+127	k h
+127	k underbar
+127	k underdot
+# 127	kra # Greenlandic old orthography			# *
+127	kh underbar
+127	l acute
+# 127	l caron							# *
+127	l commaaccent
+# 127	l middot						# *
+127	l tilde
+127	l underbar
+127	l underdot
+127	l underring
+127	lslash
+127	lunderdot acute
+127	lunderdot macron
+127	lunderring acute
+127	lunderring macron
+127	m breve
+127	m candrabindu
+127	m overdot
+127	m ogonek
+127	m underdot
+127	n acute
+127	quoteright n
+127	n breve
+127	n caron
+127	n commaaccent
+127	n overdot
+127	n underbar
+127	n underdot
+# 127	eng							# *
+127	eng acute
+127	o breve
+127	o caron
+127	o hungarumlaut
+127	o macron
+127	oe
+127	omacron breve
+127	omacron tilde
+127	otilde acute
+127	p acute
+127	r acute
+127	r breve
+127	r caron
+127	r commaaccent
+127	r underbar
+127	r underdieresis
+127	r underdot
+127	r underring
+127	runderdot acute
+127	runderdot grave
+127	runderdot macron
+127	runderdotmacron acute
+127	runderring acute
+127	runderring grave
+127	runderring macron
+127	runderringmacron acute
+127	s acute
+127	s caron
+127	s cedilla
+127	s circumflex
+127	s underbar
+127	s underdieresis
+127	s underdot
+127	sacute macron
+127	scaron acute
+127	scaron underdot
+127	sunderdot macron
+# 127	t caron							# *
+127	t cedilla
+# 127	tbar							# *
+127	t underbar
+127	t underdieresis
+127	t undertilde
+127	t underdot
+127	tunderdot acute
+127	u breve
+127	u caron
+127	u hungarumlaut
+127	u macron
+# 127	u ogonek						# *
+127	u ring
+127	u tilde
+127	udieresis acute
+127	udieresis caron
+127	udieresis grave
+127	udieresis macron
+127	umacron acute
+127	umacron breve
+127	umacron grave
+127	umacron tilde
+127	utilde acute
+127	v acute
+127	w circumflex
+127	w underdot
+127	x acute
+127	x caron
+127	y circumflex
+127	y overdot
+127	z acute
+127	z caron
+127	z overdot
+127	z underbar
+127	z underdieresis
+127	z underdot
+127	zunderdot caron
+
+# In the first version of this file I included here a subset of
+# important non-letter characters. This is unnecessary: if they exist
+# in the source font (and most of them do exist in recent versions of
+# the URW++ fonts) and are not marked for overwriting or deletion by
+# this file, they will be left "as is" by mkt1font, and makeOTF will
+# put them where they belong in the final .otf file. "They say hard
+# work never killed anyone, but I figured, why take the chance?"
+
+127	.notdef
