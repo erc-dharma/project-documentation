@@ -2879,7 +2879,7 @@
         <xsl:variable name="CurPosition" select="position()"/>
         <xsl:variable name="unit-value">
             <xsl:choose>
-                <xsl:when test="@unit='page'">
+                <xsl:when test="@unit='page' and following-sibling::tei:citedRange[1]">
                     <xsl:choose>
                         <xsl:when test="matches(., '[–\-]+')">
                             <xsl:text>pages </xsl:text>
@@ -2942,7 +2942,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:when>
-                <xsl:otherwise>
+               <!-- <xsl:otherwise>
                     <xsl:choose>
                         <xsl:when test="matches(., '[\-]+')">
                             <xsl:text>pages </xsl:text>
@@ -2954,7 +2954,7 @@
                             <xsl:text>page </xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>
-                </xsl:otherwise>
+                </xsl:otherwise> -->
             </xsl:choose>
         </xsl:variable>
         <xsl:choose>
