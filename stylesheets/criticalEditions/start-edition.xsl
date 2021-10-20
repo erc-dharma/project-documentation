@@ -830,11 +830,34 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
+                <xsl:choose>
+                    <xsl:when test="@type='canto'">
+                        <xsl:attribute name="class">col-3</xsl:attribute>
+                    </xsl:when>
+                <xsl:otherwise>
                 <xsl:attribute name="class">col-1 text-center</xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
                 <xsl:choose>
                     <xsl:when test="@type='interpolation'">
                         <xsl:value-of select="preceding::tei:div[1]/@n"/>
                         <xsl:text>*. </xsl:text>
+                    </xsl:when>
+                    <xsl:when test="@type='canto'">
+                        <xsl:element name="p">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:text>Canto </xsl:text>
+                            <xsl:value-of select="@n"/>
+                            <xsl:text>.</xsl:text>
+                        </xsl:element>
+                        <xsl:element name="p">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                            <xsl:if test="@real">
+                                <xsl:text>: </xsl:text>
+                                <xsl:value-of select="@real"/>
+                            </xsl:if>
+                        </xsl:element>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:element name="p">
@@ -852,7 +875,14 @@
                 </xsl:choose>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-11</xsl:attribute>
+                <xsl:choose>
+                    <xsl:when test="@type='canto'">
+                        <xsl:attribute name="class">col-7</xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="class">col-10</xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
                 <xsl:apply-templates/>
             </xsl:element>
             
@@ -977,13 +1007,22 @@
     </xsl:template>
     <!--  lg ! -->
     <xsl:template match="tei:lg">
-        <xsl:if test="@met">
+        <xsl:if test="@n | @met">
             <xsl:element name="p">
                 <xsl:attribute name="class">float-center</xsl:attribute>
                 <xsl:element name="small">
                     <xsl:element name="span">
                         <xsl:attribute name="class">text-muted</xsl:attribute>
-                        <xsl:value-of select="@met"/>
+                        <xsl:if test="parent::tei:div[@type='canto']">
+                            <xsl:value-of select="parent::tei:div[@type='canto']/@n"/>
+                            <xsl:text>. </xsl:text>
+                        </xsl:if>
+                        <xsl:if test="@n">
+                        <xsl:value-of select="@n"/>
+                        </xsl:if>
+                        <xsl:if test="@met">
+                            <xsl:value-of select="@met"/>
+                        </xsl:if>
                     </xsl:element>
                 </xsl:element>
             </xsl:element>
