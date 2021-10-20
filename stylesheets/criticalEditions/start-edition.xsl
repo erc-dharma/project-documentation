@@ -832,7 +832,7 @@
             <xsl:element name="div">
                 <xsl:choose>
                     <xsl:when test="@type='canto'">
-                        <xsl:attribute name="class">col-3</xsl:attribute>
+                        <xsl:attribute name="class">col-2</xsl:attribute>
                     </xsl:when>
                 <xsl:otherwise>
                 <xsl:attribute name="class">col-1 text-center</xsl:attribute>
@@ -855,7 +855,7 @@
                             <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
                             <xsl:if test="@real">
                                 <xsl:text>: </xsl:text>
-                                <xsl:value-of select="@real"/>
+                                <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑⏓–'))"/>
                             </xsl:if>
                         </xsl:element>
                     </xsl:when>
@@ -877,7 +877,7 @@
             <xsl:element name="div">
                 <xsl:choose>
                     <xsl:when test="@type='canto'">
-                        <xsl:attribute name="class">col-7</xsl:attribute>
+                        <xsl:attribute name="class">col-8</xsl:attribute>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:attribute name="class">col-10</xsl:attribute>
@@ -1015,7 +1015,7 @@
                         <xsl:attribute name="class">text-muted</xsl:attribute>
                         <xsl:if test="parent::tei:div[@type='canto']">
                             <xsl:value-of select="parent::tei:div[@type='canto']/@n"/>
-                            <xsl:text>. </xsl:text>
+                            <xsl:text>.</xsl:text>
                         </xsl:if>
                         <xsl:if test="@n">
                         <xsl:value-of select="@n"/>
