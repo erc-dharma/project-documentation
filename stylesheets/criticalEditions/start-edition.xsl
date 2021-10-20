@@ -1468,7 +1468,7 @@
                 <xsl:with-param name="string" select="@edRef"/>
             </xsl:call-template>-->
               <xsl:value-of select="substring-after(@edRef, '#')"/>
-                    <!--<xsl:text> </xsl:text>-->
+                    <xsl:text>–</xsl:text>
                 <xsl:value-of select="@n"/>
         </xsl:element>
             </xsl:otherwise>
