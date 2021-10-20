@@ -43,10 +43,10 @@
             </publicationStmt>
             <notesStmt><note><bibl>Digital Commentary of <bibl><ptr target="bib:"></ptr></bibl>.<relatedItem target=""></relatedItem></bibl></note></notesStmt>
             <sourceDesc>
-                <biblFull> <!-- Copy and paste the titleStmt and publicationStmt of the edition file -->           <titleStmt></titleStmt>
+                <biblFull> <!-- Copy and paste the titleStmt and publicationStmt of the edition file -->           
+                    <titleStmt></titleStmt>
                     <publicationStmt></publicationStmt>
                 </biblFull>
-                
             </sourceDesc>
         </fileDesc>
         <encodingDesc> 
