@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>DHARMA Prosodic patterns</title>
+                <funder>European Research Council</funder>
+                <principal ref="#emfr">Emmanuel Francis</principal>
+                <principal ref="#argr">Arlo Griffiths</principal>
+                <principal ref="#ansc">Annette Schmiedchen</principal>
+                <respStmt>
+                    <name ref="#axja">Axelle Janiak</name>
+                    <resp>XML-TEI Data Manager</resp>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>DHARMA Project (ERC 809994): The Domestication of “Hindu” Asceticism and
+                    the Religious Making of South and Southeast Asia (2019–2025).</authority>
+                <date>2019-2025</date>
+                <idno type="filename">DHARMA_prosodicPatterns_v01</idno>
+                <availability>
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">
+                        <p>This work is licenced under the Creative Commons Attribution 2.0 Unported
+                            Licence. To view a copy of the licence, visit
+                            https://creativecommons.org/licenses/by/4.0/ or send a letter to
+                            Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+                            California, 94041, USA.</p>
+                        <!-- Adding a relevant copyright and the way to quote the file.  -->
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Natively Digital</p>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <abstract>
+                <p>List of all the prosodic patterns used in the DHARMA project. </p>
+            </abstract>
+        </profileDesc>
+        <revisionDesc status="draft">
+            <change who="#axja" when="2021-10-21" status="draft"
+                >Creation of the file, adding some informations and
+                minimal metadata</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <list>
+                <item> <note>7/7</note> <name>sumānikā</name> <seg type="xml">+-+-+-=</seg> <seg
+                    type="prosody">-⏑-⏑-⏑⏓</seg> </item>
+                <item> <note>8</note> <name>pramāṇikā</name> <seg type="xml">-+-+-+-=</seg> <seg
+                    type="prosody">-⏑-⏑-⏑⏓</seg> </item>
+                <item><note>8/8</note> <name>anuṣṭubh
+</name><seg type="xml">====-++=/====-+-=</seg> <seg type="prosody"
+                    >⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg> </item>
+                <item><note>10/11</note> <name>vegavatī</name> <seg type="xml"
+                    >--+--+--+=/+--+--+--+=</seg> <seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg> </item>
+                <item><note>10/11</note> <name>viyoginī</name> <seg type="xml"
+                    >--+--+-+-=/--++--+-+-=</seg> <seg type="prosody"
+                    >⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg></item>
+                <item><note>11</note> <name>triṣṭubh</name> <seg type="xml"/> <seg type="prosody"/> </item>
+                <item><note>11</note> <name>dodhaka</name> <seg type="xml">+--+--+--+=</seg> <seg
+                    type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏓</seg></item>
+                <item><note>11</note> <name>indravajrā</name> <seg type="xml">++-++--+-+=</seg> <seg
+                    type="prosody">––⏑––⏑⏑–⏑–⏓</seg></item>
+                <item><note>11</note> <name>rathoddhatā</name> <seg type="xml">+-+---+-+-=</seg>
+                    <seg type="prosody">–⏑–⏑⏑⏑–⏑–⏑⏓</seg> </item>
+                <item><note>11</note> <name>śālinī</name> <seg type="xml">+++++-++-+=</seg> <seg
+                    type="prosody">––––|–⏑––⏑–⏓</seg></item>
+                <item><note>11</note> <name>svāgatā
+</name><seg type="xml">+-+---+--+=</seg> <seg type="prosody"
+                    >–⏑–⏑⏑⏑–⏑⏑–⏓</seg></item>
+                <item><note>11</note> <name>upajāti</name> <seg type="xml">=+-++--+-+=</seg> <seg
+                    type="prosody">⏓–⏑––⏑⏑–⏑–⏓</seg></item>
+                <item><note>11</note> <name>upendravajrā</name> <seg type="xml">-+-++--+-+=</seg>
+                    <seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg></item>
+                <item><note>11</note> <name>toṭaka</name><seg type="xml">--+--+--+--=</seg> <seg
+                    type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> </item>
+                <item><note>11</note> <name>vātormī</name> <seg type="xml">++++--++-+=</seg> <seg
+                    type="prosody">––––⏑⏑––⏑–⏓</seg></item>
+                <item><note>11/11</note> <name>upacitra</name> <seg type="xml"
+                    >--+--+--+-=/+--+--+--+=</seg> <seg type="prosody"
+                    >⏑⏑–⏑⏑–⏑⏑–⏑⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg></item>
+                <item><note>11/12</note><name>aparavaktra</name> <seg type="xml"
+                    >------+-+-=/----+--+-+-=</seg> <seg type="prosody"
+                    >⏑⏑⏑⏑⏑⏑–⏑–⏑⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑⏓</seg></item>
+                <item><note>11/12</note> <name>hariṇaplutā</name> <seg type="xml"
+                    >--+--+--+-=/---+--+--+-=</seg> <seg type="prosody"
+                    >⏑⏑–⏑⏑–⏑⏑–⏑⏓/⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg></item>
+                <item><note>11/12</note> <name>mālabhāriṇī</name> <seg type="xml"
+                    >--+--+-+-+=/--++--+-+-+=</seg> <seg type="prosody"
+                    >⏑⏑–⏑⏑–⏑–⏑–⏓/⏑⏑––⏑⏑–⏑–⏑–⏓</seg></item>
+                <item><note>12</note> <name>indravaṁśā</name> <seg type="xml">++-++--+-+-=</seg>
+                    <seg type="prosody">--⏑--⏑⏑-⏑-⏑⏓</seg></item>
+                <item><note>12</note> <name>jagatī</name> <seg type="xml"/> <seg type="prosody"/> </item>
+                <item><note>12</note> <name>kusumavicitrā</name> <seg type="xml">----++----+=</seg>
+                    <seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg></item>
+                <item><note>12</note> <name>bhujaṅgaprayāta</name> <seg type="xml"
+                    >-++-++-++-+=</seg> <seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg></item>
+                <item><note>12</note> <name>maṇimālā</name> <seg type="xml">++--++++--+=</seg> <seg
+                    type="prosody">––⏑⏑––|––⏑⏑–⏓</seg></item>
+                <item><note>12</note> <name>drutavilambita</name> <seg type="xml">---+--+--+-=</seg>
+                    <seg type="prosody">⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg> </item>
+                <item><note>12</note> <name>pramitākṣarā</name><seg type="xml">--+-+---+--=</seg>
+                    <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg> </item>
+                <item><note>12</note> <name>vaṁśamālā</name> <seg type="xml">=+-++--+-+-=</seg> <seg
+                    type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg></item>
+                <item><note>12</note> <name>vaṁśastha</name> <seg type="xml">-+-++--+-+-=</seg> <seg
+                    type="prosody">⏑–⏑––⏑⏑–⏑–⏑⏓</seg></item>
+                <item><note>12</note> <name>vaiśvadevī</name> <seg type="xml">++++++-++-+=</seg>
+                    <seg type="prosody">–––––|–⏑––⏑–⏓</seg> </item>
+                <item><note>12/13</note> <name>puṣpitāgrā</name> <seg type="xml"
+                    >------+-+-+=/----+--+-+-+=</seg> <seg type="prosody"
+                    >⏑⏑⏑⏑⏑⏑–⏑–⏑–⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑–⏓</seg></item>
+                <item><note>13</note> <name>mañjubhāṣiṇī</name> <seg type="xml">--+-+---+-+-=</seg>
+                    <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg></item>
+                <item><note>13</note> <name>mattamayūra</name> <seg type="xml">+++++--++--+=</seg>
+                    <seg type="prosody">––––|–⏑⏑––⏑⏑–⏓</seg></item>
+                <item><note>13</note> <name>praharṣiṇī</name> <seg type="xml">+++----+-+-+=</seg>
+                    <seg type="prosody">–––|⏑⏑⏑⏑–⏑–⏑–⏓</seg> </item>
+                <item><note>13</note> <name>rucirā</name> <seg type="xml">-+-+----+-+-=</seg> <seg
+                    type="prosody">⏑–⏑–|⏑⏑⏑⏑–⏑–⏑⏓</seg></item>
+                <item><note>14</note> <name>asaṁbādhā</name> <seg type="xml">+++++------++=</seg>
+                    <seg type="prosody">–––––|⏑⏑⏑⏑⏑⏑––⏓</seg></item>
+                <item><note>14</note> <name>praharaṇakalikā</name> <seg type="xml"
+                    >------+------=</seg> <seg type="prosody">⏑⏑⏑⏑⏑⏑–|⏑⏑⏑⏑⏑⏑⏓</seg></item>
+                <item><note>14</note> <name>vasantatilakā</name> <seg type="xml"
+                    >++-+---+--+-+=</seg> <seg type="prosody">––⏑–⏑⏑⏑–⏑⏑–⏑–⏓</seg></item>
+                <item><note>15</note> <name>mālinī</name> <seg type="xml">------+++-++-+=</seg> <seg
+                    type="prosody">⏑⏑⏑⏑⏑⏑––|–⏑––⏑–⏓</seg></item>
+                <item><note>17</note> <name>hariṇī</name> <seg type="xml">-----+++++-+--+-=</seg>
+                    <seg type="prosody">⏑⏑⏑⏑⏑–|––––|⏑–⏑⏑–⏑⏓</seg></item>
+                <item><note>17</note><name>mandākrāntā</name> <seg type="xml"
+                    >++++-----++-++-+=</seg> <seg type="prosody">––––|⏑⏑⏑⏑⏑–|–⏑––⏑–⏓</seg></item>
+                <item><note>17</note> <name>nardaṭaka</name> <seg type="xml"
+                    >----+-+---+--+--=</seg><seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg></item>
+                <item><note>17</note> <name>pr̥thvī</name> <seg type="xml">-+---+-+---+-++-=</seg>
+                    <seg type="prosody">⏑–⏑⏑⏑–⏑–|⏑⏑⏑–⏑––⏑⏓</seg></item>
+                <item><note>17</note> <name>śikharinī</name> <seg type="xml">-+++++-----++---=</seg>
+                    <seg type="prosody">⏑–––––|⏑⏑⏑⏑⏑––⏑⏑⏑⏓</seg></item>
+                <item><note>19</note> <name>śārdūlavikrīḍita</name> <seg type="xml"
+                    >+++--+-+---+++-++-=</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–|––⏑––⏑⏓</seg></item>
+                <item><note>19</note> <name>sumadhurā</name> <seg type="xml"
+                    >++++-++-----+++---=</seg> <seg type="prosody">––––⏑––|⏑⏑⏑⏑⏑–|––⏑⏑⏑⏓</seg> </item>
+                <item><note>20</note> <name>mattebhavikrīḍita</name> <seg type="xml"
+                    >--++--+-+---+++-++-=</seg> <seg type="prosody"
+                    >⏑⏑––⏑⏑–⏑–⏑⏑⏑–|––⏑––⏑⏓</seg></item>
+                <item><note>20</note> <name>suvadanā</name> <seg type="xml"
+                    >++++-++------+++---=</seg> <seg type="prosody"
+                    >––––⏑––|⏑⏑⏑⏑⏑⏑–|––⏑⏑⏑⏓</seg></item>
+                <item><note>21</note> <name>sragdharā</name> <seg type="xml"
+                    >++++-++------++-++-+=</seg> <seg type="prosody"
+                    >––––⏑––|⏑⏑⏑⏑⏑⏑–|–⏑––⏑–⏓</seg></item>
+                <item><note>21</note> <name>campakamālā</name> <seg type="xml"
+                    >----+-+---+--+--+-+-=</seg> <seg type="prosody">⏑⏑⏑⏑-⏑-|⏑⏑⏑-⏑⏑-|⏑⏑-⏑-⏑⏓</seg> </item>
+                <item><note>23</note><name>jagaddhita</name> <seg type="xml"
+                    >+++--+-+---+------+-+-+</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑–</seg>
+                </item>
+            </list>
+        </body>
+    </text>
+</TEI>
