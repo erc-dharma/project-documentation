@@ -8,11 +8,11 @@
             <titleStmt>
                 <title>DHARMA Prosodic patterns</title>
                 <funder>European Research Council</funder>
-                <principal ref="#emfr">Emmanuel Francis</principal>
-                <principal ref="#argr">Arlo Griffiths</principal>
-                <principal ref="#ansc">Annette Schmiedchen</principal>
+                <principal ref="part:emfr">Emmanuel Francis</principal>
+                <principal ref="part:argr">Arlo Griffiths</principal>
+                <principal ref="part:ansc">Annette Schmiedchen</principal>
                 <respStmt>
-                    <name ref="#axja">Axelle Janiak</name>
+                    <name ref="part:axja">Axelle Janiak</name>
                     <resp>XML-TEI Data Manager</resp>
                 </respStmt>
             </titleStmt>
@@ -42,7 +42,7 @@
             </abstract>
         </profileDesc>
         <revisionDesc status="draft">
-            <change who="#axja" when="2021-10-21" status="draft"
+            <change who="part:axja" when="2021-10-21" status="draft"
                 >Creation of the file, adding some informations and
                 minimal metadata</change>
         </revisionDesc>
