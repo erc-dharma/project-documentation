@@ -827,6 +827,8 @@
     </xsl:template>
     <!--  div ! -->
     <xsl:template match="tei:div">
+        <xsl:variable name="prosody" select="document('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/DHARMA_prosodicPatterns_v01.xml')"/>
+        <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
@@ -877,10 +879,15 @@
                 <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
-                    <xsl:if test="@real">
+                    <xsl:choose><xsl:when test="$prosody//tei:item[tei:name =$metrical]">
+                        <xsl:text>: </xsl:text>
+                        <xsl:value-of select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='prosody']"/>
+                    </xsl:when>
+                    <xsl:otherwise>
                         <xsl:text>: </xsl:text>
                         <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑⏓–'))"/>
-                    </xsl:if>
+                    </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:element>
                 </xsl:if>
                 <xsl:apply-templates/>         
