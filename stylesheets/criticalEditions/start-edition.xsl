@@ -830,35 +830,20 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
-                <xsl:choose>
+                <!--<xsl:choose>
                     <xsl:when test="@type='canto'">
                         <xsl:attribute name="class">col-2</xsl:attribute>
                     </xsl:when>
-                <xsl:otherwise>
+                <xsl:otherwise>-->
                 <xsl:attribute name="class">col-1 text-center</xsl:attribute>
-                </xsl:otherwise>
-            </xsl:choose>
+                <!--</xsl:otherwise>
+            </xsl:choose>-->
                 <xsl:choose>
                     <xsl:when test="@type='interpolation'">
                         <xsl:value-of select="preceding::tei:div[1]/@n"/>
                         <xsl:text>*. </xsl:text>
                     </xsl:when>
-                    <xsl:when test="@type='canto'">
-                        <xsl:element name="p">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            <xsl:text>Canto </xsl:text>
-                            <xsl:value-of select="@n"/>
-                            <xsl:text>.</xsl:text>
-                        </xsl:element>
-                        <xsl:element name="p">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
-                            <xsl:if test="@real">
-                                <xsl:text>: </xsl:text>
-                                <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑⏓–'))"/>
-                            </xsl:if>
-                        </xsl:element>
-                    </xsl:when>
+                    <xsl:when test="@type='canto'"/>
                     <xsl:otherwise>
                         <xsl:element name="p">
                             <xsl:choose>
@@ -875,17 +860,31 @@
                 </xsl:choose>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:choose>
+                <!--<xsl:choose>
                     <xsl:when test="@type='canto'">
                         <xsl:attribute name="class">col-8</xsl:attribute>
                     </xsl:when>
-                    <xsl:otherwise>
+                    <xsl:otherwise>-->
                         <xsl:attribute name="class">col-10</xsl:attribute>
-                    </xsl:otherwise>
-                </xsl:choose>
-                <xsl:apply-templates/>
-            </xsl:element>
-            
+                    <!--</xsl:otherwise>
+                </xsl:choose>-->
+                <xsl:if test="@type='canto'">
+                    <xsl:element name="p">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:text>Canto </xsl:text>
+                    <xsl:value-of select="@n"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                    <xsl:if test="@real">
+                        <xsl:text>: </xsl:text>
+                        <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑⏓–'))"/>
+                    </xsl:if>
+                </xsl:element>
+                </xsl:if>
+                <xsl:apply-templates/>         
+            </xsl:element>       
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
@@ -1018,7 +1017,7 @@
                             <xsl:text>.</xsl:text>
                         </xsl:if>
                         <xsl:if test="@n">
-                        <xsl:value-of select="@n"/>
+                            <xsl:value-of select="@n"/>
                         </xsl:if>
                         <xsl:if test="@met">
                             <xsl:value-of select="@met"/>
@@ -1336,12 +1335,14 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="tei:note[@type='prosody']"/>
     <xsl:template match="tei:note">
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
         <xsl:choose>
+            <xsl:when test="tei:note[@type='prosody']"/>
             <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                         <xsl:element name="a">
                             <xsl:attribute name="class">lem-last-note</xsl:attribute>
@@ -1369,7 +1370,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-   <xsl:template match="tei:note" mode="modals">
+    <xsl:template match="tei:note" mode="modals">
         <xsl:variable name="apparatus-note">
             <xsl:if test="self::tei:note[position()=last()][parent::tei:p or parent::tei:lg or not(@type='parallels' or parent::tei:app or @type='altLem')] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                 <xsl:element name="span">
