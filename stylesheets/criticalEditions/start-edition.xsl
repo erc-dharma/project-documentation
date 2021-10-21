@@ -1821,8 +1821,20 @@
     <!--  title ! -->
     <xsl:template match="tei:title">
         <xsl:element name="span">
-            <xsl:attribute name="class">title san</xsl:attribute>
-            <xsl:apply-templates/>
+            <xsl:choose>
+                <xsl:when test="@rend='plain'">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:when test="@level='a'">
+                    <xsl:text>‘</xsl:text>
+                    <xsl:apply-templates/>
+                    <xsl:text>’</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="class">title san</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
     
