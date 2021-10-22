@@ -878,7 +878,14 @@
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                    <xsl:choose>
+                        <xsl:when test="matches(@met,'[\+\-]+')">
+                            <xsl:value-of select="translate(@met, '-=+', '⏑⏓–')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                     <xsl:choose><xsl:when test="$prosody//tei:item[tei:name =$metrical]">
                         <xsl:text>: </xsl:text>
                         <xsl:value-of select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='prosody']"/>
@@ -1026,8 +1033,15 @@
                         <xsl:if test="@n">
                             <xsl:value-of select="@n"/>
                         </xsl:if>
-                        <xsl:if test="@met">
-                            <xsl:value-of select="@met"/>
+                        <xsl:if test="@rend='met'">
+                            <xsl:choose>
+                                <xsl:when test="matches(@met,'[\+\-]+')">
+                                    <xsl:value-of select="translate(@met, '-=+', '⏑⏓–')"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:if>
                     </xsl:element>
                 </xsl:element>
