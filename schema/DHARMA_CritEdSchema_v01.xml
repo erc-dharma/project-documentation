@@ -1090,6 +1090,7 @@
                 <valItem mode="add" ident="appendix"/>
                 <valItem mode="add" ident="section"/>
                 <valItem mode="add" ident="book"/>
+                <valItem mode="add" ident="stanza"/>
               </valList>
             </attDef>
           </attList>
