@@ -1630,6 +1630,12 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="rend" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="check"/>
+                <valItem mode="add" ident="met"/>
+              </valList>
+            </attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="list" module="core" mode="change">
@@ -2588,6 +2594,7 @@
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
                 <valItem mode="add" ident="check"/>
+                <valItem mode="add" ident="met"/>
               </valList>
             </attDef>
           </attList>
