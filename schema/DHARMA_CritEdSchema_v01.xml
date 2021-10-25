@@ -75,12 +75,39 @@
         <moduleRef key="transcr"
           except="addSpan am damage damageSpan delSpan ex fw handShift line listTranspose metamark mod path redo restore retrace sourceDoc substJoin surface surfaceGrp transpose undo zone facsimile handNotes"/>
         <moduleRef key="msdescription"
-          except="accMat acquisition additional additions adminInfo catchwords collation collection condition custEvent custodialHist depth explicit finalRubric foliation heraldry locusGrp material msItemStruct musicNotation provenance recordHist rubric seal sealDesc secFol signatures stamp surrogates typeDesc typeNote watermark dim dimensions height source support"/>
+          except="accMat acquisition additional additions adminInfo catchwords collation condition custEvent custodialHist depth explicit finalRubric foliation heraldry locusGrp material msItemStruct musicNotation provenance recordHist rubric seal sealDesc secFol signatures stamp surrogates typeDesc typeNote watermark dim dimensions height source support"/>
         <moduleRef key="certainty" except="precision respons"/>
         <moduleRef key="gaiji"
           except="charName charProp glyph glyphName localName localProp mapping unicodeName unicodeProp unihanProp value"/>
         <moduleRef key="textcrit" except="rdgGrp wit witEnd witStart"/>
         <elementSpec ident="authority" module="header" mode="change">
+          <attList>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="key" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="ref" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="collection" mode="change">
           <attList>
             <attDef ident="cert" mode="delete"/>
             <attDef ident="change" mode="delete"/>
@@ -3982,10 +4009,6 @@
           </classes>
         </elementSpec>
         <elementSpec ident="msItem" mode="change">
-          <classes mode="change">
-            <memberOf key="att.msClass" mode="delete"/>
-            <memberOf key="att.msExcerpt" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="rend" mode="delete"/>
             <attDef ident="style" mode="delete"/>

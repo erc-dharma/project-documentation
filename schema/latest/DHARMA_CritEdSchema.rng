@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-10-25T14:07:32Z. .
+Schema generated from ODD source 2021-10-25T14:14:49Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -5411,6 +5411,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                <ref name="tei_model.placeNamePart"/>
                <ref name="tei_institution"/>
                <ref name="tei_repository"/>
+               <ref name="tei_collection"/>
                <ref name="tei_idno"/>
                <ref name="tei_msName"/>
                <ref name="tei_objectName"/>
@@ -5653,6 +5654,21 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
          </attribute>
       </optional>
    </define>
+   <define name="tei_att.msClass.attributes">
+      <ref name="tei_att.msClass.attribute.class"/>
+   </define>
+   <define name="tei_att.msClass.attribute.class">
+      <optional>
+         <attribute name="class">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the text types or classifications applicable to this item by pointing to other elements or resources defining the classification concerned. </a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="anyURI"/>
+               </oneOrMore>
+            </list>
+         </attribute>
+      </optional>
+   </define>
    <define name="tei_msDesc">
       <element name="msDesc">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript description) contains a description of a single identifiable manuscript or other text-bearing object such as early printed books. [10.1. Overview]</a:documentation>
@@ -5783,6 +5799,9 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                   <ref name="tei_repository"/>
                </optional>
                <zeroOrMore>
+                  <ref name="tei_collection"/>
+               </zeroOrMore>
+               <zeroOrMore>
                   <ref name="tei_idno"/>
                </zeroOrMore>
             </group>
@@ -5814,6 +5833,17 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
          <ref name="tei_macro.phraseSeq.limited"/>
       </element>
    </define>
+   <define name="tei_collection">
+      <element name="collection">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains the name of a collection of manuscripts or other objects, not necessarily located within a single repository. [10.4. The Manuscript Identifier]</a:documentation>
+         <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.analytic.attribute.ana"/>
+         <ref name="tei_att.naming.attribute.role"/>
+         <ref name="tei_att.naming.attribute.nymRef"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_altIdentifier">
       <element name="altIdentifier">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(alternative identifier) contains an alternative or former structured identifier used for a manuscript or other object, such as a former catalogue number. [10.4. The Manuscript Identifier]</a:documentation>
@@ -5829,6 +5859,9 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </optional>
             <optional>
                <ref name="tei_repository"/>
+            </optional>
+            <optional>
+               <ref name="tei_collection"/>
             </optional>
             <ref name="tei_idno"/>
             <optional>
@@ -5927,6 +5960,8 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </choice>
          </group>
          <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.msExcerpt.attributes"/>
+         <ref name="tei_att.msClass.attributes"/>
          <empty/>
       </element>
    </define>
