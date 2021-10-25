@@ -1453,7 +1453,7 @@
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="reason" mode="change" usage="req">
+            <attDef ident="reason" mode="change" usage="rec">
               <valList type="closed" mode="change">
                 <valItem ident="omitted"/>
                 <valItem ident="lost"/>
@@ -1668,12 +1668,104 @@
               </valList>
             </attDef>
             <attDef ident="met" mode="change">
-              <datatype>
-                <dataRef name="token"/>
-              </datatype>
+              <valList type="open" mode="replace">
+                <valItem ident="sumānikā"/>
+                <valItem ident="anuṣṭubh"/>
+                <valItem ident="vegavatī"/>
+                <valItem ident="viyoginī"/>
+                <valItem ident="triṣṭubh"/>
+                <valItem ident="dodhaka"/>
+                <valItem ident="indravajrā"/>
+                <valItem ident="rathoddhatā"/>
+                <valItem ident="śālinī"/>
+                <valItem ident="svāgatā"/>
+                <valItem ident="upajāti"/>
+                <valItem ident="upendravajrā"/>
+                <valItem ident="toṭaka"/>
+                <valItem ident="vātormī"/>
+                <valItem ident="upacitra"/>
+                <valItem ident="aparavaktra"/>
+                <valItem ident="hariṇaplutā"/>
+                <valItem ident="mālabhāriṇī"/>
+                <valItem ident="jagatī"/>
+                <valItem ident="bhujaṅgaprayāta"/>
+                <valItem ident="maṇimālā"/>
+                <valItem ident="drutavilambita"/>
+                <valItem ident="pramitākṣarā"/>
+                <valItem ident="vaṁśamālā"/>
+                <valItem ident="vaṁśastha"/>
+                <valItem ident="vaiśvadevī"/>
+                <valItem ident="puṣpitāgrā"/>
+                <valItem ident="mañjubhāṣiṇī"/>
+                <valItem ident="mattamayūra"/>
+                <valItem ident="praharṣiṇī"/>
+                <valItem ident="rucirā"/>
+                <valItem ident="asaṁbādhā"/>
+                <valItem ident="praharaṇakalikā"/>
+                <valItem ident="vasantatilakā"/>
+                <valItem ident="mālinī"/>
+                <valItem ident="hariṇī"/>
+                <valItem ident="mandākrāntā"/>
+                <valItem ident="nardaṭaka"/>
+                <valItem ident="prthvī"/>
+                <valItem ident="śikharinī"/>
+                <valItem ident="śārdūlavikrīḍita"/>
+                <valItem ident="sumadhurā"/>
+                <valItem ident="mattebhavikrīḍita"/>
+                <valItem ident="suvadanā"/>
+                <valItem ident="sragdharā"/>
+                <valItem ident="uncertain"/>
+              </valList>
             </attDef>
-            <attRef name="real" class="att.metrical"/>
-            <attDef ident="met" mode="delete"/>
+            <attDef ident="real" mode="change">
+              <valList type="open" mode="replace">
+                <valItem ident="sumānikā"/>
+                <valItem ident="anuṣṭubh"/>
+                <valItem ident="vegavatī"/>
+                <valItem ident="viyoginī"/>
+                <valItem ident="triṣṭubh"/>
+                <valItem ident="dodhaka"/>
+                <valItem ident="indravajrā"/>
+                <valItem ident="rathoddhatā"/>
+                <valItem ident="śālinī"/>
+                <valItem ident="svāgatā"/>
+                <valItem ident="upajāti"/>
+                <valItem ident="upendravajrā"/>
+                <valItem ident="toṭaka"/>
+                <valItem ident="vātormī"/>
+                <valItem ident="upacitra"/>
+                <valItem ident="aparavaktra"/>
+                <valItem ident="hariṇaplutā"/>
+                <valItem ident="mālabhāriṇī"/>
+                <valItem ident="jagatī"/>
+                <valItem ident="bhujaṅgaprayāta"/>
+                <valItem ident="maṇimālā"/>
+                <valItem ident="drutavilambita"/>
+                <valItem ident="pramitākṣarā"/>
+                <valItem ident="vaṁśamālā"/>
+                <valItem ident="vaṁśastha"/>
+                <valItem ident="vaiśvadevī"/>
+                <valItem ident="puṣpitāgrā"/>
+                <valItem ident="mañjubhāṣiṇī"/>
+                <valItem ident="mattamayūra"/>
+                <valItem ident="praharṣiṇī"/>
+                <valItem ident="rucirā"/>
+                <valItem ident="asaṁbādhā"/>
+                <valItem ident="praharaṇakalikā"/>
+                <valItem ident="vasantatilakā"/>
+                <valItem ident="mālinī"/>
+                <valItem ident="hariṇī"/>
+                <valItem ident="mandākrāntā"/>
+                <valItem ident="nardaṭaka"/>
+                <valItem ident="prthvī"/>
+                <valItem ident="śikharinī"/>
+                <valItem ident="śārdūlavikrīḍita"/>
+                <valItem ident="sumadhurā"/>
+                <valItem ident="mattebhavikrīḍita"/>
+                <valItem ident="suvadanā"/>
+                <valItem ident="sragdharā"/>
+              </valList>
+            </attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="label" module="core" mode="change">
@@ -2875,7 +2967,6 @@
             <attDef ident="exclude" mode="delete"/>
             <attDef ident="facs" mode="delete"/>
             <attDef ident="hand" mode="delete"/>
-            <attDef ident="met" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="org" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
@@ -2906,6 +2997,55 @@
               <valList type="closed" mode="change">
                 <valItem ident="check"/>
                 <valItem ident="met"/>
+              </valList>
+            </attDef>
+            <attDef ident="met" mode="change">
+              <valList type="open" mode="replace">
+                <valItem ident="sumānikā"/>
+                <valItem ident="anuṣṭubh"/>
+                <valItem ident="vegavatī"/>
+                <valItem ident="viyoginī"/>
+                <valItem ident="triṣṭubh"/>
+                <valItem ident="dodhaka"/>
+                <valItem ident="indravajrā"/>
+                <valItem ident="rathoddhatā"/>
+                <valItem ident="śālinī"/>
+                <valItem ident="svāgatā"/>
+                <valItem ident="upajāti"/>
+                <valItem ident="upendravajrā"/>
+                <valItem ident="toṭaka"/>
+                <valItem ident="vātormī"/>
+                <valItem ident="upacitra"/>
+                <valItem ident="aparavaktra"/>
+                <valItem ident="hariṇaplutā"/>
+                <valItem ident="mālabhāriṇī"/>
+                <valItem ident="jagatī"/>
+                <valItem ident="bhujaṅgaprayāta"/>
+                <valItem ident="maṇimālā"/>
+                <valItem ident="drutavilambita"/>
+                <valItem ident="pramitākṣarā"/>
+                <valItem ident="vaṁśamālā"/>
+                <valItem ident="vaṁśastha"/>
+                <valItem ident="vaiśvadevī"/>
+                <valItem ident="puṣpitāgrā"/>
+                <valItem ident="mañjubhāṣiṇī"/>
+                <valItem ident="mattamayūra"/>
+                <valItem ident="praharṣiṇī"/>
+                <valItem ident="rucirā"/>
+                <valItem ident="asaṁbādhā"/>
+                <valItem ident="praharaṇakalikā"/>
+                <valItem ident="vasantatilakā"/>
+                <valItem ident="mālinī"/>
+                <valItem ident="hariṇī"/>
+                <valItem ident="mandākrāntā"/>
+                <valItem ident="nardaṭaka"/>
+                <valItem ident="prthvī"/>
+                <valItem ident="śikharinī"/>
+                <valItem ident="śārdūlavikrīḍita"/>
+                <valItem ident="sumadhurā"/>
+                <valItem ident="mattebhavikrīḍita"/>
+                <valItem ident="suvadanā"/>
+                <valItem ident="sragdharā"/>
               </valList>
             </attDef>
           </attList>
