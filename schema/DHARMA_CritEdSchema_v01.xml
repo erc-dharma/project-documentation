@@ -3570,7 +3570,6 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="wit" mode="change" usage="req"/>
             <attDef ident="varSeq" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="1"/>
