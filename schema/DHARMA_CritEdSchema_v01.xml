@@ -1870,7 +1870,7 @@
               </valList>
             </attDef>
             <attDef ident="style" mode="delete"/>
-            <attDef ident="met" mode="change" usage="req">
+            <attDef ident="met" mode="change" usage="rec">
               <valList type="open" mode="replace">
                 <valItem ident="sumānikā"/>
                 <valItem ident="anuṣṭubh"/>
@@ -2105,7 +2105,13 @@
             <attDef ident="place" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="rend" mode="change">
-              <valList type="closed" mode="change">
+              <valList mode="change" type="closed">
+                <valItem ident="hyphenfront"/>
+                <valItem ident="hyphenback"/>
+                <valItem ident="hyphenaround"/>
+                <valItem ident="circlefront"/>
+                <valItem ident="circleback"/>
+                <valItem ident="circlearound"/>
                 <valItem ident="check"/>
               </valList>
             </attDef>
