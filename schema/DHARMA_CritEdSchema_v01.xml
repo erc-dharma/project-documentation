@@ -3807,6 +3807,8 @@
               <valList type="closed" mode="replace">
                 <valItem ident="eye-skip"/>
                 <valItem ident="line_omission"/>
+                <valItem ident="haplography"/>
+                <valItem ident="dittography"/>
                 <valItem ident="lexical"/>
                 <valItem ident="morphological"/>
                 <valItem ident="ordinal"/>
@@ -3842,11 +3844,9 @@
               </valList>
             </attDef>
             <attDef ident="type" mode="change">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="transposition"/>
                 <valItem ident="paradosis"/>
-                <valItem mode="delete" ident="substantive"/>
-                <valItem mode="delete" ident="orthographic"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
@@ -3916,7 +3916,7 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
-              <valList mode="change" type="closed">
+              <valList mode="replace" type="closed">
                 <valItem ident="pc"/>
                 <valItem ident="ac"/>
               </valList>
