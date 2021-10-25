@@ -77,6 +77,7 @@
         <moduleRef key="msdescription"
           except="accMat acquisition additional additions adminInfo catchwords collation condition custEvent custodialHist depth explicit finalRubric foliation heraldry locusGrp material msItemStruct musicNotation provenance recordHist rubric seal sealDesc secFol signatures stamp surrogates typeDesc typeNote watermark dim dimensions height source support"/>
         <moduleRef key="certainty" except="precision respons"/>
+        <moduleRef key="verse" except="caesura metDecl metSym rhyme"/>
         <moduleRef key="gaiji"
           except="charName charProp glyph glyphName localName localProp mapping unicodeName unicodeProp unihanProp value"/>
         <moduleRef key="textcrit" except="rdgGrp wit witEnd witStart"/>
@@ -1454,16 +1455,11 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="reason" mode="change" usage="rec">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="omitted"/>
                 <valItem ident="lost"/>
                 <valItem ident="ellipsis"/>
-                <valItem mode="delete" ident="cancelled"/>
-                <valItem mode="delete" ident="deleted"/>
-                <valItem mode="delete" ident="editorial"/>
-                <valItem mode="delete" ident="inaudible"/>
-                <valItem mode="delete" ident="irrelevant"/>
-                <valItem mode="delete" ident="sampling"/>
+                <valItem ident="illegible"/>
               </valList>
             </attDef>
             <attDef ident="extent" mode="change">
