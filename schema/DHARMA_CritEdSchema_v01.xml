@@ -3481,7 +3481,7 @@
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="type" mode="change">
-              <valList mode="change" type="closed">
+              <valList mode="replace" type="closed">
                 <valItem ident="imitation"/>
                 <valItem ident="adaptation"/>
               </valList>
@@ -3668,7 +3668,7 @@
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cause" mode="change">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="eye-skip"/>
                 <valItem ident="line_omission"/>
                 <valItem ident="lexical"/>
@@ -3677,10 +3677,6 @@
                 <valItem ident="syntatic"/>
                 <valItem ident="sutrative"/>
                 <valItem ident="additive"/>
-                <valItem mode="delete" ident="homeoteleuton"/>
-                <valItem mode="delete" ident="homeoarchy"/>
-                <valItem mode="delete" ident="paleographicConfusion"/>
-                <valItem mode="delete" ident="falseEmendation"/>
               </valList>
             </attDef>
             <attDef ident="cert" mode="delete"/>
