@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en" n="testms">
   <teiHeader>
     <fileDesc>
@@ -191,15 +192,100 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="script" mode="delete"/>
             <attDef ident="xml:id" mode="change" usage="req"/>
-            <attDef ident="scriptRef" mode="change" usage="req"/>
+            <attDef ident="scriptRef" mode="change" usage="req">
+              <valList type="open" mode="replace">
+                <valItem ident="class:57471">
+                  <desc>Arabic script</desc>
+                </valItem>
+                <valItem ident="class:70417">
+                  <desc>Jawi script - Narrower concept of Arabic Script</desc>
+                </valItem>
+                <valItem ident="class:83217">
+                  <desc>Brāhmī and derivatives</desc>
+                </valItem>
+                <valItem ident="class:83223">
+                  <desc>northern class Brāhmī</desc>
+                </valItem>
+                <valItem ident="class:83229">
+                  <desc>Gauḍī</desc>
+                </valItem>
+                <valItem ident="class:38771">
+                  <desc>Nāgarī</desc>
+                </valItem>
+                <valItem ident="class:38774">
+                  <desc>Siddhamātr̥kā </desc>
+                </valItem>
+                <valItem ident="class:83227">
+                  <desc>southeast Asian Brāhmī</desc>
+                </valItem>
+                <valItem ident="class:83239">
+                  <desc>Balinese script</desc>
+                </valItem>
+                <valItem ident="class:38767">
+                  <desc>Batak script </desc>
+                </valItem>
+                <valItem ident="class:83233">
+                  <desc>Cam script</desc>
+                </valItem>
+                <valItem ident="class:38769">
+                  <desc>Kawi script</desc>
+                </valItem>
+                <valItem ident="class:83231">
+                  <desc>Khmer script</desc>
+                </valItem>
+                <valItem ident="class:83235">
+                  <desc>Mon-Burmese script</desc>
+                </valItem>
+                <valItem ident="class:83241">
+                  <desc>Old West Javanese script</desc>
+                </valItem>
+                <valItem ident="class:83237">
+                  <desc>Pyu script</desc>
+                </valItem>
+                <valItem ident="class:57470">
+                  <desc>Sundanese script</desc>
+                </valItem>
+                <valItem ident="class:83225">
+                  <desc>southern class Brāhmī</desc>
+                </valItem>
+                <valItem ident="class:38768">
+                  <desc>Grantha</desc>
+                </valItem>
+                <valItem ident="class:38776">
+                  <desc>Tamil script</desc>
+                </valItem>
+                <valItem ident="class:57475">
+                  <desc>Tamil with Grantha</desc>
+                </valItem>
+                <valItem ident="class:70420">
+                  <desc>Vaṭṭeḻuṭṭu</desc>
+                </valItem>
+                <valItem ident="class:83221">
+                  <desc>Chinese Script</desc>
+                </valItem>
+                <valItem ident="class:83219">
+                  <desc>Kharoṣṭhī</desc>
+                </valItem>
+                <valItem ident="maturity:83207">
+                  <desc>early Brāhmī</desc>
+                </valItem>
+                <valItem ident="maturity:83211">
+                  <desc>late Brāhmī</desc>
+                </valItem>
+                <valItem ident="maturity:83209">
+                  <desc>middle Brāhmi</desc>
+                </valItem>
+                <valItem ident="maturity:83213">
+                  <desc>regional Brāhmī-derived script</desc>
+                </valItem>
+                <valItem ident="maturity:83215">
+                  <desc>vernacular Brāhmī-derived script</desc>
+                </valItem>
+              </valList>
+            </attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="idno" module="header" mode="change">
-          <classes mode="change">
-            <memberOf key="att.datable" mode="delete"/>
-            <memberOf key="att.global" mode="delete"/>
-            <memberOf key="att.sortable" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="calendar" mode="delete"/>
@@ -245,9 +331,7 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="filename">
-                  <desc versionDate="2021-10-25" xml:lang="en">Filename without the extension</desc>
-                </valItem>
+                <valItem ident="filename"/>
               </valList>
             </attDef>
           </attList>
@@ -382,9 +466,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="prefixDef" module="header" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -408,16 +489,8 @@
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="matchPattern" usage="req">
-              <datatype>
-                <dataRef key="teidata.pattern"/>
-              </datatype>
-            </attDef>
-            <attDef ident="replacementPattern" usage="req">
-              <datatype>
-                <dataRef key="teidata.replacement"/>
-              </datatype>
-            </attDef>
+            <attDef ident="matchPattern" usage="req" mode="change"/>
+            <attDef ident="replacementPattern" usage="req" mode="change"/>
           </attList>
         </elementSpec>
         <elementSpec ident="projectDesc" module="header" mode="change">
@@ -552,7 +625,13 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="status" mode="change">
-              <valList type="closed" mode="change"/>
+              <valList type="closed" mode="replace">
+                <valItem ident="draft"/>
+                <valItem ident="candidate"/>
+                <valItem ident="approved"/>
+                <valItem ident="published"/>
+                <valItem ident="withdrawn"/>
+              </valList>
             </attDef>
           </attList>
         </elementSpec>
@@ -676,8 +755,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            
             <attDef ident="sameAs" mode="delete"/>
             <attDef ident="select" mode="delete"/>
             <attDef ident="source" mode="delete"/>
@@ -687,9 +767,6 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="part" mode="change">
-              <datatype>
-                <dataRef key="teidata.enumerated"/>
-              </datatype>
               <valList type="closed" mode="change">
                 <valItem ident="I"/>
                 <valItem ident="M"/>
@@ -698,22 +775,13 @@
             </attDef>
             <attDef ident="type" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="invocation">
-                  <desc versionDate="2021-10-19" xml:lang="en"
-                    >To represent an auspicious word, such as siddham, or an auspicious phrase, such as namo gaṇeśāya</desc>
-                </valItem>
-                <valItem mode="add" ident="colophon">
-                  <desc versionDate="2021-10-19" xml:lang="en"
-                    >We mean here a short statement declaring the end of a text or of a text component</desc>
-                </valItem>
-                <valItem mode="add" ident="speaker">
-                  <desc versionDate="2021-10-21" xml:lang="en"
-                    >Use to identify a person in a context of a dialogue</desc>
-                </valItem>
+                <valItem ident="invocation"/>
+                <valItem ident="colophon"/>               
+                <valItem ident="speaker"/>
               </valList>
             </attDef>
             <attDef ident="xml:lang" mode="change">
-              <valList type="open" mode="replace">
+              <valList type="closed" mode="replace">
                 <valItem ident="unknown"/>
                 <valItem ident="mya"/>
                 <valItem ident="obr"/>
@@ -744,7 +812,7 @@
             </attDef>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -777,11 +845,7 @@
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="target" usage="opt">
-              <datatype>
-                <dataRef key="teidata.pointer"/>
-              </datatype>
-            </attDef>
+            <attDef ident="target" mode="change" usage="req"/>
           </attList>
         </elementSpec>
         <elementSpec ident="seg" module="linking" mode="change">
@@ -794,7 +858,6 @@
             <attDef ident="facs" mode="delete"/>
             <attDef ident="function" mode="delete"/>
             <attDef ident="hand" mode="delete"/>
-            <attDef ident="met" mode="delete" usage="opt"/>
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="notation" mode="delete"/>
@@ -810,10 +873,10 @@
             <attDef ident="style" mode="delete"/>
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
-            <attDef ident="type" mode="delete">
+            <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="highlight"/>
-                <valItem mode="add" ident="interpolation"/>
+                <valItem ident="highlight"/>
+                <valItem ident="interpolation"/>
               </valList>
             </attDef>
             <attDef ident="valueDatcat" mode="delete"/>
@@ -821,14 +884,14 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="cert" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="low"/>
+                <valItem ident="low"/>
               </valList>
             </attDef>
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="pun"/>
-                <valItem mode="add" ident="check"/>
+                <valItem ident="pun"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -845,9 +908,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -864,8 +927,8 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="semi" mode="change">
-                <valItem mode="add" ident="siglum"/>
-                <valItem mode="add" ident="hand"/>
+                <valItem ident="siglum"/>
+                <valItem ident="hand"/>
                 <valItem mode="delete" ident="suspension"/>
                 <valItem mode="delete" ident="contraction"/>
                 <valItem mode="delete" ident="brevigraph"/>
@@ -901,10 +964,10 @@
             <attDef ident="precision" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="quantity" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="mark"/>
-                <valItem mode="add" ident="check"/>
+                <valItem ident="mark"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -926,8 +989,8 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="place" mode="change" usage="req">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="overstrike"/>
-                <valItem mode="add" ident="unspecified"/>
+                <valItem ident="overstrike"/>
+                <valItem ident="unspecified"/>
                 <valItem mode="delete" ident="margin"/>
                 <valItem mode="delete" ident="opposite"/>
                 <valItem mode="delete" ident="overleaf"/>
@@ -935,7 +998,7 @@
                 <valItem mode="delete" ident="inspace"/>
               </valList>
             </attDef>
-            <attDef ident="hand" usage="opt">
+            <attDef ident="hand" mode="change">
               <datatype>
                 <dataRef key="teidata.pointer"/>
               </datatype>
@@ -1113,15 +1176,15 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="unit" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="note"/>
-                <valItem mode="add" ident="item"/>
-                <valItem mode="add" ident="figure"/>
-                <valItem mode="add" ident="plate"/>
-                <valItem mode="add" ident="table"/>
-                <valItem mode="add" ident="appendix"/>
-                <valItem mode="add" ident="section"/>
-                <valItem mode="add" ident="book"/>
-                <valItem mode="add" ident="stanza"/>
+                <valItem ident="note"/>
+                <valItem ident="item"/>
+                <valItem ident="figure"/>
+                <valItem ident="plate"/>
+                <valItem ident="table"/>
+                <valItem ident="appendix"/>
+                <valItem ident="section"/>
+                <valItem ident="book"/>
+                <valItem ident="stanza"/>
               </valList>
             </attDef>
           </attList>
@@ -1236,10 +1299,10 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
-                <valItem mode="add" ident="strikeout"/>
-                <valItem mode="add" ident="dots"/>
-                <valItem mode="add" ident="ui"/>
+                <valItem ident="check"/>
+                <valItem ident="strikeout"/>
+                <valItem ident="dots"/>
+                <valItem ident="ui"/>
               </valList>
             </attDef>
           </attList>
@@ -1305,9 +1368,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1344,9 +1407,9 @@
             <attDef ident="min" mode="delete"/>
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
-            <attDef ident="precision" mode="delete">
+            <attDef ident="precision" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="low"/>
+                <valItem ident="low"/>
               </valList>
             </attDef>
             <attDef ident="prev" mode="delete"/>
@@ -1366,9 +1429,9 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="reason" mode="change" usage="req">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="omitted"/>
-                <valItem mode="add" ident="lost"/>
-                <valItem mode="add" ident="ellipsis"/>
+                <valItem ident="omitted"/>
+                <valItem ident="lost"/>
+                <valItem ident="ellipsis"/>
                 <valItem mode="delete" ident="cancelled"/>
                 <valItem mode="delete" ident="deleted"/>
                 <valItem mode="delete" ident="editorial"/>
@@ -1379,13 +1442,13 @@
             </attDef>
             <attDef ident="extent" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="unknown"/>
+                <valItem ident="unknown"/>
               </valList>
             </attDef>
             <attDef ident="unit" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="component"/>
-                <valItem mode="add" ident="character"/>
+                <valItem ident="component"/>
+                <valItem ident="character"/>
                 <valItem mode="delete" ident="cm"/>
                 <valItem mode="delete" ident="mm"/>
                 <valItem mode="delete" ident="in"/>
@@ -1410,9 +1473,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1447,9 +1510,9 @@
             <attDef ident="next" mode="delete"/>
             <attDef ident="place" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1465,7 +1528,7 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="editorial"/>
+                <valItem ident="editorial"/>
               </valList>
             </attDef>
           </attList>
@@ -1496,11 +1559,11 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="superscript"/>
-                <valItem mode="add" ident="subscript"/>
-                <valItem mode="add" ident="italic"/>
-                <valItem mode="add" ident="bold"/>
-                <valItem mode="add" ident="check"/>
+                <valItem ident="superscript"/>
+                <valItem ident="subscript"/>
+                <valItem ident="italic"/>
+                <valItem ident="bold"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -1520,9 +1583,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1560,7 +1623,7 @@
             <attDef ident="n" mode="change" usage="req"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="part" mode="change">
@@ -1578,7 +1641,7 @@
                 </valItem>
               </valList>
             </attDef>
-            <attDef ident="met" usage="opt">
+            <attDef ident="met" mode="change">
               <datatype>
                 <dataRef name="token"/>
               </datatype>
@@ -1665,7 +1728,7 @@
             <attDef ident="facs" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="org" mode="delete"/>
-            <attDef ident="part" mode="delete">
+            <attDef ident="part" mode="change">
               <valList mode="change">
                 <valItem mode="delete" ident="Y"/>
                 <valItem mode="delete" ident="N"/>
@@ -1688,8 +1751,8 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
-                <valItem mode="add" ident="met"/>
+                <valItem ident="check"/>
+                <valItem ident="met"/>
               </valList>
             </attDef>
             <attDef ident="style" mode="delete"/>
@@ -1723,9 +1786,9 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change" type="semi">
-                <valItem mode="add" ident="check"/>
-                <valItem mode="add" ident="bulleted"/>
-                <valItem mode="add" ident="numbered"/>
+                <valItem ident="check"/>
+                <valItem ident="bulleted"/>
+                <valItem ident="numbered"/>
               </valList>
             </attDef>
           </attList>
@@ -1772,9 +1835,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1792,9 +1855,9 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList mode="change" type="open">
-                <valItem mode="add" ident="volume"/>
-                <valItem mode="add" ident="weight"/>
-                <valItem mode="add" ident="currency"/>
+                <valItem ident="volume"/>
+                <valItem ident="weight"/>
+                <valItem ident="currency"/>
               </valList>
             </attDef>
           </attList>
@@ -1830,7 +1893,6 @@
             <attDef ident="nymRef" mode="delete"/>
             <attDef ident="period" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="ref" mode="delete"/>
             <attDef ident="rend" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
@@ -1850,7 +1912,6 @@
             <attDef ident="when-custom" mode="delete"/>
             <attDef ident="when-iso" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
-            <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
           </attList>
@@ -1869,9 +1930,9 @@
             <attDef ident="next" mode="delete"/>
             <attDef ident="place" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1890,15 +1951,15 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="prosody">
+                <valItem ident="prosody">
                   <desc versionDate="2021-10-25" xml:lang="en"
                     >To be used as the first child to declare a prosodic pattern</desc>
                 </valItem>
-                <valItem mode="add" ident="credit">
+                <valItem ident="credit">
                   <desc versionDate="2021-10-25" xml:lang="en"
                     >To be used only inside the translation</desc>
                 </valItem>
-                <valItem mode="add" ident="altLem">
+                <valItem ident="altLem">
                   <desc versionDate="2021-10-25" xml:lang="en"
                     >Declares an alternative lemma for display purposes</desc>
                 </valItem>
@@ -1911,9 +1972,9 @@
             <attDef ident="ana" mode="delete"/>
             <attDef ident="atLeast" mode="delete"/>
             <attDef ident="atMost" mode="delete"/>
-            <attDef ident="cert" mode="delete">
+            <attDef ident="cert" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="low"/>
+                <valItem ident="low"/>
               </valList>
             </attDef>
             <attDef ident="change" mode="delete"/>
@@ -1927,9 +1988,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -1972,8 +2033,8 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="stanza"/>
-                <valItem mode="add" ident="check"/>
+                <valItem ident="stanza"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="part" mode="change">
@@ -2038,10 +2099,10 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="siglum"/>
-                <valItem mode="add" ident="title"/>
+                <valItem ident="siglum"/>
+                <valItem ident="title"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2131,9 +2192,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2179,13 +2240,13 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="block"/>
-                <valItem mode="add" ident="check"/>
+                <valItem ident="block"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="base-text"/>
+                <valItem ident="base-text"/>
               </valList>
             </attDef>
           </attList>
@@ -2312,9 +2373,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2344,9 +2405,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2375,9 +2436,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2468,9 +2529,9 @@
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="ref" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2505,9 +2566,9 @@
             <attDef ident="from-custom" mode="delete"/>
             <attDef ident="from-iso" mode="delete"/>
             <attDef ident="key" mode="delete"/>
-            <attDef ident="rend" mode="change">
+            <attDef ident="level" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="a"/>
+                <valItem ident="a"/>
               </valList>
             </attDef>
             <attDef ident="next" mode="delete"/>
@@ -2522,8 +2583,8 @@
             <attDef ident="ref" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
-                <valItem mode="add" ident="plain"/>
+                <valItem ident="check"/>
+                <valItem ident="plain"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2552,15 +2613,15 @@
             <attDef ident="subtype" mode="change">
               <desc versionDate="2021-10-19" xml:lang="en"/>
               <valList type="semi" mode="change">
-                <valItem mode="add" ident="base-text"/>
-                <valItem mode="add" ident="commentary"/>
-                <valItem mode="add" ident="editorial"/>
-                <valItem mode="add" ident="translation"/>
+                <valItem ident="base-text"/>
+                <valItem ident="commentary"/>
+                <valItem ident="editorial"/>
+                <valItem ident="translation"/>
               </valList>
             </attDef>
             <!-- <attDef ident="cert" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="low"/>
+                <valItem ident="low"/>
               </valList>
             </attDef> -->
           </attList>
@@ -2577,7 +2638,7 @@
             <attDef ident="atMost" mode="delete"/>
             <attDef ident="cert" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="low"/>
+                <valItem ident="low"/>
               </valList>
             </attDef>
             <attDef ident="change" mode="delete"/>
@@ -2598,7 +2659,7 @@
             <attDef ident="quantity" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2650,21 +2711,16 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="xml:lang" mode="change" usage="req">
               <valList type="semi" mode="change">
-                <valItem mode="add" ident="eng"/>
+                <valItem ident="eng"/>
               </valList>
             </attDef>
             <attDef ident="xml:id" mode="change" usage="rec"/>
-            <attDef ident="corresp" usage="opt">
-              <datatype>
-                <dataRef key="teidata.pointer"/>
-              </datatype>
-            </attDef>
             <attDef ident="type" mode="change" usage="req">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="edition"/>
-                <valItem mode="add" ident="translation"/>
-                <valItem mode="add" ident="commentary"/>
-                <valItem mode="add" ident="bibliography"/>
+                <valItem ident="edition"/>
+                <valItem ident="translation"/>
+                <valItem ident="commentary"/>
+                <valItem ident="bibliography"/>
               </valList>
             </attDef>
           </attList>
@@ -2751,19 +2807,19 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="semi" mode="change">
-                <valItem mode="add" ident="chapter"/>
-                <valItem mode="add" ident="canto"/>
-                <valItem mode="add" ident="dyad"/>
-                <valItem mode="add" ident="section"/>
-                <valItem mode="add" ident="group"/>
-                <valItem mode="add" ident="interpolation"/>
+                <valItem ident="chapter"/>
+                <valItem ident="canto"/>
+                <valItem ident="dyad"/>
+                <valItem ident="section"/>
+                <valItem ident="group"/>
+                <valItem ident="interpolation"/>
               </valList>
             </attDef>
             <attDef ident="style" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
-                <valItem mode="add" ident="met"/>
+                <valItem ident="check"/>
+                <valItem ident="met"/>
               </valList>
             </attDef>
           </attList>
@@ -2886,9 +2942,9 @@
             <attDef ident="nymRef" mode="delete"/>
             <attDef ident="period" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2899,23 +2955,23 @@
             <attDef ident="sort" mode="delete"/>
             <attDef ident="source" mode="delete"/>
             <attDef ident="style" mode="delete"/>
-            <attDef ident="subtype" mode="delete">
+            <attDef ident="subtype" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="coronation"/>
-                <valItem mode="add" ident="other"/>
-                <valItem mode="add" ident="sobriquet"/>
-                <valItem mode="add" ident="title"/>
+                <valItem ident="coronation"/>
+                <valItem ident="other"/>
+                <valItem ident="sobriquet"/>
+                <valItem ident="title"/>
               </valList>
             </attDef>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="to" mode="delete"/>
             <attDef ident="to-custom" mode="delete"/>
             <attDef ident="to-iso" mode="delete"/>
-            <attDef ident="type" mode="delete">
+            <attDef ident="type" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="divine"/>
-                <valItem mode="add" ident="human"/>
-                <valItem mode="add" ident="personification"/>
+                <valItem ident="divine"/>
+                <valItem ident="human"/>
+                <valItem ident="personification"/>
               </valList>
             </attDef>
             <attDef ident="when" mode="delete"/>
@@ -2977,9 +3033,9 @@
             <attDef ident="nymRef" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="ref" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -2998,44 +3054,44 @@
             <attDef ident="key" mode="delete"/>
             <attDef ident="type" mode="change" usage="req">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="unknown"/>
-                <valItem mode="add" ident="shepherd"/>
-                <valItem mode="add" ident="peasant"/>
-                <valItem mode="add" ident="singer"/>
-                <valItem mode="add" ident="dancer"/>
-                <valItem mode="add" ident="officer"/>
-                <valItem mode="add" ident="regionalDelegate"/>
-                <valItem mode="add" ident="brahminDelegate"/>
-                <valItem mode="add" ident="artisan"/>
-                <valItem mode="add" ident="merchant"/>
-                <valItem mode="add" ident="monk"/>
-                <valItem mode="add" ident="brahmin"/>
-                <valItem mode="add" ident="priest"/>
-                <valItem mode="add" ident="godLegalEntity"/>
-                <valItem mode="add" ident="landlord"/>
-                <valItem mode="add" ident="subordinateRuler"/>
-                <valItem mode="add" ident="king"/>
+                <valItem ident="unknown"/>
+                <valItem ident="shepherd"/>
+                <valItem ident="peasant"/>
+                <valItem ident="singer"/>
+                <valItem ident="dancer"/>
+                <valItem ident="officer"/>
+                <valItem ident="regionalDelegate"/>
+                <valItem ident="brahminDelegate"/>
+                <valItem ident="artisan"/>
+                <valItem ident="merchant"/>
+                <valItem ident="monk"/>
+                <valItem ident="brahmin"/>
+                <valItem ident="priest"/>
+                <valItem ident="godLegalEntity"/>
+                <valItem ident="landlord"/>
+                <valItem ident="subordinateRuler"/>
+                <valItem ident="king"/>
               </valList>
             </attDef>
             <attDef ident="subtype" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="solderer"/>
-                <valItem mode="add" ident="sealer"/>
-                <valItem mode="add" ident="engraver"/>
-                <valItem mode="add" ident="handwriter"/>
-                <valItem mode="add" ident="composer"/>
-                <valItem mode="add" ident="scribe"/>
-                <valItem mode="add" ident="commemoratedPerson"/>
-                <valItem mode="add" ident="beneficiaryMerit"/>
-                <valItem mode="add" ident="auditor"/>
-                <valItem mode="add" ident="orderAddressee"/>
-                <valItem mode="add" ident="orderIssuer"/>
-                <valItem mode="add" ident="witness"/>
-                <valItem mode="add" ident="inChargeDonation"/>
-                <valItem mode="add" ident="administrator"/>
-                <valItem mode="add" ident="founder"/>
-                <valItem mode="add" ident="donee"/>
-                <valItem mode="add" ident="donor"/>
+                <valItem ident="solderer"/>
+                <valItem ident="sealer"/>
+                <valItem ident="engraver"/>
+                <valItem ident="handwriter"/>
+                <valItem ident="composer"/>
+                <valItem ident="scribe"/>
+                <valItem ident="commemoratedPerson"/>
+                <valItem ident="beneficiaryMerit"/>
+                <valItem ident="auditor"/>
+                <valItem ident="orderAddressee"/>
+                <valItem ident="orderIssuer"/>
+                <valItem ident="witness"/>
+                <valItem ident="inChargeDonation"/>
+                <valItem ident="administrator"/>
+                <valItem ident="founder"/>
+                <valItem ident="donee"/>
+                <valItem ident="donor"/>
               </valList>
             </attDef>
           </attList>
@@ -3077,18 +3133,18 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="other"/>
-                <valItem mode="add" ident="descender"/>
-                <valItem mode="add" ident="ascender"/>
-                <valItem mode="add" ident="feature"/>
-                <valItem mode="add" ident="defect"/>
-                <valItem mode="add" ident="binding-hole"/>
-                <valItem mode="add" ident="vacat"/>
+                <valItem ident="other"/>
+                <valItem ident="descender"/>
+                <valItem ident="ascender"/>
+                <valItem ident="feature"/>
+                <valItem ident="defect"/>
+                <valItem ident="binding-hole"/>
+                <valItem ident="vacat"/>
               </valList>
             </attDef>
             <attDef ident="unit" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="characters"/>
+                <valItem ident="characters"/>
                 <valItem mode="delete" ident="char"/>
               </valList>
             </attDef>
@@ -3141,9 +3197,9 @@
             <attDef ident="ana" mode="delete"/>
             <attDef ident="atLeast" mode="delete"/>
             <attDef ident="atMost" mode="delete"/>
-            <attDef ident="cert" mode="delete">
+            <attDef ident="cert" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="low"/>
+                <valItem ident="low"/>
               </valList>
             </attDef>
             <attDef ident="change" mode="delete"/>
@@ -3161,9 +3217,9 @@
             <attDef ident="precision" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="quantity" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -3181,12 +3237,12 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="reason" mode="change" usage="req">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="explanation"/>
-                <valItem mode="add" ident="subaudible"/>
-                <valItem mode="add" ident="undefined"/>
-                <valItem mode="add" ident="lost"/>
-                <valItem mode="add" ident="omitted"/>
-                <valItem mode="add" ident="implied"/>
+                <valItem ident="explanation"/>
+                <valItem ident="subaudible"/>
+                <valItem ident="undefined"/>
+                <valItem ident="lost"/>
+                <valItem ident="omitted"/>
+                <valItem ident="implied"/>
               </valList>
             </attDef>
             <attDef ident="evidence" mode="change">
@@ -3217,9 +3273,9 @@
             <attDef ident="prev" mode="delete"/>
             <attDef ident="quantity" mode="delete"/>
             <attDef ident="reason" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -3306,9 +3362,9 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change" usage="rec">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="filler"/>
-                <valItem mode="add" ident="numeral"/>
-                <valItem mode="add" ident="symbol"/>
+                <valItem ident="filler"/>
+                <valItem ident="numeral"/>
+                <valItem ident="symbol"/>
               </valList>
             </attDef>
           </attList>
@@ -3325,9 +3381,9 @@
             <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -3338,10 +3394,10 @@
             <attDef ident="style" mode="delete"/>
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
-            <attDef ident="type" mode="delete">
+            <attDef ident="type" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="imitation"/>
-                <valItem mode="add" ident="adaptation"/>
+                <valItem ident="imitation"/>
+                <valItem ident="adaptation"/>
               </valList>
             </attDef>
             <attDef ident="xml:base" mode="delete"/>
@@ -3428,30 +3484,30 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="varSeq" mode="delete">
+            <attDef ident="varSeq" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="1"/>
-                <valItem mode="add" ident="2"/>
+                <valItem ident="1"/>
+                <valItem ident="2"/>
               </valList>
             </attDef>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="emn"/>
-                <valItem mode="add" ident="conj"/>
-                <valItem mode="add" ident="norm"/>
-                <valItem mode="add" ident="absent_elsewhere"/>
-                <valItem mode="add" ident="reformulated_elsewhere"/>
+                <valItem ident="emn"/>
+                <valItem ident="conj"/>
+                <valItem ident="norm"/>
+                <valItem ident="absent_elsewhere"/>
+                <valItem ident="reformulated_elsewhere"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
               <valList mode="change">
-                <valItem mode="add" ident="hyphenfront"/>
-                <valItem mode="add" ident="hyphenback"/>
-                <valItem mode="add" ident="hyphenaround"/>
-                <valItem mode="add" ident="circlefront"/>
-                <valItem mode="add" ident="circleback"/>
-                <valItem mode="add" ident="circlearound"/>
-                <valItem mode="add" ident="check"/>
+                <valItem ident="hyphenfront"/>
+                <valItem ident="hyphenback"/>
+                <valItem ident="hyphenaround"/>
+                <valItem ident="circlefront"/>
+                <valItem ident="circleback"/>
+                <valItem ident="circlearound"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -3485,8 +3541,8 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="parallels"/>
-                <valItem mode="add" ident="apparatus"/>
+                <valItem ident="parallels"/>
+                <valItem ident="apparatus"/>
               </valList>
             </attDef>
           </attList>
@@ -3521,16 +3577,16 @@
         <elementSpec ident="rdg" module="textcrit" mode="change">
           <attList>
             <attDef ident="ana" mode="delete"/>
-            <attDef ident="cause" mode="delete">
+            <attDef ident="cause" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="eye-skip"/>
-                <valItem mode="add" ident="line_omission"/>
-                <valItem mode="add" ident="lexical"/>
-                <valItem mode="add" ident="morphological"/>
-                <valItem mode="add" ident="ordinal"/>
-                <valItem mode="add" ident="syntatic"/>
-                <valItem mode="add" ident="sutrative"/>
-                <valItem mode="add" ident="additive"/>
+                <valItem ident="eye-skip"/>
+                <valItem ident="line_omission"/>
+                <valItem ident="lexical"/>
+                <valItem ident="morphological"/>
+                <valItem ident="ordinal"/>
+                <valItem ident="syntatic"/>
+                <valItem ident="sutrative"/>
+                <valItem ident="additive"/>
                 <valItem mode="delete" ident="homeoteleuton"/>
                 <valItem mode="delete" ident="homeoarchy"/>
                 <valItem mode="delete" ident="paleographicConfusion"/>
@@ -3559,21 +3615,21 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="varSeq" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="1"/>
-                <valItem mode="add" ident="2"/>
+                <valItem ident="1"/>
+                <valItem ident="2"/>
               </valList>
             </attDef>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="transposition"/>
-                <valItem mode="add" ident="paradosis"/>
+                <valItem ident="transposition"/>
+                <valItem ident="paradosis"/>
                 <valItem mode="delete" ident="substantive"/>
                 <valItem mode="delete" ident="orthographic"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -3618,9 +3674,9 @@
             <attDef ident="next" mode="delete"/>
             <attDef ident="place" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="rend" mode="delete">
+            <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
@@ -3639,8 +3695,8 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="pc"/>
-                <valItem mode="add" ident="ac"/>
+                <valItem ident="pc"/>
+                <valItem ident="ac"/>
               </valList>
             </attDef>
           </attList>
@@ -3717,7 +3773,13 @@
             <attDef ident="resp" mode="delete"/>
             <attDef ident="source" mode="delete"/>
             <attDef ident="status" mode="change">
-              <valList type="semi" mode="change"/>
+              <valList type="closed" mode="replace">
+                <valItem ident="draft"/>
+                <valItem ident="candidate"/>
+                <valItem ident="approved"/>
+                <valItem ident="published"/>
+                <valItem ident="withdrawn"/>
+              </valList>
             </attDef>
           </attList>
         </elementSpec>
@@ -3736,7 +3798,7 @@
             <attDef ident="style" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -3780,7 +3842,7 @@
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -4149,20 +4211,20 @@
           <attList>
             <attDef ident="type" mode="change" usage="req">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="district"/>
-                <valItem mode="add" ident="sitePart"/>
-                <valItem mode="add" ident="site"/>
+                <valItem ident="district"/>
+                <valItem ident="sitePart"/>
+                <valItem ident="site"/>
               </valList>
             </attDef>
             <attDef ident="subtype" mode="change" usage="rec">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="garden"/>
-                <valItem mode="add" ident="pavillion"/>
-                <valItem mode="add" ident="tank"/>
-                <valItem mode="add" ident="feedingHall"/>
-                <valItem mode="add" ident="monastery"/>
-                <valItem mode="add" ident="shrine"/>
-                <valItem mode="add" ident="temple"/>
+                <valItem ident="garden"/>
+                <valItem ident="pavillion"/>
+                <valItem ident="tank"/>
+                <valItem ident="feedingHall"/>
+                <valItem ident="monastery"/>
+                <valItem ident="shrine"/>
+                <valItem ident="temple"/>
               </valList>
             </attDef>
           </attList>
@@ -4223,7 +4285,7 @@
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList mode="change" type="closed">
-                <valItem mode="add" ident="displacement"/>
+                <valItem ident="displacement"/>
               </valList>
             </attDef>
             <attDef ident="evaluate" mode="delete"/>
@@ -4265,7 +4327,7 @@
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="check"/>
+                <valItem ident="check"/>
               </valList>
             </attDef>
           </attList>
@@ -4277,8 +4339,8 @@
           <attList>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="add" ident="omissionStart"/>
-                <valItem mode="add" ident="omissionEnd"/>
+                <valItem ident="omissionStart"/>
+                <valItem ident="omissionEnd"/>
                 <valItem mode="delete" ident="image"/>
                 <valItem mode="delete" ident="character"/>
                 <valItem mode="delete" ident="theme"/>
