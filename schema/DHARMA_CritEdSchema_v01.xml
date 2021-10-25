@@ -1782,7 +1782,7 @@
               </valList>
             </attDef>
             <attDef ident="style" mode="delete"/>
-            <attDef ident="met" mode="change">
+            <attDef ident="met" mode="change" usage="req">
               <valList type="open" mode="replace">
                 <valItem ident="sumānikā"/>
                 <valItem ident="anuṣṭubh"/>
