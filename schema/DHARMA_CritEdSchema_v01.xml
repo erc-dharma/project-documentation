@@ -3322,7 +3322,7 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="reason" mode="change" usage="req">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="explanation"/>
                 <valItem ident="subaudible"/>
                 <valItem ident="undefined"/>
@@ -3550,7 +3550,6 @@
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cause" mode="delete"/>
-            <attDef ident="cert" mode="delete"/>
             <attDef ident="change" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
             <attDef ident="corresp" mode="delete"/>
@@ -3570,6 +3569,11 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="cert" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="low"/>
+              </valList>
+            </attDef>
             <attDef ident="varSeq" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="1"/>
