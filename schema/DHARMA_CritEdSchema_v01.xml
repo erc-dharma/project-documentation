@@ -357,7 +357,7 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="n" mode="delete"/>
             <attDef ident="type" mode="change">
-              <valList type="closed" mode="change">
+              <valList type="open" mode="replace">
                 <valItem ident="filename"/>
               </valList>
             </attDef>
@@ -784,7 +784,6 @@
             <attDef ident="prev" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
-            
             <attDef ident="sameAs" mode="delete"/>
             <attDef ident="select" mode="delete"/>
             <attDef ident="source" mode="delete"/>
@@ -808,7 +807,7 @@
               </valList>
             </attDef>
             <attDef ident="xml:lang" mode="change">
-              <valList type="closed" mode="replace">
+              <valList type="open" mode="replace">
                 <valItem ident="unknown"/>
                 <valItem ident="mya"/>
                 <valItem ident="obr"/>
@@ -1783,6 +1782,66 @@
               </valList>
             </attDef>
             <attDef ident="style" mode="delete"/>
+            <attDef ident="met" mode="change">
+              <valList type="open" mode="replace">
+                <valItem ident="sumānikā"/>
+                <valItem ident="anuṣṭubh"/>
+                <valItem ident="vegavatī"/>
+                <valItem ident="viyoginī"/>
+                <valItem ident="triṣṭubh"/>
+                <valItem ident="dodhaka"/>
+                <valItem ident="indravajrā"/>
+                <valItem ident="rathoddhatā"/>
+                <valItem ident="śālinī"/>
+                <valItem ident="svāgatā"/>
+                <valItem ident="upajāti"/>
+                <valItem ident="upendravajrā"/>
+                <valItem ident="toṭaka"/>
+                <valItem ident="vātormī"/>
+                <valItem ident="upacitra"/>
+                <valItem ident="aparavaktra"/>
+                <valItem ident="hariṇaplutā"/>
+                <valItem ident="mālabhāriṇī"/>
+                <valItem ident="jagatī"/>
+                <valItem ident="bhujaṅgaprayāta"/>
+                <valItem ident="maṇimālā"/>
+                <valItem ident="drutavilambita"/>
+                <valItem ident="pramitākṣarā"/>
+                <valItem ident="vaṁśamālā"/>
+                <valItem ident="vaṁśastha"/>
+                <valItem ident="vaiśvadevī"/>
+                <valItem ident="puṣpitāgrā"/>
+                <valItem ident="mañjubhāṣiṇī"/>
+                <valItem ident="mattamayūra"/>
+                <valItem ident="praharṣiṇī"/>
+                <valItem ident="rucirā"/>
+                <valItem ident="asaṁbādhā"/>
+                <valItem ident="praharaṇakalikā"/>
+                <valItem ident="vasantatilakā"/>
+                <valItem ident="mālinī"/>
+                <valItem ident="hariṇī"/>
+                <valItem ident="mandākrāntā"/>
+                <valItem ident="nardaṭaka"/>
+                <valItem ident="prthvī"/>
+                <valItem ident="śikharinī"/>
+                <valItem ident="śārdūlavikrīḍita"/>
+                <valItem ident="sumadhurā"/>
+                <valItem ident="mattebhavikrīḍita"/>
+                <valItem ident="suvadanā"/>
+                <valItem ident="sragdharā"/>
+                <valItem ident="uncertain"/>
+                <valItem ident="āryā"/>
+                <valItem ident="gīti"/>
+                <valItem ident="upagīti"/>
+                <valItem ident="udgīti"/>
+                <valItem ident="āryāgīti"/>
+                <valItem ident="veṇpā"/>
+                <valItem ident="āciriyappā"/>
+                <valItem ident="kalippā"/>
+                <valItem ident="vañcippā"/>
+                <valItem ident="maruṭpā"/>
+              </valList>
+            </attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="list" module="core" mode="change">
@@ -2904,7 +2963,7 @@
             <attDef ident="type" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
-            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:lang" mode="change" usage="req"/>
           </attList>
         </elementSpec>
         <elementSpec ident="forename" module="namesdates" mode="change">
@@ -3511,6 +3570,7 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="wit" mode="change" usage="req"/>
             <attDef ident="varSeq" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="1"/>
@@ -3518,7 +3578,7 @@
               </valList>
             </attDef>
             <attDef ident="type" mode="change">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
