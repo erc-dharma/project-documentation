@@ -1513,14 +1513,9 @@
               </valList>
             </attDef>
             <attDef ident="unit" mode="change">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="component"/>
                 <valItem ident="character"/>
-                <valItem mode="delete" ident="cm"/>
-                <valItem mode="delete" ident="mm"/>
-                <valItem mode="delete" ident="in"/>
-                <valItem mode="delete" ident="line"/>
-                <valItem mode="delete" ident="char"/>
               </valList>
             </attDef>
           </attList>
@@ -3653,8 +3648,6 @@
             <attDef ident="exclude" mode="delete"/>
             <attDef ident="facs" mode="delete"/>
             <attDef ident="n" mode="delete"/>
-            <attDef ident="next" mode="delete"/>
-            <attDef ident="prev" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change">
                 <valItem ident="check"/>
