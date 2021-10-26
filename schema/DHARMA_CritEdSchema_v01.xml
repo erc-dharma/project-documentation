@@ -2439,7 +2439,6 @@
             <attDef ident="cert" mode="delete"/>
             <attDef ident="change" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
-            <attDef ident="corresp" mode="delete"/>
             <attDef ident="defective" mode="delete"/>
             <attDef ident="exclude" mode="delete"/>
             <attDef ident="facs" mode="delete"/>
@@ -2462,6 +2461,7 @@
               <valList mode="change" type="closed">
                 <valItem ident="block"/>
                 <valItem ident="check"/>
+                <valItem ident="stanza"/>
               </valList>
             </attDef>
             <attDef ident="type" mode="change">
@@ -3146,7 +3146,7 @@
             <attDef ident="type" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
-            <attDef ident="xml:lang" mode="change" usage="req"/>
+            <attDef ident="xml:lang" mode="change" usage="rec"/>
           </attList>
         </elementSpec>
         <elementSpec ident="forename" module="namesdates" mode="change">
