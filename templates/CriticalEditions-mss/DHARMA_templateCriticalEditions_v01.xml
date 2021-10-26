@@ -33,7 +33,7 @@
 			<publicationStmt>
 				<authority>DHARMA</authority>
 				<pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
-				<idno type="filename">DHARMA_templateCriticalEdition_v01</idno>
+				<idno type="filename">DHARMA_templateCriticalEditions_v01</idno>
 				<!-- Replace by filename, e.g. DHARMA_CritEdSiksaGuru -->
 				<availability>
 					<licence target="https://creativecommons.org/licenses/by/4.0/">
