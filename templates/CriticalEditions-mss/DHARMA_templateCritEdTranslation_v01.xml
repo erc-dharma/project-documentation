@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- // Validation schema TEI-ALL must be update in favor the DHARMA manuscript schema once it has been established// -->
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" type="translation"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master? -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" type="translation"> <!-- mettre un @corresp sur l'élément avec un pointer vers le fichier master -->
    <teiHeader>
       <fileDesc>
          <titleStmt>
             <title type="main" subtype="translation">Encoding Template for Critical Editions</title>
             <!--Change the title of the file with a title for the translation-->
-            <title type="subtitle" subtype="translation">Digital Critical Edition of...</title>
+            <title type="sub" subtype="translation">Digital Critical Edition of...</title>
             <!-- fill in the subtitle if necessary -->
             <!-- Possibility to add the <editor> tag:
         <editor ref="part:ID">
@@ -60,6 +60,7 @@
       </projectDesc>
      </encodingDesc>
       <revisionDesc>
+         <change who="part:axja" when="2021-10-26">Adding the link for the RelxNg and the </change>
          <change who="part:axja" when="2021-06-12" status="draft">Creation of the template</change>
          <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
       </revisionDesc>

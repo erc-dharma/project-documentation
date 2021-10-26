@@ -8,7 +8,7 @@
 			<titleStmt>
 				<title type="main">Encoding Template for Critical Editions</title>
 				<!--Change the title of the file with the name of your text-->
-				<title type="subtitle">Digital Critical Edition of...</title>
+				<title type="sub">Digital Critical Edition of...</title>
 				<!-- fill in the subtitle if necessary -->
 				<!-- Possibility to add the <editor> tag:
         <editor ref="part:ID">
@@ -154,6 +154,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
+			<change who="part:axja" when="2021-10-26">Adding the link for the RelxNg and the </change>
 			<change who="part:axja" when="2021-10-20">Adding the abbr</change>
 			<change who="part:axja" when="2021-09-27">Adding the colophon in msItem of witness</change>
 			<change who="part:axja" when="2021-09-08">Adding the interpreation element in editorialDecl and importing the paragraph about asterisk</change>
