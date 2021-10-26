@@ -2728,8 +2728,8 @@
                     <xsl:attribute name="class">text-muted</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="@*">
-                            <xsl:variable name="soughtMS" select="substring-before(substring-after(@*, 'txt:'), '_')"/>
-                            <xsl:variable name="refMS" select="substring-after(@*, '_')"/>
+                            <xsl:variable name="soughtMS" select="substring-before(substring-after(@* except @xml:lang, 'txt:'), '_')"/>
+                            <xsl:variable name="refMS" select="substring-after(@* except @xml:lang, '_')"/>
                             <xsl:choose>
                                 <xsl:when test="document($IdListTexts)//tei:bibl[@xml:id=$soughtMS]">
                                     <xsl:element name="a">
@@ -2742,7 +2742,7 @@
                                     </xsl:element>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:value-of select="replace(descendant-or-self::tei:note/@*, 'txt:', '')"/>
+                                    <xsl:value-of select="replace(descendant-or-self::tei:note/@* except @xml:lang, 'txt:', '')"/>
                                     <xsl:text> </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
