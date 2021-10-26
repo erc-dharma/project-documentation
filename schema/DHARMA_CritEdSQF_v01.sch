@@ -105,4 +105,33 @@
             <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
         </sch:rule>
     </sch:pattern>
+    
+    <!-- controlling the witnesses -->
+    <sch:pattern>
+        <sch:rule context="@wit">
+            <sch:let name="witnesses" value="for $w in tokenize(., '\s+') return substring-after($w, '#')"/>
+            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit/t:witness/@xml:id">
+                Every reading witness (@wit) after the hashtag must match an xml:id defined in the list of witnesses in this file!
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling the syntax for @xml:id -->
+    <sch:pattern>
+        <sch:rule context="@xml:id">
+            <sch:report test="starts-with(., '#')">
+                xml:id attributes must not begin with a hashtag!
+            </sch:report>
+        </sch:rule>
+    </sch:pattern> 
+    
+    <!-- controlling the syntax for @wit -->
+    <sch:pattern>
+        <sch:rule context="@wit">
+            <sch:let name="wit-contents" value="for $w in tokenize(., '\s+') return $w"/>
+            <sch:assert test="every $wit-content in $wit-contents satisfies starts-with($wit-content, '#')">
+                @wit declarations must  begin with a hashtag!
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
 </sch:schema>
