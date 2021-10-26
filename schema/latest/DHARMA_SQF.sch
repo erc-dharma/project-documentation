@@ -119,7 +119,7 @@
     <sch:pattern>
         <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
-            <sch:assert test="starts-with($fileName, 'DHARMA_INS') or starts-with($fileName, 'DHARMA_DiplEd')">The filename should start with DHARMA_INS or DHARMA_DiplEd, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
+            <sch:assert test="starts-with($fileName, 'DHARMA_INS') or starts-with($fileName, 'DHARMA_DiplEd') or starts-with($fileName, 'DHARMA_CritEd')">The filename should start with DHARMA_INS, DHARMA_CritEd or DHARMA_DiplEd, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
 
