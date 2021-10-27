@@ -481,7 +481,8 @@
           </xsl:when>-->
             <xsl:otherwise>
               <xsl:if test="not(parent::t:fw)">
-            <xsl:value-of select="."/>
+                <xsl:value-of select="."/>
+            <!--<xsl:value-of select="translate(., 'I', '&#8544;')"/>-->
           </xsl:if>
           </xsl:otherwise>
           </xsl:choose>

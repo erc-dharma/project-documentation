@@ -7,7 +7,7 @@
   <!-- Import templates can be found in teig.xsl -->
   <xsl:import href="teig.xsl"/>
 
-  <xsl:template match="t:g" mode="#all">
+  <xsl:template match="t:g">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:call-template name="lb-dash"/>

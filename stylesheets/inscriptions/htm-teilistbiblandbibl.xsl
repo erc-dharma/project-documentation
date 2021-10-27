@@ -24,7 +24,7 @@
         <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
       </h3>
     </xsl:if>
-    <xsl:apply-templates mode="dharma"/>
+    <xsl:apply-templates/>
     </xsl:when>
   </xsl:choose>
   </xsl:template>

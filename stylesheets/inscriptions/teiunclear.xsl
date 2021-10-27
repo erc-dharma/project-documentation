@@ -4,7 +4,7 @@
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
 
 
-<xsl:template match="t:unclear" mode="#all">
+<xsl:template match="t:unclear">
      <xsl:param name="text-content">
          <xsl:choose>
             <xsl:when test="ancestor::t:orig[not(ancestor::t:choice)]">

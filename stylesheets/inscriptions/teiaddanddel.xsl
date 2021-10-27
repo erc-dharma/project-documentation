@@ -20,7 +20,7 @@
    </xsl:template>
 
 
-   <xsl:template match="t:add" mode="#all">
+   <xsl:template match="t:add">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
     <xsl:choose>
          <xsl:when test="$parm-leiden-style=('ddbdp','sammelbuch', 'dharma')">
@@ -97,7 +97,7 @@
    </xsl:template>
 
 
-   <xsl:template match="t:del" mode="#all">
+   <xsl:template match="t:del">
       <xsl:param name="parm-internal-app-style" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="$parm-internal-app-style = 'ddbdp'">

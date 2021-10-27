@@ -6,7 +6,7 @@
    <!-- hi imports in teihi.xsl, html span created here -->
    <xsl:import href="teihi.xsl"/>
 
-   <xsl:template match="t:hi" mode="#all">
+   <xsl:template match="t:hi">
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
   <xsl:choose>
          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

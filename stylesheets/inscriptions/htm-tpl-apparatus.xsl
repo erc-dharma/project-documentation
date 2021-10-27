@@ -198,9 +198,6 @@
                 <xsl:text>.</xsl:text>
              </xsl:for-each>
           </xsl:variable>
-
-
-
                 <!-- either <br/> in htm-tpl-apparatus or \r\n in txt-tpl-apparatus -->
                 <!--<xsl:call-template name="lbrk-app"/>-->
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
@@ -209,7 +206,7 @@
                 </xsl:call-template>
                   <span class="tooltiptext-notes">
                   <!--<xsl:copy-of select="node()"/>-->
-                  <xsl:apply-templates mode="dharma"/>
+                  <xsl:apply-templates/>
                   </span>
         <br/>
         </xsl:for-each>

@@ -10,7 +10,7 @@
    <xsl:template name="dharma-body-structure">
      <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
                 <xsl:element name="div">
-              <xsl:attribute name="id">metadatadiv</xsl:attribute> 
+              <xsl:attribute name="id">metadatadiv</xsl:attribute>
             <h2>Metadata</h2>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
             <h3>Identifier: </h3>
@@ -21,7 +21,7 @@
                <xsl:if test="//t:msContents//t:summary/text()">
                   <h3>Summary: </h3>
                  <xsl:element name="p">
-                  <xsl:apply-templates select="//t:msContents/t:summary" mode="dharma"/>
+                  <xsl:apply-templates select="//t:msContents/t:summary"/>
                 </xsl:element>
                </xsl:if>
                <xsl:if test="//t:handDesc//text()">
@@ -30,15 +30,15 @@
                    <xsl:when test="//t:handDesc/t:handNote/t:p">
                      <xsl:for-each select="//t:handDesc/t:handNote/t:p">
                        <p>
-                     <xsl:apply-templates mode="dharma"/>
+                     <xsl:apply-templates/>
                    </p>
                    </xsl:for-each>
-                    <xsl:apply-templates select="//t:handDesc/t:handNote/t:p" mode="dharma"/>
+                    <xsl:apply-templates select="//t:handDesc/t:handNote/t:p"/>
                    </xsl:when>
                    <xsl:otherwise>
                      <xsl:for-each select="//t:handDesc/t:p">
                        <p>
-                     <xsl:apply-templates mode="dharma"/>
+                     <xsl:apply-templates/>
                    </p>
                    </xsl:for-each>
                      </xsl:otherwise>
@@ -46,7 +46,7 @@
                </xsl:if>
                <xsl:if test="//t:sourceDesc/t:biblFull/t:editionStmt/t:p">
                  <xsl:text>First edition of the file: </xsl:text>
-                 <xsl:apply-templates select="//t:sourceDesc/t:biblFull/t:editionStmt/t:p" mode="dharma"/>
+                 <xsl:apply-templates select="//t:sourceDesc/t:biblFull/t:editionStmt/t:p"/>
                </xsl:if>
           </xsl:element>
           <xsl:variable name="maintxt">
@@ -80,7 +80,7 @@
 
          <body>
            <xsl:call-template name="nav-bar"/>
-            
+
            <xsl:element name="div">
              <xsl:attribute name="class">container</xsl:attribute>
            <xsl:element name="div">
@@ -98,7 +98,7 @@
                <xsl:call-template name="license"/>
              </xsl:element>
            </xsl:element>
-           <xsl:call-template name="dharma-script"/>    
+           <xsl:call-template name="dharma-script"/>
          </body>
       </html>
    </xsl:template>
@@ -118,13 +118,13 @@
             </xsl:otherwise>
          </xsl:choose>
       </xsl:template>
-  
+
   <xsl:template name="dharma-script">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"></script>    
+    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"></script>
   </xsl:template>
-  
+
   <!-- Nav bar template -->
   <xsl:template name="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -132,7 +132,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -157,7 +157,7 @@
               Controlled Vocabularies
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              
+
               <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
@@ -187,7 +187,7 @@
           <li class="nav-item">
             <a class="nav-link" href="https://www.zotero.org/groups/1633743/erc-dharma/library">Zotero Library</a>
           </li>
-        </ul> 
+        </ul>
       </div>
     </nav>
   </xsl:template>

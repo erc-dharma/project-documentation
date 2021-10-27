@@ -53,7 +53,7 @@
    </xsl:if>
    <xsl:choose>
      <xsl:when test="descendant::t:bibl">
-       <xsl:apply-templates mode="dharma"/>
+       <xsl:apply-templates/>
          </xsl:when>
          <xsl:otherwise>
          <xsl:apply-templates/>

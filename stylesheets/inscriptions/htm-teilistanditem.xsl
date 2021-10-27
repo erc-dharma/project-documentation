@@ -4,7 +4,7 @@
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
 
-  <xsl:template match="t:list" mode="#all">
+  <xsl:template match="t:list">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <xsl:choose>
          <xsl:when test="@type = 'ordered'">
@@ -14,24 +14,24 @@
          </xsl:when>
          <xsl:when test="@rend='bulleted' and $parm-leiden-style = 'dharma'">
            <ul>
-                 <xsl:apply-templates mode="dharma"/>
+                 <xsl:apply-templates/>
            </ul>
          </xsl:when>
          <xsl:when test="@rend='numbered' and $parm-leiden-style = 'dharma'">
            <ol>
-             <xsl:apply-templates mode="dharma"/>
+             <xsl:apply-templates/>
            </ol>
          </xsl:when>
          <xsl:when test="$parm-leiden-style = 'dharma' and child::t:label">
            <dl>
-             <xsl:apply-templates mode="dharma"/>
+             <xsl:apply-templates/>
            </dl>
          </xsl:when>
          <xsl:otherwise>
            <xsl:if test="$parm-leiden-style = 'dharma'">
             <xsl:element name="ul">
               <xsl:attribute name="class">notBulleted</xsl:attribute>
-                  <xsl:apply-templates mode="dharma"/>
+                  <xsl:apply-templates/>
             </xsl:element>
           </xsl:if>
          </xsl:otherwise>
@@ -39,13 +39,13 @@
   </xsl:template>
 
 <!--Adding a mode on item requires adding modes on all the list container application-->
-  <xsl:template match="t:item" mode="dharma">
+  <xsl:template match="t:item">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
     <!-- <li> -->
         <xsl:choose>
           <xsl:when test="ancestor::t:div[@type='translation'] and $parm-leiden-style = 'dharma' and preceding-sibling::t:label">
           <dd>
-            <xsl:apply-templates mode="dharma"/>
+            <xsl:apply-templates/>
           </dd>
         </xsl:when>
           <xsl:when test="ancestor::t:div[@type='translation'] and @n and $parm-leiden-style = 'dharma'">
@@ -53,19 +53,19 @@
             <sup class="linenumber">
              <xsl:value-of select="@n"/>
            </sup>
-           <xsl:apply-templates mode="dharma"/>
+           <xsl:apply-templates/>
          </li>
        </xsl:when>    
           <xsl:otherwise>
                 <li>
-              <xsl:apply-templates mode="dharma"/>
+              <xsl:apply-templates/>
             </li>
             </xsl:otherwise>
             </xsl:choose>
     <!-- </li> -->
   </xsl:template>
 
-  <xsl:template match="t:label[ancestor-or-self::t:list]" mode="dharma">
+  <xsl:template match="t:label[ancestor-or-self::t:list]">
     <xsl:element name="dt">
     <xsl:apply-templates/>
   </xsl:element>

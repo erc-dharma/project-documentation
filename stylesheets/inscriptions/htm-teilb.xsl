@@ -17,7 +17,7 @@ Pb de lb[@break=no] entre deux textpart
 
    <xsl:import href="teilb.xsl"/>
 
-   <xsl:template match="t:lb" mode="#all">
+   <xsl:template match="t:lb">
        <xsl:param name="parm-edn-structure" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>

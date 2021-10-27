@@ -4,7 +4,7 @@
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
 
-  <xsl:template match="t:quote" mode="#all">
+  <xsl:template match="t:quote">
     <xsl:choose>
     <xsl:when test="@rend='block'">
 <xsl:apply-templates/>
@@ -21,7 +21,7 @@
     </xsl:template>
 
 
-<xsl:template match="t:cit" mode="#all">
+<xsl:template match="t:cit">
   <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
   <xsl:choose>
 <xsl:when test="$parm-leiden-style='dharma' and child::t:quote[@rend='block']">
@@ -41,7 +41,7 @@
 <br/>
 </xsl:when>
 <xsl:otherwise>
-  <xsl:apply-templates mode="dharma"/>
+  <xsl:apply-templates/>
 </xsl:otherwise>
 </xsl:choose>
 </xsl:template>

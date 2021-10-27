@@ -51,7 +51,7 @@ bibliography. All examples only cater for book and article.
 
 	-->
 
-	<xsl:template match="t:bibl" priority="1" mode="dharma">
+	<xsl:template match="t:bibl" priority="1">
 		<xsl:param name="parm-bib" tunnel="yes" required="no"/>
 		<xsl:param name="parm-bibloc" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
@@ -189,9 +189,20 @@ bibliography. All examples only cater for book and article.
 									<xsl:when test="$leiden-style = 'dharma' and matches(./child::t:ptr/@target, '[A-Z][A-Z]')">
 										<xsl:call-template name="journalTitle"/>
 									</xsl:when>
-										<xsl:otherwise>
-											<!--<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>-->
+										<xsl:when test="$leiden-style = 'dharma' and $citation">
 											<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:choose>
+												<xsl:when test="$leiden-style = 'dharma'">
+													<xsl:variable name="fallBack" select="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Zotero_v01.xml')/node()"/>
+													<xsl:value-of select="$fallBack//t:title[@type='short']=$biblentry"/>
+												</xsl:when>
+												<xsl:otherwise>
+													<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+												</xsl:otherwise>
+											</xsl:choose>
+											<!--<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>-->
 								</xsl:otherwise>
 							</xsl:choose>
 						</a>
@@ -208,16 +219,16 @@ bibliography. All examples only cater for book and article.
 										<xsl:call-template name="citedRange-unit"/>
 										<!-- NEED TO BE REVISED AT SOME POINT TO RENDER THE ITALIC
 										not the best solution but hierarchy too instabled to force it with mode without breaking the current display - necessary to revise the code once the encoding is stable enough probably need to use the foreign element as the base rather than the bibl element -->
-										<xsl:choose>
+										<!--<xsl:choose>
 											<xsl:when test="child::t:foreign">
 											<i>
 												<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
 											</i>
 										</xsl:when>
-										<xsl:otherwise>
+										<xsl:otherwise>-->
 										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
-									</xsl:otherwise>
-										</xsl:choose>
+								<!--	</xsl:otherwise>
+							</xsl:choose>-->
 
 									<xsl:if test="following-sibling::t:citedRange[1]">
 										<xsl:text>, </xsl:text>
@@ -327,7 +338,7 @@ bibliography. All examples only cater for book and article.
 										<xsl:for-each select="t:citedRange">
 											<b>
 											<xsl:call-template name="citedRange-unit"/>
-										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')" mode="italic-citedRange"/>
+										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
 											</b>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
@@ -337,7 +348,7 @@ bibliography. All examples only cater for book and article.
 									</xsl:if>
 										<xsl:if test="child::t:note">
 											<xsl:text> • </xsl:text>
-											<xsl:value-of select="child::t:note"/>
+											<xsl:apply-templates select="child::t:note"/>
 										</xsl:if>
 
 									<!--<xsl:if test="following-sibling::t:note">
@@ -549,9 +560,8 @@ bibliography. All examples only cater for book and article.
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
-		<xsl:otherwise>
 			<!--<xsl:if test="ancestor::t:listBibl">-->
-			<xsl:choose>
+			<!--<xsl:choose>
 			<xsl:when test="matches(., '[\-]+')">
 				<xsl:text>pages </xsl:text>
 			</xsl:when>
@@ -561,9 +571,8 @@ bibliography. All examples only cater for book and article.
 			<xsl:otherwise>
 			<xsl:text>page </xsl:text>
 		</xsl:otherwise>
-		</xsl:choose>
+	</xsl:choose>-->
 	<!--</xsl:if>-->
-	</xsl:otherwise>
 </xsl:choose>
 	</xsl:variable>
 	<xsl:choose>

@@ -6,7 +6,7 @@
                 exclude-result-prefixes="t EDF"
                 version="2.0">
 
-  <xsl:template match="t:supplied[@reason=('lost' , 'illegible')]" mode="#all">
+  <xsl:template match="t:supplied[@reason=('lost' , 'illegible')]">
       <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="location" />
@@ -178,7 +178,7 @@
   </xsl:template>
 
 
-  <xsl:template match="t:supplied[@reason='subaudible']" mode="#all">
+  <xsl:template match="t:supplied[@reason='subaudible']">
      <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
      <xsl:choose>
         <xsl:when test="starts-with($parm-leiden-style, 'edh') or $parm-leiden-style='eagletxt'"/>
@@ -190,7 +190,7 @@
   </xsl:template>
 
 
-  <xsl:template match="t:supplied[@reason='explanation']" mode="#all">
+  <xsl:template match="t:supplied[@reason='explanation']">
       <xsl:text>(</xsl:text>
       <xsl:apply-templates/>
       <xsl:call-template name="cert-low"/>

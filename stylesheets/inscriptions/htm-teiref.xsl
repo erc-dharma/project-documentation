@@ -14,7 +14,7 @@
     <xsl:sequence select="replace($arg,concat('^(.*)',$regex,'.*'),'$1')"/>
   </xsl:function>
 
-  <xsl:template match="t:ref" mode="#all">
+  <xsl:template match="t:ref">
     <xsl:param name="parm-leiden-style" tunnel="yes" required="no"/>
       <xsl:choose>
          <xsl:when test="@type = 'reprint-from'">

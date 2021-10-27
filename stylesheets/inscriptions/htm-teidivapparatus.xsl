@@ -267,7 +267,7 @@
                 <xsl:text>• </xsl:text>
       </xsl:if>
     </xsl:if>
-      <xsl:apply-templates mode="dharma"/>
+      <xsl:apply-templates/>
     </span>
   </xsl:template>
 

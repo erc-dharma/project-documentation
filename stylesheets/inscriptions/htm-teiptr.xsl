@@ -6,7 +6,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="#all" version="2.0">
 
-  <xsl:template match="t:ptr[not(parent::t:bibl)]" mode="#all">
+  <xsl:template match="t:ptr[not(parent::t:bibl)]">
     <xsl:param name="parm-zoteroUorG" tunnel="yes" required="no"/>
     <xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>
     <xsl:param name="parm-zoteroStyle" tunnel="yes" required="no"/>
