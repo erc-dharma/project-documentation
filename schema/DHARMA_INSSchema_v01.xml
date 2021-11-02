@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-11-02">Correcting the error message for list element</change>
             <change who="part:axja" when="2021-10-22">Adding @unit="book" on citedRange</change>
             <change who="part:axja" when="2021-10-08">Adding a @type="feature" on space</change>
             <change who="part:axja" when="2021-09-16">Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
@@ -2692,7 +2693,7 @@
                     <constraintSpec scheme="isoschematron" ident="lists">
                         <constraint><sch:rule context="tei:list"><sch:assert
                             test="ancestor::tei:div[@type='edition' or @type='translation'  or @type='commentary']"
-                            >List can only be used inside the edition or the translation part of
+                            >List can only be used inside the edition, the commentary or the translation part of
                             your file</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
