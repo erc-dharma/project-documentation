@@ -828,7 +828,7 @@
     
     <!--  div ! -->
     <xsl:template match="tei:div">
-        <xsl:variable name="prosody" select="document('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/DHARMA_prosodicPatterns_v01.xml')"/>
+        <xsl:variable name="prosody" select="document('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml')"/>
         <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
@@ -854,9 +854,6 @@
                                     <xsl:value-of select="@n"/>
                                     <xsl:text>. </xsl:text>
                                 </xsl:when>
-                                <!--<xsl:otherwise>
-                                    
-                                </xsl:otherwise>-->
                             </xsl:choose>
                 </xsl:element>
                     </xsl:otherwise>
@@ -881,7 +878,7 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="matches(@met,'[\+\-]+')">
-                            <xsl:value-of select="translate(@met, '-=+', '⏑⏓–')"/>
+                            <xsl:value-of select="replace(replace(replace(@met, '-', '⏑&#160;'), '=', '⏓&#160;'), '+', '–&#160;')"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
@@ -893,7 +890,7 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>: </xsl:text>
-                        <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑⏓–'))"/>
+                        <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑&#160;⏓&#160;–&#160;'))"/>
                     </xsl:otherwise>
                     </xsl:choose>
                 </xsl:element>
@@ -1040,7 +1037,7 @@
                         <xsl:if test="@rend='met'">
                             <xsl:choose>
                                 <xsl:when test="matches(@met,'[\+\-]+')">
-                                    <xsl:value-of select="translate(@met, '-=+', '⏑⏓–')"/>
+                                    <xsl:value-of select="replace(replace(replace(@met, '-', '⏑&#160;'), '=', '⏓&#160;'), '+', '–&#160;')"/>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
