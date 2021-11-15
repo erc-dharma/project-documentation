@@ -334,6 +334,7 @@
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
                                         <xsl:with-param name="witdetail-string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        <xsl:with-param name="witdetail-text" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                 </xsl:call-template>
                                     <xsl:if test="tei:lem/@varSeq">
                                         <xsl:choose>
@@ -409,6 +410,7 @@
                                 <xsl:with-param name="string" select="./@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                             </xsl:call-template>
                                 <xsl:if test="./@varSeq">
                                     <xsl:choose>
@@ -460,6 +462,7 @@
                                 <xsl:with-param name="string" select="@wit"/>
                                 <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                 <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                             </xsl:call-template>
                             <xsl:text>: </xsl:text>                            
                             <xsl:apply-templates/>
@@ -2087,6 +2090,7 @@
         <xsl:param name="string"/>
         <xsl:param name="witdetail-string"/>
         <xsl:param name="witdetail-type"/>
+        <xsl:param name="witdetail-text"/>
         <xsl:choose>
             <xsl:when test="contains($string, ' ')">
                 <xsl:variable name="first-item"
@@ -2096,11 +2100,13 @@
                         <xsl:with-param name="target" select="$first-item"/>
                         <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
                         <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
+                        <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
                     </xsl:call-template>
                     <xsl:call-template name="tokenize-witness-list">
                         <xsl:with-param name="string" select="substring-after($string, ' ')"/>
                         <xsl:with-param name="witdetail-string" select="$witdetail-string"/>
                         <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
+                        <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
                     </xsl:call-template>
                 </xsl:if>
             </xsl:when>
@@ -2114,6 +2120,7 @@
                             <xsl:with-param name="target" select="translate($string, '#', '')"/>
                             <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
                             <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
+                            <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
                         </xsl:call-template>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -2126,6 +2133,7 @@
         <xsl:param name="target"/>
         <xsl:param name="witdetail-string"/>
         <xsl:param name="witdetail-type"/>
+        <xsl:param name="witdetail-text"/>
         <xsl:element name="a">
             <xsl:attribute name="class">siglum</xsl:attribute>
             <xsl:attribute name="href">
@@ -2144,9 +2152,17 @@
         <xsl:if test="$target = $witdetail-string">
             <xsl:element name="sub"> 
                 <xsl:text> </xsl:text>
-                <xsl:value-of select="$witdetail-type"/>
+                <xsl:choose>
+                    <xsl:when test="$witdetail-text != ''">
+                        <xsl:value-of select="$witdetail-text"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                    <xsl:value-of select="$witdetail-type"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:element>
         </xsl:if>
+        
     </xsl:template>
     
     <!-- Identity template -->
@@ -2513,6 +2529,7 @@
                                         <xsl:with-param name="string" select="@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                     </xsl:call-template>
                                   <xsl:if test="@varSeq">
                                       <xsl:choose>
@@ -2584,6 +2601,7 @@
                                     <xsl:with-param name="string" select="@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                 </xsl:call-template>
                                 <xsl:if test="@varSeq">
                                     <xsl:choose>
@@ -2631,6 +2649,7 @@
                                         <xsl:with-param name="string" select="@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                     </xsl:call-template>
                                     <xsl:text>: </xsl:text>                            
                                     <xsl:apply-templates/>
