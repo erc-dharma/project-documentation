@@ -825,6 +825,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
+    
     <!--  div ! -->
     <xsl:template match="tei:div">
         <xsl:variable name="prosody" select="document('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/DHARMA_prosodicPatterns_v01.xml')"/>
@@ -1031,7 +1032,10 @@
                             <xsl:text>.</xsl:text>
                         </xsl:if>
                         <xsl:if test="@n">
-                            <xsl:value-of select="@n"/>
+                            <xsl:number format="I" value="@n"/>
+                        </xsl:if>
+                        <xsl:if test="@n and @rend='met'">
+                            <xsl:text> </xsl:text>
                         </xsl:if>
                         <xsl:if test="@rend='met'">
                             <xsl:choose>
