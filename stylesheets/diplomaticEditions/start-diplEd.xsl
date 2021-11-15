@@ -144,7 +144,7 @@
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
-                <xsl:element name="h1">
+                        <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
                     <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
                 </xsl:element>
@@ -747,6 +747,7 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'"/>
@@ -854,7 +855,7 @@
                         <xsl:element name="small">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">text-muted</xsl:attribute>
-                                <xsl:value-of select="@met"/>
+                                <xsl:value-of select="replace(replace(replace(@met, '-', '⏑&#160;'), '=', '⏓&#160;'), '+', '–&#160;')"/>
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
