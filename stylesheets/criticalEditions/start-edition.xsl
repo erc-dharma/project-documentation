@@ -1339,7 +1339,7 @@
                                 <xsl:apply-templates select="tei:bibl"/>
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:apply-templates/>
+                                <xsl:apply-templates select="node() except child::tei:abbr"/>
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:element>
@@ -2847,6 +2847,7 @@
                                 </xsl:if> 
                         </xsl:for-each>
                         <xsl:text>. </xsl:text>
+                        <xsl:apply-templates select="//tei:title[@type='alt']"/>
                         <xsl:apply-templates select="//tei:title[@type='sub']"/>
                     </xsl:element>
                 <xsl:element name="li">
