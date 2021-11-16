@@ -1148,14 +1148,10 @@
     <xsl:template match="tei:listBibl">
         <xsl:choose>
             <xsl:when test="ancestor::tei:teiHeader">
-                <xsl:element name="div">
-            <xsl:attribute name="class">tab-pane fade</xsl:attribute>
-            <xsl:attribute name="id">sources</xsl:attribute>
-            <xsl:attribute name="role">tabpanel</xsl:attribute>
-            <xsl:attribute name="aria-labelledby">sources-tab</xsl:attribute> 
-            <xsl:element name="h4">List of Edited Sources</xsl:element>
             <xsl:element name="ul">
-                <xsl:for-each select="tei:biblStruct">
+                <xsl:choose>
+                    <xsl:when test="tei:biblStruct">
+                        <xsl:for-each select="tei:biblStruct">
                     <xsl:element name="li">
                         <xsl:element name="a">
                             <xsl:attribute name="id">
@@ -1169,14 +1165,23 @@
                         <xsl:apply-templates select="."/>
                     </xsl:element>
                 </xsl:for-each>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:for-each select="tei:bibl">
+                            <xsl:element name="li">
+                                <xsl:apply-templates select="."/>
+                            </xsl:element>
+                        </xsl:for-each>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:element>
-        </xsl:element>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
     <!--  listWit ! -->
     <xsl:template match="tei:listWit">
         <xsl:element name="div">
