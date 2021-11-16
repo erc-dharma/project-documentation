@@ -1447,6 +1447,10 @@
                         <xsl:value-of select="parent::tei:div[@type = 'dyad']/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
+                    <xsl:if test="parent::tei:div[@type = 'liminal']">
+                        <xsl:value-of select="parent::tei:div[@type = 'liminal']/@n"/>
+                        <xsl:text>.</xsl:text>
+                    </xsl:if>
                     <xsl:if test="ancestor-or-self::tei:div[@type = 'interpolation']">
                         <xsl:choose>
                             <xsl:when test="ancestor-or-self::tei:div[@type = 'interpolation']/@n">
@@ -1459,7 +1463,7 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:if>
-                    <xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation')]">
+                    <xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation' or @type = 'liminal')]">
                         <xsl:value-of select="ancestor-or-self::tei:div/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
