@@ -151,24 +151,26 @@
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
                 <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
+                    <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
+                       <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:author"/>
+                        <xsl:text>, </xsl:text>
+                    </xsl:if>               
+                    <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
                 </xsl:element>
-                <xsl:element name="h2">
-                    <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
-                </xsl:element>
-                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
-                    <!--<xsl:element name="p">
-                        <xsl:attribute name="class">mb-3</xsl:attribute>
-                        <xsl:text>of</xsl:text>
-                    </xsl:element>-->
-                    <xsl:element name="h1">
-                        <xsl:attribute name="class">display-6</xsl:attribute>
-                        <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:author"/>
+                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                    <xsl:element name="h2">
+                        <xsl:attribute name="class">display-5</xsl:attribute>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
                     </xsl:element>
                 </xsl:if>
+                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
+                    <xsl:element name="h2">
+                    <xsl:attribute name="class">display-5</xsl:attribute>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
+                </xsl:element>
+                </xsl:if>
                 <xsl:if test="tei:fileDesc/tei:titleStmt/tei:editor">
-                    <xsl:element name="h1">
+                    <xsl:element name="h3">
                         <xsl:attribute name="class">display-6</xsl:attribute>
                     <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:editor">
                             <xsl:choose>
@@ -1868,6 +1870,9 @@
                     <xsl:text>‘</xsl:text>
                     <xsl:apply-templates/>
                     <xsl:text>’</xsl:text>
+                </xsl:when>
+                <xsl:when test="ancestor-or-self::tei:teiHeader">
+                    <xsl:apply-templates/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:attribute name="class">title san</xsl:attribute>
