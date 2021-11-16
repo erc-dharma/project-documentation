@@ -308,14 +308,14 @@ ul.sgt-index {
 .anustubh .l:nth-child(2n) { display: inline; }
 /* Format individual lines as block elements */
 .lg:not(.anustubh) .l {
-  display:block;
+  display: inline-block;
   margin-left:1rem;
   padding-left:2rem;
   /*text-indent:-2rem;*/
 }
 
 .lg .l+.lg .l:last-child {
-  display:inline-block;
+  display:inline;
 }
 .l:last-child, .l:last-of-type {
   margin-bottom:10px;
@@ -813,4 +813,8 @@ p{
 .supsub a{
     display: inline-block;
     vertical-align: top;
+}
+
+.lg-number{
+    display: inline;
 }

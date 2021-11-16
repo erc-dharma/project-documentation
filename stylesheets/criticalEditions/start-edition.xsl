@@ -1033,12 +1033,12 @@
                             <xsl:value-of select="parent::tei:div[@type='canto']/@n"/>
                             <xsl:text>.</xsl:text>
                         </xsl:if>
-                        <xsl:if test="@n">
+                        <!--<xsl:if test="@n">
                             <xsl:number format="I" value="@n"/>
                         </xsl:if>
                         <xsl:if test="@n and @rend='met'">
                             <xsl:text> </xsl:text>
-                        </xsl:if>
+                        </xsl:if>-->
                         <xsl:if test="@rend='met'">
                             <xsl:choose>
                                 <xsl:when test="matches(@met,'[\+\-]+')">
@@ -1078,6 +1078,12 @@
                         <xsl:value-of select="@xml:id"/>
                     </xsl:attribute>
                         <xsl:apply-templates/>
+                    <xsl:if test="@n">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
+                        <xsl:value-of select="@n"/>
+                        </xsl:element>
+                    </xsl:if>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
@@ -2219,7 +2225,7 @@
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
