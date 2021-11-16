@@ -24,8 +24,9 @@
         </sch:rule>
     </sch:pattern>
     
+    <!-- controlling the syntax for @ref with edtior-->
     <sch:pattern>
-        <sch:rule context="t:*/@resp">
+        <sch:rule context="t:*/@resp | t:editor/@ref">
             <sch:assert test="starts-with(.,'part:') or starts-with(.,'http')" sqf:fix="part-prefix-addition http-prefix-addition">Project members prefix is
                 part: or a http/https link for people not associated with the project.</sch:assert>
             <sqf:fix id="part-prefix-addition">
@@ -120,11 +121,20 @@
     <sch:pattern>
         <sch:rule context="@xml:id">
             <sch:report test="starts-with(., '#')">
-                xml:id attributes must not begin with a hashtag!
+                @xml:id attributes must not begin with a hashtag!
             </sch:report>
         </sch:rule>
     </sch:pattern> 
     
+    <!-- controlling the syntax for @corresp -->
+    <sch:pattern>
+        <sch:rule context="@corresp">
+            <sch:assert test="starts-with(., '#')">
+                @corresp attributes must begin with a hashtag!
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern> 
+   
     <!-- controlling the syntax for @wit -->
     <sch:pattern>
         <sch:rule context="@wit">
@@ -134,4 +144,5 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern>
+    
 </sch:schema>

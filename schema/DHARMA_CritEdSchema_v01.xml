@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en" n="testms">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xml:lang="eng" xmlns:tei="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -1101,7 +1101,6 @@
             <attDef ident="from-custom" mode="delete"/>
             <attDef ident="from-iso" mode="delete"/>
             <attDef ident="key" mode="delete"/>
-            <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="notAfter" mode="delete"/>
             <attDef ident="notAfter-custom" mode="delete"/>
@@ -1116,7 +1115,6 @@
             <attDef ident="rend" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
-            <attDef ident="role" mode="delete"/>
             <attDef ident="sameAs" mode="delete"/>
             <attDef ident="select" mode="delete"/>
             <attDef ident="source" mode="delete"/>
@@ -1132,6 +1130,12 @@
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="role" mode="change">
+              <valList type="closed" mode="change">
+                <valItem ident="author-base"/>
+                <valItem ident="commentator"/>
+              </valList>
+            </attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="bibl" module="core" mode="change">
@@ -2239,6 +2243,7 @@
             <attDef ident="exclude" mode="delete"/>
             <attDef ident="facs" mode="delete"/>
             <attDef ident="hand" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
@@ -2907,6 +2912,15 @@
         </elementSpec>
         <elementSpec ident="unit" module="core" mode="delete"/>
         <elementSpec ident="TEI" module="textstructure" mode="change">
+          <constraintSpec scheme="schematron" ident="root">
+            <constraint>
+              <sch:rule context="tei:TEI">
+                <sch:assert
+                  test="@type='translation | commentary | bibliography' and @corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
+                <sch:report test="@type='edition' and @corresp">The attribute @corresp can't be used with the attribute @type='edition'.</sch:report>
+              </sch:rule>
+              </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -2999,6 +3013,15 @@
           </attList>
         </elementSpec>
         <elementSpec ident="div" module="textstructure" mode="change">
+          <constraintSpec scheme="schematron" ident="division">
+            <constraint>
+              <sch:rule context="tei:div[child::tei:ab[@type='invocation |colophon']]">
+                <sch:report test="tei:div/@n">
+                 The attribute @n can't be used on div if its child its an ab element with the @type 'invocation' or 'colophon'.
+               </sch:report>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -3638,6 +3661,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="app" module="textcrit" mode="change">
+          <constraintSpec scheme="schematron" ident="app-lem">
+            <constraint>
+              <sch:rule context="tei:app">
+                <sch:assert test="child::tei:lem">The element lem is mandatory within an app entry</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
