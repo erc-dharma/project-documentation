@@ -807,7 +807,8 @@ p{
     position: relative;
     display: block;
     right: -20px; 
-    top: -7px  
+    top: -7px;  
+    font-size: 65%;
 }
 
 .supsub a{

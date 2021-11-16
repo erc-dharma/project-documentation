@@ -2175,7 +2175,6 @@
         </xsl:element>
         <xsl:if test="$target = $witdetail-string">
             <xsl:element name="sub"> 
-                <xsl:text> </xsl:text>
                 <xsl:choose>
                     <xsl:when test="$witdetail-text != ''">
                         <xsl:value-of select="$witdetail-text"/>
@@ -2225,7 +2224,7 @@
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
