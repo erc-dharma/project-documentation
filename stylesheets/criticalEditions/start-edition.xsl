@@ -158,10 +158,10 @@
                     <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
                 </xsl:element>
                 <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
-                    <xsl:element name="p">
+                    <!--<xsl:element name="p">
                         <xsl:attribute name="class">mb-3</xsl:attribute>
                         <xsl:text>of</xsl:text>
-                    </xsl:element>
+                    </xsl:element>-->
                     <xsl:element name="h1">
                         <xsl:attribute name="class">display-6</xsl:attribute>
                         <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:author"/>
@@ -1458,6 +1458,10 @@
                                 <xsl:text>*.</xsl:text>
                             </xsl:otherwise>
                         </xsl:choose>
+                    </xsl:if>
+                    <xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation')]">
+                        <xsl:value-of select="ancestor-or-self::tei:div/@n"/>
+                        <xsl:text>.</xsl:text>
                     </xsl:if>
                     <xsl:value-of select="$p-num"/>
                 </xsl:element>
