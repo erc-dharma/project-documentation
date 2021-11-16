@@ -2830,7 +2830,6 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem mode="delete" ident="alt"/>
                 <valItem mode="delete" ident="short"/>
                 <valItem mode="delete" ident="desc"/>
               </valList>
@@ -2916,7 +2915,7 @@
             <constraint>
               <sch:rule context="tei:TEI">
                 <sch:assert
-                  test="@type='translation | commentary | bibliography' and @corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
+                  test="@type='translation or commentary or bibliography' and @corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
                 <sch:report test="@type='edition' and @corresp">The attribute @corresp can't be used with the attribute @type='edition'.</sch:report>
               </sch:rule>
               </constraint>
@@ -3663,7 +3662,7 @@
         <elementSpec ident="app" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="app-lem">
             <constraint>
-              <sch:rule context="tei:app">
+              <sch:rule context="tei:app[not(parent::tei:listApp[@type='parallels'])]">
                 <sch:assert test="child::tei:lem">The element lem is mandatory within an app entry</sch:assert>
               </sch:rule>
             </constraint>

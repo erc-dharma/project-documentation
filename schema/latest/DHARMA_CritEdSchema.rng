@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-11-16T10:17:18Z. .
+Schema generated from ODD source 2021-11-16T14:45:56Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -3338,6 +3338,8 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">main title</a:documentation>
                   <value>sub</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(subordinate) subtitle, title of part</a:documentation>
+                  <value>alt</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(alternate) alternate title, often in another language, by which the work is also known</a:documentation>
                </choice>
             </attribute>
          </optional>
@@ -4630,7 +4632,7 @@ You must supply at least two values for @target on <name/>
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:TEI">
-               <sch:assert test="@type='translation | commentary | bibliography' and @corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
+               <sch:assert test="@type='translation or commentary or bibliography' and @corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
                <sch:report test="@type='edition' and @corresp">The attribute @corresp can't be used with the attribute @type='edition'.</sch:report>
             </sch:rule>
          </pattern>
@@ -6650,7 +6652,7 @@ Sample values include: 1] no; 2] yes; 3] weak; 4] strong</a:documentation>
                   id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-12">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:app">
+                      context="tei:app[not(parent::tei:listApp[@type='parallels'])]">
                <sch:assert test="child::tei:lem">The element lem is mandatory within an app entry</sch:assert>
             </sch:rule>
          </pattern>
