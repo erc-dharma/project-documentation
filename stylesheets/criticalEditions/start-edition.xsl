@@ -60,7 +60,7 @@
             <xsl:attribute name="class">container</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
-                            <xsl:attribute name="class">row wrapper</xsl:attribute>
+                                <xsl:attribute name="class">row wrapper text-break</xsl:attribute>
                             <xsl:element name="ul">
                         <xsl:attribute name="class">nav nav-tabs nav-justified</xsl:attribute>
                     <xsl:attribute name="id">tab</xsl:attribute>
@@ -519,7 +519,8 @@
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
                 <xsl:apply-templates select="tei:lem"/>
-            <xsl:element name="a">
+            
+                <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
                     
@@ -545,95 +546,8 @@
             </xsl:element>
             
         </xsl:element>
-      
-           <!--<xsl:element name="span">
-           <!-\-<xsl:attribute name="class">lem-tooltipApp</xsl:attribute>-\->
-           <!-\-  <xsl:element name="div">
-           <xsl:attribute name="class">float-right</xsl:attribute>-\->
-           <xsl:element name="span">
-               <xsl:attribute name="class">tooltipApp</xsl:attribute>
-               <xsl:element name="a">
-                   <xsl:attribute name="tabindex">0</xsl:attribute>
-                   <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                   <xsl:attribute name="data-html">true</xsl:attribute>
-                   <xsl:attribute name="data-target">
-                       <xsl:value-of select="generate-id()"/>
-                   </xsl:attribute>
-                   <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                       <xsl:value-of select="$app-num"/></xsl:attribute>
-                   <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
-                   <xsl:attribute name="id">
-                       <xsl:text>from-app-</xsl:text>
-                       <xsl:value-of select="$app-num"/>
-                   </xsl:attribute>
-                           <xsl:text>(</xsl:text>
-                           <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-                           <xsl:text>)</xsl:text>
-               </xsl:element>
-           </xsl:element>
-                   <!-\-<xsl:text>&#128172;</xsl:text>-\->
-               
-               <!-\-<xsl:element name="span">
-                   <xsl:attribute name="class">tooltipApp-num</xsl:attribute>
-                   <xsl:element name="a">
-                       <xsl:attribute name="id">
-                       <xsl:text>from-app-</xsl:text>
-                       <xsl:value-of select="$app-num"/>
-                   </xsl:attribute>
-                   <xsl:attribute  name="href">
-                       <xsl:text>#to-app-</xsl:text>
-                       <xsl:value-of select="$app-num"/>
-                   </xsl:attribute>
-                   <xsl:text>(</xsl:text>
-                   <xsl:number level="any" count="//tei:app | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
-                   <xsl:text>)</xsl:text></xsl:element>
-               </xsl:element>      
-           </xsl:element>
-       </xsl:element>-\->
-       <!-\-</xsl:element>-\->
-       
-       <!-\- tooltip display in the body -\->
-           <xsl:element name="span"> 
-               <xsl:attribute name="class">lem</xsl:attribute>
-               <xsl:element name="a">
-                   <xsl:attribute name="tabindex">0</xsl:attribute>
-                   <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                   <xsl:attribute name="data-html">true</xsl:attribute>
-                   <xsl:attribute name="data-target">
-                       <xsl:value-of select="generate-id()"/>
-                   </xsl:attribute>
-                   <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-                   <xsl:attribute name="title">Apparatus <xsl:value-of select="substring-after($app-num, 'app')"/></xsl:attribute>
-                   
-                   <xsl:apply-templates select="tei:lem"/>
-               </xsl:element>
-           </xsl:element>
-           </xsl:element>-->
-           
-           <!--<!-\- Version without the tooltip display in the body-\->
-           <xsl:element name="span"> 
-               <xsl:attribute name="class">lem</xsl:attribute>
-               <xsl:apply-templates select="tei:lem"/>
-               <!-\-<xsl:element name="span">
-                   <xsl:attribute name="class">anchor</xsl:attribute>
-                   <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-               </xsl:element>-\->
-           </xsl:element>
-           </xsl:element>-->
-           
     </xsl:template>
-    <!--      <xsl:template name="lacunaRange">            
-         <xsl:variable name="startingPoint" select="tei:app/tei:rdg[child::tei:lacunaStart]"/>
-        <xsl:variable name="following-range" select="$startingPoint/following::node()"/>
-        <xsl:variable name="endingPoint" select="$following-range/tei:app[child::tei:rdg[tei:lacunaEnd]][1]"/>-->
-        <!--<xsl:variable name="preceding-range" select="$endingPoint/preceding-sibling::node()"/> => pas forcément besoin de cela-->
     
-   <!-- <xsl:message>start: <xsl:value-of select="$startingPoint"/></xsl:message>
-    <xsl:message>end: <xsl:value-of select="$endingPoint"/></xsl:message>
-    <xsl:for-each-group select="$following-range/tei:app/tei:rdg" group-ending-with="$endingPoint">
-        <xsl:text>lac.test</xsl:text>
-    </xsl:for-each-group>
-    </xsl:template>-->
      <!--  B ! -->
     <xsl:template match="tei:bibl">
     <xsl:choose>
@@ -2223,8 +2137,8 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
                <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
@@ -2437,7 +2351,7 @@
               <xsl:otherwise>
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>
-               <!-- <xsl:with-param name="childtype" select="$childtype" />-->
+                <xsl:with-param name="childtype" select="$childtype" />
             </xsl:call-template>
               </xsl:otherwise>
           </xsl:choose>
@@ -2924,46 +2838,6 @@
         </xsl:when>
     </xsl:choose>
 </xsl:template>
-    
-    <xsl:template name="app-tooltip-content">
-        <xsl:param name="location"/>
-        <xsl:variable name="app-num">
-            <xsl:value-of select="name()"/>
-            <xsl:number level="any" format="0001"/>
-        </xsl:variable>
-            <xsl:element name="span">
-                <xsl:attribute name="class">tooltipApp</xsl:attribute>
-                <xsl:element name="a">
-                    <xsl:attribute name="tabindex">0</xsl:attribute>
-                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                    <xsl:attribute name="data-html">true</xsl:attribute>
-                    <xsl:attribute name="data-target">
-                        <xsl:value-of select="generate-id()"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp or parent::tei:term)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/></xsl:attribute>
-                    <xsl:attribute name="id">
-                        <xsl:text>from-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/>
-                    </xsl:attribute>
-                    <xsl:choose>
-                        <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:listApp]"/>
-                        <xsl:when test="$location = 'apparatus' and tei:app[ancestor-or-self::tei:term]"/>
-                        <xsl:otherwise>
-                            <xsl:text>(</xsl:text>
-                            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
-                        <xsl:text>)</xsl:text></xsl:otherwise>
-                    </xsl:choose>
-                </xsl:element>
-            </xsl:element>
-
-            <!-- Version without the tooltip display in the body-->
-           <!-- <xsl:element name="span"> 
-                <xsl:attribute name="class">lem</xsl:attribute>
-                <xsl:apply-templates select="tei:lem"/>
-            </xsl:element>-->
-    </xsl:template>
     
     <!-- tpl-translation -->
     <xsl:template name="tpl-translation">
