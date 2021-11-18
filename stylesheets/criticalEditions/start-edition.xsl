@@ -550,12 +550,6 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="tei:app//tei:span[@type='omission']">
-        <xsl:copy>
-    <xsl:apply-templates mode="omission-number"/>
-        </xsl:copy>
-    </xsl:template>
-    
      <!--  B ! -->
     <xsl:template match="tei:bibl">
     <xsl:choose>
