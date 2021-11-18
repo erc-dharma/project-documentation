@@ -2,8 +2,10 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
+    xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs tei"
     version="2.0">
+    
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
     
     <!-- Written by Axelle Janiak for DHARMA, starting September 2021 -->
@@ -29,7 +31,12 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="H1">
+    <xsl:template match="H">
+        <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
+            <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl</xsl:variable>
+            <xsl:variable name="bibref">
+                <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+            </xsl:variable>
         <xsl:element name="h1">
             <xsl:attribute name="class">text-center</xsl:attribute>
             <xsl:text>ARIE </xsl:text>
@@ -37,7 +44,33 @@
             <xsl:text> [vol. </xsl:text>
             <xsl:value-of select="arie/@n"/>
             <xsl:text>]</xsl:text>
-            
+        </xsl:element>
+        <xsl:element name="p">
+            <xsl:attribute name="class">text-center</xsl:attribute>
+        <xsl:copy-of
+            select="document($bibref)/div"/>
+            </xsl:element>
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="H1">
+        <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
+        <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl</xsl:variable>
+        <xsl:variable name="bibref">
+            <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+        </xsl:variable>
+        <xsl:element name="h1">
+            <xsl:attribute name="class">text-center</xsl:attribute>
+            <xsl:text>ARIE </xsl:text>
+            <xsl:value-of select="substring-before(substring-after(./string(), '('), ')')"/>
+            <xsl:text> [vol. </xsl:text>
+            <xsl:value-of select="arie/@n"/>
+            <xsl:text>]</xsl:text>
+        </xsl:element>
+        <xsl:element name="p">
+            <xsl:attribute name="class">text-center</xsl:attribute>
+            <xsl:copy-of
+                select="document($bibref)/div"/>
         </xsl:element>
         <br/>
     </xsl:template>
@@ -56,7 +89,21 @@
         <br/>
     </xsl:template>
     
+    <xsl:template match="HD">
+        <xsl:element name="h3">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
+    
     <xsl:template match="HP">
+        <xsl:element name="h3">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="HT">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
@@ -93,7 +140,7 @@
         </xsl:for-each>
     </xsl:template>
     
-    <!-- S -->
+    
     <xsl:template name="number">
         <xsl:element name="div">
             <xsl:attribute name="class">col-4 font-weight-bold</xsl:attribute>
@@ -213,6 +260,41 @@
     </xsl:element>
     </xsl:template>
     
+    <!-- MST -->
+    <xsl:template match="MST">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Manuscript's Title</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    <!-- MSL -->
+    <xsl:template match="MSL">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Manuscript's Language</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- MSE -->
+    <xsl:template match="MSE">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Manuscript's extent</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- O -->
     <xsl:template match="O">
     <xsl:element name="dt">
@@ -249,6 +331,41 @@
     </xsl:element>
     </xsl:template>
 
+    <!-- R -->
+    <xsl:template match="RY">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Regnal Year</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- SY -->
+    <xsl:template match="SY">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Sáka Year</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- JY -->
+    <xsl:template match="JY">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Jovian Year</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
     
     <!-- <dt class="col">Description lists</dt>
   <dd class="col">A description list is perfect for defining terms.</dd> -->
