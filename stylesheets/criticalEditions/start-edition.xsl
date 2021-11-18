@@ -185,7 +185,7 @@
                                     <xsl:text>, </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        <xsl:apply-templates select="fn:normalize-space(.)"/>
+                        <xsl:apply-templates select="normalize-space(.)"/>
                     </xsl:for-each>
                     </xsl:element>
                 </xsl:if>
@@ -244,7 +244,7 @@
             <xsl:if test="@hand">
                 <xsl:text>H</xsl:text>
                 <xsl:element name="sub">
-                <xsl:value-of select="fn:substring-after(@hand, '_H')"/>
+                <xsl:value-of select="substring-after(@hand, '_H')"/>
                 </xsl:element>
                 <xsl:if test="@place">
                     <xsl:text> </xsl:text>
@@ -366,7 +366,7 @@
                     </xsl:if>
                 </xsl:element>
                 <!--  Variant readings ! -->
-                <xsl:if test="tei:rdg[fn:not(@type='paradosis')]">
+                <xsl:if test="tei:rdg[not(@type='paradosis')]">
                     <xsl:choose>
                         <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@type='absent_elsewhere'"/>
                         <xsl:otherwise>
@@ -434,6 +434,7 @@
                                         <xsl:with-param name="string-to-siglum" select="./@source"/>
                                     </xsl:call-template>
                                 </xsl:if>
+                            </xsl:element>
                                 <xsl:if test="./@cause">
                                     <xsl:element name="span">
                                         <xsl:attribute name="style">color:black;</xsl:attribute>
@@ -442,7 +443,7 @@
                                         <xsl:text>)</xsl:text>
                                     </xsl:element>
                                 </xsl:if>
-                            </xsl:element>
+                            
                             <!--<xsl:if test="./following-sibling::tei:rdg">
                                 <xsl:text>; </xsl:text>
                             </xsl:if>-->
@@ -474,9 +475,9 @@
                     </xsl:for-each>
                 </xsl:if>
                 <!--  Notes ! -->
-                <xsl:if test="tei:note[fn:not(@type='altLem') or ancestor::tei:listApp]">
+                <xsl:if test="tei:note[not(@type='altLem') or ancestor::tei:listApp]">
                     <xsl:element name="hr"/>
-                    <xsl:for-each select="tei:note[fn:not(@type='altLem')]">
+                    <xsl:for-each select="tei:note[not(@type='altLem')]">
                         <xsl:element name="span">
                             <xsl:attribute name="class">note-line</xsl:attribute>
                             <xsl:apply-templates/>
@@ -498,7 +499,6 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
-        
         <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
@@ -520,7 +520,8 @@
                 <xsl:text>from-app-</xsl:text>
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
-                <xsl:apply-templates select="tei:lem"/>
+               
+            <xsl:apply-templates select="tei:lem"/>
             
                 <xsl:element name="a">
                 <xsl:attribute name="class">
@@ -547,7 +548,12 @@
             </xsl:element>
             
         </xsl:element>
-        <xsl:apply-templates mode="omission-number"/>
+    </xsl:template>
+    
+    <xsl:template match="tei:app//tei:span[@type='omission']">
+        <xsl:copy>
+    <xsl:apply-templates mode="omission-number"/>
+        </xsl:copy>
     </xsl:template>
     
      <!--  B ! -->
@@ -1290,6 +1296,7 @@
     </xsl:template>
     
     <xsl:template match="tei:note[@type='prosody']"/>
+    
     <xsl:template match="tei:note">
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
@@ -1324,6 +1331,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
     <xsl:template match="tei:note" mode="modals">
         <xsl:variable name="apparatus-note">
             <xsl:if test="self::tei:note[position()=last()][parent::tei:p or parent::tei:lg or not(@type='parallels' or parent::tei:app or @type='altLem')] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
@@ -2902,7 +2910,7 @@
                                     <xsl:text>, </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            <xsl:apply-templates select="fn:normalize-space(.)"/>
+                            <xsl:apply-templates select="normalize-space(.)"/>
                         </xsl:for-each>
                 </xsl:element>
                 <xsl:element name="li">
