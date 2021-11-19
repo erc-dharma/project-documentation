@@ -493,7 +493,7 @@
         
     </xsl:template>
     
-    <xsl:template match="tei:app[not(parent::tei:listApp)]">
+    <xsl:template match="tei:app[not(parent::tei:listApp[@type='parallels'])]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
@@ -534,7 +534,7 @@
                 </xsl:attribute>
                 <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                     <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart']"></xsl:number></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart']"></xsl:number></xsl:attribute>
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
@@ -543,7 +543,7 @@
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                         <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
                         <xsl:text>)</xsl:text>
             </xsl:element>
             
@@ -945,10 +945,10 @@
                 <xsl:element name="small">
                     <xsl:element name="span">
                         <xsl:attribute name="class">text-muted</xsl:attribute>
-                        <xsl:if test="parent::tei:div[@type='canto']">
+                        <!--<xsl:if test="parent::tei:div[@type='canto']">
                             <xsl:value-of select="parent::tei:div[@type='canto']/@n"/>
                             <xsl:text>.</xsl:text>
-                        </xsl:if>
+                        </xsl:if>-->
                         <!--<xsl:if test="@n">
                             <xsl:number format="I" value="@n"/>
                         </xsl:if>
@@ -1026,6 +1026,41 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
+    <xsl:template match="tei:listApp[@type = 'apparatus']">
+        <xsl:element name="div">
+                <xsl:element name="div">
+                    <xsl:attribute name="class">card h-80</xsl:attribute>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">card-header</xsl:attribute>
+                        <xsl:element name="button">
+                            <xsl:attribute name="class">btn btn-link</xsl:attribute>
+                            <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                            <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
+                            <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                            <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                            <xsl:element name="small">
+                                <xsl:text>Apparatus</xsl:text>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    
+                    <xsl:element name="div">
+                        <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                        <xsl:attribute name="class">collapse</xsl:attribute>
+                        <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
+                        <xsl:attribute name="data-parent">#accordion</xsl:attribute>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">card-body</xsl:attribute>
+                            <xsl:for-each select="tei:app">
+                                <xsl:apply-templates select="."/>
+                                <br/>
+                            </xsl:for-each>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:element>
+        </xsl:element>
+    </xsl:template>
+    
     <xsl:template match="tei:listApp[@type = 'parallels']">
         <xsl:element name="div">
             <xsl:attribute name="class">parallels
@@ -1313,10 +1348,10 @@
                             </xsl:attribute>
                             <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                                 <xsl:value-of select="$app-num"/></xsl:attribute>
-                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/></xsl:attribute>
+                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/></xsl:attribute>
                              
                                     <xsl:text>(</xsl:text>
-                            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
+                            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
                                     <xsl:text>)</xsl:text>
                         </xsl:element>
             </xsl:when>
@@ -1723,10 +1758,10 @@
                     </xsl:attribute>
                     <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/></xsl:attribute>
                     
                     <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] "/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] "/>
                     <xsl:text>)</xsl:text>
                 </xsl:element>
             </xsl:when>
@@ -2333,7 +2368,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart']"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart']"> <!-- .//tei:choice | .//tei:subst |  -->
 
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -2341,7 +2376,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart']">
+            select=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart']">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -2402,7 +2437,7 @@
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
                    <!-- <xsl:value-of select="$app-num"/>-->
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
                 </a>
                 <xsl:text> </xsl:text>
             </xsl:if>
