@@ -920,7 +920,7 @@
                 <xsl:text> </xsl:text>
                 <xsl:value-of select="$script"/>
             </xsl:attribute>
-            <xsl:apply-templates/>      
+                    <xsl:apply-templates/> 
         </xsl:element>
     </xsl:template>
     <!-- lacunaEnd & lacunaStart -->    
@@ -1028,6 +1028,7 @@
     <!--  listApp ! -->
     <xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
+            <xsl:attribute name="class">col-10</xsl:attribute>
                 <xsl:element name="div">
                     <xsl:attribute name="class">card h-80</xsl:attribute>
                     <xsl:element name="div">
@@ -1050,10 +1051,27 @@
                         <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
                         <xsl:attribute name="data-parent">#accordion</xsl:attribute>
                         <xsl:element name="div">
-                            <xsl:attribute name="class">card-body</xsl:attribute>
-                            <xsl:for-each select="tei:app">
+                            <xsl:attribute name="class">card-body w-75</xsl:attribute>
+                            <!--<xsl:for-each select="tei:app">
                                 <xsl:apply-templates select="."/>
                                 <br/>
+                            </xsl:for-each>-->
+                            <xsl:for-each select="tei:app">
+                            <xsl:call-template name="dharma-app">
+                                <xsl:with-param name="apptype">
+                                    <xsl:choose>
+                                        <xsl:when test="self::tei:app">
+                                            <xsl:text>app</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="self::tei:note">
+                                            <xsl:text>note</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="self::tei:span[@type='omissionStart']">
+                                            <xsl:text>omission</xsl:text>
+                                        </xsl:when>
+                                    </xsl:choose>
+                                </xsl:with-param>
+                            </xsl:call-template>
                             </xsl:for-each>
                         </xsl:element>
                     </xsl:element>
