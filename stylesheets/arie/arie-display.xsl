@@ -124,7 +124,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="INSCRIPTION">
+    <xsl:template match="INSCRIPTION or MANUSCRIPT">
         <xsl:for-each select=".">
             <xsl:element name="div">
                 <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
