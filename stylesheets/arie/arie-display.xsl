@@ -124,7 +124,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="INSCRIPTION or MANUSCRIPT">
+    <xsl:template match="INSCRIPTION | MANUSCRIPT">
         <xsl:for-each select=".">
             <xsl:element name="div">
                 <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
@@ -165,13 +165,19 @@
                     </xsl:matching-substring>
                 </xsl:analyze-string>
             </xsl:when>
-            <!--<xsl:if test="matches(preceding::HC[1], '[0-9\-]+')">-->
+                <xsl:when test="matches(preceding::HC[1], '[0-9\-]+')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+[0-9\-]*)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
                     <xsl:otherwise>
-                <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+[0-9\-]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="regex-group(1)"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
+                        <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+[0-9\-]*)">
+                            <xsl:matching-substring>
+                                <xsl:value-of select="regex-group(1)"/>
+                            </xsl:matching-substring>
+                        </xsl:analyze-string>
                     </xsl:otherwise>
             </xsl:choose>
             <xsl:text>/</xsl:text>
