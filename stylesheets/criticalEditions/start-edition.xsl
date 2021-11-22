@@ -152,18 +152,22 @@
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
                 <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
-                       <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:author"/>
-                        <xsl:text>, </xsl:text>
-                    </xsl:if>               
+                    <xsl:text>The </xsl:text>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-italic</xsl:attribute>
                     <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
-                </xsl:element>
-                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
-                    <xsl:element name="h2">
-                        <xsl:attribute name="class">display-5</xsl:attribute>
-                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
                     </xsl:element>
-                </xsl:if>
+                    <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                            <xsl:text> or ‘</xsl:text>
+                            <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
+                        <xsl:text>’</xsl:text>
+                    </xsl:if>
+                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
+                    <xsl:text> by </xsl:text>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:author"/>                   
+                </xsl:if>  
+                </xsl:element>
+                
                 <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
                     <xsl:element name="h2">
                     <xsl:attribute name="class">display-5</xsl:attribute>
@@ -176,7 +180,7 @@
                     <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:editor">
                             <xsl:choose>
                                 <xsl:when test="position()= 1">
-                                    <xsl:text>Edited by </xsl:text>
+                                    <xsl:text>edited by </xsl:text>
                                 </xsl:when>
                                 <xsl:when test="position()=last()">
                                     <xsl:text> &amp; </xsl:text>
@@ -914,13 +918,12 @@
     <!--  L ! -->
     <!--  l ! -->
     <xsl:template match="tei:l">
-          <xsl:element name="span">
+        <xsl:element name="span">
             <xsl:attribute name="class">
-                <xsl:text>l translit</xsl:text> 
+                <xsl:text>l translit</xsl:text>
                 <xsl:text> </xsl:text>
-                <xsl:value-of select="$script"/>
-            </xsl:attribute>
-                    <xsl:apply-templates/> 
+                <xsl:value-of select="$script"/></xsl:attribute>
+            <xsl:apply-templates/> 
         </xsl:element>
     </xsl:template>
     <!-- lacunaEnd & lacunaStart -->    
@@ -2926,13 +2929,14 @@
                         </xsl:element>
                         <xsl:text>: </xsl:text>
                         <xsl:for-each select="//tei:title[@type='main']">
-                            <xsl:apply-templates/>
-                                <xsl:if test="following-sibling::tei:title[@type='main'][1]">
-                                    <xsl:text>, </xsl:text>
-                                </xsl:if> 
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
                         </xsl:for-each>
-                        <xsl:text>. </xsl:text>
+                        <xsl:text> or ‘</xsl:text>
                         <xsl:apply-templates select="//tei:title[@type='alt']"/>
+                        <xsl:text>’. </xsl:text>
                         <xsl:apply-templates select="//tei:title[@type='sub']"/>
                     </xsl:element>
                 <xsl:element name="li">
