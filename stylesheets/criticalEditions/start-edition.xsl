@@ -152,6 +152,7 @@
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
                 <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
+                    <xsl:text>The </xsl:text>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-italic</xsl:attribute>
                     <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
