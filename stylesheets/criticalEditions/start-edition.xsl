@@ -524,9 +524,9 @@
                 <xsl:text>from-app-</xsl:text>
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
-               
-            <xsl:apply-templates select="tei:lem"/>
-            
+              
+                <xsl:apply-templates select="tei:lem"/>
+
                 <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
@@ -550,8 +550,11 @@
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
                         <xsl:text>)</xsl:text>
             </xsl:element>
-            
         </xsl:element>
+        
+        <xsl:if test="descendant::tei:span[@type='omissionStart']">
+            <xsl:apply-templates select="descendant::tei:span[@type='omissionStart']" mode="omission-number"/>
+        </xsl:if>
     </xsl:template>
     
      <!--  B ! -->
@@ -785,21 +788,15 @@
                 </xsl:choose>
             </xsl:element>
             <xsl:element name="div">
-                <!--<xsl:choose>
-                    <xsl:when test="@type='canto'">
-                        <xsl:attribute name="class">col-8</xsl:attribute>
-                    </xsl:when>
-                    <xsl:otherwise>-->
                         <xsl:attribute name="class">col-10</xsl:attribute>
-                    <!--</xsl:otherwise>
-                </xsl:choose>-->
                 <xsl:if test="@type='canto'">
                     <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>Canto </xsl:text>
                     <xsl:value-of select="@n"/>
                 </xsl:element>
-                <xsl:element name="p">
+                <xsl:if test="@rend='met'">
+                    <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="matches(@met,'[\+\-]+')">
@@ -818,7 +815,7 @@
                         <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑&#160;⏓&#160;–&#160;'))"/>
                     </xsl:otherwise>
                     </xsl:choose>
-                </xsl:element>
+                </xsl:element></xsl:if>
                 </xsl:if>
                 <xsl:apply-templates/>         
             </xsl:element>       
