@@ -4632,7 +4632,6 @@ You must supply at least two values for @target on <name/>
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:TEI">
-               <sch:assert test="@type='translation or commentary or bibliography' and @corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
                <sch:report test="@type='edition' and @corresp">The attribute @corresp can't be used with the attribute @type='edition'.</sch:report>
             </sch:rule>
          </pattern>

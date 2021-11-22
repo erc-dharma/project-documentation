@@ -2916,9 +2916,6 @@
               <sch:rule context="tei:TEI[@type='edition']">
                 <sch:report test="@corresp">The attribute @corresp can't be used with the attribute @type='edition'.</sch:report>
               </sch:rule>
-              <sch:rule context="tei:TEI[@type='translation' or @type='commentary' @type='bibliography']">                
-                <sch:assert test="@corresp">The attribute @corresp is mandatory with the attribute @type translation, commentary or bibliography.</sch:assert>
-              </sch:rule>
               </constraint>
           </constraintSpec>
           <attList>
