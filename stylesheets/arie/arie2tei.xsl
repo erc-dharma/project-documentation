@@ -4,9 +4,18 @@
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs tei"
     version="2.0">
+    
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     
     <!-- Written by Axelle Janiak for DHARMA, starting September 2021 -->
+    <!-- Using group-starting-with to handle the issue 
+        <xsl:for-each-group select="*" group-starting-with="h2"      >
+          <section title="{self::h2}">
+            <xsl:for-each select="current-group()[self::p]">
+              <para><xsl:value-of select="."/></para>
+            </xsl:for-each> 
+          </section>
+        </xsl:for-each-group> -->
     
     <xsl:template match="root">
         <xsl:element name="TEI">
@@ -68,7 +77,7 @@
     <xsl:template match="doc">
         <xsl:element name="text">
             <xsl:element name="body">
-            <xsl:apply-templates/>
+                        <xsl:apply-templates/>     
         </xsl:element>
         </xsl:element>
     </xsl:template> 
@@ -84,6 +93,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     
     <!-- S -->
     <xsl:template match="S">
@@ -219,21 +229,15 @@
             </xsl:element>      
     </xsl:template>
     
-    <xsl:template match="H2">
-        <xsl:for-each select=".">
-            <xsl:element name="div">
-                <xsl:attribute name="n">
-                    <xsl:text>h2</xsl:text>
-                </xsl:attribute>
+  <xsl:template match="H2">
                 <xsl:element name="head">
-                    <xsl:value-of select="."/>
+                    <xsl:apply-templates/>
                 </xsl:element>
-            </xsl:element>
-        </xsl:for-each>
+                
     </xsl:template>
     
-    <xsl:template match="HC">
-        <xsl:element name="title">
+    <xsl:template match="HC">       
+            <xsl:element name="title">
             <xsl:attribute name="n">
                 <xsl:text>hc</xsl:text>
             </xsl:attribute>
@@ -242,12 +246,14 @@
     </xsl:template>
     
     <xsl:template match="HP">
+        <xsl:for-each-group select="HP" group-starting-with="HP">
         <xsl:element name="title">
             <xsl:attribute name="n">
                 <xsl:text>hp</xsl:text>
             </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
+        </xsl:for-each-group>
     </xsl:template>
     
     <!-- Typography -->

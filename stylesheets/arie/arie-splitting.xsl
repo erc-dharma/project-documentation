@@ -8,7 +8,22 @@
     
     <xsl:template match="root">
         <xsl:for-each select="doc">
-            <xsl:result-document method="xml" href="arie_{./H1/arie/@n}_{substring-before(substring-after(./string(), '('), ')')}.xml">
+            <xsl:choose>
+                <xsl:when test="substring-after(./H1/string(), '_go')">
+                    <xsl:result-document method="xml" href="arie_{./H1/arie/@n}_{substring-before(substring-after(./string(), '('), ')')}_go{substring-before(substring-after(./string(), '_go'), '_')}.xml">
+                        <root>
+                            <xsl:attribute name="id">
+                                <xsl:text>arie_</xsl:text>
+                                <xsl:value-of select="./H1/arie/@n"/>
+                                <xsl:text>_</xsl:text>
+                                <xsl:value-of select="substring-before(substring-after(./string(), '('), ')')"/>
+                            </xsl:attribute>
+                            <xsl:copy-of select="." />
+                        </root>
+                    </xsl:result-document>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:result-document method="xml" href="arie_{./H1/arie/@n}_{substring-before(substring-after(./string(), '('), ')')}.xml">
                 <root>
                     <xsl:attribute name="id">
                         <xsl:text>arie_</xsl:text>
@@ -19,6 +34,8 @@
                     <xsl:copy-of select="." />
                 </root>
             </xsl:result-document>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>
     </xsl:template> 
     

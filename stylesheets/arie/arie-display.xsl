@@ -63,10 +63,17 @@
             <xsl:attribute name="class">text-center</xsl:attribute>
             <xsl:text>ARIE </xsl:text>
             <xsl:value-of select="substring-before(substring-after(./string(), '('), ')')"/>
-            <xsl:text> [vol. </xsl:text>
+            <xsl:text> [ARIE </xsl:text>
             <xsl:value-of select="arie/@n"/>
             <xsl:text>]</xsl:text>
         </xsl:element>
+            <xsl:if test="substring-after(., '_go')">
+                <xsl:element name="h1">
+                    <xsl:attribute name="class">text-center</xsl:attribute>
+                <xsl:text> G.O. No. </xsl:text>
+                <xsl:value-of select="substring-before(substring-after(./string(), '_go'), '_')"/>
+                </xsl:element>
+            </xsl:if>
         <xsl:element name="p">
             <xsl:attribute name="class">text-center</xsl:attribute>
             <xsl:copy-of
@@ -77,6 +84,20 @@
     
     <xsl:template match="H2">
         <xsl:element name="h2">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="H3">
+        <xsl:element name="h3">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="H4">
+        <xsl:element name="h4">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
@@ -130,10 +151,15 @@
                 <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
                 <xsl:call-template name="number"/>
                 <xsl:element name="div">
-                    <xsl:attribute name="class">col-8</xsl:attribute>
+                    <xsl:attribute name="class">col-7</xsl:attribute>
                     <xsl:element name="dl">
                         <xsl:apply-templates select="node() except S"/>
-                        <hr/>
+                        <xsl:choose>
+                            <xsl:when test="not(following::*[1][local-name() = ('INSCRIPTION','MANUSCRIPT')])">
+                                <br/>
+                            </xsl:when>
+                            <xsl:otherwise><hr/></xsl:otherwise>
+                        </xsl:choose>
                     </xsl:element>
             </xsl:element>
             </xsl:element>
@@ -143,7 +169,7 @@
     
     <xsl:template name="number">
         <xsl:element name="div">
-            <xsl:attribute name="class">col-4 font-weight-bold</xsl:attribute>
+            <xsl:attribute name="class">col-5 font-weight-bold</xsl:attribute>
             <xsl:text>ARIE/</xsl:text>
             <xsl:value-of select="substring-before(substring-after(//H1/string(), '('), ')')"/>
             <xsl:text>/</xsl:text>
@@ -289,6 +315,18 @@
         </xsl:element>
     </xsl:template>
     
+    <!-- MM -->
+    <xsl:template match="MM">
+        <xsl:element name="dt">
+            <xsl:attribute name="class">col</xsl:attribute>
+            <xsl:text>Madras Map Survey Number</xsl:text>
+        </xsl:element>
+        <xsl:element name="dd">
+            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- MSE -->
     <xsl:template match="MSE">
         <xsl:element name="dt">
@@ -371,6 +409,13 @@
             <xsl:attribute name="class">col</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+    
+    <!-- supplied -->
+    <xsl:template match="supplied">
+        <xsl:text>[</xsl:text>
+            <xsl:apply-templates/>
+        <xsl:text>]</xsl:text>
     </xsl:template>
     
     <!-- <dt class="col">Description lists</dt>
