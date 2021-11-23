@@ -303,7 +303,7 @@
                                     <xsl:if test="not(child::tei:lem/following-sibling::tei:note[@type='altLem'])">
                                         <xsl:text> </xsl:text>
                                         <xsl:call-template name="lem-type"/>
-                            </xsl:if>
+                                    </xsl:if>
                             </xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
@@ -506,6 +506,8 @@
         <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
+                <xsl:if test="descendant::tei:span[@type='omissionStart']"> omissionStart</xsl:if>
+                <xsl:if test="descendant::tei:span[@type='omissionEnd']"> omissionEnd</xsl:if>
             </xsl:attribute>
             <xsl:attribute name="data-app">
                 <xsl:value-of select="generate-id()"/>
@@ -1827,9 +1829,12 @@
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/preceding::tei:lem[1]"/>
                         <xsl:text>&#8230;</xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][1]/preceding::tei:lem[1]"/>
+                    </xsl:element>
+                    <hr/>
                         <xsl:element name="span">
+                            <xsl:attribute name="class">note-line</xsl:attribute>
                             <xsl:attribute name="style">color:black;</xsl:attribute>
-                        <xsl:text> an omission</xsl:text> 
+                        <xsl:text>An omission</xsl:text> 
                         <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg/@cause">
                             <xsl:text> due to </xsl:text>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg/@cause"/>
@@ -1844,7 +1849,6 @@
                     </xsl:element>
                 </xsl:element>
                 </xsl:element>
-            </xsl:element>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus-omission"/>
@@ -2297,7 +2301,6 @@
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
-               <!-- <link rel="stylesheet" href="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/dharma-ms.css"/>-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
                 <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
