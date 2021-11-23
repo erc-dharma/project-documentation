@@ -51,8 +51,18 @@ $(document).ready(function() {
   },
   mouseout: function () {
     $('.lem[data-app="'+id+'"]').css({'background-color': 'transparent'});
-  }
-});
+    }
+    });
+    /* Highlighting function for lem last note */
+    $('.lem-last-note').on({
+  mouseenter: function () {
+    $(this).parent('div').prev('.text-col').children('p').css({'background-color': 'yellow'});
+  },
+  mouseout: function () {
+    $(this).parent('div').prev('.text-col').children('p').css({'background-color': 'transparent'});
+    }
+});  
+
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
 $( ".omissionStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
@@ -102,3 +112,5 @@ Code only for the lateral tooltip*/
             $(this).parents('.app').nextUntil('.app:has(.bottom-omissionEnd)').find('.bottom-reading-line:last').after().append(newRdg, siglum.wrap( '<a class="siglum" href="#"></a>').parent().wrap( '<span class="font-weight-bold "></span>').parent());
     });
 });
+
+ 
