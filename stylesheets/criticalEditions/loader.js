@@ -61,6 +61,15 @@ $(document).ready(function() {
   mouseout: function () {
     $(this).parent('div').prev('.text-col').children('p').css({'background-color': 'transparent'});
     }
+     });
+    /* Highlighting function for omission span */
+    $('.lem-omissionStart').on({
+  mouseenter: function () {
+    $(this).parent('div').prev('.text-col').find('.omissionStart').css({'background-color': 'yellow'});
+  },
+  mouseout: function () {
+    $(this).parent('div').prev('.text-col').find('.omissionStart').css({'background-color': 'transparent'});
+    }
 });  
 
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
