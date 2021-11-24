@@ -130,7 +130,7 @@
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
-                <xsl:call-template name="tpl-translation"/>
+                <!--<xsl:call-template name="tpl-translation"/>-->
                 <xsl:call-template name="tpl-com"/>  
                 <xsl:call-template name="tpl-biblio"/>
         </xsl:element>
@@ -234,9 +234,6 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-               <!-- <xsl:if test="following::tei:listApp[@type='parallels'][1]">
-                    <xsl:call-template name="listApp-parallels"/>
-                </xsl:if>-->
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -822,8 +819,36 @@
                     </xsl:choose>
                 </xsl:element></xsl:if>
                 </xsl:if>
-                <xsl:apply-templates/>         
-            </xsl:element>       
+                <xsl:apply-templates/>
+                <xsl:if test="@xml:id">
+                    <xsl:element name="div">
+                    <xsl:attribute name="class">col-10</xsl:attribute>
+                    <xsl:element name="a">
+                    <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
+                    <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                    <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
+                    <xsl:attribute name="role">button</xsl:attribute>
+                    <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                    <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                    
+                    <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
+                        <!-- need to add the language -->
+                </xsl:element>
+                <xsl:element name="div">
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="generate-id()"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="class">collapse</xsl:attribute>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
+                        <xsl:call-template name="tpl-translation">
+                            <xsl:with-param name="textpart-id" select="@xml:id"/>
+                        </xsl:call-template>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:element> 
+                </xsl:if>
+            </xsl:element>     
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
@@ -1009,9 +1034,6 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                <!--<xsl:if test="following::tei:listApp[@type='parallels'][1]">
-                    <xsl:call-template name="listApp-parallels"/>
-                </xsl:if>-->
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -1106,7 +1128,7 @@
                     <xsl:attribute name="aria-expanded">false</xsl:attribute>
                     <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
                     
-                        <xsl:text>Parallels</xsl:text>
+                        <xsl:element name="small"><xsl:text>Parallels</xsl:text></xsl:element>
                     
                 </xsl:element>
                 <xsl:element name="div">
@@ -1115,7 +1137,7 @@
                     </xsl:attribute>
                     <xsl:attribute name="class">collapse</xsl:attribute>
                     <xsl:element name="div">
-                        <xsl:attribute name="class">card card-body</xsl:attribute>
+                        <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
                         <xsl:call-template name="parallels-content"/>
                     </xsl:element>
                 </xsl:element>
@@ -1443,16 +1465,23 @@
             <xsl:number level="single" format="1"/>
         </xsl:variable>
         <xsl:choose>
+            <xsl:when test="//tei:TEI[@type='translation']">
+                <xsl:element name="p">
+                    <xsl:attribute name="class">text-justify</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
             <xsl:when test="ancestor::tei:projectDesc">
                     <xsl:element name="p">
                         <xsl:attribute name="class">text-justify</xsl:attribute>
                         <xsl:apply-templates/>
                     </xsl:element>
             </xsl:when>
-            <xsl:otherwise><xsl:element name="p">
+            <xsl:otherwise>
+                <xsl:element name="p">
             <xsl:attribute name="class">float-center</xsl:attribute><!--text-container -->
             <xsl:element name="small">
-                <xsl:element name="span">
+                        <xsl:element name="span">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
                     <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
                         <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
@@ -1486,7 +1515,9 @@
                 </xsl:element>
             </xsl:element>
         </xsl:element>
-        <xsl:element name="div">
+            </xsl:otherwise>
+        </xsl:choose>
+        <xsl:if test="not(//tei:TEI[@type='translation'])"><xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col text-col</xsl:attribute>
@@ -1497,13 +1528,8 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <!--<xsl:if test="following::tei:listApp[@type='parallels'][1]">
-                        <xsl:call-template name="listApp-parallels"/>
-                    </xsl:if>-->
                 </xsl:element>
-        </xsl:element>
-            </xsl:otherwise>
-        </xsl:choose>
+        </xsl:element></xsl:if>
     </xsl:template>
     
     <!--  pb ! -->
@@ -3043,6 +3069,7 @@
     
     <!-- tpl-translation -->
     <xsl:template name="tpl-translation">
+        <xsl:param name="textpart-id"/>
         <!-- https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/ -->
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
@@ -3052,10 +3079,9 @@
         </xsl:variable>
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-            <xsl:element name="h4">Translation</xsl:element>
             <xsl:choose>
-                <xsl:when test="document($document-trans)">
-                <xsl:apply-templates select="document($document-trans)//tei:text"/>
+                <xsl:when test="$document-trans">
+                    <xsl:apply-templates select="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="p">
@@ -3065,6 +3091,7 @@
                     </xsl:element>
                 </xsl:otherwise>
             </xsl:choose>
+            
         </xsl:element>
     </xsl:template>
     
