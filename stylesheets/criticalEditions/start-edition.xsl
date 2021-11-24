@@ -3080,13 +3080,13 @@
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
             <xsl:choose>
-                <xsl:when test="$document-trans">
+                <xsl:when test="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]">
                     <xsl:apply-templates select="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="p">
                         <xsl:attribute name="class">textContent</xsl:attribute>
-                        <xsl:text>No translation available yet for </xsl:text>
+                        <xsl:text>No translation available yet for this part of the edition </xsl:text>
                         <xsl:value-of select="$filename"/>
                     </xsl:element>
                 </xsl:otherwise>
