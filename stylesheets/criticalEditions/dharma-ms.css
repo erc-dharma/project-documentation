@@ -836,3 +836,7 @@ p{
 .text-break{
     word-break: break-all;
 }
+
+.card-body{
+    background-color: transparent;
+}
