@@ -1059,33 +1059,25 @@
     <xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
-                <xsl:element name="div">
-                    <xsl:attribute name="class">card h-80</xsl:attribute>
-                    <xsl:element name="div">
-                        <xsl:attribute name="class">card-header</xsl:attribute>
-                        <xsl:element name="button">
-                            <xsl:attribute name="class">btn btn-link</xsl:attribute>
-                            <xsl:attribute name="data-toggle">collapse</xsl:attribute>
-                            <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
-                            <xsl:attribute name="aria-expanded">false</xsl:attribute>
-                            <xsl:attribute name="arial-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                    <xsl:element name="a">
+                        <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
+                        <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                        <xsl:attribute name="data-target"><xsl:value-of select="concat( '#', generate-id())"/></xsl:attribute>
+                        <xsl:attribute name="role">button</xsl:attribute>
+                        <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                        <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                       
                             <xsl:element name="small">
                                 <xsl:text>Apparatus</xsl:text>
                             </xsl:element>
-                        </xsl:element>
                     </xsl:element>
-                    
-                    <xsl:element name="div">
-                        <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                        <xsl:attribute name="class">collapse</xsl:attribute>
-                        <xsl:attribute name="aria-labelledby">heading</xsl:attribute>
-                        <xsl:attribute name="data-parent">#accordion</xsl:attribute>
-                        <xsl:element name="div">
-                            <xsl:attribute name="class">card-body w-75</xsl:attribute>
-                            <!--<xsl:for-each select="tei:app">
-                                <xsl:apply-templates select="."/>
-                                <br/>
-                            </xsl:for-each>-->
+            <xsl:element name="div">
+            <xsl:attribute name="id">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>
+            <xsl:element name="div">
+                <xsl:attribute name="class">card-body border-dark</xsl:attribute>
                             <xsl:for-each select="tei:app">
                             <xsl:call-template name="dharma-app">
                                 <xsl:with-param name="apptype">
@@ -1105,7 +1097,6 @@
                             </xsl:for-each>
                         </xsl:element>
                     </xsl:element>
-                </xsl:element>
         </xsl:element>
     </xsl:template>
     
