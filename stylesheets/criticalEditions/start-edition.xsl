@@ -234,6 +234,9 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+               <!-- <xsl:if test="following::tei:listApp[@type='parallels'][1]">
+                    <xsl:call-template name="listApp-parallels"/>
+                </xsl:if>-->
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -1006,6 +1009,9 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                <!--<xsl:if test="following::tei:listApp[@type='parallels'][1]">
+                    <xsl:call-template name="listApp-parallels"/>
+                </xsl:if>-->
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -1081,7 +1087,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="tei:listApp[@type = 'parallels']">
+    <xsl:template match="tei:listApp[@type='parallels']">
         <xsl:element name="div">
             <xsl:attribute name="class">parallels
              <xsl:choose>
@@ -1091,8 +1097,30 @@
                  </xsl:otherwise>
              </xsl:choose>
             </xsl:attribute>
-            <xsl:if test="descendant::tei:note"> 
+        <xsl:if test="descendant::tei:note">
+                <xsl:element name="a">
+                    <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
+                    <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                    <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
+                    <xsl:attribute name="role">button</xsl:attribute>
+                    <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                    <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                    
+                        <xsl:text>Parallels</xsl:text>
+                    
+                </xsl:element>
                 <xsl:element name="div">
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="generate-id()"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="class">collapse</xsl:attribute>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">card card-body</xsl:attribute>
+                        <xsl:call-template name="parallels-content"/>
+                    </xsl:element>
+                </xsl:element>
+        </xsl:if>
+                <!--<xsl:element name="div">
                     <xsl:attribute name="class">card h-80</xsl:attribute>
                     <xsl:element name="div">
                         <xsl:attribute name="class">card-header</xsl:attribute>
@@ -1118,10 +1146,11 @@
                             <xsl:call-template name="parallels-content"/>
                         </xsl:element>
                     </xsl:element>
-                </xsl:element>
-            </xsl:if>
+                </xsl:element>-->
+            
         </xsl:element>
     </xsl:template>
+    
     <!--  listBibl -->
     <!-- Must be reworked -->
     <xsl:template match="tei:listBibl">
@@ -1468,6 +1497,9 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                    <!--<xsl:if test="following::tei:listApp[@type='parallels'][1]">
+                        <xsl:call-template name="listApp-parallels"/>
+                    </xsl:if>-->
                 </xsl:element>
         </xsl:element>
             </xsl:otherwise>
