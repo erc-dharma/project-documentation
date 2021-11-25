@@ -575,6 +575,11 @@
 					</persName>
 					<idno type="ORCID">https://orcid.org/0000-0002-1014-4660</idno>
 				</person>
+				<person xml:id="zapa">
+					<persName>
+						<name>Zakariya Pamuji Aminullah</name>
+					</persName>
+				</person>
 			</listPerson>
 		</body>
 	</text>
