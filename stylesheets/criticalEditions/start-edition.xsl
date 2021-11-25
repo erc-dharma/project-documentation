@@ -1018,7 +1018,7 @@
                     <xsl:attribute name="class">
                         <xsl:text>lg</xsl:text>
                     <xsl:if test="@met='anuṣṭubh'"><xsl:text> anustubh</xsl:text></xsl:if>
-                    <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"><xsl:text> omitted</xsl:text></xsl:if>
+                        <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"><xsl:text> omitted</xsl:text></xsl:if>
                     </xsl:attribute>
                     <xsl:attribute name="id">
                         <xsl:value-of select="@xml:id"/>
@@ -1056,7 +1056,7 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
-    <xsl:template match="tei:listApp[@type = 'apparatus']">
+    <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -1098,6 +1098,13 @@
                         </xsl:element>
                     </xsl:element>
         </xsl:element>
+    </xsl:template>-->
+    <xsl:template match="tei:listApp[@type='apparatus']">
+        <xsl:for-each select="tei:app">
+            <xsl:if test="tei:lem/text() = preceding-sibling::tei:*[1]/tei:l/text()">
+                <xsl:apply-templates select="tei:app"/>
+            </xsl:if>
+        </xsl:for-each>
     </xsl:template>
     
     <xsl:template match="tei:listApp[@type='parallels']">
@@ -2350,8 +2357,8 @@
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
