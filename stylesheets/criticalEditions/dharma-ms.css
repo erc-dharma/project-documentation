@@ -305,12 +305,12 @@ ul.sgt-index {
 .anustubh .l:nth-child(2n+1){ display: inline-block; margin-left:30px; clear: left;}
 .anustubh .l:nth-child(2):after { content:"\A"; white-space:pre; }
 .anustubh .l:nth-child(2n) { display: inline; }
-.anustubh .l:last-child {display: inline-block; margin-left:30px; clear: left;}
+.anustubh .l:last-child {display: inline-block; clear: left;}
 
 /* Format individual lines as block elements */
-.lg:not(.anustubh) .l:nth-child(2n+1){ display: block; margin-left:30px; clear: left;}
-.lg:not(.anustubh) .l:nth-child(2n){ display: inline-block; margin-left:30px; clear: left;}
-.lg:not(.anustubh) .l:last-child {display: inline-block; margin-left:30px; clear: left;}
+.lg:not(.anustubh) .l:nth-child(2n+1){ display: block; clear: left;}
+.lg:not(.anustubh) .l:nth-child(2n){ display: inline-block; clear: left;}
+.lg:not(.anustubh) .l:last-child {display: inline-block; clear: left;}
 /*.lg:not(.anustubh) .l:not(:last-child) {
   display: inline-block;
   margin-left:1rem;
