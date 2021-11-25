@@ -840,3 +840,11 @@ p{
 .card-body{
     background-color: transparent;
 }
+
+.supplied * .omitted-lg .l:first-child:before {
+    content:"⟨";
+}
+
+.supplied * .omitted-lg:last-child:after {
+    content:"⟩";
+}
