@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-09-10T08:42:26Z. .
+Schema generated from ODD source 2021-11-25T11:24:28Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3204,6 +3204,8 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
          <attribute name="rend">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
             <choice>
+               <value>check</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>grantha</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                <value>ornate</value>
@@ -3528,6 +3530,19 @@ Sample values include: 1] character; 2] component; 3] line; 4] page; 5] plate; 6
       <element name="unclear">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Character that cannot be identified unambiguously outside of its context. May contain character data and <code xmlns="http://www.w3.org/1999/xhtml">&lt;g&gt;</code> only. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.4.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.xtext"/>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
+Sample values include: 1] check</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="cert"
@@ -4393,6 +4408,8 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                   <value>volume</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>item</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>book</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>figure</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>

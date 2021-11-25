@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-11-25">Addin the value check on hi and unclear</change>
             <change who="part:axja" when="2021-10-22">adding @unit="book" with citedRange</change>
             <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
             <change who="part:axja" when="2021-07-19"
@@ -362,6 +363,7 @@
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="closed" mode="replace">
+                                <valItem ident="check"/>
                                 <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
@@ -684,7 +686,6 @@
                         <attDef ident="precision" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="quantity" mode="delete"/>
-                        <attDef ident="rend" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -707,6 +708,11 @@
                         <attDef ident="reason" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="eccentric_ductus"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="rend" mode="change">
+                            <valList type="open" mode="replace">
+                                <valItem ident="check"/>
                             </valList>
                         </attDef>
                     </attList>
