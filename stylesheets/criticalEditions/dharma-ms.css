@@ -842,7 +842,7 @@ p{
 }
 
 .supplied * .omitted-lg .l:first-child:before {
-    content:"⟨";
+    content:"⟨ ";
 }
 
 .supplied * .omitted-lg:last-child:after {
