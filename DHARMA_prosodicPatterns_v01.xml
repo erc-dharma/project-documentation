@@ -99,6 +99,7 @@
                 <item><note>12</note> <name>jagatī</name> <seg type="xml"/> <seg type="prosody"/> </item>
                 <item><note>12</note> <name>kusumavicitrā</name> <seg type="xml">- - - - + + - - - - + =</seg>
                     <seg type="prosody">⏑ ⏑ ⏑ ⏑ – – ⏑ ⏑ ⏑ ⏑ – ⏓ </seg></item>
+                <!-- <item><note>?</note><name>kusumavicitra</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  - | ⏑  ⏑  ⏑ | ⏑  -   ⏓</seg></item> -->
                 <item><note>12</note> <name>bhujaṅgaprayāta</name> <seg type="xml"
                     >- + + - + + - + + - + =</seg> <seg type="prosody">⏑ – – ⏑ – – ⏑ – – ⏑ – ⏓ </seg></item>
                 <item><note>12</note> <name>maṇimālā</name> <seg type="xml">+ + - - + + + + - - + =</seg> <seg
@@ -160,6 +161,22 @@
                 <item><note>23</note><name>jagaddhita</name> <seg type="xml"
                     >+ + + - - + - + - - - + - - - - - - + - + - + </seg> <seg type="prosody">– – – ⏑ ⏑ – ⏑ – ⏑ ⏑ ⏑ – ⏑ ⏑ ⏑ ⏑ ⏑ ⏑ – ⏑ – ⏑ – </seg>
                 </item>
+                <!-- additions from Zaki's file -->
+                <item><note>?</note><name>pādānuṣṭup</name><seg type="xml"></seg><seg type="prosody">no data available</seg></item>
+                <item><note>?</note><name>pādānuṣṭubh</name><seg type="xml"></seg><seg type="prosody">no data available</seg></item>
+                <item><note>?</note><name>vaṅśapattrapatita</name><seg type="xml"></seg><seg type="prosody">-  ⏑  ⏑ | -  ⏑  - | ⏑  ⏑  ⏑ | -  ⏑  ⏑ | ⏑  ⏑  ⏑ | ⏑  ⏓</seg></item>
+                <item><note>?</note><name>jaloddhatagati</name><seg type="xml"></seg><seg type="prosody">⏑  -  ⏑ | ⏑  ⏑  - | ⏑  -  ⏑ | ⏑  ⏑  ⏓</seg></item>
+                <item><note>?</note><name>kusumāyudha</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  ⏑ | ⏑  ⏑  ⏑ | ⏑  ⏑  ⏓</seg></item>
+                <item><note>?</note><name>praharaṇakalika</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  ⏑  ⏑ | -  ⏑  ⏑ | ⏑  ⏑  ⏑ | ⏓</seg></item>
+                <item><note>?</note><name>paṅkti</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  ⏑  ⏑ | ⏑  ⏑  - | ⏓</seg></item>
+                <item><note>?</note><name>atijagatī</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  ⏑ | ⏑  -  ⏑ | ⏑  ⏑  ⏑ | ⏓</seg></item>    
+                <item><note>?</note><name>candravartma</name><seg type="xml"></seg><seg type="prosody">-  ⏑  - | ⏑  ⏑  ⏑ | -  ⏑  ⏑ | ⏑  ⏑  ⏓</seg></item>
+                <item><note>?</note><name>śikhariṇī</name><seg type="xml"></seg><seg type="prosody">⏑  -  - | -  -  - | ⏑  ⏑  ⏑ | ⏑  ⏑  - | -  ⏑  ⏑ | ⏑  ⏓</seg></item>
+                <item><note>?</note><name>pr̥thvītala</name><seg type="xml"></seg><seg type="prosody">⏑  -  ⏑ | ⏑  ⏑  - | ⏑  -  ⏑ | ⏑  ⏑  - | ⏑  -  - | ⏑  ⏓</seg></item>
+                <item><note>?</note><name>sragdhara</name><seg type="xml"></seg><seg type="prosody">-  -  - | -  ⏑  - | -  ⏑  ⏑ | ⏑  ⏑  ⏑ | ⏑  -  - | ⏑  -  - | ⏑  -  ⏓</seg></item>
+                <item><note>?</note><name>basantatilaka</name><seg type="xml"></seg><seg type="prosody">- -  ⏑ | -  ⏑  ⏑ | ⏑  -  ⏑ | ⏑  -  ⏑ | -  ⏓</seg></item>
+                <item><note>?</note><name>citrālaya</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  - | ⏑  ⏑  - | ⏑  ⏑  ⏑ | ⏑  ⏑  ⏑ | ⏓</seg></item>                
+                
             </list>
         </body>
     </text>
