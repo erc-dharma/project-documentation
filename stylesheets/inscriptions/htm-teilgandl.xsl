@@ -126,9 +126,17 @@
   </xsl:template>
 
 <xsl:template name="prosodic">
-      <xsl:if test="matches(@met,'[\+\-]+')">
-        <xsl:value-of select="replace(replace(replace(@met,'-','⏑&#160;'),'=','⏓&#160;'),'\+','–&#160;')"/>
-      </xsl:if>
+  <xsl:variable name="prosody" select="document('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml')"/>
+  <xsl:variable name="metrical" select="@met"/>
+  <xsl:choose>
+    <xsl:when test="$prosody//t:item[t:name =$metrical]">
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="$prosody//t:item[t:name = $metrical]/child::t:seg[@type='prosody']"/>
+    </xsl:when>
+    <xsl:when test="matches($metrical,'[\+\-]+')">
+      <xsl:value-of select="replace(replace(replace($metrical, '-', '⏑'), '=', '⏓'), '+', '–')"/>
+    </xsl:when>
+  </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>
