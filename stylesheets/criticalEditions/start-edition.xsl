@@ -797,27 +797,29 @@
                     <xsl:text>Canto </xsl:text>
                     <xsl:value-of select="@n"/>
                 </xsl:element>
-                <xsl:if test="@rend='met'">
+                    <xsl:if test="@met">
                     <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:choose>
-                        <xsl:when test="matches(@met,'[\+\-]+')">
+                        <xsl:when test="matches(@met,'[=\+\-]+')">
                             <xsl:value-of select="replace(replace(replace(@met, '-', '⏑&#160;'), '=', '⏓&#160;'), '+', '–&#160;')"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:choose><xsl:when test="$prosody//tei:item[tei:name =$metrical]">
+                    <xsl:choose>
+                        <xsl:when test="$prosody//tei:item[tei:name =$metrical]">
                         <xsl:text>: </xsl:text>
                         <xsl:value-of select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='prosody']"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>: </xsl:text>
-                        <xsl:value-of select="normalize-space(translate(@real,'-=+','⏑&#160;⏓&#160;–&#160;'))"/>
+                        <xsl:value-of select="replace(replace(replace(@real, '\-', '⏑&#160;'), '=', '⏓&#160;'), '\+', '–&#160;')"/>
                     </xsl:otherwise>
                     </xsl:choose>
-                </xsl:element></xsl:if>
+                </xsl:element>
+                </xsl:if>
                 </xsl:if>
                 <xsl:apply-templates/>
                 <xsl:if test="@xml:id">
@@ -1027,7 +1029,9 @@
                     <xsl:if test="@n">
                         <xsl:element name="span">
                             <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
+                            <xsl:text>|| </xsl:text>
                         <xsl:value-of select="@n"/>
+                            <xsl:text> ||</xsl:text>
                         </xsl:element>
                     </xsl:if>
                 </xsl:element>
@@ -1056,7 +1060,7 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
-    <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
+    <xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -1098,14 +1102,14 @@
                         </xsl:element>
                     </xsl:element>
         </xsl:element>
-    </xsl:template>-->
-    <xsl:template match="tei:listApp[@type='apparatus']">
+    </xsl:template>
+    <!--<xsl:template match="tei:listApp[@type='apparatus']">
         <xsl:for-each select="tei:app">
             <xsl:if test="tei:lem/text() = preceding-sibling::tei:*[1]/tei:l/text()">
                 <xsl:apply-templates select="tei:app"/>
             </xsl:if>
         </xsl:for-each>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="tei:listApp[@type='parallels']">
         <xsl:element name="div">
