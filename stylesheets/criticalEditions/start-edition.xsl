@@ -802,7 +802,11 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="matches(@met,'[=\+\-]+')">
-                            <xsl:value-of select="replace(replace(replace(@met, '-', '⏑&#160;'), '=', '⏓&#160;'), '+', '–&#160;')"/>
+                            <xsl:call-template name="scansion">
+                                <xsl:with-param name="met-string" select="replace(replace(replace(., '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
+                                <xsl:with-param name="string-len" select="string-length(.)"/>
+                                <xsl:with-param name="string-pos" select="string-length(.) - 1"/>
+                            </xsl:call-template>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
@@ -810,12 +814,21 @@
                     </xsl:choose>
                     <xsl:choose>
                         <xsl:when test="$prosody//tei:item[tei:name =$metrical]">
+                            <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='xml']/node()"/>
                         <xsl:text>: </xsl:text>
-                        <xsl:value-of select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='prosody']"/>
+                            <xsl:call-template name="scansion">
+                                <xsl:with-param name="met-string" select="replace(replace(replace($prosody-and-met, '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
+                                <xsl:with-param name="string-len" select="string-length(.)"/>
+                                <xsl:with-param name="string-pos" select="string-length(.) - 1"/>
+                            </xsl:call-template>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>: </xsl:text>
-                        <xsl:value-of select="replace(replace(replace(@real, '\-', '⏑&#160;'), '=', '⏓&#160;'), '\+', '–&#160;')"/>
+                        <xsl:call-template name="scansion">
+                            <xsl:with-param name="met-string" select="replace(replace(replace(@real, '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
+                            <xsl:with-param name="string-len" select="string-length(.)"/>
+                            <xsl:with-param name="string-pos" select="string-length(.) - 1"/>
+                        </xsl:call-template>
                     </xsl:otherwise>
                     </xsl:choose>
                 </xsl:element>
@@ -990,7 +1003,11 @@
                         <xsl:if test="@rend='met'">
                             <xsl:choose>
                                 <xsl:when test="matches(@met,'[\+\-]+')">
-                                    <xsl:value-of select="replace(replace(replace(@met, '-', '⏑&#160;'), '=', '⏓&#160;'), '+', '–&#160;')"/>
+                                    <xsl:call-template name="scansion">
+                                        <xsl:with-param name="met-string" select="replace(replace(replace(., '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
+                                        <xsl:with-param name="string-len" select="string-length(.)"/>
+                                        <xsl:with-param name="string-pos" select="string-length(.) - 1"/>
+                                    </xsl:call-template>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
@@ -3277,5 +3294,22 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="scansion">
+        <xsl:param name="met-string"/>
+        <xsl:param name="string-len"/>
+        <xsl:param name="string-pos"/>
+        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+        <xsl:if test="$string-pos > -1">     
+           <!--<xsl:text>&#xa0;</xsl:text>-->
+            <xsl:value-of select="substring($met-string, number($string-len - $string-pos), 1)"/>
+            <!--<xsl:text>&#xa0;</xsl:text>-->
+            <xsl:call-template name="scansion">
+                <xsl:with-param name="met-string" select="$met-string"/>
+                <xsl:with-param name="string-len" select="$string-len"/>
+                <xsl:with-param name="string-pos" select="$string-pos - 1"/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
