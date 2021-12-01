@@ -980,7 +980,7 @@
                             <xsl:value-of select="@real"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:text>]</xsl:text>
+                    <xsl:text>] </xsl:text>
                 </xsl:if>
             <xsl:apply-templates/> 
         </xsl:element>
