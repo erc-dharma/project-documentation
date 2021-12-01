@@ -50,9 +50,9 @@
                                                     <xsl:when test="matches(@met,'[\+\-]+')">
                                                       <!-- Found in teigap.xsl -->
                                                       <xsl:call-template name="scansion">
-                                                        <xsl:with-param name="met-string" select="replace(replace(replace(., '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
-                                                        <xsl:with-param name="string-len" select="string-length(.)"/>
-                                                        <xsl:with-param name="string-pos" select="string-length(.) - 1"/>
+                                                        <xsl:with-param name="met-string" select="translate(@met, '-=+', '⏑⏓–')"/>
+                                                        <xsl:with-param name="string-len" select="string-length(@met)"/>
+                                                        <xsl:with-param name="string-pos" select="string-length(@met) - 1"/>
                                                       </xsl:call-template>
                                                     </xsl:when>
                                                       <xsl:otherwise>

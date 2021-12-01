@@ -723,7 +723,7 @@
          <xsl:when test="parent::t:seg[contains(@met,'+') or contains(@met,'-') or contains(@met,'=')]">
            <xsl:if test="$parm-leiden-style ='dharma'">
            <xsl:call-template name="scansion">
-              <xsl:with-param name="met-string" select="replace(replace(replace(parent::t:seg/@met, '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
+              <xsl:with-param name="met-string" select="translate(parent::t:seg/@met, '-=+', '⏑⏓–')"/>
               <xsl:with-param name="string-len" select="string-length(parent::t:seg/@met)"/>
               <xsl:with-param name="string-pos" select="string-length(parent::t:seg/@met) - 1"/>
            </xsl:call-template>
