@@ -2,22 +2,11 @@
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0"
-                xmlns:functx="http://www.functx.com"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="t"
                 version="2.0">
 
   <xsl:include href="teilgandl.xsl"/>
-  
-  <xsl:function name="functx:chars" as="xs:string*">
-    <xsl:param name="arg" as="xs:string?"/>
-    
-    <xsl:sequence select="
-      for $ch in string-to-codepoints($arg)
-      return codepoints-to-string($ch)
-      "/>
-    
-  </xsl:function>
+ 
 
                              <xsl:template match="t:lg">
                                  <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
@@ -59,7 +48,12 @@
                                           <span class="verse-meter">
                                                   <xsl:choose>
                                                     <xsl:when test="matches(@met,'[\+\-]+')">
-                                                      <xsl:call-template name="prosodic"/>
+                                                      <!-- Found in teigap.xsl -->
+                                                      <xsl:call-template name="scansion">
+                                                        <xsl:with-param name="met-string" select="replace(replace(replace(., '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
+                                                        <xsl:with-param name="string-len" select="string-length(.)"/>
+                                                        <xsl:with-param name="string-pos" select="string-length(.) - 1"/>
+                                                      </xsl:call-template>
                                                     </xsl:when>
                                                       <xsl:otherwise>
                                                         <xsl:text></xsl:text>
@@ -136,23 +130,5 @@
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
-
-<xsl:template name="prosodic">
-  <xsl:variable name="prosody" select="document('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml')"/>
-  <xsl:variable name="metrical" select="@met"/>
-  <xsl:choose>
-    <xsl:when test="$prosody//t:item[t:name =$metrical]">
-      <xsl:text>: </xsl:text>
-      <xsl:value-of select="$prosody//t:item[t:name = $metrical]/child::t:seg[@type='prosody']"/>
-    </xsl:when>
-    <xsl:when test="matches(@met,'[\+\-]+')">
-      <xsl:for-each select="functx:chars(@met)">
-        <xsl:value-of select="replace(replace(replace(., '-', '⏑'), '=', '⏓'), '+', '–')"/>
-        <xsl:text> </xsl:text>
-      </xsl:for-each>
-    </xsl:when>
-  </xsl:choose>
-  </xsl:template>
- 
 
 </xsl:stylesheet>
