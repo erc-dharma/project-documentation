@@ -723,7 +723,7 @@
          <xsl:when test="parent::t:seg[contains(@met,'+') or contains(@met,'-') or contains(@met,'=')]">
            <xsl:if test="$parm-leiden-style ='dharma'">
            <xsl:call-template name="scansion">
-              <xsl:with-param name="met-string" select="replace(replace(replace(parent::t:seg/@met,'-','⏑&#160;'),'=','⏓&#160;'),'\+','–&#160;')"/>
+              <xsl:with-param name="met-string" select="replace(replace(replace(parent::t:seg/@met, '\-', '⏑'), '=', '⏓'), '\+', '–')"/>
               <xsl:with-param name="string-len" select="string-length(parent::t:seg/@met)"/>
               <xsl:with-param name="string-pos" select="string-length(parent::t:seg/@met) - 1"/>
            </xsl:call-template>
@@ -748,14 +748,10 @@
       <xsl:param name="string-len"/>
       <xsl:param name="string-pos"/>
       <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-      <xsl:if test="$string-pos > -1">
-          <xsl:if test="not($parm-leiden-style ='dharma')">
+      <xsl:if test="$string-pos > -1">     
          <xsl:text>&#xa0;</xsl:text>
-       </xsl:if>
          <xsl:value-of select="substring($met-string, number($string-len - $string-pos), 1)"/>
-         <xsl:if test="not($parm-leiden-style ='dharma')">
         <xsl:text>&#xa0;</xsl:text>
-      </xsl:if>
          <xsl:call-template name="scansion">
             <xsl:with-param name="met-string" select="$met-string"/>
             <xsl:with-param name="string-len" select="$string-len"/>

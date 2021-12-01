@@ -2,10 +2,22 @@
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0"
+                xmlns:functx="http://www.functx.com"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="t"
                 version="2.0">
 
   <xsl:include href="teilgandl.xsl"/>
+  
+  <xsl:function name="functx:chars" as="xs:string*">
+    <xsl:param name="arg" as="xs:string?"/>
+    
+    <xsl:sequence select="
+      for $ch in string-to-codepoints($arg)
+      return codepoints-to-string($ch)
+      "/>
+    
+  </xsl:function>
 
                              <xsl:template match="t:lg">
                                  <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
@@ -133,10 +145,14 @@
       <xsl:text>: </xsl:text>
       <xsl:value-of select="$prosody//t:item[t:name = $metrical]/child::t:seg[@type='prosody']"/>
     </xsl:when>
-    <xsl:when test="matches($metrical,'[\+\-]+')">
-      <xsl:value-of select="replace(replace(replace($metrical, '-', '⏑'), '=', '⏓'), '+', '–')"/>
+    <xsl:when test="matches(@met,'[\+\-]+')">
+      <xsl:for-each select="functx:chars(@met)">
+        <xsl:value-of select="replace(replace(replace(., '-', '⏑'), '=', '⏓'), '+', '–')"/>
+        <xsl:text> </xsl:text>
+      </xsl:for-each>
     </xsl:when>
   </xsl:choose>
   </xsl:template>
+ 
 
 </xsl:stylesheet>
