@@ -586,14 +586,14 @@ a[data-toggle='popover']{
     font-size:90%;
 }
 .lineation:before,.foliation:before {
-    content:"[";
+    /*content:"[";*/
     padding-left:0.1rem;
 }
 .lineation:after,.foliation:after {
-    content:"]";
+   /* content:"]";*/
     padding-right:0.1rem;
 }
-
+/*
 .ed-insertion:before {
     content:"⟨⟨";
 }
@@ -646,16 +646,7 @@ a[data-toggle='popover']{
 
 .sic-crux:after {
     content:"†";
-}
-
-/*.move-to-right:hover ~ .lem{
-    background-color: yellow;
-}
-
-.lem:hover ~ .move-to-right{
-    background-color: yellow;
 }*/
-
 
 .tooltipApp {
     color: #a34545;
@@ -679,25 +670,17 @@ p{
     color: black;
     font-style: normal;
     }
-/*.tooltipApp a:not(first-child) {
-  display: inline;
-  
-}
- * 
- * 
 
-}*/
 .apparat-col {
    display: inline-block;
    position: relative;
    font-size: 75%;
 }
 
-
 .lem-last-note a{
     color: #a34545; 
-     right: -950px;
-      position:relative;
+    right: -950px;
+    position:relative;
 }
 .text-muted .siglum {
     color: grey;
@@ -706,19 +689,19 @@ p{
     font-style:italic;
 }
 
-.surplus:before {
+/*.surplus:before {
     content:"{";
 }
 
 .surplus:after {
     content:"}";
-}
+}*/
 
 .mark {
     background-color: yellow;
 }
 
-.hyphenfront:before,.hyphenaround:before {
+/*.hyphenfront:before,.hyphenaround:before {
     content:"-";
 }
 
@@ -732,7 +715,7 @@ p{
 
 .circleback:after,.circlearound:after {
     content:"°";
-}
+}*/
 
 .wrapper{
   width: 650px;
@@ -783,7 +766,7 @@ p{
      padding: 25px;
 }
 
-.explanation:before {
+/*.explanation:before {
     content:"(";
 }
 
@@ -797,7 +780,7 @@ p{
 
 .subaudible:after {
     content:"]";
-}
+}*/
 
 .block{
   left: 35px;
@@ -839,12 +822,4 @@ p{
 
 .card-body{
     background-color: transparent;
-}
-
-.supplied * .omitted-lg .l:first-child:before {
-    content:"⟨ ";
-}
-
-.supplied * .omitted-lg:last-child:after {
-    content:"⟩";
 }
