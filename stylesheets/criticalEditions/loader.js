@@ -122,4 +122,21 @@ Code only for the lateral tooltip*/
     });
 });
 
- 
+$('.lg-omitted .l:first-child, .omitted').prepend('⟨');
+$('.lg-omitted .l:last-child, .omitted').after('⟩');
+$('.explanation, .unclear').prepend('(');
+$('.explanation, .unclear').after(')');
+$('.subaudible, .lineation, .foliation, .lost-illegible, .gap').prepend('[');
+$('.subaudible, .lineation, .foliation, .lost-illegible, .gap').after(']');
+$('.hyphenfront, .hyphenaround').prepend('-');
+$('.hyphenback, .hyphenaround').after('-');
+$('.circlefront, .circlearound').prepend('°');
+$('.circleback, .circlearound').after('°');
+$('.surplus').prepend('{');
+$('.surplus').after('}');
+$('.ed-insertion').prepend('⟨⟨');
+$('.ed-insertion').after('⟩⟩');
+$('.scribe-deletion').prepend('⟦');
+$('.scribe-deletion').after('⟧');
+$('.sic-crux').prepend('†');
+$('.sic-crux').after('†');
