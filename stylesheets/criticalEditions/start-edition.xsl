@@ -1020,18 +1020,18 @@
                     <xsl:attribute name="class">
                         <xsl:text>lg</xsl:text>
                     <xsl:if test="@met='anuṣṭubh'"><xsl:text> anustubh</xsl:text></xsl:if>
-                        <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"><xsl:text> omitted-lg</xsl:text></xsl:if>
+                        <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
                     </xsl:attribute>
                     <xsl:attribute name="id">
                         <xsl:value-of select="@xml:id"/>
                     </xsl:attribute>
+                    <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟨</xsl:if>-->
                         <xsl:apply-templates/>
+                    <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟩</xsl:if>-->
                     <xsl:if test="@n">
                         <xsl:element name="span">
                             <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                            <xsl:text>|| </xsl:text>
                         <xsl:value-of select="@n"/>
-                            <xsl:text> ||</xsl:text>
                         </xsl:element>
                     </xsl:if>
                 </xsl:element>
