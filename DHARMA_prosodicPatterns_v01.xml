@@ -18,7 +18,7 @@
             </titleStmt>
             <publicationStmt>
                 <authority>DHARMA Project (ERC 809994): The Domestication of “Hindu” Asceticism and
-                    the Religious Making of South and Southeast Asia (2019– 2025).</authority>
+                    the Religious Making of South and Southeast Asia (2019–2025).</authority>
                 <date>2019-2025</date>
                 <idno type="filename">DHARMA_prosodicPatterns_v01</idno>
                 <availability>
@@ -62,7 +62,7 @@
                 <item><note>10/11</note> <name>viyoginī</name> <seg type="xml"
                     >--+--+-+-=/--++--+-+-=</seg> <seg type="prosody"
                     >⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>11</note> <name>triṣṭubh</name> <seg type="xml"/> <seg type="prosody"/> </item>
+                <item><note>11</note> <name>triṣṭubh</name> <seg type="xml">no data available</seg> <seg type="prosody">no data available</seg> </item>
                 <item><note>11</note> <name>dodhaka</name> <seg type="xml">+--+--+--+=</seg> <seg
                     type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏓</seg></item>
                 <item><note>11</note> <name>indravajrā</name> <seg type="xml">++-++--+-+=</seg> <seg
@@ -80,7 +80,7 @@
                     <seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg></item>
                 <item><note>11</note> <name>toṭaka</name><seg type="xml">--+--+--+--=[need to be checked]</seg> <seg
                     type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> </item>
-                <!-- <item><note>12</note> <name>toṭaka</name><seg type="xml">- - + - - + - - + - - = [need to be checked]</seg> <seg
+                <!-- <item><note>12</note> <name>toṭaka</name><seg type="xml">--+--+--+--= [need to be checked]</seg> <seg
                     type="prosody">ᵕᵕ| ᵕᵕ| ᵕᵕ| ᵕᵕ⏓</seg> </item> -->
                 <item><note>11</note> <name>vātormī</name> <seg type="xml">++++--++-+=</seg> <seg
                     type="prosody">––––⏑⏑––⏑–⏓</seg></item>
@@ -98,10 +98,10 @@
                     >⏑⏑–⏑⏑–⏑–⏑–⏓/⏑⏑––⏑⏑–⏑–⏑–⏓</seg></item>
                 <item><note>12</note> <name>indravaṁśā</name> <seg type="xml">++-++--+-+-=</seg>
                     <seg type="prosody">--⏑--⏑⏑-⏑-⏑⏓</seg></item>
-                <item><note>12</note> <name>jagatī</name> <seg type="xml"/> <seg type="prosody"/> </item>
+                <item><note>12</note> <name>jagatī</name> <seg type="xml">no data available</seg> <seg type="prosody">no data available</seg> </item>
                 <item><note>12</note><name>kusumavicitrā</name><name>kusumavicitra</name><seg type="xml">----++----+=</seg>
                     <seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg></item>
-                <!-- <item><note>?</note><name>kusumavicitra</name><seg type="xml"></seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  - | ⏑  ⏑  ⏑ | ⏑  -   ⏓</seg></item> -->
+                <!-- <item><note>?</note><name>kusumavicitra</name><seg type="xml">no data available</seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  - | ⏑ ⏑  ⏑ | ⏑  -  ⏓</seg></item> -->
                 <item><note>12</note> <name>bhujaṅgaprayāta</name> <seg type="xml"
                     >-++-++-++-+=</seg> <seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg></item>
                 <item><note>12</note> <name>maṇimālā</name> <seg type="xml">++--++++--+=</seg> <seg
@@ -134,7 +134,7 @@
                 <item><note>14</note> <name>vasantatilakā</name> <seg type="xml"
                     >++-+---+--+-+=</seg> <seg type="prosody">––⏑–⏑⏑⏑–⏑⏑–⏑–⏓</seg></item>
                 <item><note>14</note> <name>basantatilaka</name> <seg type="xml"
-                    ></seg> <seg type="prosody">ᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓</seg></item>
+                    >no data available</seg> <seg type="prosody">ᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓</seg></item>
                 <item><note>15</note> <name>mālinī</name> <seg type="xml">------+++-++-+=</seg> <seg
                     type="prosody">⏑⏑⏑⏑⏑⏑––|–⏑––⏑–⏓</seg></item>
                 <item><note>17</note> <name>hariṇī</name> <seg type="xml">-----+++++-+--+-=</seg>
@@ -166,39 +166,39 @@
                     >+++--+-+---+------+-+-+</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑–</seg>
                 </item>
                 <!-- additions from Zaki's file -->
-                <item><note>?</note><name>pādānuṣṭup</name><seg type="xml"></seg><seg type="prosody">no data available[need to be checked]</seg></item>
-                <item><note>?</note><name>pādānuṣṭubh</name><seg type="xml"></seg><seg type="prosody">no data available[need to be checked]</seg></item>
-                <item><note>?</note><name>vaṅśapattrapatita</name><seg type="xml"></seg><seg type="prosody">-⏑⏑|-⏑-|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>jaloddhatagati</name><seg type="xml"></seg><seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>kusumāyudha</name><seg type="xml"></seg><seg type="prosody">⏑⏑⏑|⏑-⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg></item>
-                <item><note>14</note><name>praharanakalika</name><seg type="xml"></seg><seg type="prosody">⏑⏑⏑|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>paṅkti</name><seg type="xml"></seg><seg type="prosody">⏑⏑⏑|⏑⏑⏑|⏑⏑-|⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>atijagatī</name><seg type="xml"></seg><seg type="prosody">⏑⏑⏑|⏑-⏑|⏑-⏑|⏑⏑⏑|⏓[need to be checked]</seg></item>    
-                <item><note>?</note><name>candravartma</name><seg type="xml"></seg><seg type="prosody">-⏑-|⏑⏑⏑|-⏑⏑|⏑⏑⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>śikhariṇī</name><seg type="xml"></seg><seg type="prosody">⏑--|---|⏑⏑⏑|⏑⏑-|-⏑⏑|⏑⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>pr̥thvītala</name><seg type="xml"></seg><seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑-|⏑--|⏑⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>sragdhara</name><seg type="xml"></seg><seg type="prosody">---|-⏑-|-⏑⏑|⏑⏑⏑|⏑--|⏑--|⏑-⏓[need to be checked]</seg></item>
-                <item><note>13</note><name>citrālaya</name><seg type="xml"></seg><seg type="prosody">⏑⏑-|⏑⏑-|⏑⏑⏑|⏑⏑⏑|⏓[need to be checked]</seg></item>                
+                <item><note>?</note><name>pādānuṣṭup</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg></item>
+                <item><note>?</note><name>pādānuṣṭubh</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg></item>
+                <item><note>?</note><name>vaṅśapattrapatita</name><seg type="xml">no data available</seg><seg type="prosody">-⏑⏑|-⏑-|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg></item>
+                <item><note>12</note><name>jaloddhatagati</name><seg type="xml">no data available</seg><seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>kusumāyudha</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑⏑|⏑-⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg></item>
+                <item><note>14</note><name>praharanakalika</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑⏑|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>paṅkti</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑⏑|⏑⏑⏑|⏑⏑-|⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>atijagatī</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑⏑|⏑-⏑|⏑-⏑|⏑⏑⏑|⏓[need to be checked]</seg></item>    
+                <item><note>?</note><name>candravartma</name><seg type="xml">no data available</seg><seg type="prosody">-⏑-|⏑⏑⏑|-⏑⏑|⏑⏑⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>śikhariṇī</name><seg type="xml">no data available</seg><seg type="prosody">⏑--|---|⏑⏑⏑|⏑⏑-|-⏑⏑|⏑⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>pr̥thvītala</name><seg type="xml">no data available</seg><seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑-|⏑--|⏑⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>sragdhara</name><seg type="xml">no data available</seg><seg type="prosody">---|-⏑-|-⏑⏑|⏑⏑⏑|⏑--|⏑--|⏑-⏓[need to be checked]</seg></item>
+                <item><note>13</note><name>citrālaya</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑-|⏑⏑-|⏑⏑⏑|⏑⏑⏑|⏓[need to be checked]</seg></item>                
                 <!-- Andrea's file -->
                 <item><note>?</note><name>bramitākṣara</name><seg type="xml">--+-+---+--=</seg><seg type="prosody">⏑⏑-⏑-⏑⏑⏑-⏑⏑⏓[need to be checked]</seg></item>
-                <item><note>12</note><name>jaloddhatagati</name><seg type="xml"></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg></item>
-                <item><note>11</note><name>upendrabajrā</name><seg type="xml"></seg><seg type="prosody">ᵕᵕ/ᵕ/ᵕᵕ/̠̌⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>jagadnātha</name><name>jagadnatha</name><seg type="xml"></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕᵕ|ᵕ|ᵕ⏓[need to be checked]</seg></item>
-                <item><note>13</note><name>punarmada</name><seg type="xml"></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg></item>
-                <item><note>16</note><name>girisa</name><seg type="xml"></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕᵕ||ᵕ|ᵕᵕᵕ|⏓[need to be checked]</seg></item>            
-                <item><note>17</note><name>vilāsinī</name><name>wiśvalalita</name><seg type="xml"></seg><seg type="prosody">ᵕᵕᵕ/ᵕᵕ/ᵕᵕ/ᵕᵕ/ᵕᵕ/ᵕ⏓[need to be checked]</seg></item>
-                <item><note>18</note><name>mṛdukomala</name><seg type="xml"></seg><seg type="prosody">|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓</seg></item> 
-                <item><note>19</note><name>navaharṣa</name><name>navaharsa</name><seg type="xml"></seg><seg type="prosody">⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑|⏑⏑|⏓</seg></item>
-                <item><note>22</note><name>turidagati</name><seg type="xml"></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg></item>
-                <item><note>21</note><name>kusumavilasitā</name><seg type="xml"></seg><seg type="prosody">ᵕᵕ|ᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>tvaritagati</name><seg type="xml"></seg><seg type="prosody">no data available[need to be checked]</seg></item>
-                <item><note>?</note><name>ratoddhata</name><seg type="xml"></seg><seg type="prosody">no data available[need to be checked]</seg></item>
+                <!--<item><note>12</note><name>jaloddhatagati</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg></item>-->
+                <item><note>11</note><name>upendrabajrā</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ/ᵕ/ᵕᵕ/̠̌⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>jagadnātha</name><name>jagadnatha</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕᵕ|ᵕ|ᵕ⏓[need to be checked]</seg></item>
+                <item><note>13</note><name>punarmada</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg></item>
+                <item><note>16</note><name>girisa</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕᵕ||ᵕ|ᵕᵕᵕ|⏓[need to be checked]</seg></item>            
+                <item><note>17</note><name>vilāsinī</name><name>wiśvalalita</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕᵕ/ᵕᵕ/ᵕᵕ/ᵕᵕ/ᵕᵕ/ᵕ⏓[need to be checked]</seg></item>
+                <item><note>18</note><name>mṛdukomala</name><seg type="xml">no data available</seg><seg type="prosody">|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓</seg></item> 
+                <item><note>19</note><name>navaharṣa</name><name>navaharsa</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑|⏑⏑|⏓</seg></item>
+                <item><note>22</note><name>turidagati</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg></item>
+                <item><note>21</note><name>kusumavilasitā</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>tvaritagati</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg></item>
+                <item><note>?</note><name>ratoddhata</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg></item>
                 
-                <item><note>17</note><name>rajanī</name><seg type="xml"></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg></item>
-                <item><note>?</note><name>pṛthivī</name><seg type="xml"></seg><seg type="prosody">no data available[need to be checked]</seg></item>
+                <item><note>17</note><name>rajanī</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg></item>
+                <item><note>?</note><name>pṛthivī</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg></item>
                    
-                <item><note>15</note><name>viṣamara</name><seg type="xml"></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg></item>
-                <item><note>18</note><name>suvaṅśapattra</name><seg type="xml"></seg><seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg></item>
+                <item><note>15</note><name>viṣamara</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg></item>
+                <item><note>18</note><name>suvaṅśapattra</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg></item>
             </list>
         </body>
     </text>
