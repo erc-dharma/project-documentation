@@ -2220,7 +2220,7 @@
           <constraintSpec scheme="schematron" ident="note">
             <constraint>
               <sch:rule context="tei:note[not(@type='altLem' or ancestor::tei:listApp[@type='parallels'])][parent::tei:app]">
-                <sch:report test="following-sibling::*">Note(s) should the last element
+                <sch:report test="following-sibling::*">Note(s) should be the last element
                           of the apparatus entry</sch:report>
               </sch:rule>
               <sch:rule context="tei:note[not(ancestor::tei:listApp[@type='parallels'])]">
@@ -3039,6 +3039,9 @@
             <constraint>
               <sch:rule context="tei:TEI[@type='edition']">
                 <sch:report test="@corresp">The attribute @corresp can't be used with the attribute @type='edition'.</sch:report>
+              </sch:rule>
+              <sch:rule context="tei:TEI[@type='translation' or @type='commentary' or @type='bibliography']">
+                <sch:assert test="@corresp">The attribute @corresp is mandatory if your file is a translation, a commentary or a bibliography.</sch:assert>
               </sch:rule>
               </constraint>
           </constraintSpec>
