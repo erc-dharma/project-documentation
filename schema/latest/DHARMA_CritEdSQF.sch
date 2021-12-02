@@ -129,7 +129,7 @@
     <!-- controlling the syntax for @corresp -->
     <sch:pattern>
         <sch:rule context="@corresp">
-            <sch:assert test="starts-with(., '#')">
+            <sch:assert test="starts-with(., '#') or starts-with(., 'txt:')">
                 @corresp attributes must begin with a hashtag!
             </sch:assert>
         </sch:rule>
@@ -168,4 +168,5 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern>
+    
 </sch:schema>

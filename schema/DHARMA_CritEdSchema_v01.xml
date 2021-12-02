@@ -252,7 +252,7 @@
         <elementSpec ident="handNote" module="header" mode="change">
           <constraintSpec scheme="schematron" ident="handNote-script">
             <constraint>
-              <sch:rule test="tei:handNote/@scriptRef">
+              <sch:rule context="tei:handNote/@scriptRef">
                 <sch:assert test="contains(.,'class:') and contains(.,'maturity:')">The content of the attribute @corresp should contained ids for both script classification and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
               </sch:rule>
             </constraint>
@@ -1511,9 +1511,6 @@
                     @quantity</sch:report>
                 <sch:report test="//tei:TEI[@type='translation'] and not(@reason)">Only @reason
                       is mandatory in translation with gap</sch:report>
-              </sch:rule>
-              <sch:rule content="tei:gap[@reason='lost|illegible']">
-                
               </sch:rule>
               <sch:rule context="tei:gap[@reason='ellipsis']">
                 <sch:report test="not(//tei:TEI[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report></sch:rule>
@@ -3898,9 +3895,9 @@
             <constraint>
               <sch:rule context="tei:lem">
                 <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
-              </sch:rule>
-              <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')">
+                <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
+              </sch:rule>
             </constraint>
           </constraintSpec>
           <attList>
