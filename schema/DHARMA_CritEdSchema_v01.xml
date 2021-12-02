@@ -1738,7 +1738,7 @@
         <elementSpec ident="l" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="verse-line">
             <constraint>
-              <sch:rule context="@corresp">
+              <sch:rule context="tei:l[@corresp]">
                 <sch:report test="not(ancestor-or-self::tei:rdg[@type='transposition'])">The attribute @corresp on a line verse can only be used inside a rdg with @type='transposition'.</sch:report>
               </sch:rule>
             </constraint>
@@ -2219,7 +2219,7 @@
           <constraintSpec scheme="schematron" ident="note">
             <constraint>
               <sch:rule context="tei:note[parent::tei:app][not(@type='altLem')]">
-                <sch:report test="not(following-sibling::tei:note)">Note(s) should the last element
+                <sch:report test="following-sibling::*">Note(s) should the last element
                           of the apparatus entry</sch:report>
               </sch:rule>
               <sch:rule context="tei:note">
@@ -3796,7 +3796,7 @@
               <sch:rule context="tei:app[not(parent::tei:listApp[@type='parallels'])]">
                 <sch:assert test="child::tei:lem">The element lem is mandatory within an app entry</sch:assert>
               </sch:rule>
-              <sch:rule context="tei:app[parent::tei:listApp[@type='parallels']]">
+              <sch:rule context="tei:app[parent::tei:listApp[@type='parallels']][@type]">
                 <sch:report test="not(@type='imitation|adaptation')">
                   An element app, inside the parallels list, can only have the attribute @type with the values 'imitation' or 'adaptation'.
                 </sch:report>
@@ -3893,8 +3893,8 @@
         <elementSpec ident="lem" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="lem-hand">
             <constraint>
-              <sch:rule context="tei:lem">
-                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')]">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+              <sch:rule context="tei:lem[@hand]">
+                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
                 <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
               </sch:rule>
@@ -4020,8 +4020,8 @@
         <elementSpec ident="rdg" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="rdg-hand">
             <constraint>
-              <sch:rule context="tei:rdg">
-                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')]">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+              <sch:rule context="tei:rdg[@hand]">
+                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
               <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
               </sch:rule>
@@ -4115,7 +4115,7 @@
           <constraintSpec scheme="schematron" ident="wit-witDetail">
             <constraint>
               <!-- @wit for witDetail should match one of the witnesses of the preceding sibling lem or rdg  -->
-              <sch:rule context="tei:witDetail[preceding-sibling::t:lem[1] or preceding-sibling::tei:rdg[1]]">
+              <sch:rule context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
                 <sch:let name="wit-witDetails" value="for $w in tokenize(., '\s+') return $w"/>
                 <sch:let name="wit-preceding" value="preceding-sibling::tei:*[1]/@wit"/>
                 <sch:assert test="every $wit-witDetail in $wit-witDetails satisfies contains($wit-preceding, $wit-witDetail)">

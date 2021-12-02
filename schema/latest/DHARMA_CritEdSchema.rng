@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-12-02T13:34:26Z. .
+Schema generated from ODD source 2021-12-02T13:51:44Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -3150,7 +3150,7 @@ Suggested values include: 1] check; 2] bulleted; 3] numbered</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note[parent::tei:app][not(@type='altLem')]">
-               <sch:report test="not(following-sibling::tei:note)">Note(s) should the last element
+               <sch:report test="following-sibling::*">Note(s) should the last element
                           of the apparatus entry</sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
@@ -3618,7 +3618,7 @@ Suggested values include: 1] base-text; 2] commentary; 3] editorial; 4] translat
                   id="DHARMA_CritEdSchema_v01-l-verse-line-constraint-rule-23">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="@corresp">
+                      context="tei:l[@corresp]">
                <sch:report test="not(ancestor-or-self::tei:rdg[@type='transposition'])">The attribute @corresp on a line verse can only be used inside a rdg with @type='transposition'.</sch:report>
             </sch:rule>
          </pattern>
@@ -6843,7 +6843,7 @@ Sample values include: 1] no; 2] yes; 3] weak; 4] strong</a:documentation>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:app[parent::tei:listApp[@type='parallels']]">
+                      context="tei:app[parent::tei:listApp[@type='parallels']][@type]">
                <sch:report test="not(@type='imitation|adaptation')">
                   An element app, inside the parallels list, can only have the attribute @type with the values 'imitation' or 'adaptation'.
                 </sch:report>
@@ -6946,8 +6946,8 @@ Sample values include: 1] no; 2] yes; 3] weak; 4] strong</a:documentation>
                   id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-36">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:lem">
-               <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')]">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+                      context="tei:lem[@hand]">
+               <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
                <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
             </sch:rule>
@@ -7026,8 +7026,8 @@ Sample values include: 1] no; 2] yes; 3] weak; 4] strong</a:documentation>
                   id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:rdg">
-               <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')]">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+                      context="tei:rdg[@hand]">
+               <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
                <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
             </sch:rule>
@@ -7121,7 +7121,7 @@ Sample values include: 1] no; 2] yes; 3] weak; 4] strong</a:documentation>
                   id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:witDetail[preceding-sibling::t:lem[1] or preceding-sibling::tei:rdg[1]]">
+                      context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
                <sch:let name="wit-witDetails" value="for $w in tokenize(., '\s+') return $w"/>
                <sch:let name="wit-preceding" value="preceding-sibling::tei:*[1]/@wit"/>
                <sch:assert test="every $wit-witDetail in $wit-witDetails satisfies contains($wit-preceding, $wit-witDetail)">
