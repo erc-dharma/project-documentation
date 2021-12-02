@@ -153,7 +153,7 @@
                 @hand  must  begin with a hashtag
             </sch:assert>
             <sch:assert test="every $hand-content in $hand-contents satisfies substring-before(substring-after($hand-content, '#'), '_') = //t:TEI//t:listWit/t:witness/@xml:id">@hand should match a witness's @xml:id</sch:assert>
-            <sch:assert test="every $hand-content in $hand-contents satisfies matches($hand-content, '\_[H]\d$')">
+            <sch:assert test="every $hand-content in $hand-contents satisfies matches($hand-content, '_[H]\d$')">
                 A hand should be declare after the @xml:id of the witness followed by an underscore, a uppercase letter H and a number (mostly with a single digit). 
             </sch:assert>
         </sch:rule>
