@@ -951,7 +951,9 @@
                   >seg[@cert='low'] can be used only in a translation file.</sch:report><sch:report
                   test="@rend='pun' and not(//tei:TEI[@type='translation'])"
                   >seg[@rend='pun'] only available in a translation file.</sch:report>
-                <sch:assert test="@type='highlight' and (parent::tei:lem or parent::tei:rdg)">
+              </sch:rule>
+              <sch:rule context="tei:seg[@type='highlight']">
+                <sch:assert test="parent::tei:lem or parent::tei:rdg">
                   seg[@rend='highlight'] can only be used as a child of lem or rdg elements. 
                 </sch:assert>
               </sch:rule>
@@ -1505,8 +1507,7 @@
               @extent (a descriptive text value) but not both at the same time.</sch:report>
                 <sch:report test="@extent and not(@unit='character')">gap may have @extent only with @unit='character'.</sch:report>
                 <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report>
-                <sch:report test="not(@reason='lost|illegible') and @quantity and @unit">@quantity and @unti can only be used with the values 'lost' and 'illegible' for @reason.</sch:report>
-                <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
+                <sch:report test="not(@reason='lost' or @reason='illegible') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost' and 'illegible' for @reason.</sch:report>
                 <sch:report test="@precision and not(@quantity)">@precision can be use only with
                     @quantity</sch:report>
                 <sch:report test="//tei:TEI[@type='translation'] and not(@reason)">Only @reason
@@ -1524,8 +1525,8 @@
                                   @quantity and @unit="line" expect either the use of @precision="low" or
                                   the element certainty.</sch:assert>
               </sch:rule>
-              <sch:rule context="tei:gap/@quantity">
-                <sch:assert test="contains('.', '\d+')">The value used for the attribute @quantity with gap should be a number</sch:assert>
+              <sch:rule context="tei:gap[@quantity]">
+                <sch:assert test="matches('@quantity', '\d+')">The value used for the attribute @quantity with gap should be a number</sch:assert>
               </sch:rule>
             </constraint>
           </constraintSpec>
@@ -2218,11 +2219,11 @@
         <elementSpec ident="note" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="note">
             <constraint>
-              <sch:rule context="tei:note[parent::tei:app][not(@type='altLem')]">
+              <sch:rule context="tei:note[not(@type='altLem' or ancestor::tei:listApp[@type='parallels'])][parent::tei:app]">
                 <sch:report test="following-sibling::*">Note(s) should the last element
                           of the apparatus entry</sch:report>
               </sch:rule>
-              <sch:rule context="tei:note">
+              <sch:rule context="tei:note[not(ancestor::tei:listApp[@type='parallels'])]">
                 <sch:report test="child::tei:note">Note(s) may not
                               contain further notes (this is not a technical requirement but a
                               convention we shall observe to reduce
@@ -2234,8 +2235,8 @@
                   An alternative lem should always be the first child after the main lem. 
                 </sch:assert>
               </sch:rule>
-              <sch:rule context="tei:note">
-                <sch:assert test="@rend and @type='altLem'">The attribute @rend can only be used with a note for an alternative lem (attribute @type='altLem').</sch:assert>
+              <sch:rule context="tei:note[@rend]">
+                <sch:assert test="@type='altLem'">The attribute @rend can only be used with a note for an alternative lem (attribute @type='altLem').</sch:assert>
               </sch:rule>
             </constraint>
           </constraintSpec>
@@ -3797,7 +3798,7 @@
                 <sch:assert test="child::tei:lem">The element lem is mandatory within an app entry</sch:assert>
               </sch:rule>
               <sch:rule context="tei:app[parent::tei:listApp[@type='parallels']][@type]">
-                <sch:report test="not(@type='imitation|adaptation')">
+                <sch:report test="not(@type='imitation' or @type='adaptation')">
                   An element app, inside the parallels list, can only have the attribute @type with the values 'imitation' or 'adaptation'.
                 </sch:report>
               </sch:rule>
@@ -4116,10 +4117,9 @@
             <constraint>
               <!-- @wit for witDetail should match one of the witnesses of the preceding sibling lem or rdg  -->
               <sch:rule context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
-                <sch:let name="wit-witDetails" value="for $w in tokenize(., '\s+') return $w"/>
-                <sch:let name="wit-preceding" value="preceding-sibling::tei:*[1]/@wit"/>
-                <sch:assert test="every $wit-witDetail in $wit-witDetails satisfies contains($wit-preceding, $wit-witDetail)">
-                  The content of the @wit attribute of witDetail must also be declared as @wit of the preceding sibling <sch:value-of select="preceding-sibling::tei:*[1]"/>. 
+                <sch:let name="wit-witDetails" value="for $w in tokenize('@wit', '\s+') return $w"/>
+                <sch:assert test="every $wit-witDetail in $wit-witDetails satisfies contains('preceding-sibling::tei:*[1]/@wit', $wit-witDetail)">
+                  The content of the witDetail's @wit attribute must also be declared as @wit of the preceding sibling. 
                 </sch:assert>
               </sch:rule>
             </constraint>
@@ -4748,7 +4748,7 @@
               <sch:rule context="@type">
                 <sch:report test="@type='displacement' and not(parent::tei:rdg)">Locus[@type='displacement'] can only be used as a child of rdg.</sch:report>
               </sch:rule>
-              <sch:rule context="tei:locus">
+              <sch:rule context="tei:locus[@from or @to]">
                 <sch:assert test="@from and @to">The atrributes @from and @to must be used together.</sch:assert>
               </sch:rule>
             </constraint>
