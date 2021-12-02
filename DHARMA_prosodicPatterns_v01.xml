@@ -80,8 +80,7 @@
                     <seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg></item>
                 <item><note>11</note> <name>toṭaka</name><seg type="xml">--+--+--+--=[need to be checked]</seg> <seg
                     type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> </item>
-                <!-- <item><note>12</note> <name>toṭaka</name><seg type="xml">--+--+--+--= [need to be checked]</seg> <seg
-                    type="prosody">ᵕᵕ| ᵕᵕ| ᵕᵕ| ᵕᵕ⏓</seg> </item> -->
+                <!-- found as <note>12</note> -->
                 <item><note>11</note> <name>vātormī</name> <seg type="xml">++++--++-+=</seg> <seg
                     type="prosody">––––⏑⏑––⏑–⏓</seg></item>
                 <item><note>11/11</note> <name>upacitra</name> <seg type="xml"
