@@ -1739,7 +1739,7 @@
           <constraintSpec scheme="schematron" ident="verse-line">
             <constraint>
               <sch:rule context="@corresp">
-                <sch:report test="not(ancestor-or-self::tei:rdg[@type='transposition')]">The attribute @corresp on a line verse can only be used inside a rdg with @type='transposition'.</sch:report>
+                <sch:report test="not(ancestor-or-self::tei:rdg[@type='transposition'])">The attribute @corresp on a line verse can only be used inside a rdg with @type='transposition'.</sch:report>
               </sch:rule>
             </constraint>
           </constraintSpec>
@@ -1952,7 +1952,7 @@
         <elementSpec ident="lg" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="lg-supplied">
               <constraint>
-                <sch:rule context="tei:lg[parent::tei:supplied">
+                <sch:rule context="tei:lg[parent::tei:supplied]">
                   <sch:report test="@n">The attribute @n is not allow when the stanza is supplied.</sch:report>
                 </sch:rule>
               </constraint>
@@ -2230,7 +2230,7 @@
                 </sch:report>
               </sch:rule>
               <sch:rule context="tei:note[@type='altLem'][parent::tei:app]">
-                <sch:assert test="previous-sibling::tei:lem[1]">
+                <sch:assert test="preceding-sibling::tei:lem[1]">
                   An alternative lem should always be the first child after the main lem. 
                 </sch:assert>
               </sch:rule>
@@ -2340,11 +2340,11 @@
           <constraintSpec scheme="schematron" ident="p">
             <constraint>
               <sch:rule context="tei:p[@rend='stanza']">
-                <sch:report test="not(//tei:TEI[@type='translation']">
+                <sch:report test="not(//tei:TEI[@type='translation'])">
                   @rend='stanza' can only be used in translations</sch:report>
               </sch:rule>
               <sch:rule context="tei:p[@n]">
-                <sch:report test="not(//tei:TEI[@type='translation']">
+                <sch:report test="not(//tei:TEI[@type='translation'])">
                   @n can only be used for paragraphs in translations</sch:report>
               </sch:rule>
               </constraint>
@@ -3894,8 +3894,8 @@
           <constraintSpec scheme="schematron" ident="lem-hand">
             <constraint>
               <sch:rule context="tei:lem">
-                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
-                <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')">
+                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')]">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+                <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
               </sch:rule>
             </constraint>
@@ -4021,8 +4021,8 @@
           <constraintSpec scheme="schematron" ident="rdg-hand">
             <constraint>
               <sch:rule context="tei:rdg">
-                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
-              <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')">
+                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')]">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+              <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
               </sch:rule>
               <sch:rule context="child::tei:span[@type='omissionStart|omissionEnd']">
@@ -4115,11 +4115,11 @@
           <constraintSpec scheme="schematron" ident="wit-witDetail">
             <constraint>
               <!-- @wit for witDetail should match one of the witnesses of the preceding sibling lem or rdg  -->
-              <sch:rule context="t:witDetail[preceding-sibling::t:lem[1] or preceding-sibling::t:rdg[1]]">
+              <sch:rule context="tei:witDetail[preceding-sibling::t:lem[1] or preceding-sibling::tei:rdg[1]]">
                 <sch:let name="wit-witDetails" value="for $w in tokenize(., '\s+') return $w"/>
-                <sch:let name="wit-preceding" value="preceding-sibling::t:*[1]/@wit"/>
+                <sch:let name="wit-preceding" value="preceding-sibling::tei:*[1]/@wit"/>
                 <sch:assert test="every $wit-witDetail in $wit-witDetails satisfies contains($wit-preceding, $wit-witDetail)">
-                  The content of the @wit attribute of witDetail must also be declared as @wit of the preceding sibling <sch:value-of select="preceding-sibling::t:*[1]"/>. 
+                  The content of the @wit attribute of witDetail must also be declared as @wit of the preceding sibling <sch:value-of select="preceding-sibling::tei:*[1]"/>. 
                 </sch:assert>
               </sch:rule>
             </constraint>
@@ -4745,8 +4745,8 @@
           </classes>
           <constraintSpec scheme="schematron" ident="displacement">
             <constraint>
-              <sch:rule context="@type='diplacement'">
-                <sch:report test="not(parent:tei:rdg)">Locus[@type='diplacement'] can only be used as a child of rdg.</sch:report>
+              <sch:rule context="@type">
+                <sch:report test="@type='displacement' and not(parent::tei:rdg)">Locus[@type='displacement'] can only be used as a child of rdg.</sch:report>
               </sch:rule>
               <sch:rule context="tei:locus">
                 <sch:assert test="@from and @to">The atrributes @from and @to must be used together.</sch:assert>
