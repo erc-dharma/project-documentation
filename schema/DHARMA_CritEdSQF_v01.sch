@@ -145,4 +145,28 @@
         </sch:rule>
     </sch:pattern>
     
+    <!-- controlling the syntax for @hand -->
+    <sch:pattern>
+        <sch:rule context="@hand">
+            <sch:let name="hand-contents" value="for $w in tokenize(., '\s+') return $w"/>
+            <sch:assert test="every $hand-content in $hand-contents satisfies starts-with($hand-content, '#')">
+                @hand  must  begin with a hashtag
+            </sch:assert>
+            <sch:assert test="every $hand-content in $hand-contents satisfies substring-before(substring-after($hand-content, '#'), '_') = //t:TEI//t:listWit/t:witness/@xml:id">@hand should match a witness's @xml:id</sch:assert>
+            <sch:assert test="every $hand-content in $hand-contents satisfies matches($hand-content, '\_[H]\d$')">
+                A hand should be declare after the @xml:id of the witness followed by an underscore, a uppercase letter H and a number (mostly with a single digit). 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling the syntax for @target with ptr -->
+    <sch:pattern>
+        <sch:rule context="t:ptr/@target[not(parent::t:bibl)]">
+            <sch:let name="contents" value="for $w in tokenize(., '\s+') return $w"/>
+            <sch:assert test="every $content in $contents satisfies starts-with($content, '#') or starts-with($content, 'bib:')">
+                The content of the attribute @target used on its own should start with '#' or with 'bib:'. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+
 </sch:schema>

@@ -55,6 +55,9 @@
         <p>Written from scratch.</p>
       </sourceDesc>
     </fileDesc>
+    <revisionDesc>
+      <change who="part:axja" when="2021-11">Starting on editing the schema for ms</change>
+    </revisionDesc>
   </teiHeader>
   <text>
     <body>
@@ -247,6 +250,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="handNote" module="header" mode="change">
+          <constraintSpec scheme="schematron" ident="handNote-script">
+            <constraint>
+              <sch:rule test="tei:handNote/@scriptRef">
+                <sch:assert test="contains(.,'class:') and contains(.,'maturity:')">The content of the attribute @corresp should contained ids for both script classification and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -930,6 +940,23 @@
           </attList>
         </elementSpec>
         <elementSpec ident="seg" module="linking" mode="change">
+          <constraintSpec scheme="schematron" ident="att-type-subtype">
+            <constraint>
+              <sch:rule context="tei:seg">
+                <sch:report
+              test="@subtype and not(@type='component')">@subtype requires
+              @type='component' to be used</sch:report>
+                <sch:report
+                test="@cert='low' and not(//tei:TEI[@type='translation'])"
+                  >seg[@cert='low'] can be used only in a translation file.</sch:report><sch:report
+                  test="@rend='pun' and not(//tei:TEI[@type='translation'])"
+                  >seg[@rend='pun'] only available in a translation file.</sch:report>
+                <sch:assert test="@type='highlight' and (parent::tei:lem or parent::tei:rdg)">
+                  seg[@rend='highlight'] can only be used as a child of lem or rdg elements. 
+                </sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="change" mode="delete"/>
@@ -1023,6 +1050,15 @@
           </attList>
         </elementSpec>
         <elementSpec ident="add" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="overstrike">
+            <constraint>
+              <sch:rule context="tei:add[@place='overstrike']">
+                <sch:report test="not(preceding-sibling::tei:del[1] or following-sibling::tei:del[1])">
+                  add[@place='overstrike'] should only be used with an element del.
+                </sch:report>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="atLeast" mode="delete"/>
@@ -1462,6 +1498,40 @@
           </attList>
         </elementSpec>
         <elementSpec ident="gap" module="core" mode="change">
+          <constraintSpec ident="gap" scheme="isoschematron">
+            <constraint>
+              <sch:rule context="tei:gap">
+                <sch:report test="@quantity and @extent">gap may have @quantity (a figure) or
+              @extent (a descriptive text value) but not both at the same time.</sch:report>
+                <sch:report test="@extent and not(@unit='character')">gap may have @extent only with @unit='character'.</sch:report>
+                <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report>
+                <sch:report test="not(@reason='lost|illegible') and @quantity and @unit">@quantity and @unti can only be used with the values 'lost' and 'illegible' for @reason.</sch:report>
+                <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
+                <sch:report test="@precision and not(@quantity)">@precision can be use only with
+                    @quantity</sch:report>
+                <sch:report test="//tei:TEI[@type='translation'] and not(@reason)">Only @reason
+                      is mandatory in translation with gap</sch:report>
+              </sch:rule>
+              <sch:rule content="tei:gap[@reason='lost|illegible']">
+                
+              </sch:rule>
+              <sch:rule context="tei:gap[@reason='ellipsis']">
+                <sch:report test="not(//tei:TEI[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report></sch:rule>
+              <sch:rule context="tei:gap[@unit='component']">
+                <sch:assert test="parent::tei:seg[@type='component']">Gap with the attribute
+                              @unit="component" can only be used inside seg with the
+                              @type="component". </sch:assert>
+              </sch:rule>
+              <sch:rule context="tei:gap[@unit='line' and @quantity]">
+                <sch:assert test="@precision='low' or child::tei:certainty">The element gap with
+                                  @quantity and @unit="line" expect either the use of @precision="low" or
+                                  the element certainty.</sch:assert>
+              </sch:rule>
+              <sch:rule context="tei:gap/@quantity">
+                <sch:assert test="contains('.', '\d+')">The value used for the attribute @quantity with gap should be a number</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="agent" mode="delete"/>
             <attDef ident="ana" mode="delete"/>
@@ -1669,6 +1739,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="l" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="verse-line">
+            <constraint>
+              <sch:rule context="@corresp">
+                <sch:report test="not(ancestor-or-self::tei:rdg[@type='transposition')]">The attribute @corresp on a line verse can only be used inside a rdg with @type='transposition'.</sch:report>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -1690,6 +1767,7 @@
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="check"/>
+                <valItem ident="met"/>
               </valList>
             </attDef>
             <attDef ident="part" mode="change">
@@ -1875,6 +1953,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="lg" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="lg-supplied">
+              <constraint>
+                <sch:rule context="tei:lg[parent::tei:supplied">
+                  <sch:report test="@n">The attribute @n is not allow when the stanza is supplied.</sch:report>
+                </sch:rule>
+              </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -1893,7 +1978,6 @@
               </valList>
             </attDef>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="real" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
             <attDef ident="rhyme" mode="delete"/>
@@ -2135,6 +2219,29 @@
           </attList>
         </elementSpec>
         <elementSpec ident="note" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="note">
+            <constraint>
+              <sch:rule context="tei:note[parent::tei:app][not(@type='altLem')]">
+                <sch:report test="not(following-sibling::tei:note)">Note(s) should the last element
+                          of the apparatus entry</sch:report>
+              </sch:rule>
+              <sch:rule context="tei:note">
+                <sch:report test="child::tei:note">Note(s) may not
+                              contain further notes (this is not a technical requirement but a
+                              convention we shall observe to reduce
+                              complication)
+                </sch:report>
+              </sch:rule>
+              <sch:rule context="tei:note[@type='altLem'][parent::tei:app]">
+                <sch:assert test="previous-sibling::tei:lem[1]">
+                  An alternative lem should always be the first child after the main lem. 
+                </sch:assert>
+              </sch:rule>
+              <sch:rule context="tei:note">
+                <sch:assert test="@rend and @type='altLem'">The attribute @rend can only be used with a note for an alternative lem (attribute @type='altLem').</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="anchored" mode="delete"/>
@@ -2233,6 +2340,18 @@
           </attList>
         </elementSpec>
         <elementSpec ident="p" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="p">
+            <constraint>
+              <sch:rule context="tei:p[@rend='stanza']">
+                <sch:report test="not(//tei:TEI[@type='translation']">
+                  @rend='stanza' can only be used in translations</sch:report>
+              </sch:rule>
+              <sch:rule context="tei:p[@n]">
+                <sch:report test="not(//tei:TEI[@type='translation']">
+                  @n can only be used for paragraphs in translations</sch:report>
+              </sch:rule>
+              </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -2308,6 +2427,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="ptr" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="ptr-rend">
+            <constraint>
+              <sch:rule context="tei:ptr[@rend='siglum|title']">
+                <sch:report test="parent::tei:bibl">The element ptr with the attribute @rend="title" or @rend="siglum" can't be used as a child of bibl.</sch:report>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cRef" mode="delete"/>
@@ -3017,6 +3143,9 @@
                  The attribute @n can't be used on div if its child its an ab element with the @type 'invocation' or 'colophon'.
                </sch:report>
               </sch:rule>
+              <sch:rule context="tei:div[@type='interpolation']">
+                <sch:report test="@n">the attribute @n can't be used on a div with @type='interpolation'.</sch:report>
+              </sch:rule>
             </constraint>
           </constraintSpec>
           <attList>
@@ -3481,6 +3610,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="supplied" module="transcr" mode="change">
+          <constraintSpec scheme="schematron" ident="supplied-translation">
+            <constraint>
+              <sch:rule context="tei:supplied[@reason='explanation | subaudible']">
+                <sch:report test="not(//tei:TEI[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="atLeast" mode="delete"/>
@@ -3663,6 +3799,11 @@
               <sch:rule context="tei:app[not(parent::tei:listApp[@type='parallels'])]">
                 <sch:assert test="child::tei:lem">The element lem is mandatory within an app entry</sch:assert>
               </sch:rule>
+              <sch:rule context="tei:app[parent::tei:listApp[@type='parallels']]">
+                <sch:report test="not(@type='imitation|adaptation')">
+                  An element app, inside the parallels list, can only have the attribute @type with the values 'imitation' or 'adaptation'.
+                </sch:report>
+              </sch:rule>
             </constraint>
           </constraintSpec>
           <attList>
@@ -3753,6 +3894,15 @@
           </attList>
         </elementSpec>
         <elementSpec ident="lem" module="textcrit" mode="change">
+          <constraintSpec scheme="schematron" ident="lem-hand">
+            <constraint>
+              <sch:rule context="tei:lem">
+                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+              </sch:rule>
+              <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')">
+                The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cause" mode="delete"/>
@@ -3871,6 +4021,18 @@
           </attList>
         </elementSpec>
         <elementSpec ident="rdg" module="textcrit" mode="change">
+          <constraintSpec scheme="schematron" ident="rdg-hand">
+            <constraint>
+              <sch:rule context="tei:rdg">
+                <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+              <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')">
+                The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
+              </sch:rule>
+              <sch:rule context="child::tei:span[@type='omissionStart|omissionEnd']">
+                <sch:assert test="@cause='eye-skip'">The only value allowed with @cause for a rdg containing a span[@type='omissionStart'] or span[@type='omissionEnd'] is 'eyeskip'.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cause" mode="change">
@@ -3953,6 +4115,18 @@
           </attList>
         </elementSpec>
         <elementSpec ident="witDetail" module="textcrit" mode="change">
+          <constraintSpec scheme="schematron" ident="wit-witDetail">
+            <constraint>
+              <!-- @wit for witDetail should match one of the witnesses of the preceding sibling lem or rdg  -->
+              <sch:rule context="t:witDetail[preceding-sibling::t:lem[1] or preceding-sibling::t:rdg[1]]">
+                <sch:let name="wit-witDetails" value="for $w in tokenize(., '\s+') return $w"/>
+                <sch:let name="wit-preceding" value="preceding-sibling::t:*[1]/@wit"/>
+                <sch:assert test="every $wit-witDetail in $wit-witDetails satisfies contains($wit-preceding, $wit-witDetail)">
+                  The content of the @wit attribute of witDetail must also be declared as @wit of the preceding sibling <sch:value-of select="preceding-sibling::t:*[1]"/>. 
+                </sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -4023,7 +4197,11 @@
         <elementSpec ident="change" mode="change">
           <classes mode="change">
             <memberOf key="att.typed" mode="delete"/>
-          </classes>
+          </classes>          <constraintSpec scheme="schematron" ident="responsability">
+            <constraint><sch:rule context="@who"><sch:assert
+              test="starts-with(.,'part:')">Project members prefix is
+              part:</sch:assert></sch:rule></constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="when-custom" mode="delete"/>
             <attDef ident="notBefore-custom" mode="delete"/>
@@ -4568,6 +4746,16 @@
           <classes mode="change">
             <memberOf key="att.global" mode="delete"/>
           </classes>
+          <constraintSpec scheme="schematron" ident="displacement">
+            <constraint>
+              <sch:rule context="@type='diplacement'">
+                <sch:report test="not(parent:tei:rdg)">Locus[@type='diplacement'] can only be used as a child of rdg.</sch:report>
+              </sch:rule>
+              <sch:rule context="tei:locus">
+                <sch:assert test="@from and @to">The atrributes @from and @to must be used together.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="scheme" mode="delete"/>
             <attDef ident="subtype" mode="delete"/>
