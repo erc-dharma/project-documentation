@@ -56,6 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2021-12-13">Adding the possiblity to use xml:id on lg and quote</change>
       <change who="part:axja" when="2021-11">Starting on editing the schema for ms</change>
     </revisionDesc>
   </teiHeader>
@@ -1987,7 +1988,6 @@
             <attDef ident="synch" mode="delete"/>
             <attDef ident="type" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
-            <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
@@ -2583,7 +2583,6 @@
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
-            <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change" type="closed">
