@@ -229,6 +229,9 @@
             <xsl:element name="div">
                 <xsl:attribute name="class">col text-col</xsl:attribute>
                 <xsl:element name="p">
+                    <xsl:if test="@xml:id">
+                        <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                    </xsl:if>
                     <xsl:apply-templates/>
                 </xsl:element>
             </xsl:element>
@@ -503,7 +506,7 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
-        <xsl:element name="span">
+            <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
                 <xsl:if test="descendant::tei:span[@type='omissionStart']"> omissionStart</xsl:if>
@@ -794,6 +797,9 @@
             </xsl:element>
             <xsl:element name="div">
                         <xsl:attribute name="class">col-10</xsl:attribute>
+                <xsl:if test="@xml:id">
+                    <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                </xsl:if>
                 <xsl:if test="@type='canto'">
                     <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -1059,9 +1065,9 @@
                     <xsl:if test="@met='anuṣṭubh'"><xsl:text> anustubh</xsl:text></xsl:if>
                         <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
                     </xsl:attribute>
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="@xml:id"/>
-                    </xsl:attribute>
+                    <xsl:if test="@xml:id">
+                        <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                    </xsl:if>
                     <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟨</xsl:if>-->
                         <xsl:apply-templates/>
                     <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟩</xsl:if>-->
@@ -1097,7 +1103,7 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
-    <xsl:template match="tei:listApp[@type = 'apparatus']">
+    <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -1139,14 +1145,18 @@
                         </xsl:element>
                     </xsl:element>
         </xsl:element>
-    </xsl:template>
-    <!--<xsl:template match="tei:listApp[@type='apparatus']">
-        <xsl:for-each select="tei:app">
-            <xsl:if test="tei:lem/text() = preceding-sibling::tei:*[1]/tei:l/text()">
-                <xsl:apply-templates select="tei:app"/>
-            </xsl:if>
-        </xsl:for-each>
     </xsl:template>-->
+    <xsl:template match="tei:listApp[@type='apparatus']">
+        <xsl:variable name="lem-external-app" select="tei"/>
+       <xsl:for-each select="tei:app[@loc]">
+           <!--<xsl:call-template name="apparatus-making"/>-->
+               <!--<xsl:with-param name="lem" select="tei:lem/text()"/>
+               <xsl:with-param name="preceding-text" select="preceding::tei:*[1]/text()"/>
+           </xsl:call-template>-->
+       </xsl:for-each>
+
+    </xsl:template>
+    
     
     <xsl:template match="tei:listApp[@type='parallels']">
         <xsl:element name="div">
@@ -1513,6 +1523,9 @@
             <xsl:when test="ancestor::tei:projectDesc">
                     <xsl:element name="p">
                         <xsl:attribute name="class">text-justify</xsl:attribute>
+                        <xsl:if test="@xml:id">
+                            <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                        </xsl:if>
                         <xsl:apply-templates/>
                     </xsl:element>
             </xsl:when>
@@ -1628,6 +1641,7 @@
     </xsl:template>
     <xsl:template name="content-ptr">
         <xsl:param name="MSlink"/>
+        <xsl:variable name="rootId" select="//tei:TEI/@xml:id"/>
         <xsl:variable name="rootHand" select="//tei:handDesc"/>
         <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml</xsl:variable>
                <xsl:choose>
@@ -1640,14 +1654,26 @@
                             <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:abbr[@type='siglum']"/>
                         </xsl:element>
                     </xsl:when>
+                   <xsl:when test="contains($MSlink, 'bib:')">
+                       <xsl:call-template name="source-siglum">
+                           <xsl:with-param name="string-to-siglum" select="$MSlink"/>
+                       </xsl:call-template>
+                   </xsl:when>
+                   <xsl:when test="contains($MSlink, $rootId)">
+                       <xsl:variable name="MSlink-id" select="substring-after($MSlink, '#')"/>
+                       <xsl:element name="a">
+                           <xsl:attribute name="href">
+                               <xsl:value-of select="$MSlink"/>
+                           </xsl:attribute>
+                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                           <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/name()"/>
+                           <xsl:text> </xsl:text>
+                           <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@n"/>
+                       </xsl:element>
+                   </xsl:when>
                    <xsl:when test="contains($MSlink, '_')">
                        <xsl:variable name="hand-id" select="substring-after($MSlink, '#')"/>
                        <xsl:apply-templates select="$rootHand/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
-                    </xsl:when>
-                   <xsl:when test="contains($MSlink, 'bib:')">
-                        <xsl:call-template name="source-siglum">
-                            <xsl:with-param name="string-to-siglum" select="$MSlink"/>
-                        </xsl:call-template>
                     </xsl:when>
                    <xsl:otherwise>
                        <xsl:element name="span">
@@ -1694,6 +1720,9 @@
             <xsl:when test="tei:quote[@type = 'base-text']">
                 <xsl:element name="div">
             <xsl:attribute name="class">basetext</xsl:attribute>
+                    <xsl:if test="@xml:id">
+                        <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                    </xsl:if>
             <xsl:apply-templates/>
                 </xsl:element>
             </xsl:when>
@@ -2365,7 +2394,7 @@
     </xsl:template>
     
     <!-- Identity template -->
-    <xsl:template match="@* | text() | comment()" mode="copy">
+    <xsl:template match="@* | text() | comment()">
         <xsl:copy/>
     </xsl:template>
     
@@ -3332,4 +3361,5 @@
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
+    
 </xsl:stylesheet>
