@@ -128,7 +128,7 @@
     
     <!-- controlling the syntax for @corresp -->
     <sch:pattern>
-        <sch:rule context="@corresp[not(t:biblStruct)]">
+        <sch:rule context="@corresp[not(self::t:biblStruct)]">
             <sch:assert test="starts-with(., '#') or starts-with(., 'txt:')">
                 @corresp attributes must begin with a hashtag!
             </sch:assert>
