@@ -115,7 +115,7 @@ n. (although there shouldn't be any of encoders follow the EG) -->
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:text[@xml:lang=('kaw-Latn', 'kaw-osn')]/descendant::text()[string-length(normalize-space(.))>0] | /t:text[@type='apparatus'][following-sibling::t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]]/descendant-or-self::*[local-name() = ('lem', 'rdg')]">
+    <xsl:template match="t:text[@xml:lang=('kaw-Latn', 'kaw-osn')]/descendant::text()[string-length(normalize-space(.))>0][not(descendant-or-self::t:note)] | /t:text[@type='apparatus'][following-sibling::t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]]/descendant-or-self::*[local-name() = ('lem', 'rdg')]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$javanese-regexes"/>
