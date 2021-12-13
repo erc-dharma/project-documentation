@@ -1666,7 +1666,14 @@
                                <xsl:value-of select="$MSlink"/>
                            </xsl:attribute>
                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                           <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/name()"/>
+                           <xsl:choose>
+                               <xsl:when test="//tei:*[@xml:id =$MSlink-id]/@type">
+                                   <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@type"/>
+                               </xsl:when>
+                               <xsl:otherwise>
+                                   <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/name()"/>                               
+                               </xsl:otherwise>
+                           </xsl:choose>
                            <xsl:text> </xsl:text>
                            <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@n"/>
                        </xsl:element>
