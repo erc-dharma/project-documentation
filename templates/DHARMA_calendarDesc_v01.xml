@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calendarDesc>
+   <calendar xml:id="gupta">
+      <p>Gupta era</p>
+   </calendar>
+   <calendar xml:id="saka">
+      <p>Saka era</p>
+   </calendar>
+   <calendar xml:id="valabhi">
+      <p>Valabhi era</p>
+   </calendar>
+   <calendar xml:id="Vikrama">
+      <p>Vikrama era</p>
+   </calendar>
+   <calendar xml:id="burmese">
+      <p>Burmese era</p>
+   </calendar>
+   <calendar xml:id="sanjaya">
+      <p>Sanjaya era</p>
+   </calendar>
+   <calendar xml:id="jovian">
+      <p>Jovian cycle</p>
+   </calendar>
+</calendarDesc>
