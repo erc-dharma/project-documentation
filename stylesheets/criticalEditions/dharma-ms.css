@@ -84,7 +84,7 @@ body{
     color: black;
 }
 
-.nav-link.active {
+#sidebar-wrapper .nav-link.active {
   background-color: #00ACC1 !important;
 }
 
