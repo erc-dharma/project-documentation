@@ -52,7 +52,7 @@
     <text>
         <body>
             <list>
-              <item> <note>7<!--aba edited, formerly 7/7. I'm not sure if the numbers here serve a purpose, but they seem to follow the "Syllables" column of the EGD metre table where a single number means a samavr̥tta metre with the given number of syllables per line, while two numbers with a slash mean an ardhasamavr̥tta with the numbers of syllables in the odd and even lines. Sumānikā is a samavr̥tta.--></note> <name>sumānikā</name> <seg type="xml">+-+-+-=</seg> <seg
+                <item> <note>7</note><!--aba edited, formerly 7/7. I'm not sure if the numbers here serve a purpose, but they seem to follow the "Syllables" column of the EGD metre table where a single number means a samavr̥tta metre with the given number of syllables per line, while two numbers with a slash mean an ardhasamavr̥tta with the numbers of syllables in the odd and even lines. Sumānikā is a samavr̥tta.--> <name>sumānikā</name> <seg type="xml">+-+-+-=</seg> <seg
                     type="prosody">-⏑-⏑-⏑⏓</seg> </item>
               <item> <note>8</note> <name>pramāṇikā</name> <seg type="xml">-+-+-+-=</seg> <seg
                     type="prosody">-⏑-⏑-⏑⏓</seg> </item>
@@ -64,7 +64,7 @@
                 <item><note>10/11</note> <name>viyoginī</name> <seg type="xml"
                     >--+--+-+-=/--++--+-+-=</seg> <seg type="prosody"
                     >⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg></item>
-              <item><note>11</note> <name>triṣṭubh</name> <seg type="xml">no data available</seg> <seg type="prosody">no data available<!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".--></seg> </item>
+                <item><note>11</note> <name>triṣṭubh</name> <seg type="xml">no data available</seg> <seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".--> </item>
                 <item><note>11</note> <name>dodhaka</name> <seg type="xml">+--+--+--+=</seg> <seg
                     type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏓</seg></item>
                 <item><note>11</note> <name>indravajrā</name> <seg type="xml">++-++--+-+=</seg> <seg
@@ -80,7 +80,7 @@
                     type="prosody">⏓–⏑––⏑⏑–⏑–⏓</seg></item>
                 <item><note>11</note> <name>upendravajrā</name> <seg type="xml">-+-++--+-+=</seg>
                     <seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg></item>
-                <item><note>12</note> <name>toṭaka</name><seg type="xml">--+--+--+--=<!--daba edited. This was shown as an 11-syllable metre in the EGD until recently, but the code (correctly) has 12 syllables. All should be fine now.--></seg> <seg
+                <item><note>12</note> <name>toṭaka</name><seg type="xml">--+--+--+--=</seg><!--daba edited. This was shown as an 11-syllable metre in the EGD until recently, but the code (correctly) has 12 syllables. All should be fine now.--> <seg
                     type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> </item>
                 <item><note>11</note> <name>vātormī</name> <seg type="xml">++++--++-+=</seg> <seg
                     type="prosody">––––⏑⏑––⏑–⏓</seg></item>
@@ -105,7 +105,7 @@
                 <item><note>12</note> <name>bhujaṅgaprayāta</name> <seg type="xml"
                     >-++-++-++-+=</seg> <seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg></item>
                 <item><note>12</note> <name>maṇimālā</name> <seg type="xml">++--++++--+=</seg> <seg
-                    type="prosody">––⏑⏑––||––⏑⏑–⏓<!--daba ed. here and passim, I've replaced | (foot boundary) with || (caesura) in the prosodic codes. Was incorrect in the EGD, now corrected in the Google version.--></seg></item>
+                    type="prosody">––⏑⏑––||––⏑⏑–⏓</seg><!--daba ed. here and passim, I've replaced | (foot boundary) with || (caesura) in the prosodic codes. Was incorrect in the EGD, now corrected in the Google version.--></item>
                 <item><note>12</note> <name>drutavilambita</name> <seg type="xml">---+--+--+-=</seg>
                     <seg type="prosody">⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg> </item>
                 <item><note>12</note> <name>pramitākṣarā</name><seg type="xml">--+-+---+--=</seg>
@@ -145,7 +145,7 @@
                     >----+-+---+--+--=</seg><seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg></item>
                 <item><note>17</note> <name>pr̥thvī</name> <seg type="xml">-+---+-+---+-++-=</seg>
                     <seg type="prosody">⏑–⏑⏑⏑–⏑–||⏑⏑⏑–⏑––⏑⏓</seg></item>
-              <item><note>17</note> <name>śikhariṇī<!--daba ed corrected n to ṇ--></name> <seg type="xml">-+++++-----++---=</seg>
+                <item><note>17</note> <name>śikhariṇī</name><!--daba ed corrected n to ṇ--> <seg type="xml">-+++++-----++---=</seg>
                     <seg type="prosody">⏑–––––||⏑⏑⏑⏑⏑––⏑⏑⏑⏓</seg></item>
                 <item><note>19</note> <name>śārdūlavikrīḍita</name> <seg type="xml"
                     >+++--+-+---+++-++-=</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg></item>
@@ -205,15 +205,15 @@
               <item><name>aupacchandasika</name><seg type="xml">6|+-+-+=/8|+-+-+=</seg><seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg></item>
               <item><name>āpātalikā</name><seg type="xml">6|+--+=/8|+--+=</seg><seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg></item>
               <!--also additions by daba 20211215: gaṇacchandas (āryā family) metres. Definitely used in XML files, but not fully definable with a simple pattern. The prosodic patterns I give below are only approximations of the more nuanced rules for these metres. I do not know if they belong on the list.-->
-              <item><name>āryā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>gīti</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>upagīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>udgīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>āryāgīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>sugīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>anugīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>vallarī</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
-              <item><name>lalitā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available<!--daba: moraic verse, can't be properly described with prosodic symbols.--></seg></item>
+                <item><name>āryā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>gīti</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>upagīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>udgīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>āryāgīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>sugīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>anugīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>vallarī</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>lalitā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
             </list>
         </body>
     </text>
