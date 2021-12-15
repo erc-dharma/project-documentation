@@ -54,7 +54,7 @@ body{
     font-size: medium;
     height:100%;
     width: 100%;
-    position: absolute;
+    position: relative;
     display: grid;
     overflow-x: hidden;
 }
@@ -82,6 +82,10 @@ body{
 
 #sidebar-wrapper h4{
     color: black;
+}
+
+.nav-link.active {
+  background-color: #00ACC1 !important;
 }
 
 #subheader {
@@ -840,4 +844,10 @@ p{
 
 .card-body{
     background-color: transparent;
+}
+
+#toggle-table-contents{
+    position: fixed;
+    top: 150px;
+    left: 200px; 
 }

@@ -15,8 +15,9 @@ function initializePopovers() {
 };
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
 })
+
 
 /* Move everything to the right but element displayed on each other */  /*jQuery(".move-to-right").appendTo ('.apparat-col')*/
 
@@ -39,6 +40,9 @@ $(document).ready(function() {
     }); 
     $("#sidebar-wrapper").mCustomScrollbar({
          theme: "minimal"
+    });
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar-wrapper').toggleClass('active');
     });
 });
 /* move sub into the previous <a> element of siglum */

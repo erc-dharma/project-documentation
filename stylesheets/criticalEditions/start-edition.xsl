@@ -55,11 +55,15 @@
         <xsl:call-template name="dharma-head"/>
         <xsl:element name="body">
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
+            <xsl:attribute name="data-spy">scroll</xsl:attribute>
+            <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
+            <xsl:attribute name="data-offset">5</xsl:attribute>
+           
         <xsl:call-template name="nav-bar"/>
-            
         <xsl:element name="div">
             <xsl:attribute name="class">container</xsl:attribute>
             <xsl:call-template name="table-contents"/>
+            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">Toggle Table of Contents</a>
             <xsl:element name="div">
                 <xsl:attribute name="class">content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
@@ -128,7 +132,6 @@
                     <xsl:call-template name="tab-metadata"/>
                 </xsl:element>
                         </xsl:element>
-            
                  <xsl:apply-templates select="./tei:text"/>
             <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
@@ -2439,12 +2442,18 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+                
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
+                
+                <!-- Font Awesome JS -->
+                <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+                <script src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+                
             </meta>
         </head>
     </xsl:template>
@@ -2458,21 +2467,24 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>-->
+        <script src="./../criticalEditions/loader.js"></script>
     </xsl:template>
        
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>
             <xsl:element name="h4">
                 <xsl:attribute name="class">text-align-center</xsl:attribute>
-                <xsl:text>Contents</xsl:text>
+                <xsl:text>Table of Contents</xsl:text>
             </xsl:element>
+            <xsl:element name="nav">
+                <xsl:attribute name="id">myScrollspy</xsl:attribute>
             <xsl:element name="ul">
-                <xsl:attribute name="class">nav flex-column</xsl:attribute>
+                <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
             <xsl:for-each select="//tei:div">
                 <xsl:element name="li">
                     <xsl:attribute name="class">nav-item</xsl:attribute>
@@ -2504,11 +2516,12 @@
             </xsl:for-each>
         </xsl:element>
         </xsl:element>
+        </xsl:element>
     </xsl:template>
     
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="narbar-dharma">
             <a class="navbar-brand" href="https://erc-dharma.github.io/">ERC-DHARMA</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
