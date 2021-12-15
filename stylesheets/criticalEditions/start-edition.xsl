@@ -56,8 +56,12 @@
         <xsl:element name="body">
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
         <xsl:call-template name="nav-bar"/>
+            
         <xsl:element name="div">
             <xsl:attribute name="class">container</xsl:attribute>
+            <xsl:call-template name="table-contents"/>
+            <xsl:element name="div">
+                <xsl:attribute name="class">content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
                                 <xsl:attribute name="class">row wrapper text-break</xsl:attribute>
@@ -124,7 +128,7 @@
                     <xsl:call-template name="tab-metadata"/>
                 </xsl:element>
                         </xsl:element>
-                        
+            
                  <xsl:apply-templates select="./tei:text"/>
             <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
@@ -133,6 +137,7 @@
                 <!--<xsl:call-template name="tpl-translation"/>-->
                 <xsl:call-template name="tpl-com"/>  
                 <xsl:call-template name="tpl-biblio"/>
+        </xsl:element>
         </xsl:element>
             <xsl:element name="footer">
                 <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
@@ -502,6 +507,7 @@
     
     <xsl:template match="tei:app[not(parent::tei:listApp[@type='parallels'])]">
         <xsl:param name="location"/>
+        <xsl:param name="app-num"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
@@ -532,7 +538,7 @@
               
                 <xsl:apply-templates select="tei:lem"/>
 
-                <xsl:element name="a">
+                            <xsl:element name="a">
                 <xsl:attribute name="class">
                     <xsl:text>move-to-right</xsl:text>
                 </xsl:attribute>
@@ -552,7 +558,7 @@
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                         <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
+                        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
                         <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:element>
@@ -2432,10 +2438,12 @@
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+                <!-- scrollbar CSS -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"/>-->
+                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
                <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
             </meta>
         </head>
@@ -2444,11 +2452,58 @@
     <!-- DHARMA html JS scripts  -->
     <xsl:template name="dharma-script">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+        <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
+        <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
         <!--<script src="./../criticalEditions/loader.js"></script>-->
+    </xsl:template>
+       
+    <!-- side bar - table of contents -->
+    <xsl:template name="table-contents">
+        <xsl:element name="div">
+            <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+            <xsl:element name="h4">
+                <xsl:attribute name="class">text-align-center</xsl:attribute>
+                <xsl:text>Contents</xsl:text>
+            </xsl:element>
+            <xsl:element name="ul">
+                <xsl:attribute name="class">nav flex-column</xsl:attribute>
+            <xsl:for-each select="//tei:div">
+                <xsl:element name="li">
+                    <xsl:attribute name="class">nav-item</xsl:attribute>
+                    <xsl:element name="a">
+                        <xsl:attribute name="class">nav-link</xsl:attribute>
+                        <xsl:attribute name="href">
+                            <xsl:text>#</xsl:text>
+                            <xsl:value-of select="@xml:id"/>
+                        </xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="@type">
+                                <xsl:value-of select="@type"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:choose>
+                                    <xsl:when test="child::tei:ab[1]">
+                                        <xsl:value-of select="child::tei:ab/@type"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="name()"/>  
+                                    </xsl:otherwise>
+                                </xsl:choose>                     
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="@n"/>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:for-each>
+        </xsl:element>
+        </xsl:element>
     </xsl:template>
     
     <!-- Nav bar template -->
@@ -2562,9 +2617,9 @@
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
-            <xsl:if
-                test="not((local-name() = 'choice' or local-name() = 'subst')
-                and (ancestor::tei:choice or ancestor::tei:subst or ancestor::tei:app))">
+        <xsl:if
+            test="not((local-name() = 'choice' or local-name() = 'subst')
+            and (ancestor::tei:choice or ancestor::tei:subst))">
                 <xsl:variable name="app-num">
                     <xsl:value-of select="name()"/>
                     <xsl:number level="any" format="0001"/>
@@ -2595,6 +2650,7 @@
                 </a>
                 <xsl:text> </xsl:text>
             </xsl:if>
+        <xsl:if test="$location = 'text'"/>
     </xsl:template>
 
     <xsl:template name="dharma-app">
@@ -2670,7 +2726,7 @@
                 <xsl:when test="$childtype='subst'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst/child::*"/>
                 </xsl:when>
-               <xsl:when test="$childtype='app'">
+               <xsl:when test="$childtype='applt'">
                     <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
                 </xsl:when>
                 <xsl:otherwise>
@@ -2909,6 +2965,11 @@
                     </xsl:element>
                 </xsl:if>
             </xsl:when>
+                <!--<xsl:when test="$child=('appalt') or $apptype=('appalt')">
+                    <xsl:apply-templates select="child::tei:*[local-name()=('orig','sic','add','lem')]">
+                        <xsl:with-param name="location" select="'text'"/>
+                    </xsl:apply-templates>
+                </xsl:when>-->
             <xsl:when test="$apptype='note'">
                 <xsl:for-each select="$path/tei:note">
                 <xsl:element name="span">

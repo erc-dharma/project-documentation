@@ -56,9 +56,12 @@ body{
     width: 100%;
     position: absolute;
     display: grid;
+    overflow-x: hidden;
 }
 .container {
-    width: 75%;
+    /*width: 75%;*/
+     display: flex;
+    width: 100%;
     /*width:1280px;*/
     /*padding:0;
     background-color:white;
@@ -66,6 +69,21 @@ body{
     border-radius:6px;
     margin-top:-7rem;*/
 }
+
+#sidebar-wrapper {
+    width: 250px;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+}
+
+#sidebar-wrapper h4{
+    color: black;
+}
+
 #subheader {
     display:block;
     width:100%;
