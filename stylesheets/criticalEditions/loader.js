@@ -37,6 +37,9 @@ $(document).ready(function() {
     $('.lem-last-note').each(function() {
         $(this).parents('div').children('.apparat-col').append(this);
     }); 
+    $("#sidebar-wrapper").mCustomScrollbar({
+         theme: "minimal"
+    });
 });
 /* move sub into the previous <a> element of siglum */
 $(document).ready(function() {
