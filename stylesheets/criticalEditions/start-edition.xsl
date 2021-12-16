@@ -63,7 +63,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">container</xsl:attribute>
             <xsl:call-template name="table-contents"/>
-            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">Toggle Table of Contents</a>
+            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Table of Contents</a>
             <xsl:element name="div">
                 <xsl:attribute name="class">content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
@@ -772,7 +772,7 @@
     <xsl:template match="tei:div">
         <xsl:variable name="prosody" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
         <!-- https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml 
-        https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml
+       https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml
         -->
         <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
