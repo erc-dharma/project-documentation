@@ -73,7 +73,7 @@ body{
 #sidebar-wrapper {
     width: 250px;
     position: fixed;
-    top: 100px;
+    top: 150px;
     left: 0;
     height: 100vh;
     z-index: 999;
@@ -848,6 +848,6 @@ p{
 
 #toggle-table-contents{
     position: fixed;
-    top: 150px;
-    left: 200px; 
+    top: 100px;
+    left: 10px;
 }
