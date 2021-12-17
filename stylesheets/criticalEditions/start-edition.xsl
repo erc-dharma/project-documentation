@@ -63,7 +63,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">container</xsl:attribute>
             <xsl:call-template name="table-contents"/>
-            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Table of Contents</a>
+            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Document Outline</a>
             <xsl:element name="div">
                 <xsl:attribute name="class">content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
@@ -540,30 +540,18 @@
             </xsl:attribute>-->
               
                 <xsl:apply-templates select="tei:lem"/>
-
-                            <xsl:element name="a">
-                <xsl:attribute name="class">
-                    <xsl:text>move-to-right</xsl:text>
-                </xsl:attribute>
-                <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                <xsl:attribute name="data-html">true</xsl:attribute>
-                <xsl:attribute name="data-target">
-                    <xsl:value-of select="generate-id()"/>
-                </xsl:attribute>
-                <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                    <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart']"></xsl:number></xsl:attribute>
-                <xsl:attribute name="id">
-                    <xsl:text>from-app-</xsl:text>
-                    <xsl:value-of select="$app-num"/>
-                </xsl:attribute>
-                <xsl:attribute name="data-app">
-                    <xsl:value-of select="generate-id()"/>
-                </xsl:attribute>
-                        <xsl:text>(</xsl:text>
-                        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
-                        <xsl:text>)</xsl:text>
-            </xsl:element>
+                <xsl:choose>
+                    <xsl:when test="parent::tei:lem">
+                        <xsl:call-template name="app-link">
+                            <xsl:with-param name="location" select="'text'"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="app-link">
+                    <xsl:with-param name="location" select="'apparatus'"/>
+                </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>       
         </xsl:element>
         
         <xsl:if test="descendant::tei:span[@type='omissionStart']">
@@ -2446,9 +2434,9 @@
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
+                <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
                 <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -2479,13 +2467,13 @@
             <xsl:attribute name="class">collapse</xsl:attribute>
             <xsl:element name="h4">
                 <xsl:attribute name="class">text-align-center</xsl:attribute>
-                <xsl:text>Table of Contents</xsl:text>
+                <xsl:text>Document Outline</xsl:text>
             </xsl:element>
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
             <xsl:element name="ul">
                 <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
-            <xsl:for-each select="//tei:div">
+            <xsl:for-each select="//tei:div[not(ancestor::tei:div)]">
                 <xsl:element name="li">
                     <xsl:attribute name="class">nav-item</xsl:attribute>
                     <xsl:element name="a">
@@ -2512,10 +2500,45 @@
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="@n"/>
                     </xsl:element>
+                    <xsl:if test="descendant::tei:div">
+                        <xsl:element name="ul">
+                            <xsl:attribute name="class">navbar-nav nav-second</xsl:attribute>
+                    <xsl:for-each select="descendant::tei:div">
+                        
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item nav-item-second</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link nav-link-second</xsl:attribute>
+                                <xsl:attribute name="href">
+                                    <xsl:text>#</xsl:text>
+                                    <xsl:value-of select="@xml:id"/>
+                                </xsl:attribute>
+                                <xsl:choose>
+                                    <xsl:when test="@type">
+                                        <xsl:value-of select="@type"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:choose>
+                                            <xsl:when test="child::tei:ab[1]">
+                                                <xsl:value-of select="child::tei:ab/@type"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="name()"/>  
+                                            </xsl:otherwise>
+                                        </xsl:choose>                     
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                                <xsl:text> </xsl:text>
+                                <xsl:value-of select="@n"/>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+                    </xsl:if>
                 </xsl:element>
             </xsl:for-each>
-        </xsl:element>
-        </xsl:element>
+            </xsl:element>
+            </xsl:element>
         </xsl:element>
     </xsl:template>
     
@@ -2630,13 +2653,13 @@
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
-        <xsl:if
-            test="not((local-name() = 'choice' or local-name() = 'subst')
+        
+        <xsl:if test="not((local-name() = 'choice' or local-name() = 'subst')
             and (ancestor::tei:choice or ancestor::tei:subst))">
-                <xsl:variable name="app-num">
-                    <xsl:value-of select="name()"/>
-                    <xsl:number level="any" format="0001"/>
-                </xsl:variable>
+            <xsl:variable name="app-num">
+                <xsl:value-of select="name()"/>
+                <xsl:number level="any" format="0001"/>
+            </xsl:variable>
                 <xsl:call-template name="generate-app-link">
                     <xsl:with-param name="location" select="$location"/>
                     <xsl:with-param name="app-num" select="$app-num"/>
@@ -2647,7 +2670,7 @@
     <xsl:template name="generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
-            <xsl:if test="$location = 'apparatus'">
+            <xsl:if test="$location = 'bottom'">
                 <a>
                     <xsl:attribute name="id">
                         <xsl:text>to-app-</xsl:text>
@@ -2661,8 +2684,32 @@
                    <!-- <xsl:value-of select="$app-num"/>-->
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
                 </a>
-                <xsl:text> </xsl:text>
             </xsl:if>
+        <xsl:if test="$location = 'apparatus'">
+            <xsl:element name="a">
+                <xsl:attribute name="class">
+                    <xsl:text>move-to-right</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                <xsl:attribute name="data-html">true</xsl:attribute>
+                <xsl:attribute name="data-target">
+                    <xsl:value-of select="generate-id()"/>
+                </xsl:attribute>
+                <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                    <xsl:value-of select="$app-num"/></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart']"></xsl:number></xsl:attribute>
+                <xsl:attribute name="id">
+                    <xsl:text>from-app-</xsl:text>
+                    <xsl:value-of select="$app-num"/>
+                </xsl:attribute>
+                <xsl:attribute name="data-app">
+                    <xsl:value-of select="generate-id()"/>
+                </xsl:attribute>
+                <xsl:text>(</xsl:text>
+                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
+                <xsl:text>)</xsl:text>
+            </xsl:element>
+        </xsl:if>
         <xsl:if test="$location = 'text'"/>
     </xsl:template>
 
@@ -2697,7 +2744,7 @@
                 <xsl:call-template name="lbrk-app"/>
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
                 <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'apparatus'"/>
+                    <xsl:with-param name="location" select="'bottom'"/>
                 </xsl:call-template>
                 <xsl:value-of select="$div-loc"/>
                 <xsl:text>. </xsl:text>
