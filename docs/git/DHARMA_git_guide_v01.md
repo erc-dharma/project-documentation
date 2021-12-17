@@ -19,7 +19,7 @@ See <https://training.github.com/kit/downloads/fr/github-git-cheat-sheet.pdf>
    * type the key TAB once you’ve filled in 3 or 4 of the first letters of a directory name: Terminal will fill in the rest if there’s no other directory beginning with the same letters.
 + Once you’re there, type the following command followed by ENTER:
   * `git pull`
-      + do this every time you start working, to get most recent version
+      + do this every time you start working, to get the most recent versions of the files in the relevant repository
       + also do it every time you are going to do the following steps
 + Once you start making edits to file, you can use
   * `git add -A`
