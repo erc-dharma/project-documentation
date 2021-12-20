@@ -67,9 +67,14 @@
             <xsl:call-template name="dharma-head"/>
             <xsl:element name="body">
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
+                <xsl:attribute name="data-spy">scroll</xsl:attribute>
+                <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
+                <xsl:attribute name="data-offset">5</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
+                    <xsl:call-template name="table-contents"/>
+                    <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Document Outline</a>
                     <xsl:apply-templates select="./tei:teiHeader"/>
                 <xsl:element name="div">
                     <xsl:attribute name="class">row wrapper</xsl:attribute>
@@ -1721,7 +1726,6 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/dharma-diplEd-css.css"></link>
-                <!--<link rel="stylesheet" href="./../diplomaticEditions/dharma-diplEd-css.css"></link>-->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
@@ -2717,6 +2721,38 @@
                     </xsl:element>
                 </xsl:otherwise>
             </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- side bar - table of contents -->
+    <xsl:template name="table-contents">
+        <xsl:element name="div">
+            <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>
+            <xsl:element name="h4">
+                <xsl:attribute name="class">text-align-center</xsl:attribute>
+                <xsl:text>Document Outline</xsl:text>
+            </xsl:element>
+            <xsl:element name="nav">
+                <xsl:attribute name="id">myScrollspy</xsl:attribute>
+                <xsl:element name="ul">
+                    <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
+                    <xsl:for-each select="//tei:pb">
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link</xsl:attribute>
+                                <xsl:attribute name="href">
+                                    <xsl:text>#</xsl:text>
+                                    <xsl:value-of select="@xml:id"/>
+                                </xsl:attribute>
+                                <xsl:text>Folio </xsl:text>
+                                <xsl:value-of select="@n"/>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+            </xsl:element>
         </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
