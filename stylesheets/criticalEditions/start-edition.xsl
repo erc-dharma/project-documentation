@@ -2434,8 +2434,8 @@
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
+               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
