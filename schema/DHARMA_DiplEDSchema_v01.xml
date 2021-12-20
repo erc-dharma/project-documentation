@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-12-20">Deleting the constraint of xml:id on pb</change>   
             <change who="part:axja" when="2021-11-25">Addin the value check on hi and unclear</change>
             <change who="part:axja" when="2021-10-22">adding @unit="book" with citedRange</change>
             <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
@@ -2783,7 +2784,6 @@
                         <attDef ident="synch" mode="delete"/>
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="break" mode="change">
