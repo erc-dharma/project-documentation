@@ -27,7 +27,7 @@
             </xsl:if>
             <xsl:attribute name="xml:id"> 
                 <xsl:value-of select="name()"/>
-                <xsl:number count="tei:pb" level="single" 
+                <xsl:number count="tei:pb" level="any" 
                     format="001"/>
             </xsl:attribute>
             <xsl:apply-templates select="node()|@*" mode="numerotation"/>
