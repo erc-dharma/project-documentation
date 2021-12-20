@@ -1115,6 +1115,9 @@
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
                 </xsl:element>
+        <xsl:if test="following::tei:fw[1]">
+            <xsl:text>–</xsl:text>
+        </xsl:if>
     </xsl:template>
   
     <!-- ptr -->
