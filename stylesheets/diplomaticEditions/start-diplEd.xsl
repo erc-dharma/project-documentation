@@ -1815,7 +1815,6 @@
                    <!-- <xsl:value-of select="$app-num"/>-->
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
                 </a>
-                <xsl:text> </xsl:text>
             </xsl:if>
     </xsl:template>
 
