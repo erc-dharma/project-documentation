@@ -441,13 +441,13 @@
                         <xsl:text>lem</xsl:text>
                     </xsl:attribute>
                 <xsl:apply-templates select="tei:lem"/>
-                    <xsl:if test="not(ancestor-or-self::tei:lem)">
                         <xsl:element name="sup">
+                            <xsl:attribute name="class">float-right"</xsl:attribute>
                             <xsl:text>(</xsl:text>
                         <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                         <xsl:text>)</xsl:text>
                         </xsl:element>
-                    </xsl:if>
+                    
             </xsl:element>   
             </xsl:element>
     </xsl:template>
@@ -1720,9 +1720,8 @@
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
                 <!-- site-specific css !-->
-                <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/dharma-diplEd-css.css"></link>
+                <!--<link rel="stylesheet" href="./../diplomaticEditions/dharma-diplEd-css.css"></link>-->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
