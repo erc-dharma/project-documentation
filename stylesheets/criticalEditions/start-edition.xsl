@@ -841,7 +841,7 @@
                 </xsl:if>
                 </xsl:if>
                 <xsl:apply-templates/>
-                <xsl:if test="@xml:id">
+                <!--<xsl:if test="@xml:id">
                     <xsl:element name="div">
                     <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -853,7 +853,7 @@
                     <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
                     
                     <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
-                        <!-- need to add the language -->
+                        <!-\- need to add the language -\->
                 </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="id">
@@ -868,7 +868,7 @@
                     </xsl:element>
                 </xsl:element>
             </xsl:element> 
-                </xsl:if>
+                </xsl:if>-->
             </xsl:element>     
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
@@ -1573,6 +1573,34 @@
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
             <xsl:apply-templates/>
+                <xsl:if test="@xml:id">
+                    <xsl:element name="div">
+                        <!--<xsl:attribute name="class">col-10</xsl:attribute>-->
+                        <xsl:element name="a">
+                            <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
+                            <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                            <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
+                            <xsl:attribute name="role">button</xsl:attribute>
+                            <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                            <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                            
+                            <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
+                            <!-- need to add the language -->
+                        </xsl:element>
+                        <xsl:element name="div">
+                            <xsl:attribute name="id">
+                                <xsl:value-of select="generate-id()"/>
+                            </xsl:attribute>
+                            <xsl:attribute name="class">collapse</xsl:attribute>
+                            <xsl:element name="div">
+                                <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
+                                <xsl:call-template name="tpl-translation">
+                                    <xsl:with-param name="textpart-id" select="@xml:id"/>
+                                </xsl:call-template>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element> 
+                </xsl:if>
         </xsl:element>
             </xsl:element>
                 <xsl:element name="div">
@@ -3274,7 +3302,7 @@
             <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
         </xsl:variable>
         <xsl:element name="div">
-            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+            <!--<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-->
             <xsl:choose>
                 <xsl:when test="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]">
                     <xsl:apply-templates select="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
