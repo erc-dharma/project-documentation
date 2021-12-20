@@ -1100,7 +1100,7 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
-    <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
+    <xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -1142,17 +1142,17 @@
                         </xsl:element>
                     </xsl:element>
         </xsl:element>
-    </xsl:template>-->
-    <xsl:template match="tei:listApp[@type='apparatus']">
+    </xsl:template>
+    <!--<xsl:template match="tei:listApp[@type='apparatus']">
         <xsl:variable name="lem-external-app" select="tei"/>
        <xsl:for-each select="tei:app[@loc]">
-           <!--<xsl:call-template name="apparatus-making"/>-->
-               <!--<xsl:with-param name="lem" select="tei:lem/text()"/>
+           <xsl:call-template name="apparatus-making">
+               <xsl:with-param name="lem" select="tei:lem/text()"/>
                <xsl:with-param name="preceding-text" select="preceding::tei:*[1]/text()"/>
-           </xsl:call-template>-->
+           </xsl:call-template>
        </xsl:for-each>
 
-    </xsl:template>
+    </xsl:template>-->
     
     
     <xsl:template match="tei:listApp[@type='parallels']">
