@@ -56,6 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2021-12-20">Adding features for translations files</change>
       <change who="part:axja" when="2021-12-13">Adding the possiblity to use xml:id on lg and quote</change>
       <change who="part:axja" when="2021-11">Starting on editing the schema for ms</change>
     </revisionDesc>
@@ -2348,20 +2349,22 @@
                 <sch:report test="not(//tei:TEI[@type='translation'])">
                   @n can only be used for paragraphs in translations</sch:report>
               </sch:rule>
+              <sch:rule context="tei:p[@corresp]">
+                <sch:report test="not(//tei:TEI[@type='translation'])">
+                  @n can only be used for paragraphs in translations</sch:report>
+              </sch:rule>
               </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
             <attDef ident="change" mode="delete"/>
-            <attDef ident="copyOf" mode="delete"/>
-            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>            
             <attDef ident="decls" mode="delete"/>
             <attDef ident="exclude" mode="delete"/>
             <attDef ident="facs" mode="delete"/>
             <attDef ident="hand" mode="delete"/>
-            <attDef ident="n" mode="delete"/>
-            <attDef ident="next" mode="delete"/>
+             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
