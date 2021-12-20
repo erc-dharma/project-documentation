@@ -1,5 +1,51 @@
-/* CSS file based on salit.css written by Andrew Ollett */
 /* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
+/* Roman-script fonts */
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Regular.otf") format("opentype"); }
+
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Bold.otf") format("opentype"); font-weight: bold; }
+
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Oblique.otf") format("opentype"); font-style: italic; }
+
+@font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-BoldOblique.otf") format("opentype"); font-style: italic; font-weight: bold; }
+
+html{
+    font-family:"IndUni-H";
+}
+
+body{
+    background-color:#eeeeee;
+    font-family:"IndUni-H";
+    font-size: medium;
+    height:100%;
+    width: 100%;
+    position: relative;
+    display: grid;
+    overflow-x: hidden;
+}
+
+.container {
+     display: flex;
+    width: 100%;
+   } 
+   
+#sidebar-wrapper {
+    width: 275px;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+}
+
+#sidebar-wrapper h4{
+    color: black;
+}
+
+#sidebar-wrapper .nav-link.active {
+  background-color: #00ACC1 !important;
+}
+
 .symbol {
         border: 2px solid black;
         border-radius: 8px;
@@ -91,4 +137,10 @@
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
   padding: 30px;
   margin-bottom: 50px;
+}
+
+#toggle-table-contents{
+    position: fixed;
+    top: 100px;
+    left: 10px;
 }
