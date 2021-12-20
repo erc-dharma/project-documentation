@@ -1111,6 +1111,7 @@
         </xsl:choose>
                 <xsl:element name="span">
                     <xsl:attribute name="class">text-muted foliation</xsl:attribute>
+                    <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
                 </xsl:element>
