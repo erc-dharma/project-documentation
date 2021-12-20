@@ -225,7 +225,7 @@
     <!--  A ! -->
     <!--  add ! -->
     <xsl:template match="tei:add">
-                <xsl:element name="a">
+                    <xsl:element name="a">
             <xsl:attribute name="class">ed-insertion</xsl:attribute>
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
@@ -233,19 +233,17 @@
             <xsl:attribute name="title">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:text>Editorial insertion</xsl:text>
             <xsl:choose>
                 <xsl:when test="@place='above'">
-                    <xsl:text>suprascr.</xsl:text>
+                    <xsl:text> suprascr.</xsl:text>
                 </xsl:when>
                 <xsl:when test="@place='below'">
-                    <xsl:text>subscr.</xsl:text>
+                    <xsl:text> subscr.</xsl:text>
                 </xsl:when>
                 <xsl:when test="@place='right' or @place='left'">
-                    <xsl:text>in mg.</xsl:text>
+                    <xsl:text> in mg.</xsl:text>
                 </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>.</xsl:text>
-                </xsl:otherwise>
             </xsl:choose>
                 </xsl:element>
             </xsl:attribute>
@@ -667,7 +665,7 @@
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
-            <xsl:attribute name="title">Editorial deletion.</xsl:attribute>
+            <xsl:attribute name="title">Editorial deletion</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">scribe-deletion</xsl:attribute>
                 <xsl:apply-templates/>
@@ -734,6 +732,9 @@
     <xsl:template match="tei:fw">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted form-work</xsl:attribute>
+            <xsl:if test="preceding::tei:pb[1]">
+                <xsl:text>:</xsl:text>
+            </xsl:if>
             <xsl:text>fw </xsl:text>
             <xsl:apply-templates/>
         </xsl:element>
@@ -992,7 +993,7 @@
     <!--  N ! -->
     <xsl:template match="tei:note">
         <xsl:choose>
-            <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg]">
+            <xsl:when test="self::tei:note">
               <xsl:element name="span">
                   <xsl:attribute name="class">lem-last-note</xsl:attribute>
                         <xsl:element name="a">
@@ -1027,7 +1028,7 @@
     </xsl:template>
    <xsl:template match="tei:note" mode="modals">
         <xsl:variable name="apparatus-note">
-            <xsl:if test="self::tei:note[position()=last()][parent::tei:p or parent::tei:lg or not(@type='parallels' or parent::tei:app or @type='altLem')]">
+            <xsl:if test="self::tei:note[not(@type='parallels' or parent::tei:app or @type='altLem')]">
                 <xsl:element name="span">
                     <xsl:element name="span">
                         <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
@@ -1115,9 +1116,6 @@
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
                 </xsl:element>
-        <xsl:if test="following::tei:fw[1]">
-            <xsl:text>–</xsl:text>
-        </xsl:if>
     </xsl:template>
   
     <!-- ptr -->
