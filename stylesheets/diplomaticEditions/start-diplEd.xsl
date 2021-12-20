@@ -594,7 +594,7 @@
             <!--  <xsl:element name="div">
            <xsl:attribute name="class">float-right</xsl:attribute>-->
             <xsl:element name="span">
-                <xsl:attribute name="class">tooltipApp float-left</xsl:attribute>
+                <xsl:attribute name="class">tooltipApp</xsl:attribute>
                 <xsl:element name="a">
                     <xsl:attribute name="tabindex">0</xsl:attribute>
                     <xsl:attribute name="data-toggle">popover</xsl:attribute>
@@ -994,7 +994,7 @@
         <xsl:choose>
             <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg]">
               <xsl:element name="span">
-                  <xsl:attribute name="class">lem-last-note float-right</xsl:attribute>
+                  <xsl:attribute name="class">lem-last-note</xsl:attribute>
                         <xsl:element name="a">
                             <xsl:attribute name="tabindex">0</xsl:attribute>
                             <xsl:attribute name="data-toggle">popover</xsl:attribute>
@@ -1065,7 +1065,7 @@
             </xsl:when>
             <xsl:when test="not(ancestor-or-self::tei:note |ancestor-or-self::tei:handDesc)">
         <xsl:element name="div">
-            <xsl:attribute name="class">text-container float-left</xsl:attribute>
+            <xsl:attribute name="class">text-container</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">text-muted</xsl:attribute>
                 <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
