@@ -732,7 +732,7 @@
     <xsl:template match="tei:fw">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted form-work</xsl:attribute>
-            <xsl:if test="preceding::tei:pb[1]">
+            <xsl:if test="preceding::tei:*[1][local-name() = ('pb')]">
                 <xsl:text>:</xsl:text>
             </xsl:if>
             <xsl:text>fw </xsl:text>
