@@ -70,7 +70,7 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="tei:quote" mode="numerotation">
+    <xsl:template match="tei:quote[not(ancestor-or-self::tei:listApp[@type='parallels'])]" mode="numerotation">
         <xsl:variable name="fileId">
             <xsl:value-of select="//tei:TEI/@xml:id"/>
             <xsl:text>_</xsl:text>
