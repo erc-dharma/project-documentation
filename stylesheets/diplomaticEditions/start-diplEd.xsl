@@ -567,7 +567,7 @@
     <!--  choice ! -->
   <xsl:template match="tei:choice[child::tei:orig and child::tei:reg]">
         <xsl:choose>
-            <xsl:when test="$edition-type='diplomatic'">
+            <xsl:when test="$edition-type='physical'">
                 <xsl:element name="span">
             <xsl:attribute name="class">orig</xsl:attribute>
                     <xsl:apply-templates select="child::tei:orig"/>
