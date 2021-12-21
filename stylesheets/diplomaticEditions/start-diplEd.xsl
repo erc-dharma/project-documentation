@@ -838,7 +838,8 @@
     <xsl:template match="tei:lb">
         <xsl:param name="line-break"/>
         <xsl:choose>
-            <xsl:when test="$line-break='no-break' or $edition-type='logical'"/>
+            <xsl:when test="$edition-type='logical' and @break='no'"/>
+            <xsl:when test="$line-break='no-break'"/>
             <xsl:otherwise>
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
