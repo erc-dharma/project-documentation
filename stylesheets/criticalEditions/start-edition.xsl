@@ -540,18 +540,9 @@
             </xsl:attribute>-->
               
                 <xsl:apply-templates select="tei:lem"/>
-                <xsl:choose>
-                    <xsl:when test="parent::tei:lem">
-                        <xsl:call-template name="app-link">
-                            <xsl:with-param name="location" select="'text'"/>
-                        </xsl:call-template>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:call-template name="app-link">
+                <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
-                </xsl:call-template>
-                    </xsl:otherwise>
-                </xsl:choose>       
+                </xsl:call-template>   
         </xsl:element>
         
         <xsl:if test="descendant::tei:span[@type='omissionStart']">
@@ -2820,13 +2811,13 @@
      <xsl:param name="childtype"/>
         <xsl:variable name="path">
            <xsl:choose>
-                <xsl:when test="$childtype='origreg' or $childtype=('siccorr')">
+                <xsl:when test="$childtype='origreg' or $childtype='siccorr'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice/child::*"/>
                 </xsl:when>
                 <xsl:when test="$childtype='subst'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst/child::*"/>
                 </xsl:when>
-               <xsl:when test="$childtype='applt'">
+               <xsl:when test="$childtype='appEm'">
                     <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
                 </xsl:when>
                 <xsl:otherwise>
