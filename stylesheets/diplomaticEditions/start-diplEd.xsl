@@ -430,7 +430,7 @@
                 </xsl:attribute>
                 <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                     <xsl:value-of select="$app-num"/></xsl:attribute>
-                <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note"/></xsl:attribute>
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
@@ -445,7 +445,6 @@
                     </xsl:attribute>
                 <xsl:apply-templates select="tei:lem"/>
                         <xsl:element name="sup">
-                            <xsl:attribute name="class">float-right"</xsl:attribute>
                             <xsl:text>(</xsl:text>
                         <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                         <xsl:text>)</xsl:text>
@@ -1010,7 +1009,7 @@
                                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
                                 <xsl:attribute name="type">button</xsl:attribute>           
                                     <xsl:text>(</xsl:text>
-                                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:choice[child::tei:sic and child::tei:corr]"/>
+                                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note | .//tei:choice[child::tei:sic and child::tei:corr]"/>
                                     <xsl:text>)</xsl:text>
                             </xsl:element>        
                         </xsl:element>
@@ -1105,7 +1104,7 @@
     <xsl:template match="tei:pb">
         <xsl:choose>
             <xsl:when test="tei:pb[not(preceding::node()/text())]"/>
-            <xsl:when test="$corpus-type='batak'"/>
+            <xsl:when test="$corpus-type='batak' or $edition-type='logical'"/>
             <xsl:otherwise>
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
