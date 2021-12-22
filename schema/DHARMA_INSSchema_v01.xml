@@ -1656,7 +1656,7 @@
                                 <valItem ident="cal:vikrama"/>
                                 <valItem ident="cal:kaniska"/>
                                 <valItem ident="cal:julian"/>
-                                <valItem ident="cal:kushan2"/>
+                                <valItem ident="cal:kushan"/>
                                 <valItem ident="cal:kalacuri"/>
                                 <valItem ident="cal:gupta"/>
                                 <valItem ident="cal:saptarsi"/>
@@ -1665,6 +1665,9 @@
                                 <valItem ident="cal:hijra"/>
                                 <valItem ident="cal:nirvana"/>
                                 <valItem ident="cal:kollam"/>
+                                <valItem ident="cal:burmese"/>
+                                <valItem ident="cal:sanjaya"/>
+                                <valItem ident="ca::valabhi"/>
                             </valList>
                         </attDef>
                     </attList>
