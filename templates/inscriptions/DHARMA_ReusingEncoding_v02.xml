@@ -96,9 +96,12 @@
                 <prefixDef ident="part" matchPattern="([a-z]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml#$1">
                     <p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_V01.xml</ref> file.</p>
                 </prefixDef>
+                <prefixDef ident="cal" matchPattern="([\w]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/templates/DHARMA_calendarDesc_v01.xml#$1">
+                    <p>Internal URIs using the cal prefix to point to calendar systems in  <ref>DHARMA_calendarDesc_v01.xml</ref> file.</p></prefixDef>
             </listPrefixDef>
         </encodingDesc>
         <revisionDesc>
+            <change who="part:axja" when="2022-12-22">Adding the ref to the calendar system</change>
             <change who="part:axja" when="2021-07-02">Upating the template to fit the new template</change>
             <change who="part:axja" when="2020-10-02">Upating the template after the transformation of the EIAD files.</change>
             <change who="part:axja" when="2020-09-15">Version 1: adding some elements to finish the template used to export the files made by Campa for DHARMA. Kept as reference for the expected conversion fro EIAD.</change>

@@ -133,6 +133,8 @@
 				<prefixDef ident="maturiy" matchPattern="(0-9]+)" replacementPattern="tba">
 					<p>Referential with the prefix maturity for script maturity declared inside OpenTheso to be mapped with ARK URIs opened to the public</p>
 				</prefixDef>
+				<prefixDef ident="cal" matchPattern="([\w]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/templates/DHARMA_calendarDesc_v01.xml#$1">
+					<p>Internal URIs using the cal prefix to point to calendar systems in  <ref>DHARMA_calendarDesc_v01.xml</ref> file.</p></prefixDef>
 			</listPrefixDef>
 		</encodingDesc>
 		<profileDesc>
@@ -154,6 +156,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
+			<change who="part:axja" when="2022-12-22">Adding the ref to the calendar system</change>
 			<change who="part:axja" when="2021-10-26">Adding the link for the RelxNg and the </change>
 			<change who="part:axja" when="2021-10-20">Adding the abbr</change>
 			<change who="part:axja" when="2021-09-27">Adding the colophon in msItem of witness</change>
