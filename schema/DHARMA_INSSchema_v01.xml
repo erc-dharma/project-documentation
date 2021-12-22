@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-12-22">Adding some attributes and values for dates</change>
             <change who="part:axja" when="2021-11-02">Correcting the error message for list element</change>
             <change who="part:axja" when="2021-10-22">Adding @unit="book" on citedRange</change>
             <change who="part:axja" when="2021-10-08">Adding a @type="feature" on space</change>
@@ -1587,13 +1588,11 @@
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="atLeast" mode="delete"/>
                         <attDef ident="atMost" mode="delete"/>
-                        <attDef ident="calendar" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="confidence" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
                         <attDef ident="corresp" mode="delete"/>
-                        <attDef ident="datingMethod" mode="delete"/>
                         <attDef ident="datingPoint" mode="delete"/>
                         <attDef ident="dur" mode="delete"/>
                         <attDef ident="dur-iso" mode="delete"/>
@@ -1601,23 +1600,15 @@
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="extent" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
-                        <attDef ident="from-custom" mode="delete"/>
                         <attDef ident="from-iso" mode="delete"/>
                         <attDef ident="instant" mode="delete"/>
                         <attDef ident="key" mode="delete"/>
                         <attDef ident="max" mode="delete"/>
                         <attDef ident="min" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>
-                        <attDef ident="next" mode="delete"/>
-                        <attDef ident="notAfter" mode="delete"/>
-                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>                    
                         <attDef ident="notAfter-iso" mode="delete"/>
-                        <attDef ident="notBefore" mode="delete"/>
-                        <attDef ident="notBefore-custom" mode="delete"/>
                         <attDef ident="notBefore-iso" mode="delete"/>
                         <attDef ident="period" mode="delete"/>
-                        <attDef ident="precision" mode="delete"/>
-                        <attDef ident="prev" mode="delete"/>
                         <attDef ident="quantity" mode="delete"/>
                         <attDef ident="ref" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
@@ -1630,16 +1621,52 @@
                         <attDef ident="style" mode="delete"/>
                         <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="to-custom" mode="delete"/>
                         <attDef ident="to-iso" mode="delete"/>
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="unit" mode="delete"/>
                         <attDef ident="when-custom" mode="delete"/>
                         <attDef ident="when-iso" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="calendar" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="cal:uncertain"/>
+                                <valItem ident="cal:regnal"/>
+                                <valItem ident="cal:śaka"/>
+                                <valItem ident="cal:vikrama"/>
+                                <valItem ident="cal:kaniska"/>
+                                <valItem ident="cal:julian"/>
+                                <valItem ident="cal:kushan2"/>
+                                <valItem ident="cal:kalacuri"/>
+                                <valItem ident="cal:gupta"/>
+                                <valItem ident="cal:saptarsi"/>
+                                <valItem ident="cal:kali"/>
+                                <valItem ident="cal:laukika"/>
+                                <valItem ident="cal:hijra"/>
+                                <valItem ident="cal:nirvana"/>
+                                <valItem ident="cal:kollam"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="datingMethod" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="cal:uncertain"/>
+                                <valItem ident="cal:regnal"/>
+                                <valItem ident="cal:śaka"/>
+                                <valItem ident="cal:vikrama"/>
+                                <valItem ident="cal:kaniska"/>
+                                <valItem ident="cal:julian"/>
+                                <valItem ident="cal:kushan2"/>
+                                <valItem ident="cal:kalacuri"/>
+                                <valItem ident="cal:gupta"/>
+                                <valItem ident="cal:saptarsi"/>
+                                <valItem ident="cal:kali"/>
+                                <valItem ident="cal:laukika"/>
+                                <valItem ident="cal:hijra"/>
+                                <valItem ident="cal:nirvana"/>
+                                <valItem ident="cal:kollam"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <classSpec ident="att.global" type="atts" mode="change" module="tei">
@@ -3921,10 +3948,8 @@
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
-                        <attDef ident="key" mode="delete"/>
                         <attDef ident="n" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
-                        <attDef ident="nymRef" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="ref" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
@@ -3935,13 +3960,38 @@
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="source" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
-                        <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="type" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="type" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="month"/>
+                                <valItem ident="fortnight"/>
+                                <valItem ident="tithi"/>
+                                <valItem ident="weekday"/>
+                                <valItem ident="naksatra"/>
+                                <valItem ident="sadvara"/>
+                                <valItem ident="pancavara"/>
+                                <valItem ident="season"/>
+                                <valItem ident="wuku"/>
+                                <valItem ident="chinese"/>
+                                <valItem ident="jovian"/>
+                                <valItem ident="jovian"/>
+                                <valItem ident="sunZodiac"/>
+                                <valItem ident="lagna"/>
+                                <valItem ident="solstice"/>
+                                <valItem ident="equinoxe"/>
+                                <valItem ident="eclipse"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="subtype" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="dark"/>
+                                <valItem ident="bright"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="seg" module="linking" mode="change">
