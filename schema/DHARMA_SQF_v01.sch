@@ -175,4 +175,15 @@
             <sch:assert test="contains(.,'class:') and contains(.,'maturity:')">The content of the attribute @corresp should contained ids for both script classification and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
         </sch:rule>
     </sch:pattern>
+    
+    <!-- controlling the beginning of the value for calendar and datingMethod -->
+    <sch:pattern>
+        <sch:rule context="t:*/@calendar | t:*/@datingMethod">
+            <sch:let name="calendarValues" value="for $w in tokenize(., '\s+') return $w"/>
+            <sch:assert test="starts-with($calendarValues, 'cal:')">
+                The attributes @calendar and @datingMethod must starts with the prefixe "cal:"
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+
 </sch:schema>

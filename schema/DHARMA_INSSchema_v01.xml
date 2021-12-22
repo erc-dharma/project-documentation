@@ -18,23 +18,36 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-            <change who="part:axja" when="2021-12-22">Adding some attributes and values for dates</change>
-            <change who="part:axja" when="2021-11-02">Correcting the error message for list element</change>
+            <change who="part:axja" when="2021-12-22"
+                >Adding some attributes and values for dates as well as for rs.</change>
+            <change who="part:axja" when="2021-11-02"
+                >Correcting the error message for list element</change>
             <change who="part:axja" when="2021-10-22">Adding @unit="book" on citedRange</change>
             <change who="part:axja" when="2021-10-08">Adding a @type="feature" on space</change>
-            <change who="part:axja" when="2021-09-16">Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
-            <change who="part:axja" when="2021-09-15">closing list attributes for unit with gap</change>
-            <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
-            <change who="part:axja" when="2021-08-13">Updating the encoding pattern for expan</change>
-            <change who="part:axja" when="2021-07-07">Updating the constraints for children of head element</change>
-            <change who="part:axja" when="2021-07-06">Adding the possibility to add a note inside a item, in the section commentary</change>
-            <change who="part:axja" when="2021-07-05">Changing the @corresp on div, p, ab, lg, l and seg elements in favor of @rendition</change>
-             <change who="part:axja" when="2021-06-11">Adding @unit="line" and @extent for space element</change>
-            <change who="part:axja" when="2021-06-03">Adding the @corresp on div, p, ab, lg, l and seg elements</change>
+            <change who="part:axja" when="2021-09-16"
+                >Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
+            <change who="part:axja" when="2021-09-15"
+                >closing list attributes for unit with gap</change>
+            <change who="part:axja" when="2021-09-10"
+                >adding @unit="section" with citedRange</change>
+            <change who="part:axja" when="2021-08-13"
+                >Updating the encoding pattern for expan</change>
+            <change who="part:axja" when="2021-07-07"
+                >Updating the constraints for children of head element</change>
+            <change who="part:axja" when="2021-07-06"
+                >Adding the possibility to add a note inside a item, in the section commentary</change>
+            <change who="part:axja" when="2021-07-05"
+                >Changing the @corresp on div, p, ab, lg, l and seg elements in favor of @rendition</change>
+            <change who="part:axja" when="2021-06-11"
+                >Adding @unit="line" and @extent for space element</change>
+            <change who="part:axja" when="2021-06-03"
+                >Adding the @corresp on div, p, ab, lg, l and seg elements</change>
             <change who="part:axja" when="2021-03-10">Adding the @part on element l</change>
-            <change who="part:axja" when="2021-01">Updating the ODD to match the evolution of the
+            <change who="part:axja" when="2021-01"
+                >Updating the ODD to match the evolution of the
                 EGD</change>
-            <change who="part:axja" when="2020-07-13">Creating an ODD with legacy from the Epidoc
+            <change who="part:axja" when="2020-07-13"
+                >Creating an ODD with legacy from the Epidoc
                 Guidelines</change>
         </revisionDesc>
     </teiHeader>
@@ -153,10 +166,12 @@
                             edition</sch:report><!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
                             div[@type='translation']</sch:report>--><sch:report
-                            test="@type='translation' and @resp and @source">@resp and @source can
+                            test="@type='translation' and @resp and @source"
+                            >@resp and @source can
                             not be used
                             together</sch:report><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><sch:report
-                            test="@type='translation' and not(@resp or @source)">@resp or @source is
+                            test="@type='translation' and not(@resp or @source)"
+                            >@resp or @source is
                             expected for
                             div[@type='translation']</sch:report><!--<sch:rule context="tei:body">
                                 <sch:assert
@@ -357,8 +372,10 @@
                     <!-- testing for <ex> outside of <expan> -->
                     <constraintSpec scheme="isoschematron" ident="ex">
                         <constraint><sch:rule context="tei:ex"><sch:report
-                            test="not(ancestor::tei:expan)">ex should only appear inside
-                            expan</sch:report><sch:report test="parent::tei:abbr">ex should not be a
+                            test="not(ancestor::tei:expan)"
+                            >ex should only appear inside
+                            expan</sch:report><sch:report
+                            test="parent::tei:abbr">ex should not be a
                             child of abbr</sch:report></sch:rule></constraint>
                     </constraintSpec>
                 </elementSpec>
@@ -400,15 +417,19 @@
                     <!-- testing for <gap> with both quantity/extent, no unit, or contained in supplied -->
                     <constraintSpec ident="gap" scheme="isoschematron">
                         <constraint><sch:rule context="tei:gap"><sch:report
-                            test="@quantity and @extent">gap may have @quantity (a figure) or
+                            test="@quantity and @extent"
+                            >gap may have @quantity (a figure) or
                             @extent (a descriptive text value) but not both</sch:report><sch:report
-                            test="@quantity and not(@unit)">If gap has @quantity then @unit is
+                            test="@quantity and not(@unit)"
+                            >If gap has @quantity then @unit is
                             required</sch:report><sch:report
                             test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]"
                             >gap may not appear within supplied text</sch:report><sch:report
-                            test="@precision and not(@quantity)">@precision can be use only with
+                            test="@precision and not(@quantity)"
+                            >@precision can be use only with
                             @quantity</sch:report><sch:report
-                            test="ancestor::tei:div[@type='aparatus'] and not(@reason)">Only @reason
+                            test="ancestor::tei:div[@type='aparatus'] and not(@reason)"
+                            >Only @reason
                             is mandatory in
                             div[@type='translation']</sch:report></sch:rule><sch:rule
                             context="tei:gap[@reason='ellipsis']"><sch:report
@@ -416,11 +437,13 @@
                             > The element gap with @reason='ellipsis' can only be used inside the
                             apparatus or in translation.</sch:report></sch:rule><sch:rule
                             context="tei:gap[@unit='component']"><sch:assert
-                            test="parent::tei:seg[@type='component']">Gap with the attribute
+                            test="parent::tei:seg[@type='component']"
+                            >Gap with the attribute
                             @unit="component" can only be used inside seg with the
                             @type="component". </sch:assert></sch:rule><sch:rule
                             context="tei:gap[@unit='line' and @quantity] "><sch:assert
-                            test="@precision='low' or child::tei:certainty">The element gap with
+                            test="@precision='low' or child::tei:certainty"
+                            >The element gap with
                             @quantity and @unit="line" expect either the use of @precision="low" or
                             the element certainty.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
@@ -678,14 +701,16 @@
                         <constraint><sch:rule context="tei:space"><!--<sch:report
                             test="@quantity and @extent">space may have @quantity (a figure) or
                             @extent (a descriptive text value) but not both</sch:report>--><sch:report
-                            test="@quantity and not(@unit)">If space has @quantity then @unit is
-                            required</sch:report></sch:rule><sch:rule context="tei:space"
-                            ><sch:assert
+                            test="@quantity and not(@unit)"
+                            >If space has @quantity then @unit is
+                            required</sch:report></sch:rule><sch:rule
+                            context="tei:space"><sch:assert
                             test="@type='binding-hole' or @type='descender' or @type='ascender' and @quantity and @unit"
                             >Space can't have @quantity and @unit attributes with
                             @type='binding-hole' or @type='descender' or @type='ascender', the only
                             @type possible is @type='defect'.</sch:assert></sch:rule><sch:rule
-                            context="tei:space"><sch:report test="@unit='page'">Please note that the
+                            context="tei:space"><sch:report test="@unit='page'"
+                            >Please note that the
                             use of "space" for blank copperplate pages has been discarded; encode
                             only a "pb" for the blank page</sch:report></sch:rule></constraint>
                     </constraintSpec>
@@ -1108,7 +1133,8 @@
                 <elementSpec ident="app" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="one-lem">
                         <constraint><sch:rule context="tei:app"><sch:report
-                            test="not(count(child::tei:lem) &gt;= 1)">An apparatus entry must always
+                            test="not(count(child::tei:lem) &gt;= 1)"
+                            >An apparatus entry must always
                             contain a lem element</sch:report><sch:report
                             test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)"
                             >When the apparatus entry contains only a lem, the @source is
@@ -1207,7 +1233,8 @@
                             the primary bibliography to declare
                             sigla</sch:report></sch:rule>--><sch:rule
                             context="tei:bibl[ancestor::tei:listBibl]"><sch:report
-                            test="child::tei:note[following-sibling::tei:*]">Note should be the last
+                            test="child::tei:note[following-sibling::tei:*]"
+                            >Note should be the last
                             element of the bibl</sch:report></sch:rule><sch:rule
                             context="tei:bibl[child::tei:note]"><sch:report
                             test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
@@ -1308,13 +1335,16 @@
                 <elementSpec ident="certainty" module="certainty" mode="change">
                     <constraintSpec scheme="schematron" ident="usage-certainty">
                         <constraint><sch:rule context="tei:certainty"><sch:report
-                            test="@match='../@met' and not(parent::tei:lg)">The pattern used in
+                            test="@match='../@met' and not(parent::tei:lg)"
+                            >The pattern used in
                             @match works with the element lg[@met]</sch:report></sch:rule><sch:rule
                             context="tei:certainty"><sch:report
-                            test="@match='..' and not(parent::tei:gap)">The pattern used in @match
+                            test="@match='..' and not(parent::tei:gap)"
+                            >The pattern used in @match
                             works within the element gap</sch:report></sch:rule><sch:rule
                             context="tei:certainty"><sch:assert
-                            test="@match='../@met' and @locus='value'"> @match="../@met" and
+                            test="@match='../@met' and @locus='value'"
+                            > @match="../@met" and
                             @locus="value" always work together. </sch:assert></sch:rule><sch:rule
                             context="tei:certainty"><sch:assert test="@match='..' and @locus='name'"
                             >@match='..' and @locus='name' always work
@@ -1428,7 +1458,8 @@
                 <elementSpec ident="choice" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="unclear-limit">
                         <constraint><sch:rule context="tei:choice"><sch:report
-                            test="child::tei:unclear and count(child::tei:unclear) &gt; 3">Choice
+                            test="child::tei:unclear and count(child::tei:unclear) &gt; 3"
+                            >Choice
                             can contained only maximum 3 unclear
                             elements</sch:report></sch:rule></constraint>
                     </constraintSpec>
@@ -1460,7 +1491,8 @@
                 <elementSpec ident="citedRange" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:citedRange"><sch:report
-                            test="child::tei:note and ancestor::tei:listBibl">Note can not be used
+                            test="child::tei:note and ancestor::tei:listBibl"
+                            >Note can not be used
                             as a child of the element citedRange, only as a sibling of this
                             element</sch:report></sch:rule></constraint>
                     </constraintSpec>
@@ -1584,6 +1616,37 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="date" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="attributes">
+                        <constraint> <sch:rule context="tei:date"> <sch:assert
+                            test="@when or (@notBefore and @notAfter) or (@from and @to)"
+                            >The content of the element date should be translated into the W3C format thanks to </sch:assert>
+                            </sch:rule> <sch:rule
+                            context="tei:date[@notBefore-custom or @notAfter-custom]"> <sch:assert
+                            test="@notBefore-custom and @notAfter-custom"
+                            >@notBefore-custom and @notAfter-custom must be used together</sch:assert>
+                            </sch:rule> <sch:rule context="tei:date[@notBefore or @notAfter]">
+                            <sch:assert test="@notBefore and @notAfter"
+                            >@notBefore and @notAfter must be used together</sch:assert> </sch:rule>
+                            <sch:rule context="tei:date[@from or @to]"> <sch:assert
+                            test="@from and @to"
+                            >The attributes @from and @to must be used together</sch:assert>
+                            </sch:rule> <sch:rule context="tei:date[@from-custom or @to-custom]">
+                            <sch:assert test="@from-custom and @to-custom"
+                            >The attributes @from-custom and @to-custom must be used together</sch:assert>
+                            </sch:rule> <sch:rule
+                            context="tei:date[@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
+                            ><sch:assert test="@datingMethod"
+                            >When using a custom attribute such as @when-custom or @notAfter-custom or @notBefore-custom, the attribute @datingMethod is mandatory and should declare the calendar used to convert the dates expressed in those previous attributes.</sch:assert></sch:rule>
+                            <sch:rule context="tei:date[@when-custom]"> <sch:assert test="@when"
+                            >When @when-custom is used, you must provide an equivalent date in the official calendar of the project with @when. (Gregorian or Julian?)</sch:assert>
+                            </sch:rule> <sch:rule context="@notBefore-custom and @notAfter-custom">
+                            <sch:assert test="@notBefore and @notAfter"
+                            >When @notBefore-custom and @notAfter-custom are used, you must provide the equivalent in Gregorian calendar with @notBefore and @notAfter.</sch:assert>
+                            </sch:rule> <sch:rule context="@from-custom and @to-custom"> <sch:assert
+                            test="@from and @to"
+                            >When @from-custom and @to-custom are used, you must provide the equivalent in Gregorian calendar with @from and @to.</sch:assert>
+                            </sch:rule> </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="atLeast" mode="delete"/>
@@ -1605,7 +1668,7 @@
                         <attDef ident="key" mode="delete"/>
                         <attDef ident="max" mode="delete"/>
                         <attDef ident="min" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>                    
+                        <attDef ident="n" mode="delete"/>
                         <attDef ident="notAfter-iso" mode="delete"/>
                         <attDef ident="notBefore-iso" mode="delete"/>
                         <attDef ident="period" mode="delete"/>
@@ -1624,7 +1687,6 @@
                         <attDef ident="to-iso" mode="delete"/>
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="unit" mode="delete"/>
-                        <attDef ident="when-custom" mode="delete"/>
                         <attDef ident="when-iso" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
@@ -1824,7 +1886,8 @@
                 <elementSpec ident="fw" module="transcr" mode="change">
                     <constraintSpec scheme="schematron" ident="fw-after-pb">
                         <constraint><sch:context rule="tei:fw"><sch:report
-                            test="not(preceding-sibling::tei:pb[1])"> The element fw must always be
+                            test="not(preceding-sibling::tei:pb[1])"
+                            > The element fw must always be
                             preceded by the element pb. </sch:report></sch:context></constraint>
                     </constraintSpec>
                     <attList>
@@ -2053,7 +2116,8 @@
                 <elementSpec ident="head" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="head-childs">
                         <constraint><sch:rule context="tei:head/child::tei:*"><sch:assert
-                            test="local-name()= ('foreign')">Foreign is the only element allowed as
+                            test="local-name()= ('foreign')"
+                            >Foreign is the only element allowed as
                             child of the element head</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -2765,7 +2829,8 @@
                 <elementSpec ident="listApp" module="textcrit" mode="change">
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:listApp"><sch:assert
-                            test="ancestor::tei:div[@type='apparatus']">ListApp can only be used
+                            test="ancestor::tei:div[@type='apparatus']"
+                            >ListApp can only be used
                             inside the apparatus.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -2857,19 +2922,24 @@
                 <elementSpec ident="milestone" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="att-unit-n">
                         <constraint><sch:rule context="tei:milestone"><sch:report
-                            test="not(@unit and @n)"> for milestone using the attribut @unit, the
+                            test="not(@unit and @n)"
+                            > for milestone using the attribut @unit, the
                             attribute @n is mandatory</sch:report></sch:rule><sch:rule
                             context="tei:milestone[@type='yati']"><sch:assert
-                            test="@type='yati' and @break='no'">Caesuras work with both @type='yati'
+                            test="@type='yati' and @break='no'"
+                            >Caesuras work with both @type='yati'
                             and @break='no'.</sch:assert></sch:rule><sch:rule
                             context="tei:milestone[@type='ref']"><sch:assert
-                            test="ancestor::tei:div[@type='translation']">@type='ref' can only be
+                            test="ancestor::tei:div[@type='translation']"
+                            >@type='ref' can only be
                             used inside the translation part of the
                             edition</sch:assert></sch:rule><sch:rule
                             context="tei:milestone[@type='ref']"><sch:assert
-                            test="@unit='stanza' or @unit='line'">@type='ref' requires the use of
+                            test="@unit='stanza' or @unit='line'"
+                            >@type='ref' requires the use of
                             @unit="stanza" or @unit="line'</sch:assert></sch:rule><sch:rule
-                            context="tei:milestone[@type='ref']"><sch:report test="not(@n)">@n is
+                            context="tei:milestone[@type='ref']"><sch:report test="not(@n)"
+                            >@n is
                             mandatory with
                             milestone/@type="ref"</sch:report></sch:rule></constraint>
                     </constraintSpec>
@@ -3033,9 +3103,11 @@
                             >Note should the last element of the
                             biliography</sch:report></sch:rule><sch:rule
                             context="tei:note[parent::tei:app]"><sch:report
-                            test="not(following-sibling::tei:note)">Note(s) should the last element
+                            test="not(following-sibling::tei:note)"
+                            >Note(s) should the last element
                             of the apparatus entry</sch:report></sch:rule><sch:rule
-                            context="tei:note"><sch:report test="child::tei:note">Note(s) may not
+                            context="tei:note"><sch:report test="child::tei:note"
+                            >Note(s) may not
                             contain further notes (this is not a technical requirement but a
                             convention we shall observe to reduce
                             complication)</sch:report></sch:rule></constraint>
@@ -3085,10 +3157,12 @@
                 <elementSpec ident="num" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="valeur-or-interval">
                         <constraint><sch:rule context="tei:num"><sch:report
-                            test="@value and (@atMost or @atLeast)">@value can not be used with the
+                            test="@value and (@atMost or @atLeast)"
+                            >@value can not be used with the
                             attributes of date range</sch:report><sch:report
                             test="@atMost and not(@atLeast)">@atLeast is expected with
-                            @atMost</sch:report><sch:report test="@atLeast and not(@atMost)">@atMost
+                            @atMost</sch:report><sch:report
+                            test="@atLeast and not(@atMost)">@atMost
                             is expected with @atLeast</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -3634,11 +3708,14 @@
                 </elementSpec>
                 <elementSpec ident="rdg" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="exclusion-inside-lem">
-                        <constraint><sch:rule context="tei:rdg"><sch:report test="child::tei:p">The
+                        <constraint><sch:rule context="tei:rdg"><sch:report test="child::tei:p"
+                            >The
                             element p is not allowed in rdg</sch:report><sch:report
                             test="child::tei:ab">The element ab is not allowed in
-                            rdg</sch:report><sch:report test="child::tei:lg">The element lg is not
-                            allowed in rdg</sch:report><sch:report test="child::tei:l">The element l
+                            rdg</sch:report><sch:report
+                            test="child::tei:lg">The element lg is not
+                            allowed in rdg</sch:report><sch:report
+                            test="child::tei:l">The element l
                             is not allowed in rdg</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -3944,6 +4021,55 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="rs" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="rs-rules">
+                        <constraint> <sch:rule context="tei:rs[@type='month']"> <sch:assert
+                            test="@key='(caitra or vaisakha or jyaistha or asadha or sravana or bhadrapada or asvina or karttika or margasira or pausa or magha or phalguna)'"
+                            >
+                                with the @type="fortnight", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
+                            </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='fortnight']"> <sch:assert
+                            test="@subtype='(dark or bright)'">
+                                    with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='tithi']"> <sch:report test="@key"
+                            >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
+                                </sch:report> </sch:rule> <sch:rule
+                            context="tei:rs[@type='naksatra']"> <sch:assert
+                            test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)"
+                            >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert>
+                            </sch:rule> <sch:rule context="tei:rs[@type='sadvara']"> <sch:assert
+                            test="@key='(tunglai or hariyang or wurukung or paniruan or was or mawulu)'"
+                            >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
+                            </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='pancavara']"> <sch:assert
+                            test="@key='(pahing or pon or wagai or kaliwuan or umanis)'"
+                            >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='season']"> <sch:assert
+                            test="@key='(hemanta or grisma or varsa)'"
+                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='wuku']"> <sch:assert
+                            test="@key='(sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung)'"
+                            >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='chinese']"> <sch:assert
+                            test="@key='(rat or buffalo-ox or tiger or hare-cat or dragon or snake or horse or goat or monkey or cock or dog or pig)'"
+                            >With the @type='chinese', you can only use one of the following values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse, goat, monkey, cock, dog, pig.
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='solstice']"> <sch:assert
+                            test="@key='(winter or summer)'"
+                            >With the @type='solstice', you can only use one of the following values: winter or summer.
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='equinox']"> <sch:assert
+                            test="@key='(autumn or spring)'"
+                            >With the @type='equinox', you can only use one of the following values: autumn or spring.
+                                </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='eclipse']"> <sch:assert
+                            test="@key='(lunar or solar)'"
+                            >With the @type='eclipse', you can only use one of the following values: lunar or solar.
+                                </sch:assert> </sch:rule> </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
@@ -3951,7 +4077,6 @@
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="ref" mode="delete"/>
@@ -3980,8 +4105,8 @@
                                 <valItem ident="season"/>
                                 <valItem ident="wuku"/>
                                 <valItem ident="chinese"/>
-                                <valItem ident="jovian"/>
-                                <valItem ident="jovian"/>
+                                <valItem ident="jovian-12"/>
+                                <valItem ident="jovian-60"/>
                                 <valItem ident="sunZodiac"/>
                                 <valItem ident="lagna"/>
                                 <valItem ident="solstice"/>
@@ -3995,12 +4120,119 @@
                                 <valItem ident="bright"/>
                             </valList>
                         </attDef>
+                        <attDef ident="key" mode="change">
+                            <valList type="semi" mode="replace">
+                                <valItem ident="caitra"/>
+                                <valItem ident="vaisakha"/>
+                                <valItem ident="jyaistha"/>
+                                <valItem ident="asadha"/>
+                                <valItem ident="sravana"/>
+                                <valItem ident="bhadrapada"/>
+                                <valItem ident="asvina"/>
+                                <valItem ident="karttika"/>
+                                <valItem ident="margasira"/>
+                                <valItem ident="pausa"/>
+                                <valItem ident="magha"/>
+                                <valItem ident="phalguna"/>
+                                <valItem ident="krttika"/>
+                                <valItem ident="rohini"/>
+                                <valItem ident="mrgasirsa"/>
+                                <valItem ident="ardra"/>
+                                <valItem ident="punarvasu"/>
+                                <valItem ident="pusya"/>
+                                <valItem ident="aslesa"/>
+                                <valItem ident="magha"/>
+                                <valItem ident="purva-phalguni"/>
+                                <valItem ident="uttara-phalguni"/>
+                                <valItem ident="hasta"/>
+                                <valItem ident="citra"/>
+                                <valItem ident="svati"/>
+                                <valItem ident="visakha"/>
+                                <valItem ident="anuradha"/>
+                                <valItem ident="jyestha"/>
+                                <valItem ident="mula"/>
+                                <valItem ident="purva-asadha"/>
+                                <valItem ident="uttara-asadha"/>
+                                <valItem ident="sravana"/>
+                                <valItem ident="dhanistha"/>
+                                <valItem ident="satabhisaj"/>
+                                <valItem ident="purva-bhadrapada"/>
+                                <valItem ident="uttara-bhadrapada"/>
+                                <valItem ident="revati"/>
+                                <valItem ident="asvini"/>
+                                <valItem ident="bharani"/>
+                                <valItem ident="tunglai"/>
+                                <valItem ident="hariyang"/>
+                                <valItem ident="wurukung"/>
+                                <valItem ident="paniruan"/>
+                                <valItem ident="was"/>
+                                <valItem ident="mawulu"/>
+                                <valItem ident="pahing"/>
+                                <valItem ident="pon"/>
+                                <valItem ident="wagai"/>
+                                <valItem ident="kaliwuan"/>
+                                <valItem ident="umanis"/>
+                                <valItem ident="hemanta"/>
+                                <valItem ident="grisma"/>
+                                <valItem ident="varsa"/>
+                                <valItem ident="sinta"/>
+                                <valItem ident="landep"/>
+                                <valItem ident="wukir"/>
+                                <valItem ident="kurantil"/>
+                                <valItem ident="tolu"/>
+                                <valItem ident="gumbreg"/>
+                                <valItem ident="warigalit"/>
+                                <valItem ident="warigagung"/>
+                                <valItem ident="julung"/>
+                                <valItem ident="sungsang"/>
+                                <valItem ident="galungan"/>
+                                <valItem ident="dungulan"/>
+                                <valItem ident="kuningan"/>
+                                <valItem ident="langki"/>
+                                <valItem ident="madasiha"/>
+                                <valItem ident="pujut"/>
+                                <valItem ident="pahang"/>
+                                <valItem ident="kuruwlut"/>
+                                <valItem ident="marakih"/>
+                                <valItem ident="tambir"/>
+                                <valItem ident="madangkungan"/>
+                                <valItem ident="mahatal"/>
+                                <valItem ident="wuyai"/>
+                                <valItem ident="manahil"/>
+                                <valItem ident="prangbakat"/>
+                                <valItem ident="balamuki"/>
+                                <valItem ident="wugu"/>
+                                <valItem ident="wayang"/>
+                                <valItem ident="kulawu"/>
+                                <valItem ident="dukut"/>
+                                <valItem ident="watugunung"/>
+                                <valItem ident="rat"/>
+                                <valItem ident="buffalo-ox"/>
+                                <valItem ident="tiger"/>
+                                <valItem ident="hare-cat"/>
+                                <valItem ident="dragon"/>
+                                <valItem ident="snake"/>
+                                <valItem ident="horse"/>
+                                <valItem ident="goat"/>
+                                <valItem ident="monkey"/>
+                                <valItem ident="cock"/>
+                                <valItem ident="dog"/>
+                                <valItem ident="pig"/>
+                                <valItem ident="winter"/>
+                                <valItem ident="summer"/>
+                                <valItem ident="autumn"/>
+                                <valItem ident="spring"/>
+                                <valItem ident="lunar"/>
+                                <valItem ident="solar"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="seg" module="linking" mode="change">
                     <constraintSpec scheme="schematron" ident="att-type-subtype">
                         <constraint><sch:rule context="tei:seg"><sch:report
-                            test="@subtype and not(@type='component')">@subtype requires
+                            test="@subtype and not(@type='component')"
+                            >@subtype requires
                             @type='component' to be used</sch:report><sch:report
                             test="@cert='low' and not(ancestor::tei:div[@type='translation'])"
                             >seg[@cert='low'] can be used only in
@@ -4719,11 +4951,15 @@
                 </elementSpec>
                 <elementSpec ident="lem" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="exclusion-inside-lem">
-                        <constraint><sch:rule context="tei:lem"><sch:report test="child::tei:p">The
+                        <constraint><sch:rule context="tei:lem"><sch:report test="child::tei:p"
+                            >The
                             element p is not allowed in lem</sch:report><sch:report
                             test="child::tei:ab">The element ab is not allowed in
-                            lem</sch:report><sch:report test="child::tei:lg">The element lg is not
-                            allowed in lem</sch:report><sch:report test="count(child::tei:l) eq 1">Don't keep the l element in lem if you have only one of them</sch:report></sch:rule></constraint>
+                            lem</sch:report><sch:report
+                            test="child::tei:lg">The element lg is not
+                            allowed in lem</sch:report><sch:report
+                            test="count(child::tei:l) eq 1"
+                            >Don't keep the l element in lem if you have only one of them</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
