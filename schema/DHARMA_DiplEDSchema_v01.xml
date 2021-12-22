@@ -18,6 +18,8 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-12-22"
+                >Adding some attributes and values for dates as well as for rs.</change>
             <change who="part:axja" when="2021-12-20">Deleting the constraint of xml:id on pb</change>   
             <change who="part:axja" when="2021-11-25">Addin the value check on hi and unclear</change>
             <change who="part:axja" when="2021-10-22">adding @unit="book" with citedRange</change>
@@ -1345,17 +1347,46 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="date" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="attributes">
+                        <constraint> <sch:rule context="tei:date"> <sch:assert
+                            test="@when or (@notBefore and @notAfter) or (@from and @to)"
+                            >The content of the element date should be translated into the W3C format thanks to </sch:assert>
+                        </sch:rule> <sch:rule
+                            context="tei:date[@notBefore-custom or @notAfter-custom]"> <sch:assert
+                                test="@notBefore-custom and @notAfter-custom"
+                                >@notBefore-custom and @notAfter-custom must be used together</sch:assert>
+                        </sch:rule> <sch:rule context="tei:date[@notBefore or @notAfter]">
+                            <sch:assert test="@notBefore and @notAfter"
+                                >@notBefore and @notAfter must be used together</sch:assert> </sch:rule>
+                            <sch:rule context="tei:date[@from or @to]"> <sch:assert
+                                test="@from and @to"
+                                >The attributes @from and @to must be used together</sch:assert>
+                            </sch:rule> <sch:rule context="tei:date[@from-custom or @to-custom]">
+                                <sch:assert test="@from-custom and @to-custom"
+                                    >The attributes @from-custom and @to-custom must be used together</sch:assert>
+                            </sch:rule> <sch:rule
+                                context="tei:date[@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
+                                ><sch:assert test="@datingMethod"
+                                    >When using a custom attribute such as @when-custom or @notAfter-custom or @notBefore-custom, the attribute @datingMethod is mandatory and should declare the calendar used to convert the dates expressed in those previous attributes.</sch:assert></sch:rule>
+                            <sch:rule context="tei:date[@when-custom]"> <sch:assert test="@when"
+                                >When @when-custom is used, you must provide an equivalent date in the official calendar of the project with @when. (Gregorian or Julian?)</sch:assert>
+                            </sch:rule> <sch:rule context="@notBefore-custom and @notAfter-custom">
+                                <sch:assert test="@notBefore and @notAfter"
+                                    >When @notBefore-custom and @notAfter-custom are used, you must provide the equivalent in Gregorian calendar with @notBefore and @notAfter.</sch:assert>
+                            </sch:rule> <sch:rule context="@from-custom and @to-custom"> <sch:assert
+                                test="@from and @to"
+                                >When @from-custom and @to-custom are used, you must provide the equivalent in Gregorian calendar with @from and @to.</sch:assert>
+                            </sch:rule> </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="atLeast" mode="delete"/>
                         <attDef ident="atMost" mode="delete"/>
-                        <attDef ident="calendar" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
                         <attDef ident="confidence" mode="delete"/>
                         <attDef ident="copyOf" mode="delete"/>
                         <attDef ident="corresp" mode="delete"/>
-                        <attDef ident="datingMethod" mode="delete"/>
                         <attDef ident="datingPoint" mode="delete"/>
                         <attDef ident="dur" mode="delete"/>
                         <attDef ident="dur-iso" mode="delete"/>
@@ -1363,23 +1394,15 @@
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="extent" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
-                        <attDef ident="from-custom" mode="delete"/>
                         <attDef ident="from-iso" mode="delete"/>
                         <attDef ident="instant" mode="delete"/>
                         <attDef ident="key" mode="delete"/>
                         <attDef ident="max" mode="delete"/>
                         <attDef ident="min" mode="delete"/>
                         <attDef ident="n" mode="delete"/>
-                        <attDef ident="next" mode="delete"/>
-                        <attDef ident="notAfter" mode="delete"/>
-                        <attDef ident="notAfter-custom" mode="delete"/>
                         <attDef ident="notAfter-iso" mode="delete"/>
-                        <attDef ident="notBefore" mode="delete"/>
-                        <attDef ident="notBefore-custom" mode="delete"/>
                         <attDef ident="notBefore-iso" mode="delete"/>
                         <attDef ident="period" mode="delete"/>
-                        <attDef ident="precision" mode="delete"/>
-                        <attDef ident="prev" mode="delete"/>
                         <attDef ident="quantity" mode="delete"/>
                         <attDef ident="ref" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
@@ -1392,16 +1415,54 @@
                         <attDef ident="style" mode="delete"/>
                         <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="to-custom" mode="delete"/>
                         <attDef ident="to-iso" mode="delete"/>
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="unit" mode="delete"/>
-                        <attDef ident="when-custom" mode="delete"/>
                         <attDef ident="when-iso" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="calendar" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="cal:uncertain"/>
+                                <valItem ident="cal:regnal"/>
+                                <valItem ident="cal:śaka"/>
+                                <valItem ident="cal:vikrama"/>
+                                <valItem ident="cal:kaniska"/>
+                                <valItem ident="cal:julian"/>
+                                <valItem ident="cal:kushan2"/>
+                                <valItem ident="cal:kalacuri"/>
+                                <valItem ident="cal:gupta"/>
+                                <valItem ident="cal:saptarsi"/>
+                                <valItem ident="cal:kali"/>
+                                <valItem ident="cal:laukika"/>
+                                <valItem ident="cal:hijra"/>
+                                <valItem ident="cal:nirvana"/>
+                                <valItem ident="cal:kollam"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="datingMethod" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="cal:uncertain"/>
+                                <valItem ident="cal:regnal"/>
+                                <valItem ident="cal:śaka"/>
+                                <valItem ident="cal:vikrama"/>
+                                <valItem ident="cal:kaniska"/>
+                                <valItem ident="cal:julian"/>
+                                <valItem ident="cal:kushan"/>
+                                <valItem ident="cal:kalacuri"/>
+                                <valItem ident="cal:gupta"/>
+                                <valItem ident="cal:saptarsi"/>
+                                <valItem ident="cal:kali"/>
+                                <valItem ident="cal:laukika"/>
+                                <valItem ident="cal:hijra"/>
+                                <valItem ident="cal:nirvana"/>
+                                <valItem ident="cal:kollam"/>
+                                <valItem ident="cal:burmese"/>
+                                <valItem ident="cal:sanjaya"/>
+                                <valItem ident="ca::valabhi"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <classSpec ident="att.global" type="atts" mode="change" module="tei">
@@ -3402,6 +3463,55 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="rs" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="rs-rules">
+                        <constraint> <sch:rule context="tei:rs[@type='month']"> <sch:assert
+                            test="@key='(caitra or vaisakha or jyaistha or asadha or sravana or bhadrapada or asvina or karttika or margasira or pausa or magha or phalguna)'"
+                            >
+                            with the @type="fortnight", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
+                        </sch:assert> </sch:rule> <sch:rule
+                            context="tei:rs[@type='fortnight']"> <sch:assert
+                                test="@subtype='(dark or bright)'">
+                                with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
+                            </sch:assert> </sch:rule> <sch:rule
+                                context="tei:rs[@type='tithi']"> <sch:report test="@key"
+                                    >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
+                                </sch:report> </sch:rule> <sch:rule
+                                    context="tei:rs[@type='naksatra']"> <sch:assert
+                                        test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)"
+                                        >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert>
+                                </sch:rule> <sch:rule context="tei:rs[@type='sadvara']"> <sch:assert
+                                    test="@key='(tunglai or hariyang or wurukung or paniruan or was or mawulu)'"
+                                    >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
+                                </sch:assert> </sch:rule> <sch:rule
+                                    context="tei:rs[@type='pancavara']"> <sch:assert
+                                        test="@key='(pahing or pon or wagai or kaliwuan or umanis)'"
+                                        >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
+                                    </sch:assert> </sch:rule> <sch:rule
+                                        context="tei:rs[@type='season']"> <sch:assert
+                                            test="@key='(hemanta or grisma or varsa)'"
+                                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
+                                        </sch:assert> </sch:rule> <sch:rule
+                                            context="tei:rs[@type='wuku']"> <sch:assert
+                                                test="@key='(sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung)'"
+                                                >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
+                                            </sch:assert> </sch:rule> <sch:rule
+                                                context="tei:rs[@type='chinese']"> <sch:assert
+                                                    test="@key='(rat or buffalo-ox or tiger or hare-cat or dragon or snake or horse or goat or monkey or cock or dog or pig)'"
+                                                    >With the @type='chinese', you can only use one of the following values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse, goat, monkey, cock, dog, pig.
+                                                </sch:assert> </sch:rule> <sch:rule
+                                                    context="tei:rs[@type='solstice']"> <sch:assert
+                                                        test="@key='(winter or summer)'"
+                                                        >With the @type='solstice', you can only use one of the following values: winter or summer.
+                                                    </sch:assert> </sch:rule> <sch:rule
+                                                        context="tei:rs[@type='equinox']"> <sch:assert
+                                                            test="@key='(autumn or spring)'"
+                                                            >With the @type='equinox', you can only use one of the following values: autumn or spring.
+                                                        </sch:assert> </sch:rule> <sch:rule
+                                                            context="tei:rs[@type='eclipse']"> <sch:assert
+                                                                test="@key='(lunar or solar)'"
+                                                                >With the @type='eclipse', you can only use one of the following values: lunar or solar.
+                                                            </sch:assert> </sch:rule> </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
@@ -3409,10 +3519,7 @@
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
-                        <attDef ident="key" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
-                        <attDef ident="nymRef" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="ref" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
@@ -3423,13 +3530,144 @@
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="source" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
-                        <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="type" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="type" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="month"/>
+                                <valItem ident="fortnight"/>
+                                <valItem ident="tithi"/>
+                                <valItem ident="weekday"/>
+                                <valItem ident="naksatra"/>
+                                <valItem ident="sadvara"/>
+                                <valItem ident="pancavara"/>
+                                <valItem ident="season"/>
+                                <valItem ident="wuku"/>
+                                <valItem ident="chinese"/>
+                                <valItem ident="jovian-12"/>
+                                <valItem ident="jovian-60"/>
+                                <valItem ident="sunZodiac"/>
+                                <valItem ident="lagna"/>
+                                <valItem ident="solstice"/>
+                                <valItem ident="equinoxe"/>
+                                <valItem ident="eclipse"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="subtype" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="dark"/>
+                                <valItem ident="bright"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="key" mode="change">
+                            <valList type="semi" mode="replace">
+                                <valItem ident="caitra"/>
+                                <valItem ident="vaisakha"/>
+                                <valItem ident="jyaistha"/>
+                                <valItem ident="asadha"/>
+                                <valItem ident="sravana"/>
+                                <valItem ident="bhadrapada"/>
+                                <valItem ident="asvina"/>
+                                <valItem ident="karttika"/>
+                                <valItem ident="margasira"/>
+                                <valItem ident="pausa"/>
+                                <valItem ident="magha"/>
+                                <valItem ident="phalguna"/>
+                                <valItem ident="krttika"/>
+                                <valItem ident="rohini"/>
+                                <valItem ident="mrgasirsa"/>
+                                <valItem ident="ardra"/>
+                                <valItem ident="punarvasu"/>
+                                <valItem ident="pusya"/>
+                                <valItem ident="aslesa"/>
+                                <valItem ident="magha"/>
+                                <valItem ident="purva-phalguni"/>
+                                <valItem ident="uttara-phalguni"/>
+                                <valItem ident="hasta"/>
+                                <valItem ident="citra"/>
+                                <valItem ident="svati"/>
+                                <valItem ident="visakha"/>
+                                <valItem ident="anuradha"/>
+                                <valItem ident="jyestha"/>
+                                <valItem ident="mula"/>
+                                <valItem ident="purva-asadha"/>
+                                <valItem ident="uttara-asadha"/>
+                                <valItem ident="sravana"/>
+                                <valItem ident="dhanistha"/>
+                                <valItem ident="satabhisaj"/>
+                                <valItem ident="purva-bhadrapada"/>
+                                <valItem ident="uttara-bhadrapada"/>
+                                <valItem ident="revati"/>
+                                <valItem ident="asvini"/>
+                                <valItem ident="bharani"/>
+                                <valItem ident="tunglai"/>
+                                <valItem ident="hariyang"/>
+                                <valItem ident="wurukung"/>
+                                <valItem ident="paniruan"/>
+                                <valItem ident="was"/>
+                                <valItem ident="mawulu"/>
+                                <valItem ident="pahing"/>
+                                <valItem ident="pon"/>
+                                <valItem ident="wagai"/>
+                                <valItem ident="kaliwuan"/>
+                                <valItem ident="umanis"/>
+                                <valItem ident="hemanta"/>
+                                <valItem ident="grisma"/>
+                                <valItem ident="varsa"/>
+                                <valItem ident="sinta"/>
+                                <valItem ident="landep"/>
+                                <valItem ident="wukir"/>
+                                <valItem ident="kurantil"/>
+                                <valItem ident="tolu"/>
+                                <valItem ident="gumbreg"/>
+                                <valItem ident="warigalit"/>
+                                <valItem ident="warigagung"/>
+                                <valItem ident="julung"/>
+                                <valItem ident="sungsang"/>
+                                <valItem ident="galungan"/>
+                                <valItem ident="dungulan"/>
+                                <valItem ident="kuningan"/>
+                                <valItem ident="langki"/>
+                                <valItem ident="madasiha"/>
+                                <valItem ident="pujut"/>
+                                <valItem ident="pahang"/>
+                                <valItem ident="kuruwlut"/>
+                                <valItem ident="marakih"/>
+                                <valItem ident="tambir"/>
+                                <valItem ident="madangkungan"/>
+                                <valItem ident="mahatal"/>
+                                <valItem ident="wuyai"/>
+                                <valItem ident="manahil"/>
+                                <valItem ident="prangbakat"/>
+                                <valItem ident="balamuki"/>
+                                <valItem ident="wugu"/>
+                                <valItem ident="wayang"/>
+                                <valItem ident="kulawu"/>
+                                <valItem ident="dukut"/>
+                                <valItem ident="watugunung"/>
+                                <valItem ident="rat"/>
+                                <valItem ident="buffalo-ox"/>
+                                <valItem ident="tiger"/>
+                                <valItem ident="hare-cat"/>
+                                <valItem ident="dragon"/>
+                                <valItem ident="snake"/>
+                                <valItem ident="horse"/>
+                                <valItem ident="goat"/>
+                                <valItem ident="monkey"/>
+                                <valItem ident="cock"/>
+                                <valItem ident="dog"/>
+                                <valItem ident="pig"/>
+                                <valItem ident="winter"/>
+                                <valItem ident="summer"/>
+                                <valItem ident="autumn"/>
+                                <valItem ident="spring"/>
+                                <valItem ident="lunar"/>
+                                <valItem ident="solar"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="seg" module="linking" mode="change">
