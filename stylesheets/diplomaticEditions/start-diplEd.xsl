@@ -2747,10 +2747,10 @@
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
             <xsl:attribute name="class">collapse</xsl:attribute>
-            <xsl:element name="h4">
+            <!--<xsl:element name="h4">
                 <xsl:attribute name="class">text-align-center</xsl:attribute>
                 <xsl:text>Document Outline</xsl:text>
-            </xsl:element>
+            </xsl:element>-->
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
                 <xsl:element name="ul">
