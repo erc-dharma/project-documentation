@@ -31,7 +31,7 @@
 						innovation programme (grant agreement no 809994).</note>
 				</authority>
 				<pubPlace><!-- Fill in here the place or places where the encoding has been done --></pubPlace>
-				<idno type="filename">DHARMA_EncodingTemplateInscription</idno>
+				<idno type="filename">DHARMA_encodingTemplateInscription</idno>
 				<!-- Replace by filename, e.g. Pallava00001 -->
 				<availability>
 					<licence target="https://creativecommons.org/licenses/by/4.0/">
