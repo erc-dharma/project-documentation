@@ -37,7 +37,7 @@
     
     <xsl:template match="H">
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
-            <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-chicago-author-date_v01.csl</xsl:variable>
+            <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
             <xsl:variable name="bibref">
                 <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
             </xsl:variable>
@@ -59,7 +59,7 @@
     
     <xsl:template match="H1">
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
-        <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-chicago-author-date_v01.csl</xsl:variable>
+        <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
         <xsl:variable name="bibref">
             <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
         </xsl:variable>

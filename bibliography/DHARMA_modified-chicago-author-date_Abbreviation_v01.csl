@@ -7,7 +7,7 @@
   -->
     <id>https://github.com/erc-dharma/project-documentation/blob/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl</id>
     <!-- For now the file will only be available on github-->
-    <link href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-chicago-author-date_v01.csl" rel="self"/>
+    <link href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl" rel="self"/>
     <link href="https://github.com/erc-dharma/project-documentation/blob/master/bibliography/DHARMA_addingCSLZotero_v01.md" rel="documentation"/>
     <link href="http://www.chicagomanualofstyle.org/tools_citationguide.html" rel="documentation"/>
     <author>
