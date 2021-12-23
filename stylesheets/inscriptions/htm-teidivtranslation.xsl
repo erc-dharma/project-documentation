@@ -138,8 +138,8 @@
      <!-- <xsl:message>sought = <xsl:value-of select="$sought"/> and <xsl:value-of select="count($sought)"/></xsl:message>-->
       <xsl:variable name="dharma-path">
          <xsl:choose>
-            <xsl:when test="$edn-structure='default'">../../DHARMA_IdListMembers_v01.xml</xsl:when>
-            <xsl:otherwise>https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml</xsl:otherwise>
+            <xsl:when test="$edn-structure='default'">../../DHARMA_idListMembers_v01.xml</xsl:when>
+            <xsl:otherwise>https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListMembers_v01.xml</xsl:otherwise>
          </xsl:choose>
       </xsl:variable>
                     	<!-- Debugging message-->

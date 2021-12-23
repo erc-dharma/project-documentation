@@ -560,7 +560,7 @@
     <xsl:choose>
         <xsl:when test=".[tei:ptr]">
             <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
-            <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_v01.csl</xsl:variable>
+            <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-chicago-author-date_v01.csl</xsl:variable>
             <xsl:variable name="zoteroomitname">
                 <xsl:value-of
                     select="unparsed-text(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
@@ -1647,7 +1647,7 @@
         <xsl:param name="MSlink"/>
         <xsl:variable name="rootId" select="//tei:TEI/@xml:id"/>
         <xsl:variable name="rootHand" select="//tei:handDesc"/>
-        <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml</xsl:variable>
+        <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
                <xsl:choose>
                    <xsl:when test="contains($MSlink, 'txt:')">
                        <xsl:variable name="MSlink-part" select="substring-after($MSlink, 'txt:')"/>
@@ -3105,7 +3105,7 @@
         </xsl:for-each>
        </xsl:element>-->
 
-        <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml
+        <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml
         </xsl:variable>
                     <xsl:for-each select="descendant-or-self::tei:app">             
                         <xsl:if test="@type">

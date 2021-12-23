@@ -59,7 +59,7 @@ bibliography. All examples only cater for book and article.
 		<xsl:param name="parm-zoteroNS" tunnel="yes" required="no"/>
 		<xsl:param name="parm-zoteroStyle" tunnel="yes" required="no"/>
 		<xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-		<xsl:variable name="var-zoteroStyle-abb">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Modified-chicago-author-date_Abbreviation_v01.csl</xsl:variable>
+		<xsl:variable name="var-zoteroStyle-abb">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-chicago-author-date_Abbreviation_v01.csl</xsl:variable>
 
 		<xsl:choose>
 			<!-- default general zotero behaviour prints
