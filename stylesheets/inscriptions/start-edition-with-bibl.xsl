@@ -11,7 +11,6 @@
      <xsl:output-character character="&apos;" string="&amp;rsquo;" />
    </xsl:character-map>
 
-
    <xsl:include href="global-varsandparams.xsl"/>
    <!-- addition for DHARMA for teipersName and placeName -->
    <xsl:include href="htm-indexable.xsl"/>

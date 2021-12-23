@@ -86,9 +86,11 @@ bibliography. All examples only cater for book and article.
 
 						<!--						check if a namespace is provided for tags/xml:ids and use it as part of the tag for zotero-->
 						<xsl:variable name="biblentry"
+							
 							select="replace(substring-after(./t:ptr/@target, ':'), '\+', '%2B')"/>
 							<!-- Debugging message-->
 								<!--	<xsl:message>biblentry= <xsl:value-of select="$biblentry"/></xsl:message>-->
+						
 
 						<xsl:variable name="zoteroapitei">
 
@@ -208,12 +210,12 @@ bibliography. All examples only cater for book and article.
 						</a>
 								<xsl:if test="t:citedRange">
 									<xsl:choose>
-									<xsl:when test="t:citedRange and not(ancestor::t:cit)">
-									<xsl:text>: </xsl:text>
-								</xsl:when>
 								<xsl:when test="t:citedRange and ancestor::t:cit">
 									<xsl:text>, </xsl:text>
 								</xsl:when>
+								<xsl:otherwise>
+								<xsl:text>: </xsl:text>
+							</xsl:otherwise>
 							</xsl:choose>
 									<xsl:for-each select="t:citedRange">
 										<xsl:call-template name="citedRange-unit"/>
@@ -226,7 +228,7 @@ bibliography. All examples only cater for book and article.
 											</i>
 										</xsl:when>
 										<xsl:otherwise>-->
-										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+										<xsl:apply-templates select="normalize-space(replace(., '-', '–'))"/>
 								<!--	</xsl:otherwise>
 							</xsl:choose>-->
 
