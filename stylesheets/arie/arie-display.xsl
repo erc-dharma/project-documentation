@@ -15,7 +15,11 @@
             <xsl:call-template name="dharma-head"/>
             <xsl:element name="body">
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
+                <xsl:attribute name="data-spy">scroll</xsl:attribute>
+                <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
+                <xsl:call-template name="table-contents"/>
+                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                 <xsl:apply-templates/>
@@ -149,6 +153,9 @@
         <xsl:for-each select=".">
             <xsl:element name="div">
                 <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
+                <xsl:attribute name="id">
+                    <xsl:value-of select="generate-id()"/>
+                </xsl:attribute>
                 <xsl:call-template name="number"/>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-7</xsl:attribute>
@@ -430,9 +437,12 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <!-- scrollbar CSS -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-css.css"></link>
                 
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
     </xsl:template>
@@ -516,6 +526,90 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
+        <!-- scrollbar -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- loader arie -->
+        <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
+    </xsl:template>
+    
+    <!-- side bar -->
+    <!-- side bar - table of contents -->
+    <xsl:template name="table-contents">
+        <xsl:element name="div">
+            <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>
+            <xsl:element name="nav">
+                <xsl:attribute name="id">myScrollspy</xsl:attribute>
+                <xsl:element name="ul">
+                    <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
+                    <xsl:for-each select="INSCRIPTION | MANUSCRIPT">
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link text-align-justify</xsl:attribute>
+                                <xsl:attribute name="href">
+                                    <xsl:text>#</xsl:text>
+                                    <xsl:value-of select="generate-id()"/>
+                                </xsl:attribute>
+                                <xsl:call-template name="number"/>
+                                <!--<xsl:choose>
+                                    <xsl:when test="@type">
+                                        <xsl:value-of select="@type"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:choose>
+                                            <xsl:when test="child::tei:ab[1]">
+                                                <xsl:value-of select="child::tei:ab/@type"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="name()"/>  
+                                            </xsl:otherwise>
+                                        </xsl:choose>                     
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                                <xsl:text> </xsl:text>
+                                <xsl:value-of select="@n"/>-->
+                            </xsl:element>
+                            <!--<xsl:if test="descendant::tei:div">
+                                <xsl:element name="ul">
+                                    <xsl:attribute name="class">navbar-nav nav-second</xsl:attribute>
+                                    <xsl:for-each select="descendant::tei:div">
+                                        
+                                        <xsl:element name="li">
+                                            <xsl:attribute name="class">nav-item-second nav-item</xsl:attribute>
+                                            <xsl:element name="a">
+                                                <xsl:attribute name="class">nav-link-second nav-link</xsl:attribute>
+                                                <xsl:attribute name="href">
+                                                    <xsl:text>#</xsl:text>
+                                                    <xsl:value-of select="@xml:id"/>
+                                                </xsl:attribute>
+                                                <xsl:choose>
+                                                    <xsl:when test="@type">
+                                                        <xsl:value-of select="@type"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <xsl:choose>
+                                                            <xsl:when test="child::tei:ab[1]">
+                                                                <xsl:value-of select="child::tei:ab/@type"/>
+                                                            </xsl:when>
+                                                            <xsl:otherwise>
+                                                                <xsl:value-of select="name()"/>  
+                                                            </xsl:otherwise>
+                                                        </xsl:choose>                     
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                                <xsl:text> </xsl:text>
+                                                <xsl:value-of select="@n"/>
+                                            </xsl:element>
+                                        </xsl:element>
+                                    </xsl:for-each>
+                                </xsl:element>
+                            </xsl:if>-->
+                        </xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
     </xsl:template>
     
 </xsl:stylesheet>
