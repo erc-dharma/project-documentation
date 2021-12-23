@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" xml:id="id" type="edition"><!-- update the @xml:id at the base with the DHARMA ID, see FNC. -->
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title type="main">Encoding Template for Critical Editions</title>
+				<!--Change the title of the file with the name of your text-->
+				<title type="sub">Digital Critical Edition of...</title>
+				<!-- fill in the subtitle if necessary -->
+				<!-- Possibility to add the <editor> tag:
+        <editor ref="part:ID">
+					<forename></forename>
+					<surname></surname>
+				</editor>
+				OR
+				<editor ref="part:ID">
+					<name></name>
+				</editor>
+        -->
+				<respStmt>
+					<!-- repeat the respStmt when necessary -->
+					<resp>creation of the file</resp>
+					<!-- work done in the file, e.g. editor, intellectual authorship of edition ...-->
+					<persName ref="part:jodo"><!-- update the id -->
+						<forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
+						<surname>Doe</surname>
+					</persName>
+				</respStmt>
+			</titleStmt>
+			<publicationStmt>
+				<authority>DHARMA</authority>
+				<pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
+				<idno type="filename">DHARMA_templateCriticalEditions_v01</idno>
+				<!-- Replace by filename, e.g. DHARMA_CritEdSiksaGuru -->
+				<availability>
+					<licence target="https://creativecommons.org/licenses/by/4.0/">
+						<p>This work is licenced under the Creative Commons Attribution 4.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
+						<p>Copyright (c) 2019-2025 by John Doe.</p><!-- Replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
+					</licence>
+				</availability>
+				<date from="2019" to="2025">2019-2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<listWit>
+					<!-- One witness for each manuscript. Update the content -->
+					<witness xml:id="fakeID">
+						<!-- Give your witness an unique identifier -->
+						<abbr type="siglum"></abbr>
+						<!-- Fill in the abbr @type="siglum" with the expected display for the witness siglum. Use <hi> with @rend for superscript and subscript -->
+						<msDesc>
+							<msIdentifier>
+								<settlement>Leiden</settlement>
+								<institution>University Library (UB)</institution>
+								<repository>Lontar</repository>
+								<idno>Or. 23732</idno>
+							</msIdentifier>
+							<msContents>
+								<!-- the msContents isn't mandatory -->
+								<msItem>
+									<author>Śāntarakṣita</author>
+									<title>Vipañcitārthā</title>
+									<!-- You can also add a colophon if needed -->
+									<!--<colophon></colophon> -->
+								</msItem>
+							</msContents>
+							<physDesc>
+								<objectDesc>
+									<!-- Here you can give a physical description of the manuscript in prose-->
+									<p>Palm-leaf manuscript. 89 leaves in Kuṭilā script. Apparently written in 1152 A.C.</p>
+								</objectDesc>
+								<handDesc> <!-- Add an attribute @hands if you have more than one hand -->
+									<!-- Create a handNote for each hand -->
+									<handNote xml:id= "A1_H1" scriptRef="class:57470 maturity:83215"> <!-- update the content of the @xml:id and the @scriptRef -->
+										<abbr type="hand">A<hi rend="superscript">1</hi>H<hi rend="subscript">1</hi></abbr><!-- Give the abbreviation siglum for the hand build on siglum-of-the-manuscript_H1, the number being incremental -->
+										<p>main hand of the manuscript, black ink, Sundanese script</p><!-- provide a description of the hand -->
+									</handNote>
+								</handDesc>
+							</physDesc>
+							<history>
+								<!-- Here you can decribe the history of the manuscript in prose. Use <origDate> and <origPlace> to emphasize the place and date of creation -->
+								<p>In June 1934, Sāṅkṛtyāyana found this manuscript in the monastery of Kun-de-ling (Lhasa).</p>
+							</history>
+						</msDesc>
+					</witness>
+				</listWit>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<projectDesc>
+				<!-- Part mandatory -->
+				<p>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
+				<!-- Optionally add here a second <p> to describe the specifics of the subproject that has led to this edition. -->
+			</projectDesc>
+			<editorialDecl>
+				<!-- As stated in the EGC, this element shall be used only if your edition follows principles that are different from or more fine-grained than those established in the project's guides. Among the following elements, you may keep only the ones your need for your edition. If you use one, its contents must be contained in at least one <p> of free text. If you don't need any <editorialDecl> at all, you may eventually remove this entire section of the file. -->
+				<correction>
+					<p/>
+				</correction>
+				<normalization>
+					<p/>
+				</normalization>
+				<punctuation>
+					<p/>
+				</punctuation>
+				<interpretation>
+					<p>The asterisk * is used to flag lemmata or forms of lemmata not recorded in the <title>Old Javanese-English Dictionary</title>.</p>
+				</interpretation>
+			</editorialDecl>
+			<samplingDecl>
+				<!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
+				<p/>
+			</samplingDecl>
+			<schemaRef type="guide" key=" EGCv01" url="https://docs.google.com/document/d/15HFxHJTOzIU1UDyVrB2yQYJ5wI6JyEshEkYgg5qwj8M/edit#"/>
+			<!-- Will need to be updated once a more official realase is done -->
+			
+			<!-- variantEncoding is a  mandatory element. You have to select one of the two solutions given in DHARMA depending how you chave chosen to encode your apparatus. If inline, select @method="parallel-segmentation" as per section §5 of EGC, but if you are encoding your apparatus after any section, mostly being stanza, use  @method="location-referenced". 
+				
+			<variantEncoding method="parallel-segmentation" location="internal"/>
+			<variantEncoding method="location-referenced" location="internal"/>.
+			
+			Note that the current by default behaviour is set on parallel-segmentation -->
+			<variantEncoding method="parallel-segmentation" location="internal"/>
+			<!-- Part mandatory -->
+			<listPrefixDef>
+				<prefixDef ident="bib" matchPattern="([a-zA-Z0-9\-\_]+)" replacementPattern="https://www.zotero.org/groups/1633743/erc-dharma/items/tag/$1">
+					<p>Public URIs with the prefix bib to point to a Zotero Group Library named ERC-DHARMA whose data are open to the public.</p>
+				</prefixDef>
+				<prefixDef ident="part" matchPattern="([a-z]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListMembers_v01.xml#$1">
+					<p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_v01.xml</ref> file.</p>
+				</prefixDef>
+				<prefixDef ident="txt" matchPattern="([A-Za-z0-9]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_IdListTexts_v01.xml#$1">
+					<p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_IdListMembers_v01.xml</ref> file.</p>
+				</prefixDef>
+				<prefixDef ident="class" matchPattern="([0-9]+)" replacementPattern="tba">
+					<p>Referential with the prefix class for script classification declared inside OpenTheso to be mapped with ARK URIs opened to the public.</p>
+				</prefixDef>
+				<prefixDef ident="maturiy" matchPattern="(0-9]+)" replacementPattern="tba">
+					<p>Referential with the prefix maturity for script maturity declared inside OpenTheso to be mapped with ARK URIs opened to the public</p>
+				</prefixDef>
+				<prefixDef ident="cal" matchPattern="([\w]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/templates/DHARMA_calendarDesc_v01.xml#$1">
+					<p>Internal URIs using the cal prefix to point to calendar systems in  <ref>DHARMA_calendarDesc_v01.xml</ref> file.</p></prefixDef>
+			</listPrefixDef>
+		</encodingDesc>
+		<profileDesc>
+			<langUsage>
+				<!-- choose the language(s) of your text, remove the others -->
+				<language ident="san-Latn">Sanskrit, romanized</language>
+				<language ident="kaw-Latn">Old Javanese, romanized</language>
+				<language ident="osn-Latn">Old Sundanese, romanized</language>
+				<language ident="tam-Latn">Tamil, romanized</language>
+				<language ident="kan-Latn">Kannada, romanized</language>
+				<language ident="tel-Latn">Telugu, romanized</language>
+			</langUsage>
+			<textClass>
+				<keywords>
+					<!-- In due course we will can use this element to declare keywords as <term>s, but at the moment please ignore <keywords>  -->
+					<term/>
+					<!-- Ignore this element for the time being. -->
+				</keywords>
+			</textClass>
+		</profileDesc>
+		<revisionDesc>
+			<change who="part:axja" when="2021-12-23" status="draft">Updating the content for variantEncoding</change>
+			<change who="part:axja" when="2022-12-22">Adding the ref to the calendar system</change>
+			<change who="part:axja" when="2021-10-26">Adding the link for the RelxNg and the </change>
+			<change who="part:axja" when="2021-10-20">Adding the abbr</change>
+			<change who="part:axja" when="2021-09-27">Adding the colophon in msItem of witness</change>
+			<change who="part:axja" when="2021-09-08">Adding the interpreation element in editorialDecl and importing the paragraph about asterisk</change>
+			<change who="part:argr" when="2020-11-27" status="draft">Modifications of the template</change>
+			<change who="part:axja" when="2020-01-06" status="draft">Creation of the template</change>
+			<!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
+		</revisionDesc>
+	</teiHeader>
+	<text xml:space="preserve" xml:lang="lg-code"><!-- update the language code -->
+		<body>
+			<div>
+	  	<!-- Structure as necessary with <div>, <p>, <ab>, <lg> depending the nature of the text -->
+			</div>
+			    <!--<xi:include href="a.xml" xpointer="a1"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/>-->
+		</body>
+	</text>
+</TEI>

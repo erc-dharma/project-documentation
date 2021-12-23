@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>DHARMA Calendar declaration</title>
+            <funder>European Research Council</funder>
+            <principal ref="part:emfr">Emmanuel Francis</principal>
+            <principal ref="part:argr">Arlo Griffiths</principal>
+            <principal ref="part:ansc">Annette Schmiedchen</principal>
+            <respStmt>
+               <name ref="part:axja">Axelle Janiak</name>
+               <resp>XML-TEI Data Manager</resp>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <authority>DHARMA Project (ERC 809994): The Domestication of “Hindu” Asceticism and
+               the Religious Making of South and Southeast Asia (2019–2025).</authority>
+            <date>2019-2025</date>
+            <idno type="filename">DHARMA_calendarDesc_v01</idno>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>This work is licenced under the Creative Commons Attribution 2.0 Unported
+                     Licence. To view a copy of the licence, visit
+                     https://creativecommons.org/licenses/by/4.0/ or send a letter to
+                     Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+                     California, 94041, USA.</p>
+                  <!-- Adding a relevant copyright and the way to quote the file.  -->
+               </licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Natively Digital</p>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <abstract>
+            <p>List of all the calendar used in the DHARMA project. </p>
+         </abstract>
+      </profileDesc>
+      <revisionDesc status="draft">
+         <change who="part:axja" when="2021-12-22" status="draft"
+            >Creation of the file, adding some informations and minimal metadata</change>
+      </revisionDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <list type="calendar">
+   <item xml:id="burmese">
+      <p>Burmese era</p>
+   </item>
+   <item xml:id="gupta">
+      <p>Gupta era</p>
+   </item>
+   <item xml:id="hijra">
+      <p>Hijra era</p>
+   </item>
+   <item xml:id="julian">
+      <p>Julian era</p>
+   </item>
+   <item xml:id="kalacuri">
+      <p>Kalacuri era</p>
+   </item>
+      <item xml:id="kali">
+         <p>Kali era</p>
+      </item>
+      <item xml:id="kaniska">
+         <p>Kaniska era</p>
+      </item>
+      <item xml:id="kollam">
+         <p>Kollam era</p>
+      </item>
+      <item xml:id="kushan">
+         <p>Kushan era</p>
+      </item>
+   <item xml:id="laukika">
+      <p>Laukika era</p>
+   </item>
+   <item xml:id="nirvana">
+      <p>Nirvana era</p>
+   </item>
+   <item xml:id="regnal">
+      <p>Regnal era</p>
+   </item>
+   <item xml:id="śaka">
+      <p>Saka era</p>
+   </item>
+   <item xml:id="sanjaya">
+      <p>Sanjaya era</p>
+   </item>
+   <item xml:id="saptarsi">
+      <p>Saptarsi era</p>
+   </item>
+   <item xml:id="valabhi">
+      <p>Valabhi era</p>
+   </item>
+   <item xml:id="vikrama">
+      <p>Vikrama era</p>
+   </item>
+   <item xml:id="uncertain">
+      <p>Unknown era</p>
+   </item>
+    </list>
+         
+         <!--<calendarDesc>
+            <calendar xml:id="burmese">
+               <p>Burmese era</p>
+            </calendar>
+            <calendar xml:id="gupta">
+               <p>Gupta era</p>
+            </calendar>
+            <calendar xml:id="hijra">
+               <p>Hijra era</p>
+            </calendar>
+            <calendar xml:id="julian">
+               <p>Julian era</p>
+            </calendar>
+            <calendar xml:id="kalacuri">
+               <p>Kalacuri era</p>
+            </calendar>
+            <calendar xml:id="kali">
+               <p>Kali era</p>
+            </calendar>
+            <calendar xml:id="kaniska">
+               <p>Kaniska era</p>
+            </calendar>
+            <calendar xml:id="kollam">
+               <p>Kollam era</p>
+            </calendar>
+            <calendar xml:id="kushan">
+               <p>Kushan era</p>
+            </calendar>
+            <calendar xml:id="laukika">
+               <p>Laukika era</p>
+            </calendar>
+            <calendar xml:id="nirvana">
+               <p>Nirvana era</p>
+            </calendar>
+            <calendar xml:id="regnal">
+               <p>Regnal era</p>
+            </calendar>
+            <calendar xml:id="śaka">
+               <p>Saka era</p>
+            </calendar>
+            <calendar xml:id="sanjaya">
+               <p>Sanjaya era</p>
+            </calendar>
+            <calendar xml:id="saptarsi">
+               <p>Saptarsi era</p>
+            </calendar>
+            <calendar xml:id="valabhi">
+               <p>Valabhi era</p>
+            </calendar>
+            <calendar xml:id="vikrama">
+               <p>Vikrama era</p>
+            </calendar>
+            <calendar xml:id="uncertain">
+               <p>Unknown calendar</p>
+            </calendar>
+         </calendarDesc>-->
+      </body>
+   </text>
+</TEI>
