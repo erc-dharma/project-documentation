@@ -1,0 +1,21 @@
+#sidebar-wrapper {
+    width: auto;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+}
+
+
+#sidebar-wrapper .nav-link.active {
+  background-color: #00ACC1 !important;
+}
+
+
+#toggle-table-contents{
+    position: fixed;
+    top: 100px;
+    left: 10px;
+}
