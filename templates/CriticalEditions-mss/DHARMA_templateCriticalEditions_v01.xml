@@ -115,6 +115,13 @@
 			</samplingDecl>
 			<schemaRef type="guide" key=" EGCv01" url="https://docs.google.com/document/d/15HFxHJTOzIU1UDyVrB2yQYJ5wI6JyEshEkYgg5qwj8M/edit#"/>
 			<!-- Will need to be updated once a more official realase is done -->
+			
+			<!-- variantEncoding is a  mandatory element. You have to select one of the two solutions given in DHARMA depending how you chave chosen to encode your apparatus. If inline, select @method="parallel-segmentation" as per section §5 of EGC, but if you are encoding your apparatus after any section, mostly being stanza, use  @method="location-referenced". 
+				
+			<variantEncoding method="parallel-segmentation" location="internal"/>
+			<variantEncoding method="location-referenced" location="internal"/>.
+			
+			Note that the current by default behaviour is set on parallel-segmentation -->
 			<variantEncoding method="parallel-segmentation" location="internal"/>
 			<!-- Part mandatory -->
 			<listPrefixDef>
@@ -156,6 +163,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
+			<change who="part:axja" when="2021-12-23" status="draft">Updating the content for variantEncoding</change>
 			<change who="part:axja" when="2022-12-22">Adding the ref to the calendar system</change>
 			<change who="part:axja" when="2021-10-26">Adding the link for the RelxNg and the </change>
 			<change who="part:axja" when="2021-10-20">Adding the abbr</change>

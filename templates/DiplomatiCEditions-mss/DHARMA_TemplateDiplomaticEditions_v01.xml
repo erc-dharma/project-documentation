@@ -95,8 +95,13 @@
                 <p/>
             </samplingDecl>
             <!--schemaRef  will need to be added once a  official realase is done -->
+            <!-- variantEncoding is a  mandatory element. You have to select one of the two solutions given in DHARMA depending how you chave chosen to encode your apparatus. If inline, select @method="parallel-segmentation" as per section §5 of EGC, but if you are encoding your apparatus after any section, mostly being stanza, use  @method="location-referenced". 
+				
+			<variantEncoding method="parallel-segmentation" location="internal"/>
+			<variantEncoding method="location-referenced" location="internal"/>.
+			
+			Note that the current by default behaviour is set on parallel-segmentation -->
             <variantEncoding method="parallel-segmentation" location="internal"/>
-            <!-- Part mandatory -->
         </encodingDesc>
         <profileDesc>
             <langUsage>
@@ -116,6 +121,7 @@
             </textClass>
         </profileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2021-12-23" status="draft">Updating the content for variantEncoding</change>
             <change who="part:axja" when="2021-04-19" status="draft">Creation of the template</change>
             <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
         </revisionDesc>
