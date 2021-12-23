@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-12-22T14:56:54Z. .
+Schema generated from ODD source 2021-12-23T09:48:39Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -4072,12 +4072,12 @@ Measures]</a:documentation>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="@notBefore-custom and @notAfter-custom">
+                      context="tei:date[@notBefore-custom and @notAfter-custom]">
                <sch:assert test="@notBefore and @notAfter">When @notBefore-custom and @notAfter-custom are used, you must provide the equivalent in Gregorian calendar with @notBefore and @notAfter.</sch:assert>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="@from-custom and @to-custom">
+                      context="tei:date[@from-custom and @to-custom]">
                <sch:assert test="@from and @to">When @from-custom and @to-custom are used, you must provide the equivalent in Gregorian calendar with @from and @to.</sch:assert>
             </sch:rule>
          </pattern>
@@ -4182,6 +4182,15 @@ Measures]</a:documentation>
                   <value>cal:sanjaya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>ca::valabhi</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="type">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
+               <choice>
+                  <value>origDate</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>

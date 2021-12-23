@@ -1338,10 +1338,10 @@
                   >When using a custom attribute such as @when-custom or @notAfter-custom or @notBefore-custom, the attribute @datingMethod is mandatory and should declare the calendar used to convert the dates expressed in those previous attributes.</sch:assert></sch:rule>
               <sch:rule context="tei:date[@when-custom]"> <sch:assert test="@when"
                 >When @when-custom is used, you must provide an equivalent date in the official calendar of the project with @when. (Gregorian or Julian?)</sch:assert>
-              </sch:rule> <sch:rule context="@notBefore-custom and @notAfter-custom">
+              </sch:rule> <sch:rule context="tei:date[@notBefore-custom and @notAfter-custom]">
                 <sch:assert test="@notBefore and @notAfter"
                   >When @notBefore-custom and @notAfter-custom are used, you must provide the equivalent in Gregorian calendar with @notBefore and @notAfter.</sch:assert>
-              </sch:rule> <sch:rule context="@from-custom and @to-custom"> <sch:assert
+              </sch:rule> <sch:rule context="tei:date[@from-custom and @to-custom]"> <sch:assert
                 test="@from and @to"
                 >When @from-custom and @to-custom are used, you must provide the equivalent in Gregorian calendar with @from and @to.</sch:assert>
               </sch:rule> </constraint>
@@ -1384,7 +1384,6 @@
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="to-iso" mode="delete"/>
-            <attDef ident="type" mode="delete"/>
             <attDef ident="unit" mode="delete"/>
             <attDef ident="when-iso" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
@@ -1429,6 +1428,11 @@
                 <valItem ident="cal:burmese"/>
                 <valItem ident="cal:sanjaya"/>
                 <valItem ident="ca::valabhi"/>
+              </valList>
+            </attDef>
+            <attDef ident="type" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="origDate"/>
               </valList>
             </attDef>
           </attList>
