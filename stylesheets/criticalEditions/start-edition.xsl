@@ -540,9 +540,14 @@
             </xsl:attribute>-->
               
                 <xsl:apply-templates select="tei:lem"/>
-                <xsl:call-template name="app-link">
+                <xsl:choose>
+                    <xsl:when test="$location='text'"/>
+                    <xsl:otherwise>
+                        <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
-                </xsl:call-template>   
+                </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>   
         </xsl:element>
         
         <xsl:if test="descendant::tei:span[@type='omissionStart']">
@@ -1442,26 +1447,9 @@
         <xsl:choose>
             <xsl:when test="tei:note[@type='prosody']"/>
             <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
-                        <xsl:element name="a">
-                            <xsl:attribute name="class">lem-last-note</xsl:attribute>
-                            <!--<xsl:attribute name="tabindex">0</xsl:attribute>-->
-                            <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                            <xsl:attribute name="data-html">true</xsl:attribute>
-                            <xsl:attribute name="id">
-                                <xsl:text>from-app-</xsl:text>
-                                <xsl:value-of select="$app-num"/>
-                            </xsl:attribute>
-                            <xsl:attribute name="data-target">
-                                <xsl:value-of select="generate-id()"/>
-                            </xsl:attribute>
-                            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                                <xsl:value-of select="$app-num"/></xsl:attribute>
-                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/></xsl:attribute>
-                             
-                                    <xsl:text>(</xsl:text>
-                            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
-                                    <xsl:text>)</xsl:text>
-                        </xsl:element>
+                        <xsl:call-template name="app-link">
+                            <xsl:with-param name="location" select="'apparatus'"/>
+                        </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
@@ -2484,10 +2472,10 @@
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
             <xsl:attribute name="class">collapse</xsl:attribute>
-            <xsl:element name="h4">
+            <!--<xsl:element name="h4">
                 <xsl:attribute name="class">text-align-center</xsl:attribute>
                 <xsl:text>Document Outline</xsl:text>
-            </xsl:element>
+            </xsl:element>-->
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
             <xsl:element name="ul">
@@ -3268,7 +3256,8 @@
             <xsl:choose>
                 <xsl:when test="parent::tei:p/tei:*[last()-1]/not(text())">
                     <xsl:choose>
-                        <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']"><xsl:value-of select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
+                        <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']">
+                            <xsl:apply-templates select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="parent::tei:p/tei:*[last()-1]"/>
