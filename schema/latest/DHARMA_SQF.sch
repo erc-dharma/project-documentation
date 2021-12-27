@@ -142,7 +142,7 @@
     
     <sch:pattern>
         <!--<sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListMembers_v01.xml')"/>-->
-        <sch:let name="list-id" value="doc('https://gitcdn.link/repo/erc-dharma/project-documentation/master/DHARMA_idListMembers_v01.xml')"/>
+        <sch:let name="list-id" value="doc('https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_idListMembers_v01.xml')"/>
         <sch:rule context="//t:teiHeader//t:persName/@ref[contains(., 'part:')]|//t:*/@resp">
             <sch:let name="tokens" value="for $i in tokenize(., ' ') return substring($i, 6)"/>
             <sch:assert test="every $token in $tokens satisfies $token = $list-id//t:person/@xml:id">The attribute value must match a defined @xml:id in DHARMA list members</sch:assert>
