@@ -125,13 +125,13 @@
     </sch:pattern>
     
     <!-- Adding feature to check if another file has the same name per Arlo's request -->
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="/"> 
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
             <sch:let name="path" value="substring-before(document-uri(/), $fileName)"/>
             <sch:assert test="distinct-values(for $fileName in /folders/folder/uri-collection(iri-to-uri(concat(@name, '/?select=*.xml'))) return tokenize($fileName, '/')[last()])">The context is <sch:value-of select="$path"/>.</sch:assert>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
     <sch:pattern>
         <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull)]">
