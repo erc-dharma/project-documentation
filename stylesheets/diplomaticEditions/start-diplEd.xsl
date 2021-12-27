@@ -72,7 +72,7 @@
                 <xsl:attribute name="data-offset">5</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
                 <xsl:element name="div">
-                    <xsl:attribute name="class">container</xsl:attribute>
+                    <xsl:attribute name="class">content</xsl:attribute>
                     <xsl:call-template name="table-contents"/>
                     <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Document Outline</a>
                     <xsl:apply-templates select="./tei:teiHeader"/>
