@@ -4037,9 +4037,10 @@
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='tithi']"> <sch:report test="@key"
                             >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
-                                </sch:report> </sch:rule> <sch:rule
+                                </sch:report> </sch:rule> 
+                            <sch:rule
                             context="tei:rs[@type='naksatra']"> <sch:assert
-                            test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)"
+                            test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)'"
                             >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert>
                             </sch:rule> <sch:rule context="tei:rs[@type='sadvara']"> <sch:assert
                             test="@key='(tunglai or hariyang or wurukung or paniruan or was or mawulu)'"
