@@ -111,7 +111,7 @@
       <xsl:if test="text()[preceding::span[@class='notBold'][1]]">
         <xsl:apply-templates select="replace($input, '\s\-', '-')"/>
       </xsl:if>
-<xsl:apply-templates select="normalize-space(replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2'))"/>
+<xsl:apply-templates select="replace($input, '([\S\)\]&lt;/span&gt;])[\n\r\s\t]/([\S\(\[&lt;]+)', '$1/$2')"/>
     </xsl:template>
 
 <!--  <xsl:template match="text()[ancestor::div[@id='apparatus']][preceding::span[@class='notBold'][1]]" mode="sqbrackets">
