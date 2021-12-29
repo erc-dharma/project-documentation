@@ -1498,10 +1498,7 @@
             </xsl:when>
             <xsl:when test="ancestor::tei:projectDesc">
                     <xsl:element name="p">
-                        <xsl:attribute name="class">text-justify</xsl:attribute>
-                        <xsl:if test="@xml:id">
-                            <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
-                        </xsl:if>
+                        <xsl:attribute name="class">text-justify</xsl:attribute> 
                         <xsl:apply-templates/>
                     </xsl:element>
             </xsl:when>
@@ -1545,7 +1542,8 @@
         </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
-        <xsl:if test="not(//tei:TEI[@type='translation'])"><xsl:element name="div">
+        <xsl:if test="//tei:TEI[@type='edition'] and ancestor::tei:body">
+            <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col text-col</xsl:attribute>
@@ -3203,15 +3201,21 @@
                         </xsl:element>
                         <xsl:text>: </xsl:text>
                         <xsl:for-each select="//tei:title[@type='main']">
+                            <xsl:text>The </xsl:text>
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:apply-templates/>
                             </xsl:element>
                         </xsl:for-each>
-                        <xsl:text> or ‘</xsl:text>
+                        <xsl:if test="//tei:title[@type='alt']">
+                            <xsl:text> or ‘</xsl:text>
                         <xsl:apply-templates select="//tei:title[@type='alt']"/>
-                        <xsl:text>’. </xsl:text>
-                        <xsl:apply-templates select="//tei:title[@type='sub']"/>
+                        <xsl:text>’</xsl:text>
+                        </xsl:if>
+                        <xsl:if test="//tei:title[@type='sub']">
+                            <xsl:text>. </xsl:text>
+                            <xsl:apply-templates select="//tei:title[@type='sub']"/>
+                        </xsl:if>
                     </xsl:element>
                 <xsl:element name="li">
                     <xsl:element name="b">
