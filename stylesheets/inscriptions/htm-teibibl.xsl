@@ -194,18 +194,6 @@ bibliography. All examples only cater for book and article.
 										<xsl:when test="$leiden-style = 'dharma' and $citation">
 											<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
 										</xsl:when>
-										<xsl:otherwise>
-											<xsl:choose>
-												<xsl:when test="$leiden-style = 'dharma'">
-													<xsl:variable name="fallBack" select="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_Zotero_v01.xml')/node()"/>
-													<xsl:value-of select="$fallBack//t:title[@type='short']=$biblentry"/>
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
-												</xsl:otherwise>
-											</xsl:choose>
-											<!--<xsl:value-of select="replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', '') , '[&lt;/]*[a-z]+[&gt;][\)]*', ''), '([0-9–]*[0-9]+)[\)]+$', '($1)')"/>-->
-								</xsl:otherwise>
 							</xsl:choose>
 						</a>
 								<xsl:if test="t:citedRange">
@@ -218,19 +206,27 @@ bibliography. All examples only cater for book and article.
 							</xsl:otherwise>
 							</xsl:choose>
 									<xsl:for-each select="t:citedRange">
-										<xsl:call-template name="citedRange-unit"/>
+										<xsl:choose>
+											<xsl:when test="@unit='entry'">
+											<xsl:element name="i">
+												<xsl:call-template name="citedRange-unit"/>
+											</xsl:element>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="citedRange-unit"/>
+										</xsl:otherwise>
+										</xsl:choose>
+										
 										<!-- NEED TO BE REVISED AT SOME POINT TO RENDER THE ITALIC
 										not the best solution but hierarchy too instabled to force it with mode without breaking the current display - necessary to revise the code once the encoding is stable enough probably need to use the foreign element as the base rather than the bibl element -->
-										<!--<xsl:choose>
-											<xsl:when test="child::t:foreign">
-											<i>
-												<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
-											</i>
+										<xsl:choose>
+											<xsl:when test="matches(., '-')">
+												<xsl:apply-templates select="replace(., '-', '–')"/>
 										</xsl:when>
-										<xsl:otherwise>-->
-										<xsl:apply-templates select="normalize-space(replace(., '-', '–'))"/>
-								<!--	</xsl:otherwise>
-							</xsl:choose>-->
+										<xsl:otherwise>
+										<xsl:apply-templates/>
+									</xsl:otherwise>
+							</xsl:choose>
 
 									<xsl:if test="following-sibling::t:citedRange[1]">
 										<xsl:text>, </xsl:text>
@@ -340,7 +336,14 @@ bibliography. All examples only cater for book and article.
 										<xsl:for-each select="t:citedRange">
 											<b>
 											<xsl:call-template name="citedRange-unit"/>
-										<xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+												<xsl:choose>
+													<xsl:when test="matches(., '-')">
+														<xsl:apply-templates select="replace(., '-', '–')"/>
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:apply-templates/>
+													</xsl:otherwise>
+												</xsl:choose>
 											</b>
 										<xsl:if test="following-sibling::t:citedRange">
 											<xsl:text>, </xsl:text>
@@ -524,7 +527,7 @@ bibliography. All examples only cater for book and article.
 		<xsl:when test="@unit='item'">
 			<xsl:text>&#8470; </xsl:text>
 		</xsl:when>
-		<xsl:when test="@unit='entry'">
+		<xsl:when test="@unit='entry'">			
 			<xsl:text>s.v. </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='figure'">
