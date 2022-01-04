@@ -16,16 +16,16 @@ html{
 body{
     margin-left: 30px;
     height:100%;
-    width: 950px;
+    width: 100%;
 }
 
 .footer {
   background-color: #f5f5f5;
 }
 
-.edition-content{
+/*.edition-content{
     width: 950px;
-}
+}*/
 
 @font-face {
   font-family: 'e-VatteluttuOT', monospace;
@@ -282,3 +282,28 @@ dd {
     font-size: 30px;
   }
 }*/
+
+#sidebar-wrapper {
+    width: 200px;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+}
+
+
+#sidebar-wrapper .nav-link.active {
+  background-color: #00ACC1 !important;
+}
+
+.nav-second{
+    position:relative;
+    left: 20px;
+}
+
+#toggle-table-contents{
+    position: fixed;
+    left: 10px;
+}

@@ -76,13 +76,21 @@
             <xsl:call-template name="css-script"/>
            <!-- Bootstrap CSS -->
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+           <!-- scrollbar CSS -->
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
          </head>
 
-         <body>
+           <xsl:element name="body">
+             <xsl:attribute name="class">font-weight-light</xsl:attribute>
+             <xsl:attribute name="data-spy">scroll</xsl:attribute>
+             <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
+             <xsl:attribute name="data-offset">5</xsl:attribute>
            <xsl:call-template name="nav-bar"/>
 
            <xsl:element name="div">
              <xsl:attribute name="class">container</xsl:attribute>
+             <xsl:call-template name="table-contents"/>
+             <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Document Outline</a>
            <xsl:element name="div">
              <xsl:attribute name="class">edition-content col-10</xsl:attribute>
              <h1>
@@ -99,7 +107,7 @@
              </xsl:element>
            </xsl:element>
            <xsl:call-template name="dharma-script"/>
-         </body>
+           </xsl:element>
       </html>
    </xsl:template>
 
@@ -120,9 +128,14 @@
       </xsl:template>
 
   <xsl:template name="dharma-script">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- Jqeury.JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/stylesheets/criticalEditions/loader.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
   </xsl:template>
 
   <!-- Nav bar template -->
@@ -202,5 +215,52 @@
         </ul>
       </div>
     </nav>
+  </xsl:template>
+  
+  <!-- side bar - table of contents -->
+  <xsl:template name="table-contents">
+    <xsl:element name="div">
+      <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+      <xsl:attribute name="class">collapse</xsl:attribute>
+      <xsl:element name="nav">
+        <xsl:attribute name="id">myScrollspy</xsl:attribute>
+        <xsl:element name="ul">
+          <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
+          <li class="nav-item"><a class="nav-link" href="#metadatadiv">Metadata</a></li>
+          <xsl:for-each select="//t:div">
+            <xsl:element name="li">
+              <xsl:attribute name="class">nav-item</xsl:attribute>
+              <xsl:element name="a">
+                <xsl:attribute name="class">nav-link</xsl:attribute>
+                <xsl:attribute name="href">
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@type"/>
+                </xsl:attribute>
+                <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+              </xsl:element>
+                <xsl:if test="@type='edition'">
+                  <xsl:element name="ul">
+                    <xsl:attribute name="class">nav-second nav-pills</xsl:attribute>
+                    <xsl:for-each select="//t:pb[ancestor-or-self::t:div[@type='edition']]">
+                    <xsl:element name="li">
+                      <xsl:attribute name="class">nav-item-second nav-item</xsl:attribute>
+                      <xsl:element name="a">
+                        <xsl:attribute name="class">nav-link</xsl:attribute>
+                        <xsl:attribute name="href">
+                          <xsl:text>#</xsl:text>
+                          <xsl:value-of select="@n"/>
+                        </xsl:attribute>
+                        <xsl:text>Folio </xsl:text>
+                        <xsl:value-of select="@n"/>
+                      </xsl:element>
+                    </xsl:element>
+                  </xsl:for-each>
+                </xsl:element></xsl:if>
+              
+            </xsl:element>
+          </xsl:for-each>
+        </xsl:element>
+      </xsl:element>
+    </xsl:element>
   </xsl:template>
    </xsl:stylesheet>
