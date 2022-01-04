@@ -1459,7 +1459,7 @@
                                 <valItem ident="cal:kollam"/>
                                 <valItem ident="cal:burmese"/>
                                 <valItem ident="cal:sanjaya"/>
-                                <valItem ident="ca::valabhi"/>
+                                <valItem ident="cal:valabhi"/>
                             </valList>
                         </attDef>
                         <attDef ident="type" mode="change">

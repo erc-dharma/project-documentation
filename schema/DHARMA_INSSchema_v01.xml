@@ -1619,7 +1619,7 @@
                     <constraintSpec scheme="schematron" ident="attributes">
                         <constraint> <sch:rule context="tei:date"> <sch:assert
                             test="@when or (@notBefore and @notAfter) or (@from and @to)"
-                            >The content of the element date should be translated into the W3C format thanks to </sch:assert>
+                            >The content of the element date should be translated into the W3C format thanks to @when or (@notBefore and @notAfter) or (@from and @to)</sch:assert>
                         </sch:rule> <sch:rule
                             context="tei:date[@notBefore-custom or @notAfter-custom]"> <sch:assert
                                 test="@notBefore-custom and @notAfter-custom"
@@ -1728,7 +1728,7 @@
                                 <valItem ident="cal:kollam"/>
                                 <valItem ident="cal:burmese"/>
                                 <valItem ident="cal:sanjaya"/>
-                                <valItem ident="ca::valabhi"/>
+                                <valItem ident="cal:valabhi"/>
                             </valList>
                         </attDef>
                         <attDef ident="type" mode="change">
