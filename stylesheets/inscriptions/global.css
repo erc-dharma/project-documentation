@@ -23,9 +23,9 @@ body{
   background-color: #f5f5f5;
 }
 
-/*.edition-content{
-    width: 950px;
-}*/
+.edition-content{
+    width: 75%;
+}
 
 @font-face {
   font-family: 'e-VatteluttuOT', monospace;
@@ -248,28 +248,33 @@ text-align:center;*/
 }
 
 dl{
+    padding: 1em;
     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    /*margin-block-start: 1em;
+    margin-block-end: 1em;*/
     padding-inline-start: 40px;
 }
 
 dl:after {content:"";display:table;clear:both;}
 
 dt {
-    float: left;
-    width: 10%;
+    /*
+    width: ;
     text-align: left;
-    padding: .25em;
+    
     clear: left;
-    font-weight:bold;
+    font-weight:bold;*/
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: left;
+    font-weight: bold;
 }
 dd {
     float: left;
-    width: 60%;
-    padding: .25em 0;
+    width: 70%;
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
 }
 
 /*/\* If the screen size is 601px wide or more, set the font-size of <div> to 80px *\/
