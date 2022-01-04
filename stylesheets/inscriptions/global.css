@@ -250,20 +250,12 @@ text-align:center;*/
 dl{
     padding: 1em;
     display: block;
-    /*margin-block-start: 1em;
-    margin-block-end: 1em;*/
     padding-inline-start: 40px;
 }
 
 dl:after {content:"";display:table;clear:both;}
 
 dt {
-    /*
-    width: ;
-    text-align: left;
-    
-    clear: left;
-    font-weight:bold;*/
     float: left;
     clear: left;
     width: 150px;

@@ -274,9 +274,10 @@ Pb de lb[@break=no] entre deux textpart
         </xsl:choose>
    </xsl:template>
 <!-- Display the pb for the blank pages-->
-      <xsl:template match="t:pb[not(preceding::node()/text())]">
+      <xsl:template match="t:pb">
         <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-        <xsl:if test="not(following-sibling::t:lb[1]) or following-sibling::t:gap[1]">
+         
+            <xsl:if test="not(preceding::node()/text()) and (not(following-sibling::t:lb[1]) or following-sibling::t:gap[1])">
           <xsl:element name="sup">
              <xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute>
             <xsl:text>⎘ plate </xsl:text>
@@ -293,9 +294,19 @@ Pb de lb[@break=no] entre deux textpart
             </xsl:element>
           </xsl:if>
         </xsl:if>
-        <xsl:if test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus']">
+         <xsl:if test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and not(preceding::node()/text())">
           <xsl:text>/</xsl:text>
         </xsl:if>
+         <!--<xsl:if test="self::t:pb[following-sibling::t:pb[1]]">
+            <xsl:element name="p">
+            <xsl:element name="sup">
+               <xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute>
+               <xsl:text>⎘ plate </xsl:text>
+               <xsl:value-of select="@n"/>
+               <xsl:text> </xsl:text>
+            </xsl:element>
+            </xsl:element>
+         </xsl:if>-->
       </xsl:template>
 
 <xsl:template match="comment()">

@@ -227,7 +227,7 @@
         <xsl:element name="ul">
           <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
           <li class="nav-item"><a class="nav-link" href="#metadatadiv">Metadata</a></li>
-          <xsl:for-each select="//t:div">
+          <xsl:for-each select="//t:div[descendant::*]">
             <xsl:element name="li">
               <xsl:attribute name="class">nav-item</xsl:attribute>
               <xsl:element name="a">
@@ -241,7 +241,9 @@
                 <xsl:if test="@type='edition'">
                   <xsl:element name="ul">
                     <xsl:attribute name="class">nav-second nav-pills</xsl:attribute>
-                    <xsl:for-each select="//t:pb[ancestor-or-self::t:div[@type='edition']]">
+                    <xsl:for-each select="//t:pb[ancestor-or-self::t:div[@type='edition'] and not(preceding::node()/text()) or following-sibling::node()[1][local-name() = 'lb' or local-name() ='fw' or
+                      (normalize-space(.)=''
+                      and following-sibling::node()[1][local-name() = 'lb' or local-name() ='fw'])]]">
                     <xsl:element name="li">
                       <xsl:attribute name="class">nav-item-second nav-item</xsl:attribute>
                       <xsl:element name="a">
