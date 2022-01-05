@@ -56,6 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
       <change who="part:axja" when="2021-12-22"
         >Adding some attributes and values for dates as well as for rs.</change>
       <change who="part:axja" when="2021-12-20">Adding features for translations files</change>
@@ -4061,7 +4062,7 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change" usage="rec">
-              <valList mode="change" type="closed">
+              <valList mode="change" type="open">
                 <valItem ident="filler"/>
                 <valItem ident="numeral"/>
                 <valItem ident="symbol"/>
