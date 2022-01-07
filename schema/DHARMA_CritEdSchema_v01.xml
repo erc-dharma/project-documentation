@@ -56,6 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-01-07">Adding value unknown for @reason with supplied and @type on note.</change>
       <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
       <change who="part:axja" when="2021-12-22"
         >Adding some attributes and values for dates as well as for rs.</change>
@@ -2297,6 +2298,10 @@
                               complication)
                 </sch:report>
               </sch:rule>
+              <sch:rule context="tei:note[ancestor::tei:listApp[@type='parallels']]">
+                <sch:assert test="tei:note[@type='unknown']">Note with @type="unknown" can be used only in the parallels list.
+                </sch:assert>
+              </sch:rule>
               <sch:rule context="tei:note[@type='altLem'][parent::tei:app]">
                 <sch:assert test="preceding-sibling::tei:lem[1]">
                   An alternative lem should always be the first child after the main lem. 
@@ -2358,6 +2363,7 @@
                   <desc versionDate="2021-10-25" xml:lang="en"
                     >Declares an alternative lemma for display purposes</desc>
                 </valItem>
+                <valItem ident="unknown"/>
               </valList>
             </attDef>
           </attList>
