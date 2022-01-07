@@ -63,7 +63,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">container</xsl:attribute>
             <xsl:call-template name="table-contents"/>
-            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Document Outline</a>
+            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse"><span>☰ Document Outline</span></a>
             <xsl:element name="div">
                 <xsl:attribute name="class">content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
@@ -2006,7 +2006,17 @@
             <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="data-placement">top</xsl:attribute>
-            <xsl:attribute name="title">Supplied by the editor.</xsl:attribute>
+            <xsl:attribute name="title">
+                <xsl:choose>
+                    <xsl:when test="@reason='unknown'">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">subaudible</xsl:attribute>
+                            <xsl:text>Text to be supplied unknown to editor.</xsl:text>
+                        </xsl:element>
+                    </xsl:when>
+                    <xsl:otherwise>Supplied by the editor.</xsl:otherwise>
+            </xsl:choose>
+            </xsl:attribute>
             <xsl:choose>
                 <xsl:when test="@reason='omitted' and not(child::tei:lg)">
                     <xsl:element name="span">
@@ -2024,9 +2034,9 @@
                     </xsl:element>
                 </xsl:when>
                 <xsl:when test="@reason='subaudible'">
-                    <xsl:choose>
+                    <xsl:choose>  
                         <xsl:when test="not(parent::tei:quote[@type='base-text'])">
-                            <xsl:element name="span">
+                                    <xsl:element name="span">
                                 <xsl:attribute name="class">subaudible</xsl:attribute>
                                 <xsl:apply-templates/>
                                 <xsl:if test="@cert='low'">
@@ -2049,6 +2059,12 @@
                         <xsl:if test="@cert='low'">
                             <xsl:text>?</xsl:text>
                         </xsl:if>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:when test="@reason='unknown'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">subaudible</xsl:attribute>
+                        <xsl:text> </xsl:text>
                     </xsl:element>
                 </xsl:when>
                 <xsl:otherwise>
@@ -2440,8 +2456,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
@@ -2462,8 +2478,8 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>-->
+        <script src="./../criticalEditions/loader.js"></script>
     </xsl:template>
        
     <!-- side bar - table of contents -->
@@ -2781,7 +2797,7 @@
                           <xsl:text>] </xsl:text>
                       </xsl:element>    
                       <xsl:apply-templates/>
-                  </xsl:when>          
+                  </xsl:when> 
               <xsl:otherwise>
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>

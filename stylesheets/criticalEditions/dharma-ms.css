@@ -71,18 +71,16 @@ body{
 }
 
 #sidebar-wrapper {
-    width: 275px;
+    width: 200px;
     position: fixed;
-    top: 150px;
     left: 0;
+    /*top: 0;*/
     height: 100vh;
     z-index: 999;
     color: #fff;
+    transition: all 0.3s;
 }
-
-#sidebar-wrapper h4{
-    color: black;
-}
+   
 
 #sidebar-wrapper .nav-link.active {
   background-color: #00ACC1 !important;
@@ -853,8 +851,6 @@ p{
     background-color: transparent;
 }
 
-#toggle-table-contents{
+#sidebarCollapse{
     position: fixed;
-    top: 100px;
-    left: 10px;
 }
