@@ -3889,7 +3889,7 @@
         <elementSpec ident="supplied" module="transcr" mode="change">
           <constraintSpec scheme="schematron" ident="supplied-translation">
             <constraint>
-              <sch:rule context="tei:supplied[@reason='explanation | subaudible']">
+              <sch:rule context="tei:supplied[@reason='explanation' or @reason='subaudible']">
                 <sch:report test="not(//tei:TEI[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report>
               </sch:rule>
             </constraint>
@@ -3944,6 +3944,7 @@
                 <valItem ident="lost"/>
                 <valItem ident="omitted"/>
                 <valItem ident="implied"/>
+                <valItem ident="unknown"/>
               </valList>
             </attDef>
             <attDef ident="evidence" mode="change">
