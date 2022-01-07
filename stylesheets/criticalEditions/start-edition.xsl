@@ -3141,7 +3141,7 @@
                 <xsl:element name="li">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
                     <xsl:choose>
-                        <xsl:when test="@*">
+                        <xsl:when test="@* except @type">
                             <xsl:variable name="soughtMS" select="substring-before(substring-after(@* except @xml:lang, 'txt:'), '_')"/>
                             <xsl:variable name="refMS" select="substring-after(@* except @xml:lang, '_')"/>
                             <xsl:choose>
@@ -3164,6 +3164,11 @@
                                 <xsl:attribute name="class">parallel-text</xsl:attribute>
                                 <xsl:apply-templates/>
                             </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="@type='unknown'">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">parallel-text</xsl:attribute>
+                            <xsl:text>No text has been identified by the editor.</xsl:text></xsl:element>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:element name="span">
