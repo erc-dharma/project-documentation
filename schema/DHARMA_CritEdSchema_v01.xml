@@ -2298,8 +2298,8 @@
                               complication)
                 </sch:report>
               </sch:rule>
-              <sch:rule context="tei:note[ancestor::tei:listApp[@type='parallels']]">
-                <sch:assert test="tei:note[@type='unknown']">Note with @type="unknown" can be used only in the parallels list.
+              <sch:rule context="tei:note[@type='unknown']">
+                <sch:assert test="ancestor::tei:listApp[@type='parallels']">Note with @type="unknown" can be used only in the parallels list.
                 </sch:assert>
               </sch:rule>
               <sch:rule context="tei:note[@type='altLem'][parent::tei:app]">
