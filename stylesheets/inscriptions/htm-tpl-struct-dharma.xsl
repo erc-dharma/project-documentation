@@ -227,7 +227,7 @@
         <xsl:element name="ul">
           <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
           <li class="nav-item"><a class="nav-link" href="#metadatadiv">Metadata</a></li>
-          <xsl:for-each select="//t:div[descendant::*]">
+          <xsl:for-each select="//t:div[descendant::* and not(@type='textpart')]">
             <xsl:element name="li">
               <xsl:attribute name="class">nav-item</xsl:attribute>
               <xsl:element name="a">
@@ -236,6 +236,19 @@
                   <xsl:text>#</xsl:text>
                   <xsl:value-of select="@type"/>
                 </xsl:attribute>
+                <xsl:if test="@type='translation'">                  
+                    <xsl:choose>
+                      <xsl:when test="@xml:lang='fra'">
+                        <xsl:text>French </xsl:text>
+                      </xsl:when>
+                      <xsl:when test="@xml:lang='ndl'">
+                        <xsl:text>Dutch </xsl:text>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:text>English </xsl:text>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:if>
                 <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
               </xsl:element>
                 <xsl:if test="@type='edition'">
@@ -257,7 +270,8 @@
                       </xsl:element>
                     </xsl:element>
                   </xsl:for-each>
-                </xsl:element></xsl:if>
+                </xsl:element>
+                </xsl:if>
               
             </xsl:element>
           </xsl:for-each>
