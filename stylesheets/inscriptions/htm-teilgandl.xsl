@@ -65,7 +65,7 @@
                                           </span>
                                           <xsl:apply-templates/>
                                         </div>
-                                          <xsl:if test="following::t:lg">
+                                        <xsl:if test="following::t:lg or following::t:p">
                                             <br/>
                                           </xsl:if>
                                       </xsl:when>
