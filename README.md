@@ -29,6 +29,7 @@ This repository is storing all the current documentation of the DHARMA Project.
 |Task Force B|Telugu Inscriptions|tfb-telugu-epigraphy|
 |Task Force B|Early Andhra|tfb-eiad-epigraphy|
 |Task Force B|Satavahana|tfb-satavahana-epigraphy|
+|Task Force B|Somavaṁśin|tfb-somavamsin-epigraphy|
 |Task Force B|Maitraka|tfb-maitraka-epigraphy|
 |Task Force B|Viṣṇukuṇḍin|tfb-visnukundin-epigraphy|
 |Task Force B|Licchavi|tfb-licchavi-epigraphy|
