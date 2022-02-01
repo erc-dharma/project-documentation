@@ -19,3 +19,11 @@
     top: 100px;
     left: 10px;
 }
+
+.stanza{
+    position: relative;
+    margin-top:10pt;
+    margin-bottom:10pt;
+    margin-left:40px;
+    margin-right:40px;
+}
