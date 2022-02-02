@@ -34,7 +34,7 @@
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
-                            <xsl:text>©EC. Online display made available by DHARMA</xsl:text>
+                            <xsl:text>©EC. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text>
                         </xsl:element>
                     </xsl:element>
                     <xsl:call-template name="dharma-script"/>            
@@ -47,9 +47,26 @@
     <xsl:template match="tei:div">
         <xsl:choose>
             <xsl:when test="@type='section'">
-                <xsl:element name="div">
-                    <xsl:apply-templates/>
-                </xsl:element>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
+                        <xsl:attribute name="id">
+                            <xsl:value-of select="generate-id()"/>
+                        </xsl:attribute>
+                        <xsl:call-template name="number"/>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-10</xsl:attribute>
+                            <xsl:element name="dl">
+                                <xsl:apply-templates select="node()"/>
+                                <xsl:choose>
+                                    <xsl:when test="not(following::tei:div[@type='section'])">
+                                        <br/>
+                                    </xsl:when>
+                                    <xsl:otherwise><hr/></xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
@@ -105,13 +122,17 @@
         <xsl:element name="div">
             <xsl:attribute name="class">stanza</xsl:attribute>
             <xsl:element name="span">
-                <xsl:number count="tei:lg" format="I" level="single"/>
+                <xsl:number count="tei:lg" format="I" level="any" from="tei:div[@type='section']"/>
                 <xsl:text>. </xsl:text>
             </xsl:element>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     
+    <!-- n -->
+    <xsl:template match="tei:note">
+        
+    </xsl:template>
     <!-- p -->
     <xsl:template match="tei:p">
         <xsl:element name="p">
@@ -158,6 +179,7 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>
+                <!--<link rel="stylesheet" href="./../ec/ec-css.css"></link>-->
                 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
@@ -240,6 +262,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader arie -->
         <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>
+        <!--<script rel="stylesheet" src="./../ec/ec-loader.js"></script>-->
     </xsl:template>
     
     <!-- side bar -->
@@ -252,7 +275,7 @@
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
                 <xsl:element name="ul">
                     <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
-                    <xsl:for-each select="INSCRIPTION | MANUSCRIPT">
+                    <xsl:for-each select="//tei:div[@type='section']">
                         <xsl:element name="li">
                             <xsl:attribute name="class">nav-item</xsl:attribute>
                             <xsl:element name="a">
@@ -261,8 +284,22 @@
                                     <xsl:text>#</xsl:text>
                                     <xsl:value-of select="generate-id()"/>
                                 </xsl:attribute>
-                                <!-- Need to be updated -->
-                                <!--<xsl:call-template name="number"/>-->
+                                <xsl:text>INSEC11</xsl:text>
+                                <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
+                                <xsl:choose>
+                                    <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
+                                        <xsl:text>0000</xsl:text>
+                                        <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                                    </xsl:when>
+                                    <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
+                                        <xsl:text>000</xsl:text>
+                                        <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                                    </xsl:when>
+                                    <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
+                                        <xsl:text>00</xsl:text>
+                                        <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                                    </xsl:when>
+                                </xsl:choose>
                             </xsl:element>
 
                         </xsl:element>
@@ -272,4 +309,30 @@
         </xsl:element>
     </xsl:template>
     
+    <!-- side number id -->
+    <!-- issue with the string in which we found pb and lb -->
+    <xsl:template name="number">
+        <xsl:element name="div">
+            <xsl:attribute name="class">col-2 font-weight-bold</xsl:attribute>
+            <xsl:value-of select="ancestor-or-self::tei:div[@type='chapter']/tei:head[1]"/>
+            <br/>
+            <xsl:text>INSEC11</xsl:text>
+            <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
+            <xsl:choose>
+                <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
+                    <xsl:text>0000</xsl:text>
+                    <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                </xsl:when>
+                <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
+                    <xsl:text>000</xsl:text>
+                    <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                </xsl:when>
+                <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
+                    <xsl:text>00</xsl:text>
+                    <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+   
 </xsl:stylesheet>
