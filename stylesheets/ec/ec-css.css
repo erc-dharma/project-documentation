@@ -20,6 +20,10 @@
     left: 10px;
 }
 
+.pagination{
+    font-size: small;
+}
+
 .stanza{
     position: relative;
     margin-top:10pt;
@@ -27,3 +31,15 @@
     margin-left:40px;
     margin-right:40px;
 }
+
+.bloc-notes{
+    display: inline;
+}
+
+.corr{
+    color: #32CD32;
+}
+
+.sic {
+        color: #FF6347;
+      }
