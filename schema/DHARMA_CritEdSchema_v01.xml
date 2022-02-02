@@ -1338,6 +1338,10 @@
                 context="tei:date[ancestor::tei:body][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
                 ><sch:assert test="@datingMethod"
                   >When using a custom attribute such as @when-custom or @notAfter-custom or @notBefore-custom, the attribute @datingMethod is mandatory and should declare the calendar used to convert the dates expressed in those previous attributes.</sch:assert></sch:rule>
+              <sch:rule
+                context="tei:date[not(parent::tei:bibl)][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
+                ><sch:assert test="matches(., '\d\d\d\d')"
+                  >Only the year in a 4 digits format can be given for the vernacular calendar.</sch:assert></sch:rule>
               <sch:rule context="tei:date[ancestor::tei:body][@when-custom]"> <sch:assert test="@when"
                 >When @when-custom is used, you must provide an equivalent date in the official calendar of the project with @when. (Gregorian or Julian?)</sch:assert>
               </sch:rule> <sch:rule context="tei:date[ancestor::tei:body][@notBefore-custom and @notAfter-custom]">
@@ -2791,7 +2795,7 @@
               with the @type="fortnight", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
             </sch:assert> </sch:rule> <sch:rule
               context="tei:rs[@type='fortnight']"> <sch:assert
-                test="@subtype='(dark or bright)'">
+                test="@key='(dark or bright)'">
                 with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
               </sch:assert> </sch:rule> <sch:rule
                 context="tei:rs[@type='tithi']"> <sch:report test="@key"
@@ -2851,6 +2855,7 @@
             <attDef ident="select" mode="delete"/>
             <attDef ident="source" mode="delete"/>
             <attDef ident="style" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
