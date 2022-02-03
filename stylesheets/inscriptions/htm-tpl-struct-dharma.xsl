@@ -145,7 +145,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -160,22 +160,11 @@
               <a class="dropdown-item" href="https://erc-dharma.github.io/#tfb-collection">Task-Force B</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/#tfc-collection">Task-Force C</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/#tfd-collection">Task-Force D</a>
+              <a class="dropdown-item" href="https://github.com/erc-dharma">All the repositories</a>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Controlled Vocabularies
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
-              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
-              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
-              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
-            </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,13 +176,12 @@
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Training
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
+              <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -203,8 +191,17 @@
               <a class="dropdown-item" href="https://erc-dharma.github.io/digital-areal/">Starting with XML in French</a>
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Bibliographic Collections
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+              <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/workflow-output/DHARMA_INSEC11.html">Epigraphia Carnatica</a>
+            </div>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+            <a class="nav-link" href="https://github.com/erc-dharma">GitHub</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://www.zotero.org/groups/1633743/erc-dharma/library">Zotero Library</a>
@@ -212,7 +209,7 @@
           <li class="nav-item">
             <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
           </li>
-        </ul>
+        </ul> 
       </div>
     </nav>
   </xsl:template>

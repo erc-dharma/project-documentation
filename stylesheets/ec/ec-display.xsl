@@ -5,11 +5,11 @@
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs tei"
     version="2.0">
-    
+
     <xsl:output method="xml" indent="no" encoding="UTF-8"/>
-    
+
     <!-- Written by Axelle Janiak for DHARMA, starting February 2021 -->
-    
+
     <xsl:template match="tei:text">
         <xsl:element name="html">
             <xsl:call-template name="dharma-head"/>
@@ -37,29 +37,29 @@
                             <xsl:text>©EC. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                    <xsl:call-template name="dharma-script"/>            
-                </xsl:element>  
+                    <xsl:call-template name="dharma-script"/>
+                </xsl:element>
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- cell -->
     <xsl:template match="tei:cell">
         <xsl:element name="td">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- corr -->
     <xsl:template match="tei:corr">
         <xsl:element name="span">
             <xsl:attribute name="class">corr</xsl:attribute>
             <xsl:text>⟨</xsl:text>
         <xsl:apply-templates/>
-        <xsl:text>⟩</xsl:text> 
+        <xsl:text>⟩</xsl:text>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- div -->
     <xsl:template match="tei:div">
         <xsl:choose>
@@ -88,14 +88,14 @@
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
-                
+
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- Head -->
     <xsl:template match="tei:head[parent::tei:div[@type='book']]">
         <xsl:element name="h2">
@@ -113,7 +113,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- hi -->
     <xsl:template match="tei:hi[@rend='it']">
                 <xsl:element name="span">
@@ -121,7 +121,7 @@
                         <xsl:apply-templates/>
                 </xsl:element>
     </xsl:template>
-    
+
     <!-- l -->
     <xsl:template match="tei:l">
         <xsl:element name="div">
@@ -129,7 +129,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- label -->
     <xsl:template match="tei:label">
         <xsl:element name="span">
@@ -137,7 +137,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- lb -->
     <xsl:template match="tei:lb">
        <xsl:choose>
@@ -147,7 +147,7 @@
            </xsl:otherwise>
        </xsl:choose>
     </xsl:template>
-    
+
     <!-- lg -->
     <xsl:template match="tei:lg">
         <xsl:element name="div">
@@ -159,7 +159,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- n -->
     <xsl:template match="tei:note">
         <xsl:choose><xsl:when test="ancestor::tei:div[@type='section']">
@@ -172,14 +172,14 @@
         </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- p -->
     <xsl:template match="tei:p">
         <xsl:element name="p">
-            <xsl:apply-templates/>       
+            <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- pb -->
     <xsl:template match="tei:pb">
             <xsl:element name="span">
@@ -189,39 +189,39 @@
                 <xsl:text>]</xsl:text>
              </xsl:element>
     </xsl:template>
-    
+
     <!-- quote -->
     <xsl:template match="tei:quote">
         <xsl:apply-templates/>
     </xsl:template>
-    
+
     <!-- row -->
     <xsl:template match="tei:row">
         <xsl:element name="tr">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- sic -->
     <xsl:template match="tei:sic">
         <xsl:element name="span">
             <xsl:attribute name="class">sic</xsl:attribute>
             <xsl:text>¿</xsl:text>
             <xsl:apply-templates/>
-            <xsl:text>?</xsl:text> 
+            <xsl:text>?</xsl:text>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- supplied -->
     <xsl:template match="tei:supplied">
         <xsl:text>[</xsl:text>
             <xsl:apply-templates/>
         <xsl:text>]</xsl:text>
     </xsl:template>
-    
+
     <!-- teiHeader -->
     <xsl:template match="tei:teiHeader"/>
-    
+
     <!-- table -->
     <xsl:template match="tei:table">
         <xsl:element name="table">
@@ -231,21 +231,21 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- unclear -->
     <xsl:template match="tei:unclear">
         <xsl:text>(</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>)</xsl:text>
     </xsl:template>
-    
+
     <!-- Named templates -->
      <xsl:template name="dharma-head">
         <head>
             <title>
                 <xsl:value-of select="//tei:titleStmt/tei:title[@type='main']"/>
             </title>
-            
+
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
@@ -255,12 +255,12 @@
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>
                 <!--<link rel="stylesheet" href="./../ec/ec-css.css"></link>-->
-                
+
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
     </xsl:template>
-   
+
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -283,51 +283,60 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/#tfb-collection">Task-Force B</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/#tfc-collection">Task-Force C</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/#tfd-collection">Task-Force D</a>
+                            <a class="dropdown-item" href="https://github.com/erc-dharma">All the repositories</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Controlled Vocabularies
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Documentation
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
+                            <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Documentation
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/git/DHARMA_git_guide_v01">Starting with git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/github-issuetracker/UsingGitHubIssueTracker.pdf">Starting with GitHub issues</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/github-issuetracker/UsingMarkdownSyntax_v01">Starting with markdown</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/digital-areal/">Starting with XML in French</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Bibliographic Collections
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/workflow-output/DHARMA_INSEC11.html">Epigraphia Carnatica</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+                        <a class="nav-link" href="https://github.com/erc-dharma">GitHub</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.zotero.org/groups/1633743/erc-dharma/library">Zotero Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
                     </li>
                 </ul> 
             </div>
         </nav>
     </xsl:template>
-    
+
     <xsl:template name="dharma-script">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
@@ -338,7 +347,7 @@
         <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>
         <!--<script rel="stylesheet" src="./../ec/ec-loader.js"></script>-->
     </xsl:template>
-    
+
     <!-- side bar -->
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
@@ -382,7 +391,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- side number id -->
     <!-- issue with the string in which we found pb and lb -->
     <xsl:template name="number">
@@ -408,7 +417,7 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-   
+
     <xsl:template name="tpl-dharma-apparatus">
         <!-- An apparatus is only created if one of the following is true -->
         <xsl:if test=".//tei:note[ancestor::tei:div[@type='section']]">
@@ -423,7 +432,7 @@
                   * notes.  -->
                 <xsl:for-each select=".//tei:note">
                     <xsl:element name="span">
-                        <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>  
+                        <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
                         <xsl:call-template name="dharma-app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>
@@ -435,7 +444,7 @@
             </xsl:element>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template name="dharma-app-link">
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
@@ -443,13 +452,13 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="01"/>
         </xsl:variable>
-        
+
         <xsl:call-template name="dharma-generate-app-link">
             <xsl:with-param name="location" select="$location"/>
             <xsl:with-param name="app-num" select="$app-num"/>
         </xsl:call-template>
     </xsl:template>
-    
+
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
