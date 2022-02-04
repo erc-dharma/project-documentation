@@ -30,17 +30,17 @@
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="//tei:sourceDesc/tei:bibl/tei:date"/>
                     </xsl:element>
-                <xsl:apply-templates/>
+                    <xsl:apply-templates/>
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
                             <xsl:text>©EC. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                    <xsl:call-template name="dharma-script"/>
-                </xsl:element>
+                    <xsl:call-template name="dharma-script"/>            
+                </xsl:element>  
             </xsl:element>
-        </xsl:element>
+        </xsl:element> 
     </xsl:template>
 
     <!-- cell -->
@@ -347,9 +347,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <!-- loader arie -->
-        <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>
-        <!--<script rel="stylesheet" src="./../ec/ec-loader.js"></script>-->
+        <!-- loader ec -->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>-->
+        <script rel="stylesheet" src="./../ec/ec-loader.js"></script>
     </xsl:template>
 
     <!-- side bar -->
@@ -371,24 +371,8 @@
                                     <xsl:text>#</xsl:text>
                                     <xsl:value-of select="generate-id()"/>
                                 </xsl:attribute>
-                                <xsl:text>INSEC11</xsl:text>
-                                <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
-                                <xsl:choose>
-                                    <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
-                                        <xsl:text>0000</xsl:text>
-                                        <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-                                    </xsl:when>
-                                    <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
-                                        <xsl:text>000</xsl:text>
-                                        <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-                                    </xsl:when>
-                                    <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
-                                        <xsl:text>00</xsl:text>
-                                        <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-                                    </xsl:when>
-                                </xsl:choose>
+                                <xsl:call-template name="ecid"/>
                             </xsl:element>
-
                         </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
@@ -403,8 +387,10 @@
             <xsl:attribute name="class">col-2</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                <xsl:call-template name="ecid"/>
             </xsl:element>
             <br/>
+            <xsl:text>DHARMA ID: </xsl:text>
             <xsl:call-template name="dharmaid"/>
         </xsl:element>
     </xsl:template>
@@ -412,26 +398,95 @@
     <xsl:template name="dharmaid">
     <xsl:element name="span">
         <xsl:attribute name="class">dharmaid</xsl:attribute>
-        <xsl:text>DHARMA ID: INSEC</xsl:text>
+        <xsl:text>INSEC</xsl:text>
         <xsl:value-of select="substring-before(substring-after(base-uri(.), 'DHARMA_INSEC'), '.xml')"/>
+        <xsl:call-template name="taluqabbr"/>
         <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
         <xsl:choose>
-            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
+            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
                 <xsl:text>00</xsl:text>
                 <xsl:value-of select="substring-before(./tei:head, ' ')"/>
             </xsl:when>
             <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
-                <xsl:text>000</xsl:text>
+                <xsl:text>0</xsl:text>
                 <xsl:value-of select="substring-before(./tei:head, ' ')"/>
             </xsl:when>
-            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
-                <xsl:text>0000</xsl:text>
+            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
                 <xsl:value-of select="substring-before(./tei:head, ' ')"/>
             </xsl:when>
         </xsl:choose>
     </xsl:element>
 </xsl:template>
     
+    <xsl:template name="ecid">
+        <xsl:text>EC </xsl:text>
+        <xsl:value-of select="substring-before(substring-after(base-uri(.), 'DHARMA_INSEC'), '.xml')"/>
+        <xsl:text> </xsl:text>
+        <xsl:call-template name="taluqabbr"/>
+        <xsl:text> </xsl:text>
+        <xsl:choose>
+            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d+')"> 
+                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template name="taluqabbr">
+        <xsl:choose>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'bangalore')">
+                <xsl:text>Bn</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nelamangala')">
+                <xsl:text>Nl</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'mâgaḍi')">
+                <xsl:text>Ma</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'dod-ballapur')">
+                <xsl:text>DB</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'dêvanhaḷḷi')">
+                <xsl:text>Dv</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'hoskote')">
+                <xsl:text>Ht</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'ânekal')">
+                <xsl:text>An</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'kânkânhaḷḷi')">
+                <xsl:text>Kn</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'channapatna')">
+                <xsl:text>Cp</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'coorg')">
+                <xsl:text>Cg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'chitaldroog')">
+                <xsl:text>Cd</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'dâvaṇagere')">
+                <xsl:text>Dg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'jagaḷur')">
+                <xsl:text>Jl</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'moḷakâlmuru')">
+                <xsl:text>Mk</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'chaḷḷakere')">
+                <xsl:text>Cl</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'hiriyûr')">
+                <xsl:text>Hr</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'hoḷalkere')">
+                <xsl:text>Hk</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+   
     <xsl:template name="tpl-dharma-apparatus">
         <!-- An apparatus is only created if one of the following is true -->
         <xsl:if test=".//tei:note[ancestor::tei:div[@type='section']]">

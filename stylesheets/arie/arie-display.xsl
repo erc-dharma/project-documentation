@@ -121,7 +121,7 @@
         <br/>
     </xsl:template>-->
     
-    <xsl:template match="H | HP">
+    <xsl:template match="H">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
