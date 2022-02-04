@@ -59,13 +59,26 @@
             <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
             <xsl:attribute name="data-offset">5</xsl:attribute>
            
-        <xsl:call-template name="nav-bar"/>
-        <xsl:element name="div">
-            <xsl:attribute name="class">container</xsl:attribute>
-            <xsl:call-template name="table-contents"/>
-            <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse"><span>☰ Document Outline</span></a>
             <xsl:element name="div">
-                <xsl:attribute name="class">content</xsl:attribute>
+                <xsl:attribute name="class">wrapper-content</xsl:attribute>
+                <xsl:call-template name="table-contents"/>
+              
+            
+            <xsl:element name="div">
+                <xsl:attribute name="id">content</xsl:attribute>
+                <xsl:call-template name="nav-bar"/>
+                
+                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse">
+                    <span>☰ Document Outline</span>
+                </a>
+                
+                <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button> -->
             <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
                                 <xsl:attribute name="class">row wrapper text-break</xsl:attribute>
@@ -141,7 +154,6 @@
                 <xsl:call-template name="tpl-com"/>  
                 <xsl:call-template name="tpl-biblio"/>
         </xsl:element>
-        </xsl:element>
             <xsl:element name="footer">
                 <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                 <xsl:element name="div">
@@ -150,6 +162,7 @@
             </xsl:element>
                 <xsl:call-template name="dharma-script"/>            
         </xsl:element>  
+        </xsl:element>
         </xsl:element>
     </xsl:template>
     <!--  teiHeader ! -->
@@ -2456,8 +2469,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>
-               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+               <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"/>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
@@ -2478,8 +2491,8 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!--<script src="https://gitcdn.link/repo/erc-dharma/project-documentation/master/stylesheets/criticalEditions/loader.js"/>-->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"/>-->
+        <script src="./../criticalEditions/loader.js"></script>
     </xsl:template>
        
     <!-- side bar - table of contents -->
@@ -2566,7 +2579,7 @@
     
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="narbar-dharma">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="https://erc-dharma.github.io/">ERC-DHARMA</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -2586,22 +2599,11 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/#tfb-collection">Task-Force B</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/#tfc-collection">Task-Force C</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/#tfd-collection">Task-Force D</a>
+                            <a class="dropdown-item" href="https://github.com/erc-dharma">All the repositories</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Controlled Vocabularies
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
-                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -2613,13 +2615,12 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Training
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -2629,8 +2630,17 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/digital-areal/">Starting with XML in French</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Epigraphical Publications
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                        </div>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
+                        <a class="nav-link" href="https://github.com/erc-dharma">GitHub</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.zotero.org/groups/1633743/erc-dharma/library">Zotero Library</a>

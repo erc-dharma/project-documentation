@@ -316,11 +316,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Bibliographic Collections
+                            Epigraphical Publications
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
-                            <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/workflow-output/DHARMA_INSEC11.html">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
                         </div>
                     </li>
                     <li class="nav-item">
