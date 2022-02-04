@@ -102,16 +102,20 @@
             <xsl:attribute name="class">text-center</xsl:attribute>
         <xsl:apply-templates/>
         </xsl:element>
+        <br/>
     </xsl:template>
     <xsl:template match="tei:head[parent::tei:div[@type='chapter']]">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
+        <br/>
     </xsl:template>
     <xsl:template match="tei:head[parent::tei:div[@type='section']]">
+        <br/>
         <xsl:element name="h4">
             <xsl:apply-templates/>
         </xsl:element>
+        <br/>
     </xsl:template>
 
     <!-- hi -->
@@ -396,28 +400,38 @@
     <!-- issue with the string in which we found pb and lb -->
     <xsl:template name="number">
         <xsl:element name="div">
-            <xsl:attribute name="class">col-2 font-weight-bold</xsl:attribute>
-            <xsl:value-of select="ancestor-or-self::tei:div[@type='chapter']/tei:head[1]"/>
+            <xsl:attribute name="class">col-2</xsl:attribute>
+            <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            </xsl:element>
             <br/>
-            <xsl:text>INSEC11</xsl:text>
-            <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
-            <xsl:choose>
-                <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
-                    <xsl:text>0000</xsl:text>
-                    <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-                </xsl:when>
-                <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
-                    <xsl:text>000</xsl:text>
-                    <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-                </xsl:when>
-                <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
-                    <xsl:text>00</xsl:text>
-                    <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-                </xsl:when>
-            </xsl:choose>
+            <xsl:call-template name="dharmaid"/>
         </xsl:element>
     </xsl:template>
 
+    <xsl:template name="dharmaid">
+    <xsl:element name="span">
+        <xsl:attribute name="class">dharmaid</xsl:attribute>
+        <xsl:text>DHARMA ID: INSEC</xsl:text>
+        <xsl:value-of select="substring-before(substring-after(base-uri(.), 'DHARMA_INSEC'), '.xml')"/>
+        <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
+        <xsl:choose>
+            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
+                <xsl:text>00</xsl:text>
+                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+            </xsl:when>
+            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
+                <xsl:text>000</xsl:text>
+                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+            </xsl:when>
+            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
+                <xsl:text>0000</xsl:text>
+                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:element>
+</xsl:template>
+    
     <xsl:template name="tpl-dharma-apparatus">
         <!-- An apparatus is only created if one of the following is true -->
         <xsl:if test=".//tei:note[ancestor::tei:div[@type='section']]">

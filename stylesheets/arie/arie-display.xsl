@@ -107,33 +107,33 @@
         <br/>
     </xsl:template>
     
-    <xsl:template match="HC">
+   <!-- <xsl:template match="HC">
         <xsl:element name="h2">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
-    </xsl:template>
+    </xsl:template>-->
     
-    <xsl:template match="HD">
+    <!--<xsl:template match="HD">
+        <xsl:element name="h3">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>-->
+    
+    <xsl:template match="H | HP">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>
     
-    <xsl:template match="HP">
+   <!-- <xsl:template match="HT">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
-    </xsl:template>
-    
-    <xsl:template match="HT">
-        <xsl:element name="h3">
-            <xsl:apply-templates/>
-        </xsl:element>
-        <br/>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="b">
         <xsl:element name="span">
