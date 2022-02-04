@@ -1628,7 +1628,7 @@
                     <constraintSpec scheme="schematron" ident="attributes">
                         <constraint> 
                             <sch:rule context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
-                                <sch:assert test="matches(./text()', '\d+')">
+                                <sch:assert test="matches('./text()', '[0-9]+')">
                                     To be encoded a date must contained a year.
                                 </sch:assert>
                             </sch:rule>

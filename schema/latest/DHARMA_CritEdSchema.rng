@@ -2896,7 +2896,7 @@ Sample values include: </a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
-               <sch:assert test="matches(./text()', '\d+')">
+               <sch:assert test="matches('./text()', '\d+')">
                   To be encoded a date must contained a year.
                 </sch:assert>
             </sch:rule>

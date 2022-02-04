@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-02-02T14:02:01Z. .
+Schema generated from ODD source 2022-02-04T12:30:32Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -4038,7 +4038,7 @@ Measures]</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
-               <sch:assert test="matches(./text()', '\d+')">
+               <sch:assert test="matches(.', '[0-9]+')">
                                     To be encoded a date must contained a year.
                                 </sch:assert>
             </sch:rule>
