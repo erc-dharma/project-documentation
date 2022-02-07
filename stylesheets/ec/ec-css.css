@@ -1,22 +1,20 @@
 #sidebar-wrapper {
-    width: 300px;
+    width: 250px;
     position: fixed;
-    top: 150px;
+    top: 0;
     left: 0;
     height: 100vh;
     z-index: 999;
     color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar-wrapper.active {
+    margin-left: -250px;
 }
 
 #sidebar-wrapper .nav-link.active {
   background-color: #00ACC1 !important;
-}
-
-
-#toggle-table-contents{
-    position: fixed;
-    top: 100px;
-    left: 10px;
 }
 
 .pagination{

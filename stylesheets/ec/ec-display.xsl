@@ -18,11 +18,10 @@
                 <xsl:attribute name="data-spy">scroll</xsl:attribute>
                 <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>            
-                <xsl:element name="div">
-                    <xsl:attribute name="class">container</xsl:attribute>
+               
                     <xsl:call-template name="table-contents"/>
-                        
-                        <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
+                    
+                   
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:element name="h1">
@@ -43,8 +42,7 @@
                     <xsl:call-template name="dharma-script"/>            
                 </xsl:element>  
             </xsl:element>
-                </xsl:element>
-            </xsl:element>
+        </xsl:element>
     </xsl:template>
 
     <!-- cell -->
@@ -277,8 +275,8 @@
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>-->
-                <link rel="stylesheet" href="../ec/ec-css.css"></link>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>
+                <!--<link rel="stylesheet" href="../ec/ec-css.css"></link>-->
 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
@@ -368,8 +366,8 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader ec -->
-        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>-->
-        <script rel="stylesheet" src="../ec/ec-loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>
+        <!--<script rel="stylesheet" src="../ec/ec-loader.js"></script>-->
     </xsl:template>
 
     <!-- side bar -->
@@ -377,7 +375,7 @@
     <xsl:template name="table-contents">
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
-            <xsl:attribute name="class">collapse</xsl:attribute>         
+            <!--<xsl:attribute name="class">collapse</xsl:attribute>     -->    
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
                 <xsl:element name="ul">
