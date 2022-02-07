@@ -17,9 +17,12 @@
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
                 <xsl:attribute name="data-spy">scroll</xsl:attribute>
                 <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
-                <xsl:call-template name="nav-bar"/>
-                <xsl:call-template name="table-contents"/>
-                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
+                <xsl:call-template name="nav-bar"/>            
+                <xsl:element name="div">
+                    <xsl:attribute name="class">container</xsl:attribute>
+                    <xsl:call-template name="table-contents"/>
+                        
+                        <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:element name="h1">
@@ -40,7 +43,8 @@
                     <xsl:call-template name="dharma-script"/>            
                 </xsl:element>  
             </xsl:element>
-        </xsl:element> 
+                </xsl:element>
+            </xsl:element>
     </xsl:template>
 
     <!-- cell -->
@@ -125,6 +129,14 @@
                         <xsl:apply-templates/>
                 </xsl:element>
     </xsl:template>
+    
+    <!-- item -->
+    <xsl:template match="tei:item">
+        <xsl:element name="li">
+            <xsl:apply-templates/>
+        </xsl:element>
+        
+    </xsl:template>
 
     <!-- l -->
     <xsl:template match="tei:l">
@@ -162,6 +174,14 @@
             </xsl:element>
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+    
+    <!-- list -->
+    <xsl:template match="tei:list">
+        <xsl:element name="ul">
+            <xsl:apply-templates/>
+        </xsl:element>
+        
     </xsl:template>
 
     <!-- n -->
@@ -253,12 +273,12 @@
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>
-                <!--<link rel="stylesheet" href="./../ec/ec-css.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>-->
+                <link rel="stylesheet" href="../ec/ec-css.css"></link>
 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
@@ -342,14 +362,14 @@
     </xsl:template>
 
     <xsl:template name="dharma-script">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
-        <!-- scrollbar -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+        <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader ec -->
         <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>-->
-        <script rel="stylesheet" src="./../ec/ec-loader.js"></script>
+        <script rel="stylesheet" src="../ec/ec-loader.js"></script>
     </xsl:template>
 
     <!-- side bar -->
@@ -357,7 +377,7 @@
     <xsl:template name="table-contents">
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
-            <xsl:attribute name="class">collapse</xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>         
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
                 <xsl:element name="ul">
