@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2022-02-07">Adding xhm and cja in @xml:lang</change>
             <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
             <change who="part:axja" when="2021-12-22"
                 >Adding some attributes and values for dates as well as for rs.</change>
@@ -274,6 +275,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
@@ -1008,6 +1011,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
@@ -1784,6 +1789,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -1865,6 +1872,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -2414,6 +2423,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -2692,6 +2703,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -3312,6 +3325,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
@@ -4717,6 +4732,8 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
                             </valList>
                         </attDef>
                         <attDef ident="xml:space" mode="delete"/>
