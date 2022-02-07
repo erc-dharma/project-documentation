@@ -791,7 +791,7 @@
                     <xsl:when test="@type='canto'"/>
                     <xsl:otherwise>
                         <xsl:element name="p">
-                            <xsl:choose>
+                            <xsl:choose>                              
                                 <xsl:when test="@n">
                                     <xsl:value-of select="@n"/>
                                     <xsl:text>. </xsl:text>
@@ -1080,7 +1080,14 @@
                     <xsl:if test="@n">
                         <xsl:element name="span">
                             <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                        <xsl:value-of select="@n"/>
+                        <xsl:choose>
+                            <xsl:when test="contains(@n, '.')">
+                                <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="@n"/>
+                            </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:element>
                     </xsl:if>
                 </xsl:element>
