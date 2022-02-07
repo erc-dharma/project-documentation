@@ -1,12 +1,10 @@
-$(document).ready(function () {
-
-    $("#sidebar").mCustomScrollbar({
+$(document).ready(function() {
+    $("#sidebar-wrapper").mCustomScrollbar({
          theme: "minimal"
     });
     $('#sidebarCollapse').on('click', function () {
-        // open or close navbar
         $('#sidebar-wrapper').toggleClass('active');
-        // close dropdowns
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
-
 });

@@ -6,7 +6,7 @@
     exclude-result-prefixes="xs tei"
     version="2.0">
 
-    <xsl:output method="xml" indent="no" encoding="UTF-8"/>
+    <xsl:output indent="no" encoding="UTF-8"/>
 
     <!-- Written by Axelle Janiak for DHARMA, starting February 2021 -->
 
@@ -17,11 +17,10 @@
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
                 <xsl:attribute name="data-spy">scroll</xsl:attribute>
                 <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
-                <xsl:call-template name="nav-bar"/>            
-               
-                    <xsl:call-template name="table-contents"/>
-                    
-                   
+                <xsl:call-template name="nav-bar"/>
+                <xsl:call-template name="table-contents"/>
+                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse">☰ Index</a>
+                         
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:element name="h1">
@@ -41,8 +40,8 @@
                     </xsl:element>
                     <xsl:call-template name="dharma-script"/>            
                 </xsl:element>  
+                </xsl:element>
             </xsl:element>
-        </xsl:element>
     </xsl:template>
 
     <!-- cell -->
@@ -271,12 +270,12 @@
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"></link>
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>
-                <!--<link rel="stylesheet" href="../ec/ec-css.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>-->
+                <link rel="stylesheet" href="../ec/ec-css.css"></link>
 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
@@ -366,16 +365,16 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader ec -->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>
-        <!--<script rel="stylesheet" src="../ec/ec-loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>-->
+        <script rel="stylesheet" src="../ec/ec-loader.js"></script>
     </xsl:template>
 
     <!-- side bar -->
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
         <xsl:element name="div">
+            <xsl:attribute name="class">collapse</xsl:attribute>  
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
-            <!--<xsl:attribute name="class">collapse</xsl:attribute>     -->    
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
                 <xsl:element name="ul">
