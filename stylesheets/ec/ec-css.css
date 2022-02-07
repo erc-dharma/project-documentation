@@ -1,27 +1,22 @@
 #sidebar-wrapper {
-    width: 250px;
+    width: 300px;
     position: fixed;
-    top: 0;
+    top: 150px;
     left: 0;
     height: 100vh;
     z-index: 999;
     color: #fff;
-    transition: all 0.3s;
-}
-
-#sidebar-wrapper.active {
-    margin-left: -250px;
 }
 
 #sidebar-wrapper .nav-link.active {
   background-color: #00ACC1 !important;
 }
 
-.wrapper-content{
-    display: flex;
-    width: 100%;
+#sidebarCollapse{
+    position: fixed;
+    top: 75px;
+    left: 10px;
 }
-
 .pagination{
     font-size: small;
 }
