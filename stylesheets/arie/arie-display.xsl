@@ -35,7 +35,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="H">
+    <!--<xsl:template match="H1">
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
             <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
             <xsl:variable name="bibref">
@@ -55,7 +55,7 @@
             select="document($bibref)/div"/>
             </xsl:element>
         <br/>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="H1">
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
