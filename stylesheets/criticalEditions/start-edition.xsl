@@ -392,7 +392,7 @@
                                 </xsl:call-template>
                             </xsl:if>
                     </xsl:if>
-                </xsl:element>
+                </xsl:element>           
                 <!--  Variant readings ! -->
                 <xsl:if test="tei:rdg[not(@type='paradosis')]">
                     <xsl:choose>
@@ -500,10 +500,10 @@
                             <!--<xsl:apply-templates select="node() except child::tei:span[@type='omissionStart']"/>-->
                             <xsl:apply-templates/>
                         </xsl:element>
-                    </xsl:for-each>
+                    </xsl:for-each>  
                 </xsl:if>
                 <!--  Notes ! -->
-                <xsl:if test="tei:note[not(@type='altLem') or ancestor::tei:listApp]">
+            <xsl:if test="tei:note[not(@type='altLem') or ancestor::tei:listApp]">
                     <xsl:element name="hr"/>
                     <xsl:for-each select="tei:note[not(@type='altLem')]">
                         <xsl:element name="span">
@@ -511,7 +511,25 @@
                             <xsl:apply-templates/>
                         </xsl:element>
                     </xsl:for-each>
-                </xsl:if>           
+                </xsl:if>
+            <!-- commentaire du witDetail -->
+            <xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail">                <xsl:for-each select="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail">
+                <xsl:if test="string-length(.) &gt;= 4"> 
+                    <xsl:element name="hr"/>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">witDetail-line</xsl:attribute>
+                        <xsl:element name="span">
+                               <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        <xsl:value-of select="substring-after(./@wit, '#')"/>
+                        <xsl:element name="sub">
+                            <xsl:value-of select="./@type"/>
+                        </xsl:element>
+                        </xsl:element>
+                        <xsl:text>: </xsl:text>
+                        <xsl:apply-templates select="."/>
+                    </xsl:element></xsl:if>
+                </xsl:for-each>
+            </xsl:if>
             <!--</xsl:element>-->
         </xsl:variable>
         
@@ -2157,6 +2175,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  BUTTON-GROUP ! -->
     <!--  button group to the right of each verse or paragraph ! -->
     <xsl:template name="button-group">
@@ -2424,7 +2443,10 @@
             </xsl:choose>
         </xsl:element>
         <xsl:if test="$target = $witdetail-string">
-            <xsl:element name="sub"> 
+            <xsl:choose>
+                <xsl:when test="string-length($witdetail-text) &gt;= 4"/>
+                <xsl:otherwise>
+                    <xsl:element name="sub"> 
                 <xsl:choose>
                     <xsl:when test="$witdetail-text != ''">
                         <xsl:value-of select="$witdetail-text"/>
@@ -2433,7 +2455,8 @@
                     <xsl:value-of select="$witdetail-type"/>
                     </xsl:otherwise>
                 </xsl:choose>
-            </xsl:element>
+            </xsl:element></xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
         
     </xsl:template>
