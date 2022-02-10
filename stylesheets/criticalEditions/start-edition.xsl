@@ -998,23 +998,18 @@
                 <xsl:variable name="context-root" select="."/>
                 <xsl:variable name="verse-number" select="./@n"/>
                 <xsl:choose>
-                    <xsl:when test="parent::tei:lg/following-sibling::tei:listApp[@type='apparatus'][1]/tei:app[@loc = $verse-number]">
-                        <xsl:for-each select="parent::tei:lg/following-sibling::tei:listApp[@type='apparatus'][1]/tei:app[@loc = $verse-number]">
-                            <xsl:variable name="app-context" select="."/>
-                            
-                            <xsl:call-template name="search-and-replace-lemma">
-                                <xsl:with-param name="input" select="$context-root"/>
-                                <xsl:with-param name="search-string" select="tei:lem"/>
-                                <xsl:with-param name="replace-node" select="$app-context"/>
-                            </xsl:call-template>
-                            
-                        </xsl:for-each>
+                    <xsl:when test=".[parent::tei:lg/following::tei:listApp[1][@type='apparatus']/tei:app[@loc = $verse-number]] and ./parent::tei:lg/following::tei:*[1][local-name() = 'listApp']">
+                        <xsl:variable name="app-context" select="parent::tei:lg/following::tei:listApp[1][@type='apparatus']/tei:app[@loc = $verse-number]"/>       
+                        <xsl:call-template name="search-and-replace-lemma">
+                            <xsl:with-param name="input" select="$context-root"/>
+                            <xsl:with-param name="search-string" select="$app-context/tei:lem"/>
+                            <xsl:with-param name="replace-node" select="$app-context"/>
+                        </xsl:call-template>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:apply-templates/>
                     </xsl:otherwise>
-                </xsl:choose>
-                
+                </xsl:choose>             
             </xsl:for-each>
         </xsl:variable>
         <xsl:element name="span">
@@ -1048,36 +1043,29 @@
         <xsl:param name="input"/>
         <xsl:param name="search-string"/>
         <xsl:param name="replace-node"/>
-        
-        <xsl:message><xsl:value-of select="$replace-node"/></xsl:message>
         <xsl:choose>
-            <!-- See if the input contains the search string -->
-            <xsl:when test="contains($input, $search-string)">
-                <!-- If so, then concatenate the substring before the search
-          string to the replacement string and to the result of
-          recursively applying this template to the remaining substring.
-          -->
-                <xsl:value-of
-                    select="substring-before($input, $search-string)"/>
-                <xsl:apply-templates select="$replace-node"/>
-                <xsl:if test="substring-after($input, $search-string)">
+            <xsl:when test="$search-string">
+                <xsl:apply-templates select="substring-before($input, $search-string[1])"/>
+                <xsl:apply-templates select="$replace-node[tei:lem = $search-string[1]]"/>
+                <xsl:if test="substring-after($input, $search-string[1])">
                     <xsl:call-template name="search-and-replace-lemma">
                         <xsl:with-param name="input"
-                            select="substring-after($input, $search-string)"/>
+                            select="substring-after($input, $search-string[1])"/>
                         <xsl:with-param name="search-string"
-                            select="$search-string"/>
+                            select="$search-string[position() != 1]"/>
                         <xsl:with-param name="replace-node"
                             select="$replace-node"/>
-                    </xsl:call-template></xsl:if>
+                    </xsl:call-template>
+                </xsl:if>          
             </xsl:when>
             <xsl:otherwise>
                 <!-- There are no more occurences of the search string so
-               just return the current input string -->
-                <xsl:value-of select="$input"/>
-            </xsl:otherwise>
+                    just return the current input string -->
+                <xsl:apply-templates select="$input"/>
+            </xsl:otherwise>  
         </xsl:choose>
-        
     </xsl:template>
+        
     <!-- lacunaEnd & lacunaStart -->    
 <!-- <xsl:template match="tei:lacunaStart">
            <xsl:text>[...</xsl:text>
@@ -1237,17 +1225,6 @@
                     </xsl:element>
         </xsl:element>
     </xsl:template>
-    <!--<xsl:template match="tei:listApp[@type='apparatus']">
-        <xsl:variable name="lem-external-app" select="tei"/>
-       <xsl:for-each select="tei:app[@loc]">
-           <xsl:call-template name="apparatus-making">
-               <xsl:with-param name="lem" select="tei:lem/text()"/>
-               <xsl:with-param name="preceding-text" select="preceding::tei:*[1]/text()"/>
-           </xsl:call-template>
-       </xsl:for-each>
-
-    </xsl:template>-->
-    
     
     <xsl:template match="tei:listApp[@type='parallels']">
         <xsl:element name="div">
