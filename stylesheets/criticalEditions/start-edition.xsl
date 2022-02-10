@@ -993,30 +993,90 @@
     <!--  L ! -->
     <!--  l ! -->
     <xsl:template match="tei:l">
+        <xsl:variable name="verse-line">
+            <xsl:for-each select=".">
+                <xsl:variable name="context-root" select="."/>
+                <xsl:variable name="verse-number" select="./@n"/>
+                <xsl:choose>
+                    <xsl:when test="parent::tei:lg/following-sibling::tei:listApp[@type='apparatus'][1]/tei:app[@loc = $verse-number]">
+                        <xsl:for-each select="parent::tei:lg/following-sibling::tei:listApp[@type='apparatus'][1]/tei:app[@loc = $verse-number]">
+                            <xsl:variable name="app-context" select="."/>
+                            
+                            <xsl:call-template name="search-and-replace-lemma">
+                                <xsl:with-param name="input" select="$context-root"/>
+                                <xsl:with-param name="search-string" select="tei:lem"/>
+                                <xsl:with-param name="replace-node" select="$app-context"/>
+                            </xsl:call-template>
+                            
+                        </xsl:for-each>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates/>
+                    </xsl:otherwise>
+                </xsl:choose>
+                
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>l translit</xsl:text>
                 <!--<xsl:text> </xsl:text>
                     <xsl:value-of select="$script"/>-->
             </xsl:attribute>
-                <xsl:if test="@real">
-                    <xsl:text>[</xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="matches(@real, '[\-\+=]')">
-                            <xsl:call-template name="scansion">
-                                <xsl:with-param name="met-string" select="translate(@real, '-=+', '⏑⏓–')"/>
-                                <xsl:with-param name="string-len" select="string-length(@real)"/>
-                                <xsl:with-param name="string-pos" select="string-length(@real) - 1"/>
-                    </xsl:call-template>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="@real"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>] </xsl:text>
-                </xsl:if>
-            <xsl:apply-templates/> 
+            <xsl:if test="@real">
+                <xsl:text>[</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="matches(@real, '[\-\+=]')">
+                        <xsl:call-template name="scansion">
+                            <xsl:with-param name="met-string"
+                                select="translate(@real, '-=+', '⏑⏓–')"/>
+                            <xsl:with-param name="string-len" select="string-length(@real)"/>
+                            <xsl:with-param name="string-pos" select="string-length(@real) - 1"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="@real"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>] </xsl:text>
+            </xsl:if>
+            <xsl:copy-of select="$verse-line"/>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="search-and-replace-lemma">
+        <xsl:param name="input"/>
+        <xsl:param name="search-string"/>
+        <xsl:param name="replace-node"/>
+        
+        <xsl:message><xsl:value-of select="$replace-node"/></xsl:message>
+        <xsl:choose>
+            <!-- See if the input contains the search string -->
+            <xsl:when test="contains($input, $search-string)">
+                <!-- If so, then concatenate the substring before the search
+          string to the replacement string and to the result of
+          recursively applying this template to the remaining substring.
+          -->
+                <xsl:value-of
+                    select="substring-before($input, $search-string)"/>
+                <xsl:apply-templates select="$replace-node"/>
+                <xsl:if test="substring-after($input, $search-string)">
+                    <xsl:call-template name="search-and-replace-lemma">
+                        <xsl:with-param name="input"
+                            select="substring-after($input, $search-string)"/>
+                        <xsl:with-param name="search-string"
+                            select="$search-string"/>
+                        <xsl:with-param name="replace-node"
+                            select="$replace-node"/>
+                    </xsl:call-template></xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- There are no more occurences of the search string so
+               just return the current input string -->
+                <xsl:value-of select="$input"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:template>
     <!-- lacunaEnd & lacunaStart -->    
 <!-- <xsl:template match="tei:lacunaStart">
