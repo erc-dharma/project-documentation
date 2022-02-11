@@ -1183,6 +1183,8 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
+    
+    <xsl:template match="tei:listApp[@type = 'apparatus']"/>
     <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
