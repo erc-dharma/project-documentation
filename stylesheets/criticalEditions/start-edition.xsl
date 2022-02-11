@@ -36,7 +36,6 @@
         </xsl:for-each>  
     </xsl:function>
     
-    
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
     
