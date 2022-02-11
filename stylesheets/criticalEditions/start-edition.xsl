@@ -1047,6 +1047,7 @@
             <xsl:when test="$search-string">
                 <xsl:apply-templates select="substring-before($input, $search-string[1])"/>
                 <xsl:apply-templates select="$replace-node[tei:lem = $search-string[1]]"/>
+                
                 <xsl:if test="substring-after($input, $search-string[1])">
                     <xsl:call-template name="search-and-replace-lemma">
                         <xsl:with-param name="input"
@@ -1056,7 +1057,7 @@
                         <xsl:with-param name="replace-node"
                             select="$replace-node"/>
                     </xsl:call-template>
-                </xsl:if>          
+                </xsl:if>  
             </xsl:when>
             <xsl:otherwise>
                 <!-- There are no more occurences of the search string so
@@ -1182,7 +1183,7 @@
         </xsl:element>
     </xsl:template>
     <!--  listApp ! -->
-    <xsl:template match="tei:listApp[@type = 'apparatus']">
+    <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
             <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -1224,7 +1225,7 @@
                         </xsl:element>
                     </xsl:element>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="tei:listApp[@type='parallels']">
         <xsl:element name="div">
