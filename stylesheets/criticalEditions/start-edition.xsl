@@ -233,6 +233,24 @@
     <!--  A ! -->
     <!--  ab ! -->
     <xsl:template match="tei:ab">
+        <xsl:variable name="ab-line">
+            <xsl:for-each select=".">
+                <xsl:variable name="context-root" select="."/>
+                <xsl:choose>
+                    <xsl:when test=".[following::tei:listApp[1][@type='apparatus']/tei:app] and ./following::tei:*[1][local-name() = 'listApp']">
+                        <xsl:variable name="app-context" select="following::tei:listApp[1][@type='apparatus']/tei:app"/>       
+                        <xsl:call-template name="search-and-replace-lemma">
+                            <xsl:with-param name="input" select="$context-root"/>
+                            <xsl:with-param name="search-string" select="$app-context/tei:lem"/>
+                            <xsl:with-param name="replace-node" select="$app-context"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates/>
+                    </xsl:otherwise>
+                </xsl:choose>             
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:if test="@type">
             <xsl:element name="p">
                 <xsl:attribute name="class">float-center</xsl:attribute>
@@ -252,7 +270,7 @@
                     <xsl:if test="@xml:id">
                         <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
                     </xsl:if>
-                    <xsl:apply-templates/>
+                    <xsl:copy-of select="$ab-line"/>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
