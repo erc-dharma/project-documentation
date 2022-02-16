@@ -1584,6 +1584,24 @@
         <xsl:variable name="p-num">
             <xsl:number level="single" format="1"/>
         </xsl:variable>
+        <xsl:variable name="p-line">
+            <xsl:for-each select=".">
+                <xsl:variable name="context-root" select="."/>
+                <xsl:choose>
+                    <xsl:when test=".[following::tei:listApp[1][@type='apparatus']/tei:app] and ./following::tei:*[1][local-name() = 'listApp']">
+                        <xsl:variable name="app-context" select="following::tei:listApp[1][@type='apparatus']/tei:app"/>       
+                        <xsl:call-template name="search-and-replace-lemma">
+                            <xsl:with-param name="input" select="$context-root"/>
+                            <xsl:with-param name="search-string" select="$app-context/tei:lem"/>
+                            <xsl:with-param name="replace-node" select="$app-context"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates/>
+                    </xsl:otherwise>
+                </xsl:choose>             
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:choose>
             <xsl:when test="//tei:TEI[@type='translation']">
                 <xsl:element name="p">
@@ -1644,7 +1662,7 @@
                 <xsl:attribute name="class">col text-col</xsl:attribute>
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
-            <xsl:apply-templates/>
+                <xsl:copy-of select="$p-line"/>
                 <xsl:if test="@xml:id">
                     <xsl:element name="div">
                         <!--<xsl:attribute name="class">col-10</xsl:attribute>-->
