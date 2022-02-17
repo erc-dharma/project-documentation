@@ -42,8 +42,10 @@ $(document).ready(function() {
          theme: "minimal"
     });
     $('#sidebarCollapse').on('click', function () {
-        $('#sidebar-wrapper').toggleClass('active');
-    });
+                $('#sidebar-wrapper, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
 });
 /* move sub into the previous <a> element of siglum */
 $(document).ready(function() {
