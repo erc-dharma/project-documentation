@@ -18,7 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-            <change who="part:axja" when="2022-02-18">Updating the model to encode person's names</change>
+            <change who="part:axja" when="2022-02-18">Updating the model to encode person's names, addding provisional values for a list of types with roleName</change>
             <change who="part:axja" when="2022-02-07">Adding xhm and cja in @xml:lang</change>
             <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
             <change who="part:axja" when="2021-12-22"
@@ -4016,6 +4016,15 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="type" mode="change">
+                            <valList type="open" mode="replace">
+                                <valItem ident="king"/>
+                                <valItem ident="queen"/>
+                                <valItem ident="prince"/>
+                                <valItem ident="princess"/>
+                                
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="rs" module="core" mode="change">
