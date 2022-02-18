@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2022-02-18">Updating the model to encode person's names</change>
             <change who="part:axja" when="2022-02-07">Adding xhm and cja in @xml:lang</change>
             <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
             <change who="part:axja" when="2021-12-22"
@@ -4015,46 +4016,6 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="type" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="king"/>
-                                <valItem ident="subordinateRuler"/>
-                                <valItem ident="landlord"/>
-                                <valItem ident="godLegalEntity"/>
-                                <valItem ident="priest"/>
-                                <valItem ident="brahim"/>
-                                <valItem ident="monk"/>
-                                <valItem ident="merchant"/>
-                                <valItem ident="brahimDelegate"/>
-                                <valItem ident="regionalDelegate"/>
-                                <valItem ident="officer"/>
-                                <valItem ident="dancer"/>
-                                <valItem ident="singer"/>
-                                <valItem ident="peasant"/>
-                                <valItem ident="shepherd"/>
-                                <valItem ident="unknown"/>
-                            </valList>
-                        </attDef>
-                        <attDef ident="subtype" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="donor"/>
-                                <valItem ident="donee"/>
-                                <valItem ident="founder"/>
-                                <valItem ident="administrator"/>
-                                <valItem ident="inChargeDonation"/>
-                                <valItem ident="witness"/>
-                                <valItem ident="orderIssuer"/>
-                                <valItem ident="orderAddressee"/>
-                                <valItem ident="auditor"/>
-                                <valItem ident="beneficaryMerit"/>
-                                <valItem ident="commemoratedPerson"/>
-                                <valItem ident="scribe"/>
-                                <valItem ident="composer"/>
-                                <valItem ident="handwriter"/>
-                                <valItem ident="engraver"/>
-                                <valItem ident="sealer-solderer"/>
-                            </valList>
-                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="rs" module="core" mode="change">
@@ -4106,7 +4067,15 @@
                             context="tei:rs[@type='eclipse']"> <sch:assert
                             test="@key='(lunar or solar)'"
                             >With the @type='eclipse', you can only use one of the following values: lunar or solar.
-                                </sch:assert> </sch:rule> </constraint>
+                                </sch:assert> </sch:rule>
+                            <sch:rule context="tei:rs[@type='individual']">
+                                <sch:assert test="@type='(masc or fem or other)'">A gender is expected as another value of reference string @type='individual'.</sch:assert>
+                            
+                        </sch:rule>
+                            <sch:rule context="tei:rs[@type='individual']">
+                                <sch:assert test="@subtype='(deity or godLegalEntity or god_child or ruler or ruler_spouse or ruler_child or subordinateRuler or royalPreceptor or 
+ noble or landlord or chief or priest or brahim or monk or cleric or officiant or officer or ascetic or hermit or merchant or artisan or brahimDelegate or regionalDelegate or dancer or singer or peasant or shepherd or slave or fieldWork or unknown)'">one of the following @subtype value can only work with @type='individual'.</sch:assert>                             </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="cert" mode="delete"/>
@@ -4121,12 +4090,68 @@
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
-                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="role" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="donor"/>
+                                <valItem ident="donee"/>
+                                <valItem ident="donativeObject"/>
+                                <valItem ident="buyer"/>
+                                <valItem ident="seller"/>
+                                <valItem ident="petitioner"/>
+                                <valItem ident="founder"/>
+                                <valItem ident="administrator"/>
+                                <valItem ident="inChargeDonation"/>
+                                <valItem ident="witness"/>
+                                <valItem ident="orderIssuer"/>
+                                <valItem ident="orderAddressee"/>
+                                <valItem ident="auditor"/>
+                                <valItem ident="beneficaryMerit"/>
+                                <valItem ident="commemoratedPerson"/>
+                                <valItem ident="scribe"/>
+                                <valItem ident="composer"/>
+                                <valItem ident="handwriter"/>
+                                <valItem ident="engraver"/>
+                                <valItem ident="sealer-solderer"/>
+                            </valList>
+                        </attDef>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="source" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
-                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="subtype" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="deity"/>
+                                <valItem ident="godLegalEntity"/>
+                                <valItem ident="god_child"/>
+                                <valItem ident="ruler"/>
+                                <valItem ident="ruler_spouse"/>
+                                <valItem ident="ruler_child"/>
+                                <valItem ident="subordinateRuler"/>
+                                <valItem ident="royalPreceptor"/>
+                                <valItem ident="noble"/>
+                                <valItem ident="landlord"/>
+                                <valItem ident="chief"/>
+                                <valItem ident="priest"/>
+                                <valItem ident="brahim"/>
+                                <valItem ident="monk"/>
+                                <valItem ident="cleric"/>
+                                <valItem ident="officiant"/>
+                                <valItem ident="officer"/>
+                                <valItem ident="ascetic"/>
+                                <valItem ident="hermit"/>
+                                <valItem ident="merchant"/>
+                                <valItem ident="artisan"/>
+                                <valItem ident="brahimDelegate"/>
+                                <valItem ident="regionalDelegate"/>
+                                <valItem ident="dancer"/>
+                                <valItem ident="singer"/>
+                                <valItem ident="peasant"/>
+                                <valItem ident="shepherd"/>
+                                <valItem ident="slave"/>
+                                <valItem ident="fieldWork"/>
+                                <valItem ident="unknown"/>
+                            </valList>
+                        </attDef>
                         <attDef ident="synch" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
@@ -4151,16 +4176,16 @@
                                 <valItem ident="solstice"/>
                                 <valItem ident="equinoxe"/>
                                 <valItem ident="eclipse"/>
-                            </valList>
-                        </attDef>
-                        <attDef ident="subtype" mode="change">
-                            <valList type="closed" mode="replace">
-                                <valItem ident="dark"/>
-                                <valItem ident="bright"/>
+                                <valItem ident="individual"/>
+                                <valItem ident="masc"/>
+                                <valItem ident="fem"/>
+                                <valItem ident="other"/>
                             </valList>
                         </attDef>
                         <attDef ident="key" mode="change">
                             <valList type="semi" mode="replace">
+                                <valItem ident="dark"/>
+                                <valItem ident="bright"/>
                                 <valItem ident="caitra"/>
                                 <valItem ident="vaisakha"/>
                                 <valItem ident="jyaistha"/>
