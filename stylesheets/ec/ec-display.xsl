@@ -422,14 +422,26 @@
         <xsl:choose>
             <xsl:when test="matches(./tei:head, '\d')">
                 <xsl:text>00</xsl:text>
-                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                <xsl:analyze-string regex="(\d[a-c]*)" select="./tei:head/string()">
+                  <xsl:matching-substring>
+                  <xsl:value-of select="regex-group(1)"/>
+                </xsl:matching-substring>
+                </xsl:analyze-string>
             </xsl:when>
             <xsl:when test="matches(./tei:head, '\d\d')">
                 <xsl:text>0</xsl:text>
-                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+                <xsl:analyze-string regex="(\d\d[a-c]*)" select="./tei:head/string()">
+                  <xsl:matching-substring>
+                  <xsl:value-of select="regex-group(1)"/>
+                </xsl:matching-substring>
+                </xsl:analyze-string>
             </xsl:when>
             <xsl:when test="matches(./tei:head, '\d\d\d')">
-                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
+              <xsl:analyze-string regex="(\d\d\d[a-c]*)" select="./tei:head/string()">
+                <xsl:matching-substring>
+                <xsl:value-of select="regex-group(1)"/>
+              </xsl:matching-substring>
+              </xsl:analyze-string>
             </xsl:when>
         </xsl:choose>
     </xsl:element>
