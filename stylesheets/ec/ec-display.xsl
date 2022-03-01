@@ -20,7 +20,7 @@
                 <xsl:call-template name="nav-bar"/>
                 <xsl:call-template name="table-contents"/>
                 <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse">☰ Index</a>
-                         
+
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:element name="h1">
@@ -38,8 +38,8 @@
                             <xsl:text>©EC. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                    <xsl:call-template name="dharma-script"/>            
-                </xsl:element>  
+                    <xsl:call-template name="dharma-script"/>
+                </xsl:element>
                 </xsl:element>
             </xsl:element>
     </xsl:template>
@@ -126,13 +126,13 @@
                         <xsl:apply-templates/>
                 </xsl:element>
     </xsl:template>
-    
+
     <!-- item -->
     <xsl:template match="tei:item">
         <xsl:element name="li">
             <xsl:apply-templates/>
         </xsl:element>
-        
+
     </xsl:template>
 
     <!-- l -->
@@ -172,13 +172,13 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- list -->
     <xsl:template match="tei:list">
         <xsl:element name="ul">
             <xsl:apply-templates/>
         </xsl:element>
-        
+
     </xsl:template>
 
     <!-- n -->
@@ -289,7 +289,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -353,7 +353,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </nav>
     </xsl:template>
@@ -373,7 +373,7 @@
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
         <xsl:element name="div">
-            <xsl:attribute name="class">collapse</xsl:attribute>  
+            <xsl:attribute name="class">collapse</xsl:attribute>
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
@@ -420,34 +420,34 @@
         <xsl:call-template name="taluqabbr"/>
         <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
         <xsl:choose>
-            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d')">
+            <xsl:when test="matches(./tei:head, '\d')">
                 <xsl:text>00</xsl:text>
                 <xsl:value-of select="substring-before(./tei:head, ' ')"/>
             </xsl:when>
-            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d')">
+            <xsl:when test="matches(./tei:head, '\d\d')">
                 <xsl:text>0</xsl:text>
                 <xsl:value-of select="substring-before(./tei:head, ' ')"/>
             </xsl:when>
-            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d\d\d')">
+            <xsl:when test="matches(./tei:head, '\d\d\d')">
                 <xsl:value-of select="substring-before(./tei:head, ' ')"/>
             </xsl:when>
         </xsl:choose>
     </xsl:element>
 </xsl:template>
-    
+
     <xsl:template name="ecid">
         <xsl:text>EC </xsl:text>
         <xsl:value-of select="substring-before(substring-after(base-uri(.), 'DHARMA_INSEC'), '.xml')"/>
         <xsl:text> </xsl:text>
         <xsl:call-template name="taluqabbr"/>
         <xsl:text> </xsl:text>
-        <xsl:choose>
-            <xsl:when test="matches(substring-before(./tei:head, ' '), '^\d+')"> 
-                <xsl:value-of select="substring-before(./tei:head, ' ')"/>
-            </xsl:when>
-        </xsl:choose>
+              <xsl:analyze-string regex="(\d+[a-c]*)" select="./tei:head/string()">
+                <xsl:matching-substring>
+                <xsl:value-of select="regex-group(1)"/>
+              </xsl:matching-substring>
+              </xsl:analyze-string>
     </xsl:template>
-    
+
     <xsl:template name="taluqabbr">
         <xsl:choose>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'bangalore')">
@@ -503,7 +503,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-   
+
     <xsl:template name="tpl-dharma-apparatus">
         <!-- An apparatus is only created if one of the following is true -->
         <xsl:if test=".//tei:note[ancestor::tei:div[@type='section']]">
