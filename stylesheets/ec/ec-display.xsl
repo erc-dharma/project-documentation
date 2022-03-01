@@ -420,28 +420,28 @@
         <xsl:call-template name="taluqabbr"/>
         <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
         <xsl:choose>
-            <xsl:when test="matches(./tei:head, '\d')">
-                <xsl:text>00</xsl:text>
-                <xsl:analyze-string regex="(\d[a-c]*)" select="./tei:head/string()">
-                  <xsl:matching-substring>
-                  <xsl:value-of select="regex-group(1)"/>
-                </xsl:matching-substring>
-                </xsl:analyze-string>
-            </xsl:when>
+          <xsl:when test="matches(./tei:head, '\d\d\d')">
+            <xsl:analyze-string regex="^\s*(\d\d\d[a-c]*)\s" select="./tei:head/string()">
+              <xsl:matching-substring>
+              <xsl:value-of select="regex-group(1)"/>
+            </xsl:matching-substring>
+            </xsl:analyze-string>
+          </xsl:when>
             <xsl:when test="matches(./tei:head, '\d\d')">
                 <xsl:text>0</xsl:text>
-                <xsl:analyze-string regex="(\d\d[a-c]*)" select="./tei:head/string()">
+                <xsl:analyze-string regex="^\s*(\d\d[a-c]*)\s" select="./tei:head/string()">
                   <xsl:matching-substring>
                   <xsl:value-of select="regex-group(1)"/>
                 </xsl:matching-substring>
                 </xsl:analyze-string>
             </xsl:when>
-            <xsl:when test="matches(./tei:head, '\d\d\d')">
-              <xsl:analyze-string regex="(\d\d\d[a-c]*)" select="./tei:head/string()">
-                <xsl:matching-substring>
-                <xsl:value-of select="regex-group(1)"/>
-              </xsl:matching-substring>
-              </xsl:analyze-string>
+            <xsl:when test="matches(./tei:head, '\d')">
+                <xsl:text>00</xsl:text>
+                <xsl:analyze-string regex="^\s*(\d[a-c]*)\s" select="./tei:head/string()">
+                  <xsl:matching-substring>
+                  <xsl:value-of select="regex-group(1)"/>
+                </xsl:matching-substring>
+                </xsl:analyze-string>
             </xsl:when>
         </xsl:choose>
     </xsl:element>
@@ -453,7 +453,7 @@
         <xsl:text> </xsl:text>
         <xsl:call-template name="taluqabbr"/>
         <xsl:text> </xsl:text>
-              <xsl:analyze-string regex="(\d+[a-c]*)" select="./tei:head/string()">
+              <xsl:analyze-string regex="^\s*(\d+[a-c]*)\s" select="./tei:head/string()">
                 <xsl:matching-substring>
                 <xsl:value-of select="regex-group(1)"/>
               </xsl:matching-substring>
