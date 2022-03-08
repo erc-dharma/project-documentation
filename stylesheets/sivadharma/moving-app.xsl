@@ -16,6 +16,21 @@
             "/>
 
     </xsl:function>
+    
+    <xsl:function name="functx:substring-before-last" as="xs:string"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="delim" as="xs:string"/>
+        
+        <xsl:sequence select="
+            if (matches($arg, functx:escape-for-regex($delim)))
+            then replace($arg,
+            concat('^(.*)', functx:escape-for-regex($delim),'.*'),
+            '$1')
+            else ''
+            "/>
+        
+    </xsl:function>
 
     <xsl:function name="functx:escape-for-regex" as="xs:string"
         xmlns:functx="http://www.functx.com">
@@ -64,7 +79,7 @@
         </xsl:copy>
         <!-- Il faudra faire ajouter les editeurs réels, mais pour la moment la mention du projet fera l'affaire -->
         <xsl:element name="editor" namespace="http://www.tei-c.org/ns/1.0">
-            <xsl:element name="name" namespace="http://www.tei-c.org/ns/1.0">Projet Sivádharma</xsl:element>
+            <xsl:element name="name" namespace="http://www.tei-c.org/ns/1.0">Projet Shivadharma</xsl:element>
         </xsl:element>
     </xsl:template>
 
@@ -89,7 +104,7 @@
         <xsl:text>This work is licenced under the Creative Commons Attribution 4.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</xsl:text>
       </xsl:element>
       <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
-        <xsl:text>Copyright (c) 2019-2025 by Sivádharma</xsl:text>
+        <xsl:text>Copyright (c) 2019-2025 by Shivadharma</xsl:text>
       </xsl:element>
       </xsl:attribute>
         </xsl:element>
@@ -108,12 +123,13 @@
         </xsl:copy>
         <xsl:element name="listApp" namespace="http://www.tei-c.org/ns/1.0">
             <xsl:attribute name="type">apparatus</xsl:attribute>
-            <xsl:for-each select="tei:app">
+            <xsl:choose>
+                <xsl:when test="tei:app">
+                    <xsl:for-each select="tei:app">
                 <xsl:element name="app" namespace="http://www.tei-c.org/ns/1.0">
                 <xsl:attribute name="loc">
                     <xsl:choose>
                         <xsl:when test="ancestor-or-self::tei:lg[@met='anuṣṭubh']">
-                            
                                     <xsl:analyze-string select="@loc" regex="([a-z]+)">
                                     <xsl:matching-substring>
                                         <!--<xsl:value-of select="regex-group(1)"/>-->
@@ -138,14 +154,23 @@
                     <xsl:if test="child::tei:*">
                         <xsl:for-each select="child::tei:*">
                             <xsl:element name="{name(.)}" namespace="http://www.tei-c.org/ns/1.0">
-                            <xsl:copy-of select="@*"/>
-                        
+                            <xsl:copy-of select="@*"/>            
                             <xsl:apply-templates select="replace(., '°', '')"/>
-                        
-                        </xsl:element></xsl:for-each>
+                        </xsl:element>
+                        </xsl:for-each>
                     </xsl:if>                    
             </xsl:element>
             </xsl:for-each>
+            </xsl:when>
+                <!-- <xsl:otherwise>
+                    <xsl:variable name="filename" select="substring-before(functx:substring-after-last(base-uri(.), '/'), '.xml')"/>
+                    <xsl:variable name="path-file" select="functx:substring-before-last(substring-after(base-uri(.), 'tfd-sanskrit-philology/'), '/')"/>
+                    <xsl:variable name="apparatus-content">
+                        <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file, $filename, '_apparatus.xml')"/>
+                    </xsl:variable>
+                    <xsl:copy-of select=""/>
+                </xsl:otherwise>-->
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
