@@ -116,6 +116,17 @@
       </xsl:element>
     </xsl:template>
 
+    <!-- PB de namespace -->
+    <xsl:template match="tei:sourceDesc">
+        <xsl:variable name="filename" select="substring-before(functx:substring-after-last(base-uri(.), '/'), '.xml')"/>
+        <xsl:variable name="path-file" select="functx:substring-before-last(substring-after(base-uri(.), 'tfd-sanskrit-philology/'), '/')"/>
+        <xsl:variable name="listWit-content">
+            <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file,'/', $filename, '_listWit.xml')"/>
+        </xsl:variable>
+                    <xsl:copy-of select="doc($listWit-content)//child::*" exclude-result-prefixes="#all"/>
+          
+    </xsl:template>
+    
     <xsl:template match="tei:lg">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
@@ -154,7 +165,16 @@
                     <xsl:if test="child::tei:*">
                         <xsl:for-each select="child::tei:*">
                             <xsl:element name="{name(.)}" namespace="http://www.tei-c.org/ns/1.0">
-                            <xsl:copy-of select="@*"/>            
+                                <xsl:choose>
+                                    <xsl:when test="@wit">
+                                        <xsl:copy-of select="@wit"/>
+                                    </xsl:when>
+                                    <xsl:when test="@type">
+                                        <xsl:attribute name="type">
+                                            <xsl:value-of select="replace(@type, '#', '')"/>
+                                        </xsl:attribute>
+                                    </xsl:when>
+                                </xsl:choose>         
                             <xsl:apply-templates select="replace(., '°', '')"/>
                         </xsl:element>
                         </xsl:for-each>
