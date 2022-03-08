@@ -56,6 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-03-08">Correcting some mispelling on @cause for rdg</change>
       <change who="part:axja" when="2022-01-07">Adding value unknown for @reason with supplied and @type on note.</change>
       <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
       <change who="part:axja" when="2021-12-22"
@@ -4336,8 +4337,8 @@
                 <valItem ident="lexical"/>
                 <valItem ident="morphological"/>
                 <valItem ident="ordinal"/>
-                <valItem ident="syntatic"/>
-                <valItem ident="sutrative"/>
+                <valItem ident="syntactic"/>
+                <valItem ident="subtractive"/>
                 <valItem ident="additive"/>
               </valList>
             </attDef>
