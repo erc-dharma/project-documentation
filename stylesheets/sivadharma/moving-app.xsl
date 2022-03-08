@@ -135,7 +135,15 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:attribute>
-                <xsl:copy-of select="child::tei:*"/>
+                    <xsl:if test="child::tei:*">
+                        <xsl:for-each select="child::tei:*">
+                            <xsl:element name="{name(.)}" namespace="http://www.tei-c.org/ns/1.0">
+                            <xsl:copy-of select="@*"/>
+                        
+                            <xsl:apply-templates select="replace(., '°', '')"/>
+                        
+                        </xsl:element></xsl:for-each>
+                    </xsl:if>                    
             </xsl:element>
             </xsl:for-each>
         </xsl:element>
