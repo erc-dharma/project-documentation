@@ -123,11 +123,92 @@
         <xsl:variable name="listWit-content">
             <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
-                    <xsl:copy-of select="doc($listWit-content)//child::*" exclude-result-prefixes="#all"/>
+                    <xsl:copy-of select="doc($listWit-content)"/>
           
     </xsl:template>
     
-    <xsl:template match="tei:lg">
+    <xsl:template match="tei:div[@type='edition']">
+        <xsl:for-each-group select="tei:lg" group-by="substring-before(@n, '.')">
+            <xsl:element name="div" namespace="http://www.tei-c.org/ns/1.0">
+                <xsl:attribute name="type">
+                    <xsl:text>canto</xsl:text>
+                </xsl:attribute>
+                
+                    <xsl:attribute name="n">
+                        <xsl:value-of select="substring-before(@n, '.')"/>
+                    </xsl:attribute>
+                
+                <xsl:for-each select="current-group()">
+                    <xsl:copy>
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="tei:l"/>
+                    </xsl:copy>
+                    <xsl:element name="listApp" namespace="http://www.tei-c.org/ns/1.0">
+                        <xsl:attribute name="type">apparatus</xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="tei:app">
+                                <xsl:for-each select="tei:app">
+                                    <xsl:element name="app" namespace="http://www.tei-c.org/ns/1.0">
+                                        <xsl:attribute name="loc">
+                                            <xsl:choose>
+                                                <xsl:when test="ancestor-or-self::tei:lg[@met='anuṣṭubh']">
+                                                    <xsl:analyze-string select="@loc" regex="([a-z]+)">
+                                                        <xsl:matching-substring>
+                                                            <!--<xsl:value-of select="regex-group(1)"/>-->
+                                                            <xsl:choose>
+                                                                <xsl:when test="regex-group(1) = 'uvaca'"><xsl:text>uvāca</xsl:text></xsl:when>
+                                                                <xsl:when test="regex-group(1) = 'a' or regex-group(1) = 'b'"><xsl:text>ab</xsl:text></xsl:when>
+                                                                <xsl:when test="regex-group(1) = 'c' or regex-group(1) = 'd'"><xsl:text>cd</xsl:text></xsl:when>
+                                                                <xsl:otherwise><xsl:value-of select="regex-group(1)"/></xsl:otherwise>
+                                                            </xsl:choose>
+                                                        </xsl:matching-substring>
+                                                    </xsl:analyze-string>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:analyze-string select="@loc" regex="([a-z])">
+                                                        <xsl:matching-substring>
+                                                            <xsl:value-of select="regex-group(1)"/>
+                                                        </xsl:matching-substring>
+                                                    </xsl:analyze-string>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </xsl:attribute>
+                                        <xsl:if test="child::tei:*">
+                                            <xsl:for-each select="child::tei:*">
+                                                <xsl:element name="{name(.)}" namespace="http://www.tei-c.org/ns/1.0">
+                                                    <xsl:choose>
+                                                        <xsl:when test="@wit">
+                                                            <xsl:copy-of select="@wit"/>
+                                                        </xsl:when>
+                                                        <xsl:when test="@type">
+                                                            <xsl:attribute name="type">
+                                                                <xsl:value-of select="replace(@type, '#', '')"/>
+                                                            </xsl:attribute>
+                                                        </xsl:when>
+                                                    </xsl:choose>         
+                                                    <xsl:apply-templates select="replace(., '°', '')"/>
+                                                </xsl:element>
+                                            </xsl:for-each>
+                                        </xsl:if>                    
+                                    </xsl:element>
+                                </xsl:for-each>
+                            </xsl:when>
+                            <!-- <xsl:otherwise>
+                    <xsl:variable name="filename" select="substring-before(functx:substring-after-last(base-uri(.), '/'), '.xml')"/>
+                    <xsl:variable name="path-file" select="functx:substring-before-last(substring-after(base-uri(.), 'tfd-sanskrit-philology/'), '/')"/>
+                    <xsl:variable name="apparatus-content">
+                        <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file, $filename, '_apparatus.xml')"/>
+                    </xsl:variable>
+                    <xsl:copy-of select=""/>
+                </xsl:otherwise>-->
+                        </xsl:choose>
+                    </xsl:element>
+                </xsl:for-each>
+            </xsl:element>
+        </xsl:for-each-group>
+    </xsl:template>
+    
+    <!--<xsl:template match="tei:lg">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:copy-of select="tei:l"/>
@@ -143,7 +224,7 @@
                         <xsl:when test="ancestor-or-self::tei:lg[@met='anuṣṭubh']">
                                     <xsl:analyze-string select="@loc" regex="([a-z]+)">
                                     <xsl:matching-substring>
-                                        <!--<xsl:value-of select="regex-group(1)"/>-->
+                                        <!-\-<xsl:value-of select="regex-group(1)"/>-\->
                                         <xsl:choose>
                                             <xsl:when test="regex-group(1) = 'uvaca'"><xsl:text>uvāca</xsl:text></xsl:when>
                                             <xsl:when test="regex-group(1) = 'a' or regex-group(1) = 'b'"><xsl:text>ab</xsl:text></xsl:when>
@@ -182,15 +263,15 @@
             </xsl:element>
             </xsl:for-each>
             </xsl:when>
-                <!-- <xsl:otherwise>
+                <!-\- <xsl:otherwise>
                     <xsl:variable name="filename" select="substring-before(functx:substring-after-last(base-uri(.), '/'), '.xml')"/>
                     <xsl:variable name="path-file" select="functx:substring-before-last(substring-after(base-uri(.), 'tfd-sanskrit-philology/'), '/')"/>
                     <xsl:variable name="apparatus-content">
                         <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file, $filename, '_apparatus.xml')"/>
                     </xsl:variable>
                     <xsl:copy-of select=""/>
-                </xsl:otherwise>-->
+                </xsl:otherwise>-\->
             </xsl:choose>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
 </xsl:stylesheet>
