@@ -42,6 +42,7 @@
             </abstract>
         </profileDesc>
         <revisionDesc status="draft">
+            <change who="part:axja" when="2022-03-09" status="draft">Adding bibl and seg @type="gana" and changing note for label</change>
 					  <change who="part:argr" when="2022-03-08" status="draft">Adding atidhr̥ti</change>
             <change who="part:daba" when="2021-12-15" status="draft">Adding info, suggestions and comments</change>
             <change who="part:axja" when="2021-10-21" status="draft">Creation of the file, adding some informations and minimal metadata</change>
@@ -49,173 +50,184 @@
     </teiHeader>
     <text>
         <body>
+            <!-- Table 2. Prosodic notation
+|Description|Code|Conventional notation|Context|
+|one short/light syllable|-|⏑|1, 2, 3|
+|one long/heavy syllable|+|-|1, 2, 3|
+|one syllable of indeterminate length (anceps)|=|⏓|1, 2, (3)|
+|two morae (one long or two short syllables)|2|⏕|1, 2, (3)|
+|larger moraic foot or colon|numeral(s)||1, 2, (3)|
+|foot boundary| \| \| |1, 2, (3)|
+|caesura|\|\|| \|\| |1|
+|boundary of odd and even quarter|/||1|
+ -->
             <list>
-                <item> <note>7</note><!--daba edited, formerly 7/7. I'm not sure if the numbers here serve a purpose, but they seem to follow the "Syllables" column of the EGD metre table where a single number means a samavr̥tta metre with the given number of syllables per line, while two numbers with a slash mean an ardhasamavr̥tta with the numbers of syllables in the odd and even lines. Sumānikā is a samavr̥tta.--> <name>sumānikā</name> <seg type="xml">+-+-+-=</seg> <seg
-                    type="prosody">-⏑-⏑-⏑⏓</seg> </item>
-              <item> <note>8</note> <name>pramāṇikā</name> <seg type="xml">-+-+-+-=</seg> <seg
-                    type="prosody">-⏑-⏑-⏑⏓</seg> </item>
-                <item><note>8/8</note> <name>anuṣṭubh
+                <item> <label>7</label><!--daba edited, formerly 7/7. I'm not sure if the numbers here serve a purpose, but they seem to follow the "Syllables" column of the EGD metre table where a single number means a samavr̥tta metre with the given number of syllables per line, while two numbers with a slash mean an ardhasamavr̥tta with the numbers of syllables in the odd and even lines. Sumānikā is a samavr̥tta.--> <name>sumānikā</name> <seg type="xml">+-+-+-=</seg> <seg
+                    type="prosody">-⏑-⏑-⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item> <label>8</label> <name>pramāṇikā</name> <seg type="xml">-+-+-+-=</seg> <seg
+                    type="prosody">-⏑-⏑-⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>8/8</label> <name>anuṣṭubh
 </name><seg type="xml">====-++=/====-+-=</seg> <seg type="prosody"
-                    >⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg> </item>
-                <item><note>10/11</note> <name>vegavatī</name> <seg type="xml"
-                    >--+--+--+=/+--+--+--+=</seg> <seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg> </item>
-                <item><note>10/11</note> <name>viyoginī</name> <seg type="xml"
+                    >⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>10/11</label> <name>vegavatī</name> <seg type="xml"
+                    >--+--+--+=/+--+--+--+=</seg> <seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>10/11</label> <name>viyoginī</name> <seg type="xml"
                     >--+--+-+-=/--++--+-+-=</seg> <seg type="prosody"
-                    >⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>11</note> <name>triṣṭubh</name> <seg type="xml"><!--no data available--></seg> <seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".--> </item>
-                <item><note>11</note> <name>dodhaka</name> <seg type="xml">+--+--+--+=</seg> <seg
-                    type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏓</seg></item>
-                <item><note>11</note> <name>indravajrā</name> <seg type="xml">++-++--+-+=</seg> <seg
-                    type="prosody">––⏑––⏑⏑–⏑–⏓</seg></item>
-                <item><note>11</note> <name>rathoddhatā</name> <seg type="xml">+-+---+-+-=</seg>
-                    <seg type="prosody">–⏑–⏑⏑⏑–⏑–⏑⏓</seg> </item>
-                <item><note>11</note> <name>śālinī</name> <seg type="xml">+++++-++-+=</seg> <seg
-                    type="prosody">––––|–⏑––⏑–⏓</seg></item>
-                <item><note>11</note> <name>svāgatā
+                    >⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>triṣṭubh</name> <seg type="xml"><!--no data available--></seg> <seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".--> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>dodhaka</name> <seg type="xml">+--+--+--+=</seg> <seg
+                    type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>indravajrā</name> <seg type="xml">++-++--+-+=</seg> <seg
+                    type="prosody">––⏑––⏑⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>rathoddhatā</name> <seg type="xml">+-+---+-+-=</seg>
+                    <seg type="prosody">–⏑–⏑⏑⏑–⏑–⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>śālinī</name> <seg type="xml">+++++-++-+=</seg> <seg
+                    type="prosody">––––|–⏑––⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>svāgatā
 </name><seg type="xml">+-+---+--+=</seg> <seg type="prosody"
-                    >–⏑–⏑⏑⏑–⏑⏑–⏓</seg></item>
-                <item><note>11</note> <name>upajāti</name> <seg type="xml">=+-++--+-+=</seg> <seg
-                    type="prosody">⏓–⏑––⏑⏑–⏑–⏓</seg></item>
-                <item><note>11</note> <name>upendravajrā</name> <seg type="xml">-+-++--+-+=</seg>
-                    <seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg></item>
-                <item><note>12</note> <name>toṭaka</name><seg type="xml">--+--+--+--=</seg>
-								 <seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> </item>
-                <item><note>11</note> <name>vātormī</name> <seg type="xml">++++--++-+=</seg> <seg
-                    type="prosody">––––⏑⏑––⏑–⏓</seg></item>
-                <item><note>11/11</note> <name>upacitra</name> <seg type="xml"
+                    >–⏑–⏑⏑⏑–⏑⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>upajāti</name> <seg type="xml">=+-++--+-+=</seg> <seg
+                    type="prosody">⏓–⏑––⏑⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>upendravajrā</name> <seg type="xml">-+-++--+-+=</seg>
+                    <seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>toṭaka</name><seg type="xml">--+--+--+--=</seg>
+								 <seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11</label> <name>vātormī</name> <seg type="xml">++++--++-+=</seg> <seg
+                    type="prosody">––––⏑⏑––⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11/11</label> <name>upacitra</name> <seg type="xml"
                     >--+--+--+-=/+--+--+--+=</seg> <seg type="prosody"
-                    >⏑⏑–⏑⏑–⏑⏑–⏑⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg></item>
-                <item><note>11/12</note><name>aparavaktra</name> <seg type="xml"
+                    >⏑⏑–⏑⏑–⏑⏑–⏑⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11/12</label><name>aparavaktra</name> <seg type="xml"
                     >------+-+-=/----+--+-+-=</seg> <seg type="prosody"
-                    >⏑⏑⏑⏑⏑⏑–⏑–⏑⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>11/12</note> <name>hariṇaplutā</name> <seg type="xml"
+                    >⏑⏑⏑⏑⏑⏑–⏑–⏑⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11/12</label> <name>hariṇaplutā</name> <seg type="xml"
                     >--+--+--+-=/---+--+--+-=</seg> <seg type="prosody"
-                    >⏑⏑–⏑⏑–⏑⏑–⏑⏓/⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg></item>
-                <item><note>11/12</note> <name>mālabhāriṇī</name> <seg type="xml"
+                    >⏑⏑–⏑⏑–⏑⏑–⏑⏓/⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>11/12</label> <name>mālabhāriṇī</name> <seg type="xml"
                     >--+--+-+-+=/--++--+-+-+=</seg> <seg type="prosody"
-                    >⏑⏑–⏑⏑–⏑–⏑–⏓/⏑⏑––⏑⏑–⏑–⏑–⏓</seg></item>
-                <item><note>12</note> <name>indravaṁśā</name> <seg type="xml">++-++--+-+-=</seg>
-                    <seg type="prosody">--⏑--⏑⏑-⏑-⏑⏓</seg></item>
-                <item><note>12</note> <name>jagatī</name> <seg type="xml"><!--no data available--></seg> <seg type="prosody">no data available</seg> </item>
-                <item><note>12</note><name>kusumavicitrā</name><!--daba ed. deleted the second name "kusumavicitra" from here.--><seg type="xml">----++----+=</seg>
-                    <seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg></item>
-              <!-- <item><note>?</note><name>kusumavicitra</name><seg type="xml">no data available</seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  - | ⏑ ⏑  ⏑ | ⏑  -  ⏓</seg></item> --><!--daba: yes, this is the same as kusumavicitrā above. Someone may have put the | (foot boundary) markers in the prosodic code to show the gaṇas if Indian prosody, but gaṇas are not feet in the sense we use the word. So the definition of kusumavicitrā as above is correct, and any instances of kusumavicitra as a metre name in the XML files should be changed to kusumavicitrā.-->
-                <item><note>12</note> <name>bhujaṅgaprayāta</name> <seg type="xml"
-                    >-++-++-++-+=</seg> <seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg></item>
-                <item><note>12</note> <name>maṇimālā</name> <seg type="xml">++--++++--+=</seg> <seg
+                    >⏑⏑–⏑⏑–⏑–⏑–⏓/⏑⏑––⏑⏑–⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>indravaṁśā</name> <seg type="xml">++-++--+-+-=</seg>
+                    <seg type="prosody">--⏑--⏑⏑-⏑-⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>jagatī</name> <seg type="xml"><!--no data available--></seg> <seg type="prosody">no data available</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label><name>kusumavicitrā</name><!--daba ed. deleted the second name "kusumavicitra" from here.--><seg type="xml">----++----+=</seg>
+                    <seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <!-- <item><label>?</label><name>kusumavicitra</name><seg type="xml">no data available</seg><seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  - | ⏑ ⏑  ⏑ | ⏑  -  ⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item> --><!--daba: yes, this is the same as kusumavicitrā above. Someone may have put the | (foot boundary) markers in the prosodic code to show the gaṇas if Indian prosody, but gaṇas are not feet in the sense we use the word. So the definition of kusumavicitrā as above is correct, and any instances of kusumavicitra as a metre name in the XML files should be changed to kusumavicitrā.-->
+                <item><label>12</label> <name>bhujaṅgaprayāta</name> <seg type="xml"
+                    >-++-++-++-+=</seg> <seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>maṇimālā</name> <seg type="xml">++--++++--+=</seg> <seg
                     type="prosody">––⏑⏑––||––⏑⏑–⏓</seg>
-								</item>
-                <item><note>12</note> <name>drutavilambita</name> <seg type="xml">---+--+--+-=</seg>
-                    <seg type="prosody">⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg> </item>
-                <item><note>12</note> <name>pramitākṣarā</name><seg type="xml">--+-+---+--=</seg>
-                    <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg> </item>
-                <item><note>12</note> <name>vaṁśamālā</name> <seg type="xml">=+-++--+-+-=</seg> <seg
-                    type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>12</note> <name>vaṁśastha</name> <seg type="xml">-+-++--+-+-=</seg> <seg
-                    type="prosody">⏑–⏑––⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>12</note> <name>vaiśvadevī</name> <seg type="xml">++++++-++-+=</seg>
-                    <seg type="prosody">–––––||–⏑––⏑–⏓</seg> </item>
-                <item><note>12/13</note> <name>puṣpitāgrā</name> <seg type="xml"
+								<seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>drutavilambita</name> <seg type="xml">---+--+--+-=</seg>
+                    <seg type="prosody">⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>pramitākṣarā</name><seg type="xml">--+-+---+--=</seg>
+                    <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>vaṁśamālā</name> <seg type="xml">=+-++--+-+-=</seg> <seg
+                    type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>vaṁśastha</name> <seg type="xml">-+-++--+-+-=</seg> <seg
+                    type="prosody">⏑–⏑––⏑⏑–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label> <name>vaiśvadevī</name> <seg type="xml">++++++-++-+=</seg>
+                    <seg type="prosody">–––––||–⏑––⏑–⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12/13</label> <name>puṣpitāgrā</name> <seg type="xml"
                     >------+-+-+=/----+--+-+-+=</seg> <seg type="prosody"
-                    >⏑⏑⏑⏑⏑⏑–⏑–⏑–⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑–⏓</seg></item>
-                <item><note>13</note> <name>mañjubhāṣiṇī</name> <seg type="xml">--+-+---+-+-=</seg>
-                    <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>13</note> <name>mattamayūra</name> <seg type="xml">+++++--++--+=</seg>
-                    <seg type="prosody">––––||–⏑⏑––⏑⏑–⏓</seg></item>
-                <item><note>13</note> <name>praharṣiṇī</name> <seg type="xml">+++----+-+-+=</seg>
-                    <seg type="prosody">–––||⏑⏑⏑⏑–⏑–⏑–⏓</seg> </item>
-                <item><note>13</note> <name>rucirā</name> <seg type="xml">-+-+----+-+-=</seg> <seg
-                    type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg></item>
-                <item><note>14</note> <name>asaṁbādhā</name> <seg type="xml">+++++------++=</seg>
-                    <seg type="prosody">–––––||⏑⏑⏑⏑⏑⏑––⏓</seg></item>
-                <item><note>14</note> <name>praharaṇakalikā</name> <seg type="xml"
-                    >------+------=</seg> <seg type="prosody">⏑⏑⏑⏑⏑⏑–||⏑⏑⏑⏑⏑⏑⏓</seg></item>
-                <item><note>14</note> <name>vasantatilakā</name> <seg type="xml"
-                    >++-+---+--+-+=</seg> <seg type="prosody">––⏑–⏑⏑⏑–⏑⏑–⏑–⏓</seg></item>
-                <item><note>14</note> <name>basantatilaka</name> <seg type="xml"
-                    >no data available</seg> <seg type="prosody">ᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓</seg></item>
-                <item><note>15</note> <name>mālinī</name> <seg type="xml">------+++-++-+=</seg> <seg
-                    type="prosody">⏑⏑⏑⏑⏑⏑––||–⏑––⏑–⏓</seg></item>
-                <item><note>17</note> <name>hariṇī</name> <seg type="xml">-----+++++-+--+-=</seg>
-                    <seg type="prosody">⏑⏑⏑⏑⏑–||––––||⏑–⏑⏑–⏑⏓</seg></item>
-                <item><note>17</note><name>mandākrāntā</name> <seg type="xml"
-                    >++++-----++-++-+=</seg> <seg type="prosody">––––||⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg></item>
-                <item><note>17</note> <name>nardaṭaka</name> <seg type="xml"
-                    >----+-+---+--+--=</seg><seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg></item>
-                <item><note>17</note> <name>pr̥thvī</name> <seg type="xml">-+---+-+---+-++-=</seg>
-                    <seg type="prosody">⏑–⏑⏑⏑–⏑–||⏑⏑⏑–⏑––⏑⏓</seg></item>
-                <item><note>17</note> <name>śikhariṇī</name><!--daba ed corrected n to ṇ--> <seg type="xml">-+++++-----++---=</seg>
-                    <seg type="prosody">⏑–––––||⏑⏑⏑⏑⏑––⏑⏑⏑⏓</seg></item>
-		<item><note>19</note> <name>navaharṣa</name> <seg type="xml"
-		                    >--+--+------+--+--=</seg> <seg type="prosody">⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑–⏑⏑⏓</seg></item>
-                <item><note>19</note> <name>śārdūlavikrīḍita</name> <seg type="xml"
-                    >+++--+-+---+++-++-=</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg></item>
-                <item><note>19</note> <name>sumadhurā</name> <seg type="xml"
-                    >++++-++-----+++---=</seg> <seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg> </item>
-                <item><note>20</note> <name>mattebhavikrīḍita</name> <seg type="xml"
+                    >⏑⏑⏑⏑⏑⏑–⏑–⏑–⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>13</label> <name>mañjubhāṣiṇī</name> <seg type="xml">--+-+---+-+-=</seg>
+                    <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>13</label> <name>mattamayūra</name> <seg type="xml">+++++--++--+=</seg>
+                    <seg type="prosody">––––||–⏑⏑––⏑⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>13</label> <name>praharṣiṇī</name> <seg type="xml">+++----+-+-+=</seg>
+                    <seg type="prosody">–––||⏑⏑⏑⏑–⏑–⏑–⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>13</label> <name>rucirā</name> <seg type="xml">-+-+----+-+-=</seg> <seg
+                    type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>14</label> <name>asaṁbādhā</name> <seg type="xml">+++++------++=</seg>
+                    <seg type="prosody">–––––||⏑⏑⏑⏑⏑⏑––⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>14</label> <name>praharaṇakalikā</name> <seg type="xml"
+                    >------+------=</seg> <seg type="prosody">⏑⏑⏑⏑⏑⏑–||⏑⏑⏑⏑⏑⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>14</label> <name>vasantatilakā</name> <seg type="xml"
+                    >++-+---+--+-+=</seg> <seg type="prosody">––⏑–⏑⏑⏑–⏑⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>14</label> <name>basantatilaka</name> <seg type="xml"
+                    >no data available</seg> <seg type="prosody">ᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>15</label> <name>mālinī</name> <seg type="xml">------+++-++-+=</seg> <seg
+                    type="prosody">⏑⏑⏑⏑⏑⏑––||–⏑––⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>17</label> <name>hariṇī</name> <seg type="xml">-----+++++-+--+-=</seg>
+                    <seg type="prosody">⏑⏑⏑⏑⏑–||––––||⏑–⏑⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>17</label><name>mandākrāntā</name> <seg type="xml"
+                    >++++-----++-++-+=</seg> <seg type="prosody">––––||⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>17</label> <name>nardaṭaka</name> <seg type="xml"
+                    >----+-+---+--+--=</seg><seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>17</label> <name>pr̥thvī</name> <seg type="xml">-+---+-+---+-++-=</seg>
+                    <seg type="prosody">⏑–⏑⏑⏑–⏑–||⏑⏑⏑–⏑––⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>17</label> <name>śikhariṇī</name><!--daba ed corrected n to ṇ--> <seg type="xml">-+++++-----++---=</seg>
+                    <seg type="prosody">⏑–––––||⏑⏑⏑⏑⏑––⏑⏑⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+		<item><label>19</label> <name>navaharṣa</name> <seg type="xml"
+		                    >--+--+------+--+--=</seg> <seg type="prosody">⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑–⏑⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>19</label> <name>śārdūlavikrīḍita</name> <seg type="xml"
+                    >+++--+-+---+++-++-=</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>19</label> <name>sumadhurā</name> <seg type="xml"
+                    >++++-++-----+++---=</seg> <seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>20</label> <name>mattebhavikrīḍita</name> <seg type="xml"
                     >--++--+-+---+++-++-=</seg> <seg type="prosody"
-                    >⏑⏑––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg></item>
-                <item><note>20</note> <name>suvadanā</name> <seg type="xml"
+                    >⏑⏑––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>20</label> <name>suvadanā</name> <seg type="xml"
                     >++++-++------+++---=</seg> <seg type="prosody"
-                    >––––⏑––||⏑⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg></item>
-                <item><note>21</note> <name>sragdharā</name> <seg type="xml"
+                    >––––⏑––||⏑⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>21</label> <name>sragdharā</name> <seg type="xml"
                     >++++-++------++-++-+=</seg> <seg type="prosody"
-                    >––––⏑––||⏑⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg></item>
-                <item><note>21</note> <name>campakamālā</name> <seg type="xml"
-                    >----+-+---+--+--+-+-=</seg> <seg type="prosody">⏑⏑⏑⏑-⏑-||⏑⏑⏑-⏑⏑-||⏑⏑-⏑-⏑⏓</seg> </item>
-                <item><note>23</note><name>jagaddhita</name> <seg type="xml"
+                    >––––⏑––||⏑⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>21</label> <name>campakamālā</name> <seg type="xml"
+                    >----+-+---+--+--+-+-=</seg> <seg type="prosody">⏑⏑⏑⏑-⏑-||⏑⏑⏑-⏑⏑-||⏑⏑-⏑-⏑⏓</seg> <seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>23</label><name>jagaddhita</name> <seg type="xml"
                     >+++--+-+---+------+-+-=</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
-                </item>
+                <seg type="gana"></seg><bibl><ptr/></bibl></item>
                 <!-- additions from Zaki's file -->
-                <item><note>?</note><name>pādānuṣṭup</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg></item>
-              <item><note>?</note><name>pādānuṣṭubh</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg></item><!--daba: I'm sure pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing, but I'm not sure if they are equivalent to anuṣṭubh. @argr will need to tell.-->
-              <item><note>17</note><name>vaṁśapattrapatita</name><seg type="xml">+--+-+---+-------=</seg><seg type="prosody">-⏑⏑-⏑-⏑⏑⏑-||⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: normalised the spelling of the name to vaṁśapattrapatita (was vaṅśapattrapatita; if this occurs in XML files, it should be changed to the standard spelling). The prosodic pattern was correct, except that I've removed the vertical bars, which should not be used to delimit gaṇas, and added a double bar at the caesura. I've added the syllable number in <note/> and inserted the XML prosodic code. I've added this metre to the EGD appendix. @argr: this should be fine, but consider if you prefer the spelling patra to pattra, and let me know if you want a note on this metre in the EGD (e.g. if this is quite common in Indonesia, or if the caesura is not observed in SE Asia or whatever).--></item>
-                <item><note>12</note><name>jaloddhatagati</name><seg type="xml">-+---+-+---=</seg><seg type="prosody">⏑-⏑⏑⏑-||⏑-⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a note in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.--></item>
-              <item><note>12</note><name>kusumāyudha</name><seg type="xml">----+------=</seg><seg type="prosody">⏑⏑⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix (though there is a very similar one called madakalitā, 13 syllables, one more long syllable at the end), so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code, added the syllable number and added the corresponding XML code.--></item>
-              <item><note>14</note><name>praharanakalika</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑⏑⏑|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as praharaṇakalikā in the main list. If praharaṇakalika occurs in the XML files, it should be corrected to praharaṇakalikā.--></item>
-              <item><note>10</note><name>paṅkti</name><seg type="xml">--------+=</seg><seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑-⏓[need to be checked]</seg><!--daba: @argr will be needed here. I've removed the bars from the template and added the XML code and syllable number. Apte's appendix has no metre matching the pattern ⏑⏑⏑⏑⏑⏑⏑⏑-⏓. If this is a metre used in SE Asia, I would strongly suggest finding a different name for it, if one can be found, since in the Indian tradition paṅkti is a generic name for 10-syllable verse and we should avoid using it for a specific template. If all other fails, I might suggest paṅktiviśeṣa. Or, if the metre is a rare one, keeping it unnamed and just giving the code for its @met in the XML would work. --></item>
-              <item><note>13</note><name>atijagatī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓[need to be checked]</seg><!--daba: @argr will be needed here. I've removed the bars from the template and added the XML code and syllable number. Apte's appendix has no metre matching this pattern. As above, I would prefer to avoid the name "atijagatī", which is the generic name for 13-syllable verse.--></item>
-              <item><note>12</note><name>candravartma</name><seg type="xml">+-+---+----=</seg><seg type="prosody">-⏑-⏑||⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a note in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.--></item>
-              <item><note>?</note><name>śikhariṇī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑--|---|⏑⏑⏑|⏑⏑-|-⏑⏑|⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as śikhariṇī in the main list. The name was incorrect (śikharinī) above; I've corrected that and also corrected the EGD.--></item>
-              <item><note>?</note><name>pr̥thvītala</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑-|⏑--|⏑⏓[need to be checked]</seg><!--daba: I think this item should be deleted. The pattern is identical to pr̥thvī (in the main list), so I guess pr̥thvītala is just an alternative name of that metre. We want just one canonical name for each metre, so unless @argr says pr̥thvītala is something distinguishable from pr̥thvī, instances of the former in XML files should be changed to the latter.--></item>
-              <item><note>?</note><name>sragdhara</name><seg type="xml"><!--no data available--></seg><seg type="prosody">---|-⏑-|-⏑⏑|⏑⏑⏑|⏑--|⏑--|⏑-⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as sragdharā in the main list. The latter is the correct form of the name; sragdhara in the XML files should be changed to that.--></item>
-              <item><note>13</note><name>citrālaya</name><seg type="xml">--+--+------=</seg><seg type="prosody">⏑⏑-⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix, so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code and added the corresponding XML code. I suspect this metre will have a caesura after the sixth syllable.--></item>
+                <item><label>?</label><name>pādānuṣṭup</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>pādānuṣṭubh</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><seg type="gana"></seg><bibl><ptr/></bibl></item><!--daba: I'm sure pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing, but I'm not sure if they are equivalent to anuṣṭubh. @argr will need to tell.-->
+              <item><label>17</label><name>vaṁśapattrapatita</name><seg type="xml">+--+-+---+-------=</seg><seg type="prosody">-⏑⏑-⏑-⏑⏑⏑-||⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: normalised the spelling of the name to vaṁśapattrapatita (was vaṅśapattrapatita; if this occurs in XML files, it should be changed to the standard spelling). The prosodic pattern was correct, except that I've removed the vertical bars, which should not be used to delimit gaṇas, and added a double bar at the caesura. I've added the syllable number in <label/> and inserted the XML prosodic code. I've added this metre to the EGD appendix. @argr: this should be fine, but consider if you prefer the spelling patra to pattra, and let me know if you want a label on this metre in the EGD (e.g. if this is quite common in Indonesia, or if the caesura is not observed in SE Asia or whatever).--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>12</label><name>jaloddhatagati</name><seg type="xml">-+---+-+---=</seg><seg type="prosody">⏑-⏑⏑⏑-||⏑-⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>12</label><name>kusumāyudha</name><seg type="xml">----+------=</seg><seg type="prosody">⏑⏑⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix (though there is a very similar one called madakalitā, 13 syllables, one more long syllable at the end), so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code, added the syllable number and added the corresponding XML code.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>14</label><name>praharanakalika</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑⏑⏑|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as praharaṇakalikā in the main list. If praharaṇakalika occurs in the XML files, it should be corrected to praharaṇakalikā.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>10</label><name>paṅkti</name><seg type="xml">--------+=</seg><seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑-⏓[need to be checked]</seg><!--daba: @argr will be needed here. I've removed the bars from the template and added the XML code and syllable number. Apte's appendix has no metre matching the pattern ⏑⏑⏑⏑⏑⏑⏑⏑-⏓. If this is a metre used in SE Asia, I would strongly suggest finding a different name for it, if one can be found, since in the Indian tradition paṅkti is a generic name for 10-syllable verse and we should avoid using it for a specific template. If all other fails, I might suggest paṅktiviśeṣa. Or, if the metre is a rare one, keeping it unnamed and just giving the code for its @met in the XML would work. --><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>13</label><name>atijagatī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓[need to be checked]</seg><!--daba: @argr will be needed here. I've removed the bars from the template and added the XML code and syllable number. Apte's appendix has no metre matching this pattern. As above, I would prefer to avoid the name "atijagatī", which is the generic name for 13-syllable verse.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>12</label><name>candravartma</name><seg type="xml">+-+---+----=</seg><seg type="prosody">-⏑-⏑||⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>śikhariṇī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑--|---|⏑⏑⏑|⏑⏑-|-⏑⏑|⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as śikhariṇī in the main list. The name was incorrect (śikharinī) above; I've corrected that and also corrected the EGD.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>pr̥thvītala</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑-|⏑--|⏑⏓[need to be checked]</seg><!--daba: I think this item should be deleted. The pattern is identical to pr̥thvī (in the main list), so I guess pr̥thvītala is just an alternative name of that metre. We want just one canonical name for each metre, so unless @argr says pr̥thvītala is something distinguishable from pr̥thvī, instances of the former in XML files should be changed to the latter.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>sragdhara</name><seg type="xml"><!--no data available--></seg><seg type="prosody">---|-⏑-|-⏑⏑|⏑⏑⏑|⏑--|⏑--|⏑-⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as sragdharā in the main list. The latter is the correct form of the name; sragdhara in the XML files should be changed to that.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>13</label><name>citrālaya</name><seg type="xml">--+--+------=</seg><seg type="prosody">⏑⏑-⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix, so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code and added the corresponding XML code. I suspect this metre will have a caesura after the sixth syllable.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
                 <!-- Andrea's file -->
-              <item><note>?</note><name>bramitākṣara</name><seg type="xml">--+-+---+--=</seg><seg type="prosody">⏑⏑-⏑-⏑⏑⏑-⏑⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as pramitākṣarā in the main list. The latter is the correct form of the name; bramitākṣara in the XML files should be changed to that.--></item>
-              <!--<item><note>12</note><name>jaloddhatagati</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg></item>--><!--daba: unsure. The prosody given here is very different from jaloddhatagati above, which agrees with the definition in Apte. The template given here is 9 syllables, not 12. All of the patterns in Andrea's list, which use ᵕ, lack - or anything else for long syllables. So it seems most likely that hyphens or some other character used by Andrea for that purpose have been lost in transformation, and by adding 3 long syllables (in the proper places), we get the correct jaloddhatagati pattern from this one. So I guess this item may be deleted, and it's the same as the jaloddhatagati above. But @argr, please check. -->
-              <item><note>11</note><name>upendrabajrā</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ/ᵕ/ᵕᵕ/̠̌⏓[need to be checked]</seg><!--daba: despite the probable disappearance of long syllables from the pattern (see comment above), I'm sure this is identical to upendravajrā of the main list. So this item can be deleted and upendrabajrā in the XML files should be corrected to upendravajrā.--></item>
-              <item><note>?</note><name>jagadnātha</name><name>jagadnatha</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕᵕ|ᵕ|ᵕ⏓[need to be checked]</seg><!--daba: no idea about this one. If my assumption about lost hyphens is correct, this should be a 23-syllable metre, but no 23-syllable metre in Apte's appendix includes the sequence ⏑⏑⏑⏑⏑⏑ (na-na) unless accompanied by at least 3 more shorts (na-na-na), which is not the case here. So, @argr please check. I would certainly prefer a Sanskritic name (e.g. jagannātha) even if this is a metre only attested outside India.--></item>
-                <item><note>13</note><name>punarmada</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg><!--daba: @argr, please check. Can't find a 13-syllable metre by this name in Apte.--></item>
-              <item><note>16</note><name>girisa</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕᵕ||ᵕ|ᵕᵕᵕ|⏓[need to be checked]</seg><!--daba: @argr, please check. Apte's appendix does not have a 16-syllable metre beginning with the sequence ⏑⏑⏑⏑⏑⏑–––.--></item>
-              <item><note>17</note><name>vilāsinī</name><name>wiśvalalita</name><seg type="xml">----+-+---+-+---=</seg><seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓</seg><!--daba: checked and corrected prosody, added XML prosodic code and added this metre to the EGD. @argr: decide what to do about the alternative name. I suggest you add it (with DHARMA-TG-compliant spelling) in a footnote to the EGD metre list and any occurrences of wiśvalalita in XML should be changed to vilāsinī.--></item>
-              <item><note>18</note><name>mṛdukomala</name><seg type="xml"><!--no data available--></seg><seg type="prosody">|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix. At least, the ṛ in the name will need changing to r̥.--></item>
-              <item><note>22</note><name>turidagati</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg><!--daba: @argr, please check. Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.--></item>
-              <item><note>21</note><name>kusumavilasitā</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ|ᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--></item>
-              <item><note>?</note><name>tvaritagati</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: @argr, please check. Presumably identical to turidagati above, but I can't locate this in Apte's appendix.--></item>
-              <item><note>?</note><name>ratoddhata</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to rathoddhatā in the main list above, but if rathoddhata occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to rathoddhatā.--></item>
+              <item><label>?</label><name>bramitākṣara</name><seg type="xml">--+-+---+--=</seg><seg type="prosody">⏑⏑-⏑-⏑⏑⏑-⏑⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as pramitākṣarā in the main list. The latter is the correct form of the name; bramitākṣara in the XML files should be changed to that.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <!--<item><label>12</label><name>jaloddhatagati</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>--><!--daba: unsure. The prosody given here is very different from jaloddhatagati above, which agrees with the definition in Apte. The template given here is 9 syllables, not 12. All of the patterns in Andrea's list, which use ᵕ, lack - or anything else for long syllables. So it seems most likely that hyphens or some other character used by Andrea for that purpose have been lost in transformation, and by adding 3 long syllables (in the proper places), we get the correct jaloddhatagati pattern from this one. So I guess this item may be deleted, and it's the same as the jaloddhatagati above. But @argr, please check. -->
+              <item><label>11</label><name>upendrabajrā</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ/ᵕ/ᵕᵕ/̠̌⏓[need to be checked]</seg><!--daba: despite the probable disappearance of long syllables from the pattern (see comment above), I'm sure this is identical to upendravajrā of the main list. So this item can be deleted and upendrabajrā in the XML files should be corrected to upendravajrā.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>jagadnātha</name><name>jagadnatha</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕᵕ|ᵕ|ᵕ⏓[need to be checked]</seg><!--daba: no idea about this one. If my assumption about lost hyphens is correct, this should be a 23-syllable metre, but no 23-syllable metre in Apte's appendix includes the sequence ⏑⏑⏑⏑⏑⏑ (na-na) unless accompanied by at least 3 more shorts (na-na-na), which is not the case here. So, @argr please check. I would certainly prefer a Sanskritic name (e.g. jagannātha) even if this is a metre only attested outside India.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><label>13</label><name>punarmada</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg><!--daba: @argr, please check. Can't find a 13-syllable metre by this name in Apte.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>16</label><name>girisa</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕᵕ||ᵕ|ᵕᵕᵕ|⏓[need to be checked]</seg><!--daba: @argr, please check. Apte's appendix does not have a 16-syllable metre beginning with the sequence ⏑⏑⏑⏑⏑⏑–––.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>17</label><name>vilāsinī</name><name>wiśvalalita</name><seg type="xml">----+-+---+-+---=</seg><seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓</seg><!--daba: checked and corrected prosody, added XML prosodic code and added this metre to the EGD. @argr: decide what to do about the alternative name. I suggest you add it (with DHARMA-TG-compliant spelling) in a footlabel to the EGD metre list and any occurrences of wiśvalalita in XML should be changed to vilāsinī.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>18</label><name>mṛdukomala</name><seg type="xml"><!--no data available--></seg><seg type="prosody">|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix. At least, the ṛ in the name will need changing to r̥.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>22</label><name>turidagati</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|⏓[need to be checked]</seg><!--daba: @argr, please check. Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>21</label><name>kusumavilasitā</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕ|ᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>tvaritagati</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: @argr, please check. Presumably identical to turidagati above, but I can't locate this in Apte's appendix.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>ratoddhata</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to rathoddhatā in the main list above, but if rathoddhata occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to rathoddhatā.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
 
-              <item><note>17</note><name>rajanī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--></item>
-              <item><note>?</note><name>pṛthivī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to pr̥thvī in the main list above, but if pṛthivī occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to pr̥thvī.--></item>
+              <item><label>17</label><name>rajanī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>?</label><name>pṛthivī</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to pr̥thvī in the main list above, but if pṛthivī occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to pr̥thvī.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
 
-              <item><note>15</note><name>viṣasmara</name><seg type="xml">--+-+---+-+---=</seg><seg type="prosody">ᵕᵕᵕᵕ–ᵕᵕᵕ–ᵕ–ᵕᵕᵕ⏓</seg><!--daba:
+              <item><label>15</label><name>viṣasmara</name><seg type="xml">--+-+---+-+---=</seg><seg type="prosody">ᵕᵕᵕᵕ–ᵕᵕᵕ–ᵕ–ᵕᵕᵕ⏓</seg><!--daba:
 							@argr, please check. I can't locate this in Apte's appendix. The name looks suspect.
-							@daba: done. name corrected to viṣasmara (Zoetmulder 1974: 459). I don't find any entry न ज स ज स in Apte's appendix... please remove comment if it seems alright now.--></item>
-              <item><note>18</note><name>suvaṅśapattra</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--></item>
+							@daba: done. name corrected to viṣasmara (Zoetmulder 1974: 459). I don't find any entry न ज स ज स in Apte's appendix... please remove comment if it seems alright now.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><label>18</label><name>suvaṅśapattra</name><seg type="xml"><!--no data available--></seg><seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
               <!--additions by daba 20211215. Not sure if anybody has ever used these names of variable metre families, which are not in the EGD list but discussed in the text sections after it. If this list is meant to be a list of the permitted values of @met in <lg>, then the following should be added. If we do not add these (deciding that the list is only for metres definable by a clear pattern), then perhaps triṣṭubh and jagatī should likewise be removed from the list.-->
-              <item><name>trimeter</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available</seg></item>
-              <item><name>vaitālīya</name><seg type="xml">6|+-+-=/8|+-+-=</seg><seg type="prosody">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg></item>
-              <item><name>aupacchandasika</name><seg type="xml">6|+-+-+=/8|+-+-+=</seg><seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg></item>
-              <item><name>āpātalikā</name><seg type="xml">6|+--+=/8|+--+=</seg><seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg></item>
+              <item><name>trimeter</name><seg type="xml"><!--no data available--></seg><seg type="prosody">no data available</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><name>vaitālīya</name><seg type="xml">6|+-+-=/8|+-+-=</seg><seg type="prosody">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><name>aupacchandasika</name><seg type="xml">6|+-+-+=/8|+-+-+=</seg><seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
+              <item><name>āpātalikā</name><seg type="xml">6|+--+=/8|+--+=</seg><seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg><seg type="gana"></seg><bibl><ptr/></bibl></item>
               <!--also additions by daba 20211215: gaṇacchandas (āryā family) metres. Definitely used in XML files, but not fully definable with a simple pattern. The prosodic patterns I give below are only approximations of the more nuanced rules for these metres. I do not know if they belong on the list.-->
-                <item><name>āryā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>gīti</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>upagīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>udgīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>āryāgīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>sugīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>anugīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>vallarī</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
-                <item><name>lalitā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--></item>
+                <item><name>āryā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>gīti</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>upagīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>udgīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>āryāgīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>sugīti</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>anugīti</name><seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>vallarī</name><seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
+                <item><name>lalitā</name><seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg><seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.--><seg type="gana"></seg><bibl><ptr/></bibl></item>
             </list>
         </body>
     </text>
