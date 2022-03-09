@@ -946,6 +946,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+ 
     <!--  G ! -->
     <xsl:template match="tei:gap">
         <xsl:choose>
