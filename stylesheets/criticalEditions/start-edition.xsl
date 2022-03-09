@@ -213,7 +213,22 @@
                     </xsl:for-each>
                     </xsl:element>
                 </xsl:if>
-        </xsl:element>
+                <xsl:text>Current Version: </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc">
+                        <xsl:if test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
+                            <xsl:value-of select="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status"/>
+                        </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>draft</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="current-date()"/>
+                <br/>
+                <xsl:text>Still in progress – do not quote without permission.</xsl:text>
+            </xsl:element>
         </xsl:element>
     </xsl:template>
     <!--  text ! -->
