@@ -164,7 +164,7 @@
                 <item><note>21</note> <name>campakamālā</name> <seg type="xml"
                     >----+-+---+--+--+-+-=</seg> <seg type="prosody">⏑⏑⏑⏑-⏑-||⏑⏑⏑-⏑⏑-||⏑⏑-⏑-⏑⏓</seg> </item>
                 <item><note>23</note><name>jagaddhita</name> <seg type="xml"
-                    >+++--+-+---+------+-+-+</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑–</seg>
+                    >+++--+-+---+------+-+-=</seg> <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
                 </item>
                 <!-- additions from Zaki's file -->
                 <item><note>?</note><name>pādānuṣṭup</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg></item>
@@ -198,7 +198,9 @@
               <item><note>17</note><name>rajanī</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕ⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--></item>
               <item><note>?</note><name>pṛthivī</name><seg type="xml">no data available</seg><seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to pr̥thvī in the main list above, but if pṛthivī occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to pr̥thvī.--></item>
 
-              <item><note>15</note><name>viṣamara</name><seg type="xml">no data available</seg><seg type="prosody">ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ|ᵕᵕ⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix. The name looks suspect.--></item>
+              <item><note>15</note><name>viṣasmara</name><seg type="xml">--+-+---+-+---=</seg><seg type="prosody">ᵕᵕᵕ|ᵕ–ᵕ|ᵕᵕ–|ᵕ–ᵕ|ᵕᵕ⏓</seg><!--daba:
+							@argr, please check. I can't locate this in Apte's appendix. The name looks suspect.
+							@daba: done. name corrected to viṣasmara (Zoetmulder 1974: 459). I don't find any entry न ज स ज स in Apte's appendix... please remove comment if it seems alright now.--></item>
               <item><note>18</note><name>suvaṅśapattra</name><seg type="xml">no data available</seg><seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.--></item>
               <!--additions by daba 20211215. Not sure if anybody has ever used these names of variable metre families, which are not in the EGD list but discussed in the text sections after it. If this list is meant to be a list of the permitted values of @met in <lg>, then the following should be added. If we do not add these (deciding that the list is only for metres definable by a clear pattern), then perhaps triṣṭubh and jagatī should likewise be removed from the list.-->
               <item><name>trimeter</name><seg type="xml">no data available</seg><seg type="prosody">no data available</seg></item>
