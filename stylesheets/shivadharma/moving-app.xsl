@@ -44,6 +44,16 @@
     </xsl:function>
 
     <xsl:output method="xml" indent="yes"/>
+    
+    <!-- To dos list:
+    - [omitted] to be converted in XML
+    - acorr and pcorr to be converted  
+    -->
+    <!-- Not necessary but still have to be resolved on Csaba side 
+    - nat apparatus
+    - dealing with @met anuṣṭubh => maybe change of structure by Csaba
+    - C combining several mss
+    -->
 
     <!-- Identity template -->
     <xsl:template match="node()|@*" name="identity">
@@ -79,13 +89,13 @@
         </xsl:copy>
         <!-- Il faudra faire ajouter les editeurs réels, mais pour la moment la mention du projet fera l'affaire -->
         <xsl:element name="editor" namespace="http://www.tei-c.org/ns/1.0">
-            <xsl:element name="name" namespace="http://www.tei-c.org/ns/1.0">Projet Shivadharma</xsl:element>
+            <xsl:element name="name" namespace="http://www.tei-c.org/ns/1.0">Shivadharma Project</xsl:element>
         </xsl:element>
     </xsl:template>
 
     <xsl:template match="tei:authority">
         <xsl:copy>
-            <xsl:text>Sivádharma</xsl:text>
+            <xsl:text>Shivadharma Project</xsl:text>
         </xsl:copy>
         <xsl:element name="pubPlace" namespace="http://www.tei-c.org/ns/1.0">
           <xsl:text>Naples, Italy</xsl:text>
@@ -145,8 +155,6 @@
                     </xsl:copy>
                     <xsl:element name="listApp" namespace="http://www.tei-c.org/ns/1.0">
                         <xsl:attribute name="type">apparatus</xsl:attribute>
-                        <xsl:choose>
-                            <xsl:when test="tei:app">
                                 <xsl:for-each select="tei:app">
                                     <xsl:element name="app" namespace="http://www.tei-c.org/ns/1.0">
                                         <xsl:attribute name="loc">
@@ -178,7 +186,9 @@
                                                 <xsl:element name="{name(.)}" namespace="http://www.tei-c.org/ns/1.0">
                                                     <xsl:choose>
                                                         <xsl:when test="@wit">
-                                                            <xsl:copy-of select="@wit"/>
+                                                            <xsl:attribute name="wit">
+                                                                <xsl:value-of select="replace(replace(@wit, 'acorr', ''), 'pcorr', '')"/>
+                                                            </xsl:attribute>
                                                         </xsl:when>
                                                         <xsl:when test="@type">
                                                             <xsl:attribute name="type">
@@ -188,20 +198,28 @@
                                                     </xsl:choose>         
                                                     <xsl:apply-templates select="replace(., '°', '')"/>
                                                 </xsl:element>
+                                                <!-- <witDetail wit="#A" type="ac"/> -->
+                                                <xsl:if test="contains(@wit, 'corr')">
+                                                    <xsl:element name="witDetail" namespace="http://www.tei-c.org/ns/1.0">
+                                                        <xsl:attribute name="wit">
+                                                            <xsl:value-of select="replace(replace(@wit, 'acorr', ''), 'pcorr', '')"/>
+                                                        </xsl:attribute>
+                                                        <xsl:attribute name="type">
+                                                            <xsl:choose>
+                                                                <xsl:when test="ends-with(@wit, 'acorr')">
+                                                                    <xsl:text>ac</xsl:text>
+                                                                </xsl:when>
+                                                                <xsl:when test="ends-with(@wit, 'pcorr')">
+                                                                    <xsl:text>pc</xsl:text>
+                                                                </xsl:when>
+                                                            </xsl:choose>
+                                                        </xsl:attribute>
+                                                    </xsl:element>
+                                                </xsl:if>
                                             </xsl:for-each>
                                         </xsl:if>                    
                                     </xsl:element>
                                 </xsl:for-each>
-                            </xsl:when>
-                            <!-- <xsl:otherwise>
-                    <xsl:variable name="filename" select="substring-before(functx:substring-after-last(base-uri(.), '/'), '.xml')"/>
-                    <xsl:variable name="path-file" select="functx:substring-before-last(substring-after(base-uri(.), 'tfd-sanskrit-philology/'), '/')"/>
-                    <xsl:variable name="apparatus-content">
-                        <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file, $filename, '_apparatus.xml')"/>
-                    </xsl:variable>
-                    <xsl:copy-of select=""/>
-                </xsl:otherwise>-->
-                        </xsl:choose>
                     </xsl:element>
                 </xsl:for-each>
             </xsl:element>
