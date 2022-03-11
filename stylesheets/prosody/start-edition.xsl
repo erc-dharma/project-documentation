@@ -40,6 +40,82 @@
             </xsl:element>
     </xsl:template>
     
+    <!--  B ! -->
+    <xsl:template match="tei:bibl">
+        <xsl:analyze-string select="./tei:ptr/@target"
+            regex="[a-z]+:(\w+)(\d\d\d\d)">
+            <xsl:matching-substring>
+                <xsl:value-of select="regex-group(1)"/>
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="regex-group(2)"/>
+            </xsl:matching-substring>
+        </xsl:analyze-string>
+            <xsl:if test="./tei:citedRange">
+                <xsl:text>, </xsl:text>
+            </xsl:if>
+        <xsl:if test="./tei:citedRange"> 
+            <xsl:for-each select="./tei:citedRange">
+                <xsl:call-template name="citedRange-unit"/>
+                <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                <xsl:if test="following-sibling::tei:citedRange[1]">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:if>
+        <xsl:if test="following::tei:bibl[1]">
+            <xsl:text>.</xsl:text>
+            <br/>
+        </xsl:if>
+    </xsl:template>
+    
+    <!--<xsl:template match="tei:bibl">
+        <xsl:choose>
+            <xsl:when test=".[tei:ptr]">
+                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
+                <xsl:variable name="zoteroapijson">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                </xsl:variable>
+                
+                    <xsl:analyze-string select="unparsed-text($zoteroapijson)"
+                        regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(2)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                
+                        <!-\-<xsl:copy-of
+                            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-\->
+                
+                   
+                <xsl:if test="tei:citedRange"> 
+                    <xsl:for-each select="tei:citedRange">
+                        <xsl:call-template name="citedRange-unit"/>
+                        <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                        <xsl:if test="following-sibling::tei:citedRange[1]">
+                            <xsl:text>, </xsl:text>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:if>
+                <xsl:if test="ancestor::tei:listBibl and ancestor-or-self::tei:bibl/@n"> <!-\- [@type='primary'] -\->
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">siglum</xsl:attribute>
+                        <xsl:if test="ancestor-or-self::tei:bibl/@n">
+                            <xsl:text> [siglum </xsl:text>
+                            <strong><xsl:value-of select="ancestor-or-self::tei:bibl/@n"/></strong>
+                            <xsl:text>]</xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:if>
+            </xsl:when>
+            <!-\- if there is no ptr, print simply what is inside bibl and a warning message-\->
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>		
+        </xsl:choose>
+    </xsl:template>-->
+    
     <!-- body -->
     <xsl:template match="tei:body">
      <xsl:element name="div">
@@ -147,6 +223,10 @@
                         <xsl:attribute name="scope">col</xsl:attribute>
                         <xsl:text>Gana</xsl:text>
                     </xsl:element>
+                    <xsl:element name="th">
+                        <xsl:attribute name="scope">col</xsl:attribute>
+                        <xsl:text>Bibliography</xsl:text>
+                    </xsl:element>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="tbody">
@@ -154,8 +234,6 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-
-    
 
     <!-- n -->
     <xsl:template match="tei:note">
@@ -526,6 +604,98 @@
                 </a>
                 <xsl:text> </xsl:text>
             </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template name="citedRange-unit">
+        <xsl:variable name="CurPosition" select="position()"/>
+        <xsl:variable name="unit-value">
+            <xsl:choose>
+                <xsl:when test="@unit='page' and following-sibling::tei:citedRange[1]">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>page </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="@unit='part'">
+                    <xsl:text>part </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='volume'">
+                    <xsl:text>volume </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='note'">
+                    <xsl:text>note </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='item'">
+                    <xsl:text>&#8470; </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='entry'">
+                    <xsl:text>s.v. </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='figure'">
+                    <xsl:text>figure </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='plate'">
+                    <xsl:text>plate </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='table'">
+                    <xsl:text>table </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='appendix'">
+                    <xsl:text>appendix </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='line'">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>lines </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>lines </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>line </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="@unit='section'">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>§§</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>§</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <!-- <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[\-]+')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>page </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise> -->
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$CurPosition = 1 and not(ancestor::tei:p or ancestor::tei:note)">
+                <xsl:value-of select="concat(upper-case(substring($unit-value,1,1)), substring($unit-value, 2),' '[not(last())] )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$unit-value"/>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
