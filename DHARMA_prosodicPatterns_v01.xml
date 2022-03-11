@@ -12,7 +12,7 @@
                 <principal ref="part:argr">Arlo Griffiths</principal>
                 <principal ref="part:ansc">Annette Schmiedchen</principal>
                 <respStmt>
-                    
+
 	<name ref="part:axja">Axelle Janiak</name>
                     <resp>XML-TEI Data Manager</resp>
                 </respStmt>
@@ -68,52 +68,66 @@
             <row><cell>foot boundary</cell><cell>|</cell>  <cell>|</cell></row>
             <row><cell>caesura</cell><cell>||</cell>  <cell>||</cell></row>
                 <row><cell>boundary of odd and even quarter</cell><cell>/</cell><cell/></row>
-            </table></p>  
+            </table></p>
         </front>
         <body>
-            
+
             <list>
-                <item>								
-	<measure unit="syllable">7</measure>			
-	<name xml:lang="san-Latn">sumānikā</name>				
-	<seg type="xml">+-+-+-=</seg>				
-	<seg type="prosody">-⏑-⏑-⏑⏓</seg>				
-	<seg type="gana"></seg>					
-	<listBibl>						
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>					
-		          <bibl><ptr target="bib:Velankar1949_01"/></bibl>					
+                <item>
+	<measure unit="syllable">7</measure>
+	<name xml:lang="san-Latn">sumānikā</name>
+	<seg type="xml">+-+-+-=</seg>
+	<seg type="prosody">-⏑-⏑-⏑⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		          <bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>				
-	<measure unit="syllable">8</measure>		
-	<name xml:lang="san-Latn">pramāṇikā</name>	
-	<seg type="xml">-+-+-+-=</seg>	
+              <item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="san-Latn">pramāṇikā</name>
+	<seg type="xml">-+-+-+-=</seg>
 	<seg type="prosody">-⏑-⏑-⏑⏓</seg>
-	<seg type="gana"></seg>							
-	<listBibl>							
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>						
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>					
+	</listBibl>
               </item>
                 <item>
-	<measure unit="syllable">8/8</measure>					
-	<name xml:lang="san-Latn">anuṣṭubh</name>		
-	<seg type="xml">====-++=/====-+-=</seg>		
-	<seg type="prosody">⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg>		
-	<seg type="gana"></seg>		
-	<listBibl>			
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>			
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>	
+	<measure unit="syllable">8/8</measure>
+	<name xml:lang="san-Latn">anuṣṭubh</name>
+	<seg type="xml">====-++=/====-+-=</seg>
+	<seg type="prosody">⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 								</listBibl>
 							</item>
+							<item>
+<measure unit="syllable">8</measure>
+<name xml:lang="kaw-Latn">pādānuṣṭubh</name><name xml:lang="kaw-Latn">pādānuṣṭup</name>
+<!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing, and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.
+@zapa: can you infer from the CK occurrences the specific prosodic pattern for this verse form? is it ====-++=?-->
+<seg type="xml"><!--no data available--></seg>
+<seg type="prosody"><!--no data available--></seg>
+<seg type="gana"></seg>
+<listBibl>
+	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+	<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+</listBibl>
+</item>
                 <item>
-	<measure unit="syllable">10/11</measure> 
-	<name xml:lang="">vegavatī</name> 
-	<seg type="xml">--+--+--+=/+--+--+--+=</seg> 
-	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg> 
+	<measure unit="syllable">10/11</measure>
+	<name xml:lang="san-Latn">vegavatī</name>
+	<seg type="xml">--+--+--+=/+--+--+--+=</seg>
+	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -122,9 +136,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">10/11</measure> 
-	<name xml:lang="">viyoginī</name> 
-	<seg type="xml">--+--+-+-=/--++--+-+-=</seg> 
+	<measure unit="syllable">10/11</measure>
+	<name xml:lang="san-Latn">viyoginī</name>
+	<seg type="xml">--+--+-+-=/--++--+-+-=</seg>
 	<seg type="prosody">⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -134,10 +148,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">triṣṭubh</name> 
-	<seg type="xml"><!--no data available--></seg> 
-	<seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".--> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">triṣṭubh</name>
+	<seg type="xml"><!--no data available--></seg>
+	<seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -146,9 +160,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">dodhaka</name> 
-	<seg type="xml">+--+--+--+=</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">dodhaka</name>
+	<seg type="xml">+--+--+--+=</seg>
 	<seg type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -158,9 +172,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">indravajrā</name> 
-	<seg type="xml">++-++--+-+=</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">indravajrā</name>
+	<seg type="xml">++-++--+-+=</seg>
 	<seg type="prosody">––⏑––⏑⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -170,10 +184,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">rathoddhatā</name> 
-	<seg type="xml">+-+---+-+-=</seg>       
-	<seg type="prosody">–⏑–⏑⏑⏑–⏑–⏑⏓</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">rathoddhatā</name><name xml:lang="kaw-Latn">rathoddhata</name>
+	<seg type="xml">+-+---+-+-=</seg>
+	<seg type="prosody">–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -182,9 +196,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">śālinī</name> 
-	<seg type="xml">+++++-++-+=</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">śālinī</name>
+	<seg type="xml">+++++-++-+=</seg>
 	<seg type="prosody">––––|–⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -194,9 +208,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">svāgatā</name>
-	<seg type="xml">+-+---+--+=</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">svāgatā</name>
+	<seg type="xml">+-+---+--+=</seg>
 	<seg type="prosody">–⏑–⏑⏑⏑–⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -206,9 +220,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">upajāti</name> 
-	<seg type="xml">=+-++--+-+=</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">upajāti</name>
+	<seg type="xml">=+-++--+-+=</seg>
 	<seg type="prosody">⏓–⏑––⏑⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -218,24 +232,23 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">upendravajrā</name> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">upendravajrā</name><name xml:lang="kaw-Latn">upendrabajra</name>
+	<!-- @anac: you seem to have the spelling upendrabajrā in your PYñ file; please adjust to spelling used in Kalangwan that I adopt here. -->
 	<seg type="xml">-+-++--+-+=</seg>
-                    
 	<seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">454</citedRange><citedRange unit="item">XI.9</citedRange></bibl>
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">toṭaka</name>
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">toṭaka</name>
 	<seg type="xml">--+--+--+--=</seg>
-								 
-	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg> 
+	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -244,9 +257,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11</measure> 
-	<name xml:lang="">vātormī</name> 
-	<seg type="xml">++++--++-+=</seg> 
+	<measure unit="syllable">11</measure>
+	<name xml:lang="san-Latn">vātormī</name>
+	<seg type="xml">++++--++-+=</seg>
 	<seg type="prosody">––––⏑⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -256,9 +269,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11/11</measure> 
-	<name xml:lang="">upacitra</name> 
-	<seg type="xml">--+--+--+-=/+--+--+--+=</seg> 
+	<measure unit="syllable">11/11</measure>
+	<name xml:lang="san-Latn">upacitra</name>
+	<seg type="xml">--+--+--+-=/+--+--+--+=</seg>
 	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏓/–⏑⏑–⏑⏑–⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -269,8 +282,8 @@
 </item>
                 <item>
 	<measure unit="syllable">11/12</measure>
-	<name xml:lang="">aparavaktra</name> 
-	<seg type="xml">------+-+-=/----+--+-+-=</seg> 
+	<name xml:lang="san-Latn">aparavaktra</name>
+	<seg type="xml">------+-+-=/----+--+-+-=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑–⏑⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -280,9 +293,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11/12</measure> 
-	<name xml:lang="">hariṇaplutā</name> 
-	<seg type="xml">--+--+--+-=/---+--+--+-=</seg> 
+	<measure unit="syllable">11/12</measure>
+	<name xml:lang="san-Latn">hariṇaplutā</name>
+	<seg type="xml">--+--+--+-=/---+--+--+-=</seg>
 	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏓/⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -292,9 +305,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">11/12</measure> 
-	<name xml:lang="">mālabhāriṇī</name> 
-	<seg type="xml">--+--+-+-+=/--++--+-+-+=</seg> 
+	<measure unit="syllable">11/12</measure>
+	<name xml:lang="san-Latn">mālabhāriṇī</name>
+	<seg type="xml">--+--+-+-+=/--++--+-+-+=</seg>
 	<seg type="prosody">⏑⏑–⏑⏑–⏑–⏑–⏓/⏑⏑––⏑⏑–⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -304,10 +317,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">indravaṁśā</name> 
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">indravaṁśā</name>
 	<seg type="xml">++-++--+-+-=</seg>
-                    
 	<seg type="prosody">--⏑--⏑⏑-⏑-⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -317,10 +329,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">jagatī</name> 
-	<seg type="xml"><!--no data available--></seg> 
-	<seg type="prosody">no data available</seg> 
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">jagatī</name>
+	<seg type="xml"><!--no data available--></seg><!-- see daba comment at triṣṭubh -->
+	<seg type="prosody">no data available</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -330,33 +342,20 @@
 </item>
                 <item>
 	<measure unit="syllable">12</measure>
-	<name xml:lang="">kusumavicitrā</name><!--daba ed. deleted the second name "kusumavicitra" from here.-->
+	<name xml:lang="san-Latn">kusumavicitrā</name><name xml:lang="kaw-Latn">kusumavicitra</name>
 	<seg type="xml">----++----+=</seg>
-                    
 	<seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.6</citedRange></bibl>
 	</listBibl>
 </item>
-              <!-- <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">kusumavicitra</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑  ⏑  ⏑ | ⏑  -  - | ⏑ ⏑  ⏑ | ⏑  -  ⏓</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item> --><!--daba: yes, this is the same as kusumavicitrā above. Someone may have put the | (foot boundary) markers in the prosodic code to show the gaṇas if Indian prosody, but gaṇas are not feet in the sense we use the word. So the definition of kusumavicitrā as above is correct, and any instances of kusumavicitra as a metre name in the XML files should be changed to kusumavicitrā.-->
-                <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">bhujaṅgaprayāta</name> 
-	<seg type="xml">-++-++-++-+=</seg> 
+<item>
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">bhujaṅgaprayāta</name>
+	<seg type="xml">-++-++-++-+=</seg>
 	<seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -366,11 +365,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">maṇimālā</name> 
-	<seg type="xml">++--++++--+=</seg> 
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">maṇimālā</name>
+	<seg type="xml">++--++++--+=</seg>
 	<seg type="prosody">––⏑⏑––||––⏑⏑–⏓</seg>
-								
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -379,11 +377,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">drutavilambita</name> 
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">drutavilambita</name>
 	<seg type="xml">---+--+--+-=</seg>
-                    
-	<seg type="prosody">⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg> 
+	<seg type="prosody">⏑⏑⏑–⏑⏑–⏑⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -392,50 +389,32 @@
 	</listBibl>
 </item>
                 <item>
-									
 	<measure unit="syllable">12</measure>
-									
-	<name xml:lang="san-Latn">pramitākṣarā</name>
-	<name xml:lang="kaw-Latn">bramitākṣara</name>
-									
+	<name xml:lang="san-Latn">pramitākṣarā</name><name xml:lang="kaw-Latn">bramitākṣara</name>
 	<seg type="xml">--+-+---+--=</seg>
-                  
 	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg>
-									
 	<seg type="gana">sa-ja-sa-sa</seg>
-									
 	<listBibl>
-										
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">A.12.9</citedRange></bibl>
-										
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-										
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.11</citedRange></bibl>
-									</listBibl></item>
+									</listBibl>
+								</item>
                 <item>
-									
 	<measure unit="syllable">12</measure>
-									
 	<name xml:lang="san-Latn">vaṁśamālā</name>
-									
 	<seg type="xml">=+-++--+-+-=</seg>
-									
 	<seg type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg>
-									
 	<seg type="gana"></seg>
-									
 	<listBibl>
-										
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-										
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-										
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 									</item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">vaṁśastha</name> 
-	<seg type="xml">-+-++--+-+-=</seg> 
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">vaṁśastha</name>
+	<seg type="xml">-+-++--+-+-=</seg>
 	<seg type="prosody">⏑–⏑––⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -445,11 +424,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">12</measure> 
-	<name xml:lang="">vaiśvadevī</name> 
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">vaiśvadevī</name>
 	<seg type="xml">++++++-++-+=</seg>
-                    
-	<seg type="prosody">–––––||–⏑––⏑–⏓</seg> 
+	<seg type="prosody">–––––||–⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -458,31 +436,21 @@
 	</listBibl>
 </item>
                 <item>
-									
 	<measure unit="syllable">12/13</measure>
-									
-	<name xml:lang="">puṣpitāgrā</name>
-									
+	<name xml:lang="san-Latn">puṣpitāgrā</name>
 	<seg type="xml">------+-+-+=/----+--+-+-+=</seg>
-									
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑–⏑–⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑–⏓</seg>
-									
 	<seg type="gana"></seg>
-									
 	<listBibl>
-										
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-										
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-										
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 									</listBibl>
 								</item>
                 <item>
-	<measure unit="syllable">13</measure> 
-	<name xml:lang="">mañjubhāṣiṇī</name> 
+	<measure unit="syllable">13</measure>
+	<name xml:lang="san-Latn">mañjubhāṣiṇī</name>
 	<seg type="xml">--+-+---+-+-=</seg>
-                    
 	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -492,10 +460,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">13</measure> 
-	<name xml:lang="">mattamayūra</name> 
+	<measure unit="syllable">13</measure>
+	<name xml:lang="san-Latn">mattamayūra</name>
 	<seg type="xml">+++++--++--+=</seg>
-                    
 	<seg type="prosody">––––||–⏑⏑––⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -505,11 +472,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">13</measure> 
-	<name xml:lang="">praharṣiṇī</name> 
+	<measure unit="syllable">13</measure>
+	<name xml:lang="san-Latn">praharṣiṇī</name>
 	<seg type="xml">+++----+-+-+=</seg>
-                    
-	<seg type="prosody">–––||⏑⏑⏑⏑–⏑–⏑–⏓</seg> 
+	<seg type="prosody">–––||⏑⏑⏑⏑–⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -518,9 +484,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">13</measure> 
-	<name xml:lang="">rucirā</name> 
-	<seg type="xml">-+-+----+-+-=</seg> 
+	<measure unit="syllable">13</measure>
+	<name xml:lang="san-Latn">rucirā</name>
+	<seg type="xml">-+-+----+-+-=</seg>
 	<seg type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -530,10 +496,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">14</measure> 
-	<name xml:lang="">asaṁbādhā</name> 
+	<measure unit="syllable">14</measure>
+	<name xml:lang="san-Latn">asaṁbādhā</name>
 	<seg type="xml">+++++------++=</seg>
-                    
 	<seg type="prosody">–––––||⏑⏑⏑⏑⏑⏑––⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -543,9 +508,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">14</measure> 
-	<name xml:lang="">praharaṇakalikā</name> 
-	<seg type="xml">------+------=</seg> 
+	<measure unit="syllable">14</measure>
+	<name xml:lang="san-Latn">praharaṇakalikā</name>
+	<!--@zapa: it seems that you have the wrong spelling praharaṇakalika in your CK file: please correct it.-->
+	<seg type="xml">------+------=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–||⏑⏑⏑⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -555,33 +521,21 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">14</measure> 
-	<name xml:lang="">vasantatilakā</name> 
-	<seg type="xml">++-+---+--+-+=</seg> 
+	<measure unit="syllable">14</measure>
+	<name xml:lang="san-Latn">vasantatilakā</name><name xml:lang="kaw-Latn">basantatilaka</name>
+	<seg type="xml">++-+---+--+-+=</seg>
 	<seg type="prosody">––⏑–⏑⏑⏑–⏑⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">458</citedRange><citedRange unit="item">XIV.6</citedRange></bibl>
 	</listBibl>
 </item>
-                <item>
-	<measure unit="syllable">14</measure> 
-	<name xml:lang="">basantatilaka</name> 
-	<seg type="xml">no data available</seg> 
-	<seg type="prosody">⏑|⏑⏑|⏑⏑|⏑⏑|⏓</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-	<measure unit="syllable">15</measure> 
-	<name xml:lang="">mālinī</name> 
-	<seg type="xml">------+++-++-+=</seg> 
+<item>
+	<measure unit="syllable">15</measure>
+	<name xml:lang="san-Latn">mālinī</name>
+	<seg type="xml">------+++-++-+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑––||–⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -590,11 +544,34 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
+<item>
+	<measure unit="syllable">15</measure>
+	<name xml:lang="kaw-Latn">viṣasmara</name>
+	<seg type="xml">--+-+---+-+---=</seg>
+	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+	<seg type="gana">sa-ja-sa-ja-sa</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl><!-- absent from Apte -->
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">459</citedRange><citedRange unit="item">XV.5</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">16</measure>
+	<name xml:lang="kaw-Latn">girisa</name>
+	<seg type="xml">------+++++----=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑–––––⏑⏑⏑⏑⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">459</citedRange><citedRange unit="item">XVI.1</citedRange></bibl>
+</listBibl>
+</item>
                 <item>
-	<measure unit="syllable">17</measure> 
-	<name xml:lang="">hariṇī</name> 
+	<measure unit="syllable">17</measure>
+	<name xml:lang="san-Latn">hariṇī</name>
 	<seg type="xml">-----+++++-+--+-=</seg>
-                    
 	<seg type="prosody">⏑⏑⏑⏑⏑–||––––||⏑–⏑⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -605,8 +582,8 @@
 </item>
                 <item>
 	<measure unit="syllable">17</measure>
-	<name xml:lang="">mandākrāntā</name> 
-	<seg type="xml">++++-----++-++-+=</seg> 
+	<name xml:lang="san-Latn">mandākrāntā</name>
+	<seg type="xml">++++-----++-++-+=</seg>
 	<seg type="prosody">––––||⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -616,8 +593,8 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">17</measure> 
-	<name xml:lang="">nardaṭaka</name> 
+	<measure unit="syllable">17</measure>
+	<name xml:lang="san-Latn">nardaṭaka</name>
 	<seg type="xml">----+-+---+--+--=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana"></seg>
@@ -627,11 +604,23 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
-	<measure unit="syllable">17</measure> 
-	<name xml:lang="">pr̥thvī</name> 
+<item>
+	<measure unit="syllable">17</measure>
+	<name xml:lang="san-Latn">vilāsinī</name><name xml:lang="kaw-Latn">viśvalalita</name>
+	<seg type="xml">----+-+---+-+---=</seg>
+	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">460</citedRange><citedRange unit="item">XVII.3</citedRange></bibl>
+</listBibl>
+</item>
+<item>
+	<measure unit="syllable">17</measure>
+	<name xml:lang="san-Latn">pr̥thvī</name><name xml:lang="kaw-Latn">pr̥thvītala</name>
+	<!-- @anac: it seems you have one or more cases of pr̥thivī in your PYñ file. please correct the spelling to one of the two options above, presumably the second. -->
 	<seg type="xml">-+---+-+---+-++-=</seg>
-                    
 	<seg type="prosody">⏑–⏑⏑⏑–⏑–||⏑⏑⏑–⏑––⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -640,36 +629,49 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
-	<measure unit="syllable">17</measure> 
-	<name xml:lang="">śikhariṇī</name><!--daba ed corrected n to ṇ--> 
+<item>
+	<measure unit="syllable">17</measure>
+	<name xml:lang="san-Latn">śikhariṇī</name>
 	<seg type="xml">-+++++-----++---=</seg>
-                    
 	<seg type="prosody">⏑–––––||⏑⏑⏑⏑⏑––⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">460</citedRange><citedRange unit="item">XVII.7</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">17</measure>
+	<name xml:lang="san-Latn">vaṁśapatrapatita</name><name xml:lang="kaw-Latn">vaṅśapatrapatita</name>
+	<seg type="xml">+--+-+---+-------=</seg>
+	<seg type="prosody">-⏑⏑-⏑-⏑⏑⏑-||⏑⏑⏑⏑⏑⏑⏓</seg>
+	<!-- @argr: this should be fine, but consider if you prefer the spelling patra to pattra, and let me know if you want a label on this metre in the EGD (e.g. if this is quite common in Indonesia, or if the caesura is not observed in SE Asia or whatever).
+@daba: I am never sure what do do with the spelling of pattra/patra, but since Apte gives the latter, I am happy to adopt it. No other comments at this time.
+@zapa: please change the spelling to vaṅśapatrapatita in all cases were your CK file has @met="vaṅśapattrapatita"-->
+	<seg type="gana">bha-ra-na-bha-na-la-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">8</citedRange><citedRange unit="item">A.17.5</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">461</citedRange><citedRange unit="item">XVII.8</citedRange></bibl>
 	</listBibl>
 </item>
 		<item>
-	<measure unit="syllable">19</measure> 
-	<name xml:lang="">navaharṣa</name> 
-	<seg type="xml"
-		                    >--+--+------+--+--=</seg> 
+	<measure unit="syllable">19</measure>
+	<name xml:lang="kaw-Latn">navaharṣa</name>
+	<seg type="xml">--+--+------+--+--=</seg>
 	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">462</citedRange><citedRange unit="item">XIX.1</citedRange></bibl>
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">19</measure> 
-	<name xml:lang="">śārdūlavikrīḍita</name> 
-	<seg type="xml">+++--+-+---+++-++-=</seg> 
+	<measure unit="syllable">19</measure>
+	<name xml:lang="san-Latn">śārdūlavikrīḍita</name>
+	<seg type="xml">+++--+-+---+++-++-=</seg>
 	<seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -679,10 +681,10 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">19</measure> 
-	<name xml:lang="">sumadhurā</name> 
-	<seg type="xml">++++-++-----+++---=</seg> 
-	<seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg> 
+	<measure unit="syllable">19</measure>
+	<name xml:lang="san-Latn">sumadhurā</name>
+	<seg type="xml">++++-++-----+++---=</seg>
+	<seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -691,9 +693,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">20</measure> 
-	<name xml:lang="">mattebhavikrīḍita</name> 
-	<seg type="xml">--++--+-+---+++-++-=</seg> 
+	<measure unit="syllable">20</measure>
+	<name xml:lang="san-Latn">mattebhavikrīḍita</name>
+	<seg type="xml">--++--+-+---+++-++-=</seg>
 	<seg type="prosody">⏑⏑––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -703,9 +705,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">20</measure> 
-	<name xml:lang="">suvadanā</name> 
-	<seg type="xml">++++-++------+++---=</seg> 
+	<measure unit="syllable">20</measure>
+	<name xml:lang="san-Latn">suvadanā</name>
+	<seg type="xml">++++-++------+++---=</seg>
 	<seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -715,9 +717,9 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">21</measure> 
-	<name xml:lang="">sragdharā</name> 
-	<seg type="xml">++++-++------++-++-+=</seg> 
+	<measure unit="syllable">21</measure>
+	<name xml:lang="san-Latn">sragdharā</name><name xml:lang="kaw-Latn">sragdhara</name>
+	<seg type="xml">++++-++------++-++-+=</seg>
 	<seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -727,11 +729,11 @@
 	</listBibl>
 </item>
                 <item>
-	<measure unit="syllable">21</measure> 
-	<name xml:lang="">campakamālā</name>				
-	<seg type="xml">----+-+---+--+--+-+-=</seg>			
-	<seg type="prosody">⏑⏑⏑⏑-⏑-||⏑⏑⏑-⏑⏑-||⏑⏑-⏑-⏑⏓</seg>		
-	<seg type="gana"></seg>				
+	<measure unit="syllable">21</measure>
+	<name xml:lang="san-Latn">campakamālā</name>
+	<seg type="xml">----+-+---+--+--+-+-=</seg>
+	<seg type="prosody">⏑⏑⏑⏑-⏑-||⏑⏑⏑-⏑⏑-||⏑⏑-⏑-⏑⏓</seg>
+	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
@@ -740,73 +742,32 @@
 </item>
 								<item>
 	<measure unit="syllable">23</measure>
-	<name xml:lang="">jagadnātha</name>
-	<name xml:lang="">virat təbu sol</name>
-	<name xml:lang="">kaləṅəṅan</name>
-	<name xml:lang="">padmakeśara</name>
-								  
+	<name xml:lang="kaw-Latn">jagadnātha</name>
+	<!--daba: I would certainly prefer a Sanskritic name (e.g. jagannātha) even if this is a metre only attested outside India.-->
+	<name xml:lang="kaw-Latn">virat təbu sol</name>
+	<name xml:lang="kaw-Latn">kaləṅəṅan</name>
+	<name xml:lang="kaw-Latn">padmakeśara</name>
 	<seg type="xml">-+---+-+---+------+-+-=</seg>
-									
 	<seg type="prosody">⏑–⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
-									<!--daba: no 23-syllable metre in Apte's appendix includes the sequence ⏑⏑⏑⏑⏑⏑ (na-na) unless accompanied by at least 3 more shorts (na-na-na), which is not the case here. I would certainly prefer a Sanskritic name (e.g. jagannātha) even if this is a metre only attested outside India.-->
-									
 	<seg type="gana">ja-sa-ja-sa-na-na-ra-la</seg><!-- ज-स-ज-स-न-न-र-ल -->
-									
 	<listBibl>
-										
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>							
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>		
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">466</citedRange><citedRange unit="item">XXIII.3</citedRange></bibl>
 									</listBibl>
 								</item>
 								<item>
 	<measure unit="syllable">23</measure>
-	<name xml:lang="">jagaddhita</name>	
-	<seg type="xml">+++--+-+---+------+-+-=</seg>	
+	<name xml:lang="san-Latn">jagaddhita</name>
+	<seg type="xml">+++--+-+---+------+-+-=</seg>
 	<seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
-	<seg type="gana"></seg>		
+	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 							</item>
                 <!-- additions from Zaki's file -->
-                <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">pādānuṣṭup</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">no data available[need to be checked]</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">pādānuṣṭubh</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">no data available[need to be checked]</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item><!--daba: I'm sure pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing, but I'm not sure if they are equivalent to anuṣṭubh. @argr will need to tell.-->
-              <item>
-	<measure unit="syllable">17</measure>
-	<name xml:lang="">vaṁśapattrapatita</name>
-	<seg type="xml">+--+-+---+-------=</seg>
-	<seg type="prosody">-⏑⏑-⏑-⏑⏑⏑-||⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: normalised the spelling of the name to vaṁśapattrapatita (was vaṅśapattrapatita; if this occurs in XML files, it should be changed to the standard spelling). The prosodic pattern was correct, except that I've removed the vertical bars, which should not be used to delimit gaṇas, and added a double bar at the caesura. I've added the syllable number in <label/> and inserted the XML prosodic code. I've added this metre to the EGD appendix. @argr: this should be fine, but consider if you prefer the spelling patra to pattra, and let me know if you want a label on this metre in the EGD (e.g. if this is quite common in Indonesia, or if the caesura is not observed in SE Asia or whatever).-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
                 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">jaloddhatagati</name>
@@ -831,23 +792,15 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-	<measure unit="syllable">14</measure>
-	<name xml:lang="">praharanakalika</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑⏑|-⏑⏑|⏑⏑⏑|⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as praharaṇakalikā in the main list. If praharaṇakalika occurs in the XML files, it should be corrected to praharaṇakalikā.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
+<item>
 	<measure unit="syllable">10</measure>
 	<name xml:lang="">paṅkti</name>
 	<seg type="xml">--------+=</seg>
-	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑-⏓[need to be checked]</seg><!--daba: @argr will be needed here. I've removed the bars from the template and added the XML code and syllable number. Apte's appendix has no metre matching the pattern ⏑⏑⏑⏑⏑⏑⏑⏑-⏓. If this is a metre used in SE Asia, I would strongly suggest finding a different name for it, if one can be found, since in the Indian tradition paṅkti is a generic name for 10-syllable verse and we should avoid using it for a specific template. If all other fails, I might suggest paṅktiviśeṣa. Or, if the metre is a rare one, keeping it unnamed and just giving the code for its @met in the XML would work. -->
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑-⏓[need to be checked]</seg><!--daba: @argr will be needed here.
+	I've removed the bars from the template and added the XML code and syllable number.
+	Apte's appendix has no metre matching the pattern ⏑⏑⏑⏑⏑⏑⏑⏑-⏓.
+	If this is a metre used in SE Asia, I would strongly suggest finding a different name for it, if one can be found, since in the Indian tradition paṅkti is a generic name for 10-syllable verse and we should avoid using it for a specific template.
+	If all else fails, I might suggest paṅktiviśeṣa. Or, if the metre is a rare one, keeping it unnamed and just giving the code for its @met in the XML would work. -->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -859,7 +812,10 @@
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">atijagatī</name>
 	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓[need to be checked]</seg><!--daba: @argr will be needed here. I've removed the bars from the template and added the XML code and syllable number. Apte's appendix has no metre matching this pattern. As above, I would prefer to avoid the name "atijagatī", which is the generic name for 13-syllable verse.-->
+	<seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓[need to be checked]</seg><!--daba: @argr will be needed here.
+	I've removed the bars from the template and added the XML code and syllable number.
+	Apte's appendix has no metre matching this pattern.
+	As above, I would prefer to avoid the name "atijagatī", which is the generic name for 13-syllable verse.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -871,7 +827,8 @@
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">candravartma</name>
 	<seg type="xml">+-+---+----=</seg>
-	<seg type="prosody">-⏑-⏑||⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.-->
+	<seg type="prosody">-⏑-⏑||⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry.
+	@argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -879,47 +836,14 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">śikhariṇī</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑--|---|⏑⏑⏑|⏑⏑-|-⏑⏑|⏑⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as śikhariṇī in the main list. The name was incorrect (śikharinī) above; I've corrected that and also corrected the EGD.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">pr̥thvītala</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑-|⏑--|⏑⏓[need to be checked]</seg><!--daba: I think this item should be deleted. The pattern is identical to pr̥thvī (in the main list), so I guess pr̥thvītala is just an alternative name of that metre. We want just one canonical name for each metre, so unless @argr says pr̥thvītala is something distinguishable from pr̥thvī, instances of the former in XML files should be changed to the latter.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">sragdhara</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">---|-⏑-|-⏑⏑|⏑⏑⏑|⏑--|⏑--|⏑-⏓[need to be checked]</seg><!--daba: this item may be deleted; it is the same as sragdharā in the main list. The latter is the correct form of the name; sragdhara in the XML files should be changed to that.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
+<item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">citrālaya</name>
 	<seg type="xml">--+--+------=</seg>
-	<seg type="prosody">⏑⏑-⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix, so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code and added the corresponding XML code. I suspect this metre will have a caesura after the sixth syllable.-->
+	<seg type="prosody">⏑⏑-⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix, so @argr will need to check it.
+	I guess the name and prosody are correct.
+	I've removed the bars from the prosodic code and added the corresponding XML code.
+	I suspect this metre will have a caesura after the sixth syllable.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -927,31 +851,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <!-- Andrea's file -->
-              <!--<item>
-	<measure unit="syllable">12</measure>
-	<name xml:lang="">jaloddhatagati</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑|⏑⏑|⏑⏑|⏑⏑⏓[need to be checked]</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>--><!--daba: unsure. The prosody given here is very different from jaloddhatagati above, which agrees with the definition in Apte. The template given here is 9 syllables, not 12. All of the patterns in Andrea's list, which use ⏑, lack - or anything else for long syllables. So it seems most likely that hyphens or some other character used by Andrea for that purpose have been lost in transformation, and by adding 3 long syllables (in the proper places), we get the correct jaloddhatagati pattern from this one. So I guess this item may be deleted, and it's the same as the jaloddhatagati above. But @argr, please check. -->
-              <item>
-	<measure unit="syllable">11</measure>
-	<name xml:lang="">upendrabajrā</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑⏑/⏑/⏑⏑/̠̌⏓[need to be checked]</seg><!--daba: despite the probable disappearance of long syllables from the pattern (see comment above), I'm sure this is identical to upendravajrā of the main list. So this item can be deleted and upendrabajrā in the XML files should be corrected to upendravajrā.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
+  <!-- from Andrea's file -->
               <item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">punarmada</name>
@@ -964,36 +864,12 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-	<measure unit="syllable">16</measure>
-	<name xml:lang="">girisa</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑⏑||⏑|⏑⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check. Apte's appendix does not have a 16-syllable metre beginning with the sequence ⏑⏑⏑⏑⏑⏑–––.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
-	<measure unit="syllable">17</measure>
-	<name xml:lang="">vilāsinī</name>
-	<name xml:lang="">wiśvalalita</name>
-	<seg type="xml">----+-+---+-+---=</seg>
-	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓</seg><!--daba: checked and corrected prosody, added XML prosodic code and added this metre to the EGD. @argr: decide what to do about the alternative name. I suggest you add it (with DHARMA-TG-compliant spelling) in a footlabel to the EGD metre list and any occurrences of wiśvalalita in XML should be changed to vilāsinī.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
+<item>
 	<measure unit="syllable">18</measure>
 	<name xml:lang="">mṛdukomala</name>
 	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix. At least, the ṛ in the name will need changing to r̥.-->
+	<seg type="prosody">|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix.
+	At least, the ṛ in the name will need changing to r̥.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -1005,7 +881,8 @@
 	<measure unit="syllable">22</measure>
 	<name xml:lang="">turidagati</name>
 	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑|⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check. Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.-->
+	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑|⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check.
+	Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -1029,7 +906,8 @@
 	<measure unit="syllable">?</measure>
 	<name xml:lang="">tvaritagati</name>
 	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">no data available[need to be checked]</seg><!--daba: @argr, please check. Presumably identical to turidagati above, but I can't locate this in Apte's appendix.-->
+	<seg type="prosody">no data available[need to be checked]</seg><!--daba: @argr, please check.
+	Presumably identical to turidagati above, but I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -1037,51 +915,11 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">ratoddhata</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to rathoddhatā in the main list above, but if rathoddhata occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to rathoddhatā.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-
-              <item>
+<item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="">rajanī</name>
 	<seg type="xml"><!--no data available--></seg>
 	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
-	<measure unit="syllable">?</measure>
-	<name xml:lang="">pṛthivī</name>
-	<seg type="xml"><!--no data available--></seg>
-	<seg type="prosody">no data available[need to be checked]</seg><!--daba: in all probability identical to pr̥thvī in the main list above, but if pṛthivī occurs in the XML files, then (since no prosodic info is given here) the prosody may need to be checked in the file before correcting the metre name to pr̥thvī.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-
-              <item>
-	<measure unit="syllable">15</measure>
-	<name xml:lang="">viṣasmara</name>
-	<seg type="xml">--+-+---+-+---=</seg>
-	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg><!--daba:
-							@argr, please check. I can't locate this in Apte's appendix. The name looks suspect.
-							@daba: done. name corrected to viṣasmara (Zoetmulder 1974: 459). I don't find any entry न ज स ज स in Apte's appendix... please remove comment if it seems alright now.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
