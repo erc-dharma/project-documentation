@@ -32,6 +32,9 @@
                 <moduleRef key="textstructure"
                     except="argument back byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText group imprimatur opener postscript salute signed titlePage titlePart trailer"/>
                 <moduleRef key="figures" except="figDesc figure formula notatedMusic"/>
+                <moduleRef key="linking"
+                    except="ab alt altGrp anchor annotation join joinGrp link linkGrp listAnnotation standOff timeline when"
+                />
             </schemaSpec>
         </body>
     </text>
