@@ -213,9 +213,7 @@
 
     <!-- quote -->
     <xsl:template match="tei:quote">
-        <xsl:text>“</xsl:text>
         <xsl:apply-templates/>
-        <xsl:text>”</xsl:text>
     </xsl:template>
 
     <!-- row -->
