@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Prosody Schema</title>
+                <author>Axelle Janiak</author>
+            </titleStmt>
+            <publicationStmt>
+                <p>for use by whoever wants it</p>
+            </publicationStmt>
+            <notesStmt>
+                <note type="ns">http://www.example.org/ns/nonTEI</note>
+            </notesStmt>
+            <sourceDesc>
+                <p>created on Friday 11th March 2022 03:58:02 PM</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <front>
+            <divGen type="toc"/>
+        </front>
+        <body>
+            <p>TEI schema for prosody</p>
+            <schemaSpec ident="DHARMA_ProsodySchema_v01" docLang="en" prefix="tei_" xml:lang="en">
+                <moduleRef key="core"
+                    except="abbr add addrLine address analytic author biblScope biblStruct binaryObject cb choice cit corr del desc distinct divGen editor ellipsis email emph expan foreign gap gb gloss graphic headItem headLabel imprint index l lb lg measureGrp media meeting mentioned milestone monogr note noteGrp num orig pb postBox postCode publisher q rb ref reg relatedItem rs rt ruby said series sic soCalled sp speaker stage street teiCorpus term textLang time unclear unit"/>
+                <moduleRef key="tei" except=""/>
+                <moduleRef key="header"
+                    except="appInfo application biblFull cRefPattern calendar calendarDesc catDesc catRef category citeData citeStructure classCode classDecl conversion correction correspAction correspContext correspDesc creation distributor editorialDecl extent geoDecl handNote hyphenation interpretation keywords listChange listPrefixDef namespace normalization notesStmt prefixDef punctuation quotation refState refsDecl rendition samplingDecl schemaRef scriptNote segmentation seriesStmt sponsor stdVals styleDefDecl tagUsage tagsDecl taxonomy textClass unitDecl unitDef xenoData"/>
+                <moduleRef key="textstructure"
+                    except="argument back byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText group imprimatur opener postscript salute signed titlePage titlePart trailer"/>
+                <moduleRef key="figures" except="figDesc figure formula notatedMusic"/>
+            </schemaSpec>
+        </body>
+    </text>
+</TEI>
