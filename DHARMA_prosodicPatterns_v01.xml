@@ -50,19 +50,27 @@
         </revisionDesc>
     </teiHeader>
     <text>
+        <front>
+            <p>Prosodic notation in XML code (@type="xml") and conventional symbols (@type="prosody")
+            <table>
+                <row role="label">
+                    <cell/>
+                    <cell>XML notation</cell>
+                    <cell>Prosody</cell>
+                </row>
+            <row><cell>one short/light syllable</cell><cell>-</cell>  <cell>⏑</cell></row>
+            <row><cell>one long/heavy syllable</cell><cell>+</cell>  <cell>-</cell></row>
+            <row><cell>one syllable of indeterminate length (anceps)</cell><cell>=</cell>  <cell>⏓</cell></row>
+            <row><cell>two morae (one long or two short syllables)</cell><cell>2</cell>  <cell>⏕</cell></row>
+                <row><cell>larger moraic foot or colon</cell><cell>numeral(s)</cell> <cell>numeral(s)</cell></row>
+            <row><cell>foot boundary</cell><cell>|</cell>  <cell>|</cell></row>
+            <row><cell>caesura</cell><cell>||</cell>  <cell>||</cell></row>
+                <row><cell>boundary of odd and even quarter</cell><cell>/</cell><cell>/</cell></row>
+            </table>
+            </p>
+        </front>  
         <body>
-            <!-- Table 2. Prosodic notation
-|Description|Code|Conventional notation|Context|
-|one short/light syllable|-|⏑|1, 2, 3|
-|one long/heavy syllable|+|-|1, 2, 3|
-|one syllable of indeterminate length (anceps)|=|⏓|1, 2, (3)|
-|two morae (one long or two short syllables)|2|⏕|1, 2, (3)|
-|larger moraic foot or colon|numeral(s)||1, 2, (3)|
-|foot boundary| \| \| |1, 2, (3)|
-|caesura|\|\|| \|\| |1|
-|boundary of odd and even quarter|/||1|
- -->
-            <list>
+                        <list>
                 <item> <label>7</label><!--daba edited, formerly 7/7. I'm not sure if the numbers here serve a purpose, but they seem to follow the "Syllables" column of the EGD metre table where a single number means a samavr̥tta metre with the given number of syllables per line, while two numbers with a slash mean an ardhasamavr̥tta with the numbers of syllables in the odd and even lines. Sumānikā is a samavr̥tta.--> <name>sumānikā</name> <seg type="xml">+-+-+-=</seg> <seg
                     type="prosody">-⏑-⏑-⏑⏓</seg> <seg type="gana"></seg><listBibl><bibl><ptr target="bib:Apte1890_01"/></bibl><bibl><ptr target="bib:Velankar1949_01"/></bibl><bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl></item>
               <item> <label>8</label> <name>pramāṇikā</name> <seg type="xml">-+-+-+-=</seg> <seg
