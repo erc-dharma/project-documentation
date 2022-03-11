@@ -647,7 +647,7 @@
 	<seg type="xml">+--+-+---+-------=</seg>
 	<seg type="prosody">-⏑⏑-⏑-⏑⏑⏑-||⏑⏑⏑⏑⏑⏑⏓</seg>
 	<!-- @argr: this should be fine, but consider if you prefer the spelling patra to pattra, and let me know if you want a label on this metre in the EGD (e.g. if this is quite common in Indonesia, or if the caesura is not observed in SE Asia or whatever).
-@daba: I am never sure what do do with the spelling of pattra/patra, but since Apte gives the latter, I am happy to adopt it. No other comments at this time.
+@daba: I am never sure what do do with the spelling of pattra/patra, but since Apte gives the latter, I am happy to adopt it. No other comments at this time. daba@argr20220311: either is fine by me. I think purists actually prefer pattra because it's derived from pat+tra. Nonetheless, patra seems to be more standard and I agree, let's follow Apte's spelling. I've changed it to patra in the EGD too.
 @zapa: please change the spelling to vaṅśapatrapatita in all cases were your CK file has @met="vaṅśapattrapatita"-->
 	<seg type="gana">bha-ra-na-bha-na-la-ga</seg>
 	<listBibl>
