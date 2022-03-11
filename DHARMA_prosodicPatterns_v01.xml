@@ -63,10 +63,10 @@
             <row><cell>one long/heavy syllable</cell><cell>+</cell>  <cell>-</cell></row>
             <row><cell>one syllable of indeterminate length (anceps)</cell><cell>=</cell>  <cell>⏓</cell></row>
             <row><cell>two morae (one long or two short syllables)</cell><cell>2</cell>  <cell>⏕</cell></row>
-                <row><cell>larger moraic foot or colon</cell><cell>numeral(s)</cell> <cell>numeral(s)</cell></row>
+                <row><cell>larger moraic foot or colon</cell><cell>numeral(s)</cell> <cell/></row>
             <row><cell>foot boundary</cell><cell>|</cell>  <cell>|</cell></row>
             <row><cell>caesura</cell><cell>||</cell>  <cell>||</cell></row>
-                <row><cell>boundary of odd and even quarter</cell><cell>/</cell><cell>/</cell></row>
+                <row><cell>boundary of odd and even quarter</cell><cell>/</cell><cell/></row>
             </table>
             </p>
         </front>
