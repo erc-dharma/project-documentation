@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Ant
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-ant
 
-name: Transforming prosody
+name: transforming prosody
 
 on:
   push
@@ -17,14 +17,14 @@ jobs:
          uses: actions/setup-java@v1
          with:
            java-version: 1.8
-       - name: Build with Ant
+       - name: Build display for prosody
          run: ant -noinput -buildfile build.xml
 
-       - name: Pushes to another repo
+       - name: Pushes to another arie
          uses: cpina/github-action-push-to-another-repository@main
          env:
            API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
+         with:
            source-directory: 'output'
            destination-github-username: 'erc-dharma'
            destination-repository-name: 'erc-dharma.github.io'
