@@ -163,8 +163,14 @@
               <a class="dropdown-item" href="https://github.com/erc-dharma">All the repositories</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownConv" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Conventions
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="editorial">Editorial Conventions</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/output/display-prosody.html">Prosodic Conventions</a>
+            </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
