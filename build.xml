@@ -2,7 +2,7 @@
 <project basedir="." name="prosody">
 
     <!-- Step 1 — splitting files -->
-    <xslt force="true" in="DHARMA_prosodicPatterns_v01.xml" out="output/display-prosody.html" style="project-documentation/stylesheets/prosody/start-edition.xsl" useImplicitFileset="false" classpath="project-documentation/editorialStylesheets/pipelineTools/saxon9he.jar">
+    <xslt force="true" in="DHARMA_prosodicPatterns_v01.xml" out="output/display-prosody.html" style="./stylesheets/prosody/start-edition.xsl" useImplicitFileset="false" classpath="project-documentation/editorialStylesheets/pipelineTools/saxon9he.jar">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
     </xslt>
 
