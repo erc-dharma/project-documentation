@@ -20,7 +20,7 @@ jobs:
        - name: Build with Ant
          run: ant -noinput -buildfile build.xml
 
-       - name: Pushes to another repo : erc-dharma.github.io
+       - name: Pushes to another repo
          uses: cpina/github-action-push-to-another-repository@main
          env:
            API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
