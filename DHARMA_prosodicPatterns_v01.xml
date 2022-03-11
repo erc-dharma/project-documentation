@@ -50,6 +50,25 @@
         </revisionDesc>
     </teiHeader>
     <text>
+        <front>
+            <p>Prosodic notation in XML code (@type="xml") and conventional symbols (@type="prosody")
+            <table>
+                <row role="label">
+                    <cell/>
+                    <cell>XML notation</cell>
+                    <cell>Prosody</cell>
+                </row>
+            <row><cell>one short/light syllable</cell><cell>-</cell>  <cell>⏑</cell></row>
+            <row><cell>one long/heavy syllable</cell><cell>+</cell>  <cell>-</cell></row>
+            <row><cell>one syllable of indeterminate length (anceps)</cell><cell>=</cell>  <cell>⏓</cell></row>
+            <row><cell>two morae (one long or two short syllables)</cell><cell>2</cell>  <cell>⏕</cell></row>
+                <row><cell>larger moraic foot or colon</cell><cell>numeral(s)</cell> <cell>numeral(s)</cell></row>
+            <row><cell>foot boundary</cell><cell>|</cell>  <cell>|</cell></row>
+            <row><cell>caesura</cell><cell>||</cell>  <cell>||</cell></row>
+                <row><cell>boundary of odd and even quarter</cell><cell>/</cell><cell>/</cell></row>
+            </table>
+            </p>
+        </front>
         <body>
             <!-- Table 2. Prosodic notation
 |Description|Code|Conventional notation|Context|
