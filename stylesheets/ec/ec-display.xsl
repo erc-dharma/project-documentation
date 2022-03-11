@@ -513,6 +513,18 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'hoḷalkere')">
                 <xsl:text>Hk</xsl:text>
             </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'sorab')">
+                <xsl:text>Sb</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'sâgar')">
+                <xsl:text>Sa</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nagar')">
+                <xsl:text>Nr</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'tîrthahaḷḷi')">
+                <xsl:text>TI</xsl:text>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
 
