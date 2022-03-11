@@ -52,8 +52,9 @@
     </teiHeader>
     <text>
         <front>
-            <p>Prosodic notation in XML code (@type="xml") and conventional symbols (@type="prosody")
+            <p>
             <table>
+                <head>Prosodic notation in XML code (@type="xml") and conventional symbols (@type="prosody")</head>
                 <row role="label">
                     <cell/>
                     <cell>XML notation</cell>
@@ -67,8 +68,7 @@
             <row><cell>foot boundary</cell><cell>|</cell>  <cell>|</cell></row>
             <row><cell>caesura</cell><cell>||</cell>  <cell>||</cell></row>
                 <row><cell>boundary of odd and even quarter</cell><cell>/</cell><cell/></row>
-            </table>
-            </p>
+            </table></p>  
         </front>
         <body>
             
@@ -1103,6 +1103,7 @@
 </item>
               <!--additions by daba 20211215. Not sure if anybody has ever used these names of variable metre families, which are not in the EGD list but discussed in the text sections after it. If this list is meant to be a list of the permitted values of @met in <lg>, then the following should be added. If we do not add these (deciding that the list is only for metres definable by a clear pattern), then perhaps triṣṭubh and jagatī should likewise be removed from the list.-->
               <item>
+                  <measure unit="syllable"/>
 	<name xml:lang="">trimeter</name>
 	<seg type="xml"><!--no data available--></seg>
 	<seg type="prosody">no data available</seg>
@@ -1114,6 +1115,7 @@
 	</listBibl>
 </item>
               <item>
+                  <measure unit="syllable"/>
 	<name xml:lang="">vaitālīya</name>
 	<seg type="xml">6|+-+-=/8|+-+-=</seg>
 	<seg type="prosody">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg>
@@ -1125,6 +1127,7 @@
 	</listBibl>
 </item>
               <item>
+                  <measure unit="syllable"/>
 	<name xml:lang="">aupacchandasika</name>
 	<seg type="xml">6|+-+-+=/8|+-+-+=</seg>
 	<seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg>
@@ -1136,6 +1139,7 @@
 	</listBibl>
 </item>
               <item>
+                  <measure unit="syllable"/>
 	<name xml:lang="">āpātalikā</name>
 	<seg type="xml">6|+--+=/8|+--+=</seg>
 	<seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg>
@@ -1148,6 +1152,7 @@
 </item>
               <!--also additions by daba 20211215: gaṇacchandas (āryā family) metres. Definitely used in XML files, but not fully definable with a simple pattern. The prosodic patterns I give below are only approximations of the more nuanced rules for these metres. I do not know if they belong on the list.-->
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">āryā</name>
 	<seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1159,6 +1164,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">gīti</name>
 	<seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1170,6 +1176,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">upagīti</name>
 	<seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1181,7 +1188,8 @@
 	</listBibl>
 </item>
                 <item>
-	<name xml:lang="">udgīti</name>
+                    <measure unit="syllable"/>
+                    <name xml:lang="">udgīti</name>
 	<seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
 	<seg type="gana"></seg>
@@ -1192,6 +1200,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">āryāgīti</name>
 	<seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1203,6 +1212,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">sugīti</name>
 	<seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1214,6 +1224,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">anugīti</name>
 	<seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1225,6 +1236,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">vallarī</name>
 	<seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
@@ -1236,6 +1248,7 @@
 	</listBibl>
 </item>
                 <item>
+                    <measure unit="syllable"/>
 	<name xml:lang="">lalitā</name>
 	<seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg>
 	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
