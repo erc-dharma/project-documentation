@@ -3,7 +3,7 @@
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
-    <teiHeader>
+    <teiHeader>a
         <fileDesc>
             <titleStmt>
                 <title>DHARMA Prosodic patterns</title>
@@ -234,7 +234,6 @@
                 <item>
 	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">upendravajrā</name><name xml:lang="kaw-Latn">upendrabajra</name>
-	<!-- @anac: you seem to have the spelling upendrabajrā in your PYñ file; please adjust to spelling used in Kalangwan that I adopt here. -->
 	<seg type="xml">-+-++--+-+=</seg>
 	<seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
@@ -619,7 +618,6 @@
 <item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="san-Latn">pr̥thvī</name><name xml:lang="kaw-Latn">pr̥thvītala</name>
-	<!-- @anac: it seems you have one or more cases of pr̥thivī in your PYñ file. please correct the spelling to one of the two options above, presumably the second. -->
 	<seg type="xml">-+---+-+---+-++-=</seg>
 	<seg type="prosody">⏑–⏑⏑⏑–⏑–||⏑⏑⏑–⏑––⏑⏓</seg>
 	<seg type="gana"></seg>
