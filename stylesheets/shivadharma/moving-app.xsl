@@ -208,7 +208,7 @@
                                                             </xsl:matching-substring>
                                                         </xsl:analyze-string>
                                                     </xsl:if>
-                                                    <xsl:apply-templates select="replace(replace(., '°', ''), '\[omitted\]', '')"/>
+                                                    <xsl:apply-templates select="translate(replace(replace(., '°', ''), '\[omitted\]', ''), '{}', '')"/>
                                                 </xsl:element>
                                                 <xsl:if test="contains(@wit, 'corr')">
                                                     <xsl:call-template name="tokenize-witness-list">
