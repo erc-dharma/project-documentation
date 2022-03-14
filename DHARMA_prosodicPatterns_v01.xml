@@ -690,6 +690,19 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
+	<item>
+		<!-- krtiGroup -->
+	<measure unit="syllable">20</measure>
+	<name xml:lang="kaw-Latn"/>
+	<seg type="xml">--+-+---+------+-+-=</seg>
+	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
+	<seg type="gana">sa-ja-sa-na-na-ja-ra</seg>
+	<listBibl>
+	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+	<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+	<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">463</citedRange><citedRange unit="item">XX.1</citedRange></bibl>
+		</listBibl>
+	</item>
                 <item>
 	<measure unit="syllable">20</measure>
 	<name xml:lang="san-Latn">mattebhavikrīḍita</name>
