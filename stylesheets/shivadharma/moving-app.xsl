@@ -134,9 +134,6 @@
             <!--  -->
             <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
-        <xsl:message><xsl:value-of select="$filename"/></xsl:message>
-        <xsl:message><xsl:value-of select="$path-file"/></xsl:message>
-        <xsl:message><xsl:value-of select="$listWit-content"/></xsl:message>
         <xsl:copy-of select="doc($listWit-content)//tei:listWit" copy-namespaces="no"/>      
          
     </xsl:template>
@@ -154,7 +151,7 @@
                 
                 <xsl:for-each select="current-group()">
                     <xsl:copy>
-                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="@* except @met"/>
                         <xsl:copy-of select="tei:l"/>
                     </xsl:copy>
                     <xsl:element name="listApp" namespace="http://www.tei-c.org/ns/1.0">
