@@ -133,7 +133,7 @@
         <xsl:variable name="listWit-content">
             <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
-                    <xsl:copy-of select="doc($listWit-content)"/>
+                <xsl:copy-of select="doc($listWit-content)//tei:listWit" copy-namespaces="no"/>               
           
     </xsl:template>
     
