@@ -133,19 +133,9 @@
         <xsl:variable name="listWit-content">
             <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
-                <xsl:choose>
-                    <xsl:when test="doc($listWit-content)//tei:listWit/not(child::tei:witness)">
-                        <xsl:element name="listWit" namespace="http://www.tei-c.org/ns/1.0">
-                            <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
-                                <xsl:text>no witness</xsl:text>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:when>  
-                    <xsl:otherwise>
-                        <xsl:copy-of select="doc($listWit-content)//tei:listWit" copy-namespaces="no"/>  
-                    </xsl:otherwise>
-                </xsl:choose>           
-          
+ 
+                        <xsl:copy-of select="doc($listWit-content)//tei:listWit" copy-namespaces="no"/>      
+         
     </xsl:template>
     
     <xsl:template match="tei:div[@type='edition']">
