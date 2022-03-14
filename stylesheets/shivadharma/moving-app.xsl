@@ -134,7 +134,7 @@
             <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
                 <xsl:choose>
-                    <xsl:when test="not(//tei:listWit[child::tei:witness])">
+                    <xsl:when test="//tei:listWit/not(child::tei:witness)">
                         <xsl:text>no witness</xsl:text>
                     </xsl:when>  
                     <xsl:otherwise>
