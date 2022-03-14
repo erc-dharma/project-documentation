@@ -198,7 +198,12 @@
                                                     </xsl:choose>         
                                                     <xsl:apply-templates select="replace(., '°', '')"/>
                                                 </xsl:element>
-                                                <!-- <witDetail wit="#A" type="ac"/> -->
+                                                <xsl:if test="contains(@wit, 'corr')">
+                                                    <xsl:call-template name="tokenize-witness-list">
+                                                        <xsl:with-param name="string" select="@wit"/>
+                                                    </xsl:call-template> 
+                                                </xsl:if>
+                                                <!--<!-\- <witDetail wit="#A" type="ac"/> -\->
                                                 <xsl:if test="contains(@wit, 'corr')">
                                                     <xsl:element name="witDetail" namespace="http://www.tei-c.org/ns/1.0">
                                                         <xsl:attribute name="wit">
@@ -215,7 +220,7 @@
                                                             </xsl:choose>
                                                         </xsl:attribute>
                                                     </xsl:element>
-                                                </xsl:if>
+                                                </xsl:if>-->
                                             </xsl:for-each>
                                         </xsl:if>                    
                                     </xsl:element>
@@ -224,6 +229,57 @@
                 </xsl:for-each>
             </xsl:element>
         </xsl:for-each-group>
+    </xsl:template>
+    
+    <xsl:template name="tokenize-witness-list">
+        <xsl:param name="string"/>
+        <xsl:choose>
+            <xsl:when test="contains($string, ' ')">
+                <xsl:variable name="first-item"
+                    select="translate(normalize-space(substring-before($string, ' ')), '#', '')"/>
+                <xsl:if test="$first-item">
+                    <xsl:call-template name="wit-detail">
+                        <xsl:with-param name="list" select="$first-item"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="substring-after($string, ' ')"/>
+                    </xsl:call-template>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:choose>
+                    <xsl:when test="$string = ''">
+                        <xsl:text/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="wit-detail">
+                            <xsl:with-param name="list" select="translate($string, '#', '')"/>
+                        </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template name="wit-detail">
+        <xsl:param name="list"/>
+            <xsl:if test="contains($list, 'corr')">
+            <xsl:element name="witDetail" namespace="http://www.tei-c.org/ns/1.0">
+                <xsl:attribute name="wit">
+                    <xsl:value-of select="replace(replace($list, 'acorr', ''), 'pcorr', '')"/>
+                </xsl:attribute>
+                <xsl:attribute name="type">
+                    <xsl:choose>
+                        <xsl:when test="ends-with($list, 'acorr')">
+                            <xsl:text>ac</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="ends-with($list, 'pcorr')">
+                            <xsl:text>pc</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:attribute>
+            </xsl:element>
+            </xsl:if>
     </xsl:template>
     
     <!--<xsl:template match="tei:lg">
