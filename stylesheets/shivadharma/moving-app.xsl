@@ -131,8 +131,8 @@
         <xsl:variable name="filename" select="substring-before(functx:substring-after-last(base-uri(.), '/'), '.xml')"/>
         <xsl:variable name="path-file" select="functx:substring-before-last(substring-after(base-uri(.), 'tfd-sanskrit-philology/'), '/')"/>
         <xsl:variable name="listWit-content">
-            <!-- https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/ -->
-            <xsl:value-of select="concat('./', $path-file,'/', $filename, '_listWit.xml')"/>
+            <!--  -->
+            <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
         <xsl:message><xsl:value-of select="$filename"/></xsl:message>
         <xsl:message><xsl:value-of select="$path-file"/></xsl:message>
