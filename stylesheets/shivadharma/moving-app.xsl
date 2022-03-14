@@ -195,32 +195,25 @@
                                                                 <xsl:value-of select="replace(@type, '#', '')"/>
                                                             </xsl:attribute>
                                                         </xsl:when>
-                                                    </xsl:choose>         
-                                                    <xsl:apply-templates select="replace(., '°', '')"/>
+                                                    </xsl:choose>
+                                                    <xsl:if test="contains(., '[omitted]')">
+                                                        <xsl:analyze-string select="." regex="\[(omitted)\]">
+                                                            <xsl:matching-substring>
+                                                                <xsl:element name="gap" namespace="http://www.tei-c.org/ns/1.0">
+                                                                    <xsl:attribute name="reason">
+                                                                        <xsl:value-of select="regex-group(1)"/>
+                                                                    </xsl:attribute>
+                                                                </xsl:element>
+                                                            </xsl:matching-substring>
+                                                        </xsl:analyze-string>
+                                                    </xsl:if>
+                                                    <xsl:apply-templates select="replace(replace(., '°', ''), '\[omitted\]', '')"/>
                                                 </xsl:element>
                                                 <xsl:if test="contains(@wit, 'corr')">
                                                     <xsl:call-template name="tokenize-witness-list">
                                                         <xsl:with-param name="string" select="@wit"/>
                                                     </xsl:call-template> 
                                                 </xsl:if>
-                                                <!--<!-\- <witDetail wit="#A" type="ac"/> -\->
-                                                <xsl:if test="contains(@wit, 'corr')">
-                                                    <xsl:element name="witDetail" namespace="http://www.tei-c.org/ns/1.0">
-                                                        <xsl:attribute name="wit">
-                                                            <xsl:value-of select="replace(replace(@wit, 'acorr', ''), 'pcorr', '')"/>
-                                                        </xsl:attribute>
-                                                        <xsl:attribute name="type">
-                                                            <xsl:choose>
-                                                                <xsl:when test="ends-with(@wit, 'acorr')">
-                                                                    <xsl:text>ac</xsl:text>
-                                                                </xsl:when>
-                                                                <xsl:when test="ends-with(@wit, 'pcorr')">
-                                                                    <xsl:text>pc</xsl:text>
-                                                                </xsl:when>
-                                                            </xsl:choose>
-                                                        </xsl:attribute>
-                                                    </xsl:element>
-                                                </xsl:if>-->
                                             </xsl:for-each>
                                         </xsl:if>                    
                                     </xsl:element>
