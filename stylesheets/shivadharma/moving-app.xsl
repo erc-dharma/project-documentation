@@ -134,6 +134,9 @@
             <!-- https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/ -->
             <xsl:value-of select="concat('./', $path-file,'/', $filename, '_listWit.xml')"/>
         </xsl:variable>
+        <xsl:message><xsl:value-of select="$filename"/></xsl:message>
+        <xsl:message><xsl:value-of select="$path-file"/></xsl:message>
+        <xsl:message><xsl:value-of select="$listWit-content"/></xsl:message>
         <xsl:copy-of select="doc($listWit-content)//tei:listWit" copy-namespaces="no"/>      
          
     </xsl:template>
