@@ -875,7 +875,8 @@
                             <xsl:choose>
                                 <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
                                     <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
-                                    <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                                    <xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/>
+                                    <xsl:text> group</xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
                                 <xsl:text>N.N.</xsl:text>
