@@ -73,11 +73,15 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="name" module="core" mode="change">
-                    <constraintSpec scheme="schematron" ident="name">
-                        <constraint><sch:rule context="tei:name[ancestor::tei:body]"><sch:assert
-                            test="@xml:lang"
-                            >@xml:lang is mandatory on the name of any prosodic pattern to identify the language of use.</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
+                   <!-- <constraintSpec scheme="schematron" ident="name">
+                        <constraint>
+                            <sch:rule context="tei:name[ancestor::tei:body]/text()">
+                                <sch:assert
+                                    test="@xml:lang"
+                            >@xml:lang is mandatory on the name of any prosodic pattern to identify the language of use.</sch:assert>
+                            </sch:rule>
+                        </constraint>
+                    </constraintSpec>-->
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>

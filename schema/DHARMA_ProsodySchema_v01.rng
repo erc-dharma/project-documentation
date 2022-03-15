@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-14T09:30:57Z. .
+Schema generated from ODD source 2022-03-15T10:49:45Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -1854,14 +1854,6 @@ Suggested values include: 1] below; 2] bottom; 3] margin; 4] top; 5] opposite; 6
       <element name="name">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(name, proper noun) contains a proper noun or noun phrase. [3.5.1. Referring Strings]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_ProsodySchema_v01-name-name-constraint-rule-8">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:name[ancestor::tei:body]">
-               <sch:assert test="@xml:lang">@xml:lang is mandatory on the name of any prosodic pattern to identify the language of use.</sch:assert>
-            </sch:rule>
-         </pattern>
          <ref name="tei_att.global.attribute.xmllang"/>
          <ref name="tei_att.canonical.attribute.ref"/>
          <empty/>
@@ -1970,7 +1962,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_ProsodySchema_v01-list-gloss-list-must-have-labels-constraint-rule-9">
+                  id="DHARMA_ProsodySchema_v01-list-gloss-list-must-have-labels-constraint-rule-8">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:list[@type='gloss']">
@@ -2124,7 +2116,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited range) defines the range of cited content, often represented by pages or other units [3.11.2.5. Scopes and Ranges in Bibliographic Citations]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_ProsodySchema_v01-citedRange-note-constraint-rule-10">
+                  id="DHARMA_ProsodySchema_v01-citedRange-note-constraint-rule-9">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:citedRange">
@@ -2195,7 +2187,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_ProsodySchema_v01-bibl-siglum-constraint-rule-11">
+                  id="DHARMA_ProsodySchema_v01-bibl-siglum-constraint-rule-10">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:bibl[ancestor::tei:listBibl]">
