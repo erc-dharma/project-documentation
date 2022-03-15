@@ -144,13 +144,18 @@
     <!-- item -->
     <xsl:template match="tei:item">
         <xsl:element name="tr">
-            <xsl:if test="tei:measure">
-                <xsl:element name="td">
+            <xsl:element name="td">
+            <xsl:if test="tei:measure">           
                     <xsl:apply-templates select="tei:measure"/>
-                </xsl:element>
             </xsl:if>
+            </xsl:element>
+            <xsl:element name="td">
+            <xsl:if test="tei:label">
+                    <xsl:apply-templates select="tei:label"/>
+            </xsl:if>
+            </xsl:element>
+            <xsl:element name="td">
             <xsl:if test="tei:name">
-                <xsl:element name="td">
                     <xsl:element name="ul">
                         <xsl:attribute name="class">list-unstyled</xsl:attribute>
                         <xsl:for-each select="tei:name">
@@ -164,34 +169,33 @@
                                         <xsl:text> (kaw)</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
-                                
                             </xsl:element>                                      
                         </xsl:for-each>
                     </xsl:element>
-                </xsl:element>
             </xsl:if>
+            </xsl:element>
             <xsl:if test="tei:seg">
                 <xsl:for-each select="tei:seg">
                     <xsl:element name="td">
-                    <xsl:apply-templates select="."/>
-                </xsl:element>
-                </xsl:for-each>
-            </xsl:if>
+                    <xsl:apply-templates/>
+                    </xsl:element>
+                </xsl:for-each> 
+            </xsl:if>   
+            <xsl:element name="td">
             <xsl:if test="tei:listBibl">
-                <xsl:element name="td">
                     <xsl:apply-templates select="tei:listBibl"/>
-                </xsl:element>
             </xsl:if>
+        </xsl:element>
         </xsl:element>
     </xsl:template>
 
     <!-- label -->
-    <xsl:template match="tei:label">
+    <!--<xsl:template match="tei:label">
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted font-weight-bold</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
 
     <!-- list -->
     <xsl:template match="tei:list">
@@ -201,7 +205,11 @@
                 <xsl:element name="tr">
                     <xsl:element name="th">
                         <xsl:attribute name="scope">col</xsl:attribute>
-                        <xsl:text>Syllabe</xsl:text>
+                        <xsl:text>Syllable</xsl:text>
+                    </xsl:element>
+                    <xsl:element name="th">
+                        <xsl:attribute name="scope">col</xsl:attribute>
+                        <xsl:text>Generic</xsl:text>
                     </xsl:element>
                     <xsl:element name="th">
                         <xsl:attribute name="scope">col</xsl:attribute>
