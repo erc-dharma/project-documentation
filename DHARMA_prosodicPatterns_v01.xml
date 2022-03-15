@@ -114,8 +114,8 @@
 <name xml:lang="kaw-Latn">pādānuṣṭubh</name><name xml:lang="kaw-Latn">pādānuṣṭup</name>
 <!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing, and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.
 @zapa: can you infer from the CK occurrences the specific prosodic pattern for this verse form? is it ====-++=?-->
-<seg type="xml"><!--no data available--></seg>
-<seg type="prosody"><!--no data available--></seg>
+<seg type="xml">no data available</seg>
+<seg type="prosody">no data available</seg>
 <seg type="gana"></seg>
 <listBibl>
 	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -150,7 +150,7 @@
                 <item>
 	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">triṣṭubh</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -330,7 +330,7 @@
                 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">jagatī</name>
-	<seg type="xml"><!--no data available--></seg><!-- see daba comment at triṣṭubh -->
+	<seg type="xml">no data available</seg><!-- see daba comment at triṣṭubh -->
 	<seg type="prosody">no data available</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -693,6 +693,7 @@
 	<!-- krtiGroup -->
 	<item>
 	<measure unit="syllable">20</measure>
+	<label type="generic" xml:lang="san-Latn">kr̥ti</label>
 	<name/>
 	<seg type="xml">--+-+---+------+-+-=</seg>
 	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
@@ -822,7 +823,7 @@
               <item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">atijagatī</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓[need to be checked]</seg><!--daba: @argr will be needed here.
 	I've removed the bars from the template and added the XML code and syllable number.
 	Apte's appendix has no metre matching this pattern.
@@ -866,7 +867,7 @@
               <item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">punarmada</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check. Can't find a 13-syllable metre by this name in Apte.-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -878,7 +879,7 @@
 <item>
 	<measure unit="syllable">18</measure>
 	<name xml:lang="">mṛdukomala</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix.
 	At least, the ṛ in the name will need changing to r̥.-->
 	<seg type="gana"></seg>
@@ -891,7 +892,7 @@
               <item>
 	<measure unit="syllable">22</measure>
 	<name xml:lang="">turidagati</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑|⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check.
 	Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
@@ -904,7 +905,7 @@
               <item>
 	<measure unit="syllable">21</measure>
 	<name xml:lang="">kusumavilasitā</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">⏑⏑|⏑|⏑⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑|⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -916,7 +917,7 @@
               <item>
 	<measure unit="syllable">?</measure>
 	<name xml:lang="">tvaritagati</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">no data available[need to be checked]</seg><!--daba: @argr, please check.
 	Presumably identical to turidagati above, but I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
@@ -929,7 +930,7 @@
 <item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="">rajanī</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -941,7 +942,7 @@
               <item>
 	<measure unit="syllable">18</measure>
 	<name xml:lang="">suvaṅśapattra</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -954,7 +955,7 @@
               <item>
                   <measure unit="syllable"/>
 	<name xml:lang="">trimeter</name>
-	<seg type="xml"><!--no data available--></seg>
+	<seg type="xml">no data available</seg>
 	<seg type="prosody">no data available</seg>
 	<seg type="gana"></seg>
 	<listBibl>
