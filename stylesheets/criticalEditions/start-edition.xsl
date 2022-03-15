@@ -867,11 +867,20 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="matches(@met,'[=\+\-]+')">
-                            <xsl:call-template name="scansion">
+                           <!-- <xsl:call-template name="scansion">
                                 <xsl:with-param name="met-string" select="translate(@met, '-=+', '⏑⏓–')"/>
                                 <xsl:with-param name="string-len" select="string-length(@met)"/>
                                 <xsl:with-param name="string-pos" select="string-length(@met) - 1"/>
-                            </xsl:call-template>
+                            </xsl:call-template>-->
+                            <xsl:choose>
+                                <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
+                                    <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
+                                    <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                <xsl:text>N.N.</xsl:text>
+                            </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="concat(upper-case(substring(@met,1,1)), substring(@met, 2),' '[not(last())] )"/>
@@ -887,6 +896,15 @@
                                 <xsl:with-param name="string-pos" select="string-length($prosody-and-met) - 1"/>
                             </xsl:call-template>
                     </xsl:when>
+                        <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
+                            <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:seg[@type='xml']/node()"/>
+                            <xsl:text>: </xsl:text>
+                            <xsl:call-template name="scansion">
+                                <xsl:with-param name="met-string" select="translate($prosody-and-met, '-=+', '⏑⏓–')"/>
+                                <xsl:with-param name="string-len" select="string-length($prosody-and-met)"/>
+                                <xsl:with-param name="string-pos" select="string-length($prosody-and-met) - 1"/>
+                            </xsl:call-template>
+                        </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>: </xsl:text>
                         <xsl:call-template name="scansion">
