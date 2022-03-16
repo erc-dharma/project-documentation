@@ -209,7 +209,7 @@
                     </xsl:element>
                     <xsl:element name="th">
                         <xsl:attribute name="scope">col</xsl:attribute>
-                        <xsl:text>Generic</xsl:text>
+                        <xsl:text>Class</xsl:text>
                     </xsl:element>
                     <xsl:element name="th">
                         <xsl:attribute name="scope">col</xsl:attribute>
