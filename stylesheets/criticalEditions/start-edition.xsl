@@ -875,16 +875,16 @@
                             <xsl:choose>
                                 <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
                                     <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
-                                    <xsl:text>N.N. (</xsl:text>
+                                    <xsl:text>Name unknown (</xsl:text>
                                     <xsl:element name="span">
                                         <xsl:attribute name="class">font-italic</xsl:attribute>
                                     <xsl:value-of select="$label-group"/>
                                     </xsl:element>
-                                    <xsl:text> group)</xsl:text>
+                                    <xsl:text> class)</xsl:text>
                                         
                                 </xsl:when>
                                 <xsl:otherwise>
-                                <xsl:text>N.N.</xsl:text>
+                                <xsl:text>Name unknown</xsl:text>
                             </xsl:otherwise>
                             </xsl:choose>
                         </xsl:when>
