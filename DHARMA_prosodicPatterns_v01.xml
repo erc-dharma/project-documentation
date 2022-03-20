@@ -752,7 +752,32 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-								<item>
+<item>
+	<measure unit="syllable">22</measure>
+	<name xml:lang="kaw-Latn">turidagati</name>
+	<seg type="xml">----+-+---+------+-+-=</seg>
+	<seg type="prosody">⏑⏑⏑|⏑-⏑|-⏑⏑|⏑-⏑|⏑⏑⏑|⏑⏑-|⏑-⏑|⏓</seg><!--daba: @argr, please check.
+	Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.-->
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.1</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">22</measure>
+	<name xml:lang="kaw-Latn">kilayu anəḍəṅ</name>
+	<seg type="xml">++------+-+---+------=</seg>
+	<seg type="prosody">––⏑|⏑⏑⏑|⏑⏑-|⏑-⏑|⏑⏑-|⏑⏑⏑|⏑⏑⏑|⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465-466</citedRange><citedRange unit="item">XXII.7</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">23</measure>
 	<name xml:lang="kaw-Latn">jagadnātha</name>
 	<!--daba: I would certainly prefer a Sanskritic name (e.g. jagannātha) even if this is a metre only attested outside India.-->
@@ -882,19 +907,6 @@
 	<seg type="xml">no data available</seg>
 	<seg type="prosody">|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix.
 	At least, the ṛ in the name will need changing to r̥.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
-	<measure unit="syllable">22</measure>
-	<name xml:lang="">turidagati</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑|⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check.
-	Presumably identical to tvaritagati below, but I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
