@@ -728,7 +728,19 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
+	<measure unit="syllable">21</measure>
+	<name xml:lang="kaw-Latn">citravilāpa</name>
+	<seg type="xml">----+--+------+--+--=</seg>
+	<seg type="prosody">⏑⏑⏑|⏑-⏑|⏑-⏑|⏑⏑⏑|⏑⏑-|⏑⏑-|⏑⏑⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">464</citedRange><citedRange unit="item">XXI.2</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">21</measure>
 	<name xml:lang="san-Latn">sragdharā</name><name xml:lang="kaw-Latn">sragdhara</name>
 	<seg type="xml">++++-++------++-++-+=</seg>
