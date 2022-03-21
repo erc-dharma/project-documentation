@@ -85,7 +85,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
+<item>
 	<measure unit="syllable">8</measure>
 	<name xml:lang="san-Latn">pramāṇikā</name>
 	<seg type="xml">-+-+-+-=</seg>
@@ -96,8 +96,8 @@
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
-              </item>
-                <item>
+</item>
+<item>
 	<measure unit="syllable">8/8</measure>
 	<name xml:lang="san-Latn">anuṣṭubh</name>
 	<seg type="xml">====-++=/====-+-=</seg>

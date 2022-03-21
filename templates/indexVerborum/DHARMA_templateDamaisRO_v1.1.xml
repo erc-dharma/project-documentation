@@ -10,11 +10,11 @@
             <respStmt>
                <resp>EpiDoc Encoding</resp>
                <!-- Work done in the file, e.g. editor ...-->
-               <persName ref="part:jodo"><!-- Update the id -->
+               <persName ref="part:axja"><!-- Update the id -->
                   <forename>Axelle</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
                   <surname>Janiak</surname>
                </persName>
-               <persName ref="part:jodo"><!-- Update the id -->
+               <persName ref="part:wjsa"><!-- Update the id -->
                   <forename>Wayan</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
                   <forename>Jarrah</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
                   <surname>Sastrawan</surname>
@@ -53,7 +53,7 @@
         <change who="part:axja" when="2022-02-12">Creation of the template</change>
      </revisionDesc>
   </teiHeader>
-  
+
   <text>
          <body>
             <div>
@@ -73,7 +73,7 @@
                		</cit>
                		<cit>
                			<usg type="geo">[J.Or.]</usg>
-               			<quote>sa prakāra niṅ maṅilala drəbya haji riṅ daṅu ... taṅkil <oRef target="salyut"/> vatu kalaṅ</quote> 
+               			<quote>sa prakāra niṅ maṅilala drəbya haji riṅ daṅu ... taṅkil <oRef target="salyut"/> vatu kalaṅ</quote>
                			<bibl>Vaharu I 795 2a : (Cui).</bibl>
                		</cit>
                		<cit>
@@ -82,7 +82,7 @@
                			<bibl>Kubu. 827 4b : 2 (Cui).</bibl>
                		</cit>
                		<cit>
-               			<quote>[...] ... tərpan <oRef target="salyut"/> vatu valaṅ pamanikan ...</quote> 
+               			<quote>[...] ... tərpan <oRef target="salyut"/> vatu valaṅ pamanikan ...</quote>
                			<bibl>Bars. 830 z a : 1 (Cui).</bibl>
                		</cit>
                	</entry>
@@ -117,7 +117,7 @@
                		</cit>
                </entry>
             	</div>
-            
+
                <div>
                   <head>s l g</head>
                <entry>
@@ -130,15 +130,15 @@
                		</cit>
                </entry>
                </div>
-               
+
                <div>
                   <head>s l ṅ</head> <!-- use this to encode the bold headings consisting only of consonants-->
                <!-- superEntry model -->
                <superEntry>  <!-- superEntry a group of entries which in the RO are headed by a line in italics-->
-              <form> 
+              <form>
                  <lbl>(sulaṅ), sulaṅ kuniṅ, sulaṅ mayaṅ</lbl> <!-- reproduce exactly the italicised heading found in RO; the parentheses indicate that the form has no cited examples, but it nevertheless is included in the encoding--></form>
                <entry> <!-- each entry corresponds to one of the elements of the label of the superEntry-->
-                  <form type="lemma"> <!-- the first element of the italicised heading is always @type=lemma--> 
+                  <form type="lemma"> <!-- the first element of the italicised heading is always @type=lemma-->
                     <orth>sulaṅ</orth>
                   </form>
                 </entry>
@@ -166,9 +166,9 @@
                 </entry>
                </superEntry>
                </div>
-                
-                <div> 
-                   <superEntry> 
+
+                <div>
+                   <superEntry>
                       <form><lbl><pb n="515"/>suliṅ, panuliṅan</lbl></form><!-- page beginning with page number of the printed publication-->
                 	<entry>
                     	<form type="lemma">
@@ -189,7 +189,7 @@
                   		</cit>
                   </entry>
                </superEntry></div>
-               
+
             <!-- simple entry model -->
                <div>
                <entry>
@@ -201,13 +201,13 @@
                   		<bibl>Poh 827 1b : 3 (Cui).</bibl>
               	 	</cit>
             	</entry></div>
-            	
+
             <!-- new head-->
             	<div>
-            	   <head>s p</head> 
+            	   <head>s p</head>
             	<entry>
             		<form type="lemma">
-						<orth>sapi</orth>            		
+						<orth>sapi</orth>
             		</form>
             		<cit>
             			<quote>... paṅgi[l hyaṅ] pūtarasaṅga tiruan pu <oRef/> si[kh]-a[l]a[n] pu lañja ...</quote>
@@ -240,7 +240,7 @@
             		</cit>
             	</entry>
             	</superEntry></div>
-            	
+
             	<div>
             	   <head>s p n</head> <!-- new head -->
             	<entry>
@@ -253,7 +253,7 @@
 						</cit>
             	</entry>
             	</div>
-            	
+
             	<div>
             	   <head>s p r</head> <!-- new head -->
             	<entry>
@@ -304,6 +304,6 @@
             	</entry>
             	</superEntry>
             </div>
-         </body>      
+         </body>
   </text>
 </TEI>
