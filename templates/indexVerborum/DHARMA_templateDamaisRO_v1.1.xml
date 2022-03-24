@@ -33,7 +33,7 @@
                      https://creativecommons.org/licenses/by/4.0/ or send a letter to
                      Creative Commons, 444 Castro Street, Suite 900, Mountain View,
                      California, 94041, USA.</p>
-                  <p>Copyright (c) 2019-2025 by John Doe.</p><!-- replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
+                  <p>Copyright (c) 2019-2025 by Wayan Jarrah Sastrawan & Axelle Janiak.</p><!-- replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
                </licence>
             </availability>
             <date from="2019" to="2025">2019-2025</date>
@@ -48,7 +48,8 @@
         </projectDesc>
      </encodingDesc>
      <revisionDesc>
-        <change who="part:axja" when="2022-03-16">Correcting the structure</change>
+	<change who="part:wjsa" when="2022-03-24">Correction of the handling of dashed in oRef tags, undoing character changes</change>
+	<change who="part:axja" when="2022-03-16">Correcting the structure</change>
         <change who="part:wjsa" when="2022-03-15">Augmenting the template and adding examples from RO pp. 514-515</change>
         <change who="part:axja" when="2022-02-12">Creation of the template</change>
      </revisionDesc>
@@ -68,21 +69,21 @@
                		</form>
                		<cit>
                			<usg type="geo">[J.Or.]</usg>
-               			<quote>tke sa kveh saṅ maṅilala drəvya ... makādiṅ ... tutan <oRef target="salyūt"/> vatu valaṅ ...</quote> <!-- it is necessary in the oRef tag to target the specific orthographic variant (in this case, salyūt) because two options exist for this entry -->
-               			<bibl>Kañcana 782 6a : 2 (Cui).</bibl>
+               			<quote>tke sa kweh saŋ maŋilala drəwya ... makādiŋ ... tutan <oRef target="salyūt">—</oRef> watu walaŋ ...</quote> <!-- it is necessary in the oRef tag to target the specific orthographic variant (in this case, salyūt) because two options exist for this entry -->
+               			<bibl>Kańcana 782 6a : 2 (Cui).</bibl>
                		</cit>
                		<cit>
                			<usg type="geo">[J.Or.]</usg>
-               			<quote>sa prakāra niṅ maṅilala drəbya haji riṅ daṅu ... taṅkil <oRef target="salyut"/> vatu kalaṅ</quote>
-               			<bibl>Vaharu I 795 2a : (Cui).</bibl>
+               			<quote>sa prakāra niŋ maŋilala drəbya haji riŋ daŋu ... taŋkil <oRef target="salyut">–</oRef> watu kalaŋ</quote>
+               			<bibl>Waharu I 795 2a : (Cui).</bibl>
                		</cit>
                		<cit>
                			<usg type="geo">[J.Or.]</usg>
-               			<quote>ṅuniveh tan kna nikaṅ śīma i pintapintan ... kriṅ <oRef target="salyut"/> tərpan ...</quote>
+               			<quote>ŋuniweh tan kna nikaŋ śīma i pintapintan ... kriŋ <oRef target="salyut">–</oRef> tərpan ...</quote>
                			<bibl>Kubu. 827 4b : 2 (Cui).</bibl>
                		</cit>
                		<cit>
-               			<quote>[...] ... tərpan <oRef target="salyut"/> vatu valaṅ pamanikan ...</quote>
+               			<quote>[...] ... tərpan <oRef target="salyut">–</oRef> watu walaŋ pamanikan ...</quote>
                			<bibl>Bars. 830 z a : 1 (Cui).</bibl>
                		</cit>
                	</entry>
@@ -95,15 +96,15 @@
                			<orth>salimar</orth>
                		</form>
                		<cit>
-               			<quote>tatkāla saṅ pamgat balakas pu balahāra manusuk sima iṅ alas iṅ <oRef/></quote>
+               			<quote>tatkāla saŋ pamgat balakas pu balahāra manusuk sima iŋ alas iŋ <oRef>–</oRef></quote>
                			<bibl>Salimar I 802.</bibl>
                		</cit>
                		<cit>
-               			<quote>tatkāla saṅ pamgat balakas pu balahāra manusuk sima iṅ alas iṅ <oRef/></quote>
+               			<quote>tatkāla saŋ pamgat balakas pu balahāra manusuk sima iŋ alas iŋ <oRef>–</oRef></quote>
                			<bibl>Salimar II 802.</bibl>
                		</cit>
                		<cit>
-               			<quote>tatkāla saṅ pamgat balakas pu balahāra manusuk sima iṅ alas iṅ <oRef/></quote>
+               			<quote>tatkāla saŋ pamgat balakas pu balahāra manusuk sima iŋ alas iŋ <oRef>–</oRef></quote>
                			<bibl>Salimar III 802.</bibl>
                		</cit>
                </entry>
@@ -112,8 +113,8 @@
                			<orth>salambayan</orth>
                		</form>
                		<cit>
-               			<quote>vinkas i hurantan pu isuk i <oRef/> pu vagay i sibunnan pu aṅkan ...</quote>
-               			<bibl>T. Gunuṅ 832 b : 18-19</bibl>
+               			<quote>winkas i hurantan pu isuk i <oRef>–</oRef> pu wagay i sibunnan pu aŋkan ...</quote>
+               			<bibl>T. Gunuŋ 832 b : 18-19</bibl>
                		</cit>
                </entry>
             	</div>
@@ -125,43 +126,43 @@
                			<orth>salaga</orth>
                		</form>
                		<cit>
-               			<quote>sakṣi ni ra n manusuk ṣima i pupus ... patih ri lampyar ri <oRef/> hulu vanva vineh pasak mā 10 ...</quote>
+               			<quote>sakṣi ni ra n manusuk ṣima i pupus ... patih ri lampyar ri <oRef>–</oRef> hulu wanwa wineh pasak mā 10 ...</quote>
                			<bibl>Pupus 750-800 1b : 7 (Cui).</bibl>
                		</cit>
                </entry>
                </div>
 
                <div>
-                  <head>s l ṅ</head> <!-- use this to encode the bold headings consisting only of consonants-->
+                  <head>s l ŋ</head> <!-- use this to encode the bold headings consisting only of consonants-->
                <!-- superEntry model -->
                <superEntry>  <!-- superEntry a group of entries which in the RO are headed by a line in italics-->
               <form>
-                 <lbl>(sulaṅ), sulaṅ kuniṅ, sulaṅ mayaṅ</lbl> <!-- reproduce exactly the italicised heading found in RO; the parentheses indicate that the form has no cited examples, but it nevertheless is included in the encoding--></form>
+                 <lbl>(sulaŋ), sulaŋ kuniŋ, sulaŋ mayaŋ</lbl> <!-- reproduce exactly the italicised heading found in RO; the parentheses indicate that the form has no cited examples, but it nevertheless is included in the encoding--></form>
                <entry> <!-- each entry corresponds to one of the elements of the label of the superEntry-->
                   <form type="lemma"> <!-- the first element of the italicised heading is always @type=lemma-->
-                    <orth>sulaṅ</orth>
+                    <orth>sulaŋ</orth>
                   </form>
                 </entry>
                 <entry>
                 	<form type="compound">		<!-- forms in the RO italicised heading with a space between them are considered compounds-->
-                     	<orth>sulaṅ kuniṅ</orth>
+                     	<orth>sulaŋ kuniŋ</orth>
                      </form>
-                     <cit>  <!-- group all citations for the same form e.g. sulaṅ kuniṅ within the same entry tag -->
-                     	<quote>juru iṅ <oRef/> si bantal i masa lañcaṅ [...] i kalaṅ i lu-u[...] si[...]</quote><!-- replace em-dashes and double em-dashes in the RO scan with oRef tags>-->
+                     <cit>  <!-- group all citations for the same form e.g. sulaŋ kuniŋ within the same entry tag -->
+                     	<quote>juru iŋ <oRef>–</oRef> si bantal i masa lańcaŋ [...] i kalaŋ i lu-u[...] si[...]</quote><!-- replace em-dashes and double em-dashes in the RO scan with oRef tags>-->
                      	<bibl>Tul. Air I 772 a: 36-37.</bibl> <!-- reproduce the bibl string exactly as in the RO scan (in plain text, no italics); this will be further analysed at a later stage -->
                      </cit>
                      <cit>
-                     	<quote>// rāma i tpi siriṅ rikaṅ kāla ... i <oRef/> vinkas si kudha rama ni dhidhi i laṅka tañjuṅ vinkas si sahiṅ rama ni tamuy ...</quote><!-- replace em-dashes and double em-dashes in the RO scan with oRef tags>-->
+                     	<quote>// rāma i tpi siriŋ rikaŋ kāla ... i <oRef>–</oRef> winkas si kudha rama ni dhidhi i laŋka tańjuŋ winkas si sahiŋ rama ni tamuy ...</quote><!-- replace em-dashes and double em-dashes in the RO scan with oRef tags>-->
                      	<bibl>Mant. III [829] z a : 13-14 (Cui).</bibl><!-- The bibliographic reference is italicised and begins with an abbreviated form of the source's name, e.g. Mant. III -->
                      </cit>
                 </entry>
                 <entry>
                   	<form type="compound">
-                  		<orth>sulaṅ mayaṅ</orth>
+                  		<orth>sulaŋ mayaŋ</orth>
                  	 </form>
                  	 <cit>
-                  		<quote>saṅ kalamvi haji i vadi hati tumūt manusuk 1 <oRef/> si putra makudur maṅhuyup 1 piṇḍa 11 kapua ...</quote>
-                  		<bibl>Ra Mvi 804 1a : 14-15 (Cui).</bibl>
+                  		<quote>saŋ kalamwi haji i wadi hati tumūt manusuk 1 <oRef>–</oRef> si putra makudur maŋhuyup 1 piṇḍa 11 kapua ...</quote>
+                  		<bibl>Ra Mwi 804 1a : 14-15 (Cui).</bibl>
                   	 </cit>
                 </entry>
                </superEntry>
@@ -169,23 +170,23 @@
 
                 <div>
                    <superEntry>
-                      <form><lbl><pb n="515"/>suliṅ, panuliṅan</lbl></form><!-- page beginning with page number of the printed publication-->
+                      <form><lbl><pb n="515"/>suliŋ, panuliŋan</lbl></form><!-- page beginning with page number of the printed publication-->
                 	<entry>
                     	<form type="lemma">
-                      		  <orth>suliṅ</orth>
+                      		  <orth>suliŋ</orth>
                       	</form>
                      	<cit>
-                       		 <quote>anuṅ ḍumatəṅakan samvahnikanaṅ rāma i roṅkab sa[ṅ] talla gusti i <oRef/> sīma vadi hati</quote>
-                        	<bibl>Roṅkab 823 1b : 6-7 (Cui).</bibl>
+                       		 <quote>anuŋ ḍumatəŋakan samwahnikanaŋ rāma i roŋkab sa[ŋ] talla gusti i <oRef>–</oRef> sīma wadi hati</quote>
+                        	<bibl>Roŋkab 823 1b : 6-7 (Cui).</bibl>
                      	</cit>
                   </entry>
                   <entry>
                   		<form type="affixed">
-                  			<orth>panuliṅan</orth>
+                  			<orth>panuliŋan</orth>
                   		</form>
                   		<cit>
-                  			<quote>hana sīma i <oRef/> vatak pikatan savah tampah 1 vlah 1</quote>
-                  			<bibl>Śrī Maṅg. I 750-800 b : 2-3.</bibl>
+                  			<quote>hana sīma i <oRef>–</oRef> watak pikatan sawah tampah 1 wlah 1</quote>
+                  			<bibl>Śrī Maŋg. I 750-800 b : 2-3.</bibl>
                   		</cit>
                   </entry>
                </superEntry></div>
@@ -194,10 +195,10 @@
                <div>
                <entry>
               	 	<form type="lemma">
-                  		<orth>siluṅluṅ</orth>
+                  		<orth>siluŋluŋ</orth>
               	 	</form>
                		<cit>
-                  		<quote>... sīmā saṅ hyaṅ caitya mahayva <oRef/> saṅ devata lumah i pastika</quote>
+                  		<quote>... sīmā saŋ hyaŋ caitya mahaywa <oRef>–</oRef> saŋ dewata lumah i pastika</quote>
                   		<bibl>Poh 827 1b : 3 (Cui).</bibl>
               	 	</cit>
             	</entry></div>
@@ -210,16 +211,16 @@
 						<orth>sapi</orth>
             		</form>
             		<cit>
-            			<quote>... paṅgi[l hyaṅ] pūtarasaṅga tiruan pu <oRef/> si[kh]-a[l]a[n] pu lañja ...</quote>
-            			<bibl>Wanua Təṅ. I 785 a : 7-8.</bibl>
+            			<quote>... paŋgi[l hyaŋ] pūtarasaŋga tiruan pu <oRef>–</oRef> si[kh]-a[l]a[n] pu lańja ...</quote>
+            			<bibl>Wanua Təŋ. I 785 a : 7-8.</bibl>
             		</cit>
             		<cit>
-            			<quote>... paṅgi[l hyaṅ] pūtarasaṅga tiruan pu <oRef/> si[kh]-a[l]a[n] pu lañja ...</quote>
-            			<bibl>Wanua Təṅ. I 785 a : 7-8.</bibl>
+            			<quote>... paŋgi[l hyaŋ] pūtarasaŋga tiruan pu <oRef>–</oRef> si[kh]-a[l]a[n] pu lańja ...</quote>
+            			<bibl>Wanua Təŋ. I 785 a : 7-8.</bibl>
             		</cit>
             		<cit>
             			<usg type="geo">[J.Or.]</usg> <!-- encode this geographic marker (J. Or. indicating East Java) with a usg@type=geo tag-->
-            			<quote>yatikā tan tama irikana śima ... aṅulaṅ kbo <oRef/> cəlaṅ ...</quote>
+            			<quote>yatikā tan tama irikana śima ... aŋulaŋ kbo <oRef>–</oRef> cəlaŋ ...</quote>
             			<bibl>Kubu. 827 5a : 1 (Cui).</bibl>
             		</cit>
             	</entry>
@@ -235,7 +236,7 @@
             			<orth>manapu</orth>
             		</form>
             		<cit>
-            			<quote>... mapagar muaṅ <oRef/> i laṇḍa tampah 1 //o//</quote>
+            			<quote>... mapagar muaŋ <oRef>–</oRef> i laṇḍa tampah 1 //o//</quote>
             			<bibl>Laṇḍa B env. 805 1b : 1 (Cui).</bibl>
             		</cit>
             	</entry>
@@ -248,7 +249,7 @@
             			<orth>sapuṇḍuh</orth>
             		</form>
 						<cit>
-							<quote>kvaih nikanaṅ patih <oRef/> pu sna rama ni ananta pu kolā rama ni dikhī ...</quote>
+							<quote>kwaih nikanaŋ patih <oRef>–</oRef> pu sna rama ni ananta pu kolā rama ni dikhī ...</quote>
 							<bibl>Mant. I 829 1b : 4 (Cui).</bibl>
 						</cit>
             	</entry>
@@ -261,11 +262,11 @@
             			<orth>suparṇna</orth>
             		</form>
 						<cit>
-							<quote>rake sirikan pu <oRef/> rakai vka pu hanumān rakai bavaṅ pūttara ...</quote>
+							<quote>rake sirikan pu <oRef>–</oRef> rakai wka pu hanumān rakai bawaŋ pūttara ...</quote>
 							<bibl>Er Ku. peu après 837 1b : 2 (Cui).</bibl>
 						</cit>
 						<cit>
-							<quote>ra kryān sirikan pu <oRef/> ra kryān vka pu hanumān ra kryān bavaṅ pūttara</quote>
+							<quote>ra kryān sirikan pu <oRef>–</oRef> ra kryān wka pu hanumān ra kryān bawaŋ pūttara</quote>
 							<bibl>Er Ku. peu après 837 1b : 12 (Cui).</bibl>
 						</cit>
             	</entry>
@@ -278,8 +279,8 @@
             		</form>
 						<cit>
 							<usg type="geo">[J.Or.]</usg>
-							<quote>[...] si luhut si <oRef/> si hira kapva ...</quote>
-							<bibl>Saṅg. 850 côté : 10</bibl>
+							<quote>[...] si luhut si <oRef>–</oRef> si hira kapwa ...</quote>
+							<bibl>Saŋg. 850 côté : 10</bibl>
 						</cit>
             	</entry>
             	<superEntry>
@@ -291,15 +292,15 @@
             			<orth>sipat wilut</orth>
             		</form>
             		<cit>
-            			<note>La plaque porte «valut», ce qui est certainement une erreur.</note>
+            			<note>La plaque porte «walut», ce qui est certainement une erreur.</note>
             			<usg type="geo">[J.Or.]</usg>
-            			<quote>saṅ manakatriṇi paṅkur ... pañjiṅ alas <oRef/> palulumuh ...</quote>
+            			<quote>saŋ manakatriṇi paŋkur ... pańjiŋ alas <oRef>–</oRef> palulumuh ...</quote>
             			<bibl>Kuṭi 762 4b : 1 (Cui).</bibl>
             		</cit>
             		<cit>
             			<usg type="geo">[J.Or.]</usg>
-            			<quote>tke sa kveh saṅ maṅilala drəvya haji... <pb n="516"/>makādiṅ ... vli vaduṅ <oRef/> paṅgare ...</quote> <!-- page beginning occurs in the middle of the quote-->
-            			<bibl>Kañcana 782 6a : 4 (Cui).</bibl>
+            			<quote>tke sa kweh saŋ maŋilala drəwya haji... <pb n="516"/>makādiŋ ... wli waduŋ <oRef>–</oRef> paŋgare ...</quote> <!-- page beginning occurs in the middle of the quote-->
+            			<bibl>Kańcana 782 6a : 4 (Cui).</bibl>
             		</cit>
             	</entry>
             	</superEntry>
