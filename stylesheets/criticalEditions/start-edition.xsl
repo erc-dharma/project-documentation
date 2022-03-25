@@ -865,7 +865,7 @@
                     <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>Canto </xsl:text>
-                    <xsl:value-of select="@n"/>
+                        <xsl:number count="tei:div[@type='canto']" level="multiple" format="1"/>
                 </xsl:element>
                     <xsl:if test="@met">
                     <xsl:element name="p">
