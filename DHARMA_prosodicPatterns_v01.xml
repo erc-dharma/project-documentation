@@ -243,19 +243,20 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">454</citedRange><citedRange unit="item">XI.9</citedRange></bibl>
 	</listBibl>
 </item>
-                <item>
-	<measure unit="syllable">12</measure>
-	<name xml:lang="san-Latn">toṭaka</name>
-	<seg type="xml">--+--+--+--=</seg>
-	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg>
-	<seg type="gana"></seg>
+<item>
+	<measure unit="syllable">11</measure>
+	<!-- argr2daba: shall we say that the san-Latn name is identical? -->
+	<name xml:lang="kaw-Latn">bhramaravilasita</name>
+	<seg type="xml">++++------=</seg>
+	<seg type="prosody">–––|–⏑⏑|⏑⏑⏑|⏑⏓</seg>
+	<seg type="gana">ma-bha-na-la</seg><!-- argr2daba: I don't understand why Apte note ma-bha-na-la-ga — isn't "la" enough to represent ⏑⏓ ? -->
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">4</citedRange><citedRange unit="item">A.11.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">454</citedRange><citedRange unit="item">XI.18</citedRange></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">vātormī</name>
 	<seg type="xml">++++--++-+=</seg>
@@ -267,7 +268,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">11/11</measure>
 	<name xml:lang="san-Latn">upacitra</name>
 	<seg type="xml">--+--+--+-=/+--+--+--+=</seg>
@@ -315,7 +316,19 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">toṭaka</name>
+	<seg type="xml">--+--+--+--=</seg>
+	<seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg>
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">indravaṁśā</name>
 	<seg type="xml">++-++--+-+-=</seg>
