@@ -352,9 +352,10 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">12</measure>
-	<name xml:lang="san-Latn">kusumavicitrā</name><name xml:lang="kaw-Latn">kusumavicitra</name>
+	<name xml:lang="san-Latn">kusumavicitrā</name>
+	<name xml:lang="kaw-Latn">kusumavicitra</name>
 	<seg type="xml">----++----+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg>
 	<seg type="gana"></seg>
@@ -362,6 +363,20 @@
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.6</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">tāmarasā</name>
+	<name xml:lang="san-Latn">lalitapadā</name>
+	<name xml:lang="kaw-Latn">svādamālinī</name>
+	<seg type="xml">----+--+--+=</seg>
+	<seg type="prosody">⏑⏑⏑|⏑–⏑|⏑–⏑|⏑–⏓</seg>
+	<seg type="gana">na-ja-ja-ja</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.4</citedRange></bibl>
 	</listBibl>
 </item>
 <item>
@@ -376,7 +391,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">maṇimālā</name>
 	<seg type="xml">++--++++--+=</seg>
@@ -388,7 +403,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">drutavilambita</name>
 	<seg type="xml">---+--+--+-=</seg>
@@ -400,7 +415,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">pramitākṣarā</name><name xml:lang="kaw-Latn">bramitākṣara</name>
 	<seg type="xml">--+-+---+--=</seg>
@@ -410,9 +425,9 @@
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">A.12.9</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.11</citedRange></bibl>
-									</listBibl>
-								</item>
-                <item>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">vaṁśamālā</name>
 	<seg type="xml">=+-++--+-+-=</seg>
@@ -422,8 +437,8 @@
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
-									</item>
-                <item>
+</item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">vaṁśastha</name>
 	<seg type="xml">-+-++--+-+-=</seg>
@@ -435,7 +450,7 @@
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">vaiśvadevī</name>
 	<seg type="xml">++++++-++-+=</seg>
