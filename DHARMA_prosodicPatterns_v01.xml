@@ -368,14 +368,14 @@
 </item>
 <item>
 	<measure unit="syllable">12</measure>
-	<name xml:lang="san-Latn">tāmarasā</name>
-	<name xml:lang="san-Latn">lalitapadā</name>
+       <name xml:lang="san-Latn">tāmarasa</name><!--daba changed from tāmarasā to tāmarasa-->
+       <name xml:lang="san-Latn">lalitapadā</name><!--daba@argr: are you sure we're happy with more than one name in a single language? So far, we have picked one authoritative name for each metre; some alternatives are mentioned in footnotes in the EGD appendix, but we should in my opinion stick to just one name per metre per language in the authority list. I vote for keeping tāmarasa, since that is the name Apte uses.-->
 	<name xml:lang="kaw-Latn">svādamālinī</name>
-	<seg type="xml">----+--+--+=</seg>
-	<seg type="prosody">⏑⏑⏑|⏑–⏑|⏑–⏑|⏑–⏓</seg>
-	<seg type="gana">na-ja-ja-ja</seg>
+	<seg type="xml">----+||--+--+=</seg><!--daba deleted foot markers from prosody and added caesura as per Apte to xml and prosody.-->
+	<seg type="prosody">⏑⏑⏑⏑–||⏑⏑–⏑⏑–⏓</seg>
+       <seg type="gana">na-ja-ja-ya</seg><!--daba corrected last gaṇa to ya. (The last syllable counts as guru.)-->
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+	  <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="item">A.12.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.4</citedRange></bibl>
 	</listBibl>
