@@ -245,12 +245,11 @@
 </item>
 <item>
 	<measure unit="syllable">11</measure>
-	<!-- argr2daba: shall we say that the san-Latn name is identical? daba: yes, definitely. I've added it below.-->
 	<name xml:lang="san-Latn">bhramaravilasita</name>
 	<name xml:lang="kaw-Latn">bhramaravilasita</name>
-	<seg type="xml">++++||------=</seg><!--daba: I've added || at the caesura indicated by Apte for this metre. I'm not sure how widely it is observed (it is not mentioned in the verse definition cited by Apte), but I think it's better to have it there.-->
-  <seg type="prosody">––––||⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: I've removed the | signs from this. The gaṇas are not feet.-->
-  <seg type="gana">ma-bha-na-la-ga</seg><!-- argr2daba: I don't understand why Apte note ma-bha-na-la-ga — isn't "la" enough to represent ⏑⏓ ? daba: no, la would be just one short syllable ⏑, for a total of 10 instead of the desired 11. You need the ga for the final anceps ⏓, which is theoretically heavy. I've added the ga. Or am I missing something in your question? -->
+	<seg type="xml">++++||------=</seg>
+  <seg type="prosody">––––||⏑⏑⏑⏑⏑⏑⏓</seg>
+  <seg type="gana">ma-bha-na-la-ga</seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">4</citedRange><citedRange unit="item">A.11.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
