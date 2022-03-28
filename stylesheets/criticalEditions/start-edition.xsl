@@ -441,6 +441,12 @@
                                     <xsl:attribute name="class">
                                         <xsl:text>translit </xsl:text>
                                         <xsl:value-of select="$script"/>
+                                        <xsl:if test="@rend='check'">
+                                            <xsl:text> mark</xsl:text>
+                                        </xsl:if>
+                                        <xsl:if test="@rend='unmetrical'">
+                                            <xsl:text> unmetrical</xsl:text>
+                                        </xsl:if>
                                     </xsl:attribute>  
                                          <xsl:choose>
                                                 <xsl:when test="tei:gap[@reason='omitted']">
@@ -2594,6 +2600,15 @@
         </xsl:element>
     </xsl:template>
     
+    <!-- Unmetrical feature -->
+    <!-- might need to be updated depending on the use contexted -->
+    <xsl:template match="tei:*[@rend='unmetrical']">
+        <xsl:element name="span">
+            <xsl:attribute name="class">unmetrical</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- DHARMA html prolog -->
     <xsl:template name="dharma-head">
         <xsl:variable name="title">
@@ -3139,8 +3154,25 @@
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                        
                     </xsl:choose>
-                    
-                    <xsl:apply-templates/>
+                    <xsl:choose>
+                        <xsl:when test="@rend">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">
+                                    <xsl:if test="@rend='check'">
+                                        <xsl:text>mark</xsl:text>
+                                    </xsl:if>
+                                    <xsl:if test="@rend='unmetrical'">
+                                        <xsl:text>unmetrical</xsl:text>
+                                    </xsl:if>
+                                </xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:apply-templates/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                            
                             <xsl:choose>
                                 <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when> 
                             </xsl:choose>
