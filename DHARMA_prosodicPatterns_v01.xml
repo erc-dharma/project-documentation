@@ -111,10 +111,11 @@
 							</item>
 							<item>
 <measure unit="syllable">8</measure>
-<name xml:lang="kaw-Latn">pādānuṣṭubh</name><name xml:lang="kaw-Latn">pādānuṣṭup</name>
-<!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing, and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.
+<name xml:lang="kaw-Latn">pādānuṣṭubh</name>
+<!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing,
+and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.
 @zapa: can you infer from the CK occurrences the specific prosodic pattern for this verse form? is it ====-++=?-->
-<seg type="xml">no data available</seg>
+<seg type="xml">========</seg>
 <seg type="prosody">no data available</seg>
 <seg type="gana"></seg>
 <listBibl>
@@ -367,12 +368,12 @@
 </item>
 <item>
 	<measure unit="syllable">12</measure>
-       <name xml:lang="san-Latn">tāmarasa</name><!--daba changed from tāmarasā to tāmarasa-->
-       <name xml:lang="san-Latn">lalitapadā</name><!--daba@argr: are you sure we're happy with more than one name in a single language? So far, we have picked one authoritative name for each metre; some alternatives are mentioned in footnotes in the EGD appendix, but we should in my opinion stick to just one name per metre per language in the authority list. I vote for keeping tāmarasa, since that is the name Apte uses.-->
+  <name xml:lang="san-Latn">tāmarasa</name>
+  <name xml:lang="san-Latn">lalitapadā</name><!--daba@argr: are you sure we're happy with more than one name in a single language? So far, we have picked one authoritative name for each metre; some alternatives are mentioned in footnotes in the EGD appendix, but we should in my opinion stick to just one name per metre per language in the authority list. I vote for keeping tāmarasa, since that is the name Apte uses.-->
 	<name xml:lang="kaw-Latn">svādamālinī</name>
-	<seg type="xml">----+||--+--+=</seg><!--daba deleted foot markers from prosody and added caesura as per Apte to xml and prosody.-->
+	<seg type="xml">----+||--+--+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–||⏑⏑–⏑⏑–⏓</seg>
-       <seg type="gana">na-ja-ja-ya</seg><!--daba corrected last gaṇa to ya. (The last syllable counts as guru.)-->
+       <seg type="gana">na-ja-ja-ya</seg>
 	<listBibl>
 	  <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="item">A.12.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
