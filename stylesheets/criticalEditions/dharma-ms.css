@@ -854,3 +854,7 @@ p{
 #sidebarCollapse{
     position: fixed;
 }
+
+.unmetrical{
+   background-color: #F8BBD0;
+}
