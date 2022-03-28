@@ -70,6 +70,10 @@ body{
     margin-top:-7rem;*/
 }
 
+#edition-content{
+    width: 95%;
+}
+
 #sidebar-wrapper {
     width: 200px;
     position: fixed;

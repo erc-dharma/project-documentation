@@ -78,6 +78,8 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button> -->
+                <xsl:element name="div">
+                    <xsl:attribute name="id">edition-content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
                                 <xsl:attribute name="class">row wrapper text-break</xsl:attribute>
@@ -152,6 +154,7 @@
                 <!--<xsl:call-template name="tpl-translation"/>-->
                 <xsl:call-template name="tpl-com"/>  
                 <xsl:call-template name="tpl-biblio"/>
+                </xsl:element>
         </xsl:element>
             <xsl:element name="footer">
                 <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
