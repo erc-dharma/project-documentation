@@ -37,5 +37,22 @@
             </xsl:choose>
           </xsl:if>
 </xsl:template>
+  
+  <xsl:template match="t:date">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:if test="$parm-leiden-style='dharma' and ancestor::t:div[@type='edition']">
+      <xsl:choose>
+        <xsl:when test="child::t:*[local-name()=('date')]">
+          <xsl:apply-templates/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates/>
+          <xsl:element name="sup">
+            <xsl:text>📅</xsl:text>
+          </xsl:element>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:template>
 
 </xsl:stylesheet>
