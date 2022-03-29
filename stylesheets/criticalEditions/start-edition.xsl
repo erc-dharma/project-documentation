@@ -146,10 +146,11 @@
                     <xsl:call-template name="tab-metadata"/>
                 </xsl:element>
                         </xsl:element>
-                 <xsl:apply-templates select="./tei:text"/>
-            <xsl:apply-templates select=".//tei:app" mode="modals"/>
+                <xsl:apply-templates select="./tei:text"/>
+                <xsl:apply-templates select=".//tei:app" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
+                <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
                 <!--<xsl:call-template name="tpl-translation"/>-->
                 <xsl:call-template name="tpl-com"/>  
@@ -1089,7 +1090,8 @@
                 <!--<xsl:text> </xsl:text>
                     <xsl:value-of select="$script"/>-->
             </xsl:attribute>
-            <xsl:if test="@real">
+            <!-- deleting tjhe previous display for tei:l[@real] -->
+            <!--<xsl:if test="@real">
                 <xsl:text>[</xsl:text>
                 <xsl:choose>
                     <xsl:when test="matches(@real, '[\-\+=]')">
@@ -1105,9 +1107,50 @@
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>] </xsl:text>
-            </xsl:if>
+            </xsl:if>-->
             <xsl:copy-of select="$verse-line"/>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="tei:l[@real]">
+        <xsl:apply-templates/>
+                <xsl:call-template name="app-link">
+                    <xsl:with-param name="location" select="'apparatus'"/>
+                </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:template match="tei:l[@real]" mode="modals">
+        <xsl:variable name="apparatus-unmetrical">
+            <xsl:if test="self::tei:l[@real]">
+                <xsl:element name="span">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">fake-lem</xsl:attribute>
+                            <xsl:call-template name="fake-lem-making"/>
+                        </xsl:element>
+                        <xsl:element name="hr"/>
+                        <xsl:text>Unmetrical. The pattern of the lines is </xsl:text>
+                        <xsl:choose>
+                            <xsl:when test="matches(@real, '[\-\+=]')">
+                                <xsl:call-template name="scansion">
+                                    <xsl:with-param name="met-string"
+                                        select="translate(@real, '-=+', '⏑⏓–')"/>
+                                    <xsl:with-param name="string-len" select="string-length(@real)"/>
+                                    <xsl:with-param name="string-pos" select="string-length(@real) - 1"/>
+                                </xsl:call-template>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="@real"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:if>
+        </xsl:variable>
+        <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$apparatus-unmetrical"/>
+        </span>      
     </xsl:template>
     
     <xsl:template name="search-and-replace-lemma">
@@ -2080,10 +2123,10 @@
                     </xsl:attribute>
                     <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/></xsl:attribute>
                     
                     <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] "/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                     <xsl:text>)</xsl:text>
                 </xsl:element>
             </xsl:when>
@@ -2831,7 +2874,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart']"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"> <!-- .//tei:choice | .//tei:subst |  -->
 
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -2839,7 +2882,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart']">
+            select=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -2900,7 +2943,7 @@
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
                    <!-- <xsl:value-of select="$app-num"/>-->
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart']"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                 </a>
             </xsl:if>
         <xsl:if test="$location = 'apparatus'">
@@ -2915,7 +2958,7 @@
                 </xsl:attribute>
                 <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                     <xsl:value-of select="$app-num"/></xsl:attribute>
-                <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart']"></xsl:number></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart'] | .//tei:l[@real]"></xsl:number></xsl:attribute>
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
@@ -2924,7 +2967,7 @@
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                 <xsl:text>(</xsl:text>
-                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart']"/>
+                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                 <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:if>
@@ -2974,7 +3017,7 @@
         <xsl:element name="span">  
             <xsl:attribute name="class">app</xsl:attribute>
           <xsl:choose>
-                  <xsl:when test="local-name() = 'note'">
+              <xsl:when test="local-name() = 'note'">
                       <xsl:call-template name="fake-lem-making"/>
                       <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -2982,6 +3025,28 @@
                       </xsl:element>    
                       <xsl:apply-templates/>
                   </xsl:when> 
+              <xsl:when test="local-name() = 'l'">
+                  <xsl:call-template name="fake-lem-making"/>
+                  <xsl:element name="span">
+                      <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                      <xsl:text>] </xsl:text>
+                  </xsl:element>    
+                  <xsl:text>Unmetrical. The pattern of the lines is </xsl:text>
+                  <xsl:choose>
+                      <xsl:when test="matches(@real, '[\-\+=]')">
+                          <xsl:call-template name="scansion">
+                              <xsl:with-param name="met-string"
+                                  select="translate(@real, '-=+', '⏑⏓–')"/>
+                              <xsl:with-param name="string-len" select="string-length(@real)"/>
+                              <xsl:with-param name="string-pos" select="string-length(@real) - 1"/>
+                          </xsl:call-template>
+                      </xsl:when>
+                      <xsl:otherwise>
+                          <xsl:value-of select="@real"/>
+                      </xsl:otherwise>
+                  </xsl:choose>
+                  <xsl:text>.</xsl:text>
+              </xsl:when>
               <xsl:otherwise>
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>
