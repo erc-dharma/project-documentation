@@ -1144,6 +1144,7 @@
                                 <xsl:value-of select="@real"/>
                             </xsl:otherwise>
                         </xsl:choose>
+                        <xsl:text>.</xsl:text>
                     </xsl:element>
                 </xsl:element>
             </xsl:if>
