@@ -56,7 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-03-29">Adding the rule for unmetrical</change>
+      <change who="part:axja" when="2022-03-29">Adding the rule for unmetrical; adding the new values for placeName</change>
       <change who="part:axja" when="2022-03-08">Correcting some mispelling on @cause for rdg</change>
       <change who="part:axja" when="2022-01-07">Adding value unknown for @reason with supplied and @type on note.</change>
       <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
@@ -4968,30 +4968,128 @@
           </classes>
         </elementSpec>
         <elementSpec ident="placeName" mode="change">
-          <classes mode="change">
-            <memberOf key="att.canonical"/>
-            <memberOf key="att.datable" mode="delete"/>
-            <memberOf key="att.editLike" mode="delete"/>
-            <memberOf key="att.global" mode="delete"/>
-            <memberOf key="att.personal" mode="delete"/>
-          </classes>
+          <!--Vérifier l'usage des @subtype selon la valeur du @type -->
+          <constraintSpec scheme="isoschematron" ident="placeName">
+            <constraint>
+              <sch:rule
+                context="tei:placeName[@type='region']">
+                <sch:assert
+                  test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='land'"
+                  >For @type="region", the @subtype should be one of the
+                  following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='land'</sch:assert>
+              </sch:rule>
+              <sch:rule
+                context="tei:placeName[@type='settlement']">
+                <sch:assert
+                  test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp'"
+                  >For @type="settlement", the @subtype should be one of the
+                  following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp'</sch:assert>
+              </sch:rule>
+              <sch:rule context="tei:placeName[@type='builtPlace']"
+                ><sch:assert
+                  test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion'"
+                  >For @type="builtPlace", the @subtype should be one of the following
+                  values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion'</sch:assert>
+              </sch:rule>
+              <sch:rule context="tei:placeName[@type='cultivation']"
+                ><sch:assert
+                  test="@subtype='garden' or @subtype='cave' or @subtype='road' or @subtype='canal' or @subtype='field' or @subtype='orchard'"
+                  >For @type="cultivation", the @subtype should be one of the following
+                  values: @subtype='garden' or @subtype='cave' or @subtype='road' or @subtype='canal' or @subtype='field' or @subtype='orchard'</sch:assert>
+              </sch:rule>
+              <sch:rule context="tei:placeName[@type='naturalPlace']"
+                ><sch:assert
+                  test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='river' or @subtype='pond' or @subtype='mountain'"
+                  >For @type="naturalPlace", the @subtype should be one of the following
+                  values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='river' or @subtype='pond' or @subtype='mountain'</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
-            <attDef ident="type" mode="change" usage="req">
-              <valList mode="change" type="closed">
-                <valItem ident="district"/>
-                <valItem ident="sitePart"/>
-                <valItem ident="site"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="calendar" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="datingMethod" mode="delete"/>
+            <attDef ident="datingPoint" mode="delete"/>
+            <attDef ident="evidence" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="from" mode="delete"/>
+            <attDef ident="from-custom" mode="delete"/>
+            <attDef ident="from-iso" mode="delete"/>
+            <attDef ident="full" mode="delete"/>
+            <attDef ident="instant" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="notAfter" mode="delete"/>
+            <attDef ident="notAfter-custom" mode="delete"/>
+            <attDef ident="notAfter-iso" mode="delete"/>
+            <attDef ident="notBefore" mode="delete"/>
+            <attDef ident="notBefore-custom" mode="delete"/>
+            <attDef ident="notBefore-iso" mode="delete"/>
+            <attDef ident="nymRef" mode="delete"/>
+            <attDef ident="period" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="role" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="sort" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="to" mode="delete"/>
+            <attDef ident="to-custom" mode="delete"/>
+            <attDef ident="to-iso" mode="delete"/>
+            <attDef ident="when" mode="delete"/>
+            <attDef ident="when-custom" mode="delete"/>
+            <attDef ident="when-iso" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="type" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="region"/>
+                <valItem ident="settlement"/>
+                <valItem ident="builtPlace"/>
+                <valItem ident="cultivation"/>
+                <valItem ident="naturalPlace"/>
               </valList>
             </attDef>
-            <attDef ident="subtype" mode="change" usage="rec">
-              <valList type="closed" mode="change">
-                <valItem ident="garden"/>
-                <valItem ident="pavillion"/>
-                <valItem ident="tank"/>
-                <valItem ident="feedingHall"/>
-                <valItem ident="monastery"/>
-                <valItem ident="shrine"/>
+            <attDef ident="subtype" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="province"/>
+                <valItem ident="district"/>
+                <valItem ident="country"/>
+                <valItem ident="land"/>
+                
+                <valItem ident="town"/>
+                <valItem ident="village"/>
+                <valItem ident="hamlet"/>
+                <valItem ident="armyCamp"/>
+                
                 <valItem ident="temple"/>
+                <valItem ident="monastery"/>
+                <valItem ident="feedingHall"/>
+                <valItem ident="tank"/>
+                <valItem ident="pavillon"/>
+                
+                <valItem ident="garden"/>
+                <valItem ident="cave"/>
+                <valItem ident="road"/>
+                <valItem ident="canal"/>
+                <valItem ident="field"/>
+                <valItem ident="orchard"/>
+                
+                <valItem ident="forest"/>
+                <valItem ident="wood"/>
+                <valItem ident="grove"/>
+                <valItem ident="tree"/>
+                <valItem ident="river"/>
+                <valItem ident="pond"/>
+                <valItem ident="montain"/>
               </valList>
             </attDef>
           </attList>
