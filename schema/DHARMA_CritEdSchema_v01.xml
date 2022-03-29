@@ -56,6 +56,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-03-29">Adding the rule for unmetrical</change>
       <change who="part:axja" when="2022-03-08">Correcting some mispelling on @cause for rdg</change>
       <change who="part:axja" when="2022-01-07">Adding value unknown for @reason with supplied and @type on note.</change>
       <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
@@ -1745,6 +1746,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="hi" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="hi-unmetrical">
+            <constraint>
+              <sch:rule context="tei:hi[@rend='unmetrical']">
+                <sch:assert test="ancestor::tei:l">hi[@rend='unmetrical'] can only be used within the line verse element l.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -1775,6 +1783,7 @@
                 <valItem ident="italic"/>
                 <valItem ident="bold"/>
                 <valItem ident="check"/>
+                <valItem ident="unmetrical"/>
               </valList>
             </attDef>
           </attList>
