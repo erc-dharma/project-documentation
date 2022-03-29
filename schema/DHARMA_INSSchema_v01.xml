@@ -4125,7 +4125,7 @@
                         </sch:rule>
                             <sch:rule context="tei:rs[@type='individual']">
                                 <sch:assert test="@subtype='(deity or godLegalEntity or god_child or ruler or ruler_spouse or ruler_child or subordinateRuler or royalPreceptor or 
- noble or landlord or chief or priest or brahim or monk or cleric or officiant or officer or ascetic or hermit or merchant or artisan or brahimDelegate or regionalDelegate or dancer or singer or peasant or shepherd or slave or fieldWork or unknown)'">one of the following @subtype value can only work with @type='individual'.</sch:assert>                             </sch:rule>
+                                    noble or landlord or chief or priest or brahmin or monk or cleric or officiant or officer or ascetic or hermit or merchant or artisan or brahminDelegate or regionalDelegate or dancer or singer or peasant or shepherd or slave or fieldWork or unknown)'">one of the following @subtype value can only work with @type='individual'.</sch:assert>                             </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -4183,7 +4183,7 @@
                                 <valItem ident="landlord"/>
                                 <valItem ident="chief"/>
                                 <valItem ident="priest"/>
-                                <valItem ident="brahim"/>
+                                <valItem ident="brahmin"/>
                                 <valItem ident="monk"/>
                                 <valItem ident="cleric"/>
                                 <valItem ident="officiant"/>
@@ -4192,7 +4192,7 @@
                                 <valItem ident="hermit"/>
                                 <valItem ident="merchant"/>
                                 <valItem ident="artisan"/>
-                                <valItem ident="brahimDelegate"/>
+                                <valItem ident="brahminDelegate"/>
                                 <valItem ident="regionalDelegate"/>
                                 <valItem ident="dancer"/>
                                 <valItem ident="singer"/>

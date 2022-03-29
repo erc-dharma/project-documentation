@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-29T09:34:47Z. .
+Schema generated from ODD source 2022-03-29T09:46:13Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3684,7 +3684,7 @@ Sample values include: 1] eccentric_ductus</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rs[@type='individual']">
-               <sch:assert test="@subtype='(deity or godLegalEntity or god_child or ruler or ruler_spouse or ruler_child or subordinateRuler or royalPreceptor or   noble or landlord or chief or priest or brahim or monk or cleric or officiant or officer or ascetic or hermit or merchant or artisan or brahimDelegate or regionalDelegate or dancer or singer or peasant or shepherd or slave or fieldWork or unknown)'">one of the following @subtype value can only work with @type='individual'.</sch:assert>
+               <sch:assert test="@subtype='(deity or godLegalEntity or god_child or ruler or ruler_spouse or ruler_child or subordinateRuler or royalPreceptor or                                      noble or landlord or chief or priest or brahmin or monk or cleric or officiant or officer or ascetic or hermit or merchant or artisan or brahminDelegate or regionalDelegate or dancer or singer or peasant or shepherd or slave or fieldWork or unknown)'">one of the following @subtype value can only work with @type='individual'.</sch:assert>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.attribute.n"/>
@@ -4035,7 +4035,7 @@ Suggested values include: 1] dark; 2] bright; 3] caitra; 4] vaisakha; 5] jyaisth
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>priest</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>brahim</value>
+                  <value>brahmin</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>monk</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
@@ -4053,7 +4053,7 @@ Suggested values include: 1] dark; 2] bright; 3] caitra; 4] vaisakha; 5] jyaisth
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>artisan</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>brahimDelegate</value>
+                  <value>brahminDelegate</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>regionalDelegate</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
