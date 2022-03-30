@@ -7,14 +7,22 @@
         <fileDesc>
             <titleStmt>
                 <title>DHARMA Prosodic patterns</title>
-                <funder>European Research Council</funder>
-                <principal ref="part:emfr">Emmanuel Francis</principal>
-                <principal ref="part:argr">Arlo Griffiths</principal>
-                <principal ref="part:ansc">Annette Schmiedchen</principal>
-                <respStmt>
-
-	<name ref="part:axja">Axelle Janiak</name>
-                    <resp>XML-TEI Data Manager</resp>
+            	<author ref="part:daba">
+            		<persName>
+            			<forename>Dániel</forename>
+            			<surname>Balogh</surname>
+            		</persName>
+            	</author> 
+            	<author ref="part:argr">
+            		<forename>Arlo</forename>
+            		<surname>Griffiths</surname>
+            	</author> 
+            	                <respStmt>
+                	<resp>Data structuration</resp>
+                	<persName ref="part:axja">
+                		<forename>Axelle</forename>
+                		<surname>Janiak</surname>
+                	</persName>	
                 </respStmt>
             </titleStmt>
             <publicationStmt>
@@ -43,6 +51,8 @@
             </abstract>
         </profileDesc>
         <revisionDesc status="draft">
+        	<change who="part:axja" when="2022-03-30" status="draft">Updating the titleStmt</change>
+        	
             <change who="part:axja" when="2022-03-11" status="draft">Changing the bibliography structure</change>
 					  <change who="part:axja" when="2022-03-09" status="draft">Adding bibl and seg @type="gana" and changing note for label</change>
 					  <change who="part:argr" when="2022-03-08" status="draft">Adding navaharṣa</change>
