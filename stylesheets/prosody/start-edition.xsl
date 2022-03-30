@@ -23,6 +23,18 @@
                         <xsl:attribute name="class">text-center</xsl:attribute>
                         <xsl:value-of select="//tei:fileDesc/tei:titleStmt/tei:title"/>
                     </xsl:element>
+                    <xsl:element name="h2">
+                        <xsl:attribute name="class">text-center</xsl:attribute>
+                        <xsl:text>by </xsl:text>
+                            <xsl:if test="//tei:fileDesc/tei:titleStmt/tei:author[1]">
+                                
+                                <xsl:apply-templates select="//tei:fileDesc/tei:titleStmt/tei:author[1]"/>
+                                <xsl:text>&amp; </xsl:text>
+                            </xsl:if>
+                            <xsl:if test="//tei:fileDesc/tei:titleStmt/tei:author[2]">
+                                <xsl:apply-templates select="//tei:fileDesc/tei:titleStmt/tei:author[2]"/>
+                            </xsl:if>                                         
+                    </xsl:element>
                     <xsl:apply-templates/>
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
