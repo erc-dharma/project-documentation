@@ -6,23 +6,23 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>DHARMA Prosodic patterns</title>
+                <title>Prosodic Patterns to be Encoded in Editions</title>
             	<author ref="part:daba">
             		<persName>
             			<forename>Dániel</forename>
             			<surname>Balogh</surname>
             		</persName>
-            	</author> 
+            	</author>
             	<author ref="part:argr">
             		<forename>Arlo</forename>
             		<surname>Griffiths</surname>
-            	</author> 
-            	                <respStmt>
-                	<resp>Data structuration</resp>
+            	</author>
+            	 <respStmt>
+                	<resp>data structuring</resp>
                 	<persName ref="part:axja">
                 		<forename>Axelle</forename>
                 		<surname>Janiak</surname>
-                	</persName>	
+                	</persName>
                 </respStmt>
             </titleStmt>
             <publicationStmt>
@@ -37,7 +37,6 @@
                             https://creativecommons.org/licenses/by/4.0/ or send a letter to
                             Creative Commons, 444 Castro Street, Suite 900, Mountain View,
                             California, 94041, USA.</p>
-                        <!-- Adding a relevant copyright and the way to quote the file.  -->
                     </licence>
                 </availability>
             </publicationStmt>
@@ -47,17 +46,16 @@
         </fileDesc>
         <profileDesc>
             <abstract>
-                <p>List of all the prosodic patterns used in the DHARMA project.</p>
+                <p>List of all the prosodic patterns used in the epigraphic and manuscript-based editions produced by the DHARMA project.</p>
             </abstract>
         </profileDesc>
         <revisionDesc status="draft">
         	<change who="part:axja" when="2022-03-30" status="draft">Updating the titleStmt</change>
-        	
-            <change who="part:axja" when="2022-03-11" status="draft">Changing the bibliography structure</change>
-					  <change who="part:axja" when="2022-03-09" status="draft">Adding bibl and seg @type="gana" and changing note for label</change>
-					  <change who="part:argr" when="2022-03-08" status="draft">Adding navaharṣa</change>
-            <change who="part:daba" when="2021-12-15" status="draft">Adding info, suggestions and comments</change>
-            <change who="part:axja" when="2021-10-21" status="draft">Creation of the file, adding some informations and minimal metadata</change>
+          <change who="part:axja" when="2022-03-11" status="draft">Changing the bibliography structure</change>
+					<change who="part:axja" when="2022-03-09" status="draft">Adding bibl and seg @type="gana" and changing note for label</change>
+					<change who="part:argr" when="2022-03-08" status="draft">Started adding new meters</change>
+          <change who="part:daba" when="2021-12-15" status="draft">Adding info, suggestions and comments</change>
+          <change who="part:axja" when="2021-10-21" status="draft">Creation of the file, adding some informations and minimal metadata</change>
         </revisionDesc>
     </teiHeader>
     <text>
