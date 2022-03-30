@@ -12,20 +12,45 @@
                 <xsl:element name="div">
               <xsl:attribute name="id">metadatadiv</xsl:attribute>
             <h2>Metadata</h2>
+                  <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Current Version: 
+                  </xsl:element>
+                  <xsl:element name="p">
+                  <xsl:choose>
+                    <xsl:when test="//t:fileDesc/following-sibling::t:revisionDesc">
+                      <xsl:if test="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status">
+                        <xsl:value-of select="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status"/>
+                      </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:text>draft</xsl:text>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <xsl:text>, </xsl:text>
+                  <xsl:value-of select="current-date()"/>
+                  </xsl:element>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
-            <h3>Identifier: </h3>
+              <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                Identifier: 
+              </xsl:element>
             <xsl:element name="p">
             <xsl:value-of select="replace(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
                <xsl:if test="//t:msContents//t:summary/text()">
-                  <h3>Summary: </h3>
+                 <xsl:element name="span">
+                   <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                   Summary: </xsl:element>
                  <xsl:element name="p">
                   <xsl:apply-templates select="//t:msContents/t:summary"/>
                 </xsl:element>
                </xsl:if>
                <xsl:if test="//t:handDesc//text()">
-                  <h3>Hands: </h3>
+                 <xsl:element name="span">
+                   <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                   Hands: </xsl:element>
                  <xsl:choose>
                    <xsl:when test="//t:handDesc/t:handNote/t:p">
                      <xsl:for-each select="//t:handDesc/t:handNote/t:p">
@@ -45,7 +70,9 @@
                  </xsl:choose>
                </xsl:if>
                <xsl:if test="//t:sourceDesc/t:biblFull/t:editionStmt/t:p">
-                 <xsl:text>First edition of the file: </xsl:text>
+                 <xsl:element name="span">
+                   <xsl:attribute name="class">font-weight-bold</xsl:attribute><xsl:text>First edition of the file: </xsl:text>
+                 </xsl:element>
                  <xsl:apply-templates select="//t:sourceDesc/t:biblFull/t:editionStmt/t:p"/>
                </xsl:if>
           </xsl:element>
