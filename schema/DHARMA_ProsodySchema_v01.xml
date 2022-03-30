@@ -26,7 +26,7 @@
             <p>TEI schema for prosody</p>
             <schemaSpec ident="DHARMA_ProsodySchema_v01" docLang="en" prefix="tei_" xml:lang="en">
                 <moduleRef key="core"
-                    except="abbr add addrLine address analytic author biblScope biblStruct binaryObject cb choice cit corr del desc distinct divGen editor ellipsis email emph expan foreign gap gb gloss graphic headItem headLabel imprint index l lb lg measureGrp media meeting mentioned milestone monogr note noteGrp num orig pb postBox postCode publisher q rb ref reg relatedItem rs rt ruby said series sic soCalled sp speaker stage street teiCorpus term textLang time unclear unit"/>
+                    except="abbr add addrLine address analytic biblScope biblStruct binaryObject cb choice cit corr del desc distinct divGen editor ellipsis email emph expan foreign gap gb gloss graphic headItem headLabel imprint index l lb lg measureGrp media meeting mentioned milestone monogr note noteGrp num orig pb postBox postCode publisher q rb ref reg relatedItem rs rt ruby said series sic soCalled sp speaker stage street teiCorpus term textLang time unclear unit"/>
                 <moduleRef key="tei" except=""/>
                 <moduleRef key="header"
                     except="appInfo application biblFull cRefPattern calendar calendarDesc catDesc catRef category citeData citeStructure classCode classDecl conversion correction correspAction correspContext correspDesc creation distributor editorialDecl extent geoDecl handNote hyphenation interpretation keywords listChange listPrefixDef namespace normalization notesStmt prefixDef punctuation quotation refState refsDecl rendition samplingDecl schemaRef scriptNote segmentation seriesStmt sponsor stdVals styleDefDecl tagUsage tagsDecl taxonomy textClass unitDecl unitDef xenoData"/>
@@ -73,7 +73,7 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="name" module="core" mode="change">
-                   <!-- <constraintSpec scheme="schematron" ident="name">
+                    <!-- <constraintSpec scheme="schematron" ident="name">
                         <constraint>
                             <sch:rule context="tei:name[ancestor::tei:body]/text()">
                                 <sch:assert
@@ -269,13 +269,13 @@
                             test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
                             the primary bibliography to declare
                             sigla</sch:report></sch:rule>--><sch:rule
-                                context="tei:bibl[ancestor::tei:listBibl]"><sch:report
-                                    test="child::tei:note[following-sibling::tei:*]"
-                                    >Note should be the last
+                            context="tei:bibl[ancestor::tei:listBibl]"><sch:report
+                            test="child::tei:note[following-sibling::tei:*]"
+                            >Note should be the last
                                     element of the bibl</sch:report></sch:rule><sch:rule
-                                        context="tei:bibl[child::tei:note]"><sch:report
-                                            test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
-                                            >In the commentary, apparatus and the epigraphic lemma, note inside bibl
+                            context="tei:bibl[child::tei:note]"><sch:report
+                            test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
+                            >In the commentary, apparatus and the epigraphic lemma, note inside bibl
                                             is prohibited. Add the note element right after the bibl
                                             element.</sch:report></sch:rule></constraint>
                     </constraintSpec>
@@ -337,6 +337,178 @@
                         <attDef ident="style" mode="delete"/>
                         <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="author" module="core" mode="change">
+                    <attList>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="notAfter" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="notBefore" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <moduleRef key="namesdates"
+                    except="addName affiliation age birth bloc climate country death district education event faith floruit genName geo geogFeat geogName langKnowledge langKnown listEvent listNym listObject listOrg listPerson listPlace listRelation location nameLink nationality nym object objectIdentifier objectName occupation offset org orgName persPronouns person personGrp persona place placeName population region relation residence roleName settlement sex socecStatus state terrain trait"/>
+                <elementSpec ident="forename" module="namesdates" mode="change">
+                    <attList>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="full" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="sort" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="surname" module="namesdates" mode="change">
+                    <attList>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="full" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="sort" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="persName" module="namesdates" mode="change">
+                    <attList>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="evidence" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="full" mode="delete"/>
+                        <attDef ident="instant" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="notAfter" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="notBefore" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="sort" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
