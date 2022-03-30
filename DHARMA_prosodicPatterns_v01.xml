@@ -252,7 +252,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
   <seg type="prosody">––––||⏑⏑⏑⏑⏑⏑⏓</seg>
   <seg type="gana">ma-bha-na-la-ga</seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">4</citedRange><citedRange unit="item">A.11.5</citedRange></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">4</citedRange><citedRange unit="item">I.A.11.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">454</citedRange><citedRange unit="item">XI.18</citedRange></bibl>
 	</listBibl>
@@ -375,7 +375,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<seg type="prosody">⏑⏑⏑⏑–||⏑⏑–⏑⏑–⏓</seg>
        <seg type="gana">na-ja-ja-ya</seg>
 	<listBibl>
-	  <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="item">A.12.5</citedRange></bibl>
+	  <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="item">I.A.12.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.4</citedRange></bibl>
 	</listBibl>
@@ -423,7 +423,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana">sa-ja-sa-sa</seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">A.12.9</citedRange></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">I.A.12.9</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.11</citedRange></bibl>
 	</listBibl>
@@ -679,7 +679,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 @zapa: please change the spelling to vaṅśapatrapatita in all cases were your CK file has @met="vaṅśapattrapatita"-->
 	<seg type="gana">bha-ra-na-bha-na-la-ga</seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">8</citedRange><citedRange unit="item">A.17.5</citedRange></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">8</citedRange><citedRange unit="item">I.A.17.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">461</citedRange><citedRange unit="item">XVII.8</citedRange></bibl>
 	</listBibl>
@@ -833,12 +833,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">23</measure>
+	<name xml:lang="san-Latn">aśvalalita</name>
 	<name xml:lang="kaw-Latn">aśvalalita</name>
-	<seg type="xml">----+-+---+-+---+-+---=</seg>
-	<seg type="prosody">⏑⏑⏑|⏑–⏑|–⏑⏑|⏑–⏑|–⏑⏑|⏑–⏑|–⏑⏑|⏑⏓</seg>
+	<seg type="xml">----+-+---+||-+---+-+---=</seg>
+       <seg type="prosody">⏑⏑⏑|⏑–⏑|–⏑⏑|⏑–||⏑|–⏑⏑|⏑–⏑|–⏑⏑|⏑⏓</seg>
 	<seg type="gana">na-ja-bha-ja-bha-ja-bha-la-ga</seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="section">II.23</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">466</citedRange><citedRange unit="item">XXIII.1</citedRange></bibl>
 	</listBibl>
@@ -879,7 +880,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<seg type="prosody">⏑–⏑|⏑⏑–|⏑–⏑|⏑⏑–|⏑⏑⏑|⏑⏑⏑|–⏑–|⏑⏑⏑|⏓</seg>
 	<seg type="gana">ja-sa-ja-sa-na-na-ra-na-ga</seg>
 	<listBibl>
-	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte's appendix--></bibl>
 	<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 	<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.1</citedRange></bibl>
 	</listBibl>
