@@ -924,13 +924,17 @@
     </xsl:template>
     
     <xsl:template match="tei:div[@type='metrical']">
-            <xsl:element name="p">
+                <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:value-of select="parent::tei:div/@n"/>
+                    <xsl:text>.</xsl:text>
+                    <xsl:number count="tei:div[@type='metrical']" level="single" format="1"/>
+                    <xsl:text> </xsl:text>
                 <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
-            </xsl:element>
+            </xsl:element>          
     </xsl:template>
     
     <xsl:template name="metrical-list">
