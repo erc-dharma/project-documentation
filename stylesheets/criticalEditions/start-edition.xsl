@@ -833,11 +833,7 @@
     </xsl:template>
     
     <!--  div ! -->
-    <xsl:template match="tei:div">
-        <xsl:variable name="prosody" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
-        <!-- https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml 
-       https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml
-        -->
+    <xsl:template match="tei:div[not(@type='metrical')]">
         <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
@@ -868,10 +864,12 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:element>
-            <xsl:element name="div">
-                        <xsl:attribute name="class">col-10</xsl:attribute>
+            <xsl:element name="div">             
+                            <xsl:attribute name="class">col-10</xsl:attribute>
                 <xsl:if test="@xml:id">
-                    <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="@xml:id"/>
+                    </xsl:attribute>
                 </xsl:if>
                 <xsl:if test="@type='canto'">
                     <xsl:element name="p">
@@ -884,25 +882,12 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="metrical-list">
                             <xsl:with-param name="metrical" select="$metrical"/>
-                            <xsl:with-param name="prosody" select="$prosody"/>
                         </xsl:call-template>
                     
                 </xsl:element>
                 </xsl:if>
                 </xsl:if>
-                <xsl:apply-templates select="tei:* except child::tei:div"/>
-                    <xsl:if test="child::tei:div[@type='metrical']">
-                    <xsl:for-each select="child::tei:div[@met]">
-                        <xsl:element name="p">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            <xsl:call-template name="metrical-list">
-                                <xsl:with-param name="metrical" select="@met"/>
-                                <xsl:with-param name="prosody" select="$prosody"/>
-                            </xsl:call-template>
-                            <xsl:apply-templates select="self::tei:*"/>
-                        </xsl:element>
-                    </xsl:for-each>
-                </xsl:if>
+                <xsl:apply-templates/>
                 <!--<xsl:if test="@xml:id">
                     <xsl:element name="div">
                     <xsl:attribute name="class">col-10</xsl:attribute>
@@ -938,9 +923,22 @@
         </xsl:if>
     </xsl:template>
     
+    <xsl:template match="tei:div[@type='metrical']">
+            <xsl:element name="p">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                <xsl:call-template name="metrical-list">
+                    <xsl:with-param name="metrical" select="@met"/>
+                </xsl:call-template>
+                <xsl:apply-templates/>
+            </xsl:element>
+    </xsl:template>
+    
     <xsl:template name="metrical-list">
-        <xsl:param name="prosody"/>
         <xsl:param name="metrical"/>
+        <xsl:variable name="prosody" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
+        <!-- https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml 
+       https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml
+        -->
         <xsl:choose>
             <xsl:when test="matches(@met,'[=\+\-]+')">
                 <!-- <xsl:call-template name="scansion">
