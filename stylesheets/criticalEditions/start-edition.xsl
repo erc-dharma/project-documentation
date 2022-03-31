@@ -618,15 +618,17 @@
             </xsl:attribute>-->
               
                 <xsl:apply-templates select="tei:lem"/>
-                <xsl:choose>
+               <!-- <xsl:choose>
                     <xsl:when test="$location='text'"/>
-                    <xsl:otherwise>
+                    <xsl:otherwise>-->
                         <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
                 </xsl:call-template>
-                    </xsl:otherwise>
-                </xsl:choose>   
-        </xsl:element></xsl:otherwise></xsl:choose>
+                    <!--</xsl:otherwise>
+                </xsl:choose>-->   
+        </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
         
         <xsl:if test="descendant::tei:span[@type='omissionStart']">
             <xsl:apply-templates select="descendant::tei:span[@type='omissionStart']" mode="omission-number"/>
@@ -2640,7 +2642,7 @@
     </xsl:template>
     
     <!-- Check feature -->
-    <xsl:template match="tei:*[@rend='check']">
+    <xsl:template match="tei:*[not(local-name()=('app'))][@rend='check']">
         <xsl:element name="span">
             <xsl:attribute name="class">mark</xsl:attribute>
             <xsl:apply-templates/>
@@ -2649,7 +2651,7 @@
     
     <!-- Unmetrical feature -->
     <!-- might need to be updated depending on the use contexted -->
-    <xsl:template match="tei:*[@rend='unmetrical']">
+    <xsl:template match="tei:*[not(local-name()=('app'))][@rend='unmetrical']">
         <xsl:element name="span">
             <xsl:attribute name="class">unmetrical</xsl:attribute>
             <xsl:apply-templates/>
@@ -2874,7 +2876,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"> <!-- .//tei:choice | .//tei:subst |  -->
 
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
@@ -2882,7 +2884,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app[not(parent::tei:listApp[@type='parallels'])]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]">
+            select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -3222,7 +3224,7 @@
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                        
                     </xsl:choose>
-                    <xsl:choose>
+                    <!--<xsl:choose>
                         <xsl:when test="@rend">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">
@@ -3239,7 +3241,7 @@
                         <xsl:otherwise>
                             <xsl:apply-templates/>
                         </xsl:otherwise>
-                    </xsl:choose>
+                    </xsl:choose>-->
                             
                             <xsl:choose>
                                 <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when> 
