@@ -1809,10 +1809,14 @@
                 <!--<xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                 <xsl:attribute name="data-placement">top</xsl:attribute>
                 <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>-->
-            <!--<xsl:call-template name="tokenize-witness-list">
-                <xsl:with-param name="string" select="@edRef"/>
-            </xsl:call-template>-->
-              <xsl:value-of select="substring-after(@edRef, '#')"/>
+                    <xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="@edRef"/>
+                        <xsl:with-param name="witdetail-string"/>
+                        <xsl:with-param name="witdetail-type"/>
+                        <xsl:with-param name="witdetail-text"/>
+                    </xsl:call-template>
+                    <!-- old display -->
+              <!--<xsl:value-of select="substring-after(@edRef, '#')"/>-->
                     <xsl:text>:</xsl:text>
                 <xsl:value-of select="@n"/>
         </xsl:element>
@@ -2630,7 +2634,8 @@
                     <xsl:value-of select="$witdetail-type"/>
                     </xsl:otherwise>
                 </xsl:choose>
-            </xsl:element></xsl:otherwise>
+            </xsl:element>
+                </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
         
