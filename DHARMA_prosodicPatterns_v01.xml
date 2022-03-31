@@ -159,8 +159,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
                 <item>
 	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">triṣṭubh</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">no data available</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".-->
+                	<seg type="xml">-+--+--+--=</seg>
+                	<seg type="prosody">⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -898,7 +898,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">jaloddhatagati</name>
 	<seg type="xml">-+---+-+---=</seg>
-	<seg type="prosody">⏑-⏑⏑⏑-||⏑-⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.-->
+	<seg type="prosody">⏑–⏑⏑⏑–||⏑–⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry. @argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -910,7 +910,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">kusumāyudha</name>
 	<seg type="xml">----+------=</seg>
-	<seg type="prosody">⏑⏑⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix (though there is a very similar one called madakalitā, 13 syllables, one more long syllable at the end), so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code, added the syllable number and added the corresponding XML code.-->
+	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: this metre is not in Apte's appendix (though there is a very similar one called madakalitā, 13 syllables, one more long syllable at the end), so @argr will need to check it. I guess the name and prosody are correct. I've removed the bars from the prosodic code, added the syllable number and added the corresponding XML code.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -981,8 +981,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
               <item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">punarmada</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏓[need to be checked]</seg><!--daba: @argr, please check. Can't find a 13-syllable metre by this name in Apte.-->
+	<seg type="xml">--+-+---+-+-=</seg>
+              	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg><!--daba: @argr, please check. Can't find a 13-syllable metre by this name in Apte.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -993,8 +993,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">18</measure>
 	<name xml:lang="">mṛdukomala</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix.
+	<seg type="xml">+-+---+----=</seg>
+	<seg type="prosody">-⏑-⏑⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix.
 	At least, the ṛ in the name will need changing to r̥.-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -1006,8 +1006,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
               <item>
 	<measure unit="syllable">21</measure>
 	<name xml:lang="">kusumavilasitā</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑|⏑|⏑⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑|⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
+              	<seg type="xml">+--+-+---+------+-+-=</seg>
+              	<seg type="prosody">-⏑⏑-⏑-⏑⏑⏑-⏑⏑⏑⏑⏑⏑-⏑-⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -1016,10 +1016,10 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	</listBibl>
 </item>
               <item>
-	<measure unit="syllable">?</measure>
+	<measure unit="syllable">10</measure>
 	<name xml:lang="">tvaritagati</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">no data available[need to be checked]</seg><!--daba: @argr, please check.
+	<seg type="xml">----+----=</seg>
+              	<seg type="prosody">⏑⏑⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: @argr, please check.
 	Presumably identical to turidagati above, but I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
@@ -1031,8 +1031,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="">rajanī</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
+	<seg type="xml">----+-+---+--+--=</seg>
+	<seg type="prosody">⏑⏑⏑⏑-⏑-⏑⏑⏑-⏑⏑-⏑⏑⏓</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
@@ -1043,8 +1043,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
               <item>
 	<measure unit="syllable">18</measure>
 	<name xml:lang="">suvaṅśapattra</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑|⏑⏑|⏑⏑|⏑⏑⏑|⏑⏑⏓[need to be checked]</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
+              	<seg type="xml">----+-+---+------=</seg>
+              	<seg type="prosody">⏑⏑⏑⏑-⏑-⏑⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg><!--daba: @argr, please check. I can't locate this in Apte's appendix.-->
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
