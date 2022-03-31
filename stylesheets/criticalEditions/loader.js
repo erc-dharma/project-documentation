@@ -84,46 +84,46 @@ $(document).ready(function() {
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
 $( ".omissionStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdg =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">om. </span></span>')
+        var newRdgOmission =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">om. </span></span>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
-        var siglum= $(this).find(".siglum:first").clone()
+        var siglumOmission = $(this).find(".siglum:first").clone()
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.popover-content').nextUntil('.popover-content:has(.omissionEnd)').find('.reading-line:last').after().append(newRdg, siglum.wrap( '<span class="font-weight-bold "></span>').parent());
+            $(this).parents('.popover-content').nextUntil('.popover-content:has(.omissionEnd)').find('.reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<span class="font-weight-bold "></span>').parent());
     });
     
     /* Trying to add the lac. $siglum between lacunaStart and lacunaEnd 
 Code only for the lateral tooltip*/
     $( ".lacunaStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdg =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span>')
+        var newRdgLacuna =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span>')
         /* Cherche le premier element suivant avec la class siglum, récupere son contenu   */
-        var siglum= $(this).find(".siglum:first").clone()
+        var siglumLacuna = $(this).find(".siglum:first").clone()
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.popover-content').nextUntil('.popover-content:has(.lacunaEnd)').find('.reading-line:last').after().append(newRdg, siglum.wrap( '<span class="font-weight-bold "></span>').parent());
+            $(this).parents('.popover-content').nextUntil('.popover-content:has(.lacunaEnd)').find('.reading-line:last').after().append(newRdgLacuna, siglumLacuna.wrap( '<span class="font-weight-bold "></span>').parent());
     }); 
     
     /* lac. for bottom apparatus */
     $( ".bottom-lacunaStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdg =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">lac.</span></span>')
+        var newRdgBottomLacuna =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">lac.</span></span>')
         /* Cherche le premier element suivant avec la class siglum, récupere son contenu   */
-        var siglum= $(this).find(".siglum:first").clone()
+        var siglumBottomLacuna = $(this).find(".siglum:first").clone()
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.app').nextUntil('.app:has(.bottom-lacunaEnd)').find('.bottom-reading-line:last').after().append(newRdg, siglum.wrap( '<span class="font-weight-bold "></span>').parent());
+            $(this).parents('.app').nextUntil('.app:has(.bottom-lacunaEnd)').find('.bottom-reading-line:last').after().append(newRdgBottomLacuna, siglumBottomLacuna.wrap( '<span class="font-weight-bold "></span>').parent());
     });
     
     /* omm. for bottom apparatus */
     $( ".bottom-omissionStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdg =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">om.</span></span>')
-        /* Cherche le premier element suivant avec la class siglum, récupere son contenu textuel  */
-        var siglum= $(this).find(".siglum:first").clone()
+        var newRdgBottomOmission =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">om.</span></span>')
+        /* Cherche le premier element suivant avec la class siglum, récupere son contenu  */
+        var siglumBottomOmission = $(this).find(".siglum:first").clone()
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.app').nextUntil('.app:has(.bottom-omissionEnd)').find('.bottom-reading-line:last').after().append(newRdg, siglum.wrap( '<span class="font-weight-bold "></span>').parent());
+            $(this).parents('.app').nextUntil('.app:has(.bottom-omissionEnd)').find('.bottom-reading-line:last').after().append(newRdgBottomOmission, siglumBottomOmission.wrap( '<span class="font-weight-bold "></span>').parent());
     });
 });
 
