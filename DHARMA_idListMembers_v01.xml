@@ -385,6 +385,12 @@
 					<idno type="VIAF">http://viaf.org/viaf/310697060</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
 				</person>
+				<person xml:id="nlsy">
+					<persName>
+						<forename>Nicholas</forename> 
+						<surname>Lua Swee Yang</surname>
+					</persName>
+				</person>
 				<person xml:id="tilu">
 					<persName>
 						<forename>Timothy</forename>
