@@ -3253,7 +3253,7 @@
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                        
                     </xsl:choose>
-                    <!--<xsl:choose>
+                    <xsl:choose>
                         <xsl:when test="@rend">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">
@@ -3270,7 +3270,7 @@
                         <xsl:otherwise>
                             <xsl:apply-templates/>
                         </xsl:otherwise>
-                    </xsl:choose>-->
+                    </xsl:choose>
                             
                             <xsl:choose>
                                 <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when> 

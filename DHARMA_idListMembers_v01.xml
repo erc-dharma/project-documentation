@@ -385,10 +385,17 @@
 					<idno type="VIAF">http://viaf.org/viaf/310697060</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
 				</person>
+<<<<<<< HEAD
 				<person xml:id="nilu">
 					<persName>
 						<forename>Nicholas</forename>
 						<surname>Lua</surname>
+=======
+				<person xml:id="nlsy">
+					<persName>
+						<forename>Nicholas</forename> 
+						<surname>Lua Swee Yang</surname>
+>>>>>>> ffb29d05caa9402bed6e0267d39f374e20187bfa
 					</persName>
 				</person>
 				<person xml:id="tilu">
