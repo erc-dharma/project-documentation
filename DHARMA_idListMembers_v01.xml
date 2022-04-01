@@ -309,7 +309,7 @@
 				</person>
 				<person xml:id="chhu">
 					<persName>
-						<forename>Chhunteng</forename> 
+						<forename>Chhunteng</forename>
 						<surname>Hun</surname>
 					</persName>
 					<!-- no idno -->
@@ -385,6 +385,12 @@
 					<idno type="VIAF">http://viaf.org/viaf/310697060</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
 				</person>
+				<person xml:id="nilu">
+					<persName>
+						<forename>Nicholas</forename>
+						<surname>Lua</surname>
+					</persName>
+				</person>
 				<person xml:id="tilu">
 					<persName>
 						<forename>Timothy</forename>
@@ -421,6 +427,11 @@
 					<idno type="IdHAL">emmanuelle-morlock</idno>
 					<idno type="IdRef">https://www.idref.fr/185971202</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-1617-8554</idno>
+				</person>
+				<person xml:id="nuha">
+					<persName>
+						<name>Nurmalia Habibah</name>
+					</persName>
 				</person>
 				<person xml:id="rama">
 					<!-- Manu: do we need to keep him? -->
