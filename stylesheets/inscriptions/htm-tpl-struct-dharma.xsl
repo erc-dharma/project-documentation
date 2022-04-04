@@ -17,16 +17,16 @@
                     Current Version: 
                   </xsl:element>
                   <xsl:element name="p">
-                  <xsl:choose>
+                  <!--<xsl:choose>
                     <xsl:when test="//t:fileDesc/following-sibling::t:revisionDesc">
                       <xsl:if test="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status">
                         <xsl:value-of select="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status"/>
                       </xsl:if>
                     </xsl:when>
-                    <xsl:otherwise>
+                    <xsl:otherwise>-->
                       <xsl:text>draft</xsl:text>
-                    </xsl:otherwise>
-                  </xsl:choose>
+                    <!--</xsl:otherwise>
+                  </xsl:choose>-->
                   <xsl:text>, </xsl:text>
                   <xsl:value-of select="current-date()"/>
                   </xsl:element>
