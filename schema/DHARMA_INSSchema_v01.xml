@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2022-04-04">Working on the list of attributes for rs</change>
             <change who="part:axja" when="2022-03-29">Updating the model for placeName</change>
             <change who="part:axja" when="2022-02-18">Updating the model to encode person's names, addding provisional values for a list of types with roleName</change>
             <change who="part:axja" when="2022-02-07">Adding xhm and cja in @xml:lang</change>
@@ -4072,12 +4073,11 @@
                 <elementSpec ident="rs" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="rs-rules">
                         <constraint> <sch:rule context="tei:rs[@type='month']"> <sch:assert
-                            test="@key='(caitra or vaisakha or jyaistha or asadha or sravana or bhadrapada or asvina or karttika or margasira or pausa or magha or phalguna)'"
-                            >
-                                with the @type="fortnight", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
+                            test="@key='caitra' or @key='vaisakha' or @key='jyaistha' or @key='asadha' or @key='sravana' or @key='bhadrapada' or @key='asvina' or @key='karttika' or @key='margasira' or @key='pausa' or @key='magha' or @key='phalguna'">
+                                with the @type="month", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
                             </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='fortnight']"> <sch:assert
-                            test="@key='(dark or bright)'">
+                                test="@subtype='dark' or @subtype='bright'">
                                     with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='tithi']"> <sch:report test="@key"
@@ -4085,47 +4085,46 @@
                                 </sch:report> </sch:rule> 
                             <sch:rule
                             context="tei:rs[@type='naksatra']"> <sch:assert
-                            test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)'"
+                            test="@key='krttika'or @key='rohini'or @key='mrgasirsa'or @key='ardra'or @key='punarvasu'or @key='pusya'or @key='aslesa'or @key='magha'or @key='purva-phalguni'or @key='uttara-phalguni'or @key='hasta'or @key='citra'or @key='svati'or @key='visakha'or @key='anuradha'or @key='jyestha'or @key='mula'or @key='purva-asadha'or @key='uttara-asadha'or @key='sravana'or @key='dhanistha'or @key='satabhisaj'or @key='purva-bhadrapada'or @key='uttara-bhadrapada'or @key='revati'or @key='asvini'or @key='bharani'"
                             >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert>
                             </sch:rule> <sch:rule context="tei:rs[@type='sadvara']"> <sch:assert
-                            test="@key='(tunglai or hariyang or wurukung or paniruan or was or mawulu)'"
+                            test="@key='tunglai' or @key='hariyang' or @key='wurukung' or @key='paniruan' or @key='was' or @key='mawulu'"
                             >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
                             </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='pancavara']"> <sch:assert
-                            test="@key='(pahing or pon or wagai or kaliwuan or umanis)'"
+                            test="@key='pahing' or @key='pon' or @key='wagai' or @key='kaliwuan' or @key='umanis'"
                             >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='season']"> <sch:assert
-                            test="@key='(hemanta or grisma or varsa)'"
+                            test="@key='hemanta' or @key='grisma' or @key='varsa'"
                             >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='wuku']"> <sch:assert
-                            test="@key='(sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung)'"
+                            test="@key='sinta' or @key='landep' or @key='wukir' or @key='kurantil' or @key='tolu' or @key='gumbreg' or @key='warigalit' or @key='warigagung' or @key='julung' or @key='sungsang' or @key='galungan' or @key='dungulan' or @key='kuningan' or @key='langki' or @key='madasiha' or @key='pujut' or @key='pahang' or @key='kuruwlut' or @key='marakih' or @key='tambir' or @key='madangkungan' or @key='mahatal' or @key='wuyai' or @key='manahil' or @key='prangbakat' or @key='balamuki' or @key='wugu' or @key='wayang' or @key='kulawu' or @key='dukut' or @key='watugunung'"
                             >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='chinese']"> <sch:assert
-                            test="@key='(rat or buffalo-ox or tiger or hare-cat or dragon or snake or horse or goat or monkey or cock or dog or pig)'"
+                            test="@key='rat' or @key='buffalo-ox' or @key='tiger' or @key='hare-cat' or @key='dragon' or @key='snake' or @key='horse' or @key='goat' or @key='monkey' or @key='cock' or @key='dog' or @key='pig'"
                             >With the @type='chinese', you can only use one of the following values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse, goat, monkey, cock, dog, pig.
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='solstice']"> <sch:assert
-                            test="@key='(winter or summer)'"
+                                test="@key='winter' or @key='summer'"
                             >With the @type='solstice', you can only use one of the following values: winter or summer.
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='equinox']"> <sch:assert
-                            test="@key='(autumn or spring)'"
+                                test="@key='autumn' or @key='spring'"
                             >With the @type='equinox', you can only use one of the following values: autumn or spring.
                                 </sch:assert> </sch:rule> <sch:rule
                             context="tei:rs[@type='eclipse']"> <sch:assert
-                            test="@key='(lunar or solar)'"
+                                test="@key='lunar' or @key='solar'"
                             >With the @type='eclipse', you can only use one of the following values: lunar or solar.
                                 </sch:assert> </sch:rule>
                             <sch:rule context="tei:rs[@type='individual']">
-                                <sch:assert test="@type='(masc or fem or other)'">A gender is expected as another value of reference string @type='individual'.</sch:assert>
+                                <sch:assert test="@type='masc' or @type='fem' or @type='other'">A gender is expected as another value of reference string @type='individual'.</sch:assert>
                             
                         </sch:rule>
                             <sch:rule context="tei:rs[@type='individual']">
-                                <sch:assert test="@subtype='(deity or godLegalEntity or god_child or ruler or ruler_spouse or ruler_child or subordinateRuler or royalPreceptor or 
-                                    noble or landlord or chief or priest or brahmin or monk or cleric or officiant or officer or ascetic or hermit or merchant or artisan or brahminDelegate or regionalDelegate or dancer or singer or peasant or shepherd or slave or fieldWork or unknown)'">one of the following @subtype value can only work with @type='individual'.</sch:assert>                             </sch:rule>
+                                <sch:assert test="@subtype='deity' or @subtype='godLegalEntity' or @subtype='god_child' or @subtype='ruler' or @subtype='ruler_spouse' or @subtype='ruler_child' or @subtype='subordinateRuler' or @subtype='royalPreceptor' or @subtype='noble' or @subtype='landlord' or @subtype='chief' or @subtype='priest' or @subtype='brahmin' or @subtype='monk' or @subtype='cleric' or @subtype='officiant' or @subtype='officer' or @subtype='ascetic' or @subtype='hermit' or @subtype='merchant' or @subtype='artisan' or @subtype='brahminDelegate' or @subtype='regionalDelegate' or @subtype='dancer' or @subtype='singer' or @subtype='peasant' or @subtype='shepherd' or @subtype='slave' or @subtype='fieldWork' or @subtype='unknown'">one of the following @subtype value can only work with @type='individual'.</sch:assert>                             </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -4201,6 +4200,8 @@
                                 <valItem ident="slave"/>
                                 <valItem ident="fieldWork"/>
                                 <valItem ident="unknown"/>
+                                <valItem ident="bright"/>
+                                <valItem ident="dark"/>
                             </valList>
                         </attDef>
                         <attDef ident="synch" mode="delete"/>
