@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-29T09:37:37Z. .
+Schema generated from ODD source 2022-04-05T08:23:06Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -1971,6 +1971,8 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_author"/>
          <ref name="tei_editor"/>
          <ref name="tei_respStmt"/>
+         <ref name="tei_funder"/>
+         <ref name="tei_principal"/>
       </choice>
    </define>
    <define name="tei_model.divWrapper">
@@ -3495,6 +3497,7 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                   <ref name="tei_idno"/>
                   <ref name="tei_model.ptrLike"/>
                   <ref name="tei_editor"/>
+                  <ref name="tei_funder"/>
                   <ref name="tei_respStmt"/>
                </choice>
             </zeroOrMore>
@@ -4069,6 +4072,9 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          <group>
             <group>
                <ref name="tei_titleStmt"/>
+               <optional>
+                  <ref name="tei_editionStmt"/>
+               </optional>
                <ref name="tei_publicationStmt"/>
                <optional>
                   <ref name="tei_notesStmt"/>
@@ -4093,6 +4099,39 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                <ref name="tei_model.respLike"/>
             </zeroOrMore>
          </group>
+      </element>
+   </define>
+   <define name="tei_funder">
+      <element name="funder">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(funding body) specifies the name of an individual, institution, or organization responsible for the funding of a project or text. [2.2.1. The Title Statement]</a:documentation>
+         <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.canonical.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_principal">
+      <element name="principal">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(principal researcher) supplies the name of the principal researcher responsible for the creation of an electronic text. [2.2.1. The Title Statement]</a:documentation>
+         <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.canonical.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_editionStmt">
+      <element name="editionStmt">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(edition statement) groups information relating to one edition of a text. [2.2.2. The Edition Statement 2.2. The File Description]</a:documentation>
+         <choice>
+            <oneOrMore>
+               <ref name="tei_model.pLike"/>
+            </oneOrMore>
+            <zeroOrMore>
+               <ref name="tei_model.respLike"/>
+            </zeroOrMore>
+         </choice>
+         <ref name="tei_att.global.attributes"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_publicationStmt">
@@ -4204,6 +4243,9 @@ Sample values include: 1] filename</a:documentation>
             <group>
                <group>
                   <ref name="tei_titleStmt"/>
+                  <optional>
+                     <ref name="tei_editionStmt"/>
+                  </optional>
                   <ref name="tei_publicationStmt"/>
                   <optional>
                      <ref name="tei_notesStmt"/>
@@ -5839,7 +5881,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an absolute or relative place name. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-placeName-div-constraint-rule-43">
+                  id="DHARMA_CritEdSchema_v01-placeName-placeName-constraint-rule-43">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:placeName[@type='region']">
