@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2022-04-05">Working on contraints for dates</change>
             <change who="part:axja" when="2022-04-04">Working on the list of attributes for rs</change>
             <change who="part:axja" when="2022-03-29">Updating the model for placeName</change>
             <change who="part:axja" when="2022-02-18">Updating the model to encode person's names, addding provisional values for a list of types with roleName</change>
@@ -1635,11 +1636,12 @@
                 <elementSpec ident="date" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="attributes">
                         <constraint> 
-                            <sch:rule context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
-                                <sch:assert test="matches('.', '\d+')">
+                            <!-- rule not working -->
+                           <!-- <sch:rule context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
+                                <sch:assert test="contains('descendant-or-self::tei:*/text()', '[0-9]+')">
                                     To be encoded a date must contained a year.
                                 </sch:assert>
-                            </sch:rule>
+                            </sch:rule>-->
                             <sch:rule
                             context="tei:date[not(parent::tei:bibl)][@notBefore-custom or @notAfter-custom]"> <sch:assert
                                 test="@notBefore-custom and @notAfter-custom"
