@@ -888,7 +888,7 @@
                 </xsl:if>
                 </xsl:if>
                 <xsl:apply-templates/>
-                <!--<xsl:if test="@xml:id">
+                <xsl:if test="@xml:id">
                     <xsl:element name="div">
                     <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
@@ -900,7 +900,7 @@
                     <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
                     
                     <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
-                        <!-\- need to add the language -\->
+                        <!-- need to add the language -->
                 </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="id">
@@ -915,7 +915,7 @@
                     </xsl:element>
                 </xsl:element>
             </xsl:element> 
-                </xsl:if>-->
+                </xsl:if>
             </xsl:element>     
         </xsl:element>
         <xsl:if test="./following-sibling::tei:div">
@@ -3614,7 +3614,7 @@
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
-        <xsl:variable name="collection">
+       <!-- <xsl:variable name="collection">
             <xsl:value-of select="'https://api.github.com/repositories/213335970/contents/editions'"/>
         </xsl:variable>
         <xsl:variable name="unparsedtext" select="unparsed-text($collection)"/>
@@ -3630,10 +3630,26 @@
             <xsl:value-of select="for $name in $names return concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $name)"/>
         </xsl:variable>
         <xsl:element name="div">
-            <!--<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-->
+            <!-\-<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-\->
             <xsl:choose>
                 <xsl:when test="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]">
                     <xsl:apply-templates select="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
+                </xsl:when>-->
+        <xsl:variable name="document-trans">
+            <xsl:choose>
+                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml'))">
+                <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="div">
+            <!--<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-->
+            <xsl:choose>
+                <xsl:when test="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]">
+                    <xsl:apply-templates select="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="p">
