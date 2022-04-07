@@ -3614,14 +3614,26 @@
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
+        <xsl:variable name="collection">
+            <xsl:value-of select="'https://api.github.com/repositories/213335970/contents/editions'"/>
+        </xsl:variable>
+        <xsl:variable name="unparsedtext" select="unparsed-text($collection)"/>
+        <xsl:variable name="names">
+            <xsl:analyze-string select="$unparsedtext"
+                regex="(\s+&quot;name&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(2)"/>
+                </xsl:matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
         <xsl:variable name="document-trans">
-            <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
+            <xsl:value-of select="for $name in $names return concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $name)"/>
         </xsl:variable>
         <xsl:element name="div">
             <!--<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-->
             <xsl:choose>
-                <xsl:when test="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]">
-                    <xsl:apply-templates select="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
+                <xsl:when test="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]">
+                    <xsl:apply-templates select="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="p">
