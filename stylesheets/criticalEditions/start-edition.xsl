@@ -889,6 +889,7 @@
                 </xsl:if>
                 <xsl:apply-templates/>
                 <xsl:if test="@xml:id">
+                    <br/>
                     <xsl:element name="div">
                     <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:element name="a">
