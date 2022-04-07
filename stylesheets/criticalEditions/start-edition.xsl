@@ -888,7 +888,7 @@
                 </xsl:if>
                 </xsl:if>
                 <xsl:apply-templates/>
-                <xsl:if test="@xml:id">
+                <xsl:if test="@xml:id and @type='canto'">
                     <br/>
                     <xsl:element name="div">
                     <xsl:attribute name="class">col-10</xsl:attribute>
@@ -1377,7 +1377,7 @@
              <xsl:choose>
                  <xsl:when test="ancestor::tei:p | ancestor::tei:ab"/>
                  <xsl:otherwise>
-                     <xsl:text>col-10</xsl:text>
+                     <xsl:text>col-8</xsl:text>
                  </xsl:otherwise>
              </xsl:choose>
             </xsl:attribute>
@@ -2907,7 +2907,8 @@
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
         test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"> <!-- .//tei:choice | .//tei:subst |  -->
-
+    
+    <div class="col-2"></div>
         <xsl:element name="div">
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
             <xsl:element name="h4">Apparatus</xsl:element>
