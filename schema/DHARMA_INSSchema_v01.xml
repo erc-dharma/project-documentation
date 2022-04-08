@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2022-04-08">Changing the values for placeName</change>
             <change who="part:axja" when="2022-04-05">Working on contraints for dates</change>
             <change who="part:axja" when="2022-04-04">Working on the list of attributes for rs</change>
             <change who="part:axja" when="2022-03-29">Updating the model for placeName</change>
@@ -3540,9 +3541,9 @@
                             <sch:rule
                                 context="tei:placeName[@type='region']">
                                 <sch:assert
-                                    test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='land'"
+                                    test="@subtype='district' or @subtype='province' or @subtype='country'"
                                     >For @type="region", the @subtype should be one of the
-                                    following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='land'</sch:assert>
+                                    following values: @subtype='district' or @subtype='province' or @subtype='country'</sch:assert>
                             </sch:rule>
                             <sch:rule
                                 context="tei:placeName[@type='settlement']">
@@ -3553,21 +3554,27 @@
                             </sch:rule>
                             <sch:rule context="tei:placeName[@type='builtPlace']"
                             ><sch:assert
-                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion'"
+                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'"
                             >For @type="builtPlace", the @subtype should be one of the following
-                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='tank' or @subtype='pavillion'</sch:assert>
+                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'</sch:assert>
                             </sch:rule>
                             <sch:rule context="tei:placeName[@type='cultivation']"
                                 ><sch:assert
-                                    test="@subtype='garden' or @subtype='cave' or @subtype='road' or @subtype='canal' or @subtype='field' or @subtype='orchard'"
+                                    test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchard'"
                                     >For @type="cultivation", the @subtype should be one of the following
-                                    values: @subtype='garden' or @subtype='cave' or @subtype='road' or @subtype='canal' or @subtype='field' or @subtype='orchard'</sch:assert>
+                                    values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus'</sch:assert>
                             </sch:rule>
+                            <sch:rule context="tei:placeName[@type='hydrographic']">
+                            <sch:assert
+                                test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal'"
+                                >For @type="hydrographic", the @subtype should be one of the following
+                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal'</sch:assert>
+                                </sch:rule>
                             <sch:rule context="tei:placeName[@type='naturalPlace']"
                                 ><sch:assert
-                                    test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='river' or @subtype='pond' or @subtype='mountain'"
+                                    test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain'"
                                     >For @type="naturalPlace", the @subtype should be one of the following
-                                    values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='river' or @subtype='pond' or @subtype='mountain'</sch:assert>
+                                    values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain'</sch:assert>
                             </sch:rule>
                         </constraint>
                     </constraintSpec>
@@ -3615,21 +3622,21 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="type" mode="change">
-                            <valList type="closed" mode="replace">
+                        <attDef ident="type" usage="rec">
+                            <valList type="open" mode="replace">
                                 <valItem ident="region"/>
                                 <valItem ident="settlement"/>
                                 <valItem ident="builtPlace"/>
                                 <valItem ident="cultivation"/>
+                                <valItem ident="hydrographic"/>
                                 <valItem ident="naturalPlace"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" mode="change">
-                            <valList type="closed" mode="replace">
+                        <attDef ident="subtype" usage="rec">
+                            <valList type="open" mode="replace">
                                 <valItem ident="province"/>
                                 <valItem ident="district"/>
                                 <valItem ident="country"/>
-                                <valItem ident="land"/>
                                 
                                 <valItem ident="town"/>
                                 <valItem ident="village"/>
@@ -3639,23 +3646,30 @@
                                 <valItem ident="temple"/>
                                 <valItem ident="monastery"/>
                                 <valItem ident="feedingHall"/>
-                                <valItem ident="tank"/>
                                 <valItem ident="pavillon"/>
                                 
                                 <valItem ident="garden"/>
-                                <valItem ident="cave"/>
-                                <valItem ident="road"/>
-                                <valItem ident="canal"/>
                                 <valItem ident="field"/>
+                                <valItem ident="fieldPaddy"/>
+                                <valItem ident="fieldMillet"/>
                                 <valItem ident="orchard"/>
+                                <valItem ident="orchardAreca"/>
+                                <valItem ident="orchardCitrus"/>
                                 
-                                <valItem ident="forest"/>
+                                <valItem ident="tank"/>
+                                <valItem ident="river"/>
+                                <valItem ident="pond"/>
+                                <valItem ident="canal"/>
+                                                                                          
+                                <valItem ident="forest"/>                             
                                 <valItem ident="wood"/>
                                 <valItem ident="grove"/>
                                 <valItem ident="tree"/>
-                                <valItem ident="river"/>
-                                <valItem ident="pond"/>
                                 <valItem ident="montain"/>
+                                <!-- 
+                                <valItem ident="cave"/>
+                                <valItem ident="road"/>
+                                -->
                             </valList>
                         </attDef>
                     </attList>
