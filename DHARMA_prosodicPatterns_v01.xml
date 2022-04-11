@@ -228,7 +228,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">upajāti</name>
 	<seg type="xml">=+-++--+-+=</seg>
@@ -242,7 +242,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
                 <item>
 	<measure unit="syllable">11</measure>
-	<name xml:lang="san-Latn">upendravajrā</name><name xml:lang="kaw-Latn">upendrabajra</name>
+	<name xml:lang="san-Latn">upendravajrā</name>
+	<name xml:lang="kaw-Latn">upendrabajra</name>
 	<seg type="xml">-+-++--+-+=</seg>
 	<seg type="prosody">⏑–⏑––⏑⏑–⏑–⏓</seg>
 	<seg type="gana"></seg>
@@ -692,7 +693,22 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">461</citedRange><citedRange unit="item">XVII.8</citedRange></bibl>
 	</listBibl>
 </item>
-		<item>
+<item>
+	<measure unit="syllable">18</measure>
+	<name xml:lang="">mr̥dukomala</name>
+	<seg type="xml">+++--+-+---+-+---=</seg>
+	<!-- wrong pattern imported from Andrea <seg type="prosody">-⏑-⏑⏑⏑-⏑⏑⏑⏑⏓</seg> -->
+	<seg type="prosody">---|⏑⏑-|⏑-⏑|⏑⏑-|⏑-⏑|⏑⏑⏓</seg>
+	<!--daba: @argr, please check. Can't locate this in Apte's appendix. -->
+	<!--argr: @daba, please check again, I have corrected some errors in xml and prosodic representations. -->
+	<seg type="gana"></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">461</citedRange><citedRange unit="item">XVIII.6</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">19</measure>
 	<name xml:lang="kaw-Latn">navaharṣa</name>
 	<seg type="xml">--+--+------+--+--=</seg>
@@ -991,19 +1007,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	</listBibl>
 </item>
 <item>
-	<measure unit="syllable">18</measure>
-	<name xml:lang="">mṛdukomala</name>
-	<seg type="xml">+-+---+----=</seg>
-	<seg type="prosody">-⏑-⏑⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: @argr, please check. Can't locate this in Apte's appendix.
-	At least, the ṛ in the name will need changing to r̥.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <item>
 	<measure unit="syllable">21</measure>
 	<name xml:lang="">kusumavilasitā</name>
               	<seg type="xml">+--+-+---+------+-+-=</seg>
