@@ -967,7 +967,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">12</measure>
-	<name xml:lang="">candravartma</name>
+	<name xml:lang="san-Latn">candravartma</name>
 	<seg type="xml">+-+---+----=</seg>
 	<seg type="prosody">-⏑-⏑||⏑⏑-⏑⏑⏑⏑⏓</seg><!--daba: spelling and metre correct, removed bars, added double bar for caesura, added XML code, added EGD entry.
 	@argr: as above, you may want to add a label in the EGD. For the caesura, I followed Apte's appendix; the sample stanza there also had a strong caesura.-->
