@@ -958,7 +958,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<name/>
 	<seg type="xml">----+--+-----=</seg>
 	<seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓</seg>
-	<seg type="gana">na-ja-ja-na-ga</seg><!--daba corrected final sa to ga-->
+	<seg type="gana">na-ja-ja-na-ga</seg>
 	<listBibl>
 	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl><!-- not recorded in Apte -->
 	<bibl><ptr target="bib:Velankar1949_01"/></bibl>
