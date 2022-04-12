@@ -695,7 +695,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">18</measure>
-	<name xml:lang="">mr̥dukomala</name>
+	<name xml:lang="kaw-Latn">mr̥dukomala</name>
 	<seg type="xml">+++--+-+---+-+---=</seg>
 	<!-- wrong pattern imported from Andrea <seg type="prosody">-⏑-⏑⏑⏑-⏑⏑⏑⏑⏓</seg> -->
 	<seg type="prosody">---⏑⏑-⏑-⏑⏑⏑-⏑-⏑⏑⏑⏓</seg>
@@ -923,7 +923,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">kusumāyudha</name>
 	<seg type="xml">----+------=</seg>
@@ -951,22 +951,21 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
+<!-- atijagatī class -->
+<item>
 	<measure unit="syllable">13</measure>
-	<name xml:lang="">atijagatī</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">⏑⏑⏑⏑-⏑⏑-⏑⏑⏑⏑⏓[need to be checked]</seg><!--daba: @argr will be needed here.
-	I've removed the bars from the template and added the XML code and syllable number.
-	Apte's appendix has no metre matching this pattern.
-	As above, I would prefer to avoid the name "atijagatī", which is the generic name for 13-syllable verse.-->
-	<seg type="gana"></seg>
+	<label type="generic" xml:lang="san-Latn">atijagatī</label>
+	<name/>
+	<seg type="xml">----+--+-----=</seg>
+	<seg type="prosody">⏑⏑⏑|⏑-⏑|⏑-⏑|⏑⏑⏑|⏓</seg>
+	<seg type="gana">na-ja-ja-na-sa</seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl><!-- not recorded -->
+	<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl><!-- not recorded -->
 	</listBibl>
 </item>
-              <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">candravartma</name>
 	<seg type="xml">+-+---+----=</seg>
