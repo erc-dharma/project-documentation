@@ -284,7 +284,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col text-col</xsl:attribute>
+                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
                 <xsl:element name="p">
                     <xsl:if test="@xml:id">
                         <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
@@ -922,10 +922,13 @@
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
         </xsl:if>
+        
     </xsl:template>
     
     <xsl:template match="tei:div[@type='metrical']">
-                <xsl:element name="p">
+                <!--<xsl:element name="div">
+                    <xsl:attribute name="class">metrical</xsl:attribute>-->
+                    <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:value-of select="parent::tei:div/@n"/>
                     <xsl:text>.</xsl:text>
@@ -934,8 +937,12 @@
                 <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template>
-                <xsl:apply-templates/>
-            </xsl:element>          
+                </xsl:element> 
+                <xsl:apply-templates/>  
+                <!--</xsl:element>-->   
+        <xsl:if test="./following-sibling::tei:div[@type='metrical']">
+            <xsl:element name="br"/>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template name="metrical-list">
@@ -1262,7 +1269,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col text-col</xsl:attribute><!-- testconteneur -->
+                <xsl:attribute name="class">col-8 text-col</xsl:attribute><!-- testconteneur -->
                 <!--<xsl:if test="ancestor::tei:item">
                     <xsl:element name="div">
                         <xsl:attribute name="class">float-center</xsl:attribute>
@@ -1277,7 +1284,12 @@
                 <xsl:element name="div">
                     <xsl:attribute name="class">
                         <xsl:text>lg</xsl:text>
-                    <xsl:if test="@met='anuṣṭubh'"><xsl:text> anustubh</xsl:text></xsl:if>
+                    <xsl:if test="@met='anuṣṭubh'">
+                        <xsl:text> anustubh</xsl:text>
+                    </xsl:if>
+                        <xsl:if test="parent::tei:div[@type='metrical']/@met='anuṣṭubh'">
+                            <xsl:text> anustubh</xsl:text>
+                        </xsl:if>
                         <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
                     </xsl:attribute>
                     <xsl:if test="@xml:id">
@@ -1306,6 +1318,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template match="tei:lg" mode="in-modal">
         <xsl:element name="div">
             <xsl:attribute name="class">lg</xsl:attribute>
@@ -1784,7 +1797,7 @@
             <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col text-col</xsl:attribute>
+                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
                 <xsl:copy-of select="$p-line"/>
@@ -2704,7 +2717,7 @@
                 <xsl:value-of select="$title"/>
             </title>
             
-            <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="content-type" content="text/html; charset=UTF-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>

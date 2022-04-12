@@ -55,7 +55,6 @@ body{
     height:100%;
     width: 100%;
     position: relative;
-    display: grid;
     overflow-x: hidden;
 }
 .container {
@@ -339,17 +338,17 @@ ul.sgt-index {
   display: inline-block;
   margin-left:1rem;
   padding-left:2rem;
-}
+}*/
 
-.lg:not(.anustubh) .l:last-child {
+/*.lg:not(.anustubh) .l:last-child {
   display: inline;
   margin-left: 1rem;
   padding-left: 2rem; 
   /\*text-indent:-2rem;*\/
-}*/
+}
 .l:last-child, .l:last-of-type {
   margin-bottom:10px;
-}
+}*/
 
 /*.lg .l+.lg .l:last-child {
   display:inline;
@@ -706,6 +705,7 @@ p{
     right: -950px;
     position:relative;
 }
+
 .text-muted .siglum {
     color: grey;
 }
