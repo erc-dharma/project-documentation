@@ -30,6 +30,13 @@
                   <xsl:text>, </xsl:text>
                   <xsl:value-of select="current-date()"/>
                   </xsl:element>
+                  <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Editors:  
+                  </xsl:element>
+                  <xsl:element name="p">
+                    <xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>
+                  </xsl:element>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
               <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
