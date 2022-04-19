@@ -1297,9 +1297,16 @@
                     <xsl:if test="@met='anuṣṭubh'">
                         <xsl:text> anustubh</xsl:text>
                     </xsl:if>
+                        <xsl:if test="@met='pādānuṣṭubh'">
+                            <xsl:text> padanustubh</xsl:text>
+                        </xsl:if>
                         <xsl:if test="parent::tei:div[@type='metrical']/@met='anuṣṭubh'">
                             <xsl:text> anustubh</xsl:text>
                         </xsl:if>
+                        <xsl:if test="parent::tei:div[@type='metrical']/@met='pādānuṣṭubh'">
+                            <xsl:text> padanustubh</xsl:text>
+                        </xsl:if>
+                        
                         <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
                     </xsl:attribute>
                     <xsl:if test="@xml:id">
@@ -1312,6 +1319,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
                         <xsl:choose>
+                            <xsl:when test="matches(child::tei:l[1]/@n, '\d+') and count(ancestor::tei:div/child::tei:lg) &gt; 1"/>
                             <xsl:when test="contains(@n, '.')">
                                 <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
                             </xsl:when>
@@ -2736,8 +2744,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 
                 <!-- site-specific css !-->
-                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>-->
-                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
+                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
