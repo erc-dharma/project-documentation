@@ -1144,6 +1144,15 @@
                 <xsl:text>] </xsl:text>
             </xsl:if>-->
             <xsl:copy-of select="$verse-line"/>
+            <!-- display for lines numbers only if Arabic numeral -->
+            <xsl:if test="matches(@n, '\d+')">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
+                    <xsl:text>[line </xsl:text>
+                    <xsl:value-of select="@n"/>
+                    <xsl:text>] </xsl:text>
+                </xsl:element>
+            </xsl:if>
         </xsl:element>
     </xsl:template>
     
