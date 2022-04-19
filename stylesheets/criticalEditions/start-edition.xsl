@@ -1171,7 +1171,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
                         <xsl:element name="span">
-                            <xsl:attribute name="class">fake-lem</xsl:attribute>
+                            <xsl:attribute name="class">fake-lem-unmetrical</xsl:attribute>
                             <xsl:call-template name="fake-lem-making"/>
                         </xsl:element>
                         <xsl:element name="hr"/>
@@ -3019,7 +3019,7 @@
         <xsl:if test="$location = 'apparatus'">
             <xsl:element name="a">
                 <xsl:attribute name="class">
-                    <xsl:text>move-to-right</xsl:text>
+                            <xsl:text>move-to-right</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="data-toggle">popover</xsl:attribute>
                 <xsl:attribute name="data-html">true</xsl:attribute>
