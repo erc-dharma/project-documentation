@@ -980,6 +980,7 @@
             </xsl:otherwise>
         </xsl:choose>
         <xsl:choose>
+            <xsl:when test="contains($prosody//tei:item[tei:name =$metrical], 'free')"/>
             <xsl:when test="$prosody//tei:item[tei:name =$metrical]">
                 <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='xml']/node()"/>
                 <xsl:text>: </xsl:text>
@@ -1300,13 +1301,18 @@
                         <xsl:if test="@met='pādānuṣṭubh'">
                             <xsl:text> padanustubh</xsl:text>
                         </xsl:if>
+                        <xsl:if test="contains(@met, 'free')">
+                            <xsl:text> freeprosody</xsl:text>
+                        </xsl:if>
                         <xsl:if test="parent::tei:div[@type='metrical']/@met='anuṣṭubh'">
                             <xsl:text> anustubh</xsl:text>
                         </xsl:if>
                         <xsl:if test="parent::tei:div[@type='metrical']/@met='pādānuṣṭubh'">
                             <xsl:text> padanustubh</xsl:text>
                         </xsl:if>
-                        
+                        <xsl:if test="contains(parent::tei:div[@type='metrical']/@met, 'free')">
+                            <xsl:text> freeprosody</xsl:text>
+                        </xsl:if>
                         <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
                     </xsl:attribute>
                     <xsl:if test="@xml:id">

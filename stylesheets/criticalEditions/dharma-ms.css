@@ -331,11 +331,14 @@ ul.sgt-index {
 .anustubh .l:last-child {display: inline-block; clear: left;}
 
 /* Format individual lines as block elements */
-.lg:not(.anustubh):not(.padanustubh) .l:nth-child(odd){ display: block; clear: left;}
-.lg:not(.anustubh):not(.padanustubh) .l:last-child {display: inline-block; clear: left;}
+.lg:not(.anustubh):not(.padanustubh):not(.freeprosody) .l:nth-child(odd){ display: block; clear: left;}
+.lg:not(.anustubh):not(.padanustubh):not(.freeprosody) .l:last-child {display: inline-block; clear: left;}
 
 .padanustubh .l:nth-child(odd){ display: block; clear: left;}
 .padanustubh .l {display: inline-block; clear: left;}
+
+.freeprosody .l:nth-child(odd){ display: block; clear: left;}
+.freeprosody .l {display: inline-block; clear: left;}
 /*.lg:not(.anustubh) .l:not(:last-child) {
   display: inline-block;
   margin-left:1rem;
