@@ -833,7 +833,7 @@
     </xsl:template>
     
     <!--  div ! -->
-    <xsl:template match="tei:div[not(@type='metrical')]">
+    <xsl:template match="tei:div[not(@type='metrical'or @type='section')]">
         <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
@@ -848,7 +848,7 @@
             </xsl:choose>-->
                 <xsl:choose>
                     <xsl:when test="@type='interpolation'">
-                        <xsl:value-of select="preceding::tei:div[1]/@n"/>
+                        <xsl:value-of select="preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
                         <xsl:text>*. </xsl:text>
                     </xsl:when>
                     <xsl:when test="@type='canto'"/>
@@ -925,10 +925,11 @@
         
     </xsl:template>
     
-    <xsl:template match="tei:div[@type='metrical']">
+    <xsl:template match="tei:div[@type='metrical' or @type='section']">
                 <!--<xsl:element name="div">
                     <xsl:attribute name="class">metrical</xsl:attribute>-->
-                    <xsl:element name="p">
+        <xsl:if test="@type='metrical'">
+            <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:value-of select="parent::tei:div/@n"/>
                     <xsl:text>.</xsl:text>
@@ -937,10 +938,10 @@
                 <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template>
-                </xsl:element> 
+                </xsl:element> </xsl:if>
                 <xsl:apply-templates/>  
                 <!--</xsl:element>-->   
-        <xsl:if test="./following-sibling::tei:div[@type='metrical']">
+        <xsl:if test="./following-sibling::tei:div[@type='metrical' or @type='section']">
             <xsl:element name="br"/>
         </xsl:if>
     </xsl:template>
@@ -1759,7 +1760,7 @@
             <xsl:element name="small">
                         <xsl:element name="span">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
-                    <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation'])">
+                            <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical'or @type='section'])">
                         <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
@@ -1778,7 +1779,7 @@
                                 <xsl:text>.</xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[1]/@n"/>
+                                <xsl:value-of select="ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
                                 <xsl:text>*.</xsl:text>
                             </xsl:otherwise>
                         </xsl:choose>
@@ -2726,8 +2727,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
