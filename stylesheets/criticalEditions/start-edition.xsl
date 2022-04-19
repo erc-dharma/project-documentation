@@ -611,7 +611,7 @@
             </xsl:attribute>
             <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                 <xsl:value-of select="$app-num"/></xsl:attribute>
-            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/></xsl:attribute>
+            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l]"/></xsl:attribute>
             <xsl:attribute name="id">
                 <xsl:text>from-app-</xsl:text>
                 <xsl:value-of select="$app-num"/>
@@ -1703,7 +1703,7 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="tei:note[@type='prosody']"/>
-            <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+            <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>
@@ -1716,7 +1716,7 @@
     
     <xsl:template match="tei:note" mode="modals">
         <xsl:variable name="apparatus-note">
-            <xsl:if test="self::tei:note[position()=last()][parent::tei:p or parent::tei:lg or not(@type='parallels' or parent::tei:app or @type='altLem')] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+            <xsl:if test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem')] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                 <xsl:element name="span">
                     <xsl:element name="span">
                         <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
@@ -2192,10 +2192,10 @@
                     </xsl:attribute>
                     <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/></xsl:attribute>
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/></xsl:attribute>
                     
                     <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                     <xsl:text>)</xsl:text>
                 </xsl:element>
             </xsl:when>
@@ -2943,7 +2943,7 @@
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:if
-        test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"> <!-- .//tei:choice | .//tei:subst |  -->
+        test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"> <!-- .//tei:choice | .//tei:subst |  -->
     
     <div class="col-2"></div>
         <xsl:element name="div">
@@ -2952,7 +2952,7 @@
                 
       <div id="apparatus">
         <xsl:for-each
-            select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]">
+            select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]">
 
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:call-template name="dharma-app">
@@ -3013,7 +3013,7 @@
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
                    <!-- <xsl:value-of select="$app-num"/>-->
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | //tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                 </a>
             </xsl:if>
         <xsl:if test="$location = 'apparatus'">
@@ -3028,7 +3028,7 @@
                 </xsl:attribute>
                 <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                     <xsl:value-of select="$app-num"/></xsl:attribute>
-                <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart'] | .//tei:l[@real]"></xsl:number></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart'] | .//tei:l[@real]"></xsl:number></xsl:attribute>
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
@@ -3037,7 +3037,7 @@
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                 <xsl:text>(</xsl:text>
-                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
+                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                 <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:if>
@@ -3070,7 +3070,7 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:choose>
-            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst) or //tei:note[last()][parent::tei:p or parent::tei:lg] ">
+            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst) or //tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] ">
                 <!-- either <br/> in htm-tpl-apparatus or \r\n in txt-tpl-apparatus -->
                 <xsl:call-template name="lbrk-app"/>
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
@@ -3639,6 +3639,19 @@
                     <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:lg/child::tei:l[last()]), '\s\|'), ' ')"/>
                 </xsl:when>
                 <xsl:otherwise><xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:lg/child::tei:l[last()]), ' ')"/></xsl:otherwise></xsl:choose>
+        </xsl:when>
+        <xsl:when test="parent::tei:l">
+            <xsl:value-of select="substring-before(parent::tei:l, ' ')"/>
+            <xsl:text> [&#8230;] </xsl:text>
+            <xsl:choose>
+                <xsl:when test="ends-with(parent::tei:l, '|')">
+                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l/text()), '\s\|'), ' ')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!-- solution très sale pour isoler la fin du vers et ne pas prendre en compte la notenoeud enfant de l. -->
+                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l/text()), ' ')"/>
+                    </xsl:otherwise>
+            </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::tei:ab">
             <xsl:value-of select="."/>
