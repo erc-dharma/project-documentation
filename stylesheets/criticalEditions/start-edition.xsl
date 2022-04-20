@@ -3688,11 +3688,12 @@
             <xsl:text> [&#8230;] </xsl:text>
             <xsl:choose>
                 <xsl:when test="ends-with(parent::tei:l, '|')">
-                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l/text()), '\s\|'), ' ')"/>
+                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l), '\s\|'), ' ')"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <!-- solution très sale pour isoler la fin du vers et ne pas prendre en compte la notenoeud enfant de l. -->
-                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l/text()), ' ')"/>
+                    <!-- je ne peux pas utiliser text(), si présence de app, ce n'est pas capable de prendre en compte le texte -->
+                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l), ' ')"/>
                     </xsl:otherwise>
             </xsl:choose>
         </xsl:when>
