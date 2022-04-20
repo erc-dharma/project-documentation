@@ -1125,7 +1125,25 @@
                 <xsl:text>l translit</xsl:text>
                 <!--<xsl:text> </xsl:text>
                     <xsl:value-of select="$script"/>-->
+                <xsl:if test="child::tei:note">
+                    <xsl:text> l-last-note-verseline</xsl:text>
+                </xsl:if>
             </xsl:attribute>
+           
+                <!-- solution avec un décalaga dans le comptage que je n'arrive pas à expliquer - je dois encore y réfléchir pour le moment solution temporaire qui fonctionne à la condition qu'il y ait qu'une note de vers dans chaque stanza -->
+                <!--
+                     <xsl:if test="child::tei:note">
+                     <xsl:variable name="app-num">
+                    <xsl:value-of select="child::tei:note/name()"/>
+                    <xsl:number level="any" format="0001" count="tei:note"/>
+                </xsl:variable>
+                        <xsl:attribute name="data-app-id">
+                            <xsl:text>from-app-</xsl:text>
+                            <xsl:value-of select="$app-num"/>
+                        </xsl:attribute>
+                </xsl:if>-->
+             
+            
             <!-- deleting tjhe previous display for tei:l[@real] -->
             <!--<xsl:if test="@real">
                 <xsl:text>[</xsl:text>
@@ -1161,6 +1179,7 @@
         <xsl:apply-templates/>
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
+                    <xsl:with-param name="type" select="'lem-verseline-real'"/>
                 </xsl:call-template>
     </xsl:template>
     
@@ -1171,7 +1190,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
                         <xsl:element name="span">
-                            <xsl:attribute name="class">fake-lem-unmetrical</xsl:attribute>
+                            <xsl:attribute name="class">fake-lem</xsl:attribute>
                             <xsl:call-template name="fake-lem-making"/>
                         </xsl:element>
                         <xsl:element name="hr"/>
@@ -1706,6 +1725,19 @@
             <xsl:when test="self::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
+                            <xsl:with-param name="type">
+                                <xsl:choose>
+                                    <xsl:when test="self::tei:note[position() = last()][parent::tei:l]">
+                                        <xsl:text>lem-last-note-verseline</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="self::tei:note[position() = last()][parent::tei:lg]">
+                                        <xsl:text>lem-last-note-stanza</xsl:text>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:text>lem-last-note</xsl:text>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:with-param>
                         </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
@@ -2178,9 +2210,13 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="self::tei:span[@type='omissionStart']">
-                <xsl:element name="a">
+                <xsl:call-template name="app-link">
+                    <xsl:with-param name="location" select="'apparatus'"/>
+                    <xsl:with-param name="type" select="'lem-omissionStart'"/>
+                </xsl:call-template>
+                <!--<xsl:element name="a">
                     <xsl:attribute name="class">lem-omissionStart move-to-right</xsl:attribute>
-                    <!--<xsl:attribute name="tabindex">0</xsl:attribute>-->
+                    <!-\-<xsl:attribute name="tabindex">0</xsl:attribute>-\->
                     <xsl:attribute name="data-toggle">popover</xsl:attribute>
                     <xsl:attribute name="data-html">true</xsl:attribute>
                     <xsl:attribute name="id">
@@ -2197,7 +2233,7 @@
                     <xsl:text>(</xsl:text>
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                     <xsl:text>)</xsl:text>
-                </xsl:element>
+                </xsl:element>-->
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
@@ -2772,7 +2808,7 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
-        <!--<script src="./../criticalEditions/loader.js"></script>-->
+        <!--<script src="../criticalEditions/loader.js"></script>-->
     </xsl:template>
        
     <!-- side bar - table of contents -->
@@ -2983,6 +3019,7 @@
     <xsl:template name="app-link">
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
+        <xsl:param name="type"/>
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
         
         <xsl:if test="not((local-name() = 'choice' or local-name() = 'subst')
@@ -2991,9 +3028,10 @@
                 <xsl:value-of select="name()"/>
                 <xsl:number level="any" format="0001"/>
             </xsl:variable>
-                <xsl:call-template name="generate-app-link">
+                    <xsl:call-template name="generate-app-link">
                     <xsl:with-param name="location" select="$location"/>
                     <xsl:with-param name="app-num" select="$app-num"/>
+                    <xsl:with-param name="type" select="$type"/>
                 </xsl:call-template>
             </xsl:if>
     </xsl:template>
@@ -3001,6 +3039,7 @@
     <xsl:template name="generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
+        <xsl:param name="type"/>
             <xsl:if test="$location = 'bottom'">
                 <a>
                     <xsl:attribute name="id">
@@ -3020,6 +3059,10 @@
             <xsl:element name="a">
                 <xsl:attribute name="class">
                             <xsl:text>move-to-right</xsl:text>
+                    <xsl:if test="$type !=''">
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="$type"/>
+                    </xsl:if>
                 </xsl:attribute>
                 <xsl:attribute name="data-toggle">popover</xsl:attribute>
                 <xsl:attribute name="data-html">true</xsl:attribute>

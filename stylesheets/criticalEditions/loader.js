@@ -35,9 +35,9 @@ $(document).ready(function() {
     $('.move-to-right').each(function() {
         $(this).prev('div').children('.apparat-col').append(this);
     }); 
-    $('.lem-last-note').each(function() {
+/*    $('.lem-last-note').each(function() {
         $(this).parents('div').children('.apparat-col').append(this);
-    }); 
+    });*/ 
     $("#sidebar-wrapper").mCustomScrollbar({
          theme: "minimal"
     });
@@ -69,6 +69,24 @@ $(document).ready(function() {
   },
   mouseout: function () {
     $(this).parent('div').prev('.text-col').children('p').css({'background-color': 'transparent'});
+    }
+     });
+         /* Highlighting function for lem last note stanza */
+    $('.lem-last-note-stanza').on({
+  mouseenter: function () {
+    $(this).parent('div').prev('.text-col').find('.l').css({'background-color': 'yellow'});
+  },
+  mouseout: function () {
+    $(this).parent('div').prev('.text-col').find('.l').css({'background-color': 'transparent'});
+    }
+     });
+              /* Highlighting function for lem last note verseline */
+        $('.lem-last-note-verseline').on({
+  mouseenter: function () {
+    $(this).parent('div').prev('.text-col').find('.l-last-note-verseline').css({'background-color': 'yellow'});
+  },
+  mouseout: function () {
+    $(this).parent('div').prev('.text-col').find('.l-last-note-verseline').css({'background-color': 'transparent'});
     }
      });
     /* Highlighting function for omission span */
