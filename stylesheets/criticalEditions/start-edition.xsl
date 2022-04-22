@@ -1935,8 +1935,8 @@
     <!-- ptr -->
     <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
         <xsl:variable name="MSlink" select="@target"/>
-        <xsl:element name="span">
-            <xsl:attribute name="class">ref-siglum</xsl:attribute>
+       <!-- <xsl:element name="span">
+            <xsl:attribute name="class">ref-siglum</xsl:attribute>-->
             <xsl:choose>
                 <xsl:when test="contains($MSlink, ' ')">
                     <xsl:variable name="first-item"
@@ -1956,8 +1956,9 @@
                     </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
-        </xsl:element>
+        <!--</xsl:element>-->
     </xsl:template>
+    
     <xsl:template name="content-ptr">
         <xsl:param name="MSlink"/>
         <xsl:variable name="rootId" select="//tei:TEI/@xml:id"/>
@@ -3702,16 +3703,24 @@
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:text> [&#8230;] </xsl:text>
-            <xsl:choose>
-                <xsl:when test="ends-with(parent::tei:l, '|')">
-                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l), '\s\|'), ' ')"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <!-- solution très sale pour isoler la fin du vers et ne pas prendre en compte la notenoeud enfant de l. -->
-                    <!-- je ne peux pas utiliser text(), si présence de app, ce n'est pas capable de prendre en compte le texte -->
-                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l), ' ')"/>
-                </xsl:otherwise>
-            </xsl:choose>
+                    <xsl:choose>
+                        <xsl:when test="parent::tei:l/child::node()[last()-1][self::text()]">
+                            <xsl:choose>
+                                <xsl:when test="ends-with(parent::tei:l/child::node()[last()-1][self::text()], '|')">
+                                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), '\s\|'), ' ')"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), ' ')"/>
+                            </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                        <xsl:when test="parent::tei:l/tei:*[last()-1][local-name() ='app']">
+                            <xsl:apply-templates select="parent::tei:l/tei:*[last()-1]/tei:lem"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), ' ')"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::tei:ab">
             <xsl:value-of select="."/>
