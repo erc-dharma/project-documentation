@@ -35,6 +35,12 @@
             <xsl:copy-of select="."/>
         </xsl:for-each>  
     </xsl:function>
+    <xsl:function name="functx:first-node" as="node()?"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="nodes" as="node()*"/>
+        <xsl:sequence select="($nodes/.)[1] "/>
+        
+    </xsl:function>
     
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
@@ -3684,7 +3690,17 @@
                 <xsl:otherwise><xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:lg/child::tei:l[last()]), ' ')"/></xsl:otherwise></xsl:choose>
         </xsl:when>
         <xsl:when test="parent::tei:l">
-            <xsl:value-of select="substring-before(parent::tei:l, ' ')"/>
+            <xsl:choose>
+                <xsl:when test="parent::tei:l/child::node()[1][self::text()]">
+                    <xsl:value-of select="substring-before(parent::tei:l/text(), ' ')"/>
+                </xsl:when>
+                <xsl:when test="parent::tei:l/child::node()[1][self::tei:app]">
+                    <xsl:value-of select="parent::tei:l/tei:app[1]/tei:lem"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="substring-before(parent::tei:l, ' ')"/>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:text> [&#8230;] </xsl:text>
             <xsl:choose>
                 <xsl:when test="ends-with(parent::tei:l, '|')">
@@ -3694,7 +3710,7 @@
                     <!-- solution très sale pour isoler la fin du vers et ne pas prendre en compte la notenoeud enfant de l. -->
                     <!-- je ne peux pas utiliser text(), si présence de app, ce n'est pas capable de prendre en compte le texte -->
                     <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l), ' ')"/>
-                    </xsl:otherwise>
+                </xsl:otherwise>
             </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::tei:ab">
@@ -3702,6 +3718,7 @@
         </xsl:when>
     </xsl:choose>
 </xsl:template>
+    
     
     <!-- tpl-translation -->
     <xsl:template name="tpl-translation">
