@@ -3709,12 +3709,13 @@
         </xsl:when>
         <xsl:when test="parent::tei:lg">
             <xsl:choose>
-                <xsl:when test="parent::tei:lg/child::tei:l[1]/node()[1][self::text()]">
-                    <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1]/text(), ' ')"/>
-                </xsl:when>
                 <xsl:when test="parent::tei:lg/child::tei:l[1]/node()[1][self::tei:app]">
                     <xsl:value-of select="parent::tei:lg/child::tei:l[1]/tei:app[1]/tei:lem"/>
                 </xsl:when>
+                <xsl:when test="parent::tei:lg/child::tei:l[1]/node()[1][self::text()]">
+                    <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1]/text(), ' ')"/>
+                </xsl:when>
+                
                 <xsl:otherwise>
                     <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
                 </xsl:otherwise>
