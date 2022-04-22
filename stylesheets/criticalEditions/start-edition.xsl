@@ -3665,21 +3665,26 @@
         <xsl:when test="parent::tei:p">
             <xsl:value-of select="substring-before(parent::tei:p, ' ')"/>       
             <xsl:text> [&#8230;] </xsl:text>
-            <xsl:choose>
-                <xsl:when test="parent::tei:p/tei:*[last()-1]/not(text())">
                     <xsl:choose>
-                        <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']">
-                            <xsl:apply-templates select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
+                        <xsl:when test="parent::tei:p/child::node()[last()-1][self::text()]">
+                            <xsl:choose>
+                                <!-- special condition si la chaîne se termine par un simple . -->
+                                <xsl:when test="parent::tei:p/child::node()[last()-1][self::text()] = '.'">
+                                    <xsl:value-of select="functx:substring-after-last(parent::tei:p/tei:app[last()]/tei:lem, ' ')"/>
+                                    <xsl:text>.</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:p/child::node()[last()-1][self::text()]), ' ')"/></xsl:otherwise>
+                            </xsl:choose>
                         </xsl:when>
+                        <xsl:when test="parent::tei:p/tei:*[last()-1][local-name() ='app']">
+                            <xsl:value-of select="parent::tei:p/tei:*[last()-1]/tei:lem"/>
+                        </xsl:when>
+                        
                         <xsl:otherwise>
-                            <xsl:value-of select="parent::tei:p/tei:*[last()-1]"/>
+                            <xsl:value-of select="functx:substring-after-last(parent::tei:p, ' ')"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="functx:substring-after-last(parent::tei:p, ' ')"/>
-                </xsl:otherwise>
-            </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::tei:lg">
             <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
