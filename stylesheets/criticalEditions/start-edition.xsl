@@ -3687,13 +3687,52 @@
                     </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::tei:lg">
-            <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
+            <xsl:choose>
+                <xsl:when test="parent::tei:lg/child::tei:l[1]/node()[1][self::text()]">
+                    <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1]/text(), ' ')"/>
+                </xsl:when>
+                <xsl:when test="parent::tei:lg/child::tei:l[1]/node()[1][self::tei:app]">
+                    <xsl:value-of select="parent::tei:lg/child::tei:l[1]/tei:app[1]/tei:lem"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="substring-before(parent::tei:lg/child::tei:l[1], ' ')"/>
+                </xsl:otherwise>
+            </xsl:choose>   
             <xsl:text> [&#8230;] </xsl:text>
             <xsl:choose>
+                <xsl:when test="parent::tei:lg/child::tei:l[last()]/descendant::node()[last()][self::text()]">
+                    <xsl:choose>
+                        <xsl:when test="ends-with(normalize-space(parent::tei:lg/child::tei:l[last()]), '||')">
+                            
+                            <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(parent::tei:lg/child::tei:l[last()]/descendant::node()[last()][self::text()], '\s\|\|'), ' ')"/>
+                            <xsl:text> ||</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="ends-with(normalize-space(parent::tei:lg/child::tei:l[last()]), '|')">
+                            <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:lg/child::tei:l[last()]/descendant::node()[last()][self::text()]), '\s\|'), ' ')"/>
+                                <xsl:text> |</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:lg/child::tei:l[last()]/descendant::node()[last()][self::text()]), ' ')"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="parent::tei:lg/child::tei:l[last()]/tei:*[last()][local-name() ='app']">
+                    <xsl:apply-templates select="parent::tei:lg/child::tei:l[last()]/tei:*[last()]/tei:lem"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:lg/child::tei:l[last()]/descendant::node()[last()][self::text()]), ' ')"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            <!--<xsl:choose>
                 <xsl:when test="ends-with(parent::tei:lg/child::tei:l[last()], '|')">
                     <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:lg/child::tei:l[last()]), '\s\|'), ' ')"/>
                 </xsl:when>
-                <xsl:otherwise><xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:lg/child::tei:l[last()]), ' ')"/></xsl:otherwise></xsl:choose>
+                <xsl:when test="ends-with(parent::tei:lg/child::tei:l[last()], '||')">
+                    <xsl:value-of select="functx:substring-before-last-match(normalize-space(parent::tei:lg/child::tei:l[last()]), '\s\|\|')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:lg/child::tei:l[last()]), ' ')"/></xsl:otherwise>
+            </xsl:choose>-->
         </xsl:when>
         <xsl:when test="parent::tei:l">
             <xsl:choose>
@@ -3711,9 +3750,14 @@
                     <xsl:choose>
                         <xsl:when test="parent::tei:l/child::node()[last()-1][self::text()]">
                             <xsl:choose>
+                             <xsl:when test="ends-with(parent::tei:l/child::node()[last()-1][self::text()], '||')">
+                                    <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), '\s\|\|'), ' ')"/>
+                                 <xsl:text> ||</xsl:text>
+                            </xsl:when>
                                 <xsl:when test="ends-with(parent::tei:l/child::node()[last()-1][self::text()], '|')">
                                     <xsl:value-of select="functx:substring-after-last(functx:substring-before-last-match(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), '\s\|'), ' ')"/>
-                            </xsl:when>
+                                    <xsl:text> |</xsl:text>
+                                </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), ' ')"/>
                             </xsl:otherwise>
