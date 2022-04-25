@@ -545,7 +545,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">praharaṇakalikā</name>
 	<!--@zapa: it seems that you have the wrong spelling praharaṇakalika in your CK file: please correct it.-->
@@ -558,7 +558,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">vasantatilakā</name>
 	<name xml:lang="kaw-Latn">basantatilaka</name>
@@ -810,7 +810,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">21</measure>
-	<name xml:lang="san-Latn">sragdharā</name><name xml:lang="kaw-Latn">sragdhara</name>
+	<name xml:lang="san-Latn">sragdharā</name>
+	<name xml:lang="kaw-Latn">sragdhara</name>
 	<seg type="xml">++++-++------++-++-+=</seg>
 	<seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg>
 	<seg type="gana"></seg>
@@ -843,6 +844,18 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.1</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">22</measure>
+	<name xml:lang="kaw-Latn">madraka</name>
+	<seg type="xml">+--+-+---+-+----+----=</seg>
+	<seg type="prosody">–⏑⏑|–⏑–|⏑⏑⏑|–⏑–|⏑⏑⏑|⏑-⏑|⏑⏑⏑|⏓</seg>
+	<seg type="gana">bha-ra-na-ra-na-ja-na-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.6</citedRange></bibl>
 	</listBibl>
 </item>
 <item>
@@ -915,10 +928,10 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">25</measure>
 	<name xml:lang="kaw-Latn">vidyutkara</name>
 	<seg type="xml">+++--+-+---+------+-+---=</seg>
-	<seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+	<seg type="prosody">–––|⏑⏑–|⏑–⏑|⏑⏑–|⏑⏑⏑|⏑⏑⏑|–⏑–|⏑⏑⏑|⏓</seg>
 	<seg type="gana">ma-sa-ja-sa-na-na-ra-na-ga</seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--daba 20220425 verified not in Apte--></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.5</citedRange></bibl>
 		</listBibl>
