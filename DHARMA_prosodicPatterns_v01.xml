@@ -893,7 +893,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">22</measure>
 	<name xml:lang="kaw-Latn">kilayu anəḍəṅ</name>
 	<seg type="xml">++------+-+---+------=</seg>
-	<seg type="prosody">––⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑-⏑⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="prosody">––⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
