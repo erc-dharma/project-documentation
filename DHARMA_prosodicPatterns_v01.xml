@@ -352,7 +352,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">jagatī</name>
 	<seg type="xml">no data available</seg><!-- see daba comment at triṣṭubh -->
@@ -429,7 +429,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">12</measure>
-	<name xml:lang="san-Latn">pramitākṣarā</name><name xml:lang="kaw-Latn">bramitākṣara</name>
+	<name xml:lang="san-Latn">pramitākṣarā</name>
+	<name xml:lang="kaw-Latn">bramitākṣara</name>
 	<seg type="xml">--+-+---+--=</seg>
 	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana">sa-ja-sa-sa</seg>
@@ -437,6 +438,18 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">I.A.12.9</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.11</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">jaloddhatagati</name>
+	<seg type="xml">-+---+-+---=</seg>
+	<seg type="prosody">⏑–⏑⏑⏑–||⏑–⏑⏑⏑⏓</seg>
+	<seg type="gana">ja-sa-ja-sa</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">I.A.12.4</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.14</citedRange></bibl>
 	</listBibl>
 </item>
 <item>
@@ -993,18 +1006,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		</listBibl>
 </item>
 <!-- additions from Zaki's file -->
-<item>
-	<measure unit="syllable">12</measure>
-	<name xml:lang="">jaloddhatagati</name>
-	<seg type="xml">-+---+-+---=</seg>
-	<seg type="prosody">⏑–⏑⏑⏑–||⏑–⏑⏑⏑⏓</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">I.A.12.4</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">kusumāyudha</name>
