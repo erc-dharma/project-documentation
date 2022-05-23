@@ -82,7 +82,19 @@
         <body>
 
             <list>
-                <item>
+
+
+<item>
+	<measure unit="syllable">1</measure>
+	<name xml:lang="kaw-Latn">nanda</name>
+	<seg type="xml">=</seg>
+	<seg type="prosody">⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">7</measure>
 	<name xml:lang="san-Latn">sumānikā</name>
 	<seg type="xml">+-+-+-=</seg>
@@ -497,9 +509,9 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">11</citedRange><citedRange unit="item">I.B.3</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-									</listBibl>
-								</item>
-                <item>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="san-Latn">mañjubhāṣiṇī</name>
 	<seg type="xml">--+-+---+-+-=</seg>
@@ -511,7 +523,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="san-Latn">mattamayūra</name>
 	<seg type="xml">+++++--++--+=</seg>
@@ -523,7 +535,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="san-Latn">praharṣiṇī</name>
 	<seg type="xml">+++----+-+-+=</seg>
@@ -535,7 +547,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="san-Latn">rucirā</name>
 	<seg type="xml">-+-+----+-+-=</seg>
@@ -547,7 +559,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">asaṁbādhā</name>
 	<seg type="xml">+++++------++=</seg>
@@ -621,7 +633,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">459</citedRange><citedRange unit="item">XVI.1</citedRange></bibl>
 </listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="san-Latn">hariṇī</name>
 	<seg type="xml">-----+++++-+--+-=</seg>
@@ -633,7 +645,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="san-Latn">mandākrāntā</name>
 	<seg type="xml">++++-----++-++-+=</seg>
@@ -739,7 +751,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">462</citedRange><citedRange unit="item">XIX.1</citedRange></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">19</measure>
 	<name xml:lang="san-Latn">śārdūlavikrīḍita</name>
 	<seg type="xml">+++--+-+---+++-++-=</seg>
@@ -751,7 +763,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-                <item>
+<item>
 	<measure unit="syllable">19</measure>
 	<name xml:lang="san-Latn">sumadhurā</name>
 	<seg type="xml">++++-++-----+++---=</seg>
@@ -1090,7 +1102,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">10</measure>
 	<name xml:lang="">tvaritagati</name>
 	<seg type="xml">----+----=</seg>
-              	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑⏑⏓</seg>
+  <seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
@@ -1123,8 +1135,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-                  <measure unit="syllable"/>
+<item>
+  <measure unit="syllable"/>
 	<name xml:lang="">vaitālīya</name>
 	<seg type="xml">6|+-+-=/8|+-+-=</seg>
 	<seg type="prosody">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg>
@@ -1135,8 +1147,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-                  <measure unit="syllable"/>
+<item>
+<measure unit="syllable"/>
 	<name xml:lang="">aupacchandasika</name>
 	<seg type="xml">6|+-+-+=/8|+-+-+=</seg>
 	<seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg>
@@ -1147,8 +1159,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-              <item>
-                  <measure unit="syllable"/>
+<item>
+  <measure unit="syllable"/>
 	<name xml:lang="">āpātalikā</name>
 	<seg type="xml">6|+--+=/8|+--+=</seg>
 	<seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg>
