@@ -945,7 +945,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<name xml:lang="san-Latn">aśvalalita</name>
 	<name xml:lang="kaw-Latn">aśvalalita</name>
 	<seg type="xml">----+-+---+||-+---+-+---=</seg>
-       <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–||⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+  <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–||⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
 	<seg type="gana">na-ja-bha-ja-bha-ja-bha-la-ga</seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="section">II.I.23</citedRange></bibl>
