@@ -89,7 +89,7 @@
 	<name xml:lang="kaw-Latn">nanda</name>
 	<seg type="xml">=</seg>
 	<seg type="prosody">⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -99,7 +99,7 @@
 	<name xml:lang="kaw-Latn">bhadra</name>
 	<seg type="xml">+=</seg>
 	<seg type="prosody">–⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -111,7 +111,7 @@
 	<!--zapa: The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".-->
 	<seg type="xml">++=</seg>
 	<seg type="prosody">–-⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -121,7 +121,7 @@
 	<name xml:lang="kaw-Latn">vanamr̥gī</name>
 	<seg type="xml">+++=</seg>
 	<seg type="prosody">–––⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -131,7 +131,7 @@
 	<name xml:lang="kaw-Latn">vijayanti</name>
 	<seg type="xml">+--+=</seg>
 	<seg type="prosody">–⏑⏑-⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -141,7 +141,7 @@
 	<name xml:lang="kaw-Latn">tanumadhya</name>
 	<seg type="xml">++--+=</seg>
 	<seg type="prosody">––⏑⏑–⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -154,7 +154,7 @@
 	<seg type="xml">----+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏓</seg>
 	<!--zapa: Zoetmulder in Kalangwan (p. 451) incorrectly describe the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable). -->
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -165,7 +165,7 @@
 	<name xml:lang="kaw-Latn">madhukaralalita</name>
 	<seg type="xml">------=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏓</seg>
-	   <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">15</citedRange><citedRange unit="item">II.7</citedRange></bibl>
 							<bibl><ptr target="bib:Velankar1949_01"/></bibl>
@@ -187,12 +187,98 @@
 	<name xml:lang="san-Latn">sumānikā</name>
 	<seg type="xml">+-+-+-=</seg>
 	<seg type="prosody">–⏑–⏑–⏑⏓</seg>
-       <seg type="gana">ra-ja-ga</seg>
+    <seg type="gana">ra-ja-ga</seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">15</citedRange><citedRange unit="item">II.7</citedRange></bibl>
 		          <bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">7</measure>
+	<name xml:lang="kaw-Latn">kumāralalita</name>
+	<seg type="xml">-+---+=</seg>
+	<seg type="prosody">⏑–⏑⏑⏑–⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">vatāpathya</name>
+	<name xml:lang="kaw-Latn">pathya</name>
+	<seg type="xml">-+++-++=</seg>
+	<seg type="prosody">⏑–––⏑––⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">śāpantika</name>
+	<seg type="xml">++-----=</seg>
+	<seg type="xml">++-+---=</seg>
+	<seg type="prosody">––⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="prosody">––⏑–⏑⏑⏑⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<!-- @zapa: the meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓. -->
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">vitana</name>
+	<seg type="xml">+--+---=</seg>
+	<seg type="prosody">–⏑⏑–⏑⏑⏑⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<!-- @zapa: In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓. -->
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">vitāna</name>
+	<seg type="xml">+--+--+=</seg>
+	<seg type="prosody">–⏑⏑–⏑⏑–⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<!-- @zapa: Should we distinguish vitana from vitāna? -->
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">māṇavakakrīḍita</name>
+	<seg type="xml">+--++--=</seg>
+	<seg type="prosody">–⏑⏑––⏑⏑⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">vidyutmālā</name>
+	<name xml:lang="san-Latn">vidyunmālā</name>
+	<seg type="xml">+++|+++|+=</seg>
+	<seg type="prosody">–––––––⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">3</citedRange><citedRange unit="item">I.A.8.3</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">8</measure>
+	<name xml:lang="kaw-Latn">bhramaravilambita</name>
+	<seg type="xml">---|-+-|-=</seg>
+	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
 </item>
 <item>
 	<measure unit="syllable">8</measure>
@@ -224,8 +310,7 @@
 <name xml:lang="kaw-Latn">pādānuṣṭubh</name>
 <name xml:lang="eng">free octosyllabic</name>
 <!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing,
-and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.
-@zapa: can you infer from the CK occurrences the specific prosodic pattern for this verse form? is it ====-++=?-->
+and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.-->
 <seg type="xml">========</seg>
 <seg type="prosody">no data available</seg>
 <seg type="gana"></seg>
@@ -235,7 +320,29 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 </listBibl>
 </item>
-                <item>
+<item>
+	<measure unit="syllable">9</measure>
+	<name xml:lang="kaw-Latn">bhujagaśiśukr̥ta</name>
+	<name xml:lang="kaw-Latn">bhujagaśiśusr̥ta</name>
+	<seg type="xml">---|---|++=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">9</measure>
+	<name xml:lang="kaw-Latn">ayamukha</name><!--CK-->
+	<name xml:lang="kaw-Latn">halamukhī</name><!--Vr̥t-->
+	<seg type="xml">+-+|---|--=</seg>
+	<seg type="prosody">–⏑–⏑⏑⏑⏑⏑⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
 	<measure unit="syllable">10/11</measure>
 	<name xml:lang="san-Latn">vegavatī</name>
 	<seg type="xml">--+--+--+=/+--+--+--+=</seg>
