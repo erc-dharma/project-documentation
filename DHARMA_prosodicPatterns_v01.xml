@@ -95,6 +95,94 @@
 	</listBibl>
 </item>
 <item>
+	<measure unit="syllable">2</measure>
+	<name xml:lang="kaw-Latn">bhadra</name>
+	<seg type="xml">+=</seg>
+	<seg type="prosody">–⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">3</measure>
+	<name xml:lang="kaw-Latn">bhadroti</name>
+	<name xml:lang="kaw-Latn">nārī</name>
+	<!--zapa: The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".-->
+	<seg type="xml">++=</seg>
+	<seg type="prosody">–-⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">4</measure>
+	<name xml:lang="kaw-Latn">vanamr̥gī</name>
+	<seg type="xml">+++=</seg>
+	<seg type="prosody">–––⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">5</measure>
+	<name xml:lang="kaw-Latn">vijayanti</name>
+	<seg type="xml">+--+=</seg>
+	<seg type="prosody">–⏑⏑-⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">6</measure>
+	<name xml:lang="kaw-Latn">tanumadhya</name>
+	<seg type="xml">++--+=</seg>
+	<seg type="prosody">––⏑⏑–⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">6</measure>
+	<name xml:lang="kaw-Latn">kusumitagandha</name>
+	<name xml:lang="kaw-Latn">kusumitajanma</name>
+	<!--zapa: The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma". -->
+	<seg type="xml">----+=</seg>
+	<seg type="prosody">⏑⏑⏑⏑–⏓</seg>
+	<!--zapa: Zoetmulder in Kalangwan (p. 451) incorrectly describe the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable). -->
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">7</measure>
+	<name xml:lang="san-Latn">madhumatī</name>
+	<name xml:lang="kaw-Latn">madhukaralalita</name>
+	<seg type="xml">------=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">15</citedRange><citedRange unit="item">II.7</citedRange></bibl>
+							<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">7</measure>
+	<name xml:lang="kaw-Latn">madalekha</name>
+	<seg type="xml">+++--+=</seg>
+	<seg type="prosody">–––⏑⏑–⏓</seg>
+	   <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
 	<measure unit="syllable">7</measure>
 	<name xml:lang="san-Latn">sumānikā</name>
 	<seg type="xml">+-+-+-=</seg>
@@ -110,6 +198,7 @@
 	<measure unit="syllable">8</measure>
 	<name xml:lang="san-Latn">pramāṇikā</name>
 	<seg type="xml">-+-+-+-=</seg>
+	<!--zapa: I find the use of symbols "+" and "-" in this segment is inconsistent comparing to other item.-->
 	<seg type="prosody">–⏑–⏑–⏑⏓</seg>
 	<seg type="gana">ja-ra-la-ga</seg>
 	<listBibl>
