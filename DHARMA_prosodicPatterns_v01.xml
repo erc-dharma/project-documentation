@@ -213,10 +213,10 @@
 	 </listBibl>
 </item>
 <item>
-	<measure unit="syllable">8</measure>
+	<measure unit="syllable">8/8</measure>
 	<name xml:lang="kaw-Latn">śāpantika</name>
-	<seg type="xml">++-----=</seg>
-	<seg type="prosody">––⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="xml">++-----=/++--+--=</seg>
+	<seg type="prosody">––⏑⏑⏑⏑⏑⏓/––⏑–⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
 	<!-- @zapa: the meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓. -->
 	<listBibl>
@@ -322,7 +322,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">9</measure>
 	<name xml:lang="kaw-Latn">bhujagaśiśukr̥ta</name>
 	<name xml:lang="kaw-Latn">bhujagaśiśusr̥ta</name>
-	<seg type="xml">---|---|++=</seg>
+	<seg type="xml">------++=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
@@ -333,8 +333,18 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">9</measure>
 	<name xml:lang="kaw-Latn">ayamukha</name><!--CK-->
 	<name xml:lang="kaw-Latn">halamukhī</name><!--Vr̥t-->
-	<seg type="xml">+-+|---|--=</seg>
+	<seg type="xml">+-+-----=</seg>
 	<seg type="prosody">–⏑–⏑⏑⏑⏑⏑⏓</seg>
+	  <seg type="gana"><!--not applicable--></seg>
+	<listBibl>
+	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	 </listBibl>
+</item>
+<item>
+	<measure unit="syllable">10</measure>
+	<name xml:lang="kaw-Latn">turidagati</name>
+	<seg type="xml">----+----=</seg>
+	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
