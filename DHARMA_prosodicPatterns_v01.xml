@@ -342,10 +342,11 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">10</measure>
+	<name xml:lang="san-Latn">tvaritagati</name>
 	<name xml:lang="kaw-Latn">turidagati</name>
 	<seg type="xml">----+----=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑⏑⏓</seg>
-	  <seg type="gana"><!--not applicable--></seg>
+	  <seg type="gana">na-ja-na-ga</seg>
 	<listBibl>
 	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	 </listBibl>
@@ -1122,10 +1123,11 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">22</measure>
-	<name xml:lang="kaw-Latn">turidagati</name>
+	<name xml:lang="kaw-Latn">unknown</name>
 	<seg type="xml">----+-+---+------+-+-=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana">na-ja-bha-ja-na-sa-ja-ga</seg>
+	<!-- @zapa: the previous name is turidagati, but all CK evidences describe turidagati as the name of paṅkti meter, not akr̥ti. In addtion, Zoetmulder (1974) is still in doubt with that name. -->
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
