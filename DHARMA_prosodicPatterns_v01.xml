@@ -216,9 +216,7 @@
 	<measure unit="syllable">8</measure>
 	<name xml:lang="kaw-Latn">śāpantika</name>
 	<seg type="xml">++-----=</seg>
-	<seg type="xml">++-+---=</seg>
 	<seg type="prosody">––⏑⏑⏑⏑⏑⏓</seg>
-	<seg type="prosody">––⏑–⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
 	<!-- @zapa: the meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓. -->
 	<listBibl>
