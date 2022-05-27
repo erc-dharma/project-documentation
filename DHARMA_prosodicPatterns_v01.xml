@@ -647,6 +647,20 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">12</measure>
+	<name xml:lang="san-Latn">bhujaṁgaprayāta</name>
+	<name xml:lang="san-Latn">bhujaṅgaprayatna</name><!-- CK -->
+	<name xml:lang="san-Latn">bhujaṅgaprayāta</name><!-- Vr̥t -->
+	<seg type="xml">-++-++-++-+=</seg>
+	<seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg>
+	<seg type="gana">ya-ya-ya-ya</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">I.A.12.6</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">indravaṁśā</name>
 	<seg type="xml">++-++--+-+-=</seg>
 	<seg type="prosody">––⏑––⏑⏑–⏑–⏑⏓</seg>
