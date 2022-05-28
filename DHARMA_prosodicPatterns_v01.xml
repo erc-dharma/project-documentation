@@ -708,6 +708,16 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">12</measure>
+<name xml:lang="kaw-Latn">navamālinī</name>
+	<seg type="xml">---|-+-|+--|-+=</seg>
+	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏓</seg>
+       <seg type="gana"><!--not quite applicable--></seg>
+	<listBibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.4</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">12</measure>
   <name xml:lang="san-Latn">tāmarasa</name>
   <name xml:lang="san-Latn">lalitapadā</name><!--daba@argr: are you sure we're happy with more than one name in a single language? So far, we have picked one authoritative name for each metre; some alternatives are mentioned in footnotes in the EGD appendix, but we should in my opinion stick to just one name per metre per language in the authority list. I vote for keeping tāmarasa, since that is the name Apte uses.-->
 	<name xml:lang="kaw-Latn">svādamālinī</name>
@@ -759,7 +769,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">pramitākṣarā</name>
-	<name xml:lang="kaw-Latn">bramitākṣara</name>
+	<name xml:lang="kaw-Latn">bhramitākṣara</name>
 	<seg type="xml">--+-+---+--=</seg>
 	<seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana">sa-ja-sa-sa</seg>
@@ -1383,6 +1393,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">candravartma</name>
+	<name xml:lang="kaw-Latn">turagagati</name>
 	<seg type="xml">+-+---+----=</seg>
 	<seg type="prosody">–⏑–⏑⏑⏑–⏑⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
