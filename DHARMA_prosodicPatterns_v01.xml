@@ -109,7 +109,7 @@
 	<measure unit="syllable">3</measure>
 	<name xml:lang="kaw-Latn">bhadroti</name>
 	<name xml:lang="kaw-Latn">nārī</name>
-	<note resp="part:zapa">The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".</note>
+	<!-- <note resp="part:zapa">The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".</note> -->
 	<seg type="xml">++=</seg>
 	<seg type="prosody">–-⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
@@ -155,7 +155,7 @@
 	<measure unit="syllable">6</measure>
 	<name xml:lang="kaw-Latn">kusumitagandha</name>
 	<name xml:lang="kaw-Latn">kusumitajanma</name>
-	<note resp="part:zapa">The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma".</note> 
+	<note resp="part:zapa">The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma".</note>
 	<seg type="xml">----+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
@@ -222,7 +222,7 @@
 	<seg type="xml">++-----=/++--+--=</seg>
 	<seg type="prosody">––⏑⏑⏑⏑⏑⏓/––⏑–⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
-  <note resp="part:zapa">The meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note> 
+  <note resp="part:zapa">The meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
 	<listBibl>
 	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	 </listBibl>
@@ -233,7 +233,7 @@
 	<seg type="xml">+--+---=</seg>
 	<seg type="prosody">–⏑⏑–⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
-  <note resp="part:zapa">In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓.</note> 
+  <note resp="part:zapa">In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓.</note>
 	<listBibl>
 	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	 </listBibl>
@@ -688,6 +688,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">kusumavicitrā</name>
 	<name xml:lang="kaw-Latn">kusumavicitra</name>
+	<name xml:lang="kaw-Latn">kusumapadānta</name>
 	<seg type="xml">----++----+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg>
 	<seg type="gana">na-ya-na-ya</seg>
@@ -879,6 +880,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="san-Latn">rucirā</name>
+	<name xml:lang="kaw-Latn">rucira</name>
+	<name xml:lang="san-Latn">śasadana</name>
 	<seg type="xml">-+-+----+-+-=</seg>
 	<seg type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana">ja-bha-sa-ja-ga</seg>
