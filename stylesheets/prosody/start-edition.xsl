@@ -36,7 +36,6 @@
                             </xsl:if>                                         
                     </xsl:element>
                     <xsl:apply-templates/>
-                    <xsl:call-template name="tpl-dharma-apparatus"/>
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
@@ -131,7 +130,7 @@
     <!-- body -->
     <xsl:template match="tei:body">
      <xsl:element name="div">
-         <xsl:element name="h2">Prosody Table</xsl:element>
+         <xsl:element name="h2">Prosody Tables</xsl:element>
          <xsl:apply-templates/>
      </xsl:element>
     </xsl:template>
@@ -151,7 +150,7 @@
     
     <!-- head -->
     <xsl:template match="tei:head">
-        <xsl:element name="p">
+        <xsl:element name="h3">
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
@@ -253,6 +252,7 @@
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:element>
+        <xsl:call-template name="tpl-dharma-apparatus"/>
     </xsl:template>
 
     <!-- n -->
