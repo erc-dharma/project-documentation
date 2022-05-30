@@ -573,8 +573,25 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'srinivaspur')">
                 <xsl:text>Sp</xsl:text>
             </xsl:when>
-        </xsl:choose>
-        
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'kadur')">
+                <xsl:text>Kd</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'chikmagaḷûr')">
+                <xsl:text>Cm</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'mûḍgere')">
+                <xsl:text>Mg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'koppa')">
+                <xsl:text>Kp</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'śṛiṅgêri')">
+                <xsl:text>Sg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'tarîkere')">
+                <xsl:text>Tk</xsl:text>
+            </xsl:when>
+        </xsl:choose>   
     </xsl:template>
 
     <xsl:template name="tpl-dharma-apparatus">
