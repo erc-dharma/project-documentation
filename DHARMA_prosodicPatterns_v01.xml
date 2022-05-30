@@ -89,7 +89,7 @@
 	<name xml:lang="kaw-Latn">nanda</name>
 	<seg type="xml">=</seg>
 	<seg type="prosody">⏓</seg>
-	  <seg type="gana"><!--not applicable--></seg>
+  <seg type="gana"><!--not applicable--><!--daba 20220530: there seem to be many kaw metres with "not applicable" under gana, but this is misleading.--></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
@@ -157,10 +157,10 @@
 	<!--zapa: The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma". -->
 	<seg type="xml">----+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏓</seg>
-	<!--zapa: Zoetmulder in Kalangwan (p. 451) incorrectly describe the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable). -->
+	<!---->
 	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	  <bibl><ptr target="bib:Zoetmulder1974_01"/><note>zapa: Zoetmulder in Kalangwan (p. 451) incorrectly describes the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable).</note></bibl>
 	</listBibl>
 </item>
 <item>
@@ -286,8 +286,9 @@
 	<measure unit="syllable">8</measure>
 	<name xml:lang="san-Latn">pramāṇikā</name>
 	<seg type="xml">-+-+-+-=</seg>
-	<!--zapa: I find the use of symbols "+" and "-" in this segment is inconsistent comparing to other item.-->
-	<seg type="prosody">–⏑–⏑–⏑⏓</seg>
+  <!--zapa: I find the use of symbols "+" and "-" in this segment is inconsistent comparing to other item.-->
+<!--daba 20220530: not sure what you mean. The + and - signs are correct here, but they may be wrong somewhere else. However, there was a mistake with the "prosody" pattern: the first syllable was missing from that (was –⏑–⏑–⏑⏓, now corrected). This resulted in an inverted pattern of long-short syllables for most of this metre, so perhaps that was the only reason why the xml notation seemed wrong. -->
+       <seg type="prosody">⏑–⏑–⏑–⏑⏓</seg>
 	<seg type="gana">ja-ra-la-ga</seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">3</citedRange><citedRange unit="item">I.A.8.3</citedRange></bibl>
@@ -719,7 +720,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">12</measure>
   <name xml:lang="san-Latn">tāmarasa</name>
-  <name xml:lang="san-Latn">lalitapadā</name><!--daba@argr: are you sure we're happy with more than one name in a single language? So far, we have picked one authoritative name for each metre; some alternatives are mentioned in footnotes in the EGD appendix, but we should in my opinion stick to just one name per metre per language in the authority list. I vote for keeping tāmarasa, since that is the name Apte uses.-->
+  <name xml:lang="san-Latn">lalitapadā</name>
 	<name xml:lang="kaw-Latn">svādamālinī</name>
 	<seg type="xml">----+||--+--+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–||⏑⏑–⏑⏑–⏓</seg>
@@ -798,7 +799,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<seg type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"><!--not quite applicable--></seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><!--only mentioned by Apte as a variety of upajāti under Appendix A, I.A.11.3--></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><note>daba: Only mentioned by Apte as a variety of upajāti under Appendix A, I.A.11.3</note></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 </item>
@@ -1266,7 +1267,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">24</citedRange><citedRange unit="section">II.I.22</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-	  <bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.6</citedRange></bibl><!--Zoetmulder gives the prosody erroneously as –⏑⏑|–⏑–|⏑⏑⏑|–⏑–|⏑⏑⏑|-⏑-|⏑⏑⏑|⏓ (bha-ra-na-ra-na-ra-na-ga). The 6th gaṇa is correctly -⏑- (ra) as shown in Apte's appendix, in Apte's source (Piṅgala's Chandaḥśāstra 7.26), and confirmed by actual Javanese examples.-->
+	  <bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.6</citedRange><note>daba: Zoetmulder gives the prosody erroneously as –⏑⏑|–⏑–|⏑⏑⏑|–⏑–|⏑⏑⏑|-⏑-|⏑⏑⏑|⏓ (bha-ra-na-ra-na-ra-na-ga). The 6th gaṇa is correctly -⏑- (ra) as shown in Apte's appendix, in Apte's source (Piṅgala's Chandaḥśāstra 7.26), and confirmed by actual Javanese examples.</note></bibl>
 	</listBibl>
 </item>
 <item>
