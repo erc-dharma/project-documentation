@@ -6,6 +6,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0"
     exclude-result-prefixes="tei xi fn functx">
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0" use-character-maps="htmlDoc"/>
+    <xsl:strip-space elements="*"/>
     
     <xsl:character-map name="htmlDoc">
         <xsl:output-character character="&apos;" string="&amp;rsquo;" />
@@ -27,6 +28,12 @@
         <xsl:param name="regex" as="xs:string"/>
         <xsl:sequence select="replace($arg,concat('^(.*)',$regex,'.*'),'$1')"/>   
     </xsl:function>
+    <xsl:function name="functx:substring-before-match" as="xs:string"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="regex" as="xs:string"/>
+        <xsl:sequence select="tokenize($arg,$regex)[1]"/>
+    </xsl:function>
     <xsl:function name="functx:sort" as="item()*"
         xmlns:functx="http://www.functx.com">
         <xsl:param name="seq" as="item()*"/>
@@ -39,7 +46,11 @@
         xmlns:functx="http://www.functx.com">
         <xsl:param name="nodes" as="node()*"/>
         <xsl:sequence select="($nodes/.)[1] "/>
-        
+    </xsl:function>
+    <xsl:function name="functx:trim" as="xs:string"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="replace(replace($arg,'\s+$',''),'^\s+','')"/>
     </xsl:function>
     
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
@@ -1556,7 +1567,6 @@
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="child::tei:abbr[1]">
-                                    <xsl:apply-templates select="child::tei:abbr[1]"/>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="@xml:id"/>
@@ -1914,6 +1924,7 @@
                         <xsl:with-param name="witdetail-string"/>
                         <xsl:with-param name="witdetail-type"/>
                         <xsl:with-param name="witdetail-text"/>
+                        <xsl:with-param name="tpl" select="'content-pb'"/>
                     </xsl:call-template>
                     <!-- old display -->
               <!--<xsl:value-of select="substring-after(@edRef, '#')"/>-->
@@ -2007,6 +2018,7 @@
                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                        <xsl:call-template name="tokenize-witness-list">
                            <xsl:with-param name="string" select="$MSlink"/>
+                           <xsl:with-param name="tpl" select="'content-ptr'"/>
                        </xsl:call-template>
                        </xsl:element>
                    </xsl:otherwise>
@@ -2668,6 +2680,7 @@
         <xsl:param name="witdetail-string"/>
         <xsl:param name="witdetail-type"/>
         <xsl:param name="witdetail-text"/>
+        <xsl:param name="tpl"/>
         <xsl:choose>
             <xsl:when test="contains($string, ' ')">
                 <xsl:variable name="first-item"
@@ -2678,12 +2691,14 @@
                         <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
                         <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                         <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                        <xsl:with-param name="tpl" select="$tpl"/>
                     </xsl:call-template>
                     <xsl:call-template name="tokenize-witness-list">
                         <xsl:with-param name="string" select="substring-after($string, ' ')"/>
                         <xsl:with-param name="witdetail-string" select="$witdetail-string"/>
                         <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                         <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                        <xsl:with-param name="tpl" select="$tpl"/>
                     </xsl:call-template>
                 </xsl:if>
             </xsl:when>
@@ -2698,6 +2713,7 @@
                             <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
                             <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                             <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                            <xsl:with-param name="tpl" select="$tpl"/>
                         </xsl:call-template>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -2711,12 +2727,17 @@
         <xsl:param name="witdetail-string"/>
         <xsl:param name="witdetail-type"/>
         <xsl:param name="witdetail-text"/>
+        <xsl:param name="tpl"/>
+        <xsl:if test="not($tpl='content-ptr' or  $tpl='content-pb')">
+            <xsl:text> </xsl:text>
+        </xsl:if>
         <xsl:element name="a">
             <xsl:attribute name="class">siglum</xsl:attribute>
             <xsl:attribute name="href">
                 <xsl:text>#</xsl:text>
                 <xsl:value-of select="$target"/>
             </xsl:attribute>
+            
             <xsl:choose>
                 <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr">
                     <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr"/>
@@ -2725,6 +2746,7 @@
                     <xsl:value-of select="$target"/>       
                 </xsl:otherwise>
             </xsl:choose>
+            
         </xsl:element>
         <xsl:if test="$target = $witdetail-string">
             <xsl:choose>
@@ -2743,7 +2765,6 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
-        
     </xsl:template>
     
     <!-- Identity template -->
@@ -3259,12 +3280,13 @@
                     </xsl:element>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        <xsl:text>] </xsl:text>
+                        <xsl:text>]</xsl:text>
                     </xsl:element>                
                     <xsl:if test="@*">
                             <xsl:if test="@type">
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-italic</xsl:attribute>
+                                    <xsl:text> </xsl:text>
                                     <xsl:call-template name="apparatus-type"/>
                                 </xsl:element>
                                 <xsl:if test="attribute::wit or attribute::source">
@@ -3488,7 +3510,7 @@
                 <xsl:text>Ed</xsl:text>
                 <xsl:element name="sup">
                     <xsl:attribute name="class">ed-siglum</xsl:attribute>             
-                <xsl:value-of select="//tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
+                    <xsl:value-of select="//tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
             </xsl:element>
             </xsl:element>
     </xsl:template>

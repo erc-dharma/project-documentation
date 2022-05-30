@@ -125,7 +125,7 @@ Code only for the lateral tooltip*/
     /* lac. for bottom apparatus */
     $( ".bottom-lacunaStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgBottomLacuna =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">lac.</span></span>')
+        var newRdgBottomLacuna =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">lac. </span></span>')
         /* Cherche le premier element suivant avec la class siglum, récupere son contenu   */
         var siglumBottomLacuna = $(this).find(".siglum:first").clone()
         
