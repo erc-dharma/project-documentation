@@ -160,7 +160,7 @@
 	<!---->
 	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
-	  <bibl><ptr target="bib:Zoetmulder1974_01"/><note>zapa: Zoetmulder in Kalangwan (p. 451) incorrectly describes the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable).</note></bibl>
+	  <bibl><ptr target="bib:Zoetmulder1974_01"/><note resp="part:zapa">Zoetmulder in Kalangwan (p. 451) incorrectly describes the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable).</note></bibl>
 	</listBibl>
 </item>
 <item>
@@ -799,7 +799,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<seg type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"><!--not quite applicable--></seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><note>daba: Only mentioned by Apte as a variety of upajāti under Appendix A, I.A.11.3</note></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><note resp="part:daba">Only mentioned by Apte as a variety of upajāti under Appendix A, I.A.11.3</note></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 </item>
@@ -1267,7 +1267,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">24</citedRange><citedRange unit="section">II.I.22</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-	  <bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.6</citedRange><note>daba: Zoetmulder gives the prosody erroneously as –⏑⏑|–⏑–|⏑⏑⏑|–⏑–|⏑⏑⏑|-⏑-|⏑⏑⏑|⏓ (bha-ra-na-ra-na-ra-na-ga). The 6th gaṇa is correctly -⏑- (ra) as shown in Apte's appendix, in Apte's source (Piṅgala's Chandaḥśāstra 7.26), and confirmed by actual Javanese examples.</note></bibl>
+	  <bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465</citedRange><citedRange unit="item">XXII.6</citedRange><note resp="part:daba">Zoetmulder gives the prosody erroneously as –⏑⏑|–⏑–|⏑⏑⏑|–⏑–|⏑⏑⏑|-⏑-|⏑⏑⏑|⏓ (bha-ra-na-ra-na-ra-na-ga). The 6th gaṇa is correctly -⏑- (ra) as shown in Apte's appendix, in Apte's source (Piṅgala's Chandaḥśāstra 7.26), and confirmed by actual Javanese examples.</note></bibl>
 	</listBibl>
 </item>
 <item>
