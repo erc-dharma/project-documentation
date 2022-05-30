@@ -108,7 +108,7 @@
 	<measure unit="syllable">3</measure>
 	<name xml:lang="kaw-Latn">bhadroti</name>
 	<name xml:lang="kaw-Latn">nārī</name>
-	<!--zapa: The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".-->
+	<note resp="part:zapa">The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".</note>
 	<seg type="xml">++=</seg>
 	<seg type="prosody">–-⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
@@ -154,10 +154,9 @@
 	<measure unit="syllable">6</measure>
 	<name xml:lang="kaw-Latn">kusumitagandha</name>
 	<name xml:lang="kaw-Latn">kusumitajanma</name>
-	<!--zapa: The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma". -->
+	<note resp="part:zapa">The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma".</note> 
 	<seg type="xml">----+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏓</seg>
-	<!---->
 	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
 	  <bibl><ptr target="bib:Zoetmulder1974_01"/><note resp="part:zapa">Zoetmulder in Kalangwan (p. 451) incorrectly describes the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable).</note></bibl>
@@ -222,7 +221,7 @@
 	<seg type="xml">++-----=/++--+--=</seg>
 	<seg type="prosody">––⏑⏑⏑⏑⏑⏓/––⏑–⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
-	<!-- @zapa: the meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓. -->
+  <note resp="part:zapa">The meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note> 
 	<listBibl>
 	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	 </listBibl>
@@ -233,7 +232,7 @@
 	<seg type="xml">+--+---=</seg>
 	<seg type="prosody">–⏑⏑–⏑⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
-	<!-- @zapa: In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓. -->
+  <note resp="part:zapa">In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓.</note> 
 	<listBibl>
 	 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	 </listBibl>
@@ -426,7 +425,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">triṣṭubh</name>
                 	<seg type="xml">-+--+--+--=</seg>
-                	<seg type="prosody">⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg><!--daba there's no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. The same applies to jagatī and to "trimeter", which I've added to the end of the list. See EGD Appendix B, "Vedic trimeter".-->
+  <seg type="prosody">⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg><note resp="part:daba">There is no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. See EGD Appendix B, "Vedic trimeter".</note>
 	<seg type="gana"></seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><!--not discussed as such by Apte--></bibl>
@@ -675,7 +674,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">jagatī</name>
-	<seg type="xml">no data available</seg><!-- see daba comment at triṣṭubh -->
+  <seg type="xml">no data available</seg><note resp="part:daba">There is no simple way to codify or summarise jagatī because of the degree of variation permitted. See EGD Appendix B, "Vedic trimeter".</note>
 	<seg type="prosody">no data available</seg>
 	<seg type="gana"></seg>
 	<listBibl>
@@ -1321,10 +1320,10 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 </item>
-<!-- abhikrti class --><!--daba note: Apte refers to this class as atikr̥ti, not abhikr̥ti-->
+<!-- abhikrti class -->
 <item>
 	<measure unit="syllable">25</measure>
-	<label type="generic" xml:lang="san-Latn">abhikr̥ti</label>
+  <label type="generic" xml:lang="san-Latn">abhikr̥ti</label><note resp="part:daba">Apte refers to this class as atikr̥ti, not abhikr̥ti.</note>
 	<name/>
 	<seg type="xml">-+---+-+---+------+-+---=</seg>
 	<seg type="prosody">⏑–⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
