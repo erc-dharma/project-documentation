@@ -17,6 +17,9 @@
                 <p>created on Friday 11th March 2022 03:58:02 PM</p>
             </sourceDesc>
         </fileDesc>
+        <revisionDesc>
+            <change who="part:axja" when="2022-05-30">Adding note element</change>
+        </revisionDesc>
     </teiHeader>
     <text>
         <front>
@@ -26,7 +29,7 @@
             <p>TEI schema for prosody</p>
             <schemaSpec ident="DHARMA_ProsodySchema_v01" docLang="en" prefix="tei_" xml:lang="en">
                 <moduleRef key="core"
-                    except="abbr add addrLine address analytic biblScope biblStruct binaryObject cb choice cit corr del desc distinct divGen editor ellipsis email emph expan foreign gap gb gloss graphic headItem headLabel imprint index l lb lg measureGrp media meeting mentioned milestone monogr note noteGrp num orig pb postBox postCode publisher q rb ref reg relatedItem rs rt ruby said series sic soCalled sp speaker stage street teiCorpus term textLang time unclear unit"/>
+                    except="abbr add addrLine address analytic biblScope biblStruct binaryObject cb choice cit corr del desc distinct divGen editor ellipsis email emph expan foreign gap gb gloss graphic headItem headLabel imprint index l lb lg measureGrp media meeting mentioned milestone monogr noteGrp num orig pb postBox postCode publisher q rb ref reg relatedItem rs rt ruby said series sic soCalled sp speaker stage street teiCorpus term textLang time unclear unit"/>
                 <moduleRef key="tei" except=""/>
                 <moduleRef key="header"
                     except="appInfo application biblFull cRefPattern calendar calendarDesc catDesc catRef category citeData citeStructure classCode classDecl conversion correction correspAction correspContext correspDesc creation distributor editorialDecl extent geoDecl handNote hyphenation interpretation keywords listChange listPrefixDef namespace normalization notesStmt prefixDef punctuation quotation refState refsDecl rendition samplingDecl schemaRef scriptNote segmentation seriesStmt sponsor stdVals styleDefDecl tagUsage tagsDecl taxonomy textClass unitDecl unitDef xenoData"/>
@@ -272,12 +275,7 @@
                             context="tei:bibl[ancestor::tei:listBibl]"><sch:report
                             test="child::tei:note[following-sibling::tei:*]"
                             >Note should be the last
-                                    element of the bibl</sch:report></sch:rule><sch:rule
-                            context="tei:bibl[child::tei:note]"><sch:report
-                            test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
-                            >In the commentary, apparatus and the epigraphic lemma, note inside bibl
-                                            is prohibited. Add the note element right after the bibl
-                                            element.</sch:report></sch:rule></constraint>
+                                    element of the bibl</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -512,6 +510,35 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="note" module="core" mode="change">
+                    <attList>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="anchored" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="evaluate" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="hand" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="place" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="targetEnd" mode="delete"/>
+                        <attDef ident="targetLang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
