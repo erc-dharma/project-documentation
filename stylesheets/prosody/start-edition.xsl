@@ -36,6 +36,7 @@
                             </xsl:if>                                         
                     </xsl:element>
                     <xsl:apply-templates/>
+                    <xsl:call-template name="tpl-dharma-apparatus"/>
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
@@ -69,6 +70,9 @@
                     <xsl:text>, </xsl:text>
                 </xsl:if>
             </xsl:for-each>
+        </xsl:if>
+        <xsl:if test="./tei:note">
+            <xsl:apply-templates select="tei:note"/>
         </xsl:if>
         <xsl:if test="following::tei:bibl[1]">
             <xsl:text>.</xsl:text>
@@ -253,16 +257,9 @@
 
     <!-- n -->
     <xsl:template match="tei:note">
-        <xsl:choose>
-            <xsl:when test="ancestor::tei:div[@type='section']">
-            <xsl:call-template name="dharma-app-link">
-                <xsl:with-param name="location" select="'text'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:apply-templates/>
-        </xsl:otherwise>
-        </xsl:choose>
+        <xsl:call-template name="dharma-app-link">
+            <xsl:with-param name="location" select="'text'"/>
+        </xsl:call-template>
     </xsl:template>
 
     <!-- p -->
@@ -401,9 +398,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <!-- loader ec -->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-loader.js"></script>
-        <!--<script rel="stylesheet" src="../ec/ec-loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>-->
+        <script src="../criticalEditions/loader.js"></script>
     </xsl:template>
 
     <xsl:template name="dharma-app-link">
@@ -424,7 +420,7 @@
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
         <xsl:variable name="number">
-            <xsl:number format="1" from="//tei:div[@type='section']" count="tei:note" level="any"/>
+            <xsl:number format="1" from="//tei:list" count="//tei:note" level="any"/>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$location = 'text'">
@@ -437,6 +433,15 @@
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
+                    <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                    <xsl:attribute name="data-placement">top</xsl:attribute>
+                    <xsl:attribute name="title">
+                        <xsl:if test="@resp">
+                        <xsl:text>(</xsl:text>
+                        <xsl:value-of select="substring-after(./@resp, ':')"/>
+                        <xsl:text>) </xsl:text>
+                    </xsl:if>
+                        <xsl:apply-templates/></xsl:attribute>
                     <span class="tooltip-notes">
                         <sup>
                             <xsl:text>↓</xsl:text>
@@ -462,6 +467,30 @@
                 <xsl:text> </xsl:text>
             </xsl:when>
         </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template name="tpl-dharma-apparatus">
+        <!-- An apparatus is only created if one of the following is true -->
+        <xsl:if test=".//tei:note">
+            <xsl:element name="div">
+                <xsl:attribute name="class">bloc-notes</xsl:attribute>
+                <xsl:element name="h3">
+                    <xsl:text>Notes</xsl:text>
+                </xsl:element>
+                    <!-- An entry is created for-each of the following instances
+                  * notes.  -->
+                    <xsl:for-each select=".//tei:note">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
+                            <xsl:call-template name="dharma-app-link">
+                                <xsl:with-param name="location" select="'apparatus'"/>
+                            </xsl:call-template>
+                            <xsl:apply-templates/>
+                        </xsl:element>
+                        <br/>
+                    </xsl:for-each>
+            </xsl:element>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template name="citedRange-unit">
