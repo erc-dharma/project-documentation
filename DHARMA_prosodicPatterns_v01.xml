@@ -50,6 +50,7 @@
             </abstract>
         </profileDesc>
         <revisionDesc status="draft">
+        	<change who="part:daba" when="2022-05-30" status="draft">Sectioning and restructuring</change>
         	<change who="part:daba" when="2022-04-26" status="draft">Adding references to Apte's appendix and some tidying</change>
         	<change who="part:axja" when="2022-03-30" status="draft">Updating the titleStmt</change>
           <change who="part:axja" when="2022-03-11" status="draft">Changing the bibliography structure</change>
@@ -81,7 +82,7 @@
         </front>
         <body>
 
-            <list>
+<list><head>Syllabo-quantitative metres</head>
 
 
 <item>
@@ -1346,7 +1347,176 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.5</citedRange></bibl>
 		</listBibl>
 </item>
-<!-- additions from Zaki's file -->
+</list>
+
+
+<list><head>Moraic metres</head><!--also additions by daba 20211215: gaṇacchandas (āryā family) metres. Definitely used in XML files, but not fully definable with a simple pattern. The prosodic patterns I give below are only approximations of the more nuanced rules for these metres. I do not know if they belong on the list.-->
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">āryā</name>
+              <seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">11-12</citedRange><citedRange unit="item">I.D.a.1</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">gīti</name>
+              <seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.2</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">upagīti</name>
+              <seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.3</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">udgīti</name>
+              <seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.4</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">āryāgīti</name>
+              <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.5</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">sugīti</name>
+              <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">anugīti</name>
+              <seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">vallarī</name>
+              <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">lalitā</name>
+              <seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg>
+              <seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+          </list>
+
+
+          <list><head>Miscellaneous metres</head>
+            <!--additions by daba 20211215. Not sure if anybody has ever used these names of variable metre families, which are not in the EGD list but discussed in the text sections after it. If this file is meant to be a list of the permitted values of @met in <lg>, then the following should be added. If we do not add these (deciding that the file is only for metres definable by a clear pattern), then perhaps triṣṭubh and jagatī should likewise be removed from the list.-->
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">trimeter</name>
+              <seg type="xml">no data available</seg>
+              <seg type="prosody">no data available</seg>
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not discussed as such by Apte--></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">vaitālīya</name>
+              <seg type="xml">6|+-+-=/8|+-+-=</seg>
+              <seg type="prosody">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg>
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.b</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">aupacchandasika</name>
+              <seg type="xml">6|+-+-+=/8|+-+-+=</seg>
+              <seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg>
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.c</citedRange></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+            <item>
+              <measure unit="syllable"/>
+              <name xml:lang="">āpātalikā</name>
+              <seg type="xml">6|+--+=/8|+--+=</seg>
+              <seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg>
+              <seg type="gana"></seg>
+              <listBibl>
+                <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+                <bibl><ptr target="bib:Velankar1949_01"/></bibl>
+                <bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+              </listBibl>
+            </item>
+          </list>
+
+
+
+<list><head>Additions in need of processing</head><!-- additions from Zaki's file --><!--daba 20220530: I assume these will be moved after being finalised to the syllabo-quantitative section to their proper place by syllable count.-->
 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">kusumāyudha</name>
@@ -1451,166 +1621,9 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
-</item>
-<!--additions by daba 20211215. Not sure if anybody has ever used these names of variable metre families, which are not in the EGD list but discussed in the text sections after it. If this file is meant to be a list of the permitted values of @met in <lg>, then the following should be added. If we do not add these (deciding that the file is only for metres definable by a clear pattern), then perhaps triṣṭubh and jagatī should likewise be removed from the list.-->
-<item>
- <measure unit="syllable"/>
-	<name xml:lang="">trimeter</name>
-	<seg type="xml">no data available</seg>
-	<seg type="prosody">no data available</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not discussed as such by Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-<item>
-  <measure unit="syllable"/>
-	<name xml:lang="">vaitālīya</name>
-	<seg type="xml">6|+-+-=/8|+-+-=</seg>
-	<seg type="prosody">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.b</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-<item>
-<measure unit="syllable"/>
-	<name xml:lang="">aupacchandasika</name>
-	<seg type="xml">6|+-+-+=/8|+-+-+=</seg>
-	<seg type="prosody">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.c</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-<item>
-  <measure unit="syllable"/>
-	<name xml:lang="">āpātalikā</name>
-	<seg type="xml">6|+--+=/8|+--+=</seg>
-	<seg type="prosody">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg>
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-              <!--also additions by daba 20211215: gaṇacchandas (āryā family) metres. Definitely used in XML files, but not fully definable with a simple pattern. The prosodic patterns I give below are only approximations of the more nuanced rules for these metres. I do not know if they belong on the list.-->
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">āryā</name>
-	<seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">11-12</citedRange><citedRange unit="item">I.D.a.1</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">gīti</name>
-	<seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.2</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">upagīti</name>
-	<seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.3</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-                    <name xml:lang="">udgīti</name>
-	<seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.4</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">āryāgīti</name>
-	<seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">12</citedRange><citedRange unit="item">I.D.a.5</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">sugīti</name>
-	<seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">anugīti</name>
-	<seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">vallarī</name>
-	<seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-                <item>
-                    <measure unit="syllable"/>
-	<name xml:lang="">lalitā</name>
-	<seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg>
-	<seg type="prosody">no data available</seg><!--daba: moraic verse, can't be properly described with prosodic symbols.-->
-	<seg type="gana"></seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-            </list>
+</item></list>
+
+
         </body>
     </text>
 </TEI>
