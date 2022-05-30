@@ -543,7 +543,38 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'channagiri')">
                 <xsl:text>Ci</xsl:text>
             </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'kolar')">
+                <xsl:text>Kl</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Mulbagal')">
+                <xsl:text>Mb</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Bowringpet')">
+                <xsl:text>Bp</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Malur')">
+                <xsl:text>Mr</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Sidlaghatta')">
+                <xsl:text>Sd</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Chik-Ballapur')">
+                <xsl:text>CB</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Gorobidnur')">
+                <xsl:text>Gd</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Bagepalli')">
+                <xsl:text>Bg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Chintamani')">
+                <xsl:text>Ct</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'Srinivaspur')">
+                <xsl:text>Sp</xsl:text>
+            </xsl:when>
         </xsl:choose>
+        
     </xsl:template>
 
     <xsl:template name="tpl-dharma-apparatus">
