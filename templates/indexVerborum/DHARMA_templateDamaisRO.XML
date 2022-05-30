@@ -1,0 +1,1349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+<fileDesc>
+<titleStmt>
+<title>TEI model for Damais</title>
+<respStmt>
+<resp>EpiDoc Encoding</resp>
+<!-- Work done in the file, e.g. editor ...-->
+<persName ref="part:axja"><!-- Update the id -->
+<forename>Axelle</forename><!-- Fill in your  names &#x2014; it is possible to use only <name> instead of <foreame> and <surname> -->
+<surname>Janiak</surname>
+</persName>
+<persName ref="part:wjsa"><!-- Update the id -->
+<forename>Wayan</forename><!-- Fill in your  names &#x2014; it is possible to use only <name> instead of <foreame> and <surname> -->
+<forename>Jarrah</forename><!-- Fill in your  names &#x2014; it is possible to use only <name> instead of <foreame> and <surname> -->
+<surname>Sastrawan</surname>
+</persName>
+</respStmt>
+</titleStmt>
+<publicationStmt>
+<authority>DHARMA</authority>
+<pubPlace><!-- Fill in here the place or places where the encoding has been done --></pubPlace>
+<idno type="filename">DHARMA_templateDamaisRO</idno>
+<!-- Replace by filename -->
+<availability>
+<licence target="https://creativecommons.org/licenses/by/4.0/">
+<p>This work is licensed under the Creative Commons Attribution 4.0 Unported
+Licence. To view a copy of the licence, visit
+https://creativecommons.org/licenses/by/4.0/ or send a letter to
+Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+California, 94041, USA.</p>
+<p>Copyright (c) 2019-2025 by John Doe.</p><!-- replace year and name, use format "Forename1 Surname1 &amp; Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 &amp; Forename3 Surname3"  if necessary &#x2014; the copyright is that of the encoder(s) -->
+</licence>
+</availability>
+<date from="2019" to="2025">2019-2025</date>
+</publicationStmt>
+<sourceDesc>
+<p>Information about the source</p>
+</sourceDesc>
+</fileDesc>
+<encodingDesc>
+<projectDesc>
+<p>The project DHARMA has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
+</projectDesc>
+</encodingDesc>
+<revisionDesc>
+<change who="part:wjsa" when="2022-04-19">Implementing changes to the structure as discussed with Balaur Shah</change>
+<change who="part:axja" when="2022-03-16">Correcting the structure</change>
+<change who="part:wjsa" when="2022-03-15">Augmenting the template and adding examples from RO pp. 514-515</change>
+<change who="part:axja" when="2022-02-12">Creation of the template</change>
+</revisionDesc>
+</teiHeader>
+<text>
+<front>
+<div type="chapter">
+<p><pb n="VII" />Louis-Charles Damais travaillait à ce Répertoire Onomastique depuis au moins dix ans. Lors de sa brusque disparition (23 mai 1966), le manuscrit se trouvait achevé dans ses grandes lignes.</p>
+<p>Cependant, plusieurs références restaient imprécisées et des notes étaient encore incomplètes. D’autre part, Louis Damais avait, en cours de travail, modifié certains principes de présentation, changé certains sigles, introduit de nouvelles précisions (concernant notamment l’origine géographique et le matériau des différentes chartes), et même transformé à plusieurs reprises l’ordre alphabétique, afin de le mieux adapter à son objet. Il n’avait pas encore eu le temps d’harmoniser la totalité et il subsistait encore de multiples incohérences.</p>
+<p>Nous avons fait de notre mieux, mais, sachant quel était son goût de l’exactitude, ce n’est pas sans scrupules que nous publions aujourd’hui un texte, auquel il aurait certainement trouvé à redire, çà et là. Le lecteur voudra bien s’en souvenir.</p>
+<p>Nous remercions bien vivement ici M. Boechari, chargé du cours d’épigraphie à l’Université d’Indonésie (Djakarta), qui a bien voulu revoir avec nous les épreuves du Répertoire.</p> <p rend="right"><hi rend="sc">D. Lombard.</hi></p>
+</div>
+<div type="chapter">
+<head><pb n="IX" />ABRÉVIATIONS</head>
+<p>Pour une liste complète des publications citées dans les travaux de Louis-Charles Damais, voir <hi rend="it">BEFEO</hi>, XLV, fasc. 1, 1951, p. 1 et 2, et <hi rend="it">BEFEO</hi>, XLIX, fasc. 1, 1958, p. 241 à 244.</p>
+<table>
+<row><cell><hi rend="it">BEFEO</hi></cell><cell><hi rend="it">Bulletin de l’École Française d’Extrême-Orient</hi>, Hanoi-Paris.</cell></row>
+<row><cell><hi rend="it">BKI</hi></cell><cell><hi rend="it">Bijdragen van het Koninklijk Instituut voor de Taal-, Land- en Volkenkunde van Nederlandsch-Indië</hi>, La Haye.</cell></row>
+<row><cell><hi rend="it">Catal.</hi></cell><cell><hi rend="it">Catalogue van de Archaeologische Verzameling van het Museum van het Bataviaasch Genootschap</hi>, par Groeneveldt, partie épigraphique rédigée par Brandes, Batavia, 1887.</cell></row>
+<row><cell><hi rend="it">EEI</hi> I à V</cell><cell><hi rend="it">Études d’Épigraphie Indonésienne</hi> par Louis-Charles Damais, in <hi rend="it">BEFEO</hi> : XLV, fasc. 1, 1951, p. 1-63 (<hi rend="it">EEI</hi> I et II) ; XLVI, fasc. 1, 1952, p. 1-105 (<hi rend="it">EEI</hi> III) ; XLVII, fasc. 1, 1955, p. 7-290 (<hi rend="it">EEI</hi> IV) ; XLIX, fasc. 1, 1958, p. 1-257 (<hi rend="it">EEI</hi> V).</cell></row>
+<row><cell><hi rend="it">Ep. Aant.</hi></cell><cell><hi rend="it">Epigrafische Aantekeningen</hi>, « Notes d’épigraphie », I à VIII, par Louis-Charles Damais, in <hi rend="it">TBG</hi>, LXXXIII, 1949, p. 1-26.</cell></row>
+<row><cell><hi rend="it">HJG</hi><hi rend="sup">2</hi></cell><cell><hi rend="it">Hindoe-Javaansche Geschiedenis</hi>, par N.J. Krom, 2<hi rend="sup">e</hi> édition, La Haye, 1931.</cell></row>
+<row><cell><hi rend="it">INI</hi></cell><cell><hi rend="it">Inscripties van Nederlandsch-Indië</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">JBG</hi></cell><cell><hi rend="it">Jaarboek van het Bataviaasch Genootschap</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">KBN Glos.</hi></cell><cell><hi rend="it">Kawi-Balineesch Nederlandsch Glossarium op het Oud-Javaansche Rāmāyaṇa</hi>, « Glossaire kawi-balinais-néerlandais du Rāmāyaṇa vieux javanais », par H.H. Juynboll, La Haye 1902.</cell></row>
+<row><cell><hi rend="it">KBNW</hi></cell><cell><hi rend="it">Kawi-Balineesch Nederlandsch Woordenboek</hi>, par Van der Tuuk, 4 vol., Batavia, 1897-1912.</cell></row>
+<row><cell><hi rend="it">KO</hi></cell><cell><hi rend="it">Kawi Oorkonden</hi>, éditées par Cohen Stuart, Leyde, 1875, avec un volume de fac-similés.</cell></row>
+<row><cell><hi rend="it">KVG</hi></cell><cell>H. Kern, <hi rend="it">Verspreide Geschriften</hi>, La Haye, 1913-1929.</cell></row>
+<row><cell><pb n="X" /><hi rend="it">MKAW-L</hi></cell><cell><hi rend="it">Mededeelingen van de Koninklijke Academie van Wetenschappen</hi>, Section Lettres, Amsterdam.</cell></row>
+<row><cell><hi rend="it">NBG</hi></cell><cell><hi rend="it">Notulen van het Bataviaasch Genootschap</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">OJNW</hi></cell><cell><hi rend="it">Oud-Javaansch-Nederlandsch Woordenlijst</hi> « Lexique vieux javanais-néerlandais », par H.H. Juynboll, Leyde, 1923.</cell></row>
+<row><cell><hi rend="it">OJO</hi></cell><cell><hi rend="it">Oud-Javaansche Oorkonden</hi>, transcriptions de Brandes éditées par N.J. Krom, Batavia, 1913 (= <hi rend="it">VBG</hi> 60).</cell></row>
+<row><cell><hi rend="it">OV</hi></cell><cell><hi rend="it">Oudheidkundige Verslagen</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">PI</hi> I et II</cell><cell><hi rend="it">Prasasti Indonesia</hi>, « Chartes d’Indonésie », par J.G. De Casparis, publié par le Service Archéologique de la République Indonésienne, vol. 1, Bandung, 1950 ; vol. II, Bandung, 1956.</cell></row>
+<row><cell><hi rend="it">Publ. OD</hi> ou <hi rend="it">POD</hi></cell><cell><hi rend="it">Publicaties van de Oudheidkundige Dienst</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">ROC</hi></cell><cell><hi rend="it">Rapporten van de Oudheidkundige Commissie</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">Short Inscr.</hi></cell><cell><hi rend="it">Short Inscriptions from Tjaṇḍi Plaosan-Lor</hi> par J.G. De Casparis in <hi rend="it">Berita Dinas Purbakala, Bulletin of the Archaeological Service of the Republic of Indonesia</hi>, No 4, Djakarta, 1958.</cell></row>
+<row><cell><hi rend="it">TBG</hi></cell><cell><hi rend="it">Tijdschrift voor Indische Taal-, Land- en Volkenkunde uitgegeven door het Bataviaasch Genootschap van Kunsten en Wetenschappen</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">VBG</hi></cell><cell><hi rend="it">Verhandelingen van het Bataviaasch Genootschap</hi>, Batavia.</cell></row>
+<row><cell><hi rend="it">VG</hi></cell><cell>Voir <hi rend="it">KVG</hi>.</cell></row>
+</table>
+</div>
+<div type="chapter">
+<head><pb n="XI" />TABLE DES MATIÈRES</head>
+<table>
+<row><cell></cell><cell></cell><cell>Pages</cell></row>
+<row><cell>A.</cell><cell><hi rend="sc">Introduction</hi></cell><cell>1</cell></row>
+<row><cell>B.</cell><cell><hi rend="sc">Liste alphabétique des documents utilisés</hi></cell><cell>37</cell></row>
+<row><cell>C.</cell><cell><hi rend="sc">Liste chronologique des documents utilisés</hi></cell><cell>42</cell></row>
+<row><cell>D.</cell><cell><hi rend="sc">Répertoire onomastique avec citation des contextes</hi></cell><cell>55</cell></row>
+<row><cell>E.</cell><cell><hi rend="sc">Listes des particules déterminatives et autres termes d’usage semblable</hi></cell><cell>929</cell></row>
+<row><cell>F.</cell><cell><hi rend="sc">Index</hi></cell><cell>991</cell></row>
+</table>
+</div>
+<div type="chapter">
+<head><pb n="1" />A. INTRODUCTION<note><p>Voir les précédentes <hi rend="it">EEI</hi>, I dans <hi rend="it">BEFEO</hi> XLV, 1951, p. 1-41 ; II dans <hi rend="it">BEFEO</hi> XLV, 1951, p. 42-63 ; III dans <hi rend="it">BEFEO</hi> XLVI, 1952, p. 1-105 ; IV dans <hi rend="it">BEFEO</hi> XLVII, 1955, p. 7-290 ; V dans <hi rend="it">BEFEO</hi> XLIX, 1958, p. 1-257.</p></note></head>
+<list>
+<item>a. <hi rend="sc">But du présent travail</hi> (par. 1 à 5).</item>
+<item>b. <hi rend="sc">Matière traitée</hi> (par. 6 à 16).</item>
+<item>c. <hi rend="sc">Période étudiée</hi> (par. 17 à 31).</item>
+<item>d. <hi rend="sc">Transcription</hi> (par. 32 à 52).</item>
+<item>e. <hi rend="sc">Classement</hi> (par. 53 à 90).</item>
+<item>f. <hi rend="sc">Sources et leur datation</hi> (par. 91 à 98).</item>
+<item>g. <hi rend="sc">Agencement des citations</hi> (par. 99 à 101).</item>
+<item>h. <hi rend="sc">Références et signes conventionnels</hi> (par. 102 à 109).</item>
+</list>
+<div type="section">
+<head>a. <hi rend="sc">But du présent travail</hi></head>
+<p>1. On sait que les incriptions de Java sont, pour la plupart, riches en anthroponymes et en toponymes, bien que cette catégorie de mots n’ait jusqu’ici guère retenu l’attention des épigraphistes ou des historiens. Ces données méritent cependant mieux, croyons-nous, que l’indifférence générale dont elles ont été l’objet jusqu’ici<note><p>Voir cependant les petites listes que Stutterheim a jointes à son édition de l’inscription de Poh de 827 Śaka, dans <hi rend="it">INI</hi> I, p. 26-28, certains articles de Van Stein Callenfels sur les fonctionnaires et les noms de lieux, et une étude de De Casparis sur les toponymes de la charte de Mantyāsih de 829 Śaka dans <hi rend="it">PI</hi> I, 151-160.</p></note>. Le but de la présente <hi rend="it">Étude</hi> est justement de faciliter aux chercheurs l’utilisation de ces matériaux trop peu connus, « onomastique » étant d’ailleurs pris ici dans un sens très large, englobant les noms de dignités, de fonctions durables ou passagères, d’occupations et de métiers, ainsi que certaines désignations de parenté employées comme termes d’adresse. On y a même joint différentes désignations de terrains et de monuments, étant donné la relation étroite existant entre cette catégorie de termes et la toponymie.</p>
+<p>2. Cette <hi rend="it">Étude</hi> est en effet essentiellement un <hi rend="it">instrument de travail</hi>. Nous aurions aimé examiner de plus près les différents termes enregistrés ici et en déterminer si possible le sens précis ou plausible ou encore l’étymologie, mais une telle entreprise aurait eu pour <pb n="2" />résultat que ce travail, auquel nous pensons depuis 1947-1948, et qui a été mis en chantier dès 1955, n’aurait pu être publié que dans un nombre d’années imprévisible, un examen approfondi de tous ces termes n’étant pas possible à brève échéance.</p>
+<p>3. Convaincu, comme aimait à le dire Stutterheim, que dans de nombreux cas, le mieux est l’ennemi du bien, nous avons préféré publier au plus tôt les matériaux rassemblés au cours de ces dernières années, afin que chacun puisse les utiliser selon son point de vue, sans avoir à refaire pour son compte le travail assez long de collationnement des milliers de mots relevés.</p>
+<p>4. On pourrait s’étonner de ce que nous ne consacrions pas des études distinctes aux noms de personnes d’une part, aux noms de lieux et aux diverses autres catégories de termes de l’autre. La réponse est simple : non seulement il arrive que le même terme apparaisse d’une part comme toponyme et de l’autre comme anthroponyme ou encore comme nom de fonction désignant un personnage, mais il n’est de plus pas toujours possible, surtout dans des documents lacunaires de les distinguer avec certitude les uns des autres. Enfin, même avec des données complètes, il n’est pas toujours parfaitement clair si un terme, suivant une particule déterminative, désigne un nom (ou titre) du personnage lui-même, le nom de lieu où il exerçait ses fonctions, ou encore l’institution dont il était le dignitaire principal.</p>
+<p>5. L’étude systématique des données rassemblées ici pourra peut-être permettre de trouver une solution à de tels problèmes, ainsi qu’à divers autres qui surgissent lorsqu’on examine les données en question et c’est pourquoi nous préférons publier ce <hi rend="it">Répertoire</hi> sans avoir eu le temps d’en faire une étude approfondie. Il était donc bien préférable, croyons-nous, de ne pas séparer les différents groupes de mots enregistrés ici — à supposer que ce soit possible —, en particulier les toponymes et les anthroponymes.</p>
+</div>
+<div type="section">
+<head>b. <hi rend="sc">Matière traitée</hi></head>
+<p>6. Le terme « onomastique » est pris ici, nous l’avons vu, dans un sens élargi. On trouvera en effet dans ce <hi rend="it">Répertoire</hi> :</p>
+<list>
+<item><hi rend="it">a.</hi> Les toponymes.</item>
+<item><hi rend="it">b.</hi> Les anthroponymes.</item>
+<item><hi rend="it">c.</hi> Les teknonymes<note><p>C’est l’inverse des désignations sémitiques « fils de..., fille de ... ». On disait donc, « père de..., mère de... ».</p></note>.</item>
+<item><hi rend="it">d.</hi> Les désignations de dignités et de fonctions.</item>
+<item><hi rend="it">e.</hi> Les désignations de métiers.</item>
+<item><hi rend="it">f.</hi> Les termes des listes de <hi rend="it">maŋilala drabya haji</hi> et autres séries <pb n="3" />analogues dont la valeur est rarement claire, mais qui apparaissent également comme toponymes et comme dignités.</item>
+<item><hi rend="it">g.</hi> Certaines formes nasalisées qui, d’après le contexte indiquent non pas une action, mais celui qui l’accomplit. Nous considérons donc qu’il s’agit d’une fonction, même si celle-ci est occasionnelle ou temporaire. Les membres d’un jury formant, dans la vie actuelle, un exemple assez net de ce que nous appelons une fonction « occasionelle » ou « temporaire ».</item>
+<item><hi rend="it">h.</hi> Les termes de sens douteux qui nous ont paru pouvoir faire partie d’une des catégories ci-dessus.</item>
+</list>
+<p>Tous les termes en question sont donnés avec citation du contexte où ils apparaissent et des références précises.</p>
+<p>7. Nous avons encore inclus dans ce <hi rend="it">Répertoire</hi>, comme étant liés de très près aux domaines dont l’abornement forme l’objet de la plupart des inscriptions, les termes suivants qui désignent des terrains, mis en culture ou non, ainsi que des détails géographiques :</p>
+<table>
+<row><cell><hi rend="it">alas</hi></cell><cell>« forêt »</cell><cell><hi rend="it">luah</hi></cell><cell>« rivière »</cell></row>
+<row><cell><hi rend="it">dmak</hi></cell><cell>« don »<note><p>Originairement, un terrain accordé par le souverain à un de ses sujets.</p></note></cell><cell><hi rend="it">patalǝsan</hi></cell><cell>« tarotière »</cell></row>
+<row><cell><hi rend="it">huma</hi></cell><cell>« rizière »</cell><cell><hi rend="it">sukat</hi></cell><cell>« herbage »</cell></row>
+<row><cell><hi rend="it">kǝbuan</hi></cell><cell>« jardin »</cell><cell><hi rend="it">tgal</hi></cell><cell>« champ »</cell></row>
+<row><cell><hi rend="it">lbak</hi></cell><cell>« vallée »</cell><cell><hi rend="it">wukir</hi></cell><cell>« colline »</cell></row>
+<row><cell><hi rend="it">lmah</hi></cell><cell>« terre »</cell><cell></cell><cell>etc.</cell></row>
+</table>
+<p>On trouvera de même des termes désignant des bâtiments cultuels ou résidentiels tels que :</p>
+<table>
+<row><cell><hi rend="it">kabikuan</hi></cell><cell>« monastère »</cell><cell><hi rend="it">patapān</hi></cell><cell>« ermitage »</cell></row>
+<row><cell><hi rend="it">kaḍatuan</hi></cell><cell>« palais »</cell><cell><hi rend="it">partapān</hi></cell><cell>(<hi rend="sc">v.m.</hi>) « ermitage »</cell></row>
+<row><cell><hi rend="it">mandira-</hi>(<hi rend="sc">Sk.</hi>)</cell><cell>« temple »</cell><cell><hi rend="it">prāsāda</hi></cell><cell>« pavillon »</cell></row>
+<row><cell><hi rend="it">pomahan</hi></cell><cell>« bâtiments »</cell><cell><hi rend="it">bhawana</hi></cell><cell>« temple »</cell></row>
+<row><cell><hi rend="it">wihāra</hi></cell><cell>« monastère »</cell><cell></cell><cell>etc.</cell></row>
+</table>
+<p>8. Pour des raisons analogues, on trouvera également en rubrique, d’une part, des mots tels que :</p>
+<table>
+<row><cell><hi rend="it">ājńā</hi></cell><cell>« ordre (royal) »</cell><cell><hi rend="it">anugraha</hi></cell><cell>« faveur (royale) »</cell></row>
+<row><cell><hi rend="it">dharmma</hi></cell><cell>« dharma »<note><p><hi rend="it">Dharmma</hi> et <hi rend="it">dharmmasīma</hi> désignent ici le terrain affranchi dont l’abornement se fait en conformité avec le <hi rend="it">Dharmma</hi>.</p></note></cell><cell><hi rend="it">sīma</hi></cell><cell>« borne », « terrain franc »</cell></row>
+<row><cell><hi rend="it">praśasti</hi></cell><cell>« charte »</cell><cell></cell><cell>etc.</cell></row>
+</table>
+<p>et, de l’autre, les principales désignations de parenté, celles-ci ayant éventuellement un sens figuré et introduisant souvent un anthroponyme. Par exemple :</p>
+<table>
+<row><cell><hi rend="it">anak</hi></cell><cell>« enfant »</cell><cell><hi rend="it">kaki</hi></cell><cell>« grand-père »</cell></row>
+<row><cell><hi rend="it">anakbi</hi></cell><cell>« épouse »</cell><cell><hi rend="it">sānak</hi></cell><cell>« membres de la famille »</cell></row>
+<row><cell><hi rend="it">bini haji</hi></cell><cell>« épouse du roi »</cell><cell><hi rend="it">wka</hi></cell><cell>« enfant », « fils »,</cell></row>
+<row><cell><hi rend="it">inaŋ</hi></cell><cell>« mère »</cell><cell></cell><cell>etc.</cell></row>
+</table>
+</div>
+</div>
+<div type="chapter">
+<head><pb n="37" />B. LISTE ALPHABÉTIQUE DES DOCUMENTS UTILISÉS<lb />AVEC LEURS ABRÉVIATIONS ÉVENTUELLES<lb />(<hi rend="sc">dans l’ordre de l’alphabet latin</hi>)</head>
+<p>Pour gagner de la place dans le <hi rend="it">Répertoire</hi>, nous avons établi un système d’abréviations que nous pensions étendre à toutes les inscriptions. Toutefois, certains noms peu connus se laissent difficilement abréger sans risquer de devenir incompréhensibles, et même de provoquer des confusions. Nous avons pour cette raison dû en réduire le nombre et nous en avons en fin de compte gardé assez peu, qui remplacent surtout les dénominations les plus longues.</p>
+<p>Pour tous les détails concernant chacune des inscriptions, on se reportera, d’après la date indiquée, à la <hi rend="it">Liste chronologique des documents utilisés</hi> qui suit celle-ci (sous C).</p>
+<p>Pour des raisons que nous avons exposées dans <hi rend="it">EEI</hi> III<note><p>Cf. <hi rend="it">BEFEO</hi> XLVI, 1952, p. 7-9, par. 18 à 25.</p></note>, nous nous servons, pour désigner chaque document, d’un toponyme — plus rarement d’un anthroponyme — s’y trouvant, ce qui fait que le nom ainsi adopté échappe à l’arbitraire des désignations par le lien (réel ou supposé) de la trouvaille ou, encore pire, par le nom du collectionneur chez qui elle s’est trouvée à une certaine époque. Comme nous avons inclus ici des inscriptions dont la date est perdue, ce travail comprend un certain nombre de textes que nous avons laissés de côté dans <hi rend="it">EEI</hi> I à IV. Nous fournissons sous C (<hi rend="it">Liste chronologique</hi>) tous les détails utiles sur ces documents ; la présente <hi rend="it">Liste</hi> ne donne que les abréviations employées le cas échéant, avec leur valeur et la date Śaka<note><p>Nous y joignons quand même, en plus du numéro d’ordre dans la liste C, l’indication de la langue dans laquelle le texte est rédigé, ainsi que la provenance, afin que le lecteur ait toujours ces éléments facilement à sa portée. Quand la langue n’est pas précisée, c’est qu’il s’agit du vieux javanais ; quand la provenance n’est pas précisée, c’est qu’il s’agit de Java central.</p></note>.</p>
+<table>
+<row><cell><pb n="38" /><hi rend="sc">Désignation (éventuellement abréviation)</hi></cell><cell>N° <hi rend="sc">de la Liste C</hi></cell><cell><hi rend="sc">Nom complet</hi></cell><cell><hi rend="sc">Langue</hi></cell><cell><hi rend="sc">Provenance</hi></cell><cell><hi rend="sc">Date</hi></cell><cell><hi rend="sc">Matériau</hi></cell></row>
+<row><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell></row>
+<row><cell>Abhaya</cell><cell>21</cell><cell>Abhaya</cell><cell></cell><cell>[J. Or.]</cell><cell>700-750</cell><cell>(<hi rend="it">argent</hi>)</cell></row>
+<row><cell>Abhayagiri.</cell><cell>12</cell><cell>Abhayagiriwihāra</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>714</cell><cell></cell></row>
+<row><cell>Abhayamukha</cell><cell>22</cell><cell>Abhayamukha</cell><cell></cell><cell>[J. Or.]</cell><cell>700-750</cell><cell></cell></row>
+<row><cell>Abhayānanda</cell><cell>33</cell><cell>Abhayānanda</cell><cell></cell><cell></cell><cell>[748]</cell><cell></cell></row>
+<row><cell>**Air Kali</cell><cell>169</cell><cell>Air Kali</cell><cell></cell><cell>[J. Or.]</cell><cell>849-850</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Alih Tiŋh.</cell><cell>107</cell><cell>Alih Tiŋhal</cell><cell></cell><cell></cell><cell>env. 805</cell><cell></cell></row>
+<row><cell>Aŋgǝhan</cell><cell>80</cell><cell>Aŋgǝhan</cell><cell></cell><cell></cell><cell>796</cell><cell></cell></row>
+<row><cell>Ayam T. I</cell><cell>117</cell><cell>Ayam Tǝas I</cell><cell></cell><cell></cell><cell>822</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Ayam T. II</cell><cell>118</cell><cell>Ayam Tǝas II</cell><cell></cell><cell></cell><cell>8[22]</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Baliŋ.</cell><cell>114</cell><cell>Baliŋawan</cell><cell></cell><cell>[J. Or.]</cell><cell>813</cell><cell></cell></row>
+<row><cell>Bars.</cell><cell>143</cell><cell>Barsahan</cell><cell></cell><cell></cell><cell>env. 830</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Bhūjayo.</cell><cell>35</cell><cell>Bhūjayottuṅgadewa</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>avant 750</cell><cell></cell></row>
+<row><cell>Bulai A</cell><cell>55</cell><cell>Bulai A</cell><cell></cell><cell></cell><cell>av. 780</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Bulai B</cell><cell>56</cell><cell>Bulai B</cell><cell></cell><cell></cell><cell>env. 780</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Bulai C</cell><cell>57</cell><cell>Bulai C</cell><cell></cell><cell></cell><cell>782</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Ci Arutǝ̄n</cell><cell>1</cell><cell>Ci Arutǝ̄n</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell></cell></row>
+<row><cell>Ci Dan Hyan</cell><cell>5</cell><cell>Ci Dan Hyaŋ</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell></cell></row>
+<row><cell>Ḍ. P. Gǝlis</cell><cell>34</cell><cell>Ḍaŋ Puhawaŋ Gǝlis</cell><cell>(<hi rend="sc">vm</hi>)</cell><cell></cell><cell>749</cell><cell></cell></row>
+<row><cell>D. P. Sel.</cell><cell>26</cell><cell>Da pu nta Selendra</cell><cell>(<hi rend="sc">vm</hi>)</cell><cell></cell><cell>av. 725</cell><cell></cell></row>
+<row><cell>Ḍaŋ Manaŋan</cell><cell>19</cell><cell>Ḍaŋ Manaŋan</cell><cell></cell><cell></cell><cell>700-750</cell><cell></cell></row>
+<row><cell>Dyah Sagara</cell><cell>14</cell><cell>Dyah Sagara</cell><cell></cell><cell></cell><cell>700-750</cell><cell>(<hi rend="it">or</hi>)</cell></row>
+<row><cell>Er Atǝn</cell><cell>20</cell><cell>Er Atǝn</cell><cell></cell><cell></cell><cell>700-750</cell><cell></cell></row>
+<row><cell>Er Haŋ.</cell><cell>112</cell><cell>Er Haŋat</cell><cell></cell><cell></cell><cell>env. 810</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Er Ku.</cell><cell>155</cell><cell>Er Kuwiŋ</cell><cell></cell><cell></cell><cell>peu après 837</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>G. Wule</cell><cell>59</cell><cell>Gunuŋ Wule</cell><cell></cell><cell></cell><cell>783</cell><cell></cell></row>
+<row><cell>Garuŋ</cell><cell>29</cell><cell>Garuŋ</cell><cell></cell><cell></cell><cell>741</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Gil. I</cell><cell>163</cell><cell>Gilikan I</cell><cell></cell><cell></cell><cell>env. 845</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Gil. II</cell><cell>164</cell><cell>Gilikan II</cell><cell></cell><cell></cell><cell>env. 845</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Guntur</cell><cell>139</cell><cell>Guntur</cell><cell></cell><cell></cell><cell>829</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Hali.</cell><cell>83</cell><cell>Haliwaŋbaŋ</cell><cell></cell><cell></cell><cell>799</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Hampran</cell><cell>7</cell><cell>Hampran</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>672</cell><cell></cell></row>
+<row><cell>Hara.</cell><cell>51</cell><cell>Haraliṅga</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>[778]</cell><cell></cell></row>
+<row><cell>Hariń. A</cell><cell>28</cell><cell>Harińjiŋ A</cell><cell></cell><cell>[J. Or.]</cell><cell>7[2]6</cell><cell></cell></row>
+<row><cell>Hariń. B</cell><cell>160</cell><cell>Harińjiŋ B</cell><cell></cell><cell>[J. Or.]</cell><cell>843</cell><cell></cell></row>
+<row><cell>Hariń. C</cell><cell>165</cell><cell>Harińjiŋ C</cell><cell></cell><cell>[J. Or.]</cell><cell>84[9]</cell><cell></cell></row>
+<row><cell>Huma.</cell><cell>81</cell><cell>Humaṇḍiŋ</cell><cell></cell><cell></cell><cell>797</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Humpan</cell><cell>70</cell><cell>Humpan</cell><cell></cell><cell></cell><cell>750-800</cell><cell></cell></row>
+<row><cell>Huwuŋ</cell><cell>31</cell><cell>Huwuŋ</cell><cell></cell><cell></cell><cell>744</cell><cell></cell></row>
+<row><cell>Inv.</cell><cell>65</cell><cell>Inventaire de Temple</cell><cell>(<hi rend="sc">vm</hi>)</cell><cell></cell><cell>750-800</cell><cell></cell></row>
+<row><cell>Jambu</cell><cell>2</cell><cell>Jambu</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell></cell></row>
+<row><cell>Juruŋan</cell><cell>82</cell><cell>Juruŋan</cell><cell></cell><cell></cell><cell>798</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>K. Ara H.</cell><cell>120</cell><cell>Kayu Ara Hiwaŋ</cell><cell></cell><cell></cell><cell>823</cell><cell></cell></row>
+<row><cell>K. Kopi</cell><cell>3</cell><cell>Kǝbon Kopi</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell></cell></row>
+<row><cell>K. Śrī B</cell><cell>172</cell><cell>Kambaŋ Śrī B</cell><cell></cell><cell>[J. Or.]</cell><cell>[850]</cell><cell></cell></row>
+<row><cell>Kadul.</cell><cell>110</cell><cell>Kaduluran</cell><cell></cell><cell></cell><cell>807</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>*Kalaḍi</cell><cell>146</cell><cell>Kalaḍi</cell><cell></cell><cell>[J. Or.]</cell><cell>831</cell><cell>(<hi rend="it">cui</hi>)</cell></row>
+<row><cell>Kalasan</cell><cell>9</cell><cell>Kalasan</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>700</cell><cell></cell></row>
+</table>
+</div>
+<div type="chapter">
+<head><pb n="42" />C. LISTE CHRONOLOGIQUE DES DOCUMENTS UTILISÉS</head>
+<p>Nous donnons en note les références indispensables pour que le lecteur puisse retrouver les transcriptions publiées, et sache comment a éventuellement été effectuée la réduction de la date et si notre lecture repose sur un document que nous avons consulté personnellement, ou bien si la transcription n’est pas de nous.</p>
+<p>Nous donnerons, entre parenthèses, après la désignation adoptée par nous, le nom sous lequel le document a été couramment désigné jusqu’ici dans la littérature épigraphique en néerlandais. Il n’y a que pour les inscriptions de Pūrṇnawarmmā que nous avons conservé les anciennes dénominations.</p>
+<p>Nous indiquons la langue, lorsque celle-ci n’est pas le vieux javanais. Enfin, nous indiquons aussi la région dont provient chaque inscription : « J. Oc. » uniquement pour les inscriptions de Śri Pūrṇnawarmmā, « J. Or. » pour les documents trouvés dans l’Est de l’île. Lorsque rien n’est indiqué, il s’agit d’inscriptions du Centre.</p>
+<table>
+<row><cell>N°</cell><cell><hi rend="sc">Désignation de l’inscription</hi></cell><cell><hi rend="sc">Langue</hi></cell><cell><hi rend="sc">Provenance</hi></cell><cell><hi rend="sc">Date śaka</hi></cell><cell><hi rend="sc">Date</hi> EC</cell></row>
+<row><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell><cell>—</cell></row>
+<row><cell>1</cell><cell>Ci Arutǝ̄n (Pūrṇnawarmmā I)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375<note><p>Dans plusieurs cas, où les dates sont très approximatives, nous arrondissons la différence entre l’ère Śaka et l’ère chrétienne à 75 ans pour garder des chiffres ronds.</p></note></cell><cell>env. 450<note><p>Éditée avec traduction anglaise par J. Ph. Vogel dans <hi rend="it">Publ. OD, I</hi>, Batavia, 1925, p. 21-24.</p></note></cell></row>
+<row><cell>2</cell><cell>Jambu (Pūrṇnawarmmā II)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell>env. 450<note><p>Éditée avec traduction anglaise par J. Ph. Vogel dans <hi rend="it">Publ. OD, I</hi>, Batavia, 1925, p. 24-26.</p></note></cell></row>
+<row><cell>3</cell><cell>Kǝbon Kopi (Pūrṇnawarmmā III)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell>env. 450<note><p>Éditée avec traduction anglaise par J. Ph. Vogel dans <hi rend="it">Publ. OD, I</hi>, Batavia, 1925, p. 27-28.</p></note></cell></row>
+<row><cell>4</cell><cell>Tugu (Pūrṇnawarmmā IV)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell>env. 450<note><p>Éditée avec traduction anglaise par J. Ph. Vogel dans <hi rend="it">Publ. OD, I</hi>, Batavia, 1925, p. 28-34.</p></note></cell></row>
+<row><cell>5</cell><cell>Ci Dan Hyaŋ (Pūrṇnawarmmā V)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Oc.]</cell><cell>env. 375</cell><cell>env. 450<note><p>Inédite. Cette inscription rupestre a été découverte il y a une dizaine d’années. Nous en avons eu une transcription due à M. Boechari, ainsi qu’une photo (DP 19639), qui a été reproduite dans le <hi rend="it">Rapport 1954 du Service Archéologique</hi> (Djakarta, 1962, mais distribué en réalité au début de 1965) fig. 6, mais elle est là pratiquement inutilisable du point de vue paléographique. Le texte avec une traduction indonésienne, en est publié dans le même <hi rend="it">Rapport</hi>, p. 5.</p></note></cell></row>
+<row><cell><pb n="43" />6</cell><cell>Sańjaya (Cangal)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>654</cell><cell>6 X 732<note><p>Voir la transcription de H. Kern dans <hi rend="it">VG</hi> VII, 115-128 et les corrections de B. Ch. Chhabra dans <hi rend="it">Expansion of Indo-Aryan Culture...</hi> 1935, p. 34-37. Cf. <hi rend="it">EEI</hi> III, p. 20-21, A 1 et <hi rend="it">EEI</hi> IV, 203-204.</p></note></cell></row>
+<row><cell>7</cell><cell>Hampran (Piumpuŋan)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>672</cell><cell>(? 24 VII) 750<note><p>Éditée pour la première fois par De Caspiris dans <hi rend="it">PI</hi> I, 1-11. Cet auteur lit le millésime 674, ce qui est selon nous exclu. Cf. <hi rend="it">EEI</hi> III, 20-21, A 2 et le <hi rend="it">Tableau des chiffres</hi> à la fin de ce dernier article. Pour la discussion du mois et du quantième, voir <hi rend="it">EEI</hi> IV, 246-250.</p></note></cell></row>
+<row><cell>8</cell><cell>Kańjuruhan (Dinȧyȧ)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell>[J. Or.]</cell><cell>682</cell><cell>21 XI 760<note><p>Voir la plus récente transcription de De Caspiris dans <hi rend="it">TBG</hi>, 81, 1941, 500-501 et nos remarques dans <hi rend="it">EEI</hi> III, p. 22-23, avec les notes. Cf. de plus <hi rend="it">EEI</hi> IV, 204.</p></note></cell></row>
+<row><cell>9</cell><cell>Kalasan</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>700</cell><cell>778 (-779)<note><p>Voir la transcription de Bosch dans <hi rend="it">TBG</hi>, 68, 1928, 57-62, avec la pl. I, et nos remarques dans <hi rend="it">EEI</hi> III, 23, note 4. Cf. de plus <hi rend="it">EEI</hi> IV, 240. Nous ajoutons, entre parenthèses, la partie de l’année Śaka + 79 qui va de janvier à mars environ.</p></note></cell></row>
+<row><cell>10</cell><cell>Saṅgrāmadhanaṁjaya (Kǝluraq)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>704</cell><cell>(? 26 IX) 782<note><p>Voir la transcription de Bosch, dans <hi rend="it">TBG</hi> 68, 1928, 1-56, avec la pl. II et nos remarques dans <hi rend="it">EEI</hi> III, 24-25 et dans <hi rend="it">EEI</hi> IV p. 205. Étant donné les discussions autour de la lecture et de la valeur du terme <hi rend="it">Dhāraṇī...</hi>, nous choisissons l’anthroponyme Saṅgrāmadhanaṁjaya pour désigner ce document.</p></note></cell></row>
+<row><cell>11</cell><cell>Mańjuśrīgǝrha</cell><cell>(<hi rend="sc">vm</hi>)</cell><cell></cell><cell>714</cell><cell>2 XI 792<note><p>Inscription nouvellement découverte et encore inédite. C’est encore à M. Boechari que nous devons une transcription et une photographie de cette importante inscription assez difficile à lire. Pour la réduction en date julienne, voir <hi rend="it">BEFEO</hi>, LI, 1963, 579-582. C’est maintenant le document le plus ancien connu, donnant les éléments du cycle des <hi rend="it">wuku</hi> en plus de la date lunaire. Elle est en vieux malais et est antérieure de 27 ans à la plus ancienne inscription datée par le cycle des wuku connue en vieux javanais.</p></note></cell></row>
+<row><cell>12</cell><cell>Abhayagiriwihāra (Ratu Bȧkȧ)</cell><cell>(<hi rend="sc">sk</hi>)</cell><cell></cell><cell>714</cell><cell>792 (-793)<note><p>Le millésime de ce texte a été publié par De Casparis dans <hi rend="it">Artibus Asiae</hi>, XXIV, 241-248 avec une bonne photographie reproduite aussi dans le <hi rend="it">Rapport 1954</hi> du <hi rend="it">Service Archéologique</hi>. Pour d’autres fragments, voir <hi rend="it">PI</hi> I, 21-22 et une photographie des premiers fragments connus dans <hi rend="it">TBG</hi>, 68, 1928, pl. III.</p></note></cell></row>
+<row><cell>13</cell><cell>Si Mpu Gaurī</cell><cell></cell><cell></cell><cell>700-750<note><p>Nous rappelons que pour ce groupe de documents de « 700-750 » Śaka, les marges d’erreurs peuvent être assez grandes. Pour arriver éventuellement à des évaluations plus précises, il faudrait une discussion paléographique détaillée dont il ne peut-être question ici.</p></note></cell><cell>775-825<note><p>Musée Djakarta n° 517 <hi rend="it">b</hi>. Plaque d’or avec un Saŋ Hyaŋ Śiwa en repoussé. Cf. <hi rend="it">TBG</hi> 47, 1904, 566, la planche 1. La lecture de Brandes, « gǝri » est fausse et impossible. Il n’a pas reconnu le signe pour <hi rend="it">-au</hi>, pourtant net, mais qui a souvent été mal interprété par les épigraphistes. Cf. entre autres à ce sujet <hi rend="it">EEI</hi> III, p. 44-45, note 3.</p></note></cell></row>
+<row><cell>14</cell><cell>Dyah Sagara</cell><cell></cell><cell></cell><cell>700-750</cell><cell>775-825<note><p>Musée Djakarta, n° 519 <hi rend="it">a</hi>, photo DP 861. Statuette d’or de Umā-Parwati sur piédestal d’argent. Cf. <hi rend="it">TBG</hi> 47, 1904, 565, avec planche 7 [<hi rend="it">a</hi>]. La légende est malheureusement illisible sur cette photographie. La lecture de Brandes est en partie erronée.</p></note></cell></row>
+<row><cell>15</cell><cell>Pu Bali</cell><cell></cell><cell></cell><cell>700-750</cell><cell>775-825<note><p>Musée Djakarta, n° 788. Voir <hi rend="it">Cata.</hi>, 226. Il s’agit de trois petites plaques d’or portant chacune un anthroponyme.</p></note></cell></row>
+<row><cell>16</cell><cell>Śrī Endra</cell><cell></cell><cell></cell><cell>700-750</cell><cell>775-825<note><p>Musée Djakarta n° 1299. Cf. <hi rend="it">Cata.</hi>, 284. On s’aperçoit ici que Brandes, ne pouvant concevoir une graphie autre que celle du sanskrit « correct », a lu °<hi rend="it">i</hi>, alors qu’il s’agit de la forme javanaise °<hi rend="it">endra</hi>, encore vivante de nos jours.</p></note></cell></row>
+<row><cell>17</cell><cell>Waruṇa</cell><cell></cell><cell></cell><cell>700-750</cell><cell>775-825<note><p>Musée Djakarta, n° 783 <hi rend="it">b</hi>. Cf. <hi rend="it">Cata.</hi>, 222 et la note 1.</p></note></cell></row>
+</table>
+</div>
+</front>
+<body>
+<div type="chapter">
+<head><pb n="55" />D. RÉPERTOIRE</head>
+<div type="section">
+<head>H / Voy.</head>
+<div type="sub_section">
+<head>h / voy.</head>
+<entry>
+<form type="lemma">
+<orth xml:id="hi">hi</orth>
+</form>
+<cit>
+<orth type="lemma">hi<note><p>Cette lecture est probablement incorrecte ou incomplète. Cf. <hi rend="it">wli</hi>.</p></note></orth>
+<quote>gusti iŋ wualu<note><p>Ce toponyme semble représenter la forme archaïque du nom de nombre « 8 », utilisé également dans l’inscription de Śiwagǝrha de 778 Śaka, à une époque où l’on prononçait certainement [wolu], pour les besoins du mètre où, comme ici, il fallait trois syllabes.</p></note> si pupul ... wariga galah si t[...]ir huler si <oRef target="hi" /><note><p>Il n’est pas impossible qu’il faille interprèter <hi rend="it">sihi</hi> donc <hi rend="it">si ihi</hi>, mais le premier <hi rend="it">i</hi> ne semble pas long.</p></note></quote>
+<bibl><hi rend="it">Salimar I</hi> 802.</bibl>
+</cit>
+</entry>
+</div>
+<div type="sub_section">
+<head>h / voy. h / voy.</head>
+<entry>
+<form type="lemma">
+<orth xml:id="iha">iha</orth>
+</form>
+<cit>
+<orth type="lemma">**iha<note><p>La forme de cet anthroponyme est curieuse, mais il est net.</p></note></orth>
+<quote>patih ri watu humalaŋ ri hu(lu) wanwa si <oRef target="iha" /> ri puluŋ śraya wineh ...</quote>
+<bibl><hi rend="it">Pupus</hi> 750-800 1<hi rend="it">b</hi> : 6 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+</div>
+<div type="sub_section">
+<head>h / voy. h / voy. r</head>
+<superEntry>
+<form>
+<lbl>(hǝar), mahǝar</lbl>
+</form>
+<entry>
+<form type="lemma">
+<orth xml:id="hǝar">hǝar</orth>
+</form>
+</entry>
+<entry>
+<form type="lemma">
+<orth xml:id="mahǝar">mahǝar</orth>
+</form>
+<cit>
+<orth type="lemma">mahǝar</orth>
+<quote>// muwah māgaman prāṇa 7 ... tuha wǝrǝh si brit si kpul rama ni <oRef target="mahǝar" /> ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 2<hi rend="it">a</hi> : 14 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">mahǝar</orth>
+<quote>// muwah raiṇa nta<note><p>Nous gardons <hi rend="it">raiṇa nta</hi> en deux mots au lieu de trois, car le <hi rend="it">r</hi> est accompagné du signe pour la diphtongue <hi rend="it">ai</hi>. Mais, étymologiquement, c’est bien <hi rend="it">ra</hi>+<hi rend="it">ina</hi>+<hi rend="it">nta</hi> qu’il faut interpréter.</p></note> saŋ manūti prāṇa 15 ... si kinaŋ rai<note><p>Bien qu’il s’agisse d’un déterminatif personnel féminin qui semble apparenté à <hi rend="it">raiṇa nta</hi>, il n’y a aucune preuve que les deux termes soient reliés.</p></note> barubuh si dakī rai <oRef target="mahǝar" /> si turukan rai tarum ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">a</hi> : 1 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+</superEntry>
+</div>
+<div type="sub_section">
+<head>h / voy. h / voy. w / b</head>
+<entry>
+<cit>
+<orth type="lemma">ahawaŋ</orth>
+<xr type="related">Voir <ref target="hawaŋ" type="entry"><hi rend="it">hawaŋ</hi></ref>.</xr>
+</cit>
+</entry>
+</div>
+<div type="sub_section">
+<head><pb n="56" />h / voy. h / voy. l</head>
+<entry>
+<cit>
+<orth type="lemma">ahuler</orth>
+<xr type="related">Voir <ref target="huler" type="entry"><hi rend="it">huler</hi></ref> sous <ref target="hulu" type="entry"><hi rend="it">hulu</hi></ref>.</xr>
+</cit>
+</entry>
+</div>
+<div type="sub_section">
+<head>h / voy. h / voy. y</head>
+<entry>
+<form type="lemma">
+<orth xml:id="huīyan">huīyan</orth>
+</form>
+<cit>
+<orth type="lemma">huīyan</orth>
+<quote>sākṣī hyaŋ guru maŋgalī saŋ śīwamūrtti kabikuan i <oRef target="huīyan" /></quote>
+<bibl><hi rend="it">Kamal.</hi> 743 <hi rend="it">a</hi> : 9-10.</bibl>
+</cit>
+</entry>
+</div>
+<div type="sub_section">
+<head>h / voy. h / voy. m</head>
+<superEntry>
+<form>
+<lbl>(ǝhǝm), maŋhǝ̄m</lbl>
+</form>
+<entry>
+<form type="lemma">
+<orth xml:id="ǝhǝm">ǝhǝm</orth>
+</form>
+</entry>
+<entry>
+<form type="lemma">
+<orth xml:id="maŋhǝ̄m">maŋhǝ̄m</orth>
+</form>
+<cit>
+<orth type="lemma">maŋhǝ̄m<note><p>Nous considérons que la base est <hi rend="it">ǝhǝm</hi> et que la graphie <hi rend="it">ŋh</hi> ne vaut pas <hi rend="it">ŋ</hi>, comme il est de règle plus tard, mais suppose un <hi rend="it">pǝpǝt</hi> entre les deux consonnes.</p></note></orth>
+<quote>kalaŋ ri gunuŋŋan si <oRef target="maŋhǝ̄m" /> rama ṇi maŋajaŋ ...</quote>
+<bibl><hi rend="it">Kamal.</hi> 743 <hi rend="it">a</hi> : 15-16.</bibl>
+</cit>
+<cit>
+<orth type="lemma">maŋhǝ̄m</orth>
+<quote>maŋiduŋ saŋkā ri haji minaŋa si <oRef target="maŋhǝ̄m" /> rama nīmpan</quote>
+<bibl><hi rend="it">Kamal.</hi> 743 <hi rend="it">b</hi> : 16-17.</bibl>
+</cit>
+</entry>
+</superEntry>
+</div>
+<div type="sub_section">
+<head>h / voy. h / voy. ŋ</head>
+<superEntry>
+<form>
+<lbl>uaŋ/wuaŋ/waŋ/wwaŋ/woŋ, wuaŋ atuha, wuaŋŋ hijo, wuaŋŋ kalaŋ, wuaŋ wulu, mawuaŋ amuaŋŋakan.</lbl>
+</form>
+<entry>
+<form type="lemma">
+<orth xml:id="uaŋ">uaŋ</orth>
+<orth xml:id="wuaŋ">wuaŋ</orth>
+<orth xml:id="waŋ">waŋ</orth>
+<orth xml:id="wwaŋ">wwaŋ</orth>
+<orth xml:id="woŋ">woŋ</orth>
+</form>
+<cit>
+<orth type="lemma">uaŋ</orth>
+<quote>// ri diwasa niŋ wuatthyaŋŋ ika maŋhyaŋ <oRef target="uaŋ" /> pamatih</quote>
+<bibl><hi rend="it">Śiwag.</hi> 778 <hi rend="it">a</hi> : 36-37.</bibl>
+</cit>
+<cit>
+<orth type="lemma">waŋ<note><p>Lecture de De Casparis dans <hi rend="it">PI</hi> II, 1956, 316.</p></note></orth>
+<quote>tiga ŋ <oRef target="waŋ" /> gustīŋke si jana ra si kaṇḍut ra si sanab...</quote>
+<bibl><hi rend="it">Śiwag.</hi> 778 <hi rend="it">a</hi> : 44.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote>saŋ patih <oRef target="wuaŋ" /> nya prāṇa 9 kapua winaih ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">a</hi> : 8 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote>irikaŋ kāla <oRef target="wuaŋ" /> i tuŋgalaŋan marā iŋ pkan i siṇḍiŋan prāṇa 4 ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">b</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote><oRef target="wuaŋ" /> i saru psu prāṇa 3 si biddhi si kyaiŋ si goḍa winaih pirak ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">b</hi> : 3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote>// saŋ mūla wuddha 2 hulu wras ḍa pu nta piwwi anak wanua i ra <oRef target="wuaŋ" /> watak kiniwaŋ muaŋ si lańot rama ni mulat anak wanua i wuaŋ wulu watak luwakan ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">b</hi> : 12-13 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote>ya hutaŋ saŋ anakabwi maŋaran si campa <oRef target="wuaŋ" /> sānak saŋ dharma</quote>
+<bibl><hi rend="it">Guntur</hi> 829 1<hi rend="it">a</hi> : 5 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote>tatra sākṣī rowaŋ ra kryān aputu pu rakak<note><p>Il ne semble pas que le <hi rend="it">ra</hi> de ce terme soit la particule honorifique. Nous gardons la lecture de Brandes.</p></note> <oRef target="wuaŋ" /> i taŋkil rowaŋ ra kryān hamǝas pu kirat <oRef target="wuaŋ" /> i timbun wsi pu saŋgama <oRef target="wuaŋ" /> i guntur</quote>
+<bibl><hi rend="it">Guntur</hi> 829 1<hi rend="it">b</hi> : 1-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">wuaŋ</orth>
+<quote>likhitapātra dyah raŋgal <oRef target="wuaŋ" /> i warasiga //</quote>
+<bibl><hi rend="it">Guntur</hi> 829 1<hi rend="it">b</hi> : 4 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="compound">
+<orth xml:id="wuaŋ_atuha">wuaŋ atuha</orth>
+</form>
+<cit>
+<orth type="compound"><pb n="57" />wuaŋ atuha</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote><oRef target="wuaŋ_atuha" /> saŋ wulaw̲an lawan ḍa pu patǝt ...</quote>
+<bibl><hi rend="it">Hariń. A</hi> 7[2]6 <hi rend="it">a</hi> : 10.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="compound">
+<orth xml:id="wuaŋŋ_hijo">wuaŋŋ hijo</orth>
+</form>
+<cit>
+<orth type="compound">wuaŋŋ hijo<note><p>Graphie originale <hi rend="it">wu°āṅ hijo</hi>.</p></note></orth>
+<quote>// rāma tpi siriŋ milu sākṣī ... tuha banua si wapra rama ni gampwar anak wanua i <oRef target="wuaŋŋ_hijo" /> watak luwakan</quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">b</hi> : 7 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="compound">
+<orth xml:id="wuaŋ_kalaŋ">wuaŋ kalaŋ</orth>
+</form>
+<cit>
+<orth type="compound">wuaŋ kalaŋ</orth>
+<quote>saŋ śala rama ni barubuh anak wanua ri <oRef target="wuaŋ_kalaŋ" /> watak kiniwaŋ ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">a</hi> : 9 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="compound">
+<orth xml:id="wuaŋ_wulu">wuaŋ wulu</orth>
+</form>
+<cit>
+<orth type="compound">wuaŋ wulu</orth>
+<quote>// saŋ mūla wuddha 2 ... muaŋ si lańot rama ni mulat anak wanua i <oRef target="wuaŋ_wulu" /> watak luwakan kapua winaih ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">b</hi> : 13 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="lemma">
+<orth xml:id="mawuaŋ">mawuaŋ</orth>
+</form>
+<cit>
+<orth type="lemma">mawuaŋ<note><p>Nous comprenons ce terme comme une désignation de fonction.</p></note></orth>
+<quote>wanua i wuatan tija ... samgat wintri ... <oRef target="mawuaŋ" /> ri tamyaŋ [...]</quote>
+<bibl><hi rend="it">Wu. Tija</hi> 802 2<hi rend="it">a</hi> : 1 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="lemma">
+<orth xml:id="amuaŋŋakan">amuaŋŋakan</orth>
+</form>
+<cit>
+<orth type="lemma">amuaŋŋakan</orth>
+<quote>tuhā[n] i haroŋan rikanaŋ kāla ... <oRef target="amuaŋŋakan" /> saŋ ra wuŋli pu kris anak wanua i limwur watǝk limwur</quote>
+<bibl><hi rend="it">Wulakan</hi> 8[49] 2<hi rend="it">a</hi> : 1-2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+</superEntry>
+</div>
+<div type="sub_section">
+<head>h / voy. n</head>
+<entry>
+<form type="lemma">
+<orth xml:id="hnī">hnī</orth>
+<orth xml:id="hni">hni</orth>
+</form>
+<cit>
+<orth type="lemma">*hnī</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>hana ta deśa maŋaran ikaŋ <oRef target="hnī" /> maŋiseni saji grih kapitiŋ pirak ...</quote>
+<bibl><hi rend="it">Kuṭi</hi> 762 7<hi rend="it">b</hi> : 3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">*hnī</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>tǝhǝr āmobhayakǝn lmah sīma <oRef target="hnī" /> kālap de ni ra cańcu makuṭa maŋkāna ikaŋ <oRef target="hnī" /></quote>
+<bibl><hi rend="it">Kuṭi</hi> 762 11<hi rend="it">b</hi> : 2-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hni</orth>
+<quote>juru ṇiŋ kanayakān rake <oRef target="hni" /> anak wanua i watu watu watak pagar wsi</quote>
+<bibl><hi rend="it">Kasug.</hi> 829 1<hi rend="it">a</hi> : 2-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+<entry>
+<form type="lemma">
+<orth xml:id="ina">ina</orth>
+</form>
+<cit>
+<orth type="lemma">ina</orth>
+<quote>// rāma i tpi siriŋ iŋkaŋ kāla ... // i hampran kalima si <oRef target="ina" /> rama ni bānā // i kasugihan winkas si hayu ...</quote>
+<bibl><hi rend="it">Mant. I</hi> 829 1<hi rend="it">b</hi> : 23 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">ina</orth>
+<quote>// rāma i tpi siriŋ rikaŋ kāla ... i hampran kalima si <oRef target="ina" /> rama ni bānā i kaśugihan winkas si hayu ...</quote>
+<bibl><hi rend="it">Mant. III</hi> [829] z <hi rend="it">a</hi> : 14 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<xr type="related">Voir aussi <ref target="raiṇa_nta"><hi rend="it">raiṇa nta</hi></ref> sous <ref target="ra_ina_ŋ"><hi rend="it">ra ina ŋ</hi></ref> et les <hi rend="it">Listes</hi>.</xr>
+</entry>
+<superEntry>
+<form>
+<lbl>(hina), hinān</lbl>
+</form>
+<entry>
+<form type="lemma">
+<orth xml:id="hina">hina</orth>
+</form>
+</entry>
+<entry>
+<form type="lemma">
+<orth xml:id="hinān">hinān</orth>
+</form>
+<cit>
+<orth type="lemma">hinān</orth>
+<quote>[...] ni ra si gahiŋ rama ni <oRef target="hinān" /></quote>
+<bibl><hi rend="it">Tǝlaŋ I</hi> [825] 1<hi rend="it">b</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+</entry>
+</superEntry>
+<entry>
+<form type="lemma">
+<orth xml:id="hino">hino</orth>
+</form>
+<cit>
+<orth type="lemma">*<hi rend="it">hino</hi><note><p>Nous avons corrigé le <hi rend="it">ṇ</hi> en dentale, ce qui est plus probable.</p></note></orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>ra kryan mantri <oRef target="hino" /> dakṣotama ra kryan mantri halu pratipakṣasaŋśaya<note><p>Cette forme est fautive, ainsi que plusieurs autres titres de ce document.</p></note> ra kryan mantri sirikan mahāmāhino</quote>
+<bibl><hi rend="it">Kuṭi</hi> 762 2<hi rend="it">b</hi> : 4-3<hi rend="it">a</hi> : 1-2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>i <oRef target="hino" /></quote>
+<bibl><hi rend="it">Leg. Prambanan</hi> env. 778<note><p>Inédite. Cette légende est peinte en gros caractères sur le mur arrière extérieur (Ouest) du grand templion se trouvant approximativement en face (donc à l’Est) du temple de Wiṣṇu.</p></note>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">*hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>tinaḍah de ra kryăn mahamantrī katrīṇī i <oRef target="hino" /> i sirikan i halu umiŋsor i taṇḍa ra kryăn riŋ pakirakiran makabehan</quote>
+<bibl><hi rend="it">Kańcana</hi> 782 1<hi rend="it">b</hi> : 4-5 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma"><pb n="58" />*hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>mwaŋ i ra kryan mahamantri katrīni i ra kryan mantrī <oRef target="hino" /> inaturan pasǝk ...</quote>
+<bibl><hi rend="it">Kańcana</hi> 782 8<hi rend="it">b</hi> : 6 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>hana sīma i śrī maŋgala watag <oRef target="hino" /></quote>
+<bibl><hi rend="it">Śrī Maŋg. I</hi> 750-800 <hi rend="it">b</hi> : 1.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tatkāla saŋ pamgat <oRef target="hino" /> pu apus manusuk sīma ...</quote>
+<bibl><hi rend="it">Śrī Maŋg. II</hi> 796.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>// paŋumwigyan 10 ... i nagantan si wada i <oRef target="hino" /> si pulaŋ i tru hayu si utus ...</quote>
+<bibl><hi rend="it">Hali.</hi> 799 3<hi rend="it">a</hi> : 7-8 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>... tumurun i ra karayān kagnap <oRef target="hino" /> watu tihaŋ bawaŋ śirikan umanugrahakna ...</quote>
+<bibl><hi rend="it">Kwak I</hi> 801 1<hi rend="it">a</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>rake <oRef target="hino" /> pu aku rake watu tihaŋ pu agra samgat bawaŋ pu partha rake sirikan pu puruŋul kapua inaŋsǝan ...</quote>
+<bibl><hi rend="it">Kwak I</hi> 801 1<hi rend="it">a</hi> : 5-6 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>ratu tatkāla rake kayu waŋi patih rake <oRef target="hino" /> pu aku rake wka pūdiŋ rake halaran pu <hi rend="it">kbi</hi> ...</quote>
+<bibl><hi rend="it">Pǝṇḍǝm</hi> 803 <hi rend="it">a</hi> : 3-4.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>i ra karayān mapatih rake <oRef target="hino" /> pu aku samgat bawaŋ pu partha rake watu tihaŋ pu agra rake śirikan pu puruŋul kapua si ra ...</quote>
+<bibl><hi rend="it">Ra Taw. I</hi> 803 1<hi rend="it">a</hi> : 2-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tatkāla ājńă ... tumurun i ra karayān mapatih <oRef target="hino" /> wka sirikan ...</quote>
+<bibl><hi rend="it">Ra Mwi</hi> 804 1<hi rend="it">a</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>maŋaŋsǝakan rake halu pasǝk pasǝk ... manusuk śīma i ra karayān mapatih rake <oRef target="hino" /> pu aku samgat bawaŋ pu partha ...</quote>
+<bibl><hi rend="it">Ra Mwi</hi> 804 1<hi rend="it">a</hi> : 7-8 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>parujar i <oRef target="hino" /> 2 kaṇḍamuhi saŋ caṭā watu waraṇi saŋ widyāŋga ...</quote>
+<bibl><hi rend="it">Ra Mwi</hi> 804 1<hi rend="it">a</hi> : 12-13 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>[ra kara]yān<note><p>L’écriture est très effacée, mais la syllabe <hi rend="it">-yān</hi> est sûre.</p></note> mapatih <oRef target="hino" /> wka si[ri]kan ...</quote>
+<bibl><hi rend="it">Kalir.</hi> 804 1<hi rend="it">a</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tumurun i ra kryān mapatih i <oRef target="hino" /> pu bāhubajra pratipakṣakṣaya rake halu pu saŋgrāmanurāddhara ...</quote>
+<bibl><hi rend="it">Ayam T. I</hi> 822 1<hi rend="it">a</hi> : 3-4 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tumurun i ra kryān mapatih i <oRef target="hino" /> pu dakṣottama bāhubajra pratipakṣākṣaya ...</quote>
+<bibl><hi rend="it">Ayam T. II</hi> 8[22] 1<hi rend="it">a</hi> : 2-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or. ?]</usg>
+<quote>ra karayān ri <oRef target="hino" /> pu bāhubajra pratipakṣakṣaya ra kryān sirikan pu samarawikrānta ...</quote>
+<bibl><hi rend="it">Taji</hi> 823 pl. 1 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>mataṇḍa saŋ ḍa sagar pu tuan anak wanwa i <hi rend="it">śru</hi> ayun watak <oRef target="hino" /></quote>
+<bibl><hi rend="it">K. Ara H.</hi> 823 <hi rend="it">a</hi> : 18.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>maŋasiakan sira pasǝk pasǝk ... i ra kryan mapatih i <oRef target="hino" /> pu dakṣa saŋ bāhubajra pratipakṣakṣaya ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 1<hi rend="it">b</hi> : 7 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma"><pb n="59" />hino</orth>
+<quote>// sa maŋkana saŋ tuhān mamuat ujar kabaih parujar ri <oRef target="hino" /> saŋ kaṇḍamuhi si tuŋgaŋ anak wanua i gunuŋan watak taŋkil ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 1<hi rend="it">b</hi> : 16 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>... saŋ tuhān mamuat ujar kabaih ... parujar i sirikan saŋ hujuŋ galuh si agra anak wanua i siŋha watak <oRef target="hino" /></quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 2<hi rend="it">a</hi> : 1-2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>// sa maŋkana saŋ i siriŋan iŋ wanua milu pinaka sākṣi patih i <oRef target="hino" /> patih kulumpaŋ si puńjaŋ rama ni śrī</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">a</hi> : 3-4 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">h(in)o<note><p>La restitution proposée par Bosch ne fait aucun doute.</p></note></orth>
+<quote>// rāma i siriŋan tumūt sākṣi i suru watak <oRef target="hino" /> kalaŋ nya si pagar kaki mahū parujar nya si tahil rama ni waris ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">a</hi> : 5 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>// rāma i siriŋan tumūt sākṣi ... i kinawuhan watak <oRef target="hino" /> gusti si bandǝŋ kaki ajī parujar nya si tuḍu ...</quote>
+<bibl><hi rend="it">Paŋg. I</hi> 824 3<hi rend="it">a</hi> : 6-7 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tumurun i ra kryān mapatih i <oRef target="hino" /> pu dakṣa bāhubajra pratipakṣakṣaya</quote>
+<bibl><hi rend="it">Tǝlaŋ II</hi> 825 1<hi rend="it">a</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tatkāla ājńă śrī mahārāja rakai watu kura dyah balituŋ śrī dharmmodaya mahāsambhu misor i ra kryān mapatih i <oRef target="hino" /> muaŋ ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 1<hi rend="it">b</hi> : 1-2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>// i ra kryān mapatih i <oRef target="hino" /> saŋ śrī dakṣottama bāhubajra pratipakṣakṣaya inaŋsǝan pasak pasak ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 1<hi rend="it">b</hi> : 7 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>saŋ tuhān mamuat wuwus kabaih parujar i <oRef target="hino" /> saŋ kaṇdamuhi pu tuŋgaŋ anak wanua i gunuŋan watak taŋkilan ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 1<hi rend="it">b</hi> : 13-14 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>i makudur lumaku manuśuk saŋŋ uttara anak wanua i warak warak watak <oRef target="hino" /></quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">a</hi> : 2-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>wadwā ra kryān mapatih i <oRef target="hino" /> paŋuraŋ milu manuśuk saŋ marumwi pu mana anak wanua i marumwi watak <oRef target="hino" /></quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">a</hi> : 3-4 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>parujar ni ra saŋ ra pilaŋ anak wanua i tarum bajaŋ watak <oRef target="hino" /> winaih pasak pasak ...</quote>
+<bibl><hi rend="it">Poh</hi> 827 2<hi rend="it">a</hi> : 6-7 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>rowaŋ haji ra kryan <oRef target="hino" /> pu dakśa ...</quote>
+<bibl><hi rend="it">Kubu.</hi> 827 5<hi rend="it">a</hi> : 4-5<hi rend="it">b</hi> : 1 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>saŋ mamuatt ujar i <oRef target="hino" /> kaṇḍamuhi pu tuŋgaŋ citralekha wuŋkal waraṇi pu manisǝr ...</quote>
+<bibl><hi rend="it">Kubu.</hi> 827 5<hi rend="it">b</hi> : 3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>inanugrahan wineh makmitana prasasti de ra kryān mapatih i <oRef target="hino" /> pu dakṣottama bāhubajra pratipakṣakṣaya ...</quote>
+<bibl><hi rend="it">Palǝpaŋan</hi> 828 1<hi rend="it">a</hi> : 1-2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma"><pb n="60" />hino</orth>
+<quote>kinon aŋukura wadwā ra kryān i <oRef target="hino" /> saŋ brahmā muaŋ rowa[ŋ] samgat priŋ sa[ŋ] kańcur ...</quote>
+<bibl><hi rend="it">Palǝpaŋan</hi> 828 1<hi rend="it">a</hi> : 5 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>umiŋsor i ra karayān mapatih i <oRef target="hino" /> halu sirikan ...</quote>
+<bibl><hi rend="it">Mant. I</hi> 829 1<hi rend="it">b</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>ra kryān mapatih i <oRef target="hino" /> mahāmantri śrī dakṣottama bāhubajra pratipakṣakṣaya ...</quote>
+<bibl><hi rend="it">Mant. I</hi> 829 1<hi rend="it">b</hi> : 9-10 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or. ?]</usg>
+<quote>umiŋsor i ra karayān mapatih i <oRef target="hino" /> halu sirikan wka ...</quote>
+<bibl><hi rend="it">Mant. II</hi> 8[29] <hi rend="it">a</hi> : 6-7.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tumurun i ra kryān mapatih i <oRef target="hino" /> pu dakṣottama bāhubajra pratipakṣakṣaya</quote>
+<bibl><hi rend="it">Saŋsaŋ</hi> 829 1<hi rend="it">a</hi> : 2-3 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>ra kryān mapati[h] i <oRef target="hino" /> inaŋsian wḍihan ...</quote>
+<bibl><hi rend="it">Saŋsaŋ</hi> 829 1<hi rend="it">b</hi> : 7-8 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">*hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>tinaḍah ra kryăn mapatih i<note><p>En fait, on lit <hi rend="it">tgu</hi>, mais il est évident qu’il s’agit d’une déformation graphique de l’aksara <hi rend="it"><seg>°i</seg></hi> qu’il faut donc restituer.</p></note> <oRef target="hino" /> pu dakṣantama bahubajra pratipakṣakṣaya</quote>
+<bibl><hi rend="it">Kaladi</hi> 831 1<hi rend="it">a</hi> : 4-5 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">*hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote><hi rend="it">pu</hi> nta tumarima ikaŋ praṣaṣti i śrī mahārāja ḍa mpu nta suddhara muaŋ ḍa mpu nta dayi likita citraleka i <oRef target="hino" /> pakṣaṇa<note><p>Cette forme semble fautive.</p></note> //o//</quote>
+<bibl><hi rend="it">Kaladi</hi> 831 10<hi rend="it">b</hi> : 3-4 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>... mūwah juru ni lampuran pu jaya anak banua i galagah watak <oRef target="hino" /><note><p>Écrit dans l’original avec le curieux « sandhi » graphique <hi rend="it">watak<seg>)</seg> khino</hi>.</p></note> muwah juru banua raray saŋ bulibak anak banua i guwa watak <oRef target="hino" /><note><p>Écrit dans l’original avec le curieux « sandhi » graphique <hi rend="it">watak<seg>)</seg> khino</hi>.</p></note></quote>
+<bibl><hi rend="it">T. Gunuŋ</hi> 832 <hi rend="it">a</hi> : 24-25.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>... mūwah <hi rend="it">pu asiki</hi> watak <oRef target="hino" /><note><p>Écrit dans l’original avec le curieux « sandhi » graphique <hi rend="it">watak<seg>)</seg> khino</hi>.</p></note> muwah tuha paḍahi pu dreŋo anak banua i hulu wanua mūwah ...</quote>
+<bibl><hi rend="it">T. Gunuŋ</hi> 832 <hi rend="it">b</hi> : 4-6.</bibl>
+</cit>
+<cit>
+<orth type="lemma">*hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>muaŋ ra kryan mahāmantri iŋ <oRef target="hino" /> dyah dakṣottama bāhubajrā pra[ti]pakṣakṣaya</quote>
+<bibl><hi rend="it">Tulaŋan</hi> [8]32 1<hi rend="it">a</hi> : 4-5 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>tatra sākṣī ... saŋ pakambaŋan anag wanwa i taŋga watak <oRef target="hino" /></quote>
+<bibl><hi rend="it">Wuru Tuŋ.</hi> 833 <hi rend="it">b</hi> : 2.</bibl>
+</cit>
+<cit>
+<orth type="lemma">h[i]no</orth>
+<quote>[... śrī] ma[ha]rāja rake <oRef target="hino" /> pu dakṣa an tlas inanugrahān ...</quote>
+<bibl><hi rend="it">Win. Mas A</hi> peu av. 837 1<hi rend="it">b</hi> : 2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>irikā diwasa ni ājńā śrī mahārāja rakai <oRef target="hino" /> śrī dakṣottama bāhubajra prati[pakṣakṣaya]</quote>
+<bibl><hi rend="it">Er Ku.</hi> peu après 837 1<hi rend="it">b</hi> : 1-2 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>piluŋgah niŋ wahuta i <oRef target="hino" /> si mahendra si jambah si bhoga wineh mas ...</quote>
+<bibl><hi rend="it">Er Ku.</hi> peu après 837 1<hi rend="it">b</hi> : 21 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma"><pb n="61" />hino</orth>
+<quote><oRef target="hino" /> rikāŋ kāla pu ketudhara maṇimantaprabhā prabhū śakti triwikrama wḍihan ...</quote>
+<bibl><hi rend="it">Lin.</hi> 841 1<hi rend="it">a</hi> : 6 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>parujar i <oRef target="hino" /> kaṇḍamuhi saŋ kasura anak banua i wuŋkuḍu watak kilipan</quote>
+<bibl><hi rend="it">Lin.</hi> 841 1<hi rend="it">a</hi> : 13 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>anurat i <oRef target="hino" /> iŋ paŋujaran wuŋkal waraṇi saŋ śuddha anak banua iŋ kabikuan</quote>
+<bibl><hi rend="it">Lin.</hi> 841 1<hi rend="it">a</hi> : 13-14 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>pinintonakan ikanaŋ tāmrapraśasti i ra kryān mapatih i <oRef target="hino" /> pu ketuwijaya</quote>
+<bibl><hi rend="it">Win. Mas B</hi> 841 1<hi rend="it">b</hi> : 7 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<quote>maŋasǝakan dyah dewa babru mas ... i ra kryān <oRef target="hino" /> anakbi ra kryān maputu juru kanaya[k]an i wuru siki wineh ...</quote>
+<bibl><hi rend="it">Win. Mas B</hi> 841 1<hi rend="it">b</hi> : 9-10 <hi rend="it">(Cui)</hi>.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>... anugraha saŋ lumāh ri <hi rend="it">twak</hi> tinaḍah rakai <oRef target="hino" /> pu ketu</quote>
+<bibl><hi rend="it">Hariń. C</hi> 849 <hi rend="it">b</hi> : 25.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>tinaḍah ra kryān mapatih i <oRef target="hino" /> pu siṇḍok śrī īśānawikrama umiŋsor i samgat momahumah kālih ...</quote>
+<bibl><hi rend="it">Saŋg.</hi> 850 <hi rend="it">a</hi> : 4-5.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>ra kryān mapatih i <oRef target="hino" /> śrī īśānawikrama inaŋsǝan ...</quote>
+<bibl><hi rend="it">Saŋg.</hi> 850 <hi rend="it">a</hi> : 31.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>saŋ tuhān i pakaraŋān makabaihan juru kanayakan i <oRef target="hino" /> samgat guṇuŋan pu tuntun ...</quote>
+<bibl><hi rend="it">Saŋg.</hi> 850 <hi rend="it">b</hi> : 3-4.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>saŋ citrale[kha] i <oRef target="hino" /> pasak pasak dhā 2 mā 8 ...</quote>
+<bibl><hi rend="it">Saŋg.</hi> 850 <hi rend="it">b</hi> : 6-7.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>likhita citralekha i <oRef target="hino" /> lakṣaṇa</quote>
+<bibl><hi rend="it">Saŋg.</hi> 850, côté : 14-15.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>[...]tlas ḍālaŋ sanmatā ra kryān mapatih i <oRef target="hino" /> [...]</quote>
+<bibl><hi rend="it">Paŋg. III</hi> [850] <hi rend="it">a</hi> : c.</bibl>
+</cit>
+<cit>
+<orth type="lemma">hino</orth>
+<usg type="geo">[J.Or.]</usg>
+<quote>[likhita]pātra citralekha i <oRef target="hino" /> samgat matǝŋǝr winaih mā su 1 ...</quote>
+<bibl><hi rend="it">Paŋg. III</hi> [850] <hi rend="it">b</hi> : k.</bibl>
+</cit>
+<xr type="related">Voir également <ref target="miśra"><hi rend="it">miśra</hi></ref>.</xr>
+</entry>
+</div>
+</div>
+</div>
+</body>
+<back>
+<div type="chapter">
+<head><pb n="929" />E. LISTES DES PARTICULES DÉTERMINATIVES<lb />ET AUTRES TERMES D’USAGE SEMBLABLE</head>
+<div type="section">
+<p>Nous donnons dans ces Listes, de même que dans le <hi rend="it">Répertoire</hi> proprement dit, des matériaux à l’état brut, sans autre interprétation personnelle que le choix et l’arrangement, avant tout chronologique, des données. On y trouvera tout d’abord, toutes les particules déterminatives qui, par leur nature, ne pouvaient trouver place dans le <hi rend="it">Répertoire</hi> et dont il est cependant intéressant de déterminer les limites d’emploi attesté, surtout pour certains termes peu connus.</p>
+<p>Nous y avons ajouté certains termes qui ont un emploi indépendant mais qui se trouvent quelquefois employés comme simples déterminatifs, comme par exemple <hi rend="it">hyaŋ</hi>, avec ou sans <hi rend="it">saŋ</hi>, certains titres et désignations de parenté, sans le contexte et avec un classement purement chronologique.</p>
+<p>Précisons que l’accent étant mis dans ces <hi rend="it">Listes</hi> sur l’apparition d’un terme à une époque donnée, nous ne répétons pas, à l’inverse de ce que nous avons fait pour le <hi rend="it">Répertoire</hi>, les mêmes expressions lorsqu’elles se présentent plusieurs fois dans une seule inscription<note><p>Lorsqu’on retrouve la même forme, deux ou plusieurs fois dans la même inscription, nous l’avons indiqué à l’aide du signe <hi rend="sc">x</hi>.</p></note>.</p>
+<p>En principe les particules et titres ne sont indiqués ici que lorsqu’ils sont suivis d’un autre terme les définissant. Dans les quelques cas où le titre apparaît, dans une inscription, avec un emploi indépendant, il est enregistré dans le <hi rend="it">Répertoire</hi>, à sa place alphabétique.</p>
+<p>Nous classons les mots ou expressions ci-dessous autour des particules les plus riches : <hi rend="it">si, ḍa, ra, pu, saŋ</hi>, etc., c’est-à-dire les désignations commençant par chacune d’elles, mettant pour terminer les expressions formées de termes de parenté ou de titres divers dans un emploi affaibli, qui équivaut à celui de particules.</p>
+<p>On trouvera d’abord une liste de tous les termes enregistrés dans un ordre qui peut paraître quelque peu arbitraire.</p>
+</div>
+<div type="section">
+<list>
+<item><pb n="930" />1. si</item>
+<item>2. si ḍa</item>
+<item>3. si ra/si ra ŋ/si reŋ</item>
+<item>4. si mpu</item>
+</list>
+<list>
+<item>5. pu/mpu</item>
+<item>6. pu nta</item>
+<item>7. pu aŋ</item>
+</list>
+<list>
+<item>8. saŋ</item>
+<item>9. saṅ ḍa/saŋ ḍa</item>
+<item>10. saŋ ra</item>
+<item>11. saŋ hyaŋ/hyaŋ</item>
+<item>12. saŋ hadyan/hadyan/saŋ adyah/saŋ dyan</item>
+<item>13. saŋ tuhān</item>
+</list>
+<list>
+<item>14. ḍa</item>
+<item>15. ḍa man</item>
+<item>16. man</item>
+<item>17. ḍa pu</item>
+<item>18. ḍa pu nta</item>
+<item>19. ḍa mpu nta</item>
+<item>20. ḍa pu hyaŋ</item>
+<item>21. ḍaŋ/ḍaŋ puhawaŋ</item>
+<item>22. ḍaŋ ācāryya</item>
+<item>23. ḍaŋ hyaŋ</item>
+<item>24. ḍaŋ karayān</item>
+</list>
+<list>
+<item>25. ra</item>
+<item>26. ra si</item>
+<item>27. ra mpu</item>
+<item>28. ra hyaŋ</item>
+</list>
+<list>
+<item>29. ra tu/saŋ ratu/saŋ ḍatu</item>
+<item>30. raka/rake/rakai</item>
+<item>31. ra karayān</item>
+<item>32. ra kryā̆n/anak kryan</item>
+<item>33. kyan/raken/rakya</item>
+<item>34. raken mapatih</item>
+<item>35. ra kryān mapatih/ra kryān apatih</item>
+<item>36. ra karayān mapatih</item>
+<item>37. ra kryān mahāmantri</item>
+</list>
+<list>
+<item>38. dyah</item>
+<item>39. śrī</item>
+<item>40. śrī mahārāja/mahārāja</item>
+</list>
+<list>
+<item>41. ina ŋ</item>
+<item>42. ra iṇa nta/reṇa nta</item>
+<item>43. ibu/ibu ni</item>
+<item>44. wini/bini</item>
+<item>45. rai/re</item>
+<item>46. kwi</item>
+<item>47. bapa/bapa ni/aya</item>
+<item>48. rama ṇi/rama ni</item>
+<item>49. kaka</item>
+<item>50. kaki/ra kaki</item>
+<item>51. buyut/puyut</item>
+</list>
+<list>
+<item>52. pamgat</item>
+<item>53. saŋ pamgat</item>
+<item>54. samgat</item>
+</list>
+<list>
+<item>55. saŋ lumah</item>
+<item>56. dewata/saŋ lumāh/saŋ dewatā lumah</item>
+</list>
+</div>
+<div type="section">
+<head><pb n="931" /><hi rend="it">si</hi></head>
+<list>
+<item>si -hula <bibl><hi rend="it">Hariń. A</hi> 7[2]6 [J.Or.]</bibl></item>
+<item>si kāryya <bibl><hi rend="it">Hariń. A</hi> 7[2]6 [J.Or.]</bibl></item>
+</list>
+<list>
+<item>si droŋ <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si narada <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si maŋhǝ̄m x <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si pagǝr <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si manam <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si sumḍǝk <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si waŋun <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si naŋgap <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si paŋguh <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>sīntap (si intap) <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si dawan <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si mada <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si jakhara x <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si paṇḍawa <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si baruṇa <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si kīśā <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si mandǝha <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>sy andan <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si tari <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si waḍag <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si tasik <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si tguh <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si mana <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si maŋgal <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+<item>si rahat <bibl><hi rend="it">Kamal.</hi> 743</bibl></item>
+</list>
+<list>
+<item>si rawan <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si maṇḍakṣa <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si bahas <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si habak <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si jati <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si madhawa <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si lańcaŋ <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si maŋga <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si rindaŋ <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si wikrama <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si piŋul <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si kunwu <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si kalap <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si danaka <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si hrǝm <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si pańca x <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si śaŋkara <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si gunuŋ <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si katil <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si sumbut <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>sy awit <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si sampū <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si haras <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si kbal <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si salpa <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si saruh <bibl><hi rend="it">Kayum.</hi> 746 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+</list>
+<list>
+<item>*si kale <bibl><hi rend="it">Kuṭi</hi> 762 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+</list>
+<list>
+<item>si kaliṇḍuan <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>sy arata <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si lbak <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si tija <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si manulih <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si ti[...] <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si kaṇṭi <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>sīka (si ika) <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si nanda <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si dhawa <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si agam <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si kalap <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si nagap <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si dhanu <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si gana x <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si pagawa <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si tamwah <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si kali <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si mana <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si rǝkap <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si jńaṭā <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si mna <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si kucira <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+<item>si rawak <bibl><hi rend="it">Tri Tǝp. II</hi> 764</bibl></item>
+</list>
+<list>
+<item>si maṇḍi <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si bhantu <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si damo <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si maŋdana <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si srī dhara <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si niha <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>sy ulihan <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si dhantan <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si jakkhāra <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si gandah <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si muranā <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si mandiha <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si hayu <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si saisa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si rutuŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item><pb n="932" />si sanā <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si mariŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si nahān <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si balubuŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si tārawaṇa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si jana <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si rǝgga <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si pasat <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si ńcuŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si sayut <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si kesawa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si bhānu <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si kala <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si wuri <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si dhasa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si bańcuŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si nana <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si warā <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si ḍaṇḍa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si jantra <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si layar <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si taguh <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si manūt <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si mulyaŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>sy awit <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si dawa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si naran <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si niru <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si siga <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si krahu <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si sanā <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si tawaŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si milih <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si haryyaŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si dhura <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si pagar <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si paŋa <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si paḍar <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si sańjanā <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si malini <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si guwasaŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si mulya <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si wanasi <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si siga <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si tala[...] <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si paŋsat <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si jati <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si napal <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si laya[...] <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si kaṇḍi <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si marowaŋ <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si huwus <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si rutus <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si milar <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si taŋguh <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+<item>si bantal <bibl><hi rend="it">Tul. Air I</hi> 772</bibl></item>
+</list>
+<list>
+<item>si maṇḍi <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si gandha <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si damo <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si maŋdana <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si srī dhara <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si jaha <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si ulihhan <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si jāntan <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si jakkhāra <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si gaṇḍah <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si murana <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si mandiha <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si hayu <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si saisa <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si rutuŋ <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si sanā <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si mariŋ <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si nihān <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+<item>si balubu <bibl><hi rend="it">Tul. Air II</hi> 772</bibl></item>
+</list>
+<list>
+<item>si kliŋ <bibl><hi rend="it">Śiwag.</hi> 778</bibl></item>
+<item>si mǝrsi <bibl><hi rend="it">Śiwag.</hi> 778</bibl></item>
+<item>si jana <bibl><hi rend="it">Śiwag.</hi> 778</bibl></item>
+<item>si baṇyāga <bibl><hi rend="it">Śiwag.</hi> 778</bibl></item>
+<item>si gnǝŋ <bibl><hi rend="it">Śiwag.</hi> 778</bibl></item>
+<item>sy akṣara <bibl><hi rend="it">Śiwag.</hi> 778</bibl></item>
+</list>
+<list>
+<item>*si jaŋ jaŋan <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si tuluŋ pgā <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si caŋkir <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si sǝgālalab <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si pasir <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si tali duk <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si tulak tamuy <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si talun <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si wah twak <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si irus <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si culuwak <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+<item>*si dānaharṣa <bibl><hi rend="it">Kańcana</hi> 782 [J.Or.] <hi rend="it">(Cui)</hi></bibl></item>
+</list>
+<list>
+<item>si limo[...] <bibl><hi rend="it">Talaga Ta.</hi> 783</bibl></item>
+</list>
+<list>
+<item>si uŋgah <bibl><hi rend="it">Wukiran</hi> 784 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si manikṣa <bibl><hi rend="it">Wukiran</hi> 784 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si ara <bibl><hi rend="it">Wukiran</hi> 784 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si maŋnah <bibl><hi rend="it">Wukiran</hi> 784 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si wsi <bibl><hi rend="it">Wukiran</hi> 784 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+<item>si mitra <bibl><hi rend="it">Wukiran</hi> 784 (<hi rend="sc">sk</hi>) et (<hi rend="sc">vj</hi>)</bibl></item>
+</list>
+<list>
+<item>si taliwaŋ <bibl><hi rend="it">Wanua Tǝŋ. I</hi> 785</bibl></item>
+<item>si si[...] <bibl><hi rend="it">Wanua Tǝŋ. I</hi> 785</bibl></item>
+<item>si la[...] <bibl><hi rend="it">Wanua Tǝŋ. I</hi> 785</bibl></item>
+<item>[si] piŋul <bibl><hi rend="it">Wanua Tǝŋ. I</hi> 785</bibl></item>
+<item>si sila <bibl><hi rend="it">Wanua Tǝŋ. I</hi> 785</bibl></item>
+</list>
+<list>
+<item>si paha[...] <bibl><hi rend="it">Wanua Tǝŋ. II</hi> 785</bibl></item>
+</list>
+<list>
+<item>si dāma <bibl><hi rend="it">Sri Maŋg. I</hi> 750-800</bibl></item>
+</list>
+<list>
+<item>**sīha (si iha) <bibl><hi rend="it">Pupus</hi> 750-800 <hi rend="it">(Cui)</hi></bibl></item>
+<item>**si subah <bibl><hi rend="it">Pupus</hi> 750-800 <hi rend="it">(Cui)</hi></bibl></item>
+</list>
+</div>
+</div>
+<div type="chapter">
+<head><pb n="991" />F. INDEX</head>
+<p>Le <hi rend="it">pepet</hi> (Ǝ) figure après le E, le Ń et le ŋ après le N, le Ś après le S</p>
+<div type="alpha">
+<head>A</head>
+<list>
+<item>abakul wwawwahan, <num>616</num>.</item>
+<item>abalun, <num>667</num>.</item>
+<item>abańol, <num>684</num>.</item>
+<item>abasana, <num>648</num>.</item>
+<item>abhaya, <num>108</num>.</item>
+<item>abhayagiri, <num>108</num>.</item>
+<item>abhayamukha, <num>108</num>.</item>
+<item>abhayānanda, <num>108</num>.</item>
+<item>abhī, <num>105</num>.</item>
+<item>acuŋ, <num>78</num>.</item>
+<item>ada, <num>93</num>.</item>
+<item>aḍasara, <num>97</num>.</item>
+<item>ādeśaśastrin-, <num>97</num>.</item>
+<item>adǝg, <num>98</num>.</item>
+<item>adǝh, <num>96</num>.</item>
+<item>adhikā, <num>97</num>.</item>
+<item>adhikara, <num>93</num>.</item>
+<item>adhirāksa, <num>93</num>.</item>
+<item>adhuti, <num>97</num>.</item>
+<item>adhyakṣa-, <num>93</num>.</item>
+<item>adi, <num>93</num>.</item>
+<item>aḍi, <num>93</num>.</item>
+<item>adi / hadi, <num>94</num>.</item>
+<item>adigama, <num>93, 98</num>.</item>
+<item>adik, <num>96</num>.</item>
+<item>ā̆dikā̆, <num>97</num>.</item>
+<item>adimantri, <num>93</num>.</item>
+<item>aḍo, <num>95</num>.</item>
+<item>adu, <num>95</num>.</item>
+<item>adyah, <num>98, 365</num>.</item>
+<item>agal, <num>161</num>.</item>
+<item>agale, <num>162</num>.</item>
+<item>agallagal, <num>161</num>.</item>
+<item>agam, <num>162</num>.</item>
+<item>agama, <num>163</num>.</item>
+<item>agasti, <num>161</num>.</item>
+<item>agastya-, <num>161</num>.</item>
+<item>age, <num>159</num>.</item>
+<item>agǝm, <num>162</num>.</item>
+<item>ageŋ, <num>163, 288</num>.</item>
+<item>agiliŋan, <num>919</num>.</item>
+<item>agra, <num>160</num>.</item>
+<item>agrapiṇḍa, <num>161</num>.</item>
+<item>agul, <num>162</num>.</item>
+<item>agusaŋŋa, <num>161</num>.</item>
+<item>agya, <num>162</num>.</item>
+<item>ahawaŋ, <num>55, 108</num>.</item>
+<item>ahuler, <num>56, 113</num>.</item>
+<item><hi rend="it">aiṇḍo</hi>, <num>72</num>.</item>
+<item>air, <num>78, 79, 80, 81, 82, 433</num>.</item>
+<item>air baraŋan, <num>78, 81, 599</num>.</item>
+<item>air bulaŋ, <num>78, 81, 674</num>.</item>
+<item>air buwuŋ, <num>78, 81, 669</num>.</item>
+<item>air gaŋgā, <num>78, 81, 926</num>.</item>
+<item>air haji, <num>78, 79, 80, 131</num>.</item>
+<item>air hijo, <num>78, 80, 132</num>.</item>
+<item>air hulu, <num>78, 113</num>.</item>
+<item>air kali, <num>78, 80, 298</num>.</item>
+<item>air papi, <num>78, 81, 800</num>.</item>
+<item>air pǝluŋ, <num>78, 81, 798</num>.</item>
+<item>air pyal, <num>78, 81, 803</num>.</item>
+<item>ajā̆, <num>129</num>.</item>
+<item>ajar, <num>132</num>.</item>
+<item>ajī̆ / haji, <num>129, 130, 131, 132, 78, 118, 741</num>.</item>
+<item>ajī, <num>132</num>.</item>
+<item>ajitā, <num>142</num>.</item>
+<item>ā̆jńā̆, <num>142, 143, 144</num>.</item>
+<item>akajaŋ, <num>320</num>.</item>
+<item>akalamwi haji, <num>306, 307, 677</num>.</item>
+<item>aku, <num>92</num>.</item>
+<item>akudur, <num>270, 273, 275, 277, 278</num>.</item>
+<item>akurug, <num>261</num>.</item>
+<item>alah, <num>117</num>.</item>
+<item>alap, <num>125</num>.</item>
+<item>alas, <num>123, 124</num>.</item>
+<item>alas galuh, <num>123, 124</num>.</item>
+<item>alaway, <num>720</num>.</item>
+<item>ālaya-, <num>125</num>.</item>
+<item>aleŋ, <num>126</num>.</item>
+<item>alǝbuh, <num>717</num>.</item>
+<item>alih tiŋhal, <num>117</num>.</item>
+<item>aluhur, <num>701</num>.</item>
+<item>aluk, <num>123, 707</num>.</item>
+<item>aluŋ, <num>126</num>.</item>
+<item>alya, <num>125</num>.</item>
+<item>ama, <num>153</num>.</item>
+<item>amahaŋ, <num>746</num>.</item>
+<item>amahat, <num>746</num>.</item>
+<item>aman, <num>156</num>.</item>
+<item>amanantǝn, <num>572</num>.</item>
+<item>amaraŋgi, <num>766</num>.</item>
+<item>amarendra, <num>156</num>.</item>
+<item>amasaŋakan, <num>793</num>.</item>
+<item><hi rend="it">amawāsya</hi>, <num>157</num>.</item>
+<item>amban, <num>156</num>.</item>
+<item>ambari, <num>157</num>.</item>
+<item>amboh, <num>156</num>.</item>
+<item>amkan, <num>766, 767</num>.</item>
+<item>amrati, <num>882, 883</num>.</item>
+<item>amuaŋŋakan, <num>56, 57</num>.</item>
+<item>amutǝr, <num>789</num>.</item>
+<item>amwar amwar, <num>157</num>.</item>
+<item>amway, <num>158, 488, 489</num>.</item>
+<item>amwǝk, <num>157, 691, 692</num>.</item>
+<item>amwil, <num>158, 409</num>.</item>
+<item>amwilan, <num>158, 409</num>.</item>
+<item>amwir, <num>157</num>.</item>
+<item>amwiran, <num>157</num>.</item>
+<item>amwul, <num>158</num>.</item>
+<item>ā̆nak / anāk, <num>63, 64, 65, 66, 67, 68, 69, 70, 71</num>.</item>
+<item>anakabi, <num>63, 65</num>.</item>
+</list>
+</div>
+</div>
+</back>
+</text>
+</TEI>
