@@ -131,6 +131,7 @@
     <xsl:template match="tei:body">
      <xsl:element name="div">
          <xsl:element name="h2">Prosody Tables</xsl:element>
+         <br/>
          <xsl:apply-templates/>
      </xsl:element>
     </xsl:template>
@@ -163,11 +164,17 @@
             <xsl:if test="tei:measure">           
                     <xsl:apply-templates select="tei:measure"/>
             </xsl:if>
+                <xsl:if test="following::tei:*[1][local-name() ='note']">
+                    <xsl:apply-templates select="following::tei:note[1]"/>
+                </xsl:if>
             </xsl:element>
             <xsl:element name="td">
             <xsl:if test="tei:label">
                     <xsl:apply-templates select="tei:label"/>
             </xsl:if>
+                <xsl:if test="following::tei:*[1][local-name() ='note']">
+                    <xsl:apply-templates select="following::tei:note[1]"/>
+                </xsl:if>
             </xsl:element>
             <xsl:element name="td">
             <xsl:if test="tei:name">
@@ -184,6 +191,9 @@
                                         <xsl:text> (kaw)</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
+                                <xsl:if test="following::tei:*[1][local-name() ='note']">
+                                    <xsl:apply-templates select="following::tei:note[1]"/>
+                                </xsl:if>
                             </xsl:element>                                      
                         </xsl:for-each>
                     </xsl:element>
@@ -193,6 +203,9 @@
                 <xsl:for-each select="tei:seg">
                     <xsl:element name="td">
                     <xsl:apply-templates/>
+                        <xsl:if test="following::tei:*[1][local-name() ='note']">
+                            <xsl:apply-templates select="following::tei:note[1]"/>
+                        </xsl:if>
                     </xsl:element>
                 </xsl:for-each> 
             </xsl:if>   
@@ -253,6 +266,7 @@
             </xsl:element>
         </xsl:element>
         <xsl:call-template name="tpl-dharma-apparatus"/>
+        <br/>
     </xsl:template>
 
     <!-- n -->
