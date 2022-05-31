@@ -1315,67 +1315,70 @@
         </xsl:if>
         <xsl:element name="div">
             <xsl:attribute name="class">row mt-2</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-8 text-col</xsl:attribute><!-- testconteneur -->
-                <!--<xsl:if test="ancestor::tei:item">
-                    <xsl:element name="div">
-                        <xsl:attribute name="class">float-center</xsl:attribute>
-                        <xsl:element name="small">
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">text-muted</xsl:attribute>
-                                <xsl:value-of select="substring-after(ancestor::tei:item/@corresp, 'txt:')"/>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
-                </xsl:if>-->
+           <xsl:choose>
+               <xsl:when test="not(ancestor::tei:quote[@type='base-text'])">
+                   
+               </xsl:when>
+               <xsl:otherwise> 
+                   <xsl:element name="div">
+                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
+                       <xsl:call-template name="lg-content"/>
+            </xsl:element>
+           </xsl:otherwise>
+           </xsl:choose>
+            <xsl:if test="not(ancestor::tei:quote[@type='base-text'])">
                 <xsl:element name="div">
-                    <xsl:attribute name="class">
-                        <xsl:text>lg</xsl:text>
-                    <xsl:if test="@met='anuṣṭubh'">
-                        <xsl:text> anustubh</xsl:text>
-                    </xsl:if>
-                        <xsl:if test="@met='pādānuṣṭubh'">
-                            <xsl:text> padanustubh</xsl:text>
-                        </xsl:if>
-                        <xsl:if test="contains(@met, 'free')">
-                            <xsl:text> freeprosody</xsl:text>
-                        </xsl:if>
-                        <xsl:if test="parent::tei:div[@type='metrical']/@met='anuṣṭubh'">
-                            <xsl:text> anustubh</xsl:text>
-                        </xsl:if>
-                        <xsl:if test="parent::tei:div[@type='metrical']/@met='pādānuṣṭubh'">
-                            <xsl:text> padanustubh</xsl:text>
-                        </xsl:if>
-                        <xsl:if test="contains(parent::tei:div[@type='metrical']/@met, 'free')">
-                            <xsl:text> freeprosody</xsl:text>
-                        </xsl:if>
-                        <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
-                    </xsl:attribute>
-                    <xsl:if test="@xml:id">
-                        <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
-                    </xsl:if>
-                    <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟨</xsl:if>-->
-                        <xsl:apply-templates/>
-                    <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟩</xsl:if>-->
-                    <xsl:if test="@n">
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                        <xsl:choose>
-                            <xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>
-                            <xsl:when test="contains(@n, '.')">
-                                <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:value-of select="@n"/>
-                            </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:element>
-                    </xsl:if>
-                </xsl:element>
-            </xsl:element>
-            <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                    <xsl:call-template name="lg-content"/>
             </xsl:element>
+            </xsl:if>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="lg-content">
+        <xsl:element name="div">
+            <xsl:attribute name="class">
+                <xsl:text>lg</xsl:text>
+                <xsl:if test="@met='anuṣṭubh'">
+                    <xsl:text> anustubh</xsl:text>
+                </xsl:if>
+                <xsl:if test="@met='pādānuṣṭubh'">
+                    <xsl:text> padanustubh</xsl:text>
+                </xsl:if>
+                <xsl:if test="contains(@met, 'free')">
+                    <xsl:text> freeprosody</xsl:text>
+                </xsl:if>
+                <xsl:if test="parent::tei:div[@type='metrical']/@met='anuṣṭubh'">
+                    <xsl:text> anustubh</xsl:text>
+                </xsl:if>
+                <xsl:if test="parent::tei:div[@type='metrical']/@met='pādānuṣṭubh'">
+                    <xsl:text> padanustubh</xsl:text>
+                </xsl:if>
+                <xsl:if test="contains(parent::tei:div[@type='metrical']/@met, 'free')">
+                    <xsl:text> freeprosody</xsl:text>
+                </xsl:if>
+                <xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']"> lg-omitted</xsl:if>
+            </xsl:attribute>
+            <xsl:if test="@xml:id">
+                <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+            </xsl:if>
+            <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟨</xsl:if>-->
+            <xsl:apply-templates/>
+            <!--<xsl:if test="ancestor-or-self::tei:supplied[@reason='omitted']">⟩</xsl:if>-->
+            <xsl:if test="@n">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
+                    <xsl:choose>
+                        <xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>
+                        <xsl:when test="contains(@n, '.')">
+                            <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="@n"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:element>
+            </xsl:if>
         </xsl:element>
     </xsl:template>
     
@@ -2815,7 +2818,7 @@
                 
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->
