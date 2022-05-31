@@ -93,13 +93,13 @@ n. (although there shouldn't be any of encoders follow the EG) -->
     </xsl:param>
     
     <!-- regexes to apply transliteration rules -->
-    <xsl:param name="javanese-regexes" as="element(regex)*">
-        <!-- pas d'espace après : -->
+    <!--<xsl:param name="javanese-regexes" as="element(regex)*">
+        <!-\- pas d'espace après : -\->
         <regex>
             <find>([:])\s+</find>
             <change>$1</change>
         </regex>
-    </xsl:param>
+    </xsl:param>-->
     
     <xsl:template match="@*|node()">
         <xsl:copy>
