@@ -299,7 +299,7 @@
             </xsl:element>
         </xsl:if>
         <xsl:element name="div">
-            <xsl:attribute name="class">row mt-2</xsl:attribute>
+            <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-8 text-col</xsl:attribute>
                 <xsl:element name="p">
@@ -882,7 +882,7 @@
                 </xsl:choose>
             </xsl:element>
             <xsl:element name="div">             
-                            <xsl:attribute name="class">col-10</xsl:attribute>
+                            <xsl:attribute name="class">col-11</xsl:attribute>
                 <xsl:if test="@xml:id">
                     <xsl:attribute name="id">
                         <xsl:value-of select="@xml:id"/>
@@ -908,7 +908,7 @@
                 <xsl:if test="@xml:id and @type='canto'">
                     <br/>
                     <xsl:element name="div">
-                    <xsl:attribute name="class">col-10</xsl:attribute>
+                    <xsl:attribute name="class">col-11</xsl:attribute>
                     <xsl:element name="a">
                     <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
                     <xsl:attribute name="data-toggle">collapse</xsl:attribute>
@@ -1314,10 +1314,10 @@
             </xsl:element>
         </xsl:if>
         <xsl:element name="div">
-            <xsl:attribute name="class">row mt-2</xsl:attribute>
+            <xsl:attribute name="class">row</xsl:attribute>
            <xsl:choose>
                <xsl:when test="not(ancestor::tei:quote[@type='base-text'])">
-                   
+                   <xsl:call-template name="lg-content"/>
                </xsl:when>
                <xsl:otherwise> 
                    <xsl:element name="div">
@@ -1326,12 +1326,12 @@
             </xsl:element>
            </xsl:otherwise>
            </xsl:choose>
-            <xsl:if test="not(ancestor::tei:quote[@type='base-text'])">
+            <!--<xsl:if test="not(ancestor::tei:quote[@type='base-text'])">
                 <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
                     <xsl:call-template name="lg-content"/>
             </xsl:element>
-            </xsl:if>
+            </xsl:if>-->
         </xsl:element>
     </xsl:template>
     
@@ -1405,7 +1405,7 @@
     <xsl:template match="tei:listApp[@type = 'apparatus']"/>
     <!--<xsl:template match="tei:listApp[@type = 'apparatus']">
         <xsl:element name="div">
-            <xsl:attribute name="class">col-10</xsl:attribute>
+            <xsl:attribute name="class">col-11</xsl:attribute>
                     <xsl:element name="a">
                         <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
                         <xsl:attribute name="data-toggle">collapse</xsl:attribute>
@@ -1870,7 +1870,7 @@
         </xsl:choose>
         <xsl:if test="//tei:TEI[@type='edition'] and ancestor::tei:body">
             <xsl:element name="div">
-            <xsl:attribute name="class">row mt-2</xsl:attribute>
+            <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-8 text-col</xsl:attribute>
             <xsl:element name="p">
@@ -1878,7 +1878,7 @@
                 <xsl:copy-of select="$p-line"/>
                 <xsl:if test="@xml:id">
                     <xsl:element name="div">
-                        <!--<xsl:attribute name="class">col-10</xsl:attribute>-->
+                        <!--<xsl:attribute name="class">col-11</xsl:attribute>-->
                         <xsl:element name="a">
                             <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
                             <xsl:attribute name="data-toggle">collapse</xsl:attribute>
@@ -2817,8 +2817,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
-               <!-- <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->

@@ -70,10 +70,10 @@ body{
     margin-top:-7rem;*/
 }
 
-#edition-content{
+/*#edition-content{
     width: 95%;
 }
-
+*/
 #sidebar-wrapper {
     width: 200px;
     position: fixed;
@@ -327,7 +327,7 @@ ul.sgt-index {
       <ref> elements can be inline with the
       last line of a verse. */
 .anustubh .l:nth-child(2n+1){ display: inline-block; clear: left;}
-.anustubh .l:nth-child(2):after { content:"\A"; white-space:pre; }
+.anustubh .l:nth-child(2n):after { content:"\A"; white-space:pre; }
 .anustubh .l:nth-child(2n) { display: inline; }
 .anustubh .l:last-child {display: inline-block; clear: left;}
 
