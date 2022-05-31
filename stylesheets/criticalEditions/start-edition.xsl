@@ -1316,7 +1316,7 @@
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
            <xsl:choose>
-               <xsl:when test="not(ancestor::tei:quote[@type='base-text'])">
+               <xsl:when test="ancestor::tei:quote[@type='base-text']">
                    <xsl:call-template name="lg-content"/>
                </xsl:when>
                <xsl:otherwise> 
@@ -1326,12 +1326,12 @@
             </xsl:element>
            </xsl:otherwise>
            </xsl:choose>
-            <!--<xsl:if test="not(ancestor::tei:quote[@type='base-text'])">
+            <xsl:if test="not(ancestor::tei:quote[@type='base-text'])">
                 <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:call-template name="lg-content"/>
+                    
             </xsl:element>
-            </xsl:if>-->
+            </xsl:if>
         </xsl:element>
     </xsl:template>
     
