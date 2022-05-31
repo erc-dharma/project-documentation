@@ -1137,6 +1137,7 @@
                 </xsl:choose>             
             </xsl:for-each>
         </xsl:variable>
+       
         <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>l translit</xsl:text>
@@ -1146,7 +1147,30 @@
                     <xsl:text> l-last-note-verseline</xsl:text>
                 </xsl:if>
             </xsl:attribute>
-           
+            <!-- display for lines numbers only if Arabic numeral -->
+            <xsl:choose>
+                <xsl:when test="matches(@n, '\d+') and ancestor::tei:*[local-name() = ('div', 'lg')]/@met='anuṣṭubh'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">text-muted lg-number-arabic</xsl:attribute>
+                        <xsl:if test="@n='1' or @n='3' or @n='5' or @n='7'">
+                            <xsl:text>[line </xsl:text>      
+                            <xsl:value-of select="@n"/>
+                            <xsl:text> &amp; </xsl:text>
+                            <xsl:value-of select="following::tei:l[1]/@n"/>
+                            <!-- not display for even-->
+                            <xsl:text>] </xsl:text>
+                        </xsl:if>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:when test="matches(@n, '\d+') and not(ancestor::tei:*[local-name() = ('div', 'lg')]/@met='anuṣṭubh')">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">text-muted lg-number-arabic</xsl:attribute>
+                        <xsl:text>[line </xsl:text>
+                        <xsl:value-of select="@n"/>
+                        <xsl:text>] </xsl:text>
+                    </xsl:element>
+                </xsl:when>
+            </xsl:choose>
                 <!-- solution avec un décalaga dans le comptage que je n'arrive pas à expliquer - je dois encore y réfléchir pour le moment solution temporaire qui fonctionne à la condition qu'il y ait qu'une note de vers dans chaque stanza -->
                 <!--
                      <xsl:if test="child::tei:note">
@@ -1180,15 +1204,6 @@
                 <xsl:text>] </xsl:text>
             </xsl:if>-->
             <xsl:copy-of select="$verse-line"/>
-            <!-- display for lines numbers only if Arabic numeral -->
-            <xsl:if test="matches(@n, '\d+')">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                    <xsl:text>[line </xsl:text>
-                    <xsl:value-of select="@n"/>
-                    <xsl:text>] </xsl:text>
-                </xsl:element>
-            </xsl:if>
         </xsl:element>
     </xsl:template>
     
@@ -2817,8 +2832,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
                 
                 <!-- Font Awesome JS -->

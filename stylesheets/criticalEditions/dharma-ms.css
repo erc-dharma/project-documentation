@@ -340,6 +340,12 @@ ul.sgt-index {
 
 .freeprosody .l:nth-child(odd){ display: block; clear: left;}
 .freeprosody .l {display: inline-block; clear: left;}
+
+.lg-number-arabic{
+    position:absolute;
+    left:-100px;
+}
+
 /*.lg:not(.anustubh) .l:not(:last-child) {
   display: inline-block;
   margin-left:1rem;
