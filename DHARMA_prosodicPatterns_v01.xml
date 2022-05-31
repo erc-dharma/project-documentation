@@ -894,9 +894,22 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">asaṁbādhā</name>
+	<name xml:lang="kaw-Latn">sambaddha</name>
 	<seg type="xml">+++++------++=</seg>
 	<seg type="prosody">–––––||⏑⏑⏑⏑⏑⏑––⏓</seg>
 	<seg type="gana">ma-ta-na-sa-ga-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">7</citedRange><citedRange unit="item">I.A.14.2</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">14</measure>
+	<name xml:lang="san-Latn">aparājitā</name>
+	<seg type="xml">---|---|+-+|--+|-=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑–⏑⏑–⏑⏓</seg>
+	<seg type="gana">na-na-ra-sa-la-ga</seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">7</citedRange><citedRange unit="item">I.A.14.2</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
