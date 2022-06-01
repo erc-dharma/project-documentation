@@ -919,7 +919,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">praharaṇakalikā</name>
-	<!--@zapa: it seems that you have the wrong spelling praharaṇakalika in your CK file: please correct it.-->
 	<seg type="xml">------+------=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–||⏑⏑⏑⏑⏑⏑⏓</seg>
 	<seg type="gana">na-na-bha-na-la-ga</seg>
@@ -932,10 +931,23 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">vasantatilakā</name>
-	<name xml:lang="kaw-Latn">basantatilaka</name>
+	<name xml:lang="kaw-Latn">basantatilakā</name>
 	<seg type="xml">++-+---+--+-+=</seg>
 	<seg type="prosody">––⏑–⏑⏑⏑–⏑⏑–⏑–⏓</seg>
 	<seg type="gana">ta-bha-ja-ja-ga-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">7</citedRange><citedRange unit="item">I.A.14.7</citedRange></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">458</citedRange><citedRange unit="item">XIV.6</citedRange></bibl>
+	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">14/15</measure>
+	<name xml:lang="san-Latn">śaśikalā</name>
+	<name xml:lang="kaw-Latn">maṇiguṇanikara</name>
+	<seg type="xml">-------------=/--------------=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓/⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">na-na-na-na-la-ga/na-na-na-na-sa</seg>
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">7</citedRange><citedRange unit="item">I.A.14.7</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
@@ -953,6 +965,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">15</measure>
+	<name xml:lang="kaw-Latn">mr̥dukaralalita</name>
+	<seg type="xml">+++|+--|---|-++|++=</seg>
+	<seg type="prosody">–––|–⏑⏑|⏑⏑⏑|⏑––|––⏓</seg>
+	<seg type="gana">ma-bha-na-ta-ma</seg>
 </item>
 <item>
 	<measure unit="syllable">15</measure>
