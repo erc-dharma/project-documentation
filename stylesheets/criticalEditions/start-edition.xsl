@@ -1934,9 +1934,6 @@
             <xsl:otherwise>
                 <xsl:element name="span">
             <xsl:attribute name="class">text-muted foliation</xsl:attribute>
-                <!--<xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-                <xsl:attribute name="data-placement">top</xsl:attribute>
-                <xsl:attribute name="title"><xsl:value-of select="substring-after(@edRef, '#')"/></xsl:attribute>-->
                     <xsl:call-template name="tokenize-witness-list">
                         <xsl:with-param name="string" select="@edRef"/>
                         <xsl:with-param name="witdetail-string"/>
@@ -1964,8 +1961,6 @@
     <!-- ptr -->
     <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
         <xsl:variable name="MSlink" select="@target"/>
-       <!-- <xsl:element name="span">
-            <xsl:attribute name="class">ref-siglum</xsl:attribute>-->
             <xsl:choose>
                 <xsl:when test="contains($MSlink, ' ')">
                     <xsl:variable name="first-item"
