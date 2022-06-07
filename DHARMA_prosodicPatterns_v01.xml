@@ -275,7 +275,7 @@
 <item>
 	<measure unit="syllable">8</measure>
 	<name xml:lang="kaw-Latn">bhramaravilambita</name>
-	<seg type="xml">---|-+-|-=</seg>
+	<seg type="xml">----+--=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
 	<listBibl>
@@ -516,7 +516,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<name xml:lang="san-Latn">vātormī</name>
 	<name xml:lang="kaw-Latn">vimala</name><!-- CK -->
 	<name xml:lang="kaw-Latn">vātormimāla</name><!-- Vr̥t -->
-	<seg type="xml">+++|+--|++-|+=</seg>
+	<seg type="xml">++++--++-+=</seg>
 	<seg type="prosody">––––⏑⏑––⏑–⏓</seg>
 	<seg type="gana">ma-bha-ta-ga-ga</seg>
 	<listBibl>
@@ -560,18 +560,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">4</citedRange><citedRange unit="item">I.A.11.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">454</citedRange><citedRange unit="item">XI.18</citedRange></bibl>
-	</listBibl>
-</item>
-<item>
-	<measure unit="syllable">11</measure>
-	<name xml:lang="san-Latn">vr̥ntā</name>
-	<name xml:lang="kaw-Latn">madhugulāmr̥tta</name><!-- CK -->
-	<name xml:lang="kaw-Latn">vr̥tta</name><!-- Vr̥t -->
-	<seg type="xml">--------++=</seg>
-	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑––⏓</seg>
-	<seg type="gana">na-na-sa-ga-ga</seg>
-	<listBibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
 <item>
@@ -701,7 +689,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="san-Latn">śrīpuṭa</name>
-	<seg type="xml">---|---|+++|-+=</seg>
+	<seg type="xml">------+++-+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–––⏑–⏓</seg>
 	<seg type="gana">na-na-ma-ya</seg>
 	<listBibl>
@@ -711,7 +699,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">12</measure>
 <name xml:lang="kaw-Latn">navamālinī</name>
-	<seg type="xml">---|-+-|+--|-+=</seg>
+	<seg type="xml">----+-+---+=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏓</seg>
        <seg type="gana"><!--not quite applicable--></seg>
 	<listBibl>
@@ -730,18 +718,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	  <bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="item">I.A.12.5</citedRange></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">455</citedRange><citedRange unit="item">XII.4</citedRange></bibl>
-	</listBibl>
-</item>
-<item>
-	<measure unit="syllable">12</measure>
-	<name xml:lang="san-Latn">bhujaṅgaprayāta</name>
-	<seg type="xml">-++-++-++-+=</seg>
-	<seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg>
-	<seg type="gana">ya-ya-ya-ya</seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">5</citedRange><citedRange unit="item">I.A.12.10</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
 <item>
@@ -855,7 +831,9 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">13</measure>
-	<name xml:lang="san-Latn">mattamayūra</name>
+	<name xml:lang="san-Latn">mattamayūrī</name>
+	<name xml:lang="kaw-Latn">mattamayūrā</name><!-- CK -->
+	<name xml:lang="kaw-Latn">mattamayūra</name><!-- Vr̥t -->
 	<seg type="xml">+++++--++--+=</seg>
 	<seg type="prosody">––––||–⏑⏑––⏑⏑–⏓</seg>
 	<seg type="gana">ma-ta-ya-sa-ga</seg>
@@ -907,7 +885,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">14</measure>
 	<name xml:lang="san-Latn">aparājitā</name>
-	<seg type="xml">---|---|+-+|--+|-=</seg>
+	<seg type="xml">------+-+--+-=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑–⏑⏑–⏑⏓</seg>
 	<seg type="gana">na-na-ra-sa-la-ga</seg>
 	<listBibl>
@@ -1010,6 +988,32 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<listBibl>
 		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">459</citedRange><citedRange unit="item">XVI.1</citedRange></bibl>
+</listBibl>
+</item>
+<item>
+	<measure unit="syllable">16</measure>
+	<name xml:lang="san-Latn">gajavilasita</name>
+	<name xml:lang="san-Latn">r̥ṣabhagajavilasita</name>
+	<name xml:lang="kaw-Latn">vr̥ṣabhagativilasita</name> <!-- Vr̥t -->
+	<name xml:lang="kaw-Latn">gajavr̥ṣabhavilasita</name> <!-- CK -->
+	<seg type="xml">+--+-+---------=</seg>
+	<seg type="prosody">–⏑⏑–⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">bha-ra-na-na-na-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!-- not in Apte--></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl><!-- not in Velankar-->
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">459</citedRange><citedRange unit="item">XVI.1</citedRange></bibl>
+</listBibl>
+</item>
+<item>
+	<measure unit="syllable">16</measure>
+	<name xml:lang="kaw-Latn">vīralalita</name>
+	<name xml:lang="kaw-Latn">jagatpramudita</name>
+	<seg type="xml">+--+-+---+-+---=</seg>
+	<seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+	<seg type="gana">bha-ra-na-ja-na-ga</seg>
+	<listBibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="appendix">III: Kakawin-Metres</citedRange><citedRange unit="page">459</citedRange><citedRange unit="item">XVI.1</citedRange></bibl>
 </listBibl>
 </item>
@@ -1361,6 +1365,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">465-466</citedRange><citedRange unit="item">XXII.7</citedRange></bibl>
 	</listBibl>
+</item>
+<item>
+	<measure unit="syllable">23</measure>
+	<name xml:lang="kaw-Latn">bhujagavilasita</name><!-- For the time being CK is the only source which provides this meter with such patterns.-->
+	<seg type="xml">--+------+-+---+------=</seg>
+  <seg type="prosody">⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">sa-na-na-ra-na-bha-na-la-ga</seg>
 </item>
 <item>
 	<measure unit="syllable">23</measure>
