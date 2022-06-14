@@ -1032,7 +1032,9 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="san-Latn">nardaṭaka</name>
+	<name xml:lang="san-Latn">avitatha</name>
 	<name xml:lang="kaw-Latn">rajanī</name>
+	<name xml:lang="kaw-Latn">avitana</name>
 	<seg type="xml">----+-+---+--+--=</seg>
 	<seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg>
 	<seg type="gana">na-ja-bha-ja-ja-la-ga</seg>
@@ -1098,7 +1100,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">17</measure>
 	<name xml:lang="san-Latn">mandākrāntā</name>
-	<name xml:lang="kaw-Latn">citralekha</name>
 	<seg type="xml">++++-----++-++-+=</seg>
 	<seg type="prosody">––––||⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg>
 	<seg type="gana">ma-bha-na-ta-ta-ga-ga</seg>
