@@ -883,7 +883,7 @@
                                 <xsl:when test="@n">
                                     <xsl:value-of select="@n"/>
                                     <xsl:text>. </xsl:text>
-                                </xsl:when>
+                                </xsl:when> 
                             </xsl:choose>
                 </xsl:element>
                     </xsl:otherwise>
@@ -953,20 +953,21 @@
     <xsl:template match="tei:div[@type='metrical' or @type='section']">
                 <!--<xsl:element name="div">
                     <xsl:attribute name="class">metrical</xsl:attribute>-->
-        <xsl:if test="@type='metrical'">
+        <xsl:if test="@type='metrical' or @type='section'">
             <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:value-of select="parent::tei:div/@n"/>
                     <xsl:text>.</xsl:text>
-                    <xsl:number count="tei:div[@type='metrical']" level="single" format="1"/>
+                <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="single" format="1"/>
                     <xsl:text> </xsl:text>
                 <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template>
-                </xsl:element> </xsl:if>
+                </xsl:element> 
+        </xsl:if>
                 <xsl:apply-templates/>  
                 <!--</xsl:element>-->   
-        <xsl:if test="./following-sibling::tei:div[@type='metrical' or @type='section']">
+        <xsl:if test="./following-sibling::tei:div[@type='metrical']">
             <xsl:element name="br"/>
         </xsl:if>
     </xsl:template>
