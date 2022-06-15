@@ -169,8 +169,8 @@
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
                 <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
-                <xsl:call-template name="tpl-com"/> 
                 <xsl:call-template name="tpl-notes-trans"/>
+                <xsl:call-template name="tpl-com"/> 
                 <xsl:call-template name="tpl-biblio"/>
                 </xsl:element>
         </xsl:element>
