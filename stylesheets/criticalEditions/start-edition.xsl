@@ -1759,7 +1759,6 @@
     <xsl:template match="tei:note[@type='prosody']"/>
     
     <xsl:template match="tei:note[//tei:TEI[@type='translation']]">
-    <xsl:apply-templates/>
         <xsl:call-template name="generate-trans-link">
             <xsl:with-param name="situation" select="'text'"/>
         </xsl:call-template>
