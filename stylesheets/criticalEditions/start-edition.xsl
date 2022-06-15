@@ -164,7 +164,7 @@
                 </xsl:element>
                         </xsl:element>
                 <xsl:apply-templates select="./tei:text"/>
-                <xsl:apply-templates select=".//tei:app" mode="modals"/>
+                    <xsl:apply-templates select=".//tei:app[not(@rend='hide')]" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
                 <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
