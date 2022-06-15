@@ -169,7 +169,7 @@
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
                 <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
-                <!--<xsl:call-template name="tpl-translation"/>-->
+                <xsl:call-template name="tpl-notes-trans"/>
                 <xsl:call-template name="tpl-com"/>  
                 <xsl:call-template name="tpl-biblio"/>
                 </xsl:element>
@@ -645,7 +645,8 @@
                     <xsl:when test="$location='text'"/>
                     <xsl:otherwise>-->
                         <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'apparatus'"/>
+                            <xsl:with-param name="location" select="'apparatus'"/>
+                           
                 </xsl:call-template>
                     <!--</xsl:otherwise>
                 </xsl:choose>-->   
@@ -1218,6 +1219,7 @@
         <xsl:apply-templates/>
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
+                    
                     <xsl:with-param name="type" select="'lem-verseline-real'"/>
                 </xsl:call-template>
     </xsl:template>
@@ -1756,6 +1758,72 @@
     
     <xsl:template match="tei:note[@type='prosody']"/>
     
+    <xsl:template match="tei:note[//tei:TEI[@type='translation']]">
+    <xsl:apply-templates/>
+        <xsl:call-template name="generate-trans-link">
+            <xsl:with-param name="situation" select="'text'"/>
+        </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:template name="generate-trans-link">
+        <xsl:param name="situation"/>
+        <xsl:variable name="trans-num">
+            <xsl:number level="any" count="//tei:note[//tei:TEI[@type='translation']]"/>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$situation = 'text'">
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:text>#to-trans-num-</xsl:text>
+                        <xsl:value-of select="$trans-num"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="id">
+                        <xsl:text>from-trans-num-</xsl:text>
+                        <xsl:value-of select="$trans-num"/>
+                    </xsl:attribute>
+                    <span class="tooltip-notes">
+                        <sup>
+                            <xsl:text>↓</xsl:text>
+                            <xsl:value-of select="$trans-num"/>
+                        </sup>
+                    </span>
+                </a>
+            </xsl:when>
+            <xsl:when test="$situation = 'apparatus-internal'">
+                <a>
+                    <xsl:attribute name="id">
+                        <xsl:text>no-fonctional-trans-num-</xsl:text>
+                        <xsl:value-of select="$trans-num"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="href">
+                        <xsl:text>#from-trans-num-</xsl:text>
+                        <xsl:value-of select="$trans-num"/>
+                    </xsl:attribute>
+                    <xsl:text>↑</xsl:text>
+                    <xsl:value-of select="$trans-num"/>
+                    <xsl:text>.</xsl:text>
+                </a>
+                <xsl:text> </xsl:text>
+            </xsl:when>
+            <xsl:when test="$situation = 'apparatus-bottom'">
+                <a>
+                    <xsl:attribute name="id">
+                        <xsl:text>to-trans-num-</xsl:text>
+                        <xsl:value-of select="$trans-num"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="href">
+                        <xsl:text>#from-trans-num-</xsl:text>
+                        <xsl:value-of select="$trans-num"/>
+                    </xsl:attribute>
+                    <xsl:text>↑</xsl:text>
+                    <xsl:value-of select="$trans-num"/>
+                    <xsl:text>.</xsl:text>
+                </a>
+                <xsl:text> </xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    
     <xsl:template match="tei:note">
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
@@ -1763,9 +1831,11 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="tei:note[@type='prosody']"/>
+            <xsl:when test="self::tei:note[//tei:TEI[@type='translation']]"/>
             <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
+                            
                             <xsl:with-param name="type">
                                 <xsl:choose>
                                     <xsl:when test="self::tei:note[position() = last()][parent::tei:l]">
@@ -1780,11 +1850,6 @@
                                 </xsl:choose>
                             </xsl:with-param>
                         </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="self::tei:note[//tei:TEI[@type='translation']]">
-                <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'translation'"/>
-                </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
@@ -1817,7 +1882,7 @@
             <xsl:copy-of select="$apparatus-note"/>
         </span>      
     </xsl:template>
-    
+
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
@@ -1848,6 +1913,30 @@
                     <xsl:attribute name="class">text-justify</xsl:attribute>
                     <xsl:apply-templates/>
                 </xsl:element>
+                <xsl:if test=".[child::tei:note]">
+                    <hr/>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">bloc-notes</xsl:attribute>
+                    <xsl:element name="h5">
+                        <xsl:text>Notes</xsl:text>
+                    </xsl:element>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">notes-translation</xsl:attribute>
+                        <!-- An entry is created for-each of the following instances
+                  * notes.  -->
+                        <xsl:for-each select="./tei:note">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
+                                <xsl:call-template name="generate-trans-link">
+                                    <xsl:with-param name="situation" select="'apparatus-internal'"/>
+                                </xsl:call-template>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                            <br/>
+                        </xsl:for-each>
+                    </xsl:element>
+                </xsl:element>
+                </xsl:if>
             </xsl:when>
             <xsl:when test="ancestor::tei:projectDesc">
                     <xsl:element name="p">
@@ -2257,6 +2346,7 @@
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
                     <xsl:with-param name="type" select="'lem-omissionStart'"/>
+                    
                 </xsl:call-template>
                 <!--<xsl:element name="a">
                     <xsl:attribute name="class">lem-omissionStart move-to-right</xsl:attribute>
@@ -3063,16 +3153,35 @@
       </div>
         </xsl:element>
     </xsl:if>
+      
   </xsl:template>
     
   <xsl:template name="lbrk-app">
     <br/>
   </xsl:template>
+    
+    <xsl:template name="tpl-notes-trans">
+        <xsl:element name="div">
+            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
+                <xsl:element name="h4">Translations Notes</xsl:element>
+                <xsl:for-each select=".//tei:note[//tei:TEI[@type='translation']]">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
+                        <xsl:call-template name="generate-trans-link">
+                            <xsl:with-param name="situation" select="'apparatus-bottom'"/>
+                        </xsl:call-template>
+                        <xsl:apply-templates select="tei:note"/>
+                    </xsl:element>
+                    <br/>
+                </xsl:for-each>
+            </xsl:element>
+    </xsl:template>
 
     <xsl:template name="app-link">
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
         <xsl:param name="type"/>
+       
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
         
         <xsl:if test="not((local-name() = 'choice' or local-name() = 'subst')
@@ -3092,7 +3201,9 @@
     <xsl:template name="generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
+        <xsl:param name="trans-num"/>
         <xsl:param name="type"/>
+       
             <xsl:if test="$location = 'bottom'">
                 <a>
                     <xsl:attribute name="id">
@@ -3138,7 +3249,7 @@
             </xsl:element>
         </xsl:if>
         <xsl:if test="$location = 'text'"/>
-        <xsl:if test="$location = 'translation'"/>
+        
     </xsl:template>
 
     <xsl:template name="dharma-app">
