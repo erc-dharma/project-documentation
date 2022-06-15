@@ -570,6 +570,10 @@ span.lem >a, .lem{
     color:#a34545;
 }
 
+#translation-notes >a{
+    color:#a34545;
+}
+
 a:hover, a i.fas:hover {
     color:#b56060;
 }

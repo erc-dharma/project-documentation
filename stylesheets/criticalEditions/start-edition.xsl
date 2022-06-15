@@ -169,8 +169,8 @@
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
                 <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
+                <xsl:call-template name="tpl-com"/> 
                 <xsl:call-template name="tpl-notes-trans"/>
-                <xsl:call-template name="tpl-com"/>  
                 <xsl:call-template name="tpl-biblio"/>
                 </xsl:element>
         </xsl:element>
@@ -1815,7 +1815,7 @@
                         <xsl:text>#from-trans-num-</xsl:text>
                         <xsl:value-of select="$trans-num"/>
                     </xsl:attribute>
-                    <xsl:text>↑</xsl:text>
+                    <xsl:text>^</xsl:text>
                     <xsl:value-of select="$trans-num"/>
                     <xsl:text>.</xsl:text>
                 </a>
@@ -3161,16 +3161,31 @@
   </xsl:template>
     
     <xsl:template name="tpl-notes-trans">
-        <xsl:element name="div">
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
+        <xsl:variable name="document-trans">
+            <xsl:choose>
+                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml'))">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        
+            <xsl:element name="div">
+                <xsl:attribute name="id">translation-notes</xsl:attribute>
             <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-                <xsl:element name="h4">Translations Notes</xsl:element>
-                <xsl:for-each select=".//tei:note[//tei:TEI[@type='translation']]">
+                <xsl:element name="h4">Translation Notes</xsl:element>
+                <xsl:for-each select="document($document-trans)//tei:note">
                     <xsl:element name="span">
-                        <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
+                        <xsl:attribute name="class">translation-notes</xsl:attribute>
                         <xsl:call-template name="generate-trans-link">
                             <xsl:with-param name="situation" select="'apparatus-bottom'"/>
                         </xsl:call-template>
-                        <xsl:apply-templates select="tei:note"/>
+                        <xsl:apply-templates/>
                     </xsl:element>
                     <br/>
                 </xsl:for-each>
@@ -3947,15 +3962,13 @@
         </xsl:when>
     </xsl:choose>
 </xsl:template>
-    
+   
     
     <!-- tpl-translation -->
     <xsl:template name="tpl-translation">
         <xsl:param name="textpart-id"/>
         <!-- https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/ -->
-        <xsl:variable name="filename">
-            <xsl:value-of select="//tei:idno[@type='filename']"/>
-        </xsl:variable>
+        
        <!-- <xsl:variable name="collection">
             <xsl:value-of select="'https://api.github.com/repositories/213335970/contents/editions'"/>
         </xsl:variable>
@@ -3977,10 +3990,13 @@
                 <xsl:when test="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]">
                     <xsl:apply-templates select="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
                 </xsl:when>-->
+        <xsl:variable name="filename">
+            <xsl:value-of select="//tei:idno[@type='filename']"/>
+        </xsl:variable>
         <xsl:variable name="document-trans">
             <xsl:choose>
                 <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml'))">
-                <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
