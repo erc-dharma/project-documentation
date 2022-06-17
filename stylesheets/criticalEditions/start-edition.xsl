@@ -458,164 +458,14 @@
                                 <xsl:apply-templates select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]"/>
                             </xsl:if>-->
                             <xsl:for-each select="tei:rdg">  
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> omissionEnd</xsl:when></xsl:choose>
-                            </xsl:attribute>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">app-rdg</xsl:attribute>
-                                <xsl:element name="span">
-                                    <xsl:attribute name="class">
-                                        <xsl:text>translit </xsl:text>
-                                        <xsl:value-of select="$script"/>
-                                        <xsl:if test="@rend='check'">
-                                            <xsl:text> mark</xsl:text>
-                                        </xsl:if>
-                                        <xsl:if test="@rend='unmetrical'">
-                                            <xsl:text> unmetrical</xsl:text>
-                                        </xsl:if>
-                                    </xsl:attribute>  
-                                         <xsl:choose>
-                                             <xsl:when test="tei:gap[@reason='omitted']">
-                                                    <xsl:element name="span">
-                                                        <xsl:attribute name="class">font-italic</xsl:attribute> 
-                                                        <xsl:attribute name="style">color:black;</xsl:attribute>
-                                                        <xsl:text>om.</xsl:text>                                                       
-                                                    </xsl:element>
-                                                </xsl:when>
-                                             <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity|@unit)]">
-                                                 <xsl:element name="span">
-                                                     <xsl:attribute name="class">font-italic</xsl:attribute>
-                                                     <xsl:attribute name="style">color:black;</xsl:attribute>
-                                                     <xsl:text>lac.</xsl:text> 
-                                                 </xsl:element>
-                                             </xsl:when>
-                                             <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
-                                            </xsl:choose> 
-                                    
-                                    <xsl:apply-templates/>
-                                    <xsl:choose>
-                                        <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
-                                    </xsl:choose>
-                                </xsl:element>
-                            </xsl:element>
-                            <xsl:text> </xsl:text>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold <xsl:if test="following-sibling::*[local-name()='witDetail'] or ./@varSeq"> supsub</xsl:if></xsl:attribute>
-                                <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="./@wit"/>
-                                    <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                    <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                    <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
-                            </xsl:call-template>
-                                <xsl:if test="./@varSeq">
-                                    <xsl:choose>
-                                        <xsl:when test="./@varSeq='1'">
-                                            <xsl:element name="sub">
-                                                <xsl:text>ac</xsl:text>
-                                            </xsl:element>
-                                        </xsl:when>
-                                        <xsl:when test="./@varSeq='2'">
-                                            <xsl:element name="sub">
-                                                <xsl:text>pc</xsl:text>
-                                            </xsl:element>
-                                        </xsl:when>
-                                    </xsl:choose>
-                                </xsl:if>
-                                <xsl:if test="./@source">
-                                    <xsl:call-template name="source-siglum">
-                                        <xsl:with-param name="string-to-siglum" select="./@source"/>
-                                    </xsl:call-template>
-                                </xsl:if>
-                            </xsl:element>
-                                <xsl:if test="./@cause">
-                                    <xsl:element name="span">
-                                        <xsl:attribute name="style">color:black;</xsl:attribute>
-                                        <xsl:text> (</xsl:text>
-                                        <xsl:value-of select="replace(./@cause, '_', ' ')"/>
-                                        <xsl:text>)</xsl:text>
-                                    </xsl:element>
-                                </xsl:if>
-                            
-                            <!--<xsl:if test="./following-sibling::tei:rdg">
-                                <xsl:text>; </xsl:text>
-                            </xsl:if>-->
-                            
-                        </xsl:element>              
+                                <xsl:call-template name="rdg-content">
+                                    <xsl:with-param name="parent-rdg" select="'no'"/>
+                                </xsl:call-template>
                     </xsl:for-each>
                             <xsl:for-each select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
-                                <xsl:element name="span">
-                                    <xsl:attribute name="class">app-rdg</xsl:attribute>
-                                    <xsl:element name="span">
-                                        <xsl:attribute name="class">
-                                            <xsl:text>translit </xsl:text>
-                                            <xsl:value-of select="$script"/>
-                                            <xsl:if test="/@rend='check'">
-                                                <xsl:text> mark</xsl:text>
-                                            </xsl:if>
-                                            <xsl:if test="@rend='unmetrical'">
-                                                <xsl:text> unmetrical</xsl:text>
-                                            </xsl:if>
-                                        </xsl:attribute>  
-                                        <xsl:choose>
-                                            <xsl:when test="tei:gap[@reason='omitted']">
-                                                <xsl:element name="span">
-                                                    <xsl:attribute name="class">font-italic</xsl:attribute> 
-                                                    <xsl:attribute name="style">color:black;</xsl:attribute>
-                                                    <xsl:text>om.</xsl:text>                                                       
-                                                </xsl:element>
-                                            </xsl:when>
-                                            <xsl:when test="tei:gap[@reason='lost'and not(@quantity|@unit)]">
-                                                <xsl:element name="span">
-                                                    <xsl:attribute name="class">font-italic</xsl:attribute>
-                                                    <xsl:attribute name="style">color:black;</xsl:attribute>
-                                                    <xsl:text>lac.</xsl:text> 
-                                                </xsl:element>
-                                            </xsl:when>
-                                            <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
-                                        </xsl:choose> 
-                                        
-                                        <xsl:choose>
-                                            <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
-                                        </xsl:choose>
-                                    </xsl:element>
-                                </xsl:element>
-                                <xsl:text> </xsl:text>
-                                <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold <xsl:if test="following-sibling::*[local-name()='witDetail'] or ./@varSeq"> supsub</xsl:if></xsl:attribute>
-                                    <xsl:call-template name="tokenize-witness-list">
-                                        <xsl:with-param name="string" select="./@wit"/>
-                                        <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                        <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
-                                    </xsl:call-template>
-                                    <xsl:if test="./@varSeq">
-                                        <xsl:choose>
-                                            <xsl:when test="./@varSeq='1'">
-                                                <xsl:element name="sub">
-                                                    <xsl:text>ac</xsl:text>
-                                                </xsl:element>
-                                            </xsl:when>
-                                            <xsl:when test="./@varSeq='2'">
-                                                <xsl:element name="sub">
-                                                    <xsl:text>pc</xsl:text>
-                                                </xsl:element>
-                                            </xsl:when>
-                                        </xsl:choose>
-                                    </xsl:if>
-                                    <xsl:if test="./@source">
-                                        <xsl:call-template name="source-siglum">
-                                            <xsl:with-param name="string-to-siglum" select="./@source"/>
-                                        </xsl:call-template>
-                                    </xsl:if>
-                                </xsl:element>
-                                <xsl:if test="./@cause">
-                                    <xsl:element name="span">
-                                        <xsl:attribute name="style">color:black;</xsl:attribute>
-                                        <xsl:text> (</xsl:text>
-                                        <xsl:value-of select="replace(./@cause, '_', ' ')"/>
-                                        <xsl:text>)</xsl:text>
-                                    </xsl:element>
-                                </xsl:if>
+                                <xsl:call-template name="rdg-content">
+                                    <xsl:with-param name="parent-rdg" select="'yes'"/>
+                                </xsl:call-template>
                             </xsl:for-each>
                         </xsl:otherwise>
                     </xsl:choose>
@@ -679,6 +529,94 @@
         
     </xsl:template>
     
+    <xsl:template name="rdg-content">
+        <xsl:param name="parent-rdg"/>
+        <xsl:element name="span">
+            <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> omissionEnd</xsl:when></xsl:choose>
+            </xsl:attribute>
+            <xsl:element name="span">
+                <xsl:attribute name="class">app-rdg</xsl:attribute>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">
+                        <xsl:text>translit </xsl:text>
+                        <xsl:value-of select="$script"/>
+                        <xsl:if test="@rend='check'">
+                            <xsl:text> mark</xsl:text>
+                        </xsl:if>
+                        <xsl:if test="@rend='unmetrical'">
+                            <xsl:text> unmetrical</xsl:text>
+                        </xsl:if>
+                    </xsl:attribute>  
+                    <xsl:choose>
+                        <xsl:when test="tei:gap[@reason='omitted']">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-italic</xsl:attribute> 
+                                <xsl:attribute name="style">color:black;</xsl:attribute>
+                                <xsl:text>om.</xsl:text>                                                       
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity|@unit)]">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                                <xsl:attribute name="style">color:black;</xsl:attribute>
+                                <xsl:text>lac.</xsl:text> 
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
+                    </xsl:choose> 
+                    
+                    <xsl:if test="$parent-rdg='no'">
+                        <xsl:apply-templates/>
+                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
+                    </xsl:choose>
+                </xsl:element>
+            </xsl:element>
+            <xsl:text> </xsl:text>
+            <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold <xsl:if test="following-sibling::*[local-name()='witDetail'] or ./@varSeq"> supsub</xsl:if></xsl:attribute>
+                <xsl:call-template name="tokenize-witness-list">
+                    <xsl:with-param name="string" select="./@wit"/>
+                    <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                    <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                    <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                </xsl:call-template>
+                <xsl:if test="./@varSeq">
+                    <xsl:choose>
+                        <xsl:when test="./@varSeq='1'">
+                            <xsl:element name="sub">
+                                <xsl:text>ac</xsl:text>
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="./@varSeq='2'">
+                            <xsl:element name="sub">
+                                <xsl:text>pc</xsl:text>
+                            </xsl:element>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:if>
+                <xsl:if test="./@source">
+                    <xsl:call-template name="source-siglum">
+                        <xsl:with-param name="string-to-siglum" select="./@source"/>
+                    </xsl:call-template>
+                </xsl:if>
+            </xsl:element>
+            <xsl:if test="./@cause">
+                <xsl:element name="span">
+                    <xsl:attribute name="style">color:black;</xsl:attribute>
+                    <xsl:text> (</xsl:text>
+                    <xsl:value-of select="replace(./@cause, '_', ' ')"/>
+                    <xsl:text>)</xsl:text>
+                </xsl:element>
+            </xsl:if>
+            
+            <!--<xsl:if test="./following-sibling::tei:rdg">
+                                <xsl:text>; </xsl:text>
+                            </xsl:if>-->
+            
+        </xsl:element>     
+    </xsl:template>
     <xsl:template match="tei:app[not(parent::tei:listApp[@type='parallels'])]">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
