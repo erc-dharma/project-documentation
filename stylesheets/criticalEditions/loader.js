@@ -136,7 +136,7 @@ Code only for the lateral tooltip*/
     /* omm. for bottom apparatus */
     $( ".bottom-omissionStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgBottomOmission =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">om.</span></span>')
+        var newRdgBottomOmission =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">om. </span></span>')
         /* Cherche le premier element suivant avec la class siglum, récupere son contenu  */
         var siglumBottomOmission = $(this).find(".siglum:first").clone()
         
