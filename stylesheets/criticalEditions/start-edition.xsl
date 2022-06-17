@@ -464,7 +464,7 @@
                     </xsl:for-each>
                             <xsl:for-each select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
                                 <xsl:call-template name="rdg-content">
-                                    <xsl:with-param name="parent-rdg" select="'yes'"/>
+                                    <xsl:with-param name="parent-rdg" select="'yes-inline'"/>
                                 </xsl:call-template>
                             </xsl:for-each>
                         </xsl:otherwise>
@@ -532,8 +532,15 @@
     <xsl:template name="rdg-content">
         <xsl:param name="parent-rdg"/>
         <xsl:element name="span">
+            <xsl:choose>
+            <xsl:when test="$parent-rdg='no' or $parent-rdg='yes-inline'">
             <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> omissionEnd</xsl:when></xsl:choose>
             </xsl:attribute>
+            </xsl:when>
+                <xsl:when test="$parent-rdg='yes-bottom'">
+                    <xsl:attribute name="class">bottom-reading-line</xsl:attribute>
+                </xsl:when>
+            </xsl:choose>
             <xsl:element name="span">
                 <xsl:attribute name="class">app-rdg</xsl:attribute>
                 <xsl:element name="span">
@@ -3615,6 +3622,14 @@
                                 </xsl:element>
                     </xsl:if>
                     </xsl:element>
+                </xsl:for-each>
+                <xsl:if test="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+                <xsl:for-each select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
+                   <xsl:call-template name="rdg-content">
+                       <xsl:with-param name="parent-rdg" select="'yes-bottom'"/>
+                   </xsl:call-template>
                 </xsl:for-each>
                 
                     <xsl:for-each select="tei:rdg/following-sibling::tei:note"><xsl:element name="span">
