@@ -878,7 +878,7 @@
     </xsl:template>
     
     <!--  div ! -->
-    <xsl:template match="tei:div[not(@type='metrical'or @type='section' or not(@*))]">
+    <xsl:template match="tei:div[not(@type='metrical'or @type='section' or not(@type))]">
             <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
@@ -898,13 +898,11 @@
                     </xsl:when>
                     <xsl:when test="@type='canto'"/>
                     <xsl:otherwise>
-                        <xsl:element name="p">
-                            <xsl:choose>                              
-                                <xsl:when test="@n">
+                        <xsl:element name="p">                            
+                                <xsl:if test="@n">
                                     <xsl:value-of select="@n"/>
                                     <xsl:text>. </xsl:text>
-                                </xsl:when> 
-                            </xsl:choose>
+                                </xsl:if> 
                 </xsl:element>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -971,20 +969,22 @@
         
     </xsl:template>
     
-    <xsl:template match="tei:div[@type='metrical' or @type='section' or not(@*)]">
+    <xsl:template match="tei:div[@type='metrical' or @type='section' or not(@type)]">
                 <!--<xsl:element name="div">
                     <xsl:attribute name="class">metrical</xsl:attribute>-->
         <xsl:if test="@type='metrical' or @type='section'">
             <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                 <xsl:if test="@n">
-                    <xsl:value-of select="parent::tei:div/@n"/>
+                    <xsl:value-of select="ancestor::tei:div/@n"/>
                     <xsl:text>.</xsl:text>
                 <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="single" format="1"/>
-                    <xsl:text> </xsl:text></xsl:if>
-                <xsl:call-template name="metrical-list">
+                    <xsl:text> </xsl:text>
+                </xsl:if>
+                <xsl:if test="@met">
+                    <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
-                </xsl:call-template>
+                </xsl:call-template></xsl:if>
                 </xsl:element> 
         </xsl:if>
                 <xsl:apply-templates/>  
@@ -1972,7 +1972,7 @@
             <xsl:element name="small">
                         <xsl:element name="span">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
-                            <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical'or @type='section'])">
+                            <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])">
                         <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
@@ -1996,10 +1996,10 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:if>
-                    <xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation' or @type = 'liminal')]">
+                    <!--<xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation' or @type = 'liminal')]">
                         <xsl:value-of select="ancestor-or-self::tei:div/@n"/>
                         <xsl:text>.</xsl:text>
-                    </xsl:if>
+                    </xsl:if>-->
                     <xsl:value-of select="$p-num"/>
                 </xsl:element>
             </xsl:element>
