@@ -878,8 +878,8 @@
     </xsl:template>
     
     <!--  div ! -->
-    <xsl:template match="tei:div[not(@type='metrical'or @type='section')]">
-        <xsl:variable name="metrical" select="@met"/>
+    <xsl:template match="tei:div[not(@type='metrical'or @type='section' or not(@*))]">
+            <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
@@ -964,13 +964,14 @@
                 </xsl:if>
             </xsl:element>     
         </xsl:element>
+
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="hr"/>
         </xsl:if>
         
     </xsl:template>
     
-    <xsl:template match="tei:div[@type='metrical' or @type='section']">
+    <xsl:template match="tei:div[@type='metrical' or @type='section' or not(@*)]">
                 <!--<xsl:element name="div">
                     <xsl:attribute name="class">metrical</xsl:attribute>-->
         <xsl:if test="@type='metrical' or @type='section'">
