@@ -534,7 +534,7 @@
         <xsl:element name="span">
             <xsl:choose>
             <xsl:when test="$parent-rdg='no' or $parent-rdg='yes-inline'">
-            <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> omissionEnd</xsl:when></xsl:choose>
+                <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
             </xsl:attribute>
             </xsl:when>
                 <xsl:when test="$parent-rdg='yes-bottom'">
@@ -976,10 +976,10 @@
         <xsl:if test="@type='metrical' or @type='section'">
             <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:value-of select="parent::tei:div/@n"/>
+                <!--<xsl:value-of select="parent::tei:div/@n"/>
                     <xsl:text>.</xsl:text>
                 <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="single" format="1"/>
-                    <xsl:text> </xsl:text>
+                    <xsl:text> </xsl:text>-->
                 <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template>
