@@ -976,10 +976,11 @@
         <xsl:if test="@type='metrical' or @type='section'">
             <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                <!--<xsl:value-of select="parent::tei:div/@n"/>
+                <xsl:if test="@n">
+                    <xsl:value-of select="parent::tei:div/@n"/>
                     <xsl:text>.</xsl:text>
                 <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="single" format="1"/>
-                    <xsl:text> </xsl:text>-->
+                    <xsl:text> </xsl:text></xsl:if>
                 <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template>
