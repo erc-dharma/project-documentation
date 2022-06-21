@@ -1616,6 +1616,7 @@
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="child::tei:abbr[1]">
+                                    <xsl:apply-templates select="tei:abbr"/>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="@xml:id"/>
@@ -2122,7 +2123,7 @@
                     </xsl:when>
                    <xsl:when test="contains($MSlink, 'bib:')">
                        <xsl:call-template name="source-siglum">
-                           <xsl:with-param name="string-to-siglum" select="$MSlink"/>
+                           <xsl:with-param name="string-to-siglum" select="substring-after($MSlink, 'bib:')"/>
                        </xsl:call-template>
                    </xsl:when>
                    <xsl:when test="contains($MSlink, $rootId)">
@@ -3690,8 +3691,8 @@
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                 <xsl:text>Ed</xsl:text>
                 <xsl:element name="sup">
-                    <xsl:attribute name="class">ed-siglum</xsl:attribute>             
-                    <xsl:value-of select="//tei:listBibl/tei:biblStruct[@corresp=$string-to-siglum]/@xml:id"/>
+                    <xsl:attribute name="class">ed-siglum</xsl:attribute>                     
+                    <xsl:value-of select="//tei:listBibl/tei:biblStruct[@xml:id=$string-to-siglum]/tei:author/tei:surname"/>
             </xsl:element>
             </xsl:element>
     </xsl:template>
