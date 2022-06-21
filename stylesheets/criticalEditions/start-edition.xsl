@@ -624,6 +624,7 @@
             
         </xsl:element>     
     </xsl:template>
+    
     <xsl:template match="tei:app[not(parent::tei:listApp[@type='parallels'])]">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
@@ -661,13 +662,11 @@
             </xsl:attribute>-->
               
                         <xsl:apply-templates select="tei:lem"/>
-               <!-- <xsl:choose>
-                    <xsl:when test="$location='text'"/>
-                    <xsl:otherwise>-->
-                        <xsl:call-template name="app-link">
-                            <xsl:with-param name="location" select="'apparatus'"/>
-                           
+                        <xsl:if test="not(parent::tei:lem)">
+                            <xsl:call-template name="app-link">
+                            <xsl:with-param name="location" select="'apparatus'"/>   
                 </xsl:call-template>
+                        </xsl:if>
                     <!--</xsl:otherwise>
                 </xsl:choose>-->   
         </xsl:element>
