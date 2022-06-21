@@ -388,7 +388,7 @@
                                     <xsl:apply-templates select="replace(tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:apply-templates select="tei:lem"/>
+                                    <xsl:apply-templates select="tei:lem"/>  
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:element>
@@ -628,6 +628,7 @@
     <xsl:template match="tei:app[not(parent::tei:listApp[@type='parallels'])]">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
+        <xsl:param name="app-type"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
@@ -660,17 +661,15 @@
                 <xsl:text>from-app-</xsl:text>
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
-                                   
-                                      <xsl:apply-templates select="tei:lem"/>
-                                <xsl:call-template name="app-link">
-                                    <xsl:with-param name="location" select="'apparatus'"/>
-                                </xsl:call-template> 
-                                  
-                                                        
-        </xsl:element>
+                   
+             <xsl:apply-templates select="tei:lem"/>
+                <xsl:call-template name="app-link">
+                    <xsl:with-param name="location" select="'apparatus'"/>
+                </xsl:call-template>
+    
+                    </xsl:element>
                 </xsl:otherwise>
             </xsl:choose>
-        
         <xsl:if test="descendant::tei:span[@type='omissionStart']">
             <xsl:apply-templates select="descendant::tei:span[@type='omissionStart']" mode="omission-number"/>
         </xsl:if>       
@@ -1418,6 +1417,7 @@
                             <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
                         </xsl:when>
                         <xsl:otherwise>
+                            <xsl:text> </xsl:text>
                             <xsl:value-of select="@n"/>
                         </xsl:otherwise>
                     </xsl:choose>
