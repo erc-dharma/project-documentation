@@ -1322,7 +1322,6 @@
     </xsl:template>
     <!--  lg ! -->
     <xsl:template match="tei:lg">
-        <xsl:if test="@n | @met">
             <xsl:element name="p">
                 <xsl:attribute name="class">float-center</xsl:attribute>
                 <xsl:element name="small">
@@ -1355,7 +1354,6 @@
                     </xsl:element>
                 </xsl:element>
             </xsl:element>
-        </xsl:if>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
            <xsl:choose>
