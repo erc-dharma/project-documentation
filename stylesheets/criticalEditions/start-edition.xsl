@@ -1410,7 +1410,7 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
                     <xsl:choose>
-                        <xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>
+                        <!--<xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>-->
                         <xsl:when test="contains(@n, '.')">
                             <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
                         </xsl:when>
