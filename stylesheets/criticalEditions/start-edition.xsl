@@ -406,9 +406,9 @@
                                 </xsl:if>-->
                             </xsl:if>
                         <xsl:if test="tei:lem/@wit"> 
-                            <xsl:if test="tei:lem/@type='absent_elsewhere'">
+                            <!--<xsl:if test="tei:lem/@type='absent_elsewhere'">
                                     <xsl:text> only in </xsl:text>
-                                </xsl:if>
+                                </xsl:if>-->
                             <xsl:if test="tei:lem/@type='reformulated_elsewhere'">
                                     <xsl:text> thus formulated in </xsl:text>
                                 </xsl:if>
@@ -450,9 +450,6 @@
                 <!--  Variant readings ! -->
             
             <xsl:if test="tei:rdg[not(@type='paradosis')]"> 
-                    <xsl:choose>
-                        <xsl:when test="tei:rdg/preceding-sibling::*[local-name()='lem'][1]/@type='absent_elsewhere'"/>                     
-                        <xsl:otherwise>
                             <xsl:element name="hr"/>
                             <!--<xsl:if test="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']">
                                 <xsl:apply-templates select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]"/>
@@ -462,13 +459,11 @@
                                     <xsl:with-param name="parent-rdg" select="'no'"/>
                                 </xsl:call-template>
                     </xsl:for-each>
-                            <xsl:for-each select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
+                            <xsl:for-each select="ancestor::*[local-name()='lem'][1]/following-sibling::tei:rdg[1]">
                                 <xsl:call-template name="rdg-content">
                                     <xsl:with-param name="parent-rdg" select="'yes-inline'"/>
                                 </xsl:call-template>
                             </xsl:for-each>
-                        </xsl:otherwise>
-                    </xsl:choose>
                 </xsl:if>
                  <xsl:if test="tei:rdg[@type='paradosis']">
                     <xsl:element name="hr"/>
@@ -539,6 +534,7 @@
             </xsl:when>
                 <xsl:when test="$parent-rdg='yes-bottom'">
                     <xsl:attribute name="class">bottom-reading-line</xsl:attribute>
+                    <xsl:text>, </xsl:text>
                 </xsl:when>
             </xsl:choose>
             <xsl:element name="span">
@@ -3465,9 +3461,9 @@
                             </xsl:if>
                             
                         <xsl:if test="@wit">
-                            <xsl:if test="@type='absent_elsewhere'">
+                            <!--<xsl:if test="@type='absent_elsewhere'">
                                 <xsl:text>only in </xsl:text>
-                                </xsl:if>
+                                </xsl:if>-->
                             <xsl:if test="@type='reformulated_elsewhere'">
                                 <xsl:text>Thus formulated in </xsl:text>
                             </xsl:if>
@@ -3501,7 +3497,7 @@
                                 </xsl:call-template>
                             </xsl:if>
                         </xsl:if>
-                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg and not(@type='absent_elsewhere')]">
+                    <xsl:if test="$path/tei:lem[following-sibling::tei:rdg]">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
@@ -3510,9 +3506,6 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd</xsl:when></xsl:choose>
                         </xsl:attribute>
-                    <xsl:choose>
-                        <xsl:when test="preceding-sibling::*[local-name()='lem'][1]/@type='absent_elsewhere'"/>
-                        <xsl:otherwise>
                             <xsl:if test="position()!=1">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
@@ -3597,9 +3590,7 @@
                             </xsl:element>
                         </xsl:if>
                     </xsl:if>
-                          
-                    </xsl:otherwise>
-                    </xsl:choose>                   
+                                            
                     <xsl:if test="@type='paradosis'">
                         <xsl:text> • </xsl:text>
                                 <xsl:element name="span">
@@ -3621,10 +3612,10 @@
                     </xsl:if>
                     </xsl:element>
                 </xsl:for-each>
-                <xsl:if test="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
+                <!--<xsl:if test="ancestor::*[local-name()='lem'][1]/following-sibling::tei:rdg[1]">
                     <xsl:text>, </xsl:text>
-                </xsl:if>
-                <xsl:for-each select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]">
+                </xsl:if>-->
+                <xsl:for-each select="ancestor::*[local-name()='lem'][1]/following-sibling::tei:rdg[1]">
                    <xsl:call-template name="rdg-content">
                        <xsl:with-param name="parent-rdg" select="'yes-bottom'"/>
                    </xsl:call-template>
