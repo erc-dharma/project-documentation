@@ -57,6 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-06-23">Deleting absent_elsewhere type for lem</change>
       <change who="part:axja" when="2022-04-05"
         >Adding funder and principal for reused files</change>
       <change who="part:axja" when="2022-03-29"
@@ -4191,7 +4192,6 @@
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
-                <valItem ident="absent_elsewhere"/>
                 <valItem ident="reformulated_elsewhere"/>
               </valList>
             </attDef>
