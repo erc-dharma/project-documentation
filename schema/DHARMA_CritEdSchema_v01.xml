@@ -57,6 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-06-24">Restricting the rules inside ms Identifier</change>
       <change who="part:axja" when="2022-06-23">Deleting absent_elsewhere type for lem</change>
       <change who="part:axja" when="2022-04-05"
         >Adding funder and principal for reused files</change>
@@ -4694,9 +4695,35 @@
           </attList>
         </elementSpec>
         <elementSpec ident="msIdentifier" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-          </classes>
+          <constraintSpec scheme="schematron" ident="identifier">
+            <constraint>
+              <sch:rule context="tei:msIdentifier">
+                <sch:assert test="child::tei:idno or child::tei:settlement and child::tei:repository"
+              >The msIdentifier should contain at least an idno for manuscript kept in Libraries or settlement and repository when kept in a prviate collection</sch:assert></sch:rule></constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+          </attList>
         </elementSpec>
         <elementSpec ident="msItem" mode="change">
           <attList>
