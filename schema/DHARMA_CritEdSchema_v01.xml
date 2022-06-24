@@ -57,7 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-06-24">Restricting the rules inside ms Identifier</change>
+      <change who="part:axja" when="2022-06-24">Restricting the rules inside ms Identifier and Updating the constraints for HandDesc and its minimal content</change>
       <change who="part:axja" when="2022-06-23">Deleting absent_elsewhere type for lem</change>
       <change who="part:axja" when="2022-04-05"
         >Adding funder and principal for reused files</change>
@@ -4566,9 +4566,12 @@
           </attList>
         </elementSpec>
         <elementSpec ident="handDesc" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-          </classes>
+          <constraintSpec scheme="schematron" ident="handDesc-content">
+            <constraint><sch:rule context="tei:handDesc">
+              <sch:assert
+              test="child::tei:p or child::tei:handNote"
+              >HandDesc should contained at least one paragraph or one handNote element</sch:assert></sch:rule></constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="source" mode="delete"/>
@@ -4936,9 +4939,60 @@
           </classes>
         </elementSpec>
         <elementSpec ident="physDesc" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-          </classes>
+          <constraintSpec scheme="isoschematron" ident="hands">
+          <constraint>
+            <sch:rule context="tei:physDesc">
+              <sch:assert test="child::tei:handDesc">The handDesc is mandatory.</sch:assert>
+            </sch:rule>
+          </constraint>
+          </constraintSpec>
+          <attList>
+          <attDef ident="ana" mode="delete"/>
+          <attDef ident="calendar" mode="delete"/>
+          <attDef ident="change" mode="delete"/>
+          <attDef ident="copyOf" mode="delete"/>
+          <attDef ident="corresp" mode="delete"/>
+          <attDef ident="datingMethod" mode="delete"/>
+          <attDef ident="datingPoint" mode="delete"/>
+          <attDef ident="evidence" mode="delete"/>
+          <attDef ident="exclude" mode="delete"/>
+          <attDef ident="facs" mode="delete"/>
+          <attDef ident="from" mode="delete"/>
+          <attDef ident="from-custom" mode="delete"/>
+          <attDef ident="from-iso" mode="delete"/>
+          <attDef ident="full" mode="delete"/>
+          <attDef ident="instant" mode="delete"/>
+          <attDef ident="n" mode="delete"/>
+          <attDef ident="notAfter" mode="delete"/>
+          <attDef ident="notAfter-custom" mode="delete"/>
+          <attDef ident="notAfter-iso" mode="delete"/>
+          <attDef ident="notBefore" mode="delete"/>
+          <attDef ident="notBefore-custom" mode="delete"/>
+          <attDef ident="notBefore-iso" mode="delete"/>
+          <attDef ident="nymRef" mode="delete"/>
+          <attDef ident="period" mode="delete"/>
+          <attDef ident="rend" mode="delete"/>
+          <attDef ident="rendition" mode="delete"/>
+          <attDef ident="resp" mode="delete"/>
+          <attDef ident="role" mode="delete"/>
+          <attDef ident="sameAs" mode="delete"/>
+          <attDef ident="select" mode="delete"/>
+          <attDef ident="sort" mode="delete"/>
+          <attDef ident="source" mode="delete"/>
+          <attDef ident="style" mode="delete"/>
+          <attDef ident="synch" mode="delete"/>
+          <attDef ident="to" mode="delete"/>
+          <attDef ident="to-custom" mode="delete"/>
+          <attDef ident="to-iso" mode="delete"/>
+          <attDef ident="when" mode="delete"/>
+          <attDef ident="when-custom" mode="delete"/>
+          <attDef ident="when-iso" mode="delete"/>
+          <attDef ident="xml:base" mode="delete"/>
+          <attDef ident="xml:lang" mode="delete"/>
+          <attDef ident="xml:space" mode="delete"/>
+          <attDef ident="type" mode="delete"/>
+          <attDef ident="subtype" mode="delete"/>
+          </attList>
         </elementSpec>
         <elementSpec ident="placeName" mode="change">
           <!--Vérifier l'usage des @subtype selon la valeur du @type -->

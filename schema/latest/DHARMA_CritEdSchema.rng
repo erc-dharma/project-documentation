@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-06-24T12:02:12Z. .
+Schema generated from ODD source 2022-06-24T12:31:18Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -6695,6 +6695,19 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                <ref name="tei_bindingDesc"/>
             </optional>
          </group>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="DHARMA_CritEdSchema_v01-physDesc-hands-constraint-rule-52">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:physDesc">
+               <sch:assert test="child::tei:handDesc">The handDesc is mandatory.</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.linking.attribute.next"/>
+         <ref name="tei_att.global.linking.attribute.prev"/>
+         <ref name="tei_att.global.responsibility.attribute.cert"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_objectDesc">
@@ -6814,6 +6827,19 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                </oneOrMore>
             </group>
          </choice>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="DHARMA_CritEdSchema_v01-handDesc-handDesc-content-constraint-rule-53">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:handDesc">
+               <sch:assert test="child::tei:p or child::tei:handNote">HandDesc should contained at least one paragraph or one handNote element</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.attribute.xmlbase"/>
+         <ref name="tei_att.global.attribute.xmlspace"/>
          <optional>
             <attribute name="hands">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the number of distinct hands identified within the manuscript</a:documentation>
@@ -7153,7 +7179,7 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-52">
+                  id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-54">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:app[not(parent::tei:listApp[@type='parallels'])]">
@@ -7261,7 +7287,7 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-54">
+                  id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-56">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem[@hand]">
@@ -7339,7 +7365,7 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-55">
+                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-57">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg[@hand]">
@@ -7434,7 +7460,7 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-57">
+                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-59">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
@@ -7548,7 +7574,7 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
             </choice>
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-58">
+                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-60">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
