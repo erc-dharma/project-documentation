@@ -605,12 +605,18 @@
                     </xsl:call-template>
                 </xsl:if>
             </xsl:element>
-            <xsl:if test="./@cause">
+            <xsl:if test="./@cause and $parent-rdg='no'">
                 <xsl:element name="span">
                     <xsl:attribute name="style">color:black;</xsl:attribute>
                     <xsl:text> (</xsl:text>
                     <xsl:value-of select="replace(./@cause, '_', ' ')"/>
                     <xsl:text>)</xsl:text>
+                </xsl:element>
+            </xsl:if>
+            <xsl:if test="$parent-rdg='yes-bottom' or $parent-rdg='yes-inline'">
+                <xsl:element name="span">
+                    <xsl:attribute name="style">color:black;</xsl:attribute>
+                    <xsl:text> (larger gap)</xsl:text>
                 </xsl:element>
             </xsl:if>
             
