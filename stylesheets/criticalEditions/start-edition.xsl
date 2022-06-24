@@ -657,11 +657,11 @@
                 <xsl:text>from-app-</xsl:text>
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
-                   
+                        <xsl:call-template name="app-link">
+                            <xsl:with-param name="location" select="'apparatus'"/>
+                        </xsl:call-template>
              <xsl:apply-templates select="tei:lem"/>
-                <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'apparatus'"/>
-                </xsl:call-template>
+                
     
                     </xsl:element>
                 </xsl:otherwise>
