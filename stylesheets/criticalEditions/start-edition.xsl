@@ -1352,18 +1352,18 @@
             </xsl:element>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
-           <xsl:choose>
+           <!--<xsl:choose>
                <xsl:when test="ancestor::tei:quote[@type='base-text']">
                    <xsl:call-template name="lg-content"/>
                </xsl:when>
-               <xsl:otherwise> 
+               <xsl:otherwise> -->
                    <xsl:element name="div">
-                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
+                <xsl:attribute name="class">col-9 text-col</xsl:attribute>
                        <xsl:call-template name="lg-content"/>
             </xsl:element>
-           </xsl:otherwise>
-           </xsl:choose>
-            <xsl:if test="not(ancestor::tei:quote[@type='base-text'])">
+           <!--</xsl:otherwise>
+           </xsl:choose>-->
+            <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
                     
@@ -1491,7 +1491,7 @@
              <xsl:choose>
                  <xsl:when test="ancestor::tei:p | ancestor::tei:ab"/>
                  <xsl:otherwise>
-                     <xsl:text>col-8</xsl:text>
+                     <xsl:text>col-9</xsl:text>
                  </xsl:otherwise>
              </xsl:choose>
             </xsl:attribute>
@@ -2002,7 +2002,7 @@
             <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
+                <xsl:attribute name="class">col-9 text-col</xsl:attribute>
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
                 <xsl:copy-of select="$p-line"/>
