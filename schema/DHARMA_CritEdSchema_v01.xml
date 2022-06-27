@@ -2626,6 +2626,12 @@
           </attList>
         </elementSpec>
         <elementSpec ident="quote" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="quote-colophon">
+            <constraint>
+              <sch:rule context="tei:quote[@type='diplomatic' or @type='normalized']">
+              <sch:assert test="parent::tei:colophon">The colophon should be structured with quote elements</sch:assert>
+            </sch:rule>
+          </constraint></constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -4528,9 +4534,6 @@
         <elementSpec ident="colophon" mode="change">
           <constraintSpec scheme="schematron" ident="colophone-quote">
             <constraint>
-              <sch:rule context="tei:colophon">
-                <sch:assert test="child::tei:quote[@type='diplomatic' or @type='normalized']">The colophon should be structured with quote elements</sch:assert>
-              </sch:rule>
               <sch:rule context="child::tei:quote[@type='diplomatic' or @type='normalized']">
                 <sch:assert test="child::tei:quote[@type='translation']">Any quote translating the colophon should be associated with a diplomatic or normalized colophon.</sch:assert>
               </sch:rule>
