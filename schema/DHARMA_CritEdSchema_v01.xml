@@ -57,6 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-06-27">Updating the rules for msIdentifier again</change>
       <change who="part:axja" when="2022-06-24">Restricting the rules inside ms Identifier and Updating the constraints for HandDesc and its minimal content</change>
       <change who="part:axja" when="2022-06-23">Deleting absent_elsewhere type for lem</change>
       <change who="part:axja" when="2022-04-05"
@@ -4701,8 +4702,11 @@
           <constraintSpec scheme="schematron" ident="identifier">
             <constraint>
               <sch:rule context="tei:msIdentifier">
-                <sch:assert test="child::tei:idno or child::tei:settlement and child::tei:repository"
-              >The msIdentifier should contain at least an idno for manuscript kept in Libraries or settlement and repository when kept in a prviate collection</sch:assert></sch:rule></constraint>
+                <sch:assert test="child::tei:settlement">The msIdentifier should contain settlement.</sch:assert></sch:rule>
+              <sch:rule context="tei:msIdentifier">
+                <sch:assert test="child::tei:idno and child::tei:repository"
+                  >If repository is given, msIdentifier should an idno</sch:assert></sch:rule>
+            </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="rend" mode="delete"/>
