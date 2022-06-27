@@ -705,11 +705,12 @@
                 <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
             </xsl:variable>
 			<xsl:choose>
-			    <xsl:when test="ancestor-or-self::tei:witness">
+			    <xsl:when test="parent::tei:witness">
 			        <xsl:value-of
 			            select="document($bibwitness)/div"/>
 			    </xsl:when>
-			    <xsl:when test="not(ancestor::tei:listBibl) or ancestor::tei:p or ancestor::tei:note">			
+			    <xsl:when test="parent::tei:listBibl"/>
+			    <xsl:when test="parent::tei:p or parent::tei:note">			
             <a href="{$pointerurl}">
 									<xsl:variable name="citation">
 										<xsl:analyze-string select="$unparsedtext"
@@ -1557,7 +1558,7 @@
     
     <!--  listBibl -->
     <!-- Must be reworked -->
-    <xsl:template match="tei:listBibl">
+    <!--<xsl:template match="tei:listBibl">
         <xsl:choose>
             <xsl:when test="ancestor::tei:teiHeader">
             <xsl:element name="ul">
@@ -1592,7 +1593,7 @@
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
+    </xsl:template>-->
     
     <!--  listWit ! -->
     <xsl:template match="tei:listWit">
@@ -1740,14 +1741,14 @@
                                                 <xsl:text>History</xsl:text>
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
-                                            <xsl:apply-templates select="normalize-space(./tei:msDesc/tei:history)"/>
+                                            <xsl:apply-templates select="./tei:msDesc/tei:history"/>
                                         </xsl:element>
                                     </xsl:if>
                                 </xsl:element>
                             </xsl:when>
-                            <xsl:when test="child::tei:bibl">
+                            <!--<xsl:when test="child::tei:bibl">
                                 <xsl:apply-templates select="tei:bibl"/>
-                            </xsl:when>
+                            </xsl:when>-->
                             <xsl:otherwise>
                                 <xsl:apply-templates select="node() except child::tei:abbr"/>
                             </xsl:otherwise>
@@ -1957,6 +1958,9 @@
                     </xsl:element>
                 </xsl:element>
                 </xsl:if>
+            </xsl:when>
+            <xsl:when test="ancestor::tei:sourceDesc">
+                    <xsl:apply-templates/>
             </xsl:when>
             <xsl:when test="ancestor::tei:projectDesc">
                     <xsl:element name="p">
