@@ -1649,7 +1649,7 @@
                                                 </xsl:if>
                                     </xsl:if>
                                     <xsl:element name="ul">
-                                        <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem[child::*/text()]">
+                                        <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem[child::*]">
                                         <xsl:element name="li">
                                             <xsl:element name="b">
                                                 <xsl:text>Content</xsl:text>
@@ -1680,11 +1680,14 @@
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
                                             <xsl:element name="ul">
-                                                <xsl:for-each select="./tei:msDesc/tei:msContents/tei:msItem[child::tei:colophon/text()]">
+                                                <xsl:for-each select="./tei:msDesc/tei:msContents/tei:msItem/tei:colophon/tei:quote">
                                                 <xsl:element name="li">
+                                                    <xsl:value-of select="@type"/>
+                                                    <xsl:text>: </xsl:text>
                                                     <xsl:element name="span">
                                                     <xsl:attribute name="class">font-italic</xsl:attribute>
-                                            <xsl:apply-templates select="./tei:colophon"/>
+                                                       
+                                            <xsl:apply-templates/>
                                                     </xsl:element>
                                                 </xsl:element>
                                                 </xsl:for-each>
