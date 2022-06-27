@@ -2658,6 +2658,9 @@
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="base-text"/>
+                <valItem ident="translation"/>
+                <valItem ident="normalized"/>
+                <valItem ident="diplomatic"/>
               </valList>
             </attDef>
           </attList>
