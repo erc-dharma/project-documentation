@@ -4523,9 +4523,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="colophon" mode="change">
-          <classes mode="change">
-            <memberOf key="att.msExcerpt" mode="delete"/>
-          </classes>
+          <constraintSpec scheme="schematron" ident="colophone-quote">
+            <constraint>
+              <sch:rule context="tei:colophon">
+                <sch:assert test="child::tei:quote[@type='diplomatic' or @type='normalized'] and child::tei:quote[@type='translation']">Any quote translating the colophon should be associated with a diplomatic or normalized colophon.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="rend" mode="delete"/>
             <attDef ident="style" mode="delete"/>
