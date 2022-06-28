@@ -57,6 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-06-28">Allowing script on handNote</change>
       <change who="part:axja" when="2022-06-27">Updating the rules for msIdentifier again, adding rules for colophons</change>
       <change who="part:axja" when="2022-06-24">Restricting the rules inside ms Identifier and Updating the constraints for HandDesc and its minimal content</change>
       <change who="part:axja" when="2022-06-23">Deleting absent_elsewhere type for lem</change>
@@ -298,7 +299,6 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="script" mode="delete"/>
             <attDef ident="xml:id" mode="change" usage="req"/>
             <attDef ident="scriptRef" mode="change" usage="req">
               <valList type="open" mode="replace">
