@@ -327,7 +327,7 @@ ul.sgt-index {
       <ref> elements can be inline with the
       last line of a verse. */
 .anustubh .l:nth-child(2n+1){ display: inline-block; clear: left;}
-.anustubh .l:nth-child(2n):after { content:"\A"; white-space:pre; }
+.anustubh .l:nth-child(2):after { content:"\A"; white-space:pre; }
 .anustubh .l:nth-child(2n) { display: inline; }
 .anustubh .l:last-child {display: inline-block; clear: left;}
 
@@ -335,8 +335,9 @@ ul.sgt-index {
 .lg:not(.anustubh):not(.padanustubh):not(.freeprosody) .l:nth-child(odd){ display: block; clear: left;}
 .lg:not(.anustubh):not(.padanustubh):not(.freeprosody) .l:last-child {display: inline-block; clear: left;}
 
+.padanustubh .l:last-child {display: inline-block !important; clear: left;}
 .padanustubh .l:nth-child(odd){ display: block; clear: left;}
-.padanustubh .l {display: inline-block; clear: left;}
+.padanustubh .l:nth-child(5) {display: inline; clear: left;}
 
 .freeprosody .l:nth-child(odd){ display: block; clear: left;}
 .freeprosody .l {display: inline-block; clear: left;}
@@ -567,6 +568,10 @@ span.lem >a, .lem{
 }
 
 #apparatus >a{
+    color:#a34545;
+}
+
+#translation-notes >a{
     color:#a34545;
 }
 
