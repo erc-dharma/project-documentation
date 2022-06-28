@@ -100,7 +100,7 @@ $(document).ready(function() {
 });  
 
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
-$( ".omissionStart" ).each(function() {
+$( ".rdg-omissionStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
         var newRdgOmission =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">om. </span></span>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
@@ -112,7 +112,7 @@ $( ".omissionStart" ).each(function() {
     
     /* Trying to add the lac. $siglum between lacunaStart and lacunaEnd 
 Code only for the lateral tooltip*/
-    $( ".lacunaStart" ).each(function() {
+    $( ".rdg-lacunaStart" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
         var newRdgLacuna =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span></span>')
         /* Cherche le premier element suivant avec la class siglum, récupere son contenu   */
