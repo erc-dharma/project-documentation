@@ -1649,7 +1649,7 @@
                                                 </xsl:if>
                                     </xsl:if>
                                     <xsl:element name="ul">
-                                        <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem[child::*]">
+                                        <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem[child::*//text()]">
                                         <xsl:element name="li">
                                             <xsl:element name="b">
                                                 <xsl:text>Content</xsl:text>
@@ -1701,7 +1701,10 @@
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
                                             <xsl:choose>
-                                                <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc">
+                                                <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc/tei:p">
+                                                    <xsl:apply-templates select="./tei:msDesc/tei:physDesc/tei:objectDesc/tei:p"/>
+                                                </xsl:when>
+                                                <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc/child::* except tei:p">
                                                     <xsl:element name="ul">
                                                         <xsl:if test="./tei:objectDesc/tei:supportDesc/tei:support">
                                                             <xsl:element name="li">
