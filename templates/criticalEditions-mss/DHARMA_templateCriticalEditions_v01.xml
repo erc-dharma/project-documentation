@@ -63,7 +63,10 @@
 									<author>Śāntarakṣita</author>
 									<title>Vipañcitārthā</title>
 									<!-- You can also add a colophon if needed -->
-									<!--<colophon></colophon> -->
+									<!--<colophon>
+										<quote></quote>
+										</colophon> -->
+									<!-- colophon should be structures with quote elements with attribute @type and @xml:lang when necessary -->
 								</msItem>
 							</msContents>
 							<physDesc>
