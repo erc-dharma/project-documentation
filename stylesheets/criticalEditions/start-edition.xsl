@@ -1792,6 +1792,14 @@
         </xsl:call-template>
     </xsl:template>
     
+    <xsl:template match="tei:note[ancestor::tei:colophon]">
+        <xsl:element name="a">
+            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+            <xsl:attribute name="title"><xsl:apply-templates/></xsl:attribute>
+            <xsl:text>(*)</xsl:text>
+        </xsl:element>
+    </xsl:template>
+    
     <xsl:template name="generate-trans-link">
         <xsl:param name="situation"/>
         <xsl:variable name="trans-num">
@@ -1858,6 +1866,7 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="tei:note[@type='prosody']"/>
+            <xsl:when test="tei:note[ancestor::tei:colophon]"/>
             <xsl:when test="self::tei:note[//tei:TEI[@type='translation']]"/>
             <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                         <xsl:call-template name="app-link">
