@@ -35,6 +35,7 @@
     </xsl:template>
    
     <xsl:template match="h1">
+        <br/>
         <xsl:element name="h1">
             <xsl:apply-templates/>
         </xsl:element>
@@ -68,9 +69,7 @@
     </xsl:template>
     
     <!-- lb -->
-    <xsl:template match="lb">
-        <br/>
-    </xsl:template>
+    <xsl:template match="lb"/>
     
     <!-- lg -->
     <xsl:template match="lg">
@@ -133,10 +132,21 @@
       </xsl:choose>
     </xsl:template>
     
-    <xsl:template match="fn | fnr">
+    <xsl:template match="fn">
         <xsl:element name="a">
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-            <xsl:attribute name="title"><xsl:apply-templates select="."/></xsl:attribute>
+            <xsl:attribute name="title"><xsl:apply-templates/></xsl:attribute>
+            <xsl:element name="sup">
+                <xsl:attribute name="class">footnote</xsl:attribute>
+                <xsl:number count="fn" format="1" level="any"/>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="fnr">
+        <xsl:element name="a">
+            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+            <xsl:attribute name="title"><xsl:apply-templates/></xsl:attribute>
             <xsl:element name="sup">
                 <xsl:value-of select="@n"/>
             </xsl:element>
