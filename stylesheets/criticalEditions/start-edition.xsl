@@ -919,7 +919,7 @@
                     <xsl:text>Canto </xsl:text>
                         <xsl:number count="tei:div[@type='canto']" level="multiple" format="1"/>
                 </xsl:element>
-                    <xsl:if test="@met">
+                    <xsl:if test="@rend='met'">
                     <xsl:element name="p">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="metrical-list">
@@ -980,7 +980,7 @@
                 <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="single" format="1"/>
                     <xsl:text> </xsl:text>
                 </xsl:if>
-                <xsl:if test="@met">
+                <xsl:if test="@rend='met'">
                     <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
                 </xsl:call-template></xsl:if>
