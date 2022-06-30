@@ -1412,16 +1412,16 @@
             <xsl:if test="@n">
                 <xsl:element name="span">
                     <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                    <xsl:choose>
+                    <!--<xsl:choose>-->
                         <!--<xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>-->
-                        <xsl:when test="contains(@n, '.')">
+                        <!--<xsl:when test="contains(@n, '.')">
                             <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
                         </xsl:when>
-                        <xsl:otherwise>
+                        <xsl:otherwise>-->
                             <xsl:text> </xsl:text>
                             <xsl:value-of select="@n"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                        <!--</xsl:otherwise>-->
+                    <!--</xsl:choose>-->
                 </xsl:element>
             </xsl:if>
         </xsl:element>
