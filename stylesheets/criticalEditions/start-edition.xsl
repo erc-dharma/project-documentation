@@ -1078,6 +1078,25 @@
     </xsl:template>
  
     <!--  G ! -->
+    <xsl:template match="tei:g">
+        <xsl:choose>
+            <xsl:when test="matches(., '..')">
+                <xsl:text>||</xsl:text>
+            </xsl:when>
+            <xsl:when test="matches(., '.')">
+                <xsl:text>|</xsl:text>
+            </xsl:when>
+            <xsl:when test="matches(., '§')">
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">symbol</xsl:attribute>
+                    <xsl:value-of select="@type"/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'"/>

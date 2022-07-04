@@ -879,3 +879,9 @@ p{
 .unmetrical{
    background-color: #F8BBD0;
 }
+
+.symbol {
+        border: 2px solid black;
+        border-radius: 8px;
+        padding: 0.03em;
+        }
