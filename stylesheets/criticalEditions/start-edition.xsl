@@ -230,16 +230,24 @@
                                     <xsl:text>, </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        <xsl:apply-templates select="normalize-space(.)"/>
+                        <xsl:choose>
+                            <xsl:when test="child::tei:forename">
+                                <xsl:apply-templates select="tei:forename"/>
+                                <xsl:text> </xsl:text>
+                                <xsl:apply-templates select="tei:surname"/>
+                            </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:apply-templates select="normalize-space(.)"/>
+                        </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:for-each>
                     </xsl:element>
                 </xsl:if>
                 <xsl:text>Current Version: </xsl:text>
                 <xsl:choose>
-                    <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc">
-                        <xsl:if test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
+                    <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
                             <xsl:value-of select="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status"/>
-                        </xsl:if>
+                        
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>draft</xsl:text>
