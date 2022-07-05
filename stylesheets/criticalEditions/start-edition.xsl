@@ -313,7 +313,7 @@
                 </xsl:if>
             </xsl:element>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-9 text-col</xsl:attribute>
+                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
                 <xsl:element name="p">
                     <xsl:if test="@xml:id">
                         <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
