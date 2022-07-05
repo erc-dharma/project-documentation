@@ -323,10 +323,10 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart']">
+                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                             <xsl:call-template name="app-link">
                                 <xsl:with-param name="location" select="'apparatus'"/>
-                                <!--<xsl:with-param name="type">
+                                <xsl:with-param name="type">
                                     <xsl:choose>
                                         <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
                                             <xsl:text>lem-omissionStart</xsl:text>
@@ -334,8 +334,11 @@
                                         <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
                                             <xsl:text>lem-lacunaStart</xsl:text>
                                         </xsl:when>
-                                    </xsl:choose>
-                                </xsl:with-param>-->
+                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
+                                        <xsl:text>lem-last-note</xsl:text>
+                                    </xsl:when>
+                                </xsl:choose>
+                                </xsl:with-param>
                             </xsl:call-template>   
                 </xsl:for-each>
             </xsl:element>
@@ -1222,6 +1225,9 @@
                 <xsl:if test="child::tei:note">
                     <xsl:text> l-last-note-verseline</xsl:text>
                 </xsl:if>
+                <xsl:if test="@real">
+                    <xsl:text> lem-verseline-real</xsl:text>
+                </xsl:if>
             </xsl:attribute>
             <!-- display for lines numbers only if Arabic numeral -->
             <xsl:choose>
@@ -1283,14 +1289,16 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="tei:l[@real]">
+    <!--<xsl:template match="tei:l[@real]">
         <xsl:apply-templates/>
+    </xsl:template>-->
+<!--        <xsl:apply-templates/>
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
                     
                     <xsl:with-param name="type" select="'lem-verseline-real'"/>
                 </xsl:call-template>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="tei:l[@real]" mode="modals">
         <xsl:variable name="apparatus-unmetrical">
@@ -1419,9 +1427,25 @@
             <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart']">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:l[@real] | descendant::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
+                            <xsl:with-param name="type">
+                                <xsl:choose>
+                                    <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
+                                        <xsl:text>lem-omissionStart</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
+                                        <xsl:text>lem-lacunaStart</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:l]">
+                                        <xsl:text>lem-last-note-verseline</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:lg]">
+                                        <xsl:text>lem-last-note-stanza</xsl:text>
+                                    </xsl:when>
+                                </xsl:choose>
+                            </xsl:with-param>
                         </xsl:call-template>   
                     </xsl:for-each>
                 </xsl:element>
@@ -1910,16 +1934,12 @@
     </xsl:template>
     
     <xsl:template match="tei:note">
-        <xsl:variable name="app-num">
-            <xsl:value-of select="name()"/>
-            <xsl:number level="any" format="0001"/>
-        </xsl:variable>
         <xsl:choose>
             <xsl:when test="tei:note[@type='prosody']"/>
             <xsl:when test="tei:note[ancestor::tei:colophon]"/>
             <xsl:when test="self::tei:note[//tei:TEI[@type='translation']]"/>
-            <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
-                        <xsl:call-template name="app-link">
+            <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
+                        <!--<xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                             
                             <xsl:with-param name="type">
@@ -1936,7 +1956,7 @@
                                 </xsl:choose>
                             </xsl:with-param>
                         </xsl:call-template>
-            </xsl:when>
+            </xsl:when>-->
             <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
@@ -2113,9 +2133,22 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart']">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
+                            <xsl:with-param name="type">
+                                <xsl:choose>
+                                    <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
+                                        <xsl:text>lem-omissionStart</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
+                                        <xsl:text>lem-lacunaStart</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
+                                        <xsl:text>lem-last-note</xsl:text>
+                                    </xsl:when>
+                                </xsl:choose>
+                            </xsl:with-param>
                         </xsl:call-template>   
                     </xsl:for-each>
                 </xsl:element>
@@ -3902,6 +3935,7 @@
     
 <xsl:template name="fake-lem-making">
     <xsl:choose>
+        <!-- ajouter le self tei:l pour le fake lem making de tei:l[@real]. Actuellement, bug-->
         <xsl:when test="parent::tei:p">
             <xsl:choose>
                 <xsl:when test="parent::tei:p/child::node()[1][self::text()]">
@@ -4022,7 +4056,7 @@
                             <xsl:value-of select="functx:substring-after-last(normalize-space(parent::tei:l/child::node()[last()-1][self::text()]), ' ')"/>
                         </xsl:otherwise>
                     </xsl:choose>
-        </xsl:when>
+        </xsl:when>        
         <xsl:when test="parent::tei:ab">
             <xsl:value-of select="."/>
         </xsl:when>
