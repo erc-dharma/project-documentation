@@ -243,7 +243,7 @@
                     </xsl:for-each>
                     </xsl:element>
                 </xsl:if>
-                <xsl:text>Current Version: </xsl:text>
+                <xsl:text>Current Version: </xsl:text>
                 <xsl:choose>
                     <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
                             <xsl:value-of select="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status"/>
@@ -319,6 +319,11 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                <xsl:for-each select="descendant::tei:app">
+                    <xsl:call-template name="app-link">
+                        <xsl:with-param name="location" select="'apparatus'"/>
+                    </xsl:call-template>
+                </xsl:for-each>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -376,36 +381,6 @@
     
     <!--  app ! -->
     <xsl:template match="tei:app[not(@rend='hide')]" mode="modals">
-        <xsl:call-template name="appcontent">
-            <xsl:with-param name="apptype">
-                <xsl:choose>
-                    <xsl:when test="self::tei:app">
-                        <xsl:text>app</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="self::tei:note">
-                        <xsl:text>note</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="self::tei:span[@type='omissionStart']">
-                        <xsl:text>omission</xsl:text>
-                    </xsl:when>
-                </xsl:choose>
-            </xsl:with-param>
-            <xsl:with-param name="childtype">
-                <xsl:choose>
-                    <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
-                        <xsl:text>origreg</xsl:text>
-                    </xsl:when>
-                </xsl:choose>
-            </xsl:with-param>
-        </xsl:call-template>
-    </xsl:template>
-    
-    <!-- template pour imiter le code et le système du bottom apparatus, mais pas besoin des params dans la cas présent. -->
-    <xsl:template name="appchoice-inline">
-        <xsl:param name="apptype" />
-        <xsl:param name="child" />
-        <xsl:param name="path" />
-        <xsl:param name="parent-lang"/>
         <xsl:variable name="apparatus">
             <!--<xsl:element name="span">-->
                 <xsl:element name="span">
@@ -701,11 +676,9 @@
                 <xsl:text>from-app-</xsl:text>
                 <xsl:value-of select="$app-num"/>
             </xsl:attribute>-->
-                               <xsl:if test="not(ancestor::tei:lem)"> 
-                                   <xsl:call-template name="app-link">
+                        <!--<xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
-                       </xsl:call-template>
-                               </xsl:if>
+                        </xsl:call-template>-->
              <xsl:apply-templates select="tei:lem"/>
                 
     
@@ -1432,7 +1405,11 @@
             <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    
+                    <xsl:for-each select="descendant::tei:app">
+                        <xsl:call-template name="app-link">
+                            <xsl:with-param name="location" select="'apparatus'"/>
+                        </xsl:call-template>
+                    </xsl:for-each>
             </xsl:element>
             </xsl:if>
         </xsl:element>
@@ -2122,6 +2099,11 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                    <xsl:for-each select="descendant::tei:app">
+                        <xsl:call-template name="app-link">
+                            <xsl:with-param name="location" select="'apparatus'"/>
+                        </xsl:call-template>
+                    </xsl:for-each>
                 </xsl:element>
         </xsl:element></xsl:if>
     </xsl:template>
@@ -3358,8 +3340,7 @@
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                 <xsl:text>(</xsl:text>
-                <!-- Attention ajout du ancestor::tei:lem contrairement aux autres comptes en combinaison avec la contrainte dans tei:app permet d'éviter le numéro d'apparat dans le lem parent lorsque plusieurs app sont "embedded" -->
-                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or ancestor::tei:lem)] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(//tei:TEI[@type='translation'])] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
+                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(//tei:TEI[@type='translation'])] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
                 <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:if>
@@ -3502,12 +3483,6 @@
                     <xsl:with-param name="path"><xsl:copy-of select="$path"/></xsl:with-param>
                    <xsl:with-param name="parent-lang"><xsl:value-of select="$parent-lang" /></xsl:with-param>
                 </xsl:call-template>
-                 <xsl:call-template name="appchoice-inline">
-                     <xsl:with-param name="apptype"><xsl:value-of select="$apptype"/></xsl:with-param>
-                     <xsl:with-param name="child"><xsl:if test="$childtype != ''">true</xsl:if></xsl:with-param>
-                     <xsl:with-param name="path"><xsl:copy-of select="$path"/></xsl:with-param>
-                     <xsl:with-param name="parent-lang"><xsl:value-of select="$parent-lang" /></xsl:with-param>
-                 </xsl:call-template>
         </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
