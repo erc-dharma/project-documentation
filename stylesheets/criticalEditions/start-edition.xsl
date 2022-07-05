@@ -295,21 +295,25 @@
                 </xsl:choose>             
             </xsl:for-each>
         </xsl:variable>
-        <xsl:if test="@type">
-            <xsl:element name="p">
-                <xsl:attribute name="class">float-center</xsl:attribute>
-                <xsl:element name="small">
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">text-muted</xsl:attribute>
-                        <xsl:value-of select="@type"/>
-                    </xsl:element>
-                </xsl:element>
-            </xsl:element>
-        </xsl:if>
+        
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
+                <xsl:attribute name="class">col-1 text-center</xsl:attribute>
+                <xsl:if test="@type">
+                    <xsl:element name="p">
+                        <xsl:attribute name="class">float-center</xsl:attribute>
+                        <xsl:element name="small">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">text-muted</xsl:attribute>
+                                <xsl:value-of select="@type"/>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:if>
+            </xsl:element>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-9 text-col</xsl:attribute>
                 <xsl:element name="p">
                     <xsl:if test="@xml:id">
                         <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
@@ -319,7 +323,7 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                <xsl:for-each select="descendant::tei:app">
+                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'])]">
                     <xsl:call-template name="app-link">
                         <xsl:with-param name="location" select="'apparatus'"/>
                     </xsl:call-template>
@@ -1405,7 +1409,7 @@
             <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'])]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>
@@ -2099,7 +2103,7 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'])]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>
