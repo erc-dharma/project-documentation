@@ -323,10 +323,20 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'])]">
-                    <xsl:call-template name="app-link">
-                        <xsl:with-param name="location" select="'apparatus'"/>
-                    </xsl:call-template>
+                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]">
+                            <xsl:call-template name="app-link">
+                                <xsl:with-param name="location" select="'apparatus'"/>
+                                <!--<xsl:with-param name="type">
+                                    <xsl:choose>
+                                        <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
+                                            <xsl:text>lem-omissionStart</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
+                                            <xsl:text>lem-lacunaStart</xsl:text>
+                                        </xsl:when>
+                                    </xsl:choose>
+                                </xsl:with-param>-->
+                            </xsl:call-template>   
                 </xsl:for-each>
             </xsl:element>
         </xsl:element>
@@ -660,8 +670,8 @@
                     <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
-                <xsl:if test="descendant::tei:span[@type='omissionStart']"> omissionStart</xsl:if>
-                <xsl:if test="descendant::tei:span[@type='omissionEnd']"> omissionEnd</xsl:if>
+                <xsl:if test="descendant::tei:span[@type='omissionStart']"> lem-omissionStart</xsl:if>
+                <xsl:if test="descendant::tei:span[@type='omissionEnd']"> lem-omissionEnd</xsl:if>
             </xsl:attribute>
             <xsl:attribute name="data-app">
                 <xsl:value-of select="generate-id()"/>
@@ -1408,13 +1418,13 @@
            </xsl:choose>-->
             <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
-                <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'])]">
+                    <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
-                        </xsl:call-template>
+                        </xsl:call-template>   
                     </xsl:for-each>
-            </xsl:element>
+                </xsl:element>
             </xsl:if>
         </xsl:element>
     </xsl:template>
@@ -2103,10 +2113,10 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'])]">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
-                        </xsl:call-template>
+                        </xsl:call-template>   
                     </xsl:for-each>
                 </xsl:element>
         </xsl:element></xsl:if>
@@ -2420,44 +2430,7 @@
         </xsl:choose>
     </xsl:template>-->
     
-    <xsl:template match="tei:span[@type='omissionStart']" mode="omission-number">
-        <xsl:variable name="app-num">
-            <xsl:value-of select="name()"/>
-            <xsl:number level="any" format="0001"/>
-        </xsl:variable>
-        <xsl:choose>
-            <xsl:when test="self::tei:span[@type='omissionStart']">
-                <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'apparatus'"/>
-                    <xsl:with-param name="type" select="'lem-omissionStart'"/>
-                    
-                </xsl:call-template>
-                <!--<xsl:element name="a">
-                    <xsl:attribute name="class">lem-omissionStart move-to-right</xsl:attribute>
-                    <!-\-<xsl:attribute name="tabindex">0</xsl:attribute>-\->
-                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                    <xsl:attribute name="data-html">true</xsl:attribute>
-                    <xsl:attribute name="id">
-                        <xsl:text>from-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="data-target">
-                        <xsl:value-of select="generate-id()"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(//tei:TEI[@type='translation'])] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/></xsl:attribute>
-                    
-                    <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(//tei:TEI[@type='translation'])] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:l[@real]"/>
-                    <xsl:text>)</xsl:text>
-                </xsl:element>-->
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+    <xsl:template match="tei:span[@type='omissionStart']" mode="omission-number"/>
     
     <xsl:template name="omission-content">
         <xsl:if test="self::tei:span[@type='omissionStart']">
