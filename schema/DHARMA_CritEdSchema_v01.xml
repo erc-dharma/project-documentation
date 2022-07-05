@@ -57,7 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-07-04">Changing the context of the constraint for colophon quotes</change>
+      <change who="part:axja" when="2022-07-05">Changing the context of the constraint for colophon quotes</change>
       <change who="part:axja" when="2022-06-28">Allowing script on handNote</change>
       <change who="part:axja" when="2022-06-27">Updating the rules for msIdentifier again, adding rules for colophons</change>
       <change who="part:axja" when="2022-06-24">Restricting the rules inside ms Identifier and Updating the constraints for HandDesc and its minimal content</change>
@@ -2632,6 +2632,9 @@
               <sch:rule context="tei:quote[@type='diplomatic' or @type='normalized']">
               <sch:assert test="parent::tei:colophon">The colophon should be structured with quote elements</sch:assert>
             </sch:rule>
+                  <sch:rule context="tei:quote[@type='translation']">
+                    <sch:assert test="preceding-sibling::tei:quote[@type='diplomatic' or @type='normalized']">Any quote translating the colophon should be preceded by its equivalent, being a diplomatic or normalized colophon.</sch:assert>
+                  </sch:rule>
           </constraint></constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4533,13 +4536,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="colophon" mode="change">
-          <constraintSpec scheme="schematron" ident="colophone-quote">
-            <constraint>
-              <sch:rule context="child::tei:quote[@type='translation']">
-                <sch:assert test="child::tei:quote[@type='diplomatic' or @type='normalized']">Any quote translating the colophon should be associated with a diplomatic or normalized colophon.</sch:assert>
-              </sch:rule>
-            </constraint>
-          </constraintSpec>
           <attList>
             <attDef ident="rend" mode="delete"/>
             <attDef ident="style" mode="delete"/>
