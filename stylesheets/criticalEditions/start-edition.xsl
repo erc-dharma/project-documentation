@@ -323,7 +323,7 @@
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]">
+                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart']">
                             <xsl:call-template name="app-link">
                                 <xsl:with-param name="location" select="'apparatus'"/>
                                 <!--<xsl:with-param name="type">
@@ -1419,7 +1419,7 @@
             <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart']">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>   
@@ -2113,7 +2113,7 @@
             </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart']">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>   
@@ -2431,6 +2431,11 @@
     </xsl:template>-->
     
     <xsl:template match="tei:span[@type='omissionStart']" mode="omission-number"/>
+        <!--<xsl:call-template name="app-link">
+            <xsl:with-param name="location" select="'apparatus'"/>
+            <xsl:with-param name="type" select="'lem-omissionStart'"/>
+        </xsl:call-template>
+    </xsl:template>-->
     
     <xsl:template name="omission-content">
         <xsl:if test="self::tei:span[@type='omissionStart']">
