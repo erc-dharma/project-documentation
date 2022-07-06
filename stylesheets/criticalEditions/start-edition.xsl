@@ -298,20 +298,24 @@
         
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-1 text-center</xsl:attribute>
-                <xsl:if test="@type">
-                    <xsl:element name="p">
-                        <xsl:attribute name="class">float-center</xsl:attribute>
-                        <xsl:element name="small">
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">text-muted</xsl:attribute>
-                                <xsl:value-of select="@type"/>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
-                </xsl:if>
-            </xsl:element>
+            
+      
+               <xsl:if test="@type='invocation' or @type='colophon'">
+                   <xsl:element name="div">
+                       <xsl:attribute name="class">col-1 text-center</xsl:attribute>
+                       <xsl:if test="@type">
+                           <xsl:element name="p">
+                               <xsl:attribute name="class">float-center</xsl:attribute>
+                               <xsl:element name="small">
+                                   <xsl:element name="span">
+                                       <xsl:attribute name="class">text-muted</xsl:attribute>
+                                       <xsl:value-of select="@type"/>
+                                   </xsl:element>
+                               </xsl:element>
+                           </xsl:element>
+                       </xsl:if>
+                   </xsl:element>
+               </xsl:if>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-8 text-col</xsl:attribute>
                 <xsl:element name="p">
@@ -328,13 +332,13 @@
                                 <xsl:with-param name="location" select="'apparatus'"/>
                                 <xsl:with-param name="type">
                                     <xsl:choose>
-                                        <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
+                                        <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
                                             <xsl:text>lem-omissionStart</xsl:text>
                                         </xsl:when>
-                                        <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
+                                        <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
                                             <xsl:text>lem-lacunaStart</xsl:text>
                                         </xsl:when>
-                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
+                                        <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
                                         <xsl:text>lem-last-note</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
@@ -1432,16 +1436,16 @@
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
                                 <xsl:choose>
-                                    <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
+                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
                                         <xsl:text>lem-omissionStart</xsl:text>
                                     </xsl:when>
-                                    <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
+                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
                                         <xsl:text>lem-lacunaStart</xsl:text>
                                     </xsl:when>
-                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:l]">
+                                    <xsl:when test="self::tei:note[position() = last()][parent::tei:l]">
                                         <xsl:text>lem-last-note-verseline</xsl:text>
                                     </xsl:when>
-                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:lg]">
+                                    <xsl:when test="self::tei:note[position() = last()][parent::tei:lg]">
                                         <xsl:text>lem-last-note-stanza</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
@@ -2138,13 +2142,13 @@
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
                                 <xsl:choose>
-                                    <xsl:when test="descendant::tei:app/descendant::tei:span[@type='omissionStart']">
+                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
                                         <xsl:text>lem-omissionStart</xsl:text>
                                     </xsl:when>
-                                    <xsl:when test="descendant::tei:app/descendant::tei:lacunaStart">
+                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
                                         <xsl:text>lem-lacunaStart</xsl:text>
                                     </xsl:when>
-                                    <xsl:when test="descendant::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
+                                    <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
                                         <xsl:text>lem-last-note</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
@@ -2152,7 +2156,8 @@
                         </xsl:call-template>   
                     </xsl:for-each>
                 </xsl:element>
-        </xsl:element></xsl:if>
+        </xsl:element>
+        </xsl:if>
     </xsl:template>
     
     <!--  pb ! -->
