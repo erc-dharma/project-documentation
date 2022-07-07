@@ -1553,6 +1553,9 @@
                 </xsl:element>
             </xsl:if>
         </xsl:element>
+        <xsl:if test="contains(@met, 'free') or contains(parent::tei:div[@type='metrical']/@met, 'free')">
+            <br/>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="tei:lg" mode="in-modal">
