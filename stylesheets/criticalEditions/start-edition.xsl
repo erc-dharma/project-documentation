@@ -167,7 +167,7 @@
                     <xsl:apply-templates select=".//tei:app[not(@rend='hide')]" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
-                <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
+                    <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
                 <xsl:call-template name="tpl-apparatus"/>
                 <xsl:call-template name="tpl-notes-trans"/>
                 <xsl:call-template name="tpl-com"/> 
@@ -829,6 +829,7 @@
             <xsl:attribute name="class">caesura</xsl:attribute>
         </xsl:element>
     </xsl:template>
+    
     <!--  choice ! -->
     <xsl:template match="tei:choice[child::tei:unclear]">
         <xsl:element name="span">
@@ -854,6 +855,39 @@
             <xsl:apply-templates select="tei:orig"/>
         </xsl:element>
     </xsl:template>-->
+    
+    <xsl:template match="tei:choice/tei:orig">
+        <span class="orig">
+            <xsl:text>¡</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>!</xsl:text>
+        </span>
+    </xsl:template>
+    
+    
+    <xsl:template match="tei:choice/tei:reg">
+            <span class="reg">
+                <xsl:text>⟨</xsl:text>
+                <xsl:apply-templates/>
+                <xsl:text>⟩</xsl:text>
+            </span>     
+    </xsl:template>
+    
+    <xsl:template match="tei:choice/tei:sic">
+                <span class="sic">
+                    <xsl:text>¿</xsl:text>
+                    <xsl:apply-templates/>
+                    <xsl:text>?</xsl:text>
+                </span>    
+    </xsl:template>
+    
+    <xsl:template match="tei:choice/tei:corr">
+                            <span class="corr">
+                                <xsl:text>⟨</xsl:text>
+                                <xsl:apply-templates/>
+                                <xsl:text>⟩</xsl:text>
+                            </span>    
+    </xsl:template>
     <!-- citedRange -->
     <xsl:template match="tei:citedRange"> 
                 <xsl:element name="span">
@@ -1311,7 +1345,7 @@
                 </xsl:call-template>
     </xsl:template>-->
     
-    <xsl:template match="tei:l[@real]" mode="modals">
+    <xsl:template match="tei:l[@real][not(child::tei:note=last())]" mode="modals">
         <xsl:variable name="apparatus-unmetrical">
             <xsl:if test="self::tei:l[@real]">
                 <xsl:element name="span">
