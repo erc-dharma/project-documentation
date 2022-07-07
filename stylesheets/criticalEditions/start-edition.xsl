@@ -444,7 +444,7 @@
                                     <xsl:text> only in </xsl:text>
                                 </xsl:if>-->
                             <xsl:if test="tei:lem/@type='reformulated_elsewhere'">
-                                    <xsl:text> thus formulated in </xsl:text>
+                                    <xsl:text> Thus formulated in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
@@ -1315,7 +1315,7 @@
                             <xsl:call-template name="fake-lem-making"/>
                         </xsl:element>
                         <xsl:element name="hr"/>
-                        <xsl:text>Unmetrical. The pattern of the lines is </xsl:text>
+                        <xsl:text>Unmetrical. The pattern of the line is </xsl:text>
                         <xsl:choose>
                             <xsl:when test="matches(@real, '[\-\+=]')">
                                 <xsl:call-template name="scansion">
@@ -3425,7 +3425,7 @@
                       <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                       <xsl:text>] </xsl:text>
                   </xsl:element>    
-                  <xsl:text>Unmetrical. The pattern of the lines is </xsl:text>
+                  <xsl:text>Unmetrical. The pattern of the line is </xsl:text>
                   <xsl:choose>
                       <xsl:when test="matches(@real, '[\-\+=]')">
                           <xsl:call-template name="scansion">
