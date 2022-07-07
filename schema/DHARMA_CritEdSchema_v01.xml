@@ -57,7 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-07-07">Adding choice for the colophon</change>
+      <change who="part:axja" when="2022-07-07">Adding choice for the colophon and adding free_octosyllabic value</change>
       <change who="part:axja" when="2022-07-05"
         >Changing the context of the constraint for colophon quotes</change>
       <change who="part:axja" when="2022-06-28">Allowing script on handNote</change>
@@ -1907,6 +1907,7 @@
                 <valItem ident="suvadan&#x101;"/>
                 <valItem ident="sragdhar&#x101;"/>
                 <valItem ident="uncertain"/>
+                <valItem ident="free_octosyllabic"/>
               </valList>
             </attDef>
             <attDef ident="real" mode="change">
@@ -1956,6 +1957,7 @@
                 <valItem ident="mattebhavikr&#x12B;&#x1E0D;ita"/>
                 <valItem ident="suvadan&#x101;"/>
                 <valItem ident="sragdhar&#x101;"/>
+                <valItem ident="free_octosyllabic"/>
               </valList>
             </attDef>
           </attList>
@@ -2126,6 +2128,7 @@
                 <valItem ident="kalipp&#x101;"/>
                 <valItem ident="va&#xF1;cipp&#x101;"/>
                 <valItem ident="maru&#x1E6D;p&#x101;"/>
+                <valItem ident="free_octosyllabic"/>
               </valList>
             </attDef>
           </attList>
@@ -3512,6 +3515,7 @@
                 <valItem ident="mattebhavikr&#x12B;&#x1E0D;ita"/>
                 <valItem ident="suvadan&#x101;"/>
                 <valItem ident="sragdhar&#x101;"/>
+                <valItem ident="free_octosyllabic"/>
               </valList>
             </attDef>
           </attList>
