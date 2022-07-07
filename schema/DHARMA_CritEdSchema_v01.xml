@@ -57,7 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-07-07">Adding choice for the colophon and adding free_octosyllabic value</change>
+      <change who="part:axja" when="2022-07-07">Adding choice for the colophon, adding free_octosyllabic value and adding the reformulation for lem. WitDetails rejectec and retained.</change>
       <change who="part:axja" when="2022-07-05"
         >Changing the context of the constraint for colophon quotes</change>
       <change who="part:axja" when="2022-06-28">Allowing script on handNote</change>
@@ -4170,11 +4170,19 @@
         </elementSpec>
         <elementSpec ident="lem" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="lem-hand">
-            <constraint><sch:rule context="tei:lem[@hand]"><sch:assert
+            <constraint>
+              <sch:rule context="tei:lem[@hand]">
+                <sch:assert
               test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])"
-              >The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert><sch:report
+              >The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+                <sch:report
               test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
-                The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule></constraint>
+                The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
+              </sch:rule>
+              <sch:rule context="tei:lem[@type='reformulation']">
+                <sch:report test="@wit">No wit should be given on a lem used for reformulation</sch:report>
+              </sch:rule>
+            </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4214,7 +4222,7 @@
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
-                <valItem ident="reformulated_elsewhere"/>
+                <valItem ident="reformulation"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
@@ -4431,6 +4439,8 @@
               <valList mode="replace" type="closed">
                 <valItem ident="pc"/>
                 <valItem ident="ac"/>
+                <valItem ident="retained"/>
+                <valItem ident="rejected"/>
               </valList>
             </attDef>
           </attList>
