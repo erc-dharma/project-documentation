@@ -1096,7 +1096,7 @@
             </xsl:otherwise>
         </xsl:choose>
         <xsl:choose>
-            <xsl:when test="contains($prosody//tei:item[tei:name =$metrical], 'free')"/>
+            <!--<xsl:when test="contains($prosody//tei:item[tei:name =$metrical], 'free')"/>-->
             <xsl:when test="$prosody//tei:item[tei:name =$metrical]">
                 <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='xml']/node()"/>
                 <xsl:if test="not($line-context='real')">
