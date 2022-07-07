@@ -2663,6 +2663,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
                     <li class="nav-item">

@@ -24,17 +24,17 @@ $(function () {
 /* Need to add the move the element to the following-sibling[1] of the ancestor <div> of apparat-col.  */
 
 /* move the main apparatus notes */
-$(document).ready(function() {
+/*$(document).ready(function() {
     $('.move-to-right').each(function() {
         $(this).parents('div').next('.apparat-col').append(this);
     }); 
-});
+});*/
 
 /* move the note for whole paragraph */
 $(document).ready(function() {
-    $('.move-to-right').each(function() {
+    /*$('.move-to-right').each(function() {
         $(this).prev('div').children('.apparat-col').append(this);
-    }); 
+    }); */
 /*    $('.lem-last-note').each(function() {
         $(this).parents('div').children('.apparat-col').append(this);
     });*/ 

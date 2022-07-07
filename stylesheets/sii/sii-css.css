@@ -1,0 +1,46 @@
+#sidebar-wrapper {
+    width: 300px;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+}
+
+#sidebar-wrapper .nav-link.active {
+  background-color: #00ACC1 !important;
+}
+
+#sidebarCollapse{
+    position: fixed;
+    top: 75px;
+    left: 10px;
+}
+.pagination{
+    font-size: small;
+}
+
+.stanza{
+    position: relative;
+    margin-top:10pt;
+    margin-bottom:10pt;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+.bloc-notes{
+    display: inline;
+}
+
+.corr{
+    color: #32CD32;
+}
+
+.sic {
+        color: #FF6347;
+      }
+      
+.footnote{
+    color: #007bff;
+}      

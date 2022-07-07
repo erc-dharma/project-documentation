@@ -311,7 +311,7 @@
 							<item>
 <measure unit="syllable">8</measure>
 <name xml:lang="kaw-Latn">pādānuṣṭubh</name>
-<name xml:lang="eng">free octosyllabic</name>
+<name xml:lang="eng">free_octosyllabic</name>
 <!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing,
 and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.-->
 <seg type="xml">========</seg>
@@ -321,6 +321,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<bibl><ptr target="bib:Apte1890_01"/><!--not discussed as such in Apte--></bibl>
 	<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 	<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
+	<bibl><ptr target="bib:Noorduyn+Teeuw2006_01"/></bibl>
 </listBibl>
 </item>
 <item>
@@ -1059,7 +1060,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">17</measure>
-	<name xml:lang="san-Latn">pr̥thvī</name><name xml:lang="kaw-Latn">pr̥thvītala</name>
+	<name xml:lang="san-Latn">pr̥thvī</name>
+	<name xml:lang="kaw-Latn">pr̥thvītala</name>
 	<seg type="xml">-+---+-+---+-++-=</seg>
 	<seg type="prosody">⏑–⏑⏑⏑–⏑–||⏑⏑⏑–⏑––⏑⏓</seg>
 	<seg type="gana">ja-sa-ja-sa-ya-la-ga</seg>
@@ -1112,6 +1114,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">18</measure>
 	<name xml:lang="san-Latn">citralekhā</name>
+	<name xml:lang="san-Latn">kusumitalatā</name>
 	<seg type="xml">+++++-----++-++-+=</seg>
 	<seg type="prosody">–––––||⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg>
 	<seg type="gana">ma-bha-na-ya-ya-ya-ya</seg>
