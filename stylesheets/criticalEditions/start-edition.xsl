@@ -1029,6 +1029,7 @@
     
     <xsl:template name="metrical-list">
         <xsl:param name="metrical"/>
+        <xsl:param name="line-context"/>
         <xsl:variable name="prosody" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
         <!-- https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml 
        https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/DHARMA_prosodicPatterns_v01.xml
@@ -1064,7 +1065,9 @@
             <xsl:when test="contains($prosody//tei:item[tei:name =$metrical], 'free')"/>
             <xsl:when test="$prosody//tei:item[tei:name =$metrical]">
                 <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:name = $metrical]/child::tei:seg[@type='xml']/node()"/>
-                <xsl:text>: </xsl:text>
+                <xsl:if test="not($line-context='real')">
+                    <xsl:text>: </xsl:text>
+                </xsl:if>
                 <xsl:call-template name="scansion">
                     <xsl:with-param name="met-string" select="translate($prosody-and-met, '-=+', '⏑⏓–')"/>
                     <xsl:with-param name="string-len" select="string-length($prosody-and-met)"/>
@@ -1073,7 +1076,9 @@
             </xsl:when>
             <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
                 <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:seg[@type='xml']/node()"/>
-                <xsl:text>: </xsl:text>
+                <xsl:if test="not($line-context='real')">
+                    <xsl:text>: </xsl:text>
+                </xsl:if>
                 <xsl:call-template name="scansion">
                     <xsl:with-param name="met-string" select="translate($prosody-and-met, '-=+', '⏑⏓–')"/>
                     <xsl:with-param name="string-len" select="string-length($prosody-and-met)"/>
@@ -1081,7 +1086,9 @@
                 </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:text>: </xsl:text>
+                <xsl:if test="not($line-context='real')">
+                    <xsl:text>: </xsl:text>
+                </xsl:if>
                 <xsl:call-template name="scansion">
                     <xsl:with-param name="met-string" select="translate(@real, '-=+', '⏑⏓–')"/>
                     <xsl:with-param name="string-len" select="string-length(@real)"/>
@@ -1315,7 +1322,16 @@
                             <xsl:call-template name="fake-lem-making"/>
                         </xsl:element>
                         <xsl:element name="hr"/>
-                        <xsl:text>Unmetrical. The pattern of the line is </xsl:text>
+                        <xsl:text>Unmetrical line. The observed pattern is not </xsl:text>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-italic</xsl:attribute>
+                            <xsl:value-of select="ancestor::tei:*[@met][1]/@met"/>
+                            <!--<xsl:call-template name="metrical-list">
+                                <xsl:with-param name="metrical" select="ancestor::tei:*[@met][1]/@met"/>
+                                <xsl:with-param name="line-context" select="'real'"/>
+                            </xsl:call-template>-->
+                        </xsl:element>
+                        <xsl:text> but </xsl:text>
                         <xsl:choose>
                             <xsl:when test="matches(@real, '[\-\+=]')">
                                 <xsl:call-template name="scansion">
@@ -3425,7 +3441,16 @@
                       <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                       <xsl:text>] </xsl:text>
                   </xsl:element>    
-                  <xsl:text>Unmetrical. The pattern of the line is </xsl:text>
+                  <xsl:text>Unmetrical line. The observed pattern is not </xsl:text>
+                      <xsl:element name="span">
+                          <xsl:attribute name="class">font-italic</xsl:attribute>
+                          <xsl:value-of select="ancestor::tei:*[@met][1]/@met"/>
+                          <!--<xsl:call-template name="metrical-list">
+                          <xsl:with-param name="metrical" select="ancestor::tei:*[@met][1]/@met"/>
+                          <xsl:with-param name="line-context" select="'real'"/>
+                      </xsl:call-template>-->
+                      </xsl:element>
+                  <xsl:text> but </xsl:text>
                   <xsl:choose>
                       <xsl:when test="matches(@real, '[\-\+=]')">
                           <xsl:call-template name="scansion">
