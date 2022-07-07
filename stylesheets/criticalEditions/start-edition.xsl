@@ -443,7 +443,7 @@
                             <!--<xsl:if test="tei:lem/@type='absent_elsewhere'">
                                     <xsl:text> only in </xsl:text>
                                 </xsl:if>-->
-                            <xsl:if test="tei:lem/@type='reformulated_elsewhere'">
+                            <xsl:if test="tei:lem/@type='reformulation' or tei:lem[following-sibling::tei:rdg[@type='paradosis']]">
                                     <xsl:text> Thus formulated in </xsl:text>
                                 </xsl:if>
                                 <xsl:element name="span">
@@ -3608,14 +3608,14 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
                             </xsl:if>
-                            
+                        <xsl:if test="@type='reformulation' or .[following-sibling::tei:rdg[@type='paradosis']]">
+                            <xsl:text> Thus formulated in </xsl:text>
+                        </xsl:if>
                         <xsl:if test="@wit">
                             <!--<xsl:if test="@type='absent_elsewhere'">
                                 <xsl:text>only in </xsl:text>
                                 </xsl:if>-->
-                            <xsl:if test="@type='reformulated_elsewhere'">
-                                <xsl:text>Thus formulated in </xsl:text>
-                            </xsl:if>
+                            
                               <xsl:element name="span">
                                   <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
