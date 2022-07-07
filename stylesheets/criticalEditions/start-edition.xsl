@@ -439,17 +439,26 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>-->
                             </xsl:if>
-                        <xsl:if test="tei:lem/@wit"> 
                             <!--<xsl:if test="tei:lem/@type='absent_elsewhere'">
                                     <xsl:text> only in </xsl:text>
                                 </xsl:if>-->
                             <xsl:if test="tei:lem/@type='reformulation' or tei:lem[following-sibling::tei:rdg[@type='paradosis']]">
                                     <xsl:text> Thus formulated in </xsl:text>
-                                </xsl:if>
                                 <xsl:element name="span">
+                                <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
+                                <xsl:call-template name="tokenize-witness-list">
+                                    <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                    
+                                    <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    
+                                </xsl:call-template>
+                                </xsl:element>
+                                </xsl:if>
+                        <xsl:if test="tei:lem/@wit"><xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
                                     </xsl:attribute>
-                                    <xsl:call-template name="tokenize-witness-list">
+                                   
+                                            <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="tei:lem/@wit"/>
                                         <xsl:with-param name="witdetail-string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
@@ -469,11 +478,10 @@
                                             </xsl:when>
                                         </xsl:choose>
                                     </xsl:if>
-                                </xsl:element>
+                                </xsl:element></xsl:if>
                                 <!--<xsl:if test="tei:lem/attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>-->
-                            </xsl:if>
                         <xsl:if test="tei:lem/@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="tei:lem/@source"/>
@@ -3614,6 +3622,15 @@
                             </xsl:if>
                         <xsl:if test="@type='reformulation' or .[following-sibling::tei:rdg[@type='paradosis']]">
                             <xsl:text> Thus formulated in </xsl:text>
+                            <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
+                                    <xsl:call-template name="tokenize-witness-list">
+                                        <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                        
+                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        
+                                    </xsl:call-template>
+                            </xsl:element>
                         </xsl:if>
                         <xsl:if test="@wit">
                             <!--<xsl:if test="@type='absent_elsewhere'">
