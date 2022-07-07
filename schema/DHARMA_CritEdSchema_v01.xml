@@ -2991,7 +2991,7 @@
         <elementSpec ident="sic" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
             <constraint>
-              <sch:rule context="parent:tei:choice"><sch:assert test="sibling::tei:corr"
+              <sch:rule context="parent::tei:choice"><sch:assert test="sibling::tei:corr"
                 >Inside choice, sic can only be used with corr.</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -3261,7 +3261,7 @@
         <elementSpec ident="unclear" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
             <constraint>
-              <sch:rule context="parent:tei:choice"><sch:assert test="sibling::tei:unclear"
+              <sch:rule context="parent::tei:choice"><sch:assert test="sibling::tei:unclear"
                 >Inside choice, at least two unclear are expected.</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -5344,7 +5344,7 @@
         <elementSpec ident="corr" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
             <constraint>
-              <sch:rule context="parent:tei:choice"><sch:assert test="sibling::tei:sic"
+              <sch:rule context="parent::tei:choice"><sch:assert test="sibling::tei:sic"
                 >Inside choice, corr can only be used with sic.</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -5379,7 +5379,7 @@
         <elementSpec ident="orig" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
             <constraint>
-              <sch:rule context="parent:tei:choice"><sch:assert test="sibling::tei:reg"
+              <sch:rule context="parent::tei:choice"><sch:assert test="sibling::tei:reg"
                 >Inside choice, orig can only be used with reg.</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -5410,7 +5410,7 @@
         <elementSpec ident="reg" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
             <constraint>
-              <sch:rule context="parent:tei:choice">
+              <sch:rule context="parent::tei:choice">
                 <sch:assert test="sibling::tei:orig"
                 >Inside choice, reg can only be used with orig.</sch:assert>
               </sch:rule>

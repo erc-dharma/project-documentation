@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-07-07T12:12:00Z. .
+Schema generated from ODD source 2022-07-07T12:18:00Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -2603,7 +2603,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   id="DHARMA_CritEdSchema_v01-sic-choice-colophon-constraint-rule-15">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="parent:tei:choice">
+                      context="parent::tei:choice">
                <sch:assert test="sibling::tei:corr">Inside choice, sic can only be used with corr.</sch:assert>
             </sch:rule>
          </pattern>
@@ -2631,7 +2631,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   id="DHARMA_CritEdSchema_v01-corr-choice-colophon-constraint-rule-16">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="parent:tei:choice">
+                      context="parent::tei:choice">
                <sch:assert test="sibling::tei:sic">Inside choice, corr can only be used with sic.</sch:assert>
             </sch:rule>
          </pattern>
@@ -2665,7 +2665,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
                   id="DHARMA_CritEdSchema_v01-reg-choice-colophon-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="parent:tei:choice">
+                      context="parent::tei:choice">
                <sch:assert test="sibling::tei:orig">Inside choice, reg can only be used with orig.</sch:assert>
             </sch:rule>
          </pattern>
@@ -2680,7 +2680,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
                   id="DHARMA_CritEdSchema_v01-orig-choice-colophon-constraint-rule-19">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="parent:tei:choice">
+                      context="parent::tei:choice">
                <sch:assert test="sibling::tei:reg">Inside choice, orig can only be used with reg.</sch:assert>
             </sch:rule>
          </pattern>
@@ -2878,7 +2878,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
                   id="DHARMA_CritEdSchema_v01-unclear-choice-colophon-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="parent:tei:choice">
+                      context="parent::tei:choice">
                <sch:assert test="sibling::tei:unclear">Inside choice, at least two unclear are expected.</sch:assert>
             </sch:rule>
          </pattern>
