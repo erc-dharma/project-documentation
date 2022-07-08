@@ -57,7 +57,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-07-07">Adding choice for the colophon, adding free_octosyllabic value and adding the reformulation for lem. WitDetails rejectec and retained.</change>
+      <change who="part:axja" when="2022-07-08">adding the values with span for reformulation start and end</change>
+      <change who="part:axja" when="2022-07-07">Adding choice for the colophon, adding free_octosyllabic value and adding the reformulation for lem. WitDetails rejectec and retained. Adding the value reformulation with note</change>
       <change who="part:axja" when="2022-07-05"
         >Changing the context of the constraint for colophon quotes</change>
       <change who="part:axja" when="2022-06-28">Allowing script on handNote</change>
@@ -2309,9 +2310,12 @@
               context="tei:note[@type='altLem'][parent::tei:app]"><sch:assert
               test="preceding-sibling::tei:lem[1]">
                   An alternative lem should always be the first child after the main lem. 
-                </sch:assert></sch:rule><sch:rule context="tei:note[@rend]"
+                </sch:assert></sch:rule>
+              <sch:rule context="tei:note[@rend]"
               ><sch:assert test="@type='altLem'"
-              >The attribute @rend can only be used with a note for an alternative lem (attribute @type='altLem').</sch:assert></sch:rule></constraint>
+              >The attribute @rend can only be used with a note for an alternative lem (attribute @type='altLem').</sch:assert>
+              </sch:rule>
+            </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -2364,6 +2368,7 @@
                   <desc versionDate="2021-10-25" xml:lang="en"
                     >Declares an alternative lemma for display purposes</desc>
                 </valItem>
+                <valItem ident="reformulation"/>
                 <valItem ident="unknown"/>
               </valList>
             </attDef>
@@ -5278,6 +5283,8 @@
               <valList type="closed" mode="change">
                 <valItem ident="omissionStart"/>
                 <valItem ident="omissionEnd"/>
+                <valItem ident="reformulationStart"/>
+                <valItem ident="reformulationEnd"/>
                 <valItem mode="delete" ident="image"/>
                 <valItem mode="delete" ident="character"/>
                 <valItem mode="delete" ident="theme"/>
