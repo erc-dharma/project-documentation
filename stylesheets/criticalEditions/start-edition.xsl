@@ -2640,7 +2640,9 @@
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
                         <xsl:text>&#8230; (§</xsl:text>
-                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/>
+                        <xsl:element name="a">
+                            <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@xml:id"/></xsl:attribute>
+                            <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/></xsl:element>
                         <xsl:text>)</xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                     </xsl:element>
@@ -3935,7 +3937,8 @@
                         <xsl:attribute name="class">bottom-reformulation</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
                         <xsl:text>&#8230; (§</xsl:text>
-                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/>
+                        <xsl:element name="a">
+                            <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@xml:id"/></xsl:attribute><xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/></xsl:element>
                         <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                         <xsl:element name="span">
