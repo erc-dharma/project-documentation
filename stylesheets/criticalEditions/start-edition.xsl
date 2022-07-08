@@ -2553,26 +2553,34 @@
     </xsl:template>-->
     
     <xsl:template name="omission-content">
+        <xsl:variable name="wit-omission" select="self::tei:span[@type='omissionStart']/parent::tei:*[1]/@wit"/>
         <xsl:if test="self::tei:span[@type='omissionStart']">
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
-                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/preceding::tei:lem[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
-                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][1]/preceding::tei:lem[1]"/>
+                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
+                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:element name="a">
+                            <xsl:attribute name="href">
+                                <xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@xml:id"/>
+                            </xsl:attribute>
+                            <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
+                        </xsl:element>
+                        <xsl:text>) </xsl:text>
+                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/preceding::tei:lem[1]"/>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:text>]</xsl:text>
                         </xsl:element> 
                         <xsl:text> an omission</xsl:text> 
-                        <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg/@cause">
+                        <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
                             <xsl:text> due to </xsl:text>
-                            <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg/@cause"/>
+                            <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>
                         <xsl:text> intervenes in </xsl:text>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="tokenize-witness-list">
-                            <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg/@wit"/>
+                            <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
                         </xsl:call-template>
                         </xsl:element>
                     </xsl:element>
@@ -2589,7 +2597,12 @@
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                             <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
                             <xsl:text>&#8230; (§</xsl:text>
-                            <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
+                        <xsl:element name="a">
+                        <xsl:attribute name="href">
+                            <xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@xml:id"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
+                    </xsl:element>
                         <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/preceding::tei:lem[1]"/>
                     </xsl:element>
