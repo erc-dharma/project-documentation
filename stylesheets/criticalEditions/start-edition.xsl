@@ -2583,40 +2583,38 @@
     <xsl:template match="tei:span[@type='omissionStart']" mode="modals">
         <xsl:variable name="wit-omission" select="self::tei:span[@type='omissionStart']/parent::tei:*[1]/@wit"/>
         <xsl:variable name="apparatus-omission">
-            <xsl:element name="span">
-                <xsl:element name="span">
+                    <xsl:element name="span">
                     <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
-                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/preceding::tei:lem[1]"/>
-                        <xsl:text>&#8230; (§</xsl:text>
-                        <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][parent::tei:*[@wit = $wit-omission][1]]/ancestor::tei:div[1]/@n"/>
+                            <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
+                            <xsl:text>&#8230; (§</xsl:text>
+                            <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
                         <xsl:text>) </xsl:text>
-                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][parent::tei:*[@wit = $wit-omission][1]]/preceding::tei:lem[1]"/>
+                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/preceding::tei:lem[1]"/>
                     </xsl:element>
                     <hr/>
                         <xsl:element name="span">
                             <xsl:attribute name="class">note-line</xsl:attribute>
                             <xsl:attribute name="style">color:black;</xsl:attribute>
                         <xsl:text>An omission</xsl:text> 
-                        <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg/@cause">
+                            <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
                             <xsl:text> due to </xsl:text>
-                            <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg/@cause"/>
+                                <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>
                         <xsl:text> intervenes in </xsl:text>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg/@wit"/>
+                                <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
                             </xsl:call-template>
                         </xsl:element>
                     </xsl:element>
                 </xsl:element>
-                </xsl:element>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus-omission"/>
-        </span>      
+        </span>       
     </xsl:template>
     
     <!-- span - modals -->
@@ -2677,7 +2675,7 @@
         </span>      
     </xsl:template>
     
-    <xsl:template match="tei:span[@type='reformulationStart']">
+    <!--<xsl:template match="tei:span[@type='reformulationStart']">
         <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem-reformulationStart</xsl:text>
@@ -2691,7 +2689,7 @@
                 <xsl:text>lem-reformulationEnd</xsl:text>
             </xsl:attribute>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     
     <!--  subst ! -->
     <xsl:template match="tei:subst">
