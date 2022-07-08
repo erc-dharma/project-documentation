@@ -2581,6 +2581,7 @@
     
     <!-- span - modals -->
     <xsl:template match="tei:span[@type='omissionStart']" mode="modals">
+        <xsl:variable name="wit-omission" select="self::tei:span[@type='omissionStart']/parent::tei:*[1]/@wit"/>
         <xsl:variable name="apparatus-omission">
             <xsl:element name="span">
                 <xsl:element name="span">
@@ -2588,8 +2589,10 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/preceding::tei:lem[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
-                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][1]/preceding::tei:lem[1]"/>
+                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][parent::tei:*[@wit = $wit-omission][1]]/ancestor::tei:div[1]/@n"/>
+                        <xsl:text>) </xsl:text>
+                        <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:span[@type='omissionEnd'][parent::tei:*[@wit = $wit-omission][1]]/preceding::tei:lem[1]"/>
                     </xsl:element>
                     <hr/>
                         <xsl:element name="span">
@@ -2625,7 +2628,9 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
+                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/>
+                        <xsl:text>)</xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                     </xsl:element>
                     
@@ -3918,7 +3923,9 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">bottom-reformulation</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
+                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/>
+                        <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
