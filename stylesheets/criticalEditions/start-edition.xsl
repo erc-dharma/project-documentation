@@ -3110,7 +3110,8 @@
         <xsl:param name="witdetail-type"/>
         <xsl:param name="witdetail-text"/>
         <xsl:param name="tpl"/>
-        <xsl:if test="not($tpl='content-ptr' or  $tpl='content-pb')">
+        <!-- Changement dans la gestion des espaces donc $tpl='content-ptr' n'est plus nécessaire -->
+        <xsl:if test="not($tpl='content-pb')">
             <xsl:text> </xsl:text>
         </xsl:if>
         <xsl:element name="a">
