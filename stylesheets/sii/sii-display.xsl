@@ -119,7 +119,7 @@
     <xsl:template match="table">
         <xsl:variable name="path-file">https://raw.githubusercontent.com/erc-dharma/tfa-sii-epigraphy/master/sii-corpus/sii01-04_tables.xml</xsl:variable>
        <xsl:variable name="table-name" select="@n"/>
-        <xsl:apply-templates select="doc($path-file)//table[@n = $table-name]"/>
+        <xsl:apply-templates select="doc($path-file)//table[@n = $table-name]/*"/>
     </xsl:template>
    
     <!-- ch et tlka -->
