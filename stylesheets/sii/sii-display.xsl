@@ -116,14 +116,10 @@
         </xsl:element>
     </xsl:template>
     
-    <!-- ref -->
-    <xsl:template match="ref">
-        <xsl:element name="span">
-            <xsl:attribute name="class">text-muted</xsl:attribute>
-            <xsl:text>[ref: </xsl:text>
-            <xsl:value-of select="@t"/>
-            <xsl:text>]</xsl:text>
-        </xsl:element>
+    <xsl:template match="table">
+        <xsl:variable name="path-file">https://raw.githubusercontent.com/erc-dharma/tfa-sii-epigraphy/master/sii-corpus/sii01-04_tables.xml</xsl:variable>
+       <xsl:variable name="table-name" select="@n"/>
+        <xsl:apply-templates select="doc($path-file)//table[@n = $table-name]"/>
     </xsl:template>
    
     <!-- ch et tlka -->
@@ -165,18 +161,21 @@
       </xsl:choose>
     </xsl:template>
     
-    <xsl:template match="fn">
+    <xsl:template match="ref">
+        <xsl:variable name="path-file">https://raw.githubusercontent.com/erc-dharma/tfa-sii-epigraphy/master/sii-corpus/sii01-04_footnotes.xml</xsl:variable>
+       <xsl:variable name="ref-name" select="@t"/>
         <xsl:element name="a">
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-            <xsl:attribute name="title"><xsl:apply-templates/></xsl:attribute>
+            <xsl:attribute name="title"><xsl:apply-templates select="doc($path-file)//note[@n = $ref-name]/p"/></xsl:attribute>
             <xsl:element name="sup">
                 <xsl:attribute name="class">footnote</xsl:attribute>
-                <xsl:number count="fn" format="1" level="any"/>
+                <xsl:number count="ref" format="1" level="any"/>
             </xsl:element>
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="fnr">
+    <!-- Supprimer dans la nouvelle livraison des fichiers -->
+    <!-- <xsl:template match="fnr">
         <xsl:element name="a">
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
             <xsl:attribute name="title"><xsl:apply-templates/></xsl:attribute>
@@ -184,7 +183,7 @@
                 <xsl:value-of select="@n"/>
             </xsl:element>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
