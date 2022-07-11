@@ -41,6 +41,22 @@
         </xsl:element>
         <br/>
     </xsl:template>
+    
+    <xsl:template match="h2">
+        <br/>
+        <xsl:element name="h2">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="h3">
+        <br/>
+        <xsl:element name="h3">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
 
     <xsl:template match="em | gr">
         <xsl:element name="span">
@@ -99,7 +115,24 @@
             <xsl:text>]</xsl:text>
         </xsl:element>
     </xsl:template>
+    
+    <!-- ref -->
+    <xsl:template match="ref">
+        <xsl:element name="span">
+            <xsl:attribute name="class">text-muted</xsl:attribute>
+            <xsl:text>[ref: </xsl:text>
+            <xsl:value-of select="@t"/>
+            <xsl:text>]</xsl:text>
+        </xsl:element>
+    </xsl:template>
    
+    <!-- ch et tlka -->
+    <xsl:template match="ch |tlka">
+        <xsl:element name="span">
+            <xsl:attribute name="style">background-color: yellow;</xsl:attribute>
+            <xsl:text>[?]</xsl:text>
+        </xsl:element>
+    </xsl:template>
     <!-- <dt class="col">Description lists</dt>
   <dd class="col">A description list is perfect for defining terms.</dd> -->
      <xsl:template name="dharma-head">
