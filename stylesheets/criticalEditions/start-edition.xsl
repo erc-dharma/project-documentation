@@ -53,7 +53,7 @@
         <xsl:sequence select="replace(replace($arg,'\s+$',''),'^\s+','')"/>
     </xsl:function>
     
-    <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
+    <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 and Epidoc  -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
     
     <xsl:variable name="script">
@@ -65,7 +65,10 @@
     <xsl:variable name="edition-id">
         <xsl:value-of select="tei:TEI[@type='edition']/@xml:id"/>
     </xsl:variable>
+    
+    
    
+   <!-- main display structure - appelle les templates et les modes-->
     <xsl:template match="/tei:TEI">
         <xsl:element name="html">
         <xsl:call-template name="dharma-head"/>
@@ -186,6 +189,7 @@
         </xsl:element>
         </xsl:element>
     </xsl:template>
+    
     <!--  teiHeader ! -->
     <xsl:template match="tei:teiHeader">
         <xsl:element name="div">
@@ -511,7 +515,7 @@
                                     <xsl:with-param name="parent-rdg" select="'yes-inline'"/>
                                 </xsl:call-template>
                             </xsl:for-each>
-                </xsl:if>
+                 </xsl:if>
                  <xsl:if test="tei:rdg[@type='paradosis']">
                     <xsl:element name="hr"/>
                     <xsl:for-each select="tei:rdg[@type='paradosis']">
@@ -580,7 +584,7 @@
         <xsl:element name="span">
             <xsl:choose>
             <xsl:when test="$parent-rdg='no' or $parent-rdg='yes-inline'">
-                <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd</xsl:when></xsl:choose>
+                <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
             </xsl:attribute>
             </xsl:when>
                 <xsl:when test="$parent-rdg='yes-bottom'">
@@ -719,13 +723,9 @@
                         </xsl:call-template>-->
              <xsl:apply-templates select="tei:lem"/>
                 
-    
                     </xsl:element>
                 </xsl:otherwise>
-            </xsl:choose>
-        <xsl:if test="descendant::tei:span[@type='omissionStart']">
-            <xsl:apply-templates select="descendant::tei:span[@type='omissionStart']" mode="omission-number"/>
-        </xsl:if>       
+            </xsl:choose>   
     </xsl:template>
     
     
@@ -2443,6 +2443,7 @@
     <xsl:template match="tei:s" mode="in-modal">
         <xsl:apply-templates select="."/>
     </xsl:template>
+    
     <!--  seg ! -->
     <xsl:template match="tei:seg">
         <xsl:choose>
@@ -2520,6 +2521,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template match="tei:stage" mode="in-modal">
         <xsl:apply-templates select="."/>
     </xsl:template>
@@ -2544,14 +2546,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>-->
-    
-    <!--<xsl:template match="tei:span[@type='omissionStart']" mode="omission-number"/>
-        <xsl:call-template name="app-link">
-            <xsl:with-param name="location" select="'apparatus'"/>
-            <xsl:with-param name="type" select="'lem-omissionStart'"/>
-        </xsl:call-template>
-    </xsl:template>-->
-    
+     
     <xsl:template name="omission-content">
         <xsl:variable name="wit-omission" select="self::tei:span[@type='omissionStart']/parent::tei:*[1]/@wit"/>
         <xsl:if test="self::tei:span[@type='omissionStart']">
@@ -3780,7 +3775,7 @@
                 
                 <xsl:for-each select="tei:rdg">
                     <xsl:element name="span">
-                        <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart</xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd</xsl:when></xsl:choose>
+                        <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
                         </xsl:attribute>
                             <xsl:if test="position()!=1">
                         <xsl:text>, </xsl:text>
