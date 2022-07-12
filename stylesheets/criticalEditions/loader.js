@@ -74,30 +74,41 @@ $(document).ready(function() {
          /* Highlighting function for lem last note stanza */
     $('.lem-last-note-stanza').on({
   mouseenter: function () {
-    $(this).parent('div').prev('.text-col').find('.l').css({'background-color': 'yellow'});
+    $(this).parent('div').prev('.text-col').find('.lg').css({'background-color': 'yellow'});
   },
   mouseout: function () {
-    $(this).parent('div').prev('.text-col').find('.l').css({'background-color': 'transparent'});
+    $(this).parent('div').prev('.text-col').find('.lg').css({'background-color': 'transparent'});
     }
      });
               /* Highlighting function for lem last note verseline */
         $('.lem-last-note-verseline').on({
   mouseenter: function () {
-    $(this).parent('div').prev('.text-col').find('.l-last-note-verseline').css({'background-color': 'yellow'});
+    $('.l-last-note-verseline').css({'background-color': 'yellow'});
   },
   mouseout: function () {
-    $(this).parent('div').prev('.text-col').find('.l-last-note-verseline').css({'background-color': 'transparent'});
+    $('.l-last-note-verseline').css({'background-color': 'transparent'});
     }
      });
     /* Highlighting function for omission span */
-    $('.lem-omissionStart').on({
+/*    $('.lem-omissionStart').on({
   mouseenter: function () {
     $(this).parent('div').prev('.text-col').find('.omissionStart').css({'background-color': 'yellow'});
   },
   mouseout: function () {
     $(this).parent('div').prev('.text-col').find('.omissionStart').css({'background-color': 'transparent'});
     }
-});  
+}); */ 
+
+    $('.omissionStartAnchor').on({
+  mouseenter: function () {
+    $(".omissionAnchor-start").nextUntil(".omissionAnchor-end").css({'background-color': 'yellow'});
+  },
+  mouseout: function () {
+ $(".omissionAnchor-start").nextUntil(".omissionAnchor-end").css({'background-color': 'transparent'});
+  }
+}); 
+
+
 
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
 $("span[class*='rdg-omissionStart']" ).each(function() {
