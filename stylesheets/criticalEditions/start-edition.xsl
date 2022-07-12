@@ -340,11 +340,20 @@
                                         <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
                                             <xsl:text>lem-omissionStart</xsl:text>
                                         </xsl:when>
+                                        <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
+                                            <xsl:text>lem-omissionEnd</xsl:text>
+                                        </xsl:when>
                                         <xsl:when test="self::tei:span[@type='reformulationStart']">
                                             <xsl:text>lem-reformulationStart</xsl:text>
                                         </xsl:when>
+                                        <xsl:when test="self::tei:span[@type='reformulationEnd']">
+                                            <xsl:text>lem-reformulationEnd</xsl:text>
+                                        </xsl:when>
                                         <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
                                             <xsl:text>lem-lacunaStart</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
+                                            <xsl:text>lem-lacunaEnd</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
                                         <xsl:text>lem-last-note</xsl:text>
@@ -2219,15 +2228,24 @@
                                     <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
                                         <xsl:text>lem-omissionStart</xsl:text>
                                     </xsl:when>
+                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
+                                        <xsl:text>lem-omissionEnd</xsl:text>
+                                    </xsl:when>
                                     <xsl:when test="self::tei:span[@type='reformulationStart']">
                                         <xsl:text>lem-reformulationStart</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="self::tei:span[@type='reformulationEnd']">
+                                        <xsl:text>lem-reformulationEnd</xsl:text>
                                     </xsl:when>
                                     <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
                                         <xsl:text>lem-lacunaStart</xsl:text>
                                     </xsl:when>
+                                    <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
+                                        <xsl:text>lem-lacunaEnd</xsl:text>
+                                    </xsl:when>
                                     <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
                                         <xsl:text>lem-last-note</xsl:text>
-                                    </xsl:when>
+                                    </xsl:when>                                
                                 </xsl:choose>
                             </xsl:with-param>
                         </xsl:call-template>   
@@ -2566,7 +2584,7 @@
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:text>]</xsl:text>
                         </xsl:element> 
-                        <xsl:text> an omission</xsl:text> 
+                        <xsl:text> An omission</xsl:text> 
                         <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
                             <xsl:text> due to </xsl:text>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
@@ -2587,7 +2605,7 @@
         <xsl:variable name="wit-omission" select="self::tei:span[@type='omissionStart']/parent::tei:*[1]/@wit"/>
         <xsl:variable name="apparatus-omission">
                     <xsl:element name="span">
-                    <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
+                    <xsl:attribute name="class">mb-1 lemma-line modal-omissionStart</xsl:attribute>
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                             <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
@@ -3505,10 +3523,28 @@
             <xsl:element name="a">
                 <xsl:attribute name="class">
                             <xsl:text>move-to-right</xsl:text>
-                    <xsl:if test="$type !=''">
+                    <xsl:choose>
+                        <xsl:when test="$type !=''">
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="$type"/>
-                    </xsl:if>
+                    </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:choose>
+                                <xsl:when test="self::tei:span[@type='omissionStart']">
+                                    <xsl:text> omissionStartAnchor</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="self::tei:span[@type='omissionEnd']">
+                                    <xsl:text> omissionEndAnchor</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="self::tei:span[@type='reformulationStart']">
+                                    <xsl:text> reformulationStartAnchor</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="self::tei:span[@type='reformulationEnd']">
+                                    <xsl:text> reformulationEndAnchor</xsl:text>
+                                </xsl:when>
+                            </xsl:choose>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:attribute>
                 <xsl:attribute name="data-toggle">popover</xsl:attribute>
                 <xsl:attribute name="data-html">true</xsl:attribute>
