@@ -1234,7 +1234,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<item>
 			<measure unit="syllable">20</measure>
 			<name xml:lang="san-Latn">mr̥gāṅkacarita</name>
-	              <name xml:lang="san-Latn">śaśāṅkaracita</name>
+	    <name xml:lang="san-Latn">śaśāṅkaracita</name>
+			<name xml:lang="kaw-Latn">mr̥gaṅśarajanī</name>
 			<name xml:lang="kaw-Latn">mattarāga</name>
 			<seg type="xml">++-+---+-+---+-+---=</seg>
 			<seg type="prosody">––⏑–⏑⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
@@ -1309,6 +1310,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable">21</measure>
 	<name xml:lang="san-Latn">sragdharā</name>
 	<name xml:lang="kaw-Latn">sragdhara</name>
+	<name xml:lang="kaw-Latn">mandrādri</name>
 	<seg type="xml">++++-++------++-++-+=</seg>
 	<seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑⏑–||–⏑––⏑–⏓</seg>
 	<seg type="gana">ma-ra-bha-na-ya-ya-ya</seg>
