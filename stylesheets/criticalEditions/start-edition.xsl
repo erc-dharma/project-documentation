@@ -301,9 +301,6 @@
             </xsl:for-each>
         </xsl:variable>
         
-        <xsl:if test="parent::tei:*/preceding-sibling::tei:*[1]">
-            <xsl:element name="hr"/>
-        </xsl:if>
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             
@@ -1075,7 +1072,7 @@
         
     </xsl:template>
     
-    <xsl:template match="tei:div[@type='metrical' or @type='section' or not(@type)]">
+    <xsl:template match="tei:div[@type='metrical' or @type='section' or not(@type)][not(child::tei:ab[@type='colophon' or @type='invocation'])]">
                 <!--<xsl:element name="div">
                     <xsl:attribute name="class">metrical</xsl:attribute>-->
         <xsl:if test="@type='metrical' or @type='section'">
@@ -1097,6 +1094,9 @@
                 <!--</xsl:element>-->   
         <xsl:if test="./following-sibling::tei:div">
             <xsl:element name="br"/>
+        </xsl:if>
+        <xsl:if test="./following-sibling::tei:div[child::tei:ab[@type='colophon']]">
+            <xsl:element name="hr"/>
         </xsl:if>
     </xsl:template>
     
