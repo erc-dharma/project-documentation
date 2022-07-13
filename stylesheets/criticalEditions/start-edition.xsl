@@ -2607,17 +2607,17 @@
                                 <xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@xml:id"/>
                             </xsl:attribute>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
-                            <xsl:if test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/parent::tei:*[local-name ()= ('lg', 'ab', 'p')]">
+                            <xsl:if test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:*[1][local-name ()= ('lg', 'ab', 'p')][not(parent::tei:div[@type='dyad'])]">
                                 <xsl:text>.</xsl:text>
                                 <xsl:choose>
-                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:*[1]/parent::tei:lg">
-                                        <xsl:number count="tei:lg" format="1" level="single"/>
+                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:lg[1]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:lg[1]/@xml:id,'.0')"/>
                                     </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:*[1]/parent::tei:ab">
-                                        <xsl:number count="tei:ab[not(child::tei:supplied)]" format="1" level="single"/>
+                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:ab[1]/@xml:id,'.0')"/>
                                     </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:*[1]/parent::tei:p">
-                                        <xsl:number count="tei:p" format="1" level="single"/>
+                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:p[1]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:p[1]/@xml:id,'.0')"/>
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:if>
@@ -2666,17 +2666,17 @@
                             <xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@xml:id"/>
                         </xsl:attribute>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
-                            <xsl:if test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/parent::tei:*[local-name ()= ('lg', 'ab', 'p')]">
+                            <xsl:if test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:*[1][local-name ()= ('lg', 'ab', 'p')][not(parent::tei:div[@type='dyad'])]">
                                 <xsl:text>.</xsl:text>
                                 <xsl:choose>
-                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:*[1]/parent::tei:lg">
-                                        <xsl:number count="tei:lg" format="1" level="single"/>
+                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:lg[1]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:lg[1]/@xml:id,'.0')"/>
                                     </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:*[1]/parent::tei:ab">
-                                        <xsl:number count="tei:ab[not(child::tei:supplied)]" format="1" level="single"/>
+                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:ab[1]/@xml:id,'.0')"/>
                                     </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:*[1]/parent::tei:p">
-                                        <xsl:number count="tei:p" format="1" level="single"/>
+                                    <xsl:when test="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:p[1]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][tei:span[@type='omissionEnd']][1]/ancestor::tei:app/parent::tei:p[1]/@xml:id,'.0')"/>
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:if>
@@ -4081,6 +4081,7 @@
                             </xsl:if>
                         </xsl:element>
                         </xsl:element>
+                        </xsl:if>
                             <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                         <xsl:element name="span">
