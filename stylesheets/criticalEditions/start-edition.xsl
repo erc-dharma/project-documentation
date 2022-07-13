@@ -704,6 +704,11 @@
                     <xsl:apply-templates select="tei:lem"/>
                 </xsl:when>
                 <xsl:otherwise>
+                    <xsl:if test="descendant::tei:span[@type='omissionStart']">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">omissionAnchor-start</xsl:attribute>
+                        </xsl:element>
+                    </xsl:if>
                     <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
@@ -733,6 +738,11 @@
              <xsl:apply-templates select="tei:lem"/>
                 
                     </xsl:element>
+                    <xsl:if test="descendant::tei:span[@type='omissionEnd']">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">omissionAnchor-end</xsl:attribute>
+                        </xsl:element>
+                    </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>   
     </xsl:template>
@@ -2338,15 +2348,7 @@
                                <xsl:value-of select="$MSlink"/>
                            </xsl:attribute>
                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                           <xsl:choose>
-                               <xsl:when test="//tei:*[@xml:id =$MSlink-id]/@type">
-                                   <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@type"/>
-                               </xsl:when>
-                               <xsl:otherwise>
-                                   <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/name()"/>                               
-                               </xsl:otherwise>
-                           </xsl:choose>
-                           <xsl:text> </xsl:text>
+                           <xsl:text>§</xsl:text>
                            <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@n"/>
                        </xsl:element>
                    </xsl:when>
@@ -2571,13 +2573,17 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
-                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:text>&#8230; (</xsl:text> 
+                            <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                <xsl:text>§</xsl:text>
                         <xsl:element name="a">
                             <xsl:attribute name="href">
                                 <xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@xml:id"/>
                             </xsl:attribute>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
                         </xsl:element>
+                            </xsl:element>
                         <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/preceding::tei:lem[1]"/>
                         <xsl:element name="span">
@@ -2609,13 +2615,17 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                             <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
-                            <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:text>&#8230; (</xsl:text> 
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:text>§</xsl:text>
                         <xsl:element name="a">
                         <xsl:attribute name="href">
                             <xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@xml:id"/>
                         </xsl:attribute>
                         <xsl:value-of select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/ancestor::tei:div[1]/@n"/>
                     </xsl:element>
+                        </xsl:element>
                         <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/preceding::tei:lem[1]"/>
                     </xsl:element>
@@ -2652,11 +2662,15 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
-                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:text>&#8230; (</xsl:text> 
+                            <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                <xsl:text>§</xsl:text>
                         <xsl:element name="a">
                             <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@xml:id"/></xsl:attribute>
                             <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/></xsl:element>
-                        <xsl:text>)</xsl:text>
+                            </xsl:element>
+                                <xsl:text>)</xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                     </xsl:element>
                     
@@ -3231,8 +3245,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
-        <!--<script src="../criticalEditions/loader.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>-->
+        <script src="../criticalEditions/loader.js"></script>
     </xsl:template>
        
     <!-- side bar - table of contents -->
@@ -3968,10 +3982,14 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">bottom-reformulation</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
-                        <xsl:text>&#8230; (§</xsl:text>
+                        <xsl:text>&#8230; (</xsl:text> 
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:text>§</xsl:text>
                         <xsl:element name="a">
                             <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@xml:id"/></xsl:attribute><xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/ancestor::tei:div[@type='dyad']/@n"/></xsl:element>
-                        <xsl:text>) </xsl:text>
+                        </xsl:element>
+                            <xsl:text>) </xsl:text>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][1]/preceding::node()[1]"/>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
