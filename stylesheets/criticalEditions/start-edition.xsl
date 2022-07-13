@@ -994,21 +994,22 @@
                 <xsl:attribute name="class">col-1 text-center</xsl:attribute>
                 <!--</xsl:otherwise>
             </xsl:choose>-->
+                
+                <xsl:element name="p">
                 <xsl:choose>
                     <xsl:when test="@type='interpolation'">
                         <xsl:value-of select="preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
                         <xsl:text>*. </xsl:text>
                     </xsl:when>
                     <xsl:when test="@type='canto'"/>
-                    <xsl:otherwise>
-                        <xsl:element name="p">                            
+                    <xsl:otherwise>                             
                                 <xsl:if test="@n">
                                     <xsl:value-of select="@n"/>
                                     <xsl:text>. </xsl:text>
                                 </xsl:if> 
-                </xsl:element>
                     </xsl:otherwise>
                 </xsl:choose>
+                </xsl:element>
             </xsl:element>
             <xsl:element name="div">             
                             <xsl:attribute name="class">col-11</xsl:attribute>
