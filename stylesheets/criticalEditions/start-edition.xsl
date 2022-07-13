@@ -70,7 +70,7 @@
    
    <!-- main display structure - appelle les templates et les modes-->
     <xsl:template match="/tei:TEI">
-        <xsl:element name="html">
+        <xsl:element name="html" xmlns="http://www.w3.org/1999/xhtml">
         <xsl:call-template name="dharma-head"/>
         <xsl:element name="body">
             <xsl:attribute name="class">font-weight-light</xsl:attribute>
