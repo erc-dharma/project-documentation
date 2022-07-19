@@ -1431,6 +1431,18 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 </item>
+<item>
+	<measure unit="syllable">23</measure>
+	<name xml:lang="san-Latn">mattākrīḍā</name>
+	<name xml:lang="kaw-Latn">mattākrīḍā</name>
+	<seg type="xml">++++++++--------------=</seg>
+	<seg type="prosody">––––––––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">ma-ma-ta-na-na-na-na-la-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
+</item>
 <!-- abhikrti class -->
 <item>
 	<measure unit="syllable">25</measure>
