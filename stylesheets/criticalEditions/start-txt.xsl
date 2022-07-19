@@ -19,10 +19,14 @@
     </xsl:function>
     
     <xsl:template match="tei:ab">
+        <xsl:if test="@type">
+            <xsl:value-of select="@type"/>
+            <xsl:text>: </xsl:text>
+        </xsl:if>
         <xsl:apply-templates/>
     </xsl:template>
     
-    <xsl:template match="tei:app">
+    <xsl:template match="tei:app[not(@rend='hide')]">
        <xsl:text>*</xsl:text>
         <xsl:apply-templates select="tei:lem"/>
         <xsl:text> (</xsl:text>
@@ -184,6 +188,19 @@
         <xsl:text>⟧</xsl:text>
     </xsl:template>
     
+    <xsl:template match="tei:div">
+        <xsl:if test="@type">
+            <xsl:value-of select="@type"/>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="@n"/>
+            <xsl:text>: </xsl:text>
+        </xsl:if>
+        <xsl:if test="following::tei:head[1]">
+            <xsl:apply-templates select="tei:head"/>
+        </xsl:if>
+        <xsl:apply-templates/>
+    </xsl:template>
+    
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'">
@@ -225,6 +242,8 @@
         
     </xsl:template>
     
+    <xsl:template match="tei:head"/>
+    
     <xsl:template match="tei:lacunaStart">
         <xsl:text>[...</xsl:text>
     </xsl:template>
@@ -248,22 +267,32 @@
     </xsl:template>
    
     <xsl:template match="tei:lg">
-        <xsl:choose>
-            <xsl:when test="tei:l[position()=last()]">
-                <xsl:apply-templates/><xsl:choose>
-                    <xsl:when test="parent::tei:lg/@n">
-                        <xsl:value-of select="@n"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:number count="tei:lg" level="any" format="1"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-                <xsl:text>|| </xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates/>
-            </xsl:otherwise>
-        </xsl:choose>
+            <xsl:if test="tei:l[@n='a' or @n='b']">
+                <xsl:text>[ab]</xsl:text>
+                <xsl:apply-templates select="tei:l[@n='a' or @n='b']"/>
+                <xsl:text>&#xA;</xsl:text>
+            </xsl:if>
+            <xsl:if test="tei:l[@n='c' or @n='d']">
+                <xsl:text>[cd]</xsl:text>
+                <xsl:apply-templates select="tei:l[@n='c' or @n='d']"/>
+                <xsl:if test="tei:l[@n='d']">
+                    <xsl:choose>
+                        <xsl:when test="parent::tei:lg/@n">
+                    <xsl:value-of select="parent::tei:lg/@n"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:number count="tei:lg" level="any" format="1"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:text>|| </xsl:text>
+                </xsl:if>
+                <xsl:text>&#xA;</xsl:text>
+            </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="tei:p">
+        <xsl:apply-templates/>
+        <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
     <xsl:template match="tei:pb">
@@ -294,7 +323,8 @@
     
     <xsl:template match="tei:quote[@type='base-text']">
         <xsl:text>base text: </xsl:text>
-        <xsl:apply-templates/>
+        <xsl:text>&#xA;</xsl:text>
+        <xsl:apply-templates select="./tei:supplied/tei:lg"/>
     </xsl:template>
     
     <xsl:template match="tei:supplied[not(@reason='implied')]">
