@@ -238,7 +238,7 @@
         <xsl:for-each select="tei:app/tei:note">
                <xsl:choose>
                    <xsl:when test="@*">
-                       <xsl:value-of select="replace(@*, 'txt:', '')"/>
+                       <xsl:value-of select="replace(@* except @xml:lang, 'txt:', '')"/>
                    </xsl:when>
                <xsl:otherwise>
                    <xsl:apply-templates/>
