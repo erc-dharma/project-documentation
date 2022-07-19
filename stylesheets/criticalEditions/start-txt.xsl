@@ -109,10 +109,6 @@
         <xsl:text>]</xsl:text>
     </xsl:template>
     
-    <xsl:template match="tei:l">
-        <xsl:apply-templates/>
-    </xsl:template>
-    
     <xsl:template match="tei:lacunaStart">
         <xsl:text>[...</xsl:text>
     </xsl:template>
@@ -122,17 +118,23 @@
     </xsl:template>
     
     <xsl:template match="tei:lg">
-        <xsl:apply-templates/>
-        <xsl:text> ||</xsl:text>
         <xsl:choose>
-            <xsl:when test="@n">
-                <xsl:value-of select="@n"/>
+            <xsl:when test="tei:l[position()=last()]">
+                <xsl:apply-templates/>
+                <xsl:choose>
+                    <xsl:when test="parent::tei:lg/@n">
+                        <xsl:value-of select="@n"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:number count="tei:lg" level="any" format="1"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>|| </xsl:text>
             </xsl:when>
-        <xsl:otherwise>
-            <xsl:number count="tei:lg" level="any" format="1"/>
-        </xsl:otherwise>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
         </xsl:choose>
-        <xsl:text>|| </xsl:text>
     </xsl:template>
     
     <xsl:template match="tei:note"> 
