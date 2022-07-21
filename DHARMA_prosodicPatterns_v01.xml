@@ -1443,6 +1443,19 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 </item>
+<!-- saṁkr̥ti class -->
+<item>
+	<measure unit="syllable">24</measure>
+	<name xml:lang="kaw-Latn">kendran</name>
+	<name xml:lang="kaw-Latn">gәli</name>
+	<seg type="xml">+--+++--++------------+=</seg>
+	<seg type="prosody">–⏑⏑–––⏑⏑––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏓</seg>
+	<seg type="gana">bha-ma-ta-bha-ma-ma-ma-ya</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
+</item>
 <!-- abhikrti class -->
 <item>
 	<measure unit="syllable">25</measure>
