@@ -1482,6 +1482,18 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.5</citedRange></bibl>
 		</listBibl>
 </item>
+<item>
+	<measure unit="syllable">26</measure>
+	<name xml:lang="kaw-Latn">pādaviśāla</name>
+	<seg type="xml">+--+++--++-------------++=</seg>
+	<seg type="prosody">–⏑⏑|–––|⏑⏑–|–⏑⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑–|–⏓</seg>
+	<seg type="gana">ma-sa-ja-sa-na-na-ra-na-ga</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.5</citedRange></bibl>
+		</listBibl>
+</item>
 </list>
 
 
