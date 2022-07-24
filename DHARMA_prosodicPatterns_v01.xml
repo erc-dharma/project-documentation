@@ -1170,6 +1170,20 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	</listBibl>
 </item>
 <item>
+	<measure unit="syllable">18</measure>
+	<name xml:lang="kaw-Latn">devīvilāsinī</name><!-- just being provided in CK -->
+  <seg type="xml">+++|+-+|-+-|--+|-+-|--=</seg>
+  <seg type="prosody">–––|–⏑–|⏑–⏑|⏑⏑–|⏑–⏑|⏑⏑⏓</seg>
+  <seg type="gana">ma-ra-ja-sa-ja-sa</seg>
+	<listBibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte (daba verified)--></bibl>
+		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
+		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page"><!--not in Zoetmulder --></citedRange></bibl>
+	</listBibl>
+</item>
+
+<!-- atidhr̥ti class -->
+<item>
 	<measure unit="syllable">19</measure>
 	<name xml:lang="kaw-Latn">navaharṣa</name>
 	<seg type="xml">--+--+------+--+--=</seg>
