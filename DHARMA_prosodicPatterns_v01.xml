@@ -1206,6 +1206,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
+<item>
+	<measure unit="syllable">19</measure>
+	<name xml:lang="kaw-Latn">karuṇālalita</name>
+	<seg type="xml">+----+------+-----=</seg>
+	<seg type="prosody">–⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">bha-sa-na-na-bha-na-ga</seg>
+</item>
 <!-- krti class -->
 <item>
 	<measure unit="syllable">20</measure>
@@ -1283,6 +1290,14 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">464</citedRange><citedRange unit="item">XX.9</citedRange></bibl>
 	</listBibl>
 </item>
+<item>
+	<measure unit="syllable">20</measure>
+	<name xml:lang="kaw-Latn">jayakusuma</name>
+	<seg type="xml">-------+---+-+--+--=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑–⏑–⏑⏑–⏑⏑⏓</seg>
+	<seg type="gana">na-na-ja-sa-ja-ja-la-ga</seg>
+</item>
+<!-- prakr̥ti class -->
 <item>
 	<measure unit="syllable">21</measure>
 	<name xml:lang="kaw-Latn">citravilāpa</name>
@@ -1456,6 +1471,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl></listBibl>
 </item>
+<item>
+	<measure unit="syllable">23</measure>
+	<name xml:lang="kaw-Latn">surakusuma</name>
+	<seg type="xml">------+------+--------=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">na-na-bha-na-ja-na-na-la-ga</seg>
+</item>
 <!-- saṁkr̥ti class -->
 <item>
 	<measure unit="syllable">24</measure>
@@ -1495,6 +1517,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.5</citedRange></bibl>
 		</listBibl>
 </item>
+<item>
+	<measure unit="syllable">25</measure>
+	<name xml:lang="kaw-Latn">kusumasari</name>
+	<seg type="xml">-----++-+--+--------+---=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑––⏑–⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏓</seg>
+	<seg type="gana">na-sa-ra-sa-na-na-sa-na-ga</seg>
+</item>
 <!-- utkr̥ti class -->
 <item>
 	<measure unit="syllable">26</measure>
@@ -1527,11 +1556,20 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<seg type="xml">+++--------------------++=</seg>
 	<seg type="prosody">–––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑––⏓</seg>
 	<seg type="gana">ma-na-na-na-na-na-na-sa-ga-ga</seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/><citedRange unit="page">468</citedRange><citedRange unit="item">XXV.5</citedRange></bibl>
-		</listBibl>
+</item>
+<item>
+	<measure unit="syllable">26</measure>
+	<name xml:lang="kaw-Latn">nagakusuma</name>
+	<seg type="xml">----+---+--+---------+---=</seg>
+	<seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏓</seg>
+	<seg type="gana">na-ja-sa-sa-na-na-na-bha-la-ga</seg>
+</item>
+<item>
+	<measure unit="syllable">50</measure>
+	<name xml:lang="kaw-Latn">lalu</name>
+	<seg type="xml">---|---|+--|-+-|---|---|---|-+-|---|---|---|+--|---|-+-|---|--+|-=</seg>
+	<seg type="prosody">⏑⏑⏑|⏑⏑⏑|–⏑⏑|⏑–⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑⏑|⏑–⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑⏑|–⏑⏑|⏑⏑⏑|⏑–⏑|⏑⏑⏑|⏑⏑–|⏑⏓</seg>
+	<seg type="gana">na-na-bha-ja-na-na-na-ja-na-na-na-bha-na-ja-na-sa-la-ga</seg>
 </item>
 </list>
 
@@ -1704,6 +1742,13 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 
 <list><head>Additions in need of processing</head><!-- additions from Zaki's file --><!--daba 20220530: I assume these will be moved after being finalised to the syllabo-quantitative section to their proper place by syllable count.-->
 <item>
+	<measure unit="syllable"/>
+	<name xml:lang="">daṇḍa</name>
+	<seg type="xml">[+--]*n|+--+-+-=</seg>
+	<seg type="prosody">[–⏑⏑]*n|–⏑⏑–⏑–⏑⏓</seg>
+	<seg type="gana"></seg>
+</item>
+<item>
 	<measure unit="syllable">12</measure>
 	<name xml:lang="">kusumāyudha</name>
 	<seg type="xml">----+------=</seg>
@@ -1759,6 +1804,14 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
+<item>
+	<measure unit="syllable">13</measure>
+	<name xml:lang="kaw-Latn">siṅharūpa</name>
+	<seg type="xml">--+-++-----=</seg>
+	<seg type="prosody">⏑⏑–⏑––⏑⏑⏑⏑⏑⏓</seg>
+	<seg type="gana">sa-bha-na-sa</seg>
+</item>
+<!-- atijagatī class -->
 <item>
 	<measure unit="syllable">13</measure>
 	<name xml:lang="">citrālaya</name>
