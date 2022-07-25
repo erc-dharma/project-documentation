@@ -83,6 +83,26 @@
                                 </xsl:attribute>
                             </xsl:if>
                         </xsl:element>
+                        <xsl:if test="$tokens[49] != '' or $tokens[50] != ''">
+                            <xsl:element name="filiation">
+                                <xsl:if test="$tokens[49]">
+                                    <xsl:attribute name="type">duplicate</xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="$tokens[50]">
+                                    <xsl:attribute name="type">reissue</xsl:attribute>
+                                </xsl:if>
+                                <xsl:element name="ref">
+                                    <xsl:attribute name="href"><xsl:choose>
+                                        <xsl:when test="$tokens[50]">{$tokens[50]}</xsl:when>
+                                        <xsl:when test="$tokens[49]">{$tokens[49]}</xsl:when>
+                                    </xsl:choose></xsl:attribute>
+                                    <xsl:choose>
+                                        <xsl:when test="$tokens[50]">Inscription {$tokens[50]} reissue in {$tokens[51]}</xsl:when>
+                                        <xsl:when test="$tokens[49]">{$tokens[49]} is a duplicate</xsl:when>
+                                    </xsl:choose>
+                                </xsl:element>
+                            </xsl:element>
+                        </xsl:if>
                     </xsl:element>
                 </msContents>
                 <physDesc>
@@ -123,7 +143,18 @@
                         </dimensions></xsl:if></p>
                     </scriptDesc>
                 </physDesc>
-
+                <history>
+                    <origin>
+                        <p>Written in <xsl:element name="origDate"><xsl:if test="$tokens[47] != ''"><xsl:attribute name="cert">{$tokens[47]}</xsl:attribute></xsl:if><xsl:if test="$tokens[48] != ''"><xsl:attribute name="evidence">{$tokens[48]}</xsl:attribute></xsl:if><xsl:choose>
+                            <xsl:when test="$tokens[46] != ''"><xsl:attribute name="notBefore"><xsl:value-of select="substring-before($tokens[46], '-')"/></xsl:attribute> <xsl:attribute name="notAfter"><xsl:value-of select="substring-after($tokens[46], '-')"/></xsl:attribute>{$tokens[46]}</xsl:when>
+                            <xsl:when test="$tokens[45] != ''">
+                                <xsl:attribute name="when">{$tokens[45]}</xsl:attribute>
+                                {$tokens[45]}
+                            </xsl:when>
+                        </xsl:choose></xsl:element>.
+                        </p>
+                    </origin>
+                </history>
             </line>
         </xsl:for-each>
     </xsl:variable>
