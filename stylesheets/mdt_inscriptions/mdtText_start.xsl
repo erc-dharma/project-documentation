@@ -170,9 +170,81 @@
         <xsl:param name="language"/>
         <xsl:if test="$language !=''">
             <xsl:choose>
+                <xsl:when test="$language = 'Arabic'">
+                    <xsl:text>ara</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Balinese')">
+                    <xsl:text>ban</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Batak')">
+                    <xsl:text>btk</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Modern Burmese'">
+                    <xsl:text>mya</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Old Burmese'">
+                    <xsl:text>obr</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Modern Cham'">
+                    <xsl:text>cjm/cja</xsl:text>
+                </xsl:when>
                 <xsl:when test="$language = 'Old Cham'">
                 <xsl:text>ocm</xsl:text>
             </xsl:when>
+                <xsl:when test="$language = 'Indonesian'">
+                    <xsl:text>ind</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Kannada')">
+                    <xsl:text>kan</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Middle Khmer'">
+                    <xsl:text>xhm</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Modern Khmer'">
+                    <xsl:text>khm</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Old Khmer'">
+                    <xsl:text>okz</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Middle Malay'">
+                    <xsl:text>zlm</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Old Malay'">
+                    <xsl:text>omy</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Old Mon'">
+                    <xsl:text>omx</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Pali'">
+                    <xsl:text>pli</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Prakrit'">
+                    <xsl:text>pra</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Pyu'">
+                    <xsl:text>pyx</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Sanskrit'">
+                    <xsl:text>san</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Sasak'">
+                    <xsl:text>sas</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Old Sundanese'">
+                    <xsl:text>osn</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Tagalog')">
+                    <xsl:text>tgl</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Tamil')">
+                    <xsl:text>tam</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Telugu')">
+                    <xsl:text>tel</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($language, 'Vietnamese')">
+                    <xsl:text>vie</xsl:text>
+                </xsl:when>
         </xsl:choose>
         </xsl:if>
 
