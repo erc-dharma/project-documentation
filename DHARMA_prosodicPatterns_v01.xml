@@ -1474,6 +1474,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">23</measure>
 	<name xml:lang="kaw-Latn">surakusuma</name>
+	<name xml:lang="kaw-Latn">vadaragumuluṅ</name>
+<!--% ⏑⏑⏑|–⏑⏑ |–⏑⏑|⏑⏑⏑|⏑–⏑|⏑–⏑|⏑⏓ (dr Sugriwa) vadaragumuluṅ -->
 	<seg type="xml">------+------+--------=</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
 	<seg type="gana">na-na-bha-na-ja-na-na-la-ga</seg>
@@ -1567,8 +1569,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable">50</measure>
 	<name xml:lang="kaw-Latn">lalu</name>
-	<seg type="xml">---|---|+--|-+-|---|---|---|-+-|---|---|---|+--|---|-+-|---|--+|-=</seg>
-	<seg type="prosody">⏑⏑⏑|⏑⏑⏑|–⏑⏑|⏑–⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑⏑|⏑–⏑|⏑⏑⏑|⏑⏑⏑|⏑⏑⏑|–⏑⏑|⏑⏑⏑|⏑–⏑|⏑⏑⏑|⏑⏑–|⏑⏓</seg>
+	<seg type="xml">------+---+-----------+----------+------+------+-=</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏓</seg>
 	<seg type="gana">na-na-bha-ja-na-na-na-ja-na-na-na-bha-na-ja-na-sa-la-ga</seg>
 </item>
 </list>
@@ -1745,7 +1747,14 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	<measure unit="syllable"/>
 	<name xml:lang="">daṇḍa</name>
 	<seg type="xml">[+--]*n|+--+-+-=</seg>
-	<seg type="prosody">[–⏑⏑]*n|–⏑⏑–⏑–⏑⏓</seg>
+	<seg type="prosody">[–⏑⏑]×n|–⏑⏑–⏑–⏑⏓</seg>
+	<seg type="gana"></seg>
+</item>
+<item>
+	<measure unit="syllable"/>
+	<name xml:lang="">daṇḍaka</name>
+	<seg type="xml">------|[+-+]*n</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑|[–⏑–]×n</seg>
 	<seg type="gana"></seg>
 </item>
 <item>
