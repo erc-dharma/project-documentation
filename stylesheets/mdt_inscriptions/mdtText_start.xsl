@@ -21,7 +21,7 @@
     
     <xsl:output method="xml" indent="yes"/>
     
-    <xsl:param name="data" as="xs:string" select="for $uri in uri-collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv') return unparsed-text($uri)"/>
+    <xsl:param name="data" as="xs:string" select="for $uri in uri-collection('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv?select=*.csv') return unparsed-text($uri)"/>
     <!-- https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv -->
     <!-- for $uri in uri-collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv') return unparsed-text($uri) -->
     
