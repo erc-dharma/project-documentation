@@ -6,7 +6,7 @@
     exclude-result-prefixes="#all"
     version="2.0">
     
-    <xsl:param name="data" as="xs:string" select="unparsed-text('.')"/>
+    <xsl:param name="data" as="xs:string" select="collection(unparsed-text('./csv'))"/>
     
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
