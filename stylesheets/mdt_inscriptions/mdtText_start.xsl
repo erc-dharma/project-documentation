@@ -19,7 +19,7 @@
         <xsl:sequence select="replace($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
     </xsl:function>
     
-    <xsl:param name="data" as="xs:string" select="uri-collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv/.?select=*.csv')!unparsed-text(.) "/>
+    <xsl:param name="data" as="xs:string" select="collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv?select=*.csv;unparsed=yes')"/>
     <!-- https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv -->
     <!-- for $uri in uri-collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv') return unparsed-text($uri) -->
     
