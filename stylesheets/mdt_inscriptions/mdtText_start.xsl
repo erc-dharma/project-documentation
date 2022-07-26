@@ -20,10 +20,12 @@
     </xsl:function>
     
     <xsl:output method="xml" indent="yes"/>
-    
-    <xsl:param name="data" as="xs:string" select="for $uri in uri-collection('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv?select=*.csv') return unparsed-text($uri)"/>
+  
+    <xsl:param name="csv" as="xs:string"/>
+    <xsl:variable name="data" as="xs:string" select="unparsed-text($csv)"/>
     <!-- https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv -->
-    <!-- for $uri in uri-collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv') return unparsed-text($uri) -->
+    <!--  -->
+    <!-- for $uri in uri-collection('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv?select=*.csv') return unparsed-text($uri) -->
     
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
@@ -242,11 +244,11 @@
     </xsl:variable>
     
     <xsl:template match="/" name="xsl:initial-template">
+        <File>
     <xsl:for-each select="$lines/line">
-            <File>
-                <xsl:copy-of select="$lines/line"/>
-            </File>
+           <xsl:copy-of select="$lines/line"/>
         </xsl:for-each>
+        </File>
     </xsl:template>
    
     <xsl:template name="language-tpl">
