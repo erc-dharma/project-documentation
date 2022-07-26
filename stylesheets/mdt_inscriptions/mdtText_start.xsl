@@ -21,9 +21,15 @@
     
     <xsl:output method="xml" indent="yes"/>
     
+    
     <xsl:template match="/" name="main">
+        <xsl:param name="name-file">
+            <xsl:value-of select="functx:substring-after-last(base-uri(.), '/')"/>
+        </xsl:param>
+        <xsl:param name="data" select="concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/', $name-file)"/>
+        <xsl:message><xsl:value-of select="$data"/></xsl:message>
         <xsl:variable name="lines">
-                <xsl:for-each select="tokenize(unparsed-text(.), '\r?\n')">
+            <xsl:for-each select="tokenize(unparsed-text($data), '\r?\n')">
                 <xsl:if test="position() >= 6">
                     <line>
                         <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
