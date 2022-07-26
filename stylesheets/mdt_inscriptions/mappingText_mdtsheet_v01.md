@@ -40,3 +40,8 @@
 |52|sources|sourceDesc/msDesc/msContents/msItem/listBibl[@type = primary]||
 |53|biblio|sourceDesc/msDesc/msContents/msItem/listBibl[@type = secondary]||
 |54| keywords| profileDesc/textClass/keywords/term||
+|55| remarks| |Non pris en compte|
+|56| rights| |Non pris en compte|
+|57| rights | |Non pris en compte|
+|58|surrogates|||
+|59|photos|||

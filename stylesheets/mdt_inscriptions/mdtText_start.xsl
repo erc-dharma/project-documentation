@@ -10,6 +10,7 @@
     
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
+            <xsl:if test="not(position() >= 5)">
             <line>
                 <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                 <sourceDesc>
@@ -216,6 +217,7 @@
                     </xsl:if>
                 </profileDesc>
             </line>
+            </xsl:if>
         </xsl:for-each>
     </xsl:variable>
     
@@ -251,9 +253,9 @@
         </xsl:for-each-group>
     </xsl:template>-->
     
-    <xsl:template match="line">
+    <xsl:template match="/">
         <xsl:result-document method="xml" href="testmdt_{./msIdentifier/idno}.xml">
-                <xsl:copy-of select="." />
+                <xsl:copy-of select="line" />
         </xsl:result-document>
     </xsl:template>
     
