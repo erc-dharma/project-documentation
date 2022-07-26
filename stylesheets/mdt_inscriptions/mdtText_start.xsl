@@ -8,17 +8,13 @@
     
     <xsl:param name="data" as="xs:string" select="unparsed-text('.')"/>
     
-   <!-- <xsl:param name="header-ids" as="xs:string*"
-        select="'01', '02', '03', '10', '48', '49', '50'"/>
-    
-    <xsl:param name="header-names" as="xs:string*"
-        select="'FileHeader ', 'GroupHeader', 'AccountHeader', 'Details', 'AccountTrailer', 'GroupTrailer', 'FileTrailer'"/>-->
-    
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
             <line>
                 <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
-                <msIdentifier>
+                <sourceDesc>
+                    <msDesc>
+                        <msIdentifier>
                     <repository>DHARMAbase</repository>
                     <idno>{$tokens[15]}</idno>
                     <xsl:if test="$tokens[17]">
@@ -103,6 +99,30 @@
                                 </xsl:element>
                             </xsl:element>
                         </xsl:if>
+                        <xsl:if test="$tokens[52] != ''">
+                            <listBibl type="primary">
+                                <xsl:variable name="sources" as="xs:string*" select="tokenize($tokens[52], '$')"/>
+                                <xsl:for-each select="$sources">
+                                    <bibl><xsl:element name="ptr">
+                                        <xsl:attribute name="target">
+                                            <xsl:text>bib:</xsl:text><xsl:apply-templates select="."/>
+                                        </xsl:attribute>
+                                    </xsl:element></bibl>
+                                </xsl:for-each>
+                            </listBibl>
+                        </xsl:if>
+                        <xsl:if test="$tokens[53] != ''">
+                            <listBibl type="secondary">
+                                <xsl:variable name="biblio" as="xs:string*" select="tokenize($tokens[53], '$')"/>
+                                <xsl:for-each select="$biblio">
+                                    <bibl><xsl:element name="ptr">
+                                        <xsl:attribute name="target">
+                                            <xsl:text>bib:</xsl:text><xsl:apply-templates select="."/>
+                                        </xsl:attribute>
+                                    </xsl:element></bibl>
+                                </xsl:for-each>
+                            </listBibl>
+                        </xsl:if>
                     </xsl:element>
                 </msContents>
                 <physDesc>
@@ -155,6 +175,46 @@
                         </p>
                     </origin>
                 </history>
+                        <xsl:if test="$tokens[58] != '' or $tokens[59] != ''">
+                        <additional>
+                            <surrogates>
+                                <xsl:variable name="estampes" select="tokenize($tokens[58], '$')"/>
+                                <xsl:variable name="photos" select="tokenize($tokens[59], '$')"/>
+                                <xsl:for-each select="$estampes">
+                                    <bibl>
+                                       <xsl:element name="ptr">
+                                           <xsl:attribute name="target">
+                                               <xsl:text>sur:</xsl:text><xsl:apply-templates select="."/>
+                                           </xsl:attribute>
+                                       </xsl:element>
+                                    </bibl>
+                                </xsl:for-each>
+                                <xsl:for-each select="$photos">
+                                    <bibl>
+                                        <xsl:element name="ptr">
+                                            <xsl:attribute name="target">
+                                                <xsl:text>dig:</xsl:text><xsl:apply-templates select="."/>
+                                            </xsl:attribute>
+                                        </xsl:element>
+                                    </bibl>
+                                </xsl:for-each>
+                            </surrogates>
+                        </additional>
+                        </xsl:if>
+                    </msDesc>
+                </sourceDesc>
+                <profileDesc>
+                    <xsl:if test="$tokens[54] != ''">
+                        <textClass>
+                            <keywords>
+                                <xsl:variable name="keywords" as="xs:string*" select="tokenize($tokens[54], '$')"/>
+                                <xsl:for-each select="$keywords">
+                                    <term><xsl:apply-templates select="."/></term>
+                                </xsl:for-each>
+                            </keywords>
+                        </textClass>
+                    </xsl:if>
+                </profileDesc>
             </line>
         </xsl:for-each>
     </xsl:variable>

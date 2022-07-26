@@ -37,3 +37,6 @@
 |49|filiation : id matching text - duplicate|sourceDesc/msDesc/msContents/msItem/filiation/@type=duplicate||
 |50|filiation : id matching text - reissue|sourceDesc/msDesc/msContents/msItem/filiation/@type=reissue||
 |51|filiation date|sourceDesc/msDesc/msContents/msItem/filiation/ CDATA||
+|52|sources|sourceDesc/msDesc/msContents/msItem/listBibl[@type = primary]||
+|53|biblio|sourceDesc/msDesc/msContents/msItem/listBibl[@type = secondary]||
+|54| keywords| profileDesc/textClass/keywords/term||
