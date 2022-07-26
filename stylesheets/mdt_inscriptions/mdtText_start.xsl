@@ -6,11 +6,11 @@
     exclude-result-prefixes="#all"
     version="2.0">
     
-    <xsl:param name="data" as="xs:string" select="collection(unparsed-text('./csv'))"/>
+    <xsl:param name="data" as="xs:string" select="collection(unparsed-text('.'))"/>
     
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
-            <xsl:if test="not(position() >= 5)">
+            <!--<xsl:if test="not(position() >= 5)">-->
             <line>
                 <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                 <sourceDesc>
@@ -217,7 +217,7 @@
                     </xsl:if>
                 </profileDesc>
             </line>
-            </xsl:if>
+            <!--</xsl:if>-->
         </xsl:for-each>
     </xsl:variable>
     
@@ -253,9 +253,9 @@
         </xsl:for-each-group>
     </xsl:template>-->
     
-    <xsl:template match="/">
+    <xsl:template match="csv">
         <xsl:result-document method="xml" href="testmdt_{./msIdentifier/idno}.xml">
-                <xsl:copy-of select="line" />
+            <xsl:copy-of select="$lines" />
         </xsl:result-document>
     </xsl:template>
     
