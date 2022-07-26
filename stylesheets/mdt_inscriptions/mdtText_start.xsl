@@ -23,8 +23,7 @@
     
     <xsl:template match="/" name="main">
         <xsl:variable name="lines">
-            <xsl:for-each select="uri-collection('.?select=*.csv')!unparsed-text(.)">
-            <xsl:for-each select="tokenize(., '\r?\n')">
+                <xsl:for-each select="tokenize(unparsed-text(.), '\r?\n')">
                 <xsl:if test="position() >= 6">
                     <line>
                         <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
@@ -237,7 +236,7 @@
                     </line>
                 </xsl:if>
             </xsl:for-each>
-        </xsl:for-each>
+        
         </xsl:variable>
         <File>
             <xsl:for-each select="$lines/line">
