@@ -313,7 +313,8 @@
            </xsl:otherwise>
        </xsl:choose>   </xsl:template>
     <xsl:template match="tei:lg">
-                <xsl:apply-templates/>                        
+                <xsl:apply-templates/>    
+        <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
     <xsl:template match="tei:note"/>
