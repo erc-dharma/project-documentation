@@ -29,7 +29,7 @@
     <!-- 'https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv?select=*.csv') return unparsed-text($uri) -->
    
     <xsl:template match="/" name="main">
-        <xsl:param name="url-json" select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
+        <!--<xsl:param name="url-json" select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
         <xsl:param name="name-file">
             <xsl:analyze-string select="$url-json"
                 regex="(&quot;namel&quot;:\s+&quot;)(.+)(&quot;,)">
@@ -41,10 +41,11 @@
         <xsl:param name="file-path" select="concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/',$name-file)"></xsl:param>
         <xsl:param name="data">
             <xsl:value-of select="for $uri in uri-collection($name-file) return unparsed-text($uri)"/>
-            <!--<xsl:value-of select="unparsed-text($name-file)"/>-->
+            <!-\-<xsl:value-of select="unparsed-text($name-file)"/>-\->
             <xsl:message><xsl:value-of select="$name-file"/></xsl:message>
-        </xsl:param>
+        </xsl:param>-->
         
+        <xsl:param name="data" select="('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>
         <xsl:variable name="lines">
             <xsl:for-each select="tokenize($data, '\r?\n')">
                 <xsl:if test="position() >= 6">
