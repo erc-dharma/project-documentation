@@ -18,7 +18,23 @@
         
     </xsl:function>
     
+   <!-- <xsl:variable name="vAllowed" select=
+        "concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'aābcdefghḥiījklmnṅñṇopqrr̥ṣstuvwxyz',
+        '0123456789.,-')"/>
+    <xsl:variable name="vSpaces" select="'                                        '"/>-->
+
+    
+<!--    <xsl:template match="*[not(text()[3])]/text()">
+        <xsl:value-of select=
+            "normalize-space(translate(., translate(.,$vAllowed,''), $vSpaces))"/>
+    </xsl:template>
+-->    
+    <xsl:template match="text()">
+        <xsl:apply-templates select="normalize-space()"/>
+    </xsl:template>
+    
     <xsl:template match="tei:ab">
+        <xsl:text>&#xA;</xsl:text>
         <xsl:if test="@type">
             <xsl:value-of select="@type"/>
             <xsl:text>: </xsl:text>
@@ -26,9 +42,10 @@
         <xsl:apply-templates/>
     </xsl:template>
     
-    <xsl:template match="tei:app[not(@rend='hide')]">
-       <xsl:text>*</xsl:text>
-        <xsl:apply-templates select="tei:lem"/>
+
+    
+    <!--<xsl:template match="tei:app[not(@rend='hide')]">
+        <xsl:apply-templates select="child::tei:lem"/>
         <xsl:text> (</xsl:text>
         <xsl:for-each select="tei:lem">
             <xsl:choose>
@@ -70,7 +87,7 @@
             <xsl:apply-templates/>
         </xsl:for-each>
         <xsl:text>)</xsl:text>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="tei:bibl">
         <xsl:choose>
@@ -189,7 +206,9 @@
     </xsl:template>
     
     <xsl:template match="tei:div">
-        <xsl:if test="@type">
+        <xsl:text>&#xA;</xsl:text>
+        
+        <xsl:if test="@type and not(@type='metrical')">
             <xsl:value-of select="@type"/>
             <xsl:text> </xsl:text>
             <xsl:value-of select="@n"/>
@@ -244,38 +263,57 @@
     
     <xsl:template match="tei:head"/>
     
-    <xsl:template match="tei:lacunaStart">
-        <xsl:text>[...</xsl:text>
-    </xsl:template>
+    <xsl:template match="tei:lacunaStart"/>
+    <xsl:template match="tei:lacunaEnd"/>
     
-    <xsl:template match="tei:lacunaEnd">
-        <xsl:text>...]</xsl:text>
+    <xsl:template match="tei:lem">
+        <xsl:apply-templates/>
     </xsl:template>
+   
     
-    <xsl:template match="tei:listApp[@type='parallels']">
+    <xsl:template match="tei:listApp[@type='parallels']"/>
+        <!--<xsl:text>&#xA;</xsl:text>
         <xsl:text>parallels: </xsl:text>
         <xsl:for-each select="tei:app/tei:note">
                <xsl:choose>
                    <xsl:when test="@*">
-                       <xsl:value-of select="replace(@* except @xml:lang, 'txt:', '')"/>
+                       <xsl:apply-templates select="replace(@* except @xml:lang, 'txt:', '')"/>
                    </xsl:when>
                <xsl:otherwise>
                    <xsl:apply-templates/>
                </xsl:otherwise>
                </xsl:choose>
            </xsl:for-each>
-    </xsl:template>
+        <xsl:text>&#xA;</xsl:text>
+    </xsl:template>-->
    
     <xsl:template match="tei:lg">
             <xsl:if test="tei:l[@n='a' or @n='b']">
                 <xsl:text>[ab]</xsl:text>
-                <xsl:apply-templates select="tei:l[@n='a' or @n='b']"/>
+                <xsl:apply-templates select="tei:l[@n='a']"/>
+                <xsl:text> </xsl:text>
+                <xsl:apply-templates select="tei:l[@n='b']"/>
                 <xsl:text>&#xA;</xsl:text>
             </xsl:if>
             <xsl:if test="tei:l[@n='c' or @n='d']">
                 <xsl:text>[cd]</xsl:text>
-                <xsl:apply-templates select="tei:l[@n='c' or @n='d']"/>
-                <xsl:if test="tei:l[@n='d']">
+                <xsl:apply-templates select="tei:l[@n='c']"/>
+                <xsl:text> </xsl:text>
+                <xsl:apply-templates select="tei:l[ @n='d']"/>
+            </xsl:if> 
+        
+            <xsl:if test="tei:l[matches(@n, '\d+')]">
+                <xsl:text>[</xsl:text>
+                <xsl:value-of select="tei:l/@n"/>
+                <xsl:text>]</xsl:text>
+            <xsl:apply-templates  select="tei:l"/>
+            </xsl:if>
+        <xsl:choose>
+                            <xsl:when test="ancestor::tei:div[1]/@n">
+                                <xsl:value-of select="ancestor::tei:div[1]/@n"/>
+                                <xsl:text>.</xsl:text>
+                            </xsl:when>
+                        </xsl:choose>
                     <xsl:choose>
                         <xsl:when test="parent::tei:lg/@n">
                     <xsl:value-of select="parent::tei:lg/@n"/>
@@ -285,12 +323,20 @@
                         </xsl:otherwise>
                     </xsl:choose>
                     <xsl:text>|| </xsl:text>
-                </xsl:if>
+                
                 <xsl:text>&#xA;</xsl:text>
-            </xsl:if>
-    </xsl:template>
+                </xsl:template>
+    
+    <xsl:template match="tei:note"/>
     
     <xsl:template match="tei:p">
+        <xsl:text>[</xsl:text>
+        <xsl:if test="parent::tei:div[1]">
+            <xsl:value-of select="parent::tei:div[1]/@n"/>
+            <xsl:text>.</xsl:text>
+        </xsl:if>
+        <xsl:number level="single" format="1"/>
+        <xsl:text>]</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
@@ -315,6 +361,8 @@
         </xsl:choose>
     </xsl:template>
     
+    <xsl:template match="tei:rdg"/>
+    
     <xsl:template match="tei:sic">
         <xsl:text>†</xsl:text>
         <xsl:apply-templates/>
@@ -322,6 +370,7 @@
     </xsl:template>
     
     <xsl:template match="tei:quote[@type='base-text']">
+        <xsl:text>&#xA;</xsl:text>
         <xsl:text>base text: </xsl:text>
         <xsl:text>&#xA;</xsl:text>
         <xsl:apply-templates select="./tei:supplied/tei:lg"/>
@@ -337,6 +386,10 @@
         <xsl:text>{</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>}</xsl:text>
+    </xsl:template>
+    
+    <xsl:template match="tei:TEI">
+        <xsl:apply-templates/>
     </xsl:template>
     
     <xsl:template match="tei:teiHeader">
