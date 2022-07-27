@@ -1746,15 +1746,15 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <item>
 	<measure unit="syllable"/>
 	<name xml:lang="">daṇḍa</name>
-	<seg type="xml">[+--]*n|+--+-+-=</seg>
-	<seg type="prosody">[–⏑⏑]×n|–⏑⏑–⏑–⏑⏓</seg>
+	<seg type="xml">‖+-+‖|+--+-+-=</seg>
+	<seg type="prosody">‖–⏑⏑‖|–⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 </item>
 <item>
 	<measure unit="syllable"/>
 	<name xml:lang="">daṇḍaka</name>
-	<seg type="xml">------|[+-+]*n</seg>
-	<seg type="prosody">⏑⏑⏑⏑⏑⏑|[–⏑–]×n</seg>
+	<seg type="xml">------|‖+-+‖</seg>
+	<seg type="prosody">⏑⏑⏑⏑⏑⏑|‖–⏑–‖</seg>
 	<seg type="gana"></seg>
 </item>
 <item>
