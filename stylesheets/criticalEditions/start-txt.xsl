@@ -287,45 +287,34 @@
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>-->
    
+   <xsl:template match="tei:l">
+       <xsl:apply-templates/>
+       <xsl:choose>
+           <xsl:when test="node()[position()=last()]/self::tei:l">
+               <xsl:choose>
+                   <xsl:when test="ancestor::tei:div[1]/@n">
+                       <xsl:value-of select="ancestor::tei:div[1]/@n"/>
+                       <xsl:text>.</xsl:text>
+                   </xsl:when>
+               </xsl:choose>
+               <xsl:choose>
+                   <xsl:when test="parent::tei:lg/@n">
+                       <xsl:value-of select="parent::tei:lg/@n"/>
+                   </xsl:when>
+                   <xsl:otherwise>
+                       <xsl:number count="tei:lg" level="any" format="1"/>
+                   </xsl:otherwise>
+               </xsl:choose>
+               <xsl:text>|| </xsl:text>
+               <xsl:text>&#xA;</xsl:text>                     
+           </xsl:when>
+           <xsl:otherwise>
+               <xsl:text>&#xA;</xsl:text>
+           </xsl:otherwise>
+       </xsl:choose>   </xsl:template>
     <xsl:template match="tei:lg">
-            <xsl:if test="tei:l[@n='a' or @n='b']">
-                <xsl:text>[ab]</xsl:text>
-                <xsl:apply-templates select="tei:l[@n='a']"/>
-                <xsl:text> </xsl:text>
-                <xsl:apply-templates select="tei:l[@n='b']"/>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:if>
-            <xsl:if test="tei:l[@n='c' or @n='d']">
-                <xsl:text>[cd]</xsl:text>
-                <xsl:apply-templates select="tei:l[@n='c']"/>
-                <xsl:text> </xsl:text>
-                <xsl:apply-templates select="tei:l[ @n='d']"/>
-            </xsl:if> 
-        
-            <xsl:if test="tei:l[matches(@n, '\d+')]">
-                <xsl:text>[</xsl:text>
-                <xsl:value-of select="tei:l/@n"/>
-                <xsl:text>]</xsl:text>
-            <xsl:apply-templates  select="tei:l"/>
-            </xsl:if>
-        <xsl:choose>
-                            <xsl:when test="ancestor::tei:div[1]/@n">
-                                <xsl:value-of select="ancestor::tei:div[1]/@n"/>
-                                <xsl:text>.</xsl:text>
-                            </xsl:when>
-                        </xsl:choose>
-                    <xsl:choose>
-                        <xsl:when test="parent::tei:lg/@n">
-                    <xsl:value-of select="parent::tei:lg/@n"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:number count="tei:lg" level="any" format="1"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:text>|| </xsl:text>
-                
-                <xsl:text>&#xA;</xsl:text>
-                </xsl:template>
+                <xsl:apply-templates/>                        
+    </xsl:template>
     
     <xsl:template match="tei:note"/>
     
