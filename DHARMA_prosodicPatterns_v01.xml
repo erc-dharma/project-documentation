@@ -1745,16 +1745,24 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 <list><head>Additions in need of processing</head><!-- additions from Zaki's file --><!--daba 20220530: I assume these will be moved after being finalised to the syllabo-quantitative section to their proper place by syllable count.-->
 <item>
 	<measure unit="syllable"/>
-	<name xml:lang="">daṇḍa</name>
+	<name xml:lang="kaw-Latn">daṇḍa</name>
 	<seg type="xml">‖+-+‖|+--+-+-=</seg>
 	<seg type="prosody">‖–⏑⏑‖|–⏑⏑–⏑–⏑⏓</seg>
 	<seg type="gana"></seg>
 </item>
 <item>
 	<measure unit="syllable"/>
-	<name xml:lang="">daṇḍaka</name>
+	<name xml:lang="kaw-Latn">daṇḍaka</name>
 	<seg type="xml">------|‖+-+‖</seg>
 	<seg type="prosody">⏑⏑⏑⏑⏑⏑|‖–⏑–‖</seg>
+	<seg type="gana"></seg>
+</item>
+<item>
+	<measure unit="syllable"/>
+	<name xml:lang="kaw-Latn">malāhati</name>
+	<name xml:lang="kaw-Latn">malavati</name>
+	<seg type="xml">‖--+‖</seg>
+	<seg type="prosody">‖⏑⏑–‖</seg>
 	<seg type="gana"></seg>
 </item>
 <item>
