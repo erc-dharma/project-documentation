@@ -1518,11 +1518,11 @@
                 <xsl:attribute name="class">col-9 text-col</xsl:attribute>
                        <xsl:call-template name="lg-content"/>
                        <br/>
-                       <xsl:call-template name="translation-button"/>
+                       <xsl:if test="not(parent::tei:p)"><xsl:call-template name="translation-button"/></xsl:if>
             </xsl:element>
            <!--</xsl:otherwise>
            </xsl:choose>-->
-            <xsl:if test="descendant-or-self::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
+            <xsl:if test="descendant-or-self::tei:app and not(parent::tei:p)"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
                     <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:span[@type='reformulationStart'] |descendant::tei:l[@real] | descendant::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem' or @type='reformulation')] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
