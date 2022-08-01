@@ -1515,6 +1515,8 @@
                    <xsl:element name="div">
                 <xsl:attribute name="class">col-9 text-col</xsl:attribute>
                        <xsl:call-template name="lg-content"/>
+                       <br/>
+                       <xsl:call-template name="translation-button"/>
             </xsl:element>
            <!--</xsl:otherwise>
            </xsl:choose>-->
@@ -2203,32 +2205,7 @@
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
                 <xsl:copy-of select="$p-line"/>
                 <xsl:if test="@xml:id">
-                    <xsl:element name="div">
-                        <!--<xsl:attribute name="class">col-11</xsl:attribute>-->
-                        <xsl:element name="a">
-                            <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
-                            <xsl:attribute name="data-toggle">collapse</xsl:attribute>
-                            <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
-                            <xsl:attribute name="role">button</xsl:attribute>
-                            <xsl:attribute name="aria-expanded">false</xsl:attribute>
-                            <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                            
-                            <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
-                            <!-- need to add the language -->
-                        </xsl:element>
-                        <xsl:element name="div">
-                            <xsl:attribute name="id">
-                                <xsl:value-of select="generate-id()"/>
-                            </xsl:attribute>
-                            <xsl:attribute name="class">collapse</xsl:attribute>
-                            <xsl:element name="div">
-                                <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
-                                <xsl:call-template name="tpl-translation">
-                                    <xsl:with-param name="textpart-id" select="@xml:id"/>
-                                </xsl:call-template>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element> 
+                    <xsl:call-template name="translation-button"/>
                 </xsl:if>
         </xsl:element>
             </xsl:element>
@@ -4454,6 +4431,34 @@
     </xsl:choose>
 </xsl:template>
    
+   <xsl:template name="translation-button">
+           <xsl:element name="div">
+               <!--<xsl:attribute name="class">col-11</xsl:attribute>-->
+               <xsl:element name="a">
+                   <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
+                   <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                   <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
+                   <xsl:attribute name="role">button</xsl:attribute>
+                   <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                   <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                   
+                   <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
+                   <!-- need to add the language -->
+               </xsl:element>
+               <xsl:element name="div">
+                   <xsl:attribute name="id">
+                       <xsl:value-of select="generate-id()"/>
+                   </xsl:attribute>
+                   <xsl:attribute name="class">collapse</xsl:attribute>
+                   <xsl:element name="div">
+                       <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
+                       <xsl:call-template name="tpl-translation">
+                           <xsl:with-param name="textpart-id" select="@xml:id"/>
+                       </xsl:call-template>
+                   </xsl:element>
+               </xsl:element>
+           </xsl:element> 
+   </xsl:template>
     
     <!-- tpl-translation -->
     <xsl:template name="tpl-translation">
