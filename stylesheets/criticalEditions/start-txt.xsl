@@ -29,12 +29,12 @@
             "normalize-space(translate(., translate(.,$vAllowed,''), $vSpaces))"/>
     </xsl:template>
 -->    
-    <xsl:template match="text()">
+    <xsl:template match="text()">        
         <xsl:if test="matches(., '^\s+') and not(matches(., '^\s+$'))">
                <xsl:text> </xsl:text>
             </xsl:if>
         <xsl:value-of select="normalize-space(.)"/>
-            <xsl:if test="matches(.,'\s+$')">
+            <xsl:if test="matches(.,'\s$')">
                <xsl:text> </xsl:text>
             </xsl:if>
     </xsl:template>
@@ -284,6 +284,7 @@
 <xsl:template match="tei:lem">
     <xsl:apply-templates/>
 </xsl:template>    
+    
     <xsl:template match="tei:listApp[@type='parallels' or @type='apparatus']"/>
         <!--<xsl:text>&#xA;</xsl:text>
         <xsl:text>parallels: </xsl:text>
@@ -301,7 +302,7 @@
     </xsl:template>-->
    
    <xsl:template match="tei:l">
-       <xsl:apply-templates/>
+      <xsl:apply-templates/>
       <xsl:if test="not(following-sibling::tei:l)">
           <xsl:text>[</xsl:text>
                   <xsl:choose>
@@ -332,6 +333,7 @@
        <xsl:text>]</xsl:text></xsl:if>
        <xsl:text>&#xA;</xsl:text>
    </xsl:template>
+    
     <xsl:template match="tei:lg">
         <xsl:apply-templates/>    
         <xsl:text>&#xA;</xsl:text>
