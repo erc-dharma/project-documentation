@@ -1039,32 +1039,7 @@
                 <xsl:apply-templates/>
                 <xsl:if test="@xml:id and @type='canto'">
                     <br/>
-                    <xsl:element name="div">
-                    <xsl:attribute name="class">col-11</xsl:attribute>
-                    <xsl:element name="a">
-                    <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
-                    <xsl:attribute name="data-toggle">collapse</xsl:attribute>
-                    <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
-                    <xsl:attribute name="role">button</xsl:attribute>
-                    <xsl:attribute name="aria-expanded">false</xsl:attribute>
-                    <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                    
-                    <xsl:element name="small"><xsl:text>Translation</xsl:text></xsl:element>
-                        <!-- need to add the language -->
-                </xsl:element>
-                <xsl:element name="div">
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="generate-id()"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="class">collapse</xsl:attribute>
-                    <xsl:element name="div">
-                        <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
-                        <xsl:call-template name="tpl-translation">
-                            <xsl:with-param name="textpart-id" select="@xml:id"/>
-                        </xsl:call-template>
-                    </xsl:element>
-                </xsl:element>
-            </xsl:element> 
+                    <xsl:call-template name="translation-button"/>
                 </xsl:if>
             </xsl:element>     
         </xsl:element>
@@ -1522,10 +1497,10 @@
             </xsl:element>
            <!--</xsl:otherwise>
            </xsl:choose>-->
-            <xsl:if test="descendant-or-self::tei:app and not(parent::tei:p)"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
+            <xsl:if test="descendant-or-self::tei:app and not(parent::tei:p) or following-sibling::tei:*[1][local-name() ='listApp'][@type='apparatus']"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:span[@type='reformulationStart'] |descendant::tei:l[@real] | descendant::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem' or @type='reformulation')] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:span[@type='reformulationStart'] |descendant::tei:l[@real] | descendant::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem' or @type='reformulation')] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | following-sibling::tei:listApp[1][@type='apparatus']/descendant::tei:app">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
@@ -4433,6 +4408,54 @@
     </xsl:choose>
 </xsl:template>
    
+   <xsl:template name="translation-parallels-button">
+       <div class="accordion" id="accordionExample">
+           <div class="card">
+               <div class="card-header" id="headingOne">
+                   <h2 class="mb-0">
+                       <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                           Collapsible Group Item #1
+                       </button>
+                   </h2>
+               </div>
+               
+               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                   <div class="card-body">
+                       Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div class="card-header" id="headingTwo">
+                   <h2 class="mb-0">
+                       <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                           Collapsible Group Item #2
+                       </button>
+                   </h2>
+               </div>
+               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                   <div class="card-body">
+                       Some placeholder content for the second accordion panel. This panel is hidden by default.
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div class="card-header" id="headingThree">
+                   <h2 class="mb-0">
+                       <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                           Collapsible Group Item #3
+                       </button>
+                   </h2>
+               </div>
+               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                   <div class="card-body">
+                       And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                   </div>
+               </div>
+           </div>
+       </div>
+   </xsl:template>
+    
    <xsl:template name="translation-button">
            <xsl:element name="div">
                <!--<xsl:attribute name="class">col-11</xsl:attribute>-->
