@@ -331,13 +331,13 @@
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
-    <xsl:template match="tei:pb">
+   <!-- <xsl:template match="tei:pb">
         <xsl:text>[ms</xsl:text>
         <xsl:value-of select="substring-after(@edRef, '#')"/>
         <xsl:text>-</xsl:text>
         <xsl:value-of select="@n"/>
         <xsl:text>]</xsl:text>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="tei:ptr[@target]">
         <xsl:choose>
