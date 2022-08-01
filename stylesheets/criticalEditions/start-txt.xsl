@@ -29,8 +29,9 @@
             "normalize-space(translate(., translate(.,$vAllowed,''), $vSpaces))"/>
     </xsl:template>
 -->    
+    
     <xsl:template match="text()">        
-        <xsl:if test="matches(., '^\s+') and not(matches(., '^\s+$'))">
+        <xsl:if test="matches(., '^\s') and not(matches(., '^\s+$'))">
                <xsl:text> </xsl:text>
             </xsl:if>
         <xsl:value-of select="normalize-space(.)"/>
@@ -493,6 +494,10 @@
                 <xsl:text>&#xA;</xsl:text>
         <xsl:value-of select="tei:fileDesc/tei:publicationStmt/tei:availability/tei:licence/tei:p[2]"/>
         <xsl:text>&#xA;</xsl:text>
+    </xsl:template>
+    
+    <xsl:template match="tei:term">
+        <xsl:apply-templates/>
     </xsl:template>
     
     <xsl:template match="tei:unclear">
