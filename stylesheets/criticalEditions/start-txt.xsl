@@ -30,7 +30,13 @@
     </xsl:template>
 -->    
     <xsl:template match="text()">
-        <xsl:apply-templates select="normalize-space()"/>
+        <xsl:if test="matches(., '^\s+') and not(matches(., '^\s+$'))">
+               <xsl:text> </xsl:text>
+            </xsl:if>
+        <xsl:value-of select="normalize-space(.)"/>
+            <xsl:if test="matches(.,'\s+$')">
+               <xsl:text> </xsl:text>
+            </xsl:if>
     </xsl:template>
     
     <xsl:template match="tei:ab">
@@ -41,9 +47,7 @@
         </xsl:if>
         <xsl:apply-templates/>
     </xsl:template>
-    
-
-    
+   
     <!--<xsl:template match="tei:app[not(@rend='hide')]">
         <xsl:apply-templates select="child::tei:lem"/>
         <xsl:text> (</xsl:text>
@@ -206,18 +210,25 @@
     </xsl:template>
     
     <xsl:template match="tei:div">
-        <xsl:text>&#xA;</xsl:text>
-        
+        <xsl:if test="@type='dyad' or @type='chapter'">
+            <xsl:text>&#xA;</xsl:text>
+        </xsl:if>
         <xsl:if test="@type and not(@type='metrical')">
             <xsl:value-of select="@type"/>
             <xsl:text> </xsl:text>
             <xsl:value-of select="@n"/>
             <xsl:text>: </xsl:text>
+            <xsl:if test="not(@type='dyad')">
+                <xsl:text>&#xA;</xsl:text>
+            </xsl:if>
         </xsl:if>
         <xsl:if test="following::tei:head[1]">
             <xsl:apply-templates select="tei:head"/>
         </xsl:if>
         <xsl:apply-templates/>
+        <xsl:if test="@type='dyad'">
+            <xsl:text>&#xA;</xsl:text>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="tei:gap">
@@ -263,15 +274,17 @@
     
     <xsl:template match="tei:head"/>
     
+    <xsl:template match="tei:hi">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
     <xsl:template match="tei:lacunaStart"/>
     <xsl:template match="tei:lacunaEnd"/>
     
-    <xsl:template match="tei:lem">
-        <xsl:apply-templates/>
-    </xsl:template>
-   
-    
-    <xsl:template match="tei:listApp[@type='parallels']"/>
+<xsl:template match="tei:lem">
+    <xsl:apply-templates/>
+</xsl:template>    
+    <xsl:template match="tei:listApp[@type='parallels' or @type='apparatus']"/>
         <!--<xsl:text>&#xA;</xsl:text>
         <xsl:text>parallels: </xsl:text>
         <xsl:for-each select="tei:app/tei:note">
@@ -289,31 +302,38 @@
    
    <xsl:template match="tei:l">
        <xsl:apply-templates/>
-       <xsl:choose>
-           <xsl:when test="node()[position()=last()]/self::tei:l">
-               <xsl:choose>
-                   <xsl:when test="ancestor::tei:div[1]/@n">
-                       <xsl:value-of select="ancestor::tei:div[1]/@n"/>
+      <xsl:if test="not(following-sibling::tei:l)">
+          <xsl:text>[</xsl:text>
+                  <xsl:choose>
+                      <xsl:when test="ancestor::tei:div[@type='chapter']">
+                              <xsl:value-of select="ancestor::tei:div[@type='chapter'][1]/@n"/>
                        <xsl:text>.</xsl:text>
-                   </xsl:when>
-               </xsl:choose>
+                          <xsl:if test="ancestor::tei:div[@type='dyad']">
+                              <xsl:value-of select="ancestor::tei:div[@type='dyad'][1]/@n"/>
+                              <xsl:text>.</xsl:text>
+                          </xsl:if>
+                       </xsl:when>      
+                      <xsl:otherwise>
+                          
+                              <xsl:value-of select="ancestor::tei:div[1]/@n"/>
+                              <xsl:text>.</xsl:text>
+                          
+                      </xsl:otherwise>
+                  </xsl:choose>
+               
                <xsl:choose>
                    <xsl:when test="parent::tei:lg/@n">
                        <xsl:value-of select="parent::tei:lg/@n"/>
                    </xsl:when>
                    <xsl:otherwise>
-                       <xsl:number count="tei:lg" level="any" format="1"/>
+                       <xsl:number count="//tei:div[@type='chapter'][descendant::tei:lg[1]]/descendant-or-self::tei:lg" level="multiple" format="1"/>
                    </xsl:otherwise>
                </xsl:choose>
-               <xsl:text>|| </xsl:text>
-               <xsl:text>&#xA;</xsl:text>                     
-           </xsl:when>
-           <xsl:otherwise>
-               <xsl:text>&#xA;</xsl:text>
-           </xsl:otherwise>
-       </xsl:choose>   </xsl:template>
+       <xsl:text>]</xsl:text></xsl:if>
+       <xsl:text>&#xA;</xsl:text>
+   </xsl:template>
     <xsl:template match="tei:lg">
-                <xsl:apply-templates/>    
+        <xsl:apply-templates/>    
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
@@ -468,7 +488,9 @@
                 <xsl:value-of select="current-date()"/>
                 <br/>
                 <xsl:text>&#xA;Still in progress – do not quote without permission.</xsl:text>
-                <xsl:text>&#xA;</xsl:text><xsl:value-of select="tei:fileDesc/tei:publicationStmt/tei:availability/tei:licence/tei:p[2]"/>
+                <xsl:text>&#xA;</xsl:text>
+        <xsl:value-of select="tei:fileDesc/tei:publicationStmt/tei:availability/tei:licence/tei:p[2]"/>
+        <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
     <xsl:template match="tei:unclear">
