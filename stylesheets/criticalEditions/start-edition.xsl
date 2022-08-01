@@ -328,6 +328,8 @@
                         <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
                     </xsl:if>
                     <xsl:copy-of select="$ab-line"/>
+                    <br/>
+                    <xsl:call-template name="translation-button"/>
                 </xsl:element>
             </xsl:element>
             <xsl:element name="div">
