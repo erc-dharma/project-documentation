@@ -3,8 +3,9 @@
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:functx="http://www.functx.com"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0"
-    exclude-result-prefixes="tei xi fn functx">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:saxon="http://saxon.sf.net/" version="3.0"
+    exclude-result-prefixes="tei xi fn functx saxon">
     
     <!-- Written by Axelle Janiak for DHARMA, starting July 2022 -->
     
@@ -37,7 +38,7 @@
     <xsl:param name="fileset"/>
     
     <xsl:param name="data"> 
-        <xsl:apply-templates select="for $file in $fileset return unparsed-text($file)"/>  
+        <xsl:apply-templates select="for $file in saxon:parse($fileset) return unparsed-text($file)"/>  
     </xsl:param>
     
     <xsl:variable name="lines">
