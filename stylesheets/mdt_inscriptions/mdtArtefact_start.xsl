@@ -339,12 +339,5 @@
         <File>          
             <xsl:copy-of select="$lines/line"/>  
         </File>
-        <!-- peut-être ajouter le result-doc ici -->
-        <!--<xsl:result-document method="xml" href="DHARMA_mdt{substring-after(./sourceDesc/msDesc/msIdentifier/idno, 'INS')}.xml">
-            <metadata>
-                <xsl:copy-of select="." />
-            </metadata>
-        </xsl:result-document>-->
     </xsl:template>  
-    
 </xsl:stylesheet>
