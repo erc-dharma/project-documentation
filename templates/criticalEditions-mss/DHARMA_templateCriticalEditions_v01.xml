@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!--<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" xml:id="id" type="edition"><!-- update the @xml:id at the base with the DHARMA ID, see FNC. -->
 	<teiHeader>
 		<fileDesc>
@@ -112,10 +115,28 @@
 					<p>The asterisk * is used to flag lemmata or forms of lemmata not recorded in the <title>Old Javanese-English Dictionary</title>.</p>
 				</interpretation>
 			</editorialDecl>
+			<refsDecl xml:id="ASLREF">
+				<cRefPattern matchPattern="(\S+) ([^.]+)\.(.*)"
+					replacementPattern="#xpath(//div1[@n='$1']/div2/[@n='$2']//lb[@n='$3'])">
+					<p>A reference is created by assembling the following, in the reverse order as that
+						listed here: <list>
+							<item>the <att>n</att> value of the preceding <gi>lb</gi>
+							</item>
+							<item>a period</item>
+							<item>the <att>n</att> value of the ancestor <gi>div2</gi>
+							</item>
+							<item>a space</item>
+							<item>the <att>n</att> value of the parent <gi>div1</gi>
+							</item>
+						</list>
+					</p>
+				</cRefPattern>
+			</refsDecl>
 			<samplingDecl>
 				<!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
 				<p/>
 			</samplingDecl>
+			
 			<schemaRef type="guide" key=" EGCv01" url="https://docs.google.com/document/d/15HFxHJTOzIU1UDyVrB2yQYJ5wI6JyEshEkYgg5qwj8M/edit#"/>
 			<!-- Will need to be updated once a more official realase is done -->
 			
