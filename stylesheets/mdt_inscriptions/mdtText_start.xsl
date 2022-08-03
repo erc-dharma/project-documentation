@@ -34,6 +34,8 @@
         <xsl:apply-templates select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
     </xsl:param>-->
 
+    <xsl:param name="fileset"/>
+    
     <xsl:param name="data"> 
         <xsl:apply-templates select="for $file in $fileset return unparsed-text($file)"/>  
     </xsl:param>
