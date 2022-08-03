@@ -30,18 +30,12 @@
     <!--<xsl:value-of select="for $uri in $name-file return unparsed-text(concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv',$uri))"/>  -->
     <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
     
-    <xsl:param name="api-url">
+  <!--  <xsl:param name="api-url">
         <xsl:apply-templates select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
-    </xsl:param>
-    <xsl:param name="file-url">
-        <xsl:analyze-string select="$api-url" regex="(&quot;download\surl&quot;:\s&quot;)(.+)&quot;">
-            <xsl:matching-substring>
-                <xsl:apply-templates select="regex-group(2)"/>
-            </xsl:matching-substring>
-        </xsl:analyze-string>
-    </xsl:param>
+    </xsl:param>-->
+
     <xsl:param name="data"> 
-        <xsl:apply-templates select="for $uri in $file-url return unparsed-text($uri)"/>  
+        <xsl:apply-templates select="for $file in $fileset return unparsed-text($file)"/>  
     </xsl:param>
     
     <xsl:variable name="lines">
