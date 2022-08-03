@@ -34,11 +34,10 @@
   <!--  <xsl:param name="api-url">
         <xsl:apply-templates select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
     </xsl:param>-->
-
-    <xsl:param name="fileset"/>
     
+    <xsl:param name="doc" select="tokenize(base-uri(.), '/')[last()]"/>
     <xsl:param name="data"> 
-        <xsl:apply-templates select="for $file in saxon:parse($fileset) return unparsed-text($file)"/>  
+        <xsl:apply-templates select="unparsed-text(concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/', $doc))"/>  
     </xsl:param>
     
     <xsl:variable name="lines">
@@ -259,6 +258,7 @@
     
    
     <xsl:template match="/" name="main">
+        <xsl:message><xsl:value-of select="$doc"/></xsl:message>
         <File>
             <xsl:for-each select="$lines/line">
                 <xsl:copy-of select="$lines/line"/>
