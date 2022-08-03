@@ -271,11 +271,8 @@
             
         </xsl:variable>
         
-        <File>
-            <!--<xsl:copy-of select="$data"></xsl:copy-of>-->
-            <xsl:for-each select="$lines/line">
-                <xsl:copy-of select="$lines/line"/>
-            </xsl:for-each>
+        <File>          
+                <xsl:copy-of select="$lines/line"/>  
         </File>
     </xsl:template>
     
