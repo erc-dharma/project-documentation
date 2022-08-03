@@ -20,29 +20,7 @@
         <xsl:sequence select="replace($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
     </xsl:function>
     
-    <xsl:output method="xml" indent="yes"/>
-    
-    
-    <!--<xsl:variable name="data" as="xs:string" select="uri-collection('https://github.com/erc-dharma/mdt-texts/tree/main/csv/.?select=*.csv')! unparsed-text('.')
-        "/>-->
-    <!-- https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv -->
-    <!-- unparsed-text('DHARMA_mdt_Somavamsin_v01.csv')-->
-    <!-- 'https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv?select=*.csv') return unparsed-text($uri) -->
-    <!--<xsl:value-of select="for $uri in $name-file return unparsed-text(concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv',$uri))"/>  -->
-     
-       <!--"download_url":"https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv"
-        -->
-        <!--<xsl:variable name="pattern" select="substring-before(substring-after(., '&quot;download_url&quot;:&quot;'), '&quot;')"/>-->
-        <!-- <xsl:value-of  select="substring-before(substring-after($api-url, '&quot;download_url&quot;:&quot;'), '&quot;')"/>-->
-        <!--<xsl:analyze-string select="$api-url"
-            regex="(&quot;download_url&quot;:&quot;)(.+)(&quot;)">
-            <xsl:matching-substring>
-                        <xsl:apply-templates select="regex-group(2)"/>
-            </xsl:matching-substring>
-            <xsl:non-matching-substring/>
-        </xsl:analyze-string>-->
-       
-    
+    <xsl:output method="xml" indent="yes"/>   
     
     <xsl:template match="/" name="xsl:initial-template">
         <xsl:variable name="api-url">
@@ -54,6 +32,9 @@
                 <xsl:value-of select="unparsed-text(.)"/>
             </xsl:for-each>
         </xsl:variable>
+        
+        <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
+        
         <xsl:variable name="lines">
                 <xsl:for-each select="tokenize($data, '\r?\n')">
                     <xsl:if test="position() >= 6">
@@ -274,11 +255,7 @@
         <File>          
                 <xsl:copy-of select="$lines/line"/>  
         </File>
-    </xsl:template>
-    
-    
-    <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
-    
+    </xsl:template>  
     
     <xsl:template name="language-tpl">
         <xsl:param name="language"/>
