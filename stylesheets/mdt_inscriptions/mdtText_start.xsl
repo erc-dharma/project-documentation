@@ -29,17 +29,22 @@
     <!-- unparsed-text('DHARMA_mdt_Somavamsin_v01.csv')-->
     <!-- 'https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv?select=*.csv') return unparsed-text($uri) -->
     <!--<xsl:value-of select="for $uri in $name-file return unparsed-text(concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv',$uri))"/>  -->
-    <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
     
-  <!--  <xsl:param name="api-url">
+    
+    <xsl:param name="api-url">
         <xsl:apply-templates select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
-    </xsl:param>-->
-    
-    <xsl:param name="doc" select="tokenize(base-uri(.), '/')[last()]"/>
-    <xsl:param name="data"> 
-        <xsl:apply-templates select="unparsed-text(concat('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/', $doc))"/>  
     </xsl:param>
-    
+    <xsl:param name="doc-url">
+        <xsl:analyze-string select="$api-url"
+            regex="(\s+&quot;download_url&quot;:\s&quot;)(.+)(&quot;)">
+            <xsl:matching-substring>
+                <xsl:value-of select="regex-group(2)"/>
+            </xsl:matching-substring>
+        </xsl:analyze-string>
+    </xsl:param>
+    <xsl:param name="data" select="unparsed-text($doc-url)">
+           </xsl:param>
+    <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
             <xsl:if test="position() >= 6">
@@ -258,7 +263,6 @@
     
    
     <xsl:template match="/" name="main">
-        <xsl:message><xsl:value-of select="$doc"/></xsl:message>
         <File>
             <xsl:for-each select="$lines/line">
                 <xsl:copy-of select="$lines/line"/>
