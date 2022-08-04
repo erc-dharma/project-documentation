@@ -6,6 +6,8 @@
     
     <!-- Written by Axelle Janiak for DHARMA, starting Août 2022 -->
     
+    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+    
     <xsl:template match="/" name="xsl:initial-template">
         <xsl:variable name="api-url">
             <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-authorities/contents/csv/places')"/>
