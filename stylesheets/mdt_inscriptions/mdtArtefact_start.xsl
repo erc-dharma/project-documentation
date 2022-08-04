@@ -5,6 +5,7 @@
     version="3.0">
     
     <!-- Written by Axelle Janiak for DHARMA, starting Août 2022 -->
+    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     
     <xsl:template match="/" name="xsl:initial-template">
         <xsl:variable name="api-url">
@@ -316,17 +317,35 @@
                     <relatedResources>
                         <xsl:if test="$tokens[67] !=''">
                             <xsl:element name="textID">
-                                <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[67], '$', ' #')"/></xsl:attribute>
+                                <xsl:attribute name="idno">
+                            <xsl:variable name="texts-id" select="tokenize($tokens[67], '\$')"/>
+                            <xsl:for-each select="$texts-id">
+                                <xsl:value-of select="."/>
+                                <xsl:text> </xsl:text>
+                            </xsl:for-each>
+                                </xsl:attribute>
                             </xsl:element>
                         </xsl:if>
                         <xsl:if test="$tokens[68] !=''">
                             <xsl:element name="surrogateID">
-                                <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[68], '$', ' #')"/></xsl:attribute>
+                                <xsl:attribute name="idno">
+                                    <xsl:variable name="surrogates-id" select="tokenize($tokens[68], '\$')"/>
+                                    <xsl:for-each select="$surrogates-id">
+                                        <xsl:value-of select="."/>
+                                        <xsl:text> </xsl:text>
+                                    </xsl:for-each>
+                                </xsl:attribute>
                             </xsl:element>
                         </xsl:if>
                         <xsl:if test="$tokens[69] !=''">
                             <xsl:element name="imageID">
-                                <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[69], '$', ' #')"/></xsl:attribute>
+                                <xsl:attribute name="idno">
+                                    <xsl:variable name="images-id" select="tokenize($tokens[69], '\$')"/>
+                                    <xsl:for-each select="$images-id">
+                                        <xsl:value-of select="."/>
+                                        <xsl:text> </xsl:text>
+                                    </xsl:for-each>
+                                </xsl:attribute>
                             </xsl:element>
                         </xsl:if>
                     </relatedResources>
