@@ -8,7 +8,7 @@
     
     <xsl:template match="/" name="xsl:initial-template">
         <xsl:variable name="api-url">
-            <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-artefacts/contents/csv')"/>
+            <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-artefacts/contents/csv/artefacts')"/>
         </xsl:variable>
         <xsl:variable name="json-xml" select="json-to-xml($api-url)"/>
         <xsl:variable name="data">
