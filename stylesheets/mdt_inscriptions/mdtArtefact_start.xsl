@@ -75,7 +75,7 @@
                         </xsl:otherwise>
                         </xsl:choose>
                         <decoDesc>
-                            <decorationRemarks><p><xsl:value-of select="$tokens[26]"/></p></decorationRemarks>
+                            <p><xsl:value-of select="$tokens[26]"/></p>
                         </decoDesc>
                     <artefactFormat>
                         <xsl:choose>
@@ -330,8 +330,8 @@
                             </xsl:element>
                         </xsl:if>
                     </relatedResources>
+                        <remarks><p><xsl:value-of select="$tokens[43]"/></p></remarks>
                     </artefactDescription>
-                    <remarks><p><xsl:value-of select="$tokens[43]"/></p></remarks>
                 </line>
             </xsl:if>
         </xsl:for-each>  
