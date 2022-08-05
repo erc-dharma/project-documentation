@@ -8,6 +8,7 @@
     exclude-result-prefixes="tei xi fn functx saxon">
     
     <!-- Written by Axelle Janiak for DHARMA, starting July 2022 -->
+    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     
     <xsl:function name="functx:escape-for-regex" as="xs:string"
         xmlns:functx="http://www.functx.com">
@@ -37,9 +38,11 @@
         
         <xsl:variable name="lines">
                 <xsl:for-each select="tokenize($data, '\r?\n')">
-                    <xsl:if test="position() >= 6">
+                    <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
+                    <xsl:choose>
+                        <xsl:when test="$tokens[1] = '0'"/>
+                    <xsl:otherwise>
                         <line>
-                            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                             <sourceDesc>
                                 <msDesc>
                                     <msIdentifier>
@@ -164,7 +167,7 @@
                                             </supportDesc>
                                             <layoutDesc>
                                                 <xsl:element name="layout">
-                                                    <xsl:attribute name="writtenLines"><xsl:value-of select="$tokens[39]"/> <xsl:if test="$tokens[39] != $tokens[40]"><xsl:value-of select="$tokens[40]"/></xsl:if></xsl:attribute>
+                                                    <xsl:attribute name="writtenLines"><xsl:value-of select="$tokens[39]"/> <xsl:if test="$tokens[39] != $tokens[40]"><xsl:text>-</xsl:text><xsl:value-of select="$tokens[40]"/></xsl:if></xsl:attribute>
                                                     <p><xsl:value-of select="$tokens[39]"/> lines are observed/preserved on the artifact. <xsl:if test="not($tokens[39] = $tokens[40])"><xsl:value-of select="$tokens[40]"/> are known or estimated for this text.</xsl:if> <xsl:if test="not(contains($tokens[42], '$')) and $tokens[42] != ''"><dimensions type="inscribed" unit="cm">
                                                         <height><xsl:value-of select="substring-before($tokens[42], 'x')"/></height>
                                                         <width><xsl:value-of select="substring-after($tokens[42], 'x')"/></width>
@@ -173,15 +176,20 @@
                                                 <xsl:if test="$tokens[41] != ''">
                                                     <xsl:if test="$tokens[41] != $tokens[39]">
                                                         <xsl:variable name="lines-zones" select="tokenize($tokens[41], '§')"/>
-                                                        <xsl:variable name="inscribed-zones" select="tokenize($tokens[42], '\$')"/>
                                                         <xsl:for-each select="$lines-zones">
                                                             <xsl:element name="layout">
-                                                                <p>Zone <xsl:value-of select="substring-before(., ':')"/> contains <xsl:value-of select="substring-after(., ':')"/> lines. <xsl:if test="substring-before(., ':') = substring-before($inscribed-zones, ':')"><dimensions type="inscribed" unit="cm">
-                                                                    <height><xsl:value-of select="substring-before(substring-after($inscribed-zones, ':'), 'x')"/></height>
-                                                                    <width><xsl:value-of select="substring-after(substring-after($inscribed-zones, ':'), 'x')"/></width>
-                                                                </dimensions></xsl:if></p>
-                                                            </xsl:element>
-                                                        </xsl:for-each>
+                                                                <xsl:attribute name="writtenLines"><xsl:value-of select="substring-after(., ':')"/></xsl:attribute>
+                                                                <p>Zone <xsl:value-of select="substring-before(., ':')"/> has <xsl:value-of select="substring-after(., ':')"/> lines.</p></xsl:element></xsl:for-each>
+                                                                    
+                                                                    
+                                                        <xsl:variable name="inscribed-zones" select="tokenize($tokens[42], '\$')"/>
+                                                        <xsl:for-each select="$inscribed-zones">
+                                                            <xsl:element name="layout">
+                                                                <p><xsl:value-of select="substring-before(., ':')"/> is inscribed on <xsl:value-of select="substring-after(normalize-space(.), ':')"/> cm.</p></xsl:element></xsl:for-each>
+                                                                    <!--Zone <xsl:value-of select="substring-before($lines-zones/., ':')"/> contains <xsl:value-of select="substring-after($lines-zones, ':')"/> lines. <xsl:if test="substring-before($lines-zones, ':') = substring-before($inscribed-zones, ':')"><dimensions type="inscribed" unit="cm">
+                                                                    <height><xsl:value-of select="substring-before(substring-after($inscribed-zones[1], ':'), 'x')"/></height>
+                                                                    <width><xsl:value-of select="substring-after(substring-after($inscribed-zones[2], ':'), 'x')"/></width>
+                                                                </dimensions></xsl:if>-->
                                                     </xsl:if>
                                                 </xsl:if>
                                             </layoutDesc>
@@ -247,7 +255,8 @@
                                 </xsl:if>
                             </profileDesc>
                         </line>
-                    </xsl:if>
+                    </xsl:otherwise>
+                </xsl:choose>
                 </xsl:for-each>  
             
         </xsl:variable>
