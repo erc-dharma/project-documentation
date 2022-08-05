@@ -8,15 +8,18 @@
    <!-- Called from htm-tpl-structure.xsl -->
 
    <xsl:template name="dharma-body-structure">
+     <xsl:variable name="metadata-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/temporary/mdt_texts.xml')"/>
+     <xsl:variable name="idfile" select="substring-after(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1], 'DHARMA_')"/>
      <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
                 <xsl:element name="div">
               <xsl:attribute name="id">metadatadiv</xsl:attribute>
             <h2>Metadata</h2>
+                  <xsl:element name="p">
                   <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     Current Version: 
                   </xsl:element>
-                  <xsl:element name="p">
+                  
                   <!--<xsl:choose>
                     <xsl:when test="//t:fileDesc/following-sibling::t:revisionDesc">
                       <xsl:if test="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status">
@@ -30,59 +33,125 @@
                   <xsl:text>, </xsl:text>
                   <xsl:value-of select="current-date()"/>
                   </xsl:element>
+                  <xsl:if test="//t:sourceDesc/t:biblFull/t:editionStmt/t:p">
+                    <xsl:element name="p">
+                      <xsl:element name="span">
+                      <xsl:attribute name="class">font-weight-bold</xsl:attribute><xsl:text>First edition of the file: </xsl:text>
+                    </xsl:element>
+                      <xsl:apply-templates select="//t:sourceDesc/t:biblFull/t:editionStmt/t:p"/>
+                    </xsl:element>
+                  </xsl:if>
+                  <xsl:element name="p">
                   <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     Editors:  
                   </xsl:element>
-                  <xsl:element name="p">
+                  
                     <xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>
                   </xsl:element>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
+              <xsl:element name="p">
               <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                Identifier: 
+                DHARMA Identifier: 
               </xsl:element>
-            <xsl:element name="p">
             <xsl:value-of select="replace(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
-               <xsl:if test="//t:msContents//t:summary/text()">
-                 <xsl:element name="span">
-                   <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                   Summary: </xsl:element>
-                 <xsl:element name="p">
-                  <xsl:apply-templates select="//t:msContents/t:summary"/>
+                  
+                  <xsl:if test="//t:msContents//t:summary/text()">
+                    <xsl:element name="p">
+                    <xsl:element name="span">
+                      <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                      Summary: </xsl:element>
+                   
+                      <xsl:apply-templates select="//t:msContents/t:summary"/>
+                    </xsl:element>
+                  </xsl:if>
+                  <xsl:if test="//t:handDesc//text()">
+                    <xsl:element name="p"><xsl:element name="span">
+                      <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                      Hands: </xsl:element>
+                    <xsl:choose>
+                      <xsl:when test="//t:handDesc/t:handNote/t:p">
+                        <xsl:for-each select="//t:handDesc/t:handNote/t:p">
+                            <xsl:apply-templates/>
+                        </xsl:for-each>
+                        <xsl:apply-templates select="//t:handDesc/t:handNote/t:p"/>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:for-each select="//t:handDesc/t:p">
+                            <xsl:apply-templates/>                    
+                        </xsl:for-each>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    </xsl:element>
+                  </xsl:if>
+                  <hr/>
+                  <h3>Additional Metadata</h3>
+                  <xsl:choose>
+                    <xsl:when test="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]">
+                      <xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Origin: </xsl:element>
+                      <xsl:apply-templates select="$metadata-file//line[msIdentifier[substring-before(idno, '_') = $idfile]]//history/origin/p"/>
+                      </xsl:element>
+                      
+                    </xsl:when>
+                    <xsl:when test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]">
+                      
+                      <xsl:element name="p">
+                      <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        Alternative identifier: </xsl:element>
+                      <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msIdentifier/altIdentifier/idno"/>
+                      </xsl:element>
+                      <xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Origin: </xsl:element>
+                      <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//history/origin/p"/>
+                      </xsl:element>
+                      <xsl:element name="p">
+                      <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        Classification: </xsl:element>
+                      <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/replace(substring-after(@class, '#'), '_', ' ')"/>
+                      </xsl:element>
+                      <xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Main Langue: </xsl:element>
+                        <xsl:call-template name="language-tpl">
+                          <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"/>
+                        </xsl:call-template>
+                      </xsl:element>
+                      <xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Corresponding Artefact: </xsl:element>
+                        <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"/> <xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/>
+                      </xsl:element>
+                      <xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Layout: </xsl:element>
+                        <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/@writtenLines"/> <xsl:text> lines are observed/preserved on the artifact.</xsl:text><xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions">
+                          <xsl:value-of select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions/@type"/>
+                          <xsl:text> on </xsl:text>
+                          <xsl:value-of select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions/height"/>
+                          <xsl:text>x</xsl:text>
+                          <xsl:value-of select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions/widht"/>
+                          <xsl:text>cm.</xsl:text>
+                        </xsl:if>
+                      </xsl:element>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:element name="p">No metadata were provided in the table for this inscription</xsl:element></xsl:otherwise>
+                  </xsl:choose>
                 </xsl:element>
-               </xsl:if>
-               <xsl:if test="//t:handDesc//text()">
-                 <xsl:element name="span">
-                   <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                   Hands: </xsl:element>
-                 <xsl:choose>
-                   <xsl:when test="//t:handDesc/t:handNote/t:p">
-                     <xsl:for-each select="//t:handDesc/t:handNote/t:p">
-                       <p>
-                     <xsl:apply-templates/>
-                   </p>
-                   </xsl:for-each>
-                    <xsl:apply-templates select="//t:handDesc/t:handNote/t:p"/>
-                   </xsl:when>
-                   <xsl:otherwise>
-                     <xsl:for-each select="//t:handDesc/t:p">
-                       <p>
-                     <xsl:apply-templates/>
-                   </p>
-                   </xsl:for-each>
-                     </xsl:otherwise>
-                 </xsl:choose>
-               </xsl:if>
-               <xsl:if test="//t:sourceDesc/t:biblFull/t:editionStmt/t:p">
-                 <xsl:element name="span">
-                   <xsl:attribute name="class">font-weight-bold</xsl:attribute><xsl:text>First edition of the file: </xsl:text>
-                 </xsl:element>
-                 <xsl:apply-templates select="//t:sourceDesc/t:biblFull/t:editionStmt/t:p"/>
-               </xsl:if>
-          </xsl:element>
+                        
           <xsl:variable name="maintxt">
             <xsl:apply-templates/>
          </xsl:variable>
@@ -316,5 +385,88 @@
         </xsl:element>
       </xsl:element>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template name="language-tpl">
+    <xsl:param name="language"/>
+    <xsl:if test="$language !=''">
+      <xsl:choose>
+        <xsl:when test="$language = 'ara'">
+          <xsl:text>Arabic</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains($language, 'ban')">
+          <xsl:text>Balinese</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains($language, 'btk')">
+          <xsl:text>Batak</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'mya'">
+          <xsl:text>Modern Burmese</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'obr'">
+          <xsl:text>Old Burmese</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'cjm' or $language = 'cja'">
+          <xsl:text>Modern Cham</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'ocm'">
+          <xsl:text>Old Cham</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'ind'">
+          <xsl:text>Indonesian</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains($language, 'kan')">
+          <xsl:text>Kannada</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'xhm'">
+          <xsl:text>Middle Khmer</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'khm'">
+          <xsl:text>Modern Khmer</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'okz'">
+          <xsl:text>Old Khmer</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'zlm'">
+          <xsl:text>Middle Malay</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'omy'">
+          <xsl:text>Old Malay</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'omx'">
+          <xsl:text>Old Mon</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'pli'">
+          <xsl:text>Pali</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'pra'">
+          <xsl:text>Prakrit</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'pyx'">
+          <xsl:text>Pyu</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'san'">
+          <xsl:text>Sanskrit</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'sas'">
+          <xsl:text>Sasak</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'osn'">
+          <xsl:text>Old Sundanese</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'tgl'">
+          <xsl:text>Tagalog</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'tam'">
+          <xsl:text>Tamil</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'tel'">
+          <xsl:text>Telugu</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'vie'">
+          <xsl:text>Vietnamese</xsl:text>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:if>
   </xsl:template>
    </xsl:stylesheet>
