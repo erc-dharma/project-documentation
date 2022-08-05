@@ -16,6 +16,7 @@
                 <xsl:attribute name="data-spy">scroll</xsl:attribute>
                 <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
+                <xsl:call-template name="table-contents"/>
                 <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
@@ -32,10 +33,239 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="listPerson">
+        <xsl:element name="div">
+            <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-4</xsl:attribute>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:value-of select="person/@xml:id"/>
+                    <br/>
+                    <xsl:value-of select="person/persName[1]"/>
+                </xsl:element>           
+            </xsl:element>
+            <xsl:element name="div">
+                <xsl:attribute name="class">col-8</xsl:attribute>
+                
+                <xsl:for-each select="person/persName">
+                    <xsl:element name="p">
+                        <xsl:value-of select="."/>
+                    </xsl:element>
+                </xsl:for-each>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        role: 
+                    </xsl:element>
+                    <xsl:value-of select="person/persName/@role"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        sex: 
+                    </xsl:element>
+                    <xsl:value-of select="person/@sex"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        occupation: 
+                    </xsl:element>
+                    <xsl:value-of select="person/occupation"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        birth: 
+                    </xsl:element>
+                    <xsl:value-of select="person/birth"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        death: 
+                    </xsl:element>
+                    <xsl:value-of select="person/death"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        floruit: 
+                    </xsl:element>
+                    <xsl:value-of select="person/floruit"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        bibliography: 
+                    </xsl:element>
+                    <xsl:apply-templates select="person/listBibl/bibl"/>
+                </xsl:element>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        relationships: 
+                    </xsl:element>
+                    <xsl:apply-templates select="listRelation/relation"/>
+                </xsl:element>
+            </xsl:element>                  
+        </xsl:element>
+        <hr/>
+    </xsl:template>
+    
+    <xsl:template match="relation">
+        <xsl:variable name="metadata-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-authorities/main/temporary/DHARMA_persons.xml')"/>
+        <xsl:variable name="active-person" select="@active"/>
+        <xsl:variable name="passive-person" select="@passive"/>
+        <xsl:for-each select=".">
+            <br/>
+            <xsl:value-of select="$metadata-file//listPerson/person[@xml:id = $active-person]/persName"/>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="@name"/>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="$metadata-file//listPerson/person[@xml:id = $passive-person]/persName"/>
+            
+        </xsl:for-each>
+    </xsl:template>
+    
+    <xsl:template match="bibl">
+        <xsl:choose>
+            <xsl:when test=".[ptr]">
+                <xsl:variable name="biblentry" select="replace(substring-after(./ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
+                <xsl:variable name="zoteroapijson">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                </xsl:variable>
+                
+                    <xsl:analyze-string select="unparsed-text($zoteroapijson)"
+                        regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(2)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                
+                        <!--<xsl:copy-of
+                            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-->
+                
+                   
+                <xsl:if test="citedRange"> 
+                    <xsl:for-each select="citedRange">
+                        <xsl:call-template name="citedRange-unit"/>
+                        <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                        <xsl:if test="following-sibling::citedRange[1]">
+                            <xsl:text>, </xsl:text>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:if>
+            </xsl:when>
+            <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>		
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template name="citedRange-unit">
+        <xsl:variable name="CurPosition" select="position()"/>
+        <xsl:variable name="unit-value">
+            <xsl:choose>
+                <xsl:when test="@unit='page' and following-sibling::tei:citedRange[1]">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>page </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="@unit='part'">
+                    <xsl:text>part </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='volume'">
+                    <xsl:text>volume </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='note'">
+                    <xsl:text>note </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='item'">
+                    <xsl:text>&#8470; </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='entry'">
+                    <xsl:text>s.v. </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='figure'">
+                    <xsl:text>figure </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='plate'">
+                    <xsl:text>plate </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='table'">
+                    <xsl:text>table </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='appendix'">
+                    <xsl:text>appendix </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='line'">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>lines </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>lines </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>line </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="@unit='section'">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>§§</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>§</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <!-- <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[\-]+')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>page </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise> -->
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$CurPosition = 1 and not(ancestor::tei:p or ancestor::tei:note)">
+                <xsl:value-of select="concat(upper-case(substring($unit-value,1,1)), substring($unit-value, 2),' '[not(last())] )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$unit-value"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
     <xsl:template name="dharma-head">
         <head>
             <title>
-                <xsl:value-of select="H1"/>
+                DHARMA Person Authority List
             </title>
             
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -47,8 +277,6 @@
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/sii/sii-css.css"></link>
                 <!--<link rel="stylesheet" href="../sii/sii-css.css"></link>-->
-                
-                
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
@@ -143,9 +371,36 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <!-- loader sii -->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/sii/sii-loader.js"></script>
+        <!-- loader  -->
+        <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
         
+    </xsl:template>
+    
+    <!-- side bar - table of contents -->
+    <xsl:template name="table-contents">
+        <xsl:element name="div">
+            <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>
+            <xsl:element name="nav">
+                <xsl:attribute name="id">myScrollspy</xsl:attribute>
+                <xsl:element name="ul">
+                    <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
+                    <xsl:for-each select="listPerson/person">
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link text-align-justify</xsl:attribute>
+                                <xsl:attribute name="href">
+                                    <xsl:text>#</xsl:text>
+                                    <xsl:value-of select="generate-id()"/>
+                                </xsl:attribute>
+                                <xsl:value-of select="@xml:id"/>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
     </xsl:template>
     
 </xsl:stylesheet>
