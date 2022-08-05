@@ -18,18 +18,6 @@
         
     </xsl:function>
     
-   <!-- <xsl:variable name="vAllowed" select=
-        "concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'aābcdefghḥiījklmnṅñṇopqrr̥ṣstuvwxyz',
-        '0123456789.,-')"/>
-    <xsl:variable name="vSpaces" select="'                                        '"/>-->
-
-    
-<!--    <xsl:template match="*[not(text()[3])]/text()">
-        <xsl:value-of select=
-            "normalize-space(translate(., translate(.,$vAllowed,''), $vSpaces))"/>
-    </xsl:template>
--->    
-    
     <xsl:template match="text()">        
         <xsl:if test="matches(., '^\s') and not(matches(., '^\s+$'))">
                <xsl:text> </xsl:text>
