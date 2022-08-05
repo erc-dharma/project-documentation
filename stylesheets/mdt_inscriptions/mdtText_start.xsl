@@ -139,9 +139,10 @@
                                                     <xsl:for-each select="$sources">
                                                         <bibl><xsl:element name="ptr">
                                                             <xsl:attribute name="target">
-                                                                <xsl:text>bib:</xsl:text><xsl:apply-templates select="."/>
+                                                                <xsl:text>bib:</xsl:text><xsl:apply-templates select="substring-before(., ':')"/>
                                                             </xsl:attribute>
-                                                        </xsl:element></bibl>
+                                                        </xsl:element>
+                                                            <citedRange><xsl:value-of select="substring-after(., ':')"/></citedRange></bibl>
                                                     </xsl:for-each>
                                                 </listBibl>
                                             </xsl:if>
@@ -151,9 +152,10 @@
                                                     <xsl:for-each select="$biblio">
                                                         <bibl><xsl:element name="ptr">
                                                             <xsl:attribute name="target">
-                                                                <xsl:text>bib:</xsl:text><xsl:apply-templates select="."/>
+                                                                <xsl:text>bib:</xsl:text><xsl:apply-templates select="substring-before(., ':')"/>
                                                             </xsl:attribute>
-                                                        </xsl:element></bibl>
+                                                        </xsl:element>
+                                                            <citedRange><xsl:value-of select="substring-after(., ':')"/></citedRange></bibl>
                                                     </xsl:for-each>
                                                 </listBibl>
                                             </xsl:if>
@@ -216,6 +218,15 @@
                                     </history>
                                     <xsl:if test="$tokens[58] != '' or $tokens[59] != ''">
                                         <additional>
+                                            <adminInfo>
+                                                <recordHist>
+                                                    <xsl:value-of select="$tokens[55]"/>
+                                                </recordHist>
+                                                <availability>
+                                                    <p><xsl:value-of select="$tokens[56]"/></p>
+                                                    <licence><xsl:value-of select="$tokens[57]"/></licence>
+                                                </availability>
+                                            </adminInfo>
                                             <surrogates>
                                                 <xsl:variable name="estampes" select="tokenize($tokens[58], '\$')"/>
                                                 <xsl:variable name="photos" select="tokenize($tokens[59], '\$')"/>
@@ -223,7 +234,8 @@
                                                     <bibl>
                                                         <xsl:element name="ptr">
                                                             <xsl:attribute name="target">
-                                                                <xsl:text>sur:</xsl:text><xsl:apply-templates select="."/>
+                                                                <xsl:text>sur:</xsl:text>
+                                                                <xsl:value-of select="."/>
                                                             </xsl:attribute>
                                                         </xsl:element>
                                                     </bibl>
@@ -232,7 +244,8 @@
                                                     <bibl>
                                                         <xsl:element name="ptr">
                                                             <xsl:attribute name="target">
-                                                                <xsl:text>dig:</xsl:text><xsl:apply-templates select="."/>
+                                                                <xsl:text>dig:</xsl:text>
+                                                                <xsl:value-of select="."/>
                                                             </xsl:attribute>
                                                         </xsl:element>
                                                     </bibl>
