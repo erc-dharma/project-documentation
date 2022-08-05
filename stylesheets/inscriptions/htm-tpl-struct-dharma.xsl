@@ -91,12 +91,56 @@
                   <h3>Additional Metadata</h3>
                   <xsl:choose>
                     <xsl:when test="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]">
-                      <xsl:element name="p">
-                        <xsl:element name="span">
-                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                          Origin: </xsl:element>
-                      <xsl:apply-templates select="$metadata-file//line[msIdentifier[substring-before(idno, '_') = $idfile]]//history/origin/p"/>
-                      </xsl:element>
+                      <xsl:variable name="secondid" select="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]/idno"/>
+                      
+                      <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $secondid]]"> 
+                        <xsl:element name="p">
+                          <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            Alternative identifier: </xsl:element>
+                          <xsl:apply-templates select=".//msIdentifier/altIdentifier/idno"/>
+                        </xsl:element>
+                        <xsl:element name="p">
+                          <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            Origin: </xsl:element>
+                          <xsl:apply-templates select=".//history/origin/p"/>
+                        </xsl:element>
+                        <xsl:element name="p">
+                          <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            Classification: </xsl:element>
+                          <xsl:apply-templates select=".//msContents/msItem/replace(substring-after(@class, '#'), '_', ' ')"/>
+                        </xsl:element>
+                        <xsl:element name="p">
+                          <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            Main Langue: </xsl:element>
+                          <xsl:call-template name="language-tpl">
+                            <xsl:with-param name="language" select=".//msContents/msItem/textLang/@mainLang"/>
+                          </xsl:call-template>
+                        </xsl:element>
+                        <xsl:element name="p">
+                          <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            Corresponding Artefact: </xsl:element>
+                          <xsl:apply-templates select=".//physDesc/objectDesc/@corresp"/> <xsl:text> inscription on </xsl:text><xsl:apply-templates select=".//physDesc/objectDesc/supportDesc/p"/>
+                        </xsl:element>
+                        <xsl:element name="p">
+                          <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            Layout: </xsl:element>
+                          <xsl:apply-templates select=".//physDesc/objectDesc/layoutDesc/layout/@writtenLines"/> <xsl:text> lines are observed/preserved on the artifact.</xsl:text><xsl:if test=".//physDesc/objectDesc/layoutDesc/layout/dimensions">
+                            <xsl:value-of select=".//physDesc/objectDesc/layoutDesc/layout/dimensions/@type"/>
+                            <xsl:text> on </xsl:text>
+                            <xsl:value-of select=".//physDesc/objectDesc/layoutDesc/layout/dimensions/height"/>
+                            <xsl:text>x</xsl:text>
+                            <xsl:value-of select=".//physDesc/objectDesc/layoutDesc/layout/dimensions/widht"/>
+                            <xsl:text>cm.</xsl:text>
+                          </xsl:if>
+                        </xsl:element>
+                        <hr/>
+                      </xsl:for-each>
                       
                     </xsl:when>
                     <xsl:when test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]">
