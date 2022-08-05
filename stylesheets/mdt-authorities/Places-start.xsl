@@ -51,21 +51,34 @@
         <xsl:element name="div">
             <xsl:attribute name="class">col-8</xsl:attribute>
             
-            <xsl:for-each select="placeName">
+            
                 <xsl:element name="p">
-                <xsl:value-of select="."/>
+                    <xsl:value-of select="placeName[1]"/>
             </xsl:element>
-            </xsl:for-each>
             <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    country: 
+                </xsl:element>
                 <xsl:value-of select="country"/>
             </xsl:element>
             <xsl:for-each select="region">
                 <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        <xsl:value-of select="@type"/>
+                        <xsl:text>: </xsl:text>
+                    </xsl:element>
                     <xsl:value-of select="."/>
                 </xsl:element>
             </xsl:for-each>
             <xsl:for-each select="settlement">
                 <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        <xsl:value-of select="@type"/>
+                        <xsl:text>: </xsl:text>
+                    </xsl:element>
                     <xsl:value-of select="."/>
                 </xsl:element>
             </xsl:for-each>
@@ -74,40 +87,31 @@
                 <xsl:value-of select="location/height"/>
             </xsl:element>
             <xsl:for-each select="note/ab">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:value-of select="@type"/>
+                    <xsl:text>: </xsl:text>
+                </xsl:element>
                 <xsl:apply-templates select="."/>
+                <br/>
             </xsl:for-each>
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    bibliography: 
+                </xsl:element>
+                <xsl:apply-templates select="listBibl/bibl"/>
+            </xsl:element>
         </xsl:element>
            
         </xsl:element>
         <hr/>
     </xsl:template>
-    <!-- 
-    <place xml:id="PLC00001" type="">
-         <placeName xml:lang="tam" xml:id="n1">Tiruvālaṅkāṭu</placeName>
-         <placeName type="normalized" corresp="#n1">Tiruvalangadu</placeName>
-         <state type="existence" notBefore=""/>
-         <country>India</country>
-         <region type="state"/>
-         <region type="province"/>
-         <region type="district">Ceṅkalpaṭṭu</region>
-         <region type="subdistrict">Tiruttaṇi</region>
-         <settlement type="city-village"/>
-         <settlement type="hamlet"/>
-         <settlement type="site"/>
-         <location>
-            <geo> </geo>
-            <height/>
-         </location>
-         <listBibl/>
-         <note>
-            <ab type="history"/>
-            <ab type="history"/>
-         </note>
-      </place>-->
+
     <xsl:template name="dharma-head">
         <head>
             <title>
-                <xsl:value-of select="H1"/>
+                DHARMA Place Authority List
             </title>
             
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -245,6 +249,136 @@
                 </xsl:element>
             </xsl:element>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="citedRange-unit">
+        <xsl:variable name="CurPosition" select="position()"/>
+        <xsl:variable name="unit-value">
+            <xsl:choose>
+                <xsl:when test="@unit='page' and following-sibling::tei:citedRange[1]">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>page </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="@unit='part'">
+                    <xsl:text>part </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='volume'">
+                    <xsl:text>volume </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='note'">
+                    <xsl:text>note </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='item'">
+                    <xsl:text>&#8470; </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='entry'">
+                    <xsl:text>s.v. </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='figure'">
+                    <xsl:text>figure </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='plate'">
+                    <xsl:text>plate </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='table'">
+                    <xsl:text>table </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='appendix'">
+                    <xsl:text>appendix </xsl:text>
+                </xsl:when>
+                <xsl:when test="@unit='line'">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>lines </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>lines </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>line </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:when test="@unit='section'">
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[–\-]+')">
+                            <xsl:text>§§</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>§</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <!-- <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="matches(., '[\-]+')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="matches(., ',')">
+                            <xsl:text>pages </xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>page </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise> -->
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$CurPosition = 1 and not(ancestor::tei:p or ancestor::tei:note)">
+                <xsl:value-of select="concat(upper-case(substring($unit-value,1,1)), substring($unit-value, 2),' '[not(last())] )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$unit-value"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="bibl">
+        <xsl:choose>
+            <xsl:when test=".[ptr]">
+                <xsl:variable name="biblentry" select="replace(substring-after(./ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
+                <xsl:variable name="zoteroapijson">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                </xsl:variable>
+                
+                <xsl:analyze-string select="unparsed-text($zoteroapijson)"
+                    regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                    <xsl:matching-substring>
+                        <xsl:value-of select="regex-group(2)"/>
+                    </xsl:matching-substring>
+                </xsl:analyze-string>
+                
+                <!--<xsl:copy-of
+                            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-->
+                
+                
+                <xsl:if test="citedRange"> 
+                    <xsl:for-each select="citedRange">
+                        <xsl:call-template name="citedRange-unit"/>
+                        <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                        <xsl:if test="following-sibling::citedRange[1]">
+                            <xsl:text>, </xsl:text>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:if>
+            </xsl:when>
+            <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>		
+        </xsl:choose>
     </xsl:template>
 
 
