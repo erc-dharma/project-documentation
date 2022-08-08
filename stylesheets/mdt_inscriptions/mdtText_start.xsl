@@ -43,6 +43,29 @@
                         <xsl:when test="$tokens[1] = '0'"/>
                     <xsl:otherwise>
                         <line>
+                            <fileDesc>
+                                <titleStmt>
+                                    <title>Metadata elements for <xsl:value-of select="$tokens[3]"/></title>
+                                </titleStmt>
+                                <editionStmt>
+                                    <p>Metadata originated from <xsl:value-of select="$tokens[4]"/></p>
+                                </editionStmt>
+                                <publicationStmt>
+                                    <authority>DHARMA</authority>
+                                    <pubPlace>Paris</pubPlace>
+                                    <idno type="filename">DHARMA_mdt_<xsl:value-of select="$tokens[3]"/></idno>
+                                    <availability>
+                                        <licence target="https://creativecommons.org/licenses/by/4.0/">
+                                            <p>This work is licensed under the Creative Commons Attribution 4.0 Unported
+                                                Licence. To view a copy of the licence, visit
+                                                https://creativecommons.org/licenses/by/4.0/ or send a letter to
+                                                Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+                                                California, 94041, USA.</p>
+                                            <p>Copyright (c) 2019-2025 by DHARMA.</p>
+                                        </licence>
+                                    </availability>
+                                    <date from="2019" to="2025">2019-2025</date>
+                                </publicationStmt>
                             <sourceDesc>
                                 <msDesc>
                                     <msIdentifier>
@@ -255,6 +278,7 @@
                                     </xsl:if>
                                 </msDesc>
                             </sourceDesc>
+                            </fileDesc>
                             <profileDesc>
                                 <xsl:if test="$tokens[54] != ''">
                                     <textClass>
@@ -267,6 +291,32 @@
                                     </textClass>
                                 </xsl:if>
                             </profileDesc>
+                            <revisionDesc>
+                                <xsl:element name="change">
+                                    <xsl:variable name="reviewers" as="xs:string*" select="tokenize($tokens[9], '\$')"/>
+                                    <xsl:attribute name="when"><xsl:value-of select="$tokens[10]"/></xsl:attribute>
+                                    <xsl:attribute name="who">
+                                        <xsl:for-each select="$reviewers">part:<xsl:value-of select="."/> </xsl:for-each>
+                                    </xsl:attribute>
+                                    Reviews of medadata
+                                </xsl:element>
+                                <xsl:element name="change">
+                                    <xsl:variable name="contributors" as="xs:string*" select="tokenize($tokens[8], '\$')"/>
+                                    <xsl:attribute name="when"><xsl:value-of select="$tokens[7]"/></xsl:attribute>
+                                    <xsl:attribute name="who">
+                                        <xsl:for-each select="$contributors">part:<xsl:value-of select="."/> </xsl:for-each>
+                                    </xsl:attribute>
+                                    Additions made in medadata
+                                </xsl:element>
+                                <xsl:element name="change">
+                                    <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[6], '\$')"/>
+                                    <xsl:attribute name="when"><xsl:value-of select="$tokens[5]"/></xsl:attribute>
+                                    <xsl:attribute name="who">
+                                        <xsl:for-each select="$editors">part:<xsl:value-of select="."/> </xsl:for-each>
+                                    </xsl:attribute>
+                                    import of medadata
+                                </xsl:element>
+                            </revisionDesc>
                         </line>
                     </xsl:otherwise>
                 </xsl:choose>
