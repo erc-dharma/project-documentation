@@ -322,7 +322,7 @@
                    </xsl:element>
                </xsl:if>
             <xsl:element name="div">
-                <xsl:attribute name="class">col-8 text-col</xsl:attribute>
+                <xsl:attribute name="class">col-9 text-col</xsl:attribute>
                 <xsl:element name="p">
                     <xsl:if test="@xml:id">
                         <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
@@ -1649,15 +1649,10 @@
 
     <xsl:template match="tei:listApp[@type='parallels']">
             <xsl:element name="div">
-            <xsl:attribute name="class">parallels
-             <xsl:choose>
-                 <xsl:when test="ancestor::tei:p | ancestor::tei:ab"/>
-                 <xsl:otherwise>
-                     <xsl:text>col-9</xsl:text>
-                 </xsl:otherwise>
-             </xsl:choose>
-            </xsl:attribute>
-        <xsl:if test="descendant::tei:note">
+            <xsl:attribute name="class">row</xsl:attribute>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">text col-9</xsl:attribute>
+                    <xsl:if test="descendant::tei:note">
                 <xsl:element name="a">
                     <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
                     <xsl:attribute name="data-toggle">collapse</xsl:attribute>
@@ -1680,6 +1675,7 @@
                     </xsl:element>
                 </xsl:element>
         </xsl:if>
+       </xsl:element>
                 <!--<xsl:element name="div">
                     <xsl:attribute name="class">card h-80</xsl:attribute>
                     <xsl:element name="div">
@@ -1708,7 +1704,9 @@
                     </xsl:element>
                 </xsl:element>-->
 
-        </xsl:element></xsl:template>
+        </xsl:element>
+        <br/>
+    </xsl:template>
 
     <!--  listBibl -->
     <!-- Must be reworked -->
@@ -2840,12 +2838,19 @@
                         <xsl:text> </xsl:text>
                     </xsl:element>
                 </xsl:when>
+                <xsl:when test="@reason='implied'">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">implied</xsl:attribute>
+                        <xsl:text> </xsl:text>
+                    </xsl:element>
+                </xsl:when>
                 <xsl:otherwise>
                     <xsl:apply-templates/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
     </xsl:template>
+    
     <!--  surplus ! -->
     <xsl:template match="tei:surplus">
         <xsl:element name="span">
