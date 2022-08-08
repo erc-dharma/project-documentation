@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE artefactMetadataTemplate SYSTEM "DHARMA_mdt_artefactDTD.dtd"[]>
+<artefactMetadataTemplate>
+<resourceManagement>
+	<resourceID digitalID=""></resourceID>
+	<metadataOrigin></metadataOrigin>
+	<metadataEditor>
+		<creation who="" when=""/>
+	</metadataEditor>
+	<metadataContribution>
+		<change who="" when="" status=""></change>
+		<metadataReview who="" when=""/>
+	</metadataContribution>
+	<project></project>
+	<corpus></corpus>
+	<metadataRights target=""><p></p></metadataRights>
+</resourceManagement>
+<artefactDescription>
+  <artefactID idno=""></artefactID>
+  <compositeArtefactID idno=""/>
+  <material ref="" value=""/>
+  <artefactType ref="" value=""/>
+  <decoDesc>
+		<decoration ref="" value=""/>
+    <decorationRemarks><p></p></decorationRemarks>
+  </decoDesc>
+  <artefactFormat>
+    <height unit=""></height>
+    <width unit=""></width>
+    <diameter unit=""></diameter>
+    <circumference unit=""></circumference>
+  </artefactFormat>
+	<lettering>
+		<letteringTechnique ref="" value=""/>
+		<textHeight unit=""></textHeight>
+		<textWidth unit=""></textWidth>
+		<linesNumber></linesNumber>
+		<glyphHeight unit=""></glyphHeight>
+		<glyphWidth unit=""></glyphWidth>
+		<letteringRemarks><p></p></letteringRemarks>
+	</lettering>
+	<copperplateFormat><!-- description of a single copper-plate, the set is describded in separate file for composite artefact -->
+		<copperplateWeight unit=""></copperplateWeight>
+		<copperplateWeightOther></copperplateWeightOther>
+		<bindingHole number=""/>
+		<sealPreservation value=""/><!-- only if the seal is on the copper-plate -->
+		<sealingTechnique ref="" value=""/>
+		<sealHeight unit=""></sealHeight>
+		<sealWidth unit=""></sealWidth>
+	</copperplateFormat>
+	<condition ref="" value=""/>
+	<artefactHistory type="" when=""><p></p></artefactHistory>
+	<originPlace>
+		<originPlaceName></originPlaceName>
+		<originPlaceID idno=""/>
+		<originPlaceRemarks><p></p></originPlaceRemarks>
+	</originPlace>
+	<discoveryPlace>
+		<discoveryPlaceName></discoveryPlaceName>
+		<discoveryPlaceID idno=""/>
+		<discoveryCoordinates></discoveryCoordinates>
+		<discoveryEvents when="" type=""><p></p></discoveryEvents>
+	</discoveryPlace>
+	<preservationPlace>
+		<preservationPlaceName></preservationPlaceName>
+		<inventoryNumber></inventoryNumber>
+		<preservationPlaceID idno=""/>
+		<preservationCoordinates></preservationCoordinates>
+		<inSituStatus value=""/>
+		<preservationEvents when="" type=""><p></p></preservationEvents>
+	</preservationPlace>
+	<artefactRights>
+		<governmentalHolder></governmentalHolder>
+		<institutionalHolder></institutionalHolder>
+		<artefactDistributionRights target=""/>
+	</artefactRights>
+	<relatedResources>
+		<textID idno=""/>
+		<surrogateID idno=""/>
+		<imageID idno=""/>
+	</relatedResources>
+</artefactDescription>
+</artefactMetadataTemplate>

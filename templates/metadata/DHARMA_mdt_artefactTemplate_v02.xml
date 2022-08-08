@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE artefactMetadataTemplate SYSTEM "DHARMA_mdt_artefactDTD.dtd">
+<artefactMetadataTemplate>
+<resourceManagement>
+	<resourceID digitalID=""/>
+	<metadataOrigin></metadataOrigin>
+	<metadataEditor>
+		<creation who="" when=""/><!-- may be repeated -->
+	</metadataEditor>
+	<metadataContribution>
+		<change who="" when="" status=""></change><!-- may be repeated -->
+	</metadataContribution>
+	<metadataReview who="" when=""/><!-- may be repeated -->
+	<project></project>
+	<corpus></corpus>
+	<metadataRights target=""/>
+</resourceManagement>
+<artefactDescription>
+  <artefactID idno=""/>
+  <compositeArtefactID idno=""/>
+  <material value=""/><!-- may be repeated -->
+  <artefactType value=""/><!-- may be repeated -->
+  <decoDesc>
+		<decoration value=""/><!-- may be repeated -->
+    <decorationRemarks><p></p></decorationRemarks>
+  </decoDesc>
+  <artefactFormat>
+    <height unit=""></height>
+    <width unit=""></width>
+    <diameter unit=""></diameter>
+    <circumference unit=""></circumference>
+  </artefactFormat>
+	<lettering>
+		<letteringTechnique value=""/>
+		<textHeight unit=""></textHeight>
+		<textWidth unit=""></textWidth>
+		<linesNumber></linesNumber>
+		<glyphHeight unit=""></glyphHeight>
+		<glyphWidth unit=""></glyphWidth>
+		<letteringRemarks><p></p></letteringRemarks>
+	</lettering>
+	<copperplateFormat>
+		<copperplateWeight unit=""></copperplateWeight>
+		<copperplateWeightOther unit=""></copperplateWeightOther>
+		<bindingHole number=""/>
+		<sealPreservation value=""/><!-- only if the seal is on the plate, in case of a set of copper-plates, all the information about the seal has to be describded at the composite artefact level -->
+		<sealingTechnique value=""/>
+		<sealHeight unit=""></sealHeight>
+		<sealWidth unit=""></sealWidth>
+	</copperplateFormat>
+	<condition value=""/>
+	<artefactHistory><p></p></artefactHistory>
+	<originPlace>
+		<originPlaceName></originPlaceName>
+		<originPlaceID idno=""/>
+		<originPlaceRemarks><p></p></originPlaceRemarks>
+	</originPlace>
+	<discoveryPlace>
+		<discoveryPlaceName></discoveryPlaceName>
+		<discoveryPlaceID idno=""/>
+		<discoveryCoordinates></discoveryCoordinates>
+		<discoveryEvents type="" when=""><p></p></discoveryEvents>
+	</discoveryPlace>
+	<preservationPlace>
+		<preservationPlaceName></preservationPlaceName>
+		<inventoryNumber></inventoryNumber><!-- may be repeated -->
+		<preservationPlaceID idno=""/>
+		<preservationCoordinates></preservationCoordinates>
+		<inSituStatus value=""/>
+		<preservationEvents when="" type=""><p></p></preservationEvents>
+	</preservationPlace>
+	<artefactRights>
+		<governmentalHolder></governmentalHolder>
+		<institutionalHolder></institutionalHolder>
+		<artefactDistributionRights target=""/>
+	</artefactRights>
+	<relatedResources>
+		<textID idno=""/><!-- may be repeated -->
+		<surrogateID idno=""/><!-- may be repeated -->
+		<imageID idno=""/><!-- may be repeated -->
+	</relatedResources>
+</artefactDescription>
+</artefactMetadataTemplate>

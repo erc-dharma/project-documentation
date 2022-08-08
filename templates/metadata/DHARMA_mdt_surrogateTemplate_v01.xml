@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE surrogateMetadataTemplate SYSTEM "DHARMA_mdt_surrogateDTD.dtd">
+<surrogateMetadataTemplate>
+<resourceManagement>
+	<resourceID digitalID=""/>
+	<metadataOrigin></metadataOrigin>
+	<metadataEditor>
+		<creation who="" when=""/><!-- may be repeated -->
+	</metadataEditor>
+	<metadataContribution>
+		<change who="" when="" status=""></change><!-- may be repeated -->
+	</metadataContribution>
+	<metadataReview who="" when=""/><!-- may be repeated -->
+	<project></project>
+	<corpus></corpus>
+	<metadataRights target=""/>
+</resourceManagement>
+<surrogateDescription>
+  <surrogateID idno=""/>
+  <surrogateType value=""/>
+  <material value=""/>
+  <surrogateCreator></surrogateCreator><!-- may be repeated -->
+	<surrogateCreationDate when=""></surrogateCreationDate>
+  <surrogateFormat>
+    <height unit=""></height>
+    <width unit=""></width>
+  	<linesNumber></linesNumber>
+		<partOfText></partOfText>
+  </surrogateFormat>
+	<estampageFormat>
+		<numberSheets></numberSheets>
+		<estampageTechnique value=""/>
+	</estampageFormat>
+	<surrogatePreservation>
+		<inventoryNumber></inventoryNumber><!-- may be repeated -->
+		<condition value=""/><!-- may be repeated -->
+		<surrogateLegends><p></p></surrogateLegends>
+		<surrogateCollection>
+			<collectionName></collectionName>
+			<collectionID idno=""/>
+		</surrogateCollection>
+		<surrogatePreservationPlace>
+			<preservationPlaceName></preservationPlaceName>
+			<preservationPlaceID idno=""/>
+			<preservationLocation></preservationLocation>
+			<boxLegend><p></p></boxLegend>
+		</surrogatePreservationPlace>
+	</surrogatePreservation>
+	<surrogateRights>
+		<governmentalHolder></governmentalHolder>
+		<institutionalHolder></institutionalHolder>
+		<surrogateDistributionRights target=""/>
+	</surrogateRights>
+	<relatedResources>
+		<textID idno=""/><!-- may be repeated -->
+		<artefactID idno=""/><!-- may be repeated -->
+		<surrogateID idno=""/><!-- may be repeated -->
+		<imageID idno=""/><!-- may be repeated -->
+	</relatedResources>
+</surrogateDescription>
+</surrogateMetadataTemplate>
