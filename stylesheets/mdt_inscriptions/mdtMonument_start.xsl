@@ -28,6 +28,43 @@
                     <xsl:element name="object">
                         <xsl:attribute name="xml:id"><xsl:value-of select="$tokens[13]"/></xsl:attribute>
                         <xsl:attribute name="type"><xsl:value-of select="$tokens[17]"/><xsl:if test="$tokens[18] != ''"><xsl:text> </xsl:text><xsl:value-of select="$tokens[18]"/></xsl:if></xsl:attribute>
+                        <resourceManagement>
+                            <resourceID><xsl:value-of select="$tokens[2]"/></resourceID>
+                            <metadataOrigin><xsl:value-of select="$tokens[3]"/></metadataOrigin>
+                            <metadataEditor>
+                                <xsl:element name="change">
+                                    <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[5], '\$')"/>
+                                    <xsl:attribute name="when"><xsl:value-of select="$tokens[4]"/></xsl:attribute>
+                                    <xsl:attribute name="who">
+                                        <xsl:for-each select="$editors">part:<xsl:value-of select="."/> </xsl:for-each>
+                                    </xsl:attribute>
+                                    import of medadata
+                                </xsl:element>
+                            </metadataEditor>
+                            <metadataContribution>
+                                <xsl:element name="change">
+                                    <xsl:variable name="contributors" as="xs:string*" select="tokenize($tokens[7], '\$')"/>
+                                    <xsl:attribute name="when"><xsl:value-of select="$tokens[6]"/></xsl:attribute>
+                                    <xsl:attribute name="who">
+                                        <xsl:for-each select="$contributors">part:<xsl:value-of select="."/> </xsl:for-each>
+                                    </xsl:attribute>
+                                    Contributions made in medadata
+                                </xsl:element>
+                            </metadataContribution>
+                            <metadataReview>
+                                <xsl:element name="change">
+                                    <xsl:variable name="reviewers" as="xs:string*" select="tokenize($tokens[8], '\$')"/>
+                                    <xsl:attribute name="when"><xsl:value-of select="$tokens[9]"/></xsl:attribute>
+                                    <xsl:attribute name="who">
+                                        <xsl:for-each select="$reviewers">part:<xsl:value-of select="."/> </xsl:for-each>
+                                    </xsl:attribute>
+                                    Reviews of medadata
+                                </xsl:element>
+                            </metadataReview>
+                            <project><xsl:value-of select="$tokens[10]"/></project>
+                            <corpus><xsl:value-of select="$tokens[11]"/></corpus>
+                            <metadataRights><xsl:value-of select="$tokens[12]"/></metadataRights>
+                        </resourceManagement>
                         <xsl:element name="objectIdentifier">
                             <xsl:element name="objectName">
                                 <xsl:attribute name="xml:lang">
