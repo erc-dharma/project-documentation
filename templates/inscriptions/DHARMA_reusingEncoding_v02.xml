@@ -51,7 +51,7 @@
                         <title><!--KEEP THE ORIGINAL TITLE--></title>
                         <!-- REPRODUCED THE PEOPLE INVOLVED IN THE FIRST PROJECT -->
                     </titleStmt>
-                    <editionStmt><p><!-- Add a description of this first edition in prose. Eventually add a lie toward the site or the original files. --></p></editionStmt>
+                    <editionStmt><p><!-- Add a description of this first edition in prose. Eventually add a link toward the site or the original files. --></p></editionStmt>
                     <publicationStmt>
                         <!-- Give the elements regarding their copyright – structured or in prose depending what have been chosen by the project. See the following example taken form Campa. Note that if you are reusing a file without those elements, contact the ingenieurs to help you create a correct reference. -->
                         <authority><!-- Keeping the original authority --></authority>
