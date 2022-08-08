@@ -24,6 +24,43 @@
             <xsl:if test="position() >= 6">
                 <line>
                     <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
+                    <resourceManagement>
+                        <resourceID><xsl:value-of select="$tokens[3]"/></resourceID>
+                        <metadataOrigin><xsl:value-of select="$tokens[4]"/></metadataOrigin>
+                        <metadataEditor>
+                            <xsl:element name="change">
+                                <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[6], '\$')"/>
+                                <xsl:attribute name="when"><xsl:value-of select="$tokens[5]"/></xsl:attribute>
+                                <xsl:attribute name="who">
+                                    <xsl:for-each select="$editors">part:<xsl:value-of select="."/> </xsl:for-each>
+                                </xsl:attribute>
+                                import of medadata
+                            </xsl:element>
+                        </metadataEditor>
+                        <metadataContribution>
+                            <xsl:element name="change">
+                                <xsl:variable name="contributors" as="xs:string*" select="tokenize($tokens[8], '\$')"/>
+                                <xsl:attribute name="when"><xsl:value-of select="$tokens[7]"/></xsl:attribute>
+                                <xsl:attribute name="who">
+                                    <xsl:for-each select="$contributors">part:<xsl:value-of select="."/> </xsl:for-each>
+                                </xsl:attribute>
+                                Contributions made in medadata
+                            </xsl:element>
+                        </metadataContribution>
+                        <metadataReview>
+                            <xsl:element name="change">
+                                <xsl:variable name="reviewers" as="xs:string*" select="tokenize($tokens[9], '\$')"/>
+                                <xsl:attribute name="when"><xsl:value-of select="$tokens[10]"/></xsl:attribute>
+                                <xsl:attribute name="who">
+                                    <xsl:for-each select="$reviewers">part:<xsl:value-of select="."/> </xsl:for-each>
+                                </xsl:attribute>
+                                Reviews of medadata
+                            </xsl:element>
+                        </metadataReview>
+                        <project><xsl:value-of select="$tokens[11]"/></project>
+                        <corpus><xsl:value-of select="$tokens[12]"/></corpus>
+                        <metadataRights><xsl:value-of select="$tokens[13]"/></metadataRights>
+                    </resourceManagement>
                     <surrogateDescription>
                         <surrogateID><xsl:value-of select="$tokens[14]"/></surrogateID>
                         <surrogateType><xsl:value-of select="$tokens[18]"/></surrogateType>
