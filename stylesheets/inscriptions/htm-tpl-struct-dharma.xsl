@@ -241,7 +241,7 @@
            <xsl:element name="div">
              <xsl:attribute name="class">edition-content col-10</xsl:attribute>
              <h1>
-               <xsl:value-of select="//t:teiHeader//t:title"/>
+               <xsl:value-of select="//t:teiHeader/t:fileDesc/t:titleStmt/t:title"/>
              </h1>
              <xsl:call-template name="dharma-body-structure"/>
            </xsl:element>
