@@ -346,7 +346,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownConv" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Authorities files
+              Authorities
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
@@ -449,10 +449,10 @@
         <xsl:when test="$language = 'ara'">
           <xsl:text>Arabic</xsl:text>
         </xsl:when>
-        <xsl:when test="contains($language, 'ban')">
+        <xsl:when test="$language = 'ban'">
           <xsl:text>Balinese</xsl:text>
         </xsl:when>
-        <xsl:when test="contains($language, 'btk')">
+        <xsl:when test="$language =  'btk'">
           <xsl:text>Batak</xsl:text>
         </xsl:when>
         <xsl:when test="$language = 'mya'">
@@ -461,7 +461,10 @@
         <xsl:when test="$language = 'obr'">
           <xsl:text>Old Burmese</xsl:text>
         </xsl:when>
-        <xsl:when test="$language = 'cjm' or $language = 'cja'">
+        <xsl:when test="$language = 'cjm'">
+          <xsl:text>Modern Cham</xsl:text>
+        </xsl:when>
+        <xsl:when test="$language = 'cja'">
           <xsl:text>Modern Cham</xsl:text>
         </xsl:when>
         <xsl:when test="$language = 'ocm'">
@@ -470,7 +473,7 @@
         <xsl:when test="$language = 'ind'">
           <xsl:text>Indonesian</xsl:text>
         </xsl:when>
-        <xsl:when test="contains($language, 'kan')">
+        <xsl:when test="$language = 'kan'">
           <xsl:text>Kannada</xsl:text>
         </xsl:when>
         <xsl:when test="$language = 'xhm'">

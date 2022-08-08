@@ -5,11 +5,11 @@
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs tei"
     version="2.0">
-    
+
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
-    
+
     <!-- Written by Axelle Janiak for DHARMA, starting September 2021 -->
-    
+
     <xsl:template match="doc">
         <xsl:element name="html">
             <xsl:call-template name="dharma-head"/>
@@ -29,12 +29,12 @@
                             <xsl:text>©ARIE. Online display made available by DHARMA</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                    <xsl:call-template name="dharma-script"/>            
-                </xsl:element>  
+                    <xsl:call-template name="dharma-script"/>
+                </xsl:element>
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!--<xsl:template match="H1">
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
             <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
@@ -56,7 +56,7 @@
             </xsl:element>
         <br/>
     </xsl:template>-->
-    
+
     <xsl:template match="H1">
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
         <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
@@ -85,70 +85,70 @@
         </xsl:element>
         <br/>
     </xsl:template>
-    
+
     <xsl:template match="H2">
         <xsl:element name="h2">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>
-    
+
     <xsl:template match="H3">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>
-    
+
     <xsl:template match="H4">
         <xsl:element name="h4">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>
-    
+
    <!-- <xsl:template match="HC">
         <xsl:element name="h2">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>-->
-    
+
     <!--<xsl:template match="HD">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>-->
-    
+
     <xsl:template match="H">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>
-    
+
    <!-- <xsl:template match="HT">
         <xsl:element name="h3">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
     </xsl:template>-->
-    
+
     <xsl:template match="b">
         <xsl:element name="span">
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="i">
         <xsl:element name="span">
             <xsl:attribute name="class">font-italic</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="INSCRIPTION | MANUSCRIPT">
         <xsl:for-each select=".">
             <xsl:element name="div">
@@ -172,8 +172,8 @@
             </xsl:element>
         </xsl:for-each>
     </xsl:template>
-    
-    
+
+
     <xsl:template name="number">
         <xsl:element name="div">
             <xsl:attribute name="class">col-5 font-weight-bold</xsl:attribute>
@@ -224,11 +224,11 @@
                     <xsl:value-of select="substring-after(preceding::pb[1]/@n, ':')"/>
                 </xsl:otherwise>
             </xsl:choose>
-            
+
             <xsl:text>)</xsl:text>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- P -->
     <xsl:template match="P">
         <xsl:element name="dt">
@@ -240,7 +240,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- Y -->
     <xsl:template match="Y">
     <xsl:element name="dt">
@@ -252,7 +252,7 @@
         <xsl:apply-templates/>
     </xsl:element>
     </xsl:template>
-    
+
     <!-- K -->
     <xsl:template match="K">
     <xsl:element name="dt">
@@ -264,7 +264,7 @@
         <xsl:apply-templates/>
     </xsl:element>
     </xsl:template>
-    
+
     <!-- D -->
     <xsl:template match="D">
     <xsl:element name="dt">
@@ -276,7 +276,7 @@
         <xsl:apply-templates/>
     </xsl:element>
     </xsl:template>
-    
+
     <!-- L -->
     <xsl:template match="L">
         <xsl:variable name="volume">
@@ -298,7 +298,7 @@
         <xsl:apply-templates/>
     </xsl:element>
     </xsl:template>
-    
+
     <!-- MST -->
     <xsl:template match="MST">
         <xsl:element name="dt">
@@ -306,7 +306,7 @@
             <xsl:text>Manuscript's Title</xsl:text>
         </xsl:element>
         <xsl:element name="dd">
-            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:attribute name="class">col</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -317,11 +317,11 @@
             <xsl:text>Manuscript's Language</xsl:text>
         </xsl:element>
         <xsl:element name="dd">
-            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:attribute name="class">col</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- MM -->
     <xsl:template match="MM">
         <xsl:element name="dt">
@@ -329,11 +329,11 @@
             <xsl:text>Madras Map Survey Number</xsl:text>
         </xsl:element>
         <xsl:element name="dd">
-            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:attribute name="class">col</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- MSE -->
     <xsl:template match="MSE">
         <xsl:element name="dt">
@@ -341,11 +341,11 @@
             <xsl:text>Manuscript's extent</xsl:text>
         </xsl:element>
         <xsl:element name="dd">
-            <xsl:attribute name="class">col</xsl:attribute>   
+            <xsl:attribute name="class">col</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- O -->
     <xsl:template match="O">
     <xsl:element name="dt">
@@ -353,11 +353,11 @@
         <xsl:text>Origin</xsl:text>
     </xsl:element>
     <xsl:element name="dd">
-        <xsl:attribute name="class">col</xsl:attribute>   
+        <xsl:attribute name="class">col</xsl:attribute>
                 <xsl:apply-templates/>
     </xsl:element>
     </xsl:template>
-    
+
     <!-- E -->
     <xsl:template match="E">
         <xsl:element name="dt">
@@ -366,10 +366,10 @@
     </xsl:element>
     <xsl:element name="dd">
         <xsl:attribute name="class">col</xsl:attribute>
-                <xsl:apply-templates/>    
+                <xsl:apply-templates/>
     </xsl:element>
     </xsl:template>
-    
+
     <!-- R -->
     <xsl:template match="R">
     <xsl:element name="dt">
@@ -393,7 +393,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- SY -->
     <xsl:template match="SY">
         <xsl:element name="dt">
@@ -405,7 +405,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- JY -->
     <xsl:template match="JY">
         <xsl:element name="dt">
@@ -417,14 +417,14 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- supplied -->
     <xsl:template match="supplied">
         <xsl:text>[</xsl:text>
             <xsl:apply-templates/>
         <xsl:text>]</xsl:text>
     </xsl:template>
-    
+
     <!-- <dt class="col">Description lists</dt>
   <dd class="col">A description list is perfect for defining terms.</dd> -->
      <xsl:template name="dharma-head">
@@ -432,7 +432,7 @@
             <title>
                 <xsl:value-of select="H1"/>
             </title>
-            
+
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
@@ -441,12 +441,12 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-css.css"></link>
-                
+
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
     </xsl:template>
-    
+
     <xsl:template match="lb">
       <xsl:choose>
           <xsl:when test="not(@break='no')">
@@ -454,7 +454,7 @@
           </xsl:when>
       </xsl:choose>
     </xsl:template>
-    
+
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -462,7 +462,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -516,7 +516,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownConv" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Authorities files
+                            Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
@@ -544,11 +544,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </nav>
     </xsl:template>
-    
+
     <xsl:template name="dharma-script">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
@@ -558,7 +558,7 @@
         <!-- loader arie -->
         <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
     </xsl:template>
-    
+
     <!-- side bar -->
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
@@ -589,9 +589,9 @@
                                                 <xsl:value-of select="child::tei:ab/@type"/>
                                             </xsl:when>
                                             <xsl:otherwise>
-                                                <xsl:value-of select="name()"/>  
+                                                <xsl:value-of select="name()"/>
                                             </xsl:otherwise>
-                                        </xsl:choose>                     
+                                        </xsl:choose>
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 <xsl:text> </xsl:text>
@@ -601,7 +601,7 @@
                                 <xsl:element name="ul">
                                     <xsl:attribute name="class">navbar-nav nav-second</xsl:attribute>
                                     <xsl:for-each select="descendant::tei:div">
-                                        
+
                                         <xsl:element name="li">
                                             <xsl:attribute name="class">nav-item-second nav-item</xsl:attribute>
                                             <xsl:element name="a">
@@ -620,9 +620,9 @@
                                                                 <xsl:value-of select="child::tei:ab/@type"/>
                                                             </xsl:when>
                                                             <xsl:otherwise>
-                                                                <xsl:value-of select="name()"/>  
+                                                                <xsl:value-of select="name()"/>
                                                             </xsl:otherwise>
-                                                        </xsl:choose>                     
+                                                        </xsl:choose>
                                                     </xsl:otherwise>
                                                 </xsl:choose>
                                                 <xsl:text> </xsl:text>
@@ -638,5 +638,5 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
 </xsl:stylesheet>
