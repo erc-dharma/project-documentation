@@ -306,7 +306,7 @@
                                     <xsl:attribute name="who">
                                         <xsl:for-each select="$contributors">part:<xsl:value-of select="."/> </xsl:for-each>
                                     </xsl:attribute>
-                                    Additions made in medadata
+                                    Contributions made in medadata
                                 </xsl:element>
                                 <xsl:element name="change">
                                     <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[6], '\$')"/>
