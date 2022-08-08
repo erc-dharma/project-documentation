@@ -299,73 +299,130 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>
-        </xsl:variable>
-
-        <xsl:element name="div">
-            <xsl:attribute name="class">row</xsl:attribute>
-
-
-               <xsl:if test="@type='invocation' or @type='colophon'">
-                   <xsl:element name="div">
-                       <xsl:attribute name="class">col-1 text-center</xsl:attribute>
-                       <xsl:if test="@type">
-                           <xsl:element name="p">
-                               <xsl:attribute name="class">float-center</xsl:attribute>
-                               <xsl:element name="small">
-                                   <xsl:element name="span">
-                                       <xsl:attribute name="class">text-muted</xsl:attribute>
-                                       <xsl:value-of select="@type"/>
-                                   </xsl:element>
-                               </xsl:element>
-                           </xsl:element>
-                       </xsl:if>
-                   </xsl:element>
-               </xsl:if>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-9 text-col</xsl:attribute>
-                <xsl:element name="p">
-                    <xsl:if test="@xml:id">
-                        <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+        </xsl:variable>     
+            <xsl:choose>
+                <xsl:when test="@type='invocation' or @type='colophon'">
+                <xsl:element name="div">
+                <xsl:attribute name="class">row</xsl:attribute>
+                
+                <xsl:element name="div">
+                    <xsl:attribute name="class">col-1 text-center</xsl:attribute>
+                    <xsl:if test="@type='invocation' or @type='colophon'">
+                        <xsl:element name="p">
+                            <xsl:attribute name="class">float-center</xsl:attribute>
+                            <xsl:element name="small">
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">text-muted</xsl:attribute>
+                                    <xsl:value-of select="@type"/>
+                                </xsl:element>
+                            </xsl:element>
+                        </xsl:element>
                     </xsl:if>
-                    <xsl:copy-of select="$ab-line"/>
-                    <br/>
-                    <xsl:call-template name="translation-button"/>
                 </xsl:element>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">col-11 text-col</xsl:attribute>
+                    
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">row</xsl:attribute>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-9 text-col</xsl:attribute>
+                            <xsl:element name="p">
+                                <xsl:if test="@xml:id">
+                                    <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                                </xsl:if>
+                                <xsl:copy-of select="$ab-line"/>
+                                <br/>
+                            </xsl:element>
+                        </xsl:element>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                            <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem' or @type='reformulation')] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+                                <xsl:call-template name="app-link">
+                                    <xsl:with-param name="location" select="'apparatus'"/>
+                                    <xsl:with-param name="type">
+                                        <xsl:choose>
+                                            <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
+                                                <xsl:text>lem-omissionStart</xsl:text>
+                                            </xsl:when>
+                                            <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
+                                                <xsl:text>lem-omissionEnd</xsl:text>
+                                            </xsl:when>
+                                            <xsl:when test="self::tei:span[@type='reformulationStart']">
+                                                <xsl:text>lem-reformulationStart</xsl:text>
+                                            </xsl:when>
+                                            <xsl:when test="self::tei:span[@type='reformulationEnd']">
+                                                <xsl:text>lem-reformulationEnd</xsl:text>
+                                            </xsl:when>
+                                            <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
+                                                <xsl:text>lem-lacunaStart</xsl:text>
+                                            </xsl:when>
+                                            <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
+                                                <xsl:text>lem-lacunaEnd</xsl:text>
+                                            </xsl:when>
+                                            <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
+                                                <xsl:text>lem-last-note</xsl:text>
+                                            </xsl:when>
+                                        </xsl:choose>
+                                    </xsl:with-param>
+                                </xsl:call-template>
+                            </xsl:for-each>
+                        </xsl:element>
+                    </xsl:element>
             </xsl:element>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
-                <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem' or @type='reformulation')] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
-                            <xsl:call-template name="app-link">
-                                <xsl:with-param name="location" select="'apparatus'"/>
-                                <xsl:with-param name="type">
-                                    <xsl:choose>
-                                        <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
-                                            <xsl:text>lem-omissionStart</xsl:text>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
-                                            <xsl:text>lem-omissionEnd</xsl:text>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:span[@type='reformulationStart']">
-                                            <xsl:text>lem-reformulationStart</xsl:text>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:span[@type='reformulationEnd']">
-                                            <xsl:text>lem-reformulationEnd</xsl:text>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
-                                            <xsl:text>lem-lacunaStart</xsl:text>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
-                                            <xsl:text>lem-lacunaEnd</xsl:text>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
-                                        <xsl:text>lem-last-note</xsl:text>
-                                    </xsl:when>
-                                </xsl:choose>
-                                </xsl:with-param>
-                            </xsl:call-template>
-                </xsl:for-each>
             </xsl:element>
-        </xsl:element>
+            </xsl:when>
+                <xsl:otherwise>
+                       
+                            <xsl:element name="div">
+                                <xsl:attribute name="class">row</xsl:attribute>
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">col-9 text-col</xsl:attribute>
+                                    <xsl:element name="p">
+                                        <xsl:if test="@xml:id">
+                                            <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                                        </xsl:if>
+                                        <xsl:copy-of select="$ab-line"/>
+                                        <br/>
+                                        <xsl:call-template name="translation-button"/>
+                                    </xsl:element>
+                                </xsl:element>
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">col-2 apparat-col text-right</xsl:attribute>
+                                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')] |descendant::tei:span[@type='omissionStart'] | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][parent::tei:p or parent::tei:lg or parent::tei:l or not(@type='parallels' or parent::tei:app or @type='altLem' or @type='reformulation')] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+                                        <xsl:call-template name="app-link">
+                                            <xsl:with-param name="location" select="'apparatus'"/>
+                                            <xsl:with-param name="type">
+                                                <xsl:choose>
+                                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
+                                                        <xsl:text>lem-omissionStart</xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
+                                                        <xsl:text>lem-omissionEnd</xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:when test="self::tei:span[@type='reformulationStart']">
+                                                        <xsl:text>lem-reformulationStart</xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:when test="self::tei:span[@type='reformulationEnd']">
+                                                        <xsl:text>lem-reformulationEnd</xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
+                                                        <xsl:text>lem-lacunaStart</xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
+                                                        <xsl:text>lem-lacunaEnd</xsl:text>
+                                                    </xsl:when>
+                                                    <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(//tei:TEI[@type='translation'])">
+                                                        <xsl:text>lem-last-note</xsl:text>
+                                                    </xsl:when>
+                                                </xsl:choose>
+                                            </xsl:with-param>
+                                        </xsl:call-template>
+                                    </xsl:for-each>
+                                </xsl:element>
+                            </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+       
     </xsl:template>
     <!--  add ! -->
     <xsl:template match="tei:add">
@@ -2838,11 +2895,21 @@
                         <xsl:text> </xsl:text>
                     </xsl:element>
                 </xsl:when>
-                <xsl:when test="@reason='implied'">
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">implied</xsl:attribute>
-                        <xsl:text> </xsl:text>
-                    </xsl:element>
+                <xsl:when test="@reason='implied' and not(parent::tei:ab)">
+                    <xsl:choose>
+                        <xsl:when test="not(parent::tei:quote[@type='base-text'])">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">implied</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">text-muted</xsl:attribute>
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:apply-templates/>
