@@ -8,10 +8,8 @@
     
     <xsl:template match="File">
         <xsl:for-each select="line">
-                <xsl:result-document method="xml" href="DHARMA_mdt{./line/artefactDescription/artefactID}.xml">
-                    <metadataAretfact>
-                        <xsl:copy-of select="." />
-                    </metadataAretfact>
+            <xsl:result-document method="xml" href="DHARMA_mdt{./resourceManagement/resourceID}.xml">
+                        <xsl:copy-of select="." />            
                 </xsl:result-document>
         </xsl:for-each>
     </xsl:template> 
