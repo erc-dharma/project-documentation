@@ -22,9 +22,12 @@
         
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
-            <xsl:if test="position() >= 7">
-                <line>
-                    <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
+            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
+            <xsl:choose>
+                <xsl:when test="$tokens[1] = '0'"/>
+                <xsl:when test="$tokens[3] = ''"/>
+                <xsl:otherwise>
+                    <line>
                     <resourceManagement>
                         <resourceID><xsl:value-of select="$tokens[3]"/></resourceID>
                         <metadataOrigin><xsl:value-of select="$tokens[4]"/></metadataOrigin>
@@ -375,7 +378,8 @@
                             </remarks>
                         </compositeArtefactDescription>
                 </line>
-            </xsl:if>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>  
     </xsl:variable>
         <File>          
