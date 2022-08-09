@@ -8,7 +8,7 @@
     
     <xsl:template match="File">
         <xsl:for-each select="line">
-            <xsl:result-document method="xml" href="DHARMA_mdt{substring-after(./sourceDesc/msDesc/msIdentifier/idno, 'INS')}.xml">
+            <xsl:result-document method="xml" href="{./fileDesc/publicationStmt/idno[@type='filename']}_{generate-id()}.xml">
                 <metadata>
                     <xsl:copy-of select="." />
                 </metadata>

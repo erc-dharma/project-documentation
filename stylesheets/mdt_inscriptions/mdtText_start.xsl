@@ -41,6 +41,7 @@
                     <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                     <xsl:choose>
                         <xsl:when test="$tokens[1] = '0'"/>
+                        <xsl:when test="$tokens[3] = ''"/>
                     <xsl:otherwise>
                         <line>
                             <fileDesc>
