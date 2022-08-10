@@ -246,6 +246,7 @@
              <xsl:call-template name="dharma-body-structure"/>
            </xsl:element>
              <xsl:apply-templates select=".//t:persName[ancestor::t:body]" mode="modals"/>
+             <xsl:apply-templates select=".//t:placeName[ancestor::t:body]" mode="modals"/>
            </xsl:element>
            <xsl:element name="footer">
              <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
