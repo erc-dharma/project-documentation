@@ -245,6 +245,7 @@
              </h1>
              <xsl:call-template name="dharma-body-structure"/>
            </xsl:element>
+             <xsl:apply-templates select=".//t:persName[ancestor::t:body]" mode="modals"/>
            </xsl:element>
            <xsl:element name="footer">
              <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
@@ -282,7 +283,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/inscriptions/loader.js"></script>
+    
   </xsl:template>
 
   <!-- Nav bar template -->

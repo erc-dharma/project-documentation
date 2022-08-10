@@ -304,3 +304,8 @@ dd {
     position: fixed;
     left: 10px;
 }
+
+.entry-line{
+    max-width: 100%;
+    margin-left: -30px;
+}
