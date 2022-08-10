@@ -307,6 +307,12 @@
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-8403-3111</idno>
 				</person>
+				<person xml:id="sagu">
+					<persName>
+					<forename>Samana</forename>
+					<surname>Gururaja</surname>
+				</persName>
+				</person>
 				<person xml:id="chhu">
 					<persName>
 						<forename>Chhunteng</forename>
