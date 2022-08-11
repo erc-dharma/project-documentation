@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -9,16 +8,16 @@
     <!-- Written by Axelle Janiak for DHARMA, starting August 2022 -->
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
     
-    <xsl:template match="File">
+    <xsl:template match="metadata">
         <xsl:element name="html">
             <xsl:call-template name="dharma-head"/>
             <xsl:element name="body">
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
-                <xsl:attribute name="data-spy">scroll</xsl:attribute>
-                <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
+                <!--<xsl:attribute name="data-spy">scroll</xsl:attribute>
+                <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>-->
                 <xsl:call-template name="nav-bar"/>
-                <xsl:call-template name="table-contents"/>
-                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
+                <!--<xsl:call-template name="table-contents"/>
+                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>-->
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:apply-templates/>
@@ -34,75 +33,180 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="place">
+    <xsl:template match="line">
         <xsl:element name="div">
             <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
             <xsl:attribute name="id">
                 <xsl:value-of select="generate-id()"/>
             </xsl:attribute>
+            
             <xsl:element name="div">
-            <xsl:attribute name="class">col-4</xsl:attribute>
-            <xsl:element name="span">
-                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                <xsl:value-of select="@xml:id"/>
                 <br/>
-                <xsl:value-of select="placeName[1]"/>
-            </xsl:element>           
+                <xsl:element name="h1">
+                    <xsl:value-of select="fileDesc/sourceDesc/msDesc/msIdentifier/idno"/>
+                    <xsl:text>: </xsl:text>
+                <xsl:value-of select="fileDesc/sourceDesc/msDesc/msContents/msItem/title"/>
+            </xsl:element>
+            <br/>
+            </xsl:element>
+           
+                <hr/>
         </xsl:element>
         <xsl:element name="div">
-            <xsl:attribute name="class">col-8</xsl:attribute>
-            
-            
+            <xsl:for-each select="fileDesc/sourceDesc/msDesc/msIdentifier/altIdentifier/idno">
                 <xsl:element name="p">
-                    <xsl:value-of select="placeName[1]"/>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        <xsl:text>Alternative identifier: </xsl:text>
+                    </xsl:element>
+                    <xsl:apply-templates select="."/>
+            </xsl:element>
+            </xsl:for-each>
+            <xsl:element name="p">
+            <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                Classification: 
+            </xsl:element>
+            <xsl:element name="ul">
+                <xsl:for-each select="tokenize(fileDesc/sourceDesc/msDesc/msContents/msItem/@class, ' ')">
+                    <xsl:element name="li">
+                        <xsl:apply-templates select="replace(., '#', '')"/>
+                    </xsl:element>
+            </xsl:for-each>
+            </xsl:element>
             </xsl:element>
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    settlement: 
+                    <xsl:text>Main Langue: </xsl:text>
                 </xsl:element>
-                <xsl:value-of select="settlement"/>
+                    <xsl:call-template name="language-tpl">
+                        <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang"/>
+                    </xsl:call-template>
             </xsl:element>
-            <xsl:for-each select="orgName">
-                <xsl:element name="p">
-                    <xsl:value-of select="."/>
-                </xsl:element>
-            </xsl:for-each>
-            <xsl:for-each select="note/date">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:value-of select="@type"/>
-                    <xsl:text>: </xsl:text>
-                </xsl:element>
-                <xsl:apply-templates select="date"/>
-                <br/>
-            </xsl:for-each>
-            <xsl:for-each select="note/ab">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:value-of select="@type"/>
-                    <xsl:text>: </xsl:text>
-                </xsl:element>
-                <xsl:apply-templates select="ab"/>
-                <br/>
-            </xsl:for-each>
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    bibliography: 
+                    <xsl:text>Artefact: </xsl:text>
                 </xsl:element>
-                <xsl:apply-templates select="listBibl/bibl"/>
+                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp"/>
+                
             </xsl:element>
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:text>Text's position on the artefact: </xsl:text>
+                </xsl:element>
+                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc"/>
+            </xsl:element>
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Layout: </xsl:element>
+            <xsl:for-each select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/layoutDesc/layout">
+                <xsl:apply-templates select="p/text()"/> 
+                <xsl:if test="p/child::dimensions">
+                    <xsl:value-of select="./p/dimensions/@type"/>
+                    <xsl:text> on </xsl:text>
+                    <xsl:value-of select="./p/dimensions/height"/>
+                    <xsl:text>x</xsl:text>
+                    <xsl:value-of select="./p/dimensions/width"/>
+                    <xsl:text> cm.</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            </xsl:element>
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Script technic: </xsl:element>
+                <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/text()"/>
+            </xsl:element>
+                <xsl:if test="fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/dimensions">
+                    <xsl:element name="p">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:value-of select="concat(upper-case(substring(fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/dimensions/@type,1,1)), substring(fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/dimensions/@type, 2),' '[not(last())] )"/>
+                            <xsl:text>: </xsl:text>
+                        </xsl:element>
+                    <xsl:value-of select="fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/dimensions/height"/>
+                        <xsl:if test="fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/dimensions/width">
+                            <xsl:text>x</xsl:text>
+                            <xsl:value-of select="fileDesc/sourceDesc/msDesc/physDesc/scriptDesc/p/dimensions/width"/>
+                        </xsl:if>
+                        <xsl:text>cm.</xsl:text>
+                    </xsl:element>
+                    </xsl:if>
+                <xsl:element name="p">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                        History: </xsl:element>
+                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/history/origin/p"/>
+                </xsl:element>         
+            <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/listBibl">
+                <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Bibliography <xsl:value-of select="@type"/>: 
+                </xsl:element>
+                    <xsl:apply-templates/>
+            </xsl:element>
+            </xsl:for-each>
         </xsl:element>
-           
+        <xsl:element name="p">
+            <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                Keywords: </xsl:element>
+            <xsl:for-each select="profileDesc/textClass/keywords/term">
+                <xsl:apply-templates select="."/>
+            <xsl:if test="following-sibling::term">
+                <xsl:text>, </xsl:text>
+            </xsl:if></xsl:for-each>
+        </xsl:element>
+        <xsl:element name="p">
+            <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                Remarks: </xsl:element>
+            <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/additional/adminInfo/recordHist"/>
+        </xsl:element>
+        <xsl:element name="p">
+            <xsl:element name="span">
+                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                Rights: </xsl:element>
+            <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/additional/adminInfo/availability/p"/>
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/additional/adminInfo/availability/p"/>
         </xsl:element>
         <hr/>
+        <xsl:element name="div">
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Linked resources: 
+                </xsl:element>
+            <xsl:element name="ul">
+                <xsl:for-each select="fileDesc/sourceDesc/msDesc/additional/surrogates/bibl">
+                <xsl:element name="li">
+                    <xsl:choose>
+                        <xsl:when test="contains(./ptr/@target, 'sur:')">
+                            <xsl:text>surrogate: </xsl:text>
+                            <xsl:apply-templates select="substring-after(./ptr/@target, 'sur:')"/>
+                        </xsl:when>
+                        <xsl:when test="contains(./ptr/@target, 'dig:')">
+                            <xsl:text>digital image: </xsl:text>
+                            <xsl:apply-templates select="substring-after(./ptr/@target, 'dig:')"/>
+                        </xsl:when>
+                    </xsl:choose> 
+                </xsl:element>
+            </xsl:for-each>
+            </xsl:element>
+        </xsl:element>
+        </xsl:element>
     </xsl:template>
 
     <xsl:template name="dharma-head">
         <head>
             <title>
-                DHARMA Collections Authority List
+                DHARMA – <xsl:value-of select="//sourceDesc/msDesc/msIdentifier/idno"/> Metadata
             </title>
             
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -112,10 +216,8 @@
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/sii/sii-css.css"></link>
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/sii/sii-css.css"></link>-->
                 <!--<link rel="stylesheet" href="../sii/sii-css.css"></link>-->
-                
-                
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
         </head>
@@ -223,11 +325,11 @@
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader  -->
-        <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
+        <!--<script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>-->
         
     </xsl:template>
     
-    <!-- side bar - table of contents -->
+   <!-- <!-\- side bar - table of contents -\->
     <xsl:template name="table-contents">
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
@@ -252,7 +354,7 @@
                 </xsl:element>
             </xsl:element>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
@@ -357,7 +459,7 @@
                 </xsl:variable>
                 
                 <xsl:analyze-string select="unparsed-text($zoteroapijson)"
-                    regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                    regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;\()(.+)(\)&lt;/span&gt;&quot;)">
                     <xsl:matching-substring>
                         <xsl:value-of select="regex-group(2)"/>
                     </xsl:matching-substring>
@@ -369,6 +471,7 @@
                 
                 <xsl:if test="citedRange"> 
                     <xsl:for-each select="citedRange">
+                        <xsl:text>, </xsl:text>
                         <xsl:call-template name="citedRange-unit"/>
                         <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
                         <xsl:if test="following-sibling::citedRange[1]">
@@ -383,9 +486,91 @@
             </xsl:otherwise>		
         </xsl:choose>
     </xsl:template>
-
-
     
-
+    <xsl:template name="language-tpl">
+        <xsl:param name="language"/>
+        <xsl:if test="$language !=''">
+            <xsl:choose>
+                <xsl:when test="$language = 'ara'">
+                    <xsl:text>Arabic</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'ban'">
+                    <xsl:text>Balinese</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language =  'btk'">
+                    <xsl:text>Batak</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'mya'">
+                    <xsl:text>Modern Burmese</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'obr'">
+                    <xsl:text>Old Burmese</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'cjm'">
+                    <xsl:text>Modern Cham</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'cja'">
+                    <xsl:text>Modern Cham</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'ocm'">
+                    <xsl:text>Old Cham</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'ind'">
+                    <xsl:text>Indonesian</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'kan'">
+                    <xsl:text>Kannada</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'xhm'">
+                    <xsl:text>Middle Khmer</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'khm'">
+                    <xsl:text>Modern Khmer</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'okz'">
+                    <xsl:text>Old Khmer</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'zlm'">
+                    <xsl:text>Middle Malay</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'omy'">
+                    <xsl:text>Old Malay</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'omx'">
+                    <xsl:text>Old Mon</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'pli'">
+                    <xsl:text>Pali</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'pra'">
+                    <xsl:text>Prakrit</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'pyx'">
+                    <xsl:text>Pyu</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'san'">
+                    <xsl:text>Sanskrit</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'sas'">
+                    <xsl:text>Sasak</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'osn'">
+                    <xsl:text>Old Sundanese</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'tgl'">
+                    <xsl:text>Tagalog</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'tam'">
+                    <xsl:text>Tamil</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'tel'">
+                    <xsl:text>Telugu</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'vie'">
+                    <xsl:text>Vietnamese</xsl:text>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:if>
+    </xsl:template>
 
 </xsl:stylesheet>

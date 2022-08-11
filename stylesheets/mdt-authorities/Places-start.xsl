@@ -6,6 +6,7 @@
     exclude-result-prefixes="xs tei"
     version="2.0">
     
+    <!-- Written by Axelle Janiak for DHARMA, starting August 2022 -->
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
     
     <xsl:template match="File">
