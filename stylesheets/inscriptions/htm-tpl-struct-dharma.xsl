@@ -149,46 +149,49 @@
                       <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         Alternative identifier: </xsl:element>
-                      <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msIdentifier/altIdentifier/idno"/>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msIdentifier/altIdentifier/idno"><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msIdentifier/altIdentifier/idno"/></xsl:if>
                       </xsl:element>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Origin: </xsl:element>
-                      <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//history/origin/p"/>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//history/origin/p/text()"><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//history/origin/p"/></xsl:if>
                       </xsl:element>
                       <xsl:element name="p">
                       <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         Classification: </xsl:element>
-                      <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/replace(substring-after(@class, '#'), '_', ' ')"/>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/@class">
+                          <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/replace(substring-after(@class, '#'), '_', ' ')"/></xsl:if>
                       </xsl:element>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Main Langue: </xsl:element>
-                        <xsl:call-template name="language-tpl">
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"> 
+                          <xsl:call-template name="language-tpl">
                           <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"/>
                         </xsl:call-template>
+                        </xsl:if>
                       </xsl:element>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Corresponding Artefact: </xsl:element>
-                        <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"/> <xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"/> <xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if>
                       </xsl:element>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Layout: </xsl:element>
-                        <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/@writtenLines"/> <xsl:text> lines are observed/preserved on the artifact.</xsl:text><xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions">
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout"><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/@writtenLines"/> <xsl:text> lines are observed/preserved on the artifact.</xsl:text><xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions">
                           <xsl:value-of select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions/@type"/>
                           <xsl:text> on </xsl:text>
                           <xsl:value-of select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions/height"/>
                           <xsl:text>x</xsl:text>
                           <xsl:value-of select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/layoutDesc/layout/dimensions/widht"/>
                           <xsl:text>cm.</xsl:text>
-                        </xsl:if>
+                        </xsl:if></xsl:if>
                       </xsl:element>
                     </xsl:when>
                     <xsl:otherwise>
