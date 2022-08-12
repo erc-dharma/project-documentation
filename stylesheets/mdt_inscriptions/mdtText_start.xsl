@@ -191,7 +191,8 @@
                                             <supportDesc>
                                                 <p><xsl:value-of select="$tokens[20]"/></p>
                                             </supportDesc>
-                                            <layoutDesc>
+                                                <layoutDesc>
+                                                    <xsl:if test="$tokens[40] != '' or $tokens[39] != ''">
                                                 <xsl:element name="layout">
                                                     <xsl:attribute name="writtenLines"><xsl:value-of select="$tokens[39]"/> <xsl:if test="$tokens[39] != $tokens[40]"><xsl:text>-</xsl:text><xsl:value-of select="$tokens[40]"/></xsl:if></xsl:attribute>
                                                     <p><xsl:value-of select="$tokens[39]"/> lines are observed/preserved on the artifact. <xsl:if test="not($tokens[39] = $tokens[40])"><xsl:value-of select="$tokens[40]"/> are known or estimated for this text.</xsl:if> <xsl:if test="not(contains($tokens[42], '$')) and $tokens[42] != ''"><dimensions type="inscribed" unit="cm">
@@ -199,6 +200,7 @@
                                                         <width><xsl:value-of select="substring-after($tokens[42], 'x')"/></width>
                                                     </dimensions></xsl:if></p>
                                                 </xsl:element>
+                                                    </xsl:if>
                                                 <xsl:if test="$tokens[41] != ''">
                                                     <xsl:if test="$tokens[41] != $tokens[39]">
                                                         <xsl:variable name="lines-zones" select="tokenize($tokens[41], '§')"/>
@@ -229,7 +231,7 @@
                                         </scriptDesc>
                                     </physDesc>
                                     <history>
-                                        <origin>
+                                        <xsl:if test="$tokens[47] != '' or $tokens[46] != '' or $tokens[45] != ''"><origin>
                                             <p>Written in <xsl:element name="origDate"><xsl:if test="$tokens[47] != ''"><xsl:attribute name="cert"><xsl:value-of select="$tokens[47]"/></xsl:attribute></xsl:if><xsl:if test="$tokens[48] != ''"><xsl:attribute name="evidence"><xsl:value-of select="$tokens[48]"/></xsl:attribute></xsl:if><xsl:choose>
                                                 <xsl:when test="$tokens[46] != ''"><xsl:attribute name="notBefore"><xsl:value-of select="substring-before($tokens[46], '-')"/></xsl:attribute> <xsl:attribute name="notAfter"><xsl:value-of select="substring-after($tokens[46], '-')"/></xsl:attribute><xsl:value-of select="$tokens[46]"/></xsl:when>
                                                 <xsl:when test="$tokens[45] != ''">
@@ -238,7 +240,7 @@
                                                 </xsl:when>
                                             </xsl:choose></xsl:element>.
                                             </p>
-                                        </origin>
+                                        </origin></xsl:if>
                                     </history>
                                     <xsl:if test="$tokens[58] != '' or $tokens[59] != ''">
                                         <additional>
