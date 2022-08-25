@@ -4184,8 +4184,11 @@
               test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
               </sch:rule>
-              <sch:rule context="tei:lem[@type='reformulation']">
-                <sch:report test="@wit">No wit should be given on a lem used for reformulation</sch:report>
+              <sch:rule context="tei:lem[@type]">
+                <sch:report test="@wit">No @wit should be given on a lem with @ type</sch:report>
+              </sch:rule>
+              <sch:rule context="tei:lem[child::tei:app]">
+                <sch:report test="not(@wit or @wit)">An element lem containing an embedded apparatus entry should have an attribute @type or @wit</sch:report>
               </sch:rule>
             </constraint>
           </constraintSpec>
@@ -4227,7 +4230,9 @@
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
-                <valItem ident="reformulation"/>
+                <valItem ident="omitted_elsewhere"/>
+                <valItem ident="lost_elsewhere"/>
+                <valItem ident="reformulated_elsewhere"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
