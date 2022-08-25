@@ -1562,18 +1562,17 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">note-line</xsl:attribute>
                     <xsl:attribute name="style">color:black;</xsl:attribute>
-                    <xsl:text>A segment of text has been lost</xsl:text>
-                    <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
-                        <xsl:text> due to </xsl:text>
-                        <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
-                    </xsl:if>
-                    <xsl:text> in </xsl:text>
+                    <xsl:text>A gap intervenes in </xsl:text>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="tokenize-witness-list">
                             <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@wit"/>
                         </xsl:call-template>
                     </xsl:element>
+                    <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
+                        <xsl:text> due to </xsl:text>
+                        <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
+                    </xsl:if>
                 </xsl:element>
             </xsl:element>
         </xsl:variable>
@@ -2724,28 +2723,27 @@
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:text>]</xsl:text>
                         </xsl:element>
-                        <xsl:text> A segment of text has been omitted</xsl:text>
+                        <xsl:text> A gap intervenes in </xsl:text>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
+                            </xsl:call-template>
+                        </xsl:element>
                         <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
                             <xsl:text> due to </xsl:text>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
-                        </xsl:if>
-                        <xsl:text>  in </xsl:text>
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        <xsl:call-template name="tokenize-witness-list">
-                            <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
-                        </xsl:call-template>
-                        </xsl:element>
+                        </xsl:if>                      
                     </xsl:element>
         </xsl:if>
     </xsl:template>
 
     <xsl:template name="lost-content">
-        <xsl:variable name="wit-omission" select="self::tei:lacunaStart/parent::tei:*[1]/@wit"/>
+        <xsl:variable name="wit-lost" select="self::tei:lacunaStart/parent::tei:*[1]/@wit"/>
         <xsl:if test="self::tei:lacunaStart">
             <xsl:element name="span">
                 <xsl:attribute name="class">fake-lem</xsl:attribute>
-                <xsl:apply-templates select="self::tei:lacunaStart/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
+                <xsl:apply-templates select="self::tei:lacunaStart/parent::tei:*[@wit = $wit-lost]/preceding::tei:lem[1]"/>
                 <xsl:text>&#8230;</xsl:text>
                 <xsl:if test="self::tei:lacunaStart[not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:lacunaEnd])]">
                     <xsl:text> (</xsl:text>
@@ -2754,20 +2752,20 @@
                         <xsl:text>§</xsl:text>
                         <xsl:element name="a">
                             <xsl:attribute name="href">
-                                <xsl:text>#</xsl:text><xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][child::tei:lacunaEnd][1]/ancestor::tei:div[1]/@xml:id"/>
+                                <xsl:text>#</xsl:text><xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/ancestor::tei:div[1]/@xml:id"/>
                             </xsl:attribute>
-                            <xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][child::tei:lacunaEnd][1]/ancestor::tei:div[1]/@n"/>
-                            <xsl:if test="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:*[1][local-name ()= ('lg', 'ab', 'p')][not(parent::tei:div[@type='dyad'])]">
+                            <xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/ancestor::tei:div[1]/@n"/>
+                            <xsl:if test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:*[1][local-name ()= ('lg', 'ab', 'p')][not(parent::tei:div[@type='dyad'])]">
                                 <xsl:text>.</xsl:text>
                                 <xsl:choose>
-                                    <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:lg[1]">
-                                        <xsl:value-of select="functx:substring-after-last(self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:lg[1]/@xml:id,'.0')"/>
+                                    <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:lg[1]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:lg[1]/@xml:id,'.0')"/>
                                     </xsl:when>
-                                    <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]">
-                                        <xsl:value-of select="functx:substring-after-last(self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:ab[1]/@xml:id,'.0')"/>
+                                    <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:ab[1]/@xml:id,'.0')"/>
                                     </xsl:when>
-                                    <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]">
-                                        <xsl:value-of select="functx:substring-after-last(self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]/@xml:id,'.0')"/>
+                                    <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]">
+                                        <xsl:value-of select="functx:substring-after-last(self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]/@xml:id,'.0')"/>
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:if>
@@ -2775,23 +2773,22 @@
                     </xsl:element>
                     <xsl:text>) </xsl:text>
                 </xsl:if>
-                <xsl:apply-templates select="self::tei:lacunaStart/following::tei:*[@wit = $wit-omission][child::tei:lacunaEnd][1]/preceding::tei:lem[1]"/>
+                <xsl:apply-templates select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/preceding::tei:lem[1]"/>
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>]</xsl:text>
-                </xsl:element>
-                <xsl:text> A segment of text has been lost</xsl:text>
-                <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-omission]/@cause">
-                    <xsl:text> due to </xsl:text>
-                    <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
-                </xsl:if>
-                <xsl:text>  in </xsl:text>
+                </xsl:element> 
+                <xsl:text> A gap intervenes in </xsl:text>
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:call-template name="tokenize-witness-list">
-                        <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
+                        <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@wit"/>
                     </xsl:call-template>
                 </xsl:element>
+                <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
+                    <xsl:text> due to </xsl:text>
+                    <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
+                </xsl:if>
             </xsl:element>
         </xsl:if>
     </xsl:template>
@@ -2840,18 +2837,17 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">note-line</xsl:attribute>
                             <xsl:attribute name="style">color:black;</xsl:attribute>
-                        <xsl:text>A segment of text has been omitted</xsl:text>
+                        <xsl:text>A gap intervenes in </xsl:text>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                <xsl:call-template name="tokenize-witness-list">
+                                    <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
+                                </xsl:call-template>
+                            </xsl:element>
                             <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
                             <xsl:text> due to </xsl:text>
                                 <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>
-                        <xsl:text> in </xsl:text>
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
-                            </xsl:call-template>
-                        </xsl:element>
                     </xsl:element>
                 </xsl:element>
         </xsl:variable>
