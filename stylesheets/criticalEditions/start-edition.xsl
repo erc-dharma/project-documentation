@@ -1527,7 +1527,7 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">fake-lem</xsl:attribute>
                     <xsl:apply-templates select="self::tei:lacunaStart/parent::tei:*[@wit = $wit-lost]/preceding::tei:lem[1]"/>
-                    <xsl:text>&#8230;</xsl:text>
+                    <xsl:text> &#8230;</xsl:text>
                     <xsl:if test="self::tei:lacunaStart[not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:lacunaEnd])]">
                         <xsl:text> (</xsl:text>
                         <xsl:element name="span">
@@ -2689,7 +2689,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
+                        <xsl:text> &#8230;</xsl:text>
                         <xsl:if test="self::tei:span[@type='omissionStart'][not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:span[@type='omissionEnd']])]">
                             <xsl:text> (</xsl:text>
                             <xsl:element name="span">
@@ -2744,7 +2744,7 @@
             <xsl:element name="span">
                 <xsl:attribute name="class">fake-lem</xsl:attribute>
                 <xsl:apply-templates select="self::tei:lacunaStart/parent::tei:*[@wit = $wit-lost]/preceding::tei:lem[1]"/>
-                <xsl:text>&#8230;</xsl:text>
+                <xsl:text> &#8230;</xsl:text>
                 <xsl:if test="self::tei:lacunaStart[not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:lacunaEnd])]">
                     <xsl:text> (</xsl:text>
                     <xsl:element name="span">
@@ -2802,7 +2802,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                             <xsl:apply-templates select="self::tei:span[@type='omissionStart']/parent::tei:*[@wit = $wit-omission]/preceding::tei:lem[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
+                        <xsl:text> &#8230;</xsl:text>
                         <xsl:if test="self::tei:span[@type='omissionStart'][not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:span[@type='omissionEnd']])]">
                             <xsl:text> (</xsl:text>
                         <xsl:element name="span">
@@ -2865,7 +2865,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">fake-lem</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
+                        <xsl:text> &#8230;</xsl:text>
                         <xsl:if test="self::tei:span[@type='reformulationStart'][not(ancestor::tei:*[1][descendant::tei:span[@type='reformulationEnd']])]">
                             <xsl:text> (</xsl:text>
                             <xsl:element name="span">
@@ -4256,7 +4256,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">bottom-reformulation</xsl:attribute>
                         <xsl:apply-templates select="self::tei:span/following::tei:witDetail[@type='retained'][1]/following::node()[1]"/>
-                        <xsl:text>&#8230;</xsl:text>
+                        <xsl:text> &#8230;</xsl:text>
                         <xsl:if test="self::tei:span[@type='reformulationStart'][not(ancestor::tei:*[1][descendant::tei:span[@type='reformulationEnd']])]">
                             <xsl:text> (</xsl:text>
                         <xsl:element name="span">
