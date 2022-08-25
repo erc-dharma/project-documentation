@@ -1562,7 +1562,7 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">note-line</xsl:attribute>
                     <xsl:attribute name="style">color:black;</xsl:attribute>
-                    <xsl:text>A gap intervenes in </xsl:text>
+                    <xsl:text>A gap due to lost intervenes in </xsl:text>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="tokenize-witness-list">
@@ -1570,7 +1570,7 @@
                         </xsl:call-template>
                     </xsl:element>
                     <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
-                        <xsl:text> due to </xsl:text>
+                        <xsl:text> caused by </xsl:text>
                         <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
                     </xsl:if>
                 </xsl:element>
@@ -2723,7 +2723,7 @@
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:text>]</xsl:text>
                         </xsl:element>
-                        <xsl:text> A gap intervenes in </xsl:text>
+                        <xsl:text> A gap due to omission intervenes in </xsl:text>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
@@ -2731,7 +2731,7 @@
                             </xsl:call-template>
                         </xsl:element>
                         <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
-                            <xsl:text> due to </xsl:text>
+                            <xsl:text> caused by </xsl:text>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>                      
                     </xsl:element>
@@ -2778,7 +2778,7 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>]</xsl:text>
                 </xsl:element> 
-                <xsl:text> A gap intervenes in </xsl:text>
+                <xsl:text> A gap due to lost intervenes in </xsl:text>
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:call-template name="tokenize-witness-list">
@@ -2786,7 +2786,7 @@
                     </xsl:call-template>
                 </xsl:element>
                 <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
-                    <xsl:text> due to </xsl:text>
+                    <xsl:text> caused by </xsl:text>
                     <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
                 </xsl:if>
             </xsl:element>
@@ -2837,7 +2837,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">note-line</xsl:attribute>
                             <xsl:attribute name="style">color:black;</xsl:attribute>
-                        <xsl:text>A gap intervenes in </xsl:text>
+                        <xsl:text>A gap due to omission intervenes in</xsl:text>
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
@@ -2845,7 +2845,7 @@
                                 </xsl:call-template>
                             </xsl:element>
                             <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
-                            <xsl:text> due to </xsl:text>
+                            <xsl:text> caused by </xsl:text>
                                 <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>
                     </xsl:element>
