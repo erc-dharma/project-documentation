@@ -1562,7 +1562,7 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">note-line</xsl:attribute>
                     <xsl:attribute name="style">color:black;</xsl:attribute>
-                    <xsl:text>A gap due to lost intervenes in </xsl:text>
+                    <xsl:text>A gap due to loss intervenes in </xsl:text>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="tokenize-witness-list">
@@ -2778,7 +2778,7 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>]</xsl:text>
                 </xsl:element> 
-                <xsl:text> A gap due to lost intervenes in </xsl:text>
+                <xsl:text> A gap due to loss intervenes in </xsl:text>
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:call-template name="tokenize-witness-list">
