@@ -51,6 +51,11 @@
         </xsl:element>
     </xsl:template>
 
+    <!-- choice -->
+    <xsl:template match="tei:choice">
+            <xsl:apply-templates/>
+    </xsl:template>
+    
     <!-- corr -->
     <xsl:template match="tei:corr">
         <xsl:element name="span">
@@ -223,6 +228,14 @@
         </xsl:element>
     </xsl:template>
 
+    <!-- s -->
+    <xsl:template match="tei:s">
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- sic -->
     <xsl:template match="tei:sic">
         <xsl:element name="span">
