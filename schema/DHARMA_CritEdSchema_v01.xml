@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron"
   xmlns:tei="http://www.tei-c.org/ns/1.0" xml:lang="en">
   <teiHeader>
@@ -2333,11 +2333,11 @@
             <attDef ident="prev" mode="delete"/>
             <attDef ident="rend" mode="change">
               <valList mode="change" type="closed">
-                <valItem ident="hyphenfront"/>
-                <valItem ident="hyphenback"/>
+                <valItem ident="hyphenleft"/>
+                <valItem ident="hyphenright"/>
                 <valItem ident="hyphenaround"/>
-                <valItem ident="circlefront"/>
-                <valItem ident="circleback"/>
+                <valItem ident="circleleft"/>
+                <valItem ident="circleright"/>
                 <valItem ident="circlearound"/>
                 <valItem ident="check"/>
               </valList>
@@ -4229,11 +4229,11 @@
             </attDef>
             <attDef ident="rend" mode="change">
               <valList mode="change">
-                <valItem ident="hyphenfront"/>
-                <valItem ident="hyphenback"/>
+                <valItem ident="hyphenleft"/>
+                <valItem ident="hyphenright"/>
                 <valItem ident="hyphenaround"/>
-                <valItem ident="circlefront"/>
-                <valItem ident="circleback"/>
+                <valItem ident="circleleft"/>
+                <valItem ident="circleright"/>
                 <valItem ident="circlearound"/>
                 <valItem ident="check"/>
               </valList>
