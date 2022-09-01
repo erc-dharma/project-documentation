@@ -1,4 +1,4 @@
-var content = $("#root").append(content);
+﻿var content = $("#root").append(content);
             initializePopovers();
                      
 function initializePopovers() {  
@@ -164,10 +164,10 @@ $('.explanation, .unclear').prepend('(');
 $('.explanation, .unclear').append(')');
 $('.subaudible, .lineation, .foliation, .lost-illegible, .gap').prepend('[');
 $('.subaudible, .lineation, .foliation, .lost-illegible, .gap').append(']');
-$('.hyphenfront, .hyphenaround').prepend('-');
-$('.hyphenback, .hyphenaround').append('-');
-$('.circlefront, .circlearound').prepend('°');
-$('.circleback, .circlearound').append('°');
+$('.hyphenleft, .hyphenaround').prepend('-');
+$('.hyphenright, .hyphenaround').append('-');
+$('.circleleft, .circlearound').prepend('°');
+$('.circleright, .circlearound').append('°');
 $('.surplus').prepend('{');
 $('.surplus').append('}');
 $('.ed-insertion').prepend('⟨⟨');

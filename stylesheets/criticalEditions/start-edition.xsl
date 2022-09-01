@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
@@ -4435,20 +4435,20 @@
     <!-- lem: render the compound in the apparatus entries -->
     <xsl:template name="lem-type">
         <xsl:choose>
-            <xsl:when test="./@rend='hyphenfront' or tei:lem/@rend='hyphenfront'">
-                <xsl:text>hyphenfront</xsl:text>
+            <xsl:when test="./@rend='hyphenleft' or tei:lem/@rend='hyphenleft'">
+                <xsl:text>hyphenleft</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='hyphenback' or tei:lem/@rend='hyphenback'">
-                <xsl:text>hyphenback</xsl:text>
+            <xsl:when test="./@rend='hyphenright' or tei:lem/@rend='hyphenright'">
+                <xsl:text>hyphenright</xsl:text>
             </xsl:when>
             <xsl:when test="./@rend='hyphenaround' or tei:lem/@rend='hyphenaround'">
                 <xsl:text>hyphenaround</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='circlefront' or tei:lem/@rend='circlefront'">
-                <xsl:text>circlefront</xsl:text>
+            <xsl:when test="./@rend='circleleft' or tei:lem/@rend='circleleft'">
+                <xsl:text>circleleft</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='circleback' or tei:lem/@rend='circleback'">
-                <xsl:text>circleback</xsl:text>
+            <xsl:when test="./@rend='circleright' or tei:lem/@rend='circleright'">
+                <xsl:text>circleright</xsl:text>
             </xsl:when>
             <xsl:when test="./@rend='circlearound' or tei:lem/@rend='circlearound'">
                 <xsl:text>circlearound</xsl:text>

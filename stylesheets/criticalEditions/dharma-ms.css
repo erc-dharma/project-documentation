@@ -1,4 +1,4 @@
-/* CSS file based on salit.css written by Andrew Ollett */
+﻿/* CSS file based on salit.css written by Andrew Ollett */
 /* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
 /* For the tables and stuff */
 
@@ -742,19 +742,19 @@ p{
     background-color: yellow;
 }
 
-/*.hyphenfront:before,.hyphenaround:before {
+/*.hyphenleft:before,.hyphenaround:before {
     content:"-";
 }
 
-.hyphenback:after,.hyphenaround:after {
+.hyphenright:after,.hyphenaround:after {
     content:"-";
 }
 
-.circlefront:before,.circlearound:before {
+.circleleft:before,.circlearound:before {
     content:"°";
 }
 
-.circleback:after,.circlearound:after {
+.circleright:after,.circlearound:after {
     content:"°";
 }*/
 
