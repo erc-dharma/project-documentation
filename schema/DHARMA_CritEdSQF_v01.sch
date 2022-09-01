@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt2"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -111,7 +111,7 @@
     <sch:pattern>
         <sch:rule context="@wit">
             <sch:let name="witnesses" value="for $w in tokenize(., '\s+') return substring-after($w, '#')"/>
-            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit/t:witness/@xml:id">
+            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit//@xml:id">
                 Every reading witness (@wit) after the hashtag must match an xml:id defined in the list of witnesses in this file!
             </sch:assert>
         </sch:rule>

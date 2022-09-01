@@ -111,7 +111,7 @@
     <sch:pattern>
         <sch:rule context="@wit">
             <sch:let name="witnesses" value="for $w in tokenize(., '\s+') return substring-after($w, '#')"/>
-            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit/t:witness/@xml:id and //t:TEI//t:listWit/@xml:id">
+            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit//@xml:id">
                 Every reading witness (@wit) after the hashtag must match an xml:id defined in the list of witnesses in this file!
             </sch:assert>
         </sch:rule>
