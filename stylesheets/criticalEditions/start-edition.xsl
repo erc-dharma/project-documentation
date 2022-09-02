@@ -4083,6 +4083,25 @@
                                   </xsl:if>
                                 </xsl:element>
                             </xsl:if>
+                    <xsl:if test="following-sibling::*[local-name()='witDetail'][1]">                
+                        <xsl:if test="string-length(following-sibling::*[local-name()='witDetail'][1]) &gt;= 4">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">witDetail-line</xsl:attribute>
+                                <xsl:text> (</xsl:text>
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                    <xsl:call-template name="tokenize-witness-list">
+                                        <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    </xsl:call-template>
+                                </xsl:element>
+                                <xsl:text>: </xsl:text>
+                                <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]"/>
+                            </xsl:element>
+                        <xsl:text>)</xsl:text>
+                        </xsl:if>
+                    
+                    </xsl:if>
                         <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
@@ -4182,6 +4201,25 @@
                             </xsl:element>
                         </xsl:if>
                     </xsl:if>
+                        
+                        <xsl:if test="following-sibling::*[local-name()='witDetail'][1]">                
+                            <xsl:if test="string-length(following-sibling::*[local-name()='witDetail'][1]/text()) &gt;= 4">
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">witDetail-line</xsl:attribute>
+                                    <xsl:text> (</xsl:text>
+                                    <xsl:element name="span">
+                                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                                        <xsl:call-template name="tokenize-witness-list">
+                                            <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                            <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        </xsl:call-template>
+                                    </xsl:element>
+                                    <xsl:text>: </xsl:text>
+                                    <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]"/>
+                                </xsl:element>
+                                <xsl:text>)</xsl:text>
+                            </xsl:if>
+                        </xsl:if>
 
                     <xsl:if test="@type='paradosis'">
                         <xsl:text> • </xsl:text>
