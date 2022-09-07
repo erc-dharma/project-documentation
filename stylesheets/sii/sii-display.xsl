@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -53,6 +53,14 @@
     <xsl:template match="h3">
         <br/>
         <xsl:element name="h3">
+            <xsl:apply-templates/>
+        </xsl:element>
+        <br/>
+    </xsl:template>
+    
+    <xsl:template match="h4">
+        <br/>
+        <xsl:element name="h4">
             <xsl:apply-templates/>
         </xsl:element>
         <br/>
@@ -123,7 +131,7 @@
     </xsl:template>
    
     <!-- ch et tlka -->
-    <xsl:template match="ch |tlka">
+    <xsl:template match="ch |tlka | TL">
         <xsl:element name="span">
             <xsl:attribute name="style">background-color: yellow;</xsl:attribute>
             <xsl:text>[?]</xsl:text>
@@ -166,7 +174,7 @@
        <xsl:variable name="ref-name" select="@t"/>
         <xsl:element name="a">
             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-            <xsl:attribute name="title"><xsl:apply-templates select="doc($path-file)//note[@n = $ref-name]/p"/></xsl:attribute>
+            <xsl:attribute name="title"><xsl:choose><xsl:when test="doc($path-file)//note[@n = $ref-name]"><xsl:apply-templates select="doc($path-file)//note[@n = $ref-name]/p"/></xsl:when><xsl:otherwise><xsl:apply-templates/></xsl:otherwise></xsl:choose></xsl:attribute>
             <xsl:element name="sup">
                 <xsl:attribute name="class">footnote</xsl:attribute>
                 <xsl:number count="ref" format="1" level="any"/>
@@ -249,6 +257,8 @@
                             Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
