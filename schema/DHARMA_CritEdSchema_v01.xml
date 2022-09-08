@@ -57,6 +57,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-09-08"
+        >Adding the @xml:id for msFrag and msPart</change>
       <change who="part:axja" when="2022-09-01"
         >Changing the type of list for @rend hyphen and circle. Adding the value orthographical</change>
       <change who="part:axja" when="2022-08-26"
@@ -1196,9 +1198,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="bibl" module="core" mode="change">
-          <classes mode="change">
-            <memberOf key="att.typed" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -1788,9 +1787,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="item" module="core" mode="change">
-          <classes mode="change">
-            <memberOf key="att.sortable" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -2466,9 +2462,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="pb" module="core" mode="change">
-          <classes mode="change">
-            <memberOf key="att.witnessed"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -2491,6 +2484,7 @@
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="type" mode="delete"/>
+            <attDef ident="wit" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
@@ -2687,9 +2681,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="ref" module="core" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cRef" mode="delete"/>
@@ -4482,9 +4473,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="change" mode="change">
-          <classes mode="change">
-            <memberOf key="att.typed" mode="delete"/>
-          </classes>
           <constraintSpec scheme="schematron" ident="responsability">
             <constraint><sch:rule context="@who"><sch:assert test="starts-with(.,'part:')"
               >Project members prefix is
@@ -4539,6 +4527,8 @@
                 <valItem ident="withdrawn"/>
               </valList>
             </attDef>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
           </attList>
         </elementSpec>
         <elementSpec ident="anchor" mode="change">
@@ -4704,13 +4694,6 @@
           </attList>
         </elementSpec>
         <elementSpec ident="msDesc" mode="change">
-          <classes mode="change">
-            <memberOf key="att.declaring" mode="delete"/>
-            <memberOf key="att.docStatus" mode="delete"/>
-            <memberOf key="att.global" mode="delete"/>
-            <memberOf key="att.sortable" mode="delete"/>
-            <memberOf key="att.typed" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="source" mode="delete"/>
@@ -4729,40 +4712,54 @@
             <attDef ident="rend" mode="delete"/>
             <attDef ident="style" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
+            <attDef ident="decls" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="sortKey" mode="delete"/>
+            <attDef ident="status" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
           </attList>
         </elementSpec>
         <elementSpec ident="msFrag" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-            <memberOf key="att.typed" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
-            <attDef ident="source" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
-            <attDef ident="resp" mode="delete"/>
             <attDef ident="change" mode="delete"/>
-            <attDef ident="facs" mode="delete"/>
-            <attDef ident="corresp" mode="delete"/>
-            <attDef ident="synch" mode="delete"/>
-            <attDef ident="sameAs" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="exclude" mode="delete"/>
-            <attDef ident="select" mode="delete"/>
             <attDef ident="rend" mode="delete"/>
-            <attDef ident="style" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="versionDate" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
           </attList>
         </elementSpec>
         <elementSpec ident="msIdentifier" mode="change">
           <constraintSpec scheme="schematron" ident="identifier">
-            <constraint><sch:rule context="tei:msIdentifier"><sch:assert
-              test="child::tei:settlement"
-              >The msIdentifier should contain settlement.</sch:assert></sch:rule><sch:rule
-              context="tei:msIdentifier"><sch:assert
-              test="child::tei:idno and child::tei:repository"
+            <constraint>
+              <sch:rule context="tei:msIdentifier[not(following-sibling::tei:msFrag)]"
+              ><sch:assert test="child::tei:settlement"
+              >The msIdentifier should contain settlement, when not associated with msFrag.</sch:assert></sch:rule><sch:rule
+                context="tei:msIdentifier[child::tei:repository]"><sch:assert
+              test="child::tei:idno"
               >If repository is given, msIdentifier should an idno</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -4815,56 +4812,59 @@
           </attList>
         </elementSpec>
         <elementSpec ident="msName" mode="change">
-          <classes mode="change">
-            <memberOf key="att.typed" mode="delete"/>
-          </classes>
           <attList>
-            <attDef ident="rend" mode="delete"/>
-            <attDef ident="style" mode="delete"/>
-            <attDef ident="rendition" mode="delete"/>
-            <attDef ident="corresp" mode="delete"/>
-            <attDef ident="synch" mode="delete"/>
-            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="exclude" mode="delete"/>
-            <attDef ident="select" mode="delete"/>
-            <attDef ident="facs" mode="delete"/>
-            <attDef ident="change" mode="delete"/>
-            <attDef ident="cert" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
             <attDef ident="source" mode="delete"/>
-            <attDef ident="ana" mode="delete"/>
-            <attDef ident="n" mode="delete"/>
-            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="versionDate" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
           </attList>
         </elementSpec>
         <elementSpec ident="msPart" mode="change">
-          <classes mode="change">
-            <memberOf key="att.global" mode="delete"/>
-            <memberOf key="att.typed" mode="delete"/>
-          </classes>
           <attList>
             <attDef ident="ana" mode="delete"/>
-            <attDef ident="source" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
-            <attDef ident="resp" mode="delete"/>
             <attDef ident="change" mode="delete"/>
-            <attDef ident="facs" mode="delete"/>
-            <attDef ident="corresp" mode="delete"/>
-            <attDef ident="synch" mode="delete"/>
-            <attDef ident="sameAs" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
-            <attDef ident="exclude" mode="delete"/>
-            <attDef ident="select" mode="delete"/>
             <attDef ident="rend" mode="delete"/>
-            <attDef ident="style" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="versionDate" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
           </attList>
         </elementSpec>
         <elementSpec ident="normalization" mode="change">
@@ -5502,7 +5502,7 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
           </attList>
-        </elementSpec>
+        </elementSpec>    
       </schemaSpec>
     </body>
   </text>

@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-09-01T11:44:23Z. .
+Schema generated from ODD source 2022-09-08T10:05:12Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -3329,6 +3329,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                </report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.pointing.attribute.target"/>
          <empty/>
       </element>
@@ -3571,7 +3572,6 @@ Suggested values include: 1] check; 2] bulleted; 3] numbered</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(page beginning) marks the beginning of a new page in a paginated document. [3.10.3. Milestone
 Elements]</a:documentation>
          <empty/>
-         <ref name="tei_att.witnessed.attributes"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.edition.attribute.edRef"/>
          <optional>
@@ -6685,13 +6685,13 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                   id="DHARMA_CritEdSchema_v01-msIdentifier-identifier-constraint-rule-63">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:msIdentifier">
-               <sch:assert test="child::tei:settlement">The msIdentifier should contain settlement.</sch:assert>
+                      context="tei:msIdentifier[not(following-sibling::tei:msFrag)]">
+               <sch:assert test="child::tei:settlement">The msIdentifier should contain settlement, when not associated with msFrag.</sch:assert>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:msIdentifier">
-               <sch:assert test="child::tei:idno and child::tei:repository">If repository is given, msIdentifier should an idno</sch:assert>
+                      context="tei:msIdentifier[child::tei:repository]">
+               <sch:assert test="child::tei:idno">If repository is given, msIdentifier should an idno</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -7184,6 +7184,8 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                </group>
             </choice>
          </group>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_msFrag">
@@ -7214,6 +7216,8 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                </group>
             </choice>
          </group>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_certainty">
