@@ -533,6 +533,7 @@
                                     <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
 
                                     <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
 
                                 </xsl:call-template>
                                 </xsl:element>
@@ -545,6 +546,7 @@
                                     <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     
                                     <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
                                     
                                 </xsl:call-template>
                             </xsl:element>
@@ -559,6 +561,7 @@
                                         <xsl:with-param name="witdetail-string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                         <xsl:with-param name="witdetail-text" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                                                <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
                                 </xsl:call-template>
                                     <xsl:if test="tei:lem/@varSeq">
                                         <xsl:choose>
@@ -621,6 +624,7 @@
                                 <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                 <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                 <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                                <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
                             </xsl:call-template>
                             </xsl:element>
                             <xsl:text>: </xsl:text>
@@ -640,21 +644,21 @@
                     </xsl:for-each>
                 </xsl:if>
             <!-- commentaire du witDetail -->
-            <xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail">                <xsl:for-each select="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail">
-                <xsl:if test="string-length(.) &gt;= 4">
+            <xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">                <xsl:for-each select="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">
                     <xsl:element name="hr"/>
                     <xsl:element name="span">
                         <xsl:attribute name="class">witDetail-line</xsl:attribute>
-                        <xsl:element name="span">
+                        <!--<xsl:element name="span">
                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        <xsl:value-of select="substring-after(./@wit, '#')"/>
-                        <xsl:element name="sub">
-                            <xsl:value-of select="./@type"/>
+                            <xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="parent::tei:witDetail/@wit"/>
+                                <xsl:with-param name="witdetail-type" select="parent::tei:witDetail/@type"/>
+                                <xsl:with-param name="wit-hand" select="parent::tei:witDetail/preceding-sibling::tei:*[1]/@hand"/>
+                            </xsl:call-template>
                         </xsl:element>
-                        </xsl:element>
-                        <xsl:text>: </xsl:text>
+                        <xsl:text>: </xsl:text>-->
                         <xsl:apply-templates select="."/>
-                    </xsl:element></xsl:if>
+                    </xsl:element>
                 </xsl:for-each>
             </xsl:if>
             <!--</xsl:element>-->
@@ -726,6 +730,7 @@
                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                     <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                    <xsl:with-param name="wit-hand" select="./@hand"/>
                 </xsl:call-template>
                 <xsl:if test="./@varSeq">
                     <xsl:choose>
@@ -3327,6 +3332,7 @@
         <xsl:param name="witdetail-string"/>
         <xsl:param name="witdetail-type"/>
         <xsl:param name="witdetail-text"/>
+        <xsl:param name="wit-hand"/>
         <xsl:param name="tpl"/>
         <xsl:choose>
             <xsl:when test="contains($string, ' ')">
@@ -3338,6 +3344,7 @@
                         <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
                         <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                         <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                        <xsl:with-param name="wit-hand" select="$wit-hand"/>
                         <xsl:with-param name="tpl" select="$tpl"/>
                     </xsl:call-template>
                     <xsl:call-template name="tokenize-witness-list">
@@ -3345,6 +3352,7 @@
                         <xsl:with-param name="witdetail-string" select="$witdetail-string"/>
                         <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                         <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                        <xsl:with-param name="wit-hand" select="$wit-hand"/>
                         <xsl:with-param name="tpl" select="$tpl"/>
                     </xsl:call-template>
                 </xsl:if>
@@ -3360,6 +3368,7 @@
                             <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
                             <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
                             <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                            <xsl:with-param name="wit-hand" select="$wit-hand"/>
                             <xsl:with-param name="tpl" select="$tpl"/>
                         </xsl:call-template>
                     </xsl:otherwise>
@@ -3374,6 +3383,7 @@
         <xsl:param name="witdetail-string"/>
         <xsl:param name="witdetail-type"/>
         <xsl:param name="witdetail-text"/>
+        <xsl:param name="wit-hand"/>
         <xsl:param name="tpl"/>
         <!-- Changement dans la gestion des espaces donc $tpl='content-ptr' n'est plus nécessaire -->
         <xsl:if test="not($tpl='content-pb')">
@@ -3397,21 +3407,21 @@
 
         </xsl:element>
         <xsl:if test="$target = $witdetail-string">
-            <xsl:choose>
-                <xsl:when test="string-length($witdetail-text) &gt;= 4"/>
-                <xsl:otherwise>
+            
                     <xsl:element name="sub">
-                <xsl:choose>
-                    <xsl:when test="$witdetail-text != ''">
-                        <xsl:value-of select="$witdetail-text"/>
-                    </xsl:when>
-                    <xsl:otherwise>
+               
                     <xsl:value-of select="$witdetail-type"/>
-                    </xsl:otherwise>
-                </xsl:choose>
+                        <xsl:if test="$wit-hand !=''">
+                            <xsl:choose>
+                                <xsl:when test="fn:contains($wit-hand, 'H1')">
+                                    <xsl:text>-pm</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="fn:contains($wit-hand, 'H2')">
+                                    <xsl:text>-sm</xsl:text>
+                                </xsl:when>
+                            </xsl:choose>
+                        </xsl:if>
             </xsl:element>
-                </xsl:otherwise>
-            </xsl:choose>
         </xsl:if>
     </xsl:template>
 
@@ -4040,6 +4050,7 @@
                                         <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
 
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        <xsl:with-param name="wit-hand" select="@hand"/>
 
                                     </xsl:call-template>
                             </xsl:element>
@@ -4052,6 +4063,7 @@
                                 <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                 
                                 <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
                                 
                             </xsl:call-template>
                         </xsl:element>
@@ -4068,6 +4080,7 @@
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                         <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                                        <xsl:with-param name="wit-hand" select="@hand"/>
                                     </xsl:call-template>
                                   <xsl:if test="@varSeq">
                                       <xsl:choose>
@@ -4085,23 +4098,22 @@
                                   </xsl:if>
                                 </xsl:element>
                             </xsl:if>
-                    <xsl:if test="following-sibling::*[local-name()='witDetail'][1]">                
-                        <xsl:if test="string-length(following-sibling::*[local-name()='witDetail'][1]) &gt;= 4">
+                    <xsl:if test="following-sibling::*[local-name()='witDetail'][1]/text()">                
                             <xsl:element name="span">
                                 <xsl:attribute name="class">witDetail-line</xsl:attribute>
                                 <xsl:text> (</xsl:text>
-                                <xsl:element name="span">
+                               <!-- <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/><xsl:with-param name="wit-hand" select="preceding::tei:*[1]/@hand"/>
                                     </xsl:call-template>
                                 </xsl:element>
-                                <xsl:text>: </xsl:text>
+                                <xsl:text>: </xsl:text>-->
                                 <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]"/>
                             </xsl:element>
                         <xsl:text>)</xsl:text>
-                        </xsl:if>
+                        
                     
                     </xsl:if>
                         <xsl:if test="@source">
@@ -4172,6 +4184,7 @@
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                     <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                                    <xsl:with-param name="wit-hand" select="@hand"/>
                                 </xsl:call-template>
                                 <xsl:if test="@varSeq">
                                     <xsl:choose>
@@ -4204,23 +4217,22 @@
                         </xsl:if>
                     </xsl:if>
                         
-                        <xsl:if test="following-sibling::*[local-name()='witDetail'][1]">                
-                            <xsl:if test="string-length(following-sibling::*[local-name()='witDetail'][1]/text()) &gt;= 4">
+                        <xsl:if test="following-sibling::*[local-name()='witDetail'][1]/text()">                
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">witDetail-line</xsl:attribute>
                                     <xsl:text> (</xsl:text>
-                                    <xsl:element name="span">
+                                    <!--<xsl:element name="span">
                                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                         <xsl:call-template name="tokenize-witness-list">
                                             <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                            <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                            <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/><xsl:with-param name="wit-hand" select="preceding::tei:*[1]/@hand"/>
                                         </xsl:call-template>
                                     </xsl:element>
-                                    <xsl:text>: </xsl:text>
+                                    <xsl:text>: </xsl:text>-->
                                     <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]"/>
                                 </xsl:element>
                                 <xsl:text>)</xsl:text>
-                            </xsl:if>
+                            
                         </xsl:if>
 
                     <xsl:if test="@type='paradosis'">
@@ -4240,6 +4252,7 @@
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                         <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
+                                        <xsl:with-param name="wit-hand" select="@hand"/>
                                     </xsl:call-template>
                                     </xsl:element>
                                     <xsl:text>: </xsl:text>
