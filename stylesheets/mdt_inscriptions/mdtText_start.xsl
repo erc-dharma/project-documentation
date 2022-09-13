@@ -6,23 +6,23 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:saxon="http://saxon.sf.net/" version="3.0"
     exclude-result-prefixes="tei xi fn functx saxon">
-    
+
     <!-- Written by Axelle Janiak for DHARMA, starting July 2022 -->
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
-    
+
     <xsl:function name="functx:escape-for-regex" as="xs:string"
         xmlns:functx="http://www.functx.com">
-        <xsl:param name="arg" as="xs:string?"/>  
-        <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>     
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
     </xsl:function>
     <xsl:function name="functx:substring-after-last" as="xs:string?">
         <xsl:param name="arg" as="xs:string?"/>
         <xsl:param name="delim" as="xs:string"/>
         <xsl:sequence select="replace($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
     </xsl:function>
-    
-    <xsl:output method="xml" indent="yes"/>   
-    
+
+    <xsl:output method="xml" indent="yes"/>
+
     <xsl:template match="/" name="xsl:initial-template">
         <xsl:variable name="api-url">
             <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
@@ -33,15 +33,16 @@
                 <xsl:value-of select="unparsed-text(.)"/>
             </xsl:for-each>
         </xsl:variable>
-        
+
         <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
-        
+
         <xsl:variable name="lines">
                 <xsl:for-each select="tokenize($data, '\r?\n')">
                     <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                     <xsl:choose>
                         <xsl:when test="$tokens[1] = '0'"/>
-                        <xsl:when test="$tokens[3] = ''"/>
+                        <xsl:when test="$tokens[3] = '' and $tokens[16]"/>
+                        <!-- ajouter la description du $tokens[16] pour discriminer les fichiers à ajouter-->
                     <xsl:otherwise>
                         <line>
                             <fileDesc>
@@ -123,7 +124,7 @@
                                                                 <xsl:text> </xsl:text>
                                                                 <xsl:call-template name="language-tpl">
                                                                     <xsl:with-param name="language" select="$tokens[32]"/>
-                                                                </xsl:call-template>                                  
+                                                                </xsl:call-template>
                                                             </xsl:attribute>
                                                         </xsl:if>
                                                         <xsl:if test="$tokens[35]">
@@ -131,7 +132,7 @@
                                                                 <xsl:text> </xsl:text>
                                                                 <xsl:call-template name="language-tpl">
                                                                     <xsl:with-param name="language" select="$tokens[35]"/>
-                                                                </xsl:call-template>                                  
+                                                                </xsl:call-template>
                                                             </xsl:attribute>
                                                         </xsl:if>
                                                     </xsl:attribute>
@@ -208,8 +209,8 @@
                                                             <xsl:element name="layout">
                                                                 <xsl:attribute name="writtenLines"><xsl:value-of select="substring-after(., ':')"/></xsl:attribute>
                                                                 <p>Zone <xsl:value-of select="substring-before(., ':')"/> has <xsl:value-of select="substring-after(., ':')"/> lines.</p></xsl:element></xsl:for-each>
-                                                                    
-                                                                    
+
+
                                                         <xsl:variable name="inscribed-zones" select="tokenize($tokens[42], '\$')"/>
                                                         <xsl:for-each select="$inscribed-zones">
                                                             <xsl:element name="layout">
@@ -323,15 +324,15 @@
                         </line>
                     </xsl:otherwise>
                 </xsl:choose>
-                </xsl:for-each>  
-            
+                </xsl:for-each>
+
         </xsl:variable>
-        
-        <File>          
-                <xsl:copy-of select="$lines/line"/>  
+
+        <File>
+                <xsl:copy-of select="$lines/line"/>
         </File>
-    </xsl:template>  
-    
+    </xsl:template>
+
     <xsl:template name="language-tpl">
         <xsl:param name="language"/>
         <xsl:if test="$language !=''">
