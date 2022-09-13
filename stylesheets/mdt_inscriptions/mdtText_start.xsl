@@ -41,7 +41,7 @@
                     <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                     <xsl:choose>
                         <xsl:when test="$tokens[1] = '0'"/>
-                        <xsl:when test="$tokens[3] = '' and $tokens[16]"/>
+                        <xsl:when test="$tokens[3] = ''"/>
                         <!-- ajouter la description du $tokens[16] pour discriminer les fichiers à ajouter-->
                     <xsl:otherwise>
                         <line>
