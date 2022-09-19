@@ -182,11 +182,11 @@
             <xsl:text>/</xsl:text>
             <xsl:choose>
                 <xsl:when test="preceding::H2[1]">
-                    <xsl:value-of select="replace(replace(substring-before(preceding::H2[1], '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
+                    <xsl:value-of select="replace(replace(substring-before(preceding::H2[1]/string(), '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
                 </xsl:when>
             <!-- substring-before(preceding::HC[1], '.') -->
             <xsl:otherwise>
-                <xsl:value-of select="replace(replace(substring-before(preceding::HC[1], '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
+                <xsl:value-of select="replace(replace(substring-before(preceding::HC[1]/string(), '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
             </xsl:otherwise>
             </xsl:choose>
             <xsl:text>/</xsl:text>
