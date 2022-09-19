@@ -3139,8 +3139,15 @@
             <xsl:attribute name="class">word</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template> 
+    
+    <!--  witDetail ! -->
+    <xsl:template match="tei:witDetail">
+        <xsl:choose>
+            <xsl:when test="tei:witDetail[@type='rejected']/text()"/>
+        </xsl:choose>
     </xsl:template>
-
+    
     <!--  BUTTON-GROUP ! -->
     <!--  button group to the right of each verse or paragraph ! -->
     <xsl:template name="button-group">
