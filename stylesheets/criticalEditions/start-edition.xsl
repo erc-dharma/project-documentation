@@ -448,7 +448,7 @@
                     <xsl:text> </xsl:text>
                 </xsl:if>
             </xsl:if>
-            <xsl:if test="@place and not(@place='unspecified')">
+            <xsl:if test="@place and not(@place='unspecified' and parent::tei:subst)">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-italic</xsl:attribute>
                     <xsl:choose>
@@ -644,11 +644,13 @@
                     </xsl:for-each>
                 </xsl:if>
             <!-- commentaire du witDetail -->
-            <xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">                <xsl:for-each select="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">
+            <!-- temporary disabled, waiting for Arlo's answer on where to place it -->
+            <!--<xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">                
+                <xsl:for-each select="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">
                     <xsl:element name="hr"/>
                     <xsl:element name="span">
                         <xsl:attribute name="class">witDetail-line</xsl:attribute>
-                        <!--<xsl:element name="span">
+                        <!-\-<xsl:element name="span">
                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="parent::tei:witDetail/@wit"/>
@@ -656,11 +658,11 @@
                                 <xsl:with-param name="wit-hand" select="parent::tei:witDetail/preceding-sibling::tei:*[1]/@hand"/>
                             </xsl:call-template>
                         </xsl:element>
-                        <xsl:text>: </xsl:text>-->
+                        <xsl:text>: </xsl:text>-\->
                         <xsl:apply-templates select="."/>
                     </xsl:element>
                 </xsl:for-each>
-            </xsl:if>
+            </xsl:if>-->
             <!--</xsl:element>-->
         </xsl:variable>
 
@@ -1065,6 +1067,21 @@
             <xsl:attribute name="title">Editorial deletion.</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">scribe-deletion</xsl:attribute>
+                <xsl:if test="not(parent::tei:subst)">
+                    <xsl:element name="span">
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:choose>
+                    <xsl:when test="@rend='strikeout'">
+                        <xsl:text>ante ras. </xsl:text>
+                    </xsl:when>
+                    <xsl:when test="@rend='dots'">
+                        <xsl:text>exp. </xsl:text>
+                    </xsl:when>
+                    <xsl:when test="@rend='ui'">
+                        <xsl:text>ui </xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                </xsl:element></xsl:if>
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:element>
@@ -3420,8 +3437,15 @@
                                     <xsl:text>-sm</xsl:text>
                                 </xsl:when>
                             </xsl:choose>
-                        </xsl:if>
+                        </xsl:if> 
             </xsl:element>
+            <xsl:if test="$witdetail-text != ''">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">witDetail-line font-weight-normal</xsl:attribute>
+                <xsl:text> (</xsl:text>
+            <xsl:apply-templates select="$witdetail-text"/>
+            <xsl:text>)</xsl:text>
+            </xsl:element></xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -4098,24 +4122,6 @@
                                   </xsl:if>
                                 </xsl:element>
                             </xsl:if>
-                    <xsl:if test="following-sibling::*[local-name()='witDetail'][1]/text()">                
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">witDetail-line</xsl:attribute>
-                                <xsl:text> (</xsl:text>
-                               <!-- <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                                    <xsl:call-template name="tokenize-witness-list">
-                                        <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                        <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/><xsl:with-param name="wit-hand" select="preceding::tei:*[1]/@hand"/>
-                                    </xsl:call-template>
-                                </xsl:element>
-                                <xsl:text>: </xsl:text>-->
-                                <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]"/>
-                            </xsl:element>
-                        <xsl:text>)</xsl:text>
-                        
-                    
-                    </xsl:if>
                         <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
@@ -4215,26 +4221,7 @@
                                 <xsl:text>)</xsl:text>
                             </xsl:element>
                         </xsl:if>
-                    </xsl:if>
-                        
-                        <xsl:if test="following-sibling::*[local-name()='witDetail'][1]/text()">                
-                                <xsl:element name="span">
-                                    <xsl:attribute name="class">witDetail-line</xsl:attribute>
-                                    <xsl:text> (</xsl:text>
-                                    <!--<xsl:element name="span">
-                                        <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                                        <xsl:call-template name="tokenize-witness-list">
-                                            <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                            <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/><xsl:with-param name="wit-hand" select="preceding::tei:*[1]/@hand"/>
-                                        </xsl:call-template>
-                                    </xsl:element>
-                                    <xsl:text>: </xsl:text>-->
-                                    <xsl:apply-templates select="following-sibling::*[local-name()='witDetail'][1]"/>
-                                </xsl:element>
-                                <xsl:text>)</xsl:text>
-                            
-                        </xsl:if>
-
+                    </xsl:if>                   
                     <xsl:if test="@type='paradosis'">
                         <xsl:text> • </xsl:text>
                                 <xsl:element name="span">
