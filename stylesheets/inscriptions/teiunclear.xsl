@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id: teiunclear.xsl 1725 2012-01-10 16:08:31Z gabrielbodard $ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"  version="2.0">
@@ -61,10 +61,11 @@
           </xsl:when>
               <xsl:otherwise><xsl:text>(</xsl:text></xsl:otherwise>
             </xsl:choose>-->
-            <xsl:call-template name="brackets-opener"/>
-
+            <xsl:text>(</xsl:text>
+            
             <xsl:apply-templates/>
-
+            <xsl:if test="@cert='low'">?</xsl:if>                
+            <xsl:text>)</xsl:text>
               <!--<xsl:choose>
                 <xsl:when test="@rend='grantha' or child::t:hi[@rend='grantha']">
                   <xsl:element name="span">
@@ -80,12 +81,15 @@
                 <xsl:when test="parent::t:hi[@rend='grantha']">
                 <xsl:element name="span">
                 <xsl:attribute name="class">notBold</xsl:attribute>
+                  <xsl:if test="@cert='low'">?</xsl:if>
                 <xsl:text>)</xsl:text>
               </xsl:element>
             </xsl:when>
-                <xsl:otherwise><xsl:text>)</xsl:text></xsl:otherwise>
+                <xsl:otherwise>
+                  <xsl:if test="@cert='low'">?</xsl:if>                
+                  <xsl:text>)</xsl:text>
+                </xsl:otherwise>
               </xsl:choose>-->
-            <xsl:call-template name="brackets-closer"/>
             <!--<xsl:if test="parent::t:l[@enjamb='yes'] and self::t:unclear[not(following::text()[1])]">
             <xsl:text>-</xsl:text>
           </xsl:if>-->
