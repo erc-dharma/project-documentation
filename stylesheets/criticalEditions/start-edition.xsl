@@ -4117,7 +4117,7 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:if>
                             </xsl:if>
-                    <xsl:if test="self::tei:lem[@type='reformulated_elsewhere'][not(following-sibling::tei:rdg[@type='transposition'])] or .[following-sibling::tei:rdg[@type='paradosis']]"><!-- or .[following-sibling::tei:witDetail[@type='retained']] -->
+                    <xsl:if test="self::tei:lem[@type='reformulated_elsewhere'] or .[following-sibling::tei:rdg[@type='paradosis']]"><!-- or .[following-sibling::tei:witDetail[@type='retained']] -->
                             <xsl:text> Thus formulated in </xsl:text>
                             <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
@@ -4130,7 +4130,7 @@
                                     </xsl:call-template>
                             </xsl:element>
                         </xsl:if>
-                    <xsl:if test="self::tei:lem[@type='transposition'] and ancestor::tei:lg">
+                    <xsl:if test="self::tei:lem[@type='transposition'][ancestor::tei:lg[not(@xml:id)]][following-sibling::tei:rdg[child::tei:*[@corresp]]]">
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
@@ -4156,7 +4156,7 @@
                             </xsl:call-template>
                         </xsl:element>
                     </xsl:if>
-                    <xsl:if test="tei:lem[not(@type='transposition')]/@wit">
+                    <xsl:if test="self::tei:lem/@wit">
                             <!--<xsl:if test="@type='absent_elsewhere'">
                                 <xsl:text>only in </xsl:text>
                                 </xsl:if>-->
@@ -4164,7 +4164,7 @@
                               <xsl:element name="span">
                                   <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
                                     <xsl:call-template name="tokenize-witness-list">
-                                        <xsl:with-param name="string" select="@wit"/>
+                                        <xsl:with-param name="string" select="self::tei:lem[not(@type='transposition')]/@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                         <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                         <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
@@ -4320,7 +4320,7 @@
                 <!--<xsl:if test="ancestor::*[local-name()='lem'][1]/following-sibling::tei:rdg[1]">
                     <xsl:text>, </xsl:text>
                 </xsl:if>-->
-                <xsl:for-each select="ancestor::*[local-name()='lem'][not(@type='reformulation')][1]/following-sibling::tei:rdg[not(@type='transposition')][1]">
+                <xsl:for-each select="ancestor::*[local-name()='lem'][not(@type='reformulation' or @type='transposition')][1]/following-sibling::tei:rdg[1]">
                    <xsl:call-template name="rdg-content">
                        <xsl:with-param name="parent-rdg" select="'yes-bottom'"/>
                    </xsl:call-template>
