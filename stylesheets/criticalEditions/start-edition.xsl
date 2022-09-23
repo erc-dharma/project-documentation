@@ -508,7 +508,7 @@
                                 <xsl:when test="tei:lem[@type='transposition']"/>
                                 <xsl:when test="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
                                     <xsl:variable name="corresp-id" select="tei:rdg[@type='transposition']/@corresp"/>
-                                    <xsl:apply-templates select="replace(//tei:lem[@type='transposition'][ancestor::*[@xml:id = substring-after($corresp-id, '#')]]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
+                                    <xsl:apply-templates select="replace(//tei:lem[contains(@type, 'transposition')][ancestor::*[@xml:id = substring-after($corresp-id, '#')]]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
                                         "/>
                                 </xsl:when>
                                 <xsl:otherwise>
@@ -619,10 +619,31 @@
                                 <!--<xsl:if test="tei:lem/attribute::source">
                                     <xsl:text> </xsl:text>
                                 </xsl:if>-->
-                        <xsl:if test="tei:lem[@type='transposition'][ancestor::tei:*[matches(@xml:id, 'trsp\d\d\d')]]">
-                            <xsl:text> (</xsl:text>
-                            <xsl:value-of select="tei:lem/@type"/>
-                            <xsl:text>)</xsl:text>
+                        
+                        <xsl:if test="tei:lem[contains(@type, 'transposition')]">
+                            
+                            <xsl:if test="tei:lem[contains(@type, 'emn') or contains(@type, 'conj') or contains(@type, 'norm')]">
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                                    <xsl:choose>
+                                        <xsl:when test="contains(tei:lem/@type, 'emn')">
+                                            <xsl:text>em.</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="contains(tei:lem/@type, 'conj')">
+                                            <xsl:text>conj.</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="contains(tei:lem/@type, 'norm')">
+                                            <xsl:text>norm.</xsl:text>
+                                        </xsl:when>
+                                    </xsl:choose>
+                                </xsl:element>
+                            </xsl:if>
+                            <!--  -->
+                            <xsl:choose>
+                                <xsl:when test="tei:lem[ancestor::tei:lg[not(@xml:id)]][following-sibling::tei:rdg[child::tei:*[@corresp]]]"></xsl:when>
+                                <xsl:otherwise> 
+                            <xsl:text> (transposition)</xsl:text>
+                        </xsl:otherwise></xsl:choose>
                         </xsl:if>
                         <xsl:if test="tei:lem/@source">
                                 <xsl:call-template name="source-siglum">
@@ -4133,7 +4154,7 @@
                         <xsl:text>]</xsl:text>
                     </xsl:element>
                     </xsl:if>
-                            <xsl:if test="@type">
+                    <xsl:if test="@type">
                                 <xsl:element name="span">
                                     <xsl:attribute name="class">font-italic</xsl:attribute>
                                     <xsl:text> </xsl:text>
@@ -4170,7 +4191,7 @@
                         </xsl:for-each>
                     </xsl:if>
                     <!-- case for transposition with parent with xml:if  -->
-                    <xsl:if test="self::tei:lem[@type='transposition'][ancestor::tei:*[matches(@xml:id, 'trsp\d\d\d')]]">
+                    <xsl:if test="self::tei:lem[contains(@type,'transposition')][ancestor::tei:*[matches(@xml:id, 'trsp\d\d\d')]]">
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
@@ -4228,10 +4249,33 @@
                             </xsl:otherwise>
                         </xsl:choose>
                             </xsl:if>
-                    <xsl:if test="self::tei:lem[@type='transposition']">
-                        <xsl:text> (</xsl:text>
-                        <xsl:value-of select="@type"/>
-                        <xsl:text>)</xsl:text>
+                    
+                    <xsl:if test="self::tei:lem[contains(@type, 'transposition')]">
+                        
+                        <xsl:if test="self::tei:lem[contains(@type, 'emn') or contains(@type, 'conj') or contains(@type, 'norm')]">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                            <xsl:choose>
+                                <xsl:when test="contains(@type, 'emn')">
+                                    <xsl:text>em.</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="contains(@type, 'conj')">
+                                    <xsl:text>conj.</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="contains(@type, 'norm')">
+                                    <xsl:text>norm.</xsl:text>
+                                </xsl:when>
+                            </xsl:choose>
+                            </xsl:element>
+                        </xsl:if>
+                        <xsl:choose>
+                            <xsl:when test=".[ancestor::tei:lg[not(@xml:id)]][following-sibling::tei:rdg[child::tei:*[@corresp]]]"/>
+                            <xsl:otherwise>
+                                <xsl:text> (transposition)</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                       <!-- <xsl:value-of select="@type"/>
+                        <xsl:text>)</xsl:text>-->
                     </xsl:if>
                         <xsl:if test="@source">
                                 <xsl:call-template name="source-siglum">
@@ -4239,7 +4283,7 @@
                                 </xsl:call-template>
                             </xsl:if>
 
-                    <xsl:if test="$path/tei:lem[not(@type='transposition')]">
+                    <xsl:if test="$path/tei:lem[not(contains(@type,'transposition'))]">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                     
@@ -4247,7 +4291,7 @@
                 <!-- create the fake lem for transposition only containing rdg -->
                 <xsl:for-each select="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
                         <xsl:variable name="corresp-id" select="@corresp"/>
-                        <xsl:apply-templates select="replace(//tei:lem[@type='transposition'][ancestor::*[@xml:id = substring-after($corresp-id, '#')]]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
+                        <xsl:apply-templates select="replace(//tei:lem[contains(@type, 'transposition')][ancestor::*[@xml:id = substring-after($corresp-id, '#')]]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
                             "/>
                         <!--  adding the bracket since it can't be diplayed without element lem-->
                         <xsl:element name="span">
