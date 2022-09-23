@@ -653,6 +653,7 @@
                     </xsl:if>
                     <!-- witnesses pour la transposition  -->
                     <xsl:if test="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
+                        <xsl:variable name="corresp-id" select="tei:rdg[@type='transposition']/@corresp"/>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
@@ -662,6 +663,12 @@
                         </xsl:element>
                         <xsl:text> (</xsl:text>
                         <xsl:value-of select="tei:rdg/@type"/>
+                        <xsl:text>, see </xsl:text> 
+                        <xsl:element name="a">
+                            <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="//tei:lem[contains(@type, 'transposition')]/ancestor::tei:*[@xml:id = substring-after($corresp-id, '#')]/@xml:id"/></xsl:attribute>
+                        <xsl:text>st. </xsl:text>
+                        <xsl:value-of select="//tei:lem[contains(@type, 'transposition')]/ancestor::tei:*[@xml:id = substring-after($corresp-id, '#')]/@n"/>
+                        </xsl:element>
                         <xsl:text>)</xsl:text>
                     </xsl:if>
                 </xsl:element>
@@ -4426,8 +4433,15 @@
                 </xsl:for-each>
                 <!-- @type pour la transposition  -->
                 <xsl:if test="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
+                    <xsl:variable name="corresp-id" select="@corresp"/>
                     <xsl:text> (</xsl:text>
                     <xsl:value-of select="tei:rdg/@type"/>
+                    <xsl:text>, see </xsl:text> 
+                    <xsl:element name="a">
+                        <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="//tei:lem[contains(@type, 'transposition')]/ancestor::tei:*[@xml:id = substring-after($corresp-id, '#')]/@xml:id"/></xsl:attribute>
+                        <xsl:text>st. </xsl:text>
+                        <xsl:value-of select="//tei:lem[contains(@type, 'transposition')]/ancestor::tei:*[@xml:id = substring-after($corresp-id, '#')]/@n"/>
+                    </xsl:element>
                     <xsl:text>)</xsl:text>
                 </xsl:if>
                 <xsl:for-each select="tei:rdg/following-sibling::tei:note[not(@type='altLem')]"><xsl:element name="span">
