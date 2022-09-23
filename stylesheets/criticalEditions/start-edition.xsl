@@ -4433,7 +4433,7 @@
                 </xsl:for-each>
                 <!-- @type pour la transposition  -->
                 <xsl:if test="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
-                    <xsl:variable name="corresp-id" select="@corresp"/>
+                    <xsl:variable name="corresp-id" select="tei:rdg/@corresp"/>
                     <xsl:text> (</xsl:text>
                     <xsl:value-of select="tei:rdg/@type"/>
                     <xsl:text>, see </xsl:text> 
