@@ -505,7 +505,7 @@
                                 <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
                                     <xsl:apply-templates select="replace(tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
                                 </xsl:when>
-                                <xsl:when test="tei:lem[@cause='transposition'][not(@xml:id)]"/>
+                                <xsl:when test="tei:lem[@cause='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))]"/>
                                 <xsl:when test="tei:rdg[@cause='transposition'][not(preceding-sibling::tei:lem)]">
                                     <xsl:variable name="corresp-id" select="tei:rdg[@cause='transposition']/@corresp"/>
                                     <xsl:apply-templates select="replace(//tei:lem[@cause='transposition'][@xml:id = substring-after($corresp-id, '#')]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
@@ -545,7 +545,7 @@
                                 </xsl:call-template>
                                 </xsl:element>
                                 </xsl:if>
-                        <xsl:if test="tei:lem[@cause='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))][following-sibling::tei:rdg[child::tei:*[@corresp]]]">
+                        <xsl:if test="tei:lem[@cause='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]">
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
@@ -554,9 +554,9 @@
                               </xsl:call-template>
                             </xsl:element>
                                     <xsl:text> presents the lines in order </xsl:text>
-                            <xsl:for-each select="tei:lem[@cause='transposition']/following-sibling::tei:rdg/tei:l">
+                            <xsl:for-each select="tei:lem[@cause='transposition']/following-sibling::tei:rdg/descendant-or-self::tei:l">
                                         <xsl:variable name="id-corresp" select="substring-after(@corresp, '#')"/>
-                                        <xsl:value-of select="parent::tei:rdg/preceding-sibling::tei:lem/child::tei:l[@xml:id = $id-corresp]/@n"/>
+                                <xsl:value-of select="ancestor-or-self::tei:rdg/preceding-sibling::tei:lem/descendant-or-self::tei:l[@xml:id = $id-corresp]/@n"/>
                                     </xsl:for-each>
                         </xsl:if>
                         <!-- witness displmay for transposition section 5.8.4 -->
@@ -586,7 +586,7 @@
                         </xsl:if>
                         <xsl:if test="tei:lem/@wit">
                                     <xsl:choose>
-                                        <xsl:when test="tei:lem[@cause='transposition'][not(@xml:id)][following-sibling::tei:rdg[child::tei:*[@corresp]]]"/>
+                                        <xsl:when test="tei:lem[@cause='transposition'][not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
                                         <xsl:otherwise>
                                             <xsl:element name="span">
                                     <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
@@ -622,7 +622,7 @@
                         
                         <xsl:if test="tei:lem[@cause='transposition']">
                             <xsl:choose>
-                                <xsl:when test="tei:lem[ancestor::tei:lg[not(@xml:id)]][following-sibling::tei:rdg[child::tei:*[@corresp]]]"></xsl:when>
+                                <xsl:when test="tei:lem[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"></xsl:when>
                                 <xsl:otherwise> 
                             <xsl:text> (transposition)</xsl:text>
                         </xsl:otherwise></xsl:choose>
@@ -4173,7 +4173,7 @@
                                     </xsl:call-template>
                             </xsl:element>
                         </xsl:if>
-                    <xsl:if test="self::tei:lem[@cause='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))][following-sibling::tei:rdg[descendant::tei:*[@corresp]]]">
+                    <xsl:if test="self::tei:lem[@cause='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]">
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
@@ -4216,7 +4216,7 @@
                                 <xsl:text>only in </xsl:text>
                                 </xsl:if>-->
                         <xsl:choose>
-                            <xsl:when test="self::tei:lem[@cause='transposition'][not(@xml:id)][following-sibling::tei:rdg[descendant::tei:*[@corresp]]]"/>
+                            <xsl:when test="self::tei:lem[@cause='transposition'][not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
                             <xsl:otherwise>
                               <xsl:element name="span">
                                   <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
@@ -4248,7 +4248,7 @@
                     
                     <xsl:if test="self::tei:lem[@cause='transposition']">
                         <xsl:choose>
-                            <xsl:when test=".[not(@xml:id)][following-sibling::tei:rdg[descendant::tei:*[@corresp]]]"/>
+                            <xsl:when test=".[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
                             <xsl:otherwise>
                                 <xsl:text> (transposition)</xsl:text>
                             </xsl:otherwise>
