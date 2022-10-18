@@ -15,7 +15,7 @@
       </xsl:if>
       <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']">
         <xsl:element name="span">
-          <xsl:attribute name="class">certlow</xsl:attribute>
+          <xsl:attribute name="class">certlow<xsl:if test="@rend='check'"> mark</xsl:if></xsl:attribute>
           <xsl:text>¿</xsl:text>
         </xsl:element>
       </xsl:if>
@@ -36,7 +36,7 @@
       </xsl:if>
       <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']">
         <xsl:element name="span">
-          <xsl:attribute name="class">certlow</xsl:attribute>
+          <xsl:attribute name="class">certlow<xsl:if test="@rend='check'"> mark</xsl:if></xsl:attribute>
           <xsl:text>?</xsl:text>
         </xsl:element>
       </xsl:if>
@@ -59,15 +59,5 @@
   </xsl:choose>
 </span>
 </xsl:template>-->
-
-<!-- Adding the visual check feature - reducing it to dharma style -->
-  <xsl:template match="$parm-leiden-style='dharma' and t:*[not(local-name()=('app'))][@rend='check']">
-    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-    <xsl:element name="span">
-      <xsl:attribute name="class">mark</xsl:attribute>
-      <xsl:apply-templates/>
-    </xsl:element>
-  </xsl:template>
-
 
 </xsl:stylesheet>
