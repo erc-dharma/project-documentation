@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <grammar xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:tei="http://www.tei-c.org/ns/1.0"
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-06-15T11:21:01Z. .
+Schema generated from ODD source 2022-10-18T09:50:31Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -8239,6 +8239,8 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
                      <choice>
                         <value>pun</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>check</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                      </choice>
                   </oneOrMore>
                </list>
@@ -9901,6 +9903,20 @@ Sample values include: 1] king; 2] queen; 3] prince; 4] princess</a:documentatio
          <ref name="tei_att.global.responsibility.attribute.cert"/>
          <ref name="tei_att.canonical.attribute.key"/>
          <ref name="tei_att.canonical.attribute.ref"/>
+         <optional>
+            <attribute name="type">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+Sample values include: 1] region; 2] settlement; 3] builtPlace; 4] cultivation; 5] hydrographic; 6] naturalPlace</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="subtype">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village; 6] hamlet; 7] armyCamp; 8] temple; 9] monastery; 10] feedingHall; 11] pavillon; 12] garden; 13] field; 14] fieldPaddy; 15] fieldMillet; 16] orchard; 17] orchardAreca; 18] orchardCitrus; 19] tank; 20] river; 21] pond; 22] canal; 23] forest; 24] wood; 25] grove; 26] tree; 27] montain</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
