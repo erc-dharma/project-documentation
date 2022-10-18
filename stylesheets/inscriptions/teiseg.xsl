@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
@@ -60,6 +60,14 @@
 </span>
 </xsl:template>-->
 
+<!-- Adding the visual check feature - reducing it to dharma style -->
+  <xsl:template match="$parm-leiden-style='dharma' and t:*[not(local-name()=('app'))][@rend='check']">
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+    <xsl:element name="span">
+      <xsl:attribute name="class">mark</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
 
 
 </xsl:stylesheet>
