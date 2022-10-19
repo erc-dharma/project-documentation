@@ -3640,8 +3640,8 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="type" usage="rec">
-                            <valList type="open" mode="replace">
+                        <attDef ident="type" mode="change" usage="req">
+                            <valList type="open" mode="change">
                                 <valItem ident="region"/>
                                 <valItem ident="settlement"/>
                                 <valItem ident="builtPlace"/>
@@ -3650,8 +3650,8 @@
                                 <valItem ident="naturalPlace"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" usage="rec">
-                            <valList type="open" mode="replace">
+                        <attDef ident="subtype" mode="change" usage="req">
+                            <valList type="open" mode="change">
                                 <valItem ident="province"/>
                                 <valItem ident="district"/>
                                 <valItem ident="country"/>
