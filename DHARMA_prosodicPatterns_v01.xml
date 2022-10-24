@@ -24,6 +24,16 @@
                 		<surname>Janiak</surname>
                 	</persName>
                 </respStmt>
+								<respStmt>
+                 	<resp>Scientific contribitions</resp>
+									<persName ref="part:zapa">
+	                   <name>Zakariya Pamuji Aminullah</name>
+	                </persName>
+									<persName ref="part:anac">
+										<forename>Andrea</forename>
+									 <surname>Acri</surname>
+	                </persName>
+                 </respStmt>
             </titleStmt>
             <publicationStmt>
                 <authority>DHARMA Project (ERC 809994): The Domestication of “Hindu” Asceticism and
