@@ -28,13 +28,13 @@
             <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
         </xsl:variable>
         <xsl:variable name="json-xml" select="json-to-xml($api-url)"/>
-        <xsl:variable name="data">
+       <!-- <xsl:variable name="data">
             <xsl:for-each select="$json-xml/node()//*[@key = 'download_url']">
                 <xsl:value-of select="unparsed-text(.)"/>
             </xsl:for-each>
-        </xsl:variable>
+        </xsl:variable>-->
 
-        <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
+        <xsl:variable name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin.csv')"/>
 
         <xsl:variable name="lines">
                 <xsl:for-each select="tokenize($data, '\r?\n')">
@@ -329,10 +329,10 @@
         </xsl:variable>
 
         <File>
-            <xsl:copy-of select="replace($lines/line, 'COMMA', ',')"/>
+            <xsl:copy-of select="$lines/line"/>
         </File>
     </xsl:template>
-
+    
     <xsl:template name="language-tpl">
         <xsl:param name="language"/>
         <xsl:if test="$language !=''">
