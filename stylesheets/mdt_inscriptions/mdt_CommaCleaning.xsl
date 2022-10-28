@@ -4,7 +4,7 @@
         xmlns="http://www.w3.org/1999/xhtml"
         version="3.0">
         
-        <!-- Written by Axelle Janiak for DHARMA, starting July 2022 -->
+        <!-- Written by Axelle Janiak for DHARMA, starting october 2022 -->
         <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
         
         <xsl:mode on-no-match="shallow-copy"/>

@@ -8,6 +8,10 @@
     exclude-result-prefixes="tei xi fn functx saxon">
 
     <!-- Written by Axelle Janiak for DHARMA, starting July 2022 -->
+    <!-- This file retrieve the CSV from the github API since we want to run several at the same time. So the github action runs differently. We launch this xslt in java command line rather than from an ant file as usual -->
+    <!-- a cleaning for COMMA as been applied in a second step to avoid issue a looping and hasn't been linked to the 3rd step since we use this file gathering all the data to generate more easily some temporary display -->
+    <!-- 3rd step splitting to allow temporary display of each entry. A code has been added at the end of each filename since several beared the same ids. When files are clean enough, it should be deleted -->
+    
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 
     <xsl:function name="functx:escape-for-regex" as="xs:string"
@@ -23,7 +27,6 @@
 
     <xsl:output method="xml" indent="yes"/>
 
-    <xsl:template match="/" name="xsl:initial-template">
         <xsl:variable name="api-url">
             <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-texts/contents/csv')"/>
         </xsl:variable>
@@ -34,7 +37,8 @@
             </xsl:for-each>
         </xsl:variable>-->
 
-        <xsl:variable name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin.csv')"/>
+    <xsl:template match="/" name="xsl:initial-template">
+            <xsl:variable name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin.csv')"/>
 
         <xsl:variable name="lines">
                 <xsl:for-each select="tokenize($data, '\r?\n')">
@@ -331,6 +335,7 @@
         <File>
             <xsl:copy-of select="$lines/line"/>
         </File>
+            
     </xsl:template>
     
     <xsl:template name="language-tpl">
