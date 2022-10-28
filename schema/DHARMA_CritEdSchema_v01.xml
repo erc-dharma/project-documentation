@@ -57,6 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2022-10-28">Adding a constraint to check for empty witDetail, deleting @type="reformulation" with note.</change>
       <change who="part:axja" when="2022-09-23">Updating rules related to the new transposition model</change>
       <change who="part:axja" when="2022-09-08"
         >Adding the @xml:id for msFrag and msPart</change>
@@ -2372,7 +2373,7 @@
                   <desc versionDate="2021-10-25" xml:lang="en"
                     >Declares an alternative lemma for display purposes</desc>
                 </valItem>
-                <valItem ident="reformulation"/>
+                <!--<valItem ident="reformulation"/>-->
                 <valItem ident="unknown"/>
               </valList>
             </attDef>
@@ -4411,7 +4412,10 @@
               test="every $wit-witDetail in $wit-witDetails satisfies contains('preceding-sibling::tei:*[1]/@wit', $wit-witDetail)"
               >
                   The content of the witDetail's @wit attribute must also be declared as @wit of the preceding sibling. 
-                </sch:assert></sch:rule></constraint>
+                </sch:assert>
+              <sch:report test="./node()">WitDetail should be an empty element</sch:report>
+            </sch:rule>
+            </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
