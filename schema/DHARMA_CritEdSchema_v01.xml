@@ -57,7 +57,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-10-28">Adding a constraint to check for empty witDetail, deleting @type="reformulation" with note.</change>
+      <change who="part:axja" when="2022-10-28">Adding a constraint to check for empty witDetail, deleting @type="reformulation" with note and adding @type='retained' on lem</change>
       <change who="part:axja" when="2022-09-23">Updating rules related to the new transposition model</change>
       <change who="part:axja" when="2022-09-08"
         >Adding the @xml:id for msFrag and msPart</change>
@@ -4228,6 +4228,7 @@
                 <valItem ident="omitted_elsewhere"/>
                 <valItem ident="lost_elsewhere"/>
                 <valItem ident="reformulated_elsewhere"/>
+                <valItem ident="retained"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
