@@ -90,7 +90,7 @@
     <xsl:template match="tei:div">
         <!-- @type chapter, section, sub-section and alpha -->
         <xsl:choose>
-            <xsl:when test="@type='section'">
+            <xsl:when test=".[not(ancestor::tei:front)]/@type='section'">
                     <xsl:element name="div">
                         <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
                         <xsl:attribute name="id">
@@ -119,6 +119,9 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
+                <xsl:if test="descendant::tei:note">
+                    <xsl:call-template name="tpl-dharma-apparatus"/>
+                </xsl:if>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -563,14 +566,14 @@
 
     <xsl:template name="tpl-dharma-apparatus">
         <!-- An apparatus is only created if one of the following is true -->
-        <xsl:if test=".//tei:note[ancestor::tei:div[@type='section']]">
+        <xsl:if test=".//tei:note[ancestor::tei:div]">
             <xsl:element name="div">
                 <xsl:attribute name="class">bloc-notes</xsl:attribute>
             <xsl:element name="h5">
                 <xsl:text>Notes</xsl:text>
             </xsl:element>
             <xsl:element name="span">
-                <xsl:attribute name="class">notes-translation</xsl:attribute>
+                <xsl:attribute name="class">notes</xsl:attribute>
                 <!-- An entry is created for-each of the following instances
                   * notes.  -->
                 <xsl:for-each select=".//tei:note">
@@ -585,6 +588,7 @@
                 </xsl:for-each>
             </xsl:element>
             </xsl:element>
+            <br/>
         </xsl:if>
     </xsl:template>
 
@@ -606,7 +610,7 @@
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
         <xsl:variable name="number">
-            <xsl:number format="1" from="//tei:div[@type='section']" count="tei:note" level="any"/>
+            <xsl:number format="1" from="//tei:div" count="tei:note" level="any"/>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$location = 'text'">
