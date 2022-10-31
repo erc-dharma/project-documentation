@@ -85,50 +85,73 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
+    <!-- cit -->
+    <xsl:template match="tei:cit">
+        <xsl:element name="div">
+            <xsl:attribute name="class">col-10</xsl:attribute>
+            <xsl:apply-templates/>
+            <xsl:if test="descendant::tei:note">
+                <xsl:call-template name="tpl-dharma-apparatus"/>
+            </xsl:if>
+        </xsl:element>
+    </xsl:template>
 
     <!-- div -->
     <xsl:template match="tei:div">
         <!-- @type chapter, section, sub-section and alpha -->
         <xsl:choose>
-            <xsl:when test=".[not(ancestor::tei:front)]/@type='section'">
+            <xsl:when test="@type='chapter'">
+                <xsl:element name="div">
+                    <xsl:attribute name="class">row</xsl:attribute>
+                    <xsl:apply-templates select="node()"/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="@type='section'">
+                <xsl:element name="div">
+                    <xsl:attribute name="class">row</xsl:attribute>
+                    <xsl:apply-templates select="node()"/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test=".[not(ancestor::tei:front)]/@type='sub-section'">
                     <xsl:element name="div">
-                        <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
-                        <xsl:attribute name="id">
-                            <xsl:value-of select="generate-id()"/>
-                        </xsl:attribute>
-                        <xsl:call-template name="number"/>
-                        <xsl:element name="div">
-                            <xsl:attribute name="class">col-10</xsl:attribute>
-                            <xsl:element name="dl">
+                        <xsl:attribute name="class">row</xsl:attribute>               
                                 <xsl:apply-templates select="node()"/>
-                                <xsl:if test="descendant::tei:note">
-                                    <xsl:call-template name="tpl-dharma-apparatus"/>
-                                </xsl:if>
                                 <xsl:choose>
-                                    <xsl:when test="not(following::tei:div[@type='section'])">
-                                        <br/>
+                                    <xsl:when test="following::tei:div[@type='sub-section']">
+                                        <hr></hr>
                                     </xsl:when>
                                     <xsl:otherwise>
-                                        <hr/>
+                                        <br></br>
                                     </xsl:otherwise>
                                 </xsl:choose>
-                            </xsl:element>
-                        </xsl:element>
                     </xsl:element>
-
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
-                <xsl:if test="descendant::tei:note">
-                    <xsl:call-template name="tpl-dharma-apparatus"/>
-                </xsl:if>
+                
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
+    <!-- e -->
+    <xsl:template match="tei:entry">
+        <xsl:element name="div">
+            <xsl:attribute name="class">col-12</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- form -->
+    <xsl:template match="tei:form">
+        <xsl:element name="div">
+            <xsl:attribute name="class">col-2</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- front -->
     <xsl:template match="tei:front">
-        
             <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
                 <xsl:for-each select="tei:div[@type='chapter']">
@@ -195,11 +218,30 @@
     </xsl:template>
 
     <!-- hi -->
-    <xsl:template match="tei:hi[@rend='it']">
+    <xsl:template match="tei:hi">
+        <xsl:choose>
+            <xsl:when test="@rend='it'">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-italic</xsl:attribute>
                         <xsl:apply-templates/>
                 </xsl:element>
+            </xsl:when>
+            <xsl:when test="@rend='sup'">
+                <xsl:element name="sup">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="@rend='sub'">
+                <xsl:element name="sub">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="@rend='sc'">
+                <xsl:element name="small">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 
     <!-- item -->
@@ -210,12 +252,9 @@
 
     </xsl:template>
 
-    <!-- l -->
-    <xsl:template match="tei:l">
-        <xsl:element name="div">
-            <xsl:attribute name="class">verseline</xsl:attribute>
+    <!-- lbl -->
+    <xsl:template match="tei:lbl">
             <xsl:apply-templates/>
-        </xsl:element>
     </xsl:template>
 
     <!-- label -->
@@ -234,18 +273,6 @@
            <br/>
            </xsl:otherwise>
        </xsl:choose>
-    </xsl:template>
-
-    <!-- lg -->
-    <xsl:template match="tei:lg">
-        <xsl:element name="div">
-            <xsl:attribute name="class">stanza</xsl:attribute>
-            <xsl:element name="span">
-                <xsl:number count="tei:lg" format="I" level="any" from="tei:div[@type='section']"/>
-                <xsl:text>. </xsl:text>
-            </xsl:element>
-            <xsl:apply-templates/>
-        </xsl:element>
     </xsl:template>
 
     <!-- list -->
@@ -268,6 +295,34 @@
         </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
+    <!-- num -->
+    <xsl:template match="tei:num">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
+    <!-- oRef -->
+    <xsl:template match="tei:oRef">
+        <xsl:element name="a">
+            <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- orth -->
+    <xsl:template match="tei:orth[@xml:id]">
+        <xsl:element name="a">
+            <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="tei:orth[@type='lemma']">
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
 
     <!-- p -->
     <xsl:template match="tei:p">
@@ -288,7 +343,9 @@
 
     <!-- quote -->
     <xsl:template match="tei:quote">
+        <xsl:text>“</xsl:text>
         <xsl:apply-templates/>
+        <xsl:text>”</xsl:text>
     </xsl:template>
 
     <!-- row -->
@@ -569,9 +626,10 @@
         <xsl:if test=".//tei:note[ancestor::tei:div]">
             <xsl:element name="div">
                 <xsl:attribute name="class">bloc-notes</xsl:attribute>
-            <xsl:element name="h5">
+            <!--<xsl:element name="h5">
                 <xsl:text>Notes</xsl:text>
-            </xsl:element>
+            </xsl:element>-->
+                <hr></hr>
             <xsl:element name="span">
                 <xsl:attribute name="class">notes</xsl:attribute>
                 <!-- An entry is created for-each of the following instances
