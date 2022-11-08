@@ -305,10 +305,17 @@
     </xsl:template>
 
     <!-- n -->
-    <xsl:template match="tei:note[not(@type='geo')]">
-            <xsl:call-template name="dharma-app-link">
+    <xsl:template match="tei:note">
+            <xsl:choose>
+                <xsl:when test="@type='geo'">
+                   <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="dharma-app-link">
                 <xsl:with-param name="location" select="'text'"/>
             </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
     </xsl:template>
 
     <!-- num -->
@@ -686,7 +693,7 @@
                     <xsl:attribute name="class">notes-translation</xsl:attribute>
                     <!-- An entry is created for-each of the following instances
                   * notes.  -->
-                    <xsl:for-each select=".//tei:note">
+                    <xsl:for-each select=".//tei:note[not(@type='geo')]">
                         <xsl:element name="span">
                             <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
                             <xsl:call-template name="dharma-app-link">
@@ -706,7 +713,7 @@
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
         <xsl:variable name="number">
-            <xsl:number format="1" count="tei:note" level="any"/>
+            <xsl:number format="1" count="tei:note[not(@type='geo')]" level="any"/>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$location = 'text'">
