@@ -31,6 +31,8 @@
                     </xsl:element>
                     <br/>
                     <xsl:apply-templates/>
+                    <br/>
+                    <xsl:call-template name="tpl-dharma-apparatus"/>
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
@@ -79,6 +81,13 @@
         </xsl:for-each>
     </xsl:template>
     
+    <!-- bibl -->
+    <xsl:template match="tei:bibl">
+        <xsl:text> (</xsl:text>
+            <xsl:apply-templates/>
+        <xsl:text>)</xsl:text>
+    </xsl:template>
+    
     <!-- cell -->
     <xsl:template match="tei:cell">
         <xsl:element name="td">
@@ -89,11 +98,7 @@
     <!-- cit -->
     <xsl:template match="tei:cit">
         <xsl:element name="div">
-            <xsl:attribute name="class">col-10</xsl:attribute>
             <xsl:apply-templates/>
-            <xsl:if test="descendant::tei:note">
-                <xsl:call-template name="tpl-dharma-apparatus"/>
-            </xsl:if>
         </xsl:element>
     </xsl:template>
 
@@ -104,19 +109,28 @@
             <xsl:when test="@type='chapter'">
                 <xsl:element name="div">
                     <xsl:attribute name="class">row</xsl:attribute>
-                    <xsl:apply-templates select="node()"/>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">col-12</xsl:attribute>
+                        <xsl:apply-templates select="node()"/>
+                </xsl:element>
                 </xsl:element>
             </xsl:when>
             <xsl:when test="@type='section'">
                 <xsl:element name="div">
                     <xsl:attribute name="class">row</xsl:attribute>
-                    <xsl:apply-templates select="node()"/>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">col-12</xsl:attribute>
+                    <xsl:apply-templates select="node()"/>                     
+                    </xsl:element>
                 </xsl:element>
             </xsl:when>
             <xsl:when test=".[not(ancestor::tei:front)]/@type='sub-section'">
                     <xsl:element name="div">
-                        <xsl:attribute name="class">row</xsl:attribute>               
+                        <xsl:attribute name="class">row</xsl:attribute> 
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-12</xsl:attribute>
                                 <xsl:apply-templates select="node()"/>
+                        </xsl:element>
                                 <xsl:choose>
                                     <xsl:when test="following::tei:div[@type='sub-section']">
                                         <hr></hr>
@@ -129,25 +143,30 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
-                
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
-    <!-- e -->
+    <!-- entry -->
     <xsl:template match="tei:entry">
         <xsl:element name="div">
-            <xsl:attribute name="class">col-12</xsl:attribute>
-            <xsl:apply-templates/>
+        <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     
     <!-- form -->
     <xsl:template match="tei:form">
-        <xsl:element name="div">
+        <xsl:choose>
+            <xsl:when test="@type='lemma'">
+                <xsl:element name="div">
             <xsl:attribute name="class">col-2</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <!-- front -->
@@ -188,9 +207,9 @@
                         </xsl:element>
                     </xsl:element>
             </xsl:element>
-                    <br/>
+                    <br></br>
                 </xsl:for-each>
-               
+                <br></br>
         </xsl:element>
         
     </xsl:template>
@@ -249,12 +268,14 @@
         <xsl:element name="li">
             <xsl:apply-templates/>
         </xsl:element>
-
     </xsl:template>
-
+    
     <!-- lbl -->
     <xsl:template match="tei:lbl">
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-lighter</xsl:attribute>
             <xsl:apply-templates/>
+        </xsl:element>
     </xsl:template>
 
     <!-- label -->
@@ -284,21 +305,19 @@
     </xsl:template>
 
     <!-- n -->
-    <xsl:template match="tei:note">
-        <xsl:choose><xsl:when test="ancestor::tei:div[@type='section']">
+    <xsl:template match="tei:note[not(@type='geo')]">   
             <xsl:call-template name="dharma-app-link">
                 <xsl:with-param name="location" select="'text'"/>
-            </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:apply-templates/>
-        </xsl:otherwise>
-        </xsl:choose>
+            </xsl:call-template> 
     </xsl:template>
     
     <!-- num -->
     <xsl:template match="tei:num">
-        <xsl:apply-templates/>
+        <xsl:element name="a">
+            <xsl:attribute name="href">#page<xsl:apply-templates/></xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+        
     </xsl:template>
     
     <!-- oRef -->
@@ -317,7 +336,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="tei:orth[@type='lemma']">
+    <xsl:template match="tei:orth[@type='lemma' or @type='compound']">
         <xsl:element name="span">
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
             <xsl:apply-templates/>
@@ -335,6 +354,7 @@
     <xsl:template match="tei:pb">
             <xsl:element name="span">
                 <xsl:attribute name="class">pagination text-muted float-right</xsl:attribute>
+                <xsl:attribute name="id">page<xsl:value-of select="@n"/></xsl:attribute>
                 <xsl:text>[page </xsl:text>
                 <xsl:value-of select="@n"/>
                 <xsl:text>]</xsl:text>
@@ -343,11 +363,19 @@
 
     <!-- quote -->
     <xsl:template match="tei:quote">
-        <xsl:text>“</xsl:text>
+        <xsl:text>: “</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>”</xsl:text>
     </xsl:template>
 
+    <!-- ref -->
+    <xsl:template match="tei:ref">
+        <xsl:element name="a">
+            <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- row -->
     <xsl:template match="tei:row">
         <xsl:element name="tr">
@@ -379,6 +407,13 @@
             <xsl:apply-templates/>
         <xsl:text>]</xsl:text>
     </xsl:template>
+    
+    <!-- superEntry -->
+    <xsl:template match="tei:superEntry">
+        <xsl:element name="div">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
 
     <!-- table -->
     <xsl:template match="tei:table">
@@ -400,6 +435,9 @@
         <xsl:text>)</xsl:text>
     </xsl:template>
 
+    <!-- xr -->
+    <!-- no need to-->
+    
     <!-- Named templates -->
      <xsl:template name="dharma-head">
         <head>
@@ -621,35 +659,6 @@
               </xsl:analyze-string>
     </xsl:template>
 
-    <xsl:template name="tpl-dharma-apparatus">
-        <!-- An apparatus is only created if one of the following is true -->
-        <xsl:if test=".//tei:note[ancestor::tei:div]">
-            <xsl:element name="div">
-                <xsl:attribute name="class">bloc-notes</xsl:attribute>
-            <!--<xsl:element name="h5">
-                <xsl:text>Notes</xsl:text>
-            </xsl:element>-->
-                <hr></hr>
-            <xsl:element name="span">
-                <xsl:attribute name="class">notes</xsl:attribute>
-                <!-- An entry is created for-each of the following instances
-                  * notes.  -->
-                <xsl:for-each select=".//tei:note">
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
-                        <xsl:call-template name="dharma-app-link">
-                            <xsl:with-param name="location" select="'apparatus'"/>
-                        </xsl:call-template>
-                        <xsl:apply-templates select="child::tei:p/node()"/>
-                    </xsl:element>
-                    <br/>
-                </xsl:for-each>
-            </xsl:element>
-            </xsl:element>
-            <br/>
-        </xsl:if>
-    </xsl:template>
-
     <xsl:template name="dharma-app-link">
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
@@ -664,11 +673,39 @@
         </xsl:call-template>
     </xsl:template>
 
+    <xsl:template name="tpl-dharma-apparatus">
+        <!-- An apparatus is only created if one of the following is true -->
+        <xsl:if test=".//tei:note[not(@type='geo')]">
+            <xsl:element name="div">
+                <xsl:attribute name="class">bloc-notes</xsl:attribute>
+                <xsl:element name="h2">
+                    <xsl:text>Notes</xsl:text>
+                </xsl:element>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">notes-translation</xsl:attribute>
+                    <!-- An entry is created for-each of the following instances
+                  * notes.  -->
+                    <xsl:for-each select=".//tei:note">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
+                            <xsl:call-template name="dharma-app-link">
+                                <xsl:with-param name="location" select="'apparatus'"/>
+                            </xsl:call-template>
+                            <xsl:apply-templates select="child::tei:p/node()"/>
+                        </xsl:element>
+                        <br></br>
+                    </xsl:for-each>
+                </xsl:element>
+                
+            </xsl:element>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
         <xsl:variable name="number">
-            <xsl:number format="1" from="//tei:div" count="tei:note" level="any"/>
+            <xsl:number format="1" count="tei:note" level="any"/>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$location = 'text'">
