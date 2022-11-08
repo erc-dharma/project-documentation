@@ -59,11 +59,11 @@
                         <xsl:attribute name="role">button</xsl:attribute>
                         <xsl:attribute name="aria-expanded">false</xsl:attribute>
                         <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                        
+
                         <xsl:element name="small">
                             <xsl:apply-templates select="tei:head/text()"/>
                         </xsl:element>
-                        
+
                     </xsl:element>
                     <xsl:element name="div">
                         <xsl:attribute name="id">
@@ -75,26 +75,26 @@
                             <xsl:apply-templates/>
                         </xsl:element>
                     </xsl:element>
-                
+
             </xsl:element>
         </xsl:element>
         </xsl:for-each>
     </xsl:template>
-    
+
     <!-- bibl -->
     <xsl:template match="tei:bibl">
         <xsl:text> (</xsl:text>
             <xsl:apply-templates/>
         <xsl:text>)</xsl:text>
     </xsl:template>
-    
+
     <!-- cell -->
     <xsl:template match="tei:cell">
         <xsl:element name="td">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- cit -->
     <xsl:template match="tei:cit">
         <xsl:element name="div">
@@ -120,13 +120,13 @@
                     <xsl:attribute name="class">row</xsl:attribute>
                     <xsl:element name="div">
                         <xsl:attribute name="class">col-12</xsl:attribute>
-                    <xsl:apply-templates select="node()"/>                     
+                    <xsl:apply-templates select="node()"/>
                     </xsl:element>
                 </xsl:element>
             </xsl:when>
             <xsl:when test=".[not(ancestor::tei:front)]/@type='sub-section'">
                     <xsl:element name="div">
-                        <xsl:attribute name="class">row</xsl:attribute> 
+                        <xsl:attribute name="class">row</xsl:attribute>
                         <xsl:element name="div">
                             <xsl:attribute name="class">col-12</xsl:attribute>
                                 <xsl:apply-templates select="node()"/>
@@ -146,14 +146,14 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- entry -->
     <xsl:template match="tei:entry">
         <xsl:element name="div">
         <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- form -->
     <xsl:template match="tei:form">
         <xsl:choose>
@@ -168,7 +168,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- front -->
     <xsl:template match="tei:front">
             <xsl:element name="div">
@@ -183,7 +183,7 @@
                         <xsl:attribute name="role">button</xsl:attribute>
                         <xsl:attribute name="aria-expanded">false</xsl:attribute>
                         <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                        
+
                         <xsl:element name="small">
                             <xsl:choose>
                                 <xsl:when test="child::tei:head[1]">
@@ -194,7 +194,7 @@
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:element>
-                        
+
                     </xsl:element>
                     <xsl:element name="div">
                         <xsl:attribute name="id">
@@ -211,9 +211,9 @@
                 </xsl:for-each>
                 <br></br>
         </xsl:element>
-        
+
     </xsl:template>
-    
+
     <!-- Head -->
     <xsl:template match="tei:head[parent::tei:div[@type='chapter']]">
         <xsl:element name="h2">
@@ -269,7 +269,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- lbl -->
     <xsl:template match="tei:lbl">
         <xsl:element name="span">
@@ -305,21 +305,21 @@
     </xsl:template>
 
     <!-- n -->
-    <xsl:template match="tei:note[not(@type='geo')]">   
+    <xsl:template match="tei:note[not(@type='geo')]">
             <xsl:call-template name="dharma-app-link">
                 <xsl:with-param name="location" select="'text'"/>
-            </xsl:call-template> 
+            </xsl:call-template>
     </xsl:template>
-    
+
     <!-- num -->
     <xsl:template match="tei:num">
         <xsl:element name="a">
             <xsl:attribute name="href">#page<xsl:apply-templates/></xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
-        
+
     </xsl:template>
-    
+
     <!-- oRef -->
     <xsl:template match="tei:oRef">
         <xsl:element name="a">
@@ -327,7 +327,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- orth -->
     <xsl:template match="tei:orth[@xml:id]">
         <xsl:element name="a">
@@ -335,7 +335,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="tei:orth[@type='lemma' or @type='compound']">
         <xsl:element name="span">
             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -375,7 +375,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- row -->
     <xsl:template match="tei:row">
         <xsl:element name="tr">
@@ -390,7 +390,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- sic -->
     <xsl:template match="tei:sic">
         <xsl:element name="span">
@@ -407,7 +407,7 @@
             <xsl:apply-templates/>
         <xsl:text>]</xsl:text>
     </xsl:template>
-    
+
     <!-- superEntry -->
     <xsl:template match="tei:superEntry">
         <xsl:element name="div">
@@ -424,7 +424,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- teiHeader -->
     <xsl:template match="tei:teiHeader"/>
 
@@ -437,7 +437,7 @@
 
     <!-- xr -->
     <!-- no need to-->
-    
+
     <!-- Named templates -->
      <xsl:template name="dharma-head">
         <head>
@@ -540,6 +540,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-rode/display-rode.html">RODE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -696,11 +697,11 @@
                         <br></br>
                     </xsl:for-each>
                 </xsl:element>
-                
+
             </xsl:element>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>

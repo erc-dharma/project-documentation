@@ -19,7 +19,7 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     Current Version: 
                   </xsl:element>
-                  
+
                   <!--<xsl:choose>
                     <xsl:when test="//t:fileDesc/following-sibling::t:revisionDesc">
                       <xsl:if test="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status">
@@ -46,25 +46,25 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     Editors:  
                   </xsl:element>
-                  
+
                     <xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>
                   </xsl:element>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
               <xsl:element name="p">
               <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                DHARMA Identifier: 
+                DHARMA Identifier:
               </xsl:element>
             <xsl:value-of select="replace(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
-                  
+
                   <xsl:if test="//t:msContents//t:summary/text()">
                     <xsl:element name="p">
                     <xsl:element name="span">
                       <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                       Summary: </xsl:element>
-                   
+
                       <xsl:apply-templates select="//t:msContents/t:summary"/>
                     </xsl:element>
                   </xsl:if>
@@ -81,7 +81,7 @@
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:for-each select="//t:handDesc/t:p">
-                            <xsl:apply-templates/>                    
+                            <xsl:apply-templates/>
                         </xsl:for-each>
                       </xsl:otherwise>
                     </xsl:choose>
@@ -92,8 +92,8 @@
                   <xsl:choose>
                     <xsl:when test="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]">
                       <xsl:variable name="secondid" select="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]/idno"/>
-                      
-                      <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $secondid]]"> 
+
+                      <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $secondid]]">
                         <xsl:element name="p">
                           <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -141,10 +141,10 @@
                         </xsl:element>
                         <hr/>
                       </xsl:for-each>
-                      
+
                     </xsl:when>
                     <xsl:when test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]">
-                      
+
                       <xsl:element name="p">
                       <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -168,7 +168,7 @@
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Main Langue: </xsl:element>
-                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"> 
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang">
                           <xsl:call-template name="language-tpl">
                           <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"/>
                         </xsl:call-template>
@@ -198,7 +198,7 @@
                       <xsl:element name="p">No metadata were provided in the table for this inscription</xsl:element></xsl:otherwise>
                   </xsl:choose>
                 </xsl:element>
-                        
+
           <xsl:variable name="maintxt">
             <xsl:apply-templates/>
          </xsl:variable>
@@ -288,7 +288,7 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/inscriptions/loader.js"></script>
-    
+
   </xsl:template>
 
   <!-- Nav bar template -->
@@ -298,7 +298,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -371,6 +371,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
               <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+              <a class="nav-link" href="https://erc-dharma.github.io/output-rode/display-rode.html">RODE</a>
               <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
             </div>
           </li>
@@ -383,11 +384,11 @@
           <li class="nav-item">
             <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
           </li>
-        </ul> 
+        </ul>
       </div>
     </nav>
   </xsl:template>
-  
+
   <!-- side bar - table of contents -->
   <xsl:template name="table-contents">
     <xsl:element name="div">
@@ -407,7 +408,7 @@
                   <xsl:text>#</xsl:text>
                   <xsl:value-of select="@type"/>
                 </xsl:attribute>
-                <xsl:if test="@type='translation'">                  
+                <xsl:if test="@type='translation'">
                     <xsl:choose>
                       <xsl:when test="@xml:lang='fra'">
                         <xsl:text>French </xsl:text>
@@ -443,14 +444,14 @@
                   </xsl:for-each>
                 </xsl:element>
                 </xsl:if>
-              
+
             </xsl:element>
           </xsl:for-each>
         </xsl:element>
       </xsl:element>
     </xsl:element>
   </xsl:template>
-  
+
   <xsl:template name="language-tpl">
     <xsl:param name="language"/>
     <xsl:if test="$language !=''">

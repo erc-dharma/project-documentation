@@ -55,7 +55,7 @@
     <xsl:template match="tei:choice">
             <xsl:apply-templates/>
     </xsl:template>
-    
+
     <!-- corr -->
     <xsl:template match="tei:corr">
         <xsl:element name="span">
@@ -235,7 +235,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- sic -->
     <xsl:template match="tei:sic">
         <xsl:element name="span">
@@ -375,6 +375,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-rode/display-rode.html">RODE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -519,7 +520,7 @@
             </xsl:when>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'kânkânhaḷḷi')">
                 <xsl:text>Kn</xsl:text>
-            </xsl:when>           
+            </xsl:when>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'channapatna')">
                 <xsl:text>Cp</xsl:text>
             </xsl:when>
@@ -627,11 +628,11 @@
             </xsl:when>
                 <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'belur')">
                     <xsl:text>Bl</xsl:text>
-                    
+
                 </xsl:when>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='part']/tei:head), 'belur')">
                 <xsl:text>Bl</xsl:text>
-                
+
             </xsl:when>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'arsikere')">
                 <xsl:text>Ak</xsl:text>
@@ -648,7 +649,7 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'manjarabad')">
                 <xsl:text>Mj</xsl:text>
             </xsl:when>
-        </xsl:choose>   
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="tpl-dharma-apparatus">
