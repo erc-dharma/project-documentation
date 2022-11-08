@@ -30,4 +30,4 @@ jobs:
            destination-github-username: 'erc-dharma'
            destination-repository-name: 'erc-dharma.github.io'
            user-email: github-actions@github.com
-           target-directory: 'output/prosody'
+           target-directory: 'output'
