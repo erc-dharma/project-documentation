@@ -190,7 +190,7 @@
                                     <xsl:apply-templates select="tei:head/string()"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>Preface</xsl:text>
+                                    <xsl:text>PREFACE</xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:element>
