@@ -191,26 +191,79 @@
             </xsl:choose>
             <xsl:text>/</xsl:text>
             <xsl:choose>
-                <xsl:when test="matches(preceding::H2[1], '[0-9\-]+')">
-                <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+[0-9\-]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="regex-group(1)"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
+                
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d\d\d')">
+                    <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+\-\d\d\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d')">                
+                    <xsl:analyze-string select="preceding::H2[1]/string()" regex="((\d\d)\d\d\-)(\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                            <xsl:value-of select="regex-group(2)"/>
+                            <xsl:value-of select="regex-group(3)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
             </xsl:when>
-                <xsl:when test="matches(preceding::HC[1], '[0-9\-]+')">
-                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+[0-9\-]*)">
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+')">
+                    <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+\-\d\d\d\d')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+\-\d\d\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+\-\d\d\')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="((\d\d)\d\d\-)(\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                            <xsl:value-of select="regex-group(2)"/>
+                            <xsl:value-of select="regex-group(3)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+)">
                         <xsl:matching-substring>
                             <xsl:value-of select="regex-group(1)"/>
                         </xsl:matching-substring>
                     </xsl:analyze-string>
                 </xsl:when>
                     <xsl:otherwise>
-                        <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+[0-9\-]*)">
+                        <xsl:choose>
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+\-\d\d\d\d')">
+                                <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+\-\d\d\d\d)">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(1)"/>
+                                    </xsl:matching-substring>
+                                </xsl:analyze-string>
+                            </xsl:when>
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+\-\d\d\')">
+                                <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="((\d\d)\d\d\-)(\d\d)">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(1)"/>
+                                        <xsl:value-of select="regex-group(2)"/>
+                                        <xsl:value-of select="regex-group(3)"/>
+                                    </xsl:matching-substring>
+                                </xsl:analyze-string>
+                            </xsl:when>
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+')">
+                                <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+[0-9\-]*)">
                             <xsl:matching-substring>
                                 <xsl:value-of select="regex-group(1)"/>
                             </xsl:matching-substring>
                         </xsl:analyze-string>
+                            </xsl:when>
+                        </xsl:choose>
                     </xsl:otherwise>
             </xsl:choose>
             <xsl:text>/</xsl:text>
