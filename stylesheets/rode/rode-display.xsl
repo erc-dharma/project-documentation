@@ -2,11 +2,23 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
+    xmlns:functx="http://www.functx.com"
     xmlns="http://www.w3.org/1999/xhtml"
-    exclude-result-prefixes="xs tei"
+    exclude-result-prefixes="xs tei functx"
     version="2.0">
 
     <xsl:output indent="no" encoding="UTF-8"/>
+    
+    <xsl:function name="functx:sort" as="item()*"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="seq" as="item()*"/>
+        
+        <xsl:for-each select="$seq">
+            <xsl:sort select="."/>
+            <xsl:copy-of select="."/>
+        </xsl:for-each>
+        
+    </xsl:function>
 
     <!-- Written by Axelle Janiak for DHARMA, starting February 2021 -->
 
@@ -160,7 +172,12 @@
             <xsl:when test="@type='lemma'">
                 <xsl:element name="div">
             <xsl:attribute name="class">col-2</xsl:attribute>
-            <xsl:apply-templates/>
+                    <xsl:element name="a">
+                        <xsl:attribute name="id">
+                            <xsl:value-of select="generate-id()"/>
+                        </xsl:attribute>
+                        <xsl:apply-templates/>
+                    </xsl:element>
         </xsl:element>
             </xsl:when>
             <xsl:otherwise>
@@ -586,7 +603,7 @@
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
                 <xsl:element name="ul">
                     <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
-                    <xsl:for-each select="//tei:div[@type='section']">
+                    <xsl:for-each select="//tei:form[@type='lemma']">
                         <xsl:element name="li">
                             <xsl:attribute name="class">nav-item</xsl:attribute>
                             <xsl:element name="a">
@@ -595,76 +612,13 @@
                                     <xsl:text>#</xsl:text>
                                     <xsl:value-of select="generate-id()"/>
                                 </xsl:attribute>
-                                <xsl:call-template name="ecid"/>
+                                <xsl:value-of select="."/>
                             </xsl:element>
                         </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
             </xsl:element>
         </xsl:element>
-    </xsl:template>
-
-    <!-- side number id -->
-    <!-- issue with the string in which we found pb and lb -->
-    <xsl:template name="number">
-        <xsl:element name="div">
-            <xsl:attribute name="class">col-2</xsl:attribute>
-            <xsl:element name="span">
-                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                <xsl:call-template name="ecid"/>
-            </xsl:element>
-            <br/>
-            <xsl:text>DHARMA ID: </xsl:text>
-            <xsl:call-template name="dharmaid"/>
-        </xsl:element>
-    </xsl:template>
-
-    <xsl:template name="dharmaid">
-    <xsl:element name="span">
-        <xsl:attribute name="class">dharmaid</xsl:attribute>
-        <xsl:text>RODE</xsl:text>
-        <xsl:value-of select="substring-before(substring-after(base-uri(.), 'DHARMA_INSEC'), '.xml')"/>
-        <!--<xsl:call-template name="taluqabbr"/>-->
-        <!--<xsl:number level="any" count="tei:div[@type='section']" format="00001"/>-->
-        <xsl:choose>
-          <xsl:when test="matches(./tei:head, '\d\d\d')">
-            <xsl:analyze-string regex="^\s*(\d\d\d[a-c]*)" select="./tei:head/string()">
-              <xsl:matching-substring>
-              <xsl:value-of select="regex-group(1)"/>
-            </xsl:matching-substring>
-            </xsl:analyze-string>
-          </xsl:when>
-            <xsl:when test="matches(./tei:head, '\d\d')">
-                <xsl:text>0</xsl:text>
-                <xsl:analyze-string regex="^\s*(\d\d[a-c]*)" select="./tei:head/string()">
-                  <xsl:matching-substring>
-                  <xsl:value-of select="regex-group(1)"/>
-                </xsl:matching-substring>
-                </xsl:analyze-string>
-            </xsl:when>
-            <xsl:when test="matches(./tei:head, '\d')">
-                <xsl:text>00</xsl:text>
-                <xsl:analyze-string regex="^\s*(\d[a-c]*)" select="./tei:head/string()">
-                  <xsl:matching-substring>
-                  <xsl:value-of select="regex-group(1)"/>
-                </xsl:matching-substring>
-                </xsl:analyze-string>
-            </xsl:when>
-        </xsl:choose>
-    </xsl:element>
-</xsl:template>
-
-    <xsl:template name="ecid">
-        <xsl:text>RODE </xsl:text>
-        <xsl:value-of select="substring-before(substring-after(base-uri(.), 'DHARMA_INSEC'), '.xml')"/>
-        <xsl:text> </xsl:text>
-        <!--<xsl:call-template name="taluqabbr"/>-->
-        <xsl:text> </xsl:text>
-              <xsl:analyze-string regex="^\s*(\d+[a-c]*)" select="./tei:head/string()">
-                <xsl:matching-substring>
-                <xsl:value-of select="regex-group(1)"/>
-              </xsl:matching-substring>
-              </xsl:analyze-string>
     </xsl:template>
 
     <xsl:template name="dharma-app-link">
