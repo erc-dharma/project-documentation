@@ -222,7 +222,7 @@
                         </xsl:matching-substring>
                     </xsl:analyze-string>
                 </xsl:when>
-                <xsl:when test="matches(preceding::HC[1], '[0-9]+\-\d\d\')">
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+\-\d\d')">
                     <xsl:analyze-string select="preceding::HC[1]/string()" regex="((\d\d)\d\d\-)(\d\d)">
                         <xsl:matching-substring>
                             <xsl:value-of select="regex-group(1)"/>
@@ -247,7 +247,7 @@
                                     </xsl:matching-substring>
                                 </xsl:analyze-string>
                             </xsl:when>
-                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+\-\d\d\')">
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+\-\d\d')">
                                 <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="((\d\d)\d\d\-)(\d\d)">
                                     <xsl:matching-substring>
                                         <xsl:value-of select="regex-group(1)"/>
