@@ -357,7 +357,7 @@
     <xsl:template match="tei:oRef">
         <xsl:element name="a">
             <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
-            <xsl:apply-templates/>
+            <xsl:text>—</xsl:text>
         </xsl:element>
     </xsl:template>
 
