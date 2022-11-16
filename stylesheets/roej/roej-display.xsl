@@ -48,7 +48,7 @@
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
-                            <xsl:text>©RODE. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text><!-- vérifier le nom de la compagnie -->
+                            <xsl:text>©ROEJ. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text><!-- vérifier le nom de la compagnie -->
                         </xsl:element>
                     </xsl:element>
                     <xsl:call-template name="dharma-script"/>
@@ -564,7 +564,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
-                            <a class="nav-link" href="https://erc-dharma.github.io/output-rode/display-rode.html">RODE</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">ROEJ</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
