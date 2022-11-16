@@ -37,8 +37,10 @@
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:element name="h1">
                         <xsl:attribute name="class">text-center</xsl:attribute>
-                        <xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
-                        <xsl:text> by </xsl:text>
+                        <xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
+                        <xsl:text> (</xsl:text>
+                        <xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='abbr']"/>
+                        <xsl:text>) by </xsl:text>
                         <xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author"/>
                     </xsl:element>
                     <br/>
@@ -48,7 +50,7 @@
                     <xsl:element name="footer">
                         <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                         <xsl:element name="div">
-                            <xsl:text>©ROEJ. Online display made available by DHARMA (2019-2025), digitization made by Word Pro.</xsl:text><!-- vérifier le nom de la compagnie -->
+                            <xsl:text>© EFEO. Digitization in TEI and online display made possible by the DHARMA project (ERC grant no. 809994). </xsl:text><!-- vérifier le nom de la compagnie -->
                         </xsl:element>
                     </xsl:element>
                     <xsl:call-template name="dharma-script"/>
@@ -95,9 +97,11 @@
 
     <!-- bibl -->
     <xsl:template match="tei:bibl">
-        <xsl:text> (</xsl:text>
+        <br/>
+        <xsl:element name="span">
+            <xsl:attribute name="class">biblitem</xsl:attribute>
             <xsl:apply-templates/>
-        <xsl:text>)</xsl:text>
+        </xsl:element>
     </xsl:template>
 
     <!-- cell -->
@@ -477,7 +481,7 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/ec/ec-css.css"></link>
-                <!--<link rel="stylesheet" href="../ec/ec-css.css"></link>-->
+                <link rel="stylesheet" href="../roej/roej-css.css"></link>
 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
@@ -564,7 +568,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
-                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">ROEJ</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
