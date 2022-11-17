@@ -43,6 +43,7 @@
                         <xsl:text>) by </xsl:text>
                         <xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author"/>
                     </xsl:element>
+                    <xsl:element name="div"><xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:sourceDesc"/></xsl:element>
                     <br/>
                     <xsl:apply-templates/>
                     <br/>
@@ -162,7 +163,7 @@
         </xsl:element>
     </xsl:template>
 
-    <!-- div -->
+    <!-- text -->
     <xsl:template match="tei:text">
         <!--<xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>-->
@@ -578,7 +579,23 @@
 
     <!-- teiHeader -->
     <xsl:template match="tei:teiHeader"/>
-
+    
+    <!-- title -->
+    
+    <xsl:template match="tei:title">
+        <xsl:choose>
+            <xsl:when test="@level='m'">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
     <!-- unclear -->
     <xsl:template match="tei:unclear">
         <xsl:text>(</xsl:text>
