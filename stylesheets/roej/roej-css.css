@@ -29,3 +29,7 @@ a:hover, a i.fas:hover {
 a, a i.fas {
     color:black;
 }
+
+card-header, a {
+     color:black;
+}

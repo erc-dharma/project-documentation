@@ -54,13 +54,14 @@
                         </xsl:element>
                     </xsl:element>
                     <xsl:call-template name="dharma-script"/>
+                    <xsl:apply-templates select=".//tei:note" mode="modals"/>
                 </xsl:element>
                 </xsl:element>
             </xsl:element>
     </xsl:template>
 
     <!-- back -->
-    <xsl:template match="tei:back">
+   <!-- <xsl:template match="tei:back">
         <xsl:for-each select="tei:div[@type='chapter']">
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
@@ -93,7 +94,7 @@
             </xsl:element>
         </xsl:element>
         </xsl:for-each>
-    </xsl:template>
+    </xsl:template>-->
 
     <!-- bibl -->
     <xsl:template match="tei:bibl">
@@ -103,7 +104,50 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-
+   
+   <!-- body -->
+    <!--<xsl:template match="tei:body">
+        <xsl:element name="div">
+            <xsl:attribute name="class">row</xsl:attribute>
+            <xsl:for-each select="tei:div[@type='chapter']">
+                <xsl:element name="div">
+                    <xsl:attribute name="class">col-12</xsl:attribute>
+                    <xsl:element name="a">
+                        <xsl:attribute name="class">btn btn-outline-dark btn-block</xsl:attribute>
+                        <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                        <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
+                        <xsl:attribute name="role">button</xsl:attribute>
+                        <xsl:attribute name="aria-expanded">false</xsl:attribute>
+                        <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
+                        
+                        <xsl:element name="small">
+                            <xsl:choose>
+                                <!-\- condition pour éviter la note dans le titre du head Introduction -\->
+                                <xsl:when test="child::tei:head[1]">
+                                    <xsl:apply-templates select="tei:head/string()"/>
+                                </xsl:when>
+                               
+                            </xsl:choose>
+                        </xsl:element>
+                        
+                    </xsl:element>
+                    <xsl:element name="div">
+                        <xsl:attribute name="id">
+                            <xsl:value-of select="generate-id()"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="class">collapse show</xsl:attribute>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
+                            <xsl:apply-templates/>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:element>
+                <br></br>
+            </xsl:for-each>
+            <br></br>
+        </xsl:element>
+    </xsl:template>-->
+    
     <!-- cell -->
     <xsl:template match="tei:cell">
         <xsl:element name="td">
@@ -119,18 +163,76 @@
     </xsl:template>
 
     <!-- div -->
-    <xsl:template match="tei:div">
+    <xsl:template match="tei:text">
+        <!--<xsl:element name="div">
+            <xsl:attribute name="class">row</xsl:attribute>-->
+            <xsl:element name="div">
+                <xsl:attribute name="class">accordion</xsl:attribute>
+            <xsl:attribute name="id">accordionStructure</xsl:attribute>
+                <xsl:for-each select="descendant::tei:div[@type='chapter']">
+                <xsl:element name="div">
+                    <xsl:attribute name="class">text col-12</xsl:attribute>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">card-header</xsl:attribute>
+                        <xsl:attribute name="id">header<xsl:number count="tei:div[@type='chapter']" level="any"/></xsl:attribute>
+                        <xsl:element name="h2">
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">btn btn-block text-center<xsl:if test="not(contains(child::tei:head[1], 'RÉPERTOIRE'))">
+                                    <xsl:text> collapsed</xsl:text>
+                                </xsl:if></xsl:attribute>                          
+                            <xsl:attribute name="role">button</xsl:attribute>
+                            <xsl:attribute name="data-toggle">collapse</xsl:attribute>
+                            <xsl:attribute name="data-target">#collapse<xsl:number count="tei:div[@type='chapter']" level="any"/></xsl:attribute>
+                            <xsl:attribute name="arie-expanded">
+                                <xsl:choose>
+                                    <xsl:when test="contains(child::tei:head[1], 'RÉPERTOIRE')">
+                                        <xsl:text>true</xsl:text>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:text>false</xsl:text>
+                                    </xsl:otherwise>
+                            </xsl:choose>
+                            </xsl:attribute>
+                            <xsl:attribute name="aria-controls">collapse<xsl:number count="tei:div[@type='chapter']" level="any"/></xsl:attribute>
+                        <xsl:element name="small">
+                            <xsl:choose>
+                                <xsl:when test="contains(child::tei:head[1], 'INTRODUCTION')">
+                                    <xsl:apply-templates select="tei:head/text()"/>
+                                </xsl:when>
+                                
+                                <xsl:when test="child::tei:head[1]">
+                                    <xsl:apply-templates select="tei:head/string()"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>PRÉFACE</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:element>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    <xsl:element name="div">
+                        <xsl:attribute name="id">collapse<xsl:number count="tei:div[@type='chapter']" level="any"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="class">collapse <xsl:if test="contains(child::tei:head[1], 'RÉPERTOIRE')">
+                            <xsl:text>show</xsl:text>
+                        </xsl:if></xsl:attribute>
+                        <xsl:attribute name="aria-labelledby">header<xsl:number count="tei:div[@type='chapter']" level="any"/></xsl:attribute>
+                        <xsl:attribute name="data-parent">#accordionStructure</xsl:attribute>
+                        <xsl:element name="div"> 
+                            <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
+                            <xsl:apply-templates/>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:for-each>
+        </xsl:element>
+        <!--</xsl:element>-->
+    </xsl:template>
+    
+    <xsl:template match="tei:div[not(@type='chapter')]">
         <!-- @type chapter, section, sub-section and alpha -->
         <xsl:choose>
-            <xsl:when test="@type='chapter'">
-                <xsl:element name="div">
-                    <xsl:attribute name="class">row</xsl:attribute>
-                    <xsl:element name="div">
-                        <xsl:attribute name="class">col-12</xsl:attribute>
-                        <xsl:apply-templates select="node()"/>
-                </xsl:element>
-                </xsl:element>
-            </xsl:when>
             <xsl:when test="@type='section'">
                 <xsl:element name="div">
                     <xsl:attribute name="class">row</xsl:attribute>
@@ -172,7 +274,7 @@
 
     <!-- form -->
     <xsl:template match="tei:form">
-        <xsl:choose>
+        <!--<xsl:choose>
             <xsl:when test="@type='lemma'">
                 <xsl:element name="div">
             <xsl:attribute name="class">col-2</xsl:attribute>
@@ -187,11 +289,23 @@
             <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
-        </xsl:choose>
+        </xsl:choose>-->
+            <xsl:if test="child::tei:lbl">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                <xsl:apply-templates/>
+                </xsl:element>
+                </xsl:if>
+        <xsl:if test="@type='lemma'">
+                <xsl:element name="a">
+            <xsl:attribute name="id">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+        </xsl:element></xsl:if>
     </xsl:template>
 
     <!-- front -->
-    <xsl:template match="tei:front">
+    <!--<xsl:template match="tei:front">
             <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
                 <xsl:for-each select="tei:div[@type='chapter']">
@@ -207,6 +321,7 @@
 
                         <xsl:element name="small">
                             <xsl:choose>
+                                <!-\- condition pour éviter la note dans le titre du head Introduction -\->
                                 <xsl:when test="contains(child::tei:head[1], 'INTRODUCTION')">
                                     <xsl:apply-templates select="tei:head/text()"/>
                                 </xsl:when>
@@ -236,7 +351,7 @@
                 <br></br>
         </xsl:element>
 
-    </xsl:template>
+    </xsl:template>-->
 
     <!-- Head -->
     <xsl:template match="tei:head[parent::tei:div[@type='chapter']]">
@@ -302,7 +417,7 @@
     <!-- lbl -->
     <xsl:template match="tei:lbl">
         <xsl:element name="span">
-            <xsl:attribute name="class">font-weight-lighter</xsl:attribute>
+            <xsl:attribute name="class">font-weight-bold lbl-item</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -488,8 +603,8 @@
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/roej/roej-css.css"></link>
-                <!--<link rel="stylesheet" href="../roej/roej-css.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/roej/roej-css.css"></link>-->
+                <link rel="stylesheet" href="../roej/roej-css.css"></link>
 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
@@ -603,8 +718,8 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader ec -->
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
-        <!--<script rel="stylesheet" src="../ec/ec-loader.js"></script>-->
+        <!-- <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/roej/roej-loader.js"></script>-->
+        <script rel="stylesheet" src="../roej/roej-loader.js"></script>
     </xsl:template>
 
     <!-- side bar -->
@@ -687,6 +802,7 @@
         <xsl:choose>
             <xsl:when test="$location = 'text'">
                 <a>
+                    <xsl:attribute name="class">inline-app</xsl:attribute>
                     <xsl:attribute name="href">
                         <xsl:text>#to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
@@ -695,6 +811,14 @@
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
+                    <xsl:attribute name="tabindex">0</xsl:attribute>
+                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
+                    <xsl:attribute name="data-html">true</xsl:attribute>
+                    <xsl:attribute name="data-target">
+                        <xsl:value-of select="generate-id()"/>
+                    </xsl:attribute>
+                    
+                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:note"></xsl:number></xsl:attribute>                  
                     <span class="tooltip-notes">
                         <sup>
                             <xsl:text>↓</xsl:text>
@@ -705,6 +829,7 @@
             </xsl:when>
             <xsl:when test="$location = 'apparatus'">
                 <a>
+                    <xsl:attribute name="class">bottom-app</xsl:attribute>
                     <xsl:attribute name="id">
                         <xsl:text>to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
@@ -720,5 +845,16 @@
                 <xsl:text> </xsl:text>
             </xsl:when>
         </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="tei:note[not(@type='geo')]" mode="modals">
+        <xsl:variable name="notes">
+                    <xsl:element name="span">
+                        <xsl:apply-templates/>
+                </xsl:element>
+        </xsl:variable>
+        <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$notes"/>
+        </span>
     </xsl:template>
 </xsl:stylesheet>
