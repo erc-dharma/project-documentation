@@ -19,3 +19,13 @@
 }
 
 .biblitem { margin-left: 40px; }
+
+.lbl-item{color: #007bff;}
+
+a:hover, a i.fas:hover {
+    color: #007bff;
+}
+
+a, a i.fas {
+    color:black;
+}
