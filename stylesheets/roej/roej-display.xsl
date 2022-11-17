@@ -207,11 +207,14 @@
 
                         <xsl:element name="small">
                             <xsl:choose>
+                                <xsl:when test="contains(child::tei:head[1], 'INTRODUCTION')">
+                                    <xsl:apply-templates select="tei:head/text()"/>
+                                </xsl:when>
                                 <xsl:when test="child::tei:head[1]">
                                     <xsl:apply-templates select="tei:head/string()"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>PREFACE</xsl:text>
+                                    <xsl:text>PRÉFACE</xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:element>
@@ -639,7 +642,6 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="01"/>
         </xsl:variable>
-
         <xsl:call-template name="dharma-generate-app-link">
             <xsl:with-param name="location" select="$location"/>
             <xsl:with-param name="app-num" select="$app-num"/>
@@ -674,6 +676,8 @@
         </xsl:if>
     </xsl:template>
 
+   
+    
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
