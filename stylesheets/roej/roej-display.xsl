@@ -796,8 +796,9 @@
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
+        <xsl:variable name="page-num" select="preceding::tei:pb[1]/@n"/>
         <xsl:variable name="number">
-            <xsl:number format="1" count="tei:note[not(@type='geo')]" level="any"/>
+            <xsl:value-of select="preceding::tei:pb[1]/@n"/><xsl:text>-</xsl:text><xsl:number format="1" count="tei:note[not(@type='geo')][preceding::tei:pb[1]/@n = $page-num]" level="any"/>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$location = 'text'">
@@ -818,7 +819,7 @@
                         <xsl:value-of select="generate-id()"/>
                     </xsl:attribute>
                     
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:note"></xsl:number></xsl:attribute>                  
+                    <xsl:attribute name="title">Note <xsl:value-of select="$number"/></xsl:attribute>                  
                     <span class="tooltip-notes">
                         <sup>
                             <xsl:text>↓</xsl:text>
@@ -839,7 +840,7 @@
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
                     <xsl:text>↑</xsl:text>
-                    <xsl:value-of select="$number"/>
+                    <xsl:copy-of select="$number"/>
                     <xsl:text>.</xsl:text>
                 </a>
                 <xsl:text> </xsl:text>
