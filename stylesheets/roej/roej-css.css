@@ -26,6 +26,10 @@ a:hover, a i.fas:hover {
     color: #007bff;
 }
 
+.bottom-app{
+    color: #007bff;
+}
+
 a, a i.fas {
     color:black;
 }

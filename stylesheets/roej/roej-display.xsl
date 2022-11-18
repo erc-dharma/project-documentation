@@ -837,9 +837,9 @@
                     </xsl:attribute>
                     
                     <xsl:attribute name="title">Note <xsl:value-of select="$number"/></xsl:attribute>                  
-                    <span class="tooltip-notes">
+                    <span class="tooltip-notes font-weight-normal">
                         <sup>
-                            <xsl:text>↓</xsl:text>
+                            <!--<xsl:text>↓</xsl:text>-->
                             <xsl:value-of select="$number"/>
                         </sup>
                     </span>
@@ -856,7 +856,7 @@
                         <xsl:text>#from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
-                    <xsl:text>↑</xsl:text>
+                    <xsl:text>^</xsl:text>
                     <xsl:copy-of select="$number"/>
                     <xsl:text>.</xsl:text>
                 </a>
