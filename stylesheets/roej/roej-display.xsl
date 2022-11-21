@@ -99,11 +99,28 @@
 
     <!-- bibl -->
     <xsl:template match="tei:bibl">
-        <br/>
-        <xsl:element name="span">
+        <xsl:choose>
+            <xsl:when test=".[tei:ptr]">
+                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="zoteroapitei">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:variable name="pointerurl">
+                    <xsl:value-of select="document($zoteroapitei)//tei:biblStruct/@corresp"/>
+                </xsl:variable>
+                <a href="{$pointerurl}">
+                    <xsl:apply-templates/>
+                </a>
+            </xsl:when>
+            <xsl:otherwise>
+                <br/>
+                <xsl:element name="span">
             <xsl:attribute name="class">biblitem</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
    
    <!-- body -->
