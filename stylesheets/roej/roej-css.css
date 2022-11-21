@@ -37,3 +37,7 @@ a, a i.fas {
 card-header, a {
      color:black;
 }
+
+.pagination{
+    font-size: 1rem;
+}
