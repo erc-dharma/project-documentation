@@ -498,6 +498,9 @@
     <!-- p -->
     <xsl:template match="tei:p">
         <xsl:element name="p">
+            <xsl:if test="@rend='right'">
+                <xsl:attribute name="class">text-right</xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -620,8 +623,8 @@
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <!-- site-specific css !-->
-                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/roej/roej-css.css"></link>-->
-                <link rel="stylesheet" href="../roej/roej-css.css"></link>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/roej/roej-css.css"></link>
+                <!--<link rel="stylesheet" href="../roej/roej-css.css"></link>-->
 
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
             </meta>
