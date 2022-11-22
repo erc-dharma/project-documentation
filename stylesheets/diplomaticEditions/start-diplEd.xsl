@@ -144,36 +144,43 @@
         </xsl:element>
     </xsl:template>
     <!--  teiHeader ! -->
+    <!--  teiHeader ! -->
     <xsl:template match="tei:teiHeader">
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
-                        <xsl:element name="h1">
+                <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
-                </xsl:element>
-                <xsl:element name="h2">
-                    <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:value-of select="./tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
-                </xsl:element>
-                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
-                    <xsl:element name="p">
-                        <xsl:attribute name="class">mb-3</xsl:attribute>
-                        <xsl:text>of</xsl:text>
+                    <xsl:text>The </xsl:text>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-italic</xsl:attribute>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
                     </xsl:element>
-                    <xsl:element name="h1">
-                        <xsl:attribute name="class">display-6</xsl:attribute>
-                        <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:author"/>
+                    <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                        <xsl:text> or ‘</xsl:text>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
+                        <xsl:text>’</xsl:text>
+                    </xsl:if>
+                    <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
+                        <xsl:text> by </xsl:text>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:author"/>
+                    </xsl:if>
+                </xsl:element>
+                
+                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
+                    <xsl:element name="h2">
+                        <xsl:attribute name="class">display-5</xsl:attribute>
+                        <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="tei:fileDesc/tei:titleStmt/tei:editor">
-                    <xsl:element name="h1">
+                    <xsl:element name="h3">
                         <xsl:attribute name="class">display-6</xsl:attribute>
-                    <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:editor">
+                        <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:editor">
                             <xsl:choose>
                                 <xsl:when test="position()= 1">
-                                    <xsl:text>Edited by </xsl:text>
+                                    <xsl:text>edited by </xsl:text>
                                 </xsl:when>
                                 <xsl:when test="position()=last()">
                                     <xsl:text> &amp; </xsl:text>
@@ -182,30 +189,34 @@
                                     <xsl:text>, </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        <xsl:apply-templates select="fn:normalize-space(.)"/>
-                    </xsl:for-each>
-                    </xsl:element>
-                </xsl:if>
-                <xsl:if test="not(tei:fileDesc/tei:titleStmt/tei:editor)">
-                    <xsl:element name="h1">
-                        <xsl:attribute name="class">display-6</xsl:attribute>
-                        <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:respStmt/tei:persName">
                             <xsl:choose>
-                                <xsl:when test="position()= 1">
-                                    <xsl:text>Edited by </xsl:text>
-                                </xsl:when>
-                                <xsl:when test="position()=last()">
-                                    <xsl:text> &amp; </xsl:text>
+                                <xsl:when test="child::tei:forename">
+                                    <xsl:apply-templates select="tei:forename"/>
+                                    <xsl:text> </xsl:text>
+                                    <xsl:apply-templates select="tei:surname"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>, </xsl:text>
+                                    <xsl:apply-templates select="normalize-space(.)"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            <xsl:apply-templates select="fn:normalize-space(.)"/>
                         </xsl:for-each>
                     </xsl:element>
                 </xsl:if>
-        </xsl:element>
+                <xsl:text>Current Version: </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
+                        <xsl:value-of select="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status"/>
+                        
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>draft</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="current-date()"/>
+                <br/>
+                <xsl:text>Still in progress – do not quote without permission.</xsl:text>
+            </xsl:element>
         </xsl:element>
     </xsl:template>
     <!--  text ! -->
@@ -1115,7 +1126,10 @@
                     <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
-                </xsl:element>
+                    <xsl:if test="following-sibling::tei:fw[1]">
+                        <xsl:apply-templates select="following-sibling::tei:fw[1]"/>
+                    </xsl:if>
+                </xsl:element>     
     </xsl:template>
 
     <!-- ptr -->
