@@ -744,7 +744,7 @@
         </xsl:element>
     </xsl:template>
     <!--  fw ! -->
-    <xsl:template match="tei:fw">
+    <!--<xsl:template match="tei:fw">
         <xsl:choose>
             <xsl:when test="preceding::tei:*[1][local-name() = ('pb')]">
                 <xsl:text>: </xsl:text>
@@ -758,7 +758,7 @@
             <xsl:apply-templates/>
         </xsl:element></xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
+    </xsl:template>-->
     <!--  G ! -->
     <xsl:template match="tei:g">
         <xsl:element name="span">
