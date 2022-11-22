@@ -1137,6 +1137,8 @@
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
                     <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')]">
+                        <xsl:text>: </xsl:text>
+                        <xsl:text>fw </xsl:text>
                         <xsl:apply-templates select="following-sibling::tei:fw[1]"/>
                     </xsl:if>
                 </xsl:element>     
