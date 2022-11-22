@@ -618,12 +618,7 @@
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
-                    <xsl:element name="sup">
-                    <xsl:attribute name="class">float-right</xsl:attribute>
-                    <xsl:text>(</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
-                    <xsl:text>)</xsl:text>
-                    </xsl:element>
+                    
                 </xsl:element>
             </xsl:element>
 
@@ -631,6 +626,12 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">sic</xsl:attribute>
                         <xsl:apply-templates select="tei:sic"/>
+                        <xsl:element name="sup">
+                            <xsl:attribute name="class">float-right</xsl:attribute>
+                            <xsl:text>(</xsl:text>
+                            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
+                            <xsl:text>)</xsl:text>
+                        </xsl:element>
                     </xsl:element>
         </xsl:element>
     </xsl:template>
