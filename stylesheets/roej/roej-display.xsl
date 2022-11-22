@@ -491,9 +491,18 @@
 
     <!-- oRef -->
     <xsl:template match="tei:oRef">
+        <xsl:variable name="oreference" select="@target"/>
         <xsl:element name="a">
+            <xsl:attribute name="class">oreference</xsl:attribute>
             <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
-            <xsl:text>—</xsl:text>
+            <!--<xsl:text>—</xsl:text>-->
+           <xsl:choose> 
+               <xsl:when test="substring-before(//tei:orth[@xml:id = $oreference]/@xml:id, '-')">
+                   <xsl:value-of select="replace(substring-before(//tei:orth[@xml:id = $oreference]/@xml:id, '-'), '_', ' ')"/></xsl:when>
+           <xsl:otherwise>
+               <xsl:value-of select="replace(//tei:orth[@xml:id = $oreference]/@xml:id, '_', ' ')"/>
+           </xsl:otherwise>
+           </xsl:choose>
         </xsl:element>
     </xsl:template>
 
