@@ -452,10 +452,11 @@
 
                 <xsl:element name="span">
                     <xsl:attribute name="class">
-                        <xsl:text>lem</xsl:text>
+                        <xsl:text>lem </xsl:text>
                     </xsl:attribute>
                 <xsl:apply-templates select="tei:lem"/>
                         <xsl:element name="sup">
+                            <xsl:attribute name="class">float-right</xsl:attribute>
                             <xsl:text>(</xsl:text>
                         <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg]"/>
                         <xsl:text>)</xsl:text>
@@ -598,9 +599,9 @@
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
         <xsl:element name="span">
-            <xsl:attribute name="class">lem-tooltipApp</xsl:attribute>
+            <xsl:attribute name="class">lem-tooltipApp float-right</xsl:attribute>
             <!--  <xsl:element name="div">
-           <xsl:attribute name="class">float-right</xsl:attribute>-->
+           <xsl:attribute name="class"></xsl:attribute>-->
             <xsl:element name="span">
                 <xsl:attribute name="class">tooltipApp</xsl:attribute>
                 <xsl:element name="a">
@@ -617,9 +618,12 @@
                         <xsl:text>from-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
+                    <xsl:element name="sup">
+                    <xsl:attribute name="class">float-right</xsl:attribute>
                     <xsl:text>(</xsl:text>
                     <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
                     <xsl:text>)</xsl:text>
+                    </xsl:element>
                 </xsl:element>
             </xsl:element>
 
@@ -740,14 +744,19 @@
     </xsl:template>
     <!--  fw ! -->
     <xsl:template match="tei:fw">
-        <xsl:element name="span">
+        <xsl:choose>
+            <xsl:when test="preceding::tei:*[1][local-name() = ('pb')]">
+                <xsl:text>: </xsl:text>
+                <xsl:text>fw </xsl:text>
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="span">
             <xsl:attribute name="class">text-muted form-work</xsl:attribute>
-            <xsl:if test="preceding::tei:*[1][local-name() = ('pb')]">
-                <xsl:text>:</xsl:text>
-            </xsl:if>
             <xsl:text>fw </xsl:text>
             <xsl:apply-templates/>
-        </xsl:element>
+        </xsl:element></xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <!--  G ! -->
     <xsl:template match="tei:g">
@@ -1126,7 +1135,7 @@
                     <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
-                    <xsl:if test="following-sibling::tei:fw[1]">
+                    <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')]">
                         <xsl:apply-templates select="following-sibling::tei:fw[1]"/>
                     </xsl:if>
                 </xsl:element>     
