@@ -2037,14 +2037,14 @@
                     </xsl:if>
                     </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:if test="following-sibling::tei:note and not(following-sibling::tei:rdg)">
+                    <xsl:if test="tei:lem/following-sibling::tei:note and not(following-sibling::tei:rdg)">
                         <xsl:text> • </xsl:text>
-                        <xsl:apply-templates select="following-sibling::tei:note"/>
+                        <xsl:apply-templates select="tei:lem/following-sibling::tei:note"/>
                     </xsl:if>
                 </xsl:for-each>
-                <xsl:if test="not(tei:rdg) and tei:note">
+                <xsl:if test="not(tei:rdg) and tei:lem/following-sibling::tei:note">
                     <xsl:text> • </xsl:text>
-                    <xsl:apply-templates select="tei:note"/>
+                    <xsl:apply-templates select="tei:lem/following-sibling::tei:note"/>
                 </xsl:if>
             </xsl:when>
             <xsl:when test="$apptype='note'">
