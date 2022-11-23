@@ -1017,34 +1017,7 @@
                 <xsl:when test="tei:note[@type='prosody']"/>
                 <xsl:when test="tei:note[ancestor::tei:colophon]"/>
                 <xsl:when test="self::tei:note[//tei:TEI[@type='translation']]"/>
-                <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
-              <xsl:element name="span">
-                  <xsl:attribute name="class">lem-last-note</xsl:attribute>
-                        <xsl:element name="a">
-                            <xsl:attribute name="tabindex">0</xsl:attribute>
-                            <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                            <xsl:attribute name="data-html">true</xsl:attribute>
-                            <xsl:attribute name="data-target">
-                                <xsl:value-of select="generate-id()"/>
-                            </xsl:attribute>
-                            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-                            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:choice[child::tei:sic and child::tei:corr]"/></xsl:attribute>
-
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">tooltipApp</xsl:attribute>
-                                <xsl:attribute name="type">button</xsl:attribute>
-                                    <xsl:text>(</xsl:text>
-                                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note | .//tei:choice[child::tei:sic and child::tei:corr]"/>
-                                    <xsl:text>)</xsl:text>
-                            </xsl:element>
-                        </xsl:element>
-
-             <!--   <xsl:element name="span">
-                    <xsl:attribute name="class">last-note</xsl:attribute>
-                    <xsl:text>&#128172;</xsl:text>
-                </xsl:element>-->
-              </xsl:element>
-            </xsl:when>
+                <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
             <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
