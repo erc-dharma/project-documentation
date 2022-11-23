@@ -1072,6 +1072,14 @@
             <xsl:copy-of select="$apparatus-note"/>
         </span>
     </xsl:template>
+    <xsl:template match="tei:num">
+        <xsl:choose>
+            <xsl:when test="parent::tei:fw"/>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
