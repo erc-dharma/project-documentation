@@ -1014,7 +1014,10 @@
     <!--  N ! -->
     <xsl:template match="tei:note">
         <xsl:choose>
-            <xsl:when test="self::tei:note">
+                <xsl:when test="tei:note[@type='prosody']"/>
+                <xsl:when test="tei:note[ancestor::tei:colophon]"/>
+                <xsl:when test="self::tei:note[//tei:TEI[@type='translation']]"/>
+                <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
               <xsl:element name="span">
                   <xsl:attribute name="class">lem-last-note</xsl:attribute>
                         <xsl:element name="a">
@@ -1040,16 +1043,16 @@
                     <xsl:attribute name="class">last-note</xsl:attribute>
                     <xsl:text>&#128172;</xsl:text>
                 </xsl:element>-->
-              </xsl:element>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
    <xsl:template match="tei:note" mode="modals">
         <xsl:variable name="apparatus-note">
-            <xsl:if test="self::tei:note[not(@type='parallels' or parent::tei:app or @type='altLem')]">
+            <xsl:if test="self::tei:note[position() = last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
                 <xsl:element name="span">
                     <xsl:element name="span">
                         <xsl:attribute name="class">mb-1 lemma-line</xsl:attribute>
@@ -1072,6 +1075,7 @@
             <xsl:copy-of select="$apparatus-note"/>
         </span>
     </xsl:template>
+    
     <xsl:template match="tei:num[not(parent::tei:fw)]">
        <xsl:apply-templates/>
     </xsl:template>
