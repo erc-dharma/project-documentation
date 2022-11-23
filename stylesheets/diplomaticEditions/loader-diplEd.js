@@ -1,4 +1,4 @@
-var content = $("#root").append(content);
+﻿var content = $("#root").append(content);
             initializePopovers();
                      
 function initializePopovers() {  
@@ -13,6 +13,17 @@ function initializePopovers() {
             }
             });
 };
+
+  /* Highlighting function in JQuery */
+    $('.move-to-right').on({
+  mouseenter: function () {
+    id = $(this).attr('data-app');
+    $('.lem[data-app="'+id+'"]').css({'background-color': 'yellow'});
+  },
+  mouseout: function () {
+    $('.lem[data-app="'+id+'"]').css({'background-color': 'transparent'});
+    }
+    });
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
