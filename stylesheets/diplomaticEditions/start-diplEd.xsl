@@ -1043,6 +1043,7 @@
                     <xsl:attribute name="class">last-note</xsl:attribute>
                     <xsl:text>&#128172;</xsl:text>
                 </xsl:element>-->
+              </xsl:element>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
