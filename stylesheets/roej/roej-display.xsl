@@ -55,7 +55,7 @@
                         </xsl:element>
                     </xsl:element>
                     <xsl:call-template name="dharma-script"/>
-                    <xsl:apply-templates select=".//tei:note" mode="modals"/>
+                    <xsl:apply-templates select=".//tei:note[not(@type='geo')]" mode="modals"/>
                 </xsl:element>
                 </xsl:element>
             </xsl:element>
@@ -897,7 +897,7 @@
     <xsl:template match="tei:note[not(@type='geo')]" mode="modals">
         <xsl:variable name="notes">
                     <xsl:element name="span">
-                        <xsl:apply-templates/>
+                        <xsl:apply-templates select="tei:note"/>
                 </xsl:element>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
