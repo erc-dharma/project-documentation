@@ -897,7 +897,7 @@
     <xsl:template match="tei:note[not(@type='geo')]" mode="modals">
         <xsl:variable name="notes">
                     <xsl:element name="span">
-                        <xsl:apply-templates select="tei:note"/>
+                        <xsl:apply-templates/>
                 </xsl:element>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
