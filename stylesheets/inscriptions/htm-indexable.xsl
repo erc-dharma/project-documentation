@@ -1,9 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
                 version="2.0">
-
+  
+  <xsl:template match="t:persName[ancestor::t:teiHeader]">
+    <xsl:choose>
+      <xsl:when test="t:forename and t:surname">
+      <xsl:value-of select="t:forename"/>
+    <xsl:text> </xsl:text>
+    <xsl:element name="span">
+      <xsl:attribute name="class">resp</xsl:attribute>
+    <xsl:value-of select="t:surname"/>
+    </xsl:element>
+      </xsl:when>
+      <xsl:when test="t:name">
+          <xsl:value-of select="normalize-space(.)"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+  
 <xsl:template match="t:persName[ancestor::t:body]">
   <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
       <xsl:if test="$parm-leiden-style='dharma' and ancestor::t:div[@type='edition']">
