@@ -44,10 +44,34 @@
                   <xsl:element name="p">
                   <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    Editors:  
+                    <xsl:choose>
+                      <xsl:when test="count(//t:fileDesc/t:titleStmt/t:respStmt[contains(t:resp, 'intellectual authorship of edition')]/child::t:persName) = 1">
+                        <xsl:text>Editor:</xsl:text>
+                      </xsl:when>
+                      <xsl:when test="count(//t:fileDesc/t:titleStmt/t:respStmt[contains(t:resp, 'intellectual authorship of edition')]/child::t:persName) = 0">
+                        <xsl:text>No editor has been identified for this inscription.</xsl:text>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:text>Editors:</xsl:text>
+                      </xsl:otherwise>
+                    </xsl:choose>  
                   </xsl:element>
 
-                    <xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>
+                    <!--<xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>-->
+                    <xsl:for-each select="//t:fileDesc/t:titleStmt/t:respStmt[contains(t:resp, 'intellectual authorship of edition')]/t:persName">                     
+                      <xsl:apply-templates select="."/>
+                          <xsl:choose>
+                            <xsl:when test="position()=last()">
+                              <xsl:text>. </xsl:text>
+                            </xsl:when>
+                            <xsl:when test="position()=(last()-1)">
+                              <xsl:text> and </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:text>, </xsl:text>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                    </xsl:for-each>
                   </xsl:element>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
               <xsl:element name="p">
