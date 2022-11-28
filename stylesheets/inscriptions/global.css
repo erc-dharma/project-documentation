@@ -125,6 +125,7 @@ P {
     position: relative;
     }
 .linenumber {
+    font-style:normal;
     color: black;
     position: relative;
     text-decoration: none;
