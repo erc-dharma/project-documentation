@@ -9,10 +9,7 @@
       <xsl:when test="t:forename and t:surname">
       <xsl:value-of select="t:forename"/>
     <xsl:text> </xsl:text>
-    <xsl:element name="span">
-      <xsl:attribute name="class">resp</xsl:attribute>
     <xsl:value-of select="t:surname"/>
-    </xsl:element>
       </xsl:when>
       <xsl:when test="t:name">
           <xsl:value-of select="normalize-space(.)"/>

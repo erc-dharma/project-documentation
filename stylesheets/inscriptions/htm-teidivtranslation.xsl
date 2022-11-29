@@ -72,8 +72,6 @@
 
             <xsl:if test="@source">
          <xsl:text> by </xsl:text>
-         <xsl:element name="span">
-           <xsl:attribute name="class">resp</xsl:attribute>
            <xsl:choose>
               <xsl:when test="matches(@source, '\+[a][l]')">
                   <xsl:analyze-string select="$unparsedresp"
@@ -101,7 +99,6 @@
          </xsl:analyze-string>
        </xsl:otherwise>
        </xsl:choose>
-       </xsl:element>
          <xsl:text> </xsl:text>
          <xsl:analyze-string select="$unparsedresp"
            regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
@@ -165,11 +162,8 @@
                                    </xsl:otherwise>
                                    </xsl:choose>
                                 <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[1]"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:element name="span">
-                                  <xsl:attribute name="class">resp</xsl:attribute>
+                                <xsl:text> </xsl:text> 
                                   <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[2]"/>
-                                </xsl:element>
                              <!--  <xsl:value-of select="./child::*/node()[2]"/>-->
                             </xsl:when>
                               <xsl:otherwise>
