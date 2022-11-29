@@ -236,6 +236,7 @@
 
    <!-- Called from htm-tpl-structure.xsl -->
    <xsl:template name="dharma-structure">
+     <xsl:param name="parm-internal-app-style" tunnel="yes" required="no"/>
       <xsl:variable name="title">
          <xsl:call-template name="dharma-title" />
       </xsl:variable>
@@ -271,6 +272,7 @@
                <xsl:value-of select="//t:teiHeader/t:fileDesc/t:titleStmt/t:title"/>
              </h1>
              <xsl:call-template name="dharma-body-structure"/>
+             <xsl:call-template name="tpl-dharma-apparatus"/>
            </xsl:element>
              <xsl:apply-templates select=".//t:persName[ancestor::t:body]" mode="modals"/>
              <xsl:apply-templates select=".//t:placeName[ancestor::t:body]" mode="modals"/>

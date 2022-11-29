@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t" version="2.0">
@@ -142,7 +142,7 @@
     <xsl:param name="location"/>
     <xsl:param name="app-num"/>
     <xsl:variable name="number">
-    <xsl:number format="1" from="//t:div[@type='translation']" count="t:note[not(@type='credit')]" level="any"/>
+      <xsl:number format="1" count="t:note[not(@type='credit') and not(ancestor::t:div[@type='edition'] or ancestor::t:div[@type='apparatus'])]" level="any"/>
     </xsl:variable>
     <xsl:choose>
       <xsl:when test="$location = 'text'">
@@ -184,13 +184,16 @@
 
   <xsl:template name="tpl-dharma-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
-    <xsl:if test=".//t:note[ancestor::t:div[@type='translation']]">
-      <h3>Notes</h3>
+    <xsl:if test=".//t:note[not(ancestor::t:div[@type='edition'] or ancestor::t:div[@type='apparatus'])]">
+      <br/>
+      <xsl:element name="div">
+        <xsl:attribute name="id">bottom-notes</xsl:attribute>
+       <h2>Notes</h2>
       <p id="notes-translation">
         <!-- An entry is created for-each of the following instances
                   * notes.
         -->
-        <xsl:for-each select=".//t:note[not(@type='credit')]">
+        <xsl:for-each select=".//t:note[not(@type='credit') and not(ancestor::t:div[@type='edition'] or ancestor::t:div[@type='apparatus'])]">
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:variable name="div-loc">
              <xsl:for-each select="ancestor::t:div[@type='textpart'][@n]">
@@ -210,7 +213,7 @@
                   </span>
         <br/>
         </xsl:for-each>
-      </p>
+      </p></xsl:element>
     </xsl:if>
   </xsl:template>
 

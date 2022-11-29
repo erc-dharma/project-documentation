@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:t="http://www.tei-c.org/ns/1.0"
   xmlns:EDF="http://epidoc.sourceforge.net/ns/functions" exclude-result-prefixes="t EDF" version="2.0">
@@ -23,13 +23,13 @@
          <xsl:apply-templates/>
 
 
-           <xsl:choose>
-               <!-- Apparatus creation: look in tpl-apparatus.xsl for documentation and templates -->
+           <!--<xsl:choose>
+               <!-\- Apparatus creation: look in tpl-apparatus.xsl for documentation and templates -\->
                <xsl:when test="$parm-internal-app-style = 'dharma'">
-                   <!-- Framework found in htm-tpl-apparatus.xsl -->
+                   <!-\- Framework found in htm-tpl-apparatus.xsl -\->
                    <xsl:call-template name="tpl-dharma-apparatus"/>
                </xsl:when>
-           </xsl:choose>
+           </xsl:choose>-->
          </div>
    </xsl:template>
 
