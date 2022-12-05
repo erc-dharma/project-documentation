@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0"
-   exclude-result-prefixes="t" version="2.0">
+   xmlns:EDF="http://epidoc.sourceforge.net/ns/functions"
+   exclude-result-prefixes="#all" version="2.0">
    <!-- More specific templates in teimilestone.xsl -->
 
   <xsl:template match="t:milestone">
@@ -45,22 +46,44 @@
          </xsl:when>
          <xsl:when test="$parm-leiden-style = 'dharma'">
            <xsl:choose>
-             <xsl:when test="ancestor::t:lem">
-           <xsl:text>/</xsl:text>
+             <xsl:when test="ancestor::t:app">
+               <xsl:element name="span">
+                 <xsl:attribute name="trigger">hover</xsl:attribute>
+                 <xsl:attribute name="class">milestone-label</xsl:attribute>
+                 <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                 <xsl:attribute name="data-placement">top</xsl:attribute>
+                 <xsl:attribute name="title">
+                   <xsl:value-of select="concat(upper-case(substring(@unit,1,1)), substring(@unit, 2),' '[not(last())] )"/>
+                   <xsl:if test="@n">
+                     <xsl:text> </xsl:text>
+                     <xsl:value-of select="@n"/>
+                   </xsl:if>
+                 </xsl:attribute>
+                   <xsl:text>&#8225;</xsl:text>
+               </xsl:element>
          </xsl:when>
-         <xsl:when test="not(ancestor::t:lg or ancestor::t:div[@type='translation'])">
-           <xsl:if test="@break='no'">
-           </xsl:if>
-           <xsl:text>&#8225; </xsl:text>
-           <xsl:if test="not(following-sibling::t:label)">
+         <xsl:when test="not(ancestor::t:div[@type='translation'])">
+           <!--<xsl:text>&#8225; </xsl:text>-->
+             <xsl:element name="span">
+               <xsl:attribute name="trigger">hover</xsl:attribute>
+               <xsl:attribute name="class">milestone-label</xsl:attribute>
+               <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+               <xsl:attribute name="data-placement">top</xsl:attribute>
+               <xsl:attribute name="title">
+                 <xsl:value-of select="following-sibling::t:label[1]"/>
+               </xsl:attribute>
              <xsl:element name="sup">
-               <xsl:text>[</xsl:text>
-               <xsl:value-of select="@unit"/>
-               <xsl:text> </xsl:text>
+               <xsl:attribute name="class">linenumber</xsl:attribute>
+               <!--<xsl:text>[</xsl:text>-->
+               <xsl:value-of select="concat(upper-case(substring(@unit,1,1)), substring(@unit, 2),' '[not(last())] )"/>
+               <xsl:if test="@n">
+                 <xsl:text> </xsl:text>
                <xsl:value-of select="@n"/>
-               <xsl:text>]</xsl:text>
+               </xsl:if>
+               <!--<xsl:text>]</xsl:text>-->
              </xsl:element>
-           </xsl:if>
+             </xsl:element>
+           
          </xsl:when>
          <xsl:when test="ancestor::t:div[@type='translation'] and @type='ref'">
            <xsl:if test="@n and @unit='line'">

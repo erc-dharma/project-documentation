@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0"
@@ -12,15 +12,6 @@
                                  <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
                                   <xsl:choose>
                                       <xsl:when test="$leiden-style='dharma'">
-                                        <xsl:choose>
-                                            <xsl:when test="child::t:l/descendant::t:milestone[following-sibling::t:lb] or child::t:l/descendant::t:milestone[following-sibling::t:label and following-sibling::t:lb]">
-                                            <xsl:element name="h3">
-                                              <xsl:text>&#8225; </xsl:text>
-                                              <xsl:value-of select="descendant::t:label"/>
-                                            <hr/>
-                                          </xsl:element>
-                                        </xsl:when>
-                                      </xsl:choose>
                                             <!-- Deleting the language constraint TO BE DONE -->
                                            <!-- TO BE DONE : Adding the @n if more than one <lg> = adding a variable -->
                                            <div class="verse-part">

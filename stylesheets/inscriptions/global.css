@@ -46,6 +46,11 @@ body{
         position: relative;
         color: #1E90FF;
           }
+          
+.milestone-label {
+        position: relative;
+        color: #1E90FF;
+          }          
 
 .abbreviation {
   color: #a57659;
