@@ -10,6 +10,9 @@
   <!--  <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
     <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
 
+    <xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>
+    
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
     <xsl:function name="functx:escape-for-regex" as="xs:string"
