@@ -6,8 +6,9 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0"
     exclude-result-prefixes="tei xi fn functx">
 
-    <xsl:param name="edition-type" as="xs:string"/>
-    <xsl:param name="corpus-type" as="xs:string"/>
+<!-- addition to run the xslt locally, to be commenting before pushing files otherwise the pipeline won't run for diplEd -->
+  <!--  <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
+    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
 
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
@@ -743,22 +744,10 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  fw ! -->
-    <!--<xsl:template match="tei:fw">
-        <xsl:choose>
-            <xsl:when test="preceding::tei:*[1][local-name() = ('pb')]">
-                <xsl:text>: </xsl:text>
-                <xsl:text>fw </xsl:text>
-                <xsl:apply-templates/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:element name="span">
-            <xsl:attribute name="class">text-muted form-work</xsl:attribute>
-            <xsl:text>fw </xsl:text>
-            <xsl:apply-templates/>
-        </xsl:element></xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>-->
+    <xsl:template match="tei:fw"/>
+    
     <!--  G ! -->
     <xsl:template match="tei:g">
         <xsl:element name="span">
@@ -865,10 +854,25 @@
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
         </xsl:choose>
-        <xsl:element name="span">
-            <xsl:attribute name="class">text-muted lineation</xsl:attribute>
-            <xsl:value-of select="@n"/>
-        </xsl:element>
+        <!--<xsl:for-each-group select="*" group-starting-with="tei:lb">
+            
+                <xsl:for-each select="current-group()">
+                    <xsl:copy>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-10 structural-grid</xsl:attribute>-->
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">text-muted lineation</xsl:attribute>
+                            <xsl:value-of select="@n"/>
+                        </xsl:element>
+                        <xsl:apply-templates/>
+                        <!--</xsl:element>
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-2 structural-grid</xsl:attribute>
+                            <!-\- déclencher les appels de notes à partir d'ici -\->
+                        </xsl:element>
+                    </xsl:copy>
+                </xsl:for-each>
+        </xsl:for-each-group>-->
     </xsl:template>
     <!--  lg ! -->
     <xsl:template match="tei:lg">
@@ -1050,9 +1054,10 @@
         </span>
     </xsl:template>
     
-    <xsl:template match="tei:num[not(parent::tei:fw)]">
+<!--    <xsl:template match="tei:num[not(parent::tei:fw)]">
        <xsl:apply-templates/>
-    </xsl:template>
+    </xsl:template>-->
+    
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
@@ -1120,7 +1125,7 @@
                     <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')]">
                         <xsl:text>: </xsl:text>
                         <xsl:text>fw </xsl:text>
-                        <xsl:apply-templates select="following-sibling::tei:*[1][local-name()=('fw')]/tei:num"/>
+                        <xsl:value-of select="following-sibling::tei:*[1][local-name()=('fw')]"/>
                     </xsl:if>
                 </xsl:element>     
     </xsl:template>
