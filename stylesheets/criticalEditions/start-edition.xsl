@@ -4614,10 +4614,10 @@
                                         <xsl:value-of select="$refMS"/>
                                     </xsl:element>
                                 </xsl:when>
-                                <xsl:otherwise>
+                                <xsl:when test="/tei:TEI[not(@xml:id ='skk' or @xml:id ='sasanamahaguru' or @xml:id ='siksaguru')]">
                                     <xsl:value-of select="replace(descendant-or-self::tei:note/@* except @xml:lang, 'txt:', '')"/>
                                     <xsl:text> </xsl:text>
-                                </xsl:otherwise>
+                                </xsl:when>
                             </xsl:choose>
                             <xsl:element name="span">
                                 <xsl:attribute name="class">parallel-text</xsl:attribute>
