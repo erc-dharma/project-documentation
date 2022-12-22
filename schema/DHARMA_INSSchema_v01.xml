@@ -247,9 +247,7 @@
                             <valList type="open" mode="replace">
                                 <valItem ident="fragment"/>
                                 <valItem ident="face"/>
-                                <valItem ident="facet"/>
                                 <valItem ident="faces"/>
-                                <valItem ident="facets"/>
                                 <valItem ident="zone"/>
                                 <valItem ident="column"/>
                                 <valItem ident="item"/>
@@ -3060,9 +3058,7 @@
                             <valList type="open" mode="replace">
                                 <valItem ident="fragment"/>
                                 <valItem ident="face"/>
-                                <valItem ident="facet"/>
                                 <valItem ident="faces"/>
-                                <valItem ident="facets"/>
                                 <valItem ident="zone"/>
                                 <valItem ident="column"/>
                                 <valItem ident="block"/>

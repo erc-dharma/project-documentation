@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-10-17T09:01:07Z. .
+Schema generated from ODD source 2022-12-22T15:19:32Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -4523,7 +4523,7 @@ Elements]</a:documentation>
          <ref name="tei_att.global.attribute.n"/>
          <attribute name="unit">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a conventional name for the kind of section changing at this milestone.
-Sample values include: 1] fragment; 2] face; 3] facet; 4] faces; 5] facets; 6] zone; 7] column; 8] block; 9] surface; 10] item; 11] area; 12] line; 13] stanza</a:documentation>
+Sample values include: 1] fragment; 2] face; 3] faces; 4] zone; 5] column; 6] block; 7] surface; 8] item; 9] area; 10] line; 11] stanza</a:documentation>
             <data type="token">
                <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
             </data>
@@ -6901,7 +6901,7 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
          <optional>
             <attribute name="subtype">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a sub-categorization of the element, if needed
-Sample values include: 1] fragment; 2] face; 3] facet; 4] faces; 5] facets; 6] zone; 7] column; 8] item; 9] trial</a:documentation>
+Sample values include: 1] fragment; 2] face; 3] faces; 4] zone; 5] column; 6] item; 7] trial</a:documentation>
                <data type="token">
                   <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
                </data>
