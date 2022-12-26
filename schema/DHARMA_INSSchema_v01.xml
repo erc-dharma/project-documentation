@@ -2308,6 +2308,14 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="l" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="mixed-verse">
+                        <constraint><sch:rule context="tei:l[parent::tei:lg[@met='mixed']]">
+                        <sch:assert
+                            test="self::tei:l[@real or @met]"
+                            >In a stanza identify as "mixed", the children verse lines must have at least an attribute @met or @real.</sch:assert>
+                    </sch:rule>
+                    </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2623,14 +2631,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="lg" module="core" mode="change">
-                    <constraintSpec scheme="schematron" ident="usage-mixed">
-                        <constraint>
-                            <sch:rule context="tei:lg[@met='mixed']">
-                                <sch:assert
-                            test="child::tei:l[@real or @met]"
-                            >In a stanza set on "mixed", the children verse lines must have at least an attribute @met or @real.</sch:assert></sch:rule>
-                        </constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
