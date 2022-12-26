@@ -599,7 +599,7 @@
                                 <valItem ident="binding-hole"/>
                                 <valItem ident="descender"/>
                                 <valItem ident="ascender"/>
-                                <valItem ident="other"/>
+                                <valItem ident="unclassified"/>
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change">

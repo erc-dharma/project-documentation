@@ -3832,7 +3832,7 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem ident="other"/>
+                <valItem ident="unclassified"/>
                 <valItem ident="descender"/>
                 <valItem ident="ascender"/>
                 <valItem ident="feature"/>

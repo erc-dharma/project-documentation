@@ -810,7 +810,7 @@
                                 <valItem ident="descender"/>
                                 <valItem ident="ascender"/>
                                 <valItem ident="feature"/>
-                                <valItem ident="other"/>
+                                <valItem ident="unclassified"/>
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change">
@@ -2382,6 +2382,7 @@
                                 <valItem ident="suvadanā"/>
                                 <valItem ident="sragdharā"/>
                                 <valItem ident="uncertain"/>
+                                <valItem ident="mixed"/>
                             </valList>
                         </attDef>
                         <attDef ident="real" mode="change">
@@ -2622,6 +2623,14 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="lg" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="usage-mixed">
+                        <constraint>
+                            <sch:rule context="tei:lg[@met='mixed']">
+                                <sch:assert
+                            test="child::tei:l[@real or @met]"
+                            >In a stanza set on "mixed", the children verse lines must have at least an attribute @met or @real.</sch:assert></sch:rule>
+                        </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2706,6 +2715,7 @@
                                 <valItem ident="kalippā"/>
                                 <valItem ident="vañcippā"/>
                                 <valItem ident="maruṭpā"/>
+                                <valItem ident="mixed"/>
                             </valList>
                         </attDef>
                         <attDef ident="n" mode="change" usage="req">
