@@ -2869,9 +2869,8 @@
                 <elementSpec ident="list" module="core" mode="change">
                     <constraintSpec scheme="isoschematron" ident="lists">
                         <constraint><sch:rule context="tei:list"><sch:assert
-                            test="ancestor::tei:div[@type='edition' or @type='translation'  or @type='commentary']"
-                            >List can only be used inside the edition, the commentary or the translation part of
-                            your file</sch:assert></sch:rule></constraint>
+                            test="parent::tei:p"
+                            >List can only be used inside a paragraph element.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
