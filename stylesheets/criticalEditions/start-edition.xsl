@@ -63,7 +63,11 @@
     </xsl:variable>
 
     <xsl:variable name="edition-id">
-        <xsl:value-of select="tei:TEI[@type='edition']/@xml:id"/>
+        <xsl:value-of select="//tei:TEI[@type='edition']/@xml:id"/>
+    </xsl:variable>
+    
+    <xsl:variable name="edition-root">
+        <xsl:value-of select="//tei:TEI[@type='edition']"/>
     </xsl:variable>
 
 
@@ -1624,7 +1628,7 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">fake-lem</xsl:attribute>
                     <xsl:apply-templates select="self::tei:lacunaStart/parent::tei:*[@wit = $wit-lost]/preceding::tei:lem[1]"/>
-                    <xsl:text> &#8230;</xsl:text>
+                    <xsl:text> &#8230; </xsl:text>
                     <xsl:if test="self::tei:lacunaStart[not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:lacunaEnd])]">
                         <xsl:text> (</xsl:text>
                         <xsl:element name="span">
@@ -1670,6 +1674,7 @@
                         <xsl:text> caused by </xsl:text>
                         <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
                     </xsl:if>
+                    <xsl:text>.</xsl:text>
                 </xsl:element>
             </xsl:element>
         </xsl:variable>
@@ -2517,7 +2522,6 @@
 
     <xsl:template name="content-ptr">
         <xsl:param name="MSlink"/>
-        <xsl:variable name="rootId" select="//tei:TEI/@xml:id"/>
         <xsl:variable name="rootHand" select="//tei:handDesc"/>
         <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
                <xsl:choose>
@@ -2535,14 +2539,18 @@
                            <xsl:with-param name="string-to-siglum" select="substring-after($MSlink, 'bib:')"/>
                        </xsl:call-template>
                    </xsl:when>
-                   <xsl:when test="contains($MSlink, $rootId)">
-                       <xsl:variable name="MSlink-id" select="substring-after($MSlink, '#')"/>
+                   <xsl:when test="contains($MSlink, $edition-id)"> 
+                       <xsl:variable name="targetLink" select="substring-after($MSlink, '#')"/>
+                       <xsl:message><xsl:value-of select="$edition-id"/></xsl:message>
+                       <xsl:message><xsl:value-of select="$MSlink"/></xsl:message>
+                       <xsl:message><xsl:value-of select="$targetLink"/></xsl:message>
                        <xsl:element name="a">
                            <xsl:attribute name="href">
                                <xsl:value-of select="$MSlink"/>
                            </xsl:attribute>
                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                            <xsl:text>§</xsl:text>
+                           
                            <!--<xsl:choose>
                                <xsl:when test="//tei:*[@xml:id =$MSlink-id]/@type">
                                    <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@type"/>
@@ -2553,14 +2561,16 @@
                                </xsl:when>
                            </xsl:choose>-->
                            <xsl:choose>
-                               <xsl:when test="//tei:*[@xml:id =$MSlink-id]/@n">
-                                   <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@n"/>
+                               <xsl:when test="//tei:div[@xml:id = $targetLink]">
+                                   <xsl:value-of select="$edition-root//tei:*[@xml:id = $targetLink]/@type"/>
+                                   <xsl:text> </xsl:text>
+                                   <xsl:value-of select="$edition-root//tei:*[@xml:id = $targetLink]/@n"/>
                                </xsl:when>
                                <!--<xsl:when test="//tei:*[@xml:id =$MSlink-id]/name() ='lg'">
                                    <xsl:number count="tei:lg" level="any" format="1"/>
                                </xsl:when>-->
                                <xsl:otherwise>
-                                   <xsl:text>Code tbw</xsl:text>
+                                   <xsl:text>Issue in the code</xsl:text>
                                </xsl:otherwise>
                            </xsl:choose>
                        </xsl:element>
