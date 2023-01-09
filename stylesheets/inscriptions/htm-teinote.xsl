@@ -20,14 +20,14 @@
             </span>
             </xsl:when>
             <xsl:otherwise>
-            <i class="note">
+              <span class="note">
               <xsl:apply-imports/>
-            </i>
+            </span>
           </xsl:otherwise>
           </xsl:choose>
         </xsl:when>
         <xsl:when test="ancestor::t:p or ancestor::t:l or ancestor::t:ab">
-           <i><xsl:apply-imports/></i>
+           <xsl:apply-imports/>
         </xsl:when>
          <xsl:otherwise>
             <p class="note">
