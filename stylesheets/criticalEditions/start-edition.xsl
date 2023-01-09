@@ -575,8 +575,21 @@
                                 </xsl:call-template>
                             </xsl:element>
                         </xsl:if>
-                        <xsl:if test="tei:lem[@type='omitted_elsewhere'] or tei:lem[@type='lost_elsewhere']">
+                        <xsl:if test="tei:lem[@type='omitted_elsewhere']">
                             <xsl:text> transmitted in </xsl:text>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
+                                <xsl:call-template name="tokenize-witness-list">
+                                    <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                    
+                                    <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
+                                    
+                                </xsl:call-template>
+                            </xsl:element>
+                        </xsl:if>
+                        <xsl:if test="tei:lem[@type='lost_elsewhere']">
+                            <xsl:text> preserved in </xsl:text>
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
@@ -4212,7 +4225,7 @@
                             </xsl:call-template>
                         </xsl:element>
                     </xsl:if>
-                    <xsl:if test="self::tei:lem/@type='omitted_elsewhere' or @type='lost_elsewhere'">
+                    <xsl:if test="self::tei:lem/@type='omitted_elsewhere'">
                         <xsl:text> transmitted in </xsl:text>
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
@@ -4222,6 +4235,19 @@
                                 <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
                                 <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
 
+                            </xsl:call-template>
+                        </xsl:element>
+                    </xsl:if>
+                    <xsl:if test="self::tei:lem/@type='lost_elsewhere'">
+                        <xsl:text> preserved in </xsl:text>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
+                            <xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                                
+                                <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
+                                
                             </xsl:call-template>
                         </xsl:element>
                     </xsl:if>
