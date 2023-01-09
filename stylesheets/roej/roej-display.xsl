@@ -497,6 +497,9 @@
             <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
             <!--<xsl:text>—</xsl:text>-->
            <xsl:choose> 
+               <xsl:when test="child::text()">
+                   <xsl:apply-templates/>
+               </xsl:when>
                <xsl:when test="substring-before(//tei:orth[@xml:id = $oreference]/@xml:id, '-')">
                    <xsl:value-of select="replace(substring-before(//tei:orth[@xml:id = $oreference]/@xml:id, '-'), '_', ' ')"/></xsl:when>
            <xsl:otherwise>
