@@ -173,6 +173,39 @@
         </xsl:element>
     </xsl:template>
 
+    <!-- choice -->
+    <xsl:template match="tei:choice">
+        <!-- "tryamwa(ka)liṅga" >> "Correction par Arlo Griffiths de tryamwa(ka)liṅgā dans l'ouvrage imprimé." -->
+        <!-- /TEI/text[1]/body[1]/div[1]/div[9]/div[18]/superEntry[1]/form[1]/lbl[1] -->
+        <xsl:element name="a">
+            <xsl:attribute name="class">choice</xsl:attribute>
+            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
+            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+            <xsl:attribute name="data-placement">top</xsl:attribute>
+            <xsl:attribute name="title">
+                <xsl:choose>
+                    <xsl:when test="child::tei:corr">Correction par <xsl:call-template name="participants"><xsl:with-param name="partid" select="substring-after(tei:corr/@resp, 'part:')"/></xsl:call-template> de  <xsl:apply-templates select="child::tei:sic"/> dans l'ouvrage imprimé. <xsl:if test="following-sibling::*[1][local-name() = 'note']"><xsl:apply-templates select="following-sibling::*[1][local-name() = 'note']" mode="bypass"/></xsl:if></xsl:when>
+                    <xsl:when test="child::tei:reg">Correction par <xsl:call-template name="participants"><xsl:with-param name="partid" select="substring-after(tei:reg/@resp, 'part:')"/></xsl:call-template> de  <xsl:apply-templates select="child::tei:orig"/> dans l'ouvrage imprimé. <xsl:if test="following-sibling::*[1][local-name() = 'note']"><xsl:apply-templates select="following-sibling::*[1][local-name() = 'note']" mode="bypass"/></xsl:if></xsl:when>
+            </xsl:choose>
+            </xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="child::tei:corr"><xsl:apply-templates select="tei:corr"/></xsl:when>
+                <xsl:when test="child::tei:reg"><xsl:apply-templates select="tei:reg"/></xsl:when>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="participants">
+        <xsl:param name="partid"/>
+        <xsl:choose>
+            <xsl:when test="$partid='argr'">
+                <xsl:text>Arlo Griffths</xsl:text>
+            </xsl:when>
+            <xsl:when test="$partid='wjsa'">
+                <xsl:text>Wayan Jarrah Sastrawan</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
     <!-- cit -->
     <xsl:template match="tei:cit">
         <xsl:element name="div">
@@ -469,6 +502,7 @@
     <!-- n -->
     <xsl:template match="tei:note">
             <xsl:choose>
+                <xsl:when test="preceding-sibling::*[1][local-name()= 'choice']"/>
                 <xsl:when test="@type='geo'">
                    <xsl:apply-templates/>
                 </xsl:when>
@@ -478,6 +512,10 @@
             </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="tei:note" mode="bypass">
+        <xsl:if test="preceding-sibling::*[1][local-name()= 'choice']"><xsl:apply-templates/></xsl:if>
     </xsl:template>
 
     <!-- num -->
@@ -576,7 +614,7 @@
     </xsl:template>
 
     <!-- sic -->
-    <xsl:template match="tei:sic">
+    <xsl:template match="tei:sic[not(parent::tei:choice)]">
         <xsl:element name="span">
             <xsl:attribute name="class">sic</xsl:attribute>
             <xsl:text>¿</xsl:text>
