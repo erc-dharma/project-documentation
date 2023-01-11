@@ -297,6 +297,24 @@ Pb de lb[@break=no] entre deux textpart
          <xsl:if test="$parm-leiden-style = 'dharma' and ancestor::t:div[@type='apparatus'] and not(preceding::node()/text())">
           <xsl:text>/</xsl:text>
         </xsl:if>
+         <!-- special condition since dharma doesn't alwyas provide lb -->
+         <xsl:if test="$parm-leiden-style = 'dharma' and following-sibling::t:*[1][local-name() = 'gap'] and not(following-sibling::t:*[1][local-name() = 'lb'])">
+            <xsl:element name="sup">
+               <xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute>
+               <xsl:text>⎘ plate </xsl:text>
+               <xsl:value-of select="@n"/>
+               <xsl:text> </xsl:text>
+            </xsl:element>
+            <xsl:if test="following-sibling::t:fw[1]">
+               <xsl:element name="sup">
+                  <xsl:text>fw: </xsl:text>
+                  <xsl:if test="following-sibling::t:fw[1][child::t:supplied]">[</xsl:if>
+                  <xsl:value-of select="following-sibling::t:fw[1]/child::node()"/>
+                  <xsl:if test="following-sibling::t:fw[1][child::t:supplied]">]</xsl:if>
+                  <xsl:text> </xsl:text>
+               </xsl:element>
+            </xsl:if>
+         </xsl:if>
          <!--<xsl:if test="self::t:pb[following-sibling::t:pb[1]]">
             <xsl:element name="p">
             <xsl:element name="sup">
