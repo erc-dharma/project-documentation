@@ -36,5 +36,9 @@
          </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
+  
+  <xsl:template mode="notebiblio" match="t:note[parent::t:bibl]">
+    <xsl:apply-templates/>
+  </xsl:template>
 
 </xsl:stylesheet>

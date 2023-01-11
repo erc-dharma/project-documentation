@@ -193,7 +193,7 @@
         <!-- An entry is created for-each of the following instances
                   * notes.
         -->
-        <xsl:for-each select=".//t:note[not(@type='credit') and not(ancestor::t:div[@type='edition'] or ancestor::t:div[@type='apparatus'])]">
+        <xsl:for-each select=".//t:note[not(@type='credit') and not(ancestor::t:div[@type='edition'] or ancestor::t:div[@type='apparatus'] or parent::t:bibl)]">
           <!-- Found in tpl-apparatus.xsl -->
           <xsl:variable name="div-loc">
              <xsl:for-each select="ancestor::t:div[@type='textpart'][@n]">

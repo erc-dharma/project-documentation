@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:t="http://www.tei-c.org/ns/1.0"
 	xmlns:f="http://example.com/ns/functions"
@@ -353,7 +353,7 @@ bibliography. All examples only cater for book and article.
 									</xsl:if>
 										<xsl:if test="child::t:note">
 											<xsl:text> • </xsl:text>
-											<xsl:apply-templates select="child::t:note"/>
+											<xsl:apply-templates select="child::t:note" mode="notebiblio"/>
 										</xsl:if>
 
 									<!--<xsl:if test="following-sibling::t:note">
