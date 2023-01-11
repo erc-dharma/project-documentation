@@ -79,4 +79,7 @@ Clicking each item will show you in detail the textual changes within each file.
 
 ### Commit 
 Staging (git add) and unstaging (git reset) can be done via contextual actions in the files or by drag-and-drop.
-Write a commit message in the top box and press `Ctrl` + `Enter` in Microsoft or `command` + `Enter`. 
+![Staging](https://github.com/erc-dharma/project-documentation/blob/master/docs/images/VS07.png)
+
+Write a commit message in the top box and press `Ctrl` + `Enter` in Microsoft or `command` + `Enter` or click on the button. If there are any staged changes, only those changes will be committed. Otherwise, you'll get a prompt asking you to select what changes you'd like to commit and get the option to change your commit settings.
+![Commit](https://github.com/erc-dharma/project-documentation/blob/master/docs/images/VS08.png)
