@@ -7,11 +7,11 @@
     exclude-result-prefixes="tei xi fn functx">
 
 <!-- addition to run the xslt locally, to be commenting before pushing files otherwise the pipeline won't run for diplEd -->
-  <!--  <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
-    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
+    <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
+    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>
 
-    <xsl:param name="edition-type" as="xs:string"/>
-    <xsl:param name="corpus-type" as="xs:string"/>
+   <!-- <xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>-->
     
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
@@ -262,9 +262,13 @@
             </xsl:choose>
                 </xsl:element>
             </xsl:attribute>
-            <xsl:apply-templates/>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">scribe-insertion</xsl:attribute>
+                            <xsl:apply-templates/>
+                        </xsl:element>
         </xsl:element>
     </xsl:template>
+    
     <!--  app ! -->
     <xsl:template match="tei:app" mode="modals">
         <xsl:param name="line-break"/>
@@ -749,7 +753,16 @@
     </xsl:template>
     
     <!--  fw ! -->
-    <xsl:template match="tei:fw"/>
+    <xsl:template match="tei:fw">
+        <xsl:choose>
+            <xsl:when test="child::tei:choice">
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="."/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     
     <!--  G ! -->
     <xsl:template match="tei:g">
@@ -1128,7 +1141,7 @@
                     <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')]">
                         <xsl:text>: </xsl:text>
                         <xsl:text>fw </xsl:text>
-                        <xsl:value-of select="following-sibling::tei:*[1][local-name()=('fw')]"/>
+                        <xsl:apply-templates select="following-sibling::tei:*[1][local-name()=('fw')]"/>
                     </xsl:if>
                 </xsl:element>     
     </xsl:template>
@@ -1329,13 +1342,12 @@
         </xsl:choose>
     </xsl:template>
     <!--  subst ! -->
-    <xsl:template match="tei:subst">
+    <!--<xsl:template match="tei:subst">
             <xsl:element name="span">
-                <xsl:attribute name="class">ed-insertion</xsl:attribute>
-                <xsl:apply-templates select="child::tei:del"/>
-                <xsl:value-of select="child::tei:add"/>
+                <!-\-<xsl:attribute name="class">ed-insertion</xsl:attribute>-\->
+                <xsl:apply-templates/>
             </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     <!--  supplied ! -->
     <xsl:template match="tei:supplied">
         <xsl:element name="span">
@@ -2665,6 +2677,7 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
