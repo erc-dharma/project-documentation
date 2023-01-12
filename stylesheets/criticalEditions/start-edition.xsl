@@ -2573,33 +2573,80 @@
                                <xsl:value-of select="$MSlink"/>
                            </xsl:attribute>
                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                           <xsl:text>§</xsl:text>
-                           
-                           <!--<xsl:choose>
-                               <xsl:when test="//tei:*[@xml:id =$MSlink-id]/@type">
-                                   <xsl:value-of select="//tei:*[@xml:id =$MSlink-id]/@type"/>
-                                   <xsl:text> </xsl:text>
-                               </xsl:when>
-                               <xsl:when test="//tei:*[@xml:id =$MSlink-id]/name() ='lg'">
-                                   <xsl:text>stanza </xsl:text>
-                               </xsl:when>
-                           </xsl:choose>-->
+                           <xsl:text>§</xsl:text> 
                            <xsl:choose>
-                               <xsl:when test="//tei:div[@xml:id = $targetLink]">
-                                   <xsl:value-of select="$edition-root//tei:*[@xml:id = $targetLink]/@type"/>
+                               <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='div']/@type">
+                                   <xsl:value-of select="//tei:*[@xml:id =$targetLink]/@type"/>
                                    <xsl:text> </xsl:text>
-                                   <xsl:value-of select="$edition-root//tei:*[@xml:id = $targetLink]/@n"/>
+                                   <xsl:value-of select="//tei:*[@xml:id =$targetLink]/@n"/>
                                </xsl:when>
-                               <!--<xsl:when test="//tei:*[@xml:id =$MSlink-id]/name() ='lg'">
-                                   <xsl:number count="tei:lg" level="any" format="1"/>
-                               </xsl:when>-->
-                               <xsl:otherwise>
+                               <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='p']">
+                                   <xsl:if test="self::tei:*[@xml:id =$targetLink][local-name() ='p'][ancestor::tei:div[@type = 'chapter'][1] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])]">
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor::tei:div[@type = 'chapter']/@n"/>
+                                       <xsl:text>.</xsl:text>
+                                   </xsl:if>
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][parent::tei:div[@type = 'dyad']]">
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/parent::tei:div[@type = 'dyad']/@n"/>
+                                       <xsl:text>.</xsl:text>
+                                   </xsl:if>
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][parent::tei:div[@type = 'liminal']]">
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/parent::tei:div[@type = 'liminal']/@n"/>
+                                       <xsl:text>.</xsl:text>
+                                   </xsl:if>
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][ancestor-or-self::tei:div[@type = 'interpolation']]">
+                                       <xsl:choose>
+                                           <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor-or-self::tei:div[@type = 'interpolation']/@n">
+                                               <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor-or-self::tei:div[@type = 'interpolation']/@n"/>
+                                               <xsl:text>.</xsl:text>
+                                           </xsl:when>
+                                           <xsl:otherwise>
+                                               <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
+                                               <xsl:text>*.</xsl:text>
+                                           </xsl:otherwise>
+                                       </xsl:choose>
+                                   </xsl:if>
+                                   <xsl:number level="single" format="1" count="tei:p"/>
+                               </xsl:when>
+                               <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='lg']">
+                                   <xsl:text>stanza in </xsl:text>
+                                   <xsl:if test="self::tei:*[@xml:id =$targetLink][local-name() ='lg'][ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])]">
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'chapter']/@type"/>
+                                       <xsl:text> </xsl:text>
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'chapter']/@n"/>
+                                       
+                                   </xsl:if>
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='lg'][ancestor::tei:div[@type = 'dyad']]">
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'dyad']/@type"/>
+                                       <xsl:text> </xsl:text>
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'dyad']/@n"/>
+                                       
+                                   </xsl:if>
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='lg'][ancestor::tei:div[@type = 'liminal']]">
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'liminal']/@type"/>
+                                       <xsl:text> </xsl:text>
+                                       <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'liminal']/@n"/>
+                                       
+                                   </xsl:if>
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='lg'][ancestor::tei:div[@type = 'interpolation']]">
+                                       <xsl:choose>
+                                           <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'interpolation']/@n">
+                                               <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'interpolation']/@n"/>
+                                               
+                                           </xsl:when>
+                                           <xsl:otherwise>
+                                               <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='lg']/ancestor::tei:div[@type = 'interpolation']/preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
+                                               <xsl:text>*</xsl:text>
+                                           </xsl:otherwise>
+                                       </xsl:choose>
+                                   </xsl:if>
+                               </xsl:when>
+                                <xsl:otherwise>
                                    <xsl:text>Issue in the code</xsl:text>
                                </xsl:otherwise>
                            </xsl:choose>
                        </xsl:element>
                    </xsl:when>
-                   <xsl:when test="contains($MSlink, '_')">
+                   <xsl:when test="contains($MSlink, '_H')">
                        <xsl:variable name="hand-id" select="substring-after($MSlink, '#')"/>
                        <xsl:apply-templates select="$rootHand/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
                     </xsl:when>
