@@ -2511,6 +2511,7 @@
     <!-- ptr -->
     <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
         <xsl:variable name="MSlink" select="@target"/>
+        <xsl:variable name="rendcontent" select="@rend"/>
             <xsl:choose>
                 <xsl:when test="contains($MSlink, ' ')">
                     <xsl:variable name="first-item"
@@ -2518,15 +2519,18 @@
                     <xsl:if test="$first-item">
                         <xsl:call-template name="content-ptr">
                             <xsl:with-param name="MSlink" select="$first-item"/>
+                            <xsl:with-param name="rendcontent" select="$rendcontent"/>
                         </xsl:call-template>
                         <xsl:call-template name="content-ptr">
                             <xsl:with-param name="MSlink" select="substring-after($MSlink, ' ')"/>
+                            <xsl:with-param name="rendcontent" select="$rendcontent"/>
                         </xsl:call-template>
                     </xsl:if>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:call-template name="content-ptr">
                           <xsl:with-param name="MSlink" select="$MSlink"/>
+                          <xsl:with-param name="rendcontent" select="$rendcontent"/>
                     </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
@@ -2535,6 +2539,7 @@
 
     <xsl:template name="content-ptr">
         <xsl:param name="MSlink"/>
+        <xsl:param name="rendcontent"/>
         <xsl:variable name="rootHand" select="//tei:handDesc"/>
         <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
                <xsl:choose>
@@ -2542,8 +2547,10 @@
                        <xsl:variable name="MSlink-part" select="substring-after($MSlink, 'txt:')"/>
                         <xsl:element name="a">
                             <xsl:attribute name="href">
-                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:ptr[1]/@target"/>
-                            </xsl:attribute>
+                                <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:ptr[1]/@target"/></xsl:attribute>
+                            <xsl:if test="$rendcontent= 'title'">
+                                <xsl:attribute name="class">font-italic</xsl:attribute>
+                            </xsl:if>
                             <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:abbr[@type='siglum']"/>
                         </xsl:element>
                     </xsl:when>
