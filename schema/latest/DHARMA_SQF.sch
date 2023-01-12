@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt3"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -76,7 +76,7 @@
         </sch:rule>
     </sch:pattern>
     
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:bibl[parent::t:listBibl[@type='primary']]">
             <sch:assert test="./@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
@@ -89,7 +89,7 @@
                 <sqf:add node-type="attribute" target="n"/>
             </sqf:fix>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
     <!--<sch:pattern>
         <sch:rule context="t:app">
@@ -184,6 +184,16 @@
             <sch:assert test="starts-with($calendarValues, 'cal:')">
                 The attributes @calendar and @datingMethod must starts with the prefixe "cal:"
             </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling sigla -->
+    <sch:pattern>
+        <sch:rule context="t:*/@source[starts-with(., 'bib:')]">
+            <sch:let name="appEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
+            <sch:assert test="every $appEntry in $appEntries satisfies $appEntry = //t:listBibl/bibl/@n">@n mandatory in
+                the primary bibliography to declare
+                sigla of this source.</sch:assert>
         </sch:rule>
     </sch:pattern>
     
