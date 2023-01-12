@@ -2548,10 +2548,14 @@
                         <xsl:element name="a">
                             <xsl:attribute name="href">
                                 <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:ptr[1]/@target"/></xsl:attribute>
-                            <xsl:if test="$rendcontent= 'title'">
+                            
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
-                            </xsl:if>
-                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:abbr[@type='siglum']"/>
+                            <xsl:choose>
+                                <xsl:when test="$rendcontent= 'siglum'">
+                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:abbr[@type='siglum']"/></xsl:when>
+                                <xsl:when test="$rendcontent= 'title'">
+                                    <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:title"/></xsl:when>
+                            </xsl:choose>
                         </xsl:element>
                     </xsl:when>
                    <xsl:when test="contains($MSlink, 'bib:')">
