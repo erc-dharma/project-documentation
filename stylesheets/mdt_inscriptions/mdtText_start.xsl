@@ -505,13 +505,103 @@
     
     <xsl:template name="script-class">
         <xsl:param name="classification"/>
-        <xsl:text>code yet to be done</xsl:text>
+        <xsl:if test="$classification !=''">
+            <xsl:choose>
+                <xsl:when test="$classification ='brahmi_and_derivatives'">
+                    <xsl:text>Brahmi and Derivatives</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - northern_class_brahmi'">
+                    <xsl:text>Northern Class Brahmi</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - northern_class_brahmi - siddhamatrika'">
+                    <xsl:text>Siddhamatrika</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - northern_class_brahmi - gaudi'">
+                    <xsl:text>Gaudi</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - northern_class_brahmi - nagari'">
+                    <xsl:text>Nagari</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southern_class_brahmi'">
+                    <xsl:text>Southern Class Brahmi</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southern_class_brahmi - tamil_script'">
+                    <xsl:text>Tamil Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southern_class_brahmi - grantha'">
+                    <xsl:text>Grantha</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southern_class_brahmi - vatteluttu'">
+                    <xsl:text>Vatteluttu</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi'">
+                    <xsl:text>Southeast Asian Brahmi</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - khmer_script'">
+                    <xsl:text>Khmer Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - cam_script'">
+                    <xsl:text>Cam Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - mon-burmese_script'">
+                    <xsl:text>Mon-Burnese Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - pyu_script'">
+                    <xsl:text>Pyu Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - kawi_script'">
+                    <xsl:text>Kawi Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - batak_script'">
+                    <xsl:text>Batak Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - balinese_script'">
+                    <xsl:text>Balinese Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - sundanese_script'">
+                    <xsl:text>Sundanese Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='brahmi_and_derivatives - southeast_asian_brahmi - old_west_javanese_script'">
+                    <xsl:text>Old West Javanese Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='kharosthi'">
+                    <xsl:text>Kharosthi</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='arabic_script'">
+                    <xsl:text>Arabic Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='arabic_script - jawi_script'">
+                    <xsl:text>Jawi Script</xsl:text>
+                </xsl:when>
+                <xsl:when test="$classification ='chinese_script'">
+                    <xsl:text>Chinese script</xsl:text>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
     
     
     <xsl:template name="script-maturity">
         <xsl:param name="maturity"/>
-        <xsl:text>code yet to be done</xsl:text>
+        <xsl:if test="$maturity !=''">
+        <xsl:choose>
+            <xsl:when test="$maturity='early Brahmi'">
+                <xsl:text>early Brahmi</xsl:text>
+            </xsl:when>
+            <xsl:when test="$maturity='middle Brahmi'">
+                <xsl:text>middle Brahmi</xsl:text>
+            </xsl:when>
+            <xsl:when test="$maturity='late Brahmi'">
+                <xsl:text>late Brahmi</xsl:text>
+            </xsl:when>
+            <xsl:when test="$maturity='regional Brahmi-derived script'">
+                <xsl:text>regional Brahmi-derived script</xsl:text>
+            </xsl:when>
+            <xsl:when test="$maturity='vernacular Brahmi-derived script'">
+                <xsl:text>vernacular Brahmi-derived script</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+            </xsl:if>    
     </xsl:template>
 
 </xsl:stylesheet>
