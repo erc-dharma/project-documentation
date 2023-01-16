@@ -189,7 +189,7 @@
     
     <!-- controlling sigla -->
     <sch:pattern>
-        <sch:rule context="t:*/@source[starts-with(., 'bib:')]">
+        <sch:rule context="t:lem/@source[starts-with(., 'bib:')] | t:rdg/@source[starts-with(., 'bib:')]">
             <sch:let name="appEntries" value="for $w in tokenize(., '\s+') return $w"/>
             <sch:assert test="every $appEntry in $appEntries satisfies $appEntry = //t:ptr[parent::t:bibl[@n]]/@target">@n mandatory in
                 the primary bibliography to declare
