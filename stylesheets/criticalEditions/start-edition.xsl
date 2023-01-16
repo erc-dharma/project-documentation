@@ -2434,10 +2434,14 @@
                 <xsl:attribute name="class">col-9 text-col</xsl:attribute>
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
-                <xsl:copy-of select="$p-line"/>
                 <xsl:if test="@xml:id">
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="@xml:id"/>
+                    </xsl:attribute>
                     <xsl:call-template name="translation-button"/>
                 </xsl:if>
+                <xsl:copy-of select="$p-line"/>
+                
         </xsl:element>
             </xsl:element>
                 <xsl:element name="div">
@@ -2565,9 +2569,9 @@
                    </xsl:when>
                    <xsl:when test="contains($MSlink, $edition-id)"> 
                        <xsl:variable name="targetLink" select="substring-after($MSlink, '#')"/>
-                      <!-- <xsl:message><xsl:value-of select="$edition-id"/></xsl:message>
+                       <xsl:message><xsl:value-of select="$edition-id"/></xsl:message>
                        <xsl:message><xsl:value-of select="$MSlink"/></xsl:message>
-                       <xsl:message><xsl:value-of select="$targetLink"/></xsl:message>-->
+                       <xsl:message><xsl:value-of select="$targetLink"/></xsl:message>
                        <xsl:element name="a">
                            <xsl:attribute name="href">
                                <xsl:value-of select="$MSlink"/>
@@ -2581,7 +2585,7 @@
                                </xsl:when>
                                <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='p']">
                                    <xsl:text>§</xsl:text>
-                                   <xsl:if test="self::tei:*[@xml:id =$targetLink][local-name() ='p'][ancestor::tei:div[@type = 'chapter'][1] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])]">
+                                   <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][ancestor::tei:div[@type = 'chapter'][1] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])]">
                                        <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor::tei:div[@type = 'chapter']/@n"/>
                                        <xsl:text>.</xsl:text>
                                    </xsl:if>
@@ -2604,8 +2608,8 @@
                                                <xsl:text>*.</xsl:text>
                                            </xsl:otherwise>
                                        </xsl:choose>
-                                   </xsl:if>
-                                   <xsl:number level="single" format="1" count="tei:p"/>
+                                   </xsl:if>                                                              
+                                   <xsl:value-of select="(count(//tei:*[@xml:id =$targetLink][local-name() ='p']/preceding-sibling::tei:p) + 1)" />
                                </xsl:when>
                                <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='lg']">
                                    <xsl:text>stanza </xsl:text>
