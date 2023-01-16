@@ -13,11 +13,13 @@
          and not($parm-edition-type='diplomatic')">
          <xsl:text>-</xsl:text>
       </xsl:if>
+    <xsl:element name="span">
+    <xsl:if test="$parm-leiden-style='dharma' and @rend='check'">
+        <xsl:attribute name="class">checkmark</xsl:attribute>
+    </xsl:if>
       <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']">
-        <xsl:element name="span">
-          <xsl:attribute name="class">certlow<xsl:if test="@rend='check'"> mark</xsl:if></xsl:attribute>
+          <xsl:attribute name="class">certlow<xsl:if test="@rend='check'"> checkmark</xsl:if></xsl:attribute>
           <xsl:text>¿</xsl:text>
-        </xsl:element>
       </xsl:if>
       <xsl:if test="$parm-leiden-style='dharma' and @rend='pun' and ancestor::t:div[@type='translation']">
       <xsl:text>{</xsl:text>
@@ -34,15 +36,13 @@
          and not($parm-edition-type='diplomatic')">
          <xsl:text>-</xsl:text>
       </xsl:if>
-      <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']">
-        <xsl:element name="span">
-          <xsl:attribute name="class">certlow<xsl:if test="@rend='check'"> mark</xsl:if></xsl:attribute>
+      <xsl:if test="$parm-leiden-style='dharma' and @cert='low' and ancestor::t:div[@type='translation']"> 
           <xsl:text>?</xsl:text>
-        </xsl:element>
       </xsl:if>
       <xsl:if test="$parm-leiden-style='dharma' and @rend='pun' and ancestor::t:div[@type='translation']">
       <xsl:text>}</xsl:text>
     </xsl:if>
+    </xsl:element>
   </xsl:template>
 
 <!--  <xsl:template match="//t:seg[@type='component']">

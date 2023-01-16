@@ -316,6 +316,6 @@ dd {
     margin-left: -30px;
 }
 
-.mark {
-    background-color: yellow;
+.checkmark {
+    background-color: #eeca0b;
 }
