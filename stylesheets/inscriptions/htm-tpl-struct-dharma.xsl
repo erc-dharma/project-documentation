@@ -226,8 +226,14 @@
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Corresponding Artefact: </xsl:element>
-                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"/> <xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"><xsl:apply-templates select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/> <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p != ''"><xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if></xsl:if>
                       </xsl:element>
+                      <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/scriptDesc/p != ''"><xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Technique: </xsl:element>
+                        <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/scriptDesc/p"/>
+                      </xsl:element></xsl:if>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
