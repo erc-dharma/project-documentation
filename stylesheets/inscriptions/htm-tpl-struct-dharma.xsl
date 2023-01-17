@@ -7,8 +7,12 @@
 
    <!-- Called from htm-tpl-structure.xsl -->
 
+  <xsl:variable name="metadata-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/temporary/mdt_texts.xml')"/>
+  <xsl:variable name="artefact-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_artefacts.xml')"/>
+  <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
+  
    <xsl:template name="dharma-body-structure">
-     <xsl:variable name="metadata-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/temporary/mdt_texts.xml')"/>
+     
      <xsl:variable name="idfile" select="substring-after(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1], 'DHARMA_')"/>
      <!-- Main text output : (replace(. , '([a-z\)\]])/\s+([a-z\)\]])', '$1/$2')-->
                 <xsl:element name="div">
@@ -226,7 +230,21 @@
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Corresponding Artefact: </xsl:element>
-                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"><xsl:apply-templates select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/> <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p != ''"><xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if></xsl:if>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp">
+                          <xsl:element name="span">
+                            <xsl:attribute name="trigger">hover</xsl:attribute>
+                            <xsl:attribute name="class">artefact-label</xsl:attribute>
+                            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                            <xsl:attribute name="data-placement">top</xsl:attribute>
+                            <xsl:attribute name="title">
+                              <xsl:call-template name="artefact-info">
+                                <xsl:with-param name="idfile" select="$idfile"/>
+                                <xsl:with-param name="idart" select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/>
+                              </xsl:call-template>
+                            </xsl:attribute>
+                            <xsl:apply-templates select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/>
+                          </xsl:element>
+                           <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p != ''"><xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if></xsl:if>
                       </xsl:element>
                       <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/scriptDesc/p != ''"><xsl:element name="p">
                         <xsl:element name="span">
@@ -597,4 +615,23 @@
       </xsl:choose>
     </xsl:if>
   </xsl:template>
+  
+  <xsl:template name="artefact-info">
+    <xsl:param name="idart"/>
+    <xsl:param name="idfile"/>
+    <xsl:choose>
+      <xsl:when test="contains($idart, 'CONART')">
+        <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
+          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//compositeArtefactDes"/>
+        </xsl:if>
+        
+      </xsl:when>
+      <xsl:when test="contains($idart, 'ART')">
+        <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']">
+          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']"/>
+        </xsl:if>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
    </xsl:stylesheet>
