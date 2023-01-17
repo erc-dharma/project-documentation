@@ -139,10 +139,23 @@
                         <xsl:element name="p">
                           <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            Main Langue: </xsl:element>
-                          <xsl:call-template name="language-tpl">
-                            <xsl:with-param name="language" select=".//msContents/msItem/textLang/@mainLang"/>
-                          </xsl:call-template>
+                            Languages: </xsl:element>
+                          <xsl:if test=".//msContents/msItem/textLang/@mainLang">
+                            <xsl:call-template name="language-tpl">
+                              <xsl:with-param name="language" select=".//msContents/msItem/textLang/@mainLang"/>
+                            </xsl:call-template>
+                            <xsl:if test=".//msContents/msItem/textLang/@otherLangs != ''">
+                              <xsl:text> and </xsl:text>
+                              <xsl:call-template name="language-tpl">
+                                <xsl:with-param name="language" select=".//msContents/msItem/textLang/@otherLangs"/>
+                              </xsl:call-template>
+                            </xsl:if>
+                          </xsl:if>
+                          <xsl:element name="ol">
+                            <xsl:for-each select=".//msContents/msItem/textLang/p"> 
+                              <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
+                            </xsl:for-each>
+                          </xsl:element>
                         </xsl:element>
                         <xsl:element name="p">
                           <xsl:element name="span">
@@ -191,12 +204,23 @@
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                          Main Langue: </xsl:element>
+                          Languages: </xsl:element>
                         <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang">
                           <xsl:call-template name="language-tpl">
                           <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"/>
                         </xsl:call-template>
+                          <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@otherLangs != ''">
+                            <xsl:text> and </xsl:text>
+                            <xsl:call-template name="language-tpl">
+                              <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@otherLangs"/>
+                            </xsl:call-template>
+                          </xsl:if>
                         </xsl:if>
+                        <xsl:element name="ol">
+                          <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/p"> 
+                            <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
+                          </xsl:for-each>
+                      </xsl:element>
                       </xsl:element>
                       <xsl:element name="p">
                         <xsl:element name="span">
