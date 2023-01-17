@@ -39,7 +39,7 @@
         </xsl:variable>
 
     <xsl:template match="/" name="xsl:initial-template">
-           <!-- <xsl:variable name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin.csv')"/>-->
+           <!-- <xsl:variable name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Pallava.csv')"/>-->
 
         <xsl:variable name="lines">
                 <xsl:for-each select="tokenize($data, '\r?\n')">
@@ -156,15 +156,15 @@
                                                 </xsl:if>
                                                 <!-- colonne AD, AE, AF = lang 2 -->
                                                 <xsl:if test="$tokens[30] != ''">
-                                                    <xsl:element name="p">Predominantly in <xsl:value-of select="$tokens[30]"/>, script <xsl:call-template name="script-class"><xsl:with-param name="classification" select="$tokens[31]"></xsl:with-param></xsl:call-template> and <xsl:call-template name="script-maturity"><xsl:with-param name="maturity" select="$tokens[32]"></xsl:with-param></xsl:call-template></xsl:element>
+                                                    <xsl:element name="p">Secondary language is <xsl:value-of select="$tokens[30]"/>, script <xsl:call-template name="script-class"><xsl:with-param name="classification" select="$tokens[31]"></xsl:with-param></xsl:call-template> and <xsl:call-template name="script-maturity"><xsl:with-param name="maturity" select="$tokens[32]"></xsl:with-param></xsl:call-template></xsl:element>
                                                 </xsl:if>
                                                 <!-- colonne AG, AH, AI = lang 3 -->
                                                 <xsl:if test="$tokens[33] != ''">
-                                                    <xsl:element name="p">Predominantly in <xsl:value-of select="$tokens[33]"/>, script <xsl:call-template name="script-class"><xsl:with-param name="classification" select="$tokens[34]"></xsl:with-param></xsl:call-template> and <xsl:call-template name="script-maturity"><xsl:with-param name="maturity" select="$tokens[35]"></xsl:with-param></xsl:call-template></xsl:element>
+                                                    <xsl:element name="p">Third language is <xsl:value-of select="$tokens[33]"/>, script <xsl:call-template name="script-class"><xsl:with-param name="classification" select="$tokens[34]"></xsl:with-param></xsl:call-template> and <xsl:call-template name="script-maturity"><xsl:with-param name="maturity" select="$tokens[35]"></xsl:with-param></xsl:call-template></xsl:element>
                                                 </xsl:if>
                                                 <!-- colonne AJ, AK, AL = lang 4 -->
                                                 <xsl:if test="$tokens[36] != ''">
-                                                    <xsl:element name="p">Predominantly in <xsl:value-of select="$tokens[36]"/>, script <xsl:call-template name="script-class"><xsl:with-param name="classification" select="$tokens[37]"></xsl:with-param></xsl:call-template> and <xsl:call-template name="script-maturity"><xsl:with-param name="maturity" select="$tokens[38]"></xsl:with-param></xsl:call-template></xsl:element>
+                                                    <xsl:element name="p">Fourth language is <xsl:value-of select="$tokens[36]"/>, script <xsl:call-template name="script-class"><xsl:with-param name="classification" select="$tokens[37]"></xsl:with-param></xsl:call-template> and <xsl:call-template name="script-maturity"><xsl:with-param name="maturity" select="$tokens[38]"></xsl:with-param></xsl:call-template></xsl:element>
                                                 </xsl:if>
                                             </xsl:element>
                                             <!-- filiation: AY (51) id , AZ (52) type & BA(53) date  -->
@@ -244,8 +244,8 @@
                                                     <!-- colonne AP: lines per zone (42) colonne AQ: dimensions zones text (43) -->
                                                     <xsl:if test="$tokens[41] != '' or $tokens[40] != ''">
                                                 <xsl:element name="layout">
-                                                    <xsl:attribute name="writtenLines"><xsl:value-of select="$tokens[40]"/> <xsl:if test="$tokens[40] != $tokens[41]"><xsl:text>-</xsl:text><xsl:value-of select="$tokens[41]"/></xsl:if></xsl:attribute>
-                                                    <p><xsl:value-of select="$tokens[40]"/> lines are observed/preserved on the artifact. <xsl:if test="not($tokens[40] = $tokens[41])"><xsl:value-of select="$tokens[41]"/> are known or estimated for this text.</xsl:if> <xsl:if test="not(contains($tokens[43], '$')) and $tokens[43] != ''"><dimensions type="inscribed" unit="cm">
+                                                    <xsl:attribute name="writtenLines"><xsl:value-of select="$tokens[40]"/> <xsl:if test="$tokens[40] != $tokens[41] and $tokens[41]!= ''"><xsl:text>-</xsl:text><xsl:value-of select="$tokens[41]"/></xsl:if></xsl:attribute>
+                                                    <p><xsl:value-of select="$tokens[40]"/> lines are observed/preserved on the artifact. <xsl:if test="not($tokens[40] = $tokens[41]) and $tokens[41]!= ''"><xsl:value-of select="$tokens[41]"/> are known or estimated for this text.</xsl:if> <xsl:if test="not(contains($tokens[43], '$')) and $tokens[43] != ''"><dimensions type="inscribed" unit="cm">
                                                         <height><xsl:value-of select="substring-before($tokens[43], 'x')"/></height>
                                                         <width><xsl:value-of select="substring-after($tokens[43], 'x')"/></width>
                                                     </dimensions></xsl:if></p>
@@ -371,7 +371,16 @@
                             <revisionDesc>
                                 <xsl:element name="change">
                                     <!-- colonne I : reviewers (9) -->
-                                    <xsl:variable name="reviewers" as="xs:string*" select="tokenize($tokens[9], '\$')"/>
+                                    <xsl:variable name="reviewers" as="xs:string*">
+                                        <xsl:choose>
+                                            <xsl:when test="contains($tokens[9], '$')">
+                                                <xsl:value-of select="tokenize($tokens[9], '\$')"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="$tokens[9]"/>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </xsl:variable>
                                     <!-- colonne J : date (10) -->
                                     <xsl:attribute name="when"><xsl:value-of select="$tokens[10]"/></xsl:attribute>
                                     <xsl:attribute name="who">
@@ -381,7 +390,16 @@
                                 </xsl:element>
                                 <xsl:element name="change">
                                     <!-- colonne H : contributors (8) -->
-                                    <xsl:variable name="contributors" as="xs:string*" select="tokenize($tokens[8], '\$')"/>
+                                    <xsl:variable name="contributors" as="xs:string*">
+                                            <xsl:choose>
+                                                <xsl:when test="contains($tokens[8], '$')">
+                                                    <xsl:value-of select="tokenize($tokens[8], '\$')"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:value-of select="$tokens[8]"/>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </xsl:variable>
                                     <!--colonne G : date - pas très sûre (7) -->
                                     <xsl:attribute name="when"><xsl:value-of select="$tokens[7]"/></xsl:attribute>
                                     <xsl:attribute name="who">
@@ -391,7 +409,16 @@
                                 </xsl:element>
                                 <xsl:element name="change">
                                     <!-- colonne F  : editor (6) -->
-                                    <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[6], '\$')"/>
+                                    <xsl:variable name="editors" as="xs:string*">
+                                        <xsl:choose>
+                                            <xsl:when test="contains($tokens[6], '$')">
+                                                <xsl:value-of select="tokenize($tokens[6], '\$')"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="$tokens[6]"/>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </xsl:variable>
                                     <!-- colonne E  : date import (6) -->
                                     <xsl:attribute name="when"><xsl:value-of select="$tokens[5]"/></xsl:attribute>
                                     <xsl:attribute name="who">

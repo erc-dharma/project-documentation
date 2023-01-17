@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
@@ -7,8 +7,8 @@
     <!-- Written by Axelle Janiak for DHARMA, starting Août 2022 -->
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     
-    <xsl:template match="/" name="xsl:initial-template">
-        <xsl:variable name="api-url">
+   <xsl:template match="/" name="xsl:initial-template">
+       <!--  <xsl:variable name="api-url">
             <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-artefacts/contents/csv/conglomerate-artefacts')"/>
         </xsl:variable>
         <xsl:variable name="json-xml" select="json-to-xml($api-url)"/>
@@ -16,9 +16,9 @@
             <xsl:for-each select="$json-xml/node()//*[@key = 'download_url']">
                 <xsl:value-of select="unparsed-text(.)"/>
             </xsl:for-each>
-        </xsl:variable>
+        </xsl:variable>-->
         
-        <!--<xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-texts/main/csv/DHARMA_mdt_Somavamsin_v01.csv')"/>-->
+       <xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/csv/conglomerate-artefacts/DHARMA_mdt_Pallava.csv')"/>
         
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
@@ -33,7 +33,16 @@
                         <metadataOrigin><xsl:value-of select="$tokens[4]"/></metadataOrigin>
                         <metadataEditor>
                             <xsl:element name="change">
-                                <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[6], '\$')"/>
+                                <xsl:variable name="editors" as="xs:string*">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($tokens[6], '$')">
+                                            <xsl:value-of select="tokenize($tokens[6], '\$')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$tokens[6]"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
                                 <xsl:attribute name="when"><xsl:value-of select="$tokens[5]"/></xsl:attribute>
                                 <xsl:attribute name="who">
                                     <xsl:for-each select="$editors">part:<xsl:value-of select="."/> </xsl:for-each>
@@ -43,7 +52,16 @@
                         </metadataEditor>
                         <metadataContribution>
                             <xsl:element name="change">
-                                <xsl:variable name="contributors" as="xs:string*" select="tokenize($tokens[8], '\$')"/>
+                                <xsl:variable name="contributors" as="xs:string*">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($tokens[8], '$')">
+                                            <xsl:value-of select="tokenize($tokens[8], '\$')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$tokens[8]"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
                                 <xsl:attribute name="when"><xsl:value-of select="$tokens[7]"/></xsl:attribute>
                                 <xsl:attribute name="who">
                                     <xsl:for-each select="$contributors">part:<xsl:value-of select="."/> </xsl:for-each>
@@ -53,7 +71,16 @@
                         </metadataContribution>
                         <metadataReview>
                             <xsl:element name="change">
-                                <xsl:variable name="reviewers" as="xs:string*" select="tokenize($tokens[9], '\$')"/>
+                                <xsl:variable name="reviewers" as="xs:string*">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($tokens[9], '$')">
+                                            <xsl:value-of select="tokenize($tokens[9], '\$')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$tokens[9]"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
                                 <xsl:attribute name="when"><xsl:value-of select="$tokens[10]"/></xsl:attribute>
                                 <xsl:attribute name="who">
                                     <xsl:for-each select="$reviewers">part:<xsl:value-of select="."/> </xsl:for-each>
@@ -67,15 +94,16 @@
                     </resourceManagement>
                         <compositeArtefactDescription>
                             <compositeArtefactID><xsl:value-of select="$tokens[14]"/></compositeArtefactID>
-                            <compositeArtefactDes><xsl:value-of select="$tokens[15]"/></compositeArtefactDes>
-                            <alternative>
+                            <compositeArtefactDes type="main"><xsl:value-of select="$tokens[15]"/></compositeArtefactDes>
                                 <xsl:if test="$tokens[16] != ''">
-                                    <artefactDes><xsl:value-of select="$tokens[16]"/></artefactDes>
-                                </xsl:if>
+                                    <alternative>
+                                    <artefactDes type="alt"><xsl:value-of select="$tokens[16]"/></artefactDes>
                                 <xsl:if test="$tokens[17] != ''">
-                                    <artefactDes><xsl:value-of select="$tokens[17]"/></artefactDes>
+                                    <artefactDes type="alt"><xsl:value-of select="$tokens[17]"/></artefactDes>
                                 </xsl:if>
-                            </alternative>
+                                    </alternative>
+                                </xsl:if>
+  
                             <material><xsl:value-of select="$tokens[23]"/></material>
                             <xsl:if test="$tokens[24] != ''">
                                 <material>
