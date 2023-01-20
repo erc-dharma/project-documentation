@@ -669,7 +669,7 @@
                             <xsl:text>TN</xsl:text>
                         </xsl:when>
                             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nañjangûḍ')">
-                                <xsl:text></xsl:text>
+                                <xsl:text>Nj</xsl:text>
                             </xsl:when>
         </xsl:choose>
     </xsl:template>
