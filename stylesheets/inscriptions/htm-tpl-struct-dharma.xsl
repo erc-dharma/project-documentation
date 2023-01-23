@@ -233,13 +233,14 @@
                             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                             <xsl:attribute name="data-placement">top</xsl:attribute>
                             <xsl:attribute name="title">
-                              <xsl:variable name="conart-file"
+                              <!--<xsl:variable name="conart-file"
                                 select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
-                              <xsl:variable name="idart" select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/>
-                              <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//compositeArtefactDes"/>
-                              <!--<xsl:call-template name="artefact-info">
-                                <xsl:with-param name="idart" select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/>
-                              </xsl:call-template>-->
+                              <xsl:variable name="idart" select="tokenize(substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#'), ' ')"/>
+                             
+                              <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>-->
+                              <xsl:call-template name="artefact-info">
+                                <xsl:with-param name="idart" select="tokenize(substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#'), ' ')"/>
+                              </xsl:call-template>
                             </xsl:attribute>
                             <xsl:apply-templates select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/>
                           </xsl:element>
@@ -620,19 +621,22 @@
     <xsl:variable name="artefact-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_artefacts.xml')"/>
     <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
     
-    <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//compositeArtefactDes"/>
-    <!--<xsl:choose>
+    <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
+    <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>
+    </xsl:if>
+    <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']">
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']"/>
+    </xsl:if>
+   <!-- <xsl:choose>
       <xsl:when test="starts-with($idart, 'CONART')">
-        <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
-          <xsl:message><xsl:value-of select="$idart"/></xsl:message>
-          <xsl:message><xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//compositeArtefactDes"/></xsl:message>
-          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//compositeArtefactDes"/>
+        
+          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>
         </xsl:if>
         
       </xsl:when>
       <xsl:when test="starts-with($idart, 'ART')">
         <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']">
-          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']"/>
+          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>
         </xsl:if>
       </xsl:when>
     </xsl:choose>-->
