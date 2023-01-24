@@ -45,7 +45,7 @@
                 <xsl:element name="h1">
                     <xsl:value-of select="fileDesc/sourceDesc/msDesc/msIdentifier/idno"/>
                     <xsl:text>: </xsl:text>
-                <xsl:value-of select="fileDesc/sourceDesc/msDesc/msContents/msItem/title"/>
+                <xsl:value-of select="fileDesc/sourceDesc/msDesc/msContents/msItem/title[@type='main']"/>
             </xsl:element>
             <br/>
             </xsl:element>
@@ -62,6 +62,36 @@
                     <xsl:apply-templates select="."/>
             </xsl:element>
             </xsl:for-each>
+            <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/title[@type='alt']">
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:text>Alternative designation: </xsl:text>
+                </xsl:element>
+                <xsl:apply-templates select="."/>
+            </xsl:element>
+            </xsl:for-each>
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Languages: </xsl:element>
+                <xsl:if test="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang">
+                    <xsl:call-template name="language-tpl">
+                        <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang"/>
+                    </xsl:call-template>
+                    <xsl:if test="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@otherLangs != ''">
+                        <xsl:text> and </xsl:text>
+                        <xsl:call-template name="language-tpl">
+                            <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@otherLangs"/>
+                        </xsl:call-template>
+                    </xsl:if>
+                </xsl:if>
+                <xsl:element name="ol">
+                    <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/p"> 
+                        <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+            </xsl:element>
             <xsl:element name="p">
             <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -74,31 +104,36 @@
                     </xsl:element>
             </xsl:for-each>
             </xsl:element>
-            </xsl:element>
-            <xsl:element name="p">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:text>Main Langue: </xsl:text>
-                </xsl:element>
-                    <xsl:call-template name="language-tpl">
-                        <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang"/>
-                    </xsl:call-template>
-            </xsl:element>
+            </xsl:element> 
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>Artefact: </xsl:text>
                 </xsl:element>
-                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp"/>
-
+               <xsl:element name="span">
+                            <xsl:attribute name="trigger">hover</xsl:attribute>
+                            <xsl:attribute name="class">artefact-label</xsl:attribute>
+                            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                            <xsl:attribute name="data-placement">top</xsl:attribute>
+                            <xsl:attribute name="title">
+                               
+                                <xsl:call-template name="artefact-info">
+                                    <xsl:with-param name="idart" select="tokenize(substring-after(fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp, '#'), ' ')"/>
+                                </xsl:call-template>
+                            </xsl:attribute>
+                   <xsl:apply-templates select="substring-after(fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp, '#')"/>
+                        </xsl:element>
+                <xsl:if test="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc/p != ''">
+                    <xsl:element name="p">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:text>Text's position on the artefact: </xsl:text>
+                        </xsl:element>
+                        <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc"/>
+                    </xsl:element>
+                </xsl:if>
             </xsl:element>
-            <xsl:element name="p">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:text>Text's position on the artefact: </xsl:text>
-                </xsl:element>
-                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc"/>
-            </xsl:element>
+           
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -576,6 +611,31 @@
                     <xsl:text>Vietnamese</xsl:text>
                 </xsl:when>
             </xsl:choose>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="artefact-info">
+        <xsl:param name="idart"/>
+        <xsl:variable name="artefact-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_artefacts.xml')"/>
+        <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
+        
+        <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
+            <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//rightHolder"/>
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
+            <xsl:text>.</xsl:text>
+            <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat">  
+                <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat"/>
+                <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed">
+                    <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed"/>
+                    <xsl:text> plates observed. </xsl:text>
+                </xsl:if>
+            </xsl:if>
+            <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated">
+                <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated"/>
+                <xsl:text> plates estimated.</xsl:text></xsl:if>
+        </xsl:if>
+        <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//rightHolder">
+            <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
         </xsl:if>
     </xsl:template>
 
