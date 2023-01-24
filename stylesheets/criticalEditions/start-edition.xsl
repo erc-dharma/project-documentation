@@ -2434,13 +2434,15 @@
                 <xsl:attribute name="class">col-9 text-col</xsl:attribute>
             <xsl:element name="p">
             <!--<xsl:attribute name="class">textContent</xsl:attribute>-->
+                <xsl:attribute name="id">
+                    <xsl:value-of select="@xml:id"/>
+                </xsl:attribute>
+                <xsl:copy-of select="$p-line"/>
+                
                 <xsl:if test="@xml:id">
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="@xml:id"/>
-                    </xsl:attribute>
                     <xsl:call-template name="translation-button"/>
                 </xsl:if>
-                <xsl:copy-of select="$p-line"/>
+                
                 
         </xsl:element>
             </xsl:element>
