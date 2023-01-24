@@ -622,10 +622,23 @@
     <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
     
     <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
-    <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//rightHolder"/>
+      <xsl:text>, </xsl:text>
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
+      <xsl:text>.</xsl:text>
+      <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat">  
+        <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat"/>
+        <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed">
+          <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed"/>
+        <xsl:text> plates observed. </xsl:text>
+        </xsl:if>
+      </xsl:if>
+      <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated">
+        <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated"/>
+        <xsl:text> plates estimated.</xsl:text></xsl:if>
     </xsl:if>
-    <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']">
-      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']"/>
+    <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//rightHolder">
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
     </xsl:if>
    <!-- <xsl:choose>
       <xsl:when test="starts-with($idart, 'CONART')">
