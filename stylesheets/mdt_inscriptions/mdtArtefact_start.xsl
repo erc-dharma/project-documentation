@@ -1,8 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="xs"
-    version="3.0">
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:tei="http://www.tei-c.org/ns/1.0"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:functx="http://www.functx.com"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0"
+    exclude-result-prefixes="tei xi fn functx">
+    <!-- Written by Axelle Janiak for DHARMA, starting Août 2022 -->
+    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+    
+    <xsl:function name="functx:escape-for-regex" as="xs:string"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
+    </xsl:function>
+    <xsl:function name="functx:substring-after-last" as="xs:string?">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="delim" as="xs:string"/>
+        <xsl:sequence select="replace($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
+    </xsl:function>
+    <xsl:function name="functx:substring-before-match" as="xs:string"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="regex" as="xs:string"/>
+        <xsl:sequence select="tokenize($arg,$regex)[1]"/>
+    </xsl:function>
     
     <!-- Written by Axelle Janiak for DHARMA, starting Août 2022 -->
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
@@ -97,23 +118,30 @@
                                 <monumentID><xsl:value-of select="$tokens[20]"/></monumentID>
                             </relationMonument>
                         </xsl:if>
-                            <!-- colonne x (24) type 1 -->
+                        <!-- colonne x (24) type 1 -->
                         <xsl:if test="$tokens[24] != ''">
-                            <material><xsl:value-of select="$tokens[24]"/></material>
+                            <xsl:call-template name="material-type">
+                                <xsl:with-param name="material" select="$tokens[24]"/>
+                            </xsl:call-template> 
                             <!-- colonne Y (25) type 1 -->
                             <xsl:if test="$tokens[25] != ''">
-                                <material><xsl:value-of select="$tokens[25]"/></material>
+                                <xsl:call-template name="material-type">
+                                    <xsl:with-param name="material" select="$tokens[25]"/>
+                                </xsl:call-template> 
                             </xsl:if>                    
                         </xsl:if>
-                            <!-- colonne U (21) type 1 -->
-                        <xsl:if test="$tokens[21] != ''">
-                            <artefactType><xsl:value-of select="$tokens[21]"/></artefactType>
-                            <!-- colonne W (23) type 1 -->
+                        <!-- colonne U (21) type 1 -->
+                        <xsl:if test="$tokens[21]!= ''">
+                            <xsl:call-template name="artefact-type">
+                                <xsl:with-param name="typology" select="$tokens[21]"/>
+                            </xsl:call-template> 
+                            <!-- colonne W (23) type 2 -->
                             <xsl:if test="$tokens[23] != ''">
-                                <artefactType><xsl:value-of select="$tokens[23]"/></artefactType>
+                                <xsl:call-template name="artefact-type">
+                                    <xsl:with-param name="typology" select="$tokens[23]"/>
+                                </xsl:call-template>
                             </xsl:if>
-                        
-                        </xsl:if>
+                        </xsl:if> 
                             <!-- colonne V (22) reuse-->
                         <xsl:choose>
                             <xsl:when test="$tokens[22] != 'yes'">
@@ -306,7 +334,7 @@
                         <xsl:element name="discoveryPlaceId">
                             <xsl:attribute name="id"><xsl:value-of select="$tokens[47]"/></xsl:attribute>
                             <xsl:value-of select="$tokens[46]"/>
-                        </xsl:element>eId>
+                        </xsl:element>
                         <discoveryCoordinates><xsl:value-of select="$tokens[48]"/></discoveryCoordinates>
                         <xsl:if test="$tokens[49] != ''">
                             <xsl:element name="discoveryEvents">
@@ -329,8 +357,8 @@
                         </xsl:element>
                             <xsl:choose>
                                 <xsl:when test="contains($tokens[55], '$')">
-                                    <xsl:variable name="sealWidths" as="xs:string*" select="tokenize($tokens[55], '\$')"/>
-                                    <xsl:for-each select="$sealWidths">
+                                    <xsl:variable name="inventories" as="xs:string*" select="tokenize($tokens[55], '\$')"/>
+                                    <xsl:for-each select="$inventories">
                                         <inventoryNumber><xsl:value-of select="."/></inventoryNumber>
                                     </xsl:for-each>
                                 </xsl:when>
@@ -408,4 +436,52 @@
             <xsl:copy-of select="$lines/line"/>  
         </File>
     </xsl:template>  
+    
+    <xsl:template name="artefact-type">
+        <xsl:param name="typology"/>
+        <xsl:if test="$typology != ''">
+            <xsl:element name="compositeArtefactType">
+                <xsl:attribute name="class">
+                    <xsl:choose>
+                        <xsl:when test="contains($typology, ' - ')">
+                            <xsl:value-of select="substring-before($typology, ' -')"/>
+                        </xsl:when>
+                        <xsl:otherwise><xsl:attribute name="class"><xsl:value-of select="$typology"/></xsl:attribute></xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <xsl:choose>                 
+                    <xsl:when test="$typology ='architectural_element' or $typology = 'documentary' or $typology = 'jewellery' or $typology = 'monument' or $typology = 'natural_object' or $typology = 'sculpture' or $typology = 'unknown' or $typology = 'utensil'">
+                        <xsl:value-of select="translate($typology, '_', ' ')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="substring-after($typology, '- ')"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:element>
+        </xsl:if>
+    </xsl:template>
+    
+    <xsl:template name="material-type">
+        <xsl:param name="material"/>
+        <xsl:if test="$material != ''">
+            <xsl:element name="material">
+                <xsl:attribute name="class">
+                    <xsl:choose>
+                        <xsl:when test="contains($material, ' - ')">
+                            <xsl:value-of select="functx:substring-before-match($material, ' -')"/>
+                        </xsl:when>
+                        <xsl:otherwise><xsl:attribute name="class"><xsl:value-of select="$material"/></xsl:attribute></xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <xsl:choose>                 
+                    <xsl:when test="$material='metal' or $material='mineral-based' or $material='organic' or $material='stone' or $material='unknown'">
+                        <xsl:value-of select="$material"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="translate(functx:substring-after-last($material, '- '), '_', ' ')"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:element>
+        </xsl:if>
+    </xsl:template>
 </xsl:stylesheet>
