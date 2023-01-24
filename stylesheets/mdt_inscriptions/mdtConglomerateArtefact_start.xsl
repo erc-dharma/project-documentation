@@ -26,7 +26,7 @@
     </xsl:function>
     
    <xsl:template match="/" name="xsl:initial-template">
-       <!--  <xsl:variable name="api-url">
+         <xsl:variable name="api-url">
             <xsl:value-of select="unparsed-text('https://api.github.com/repos/erc-dharma/mdt-artefacts/contents/csv/conglomerate-artefacts')"/>
         </xsl:variable>
         <xsl:variable name="json-xml" select="json-to-xml($api-url)"/>
@@ -34,9 +34,9 @@
             <xsl:for-each select="$json-xml/node()//*[@key = 'download_url']">
                 <xsl:value-of select="unparsed-text(.)"/>
             </xsl:for-each>
-        </xsl:variable>-->
+        </xsl:variable>
         
-       <xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/csv/conglomerate-artefacts/DHARMA_mdt_Pallava.csv')"/>
+      <!-- <xsl:param name="data" select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/csv/conglomerate-artefacts/DHARMA_mdt_Pallava.csv')"/>-->
         
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
