@@ -55,7 +55,7 @@
                             </xsl:if>
                             <xsl:for-each select="$biblio">
                             <xsl:choose>
-                                <xsl:when test="contains(., '\_\d\d')"> 
+                                <xsl:when test="matches(., '\_\d\d')"> 
                                         <bibl><xsl:element name="ptr">
                                             <xsl:attribute name="target">
                                                 <xsl:text>bib:</xsl:text><xsl:apply-templates select="."/>
@@ -177,7 +177,7 @@
                             </decoDesc>
                             <compositeArtefactFormat>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[27], '\-')">
+                                    <xsl:when test="contains($tokens[27], '-')">
                                         <xsl:variable name="heights" as="xs:string*" select="tokenize($tokens[27], '\-')"/>
                                         <xsl:element name="height">
                                             <xsl:attribute name="unit">cm</xsl:attribute>
@@ -191,7 +191,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[28], '\-')">
+                                    <xsl:when test="contains($tokens[28], '-')">
                                         <xsl:variable name="widths" as="xs:string*" select="tokenize($tokens[28], '\-')"/>
                                         <xsl:element name="width">
                                             <xsl:attribute name="unit">cm</xsl:attribute>
@@ -205,7 +205,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[29], '\-')">
+                                    <xsl:when test="contains($tokens[29], '-')">
                                         <xsl:variable name="depths" as="xs:string*" select="tokenize($tokens[29], '\-')"/>
                                         <xsl:element name="depth">
                                             <xsl:attribute name="unit">cm</xsl:attribute>
@@ -219,7 +219,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[30], '\-')">
+                                    <xsl:when test="contains($tokens[30], '-')">
                                         <xsl:variable name="diameters" as="xs:string*" select="tokenize($tokens[230], '\-')"/>
                                         <xsl:element name="diameter">
                                             <xsl:attribute name="unit">cm</xsl:attribute>
@@ -233,7 +233,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[31], '\-')">
+                                    <xsl:when test="contains($tokens[31], '-')">
                                         <xsl:variable name="circumferences" as="xs:string*" select="tokenize($tokens[31], '\-')"/>
                                         <xsl:element name="circumference">
                                             <xsl:attribute name="unit">cm</xsl:attribute>
@@ -247,7 +247,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[32], '\-')">
+                                    <xsl:when test="contains($tokens[32], '-')">
                                         <xsl:variable name="weights" as="xs:string*" select="tokenize($tokens[32], '\-')"/>
                                         <xsl:element name="weight">
                                             <xsl:attribute name="unit">cm</xsl:attribute>
@@ -302,7 +302,7 @@
                                         </xsl:otherwise>
                                     </xsl:choose>
                                     <xsl:choose>
-                                        <xsl:when test="contains($tokens[40], '\-')">
+                                        <xsl:when test="contains($tokens[40], '-')">
                                             <xsl:variable name="sealWidths" as="xs:string*" select="tokenize($tokens[36], '\-')"/>
                                             <xsl:element name="sealWidth">
                                                 <xsl:attribute name="unit">cm</xsl:attribute>
@@ -371,7 +371,7 @@
                                     <xsl:value-of select="$tokens[55]"/>
                                 </xsl:element>
                                 <xsl:choose>
-                                    <xsl:when test="contains($tokens[57], '\$')">
+                                    <xsl:when test="contains($tokens[57], '$')">
                                         <xsl:variable name="inventories" as="xs:string*" select="tokenize($tokens[57], '\$')"/>
                                         <xsl:for-each select="$inventories">
                                             <inventoryNumber><xsl:value-of select="."/></inventoryNumber>
