@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
@@ -8,7 +8,8 @@
     
     <xsl:template match="File">
         <xsl:for-each select="line">
-            <xsl:result-document method="xml" href="{./fileDesc/publicationStmt/idno[@type='filename']}_{generate-id()}.xml">
+            <xsl:result-document method="xml" href="{./fileDesc/publicationStmt/idno[@type='filename']}.xml">
+                <!-- _{generate-id()} -->
                 <metadata>
                     <xsl:copy-of select="." />
                 </metadata>
