@@ -4998,9 +4998,12 @@
                 <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml'))">
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
                 </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
-                </xsl:otherwise>
+                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml.xml'))">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml.xml')"/>
+                </xsl:when>
+                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml.xml'))">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml.xml')"/>
+                </xsl:when>
             </xsl:choose>
         </xsl:variable>
         <xsl:element name="div">
@@ -5156,7 +5159,7 @@
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
-        <xsl:variable name="document-com">git
+        <xsl:variable name="document-com">
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_com.xml')"/>
         </xsl:variable>
         <xsl:element name="div">
