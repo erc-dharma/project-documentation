@@ -7,11 +7,11 @@
     exclude-result-prefixes="tei xi fn functx">
 
 <!-- addition to run the xslt locally, to be commenting before pushing files otherwise the pipeline won't run for diplEd -->
-    <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
-    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>
+    <!--<xsl:param name="edition-type" as="xs:string" select="'physical'"/>
+    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
 
-   <!-- <xsl:param name="edition-type" as="xs:string"/>
-    <xsl:param name="corpus-type" as="xs:string"/>-->
+    <xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>
     
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
