@@ -45,10 +45,6 @@ $('.circlefront, .circlearound').prepend('°');
 $('.circleback, .circlearound').append('°');
 $('.surplus').prepend('{');
 $('.surplus').append('}');
-$('.ed-insertion').prepend('⟨⟨');
-$('.ed-insertion').append('⟩⟩');
-$('.scribe-deletion').prepend('⟦');
-$('.scribe-deletion').append('⟧');
 $('.sic-crux').prepend('†');
 $('.sic-crux').append('†');
 })
