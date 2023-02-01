@@ -7,11 +7,11 @@
     exclude-result-prefixes="tei xi fn functx">
 
 <!-- addition to run the xslt locally, to be commenting before pushing files otherwise the pipeline won't run for diplEd -->
-    <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
-    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>
+    <!--<xsl:param name="edition-type" as="xs:string" select="'physical'"/>
+    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
 
-   <!-- <xsl:param name="edition-type" as="xs:string"/>
-    <xsl:param name="corpus-type" as="xs:string"/>-->
+    <xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>
     
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
@@ -755,11 +755,20 @@
     <!--  fw ! -->
     <xsl:template match="tei:fw">
         <xsl:choose>
+            <xsl:when test="@place='left'"/>
+            <xsl:when test="@place='right'">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted form-work float-right</xsl:attribute>
+                        <xsl:text>[fw </xsl:text>
+                        <xsl:apply-templates/>
+                    <xsl:text>]</xsl:text>
+                </xsl:element> 
+            </xsl:when>
             <xsl:when test="child::tei:choice">
                 <xsl:apply-templates/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="."/>
+                <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -1069,11 +1078,7 @@
             <xsl:copy-of select="$apparatus-note"/>
         </span>
     </xsl:template>
-    
-<!--    <xsl:template match="tei:num[not(parent::tei:fw)]">
-       <xsl:apply-templates/>
-    </xsl:template>-->
-    
+   
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
@@ -1138,10 +1143,10 @@
                     <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
                     <xsl:text>Folio </xsl:text>
                     <xsl:value-of select="@n"/>
-                    <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')]">
+                    <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')][not(@place='right')]">
                         <xsl:text>: </xsl:text>
                         <xsl:text>fw </xsl:text>
-                        <xsl:apply-templates select="following-sibling::tei:*[1][local-name()=('fw')]"/>
+                        <xsl:value-of select="following-sibling::tei:*[1][local-name()=('fw')]"/>
                     </xsl:if>
                 </xsl:element>     
     </xsl:template>
@@ -1755,6 +1760,7 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/dharma-diplEd-css.css"></link>
+                <!--<link rel="stylesheet" href="./../diplomaticEditions/dharma-diplEd-css.css"></link>-->
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"></link>
