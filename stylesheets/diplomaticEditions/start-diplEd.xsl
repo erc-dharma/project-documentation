@@ -755,7 +755,7 @@
                 <xsl:if test="not(preceding-sibling::tei:*[1][local-name()=('pb')])">
                     <xsl:text>[</xsl:text>
                 </xsl:if>
-                <xsl:text>fw</xsl:text>
+                <xsl:text>fw </xsl:text>
                 <xsl:apply-templates/>
                 <xsl:text>]</xsl:text>
                 </xsl:element>
