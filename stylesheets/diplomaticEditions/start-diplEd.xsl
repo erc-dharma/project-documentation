@@ -7,11 +7,11 @@
     exclude-result-prefixes="tei xi fn functx">
 
 <!-- addition to run the xslt locally, to be commenting before pushing files otherwise the pipeline won't run for diplEd -->
-    <!--<xsl:param name="edition-type" as="xs:string" select="'physical'"/>
-    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
+    <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
+    <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>
 
-    <xsl:param name="edition-type" as="xs:string"/>
-    <xsl:param name="corpus-type" as="xs:string"/>
+   <!-- <xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>-->
     
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
@@ -755,7 +755,17 @@
     <!--  fw ! -->
     <xsl:template match="tei:fw">
         <xsl:choose>
-            <xsl:when test="@place='left'"/>
+            <xsl:when test="@place='left'">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">text-muted</xsl:attribute>
+                <xsl:if test="not(preceding-sibling::tei:*[1][local-name()=('pb')])">
+                    <xsl:text>[</xsl:text>
+                </xsl:if>
+                <xsl:text>fw</xsl:text>
+                <xsl:apply-templates/>
+                <xsl:text>]</xsl:text>
+                </xsl:element>
+            </xsl:when>
             <xsl:when test="@place='right'">
                 <xsl:element name="span">
                     <xsl:attribute name="class">text-muted form-work float-right</xsl:attribute>
@@ -1139,15 +1149,19 @@
             </xsl:otherwise>
         </xsl:choose>
                 <xsl:element name="span">
-                    <xsl:attribute name="class">text-muted foliation</xsl:attribute>
+                    <xsl:attribute name="class">text-muted</xsl:attribute>
                     <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
-                    <xsl:text>Folio </xsl:text>
+                    <xsl:text>[Folio </xsl:text>
                     <xsl:value-of select="@n"/>
-                    <xsl:if test="following-sibling::tei:*[1][local-name()=('fw')][not(@place='right')]">
-                        <xsl:text>: </xsl:text>
-                        <xsl:text>fw </xsl:text>
-                        <xsl:value-of select="following-sibling::tei:*[1][local-name()=('fw')]"/>
-                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="following-sibling::tei:*[1][local-name()=('fw')][not(@place='right')]">
+                            <xsl:text>: </xsl:text>
+                            
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>]</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:element>     
     </xsl:template>
 
