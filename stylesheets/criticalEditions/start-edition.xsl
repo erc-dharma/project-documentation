@@ -106,7 +106,7 @@
                     <xsl:attribute name="id">edition-content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
                             <xsl:element name="div">
-                                <xsl:attribute name="class">row wrapper text-break</xsl:attribute>
+                                <xsl:attribute name="class">row wrapper</xsl:attribute><!--  text-break -->
                             <xsl:element name="ul">
                         <xsl:attribute name="class">nav nav-tabs nav-justified</xsl:attribute>
                     <xsl:attribute name="id">tab</xsl:attribute>
@@ -2101,11 +2101,7 @@
                                                 <xsl:element name="li">
                                                     <xsl:value-of select="@type"/>
                                                     <xsl:text>: </xsl:text>
-                                                    <xsl:element name="span">
-                                                    <xsl:attribute name="class">font-italic</xsl:attribute>
-
-                                            <xsl:apply-templates/>
-                                                    </xsl:element>
+                                            <xsl:apply-templates select="."/>
                                                 </xsl:element>
                                                 </xsl:for-each>
                                                 <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem/tei:colophon/tei:note">
@@ -2702,6 +2698,17 @@
                     <xsl:attribute name="class">block</xsl:attribute>
                     <xsl:apply-templates/>
                 </xsl:element>
+            </xsl:when>
+            <xsl:when test="@type='normalized' or @type='diplomatic'">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="@type='translation'">
+                <xsl:text>‘</xsl:text>
+                <xsl:apply-templates/>
+                <xsl:text>’</xsl:text>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates/>
