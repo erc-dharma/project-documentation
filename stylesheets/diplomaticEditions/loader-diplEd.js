@@ -37,8 +37,8 @@ $(function () {
 $('.lg-omitted .l:last-child, .omitted').append('⟩');
 $('.explanation, .unclear').prepend('(');
 $('.explanation, .unclear').append(')');
-$('.subaudible, .lineation, .foliation, .lost-illegible, .gap').prepend('[');
-$('.subaudible, .lineation, .foliation, .lost-illegible, .gap').append(']');
+$('.subaudible, .lineation, .lost-illegible, .gap').prepend('[');
+$('.subaudible, .lineation, .lost-illegible, .gap').append(']');
 $('.hyphenfront, .hyphenaround').prepend('-');
 $('.hyphenback, .hyphenaround').append('-');
 $('.circlefront, .circlearound').prepend('°');
