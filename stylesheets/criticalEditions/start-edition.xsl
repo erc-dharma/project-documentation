@@ -1381,12 +1381,15 @@
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'"/>
-            <xsl:when test="@reason='lost' and not(@quantity|@unity)"/>
+            <xsl:when test="@reason='lost' and not(@quantity|@unit)"/>
             <xsl:otherwise>
                 <xsl:element name="span">
             <xsl:attribute name="class">gap</xsl:attribute>
             <xsl:choose>
-                <xsl:when test="@quantity and @unit">
+                <xsl:when test="@unit='component'">
+                    <xsl:text>.</xsl:text>
+                </xsl:when>
+                <xsl:when test="@quantity and @unit and not(@unit='component')">
                     <xsl:if test="@precision='low'">
                         <xsl:text>ca. </xsl:text>
                     </xsl:if>
