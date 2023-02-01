@@ -1120,6 +1120,12 @@
                 </xsl:if>
     </xsl:template>
     <!-- colophon -->
+    <xsl:template match="tei:colophon">
+        <xsl:apply-templates/>
+        <xsl:if test="descendant-or-self::tei:note">
+            <xsl:apply-templates select="tei:note"/>
+        </xsl:if>
+    </xsl:template>
    <!-- <xsl:template name="colophon">
         <xsl:if test="//tei:colophon">
             <xsl:element name="hr"/>
@@ -2102,6 +2108,9 @@
                                                     </xsl:element>
                                                 </xsl:element>
                                                 </xsl:for-each>
+                                                <xsl:if test="./tei:msDesc/tei:msContents/tei:msItem/tei:colophon/tei:note">
+                                                    <xsl:apply-templates select="./tei:msDesc/tei:msContents/tei:msItem/tei:colophon/tei:note"/>
+                                                </xsl:if>
                                             </xsl:element>
                                         </xsl:element>
                                     </xsl:if>
@@ -2203,12 +2212,8 @@
         </xsl:call-template>
     </xsl:template>
 
-    <xsl:template match="tei:note[ancestor::tei:colophon]">
-        <xsl:element name="a">
-            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-            <xsl:attribute name="title"><xsl:apply-templates/></xsl:attribute>
-            <xsl:text>(*)</xsl:text>
-        </xsl:element>
+    <xsl:template match="tei:note[ancestor-or-self::tei:colophon]">
+        <xsl:apply-templates/>
     </xsl:template>
 
     <xsl:template name="generate-trans-link">
