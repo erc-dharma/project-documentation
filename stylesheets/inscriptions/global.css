@@ -319,3 +319,7 @@ dd {
 .checkmark {
     background-color: #eeca0b;
 }
+
+.formwork-right{
+    float: right;
+}
