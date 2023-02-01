@@ -7,7 +7,7 @@
     exclude-result-prefixes="tei xi fn functx">
 
 <!-- addition to run the xslt locally, to be commenting before pushing files otherwise the pipeline won't run for diplEd -->
-    <!--<xsl:param name="edition-type" as="xs:string" select="'physical'"/>
+<!--    <xsl:param name="edition-type" as="xs:string" select="'physical'"/>
     <xsl:param name="corpus-type" as="xs:string" select="'nusantara'"/>-->
 
     <xsl:param name="edition-type" as="xs:string"/>
@@ -264,7 +264,9 @@
             </xsl:attribute>
                         <xsl:element name="span">
                             <xsl:attribute name="class">scribe-insertion</xsl:attribute>
+                            <xsl:text>⟨⟨</xsl:text>
                             <xsl:apply-templates/>
+                            <xsl:text>⟩⟩</xsl:text>
                         </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -677,17 +679,12 @@
     <!--  D ! -->
     <!--  del ! -->
     <xsl:template match="tei:del">
-        <xsl:element name="a">
-            <xsl:attribute name="class">ed-deletion</xsl:attribute>
-            <xsl:attribute name="href">javascript:void(0);</xsl:attribute>
-            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
-            <xsl:attribute name="data-placement">top</xsl:attribute>
-            <xsl:attribute name="title">Editorial deletion</xsl:attribute>
             <xsl:element name="span">
                 <xsl:attribute name="class">scribe-deletion</xsl:attribute>
+                <xsl:text>⟦</xsl:text>
                 <xsl:apply-templates/>
+                <xsl:text>⟧</xsl:text>
             </xsl:element>
-        </xsl:element>
     </xsl:template>
     <!-- dimensions -->
     <xsl:template match="tei:dimensions">
@@ -1784,6 +1781,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/diplomaticEditions/loader-diplEd.js"/>
+        <!--<script src="./../diplomaticEditions/loader-diplEd.js"/>-->
 
     </xsl:template>
 
