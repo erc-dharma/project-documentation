@@ -600,49 +600,43 @@
        </xsl:when>
         </xsl:choose>
     </xsl:template>
+    
     <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="0001"/>
         </xsl:variable>
-        <xsl:element name="span">
-            <xsl:attribute name="class">lem-tooltipApp float-right</xsl:attribute>
-            <!--  <xsl:element name="div">
-           <xsl:attribute name="class"></xsl:attribute>-->
+        <xsl:element name="a">
+            <xsl:attribute name="data-toggle">popover</xsl:attribute>
+            <xsl:attribute name="data-html">true</xsl:attribute>
+            <xsl:attribute name="data-target">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
+                <xsl:value-of select="$app-num"/></xsl:attribute>
+            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:choice[child::tei:sic and child::tei:corr]"/></xsl:attribute>
+            <xsl:attribute name="id">
+                <xsl:text>from-app-</xsl:text>
+                <xsl:value-of select="$app-num"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-app">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            
             <xsl:element name="span">
-                <xsl:attribute name="class">tooltipApp</xsl:attribute>
-                <xsl:element name="a">
-                    <xsl:attribute name="tabindex">0</xsl:attribute>
-                    <xsl:attribute name="data-toggle">popover</xsl:attribute>
-                    <xsl:attribute name="data-html">true</xsl:attribute>
-                    <xsl:attribute name="data-target">
-                        <xsl:value-of select="generate-id()"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/></xsl:attribute>
-                    <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg] | .//tei:choice[child::tei:sic and child::tei:corr]"/></xsl:attribute>
-                    <xsl:attribute name="id">
-                        <xsl:text>from-app-</xsl:text>
-                        <xsl:value-of select="$app-num"/>
-                    </xsl:attribute>
-                    
+                <xsl:attribute name="class">lem sic</xsl:attribute>
+                <xsl:apply-templates select="tei:sic"/>
+                <xsl:element name="sup">
+                    <xsl:attribute name="class">float-right</xsl:attribute>
+                    <xsl:text>(</xsl:text>
+                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
+                    <xsl:text>)</xsl:text>
                 </xsl:element>
             </xsl:element>
-
-            <!-- Version without the tooltip display in the body-->
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">sic</xsl:attribute>
-                        <xsl:apply-templates select="tei:sic"/>
-                        <xsl:element name="sup">
-                            <xsl:attribute name="class">float-right</xsl:attribute>
-                            <xsl:text>(</xsl:text>
-                            <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | //tei:note[last()][parent::tei:p or parent::tei:lg] | //tei:choice[child::tei:sic and child::tei:corr]"/>
-                            <xsl:text>)</xsl:text>
-                        </xsl:element>
-                    </xsl:element>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
         <xsl:variable name="apparatus">
             <xsl:element name="span">
