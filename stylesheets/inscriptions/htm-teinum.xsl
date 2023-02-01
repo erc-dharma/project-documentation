@@ -54,7 +54,7 @@
          </xsl:when>
          <xsl:when test="$parm-leiden-style = 'dharma' and parent::t:fw[@place='right']">
            <xsl:element name="sup">
-              <xsl:attribute name="class">float-right</xsl:attribute>
+              <xsl:attribute name="class">formwork-right</xsl:attribute>
              <xsl:text>[fw: </xsl:text>
              <xsl:value-of select="."/>
              <xsl:text>]</xsl:text>
