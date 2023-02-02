@@ -249,7 +249,7 @@ Pb de lb[@break=no] entre deux textpart
      <xsl:choose>
 <xsl:when test="preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw' or
                    (normalize-space(.)=''
-                   and preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw'])][not(@place='right')]">
+                   and preceding-sibling::node()[1][local-name() = 'pb' or local-name() ='fw'])]">
      <xsl:if test="EDF:f-wwrap(.) = true()">
         <xsl:text>-</xsl:text>
      </xsl:if>
@@ -259,15 +259,21 @@ Pb de lb[@break=no] entre deux textpart
             <xsl:value-of select="preceding-sibling::t:pb[1]/@n"/>
             <xsl:text> </xsl:text>
           </xsl:element>
+   
+   <xsl:variable name="refnum" select="preceding-sibling::node()[1][local-name() ='fw']/@n"/>
+   
           <xsl:if test="preceding-sibling::node()[1][local-name() ='fw' or
                              (normalize-space(.)=''
-                             and preceding-sibling::node()[1][local-name() ='fw'])][not(@place='right')]">
+                             and preceding-sibling::node()[1][local-name() ='fw'])]">
             <xsl:element name="sup">
-              <xsl:text>fw: </xsl:text>
-               <xsl:if test="preceding-sibling::t:fw[1][not(@place='right')][child::t:supplied]">[</xsl:if>
+               <xsl:text> #</xsl:text>
+               <xsl:value-of select="(count(preceding-sibling::t:*[@n =$refnum][local-name() ='fw']) + 1)"/>
+              <!--<xsl:text>fw: </xsl:text>-->
+               <xsl:text> </xsl:text>
+               <!--<xsl:if test="preceding-sibling::t:fw[1][child::t:supplied]">[</xsl:if>-->
               <xsl:value-of select="preceding-sibling::t:fw[1]/child::node()"/>
-               <xsl:if test="preceding-sibling::t:fw[1][not(@place='right')][child::t:supplied]">]</xsl:if>
-              <xsl:text> </xsl:text>
+              <!-- <xsl:if test="preceding-sibling::t:fw[1][child::t:supplied]">]</xsl:if>
+              <xsl:text> </xsl:text>-->
             </xsl:element>
           </xsl:if>
         </xsl:when>
@@ -284,13 +290,18 @@ Pb de lb[@break=no] entre deux textpart
             <xsl:value-of select="@n"/>
             <xsl:text> </xsl:text>
           </xsl:element>
-               <xsl:if test="following-sibling::t:fw[1][not(@place='right')]">
+               <xsl:variable name="refnum" select="preceding-sibling::node()[1][local-name() ='fw']/@n"/>
+               
+               <xsl:if test="following-sibling::t:fw[1]">
             <xsl:element name="sup">
-              <xsl:text>fw: </xsl:text>
-               <xsl:if test="following-sibling::t:fw[1][not(@place='right')][child::t:supplied]">[</xsl:if>
+               <xsl:text> #</xsl:text>
+               <xsl:value-of select="(count(preceding-sibling::t:*[@n =$refnum][local-name() ='fw']) + 1)"/>
+               <!--<xsl:text>fw: </xsl:text>-->
+               <xsl:text> </xsl:text>
+               <!--<xsl:if test="following-sibling::t:fw[1][child::t:supplied]">[</xsl:if>-->
               <xsl:value-of select="following-sibling::t:fw[1]/child::node()"/>
-               <xsl:if test="following-sibling::t:fw[1][not(@place='right')][child::t:supplied]">]</xsl:if>
-              <xsl:text> </xsl:text>
+               <!--<xsl:if test="following-sibling::t:fw[1][child::t:supplied]">]</xsl:if>
+              <xsl:text> </xsl:text>-->
             </xsl:element>
           </xsl:if>
         </xsl:if>
@@ -305,12 +316,12 @@ Pb de lb[@break=no] entre deux textpart
                <xsl:value-of select="@n"/>
                <xsl:text> </xsl:text>
             </xsl:element>
-            <xsl:if test="following-sibling::t:fw[1][not(@place='right')]">
+            <xsl:if test="following-sibling::t:fw[1]">
                <xsl:element name="sup">
                   <xsl:text>fw: </xsl:text>
-                  <xsl:if test="following-sibling::t:fw[1][not(@place='right')][child::t:supplied]">[</xsl:if>
+                  <xsl:if test="following-sibling::t:fw[1][child::t:supplied]">[</xsl:if>
                   <xsl:value-of select="following-sibling::t:fw[1]/child::node()"/>
-                  <xsl:if test="following-sibling::t:fw[1][not(@place='right')][child::t:supplied]">]</xsl:if>
+                  <xsl:if test="following-sibling::t:fw[1][child::t:supplied]">]</xsl:if>
                   <xsl:text> </xsl:text>
                </xsl:element>
             </xsl:if>

@@ -52,14 +52,14 @@
                <xsl:apply-imports/>
             </span>
          </xsl:when>
-         <xsl:when test="$parm-leiden-style = 'dharma' and parent::t:fw[@place='right']">
+         <!--<xsl:when test="$parm-leiden-style = 'dharma' and parent::t:fw[@place='right']">
            <xsl:element name="sup">
               <xsl:attribute name="class">formwork-right</xsl:attribute>
              <xsl:text>[fw: </xsl:text>
              <xsl:value-of select="."/>
              <xsl:text>]</xsl:text>
            </xsl:element>
-         </xsl:when>
+         </xsl:when>-->
          <xsl:otherwise>
            <xsl:if test="$parm-leiden-style = 'dharma' and not(parent::t:fw)">
             <xsl:apply-imports/>
