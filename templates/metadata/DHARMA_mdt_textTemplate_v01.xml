@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE textMetadataTemplate SYSTEM "DHARMA_mdt_textDTD.dtd">
+<textMetadataTemplate>
+<resourceManagement>
+	<resourceID digitalID=""/>
+	<metadataOrigin></metadataOrigin>
+	<metadataEditor>
+		<creation who="" when=""/><!-- may be repeated -->
+	</metadataEditor>
+	<metadataContribution>
+		<change who="" when="" status=""></change><!-- may be repeated -->
+	</metadataContribution>
+	<metadataReview who="" when=""/><!-- may be repeated -->
+	<project></project>
+	<corpus></corpus>
+	<metadataRights target=""/>
+</resourceManagement>
+<textDescription>
+  <textID idno=""/>
+	<alternativeID></alternativeID><!-- may be repeated -->
+	<textDesignation></textDesignation>
+	<alternativeDesignation></alternativeDesignation><!-- may be repeated -->
+  <textType value=""/><!-- may be repeated -->
+  <linesNumber></linesNumber>
+	<textLanguage value=""/><!-- may be repeated -->
+	<textScript value=""/><!-- may be repeated -->
+	<textDate>
+	<dateRegnalYear>
+		<ruler></ruler>
+		<year></year>
+		<month></month>
+		<fornight></fornight>
+		<day></day>
+		<remark></remark>
+	</dateRegnalYear>
+	<date calendar=""><!-- may be repeated --><!-- the calendar has to be declared in the attribute calendar -->
+		<year></year>
+		<month></month>
+		<fornight></fornight>
+		<day></day>
+		<remark></remark>
+	</date>
+	<dateJovianCycle>
+		<cycleName></cycleName>
+		<month></month>
+		<fornight></fornight>
+		<day></day>
+		<remark></remark>
+	</dateJovianCycle>
+	<origDate notBefore="" notAfter="" when="" precision="" evidence="" datingMethod=""></origDate><!-- equivalence of the date according to the occidental calendar -->
+	</textDate>
+	<textFiliation>
+		<duplicateText>
+		<duplicateTextID>
+			<ID></ID>
+			<corpus></corpus>
+			<reference></reference>
+		</duplicateTextID><!-- may be repeated -->
+		</duplicateText>
+		<reissue>
+		<textReissue value=""/>
+		<reissueTextID>
+			<ID></ID>
+			<corpus></corpus>
+			<reference></reference>
+		</reissueTextID><!-- may be repeated -->
+		<reissueDate when=""/>
+	</reissue>
+	</textFiliation>
+  <textSummary><p></p></textSummary>
+	<keywords><!-- may be repeated -->
+		<term></term>
+	</keywords>
+	<textRemarks><p></p></textRemarks>
+	<textRights>
+		<publicationProject></publicationProject>
+		<textDistributionRights target=""/>
+	</textRights>
+	<relatedResources>
+		<artefactID idno=""/><!-- may be repeated -->
+		<surrogateID idno=""/><!-- may be repeated -->
+		<imageID idno=""/><!-- may be repeated -->
+	</relatedResources>
+</textDescription>
+</textMetadataTemplate>
