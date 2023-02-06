@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!ELEMENT surrogateMetadataTemplate (resourceManagement,surrogateDescription)>
+  <!ELEMENT resourceManagement (resourceID,metadataOrigin,metadataEditor,metadataContribution+,metadataReview+,project,corpus,metadataRights)>
+  <!ELEMENT resourceID EMPTY>
+  <!ATTLIST resourceID
+  digitalID ID #REQUIRED
+  >
+    <!ELEMENT metadataOrigin (#PCDATA)>
+    <!ELEMENT metadataEditor (creation+)>
+      <!ELEMENT creation EMPTY>
+      <!-- ajouter un pointeur vers la liste des membres du projet -->
+      <!ATTLIST creation
+      who CDATA #REQUIRED
+      when CDATA #REQUIRED
+      >
+    <!ELEMENT metadataContribution (change)>
+      <!ELEMENT change (#PCDATA)>
+      <!-- ajouter un pointeur vers la liste des membres du projet -->
+      <!ATTLIST change
+      who CDATA #REQUIRED
+      when CDATA #REQUIRED
+      status  CDATA #REQUIRED
+      ><!-- ajouter les valeurs possibles pour le workflow -->
+    <!ELEMENT metadataReview EMPTY>
+    <!ATTLIST metadataReview
+    who CDATA #REQUIRED
+    when CDATA #REQUIRED
+    ><!-- ajouter un pointeur vers la liste des membres du projet -->
+    <!ELEMENT project (#PCDATA)>
+    <!ELEMENT corpus (#PCDATA)>
+    <!ELEMENT metadataRights EMPTY>
+    <!ATTLIST metadataRights
+    target CDATA #FIXED "CC0 1.0"
+    >
+<!ELEMENT surrogateDescription (surrogateID,surrogateType,material,surrogateCreator,surrogateCreationDate,surrogateFormat,estampageFormat,surrogatePreservation,surrogateRights,relatedResources)>
+<!-- PRECISER LES CHAMPS OBLIGATOIRES OU OPTIONNELS -->
+  <!ELEMENT surrogateID EMPTY>
+  <!ATTLIST surrogateID
+  idno ID #REQUIRED
+  >
+  <!ELEMENT surrogateType EMPTY>
+  <!ATTLIST surrogateType
+  value (estampage|plaster_cast|rubbing|analog_photograph|resin_cast|wax_impression|unknown) "unknown"
+  ><!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+  <!ELEMENT material EMPTY>
+  <!ATTLIST material
+  value (unknown|valeur1|valeur2) "unknown"
+  ><!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+  <!ELEMENT surrogateCreator (#PCDATA)>
+  <!ELEMENT surrogateCreationDate (#PCDATA)>
+  <!ATTLIST surrogateCreationDate
+  when CDATA #IMPLIED
+  >
+  <!ELEMENT surrogateFormat (height+,width+,linesNumber,partOfText)>
+    <!ELEMENT height (#PCDATA)>
+    <!ATTLIST height
+    unit (m|cm) "cm"
+    >
+    <!ELEMENT width (#PCDATA)>
+    <!ATTLIST width
+   unit (m|cm) "cm"
+    >
+    <!ELEMENT linesNumber (#PCDATA)>
+    <!ELEMENT partOfText (#PCDATA)>
+  <!ELEMENT estampageFormat (numberSheets,estampageTechnique)>
+    <!ELEMENT numberSheets (#PCDATA)>
+    <!ELEMENT estampageTechnique EMPTY>
+    <!ATTLIST estampageTechnique
+    value (unknown|valeur1|valeur2) "unknown"
+    ><!-- liste à définir -->
+  <!ELEMENT surrogatePreservation (inventoryNumber+,condition+,surrogateLegends,surrogateCollection, surrogatePreservationPlace)>
+    <!ELEMENT inventoryNumber (#PCDATA)>
+    <!ELEMENT condition EMPTY>
+    <!ATTLIST condition
+    value (unknown|valeur1|valeur2) "unknown"
+    ><!-- liste à définir -->
+    <!ELEMENT surrogateLegends (p)>
+      <!ELEMENT p (#PCDATA)>
+    <!ELEMENT surrogateCollection (collectionName,collectionID)>
+      <!ELEMENT collectionName (#PCDATA)>
+      <!ELEMENT collectionID EMPTY>
+      <!ATTLIST collectionID
+      idno ID #REQUIRED
+      >
+  <!ELEMENT surrogatePreservationPlace (preservationPlaceName,preservationPlaceID,preservationLocation,boxLegend)>
+    <!ELEMENT preservationPlaceName (#PCDATA)>
+    <!ELEMENT preservationPlaceID EMPTY>
+    <!ATTLIST preservationPlaceID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT preservationLocation (#PCDATA)>
+    <!ELEMENT boxLegend (p)>
+      <!--<!ELEMENT p (#PCDATA)>-->
+  <!ELEMENT surrogateRights (governmentalHolder,institutionalHolder,surrogateDistributionRights)>
+    <!ELEMENT governmentalHolder EMPTY>
+    <!ELEMENT institutionalHolder EMPTY>
+    <!ELEMENT surrogateDistributionRights EMPTY>
+    <!ATTLIST surrogateDistributionRights
+    target CDATA  #FIXED "All rights reserved"
+    >
+  <!ELEMENT relatedResources (textID+,artefactID+,surrogateID+,imageID+)>
+    <!ELEMENT artefactID EMPTY>
+    <!ATTLIST artefactID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT textID EMPTY>
+    <!ATTLIST textID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT imageID EMPTY>
+    <!ATTLIST imageID
+    idno ID #REQUIRED
+    >

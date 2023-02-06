@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!ELEMENT textMetadataTemplate (resourceManagement,textDescription)>
+  <!ELEMENT resourceManagement (resourceID,metadataOrigin,metadataEditor,metadataContribution+,metadataReview+,project,corpus,metadataRights)>
+  <!ELEMENT resourceID EMPTY>
+  <!ATTLIST resourceID
+  digitalID ID #REQUIRED
+  >
+    <!ELEMENT metadataOrigin (#PCDATA)>
+    <!ELEMENT metadataEditor (creation+)>
+      <!ELEMENT creation EMPTY>
+      <!-- ajouter un pointeur vers la liste des membres du projet -->
+      <!ATTLIST creation
+      who CDATA #REQUIRED
+      when CDATA #REQUIRED
+      >
+    <!ELEMENT metadataContribution (change)>
+      <!ELEMENT change (#PCDATA)>
+      <!-- ajouter un pointeur vers la liste des membres du projet -->
+      <!ATTLIST change
+      who CDATA #REQUIRED
+      when CDATA #REQUIRED
+      status  CDATA #REQUIRED
+      ><!-- ajouter les valeurs possibles pour le workflow -->
+    <!ELEMENT metadataReview EMPTY>
+    <!-- ajouter un pointeur vers la liste des membres du projet -->
+    <!ATTLIST metadataReview
+    who CDATA #REQUIRED
+    when CDATA #REQUIRED
+    >
+    <!ELEMENT project (#PCDATA)>
+    <!ELEMENT corpus (#PCDATA)>
+    <!ELEMENT metadataRights EMPTY>
+    <!ATTLIST metadataRights
+    target CDATA #FIXED "CC0 1.0"
+    >
+<!ELEMENT textDescription (textID,alternativeID,textDesignation,alternativeDesignation,textType+,linesNumber,textLanguage+,textScript+,textDate,origDate,textFiliation,textSummary,keywords,textRemarks,textRights,relatedResources)>
+<!-- PRECISER LES CHAMPS OBLIGATOIRES OU OPTIONNELS -->
+  <!ELEMENT textID EMPTY>
+  <!ATTLIST textID
+  idno ID #REQUIRED
+  >
+  <!ELEMENT alternativeID (#PCDATA)>
+  <!ELEMENT textDesignation (#PCDATA)>
+  <!ELEMENT alternativeDesignation (#PCDATA)>
+  <!ELEMENT textType EMPTY>
+  <!ATTLIST textType
+  value (unknown|valeur1|valeur2) "unknown"
+  ><!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+  <!ELEMENT linesNumber (#PCDATA)>
+  <!ELEMENT textLanguage EMPTY>
+  <!ATTLIST textLanguage
+  value (unknown|valeur1|valeur2) "unknown"
+  ><!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+  <!ELEMENT textScript EMPTY>
+  <!ATTLIST textScript
+ value (unknown|valeur1|valeur2) "unknown"
+  ><!-- ajouter les valeurs des vocabulaires contrôlés d'OpenTheso -->
+  <!ELEMENT textDate (dateRegnalYear,date,dateJovianCycle,origDate)>
+    <!ELEMENT dateRegnalYear (ruler,year,month,fornight,day,remark)>
+      <!ELEMENT ruler (#PCDATA)>
+      <!ELEMENT year (#PCDATA)>
+      <!ELEMENT month (#PCDATA)>
+      <!ELEMENT fornight (#PCDATA)>
+      <!ELEMENT day (#PCDATA)>
+      <!ELEMENT remark (#PCDATA)>
+    <!ELEMENT date (year,month,fornight,day,remark)>
+    <!ATTLIST date
+    calendar (Saka|Gupta|Valabhi|Vikrama|Burmese|Sanjaya|Other|Unknown) "Saka"
+    ><!-- liste à revoir -->
+     <!-- <!ELEMENT year (#PCDATA)>-->
+      <!--<!ELEMENT month (#PCDATA)>-->
+      <!--<!ELEMENT fornight (#PCDATA)>-->
+     <!-- <!ELEMENT day (#PCDATA)>-->
+    <!ELEMENT dateJovianCycle (cycleName,month,fornight,day,remark)>
+      <!ELEMENT cycleName (#PCDATA)>
+     <!-- <!ELEMENT month (#PCDATA)>-->
+     <!-- <!ELEMENT fornight (#PCDATA)>-->
+     <!-- <!ELEMENT day (#PCDATA)>-->
+    <!ELEMENT origDate (#PCDATA)>
+    <!ATTLIST origDate
+    notBefore CDATA #REQUIRED
+    notAfter CDATA #REQUIRED
+    when CDATA #REQUIRED
+    precision (low|medium|high) "low"
+    evidence (internal_date|lettering|nomenclature|prosopography|reign|titulature|context) #REQUIRED
+    datingMethod CDATA #FIXED "gregorian">
+     <!-- liste à définir -->
+  <!ELEMENT textFiliation (duplicateText,reissue)>
+    <!ELEMENT duplicateText (duplicateTextID+)>
+      <!ELEMENT duplicateTextID (ID,corpus,reference)>
+        <!ELEMENT ID (#PCDATA)>
+        <!--<!ELEMENT corpus (#PCDATA)>-->
+        <!ELEMENT reference (#PCDATA)>
+        <!-- the ID of the duplicate can be added as free text, but it needs the name of the project and the reference (publication or url if it's online) -->
+    <!ELEMENT reissue (textReissue,reissueTextID,reissueDate)>
+      <!ELEMENT textReissue EMPTY>
+      <!ATTLIST textReissue
+      value (yes|no) "no"
+      ><!-- not sure of that -->
+      <!ELEMENT reissueTextID (ID,corpus,reference)>
+        <!--<!ELEMENT ID (#PCDATA)>
+        <!ELEMENT corpus (#PCDATA)>
+        <!ELEMENT reference (#PCDATA)>-->
+        <!-- the ID of the duplicate can be added as free text, but it needs the name of the project and the reference (publication or url if it's online) -->
+      <!ELEMENT reissueDate EMPTY>
+      <!ATTLIST reissueDate
+      when CDATA #IMPLIED
+      ><!-- not sure of that -->
+  <!ELEMENT textSummary (p)>
+    <!ELEMENT p (#PCDATA)>
+  <!ELEMENT keywords (term+)>
+    <!ELEMENT term (#PCDATA)>
+  <!ELEMENT textRemarks (p)>
+   <!-- <!ELEMENT p (#PCDATA)>-->
+  <!ELEMENT textRights (publicationProject,textDistributionRights)>
+    <!ELEMENT publicationProject (#PCDATA)>
+    <!ELEMENT textDistributionRights (p)>
+    <!ATTLIST textDistributionRights
+    target (CC_BY_4.0|other) "CC_BY_4.0"
+    ><!-- dans l'élément p, on déclare l'auteur des métadonnées que l'on cite. Si le texte est établi par DHARMA sans citation, la licence CC BY 4.0 s'applique -->
+  <!ELEMENT relatedResources (artefactID+,surrogateID+,imageID+)>
+    <!ELEMENT artefactID EMPTY>
+    <!ATTLIST artefactID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT surrogateID EMPTY>
+    <!ATTLIST surrogateID
+    idno ID #REQUIRED
+    >
+    <!ELEMENT imageID EMPTY>
+    <!ATTLIST imageID
+    idno ID #REQUIRED
+    >
