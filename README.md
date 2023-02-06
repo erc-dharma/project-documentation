@@ -107,6 +107,7 @@ several documents and markdown files
         - DHARMA_ProsodySchema_v01.xml : main schema for prosody used to created relaxNg.
         - DHARMA_ProsodySchema_v01.rng : output in xml syntax
 - README : explain how to use the schema with DHARMA files.
+- travis.yml : script to validate the schemas automatically with travis, code works but not used anymore since we have reach the free limit. Note that the name of the file should start with a dote when used in repositories. 
 
 ## Stylesheets
 All stylesheets made for display purposes are associated to a css and a js files. Both are specific for each allowing an autonomous use, even if more difficult to keep on a long run. 
