@@ -913,7 +913,7 @@
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>-->
              <xsl:choose>
-                 <xsl:when test="not(tei:lem)">
+                 <xsl:when test="not(tei:lem) and tei:rdg[@cause='transposition']">
                      <xsl:text>[transposed segment]</xsl:text>
                  </xsl:when>
                  <xsl:otherwise>
@@ -5016,11 +5016,11 @@
                 <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml'))">
                     <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
                 </xsl:when>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml.xml'))">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml.xml')"/>
+                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml'))">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml')"/>
                 </xsl:when>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml.xml'))">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml.xml')"/>
+                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml'))">
+                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml')"/>
                 </xsl:when>
             </xsl:choose>
         </xsl:variable>
