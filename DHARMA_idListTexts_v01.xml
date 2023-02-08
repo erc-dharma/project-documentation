@@ -289,12 +289,21 @@ e.g. MDhŚ-O, MDhŚ-M
                </msIdentifier>
                <ptr/>
             </bibl>     
-            <bibl corresp="bib:Olivelle2005_01" xml:id="EdMDhS2005">
-               <abbr type="siglum">MDhŚ</abbr>
+            <bibl corresp="bib:Olivelle2005_01" xml:id="EdMaDhaSa2005">
+               <abbr type="siglum">MāDhŚā</abbr>
                <title>Mānava-Dharmaśāstra</title>
                <ptr target="https://raw.githubusercontent.com/sarit/SARIT-corpus/master/manusmrti.xml"/>
             </bibl>
-            
+            <bibl corresp="bib:Acri2017_01" xml:id="EdDhPa2017">
+               <abbr type="siglum">DhPā</abbr>
+               <title>Dharma Pātañjala</title>
+               <ptr target="https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/DHARMA_CritEdDharmaPatanjala.xml"/>
+               <msIdentifier>
+                  <settlement>Berlin</settlement>
+                  <repository>Staatsbibliothek</repository>
+                  <idno>MS Schoemann I-21</idno>
+               </msIdentifier>
+            </bibl>
          </listBibl>
       </body>
   </text>
