@@ -95,7 +95,7 @@
                   <xsl:if test="//t:handDesc//text()">
                     <xsl:element name="p"><xsl:element name="span">
                       <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                      Hands: </xsl:element>
+                      Hand Description: </xsl:element>
                     <xsl:choose>
                       <xsl:when test="//t:handDesc/t:handNote/t:p">
                         <xsl:for-each select="//t:handDesc/t:handNote/t:p">
