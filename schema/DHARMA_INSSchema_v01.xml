@@ -284,6 +284,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
@@ -1056,6 +1057,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
@@ -1829,6 +1831,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -1912,6 +1915,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -2472,6 +2476,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -2753,6 +2758,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -3372,6 +3378,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">

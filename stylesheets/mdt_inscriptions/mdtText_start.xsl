@@ -526,6 +526,9 @@
                 <xsl:when test="$language = 'Modern Burmese'">
                     <xsl:text>mya</xsl:text>
                 </xsl:when>
+                <xsl:when test="$language = 'Oriya'">
+                    <xsl:text>ori</xsl:text>
+                </xsl:when>
         </xsl:choose>
         </xsl:if>
     </xsl:template>

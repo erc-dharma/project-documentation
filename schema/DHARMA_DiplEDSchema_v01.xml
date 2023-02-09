@@ -229,6 +229,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -841,6 +842,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
@@ -1516,6 +1518,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -1597,6 +1600,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -2147,6 +2151,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -2335,6 +2340,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -2837,6 +2843,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -4107,6 +4114,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="xml:space" mode="delete"/>
@@ -4166,6 +4174,7 @@
                                 <valItem ident="tam"/>
                                 <valItem ident="tel"/>
                                 <valItem ident="vie"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="xml:space" mode="change" usage="req">

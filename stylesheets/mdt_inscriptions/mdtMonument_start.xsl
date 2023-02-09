@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
@@ -280,6 +280,9 @@
                 </xsl:when>
                 <xsl:when test="contains($language, 'Vietnamese')">
                     <xsl:text>vie</xsl:text>
+                </xsl:when>
+                <xsl:when test="$language = 'Oriya'">
+                    <xsl:text>ori</xsl:text>
                 </xsl:when>
             </xsl:choose>
         </xsl:if>
