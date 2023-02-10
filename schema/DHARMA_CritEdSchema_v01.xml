@@ -930,6 +930,7 @@
                 <valItem ident="tam"/>
                 <valItem ident="tel"/>
                 <valItem ident="vie"/>
+                <valItem ident="ori"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
