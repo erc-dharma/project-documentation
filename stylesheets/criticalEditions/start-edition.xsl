@@ -2718,8 +2718,22 @@
 
     <!--  R ! -->
     <xsl:template match="tei:text//tei:ref">
-        <xsl:element name="span">
+        <xsl:element name="a">
             <xsl:attribute name="class">ref san</xsl:attribute>
+            <xsl:attribute name="href">
+                <xsl:choose>
+                    <!-- link to the epigraphy -->
+                    <xsl:when test="matches(@target, 'DHARMA_INSIDENK')">
+                        <xsl:value-of select="@target"/>
+                    </xsl:when>
+                    <xsl:when test="matches(@target,'DHARMA_CritEd') ">
+                        <xsl:value-of select="replace(concat('https://erc-dharma.github.io/tfd-nusantara-philology/output/critical-edition/html/', @target), '.xml#', '.html#')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="@target"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -3657,8 +3671,8 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
 
                 <!-- site-specific css !-->
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
+                <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>-->
+                <link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
 
                 <!-- Font Awesome JS -->
