@@ -1315,19 +1315,20 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="unit" mode="change">
-              <valList mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="page"/>
-                <valItem ident="part"/>
                 <valItem ident="volume"/>
-                <valItem ident="note"/>
+                <valItem ident="book"/>
                 <valItem ident="item"/>
                 <valItem ident="figure"/>
                 <valItem ident="plate"/>
                 <valItem ident="table"/>
                 <valItem ident="appendix"/>
+                <valItem ident="note"/>
+                <valItem ident="part"/>
+                <valItem ident="entry"/>
+                <valItem ident="line"/>
                 <valItem ident="section"/>
-                <valItem ident="book"/>
-                <valItem ident="stanza"/>
               </valList>
             </attDef>
           </attList>
@@ -4228,6 +4229,7 @@
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
+                <valItem ident="note"/>
                 <valItem ident="omitted_elsewhere"/>
                 <valItem ident="lost_elsewhere"/>
                 <valItem ident="reformulated_elsewhere"/>
