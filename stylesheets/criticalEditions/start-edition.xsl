@@ -1713,7 +1713,7 @@
         </xsl:element>
     </xsl:template>
     <!--  lg ! -->
-    <xsl:template match="tei:lg">
+    <xsl:template match="tei:lg[not(ancestor::tei:rdg)]">
             <xsl:element name="p">
                 <xsl:attribute name="class">float-center</xsl:attribute>
                 <xsl:element name="small">
@@ -1794,6 +1794,12 @@
             </xsl:if>
         </xsl:element>
     </xsl:template>
+    
+    <xsl:template match="tei:lg[ancestor::tei:rdg]">
+        <xsl:element name="span">
+                <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
 
     <xsl:template name="lg-content">
         <xsl:element name="div">
@@ -1847,12 +1853,13 @@
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="tei:lg" mode="in-modal">
+  <!--  <xsl:template match="tei:lg[not(parent::tei:rdg)]" mode="in-modal">
         <xsl:element name="div">
             <xsl:attribute name="class">lg</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
+    
     <!--  List -->
     <xsl:template match="tei:list">
         <xsl:element name="ul">
