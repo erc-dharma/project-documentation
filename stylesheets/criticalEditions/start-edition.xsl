@@ -2920,6 +2920,7 @@
                             <xsl:text> caused by </xsl:text>
                             <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>
+                        <xsl:text>.</xsl:text>
                     </xsl:element>
         </xsl:if>
     </xsl:template>
@@ -2975,6 +2976,7 @@
                     <xsl:text> caused by </xsl:text>
                     <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
                 </xsl:if>
+                <xsl:text>.</xsl:text>
             </xsl:element>
         </xsl:if>
     </xsl:template>
@@ -3034,6 +3036,7 @@
                             <xsl:text> caused by </xsl:text>
                                 <xsl:value-of select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause"/>
                         </xsl:if>
+                            <xsl:text>.</xsl:text>
                     </xsl:element>
                 </xsl:element>
         </xsl:variable>
