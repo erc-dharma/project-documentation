@@ -4713,7 +4713,7 @@
             <xsl:for-each select="descendant-or-self::tei:note">
                 <xsl:element name="li">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
-                    <xsl:choose>
+                    <!--<xsl:choose>
                         <xsl:when test="@* except @type">
                             <xsl:variable name="soughtMS" select="substring-before(substring-after(@* except @xml:lang, 'txt:'), '_')"/>
                             <xsl:variable name="refMS" select="substring-after(@* except @xml:lang, '_')"/>
@@ -4749,7 +4749,11 @@
                                 <xsl:apply-templates/>
                             </xsl:element>
                         </xsl:otherwise>
-                    </xsl:choose>
+                    </xsl:choose>-->
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">parallel-text</xsl:attribute>
+                        <xsl:apply-templates/>
+                    </xsl:element>
                 </xsl:element>
             </xsl:for-each>
         </xsl:element>
