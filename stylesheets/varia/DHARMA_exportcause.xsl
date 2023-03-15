@@ -45,7 +45,7 @@
      <xsl:element name="div">
          <xsl:element name="h2">Cause Tables</xsl:element>
          <br/>
-         <p><xsl:value-of select="count(.//tei:app[child::tei:rdg[@cause]])"/> <xsl:text> attribute @cause found.</xsl:text></p>
+         <p><xsl:value-of select="count(.//tei:app[child::tei:rdg[@cause]])"/> <xsl:text> @cause found.</xsl:text></p>
          <br/>
          <xsl:element name="table">
              <xsl:attribute name="class">table</xsl:attribute>
@@ -113,6 +113,19 @@
                 <xsl:call-template name="tokenize-witness-list">
                     <xsl:with-param name="string" select="tei:lem/@wit"/>
                 </xsl:call-template>
+                <xsl:if test="tei:lem[@type='omitted_elsewhere']">
+                    <!--<xsl:element name="span"><xsl:attribute name="class">font-weight-bold</xsl:attribute> transmitted in </xsl:element>-->
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold<xsl:if test="./following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
+                        <xsl:call-template name="tokenize-witness-list">
+                            <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                            
+                            <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                            <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
+                            
+                        </xsl:call-template>
+                    </xsl:element>
+                </xsl:if>
                 <xsl:if test="tei:lem/@type">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-italic</xsl:attribute>
@@ -672,6 +685,67 @@
                 <xsl:value-of select="//tei:listBibl/tei:biblStruct[@xml:id=$string-to-siglum]/tei:author/tei:surname"/>
             </xsl:element>
         </xsl:element>
+    </xsl:template>
+    
+    <!--  add ! -->
+    <xsl:template match="tei:add">
+        <xsl:element name="span">
+            <xsl:attribute name="class">ed-insertion</xsl:attribute> 
+            <xsl:apply-templates />
+        </xsl:element>
+    </xsl:template>
+    
+    <!--  G ! -->
+    <xsl:template match="tei:g">
+        <xsl:choose>
+            <xsl:when test="matches(., '..')">
+                <xsl:text>||</xsl:text>
+            </xsl:when>
+            <xsl:when test="matches(., '.')">
+                <xsl:text>|</xsl:text>
+            </xsl:when>
+            <xsl:when test="matches(., '§')">
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">symbol</xsl:attribute>
+                    <xsl:value-of select="@type"/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <!-- space ! -->
+    <xsl:template match="tei:space">
+        <xsl:choose>
+            <xsl:when test="@type='binding-hole'">
+                <xsl:text>◯</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    
+    <!--  lb ! -->
+    <xsl:template match="tei:lb">
+        <xsl:element name="span">
+            <xsl:attribute name="class">text-muted lineation</xsl:attribute>
+            <xsl:value-of select="@n"/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!--  seg ! -->
+    <xsl:template match="tei:seg">
+        <xsl:choose>
+            <xsl:when test="@type='highlight'">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="@type='interpolation'">
+                <xsl:apply-templates/>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
     
 </xsl:stylesheet>
