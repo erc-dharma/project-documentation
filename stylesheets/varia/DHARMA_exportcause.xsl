@@ -8,7 +8,15 @@
 
     <xsl:output indent="no" encoding="UTF-8"/>
 
-    <!-- Written by Axelle Janiak for DHARMA, starting February 2021 -->
+    <!-- Written by Axelle Janiak for DHARMA, starting Mars 2023 -->
+    
+    <xsl:variable name="edition-id">
+        <xsl:value-of select="//tei:TEI[@type='edition']/@xml:id"/>
+    </xsl:variable>
+    
+    <xsl:variable name="edition-root">
+        <xsl:value-of select="//tei:TEI[@type='edition']"/>
+    </xsl:variable>
 
     <xsl:template match="/">
         <xsl:element name="html">
@@ -37,6 +45,8 @@
      <xsl:element name="div">
          <xsl:element name="h2">Cause Tables</xsl:element>
          <br/>
+         <p><xsl:value-of select="count(.//tei:app[child::tei:rdg[@cause]])"/> <xsl:text> attribute @cause found.</xsl:text></p>
+         <br/>
          <xsl:element name="table">
              <xsl:attribute name="class">table</xsl:attribute>
              <xsl:element name="thead">
@@ -53,45 +63,84 @@
                          <xsl:attribute name="scope">col</xsl:attribute>
                          <xsl:text>Variants</xsl:text>
                      </xsl:element> 
+                     <xsl:element name="th">
+                         <xsl:attribute name="scope">col</xsl:attribute>
+                         <xsl:text>Notes</xsl:text>
+                     </xsl:element> 
                  </xsl:element>
              </xsl:element>
              <xsl:element name="tbody">
-                 <xsl:apply-templates select=".//tei:app[child::tei:rdg[@cause]]"/>
+                 <xsl:apply-templates select=".//tei:app[child::tei:rdg[@cause]]">
+                     <xsl:sort select="distinct-values(./child::tei:rdg/@cause)"/>
+                 </xsl:apply-templates>
              </xsl:element>
          </xsl:element>
      </xsl:element>
     </xsl:template>
-
-    <!-- item -->
+    
+    <xsl:template match="tei:app[not(child::tei:rdg[@cause])]">
+        <xsl:choose>
+            <xsl:when test="parent::tei:lem">
+                <xsl:apply-templates select="./tei:lem"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="."/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
     <xsl:template match="tei:app[child::tei:rdg[@cause]]">
         <xsl:element name="tr">
             <xsl:element name="td">
-                <xsl:apply-templates select="tei:rdg/@cause"/>
+                <xsl:choose>
+                    <xsl:when test="count(tei:rdg/@cause) &gt; 1">
+                        <xsl:for-each select="distinct-values(tei:rdg/@cause)">
+                            <xsl:apply-templates select="."/>
+                            <br/>
+                        </xsl:for-each>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="tei:rdg/@cause"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:element>
             <xsl:element name="td">
                 <xsl:element name="span">
                     <xsl:attribute name="class"><xsl:call-template name="lem-type"/></xsl:attribute>
                     <xsl:apply-templates select="tei:lem"/>
+                      
                 </xsl:element>
-                <xsl:text> (</xsl:text>
-                <xsl:apply-templates select="tei:lem/@wit"/>
+                <xsl:call-template name="tokenize-witness-list">
+                    <xsl:with-param name="string" select="tei:lem/@wit"/>
+                </xsl:call-template>
                 <xsl:if test="tei:lem/@type">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-italic</xsl:attribute>
                         <xsl:call-template name="apparatus-type"/>
                     </xsl:element>
                 </xsl:if>
-                <xsl:text>)</xsl:text>
             </xsl:element>
             <xsl:element name="td">
                 <xsl:for-each select="tei:rdg">
                     <xsl:apply-templates select="."/>
-                    <xsl:text> (</xsl:text>
-                    <xsl:apply-templates select="./@wit"/>
-                    <xsl:text>)</xsl:text>
+                    <xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="./@wit"/>
+                    </xsl:call-template>
                     <br/>
                 </xsl:for-each>
             </xsl:element>
+            <xsl:element name="td">
+                <xsl:for-each select="tei:note[not(@type='altLem')]">
+                    <xsl:apply-templates/>
+                </xsl:for-each>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="tei:foreign">
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-italic</xsl:attribute>
+            <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
 
@@ -382,4 +431,247 @@
         </xsl:choose>
     </xsl:template>
 
+    <xsl:template name="tokenize-witness-list">
+        <xsl:param name="string"/>
+        <xsl:param name="witdetail-string"/>
+        <xsl:param name="witdetail-type"/>
+        <xsl:param name="witdetail-text"/>
+        <xsl:param name="wit-hand"/>
+        <xsl:param name="tpl"/>
+        <xsl:choose>
+            <xsl:when test="contains($string, ' ')">
+                <xsl:variable name="first-item"
+                    select="translate(normalize-space(substring-before($string, ' ')), '#', '')"/>
+                <xsl:if test="$first-item">
+                    <xsl:call-template name="make-bibl-link">
+                        <xsl:with-param name="target" select="$first-item"/>
+                        <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
+                        <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
+                        <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                        <xsl:with-param name="wit-hand" select="$wit-hand"/>
+                        <xsl:with-param name="tpl" select="$tpl"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="substring-after($string, ' ')"/>
+                        <xsl:with-param name="witdetail-string" select="$witdetail-string"/>
+                        <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
+                        <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                        <xsl:with-param name="wit-hand" select="$wit-hand"/>
+                        <xsl:with-param name="tpl" select="$tpl"/>
+                    </xsl:call-template>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:choose>
+                    <xsl:when test="$string = ''">
+                        <xsl:text/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="make-bibl-link">
+                            <xsl:with-param name="target" select="translate($string, '#', '')"/>
+                            <xsl:with-param name="witdetail-string" select="translate($witdetail-string, '#', '')"/>
+                            <xsl:with-param name="witdetail-type" select="$witdetail-type"/>
+                            <xsl:with-param name="witdetail-text" select="$witdetail-text"/>
+                            <xsl:with-param name="wit-hand" select="$wit-hand"/>
+                            <xsl:with-param name="tpl" select="$tpl"/>
+                        </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <!--  Make bibliography link ! -->
+    <xsl:template name="make-bibl-link">
+        <xsl:param name="target"/>
+        <xsl:param name="witdetail-string"/>
+        <xsl:param name="witdetail-type"/>
+        <xsl:param name="witdetail-text"/>
+        <xsl:param name="wit-hand"/>
+        <xsl:param name="tpl"/>
+        <!-- Changement dans la gestion des espaces donc $tpl='content-ptr' n'est plus nécessaire -->
+        <xsl:if test="not($tpl='content-pb')">
+            <xsl:text> </xsl:text>
+        </xsl:if>
+        <xsl:element name="a">
+            <xsl:attribute name="class">siglum</xsl:attribute>
+            <xsl:attribute name="href">
+                <xsl:text>#</xsl:text>
+                <xsl:value-of select="$target"/>
+            </xsl:attribute>
+            
+            <xsl:choose>
+                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr">
+                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$target"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            
+        </xsl:element>
+        <xsl:if test="$target = $witdetail-string">
+            
+            <xsl:element name="sub">
+                
+                <xsl:value-of select="$witdetail-type"/>
+                <xsl:if test="$wit-hand !=''">
+                    <xsl:choose>
+                        <xsl:when test="contains($wit-hand, 'H1')">
+                            <xsl:text>-pm</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="contains($wit-hand, 'H2')">
+                            <xsl:text>-sm</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:if>
+            </xsl:element>
+            <xsl:if test="$witdetail-text != ''">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">witDetail-line font-weight-normal</xsl:attribute>
+                    <xsl:text> (</xsl:text>
+                    <xsl:apply-templates select="$witdetail-text"/>
+                    <xsl:text>)</xsl:text>
+                </xsl:element></xsl:if>
+        </xsl:if>
+    </xsl:template>
+    
+    <!-- ptr -->
+    <xsl:template match="tei:ptr[not(parent::tei:bibl)]">
+        <xsl:variable name="MSlink" select="@target"/>
+        <xsl:variable name="rendcontent" select="@rend"/>
+        <xsl:choose>
+            <xsl:when test="contains($MSlink, ' ')">
+                <xsl:variable name="first-item"
+                    select="normalize-space(substring-before($MSlink, ' '))"/>
+                <xsl:if test="$first-item">
+                    <xsl:call-template name="content-ptr">
+                        <xsl:with-param name="MSlink" select="$first-item"/>
+                        <xsl:with-param name="rendcontent" select="$rendcontent"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="content-ptr">
+                        <xsl:with-param name="MSlink" select="substring-after($MSlink, ' ')"/>
+                        <xsl:with-param name="rendcontent" select="$rendcontent"/>
+                    </xsl:call-template>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="content-ptr">
+                    <xsl:with-param name="MSlink" select="$MSlink"/>
+                    <xsl:with-param name="rendcontent" select="$rendcontent"/>
+                </xsl:call-template>
+            </xsl:otherwise>
+        </xsl:choose>
+        <!--</xsl:element>-->
+    </xsl:template>
+    
+    <xsl:template name="content-ptr">
+        <xsl:param name="MSlink"/>
+        <xsl:param name="rendcontent"/>
+        <xsl:variable name="rootHand" select="//tei:handDesc"/>
+        <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
+        <xsl:choose>
+            <xsl:when test="contains($MSlink, 'txt:')">
+                <xsl:variable name="MSlink-part" select="substring-after($MSlink, 'txt:')"/>
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:ptr[1]/@target"/></xsl:attribute>
+                    <xsl:if test="$rendcontent= 'title'"><xsl:attribute name="class">font-italic</xsl:attribute></xsl:if>
+                    <xsl:if test="$rendcontent= 'siglum'"><xsl:attribute name="class">font-weight-bold</xsl:attribute></xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="$rendcontent= 'siglum'">
+                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:abbr[@type='siglum']"/></xsl:when>
+                        <xsl:when test="$rendcontent= 'title'">
+                            <xsl:apply-templates select="document($IdListTexts)//tei:bibl[@xml:id=$MSlink-part]/child::tei:title"/></xsl:when>
+                    </xsl:choose>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="contains($MSlink, 'bib:')">
+                <xsl:call-template name="source-siglum">
+                    <xsl:with-param name="string-to-siglum" select="substring-after($MSlink, 'bib:')"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="contains($MSlink, $edition-id)"> 
+                <xsl:variable name="targetLink" select="substring-after($MSlink, '#')"/>
+                <xsl:message><xsl:value-of select="$edition-id"/></xsl:message>
+                <xsl:message><xsl:value-of select="$MSlink"/></xsl:message>
+                <xsl:message><xsl:value-of select="$targetLink"/></xsl:message>
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="$MSlink"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:choose>
+                        <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='div']/@type">
+                            <xsl:value-of select="//tei:*[@xml:id =$targetLink]/@type"/>
+                            <xsl:text> </xsl:text>
+                            <xsl:value-of select="//tei:*[@xml:id =$targetLink]/@n"/>
+                        </xsl:when>
+                        <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='p']">
+                            <xsl:text>§</xsl:text>
+                            <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][ancestor::tei:div[@type = 'chapter'][1] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])]">
+                                <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor::tei:div[@type = 'chapter']/@n"/>
+                                <xsl:text>.</xsl:text>
+                            </xsl:if>
+                            <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][parent::tei:div[@type = 'dyad']]">
+                                <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/parent::tei:div[@type = 'dyad']/@n"/>
+                                <xsl:text>.</xsl:text>
+                            </xsl:if>
+                            <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][parent::tei:div[@type = 'liminal']]">
+                                <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/parent::tei:div[@type = 'liminal']/@n"/>
+                                <xsl:text>.</xsl:text>
+                            </xsl:if>
+                            <xsl:if test="//tei:*[@xml:id =$targetLink][local-name() ='p'][ancestor-or-self::tei:div[@type = 'interpolation']]">
+                                <xsl:choose>
+                                    <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor-or-self::tei:div[@type = 'interpolation']/@n">
+                                        <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor-or-self::tei:div[@type = 'interpolation']/@n"/>
+                                        <xsl:text>.</xsl:text>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="//tei:*[@xml:id =$targetLink][local-name() ='p']/ancestor-or-self::tei:div[@type = 'interpolation']/preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
+                                        <xsl:text>*.</xsl:text>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:if>                                                              
+                            <xsl:value-of select="(count(//tei:*[@xml:id =$targetLink][local-name() ='p']/preceding-sibling::tei:p) + 1)" />
+                        </xsl:when>
+                        <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='lg']">
+                            <xsl:text>stanza </xsl:text>
+                            <xsl:number level="any" format="1" count="tei:lg"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>Issue in the code</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:element>
+            </xsl:when>
+            <xsl:when test="contains($MSlink, '_H')">
+                <xsl:variable name="hand-id" select="substring-after($MSlink, '#')"/>
+                <xsl:apply-templates select="$rootHand/tei:handNote[@xml:id = $hand-id]/tei:abbr"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="$MSlink"/>
+                        <xsl:with-param name="tpl" select="'content-ptr'"/>
+                    </xsl:call-template>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <!-- Siglum : fetch the siglum to display -->
+    <xsl:template name="source-siglum">
+        <xsl:param name="string-to-siglum"/>
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            <xsl:text>Ed</xsl:text>
+            <xsl:element name="sup">
+                <xsl:attribute name="class">ed-siglum</xsl:attribute>
+                <xsl:value-of select="//tei:listBibl/tei:biblStruct[@xml:id=$string-to-siglum]/tei:author/tei:surname"/>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
+    
 </xsl:stylesheet>
