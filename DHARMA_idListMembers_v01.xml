@@ -45,6 +45,7 @@
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#argr" when="2023-03-31">Added Tyassanti Kusumo Dewanti's ID.</change>
 			<change who="#axja" when="2021-11-25">Added Zakariya Pamuji Aminullah's ID.</change>
 			<change who="#argr" when="2021-06-01">Added Amandine Wattelier-Bricout's ID.</change>
 			<change who="#argr" when="2021-05-20">Added Wayan Jarrah Sastrawan's ID.</change>
@@ -562,6 +563,11 @@
 					<idno type="IdRef">https://www.idref.fr/177429623</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
 					<idno type="IdHAL">vincent-tournier</idno>
+				</person>
+				<person xml:id="tykd">
+					<persName>
+						<name>Tyassanti Kusumo Dewanti</name>
+					</persName>
 				</person>
 				<person xml:id="utve">
 					<persName>
