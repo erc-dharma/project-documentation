@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:t="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -261,7 +261,7 @@
     <span>
       <xsl:if test="ancestor::t:app">
         <xsl:if test="preceding-sibling::t:lem and $parm-leiden-style='dharma'">
-        <xsl:text>• </xsl:text>
+        <xsl:text> • </xsl:text>
       </xsl:if>
       <xsl:if test="preceding-sibling::t:rdg and following-sibling::t:rdg">
                 <xsl:text>• </xsl:text>
