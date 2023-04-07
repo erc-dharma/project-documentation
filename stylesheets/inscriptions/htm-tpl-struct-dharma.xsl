@@ -104,9 +104,7 @@
                         <xsl:apply-templates select="//t:handDesc/t:handNote/t:p"/>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:for-each select="//t:handDesc/t:p">
-                            <xsl:apply-templates/>
-                        </xsl:for-each>
+                          <xsl:apply-templates select="//t:handDesc"/>
                       </xsl:otherwise>
                     </xsl:choose>
                     </xsl:element>
