@@ -267,13 +267,10 @@ Pb de lb[@break=no] entre deux textpart
                              and preceding-sibling::node()[1][local-name() ='fw'])]">
             <xsl:element name="sup">
                <xsl:text> #</xsl:text>
-               <xsl:value-of select="(count(preceding-sibling::t:*[@n =$refnum][local-name() ='fw']) + 1)"/>
+               <!--<xsl:value-of select="(count(preceding-sibling::t:*[@n =$refnum][local-name() ='fw']) + 1)"/>-->
               <!--<xsl:text>fw: </xsl:text>-->
-               <xsl:text> </xsl:text>
-               <!--<xsl:if test="preceding-sibling::t:fw[1][child::t:supplied]">[</xsl:if>-->
+               <!--<xsl:text> </xsl:text>-->
               <xsl:value-of select="preceding-sibling::t:fw[1]/child::node()"/>
-              <!-- <xsl:if test="preceding-sibling::t:fw[1][child::t:supplied]">]</xsl:if>
-              <xsl:text> </xsl:text>-->
             </xsl:element>
           </xsl:if>
         </xsl:when>
