@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-02-15T10:50:15Z. .
+Schema generated from ODD source 2023-04-11T09:08:13Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -7388,6 +7388,17 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
          </attribute>
       </optional>
    </define>
+   <define name="tei_att.textCritical.attribute.type">
+      <optional>
+         <attribute name="type">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the reading according to some useful typology.
+Sample values include: 1] substantive; 2] orthographic</a:documentation>
+            <data type="token">
+               <param name="pattern">[^\p{C}\p{Z}]+</param>
+            </data>
+         </attribute>
+      </optional>
+   </define>
    <define name="tei_app">
       <element name="app">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(apparatus entry) contains one entry in a critical apparatus, with an optional lemma and usually one or more readings or notes on the relevant passage. [12.1.1. The Apparatus Entry]</a:documentation>
@@ -7400,6 +7411,7 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
                   <ref name="tei_model.rdgLike"/>
                   <ref name="tei_model.noteLike"/>
                   <ref name="tei_witDetail"/>
+                  <ref name="tei_rdgGrp"/>
                </choice>
             </zeroOrMore>
          </group>
@@ -7720,6 +7732,65 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
                   <value>1</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>2</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
+            </attribute>
+         </optional>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_rdgGrp">
+      <element name="rdgGrp">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reading group) within a textual variation, groups two or more readings perceived to have a genetic relationship or other affinity. [12.1. The Apparatus Entry, Readings, and Witnesses]</a:documentation>
+         <group>
+            <optional>
+               <ref name="tei_lem"/>
+            </optional>
+            <zeroOrMore>
+               <choice>
+                  <ref name="tei_model.rdgLike"/>
+                  <ref name="tei_model.noteLike"/>
+                  <ref name="tei_witDetail"/>
+                  <ref name="tei_rdgGrp"/>
+               </choice>
+            </zeroOrMore>
+         </group>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="DHARMA_CritEdSchema_v01-rdgGrp-only1lem-constraint-assert-54">
+            <rule context="tei:rdgGrp">
+               <sch:assert xmlns="http://www.tei-c.org/ns/1.0"
+                           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                           test="count(tei:lem) &lt; 2">Only one &lt;lem&gt; element may appear within a &lt;rdgGrp&gt;</sch:assert>
+            </rule>
+         </pattern>
+         <ref name="tei_att.textCritical.attribute.type"/>
+         <optional>
+            <attribute name="cause">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the cause for the variant reading, according to any appropriate typology of possible origins.</a:documentation>
+               <choice>
+                  <value>eye-skip</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>line_omission</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>haplography</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>dittography</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>lexical</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>morphological</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>ordinal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>syntactic</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>subtractive</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>additive</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>orthographical</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>transposition</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>

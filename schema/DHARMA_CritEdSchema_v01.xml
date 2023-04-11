@@ -57,10 +57,11 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="part:axja" when="2022-10-28">Adding a constraint to check for empty witDetail, deleting @type="reformulation" with note and adding @type='retained' on lem</change>
-      <change who="part:axja" when="2022-09-23">Updating rules related to the new transposition model</change>
-      <change who="part:axja" when="2022-09-08"
-        >Adding the @xml:id for msFrag and msPart</change>
+      <change who="part:axja" when="2022-10-28"
+        >Adding a constraint to check for empty witDetail, deleting @type="reformulation" with note and adding @type='retained' on lem</change>
+      <change who="part:axja" when="2022-09-23"
+        >Updating rules related to the new transposition model</change>
+      <change who="part:axja" when="2022-09-08">Adding the @xml:id for msFrag and msPart</change>
       <change who="part:axja" when="2022-09-01"
         >Changing the type of list for @rend hyphen and circle. Adding the value orthographical</change>
       <change who="part:axja" when="2022-08-26"
@@ -118,7 +119,7 @@
         <moduleRef key="verse" except="caesura metDecl metSym rhyme"/>
         <moduleRef key="gaiji"
           except="charName charProp glyph glyphName localName localProp mapping unicodeName unicodeProp unihanProp value"/>
-        <moduleRef key="textcrit" except="rdgGrp wit witEnd witStart"/>
+        <moduleRef key="textcrit" except="wit witEnd witStart"/>
         <elementSpec ident="authority" module="header" mode="change">
           <attList>
             <attDef ident="cert" mode="delete"/>
@@ -1829,11 +1830,9 @@
             <constraint><sch:rule context="tei:l[@corresp]"><sch:assert
               test="ancestor::tei:rdg[preceding-sibling::tei:lem[@cause='transposition']]"
               >The attribute @corresp on a line verse can only be used inside a rdg whose preceding sibling bears @cause='transposition'.</sch:assert>
-            </sch:rule>
-              <sch:rule context="tei:l[not(@corresp)]">
-                <sch:assert test="@n">@n is mandatory on every line verse, except when @corresp in used for a transposition.</sch:assert>
-              </sch:rule>
-            </constraint>
+              </sch:rule> <sch:rule context="tei:l[not(@corresp)]"> <sch:assert test="@n"
+              >@n is mandatory on every line verse, except when @corresp in used for a transposition.</sch:assert>
+              </sch:rule> </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4079,7 +4078,8 @@
         </elementSpec>
         <elementSpec ident="app" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="app-lem">
-            <constraint><sch:rule context="tei:app[not(parent::tei:listApp[@type='parallels'])][not(child::tei:rdg[@cause='transposition'])]"
+            <constraint><sch:rule
+              context="tei:app[not(parent::tei:listApp[@type='parallels'])][not(child::tei:rdg[@cause='transposition'])]"
               ><sch:assert test="child::tei:lem"
               >The element lem is mandatory within an app entry, except for the transposition</sch:assert></sch:rule><sch:rule
               context="tei:app[parent::tei:listApp[@type='parallels']][@type]"><sch:report
@@ -4183,7 +4183,7 @@
               test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule><sch:rule
               context="tei:lem[@type]"><sch:report test="@wit"
-                >No @wit should be given on a lem with @type, with the exception of @cause='transposition' </sch:report></sch:rule><sch:rule
+              >No @wit should be given on a lem with @type, with the exception of @cause='transposition' </sch:report></sch:rule><sch:rule
               context="tei:lem[child::tei:app]"><sch:report test="not(@wit or @wit)"
               >An element lem containing an embedded apparatus entry should have an attribute @type or @wit</sch:report></sch:rule></constraint>
           </constraintSpec>
@@ -4324,9 +4324,10 @@
               context="child::tei:span[@type='omissionStart|omissionEnd']"><sch:assert
               test="@cause='eye-skip'"
               >The only value allowed with @cause for a rdg containing a span[@type='omissionStart'] or span[@type='omissionEnd'] is 'eyeskip'.</sch:assert></sch:rule>
-            <sch:rule context="tei:rdg[@cause='transposition']">
-              <sch:report test="preceding-sibling::tei:lem[1]">rdg[@cause='transposition'] is only allowed when there is no lem.</sch:report>
-            </sch:rule></constraint>
+              <sch:rule context="tei:rdg[@cause='transposition']"> <sch:report
+              test="preceding-sibling::tei:lem[1]"
+              >rdg[@cause='transposition'] is only allowed when there is no lem.</sch:report>
+              </sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4418,10 +4419,8 @@
               test="every $wit-witDetail in $wit-witDetails satisfies contains('preceding-sibling::tei:*[1]/@wit', $wit-witDetail)"
               >
                   The content of the witDetail's @wit attribute must also be declared as @wit of the preceding sibling. 
-                </sch:assert>
-              <sch:report test="./node()">WitDetail should be an empty element</sch:report>
-            </sch:rule>
-            </constraint>
+                </sch:assert> <sch:report test="./node()"
+              >WitDetail should be an empty element</sch:report> </sch:rule> </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4774,12 +4773,10 @@
         </elementSpec>
         <elementSpec ident="msIdentifier" mode="change">
           <constraintSpec scheme="schematron" ident="identifier">
-            <constraint>
-              <sch:rule context="tei:msIdentifier[not(following-sibling::tei:msFrag)]"
+            <constraint> <sch:rule context="tei:msIdentifier[not(following-sibling::tei:msFrag)]"
               ><sch:assert test="child::tei:settlement"
               >The msIdentifier should contain settlement, when not associated with msFrag.</sch:assert></sch:rule><sch:rule
-                context="tei:msIdentifier[child::tei:repository]"><sch:assert
-              test="child::tei:idno"
+              context="tei:msIdentifier[child::tei:repository]"><sch:assert test="child::tei:idno"
               >If repository is given, msIdentifier should an idno</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -5522,7 +5519,47 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
           </attList>
-        </elementSpec>    
+        </elementSpec>
+        <elementSpec ident="rdgGrp" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global" mode="delete"/>
+          </classes>
+          <attList>
+            <attDef ident="varSeq" mode="delete"/>
+            <attDef ident="require" mode="delete"/>
+            <attDef ident="hand" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="cause" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="eye-skip"/>
+                <valItem ident="line_omission"/>
+                <valItem ident="haplography"/>
+                <valItem ident="dittography"/>
+                <valItem ident="lexical"/>
+                <valItem ident="morphological"/>
+                <valItem ident="ordinal"/>
+                <valItem ident="syntactic"/>
+                <valItem ident="subtractive"/>
+                <valItem ident="additive"/>
+                <valItem ident="orthographical"/>
+                <valItem ident="transposition"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
       </schemaSpec>
     </body>
   </text>
