@@ -326,12 +326,12 @@ dd {
     position: absolute;
     }
     
-.linenumber {
+/*.linenumber {
     left: -4em;
     padding-right: 0.2em;
     position: absolute;
     }
-    
+    */
 .linenumberbroken {
     left: -4em;
     padding-right: 0.2em;
