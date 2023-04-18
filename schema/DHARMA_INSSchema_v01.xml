@@ -69,7 +69,7 @@
             <schemaSpec ident="dharma" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
                 source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
                 <!--source="https://svn.code.sf.net/p/epidoc/code/trunk/schema/tei-epidoc.xml"
-                
+
                 -->
                 <!--       MODULES USED BY THE DHARMA SCHEMA       -->
                 <moduleRef key="core"
@@ -3584,29 +3584,29 @@
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:placeName[@type='region']"><sch:assert
-                            test="@subtype='district' or @subtype='province' or @subtype='country'"
+                            test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined'"
                             >For @type="region", the @subtype should be one of the
-                                    following values: @subtype='district' or @subtype='province' or @subtype='country'</sch:assert></sch:rule><sch:rule
+                                    following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='settlement']"><sch:assert
-                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp'"
+                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined'"
                             >For @type="settlement", the @subtype should be one of the
-                                    following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp'</sch:assert></sch:rule><sch:rule
+                                    following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='builtPlace']"><sch:assert
-                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'"
+                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'"
                             >For @type="builtPlace", the @subtype should be one of the following
-                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='cultivation']"><sch:assert
-                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus'"
+                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined'"
                             >For @type="cultivation", the @subtype should be one of the following
-                                    values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus'</sch:assert></sch:rule><sch:rule
+                                    values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='hydrographic']"><sch:assert
-                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal'"
+                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined'"
                             >For @type="hydrographic", the @subtype should be one of the following
-                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='naturalPlace']"><sch:assert
-                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain'"
+                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined'"
                             >For @type="naturalPlace", the @subtype should be one of the following
-                                    values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain'</sch:assert></sch:rule></constraint>
+                                    values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined'</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3656,8 +3656,8 @@
                             <valList type="open" mode="change">
                                 <valItem ident="region"/>
                                 <valItem ident="settlement"/>
-                                <valItem ident="builtPlace"/>  
-                           
+                                <valItem ident="builtPlace"/>
+                                <valItem ident="cultivation"/>
                                 <valItem ident="hydrographic"/>
                                 <valItem ident="naturalPlace"/>
                                 <valItem ident="undetermined"/>
@@ -3704,7 +3704,7 @@
                                 <valItem ident="lake"/>
                                 <valItem ident="mount"/>
                                 <valItem ident="undetermined"/>
-                                <!-- 
+                                <!--
                                 <valItem ident="cave"/>
                                 <valItem ident="road"/>
                                 -->
@@ -4135,26 +4135,26 @@
                                     with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
                                 </sch:assert></sch:rule><sch:rule
                                     context="tei:rs[@type='tithi']"><sch:report test="@key"
-                            >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
+                            >@key shouldn't be used with tei:rs[@type='tithi'], favor @n.
                                 </sch:report></sch:rule><sch:rule
                                     context="tei:rs[@type='naksatra']"><sch:assert
                             test="@key='krttika'or @key='rohini'or @key='mrgasirsa'or @key='ardra'or @key='punarvasu'or @key='pusya'or @key='aslesa'or @key='magha'or @key='purva-phalguni'or @key='uttara-phalguni'or @key='hasta'or @key='citra'or @key='svati'or @key='visakha'or @key='anuradha'or @key='jyestha'or @key='mula'or @key='purva-asadha'or @key='uttara-asadha'or @key='sravana'or @key='dhanistha'or @key='satabhisaj'or @key='purva-bhadrapada'or @key='uttara-bhadrapada'or @key='revati'or @key='asvini'or @key='bharani'"
                             >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert></sch:rule><sch:rule
                                 context="tei:rs[@type='sadvara']"><sch:assert
                             test="@key='tunglai' or @key='hariyang' or @key='wurukung' or @key='paniruan' or @key='was' or @key='mawulu'"
-                            >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
+                            >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
                             </sch:assert></sch:rule><sch:rule
                                 context="tei:rs[@type='pancavara']"><sch:assert
                             test="@key='pahing' or @key='pon' or @key='wagai' or @key='kaliwuan' or @key='umanis'"
-                            >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
+                            >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis.
                                 </sch:assert></sch:rule><sch:rule
                                     context="tei:rs[@type='season']"><sch:assert
                             test="@key='hemanta' or @key='grisma' or @key='varsa'"
-                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
+                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa.
                                 </sch:assert></sch:rule><sch:rule
                                     context="tei:rs[@type='wuku']"><sch:assert
                             test="@key='sinta' or @key='landep' or @key='wukir' or @key='kurantil' or @key='tolu' or @key='gumbreg' or @key='warigalit' or @key='warigagung' or @key='julung' or @key='sungsang' or @key='galungan' or @key='dungulan' or @key='kuningan' or @key='langki' or @key='madasiha' or @key='pujut' or @key='pahang' or @key='kuruwlut' or @key='marakih' or @key='tambir' or @key='madangkungan' or @key='mahatal' or @key='wuyai' or @key='manahil' or @key='prangbakat' or @key='balamuki' or @key='wugu' or @key='wayang' or @key='kulawu' or @key='dukut' or @key='watugunung'"
-                            >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
+                            >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung.
                                 </sch:assert></sch:rule><sch:rule
                                     context="tei:rs[@type='chinese']"><sch:assert
                             test="@key='rat' or @key='buffalo-ox' or @key='tiger' or @key='hare-cat' or @key='dragon' or @key='snake' or @key='horse' or @key='goat' or @key='monkey' or @key='cock' or @key='dog' or @key='pig'"
