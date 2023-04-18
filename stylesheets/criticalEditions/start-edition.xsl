@@ -913,7 +913,7 @@
                             <xsl:with-param name="location" select="'apparatus'"/>
                         </xsl:call-template>-->
              <xsl:choose>
-                 <xsl:when test="not(tei:lem) and tei:rdg[@cause='transposition']">
+                 <xsl:when test="not(tei:lem) and tei:rdg[@cause='transposition'] or tei:rdgGrp[@cause='transposition']">
                      <xsl:text>[transposed segment]</xsl:text>
                  </xsl:when>
                  <xsl:otherwise>
@@ -3640,6 +3640,7 @@
     </xsl:template>
 
     <!-- Check feature -->
+    <!-- Note that any element <hi> only used with the @rend="check" will be deleted at some point. On other elements, only the @rend attribute will be deleted, except if several values are given in the @rend. -->
     <xsl:template match="tei:*[not(local-name()=('app'))][@rend='check']">
         <xsl:element name="span">
             <xsl:attribute name="class">mark</xsl:attribute>

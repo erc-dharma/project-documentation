@@ -3596,7 +3596,7 @@
                             >For @type="builtPlace", the @subtype should be one of the following
                                 values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='cultivation']"><sch:assert
-                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchard'"
+                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus'"
                             >For @type="cultivation", the @subtype should be one of the following
                                     values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='hydrographic']"><sch:assert
@@ -3652,7 +3652,7 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="type" mode="change" usage="req">
+                        <attDef ident="type" mode="change">
                             <valList type="open" mode="change">
                                 <valItem ident="region"/>
                                 <valItem ident="settlement"/>
@@ -3660,9 +3660,10 @@
                                 <valItem ident="cultivation"/>
                                 <valItem ident="hydrographic"/>
                                 <valItem ident="naturalPlace"/>
+                                <valItem ident="undetermined"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" mode="change" usage="req">
+                        <attDef ident="subtype" mode="change">
                             <valList type="open" mode="change">
                                 <valItem ident="province"/>
                                 <valItem ident="district"/>
@@ -3691,6 +3692,18 @@
                                 <valItem ident="grove"/>
                                 <valItem ident="tree"/>
                                 <valItem ident="montain"/>
+                                <valItem ident="land"/>
+                                <valItem ident="nurcery"/>
+                                <valItem ident="island"/>
+                                <valItem ident="establishment"/>
+                                <valItem ident="fieldIrrigated"/>
+                                <valItem ident="fieldDry"/>
+                                <valItem ident="fieldSalted"/>
+                                <valItem ident="wetland"/>
+                                <valItem ident="pool"/>
+                                <valItem ident="lake"/>
+                                <valItem ident="mount"/>
+                                <valItem ident="undetermined"/>
                                 <!-- 
                                 <valItem ident="cave"/>
                                 <valItem ident="road"/>
