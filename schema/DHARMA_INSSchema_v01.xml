@@ -3656,8 +3656,8 @@
                             <valList type="open" mode="change">
                                 <valItem ident="region"/>
                                 <valItem ident="settlement"/>
-                                <valItem ident="builtPlace"/>
-                                <valItem ident="cultivation"/>
+                                <valItem ident="builtPlace"/>  
+                           
                                 <valItem ident="hydrographic"/>
                                 <valItem ident="naturalPlace"/>
                                 <valItem ident="undetermined"/>
