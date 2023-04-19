@@ -18,6 +18,9 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2023-04-19">Completing Salome addition and creating a schematron rule for @type undertermined</change>
+            <change who="part:sapi" when="2023-04-18">Learning to add value in attributes and updating the schematron rules</change>
+            <change who="part:axja" when="2023-04-18">Adding values for placeName - See Salome research</change>
             <change who="part:axja" when="2022-10-18">adding seg/@rend="check"</change>
             <change who="part:axja" when="2022-06-15">Updating the values for abbreviations</change>
             <change who="part:axja" when="2022-04-08">Changing the values for placeName</change>
@@ -3189,8 +3192,8 @@
                             >Note should the last element of the
                             biliography</sch:report></sch:rule><sch:rule
                             context="tei:note[parent::tei:app]"><sch:report
-                            test="not(following-sibling::tei:note)"
-                            >Note(s) should the last element
+                            test="following-sibling::tei:*[not(local-name () = 'note')]"
+                            >Note(s) be should the last element
                             of the apparatus entry</sch:report></sch:rule><sch:rule
                             context="tei:note"><sch:report test="child::tei:note"
                             >Note(s) may not
@@ -3584,29 +3587,33 @@
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:placeName[@type='region']"><sch:assert
-                            test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined'"
+                            test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'"
                             >For @type="region", the @subtype should be one of the
-                                    following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
+                            following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='settlement']"><sch:assert
-                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined'"
+                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'"
                             >For @type="settlement", the @subtype should be one of the
-                                    following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
+                                following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='builtPlace']"><sch:assert
                             test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'"
                             >For @type="builtPlace", the @subtype should be one of the following
                                 values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='cultivation']"><sch:assert
-                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined'"
+                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'"
                             >For @type="cultivation", the @subtype should be one of the following
-                                    values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='hydrographic']"><sch:assert
-                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined'"
+                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'"
                             >For @type="hydrographic", the @subtype should be one of the following
-                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='naturalPlace']"><sch:assert
-                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined'"
+                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'"
                             >For @type="naturalPlace", the @subtype should be one of the following
-                                    values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined'</sch:assert></sch:rule></constraint>
+                                values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'</sch:assert></sch:rule>
+                        <sch:rule context="tei:placeName[@type='undetermined']">
+                            <sch:assert test="not(@subtype)">@subtype isn't allowed with @type='undetermined'</sch:assert>
+                            
+                        </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3693,7 +3700,7 @@
                                 <valItem ident="tree"/>
                                 <valItem ident="montain"/>
                                 <valItem ident="land"/>
-                                <valItem ident="nurcery"/>
+                                <valItem ident="nursery"/>
                                 <valItem ident="island"/>
                                 <valItem ident="establishment"/>
                                 <valItem ident="fieldIrrigated"/>

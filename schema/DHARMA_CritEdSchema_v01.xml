@@ -57,6 +57,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="part:axja" when="2023-04-19"
+        >Changing the @cause ordinal for transposition; changing tei:lem/@cause='transposition' for tei:lem/@type='transposition'; deleting the schematron rule limiting the use of n with p to translations ; deleting a rule regarding the use of @cause transposition on rdg only if there is no lem </change>
       <change who="part:axja" when="2022-10-28"
         >Adding a constraint to check for empty witDetail, deleting @type="reformulation" with note and adding @type='retained' on lem</change>
       <change who="part:axja" when="2022-09-23"
@@ -1828,7 +1830,7 @@
         <elementSpec ident="l" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="verse-line">
             <constraint><sch:rule context="tei:l[@corresp]"><sch:assert
-              test="ancestor::tei:rdg[preceding-sibling::tei:lem[@cause='transposition']]"
+              test="ancestor::tei:rdg[preceding-sibling::tei:lem[@type='transposition']]"
               >The attribute @corresp on a line verse can only be used inside a rdg whose preceding sibling bears @cause='transposition'.</sch:assert>
               </sch:rule> <sch:rule context="tei:l[not(@corresp)]"> <sch:assert test="@n"
               >@n is mandatory on every line verse, except when @corresp in used for a transposition.</sch:assert>
@@ -2429,9 +2431,6 @@
             <constraint><sch:rule context="tei:p[@rend='stanza']"><sch:report
               test="not(//tei:TEI[@type='translation'])">
                   @rend='stanza' can only be used in translations</sch:report></sch:rule><sch:rule
-              context="tei:p[@n]"><sch:report test="not(//tei:TEI[@type='translation'])"
-              >
-                  @n can only be used for paragraphs in translations</sch:report></sch:rule><sch:rule
               context="tei:p[@corresp]"><sch:report test="not(//tei:TEI[@type='translation'])"
               >
                   @n can only be used for paragraphs in translations</sch:report></sch:rule></constraint>
@@ -4183,17 +4182,13 @@
               test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule><sch:rule
               context="tei:lem[@type]"><sch:report test="@wit"
-              >No @wit should be given on a lem with @type, with the exception of @cause='transposition' </sch:report></sch:rule><sch:rule
+              >No @wit should be given on a lem with @type </sch:report></sch:rule><sch:rule
               context="tei:lem[child::tei:app]"><sch:report test="not(@wit or @wit)"
               >An element lem containing an embedded apparatus entry should have an attribute @type or @wit</sch:report></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
-            <attDef ident="cause" mode="change">
-              <valList type="closed" mode="replace">
-                <valItem ident="transposition"/>
-              </valList>
-            </attDef>
+            <attDef ident="cause" mode="delete"/>
             <attDef ident="change" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
             <attDef ident="corresp" mode="delete"/>
@@ -4234,6 +4229,7 @@
                 <valItem ident="lost_elsewhere"/>
                 <valItem ident="reformulated_elsewhere"/>
                 <valItem ident="retained"/>
+                <valItem ident="transposition"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
@@ -4324,10 +4320,7 @@
               context="child::tei:span[@type='omissionStart|omissionEnd']"><sch:assert
               test="@cause='eye-skip'"
               >The only value allowed with @cause for a rdg containing a span[@type='omissionStart'] or span[@type='omissionEnd'] is 'eyeskip'.</sch:assert></sch:rule>
-              <sch:rule context="tei:rdg[@cause='transposition']"> <sch:report
-              test="preceding-sibling::tei:lem[1]"
-              >rdg[@cause='transposition'] is only allowed when there is no lem.</sch:report>
-              </sch:rule></constraint>
+              </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4339,7 +4332,6 @@
                 <valItem ident="dittography"/>
                 <valItem ident="lexical"/>
                 <valItem ident="morphological"/>
-                <valItem ident="ordinal"/>
                 <valItem ident="syntactic"/>
                 <valItem ident="subtractive"/>
                 <valItem ident="additive"/>
@@ -5550,7 +5542,6 @@
                 <valItem ident="dittography"/>
                 <valItem ident="lexical"/>
                 <valItem ident="morphological"/>
-                <valItem ident="ordinal"/>
                 <valItem ident="syntactic"/>
                 <valItem ident="subtractive"/>
                 <valItem ident="additive"/>

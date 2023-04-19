@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-04-11T09:08:13Z. .
+Schema generated from ODD source 2023-04-19T14:53:46Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -2357,19 +2357,13 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:p[@n]">
-               <sch:report test="not(//tei:TEI[@type='translation'])">
-                  @n can only be used for paragraphs in translations</sch:report>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:p[@corresp]">
                <sch:report test="not(//tei:TEI[@type='translation'])">
                   @n can only be used for paragraphs in translations</sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-p-abstractModel-structure-p-constraint-report-8">
+                  id="DHARMA_CritEdSchema_v01-p-abstractModel-structure-p-constraint-report-7">
             <rule context="tei:p">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="not(ancestor::tei:floatingText) and (ancestor::tei:p or ancestor::tei:ab)          and not(parent::tei:exemplum                |parent::tei:item                |parent::tei:note                |parent::tei:q                |parent::tei:quote                |parent::tei:remarks                |parent::tei:said                |parent::tei:sp                |parent::tei:stage                |parent::tei:cell                |parent::tei:figure                )">
@@ -2378,7 +2372,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-p-abstractModel-structure-l-constraint-report-9">
+                  id="DHARMA_CritEdSchema_v01-p-abstractModel-structure-l-constraint-report-8">
             <rule context="tei:p">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:p[. = current()])]">
@@ -2441,7 +2435,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(highlighted) marks a word or phrase as graphically distinct from the surrounding text, for reasons concerning which no claim is made. [3.3.2.2. Emphatic Words and Phrases 3.3.2. Emphasis, Foreign Words, and Unusual Language]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-hi-hi-unmetrical-constraint-rule-12">
+                  id="DHARMA_CritEdSchema_v01-hi-hi-unmetrical-constraint-rule-11">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:hi[@rend='unmetrical']">
@@ -2489,7 +2483,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(quotation) contains a phrase or passage attributed by the narrator or author to some agency external to the text. [3.3.3. Quotation 4.3.1. Grouped Texts]</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-quote-quote-colophon-constraint-rule-13">
+                  id="DHARMA_CritEdSchema_v01-quote-quote-colophon-constraint-rule-12">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:quote[@type='diplomatic' or @type='normalized']">
@@ -2581,7 +2575,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(description) contains a brief description of the object documented by its parent element, typically a documentation element or an entity. [22.4.1. Description of Components]</a:documentation>
          <ref name="tei_macro.limitedContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-desc-deprecationInfo-only-in-deprecated-constraint-rule-15">
+                  id="DHARMA_CritEdSchema_v01-desc-deprecationInfo-only-in-deprecated-constraint-rule-14">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -2642,7 +2636,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Latin for thus or so) contains text reproduced although apparently incorrect or inaccurate. [3.4.1. Apparent Errors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-sic-choice-colophon-constraint-rule-16">
+                  id="DHARMA_CritEdSchema_v01-sic-choice-colophon-constraint-rule-15">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:sic[parent::tei:choice]">
@@ -2670,7 +2664,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(correction) contains the correct form of a passage apparently erroneous in the copy text. [3.4.1. Apparent Errors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-corr-choice-colophon-constraint-rule-17">
+                  id="DHARMA_CritEdSchema_v01-corr-choice-colophon-constraint-rule-16">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:corr[parent::tei:choice]">
@@ -2694,7 +2688,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             </choice>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-choice-choice-colophon-constraint-rule-19">
+                  id="DHARMA_CritEdSchema_v01-choice-choice-colophon-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:choice">
@@ -2716,7 +2710,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
 Normalization 12. Critical Apparatus]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-reg-choice-colophon-constraint-rule-21">
+                  id="DHARMA_CritEdSchema_v01-reg-choice-colophon-constraint-rule-20">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:reg[parent::tei:choice]">
@@ -2736,7 +2730,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
 Normalization 12. Critical Apparatus]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-orig-choice-colophon-constraint-rule-23">
+                  id="DHARMA_CritEdSchema_v01-orig-choice-colophon-constraint-rule-22">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:orig[parent::tei:choice]">
@@ -2760,7 +2754,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-gap-gap-constraint-rule-25">
+                  id="DHARMA_CritEdSchema_v01-gap-gap-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:gap">
@@ -2856,7 +2850,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(addition) contains letters, words, or phrases inserted in the source text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-add-overstrike-constraint-rule-30">
+                  id="DHARMA_CritEdSchema_v01-add-overstrike-constraint-rule-29">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:add[@place='overstrike']">
@@ -3070,7 +3064,7 @@ Sample values include: </a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-date-attributes-constraint-rule-31">
+                  id="DHARMA_CritEdSchema_v01-date-attributes-constraint-rule-30">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
@@ -3156,7 +3150,7 @@ Sample values include: </a:documentation>
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-date-calendar-calendar-constraint-rule-37">
+                  id="DHARMA_CritEdSchema_v01-date-calendar-calendar-constraint-rule-36">
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
@@ -3277,7 +3271,7 @@ Suggested values include: </a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(pointer) defines a pointer to another location. [3.6. Simple Links and Cross-References 16.1. Links]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-ptr-ptr-rend-constraint-rule-38">
+                  id="DHARMA_CritEdSchema_v01-ptr-ptr-rend-constraint-rule-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:ptr[@rend='siglum|title']">
@@ -3285,7 +3279,7 @@ Suggested values include: </a:documentation>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-ptr-ptrAtts-constraint-report-20">
+                  id="DHARMA_CritEdSchema_v01-ptr-ptrAtts-constraint-report-19">
             <rule context="tei:ptr">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@target and @cRef">Only one of the
 attributes @target and @cRef may be supplied on <name/>.</report>
@@ -3322,7 +3316,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) defines a reference to another location, possibly modified by additional text or comment. [3.6. Simple Links and Cross-References 16.1. Links]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-ref-refAtts-constraint-report-21">
+                  id="DHARMA_CritEdSchema_v01-ref-refAtts-constraint-report-20">
             <rule context="tei:ref">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@target and @cRef">Only one of the
 	attributes @target' and @cRef' may be supplied on <name/>
@@ -3381,7 +3375,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-list-gloss-list-must-have-labels-constraint-rule-39">
+                  id="DHARMA_CritEdSchema_v01-list-gloss-list-must-have-labels-constraint-rule-38">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:list[@type='gloss']">
@@ -3483,7 +3477,7 @@ Suggested values include: 1] check; 2] bulleted; 3] numbered</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a note or annotation. [3.8.1. Notes and Simple Annotation 2.2.6. The Notes Statement 3.11.2.8. Notes and Statement of Language 9.3.5.4. Notes within Entries]</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-note-note-constraint-rule-40">
+                  id="DHARMA_CritEdSchema_v01-note-note-constraint-rule-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note[not(@type='altLem' or ancestor::tei:listApp[@type='parallels'])][parent::tei:app]">
@@ -3989,11 +3983,11 @@ Suggested values include: 1] base-text; 2] commentary; 3] editorial; 4] translat
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-l-verse-line-constraint-rule-45">
+                  id="DHARMA_CritEdSchema_v01-l-verse-line-constraint-rule-44">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l[@corresp]">
-               <sch:assert test="ancestor::tei:rdg[preceding-sibling::tei:lem[@cause='transposition']]">The attribute @corresp on a line verse can only be used inside a rdg whose preceding sibling bears @cause='transposition'.</sch:assert>
+               <sch:assert test="ancestor::tei:rdg[preceding-sibling::tei:lem[@type='transposition']]">The attribute @corresp on a line verse can only be used inside a rdg whose preceding sibling bears @cause='transposition'.</sch:assert>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4002,7 +3996,7 @@ Suggested values include: 1] base-text; 2] commentary; 3] editorial; 4] translat
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-l-abstractModel-structure-l-constraint-report-24">
+                  id="DHARMA_CritEdSchema_v01-l-abstractModel-structure-l-constraint-report-23">
             <rule context="tei:l">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:l[. = current()])]">
@@ -4100,7 +4094,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-lg-lg-supplied-constraint-rule-47">
+                  id="DHARMA_CritEdSchema_v01-lg-lg-supplied-constraint-rule-46">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lg[parent::tei:supplied]">
@@ -4116,7 +4110,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-lg-abstractModel-structure-l-constraint-report-26">
+                  id="DHARMA_CritEdSchema_v01-lg-abstractModel-structure-l-constraint-report-25">
             <rule context="tei:lg">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:lg[. = current()])]">
@@ -4700,7 +4694,7 @@ Sample values include: 1] filename</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(note on hand) describes a particular style or hand distinguished within a manuscript. [10.7.2. Writing, Decoration, and Other Notations]</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-handNote-handNote-script-constraint-rule-48">
+                  id="DHARMA_CritEdSchema_v01-handNote-handNote-script-constraint-rule-47">
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
@@ -4815,7 +4809,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.6. Identifying Changes and Revisions]</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-change-responsability-constraint-rule-49">
+                  id="DHARMA_CritEdSchema_v01-change-responsability-constraint-rule-48">
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
@@ -4964,7 +4958,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-ab-abstractModel-structure-ab-constraint-report-27">
+                  id="DHARMA_CritEdSchema_v01-ab-abstractModel-structure-ab-constraint-report-26">
             <rule context="tei:ab">
                <report xmlns:xi="http://www.w3.org/2001/XInclude"
                        xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4975,7 +4969,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-ab-abstractModel-structure-l-constraint-report-28">
+                  id="DHARMA_CritEdSchema_v01-ab-abstractModel-structure-l-constraint-report-27">
             <rule context="tei:ab">
                <report xmlns:xi="http://www.w3.org/2001/XInclude"
                        xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5086,7 +5080,7 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-seg-att-type-subtype-constraint-rule-50">
+                  id="DHARMA_CritEdSchema_v01-seg-att-type-subtype-constraint-rule-49">
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
@@ -5218,7 +5212,7 @@ You must supply at least two values for @target on <name/>
             </choice>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-TEI-root-constraint-rule-52">
+                  id="DHARMA_CritEdSchema_v01-TEI-root-constraint-rule-51">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5491,7 +5485,7 @@ Suggested values include: 1] eng</a:documentation>
             </optional>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-div-division-constraint-rule-54">
+                  id="DHARMA_CritEdSchema_v01-div-division-constraint-rule-53">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:div[child::tei:ab[@type='invocation |colophon']]">
@@ -5506,7 +5500,7 @@ Suggested values include: 1] eng</a:documentation>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-l-constraint-report-35">
+                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-l-constraint-report-34">
             <rule context="tei:div">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="ancestor::tei:l">
         Abstract model violation: Lines may not contain higher-level structural elements such as div.
@@ -5514,7 +5508,7 @@ Suggested values include: 1] eng</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-p-constraint-report-36">
+                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-p-constraint-report-35">
             <rule context="tei:div">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:p or ancestor::tei:ab and not(ancestor::tei:floatingText)">
@@ -6095,7 +6089,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an absolute or relative place name. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-placeName-placeName-constraint-rule-56">
+                  id="DHARMA_CritEdSchema_v01-placeName-placeName-constraint-rule-55">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:placeName[@type='region']">
@@ -6278,7 +6272,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-objectIdentifier-objectIdentifier_minimal-constraint-report-37">
+                  id="DHARMA_CritEdSchema_v01-objectIdentifier-objectIdentifier_minimal-constraint-report-36">
             <rule context="tei:objectIdentifier">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="not(count(*) gt 0)">An objectIdentifier must contain at minimum a single piece of locating or identifying information.</report>
             </rule>
@@ -6396,7 +6390,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-supplied-supplied-translation-constraint-rule-61">
+                  id="DHARMA_CritEdSchema_v01-supplied-supplied-translation-constraint-rule-60">
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
@@ -6612,7 +6606,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-locus-displacement-constraint-rule-62">
+                  id="DHARMA_CritEdSchema_v01-locus-displacement-constraint-rule-61">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="@type">
@@ -6714,7 +6708,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-msIdentifier-identifier-constraint-rule-64">
+                  id="DHARMA_CritEdSchema_v01-msIdentifier-identifier-constraint-rule-63">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:msIdentifier[not(following-sibling::tei:msFrag)]">
@@ -6727,7 +6721,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-msIdentifier-msId_minimal-constraint-report-40">
+                  id="DHARMA_CritEdSchema_v01-msIdentifier-msId_minimal-constraint-report-39">
             <rule context="tei:msIdentifier">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="not(parent::tei:msPart) and (local-name(*[1])='idno' or local-name(*[1])='altIdentifier' or normalize-space(.)='')">An msIdentifier must contain either a repository or location.</report>
@@ -6914,7 +6908,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </optional>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-physDesc-hands-constraint-rule-66">
+                  id="DHARMA_CritEdSchema_v01-physDesc-hands-constraint-rule-65">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:physDesc">
@@ -7046,7 +7040,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
             </group>
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-handDesc-handDesc-content-constraint-rule-67">
+                  id="DHARMA_CritEdSchema_v01-handDesc-handDesc-content-constraint-rule-66">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:handDesc">
@@ -7416,7 +7410,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-68">
+                  id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-67">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:app[not(parent::tei:listApp[@type='parallels'])][not(child::tei:rdg[@cause='transposition'])]">
@@ -7531,7 +7525,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-70">
+                  id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-69">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem[@hand]">
@@ -7542,7 +7536,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem[@type]">
-               <sch:report test="@wit">No @wit should be given on a lem with @type, with the exception of @cause='transposition' </sch:report>
+               <sch:report test="@wit">No @wit should be given on a lem with @type </sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7607,13 +7601,6 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>retained</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="cause">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the cause for the variant reading, according to any appropriate typology of possible origins.</a:documentation>
-               <choice>
                   <value>transposition</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
@@ -7649,7 +7636,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-73">
+                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-72">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg[@hand]">
@@ -7661,11 +7648,6 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="child::tei:span[@type='omissionStart|omissionEnd']">
                <sch:assert test="@cause='eye-skip'">The only value allowed with @cause for a rdg containing a span[@type='omissionStart'] or span[@type='omissionEnd'] is 'eyeskip'.</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:rdg[@cause='transposition']">
-               <sch:report test="preceding-sibling::tei:lem[1]">rdg[@cause='transposition'] is only allowed when there is no lem.</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.linking.attribute.corresp"/>
@@ -7709,8 +7691,6 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                   <value>lexical</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>morphological</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ordinal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>syntactic</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
@@ -7780,8 +7760,6 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>morphological</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ordinal</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>syntactic</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>subtractive</value>
@@ -7811,7 +7789,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-76">
+                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-74">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
@@ -7873,7 +7851,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </oneOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-listWit-listWit-family-constraint-rule-77">
+                  id="DHARMA_CritEdSchema_v01-listWit-listWit-family-constraint-rule-75">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:listWit[parent::tei:listWit]">
@@ -7939,7 +7917,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-78">
+                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-76">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7972,7 +7950,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">associates an interpretative annotation directly with a span of text. [17.3. Spans and Interpretations]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-targetfrom-constraint-report-48">
+                  id="DHARMA_CritEdSchema_v01-span-targetfrom-constraint-report-46">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@from and @target">
 Only one of the attributes @target and @from may be supplied on <name/>
@@ -7980,7 +7958,7 @@ Only one of the attributes @target and @from may be supplied on <name/>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-targetto-constraint-report-49">
+                  id="DHARMA_CritEdSchema_v01-span-targetto-constraint-report-47">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@to and @target">
 Only one of the attributes @target and @to may be supplied on <name/>
@@ -7988,14 +7966,14 @@ Only one of the attributes @target and @to may be supplied on <name/>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-tonotfrom-constraint-report-50">
+                  id="DHARMA_CritEdSchema_v01-span-tonotfrom-constraint-report-48">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@to and not(@from)">
 If @to is supplied on <name/>, @from must be supplied as well</report>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-tofrom-constraint-report-51">
+                  id="DHARMA_CritEdSchema_v01-span-tofrom-constraint-report-49">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="contains(normalize-space(@to),' ') or contains(normalize-space(@from),' ')">
