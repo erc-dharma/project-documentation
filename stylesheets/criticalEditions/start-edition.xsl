@@ -2170,8 +2170,8 @@
                                                 <xsl:text>History</xsl:text>
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
-                                            <xsl:apply-templates select="./tei:msDesc/tei:history"/>
-                                        </xsl:element>
+                                                <xsl:apply-templates select="./tei:msDesc/tei:history"/>
+                                          </xsl:element>
                                     </xsl:if>
                                 </xsl:element>
                             </xsl:when>
