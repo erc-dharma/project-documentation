@@ -53,7 +53,7 @@
         <xsl:sequence select="replace(replace($arg,'\s+$',''),'^\s+','')"/>
     </xsl:function>
 
-    <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 and Epidoc  -->
+    <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
 
     <xsl:variable name="script">
@@ -68,6 +68,10 @@
     
     <xsl:variable name="edition-root">
         <xsl:value-of select="//tei:TEI[@type='edition']"/>
+    </xsl:variable>
+    
+    <xsl:variable name="counter-n">
+        <xsl:number from="tei:body" count="tei:div[@type or not(@type='metrical')] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
     </xsl:variable>
 
 
@@ -666,7 +670,14 @@
                         <xsl:element name="a">
                             <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/@xml:id"/></xsl:attribute>
                         <xsl:text>st. </xsl:text>
-                            <xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/child::tei:lg/@n"/>
+                            <xsl:choose>
+                                <xsl:when test="@n">
+                                    <xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/child::tei:lg/@n"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:copy-of select="$counter-n"/>
+                                </xsl:otherwise>
+                            </xsl:choose> 
                         </xsl:element>
                         <xsl:text>)</xsl:text>
                     </xsl:if>
@@ -1126,34 +1137,7 @@
             <xsl:apply-templates select="tei:note"/>
         </xsl:if>
     </xsl:template>
-   <!-- <xsl:template name="colophon">
-        <xsl:if test="//tei:colophon">
-            <xsl:element name="hr"/>
-        <xsl:element name="div">
-            <xsl:attribute name="class">row</xsl:attribute>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-1 text-center</xsl:attribute>
-                        <xsl:value-of select="number(//tei:div[@type='chapter'][last()]/@n) + 1"/>
-                        <xsl:text>. </xsl:text>
-            </xsl:element>
-            <xsl:element name="div">
-                <xsl:attribute name="class">col-11</xsl:attribute>
-                <xsl:element name="p">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:text>Colophon</xsl:text>
-                </xsl:element>
-                <xsl:for-each select="//tei:colophon">
-                    <xsl:element name="p">
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">text-muted foliation</xsl:attribute>
-                            <xsl:value-of select="./ancestor::tei:witness/@xml:id"/>
-                        </xsl:element>
-                        <xsl:apply-templates/>
-                    </xsl:element>
-                </xsl:for-each>
-            </xsl:element>
-        </xsl:element></xsl:if>
-    </xsl:template>-->
+    
     <!--  D ! -->
     <!--  del ! -->
     <xsl:template match="tei:del">
@@ -1203,15 +1187,25 @@
                 <xsl:element name="p">
                 <xsl:choose>
                     <xsl:when test="@type='interpolation'">
-                        <xsl:value-of select="preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n"/>
-                        <xsl:text>*. </xsl:text>
+                        <xsl:choose>
+                            <xsl:when test="preceding::tei:div[not(@type='metrical'or @type='section')][1]/@n">
+                                <xsl:text>*. </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:copy-of select="$counter-n"/>
+                            </xsl:otherwise>
+                        </xsl:choose> 
                     </xsl:when>
                     <xsl:when test="@type='canto'"/>
                     <xsl:otherwise>
-                                <xsl:if test="@n">
+                                <xsl:choose>
+                                    <xsl:when test="@n">
                                     <xsl:value-of select="@n"/>
-                                    <xsl:text>. </xsl:text>
-                                </xsl:if>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:copy-of select="$counter-n"/>
+                                </xsl:otherwise>
+                                </xsl:choose>
                     </xsl:otherwise>
                 </xsl:choose>
                 </xsl:element>
@@ -1259,12 +1253,17 @@
         <xsl:if test="@type='metrical' or @type='section'">
             <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                <xsl:if test="@n">
-                    <xsl:value-of select="ancestor::tei:div/@n"/>
-                    <xsl:text>.</xsl:text>
-                <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="single" format="1"/>
-                    <xsl:text> </xsl:text>
-                </xsl:if>
+                <xsl:choose>
+                    <xsl:when test="@n">
+                        <xsl:value-of select="ancestor::tei:div/@n"/>
+                        <xsl:text>.</xsl:text>
+                        <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="multiple" format="1"/>
+                        <xsl:text> </xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:copy-of select="$counter-n"/>
+                    </xsl:otherwise>
+                </xsl:choose> 
                 <xsl:if test="@rend='met'">
                     <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
@@ -1322,22 +1321,25 @@
                 <xsl:if test="not($line-context='real')">
                     <xsl:text>: </xsl:text>
                 </xsl:if>
-                <xsl:call-template name="scansion">
+                <!-- adding a for-each while figuring a solution for multiple seg with the same content -->
+                <xsl:for-each select="$prosody-and-met">
+                    <xsl:call-template name="scansion">
                     <xsl:with-param name="met-string" select="translate($prosody-and-met, '-=+', '⏑⏓–')"/>
                     <xsl:with-param name="string-len" select="string-length($prosody-and-met)"/>
                     <xsl:with-param name="string-pos" select="string-length($prosody-and-met) - 1"/>
-                </xsl:call-template>
+                </xsl:call-template></xsl:for-each>
             </xsl:when>
             <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
                 <xsl:variable name="prosody-and-met" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:seg[@type='xml']/node()"/>
                 <xsl:if test="not($line-context='real')">
                     <xsl:text>: </xsl:text>
                 </xsl:if>
-                <xsl:call-template name="scansion">
+                <!-- adding a for-each while figuring a solution for multiple seg with the same content -->
+                <xsl:for-each select="$prosody-and-met"><xsl:call-template name="scansion">
                     <xsl:with-param name="met-string" select="translate($prosody-and-met, '-=+', '⏑⏓–')"/>
                     <xsl:with-param name="string-len" select="string-length($prosody-and-met)"/>
                     <xsl:with-param name="string-pos" select="string-length($prosody-and-met) - 1"/>
-                </xsl:call-template>
+                </xsl:call-template></xsl:for-each>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:if test="not($line-context='real')">
@@ -2337,9 +2339,9 @@
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
-        <xsl:variable name="p-num">
+        <!--<xsl:variable name="p-num">
             <xsl:number level="single" format="1"/>
-        </xsl:variable>
+        </xsl:variable>-->
         <xsl:variable name="p-line">
             <xsl:for-each select=".">
                 <xsl:variable name="context-root" select="."/>
@@ -2404,7 +2406,9 @@
             <xsl:element name="small">
                         <xsl:element name="span">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
-                            <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])">
+                            <xsl:choose>
+                                <xsl:when test="./@n">
+                                    <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])">
                         <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
@@ -2428,11 +2432,17 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:if>
+                                <xsl:value-of select="@n"/>
+                                </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:copy-of select="$counter-n"/>
+                            </xsl:otherwise>
+                            </xsl:choose>
                     <!--<xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation' or @type = 'liminal')]">
                         <xsl:value-of select="ancestor-or-self::tei:div/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>-->
-                    <xsl:value-of select="$p-num"/>
+                    <!--<xsl:value-of select="$p-num"/>-->
                 </xsl:element>
             </xsl:element>
         </xsl:element>
@@ -2582,9 +2592,9 @@
                    </xsl:when>
                    <xsl:when test="contains($MSlink, $edition-id)"> 
                        <xsl:variable name="targetLink" select="substring-after($MSlink, '#')"/>
-                       <xsl:message><xsl:value-of select="$edition-id"/></xsl:message>
+                      <!-- <xsl:message><xsl:value-of select="$edition-id"/></xsl:message>
                        <xsl:message><xsl:value-of select="$MSlink"/></xsl:message>
-                       <xsl:message><xsl:value-of select="$targetLink"/></xsl:message>
+                       <xsl:message><xsl:value-of select="$targetLink"/></xsl:message>-->
                        <xsl:element name="a">
                            <xsl:attribute name="href">
                                <xsl:value-of select="$MSlink"/>
@@ -5288,5 +5298,4 @@
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-
 </xsl:stylesheet>
