@@ -75,9 +75,10 @@
              <xsl:element name="sup">
                <xsl:attribute name="class">linenumber</xsl:attribute>
                <!--<xsl:text>[</xsl:text>-->
-               <xsl:value-of select="concat(upper-case(substring(@unit,1,1)), substring(@unit, 2),' '[not(last())] )"/>
+               <xsl:if test="not(@unit='face')"><xsl:value-of select="concat(upper-case(substring(@unit,1,1)), substring(@unit, 2),' '[not(last())] )"/>
+               <xsl:text> </xsl:text>
+               </xsl:if>
                <xsl:if test="@n">
-                 <xsl:text> </xsl:text>
                <xsl:value-of select="@n"/>
                </xsl:if>
                <!--<xsl:text>]</xsl:text>-->
