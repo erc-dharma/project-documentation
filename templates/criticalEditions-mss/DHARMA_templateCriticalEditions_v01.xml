@@ -112,7 +112,7 @@
 					<p>The asterisk * is used to flag lemmata or forms of lemmata not recorded in the <title>Old Javanese-English Dictionary</title>.</p>
 				</interpretation>
 			</editorialDecl>
-			<refsDecl xml:id="ASLREF">
+			<!--<refsDecl xml:id="ASLREF">
 				<cRefPattern matchPattern="(\S+) ([^.]+)\.(.*)"
 					replacementPattern="#xpath(//div1[@n='$1']/div2/[@n='$2']//lb[@n='$3'])">
 					<p>A reference is created by assembling the following, in the reverse order as that
@@ -128,7 +128,7 @@
 						</list>
 					</p>
 				</cRefPattern>
-			</refsDecl>
+			</refsDecl>-->
 			<samplingDecl>
 				<!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
 				<p/>
