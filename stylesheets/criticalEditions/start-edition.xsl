@@ -69,12 +69,6 @@
     <xsl:variable name="edition-root">
         <xsl:value-of select="//tei:TEI[@type='edition']"/>
     </xsl:variable>
-    
-    <xsl:variable name="counter-n">
-        <xsl:number from="tei:body" count="tei:div[@type or not(@type='metrical')] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
-    </xsl:variable>
-
-
 
    <!-- main display structure - appelle les templates et les modes-->
     <xsl:template match="/tei:TEI">
@@ -675,7 +669,7 @@
                                     <xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/child::tei:lg/@n"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:copy-of select="$counter-n"/>
+                                    <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
                                 </xsl:otherwise>
                             </xsl:choose> 
                         </xsl:element>
@@ -1192,7 +1186,7 @@
                                 <xsl:text>*. </xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:copy-of select="$counter-n"/>
+                                <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
                             </xsl:otherwise>
                         </xsl:choose> 
                     </xsl:when>
@@ -1203,7 +1197,7 @@
                                     <xsl:value-of select="@n"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:copy-of select="$counter-n"/>
+                                    <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
                                 </xsl:otherwise>
                                 </xsl:choose>
                     </xsl:otherwise>
@@ -1261,7 +1255,7 @@
                         <xsl:text> </xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:copy-of select="$counter-n"/>
+                        <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
                     </xsl:otherwise>
                 </xsl:choose> 
                 <xsl:if test="@rend='met'">
@@ -2435,7 +2429,7 @@
                                 <xsl:value-of select="@n"/>
                                 </xsl:when>
                             <xsl:otherwise>
-                                <xsl:copy-of select="$counter-n"/>
+                                <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
                             </xsl:otherwise>
                             </xsl:choose>
                     <!--<xsl:if test="parent::tei:div[not(@type = 'chapter' or @type = 'dyad' or @type ='interpolation' or @type = 'liminal')]">
