@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
@@ -1865,18 +1865,18 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
 </item>
-<item>
+<!--<item>
 	<measure unit="syllable">10</measure>
 	<name xml:lang="">tvaritagati</name>
-	<seg type="xml">----+----=</seg>
+	<seg type="xml">-\-\-\-+-\-\-\-=</seg>
   <seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑⏑⏓</seg>
 	<seg type="gana"></seg>
 	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!--not in Apte--></bibl>
+		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><!-\-not in Apte-\-></bibl>
 		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
 		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
 	</listBibl>
-</item>
+</item>-->
 </list>
 
 
