@@ -1248,18 +1248,20 @@
                     <xsl:attribute name="class">metrical</xsl:attribute>-->
         <xsl:if test="@type='metrical' or @type='section'">
             <xsl:element name="p">
-                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                <xsl:attribute name="class">font-weight-bold metrical</xsl:attribute>
                 <xsl:choose>
-                    <xsl:when test="@n">
-                        <xsl:value-of select="ancestor::tei:div/@n"/>
-                        <xsl:text>.</xsl:text>
-                        <xsl:number count="//tei:div[@type='metrical' and @type='section']" level="multiple" format="1"/>
-                        <xsl:text> </xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
-                    </xsl:otherwise>
-                </xsl:choose> 
+                            <xsl:when test="ancestor::tei:div/@n">
+                            <xsl:value-of select="ancestor::tei:div/@n"/>
+                            <xsl:text>.</xsl:text>
+                                <xsl:number count="tei:div[(@type='metrical' or @type='section')]" level="single" format="1"/>
+                            <xsl:text> </xsl:text>
+                        </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:number from="tei:body" count="tei:div[not(child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
+                <xsl:text> </xsl:text>
+                            </xsl:otherwise>
+                </xsl:choose>
+                                                
                 <xsl:if test="@rend='met'">
                     <xsl:call-template name="metrical-list">
                     <xsl:with-param name="metrical" select="@met"/>
@@ -1842,7 +1844,7 @@
                         </xsl:when>
                         <xsl:otherwise>-->
                             <xsl:text> </xsl:text>
-                            <xsl:value-of select="@n"/>
+                            <xsl:number count="tei:lg" format="1" level="single"/>
                         <!--</xsl:otherwise>-->
                     <!--</xsl:choose>-->
                 </xsl:element>
@@ -2405,7 +2407,7 @@
                         <xsl:element name="span">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
                             <xsl:choose>
-                                <xsl:when test="./@n">
+                                <xsl:when test="ancestor-or-self::tei:*/@n">
                                     <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])">
                         <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                         <xsl:text>.</xsl:text>
@@ -2430,7 +2432,15 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:if>
-                                <xsl:value-of select="@n"/>
+                                <xsl:choose>
+                                    <xsl:when test="self::tei:p/@n">
+                                       
+                                    <xsl:value-of select="@n"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:number count="tei:p" level="single" format="1"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                                 </xsl:when>
                             <xsl:otherwise>
                                 <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
@@ -4189,9 +4199,6 @@
                <xsl:when test="$childtype='appEm'">
                     <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
                 </xsl:when>
-               <xsl:when test="$childtype='appGrp'">
-                   <xsl:copy-of select="child::tei:*[local-name()=('rdgGrp')]/child::*"/>
-               </xsl:when>
                 <xsl:otherwise>
                         <xsl:copy-of select="node()"/>
                </xsl:otherwise>
