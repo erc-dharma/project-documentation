@@ -679,25 +679,27 @@
                 <!--  Variant readings ! -->
 
 
-            <xsl:if test="tei:rdg[not(@type='paradosis' or  @cause='transposition')][not(preceding-sibling::tei:lem[@type='transposition'])]">
+            <xsl:if test="descendant-or-self::tei:rdg[not(@type='paradosis' or  @cause='transposition')][not(preceding-sibling::tei:lem[@type='transposition'])]">
                             <xsl:element name="hr"/>
                             <!--<xsl:if test="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']">
                                 <xsl:apply-templates select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]"/>
                             </xsl:if>-->
-                            <xsl:for-each select="tei:rdg">
-                                <xsl:call-template name="rdg-content">
-                                    <xsl:with-param name="parent-rdg" select="'no'"/>
-                                </xsl:call-template>
-                    </xsl:for-each>
+                <xsl:for-each select="descendant-or-self::tei:rdg">
+                                       <xsl:call-template name="rdg-content">
+                                           <xsl:with-param name="parent-rdg" select="'no'"/>
+                                       </xsl:call-template>
+                                   </xsl:for-each>
+                
                 <xsl:for-each select="ancestor::*[local-name()='lem'][not(@type='reformulated_elsewhere' or @type='transposition')][1]/following-sibling::tei:rdg[1]">
                                 <xsl:call-template name="rdg-content">
                                     <xsl:with-param name="parent-rdg" select="'yes-inline'"/>
                                 </xsl:call-template>
                             </xsl:for-each>
+                
                  </xsl:if>
-                 <xsl:if test="tei:rdg[@type='paradosis']">
+            <xsl:if test="descendant-or-self::tei:rdg[@type='paradosis']">
                     <xsl:element name="hr"/>
-                    <xsl:for-each select="tei:rdg[@type='paradosis']">
+                <xsl:for-each select="descendant-or-self::tei:rdg[@type='paradosis']">
                         <xsl:element name="span">
                             <xsl:attribute name="class">paradosis-line</xsl:attribute>
                             <xsl:element name="span">
@@ -1289,7 +1291,7 @@
                                 <xsl:with-param name="string-pos" select="string-length(@met) - 1"/>
                             </xsl:call-template>-->
                 <xsl:choose>
-                    <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]">
+                    <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical][1]">
                         <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
                         <xsl:text>Name unknown (</xsl:text>
                         <xsl:element name="span">
@@ -1339,11 +1341,13 @@
                 <xsl:if test="not($line-context='real')">
                     <xsl:text>: </xsl:text>
                 </xsl:if>
+                <xsl:for-each select=".">
                 <xsl:call-template name="scansion">
                     <xsl:with-param name="met-string" select="translate(@real, '-=+', '⏑⏓–')"/>
                     <xsl:with-param name="string-len" select="string-length(@real)"/>
                     <xsl:with-param name="string-pos" select="string-length(@real) - 1"/>
                 </xsl:call-template>
+                </xsl:for-each>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -4185,6 +4189,9 @@
                <xsl:when test="$childtype='appEm'">
                     <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
                 </xsl:when>
+               <xsl:when test="$childtype='appGrp'">
+                   <xsl:copy-of select="child::tei:*[local-name()=('rdgGrp')]/child::*"/>
+               </xsl:when>
                 <xsl:otherwise>
                         <xsl:copy-of select="node()"/>
                </xsl:otherwise>
@@ -4402,7 +4409,7 @@
                         </xsl:element>
 
                 </xsl:for-each>
-                <xsl:for-each select="tei:rdg[not(preceding-sibling::tei:lem[@type='transposition'])]">
+                <xsl:for-each select="descendant-or-self::tei:rdg[not(preceding-sibling::tei:lem[@type='transposition'])]">
 
                     <xsl:element name="span">
                         <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
