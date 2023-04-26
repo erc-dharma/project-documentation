@@ -504,6 +504,12 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'bangalore')">
                 <xsl:text>Bn</xsl:text>
             </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'coorg')">
+                <xsl:text>Cg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'sravaṇa beḷgoḷa')">
+                <xsl:text>SB</xsl:text>
+            </xsl:when>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nelamangala')">
                 <xsl:text>Nl</xsl:text>
             </xsl:when>
