@@ -310,7 +310,7 @@
             </group>
           </if>
           <else-if variable="issue">
-            <group delimiter=" " prefix=", ">
+            <group delimiter=" " prefix=" (" suffix=")">
               <!--<text term="issue" form="short"/>-->
               <text variable="issue"/>
               <date variable="issued" prefix="(" suffix=")">
