@@ -307,7 +307,6 @@
                 <xsl:when test="@type='invocation' or @type='colophon'">
                 <xsl:element name="div">
                 <xsl:attribute name="class">row</xsl:attribute>
-
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-1 text-center</xsl:attribute>
                     <xsl:if test="@type='invocation' or @type='colophon'">
@@ -321,10 +320,20 @@
                             </xsl:element>
                         </xsl:element>
                     </xsl:if>
+                    <xsl:if test="@n and not(@type='invocation' or @type='colophon')">
+                        <xsl:element name="p">
+                            <xsl:attribute name="class">float-center</xsl:attribute>
+                            <xsl:element name="small">
+                                <xsl:element name="span">
+                                    <xsl:attribute name="class">text-muted</xsl:attribute>
+                                    <xsl:value-of select="@n"/>
+                                </xsl:element>
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:if>
                 </xsl:element>
                 <xsl:element name="div">
                     <xsl:attribute name="class">col-11 text-col</xsl:attribute>
-
                     <xsl:element name="div">
                         <xsl:attribute name="class">row</xsl:attribute>
                         <xsl:element name="div">
@@ -1837,16 +1846,15 @@
             <xsl:if test="@n">
                 <xsl:element name="span">
                     <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                    <!--<xsl:choose>-->
+                    <xsl:choose>
                         <!--<xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>-->
-                        <!--<xsl:when test="contains(@n, '.')">
-                            <xsl:value-of select="functx:substring-after-last(@n, '.')"/>
+                        <xsl:when test="@n">
+                            <xsl:value-of select="@n"/>
                         </xsl:when>
-                        <xsl:otherwise>-->
-                            <xsl:text> </xsl:text>
+                        <xsl:otherwise>
                             <xsl:number count="tei:lg" format="1" level="single"/>
-                        <!--</xsl:otherwise>-->
-                    <!--</xsl:choose>-->
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:element>
             </xsl:if>
         </xsl:element>
@@ -2416,10 +2424,18 @@
                         <xsl:value-of select="parent::tei:div[@type = 'dyad']/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
-                    <xsl:if test="parent::tei:div[@type = 'liminal']">
+                     <xsl:if test="parent::tei:div[@type = 'section']">
+                                        <xsl:value-of select="parent::tei:div[@type = 'section']/@n"/>
+                                        <xsl:text>.</xsl:text>
+                     </xsl:if>
+                     <xsl:if test="parent::tei:div[@type = 'metrical']">
+                                        <xsl:value-of select="parent::tei:div[@type = 'metrical']/@n"/>
+                                        <xsl:text>.</xsl:text>
+                     </xsl:if>
+                    <!--<xsl:if test="parent::tei:div[@type = 'liminal']">
                         <xsl:value-of select="parent::tei:div[@type = 'liminal']/@n"/>
                         <xsl:text>.</xsl:text>
-                    </xsl:if>
+                    </xsl:if>-->
                     <xsl:if test="ancestor-or-self::tei:div[@type = 'interpolation']">
                         <xsl:choose>
                             <xsl:when test="ancestor-or-self::tei:div[@type = 'interpolation']/@n">
