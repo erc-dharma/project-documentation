@@ -2,8 +2,24 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt2"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:t="http://www.tei-c.org/ns/1.0">
+    xmlns:t="http://www.tei-c.org/ns/1.0"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:functx="http://www.functx.com"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
+    
+    <xsl:function name="functx:sequence-node-equal-any-order" as="xs:boolean"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="seq1" as="node()*"/>
+        <xsl:param name="seq2" as="node()*"/>
+        
+        <xsl:sequence select="
+            not( ($seq1 except $seq2, $seq2 except $seq1))
+            "/>
+        
+    </xsl:function>
+    
     
     <sch:pattern>
         <sch:rule context="t:*/@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
@@ -197,4 +213,46 @@
             <sch:assert test="every $id in $textpart-id satisfies $textpart-id = $editionfile//t:*/@xml:id">@corresp not found in edition file.</sch:assert>
         </sch:rule>
     </sch:pattern>
+    
+    <!-- sqf under build -->
+    <!-- controlling the presence of witnesses -->
+    <!--<sch:pattern>
+        
+        <sch:rule context="t:app//@wit">
+            <!-\- making a list of the sigla -\->
+            <sch:let name="witnesses-list" value="//t:TEI//t:listWit/t:witness/@xml:id"/>
+            <!-\- making a list of all the values -\->
+            <sch:let name="witnesses-app" value="string-join(.//@wit, ' ')"/>
+            <sch:assert test="functx:sequence-node-equal-any-order($witnesses-app, $witnesses-list)">all witnesses should be declares in app entries.</sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
+    <!--<sch:pattern>
+        <sch:rule context="t:app">
+            <sch:let name="wit-contents" value="for $w in tokenize(.//@wit, '\s+') return $w"/>
+            <sch:let name="witnesses-list" value="count()"/>
+            <sch:assert test="count($wit-contents) = $witnesses-list">
+                all witnesses should be declares in app entries.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
+    
+    <!-- sorting the witnesses -->
+    <!--<sch:pattern>
+        <sch:rule context="@wit[contains(., ' ')]">
+            <sch:let name="wit-contents" value="for $w in tokenize(., '\s+') return substring-after($w, '#')"/>
+            <sch:let name="witnesses-list" value="//t:TEI//t:listWit/t:witness/@xml:id"/>
+            <sch:assert test="deep-equal($witnesses-list, $wit-contents)">
+                Please check the order of the witness<xsl:value-of select="$witnesses-list"/>
+            </sch:assert>
+        </sch:rule>
+        
+    </sch:pattern>
+    -->
+    <!-- distinc-value inside an app -->
+    <!--<sch:pattern>
+        <sch:rule context="t:app[not(descendant::t:app or parent::t:listApp[@type='parallels'])]">
+            <sch:let name="witnesses-app" value="string-join(./*[not(t:witDetail)]/@wit, ' ')"/>
+            <sch:assert test="distinct-values($witnesses-app)">each app should only have only one time a witness declare</sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
 </sch:schema>

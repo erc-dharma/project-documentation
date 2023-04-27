@@ -3427,9 +3427,16 @@
             <constraint><sch:rule context="tei:div[child::tei:ab[@type='invocation |colophon']]"
               ><sch:report test="tei:div/@n">
                  The attribute @n can't be used on div if its child its an ab element with the @type 'invocation' or 'colophon'.
-               </sch:report></sch:rule><sch:rule
-              context="tei:div[@type='interpolation']"><sch:report test="@n"
-              >the attribute @n can't be used on a div with @type='interpolation'.</sch:report></sch:rule></constraint>
+               </sch:report>
+            </sch:rule>
+              <sch:rule context="tei:div[@type='interpolation']">
+                 <sch:report test="@n"
+              >the attribute @n can't be used on a div with @type='interpolation'.</sch:report>
+               </sch:rule>
+              <sch:rule context="tei:div[not(child::tei:ab[@type='invocation' or @type='colophon'])]">
+                <sch:assert test="@n">@n is mandatory on div unless it contains invocation or colophon</sch:assert>
+              </sch:rule>
+            </constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -4374,6 +4381,7 @@
                 <valItem ident="check"/>
               </valList>
             </attDef>
+            <attDef ident="wit" mode="change" usage="req"/>
           </attList>
         </elementSpec>
         <elementSpec ident="variantEncoding" module="textcrit" mode="change">
