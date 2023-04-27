@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:t="http://www.tei-c.org/ns/1.0"
@@ -141,13 +141,13 @@ n. (although there shouldn't be any of encoders follow the EG) -->
     </xsl:param>
     
     <!-- regexes to apply transliteration rules -->
-    <xsl:param name="javanese-regexes" as="element(regex)*">
-        <!-- pas d'espace après : -->
+   <!-- <xsl:param name="javanese-regexes" as="element(regex)*">
+        <!-\- pas d'espace après : -\->
         <regex>
             <find>([:])\s+</find>
             <change>$1</change>
         </regex>
-    </xsl:param>
+    </xsl:param>-->
     
     <xsl:template match="@*|node()">
         <xsl:copy>
@@ -162,19 +162,19 @@ n. (although there shouldn't be any of encoders follow the EG) -->
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:div[not(@xml:lang='fra')]/descendant::text()[string-length(normalize-space(.))>0]">
+    <xsl:template match="t:div[not(@xml:lang='fra') and @type='translation' or @type='commentary']/descendant::text()[string-length(normalize-space(.))>0]">
             <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$english-regexes"/>
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]/descendant::text()[string-length(normalize-space(.))>0] | /t:div[@type='apparatus'][following-sibling::t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]]/descendant-or-self::*[local-name() = ('lem', 'rdg')]">
+ <!--   <xsl:template match="t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]/descendant::text()[string-length(normalize-space(.))>0] | /t:div[@type='apparatus'][following-sibling::t:div[@xml:lang=('kaw-Latn', 'kaw-osn')]]/descendant-or-self::*[local-name() = ('lem', 'rdg')]">
         <xsl:call-template name="applyRegexes">
             <xsl:with-param name="nodeText" select="."/>
             <xsl:with-param name="regex" select="$javanese-regexes"/>
         </xsl:call-template>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template name="applyRegexes">
         <xsl:param name="nodeText"/>
