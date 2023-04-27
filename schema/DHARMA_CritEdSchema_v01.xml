@@ -3433,8 +3433,8 @@
                  <sch:report test="@n"
               >the attribute @n can't be used on a div with @type='interpolation'.</sch:report>
                </sch:rule>
-              <sch:rule context="tei:div[not(child::tei:ab[@type='invocation' or @type='colophon'])]">
-                <sch:assert test="@n">@n is mandatory on div unless it contains invocation or colophon</sch:assert>
+              <sch:rule context="tei:div[child::tei:ab[@type='invocation' or @type='colophon']]">
+                <sch:report test="@n">@n forbidden on div if it contains invocation or colophon</sch:report>
               </sch:rule>
             </constraint>
           </constraintSpec>
@@ -3449,7 +3449,7 @@
             <attDef ident="hand" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="org" mode="delete"/>
-            <attDef ident="prev" mode="delete"/>
+            <attDef ident="prev" mode="delete"/> 
             <attDef ident="real" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
