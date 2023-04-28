@@ -8,6 +8,23 @@
     
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     
+    <!-- written by Axelle Janiak for Aditia's Gunawan phD display -->
+    
+    <!-- purpose: overwrite the present contents of Aditia's translation xml files from the gdocs that he has for the translations, with retention of formating (italics), footnote -->
+    
+    <!-- How to use this xslt -->
+    <!-- 
+Quick xslt, not perfect, but enough to answer Aditia's need regarding his phD. See issue #110.
+It was made to be made with Oxygen.
+
+1-  download the Googledoc
+2- open the Googledoc in Oxygen 
+3- You need to "dezip" it. To do so, select the Word > document, in the left panel opened when the Googledoc were added in Oxygen. 
+4- A document version should open in OOXML. => run the  xslt called "DOCX TO TEI P5" in the section OOXML in the XSLT provided by default in Oxygen, from Configure Transformation scenario.
+5- An output is generated, its content lighter than the previous version. From this output, run the xslt I have pushed: https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/criticalEditions/cleaning-translation.xsl. You have to configure it, from the Configure Transformation scenario as usual.
+6- The resulting file should be good enough, i.e. meaning it keeps the italic and notes, but some works will have to be done manually.
+    -->
+    
     <!-- need to add processing instruction -->
     <xsl:template match="/">
         <xsl:element name="TEI">
