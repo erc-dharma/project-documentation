@@ -10,7 +10,7 @@
     
     <!-- written by Axelle Janiak for Aditia's Gunawan phD display -->
     
-    <!-- purpose: overwrite the present contents of Aditia's translation xml files from the gdocs that he has for the translations, with retention of formating (italics), footnote -->
+    <!-- purpose: create a translation xml files from the gdocs that he has for the translations, with retention of formating (italics), footnote -->
     
     <!-- How to use this xslt -->
     <!-- 
@@ -222,19 +222,5 @@ It was made to be used with Oxygen.
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
-    <!--<xsl:template match="tei:p/text()">
-                <xsl:analyze-string select="." regex="\[(.)\]">
-                    <xsl:matching-substring>
-                        <xsl:element name="supplied">
-                            <xsl:attribute name="reason">subaudible</xsl:attribute>
-                            <xsl:value-of select="regex-group(1)"/>
-                        </xsl:element>
-                    </xsl:matching-substring>
-                    <xsl:non-matching-substring>
-                        <xsl:apply-templates/>
-                    </xsl:non-matching-substring>
-                </xsl:analyze-string>
-    </xsl:template>-->
     
 </xsl:stylesheet>
