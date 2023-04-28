@@ -2134,8 +2134,8 @@
                                             </xsl:element>
                                             <xsl:text>: </xsl:text>
                                             <xsl:choose>
-                                                <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc/tei:p">
-                                                    <xsl:apply-templates select="./tei:msDesc/tei:physDesc/tei:objectDesc/tei:p"/>
+                                                <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc">
+                                                    <xsl:apply-templates select="./tei:msDesc/tei:physDesc/tei:objectDesc"/>
                                                 </xsl:when>
                                                 <xsl:when test="./tei:msDesc/tei:physDesc/tei:objectDesc/child::* except tei:p">
                                                     <xsl:element name="ul">
@@ -2160,7 +2160,7 @@
                                                     </xsl:element>
                                                 </xsl:when>
                                                 <xsl:otherwise>
-                                                    <xsl:apply-templates select="normalize-space(./tei:msDesc/tei:physDesc/tei:p)"/>
+                                                    <xsl:apply-templates select="./tei:msDesc/tei:physDesc"/>
                                                </xsl:otherwise>
                                             </xsl:choose>
                                         </xsl:element>
