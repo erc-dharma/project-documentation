@@ -197,4 +197,14 @@
             <sch:assert test="every $id in $textpart-id satisfies $textpart-id = $editionfile//t:*/@xml:id">@corresp not found in edition file.</sch:assert>
         </sch:rule>
     </sch:pattern>
+    
+    <!-- vérifier la présence de tous les témoins -->
+    <sch:pattern>
+        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'])]">
+            <!-- on compte les témoins déclarés-->
+            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
+            <sch:let name="witnesses-app" value="count(tokenize(string-join(./t:*[not(t:witDetail)]/@wit, ' '), '\s'))"/>            
+            <sch:assert test="$witnesses-app = $witnesses-list">every apparatus entry should have the same number of witnesses as declared in the teiHeader</sch:assert>
+        </sch:rule>
+    </sch:pattern>
 </sch:schema>

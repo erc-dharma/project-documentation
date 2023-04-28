@@ -220,7 +220,7 @@
         
         <sch:rule context="t:app//@wit">
             <!-\- making a list of the sigla -\->
-            <sch:let name="witnesses-list" value="//t:TEI//t:listWit/t:witness/@xml:id"/>
+            <sch:let name="witnesses-list" value=""/>
             <!-\- making a list of all the values -\->
             <sch:let name="witnesses-app" value="string-join(.//@wit, ' ')"/>
             <sch:assert test="functx:sequence-node-equal-any-order($witnesses-app, $witnesses-list)">all witnesses should be declares in app entries.</sch:assert>
@@ -229,7 +229,7 @@
     <!--<sch:pattern>
         <sch:rule context="t:app">
             <sch:let name="wit-contents" value="for $w in tokenize(.//@wit, '\s+') return $w"/>
-            <sch:let name="witnesses-list" value="count()"/>
+            
             <sch:assert test="count($wit-contents) = $witnesses-list">
                 all witnesses should be declares in app entries.
             </sch:assert>
@@ -248,11 +248,13 @@
         
     </sch:pattern>
     -->
-    <!-- distinc-value inside an app -->
-    <!--<sch:pattern>
-        <sch:rule context="t:app[not(descendant::t:app or parent::t:listApp[@type='parallels'])]">
-            <sch:let name="witnesses-app" value="string-join(./*[not(t:witDetail)]/@wit, ' ')"/>
-            <sch:assert test="distinct-values($witnesses-app)">each app should only have only one time a witness declare</sch:assert>
+    <!-- vérifier la présence de tous les témoins -->
+    <sch:pattern>
+        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'])]">
+            <!-- on compte les témoins déclarés-->
+            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
+            <sch:let name="witnesses-app" value="count(tokenize(string-join(./t:*[not(t:witDetail)]/@wit, ' '), '\s'))"/>            
+            <sch:assert test="$witnesses-app = $witnesses-list">every apparatus entry should have the same number of witnesses as declared in the teiHeader</sch:assert>
         </sch:rule>
-    </sch:pattern>-->
+    </sch:pattern>
 </sch:schema>
