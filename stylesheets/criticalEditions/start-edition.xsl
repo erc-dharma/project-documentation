@@ -1852,15 +1852,9 @@
             <xsl:if test="@n">
                 <xsl:element name="span">
                     <xsl:attribute name="class">text-muted lg-number</xsl:attribute>
-                    <xsl:choose>
-                        <!--<xsl:when test="matches(child::tei:l[1]/@n, '\d+')"/>-->
-                        <xsl:when test="@n">
-                            <xsl:value-of select="@n"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:number count="tei:lg" format="1" level="single"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                    <xsl:if test="@n">
+                        <xsl:value-of select="@n"/>
+                    </xsl:if>
                 </xsl:element>
             </xsl:if>
         </xsl:element>
