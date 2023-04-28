@@ -15,14 +15,15 @@
     <!-- How to use this xslt -->
     <!-- 
 Quick xslt, not perfect, but enough to answer Aditia's need regarding his phD. See issue #110.
-It was made to be made with Oxygen.
+It was made to be used with Oxygen.
 
-1-  download the Googledoc
+1- download the Googledoc in ??? format
 2- open the Googledoc in Oxygen 
 3- You need to "dezip" it. To do so, select the Word > document, in the left panel opened when the Googledoc were added in Oxygen. 
 4- A document version should open in OOXML. => run the  xslt called "DOCX TO TEI P5" in the section OOXML in the XSLT provided by default in Oxygen, from Configure Transformation scenario.
-5- An output is generated, its content lighter than the previous version. From this output, run the xslt I have pushed: https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/criticalEditions/cleaning-translation.xsl. You have to configure it, from the Configure Transformation scenario as usual.
-6- The resulting file should be good enough, i.e. meaning it keeps the italic and notes, but some works will have to be done manually.
+5- An output is generated, its content lighter than the previous version. 
+6- From this output, run the present xslt or any modified version of it. You have to configure it, from the Configure Transformation scenario as usual.
+6- The resulting file should be good enough, i.e. meaning it keeps the italic and notes, but some further clean up will have to be done manually to obtain valid XML.
     -->
     
     <!-- need to add processing instruction -->
