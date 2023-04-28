@@ -17,7 +17,7 @@
 Quick xslt, not perfect, but enough to answer Aditia's need regarding his phD. See issue #110.
 It was made to be used with Oxygen.
 
-1- download the Googledoc in ??? format
+1- download the Googledoc in docx format
 2- open the Googledoc in Oxygen 
 3- You need to "dezip" it. To do so, select the Word > document, in the left panel opened when the Googledoc were added in Oxygen. 
 4- A document version should open in OOXML. => run the  xslt called "DOCX TO TEI P5" in the section OOXML in the XSLT provided by default in Oxygen, from Configure Transformation scenario.
