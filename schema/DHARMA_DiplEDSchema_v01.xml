@@ -1829,7 +1829,6 @@
                         <attDef ident="scribe" mode="delete"/>
                         <attDef ident="scribeRef" mode="delete"/>
                         <attDef ident="script" mode="delete"/>
-                        <attDef ident="scriptRef" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="source" mode="delete"/>
                         <attDef ident="style" mode="delete"/>

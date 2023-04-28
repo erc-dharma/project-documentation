@@ -1792,6 +1792,7 @@
                 <valItem ident="bold"/>
                 <valItem ident="check"/>
                 <valItem ident="unmetrical"/>
+                <valItem ident="small-caps"/>
               </valList>
             </attDef>
           </attList>
