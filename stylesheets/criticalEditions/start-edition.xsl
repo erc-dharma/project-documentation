@@ -1470,6 +1470,12 @@
                     <xsl:apply-templates/>
                 </xsl:element>
             </xsl:when>
+            <xsl:when test="@rend='caps'">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">small-caps</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
 

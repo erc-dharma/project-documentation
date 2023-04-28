@@ -887,4 +887,7 @@ p{
         border-radius: 8px;
         padding: 0.03em;
         }
-             
+        
+.small-caps {
+  font-variant: small-caps;
+}            
