@@ -199,12 +199,26 @@
     </sch:pattern>
     
     <!-- vérifier la présence de tous les témoins -->
+    <!-- exclusion pour les witDetail, les parallèles et les app "nested" -->
+    <!-- tentative de nettoyer le plus rapidement possible les fichiers d'Aditia. Il faudra les faire après -->
     <sch:pattern>
-        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'])]">
+        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'] or parent::t:lem or child::t:witDetail)]">
             <!-- on compte les témoins déclarés-->
             <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
             <sch:let name="witnesses-app" value="count(tokenize(string-join(./t:*[not(t:witDetail)]/@wit, ' '), '\s'))"/>            
             <sch:assert test="$witnesses-app = $witnesses-list">every apparatus entry should have the same number of witnesses as declared in the teiHeader</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- règles de validation pour les witDetails -->
+    <!-- compte le nombre de witDetail + 1. Cet ajout correspond à la prise en compte du dédoublement du même témoin en raison du pc et du ac -->
+    <sch:pattern>
+        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'] or parent::t:lem) and child::t:witDetail]">
+            <!-- on compte les témoins déclarés-->
+            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
+            <sch:let name="count-witdetail" value="count(./t:witDetail) + 1"/>
+            <sch:let name="witnesses-app" value="count(tokenize(string-join(./*/@wit, ' '), '\s'))"/>            
+            <sch:assert test="$witnesses-app - $count-witdetail = $witnesses-list">This entry with witDetail shouldn't have more than witnesses declared in the teiHeader</sch:assert>
         </sch:rule>
     </sch:pattern>
 </sch:schema>
