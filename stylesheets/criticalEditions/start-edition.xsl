@@ -1252,7 +1252,7 @@
             <xsl:element name="p">
                 <xsl:attribute name="class">font-weight-bold metrical</xsl:attribute>
                 <xsl:if test="@n">
-                <xsl:value-of slect="@n"/>
+                <xsl:value-of select="@n"/>
                 </xsl:if>   
                 <xsl:if test="@rend='met'">
                     <xsl:call-template name="metrical-list">
