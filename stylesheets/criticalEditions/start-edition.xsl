@@ -2394,9 +2394,7 @@
             <xsl:element name="small">
                         <xsl:element name="span">
                     <xsl:attribute name="class">text-muted</xsl:attribute>
-                            <xsl:choose>
-                                <xsl:when test="ancestor-or-self::tei:*/@n">
-                                    <xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])">
+                    <!--<xsl:if test="ancestor::tei:div[@type = 'chapter'] and not(ancestor::tei:div[@type = 'dyad' or @type ='interpolation' or @type='metrical' or @type='section'])">
                         <xsl:value-of select="ancestor::tei:div[@type = 'chapter']/@n"/>
                         <xsl:text>.</xsl:text>
                     </xsl:if>
@@ -2411,7 +2409,7 @@
                      <xsl:if test="parent::tei:div[@type = 'metrical']">
                                         <xsl:value-of select="parent::tei:div[@type = 'metrical']/@n"/>
                                         <xsl:text>.</xsl:text>
-                     </xsl:if>
+                     </xsl:if>-->
                     <!--<xsl:if test="parent::tei:div[@type = 'liminal']">
                         <xsl:value-of select="parent::tei:div[@type = 'liminal']/@n"/>
                         <xsl:text>.</xsl:text>
@@ -2428,9 +2426,9 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:if>
-                                <xsl:if test="@n">
-                                    <xsl:value-of select="@n"/>
-                                  </xsl:if>
+                    <xsl:if test="@n">
+                        <xsl:value-of select="@n"/>
+                    </xsl:if>
                 </xsl:element>
             </xsl:element>
         </xsl:element>
