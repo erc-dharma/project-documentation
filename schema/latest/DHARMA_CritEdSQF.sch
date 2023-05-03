@@ -197,36 +197,4 @@
             <sch:assert test="every $id in $textpart-id satisfies $textpart-id = $editionfile//t:*/@xml:id">@corresp not found in edition file.</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
-    <!-- vérifier la présence de tous les témoins -->
-    <!-- exclusion pour les witDetail, les parallèles et les app "nested" -->
-    <!-- tentative de nettoyer le plus rapidement possible les fichiers d'Aditia. Il faudra les faire après -->
-    <sch:pattern>
-        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'] or parent::t:lem or child::t:witDetail or child::t:lem[@type] or descendant-or-self::lacunaStart/following-sibling::*|descendant-or-self::lacunaStart/following::lacunaEnd[1]/preceding-sibling::*)]">
-            <!-- on compte les témoins déclarés-->
-            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
-            <sch:let name="witnesses-app" value="count(tokenize(string-join(./t:*[not(t:witDetail)]/@wit, ' '), '\s'))"/>            
-            <sch:assert test="$witnesses-app = $witnesses-list">every apparatus entry should have the same number of witnesses as declared in the teiHeader</sch:assert>
-        </sch:rule>
-    </sch:pattern>
-    
-    <!-- règles de validation pour les witDetails -->
-    <!-- compte le nombre de witDetail + 1. Cet ajout correspond à la prise en compte du dédoublement du même témoin en raison du pc et du ac -->
-    <sch:pattern>
-        <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'] or parent::t:lem or child::t:lem[@type] or (.[descendant-or-self::t:lacunaStart]/following-sibling::*|.[descendant-or-self::t:lacunaStart]/following::t:lacunaEnd[1]/preceding-sibling::*)) and child::t:witDetail]">
-            <!-- on compte les témoins déclarés-->
-            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
-            <sch:let name="count-witdetail" value="count(./t:witDetail) + 1"/>
-            <sch:let name="witnesses-app" value="count(tokenize(string-join(./*/@wit, ' '), '\s'))"/>            
-            <sch:assert test="$witnesses-app - $count-witdetail = $witnesses-list">This entry with witDetail shouldn't have more than witnesses declared in the teiHeader</sch:assert>
-        </sch:rule>
-    </sch:pattern>
-    
-    <sch:pattern>
-        <sch:rule context="t:app[descendant-or-self::t:lacunaStart/following-sibling::*|descendant-or-self::t:lacunaStart/following::t:lacunaEnd[1]/preceding-sibling::*]">
-            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
-            <sch:let name="witnesses-app" value="count(tokenize(string-join(./t:*[not(t:witDetail)]/@wit, ' '), '\s'))"/> 
-            <sch:assert test="$witnesses-app - 1 = $witnesses-list">This entry inside a lacuna should have less witnesses declared than in the teiHeader</sch:assert>            
-        </sch:rule>
-    </sch:pattern>
 </sch:schema>
