@@ -156,6 +156,20 @@
                 <xsl:variable name="current-node" select="current()"/>
                 <xsl:variable name="sequence" select="for $node in $lacunae-nodes return $node"/>
                 <xsl:choose>
+                    <xsl:when test="tei:lem[not(@type or @wit or @source)]">
+                        <xsl:element name="tr">
+                            <xsl:call-template name="app-number"/>
+                            
+                            <xsl:element name="td">
+                                <xsl:call-template name="appchoice"/>
+                            </xsl:element>                                
+                            
+                            <xsl:element name="td">
+                                <xsl:text> This lem element has no type, no wit and no source. Please check it</xsl:text>
+                                
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:when>
                     <xsl:when test="parent::tei:listApp[@type='parallels']"/>
                     <xsl:when test="@rend='hide'"/> 
                     <xsl:when test="$current-node = $sequence">
