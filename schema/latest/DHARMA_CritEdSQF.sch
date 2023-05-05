@@ -236,8 +236,8 @@
             <sch:let name="num-omStart" value="count(//t:span[@type='omissionStart'])"/>
             <sch:let name="num-omEnd" value="count(//t:span[@type='omissionEnd'])"/>
             <sch:assert test="$num-omStart = $num-omEnd">
-                The number of lacunaStart (<xsl:value-of select="$num-omStart"/>) doesn't match the one from
-                lacunaEnd (<xsl:value-of select="$num-omEnd"/>), please check them.
+                The number of omissionStart (<xsl:value-of select="$num-omStart"/>) doesn't match the one from
+                omissionEnd (<xsl:value-of select="$num-omEnd"/>), please check them.
             </sch:assert>
         </sch:rule>
     </sch:pattern>
