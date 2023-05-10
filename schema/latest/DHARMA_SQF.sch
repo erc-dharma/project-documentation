@@ -197,4 +197,13 @@
         </sch:rule>
     </sch:pattern>
     
+    <!-- controlling corresp on lg -->
+    <sch:pattern>
+        <sch:rule context="t:lg/@corresp">
+            <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/BESTOW/main/DHARMA_Sircar1965.xml')"/>
+            <sch:assert test="t:lg/@corresp[starts-with(., '#')]">corresp must starts with #</sch:assert>
+            <sch:assert test="t:lg/@corresp = $list-id//t:div/@xml:id">the value inside corresp must match a value declared in BESTOW reference file</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
 </sch:schema>
