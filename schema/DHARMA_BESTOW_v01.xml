@@ -149,14 +149,15 @@
                             identical.</sch:assert>--></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
-                        <attDef ident="type" mode="change" usage="req">
+                        <attDef ident="type" mode="change" usage="rec">
                             <valList type="closed" mode="replace">
                                 <valItem ident="text"/>
                                 <valItem ident="bibliography"/>
-                                <valItem ident="autorship"/>
+                                <valItem ident="authorship"/>
                                 <valItem ident="notes"/>
                                 <valItem ident="textpart"/>
                                 <valItem ident="translation"/>
+                                <valItem ident="occurences"/>
                             </valList>
                         </attDef>
                         <attDef ident="ana" mode="delete"/>
@@ -200,17 +201,7 @@
                                 <valItem ident="text-align: justify"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="fragment"/>
-                                <valItem ident="face"/>
-                                <valItem ident="faces"/>
-                                <valItem ident="zone"/>
-                                <valItem ident="column"/>
-                                <valItem ident="item"/>
-                                <valItem ident="trial"/>
-                            </valList>
-                        </attDef>
+                        
                         <attDef ident="xml:lang" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="unknown"/>
@@ -2679,11 +2670,6 @@
                                 <valItem ident="maruṭpā"/>
                                 <valItem ident="mixed"/>
                             </valList>
-                        </attDef>
-                        <attDef ident="n" mode="change" usage="req">
-                            <datatype>
-                                <dataRef key="teidata.numeric"/>
-                            </datatype>
                         </attDef>
                         <attDef ident="xml:lang" mode="change">
                             <valList type="open" mode="replace">
