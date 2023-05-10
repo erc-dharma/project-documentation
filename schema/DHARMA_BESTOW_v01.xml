@@ -3252,9 +3252,8 @@
                 <elementSpec ident="p" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="p">
                         <constraint><sch:rule context="tei:p"><sch:report
-                            test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])"
-                            >@rend='stanza' can only be used in div[@type='translation'] and in
-                            div[@type='commentary']</sch:report></sch:rule><!--<sch:report
+                            test="@rend='stanza' and not(ancestor::tei:div[@type='translation'])"
+                            >@rend='stanza' can only be used in div[@type='translation']</sch:report></sch:rule><!--<sch:report
                             test="not(@n) and ancestor::tei:div[@type='translation']"> @n is
                             mandatory on p element in
                             div[@type='translation']</sch:report>--></constraint>
@@ -3280,8 +3279,7 @@
                                 <valItem ident="small"/>
                                 <valItem ident="wide"/>
                             </valList>
-                        </attDef>
-                        <attDef ident="corresp" mode="delete"/>
+                        </attDef>                       
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
