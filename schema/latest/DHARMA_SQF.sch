@@ -134,7 +134,7 @@
     </sch:pattern>-->
     
     <sch:pattern>
-        <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull)]">
+        <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull or ancestor::t:msDesc)]">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
             <sch:assert test="./text() eq $idno-fileName">The idno[@type='filename'] must match the filename of the file "<sch:value-of select="$idno-fileName"/>"; without the extension ".xml"  </sch:assert>
         </sch:rule>
