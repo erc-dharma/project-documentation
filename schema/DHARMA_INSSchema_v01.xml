@@ -18,6 +18,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2023-05-10">Allowing the possibility to use corresp with lg to encodage Amandine stanzas</change>
             <change who="part:axja" when="2023-04-19">Completing Salome addition and creating a schematron rule for @type undertermined</change>
             <change who="part:sapi" when="2023-04-18">Learning to add value in attributes and updating the schematron rules</change>
             <change who="part:axja" when="2023-04-18">Adding values for placeName - See Salome research</change>
@@ -2651,7 +2652,6 @@
                         <attDef ident="org" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
