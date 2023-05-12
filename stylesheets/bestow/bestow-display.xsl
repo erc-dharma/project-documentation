@@ -12,33 +12,97 @@
     
     <!--  B ! -->
     <xsl:template match="tei:bibl">
-        <xsl:analyze-string select="./tei:ptr/@target"
-            regex="[a-z]+:(\w+)(\d\d\d\d)">
-            <xsl:matching-substring>
-                <xsl:value-of select="regex-group(1)"/>
-                <xsl:text> </xsl:text>
-                <xsl:value-of select="regex-group(2)"/>
-            </xsl:matching-substring>
-        </xsl:analyze-string>
-        <xsl:if test="./tei:citedRange">
-            <xsl:text>, </xsl:text>
-        </xsl:if>
-        <xsl:if test="./tei:citedRange">
-            <xsl:for-each select="./tei:citedRange">
-                <xsl:call-template name="citedRange-unit"/>
-                <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
-                <xsl:if test="following-sibling::tei:citedRange[1]">
-                    <xsl:text>, </xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-        </xsl:if>
-        <xsl:if test="./tei:note">
-            <xsl:apply-templates select="tei:note"/>
-        </xsl:if>
-        <xsl:if test="following::tei:bibl[1]">
-            <xsl:text>.</xsl:text>
-            <br/>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test=".[tei:ptr]">
+                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
+                <xsl:variable name="zoteroomitname">
+                    <xsl:value-of
+                        select="unparsed-text(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+                    />
+                </xsl:variable>
+                <xsl:variable name="zoteroapitei">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:variable name="zoteroapijson">
+                    <xsl:value-of
+                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
+                <xsl:variable name="pointerurl">
+                    <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
+                </xsl:variable>
+                <xsl:variable name="bibwitness">
+                    <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                </xsl:variable>
+                <xsl:choose>
+                    <xsl:when test="ancestor::tei:p or ancestor::tei:note">
+                        <a href="{$pointerurl}">
+                            <xsl:variable name="citation">
+                                <xsl:analyze-string select="$unparsedtext"
+                                    regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(2)"/>
+                                    </xsl:matching-substring>
+                                </xsl:analyze-string>
+                            </xsl:variable>
+                            <xsl:choose>
+                                <xsl:when test="@rend='omitname'">
+                                    <xsl:analyze-string select="$zoteroomitname"
+                                        regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
+                                        <xsl:matching-substring>
+                                            <xsl:value-of select="regex-group(2)"/>
+                                        </xsl:matching-substring>
+                                    </xsl:analyze-string>
+                                </xsl:when>
+                                <xsl:when test="@rend='ibid'">
+                                    <xsl:element name="i">
+                                        <xsl:text>ibid.</xsl:text>
+                                    </xsl:element>
+                                </xsl:when>
+                                <xsl:when test="matches(./child::tei:ptr/@target, '[A-Z][A-Z]')">
+                                    <xsl:call-template name="journalTitle"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </a>
+                        <xsl:if test="tei:citedRange">
+                            <xsl:choose>
+                                <xsl:when test="tei:citedRange and not(ancestor::tei:cit)">
+                                    <xsl:text>: </xsl:text>
+                                </xsl:when>
+                                <xsl:when test="tei:citedRange and ancestor::tei:cit">
+                                    <xsl:text>, </xsl:text>
+                                </xsl:when>
+                            </xsl:choose>
+                            <xsl:for-each select="tei:citedRange">
+                                <xsl:call-template name="citedRange-unit"/>
+                                <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                                <xsl:if test="following-sibling::tei:citedRange[1]">
+                                    <xsl:text>, </xsl:text>
+                                </xsl:if>
+                            </xsl:for-each>
+                        </xsl:if>
+                        <!-- Display for t:cit  -->
+                        <xsl:if test="following::tei:quote[1] and ancestor::tei:cit">
+                            <xsl:text>: </xsl:text>
+                        </xsl:if>
+                        
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:copy-of
+                            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <!-- div -->
@@ -70,22 +134,61 @@
     
     <xsl:template match="tei:div[@type][not(@type='translation' or @type='occurences' or @type='text')]">
                 <xsl:element name="div">
-                    <xsl:element name="small">
+                    
                         <xsl:element name="span">
-                            <xsl:attribute name="class">text-muted</xsl:attribute> 
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute> 
                         <xsl:call-template name="langague"/>
                         <xsl:choose>
                             <xsl:when test="@type='textpart'">
                                 <xsl:text>Translation</xsl:text>
                             </xsl:when>
-                            <xsl:otherwise><xsl:value-of select="@type"/></xsl:otherwise>
+                            <xsl:when test="@type='inscriptions'">
+                                <xsl:text>Inscriptions</xsl:text> 
+                            </xsl:when>  
+                            <xsl:when test="@type='notes'">
+                                <xsl:text>Sircar's notes</xsl:text> 
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
+                             </xsl:otherwise>
                         </xsl:choose>
                         </xsl:element>
-                    </xsl:element>
+                    
                     <br/>
-                    <xsl:apply-templates/>
+                    <xsl:choose>
+                        <xsl:when test="@type='inscriptions'">
+                            <xsl:element name="p">
+                                <xsl:text>Appart for the spelling differences, this stanza identically appears in : </xsl:text>
+                            </xsl:element>
+                        </xsl:when>
+                        <xsl:when test="(@type='purāṇas' or @type='dharmaśāśtras')">
+                            <p>This stanza occurs in : </p>
+                        </xsl:when>
+                        <xsl:when test="@type='variation'">
+                            <p>This stanza appears with the following modifications here:</p>
+                        </xsl:when>
+                        <xsl:when test="@type='authorship'">
+                            <p>The authorship of this stanza is attributed to the following sources:</p>
+                        </xsl:when>
+                    </xsl:choose>
+                    <xsl:choose>
+                        <xsl:when test="descendant-or-self::text() = ''">
+                            <p>No data currently available</p>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:apply-templates/>
+                        </xsl:otherwise>
+                    </xsl:choose>
         </xsl:element>
             
+    </xsl:template>
+    
+    <!--  foreign ! -->
+    <xsl:template match="tei:foreign">
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-italic</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
     </xsl:template>
     
     <!--  hi ! -->
@@ -126,9 +229,9 @@
     <xsl:template match="tei:lg">
         <xsl:element name="p">
             <xsl:attribute name="class">float-center</xsl:attribute>
-            <xsl:element name="small">
+            
                 <xsl:element name="span">
-                    <xsl:attribute name="class">text-muted</xsl:attribute>                 
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>                 
                         <xsl:choose>
                             <xsl:when test="matches(@met,'[\+\-]+')">
                                 <xsl:call-template name="scansion">
@@ -142,7 +245,7 @@
                             </xsl:otherwise>
                         </xsl:choose>
                 </xsl:element>
-            </xsl:element>
+            
         </xsl:element>
         
             <xsl:element name="div">
@@ -157,10 +260,69 @@
             </xsl:element>
     </xsl:template>
     
+    <!--  List -->
+    <xsl:template match="tei:list">
+        <xsl:element name="ul">
+            <xsl:attribute name="class">list-unstyle</xsl:attribute>
+            <xsl:for-each select="child::tei:item">
+                <xsl:element name="li">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:for-each>
+            
+        </xsl:element>
+    </xsl:template>
+    
+    <!--  listBibl -->
+    <xsl:template match="tei:listBibl">
+        <xsl:apply-templates/>
+        <br/>
+    </xsl:template>
+    
     <!-- p -->
     <xsl:template match="tei:p">
         <xsl:element name="p">
-            <xsl:apply-templates/>
+           
+                <xsl:if test="@rend='stanza'"> 
+                        <xsl:choose>
+                            <xsl:when test="@n='1' and not(following-sibling::tei:*)"/>
+                            <xsl:when test="matches(@n, '[rv]+')">
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+                                    <xsl:value-of select="@n"/>
+                                </xsl:element>
+                            </xsl:when>
+                            <!--<xsl:when test="count(@n) &gt;= 2">-->
+                            <xsl:when test="matches(@n, ',')">
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+                                    <xsl:number value="substring-before(@n, ',')" format="I"/>
+                                    <xsl:text>, </xsl:text>
+                                    <xsl:number value="substring-after(@n, ',')" format="I"/>
+                                    <xsl:text>. </xsl:text>
+                                </xsl:element>
+                            </xsl:when>
+                            <xsl:when test="matches(@n, '-')">
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+                                    <xsl:number value="substring-before(@n, '-')" format="I"/>
+                                    <xsl:text>, </xsl:text>
+                                    <xsl:number value="substring-after(@n, '-')" format="I"/>
+                                    <xsl:text>. </xsl:text>
+                                </xsl:element>
+                            </xsl:when>
+                            
+                            <!-- deleting the default since Amandine 's hasn't added any @n -->
+                           <!-- <xsl:otherwise>
+                                <xsl:element name="div">
+                                    <xsl:attribute name="class">translated-stanzanumber</xsl:attribute>
+                                    <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
+                                </xsl:element>
+                            </xsl:otherwise>-->
+                
+            </xsl:choose>
+                </xsl:if>
+                <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     
@@ -227,6 +389,29 @@
                 
             </meta>
         </head>
+    </xsl:template>
+    
+    <!--  title ! -->
+    <xsl:template match="tei:title">
+        <xsl:element name="span">
+            <xsl:choose>
+                <xsl:when test="@rend='plain'">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:when test="@level='a'">
+                    <xsl:text>‘</xsl:text>
+                    <xsl:apply-templates/>
+                    <xsl:text>’</xsl:text>
+                </xsl:when>
+                <xsl:when test="ancestor-or-self::tei:teiHeader">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="class">font-italic</xsl:attribute>
+                    <xsl:apply-templates/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
     </xsl:template>
     
     <!-- Nav bar template -->
@@ -457,5 +642,43 @@
                 <xsl:with-param name="string-pos" select="$string-pos - 1"/>
             </xsl:call-template>
         </xsl:if>
+    </xsl:template>
+    
+    <xsl:template name="journalTitle">
+        <xsl:choose>
+            <!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
+            <xsl:when test="matches(./child::tei:ptr/@target, '[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*')">
+                <xsl:analyze-string select="./child::tei:ptr/@target" regex="[a-z]+:([A][R][I][E])([0-9\-]+)(_[0-9])*">
+                    <xsl:matching-substring>
+                        <i><xsl:value-of select="regex-group(1)"/></i>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="regex-group(2)"/>
+                    </xsl:matching-substring>
+                </xsl:analyze-string>
+            </xsl:when>
+            <xsl:when test="matches(./child::tei:ptr/@target, '[a-z]+:([A-Z]+)([0-9][0-9]+[0-9\-]*)_([0-9]+[\-]*)')">
+                <xsl:analyze-string select="./child::tei:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9][0-9]+[0-9\-]*)_([0-9]+[\-]*)">
+                    <xsl:matching-substring>
+                        <i><xsl:value-of select="regex-group(1)"/></i>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="regex-group(2)"/>
+                        <xsl:text> (</xsl:text>
+                        <xsl:value-of select="regex-group(3)"/>
+                        <xsl:text>)</xsl:text>
+                    </xsl:matching-substring>
+                </xsl:analyze-string>
+            </xsl:when>
+            <!-- Handles OV, ROC, ROD -->
+            <xsl:when test="matches(./child::tei:ptr/@target, '[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*')">
+                <xsl:analyze-string select="./child::tei:ptr/@target" regex="[a-z]+:([A-Z]+)([0-9\-]+)(_[0-9])*">
+                    <xsl:matching-substring>
+                        <i><xsl:value-of select="regex-group(1)"/></i>
+                        <xsl:text> (</xsl:text>
+                        <xsl:value-of select="regex-group(2)"/>
+                        <xsl:text>)</xsl:text>
+                    </xsl:matching-substring>
+                </xsl:analyze-string>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
