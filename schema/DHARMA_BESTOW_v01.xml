@@ -126,13 +126,13 @@
                 <elementSpec ident="div" mode="change" module="textstructure">
                     <constraintSpec scheme="isoschematron" ident="div">
                         <!-- SQF add to delete @xml:lang='eng'. -->
-                        <constraint><sch:rule context="tei:div"><sch:report
+                        <constraint><sch:rule context="tei:div"><!--<sch:report
                             test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"
                             > Divs other than @type=textpart may not nest in divs of different @type
                             </sch:report><sch:report
                             test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
                             > At least two divs @type=textpart are expected in the
-                            edition</sch:report><!--<sch:report
+                            edition</sch:report>--><!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
                             div[@type='translation']</sch:report>--><sch:report
                             test="@type='translation' and @resp and @source"
@@ -158,6 +158,10 @@
                                 <valItem ident="textpart"/>
                                 <valItem ident="translation"/>
                                 <valItem ident="occurences"/>
+                                <valItem ident="inscriptions"/>
+                                <valItem ident="purāṇas"/>
+                                <valItem ident="dharmaśāśtras"/>
+                                <valItem ident="variation"/>
                             </valList>
                         </attDef>
                         <attDef ident="ana" mode="delete"/>
@@ -3115,7 +3119,7 @@
                 </elementSpec>
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
-                        <constraint><sch:rule context="tei:note"><sch:report
+                        <constraint><sch:rule context="tei:note"><!--<sch:report
                             test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
                             >Note is prohibited in div[@type='edition']</sch:report><sch:report
                             test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)"
@@ -3127,7 +3131,7 @@
                             notes.</sch:report><sch:report
                             test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
                             >Inside div[@type='bibliography'], note should be wrapped inside an p
-                            element for the epigraphic lemma</sch:report><sch:report
+                            element for the epigraphic lemma</sch:report>--><sch:report
                             test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
                             >Note should the last element of the
                             biliography</sch:report></sch:rule><sch:rule
