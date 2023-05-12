@@ -4,6 +4,8 @@
 In  `preferences`, go to `XML -> Schematron`.
 in the *Schematron 1.5* part, choose `2.0` as Xpath version to use the schemas to their full extent.
 
+In `preferences`, go to go to `XML -> XML Parser -> RELAX NG`, the box "Add default attribute values" must be unticked.
+
 ## Linking your XML with a Schema
 It is possible to link your XML with any schema. You can use several ways to do so. All the following solutions can be combined. We recommend having the online official schema in the processing instructions and any other schema you wished declare with the project options of Oxygen.
 
