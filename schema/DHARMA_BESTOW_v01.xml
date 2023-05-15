@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:sch="http://purl.oclc.org/dsdl/schematron" xml:lang="en">
     <teiHeader>
@@ -18,58 +18,12 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-            <change who="part:axja" when="2023-05-10">Allowing the possibility to use corresp with lg to encodage Amandine stanzas</change>
-            <change who="part:axja" when="2023-04-19">Completing Salome addition and creating a schematron rule for @type undertermined</change>
-            <change who="part:sapi" when="2023-04-18">Learning to add value in attributes and updating the schematron rules</change>
-            <change who="part:axja" when="2023-04-18">Adding values for placeName - See Salome research</change>
-            <change who="part:axja" when="2022-10-18">adding seg/@rend="check"</change>
-            <change who="part:axja" when="2022-06-15">Updating the values for abbreviations</change>
-            <change who="part:axja" when="2022-04-08">Changing the values for placeName</change>
-            <change who="part:axja" when="2022-04-05">Working on contraints for dates</change>
-            <change who="part:axja" when="2022-04-04"
-                >Working on the list of attributes for rs</change>
-            <change who="part:axja" when="2022-03-29">Updating the model for placeName</change>
-            <change who="part:axja" when="2022-02-18"
-                >Updating the model to encode person's names, addding provisional values for a list of types with roleName</change>
-            <change who="part:axja" when="2022-02-07">Adding xhm and cja in @xml:lang</change>
-            <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
-            <change who="part:axja" when="2021-12-22"
-                >Adding some attributes and values for dates as well as for rs.</change>
-            <change who="part:axja" when="2021-11-02"
-                >Correcting the error message for list element</change>
-            <change who="part:axja" when="2021-10-22">Adding @unit="book" on citedRange</change>
-            <change who="part:axja" when="2021-10-08">Adding a @type="feature" on space</change>
-            <change who="part:axja" when="2021-09-16"
-                >Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
-            <change who="part:axja" when="2021-09-15"
-                >closing list attributes for unit with gap</change>
-            <change who="part:axja" when="2021-09-10"
-                >adding @unit="section" with citedRange</change>
-            <change who="part:axja" when="2021-08-13"
-                >Updating the encoding pattern for expan</change>
-            <change who="part:axja" when="2021-07-07"
-                >Updating the constraints for children of head element</change>
-            <change who="part:axja" when="2021-07-06"
-                >Adding the possibility to add a note inside a item, in the section commentary</change>
-            <change who="part:axja" when="2021-07-05"
-                >Changing the @corresp on div, p, ab, lg, l and seg elements in favor of @rendition</change>
-            <change who="part:axja" when="2021-06-11"
-                >Adding @unit="line" and @extent for space element</change>
-            <change who="part:axja" when="2021-06-03"
-                >Adding the @corresp on div, p, ab, lg, l and seg elements</change>
-            <change who="part:axja" when="2021-03-10">Adding the @part on element l</change>
-            <change who="part:axja" when="2021-01"
-                >Updating the ODD to match the evolution of the
-                EGD</change>
-            <change who="part:axja" when="2020-07-13"
-                >Creating an ODD with legacy from the Epidoc
-                Guidelines</change>
+            <change who="part:axja" when="2023-05-10">Creating the schema for Amandinne based on the INS schema</change>
         </revisionDesc>
     </teiHeader>
     <text>
         <body>
-            <p>DHARMA TEI Customization written by Daniel Balogh and Arlo Griffiths based on&#13;
-                Epidoc&#13; schema. </p>
+            <p>TEI Customization  based on DHARMA practices.</p>
             <schemaSpec ident="dharma" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
                 source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
                 <!--source="https://svn.code.sf.net/p/epidoc/code/trunk/schema/tei-epidoc.xml"
@@ -172,37 +126,42 @@
                 <elementSpec ident="div" mode="change" module="textstructure">
                     <constraintSpec scheme="isoschematron" ident="div">
                         <!-- SQF add to delete @xml:lang='eng'. -->
-                        <constraint><sch:rule context="tei:div"><sch:report
+                        <constraint><sch:rule context="tei:div"><!--<sch:report
                             test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"
                             > Divs other than @type=textpart may not nest in divs of different @type
                             </sch:report><sch:report
                             test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
                             > At least two divs @type=textpart are expected in the
-                            edition</sch:report><!--<sch:report
+                            edition</sch:report>--><!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
-                            div[@type='translation']</sch:report>--><sch:report
+                            div[@type='translation']</sch:report>--><!--<sch:report
                             test="@type='translation' and @resp and @source"
                             >@resp and @source can
                             not be used
-                            together</sch:report><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><sch:report
+                            together</sch:report>--><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><!--<sch:report
                             test="@type='translation' and not(@resp or @source)"
                             >@resp or @source is
                             expected for
-                            div[@type='translation']</sch:report><!--<sch:rule context="tei:body">
+                            div[@type='translation']</sch:report>--><!--<sch:rule context="tei:body">
                                 <sch:assert
                             test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
                             >The textpart structure in edition and in apparatus must be
                             identical.</sch:assert>--></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
-                        <attDef ident="type" mode="change" usage="req">
+                        <attDef ident="type" mode="change" usage="rec">
                             <valList type="closed" mode="replace">
-                                <valItem ident="apparatus"/>
+                                <valItem ident="text"/>
                                 <valItem ident="bibliography"/>
-                                <valItem ident="commentary"/>
-                                <valItem ident="edition"/>
+                                <valItem ident="authorship"/>
+                                <valItem ident="notes"/>
                                 <valItem ident="textpart"/>
                                 <valItem ident="translation"/>
+                                <valItem ident="occurences"/>
+                                <valItem ident="inscriptions"/>
+                                <valItem ident="purāṇas"/>
+                                <valItem ident="dharmaśāśtras"/>
+                                <valItem ident="variation"/>
                             </valList>
                         </attDef>
                         <attDef ident="ana" mode="delete"/>
@@ -225,8 +184,7 @@
                         <attDef ident="sample" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/> 
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <valList type="closed" mode="replace">
@@ -247,17 +205,7 @@
                                 <valItem ident="text-align: justify"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="fragment"/>
-                                <valItem ident="face"/>
-                                <valItem ident="faces"/>
-                                <valItem ident="zone"/>
-                                <valItem ident="column"/>
-                                <valItem ident="item"/>
-                                <valItem ident="trial"/>
-                            </valList>
-                        </attDef>
+                        
                         <attDef ident="xml:lang" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="unknown"/>
@@ -2652,6 +2600,7 @@
                         <attDef ident="org" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -2725,11 +2674,6 @@
                                 <valItem ident="maruṭpā"/>
                                 <valItem ident="mixed"/>
                             </valList>
-                        </attDef>
-                        <attDef ident="n" mode="change" usage="req">
-                            <datatype>
-                                <dataRef key="teidata.numeric"/>
-                            </datatype>
                         </attDef>
                         <attDef ident="xml:lang" mode="change">
                             <valList type="open" mode="replace">
@@ -3175,7 +3119,7 @@
                 </elementSpec>
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
-                        <constraint><sch:rule context="tei:note"><sch:report
+                        <constraint><sch:rule context="tei:note"><!--<sch:report
                             test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
                             >Note is prohibited in div[@type='edition']</sch:report><sch:report
                             test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)"
@@ -3187,7 +3131,7 @@
                             notes.</sch:report><sch:report
                             test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
                             >Inside div[@type='bibliography'], note should be wrapped inside an p
-                            element for the epigraphic lemma</sch:report><sch:report
+                            element for the epigraphic lemma</sch:report>--><sch:report
                             test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
                             >Note should the last element of the
                             biliography</sch:report></sch:rule><sch:rule
@@ -3311,18 +3255,12 @@
                 </elementSpec>
                 <elementSpec ident="p" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="p">
-                        <constraint>
-                            <sch:rule context="tei:p">
-                                <sch:report
-                            test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])"
-                            >@rend='stanza' can only be used in div[@type='translation'] and in
-                            div[@type='commentary']</sch:report></sch:rule>
-                        <sch:rule context="tei:p[@corresp]">
-                            <sch:assert
-                                test="@rend='stanza' and ancestor::tei:div[@type='translation']"
-                                >@corresp can only be used with p in the context of a @rend="stanza" and inside a translatio </sch:assert>
-                        </sch:rule>
-                            </constraint>
+                        <constraint><sch:rule context="tei:p"><sch:report
+                            test="@rend='stanza' and not(ancestor::tei:div[@type='translation'])"
+                            >@rend='stanza' can only be used in div[@type='translation']</sch:report></sch:rule><!--<sch:report
+                            test="not(@n) and ancestor::tei:div[@type='translation']"> @n is
+                            mandatory on p element in
+                            div[@type='translation']</sch:report>--></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3345,7 +3283,7 @@
                                 <valItem ident="small"/>
                                 <valItem ident="wide"/>
                             </valList>
-                        </attDef>
+                        </attDef>                       
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>

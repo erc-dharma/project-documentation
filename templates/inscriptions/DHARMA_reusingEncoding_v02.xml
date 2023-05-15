@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Add DHARMA PIs -->
-<?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- //// PLEASE DO NOT USE THIS TEMPLATE FOR YOUR ENCODING. IT IS ONLY A MODEL CREATED TO HANDLE CONVERTING AN ALREADY EXISTING XML FILE TO DHARMA CONVENTIONS. CONTACT THE INGENIEURS OF THE PROJECT IF YOU WANT TO REUSE FILES./// -->
 <TEI xmlns="http://www.tei-c.org/ns/1.0"  xml:lang="eng">
     <teiHeader>

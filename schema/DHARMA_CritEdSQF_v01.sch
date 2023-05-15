@@ -215,17 +215,17 @@
     </sch:pattern>
     
     <!-- to do vérifier les lacunae -->
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:lacunaStart">
             <sch:let name="witness-related" value="parent::t:rdg/@wit"/>
             <sch:assert test="./following::t:lacunaEnd/parent::t:rdg[@wit= $witness-related]">
                 Check this lacuna, it might not have a matching ending
             </sch:assert>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
     <!-- compter les lacunae -->
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:lacunaStart | t:lacunaEnd">
             <sch:let name="num-lacunaStart" value="count(//t:lacunaStart)"/>
             <sch:let name="num-lacunaEnd" value="count(//t:lacunaEnd)"/>
@@ -234,40 +234,28 @@
                 lacunaEnd (<xsl:value-of select="$num-lacunaEnd"/>), please check them.
             </sch:assert>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
     <!-- to do vérifier les omissions -->
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:span[@type='omissionStart']">
             <sch:let name="witness-related" value="parent::t:rdg/@wit"/>
             <sch:assert test="./following::t:span[@type='omissionEnd']/parent::t:rdg[@wit= $witness-related]">
                 Check this omission, it might not have a matching ending.
             </sch:assert>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
     <!-- compter les omissions -->
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:span[@type='omissionStart'] | t:span[@type='omissionEnd']">
             <sch:let name="num-omStart" value="count(//t:span[@type='omissionStart'])"/>
             <sch:let name="num-omEnd" value="count(//t:span[@type='omissionEnd'])"/>
             <sch:assert test="$num-omStart = $num-omEnd">
-                The number of lacunaStart (<xsl:value-of select="$num-omStart"/>) doesn't match the one from
-                lacunaEnd (<xsl:value-of select="$num-omEnd"/>), please check them.
+                The number of omissionStart (<xsl:value-of select="$num-omStart"/>) doesn't match the one from
+                omissionEnd (<xsl:value-of select="$num-omEnd"/>), please check them.
             </sch:assert>
         </sch:rule>
-    </sch:pattern>
-    
-    <!-- checking if a witness is given more than one in an entry -->
-     <sch:pattern>
-         <sch:let name="node-to-exclude" value="//t:app[descendant-or-self::lacunaStart]/following-sibling::*|t:app[descendant-or-self::lacunaStart]/following::lacunaEnd[1]/preceding-sibling::*"/>
-         <sch:rule context="t:app[not(parent::t:listApp[@type='parallels'] or parent::t:lem or child::t:lem[@type] or child::t:witDetail or deep-equal(., $node-to-exclude))]">
-            <!-- on compte les témoins déclarés-->
-            <sch:let name="witnesses-list" value="count(//t:TEI//t:listWit/t:witness/@xml:id)"/>
-             
-            <sch:let name="witnesses-app" value="count(tokenize(string-join(./t:*[not(t:witDetail)]/@wit, ' '), '\s'))"/>            
-            <sch:assert test="$witnesses-app = $witnesses-list">every apparatus entry should have the same number of witnesses as declared in the teiHeader</sch:assert>
-        </sch:rule>
-    </sch:pattern>
-
+    </sch:pattern>-->
+  
 </sch:schema>
