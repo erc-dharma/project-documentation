@@ -334,8 +334,11 @@
             <xsl:call-template name="dharma-head"/>
             <xsl:element name="body">
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
-                
+                <xsl:attribute name="data-spy">scroll</xsl:attribute>
+                <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
+                <xsl:call-template name="table-contents"/>
+                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="toggle-table-contents">☰ Index</a>
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
                     <xsl:element name="h1">
@@ -680,5 +683,35 @@
                 </xsl:analyze-string>
             </xsl:when>
         </xsl:choose>
+    </xsl:template>
+    
+    <!-- side bar -->
+    <!-- side bar - table of contents -->
+    <xsl:template name="table-contents">
+        <xsl:element name="div">
+            <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
+            <xsl:attribute name="class">collapse</xsl:attribute>
+            <xsl:element name="nav">
+                <xsl:attribute name="id">myScrollspy</xsl:attribute>
+                <xsl:element name="ul">
+                    <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
+                    <xsl:for-each select="//tei:div[@xml:id]">
+                        <xsl:element name="li">
+                            <xsl:attribute name="class">nav-item</xsl:attribute>
+                            <xsl:element name="a">
+                                <xsl:attribute name="class">nav-link text-align-justify</xsl:attribute>
+                                <xsl:attribute name="href">
+                                    <xsl:text>#</xsl:text>
+                                    <xsl:value-of select="generate-id()"/>
+                                </xsl:attribute>
+                               <xsl:value-of select="@xml:id"/>
+          
+                            </xsl:element>
+                            
+                        </xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
