@@ -132,16 +132,14 @@
             </xsl:element>
     </xsl:template>
     
-    <xsl:template match="tei:div[@type][not(@type='translation' or @type='occurences' or @type='text')]">
+    <xsl:template match="tei:div[@type][not(@type='occurences' or @type='text')]">
+
                 <xsl:element name="div">
                     
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute> 
                         <xsl:call-template name="langague"/>
-                        <xsl:choose>
-                            <xsl:when test="@type='textpart'">
-                                <xsl:text>Translation</xsl:text>
-                            </xsl:when>
+                        <xsl:choose>                            
                             <xsl:when test="@type='inscriptions'">
                                 <xsl:text>Inscriptions</xsl:text> 
                             </xsl:when>  
@@ -159,10 +157,12 @@
                         <xsl:when test="@type='inscriptions'">
                             <xsl:element name="p">
                                 <xsl:text>Appart for the spelling differences, this stanza identically appears in : </xsl:text>
+                                
                             </xsl:element>
                         </xsl:when>
                         <xsl:when test="(@type='purāṇas' or @type='dharmaśāśtras')">
                             <p>This stanza occurs in : </p>
+                            
                         </xsl:when>
                         <xsl:when test="@type='variation'">
                             <p>This stanza appears with the following modifications here:</p>
@@ -325,6 +325,39 @@
                 <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
+    <!-- ref -->
+        <!--  -->
+        <xsl:template match="tei:text//tei:ref">
+            <xsl:variable name="url-somavamsin" select="'https://erc-dharma.github.io/tfb-somavamsin-epigraphy/workflow-output/html/'"/>
+            <xsl:variable name="url-bengalCharters" select="'https://erc-dharma.github.io/tfb-bengalcharters-epigraphy/workflow-output/html/'"/>
+            <xsl:variable name="url-maitraka" select="'https://erc-dharma.github.io/tfb-maitraka-epigraphy/workflow-output/html/'"/>
+            <xsl:variable name="url-pallava" select="'https://erc-dharma.github.io/tfa-pallava-epigraphy/texts/htmloutput/'"/>
+            <xsl:element name="a">
+                <xsl:attribute name="class">ref</xsl:attribute>
+                <xsl:attribute name="href">
+                    <xsl:choose>
+                        <!-- link to the epigraphy -->
+                        <xsl:when test="matches(@target, 'Somavamsin')">
+                            <xsl:value-of select="concat($url-somavamsin , @target)"/>
+                        </xsl:when>
+                        <xsl:when test="matches(@target, 'BengalCharters')">
+                            <xsl:value-of select="concat($url-bengalCharters , @target)"/>
+                        </xsl:when>
+                        <xsl:when test="matches(@target, 'Maitraka')">
+                            <xsl:value-of select="concat($url-maitraka , @target)"/>
+                        </xsl:when>
+                        <xsl:when test="matches(@target, 'Pallava')">
+                            <xsl:value-of select="concat($url-pallava , @target)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="@target"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <xsl:apply-templates/>
+            </xsl:element>
+        </xsl:template>
     
     <!-- teiHeader -->
     <xsl:template match="tei:teiHeader"/>
