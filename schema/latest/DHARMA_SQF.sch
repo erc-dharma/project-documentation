@@ -206,4 +206,13 @@
         </sch:rule>
     </sch:pattern>
     
+    <!-- controlling ref on rs - BESTOW addition-->
+    <sch:pattern>
+        <sch:rule context="t:rs/@ref">
+            <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/BESTOW/main/DHARMA_BestAuthorities.xml')"/>
+            <sch:assert test=".[starts-with(., 'best:')]">ref must starts with best:</sch:assert>
+            <sch:assert test="substring-after(., 'best:') = $list-id//t:item/@xml:id">the value inside ref must match a value declared in BESTOW authorities file</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
 </sch:schema>
