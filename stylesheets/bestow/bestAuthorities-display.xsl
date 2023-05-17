@@ -187,6 +187,67 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="tei:persName[ancestor::tei:body]">
+        <xsl:element name="span">
+            <xsl:attribute name="data-toggle">popover</xsl:attribute>
+            <xsl:attribute name="data-placement">bottom</xsl:attribute>
+            <xsl:attribute name="title">       
+                <xsl:apply-templates/>                    
+            </xsl:attribute>
+            <xsl:attribute name="data-target">
+                <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+            <xsl:element name="sup">
+                <xsl:text>👤</xsl:text>
+            </xsl:element>
+        </xsl:element>            
+    </xsl:template>
+    
+    <xsl:template match="tei:persName[ancestor::tei:body]" mode="modals">
+        <xsl:variable name="persons">
+            <xsl:choose>
+                <xsl:when test="@ref">
+                    <xsl:variable name="person-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-authorities/main/temporary/DHARMA_persons.xml')//File"/>
+                    <xsl:variable name="person-id" select="@ref"/>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">entry-line</xsl:attribute>
+                        <xsl:text>Identifier: </xsl:text><xsl:apply-templates select="$person-id"/>
+                        <br/>
+                    </xsl:element>
+                    <xsl:choose>
+                        <xsl:when test="$person-file/listPerson[person[@xml:id = $person-id]]">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">entry-line</xsl:attribute>
+                                <xsl:text>Name: </xsl:text><xsl:apply-templates select="$person-file/listPerson[person[@xml:id = $person-id]]/descendant::persName[1]"/><br/></xsl:element>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">entry-line</xsl:attribute>
+                                <xsl:text>Sex: </xsl:text><xsl:apply-templates select="$person-file/listPerson[person[@xml:id = $person-id]]/child::person/@sex"/><br/></xsl:element>
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">entry-line</xsl:attribute>
+                                <xsl:text>Role: </xsl:text><xsl:apply-templates select="$person-file/listPerson[person[@xml:id = $person-id]]/child::person/@role"/></xsl:element>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>no data available for this id.</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">entry-line</xsl:attribute>
+                        <xsl:text>No identifier given for </xsl:text>
+                        <xsl:apply-templates/>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        
+        <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$persons"/>
+        </span>
+    </xsl:template>
+    
+    
     <!-- ref -->
         <xsl:template match="tei:text//tei:ref">
             <xsl:variable name="url-somavamsin" select="'https://erc-dharma.github.io/tfb-somavamsin-epigraphy/workflow-output/html/'"/>
@@ -419,8 +480,8 @@
         
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <!-- loader arie -->
-        <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
+        <!-- loader -->
+        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
     </xsl:template>
     
     <xsl:template name="citedRange-unit">
