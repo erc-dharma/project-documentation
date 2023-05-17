@@ -366,6 +366,9 @@
                 <xsl:otherwise>
                     <xsl:attribute name="class">font-italic</xsl:attribute>
                     <xsl:apply-templates/>
+                    <xsl:element name="sup">
+                        <xsl:text>📜</xsl:text>
+                    </xsl:element>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
