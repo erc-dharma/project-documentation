@@ -222,7 +222,13 @@
     </xsl:template>
     
     <xsl:template match="tei:l">
-        <xsl:apply-templates/><xsl:if test="following-sibling::tei:l[1] and self::tei:l[@n = 'b' or @n = 'd' or @n='f']"><br></br></xsl:if>
+           
+            <xsl:element name="span">
+            <xsl:attribute name="class">
+                <xsl:text>l</xsl:text>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+            </xsl:element>
         </xsl:template>
     
     <!--  lg ! -->
@@ -747,4 +753,5 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
+       
 </xsl:stylesheet>
