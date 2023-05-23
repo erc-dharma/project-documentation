@@ -117,8 +117,15 @@
                     <xsl:value-of select="replace(@xml:id, '_', ' ')"/>
                 </xsl:element>
                 <xsl:element name="div">
-                    <xsl:attribute name="class">col-10</xsl:attribute>
-                        <xsl:apply-templates/>
+                    <xsl:attribute name="class">col-2</xsl:attribute>
+                        <xsl:apply-templates select="* except tei:note"/>
+                </xsl:element>
+                    <xsl:if test="child::tei:note">
+                        <xsl:element name="div">
+                            <xsl:attribute name="class">col-8</xsl:attribute>
+                        <xsl:apply-templates select="tei:note"/>
+                        </xsl:element>
+                    </xsl:if>
                         <xsl:choose>
                             <xsl:when test="not(following::*[1][local-name() = ('item')][@xml:id])">
                                 <br/>
@@ -128,7 +135,6 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     
-                </xsl:element>
             </xsl:element>
     </xsl:template>
     
