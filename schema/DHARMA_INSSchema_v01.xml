@@ -4292,6 +4292,7 @@
                                 <valItem ident="individual-masc"/>
                                 <valItem ident="individual-fem"/>
                                 <valItem ident="individual-other"/>
+                                <valItem ident="authorship"/>
                             </valList>
                         </attDef>
                         <attDef ident="key" mode="change">

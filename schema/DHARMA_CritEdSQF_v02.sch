@@ -72,7 +72,7 @@
             </sqf:fix>
         </sch:rule>
     </sch:pattern>
-    
+ 
     <sch:pattern>
         <sch:rule context="t:TEI[@type='edition']//t:l">
             <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
@@ -150,7 +150,7 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern> 
-    
+   
     <!-- controlling the syntax for @wit -->
     <sch:pattern>
         <sch:rule context="@wit">
@@ -184,7 +184,7 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <!-- controlling the beginning of the value for calendar and datingMethod -->
     <sch:pattern>
         <sch:rule context="t:*/@calendar | t:*/@datingMethod">
@@ -257,7 +257,7 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern>-->
-    
+ 
     <!-- controlling corresp on lg and p - BESTOW addition-->
     <sch:pattern>
         <sch:rule context="t:lg/@corresp | t:p/@corresp">
