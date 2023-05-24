@@ -83,16 +83,15 @@
             <xsl:element name="div">
                 <xsl:attribute name="class">wrapper-content</xsl:attribute>
                 <xsl:call-template name="table-contents"/>
-
-
+                
             <xsl:element name="div">
                 <xsl:attribute name="id">content</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
 
                 <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse">
                     <span>☰ Document Outline</span>
-                </a>
-
+                </a>                
+               
                 <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
                         <span>Toggle Sidebar</span>
@@ -103,6 +102,10 @@
                 <xsl:element name="div">
                     <xsl:attribute name="id">edition-content</xsl:attribute>
             <xsl:apply-templates select="./tei:teiHeader"/>
+                    <xsl:element name="div">
+                        <xsl:attribute name="class">row wrapper</xsl:attribute>
+                        
+                    </xsl:element>
                             <xsl:element name="div">
                                 <xsl:attribute name="class">row wrapper</xsl:attribute><!--  text-break -->
                             <xsl:element name="ul">
@@ -3750,6 +3753,9 @@
                         </xsl:choose>
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="@n"/>
+                        <xsl:if test="child::tei:head[@type='editorial']">
+                            <xsl:text>: </xsl:text><xsl:value-of select="child::tei:head"/>
+                        </xsl:if>
                     </xsl:element>
                     <xsl:if test="descendant::tei:div">
                         <xsl:element name="ul">
@@ -3766,7 +3772,7 @@
                                 </xsl:attribute>
                                 <xsl:choose>
                                     <xsl:when test="@type">
-                                        <xsl:value-of select="@type"/>
+                                        <xsl:value-of select="@type"/>                                        
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:choose>
@@ -3781,6 +3787,9 @@
                                 </xsl:choose>
                                 <xsl:text> </xsl:text>
                                 <xsl:value-of select="@n"/>
+                                <xsl:if test="child::tei:head[@type='editorial']">
+                                    <xsl:text> (</xsl:text><xsl:value-of select="child::tei:head"/><xsl:text>)</xsl:text>
+                                </xsl:if>
                             </xsl:element>
                         </xsl:element>
                     </xsl:for-each>
