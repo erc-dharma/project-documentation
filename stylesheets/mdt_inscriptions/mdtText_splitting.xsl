@@ -9,9 +9,8 @@
     <xsl:template match="File">
         <xsl:for-each select="line">
             <xsl:result-document method="xml" href="{./fileDesc/publicationStmt/idno[@type='filename']}.xml">
-                <!-- _{generate-id()} -->
                 <metadata>
-                    <xsl:copy-of select="." />
+                    <xsl:copy-of select="."/>
                 </metadata>
             </xsl:result-document>
         </xsl:for-each>
