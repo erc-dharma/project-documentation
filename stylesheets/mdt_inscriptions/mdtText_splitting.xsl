@@ -8,7 +8,7 @@
     
     <xsl:template match="File">
         <xsl:for-each select="line">
-            <xsl:result-document method="xml" href="{concat(./fileDesc/publicationStmt/idno[@type='filename'], '_', generate-id(), '.xml')}">
+            <xsl:result-document href="{concat(./fileDesc/publicationStmt/idno[@type='filename'], '_', generate-id(), '.xml')}">
                 <metadata>
                     <xsl:copy-of select="."/>
                 </metadata>
