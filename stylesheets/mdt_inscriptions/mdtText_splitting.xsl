@@ -8,7 +8,7 @@
     
     <xsl:template match="File">
         <xsl:for-each select="line">
-            <xsl:result-document href="DHARMA_mdt_{./fileDesc/sourceDesc/msDesc/msIdentifier/idno}.xml" method="xml" encoding="utf-8">
+            <xsl:result-document href="DHARMA_mdt_{./fileDesc/sourceDesc/msDesc/msIdentifier/idno}_{generate-id()}.xml" method="xml" encoding="utf-8">
                 <xsl:copy-of select="."/>
             </xsl:result-document>
         </xsl:for-each>
