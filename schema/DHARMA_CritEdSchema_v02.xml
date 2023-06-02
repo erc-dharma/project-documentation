@@ -1135,15 +1135,17 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="place" mode="change" usage="req">
-              <valList mode="change" type="closed">
-                <valItem ident="overstrike"/>
-                <valItem ident="unspecified"/>
-                <valItem mode="delete" ident="margin"/>
-                <valItem mode="delete" ident="opposite"/>
-                <valItem mode="delete" ident="overleaf"/>
-                <valItem mode="delete" ident="end"/>
-                <valItem mode="delete" ident="inspace"/>
-              </valList>
+                <valList type="closed" mode="replace">
+                    <valItem ident="inline"/>
+                    <valItem ident="below"/>
+                    <valItem ident="above"/>
+                    <valItem ident="top"/>
+                    <valItem ident="bottom"/>
+                    <valItem ident="left"/>
+                    <valItem ident="right"/>
+                    <valItem ident="overstrike"/>
+                    <valItem ident="unspecified"/>
+                </valList>
             </attDef>
             <attDef ident="hand" mode="change">
               <datatype>
@@ -1503,11 +1505,12 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
-              <valList type="closed" mode="change">
+              <valList type="closed" mode="replace">
                 <valItem ident="check"/>
                 <valItem ident="strikeout"/>
                 <valItem ident="dots"/>
                 <valItem ident="ui"/>
+                <valItem ident="corrected"/>
               </valList>
             </attDef>
           </attList>
