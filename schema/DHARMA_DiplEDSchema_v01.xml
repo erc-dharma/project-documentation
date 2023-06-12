@@ -20,11 +20,11 @@
         <revisionDesc>
             <change who="part:axja" when="2022-10-17">adding the rend="check"</change>
             <change who="part:axja" when="2022-03-29">Adding the new values for placeName</change>
-            
+
             <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
             <change who="part:axja" when="2021-12-22"
                 >Adding some attributes and values for dates as well as for rs.</change>
-            <change who="part:axja" when="2021-12-20">Deleting the constraint of xml:id on pb</change>   
+            <change who="part:axja" when="2021-12-20">Deleting the constraint of xml:id on pb</change>
             <change who="part:axja" when="2021-11-25">Addin the value check on hi and unclear</change>
             <change who="part:axja" when="2021-10-22">adding @unit="book" with citedRange</change>
             <change who="part:axja" when="2021-09-10">adding @unit="section" with citedRange</change>
@@ -495,7 +495,7 @@
                             <sch:rule context="tei:origDate[ancestor::tei:teiHeader]"> <sch:assert
                                 test="@when or (@notBefore and @notAfter) or (@from and @to)"
                                 >The content of the element date should be translated into the W3C format thanks to @when or (@notBefore and @notAfter) or (@from and @to)</sch:assert>
-                            </sch:rule> 
+                            </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -1360,7 +1360,7 @@
                 </elementSpec>
                 <elementSpec ident="date" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="attributes">
-                        <constraint> 
+                        <constraint>
                             <sch:rule context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
                                 <sch:assert test="matches('./text()', '\d+')">
                                     To be encoded a date must contained a year.
@@ -3049,25 +3049,25 @@
                                 <valItem ident="district"/>
                                 <valItem ident="country"/>
                                 <valItem ident="land"/>
-                                
+
                                 <valItem ident="town"/>
                                 <valItem ident="village"/>
                                 <valItem ident="hamlet"/>
                                 <valItem ident="armyCamp"/>
-                                
+
                                 <valItem ident="temple"/>
                                 <valItem ident="monastery"/>
                                 <valItem ident="feedingHall"/>
                                 <valItem ident="tank"/>
                                 <valItem ident="pavillon"/>
-                                
+
                                 <valItem ident="garden"/>
                                 <valItem ident="cave"/>
                                 <valItem ident="road"/>
                                 <valItem ident="canal"/>
                                 <valItem ident="field"/>
                                 <valItem ident="orchard"/>
-                                
+
                                 <valItem ident="forest"/>
                                 <valItem ident="wood"/>
                                 <valItem ident="grove"/>
@@ -3540,26 +3540,26 @@
                                 with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
                             </sch:assert> </sch:rule> <sch:rule
                                 context="tei:rs[@type='tithi']"> <sch:report test="@key"
-                                    >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
+                                    >@key shouldn't be used with tei:rs[@type='tithi'], favor @n.
                                 </sch:report> </sch:rule> <sch:rule
                                     context="tei:rs[@type='naksatra']"> <sch:assert
                                         test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)'"
                                         >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert>
                                 </sch:rule> <sch:rule context="tei:rs[@type='sadvara']"> <sch:assert
                                     test="@key='(tunglai or hariyang or wurukung or paniruan or was or mawulu)'"
-                                    >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
+                                    >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
                                 </sch:assert> </sch:rule> <sch:rule
                                     context="tei:rs[@type='pancavara']"> <sch:assert
                                         test="@key='(pahing or pon or wagai or kaliwuan or umanis)'"
-                                        >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
+                                        >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis.
                                     </sch:assert> </sch:rule> <sch:rule
                                         context="tei:rs[@type='season']"> <sch:assert
                                             test="@key='(hemanta or grisma or varsa)'"
-                                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
+                                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa.
                                         </sch:assert> </sch:rule> <sch:rule
                                             context="tei:rs[@type='wuku']"> <sch:assert
                                                 test="@key='(sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung)'"
-                                                >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
+                                                >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung.
                                             </sch:assert> </sch:rule> <sch:rule
                                                 context="tei:rs[@type='chinese']"> <sch:assert
                                                     test="@key='(rat or buffalo-ox or tiger or hare-cat or dragon or snake or horse or goat or monkey or cock or dog or pig)'"
@@ -4555,6 +4555,8 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="principal" mode="delete"/>
+                <elementSpec ident="funder" mode="delete"/>
+                <elementSpec ident="sponsor" mode="delete"/>
             </schemaSpec>
         </body>
     </text>

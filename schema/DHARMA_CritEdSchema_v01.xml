@@ -985,7 +985,7 @@
               >seg[@rend='pun'] only available in a translation file.</sch:report></sch:rule><sch:rule
               context="tei:seg[@type='highlight']"><sch:assert
               test="parent::tei:lem or parent::tei:rdg">
-                  seg[@rend='highlight'] can only be used as a child of lem or rdg elements. 
+                  seg[@rend='highlight'] can only be used as a child of lem or rdg elements.
                 </sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -2323,7 +2323,7 @@
                 </sch:assert></sch:rule><sch:rule
               context="tei:note[@type='altLem'][parent::tei:app]"><sch:assert
               test="preceding-sibling::tei:lem[1]">
-                  An alternative lem should always be the first child after the main lem. 
+                  An alternative lem should always be the first child after the main lem.
                 </sch:assert></sch:rule><sch:rule context="tei:note[@rend]"
               ><sch:assert test="@type='altLem'"
               >The attribute @rend can only be used with a note for an alternative lem (attribute @type='altLem').</sch:assert></sch:rule></constraint>
@@ -2807,24 +2807,24 @@
                 with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
               </sch:assert></sch:rule><sch:rule context="tei:rs[@type='tithi']"
               ><sch:report test="@key"
-              >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
+              >@key shouldn't be used with tei:rs[@type='tithi'], favor @n.
                 </sch:report></sch:rule><sch:rule context="tei:rs[@type='naksatra']"
               ><sch:assert
               test="@key='(krttika or rohini or mrgasirsa or ardra or punarvasu or pusya or aslesa or magha or purva-phalguni or uttara-phalguni or hasta or citra or svati or visakha or anuradha or jyestha or mula or purva-asadha or uttara-asadha or sravana or dhanistha or satabhisaj or purva-bhadrapada or uttara-bhadrapada or revati or asvini or bharani)'"
               >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert></sch:rule><sch:rule
               context="tei:rs[@type='sadvara']"><sch:assert
               test="@key='(tunglai or hariyang or wurukung or paniruan or was or mawulu)'"
-              >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
+              >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
                 </sch:assert></sch:rule><sch:rule context="tei:rs[@type='pancavara']"
               ><sch:assert test="@key='(pahing or pon or wagai or kaliwuan or umanis)'"
-              >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
+              >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis.
                   </sch:assert></sch:rule><sch:rule context="tei:rs[@type='season']"
               ><sch:assert test="@key='(hemanta or grisma or varsa)'"
-              >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
+              >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa.
                     </sch:assert></sch:rule><sch:rule context="tei:rs[@type='wuku']"
               ><sch:assert
               test="@key='(sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung)'"
-              >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
+              >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung.
                       </sch:assert></sch:rule><sch:rule
               context="tei:rs[@type='chinese']"><sch:assert
               test="@key='(rat or buffalo-ox or tiger or hare-cat or dragon or snake or horse or goat or monkey or cock or dog or pig)'"
@@ -3450,7 +3450,7 @@
             <attDef ident="hand" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="org" mode="delete"/>
-            <attDef ident="prev" mode="delete"/> 
+            <attDef ident="prev" mode="delete"/>
             <attDef ident="real" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="resp" mode="delete"/>
@@ -4419,7 +4419,7 @@
               /><sch:assert
               test="every $wit-witDetail in $wit-witDetails satisfies contains('preceding-sibling::tei:*[1]/@wit', $wit-witDetail)"
               >
-                  The content of the witDetail's @wit attribute must also be declared as @wit of the preceding sibling. 
+                  The content of the witDetail's @wit attribute must also be declared as @wit of the preceding sibling.
                 </sch:assert> <sch:report test="./node()"
               >WitDetail should be an empty element</sch:report> </sch:rule> </constraint>
           </constraintSpec>

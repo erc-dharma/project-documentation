@@ -184,7 +184,7 @@
                         <attDef ident="sample" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
-                        <attDef ident="xml:base" mode="delete"/> 
+                        <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <valList type="closed" mode="replace">
@@ -205,7 +205,7 @@
                                 <valItem ident="text-align: justify"/>
                             </valList>
                         </attDef>
-                        
+
                         <attDef ident="xml:lang" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="unknown"/>
@@ -3283,7 +3283,7 @@
                                 <valItem ident="small"/>
                                 <valItem ident="wide"/>
                             </valList>
-                        </attDef>                       
+                        </attDef>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
@@ -3554,7 +3554,7 @@
                                 values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'</sch:assert></sch:rule>
                         <sch:rule context="tei:placeName[@type='undetermined']">
                             <sch:assert test="not(@subtype)">@subtype isn't allowed with @type='undetermined'</sch:assert>
-                            
+
                         </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -5177,6 +5177,9 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
+                <elementSpec ident="principal" mode="delete"/>
+                <elementSpec ident="funder" mode="delete"/>
+                <elementSpec ident="sponsor" mode="delete"/>
             </schemaSpec>
         </body>
     </text>

@@ -3616,7 +3616,7 @@
                                 values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'</sch:assert></sch:rule>
                         <sch:rule context="tei:placeName[@type='undetermined']">
                             <sch:assert test="not(@subtype)">@subtype isn't allowed with @type='undetermined'</sch:assert>
-                            
+
                         </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -5240,6 +5240,8 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="principal" mode="delete"/>
+                <elementSpec ident="funder" mode="delete"/>
+                <elementSpec ident="sponsor" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
