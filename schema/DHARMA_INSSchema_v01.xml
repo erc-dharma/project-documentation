@@ -5239,6 +5239,7 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
+                <elementSpec ident="principal" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
