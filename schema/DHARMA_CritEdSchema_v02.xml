@@ -5300,10 +5300,10 @@
           <attList>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem ident="omissionStart"/>
-                <valItem ident="omissionEnd"/>
-                <valItem ident="reformulationStart"/>
-                <valItem ident="reformulationEnd"/>
+                <valItem ident="omissionStart" mode="add"/>
+                <valItem ident="omissionEnd" mode="add"/>
+                <valItem ident="reformulationStart" mode="add"/>
+                <valItem ident="reformulationEnd" mode="add"/>
                 <valItem mode="delete" ident="image"/>
                 <valItem mode="delete" ident="character"/>
                 <valItem mode="delete" ident="theme"/>
