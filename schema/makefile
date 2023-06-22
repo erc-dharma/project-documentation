@@ -17,5 +17,5 @@ latest/DHARMA_CritEdSchema.rng: DHARMA_CritEdSchema_v02.rng
 latest/DHARMA_DiplEDSchema.rng: DHARMA_DiplEDSchema_v01.rng
 	cp $^ $@
 
-latest/DHARMA_ProsodySchema.rng: DHARMA_ProsodySchema_v01.xml
+latest/DHARMA_ProsodySchema.rng: DHARMA_ProsodySchema_v01.rng
 	cp $^ $@
