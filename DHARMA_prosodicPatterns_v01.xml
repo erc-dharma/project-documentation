@@ -486,18 +486,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">11</measure>
-	<name xml:lang="san-Latn">indravajrā</name>
-	<seg type="xml">++-++--+-+=</seg>
-	<seg type="prosody">––⏑––⏑⏑–⏑–⏓</seg>
-	<seg type="gana">ta-ta-ja-ga-ga</seg>
-	<listBibl>
-		<bibl><ptr target="bib:Apte1890_01"/><citedRange unit="appendix">A: Sanskrit Prosody</citedRange><citedRange unit="page">4</citedRange><citedRange unit="item">I.A.11.1</citedRange></bibl>
-		<bibl><ptr target="bib:Velankar1949_01"/></bibl>
-		<bibl><ptr target="bib:Zoetmulder1974_01"/></bibl>
-	</listBibl>
-</item>
-<item>
-	<measure unit="syllable">11</measure>
 	<name xml:lang="san-Latn">rathoddhatā</name>
 	<name xml:lang="kaw-Latn">bhikṣuka</name><!-- CK -->
 	<seg type="xml">+-+---+-+-=</seg>
