@@ -19,3 +19,6 @@ latest/DHARMA_DiplEDSchema.rng: DHARMA_DiplEDSchema_v01.rng
 
 latest/DHARMA_ProsodySchema.rng: DHARMA_ProsodySchema_v01.rng
 	cp $^ $@
+
+%.rnc: %.rng
+	java -jar validationTools/trang.jar $^ $@
