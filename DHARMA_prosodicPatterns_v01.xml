@@ -56,6 +56,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="draft" when="2023-09-05" who="part:argr">Inserted altname prabodhitā under viyoginī and completed Zoetmulder reference</change>
       <change status="draft" when="2022-05-30" who="part:daba">Sectioning and restructuring</change>
       <change status="draft" when="2022-04-26" who="part:daba">Adding references to Apte's appendix and some tidying</change>
       <change status="draft" when="2022-03-30" who="part:axja">Updating the titleStmt</change>
@@ -589,6 +590,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         <item>
           <measure unit="syllable">10/11</measure>
           <name xml:lang="san-Latn">viyoginī</name>
+          <name xml:lang="san-Latn">prabodhitā</name>
           <seg type="xml">--+--+-+-=/--++--+-+-=</seg>
           <seg type="prosody">⏑⏑–⏑⏑–⏑–⏑⏓/⏑⏑––⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">sa-sa-ja-ga/sa-bha-ra-la-ga</seg>
@@ -604,6 +606,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">470</citedRange>
             </bibl>
           </listBibl>
         </item>
