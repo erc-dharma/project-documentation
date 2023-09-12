@@ -1,4 +1,4 @@
-/* Roman-script fonts */
+﻿/* Roman-script fonts */
 @font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Regular.otf") format("opentype"); }
 
 @font-face { font-family: "IndUni-H"; src: url("https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@master/docs/fonts/IndUni-H/IndUni-H-Bold.otf") format("opentype"); font-weight: bold; }
@@ -46,6 +46,11 @@ body{
         position: relative;
         color: #1E90FF;
           }
+          
+.milestone-label {
+        position: relative;
+        color: #1E90FF;
+          }          
 
 .abbreviation {
   color: #a57659;
@@ -56,7 +61,6 @@ div {
         left: 30px;
         padding-right: 0.2em;
         position:relative;
-        text-align: justify;
     }
 h2 {
         left: -18px;
@@ -66,12 +70,7 @@ h2 {
 P {
       position: relative;
       }
-.latinnum {
-    border-top: thin black solid;
-     }
-.supraline {
-    border-top: thin black solid;
-     }
+
 .csl-entry{
   left: -30px;
   display: inline;
@@ -87,19 +86,7 @@ P {
   position: relative;
   left: -1px;
 }
-.previouslyread {
-    text-decoration: underline;
-     }
-*[lang="la"] {
-    font-family: "GentiumAlt", "Gentium","Palatino Linotype", "Palatino", "Times New Roman", "Times", "Arial Unicode MS", serif;
-}
-*[lang="grc"] {
-    font-family: "Lucida Grande", "Arial Unicode MS","Galilee Unicode Gk", "New Athena Unicode", "Athena Unicode",
-    "Palatino Linotype", "Titus Cyberbit Basic", "Cardo", "Vusillus Old Face", "Alphabetum", "Galatia SIL",
-    "Code 2000", "GentiumAlt", "Gentium", "Minion Pro", "GeorgiaGreek", "Vusillus Old Face Italic",
-    "Everson Mono", "Aristarcoj", "Porson", "Legendum", "Aisa Unicode", "Hindsight Unicode", "Caslon",
-    "Verdana", "Tahoma";
-   }
+
 
 *[lang="tam-vat"]{
   font-family: "e-VatteluttuOT";
@@ -109,22 +96,16 @@ P {
   font-family: "NotoSansTamil-Regular", "NotoSansGrantha-Regular";
 }
 
-   .siglum {
+.siglum {
            color: #1E90FF;
              }
-.textpart {
-    left: 6em;
-    line-height: 1.4;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    position: relative;
-    padding-right: 2em;
-}
-.textpartnumber {
+/* .textpartnumber {
     padding-right: 0.2em;
     position: relative;
-    }
+    } */
+
 .linenumber {
+    font-style:normal;
     color: black;
     position: relative;
     text-decoration: none;
@@ -137,8 +118,7 @@ P {
     padding-right: 2px;
     padding-left: 2px;
     }
-/*border: 1px solid black;
-text-align:center;*/
+
 .linenumberapp {
         color: black;
         position: relative;
@@ -151,13 +131,7 @@ text-align:center;*/
         padding-right: 2px;
         padding-left: 2px;
         }
-.linenumberbroken {
-    left: -4em;
-    padding-right: 0.2em;
-    position: absolute;
-    color: red ;
-    text-decoration: blink ;
-    }
+
 .versenumber {
   color: black;
   position: relative;
@@ -190,9 +164,7 @@ text-align:center;*/
 .translated-stanzanumber{
   font-weight: bold;
 }
-.petraeligature {
-    text-decoration: underline;
-    }
+
 .underline {
     text-decoration: underline;
     }
@@ -226,10 +198,6 @@ text-align:center;*/
 .notBold{
   font-weight: normal;
 }
-
-/*.notChoice{
-  color:black;
-}*/
 
 .certlow{
   color: red;
@@ -308,4 +276,148 @@ dd {
 .entry-line{
     max-width: 100%;
     margin-left: -30px;
+}
+
+.checkmark {
+    background-color: #eeca0b;
+}
+
+.formwork-right{
+    float: right;
+}
+
+/* part inhérited from Epidoc */
+
+.latinnum {
+    border-top: thin black solid;
+     }
+     
+.supraline {
+    border-top: thin black solid;
+     }
+     
+.previouslyread {
+    text-decoration: underline;
+     }
+     
+*[lang="la"] {
+    font-family: "GentiumAlt", "Gentium","Palatino Linotype", "Palatino", "Times New Roman", "Times", "Arial Unicode MS", serif;
+}
+
+*[lang="grc"] {
+    font-family: "Lucida Grande", "Arial Unicode MS","Galilee Unicode Gk", "New Athena Unicode", "Athena Unicode", 
+    "Palatino Linotype", "Titus Cyberbit Basic", "Cardo", "Vusillus Old Face", "Alphabetum", "Galatia SIL", 
+    "Code 2000", "GentiumAlt", "Gentium", "Minion Pro", "GeorgiaGreek", "Vusillus Old Face Italic", 
+    "Everson Mono", "Aristarcoj", "Porson", "Legendum", "Aisa Unicode", "Hindsight Unicode", "Caslon", 
+    "Verdana", "Tahoma";
+   }
+   
+.textpart {
+    left: 6em;
+    line-height: 1.4;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    padding-right: 2em;
+}
+
+.textpartnumber {
+    padding-right: 0.2em;
+    position: absolute;
+    }
+    
+/*.linenumber {
+    left: -4em;
+    padding-right: 0.2em;
+    position: absolute;
+    }
+    */
+.linenumberbroken {
+    left: -4em;
+    padding-right: 0.2em;
+    position: absolute;
+    color: red ;
+    text-decoration: blink ;
+    }
+    
+.petraeligature {
+    text-decoration: underline;
+    }
+    
+.curvedligature {
+      border-top: 2px solid black;
+      border-radius: 6px;
+      padding: 4px 2px 0px 2px;
+}
+    
+.underline {
+    text-decoration: underline;
+    }
+
+.italic {
+    font-style: italic;
+    }
+
+.rtl, .rtl * {
+    direction: rtl;
+    text-align-last: right;
+}
+
+h4.slimmer {
+    margin-bottom: -0.5em;
+    }    
+
+h3.iospe {
+    color: rgb(40, 80, 114);
+    float: left;
+    font-family: arial,helvetica,sans-serif;
+    font-size: 125%;
+    max-width: 165px;
+    margin-top:0;
+    padding-top:0;
+    }
+
+h4.iospe {
+    font-family: arial,helvetica,sans-serif;
+    font-size: 13px;
+    color: rgb(51, 51, 51);
+    max-width: 165px;
+    width: 165px;
+    }
+
+dl.iospe {
+    font-family: arial,helvetica,sans-serif;
+    font-size: 13px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-left: 165px;
+    padding-top: 5px;
+    }
+
+dl.iospe dt {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    max-width: 165px;
+    vertical-align: baseline;
+    width: 165px;
+    }
+
+dl.iospe dd {
+    font-size: 13px;
+    margin-left: 165px;
+    vertical-align: baseline;
+    }
+
+div#edition.iospe {
+    margin-left: 100px;
+    }
+
+div.iospe {
+    margin-left:165px;
+    }
+
+.no-space {
+    margin-bottom: -1.9em;
 }

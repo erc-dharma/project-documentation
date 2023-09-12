@@ -1,4 +1,4 @@
-/* CSS file based on salit.css written by Andrew Ollett */
+﻿/* CSS file based on salit.css written by Andrew Ollett */
 /* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
 /* For the tables and stuff */
 
@@ -327,7 +327,7 @@ ul.sgt-index {
       <ref> elements can be inline with the
       last line of a verse. */
 .anustubh .l:nth-child(2n+1){ display: inline-block; clear: left;}
-.anustubh .l:nth-child(2):after { content:"\A"; white-space:pre; }
+.anustubh .l:nth-child(2n):after { content:"\A"; white-space:pre; }
 .anustubh .l:nth-child(2n) { display: inline; }
 .anustubh .l:last-child {display: inline-block; clear: left;}
 
@@ -742,19 +742,19 @@ p{
     background-color: yellow;
 }
 
-/*.hyphenfront:before,.hyphenaround:before {
+/*.hyphenleft:before,.hyphenaround:before {
     content:"-";
 }
 
-.hyphenback:after,.hyphenaround:after {
+.hyphenright:after,.hyphenaround:after {
     content:"-";
 }
 
-.circlefront:before,.circlearound:before {
+.circleleft:before,.circlearound:before {
     content:"°";
 }
 
-.circleback:after,.circlearound:after {
+.circleright:after,.circlearound:after {
     content:"°";
 }*/
 
@@ -832,7 +832,9 @@ p{
 
 .block{
   left: 35px;
-  max-width: 96%;
+  max-width: 90%;
+  position: relative;
+  display: block;
 }
 
 .card{
@@ -885,3 +887,7 @@ p{
         border-radius: 8px;
         padding: 0.03em;
         }
+        
+.small-caps {
+  font-variant: small-caps;
+}            

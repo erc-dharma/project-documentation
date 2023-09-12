@@ -1,0 +1,45 @@
+﻿#sidebar-wrapper {
+    width: 300px;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+}
+
+#sidebar-wrapper .nav-link.active {
+  background-color: #00ACC1 !important;
+}
+
+#sidebarCollapse{
+    position: fixed;
+    top: 75px;
+    left: 10px;
+}
+
+.biblitem { margin-left: 40px; }
+
+.lbl-item{color: #007bff;}
+
+a:hover, a i.fas:hover {
+    color: #007bff;
+}
+
+.bottom-app{
+    color: #007bff;
+}
+
+a, a i.fas {
+    color:black;
+}
+
+card-header, a {
+     color:black;
+}
+
+.pagination{
+    font-size: 1rem;
+}
+
+.oreference{color: #007bff;}

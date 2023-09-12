@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:t="http://www.tei-c.org/ns/1.0"
   xmlns:EDF="http://epidoc.sourceforge.net/ns/functions" exclude-result-prefixes="t EDF" version="2.0">
@@ -23,13 +23,13 @@
          <xsl:apply-templates/>
 
 
-           <xsl:choose>
-               <!-- Apparatus creation: look in tpl-apparatus.xsl for documentation and templates -->
+           <!--<xsl:choose>
+               <!-\- Apparatus creation: look in tpl-apparatus.xsl for documentation and templates -\->
                <xsl:when test="$parm-internal-app-style = 'dharma'">
-                   <!-- Framework found in htm-tpl-apparatus.xsl -->
+                   <!-\- Framework found in htm-tpl-apparatus.xsl -\->
                    <xsl:call-template name="tpl-dharma-apparatus"/>
                </xsl:when>
-           </xsl:choose>
+           </xsl:choose>-->
          </div>
    </xsl:template>
 
@@ -72,8 +72,6 @@
 
             <xsl:if test="@source">
          <xsl:text> by </xsl:text>
-         <xsl:element name="span">
-           <xsl:attribute name="class">resp</xsl:attribute>
            <xsl:choose>
               <xsl:when test="matches(@source, '\+[a][l]')">
                   <xsl:analyze-string select="$unparsedresp"
@@ -101,7 +99,6 @@
          </xsl:analyze-string>
        </xsl:otherwise>
        </xsl:choose>
-       </xsl:element>
          <xsl:text> </xsl:text>
          <xsl:analyze-string select="$unparsedresp"
            regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
@@ -165,11 +162,8 @@
                                    </xsl:otherwise>
                                    </xsl:choose>
                                 <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[1]"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:element name="span">
-                                  <xsl:attribute name="class">resp</xsl:attribute>
+                                <xsl:text> </xsl:text> 
                                   <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[2]"/>
-                                </xsl:element>
                              <!--  <xsl:value-of select="./child::*/node()[2]"/>-->
                             </xsl:when>
                               <xsl:otherwise>

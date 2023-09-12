@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
@@ -10,7 +10,7 @@
     <xsl:param name="parm-apparatus-style" tunnel="yes" required="no"></xsl:param>
 
     <xsl:choose>
-      <xsl:when test="ancestor::t:div[@type='translation'] and $leiden-style='dharma' and not(@type='credit')">
+      <xsl:when test="not(ancestor::t:div[@type='edition'] or ancestor::t:div[@type='apparatus']) and $leiden-style='dharma' and not(@type='credit')">
         <xsl:call-template name="dharma-app-link">
            <xsl:with-param name="location" select="'text'"/>
         </xsl:call-template>

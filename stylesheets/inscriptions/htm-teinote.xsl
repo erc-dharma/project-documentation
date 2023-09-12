@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
@@ -20,14 +20,14 @@
             </span>
             </xsl:when>
             <xsl:otherwise>
-            <i class="note">
+              <span class="note">
               <xsl:apply-imports/>
-            </i>
+            </span>
           </xsl:otherwise>
           </xsl:choose>
         </xsl:when>
         <xsl:when test="ancestor::t:p or ancestor::t:l or ancestor::t:ab">
-           <i><xsl:apply-imports/></i>
+           <xsl:apply-imports/>
         </xsl:when>
          <xsl:otherwise>
             <p class="note">
@@ -35,6 +35,10 @@
             </p>
          </xsl:otherwise>
       </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template mode="notebiblio" match="t:note[parent::t:bibl]">
+    <xsl:apply-templates/>
   </xsl:template>
 
 </xsl:stylesheet>

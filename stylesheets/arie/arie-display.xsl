@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -182,35 +182,88 @@
             <xsl:text>/</xsl:text>
             <xsl:choose>
                 <xsl:when test="preceding::H2[1]">
-                    <xsl:value-of select="replace(replace(substring-before(preceding::H2[1], '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
+                    <xsl:value-of select="normalize-space(replace(replace(substring-before(preceding::H2[1]/string(), '.'), 'Appendix', ''), 'APPENDIX', ''))"/>
                 </xsl:when>
             <!-- substring-before(preceding::HC[1], '.') -->
             <xsl:otherwise>
-                <xsl:value-of select="replace(replace(substring-before(preceding::HC[1], '.'), 'Appendix ', ''), 'APPENDIX ', '')"/>
+                <xsl:value-of select="normalize-space(replace(replace(substring-before(preceding::HC[1]/string(), '.'), 'Appendix', ''), 'APPENDIX', ''))"/>
             </xsl:otherwise>
             </xsl:choose>
             <xsl:text>/</xsl:text>
             <xsl:choose>
-                <xsl:when test="matches(preceding::H2[1], '[0-9\-]+')">
-                <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+[0-9\-]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="regex-group(1)"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
+                
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d\d\d')">
+                    <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+\-\d\d\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d')">                
+                    <xsl:analyze-string select="preceding::H2[1]/string()" regex="((\d\d)\d\d\-)(\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                            <xsl:value-of select="regex-group(2)"/>
+                            <xsl:value-of select="regex-group(3)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
             </xsl:when>
-                <xsl:when test="matches(preceding::HC[1], '[0-9\-]+')">
-                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+[0-9\-]*)">
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+')">
+                    <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+\-\d\d\d\d')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+\-\d\d\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+\-\d\d')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="((\d\d)\d\d\-)(\d\d)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                            <xsl:value-of select="regex-group(2)"/>
+                            <xsl:value-of select="regex-group(3)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:when test="matches(preceding::HC[1], '[0-9]+')">
+                    <xsl:analyze-string select="preceding::HC[1]/string()" regex="([0-9]+)">
                         <xsl:matching-substring>
                             <xsl:value-of select="regex-group(1)"/>
                         </xsl:matching-substring>
                     </xsl:analyze-string>
                 </xsl:when>
                     <xsl:otherwise>
-                        <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+[0-9\-]*)">
+                        <xsl:choose>
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+\-\d\d\d\d')">
+                                <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+\-\d\d\d\d)">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(1)"/>
+                                    </xsl:matching-substring>
+                                </xsl:analyze-string>
+                            </xsl:when>
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+\-\d\d')">
+                                <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="((\d\d)\d\d\-)(\d\d)">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(1)"/>
+                                        <xsl:value-of select="regex-group(2)"/>
+                                        <xsl:value-of select="regex-group(3)"/>
+                                    </xsl:matching-substring>
+                                </xsl:analyze-string>
+                            </xsl:when>
+                            <xsl:when test="matches(preceding::arie[1]/@ref, '[0-9]+')">
+                                <xsl:analyze-string select="preceding::arie[1]/@ref/string()" regex="([0-9]+[0-9\-]*)">
                             <xsl:matching-substring>
                                 <xsl:value-of select="regex-group(1)"/>
                             </xsl:matching-substring>
                         </xsl:analyze-string>
+                            </xsl:when>
+                        </xsl:choose>
                     </xsl:otherwise>
             </xsl:choose>
             <xsl:text>/</xsl:text>
@@ -485,8 +538,8 @@
                             Conventions
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="editorial">Editorial Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/output/display-prosody.html">Prosodic Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -494,8 +547,10 @@
                             Documentation
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-                            <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
@@ -505,6 +560,7 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -519,6 +575,8 @@
                             Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
@@ -533,6 +591,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -551,9 +610,10 @@
     </xsl:template>
 
     <xsl:template name="dharma-script">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader arie -->

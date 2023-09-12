@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0"
@@ -6,7 +6,12 @@
    exclude-result-prefixes="#all" version="2.0">
 
   <xsl:template match="t:p">
-      <p>
+    <xsl:param name="parm-edition-type" tunnel="yes" required="no"></xsl:param>
+    <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
+      <xsl:element name="p">
+        <xsl:if test="$parm-leiden-style='dharma' and @rend='check'">
+          <xsl:attribute name="class">checkmark</xsl:attribute>
+        </xsl:if>
         <xsl:if test="@n and not(@rend)">
           <sup class="linenumber">
            <!--<xsl:text>(</xsl:text>-->
@@ -60,7 +65,7 @@
        </xsl:otherwise>
        </xsl:choose>
 
-      </p>
+      </xsl:element>
 
   </xsl:template>
 

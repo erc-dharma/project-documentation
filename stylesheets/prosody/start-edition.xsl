@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -15,7 +15,7 @@
             <xsl:call-template name="dharma-head"/>
             <xsl:element name="body">
                 <xsl:attribute name="class">font-weight-light</xsl:attribute>
-                
+
                 <xsl:call-template name="nav-bar"/>
                 <xsl:element name="div">
                     <xsl:attribute name="class">container</xsl:attribute>
@@ -27,13 +27,13 @@
                         <xsl:attribute name="class">text-center</xsl:attribute>
                         <xsl:text>by </xsl:text>
                             <xsl:if test="//tei:fileDesc/tei:titleStmt/tei:author[1]">
-                                
+
                                 <xsl:apply-templates select="//tei:fileDesc/tei:titleStmt/tei:author[1]"/>
                                 <xsl:text>&amp; </xsl:text>
                             </xsl:if>
                             <xsl:if test="//tei:fileDesc/tei:titleStmt/tei:author[2]">
                                 <xsl:apply-templates select="//tei:fileDesc/tei:titleStmt/tei:author[2]"/>
-                            </xsl:if>                                         
+                            </xsl:if>
                     </xsl:element>
                     <xsl:apply-templates/>
                     <xsl:element name="footer">
@@ -47,7 +47,7 @@
                 </xsl:element>
             </xsl:element>
     </xsl:template>
-    
+
     <!--  B ! -->
     <xsl:template match="tei:bibl">
         <xsl:analyze-string select="./tei:ptr/@target"
@@ -61,7 +61,7 @@
             <xsl:if test="./tei:citedRange">
                 <xsl:text>, </xsl:text>
             </xsl:if>
-        <xsl:if test="./tei:citedRange"> 
+        <xsl:if test="./tei:citedRange">
             <xsl:for-each select="./tei:citedRange">
                 <xsl:call-template name="citedRange-unit"/>
                 <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
@@ -78,7 +78,7 @@
             <br/>
         </xsl:if>
     </xsl:template>
-    
+
     <!--<xsl:template match="tei:bibl">
         <xsl:choose>
             <xsl:when test=".[tei:ptr]">
@@ -88,19 +88,19 @@
                     <xsl:value-of
                         select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
-                
+
                     <xsl:analyze-string select="unparsed-text($zoteroapijson)"
                         regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
                         <xsl:matching-substring>
                             <xsl:value-of select="regex-group(2)"/>
                         </xsl:matching-substring>
                     </xsl:analyze-string>
-                
+
                         <!-\-<xsl:copy-of
                             select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-\->
-                
-                   
-                <xsl:if test="tei:citedRange"> 
+
+
+                <xsl:if test="tei:citedRange">
                     <xsl:for-each select="tei:citedRange">
                         <xsl:call-template name="citedRange-unit"/>
                         <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
@@ -123,10 +123,10 @@
             <!-\- if there is no ptr, print simply what is inside bibl and a warning message-\->
             <xsl:otherwise>
                 <xsl:apply-templates/>
-            </xsl:otherwise>		
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>-->
-    
+
     <!-- body -->
     <xsl:template match="tei:body">
      <xsl:element name="div">
@@ -142,13 +142,13 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- front -->
     <xsl:template match="tei:front">
         <xsl:element name="h2">Introduction</xsl:element>
-        <xsl:apply-templates/>   
+        <xsl:apply-templates/>
     </xsl:template>
-    
+
     <!-- head -->
     <xsl:template match="tei:head">
         <xsl:element name="h3">
@@ -161,7 +161,7 @@
     <xsl:template match="tei:item">
         <xsl:element name="tr">
             <xsl:element name="td">
-            <xsl:if test="tei:measure">           
+            <xsl:if test="tei:measure">
                     <xsl:apply-templates select="tei:measure"/>
             </xsl:if>
                 <xsl:if test="following::tei:*[1][local-name() ='note']">
@@ -194,7 +194,7 @@
                                 <xsl:if test="following::tei:*[1][local-name() ='note']">
                                     <xsl:apply-templates select="following::tei:note[1]"/>
                                 </xsl:if>
-                            </xsl:element>                                      
+                            </xsl:element>
                         </xsl:for-each>
                     </xsl:element>
             </xsl:if>
@@ -207,8 +207,8 @@
                             <xsl:apply-templates select="following::tei:note[1]"/>
                         </xsl:if>
                     </xsl:element>
-                </xsl:for-each> 
-            </xsl:if>   
+                </xsl:for-each>
+            </xsl:if>
             <xsl:element name="td">
             <xsl:if test="tei:listBibl">
                     <xsl:apply-templates select="tei:listBibl"/>
@@ -282,7 +282,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-   
+
     <!-- row -->
     <xsl:template match="tei:row">
         <xsl:element name="tr">
@@ -353,8 +353,8 @@
                             Conventions
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="editorial">Editorial Conventions</a>
-                            <a class="dropdown-item" href="">Prosodic Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -362,8 +362,11 @@
                             Documentation
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
+                            <div class="dropdown-divider"></div>
+                            
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-                            <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/open-access/DHARMA_GuideOpenAccess_March2022.pdf">Guide Open-Access</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
@@ -374,6 +377,7 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -388,6 +392,8 @@
                             Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
@@ -402,6 +408,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -436,13 +443,13 @@
             <xsl:value-of select="name()"/>
             <xsl:number level="any" format="01"/>
         </xsl:variable>
-        
+
         <xsl:call-template name="dharma-generate-app-link">
             <xsl:with-param name="location" select="$location"/>
             <xsl:with-param name="app-num" select="$app-num"/>
         </xsl:call-template>
     </xsl:template>
-    
+
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
@@ -495,7 +502,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="tpl-dharma-apparatus">
         <!-- An apparatus is only created if one of the following is true -->
         <xsl:if test=".//tei:note">
@@ -519,7 +526,7 @@
             </xsl:element>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
         <xsl:variable name="unit-value">
@@ -611,5 +618,5 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
 </xsl:stylesheet>

@@ -10,6 +10,7 @@
       <xsl:param name="parm-internal-app-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-external-app-style" tunnel="yes" required="no"></xsl:param>
       <xsl:param name="parm-edn-structure" tunnel="yes" required="no"></xsl:param>
+      <xsl:param name="location" tunnel="yes" required="no"/>
       <xsl:choose>
          <xsl:when test="$parm-edn-structure = 'igcyr'">
          <xsl:for-each select=".">

@@ -6,6 +6,7 @@
    <xsl:import href="teiaddanddel.xsl"/>
 
    <xsl:template match="t:subst">
+      <xsl:param name="location" tunnel="yes" required="no"/>
       <xsl:apply-imports/>
    </xsl:template>
 
@@ -26,6 +27,7 @@
 
 
    <xsl:template match="t:del">
+      <xsl:param name="location" tunnel="yes" required="no"/>
       <xsl:apply-imports/>
    </xsl:template>
 

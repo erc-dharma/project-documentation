@@ -1,9 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt2"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:t="http://www.tei-c.org/ns/1.0">
+    xmlns:t="http://www.tei-c.org/ns/1.0"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:functx="http://www.functx.com"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
+    
+    <xsl:function name="functx:sequence-node-equal-any-order" as="xs:boolean"
+        xmlns:functx="http://www.functx.com">
+        <xsl:param name="seq1" as="node()*"/>
+        <xsl:param name="seq2" as="node()*"/>
+        
+        <xsl:sequence select="
+            not( ($seq1 except $seq2, $seq2 except $seq1))
+            "/>
+        
+    </xsl:function>
+    
     
     <sch:pattern>
         <sch:rule context="t:*/@source"><sch:assert test="starts-with(.,'bib:')" sqf:fix="bib-prefix-source bib-prefix-target">Bibliographic
@@ -111,7 +127,7 @@
     <sch:pattern>
         <sch:rule context="@wit">
             <sch:let name="witnesses" value="for $w in tokenize(., '\s+') return substring-after($w, '#')"/>
-            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit/t:witness/@xml:id">
+            <sch:assert test="every $witnesse in $witnesses satisfies $witnesses = //t:TEI//t:listWit//@xml:id">
                 Every reading witness (@wit) after the hashtag must match an xml:id defined in the list of witnesses in this file!
             </sch:assert>
         </sch:rule>
@@ -152,7 +168,7 @@
             <sch:assert test="every $hand-content in $hand-contents satisfies starts-with($hand-content, '#')">
                 @hand  must  begin with a hashtag
             </sch:assert>
-            <sch:assert test="every $hand-content in $hand-contents satisfies substring-before(substring-after($hand-content, '#'), '_') = //t:TEI//t:listWit/t:witness/@xml:id">@hand should match a witness's @xml:id</sch:assert>
+            <sch:assert test="every $hand-content in $hand-contents satisfies substring-before(substring-after($hand-content, '#'), '_') = //t:TEI//t:listWit//@xml:id">@hand should match a witness's @xml:id</sch:assert>
             <sch:assert test="every $hand-content in $hand-contents satisfies matches($hand-content, '_[H]\d$')">
                 A hand should be declare after the @xml:id of the witness followed by an underscore, a uppercase letter H and a number (mostly with a single digit). 
             </sch:assert>
@@ -178,4 +194,68 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern>
+    
+    <!-- controlling the prosdoy with @met -->
+    <sch:pattern>
+        <sch:rule context="t:div/@met[not(matches(.,'[=\+\-]+') or contains(., 'free'))] | t:lg/@met[not(matches(.,'[=\+\-]+') or contains(., 'free'))]">
+            <sch:let name="prosody" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
+            <sch:let name="metricals" value="for $metrical in tokenize(., '\s+') return $metrical"/>
+            <sch:assert test="every $metrical in $metricals satisfies $metricals = $prosody//t:item/t:name">The attribute @met should match one entry in the prosodic patterns file, when filled with textual content.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling the corresp for translation -->
+    <sch:pattern>
+        <sch:rule context="t:*[@corresp][ancestor::t:TEI[@type='translation']]">
+            <sch:let name="current-translation" value="substring-before(tokenize(document-uri(/), '/')[last()], '_transEng01.xml')"/>
+            <sch:let name="editionfile" value="doc(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $current-translation, '.xml'))"/>
+            <sch:let name="textpart-id" value="for $id in substring-after(tokenize(@corresp, '\s+'), '#') return $id"/>
+            <sch:assert test="every $id in $textpart-id satisfies $textpart-id = $editionfile//t:*/@xml:id">@corresp not found in edition file.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- to do vérifier les lacunae -->
+    <!--<sch:pattern>
+        <sch:rule context="t:lacunaStart">
+            <sch:let name="witness-related" value="parent::t:rdg/@wit"/>
+            <sch:assert test="./following::t:lacunaEnd/parent::t:rdg[@wit= $witness-related]">
+                Check this lacuna, it might not have a matching ending
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
+    
+    <!-- compter les lacunae -->
+    <!--<sch:pattern>
+        <sch:rule context="t:lacunaStart | t:lacunaEnd">
+            <sch:let name="num-lacunaStart" value="count(//t:lacunaStart)"/>
+            <sch:let name="num-lacunaEnd" value="count(//t:lacunaEnd)"/>
+            <sch:assert test="$num-lacunaStart = $num-lacunaEnd">
+                The number of lacunaStart (<xsl:value-of select="$num-lacunaStart"/>) doesn't match the one from
+                lacunaEnd (<xsl:value-of select="$num-lacunaEnd"/>), please check them.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
+    
+    <!-- to do vérifier les omissions -->
+    <!--<sch:pattern>
+        <sch:rule context="t:span[@type='omissionStart']">
+            <sch:let name="witness-related" value="parent::t:rdg/@wit"/>
+            <sch:assert test="./following::t:span[@type='omissionEnd']/parent::t:rdg[@wit= $witness-related]">
+                Check this omission, it might not have a matching ending.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
+    
+    <!-- compter les omissions -->
+    <!--<sch:pattern>
+        <sch:rule context="t:span[@type='omissionStart'] | t:span[@type='omissionEnd']">
+            <sch:let name="num-omStart" value="count(//t:span[@type='omissionStart'])"/>
+            <sch:let name="num-omEnd" value="count(//t:span[@type='omissionEnd'])"/>
+            <sch:assert test="$num-omStart = $num-omEnd">
+                The number of omissionStart (<xsl:value-of select="$num-omStart"/>) doesn't match the one from
+                omissionEnd (<xsl:value-of select="$num-omEnd"/>), please check them.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>-->
+  
 </sch:schema>

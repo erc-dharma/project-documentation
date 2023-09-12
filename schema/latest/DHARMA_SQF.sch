@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt3"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -76,7 +76,7 @@
         </sch:rule>
     </sch:pattern>
     
-    <sch:pattern>
+    <!--<sch:pattern>
         <sch:rule context="t:bibl[parent::t:listBibl[@type='primary']]">
             <sch:assert test="./@n" sqf:fix="add-siglum">@n mandatory in
                 the primary bibliography to declare
@@ -89,7 +89,7 @@
                 <sqf:add node-type="attribute" target="n"/>
             </sqf:fix>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
     <!--<sch:pattern>
         <sch:rule context="t:app">
@@ -134,7 +134,7 @@
     </sch:pattern>-->
     
     <sch:pattern>
-        <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull)]">
+        <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull or ancestor::t:msDesc)]">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
             <sch:assert test="./text() eq $idno-fileName">The idno[@type='filename'] must match the filename of the file "<sch:value-of select="$idno-fileName"/>"; without the extension ".xml"  </sch:assert>
         </sch:rule>
@@ -184,6 +184,34 @@
             <sch:assert test="starts-with($calendarValues, 'cal:')">
                 The attributes @calendar and @datingMethod must starts with the prefixe "cal:"
             </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling sigla -->
+    <sch:pattern>
+        <sch:rule context="t:lem/@source[starts-with(., 'bib:')] | t:rdg/@source[starts-with(., 'bib:')]">
+            <sch:let name="appEntries" value="for $w in tokenize(., '\s+') return $w"/>
+            <sch:assert test="every $appEntry in $appEntries satisfies $appEntry = //t:ptr[parent::t:bibl[@n]]/@target">@n mandatory in
+                the primary bibliography to declare
+                sigla of this source.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling corresp on lg and p -->
+    <sch:pattern>
+        <sch:rule context="t:lg/@corresp | t:p/@corresp">
+            <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/BESTOW/main/DHARMA_Sircar1965.xml')"/>
+            <sch:assert test=".[starts-with(., '#')]">corresp must starts with #</sch:assert>
+            <sch:assert test="substring-after(., '#') = $list-id//t:div/@xml:id">the value inside corresp must match a value declared in BESTOW reference file</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
+    <!-- controlling ref on rs - BESTOW addition-->
+    <sch:pattern>
+        <sch:rule context="t:rs/@ref">
+            <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/BESTOW/main/DHARMA_BestAuthorities.xml')"/>
+            <sch:assert test=".[starts-with(., 'best:')]">ref must starts with best:</sch:assert>
+            <sch:assert test="substring-after(., 'best:') = $list-id//t:item/@xml:id">the value inside ref must match a value declared in BESTOW authorities file</sch:assert>
         </sch:rule>
     </sch:pattern>
     

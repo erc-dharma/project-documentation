@@ -192,10 +192,14 @@
         <if type="legal_case" match="none">
           <choose>
             <if variable="DOI">
-              <text variable="DOI" prefix="https://doi.org/"/>
+            <group prefix="[DOI: " suffix="]">
+              <text variable="DOI"/>
+            </group>
             </if>
             <else>
-              <text variable="URL"/>
+            <group prefix="[" suffix="]">
+               <text variable="URL"/>
+            </group>
             </else>
           </choose>
         </if>
@@ -303,8 +307,8 @@
             </group>
           </if>
           <else-if variable="issue">
-            <group delimiter=" " prefix=", ">
-              <text term="issue" form="short"/>
+            <group delimiter=" " prefix=" (" suffix=")">
+              <!--<text term="issue" form="short"/>-->
               <text variable="issue"/>
               <date variable="issued" prefix="(" suffix=")">
                 <date-part name="month"/>

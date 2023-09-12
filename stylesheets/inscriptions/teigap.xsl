@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:t="http://www.tei-c.org/ns/1.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:EDF="http://epidoc.sourceforge.net/ns/functions"
@@ -343,8 +343,12 @@
                </xsl:when>
                <xsl:when test="$parm-leiden-style = 'dharma'">
                   <xsl:choose>
-                     <!-- lines lost -->
-                     <xsl:when test="@reason and @unit='line'">
+                     <!--  unknown charcaters lost or illegible-->
+                     <xsl:when test="@unit='character'">
+                        <xsl:text>...</xsl:text>
+                     </xsl:when>
+                     <!-- lines  -->
+                     <xsl:when test="@unit='line'">
                         <xsl:text>unknown number of lines</xsl:text>
                         <xsl:if test="child::t:certainty">
                            <xsl:text> possibly</xsl:text>
@@ -359,10 +363,7 @@
                     <xsl:text> lost or illegible</xsl:text>
                   </xsl:if>
                      </xsl:when>
-                     <!--  unknown charcaters lost or illegible-->
-                     <xsl:when test="@unit='character'">
-                        <xsl:text>...</xsl:text>
-                     </xsl:when>
+                     
                   </xsl:choose>
                </xsl:when>
                <xsl:when test="$parm-edn-structure = 'creta'"> <!-- added for creta -->

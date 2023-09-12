@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
@@ -14,8 +14,12 @@
          <br/>
       </xsl:if>
       <xsl:choose>
+        <!-- $parm-leiden-style = 'dharma' and following-sibling::t:*[1][local-name() = 'gap'] and not( -->
         <xsl:when test="$parm-leiden-style = 'dharma'">
-          <xsl:apply-imports/>
+              <xsl:apply-imports/>
+          <xsl:if test="preceding-sibling::t:*[1][local-name() = 'pb'] and self::t:gap[@reason='lost' and @unit='line']">
+            <br/>
+          </xsl:if>
         </xsl:when>
         <xsl:otherwise>
           <span lang="en" class="gap"><xsl:apply-imports/></span>

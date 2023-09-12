@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0"
@@ -102,4 +102,17 @@
          <xsl:text>⟨</xsl:text><xsl:apply-templates/><xsl:text>⟩</xsl:text>
          </xsl:if>
    </xsl:template>
+  
+  <!-- dharma specific template -->
+  <xsl:template match="t:sic">
+    <xsl:param name="parm-edn-structure" tunnel="yes" required="no"/>
+    <xsl:if test="$parm-edn-structure = 'dharma'">
+      <span class="sic">
+        <xsl:text>¿</xsl:text>
+        <xsl:apply-templates/>
+        <xsl:text>?</xsl:text>
+      </span>
+    </xsl:if>
+  </xsl:template>
+  
 </xsl:stylesheet>

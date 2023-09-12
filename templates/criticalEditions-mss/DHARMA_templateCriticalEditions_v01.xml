@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSchema.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_CritEdSQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" xml:id="id" type="edition"><!-- update the @xml:id at the base with the DHARMA ID, see FNC. -->
 	<teiHeader>
 		<fileDesc>
@@ -80,7 +77,7 @@
 								<handDesc> <!-- Add an attribute @hands if you have more than one hand -->
 									<!-- Create a handNote for each hand -->
 									<handNote xml:id= "A1_H1" scriptRef="class:57470 maturity:83215"> <!-- update the content of the @xml:id and the @scriptRef -->
-										<abbr type="hand">A<hi rend="superscript">1</hi>H<hi rend="subscript">1</hi></abbr><!-- Give the abbreviation siglum for the hand build on siglum-of-the-manuscript_H1, the number being incremental -->
+										<abbr type="hand">A<hi rend="superscript">1</hi>H<hi rend="subscript">1</hi></abbr><!-- Give the abbreviation siglum for the hand built on siglum-of-the-manuscript_H1, the number being incremental -->
 										<p>main hand of the manuscript, black ink, Sundanese script</p><!-- provide a description of the hand -->
 									</handNote>
 								</handDesc>
@@ -115,7 +112,7 @@
 					<p>The asterisk * is used to flag lemmata or forms of lemmata not recorded in the <title>Old Javanese-English Dictionary</title>.</p>
 				</interpretation>
 			</editorialDecl>
-			<refsDecl xml:id="ASLREF">
+			<!--<refsDecl xml:id="ASLREF">
 				<cRefPattern matchPattern="(\S+) ([^.]+)\.(.*)"
 					replacementPattern="#xpath(//div1[@n='$1']/div2/[@n='$2']//lb[@n='$3'])">
 					<p>A reference is created by assembling the following, in the reverse order as that
@@ -131,7 +128,7 @@
 						</list>
 					</p>
 				</cRefPattern>
-			</refsDecl>
+			</refsDecl>-->
 			<samplingDecl>
 				<!-- To be kept only to explain in prose the method to choose the corpus, e.g. ommission of the material ...-->
 				<p/>
@@ -161,7 +158,7 @@
 				<prefixDef ident="class" matchPattern="([0-9]+)" replacementPattern="tba">
 					<p>Referential with the prefix class for script classification declared inside OpenTheso to be mapped with ARK URIs opened to the public.</p>
 				</prefixDef>
-				<prefixDef ident="maturiy" matchPattern="(0-9]+)" replacementPattern="tba">
+				<prefixDef ident="maturity" matchPattern="([0-9]+)" replacementPattern="tba">
 					<p>Referential with the prefix maturity for script maturity declared inside OpenTheso to be mapped with ARK URIs opened to the public</p>
 				</prefixDef>
 				<prefixDef ident="cal" matchPattern="([\w]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/templates/DHARMA_calendarDesc_v01.xml#$1">
@@ -173,6 +170,7 @@
 				<!-- choose the language(s) of your text, remove the others -->
 				<language ident="san-Latn">Sanskrit, romanized</language>
 				<language ident="kaw-Latn">Old Javanese, romanized</language>
+				<language ident="ori-Latn">Oriya, romanized</language>
 				<language ident="osn-Latn">Old Sundanese, romanized</language>
 				<language ident="tam-Latn">Tamil, romanized</language>
 				<language ident="kan-Latn">Kannada, romanized</language>

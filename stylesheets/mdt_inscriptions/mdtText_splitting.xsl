@@ -4,16 +4,13 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
-    <!-- Written by Axelle Janiak for DHARMA, starting July 2022 -->
+    <!-- Written by Axelle Janiak for DHARMA, starting July 2022 --> 
     
     <xsl:template match="File">
         <xsl:for-each select="line">
-            <xsl:result-document method="xml" href="{./fileDesc/publicationStmt/idno[@type='filename']}_{generate-id()}.xml">
-                <metadata>
-                    <xsl:copy-of select="." />
-                </metadata>
+            <xsl:result-document href="DHARMA_mdt_{./fileDesc/sourceDesc/msDesc/msIdentifier/idno}_{generate-id()}.xml" method="xml" encoding="utf-8">
+                <xsl:copy-of select="."/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template> 
-    
 </xsl:stylesheet>

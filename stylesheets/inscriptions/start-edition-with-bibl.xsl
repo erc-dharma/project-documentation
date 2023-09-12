@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:t="http://www.tei-c.org/ns/1.0"
@@ -22,6 +22,7 @@
    <xsl:include href="htm-teidivedition.xsl"/>
    <xsl:include href="htm-teidivtranslation.xsl"/>
    <xsl:include href="htm-teidivapparatus.xsl"/>
+    <xsl:include href="htm-teifacsimile.xsl"/>
    <xsl:include href="htm-teiforeign.xsl"/>
    <xsl:include href="htm-teifigure.xsl"/>
    <xsl:include href="htm-teig.xsl"/>
@@ -85,7 +86,7 @@
     <!-- global named templates with no html, also used by start-txt  -->
    <xsl:include href="tpl-certlow.xsl"/>
    <xsl:include href="tpl-text.xsl"/>
-   <xsl:include href="tpl-unclearbrackets.xsl"/>
+   <!--<xsl:include href="tpl-unclearbrackets.xsl"/>-->
 
 
 

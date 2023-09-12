@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
@@ -45,6 +45,8 @@
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#axja" when="2023-05-10">Added Michaël Meyer's ID.</change>
+			<change who="#argr" when="2023-03-31">Added Tyassanti Kusumo Dewanti's ID.</change>
 			<change who="#axja" when="2021-11-25">Added Zakariya Pamuji Aminullah's ID.</change>
 			<change who="#argr" when="2021-06-01">Added Amandine Wattelier-Bricout's ID.</change>
 			<change who="#argr" when="2021-05-20">Added Wayan Jarrah Sastrawan's ID.</change>
@@ -424,6 +426,13 @@
 					<idno type="IdRef">https://www.idref.fr/176193774</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-4944-6535</idno>
 				</person>
+				<person xml:id="mime">
+					<persName>
+						<forename>Michaël</forename>
+						<surname>Meyer</surname>
+					</persName>
+					<!-- idno à chercher -->
+				</person>
 				<person xml:id="emmo">
 					<persName>
 						<forename>Emmanuelle</forename>
@@ -553,6 +562,12 @@
 					</persName>
 					<!-- must be created-->
 				</person>
+				<person xml:id="tisn">
+					<persName>
+						<name>Titi Surti Nastiti</name>
+					</persName>
+					<idno type="VIAF">http://viaf.org/viaf/72800314</idno>
+				</person>
 				<person xml:id="vito">
 					<persName>
 						<forename>Vincent</forename>
@@ -562,6 +577,12 @@
 					<idno type="IdRef">https://www.idref.fr/177429623</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
 					<idno type="IdHAL">vincent-tournier</idno>
+				</person>
+				<person xml:id="tykd">
+					<persName>
+						<name>Tyassanti Kusumo Dewanti</name>
+					</persName>
+					<!-- must be created-->
 				</person>
 				<person xml:id="utve">
 					<persName>
@@ -596,6 +617,11 @@
 				<person xml:id="zapa">
 					<persName>
 						<name>Zakariya Pamuji Aminullah</name>
+					</persName>
+				</person>
+				<person xml:id="ilnu">
+					<persName>
+						<name>Ilham Nurwansah</name>
 					</persName>
 				</person>
 			</listPerson>

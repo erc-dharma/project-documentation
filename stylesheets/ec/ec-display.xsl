@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -49,6 +49,11 @@
         <xsl:element name="td">
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+
+    <!-- choice -->
+    <xsl:template match="tei:choice">
+            <xsl:apply-templates/>
     </xsl:template>
 
     <!-- corr -->
@@ -223,6 +228,14 @@
         </xsl:element>
     </xsl:template>
 
+    <!-- s -->
+    <xsl:template match="tei:s">
+        <xsl:element name="span">
+            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
     <!-- sic -->
     <xsl:template match="tei:sic">
         <xsl:element name="span">
@@ -312,17 +325,20 @@
                             Conventions
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="editorial">Editorial Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/output/display-prosody.html">Prosodic Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
+                        <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
+                        <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
+                        <div class="dropdown-divider"></div>
+                        
                         <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Documentation
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-                            <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
@@ -332,6 +348,7 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -346,6 +363,8 @@
                             Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
@@ -360,6 +379,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -484,6 +504,12 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'bangalore')">
                 <xsl:text>Bn</xsl:text>
             </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'coorg')">
+                <xsl:text>Cg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'sravaṇa beḷgoḷa')">
+                <xsl:text>SB</xsl:text>
+            </xsl:when>
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nelamangala')">
                 <xsl:text>Nl</xsl:text>
             </xsl:when>
@@ -604,7 +630,78 @@
             <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'tarîkere')">
                 <xsl:text>Tk</xsl:text>
             </xsl:when>
-        </xsl:choose>   
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'hassan')">
+                <xsl:text>Hn</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='part']/tei:head), 'hassan')">
+                <xsl:text>Hn</xsl:text>
+            </xsl:when>
+                <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'belur')">
+                    <xsl:text>Bl</xsl:text>
+
+                </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='part']/tei:head), 'belur')">
+                <xsl:text>Bl</xsl:text>
+
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'arsikere')">
+                <xsl:text>Ak</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'channarayapatna')">
+                <xsl:text>Cn</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'hole-narsipur')">
+                <xsl:text>HN</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'arkalgud')">
+                <xsl:text>Ag</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'manjarabad')">
+                <xsl:text>Mj</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'mysore')">
+                <xsl:text>My</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'seringapatam')">
+                <xsl:text>Sr</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'maṇḍya')">
+                <xsl:text>Md</xsl:text>
+            </xsl:when>
+                    <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'maḷavaḷḷi')">
+                        <xsl:text>Ml</xsl:text>
+                    </xsl:when>
+                        <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'tirumakûḍlu-narasîpûr')">
+                            <xsl:text>TN</xsl:text>
+                        </xsl:when>
+                            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nañjangûḍ')">
+                                <xsl:text>Nj</xsl:text>
+                            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'châmarâjnagar')">
+                <xsl:text>Ch</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'yeḷandûr jâgîr')">
+                <xsl:text>Yl</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'guṇḍlupet')">
+                <xsl:text>Gu</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'yeḍatore')">
+                <xsl:text>Yd</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'heggaḍadêvankôṭe')">
+                <xsl:text>Hg</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'huṇsûr')">
+                <xsl:text>Hs</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'kṛishṇarâjapêṭ')">
+                <xsl:text>Kr</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains(lower-case(ancestor::tei:div[@type='chapter']/tei:head), 'nâgamaṅgala')">
+                <xsl:text>Ng</xsl:text>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="tpl-dharma-apparatus">

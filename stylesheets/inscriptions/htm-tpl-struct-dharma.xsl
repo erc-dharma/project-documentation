@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:t="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="t"
@@ -19,7 +19,7 @@
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     Current Version: 
                   </xsl:element>
-                  
+
                   <!--<xsl:choose>
                     <xsl:when test="//t:fileDesc/following-sibling::t:revisionDesc">
                       <xsl:if test="//t:fileDesc/following-sibling::t:revisionDesc/t:change[1]/@status">
@@ -44,34 +44,58 @@
                   <xsl:element name="p">
                   <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    Editors:  
+                    <xsl:choose>
+                      <xsl:when test="count(//t:fileDesc/t:titleStmt/t:respStmt[contains(t:resp, 'intellectual authorship of edition')]/child::t:persName) = 1">
+                        <xsl:text>Editor:</xsl:text>
+                      </xsl:when>
+                      <xsl:when test="count(//t:fileDesc/t:titleStmt/t:respStmt[contains(t:resp, 'intellectual authorship of edition')]/child::t:persName) = 0">
+                        <xsl:text>No editor has been identified for this inscription.</xsl:text>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:text>Editors:</xsl:text>
+                      </xsl:otherwise>
+                    </xsl:choose>  
                   </xsl:element>
-                  
-                    <xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>
+
+                    <!--<xsl:apply-templates select="substring-after(//t:fileDesc/t:publicationStmt/t:availability/t:licence/t:p[2], 'by ')"/>-->
+                    <xsl:for-each select="//t:fileDesc/t:titleStmt/t:respStmt[contains(t:resp, 'intellectual authorship of edition')]/t:persName">                     
+                      <xsl:apply-templates select="."/>
+                          <xsl:choose>
+                            <xsl:when test="position()=last()">
+                              <xsl:text>. </xsl:text>
+                            </xsl:when>
+                            <xsl:when test="position()=(last()-1)">
+                              <xsl:text> and </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:text>, </xsl:text>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                    </xsl:for-each>
                   </xsl:element>
             <xsl:if test="//t:fileDesc/t:publicationStmt/t:idno[@type='filename'][1]">
               <xsl:element name="p">
               <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                DHARMA Identifier: 
+                DHARMA Identifier:
               </xsl:element>
             <xsl:value-of select="replace(//t:fileDesc/t:publicationStmt/t:idno[@type='filename'], 'DHARMA_', '')"/>
             </xsl:element>
           </xsl:if>
-                  
+
                   <xsl:if test="//t:msContents//t:summary/text()">
                     <xsl:element name="p">
                     <xsl:element name="span">
                       <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                       Summary: </xsl:element>
-                   
+
                       <xsl:apply-templates select="//t:msContents/t:summary"/>
                     </xsl:element>
                   </xsl:if>
                   <xsl:if test="//t:handDesc//text()">
                     <xsl:element name="p"><xsl:element name="span">
                       <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                      Hands: </xsl:element>
+                      Hand Description: </xsl:element>
                     <xsl:choose>
                       <xsl:when test="//t:handDesc/t:handNote/t:p">
                         <xsl:for-each select="//t:handDesc/t:handNote/t:p">
@@ -80,9 +104,7 @@
                         <xsl:apply-templates select="//t:handDesc/t:handNote/t:p"/>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:for-each select="//t:handDesc/t:p">
-                            <xsl:apply-templates/>                    
-                        </xsl:for-each>
+                          <xsl:apply-templates select="//t:handDesc"/>
                       </xsl:otherwise>
                     </xsl:choose>
                     </xsl:element>
@@ -92,8 +114,8 @@
                   <xsl:choose>
                     <xsl:when test="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]">
                       <xsl:variable name="secondid" select="$metadata-file//line//msIdentifier[substring-before(idno, '_') = $idfile]/idno"/>
-                      
-                      <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $secondid]]"> 
+
+                      <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $secondid]]">
                         <xsl:element name="p">
                           <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -115,10 +137,23 @@
                         <xsl:element name="p">
                           <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                            Main Langue: </xsl:element>
-                          <xsl:call-template name="language-tpl">
-                            <xsl:with-param name="language" select=".//msContents/msItem/textLang/@mainLang"/>
-                          </xsl:call-template>
+                            Languages: </xsl:element>
+                          <xsl:if test=".//msContents/msItem/textLang/@mainLang">
+                            <xsl:call-template name="language-tpl">
+                              <xsl:with-param name="language" select=".//msContents/msItem/textLang/@mainLang"/>
+                            </xsl:call-template>
+                            <xsl:if test=".//msContents/msItem/textLang/@otherLangs != ''">
+                              <xsl:text> and </xsl:text>
+                              <xsl:call-template name="language-tpl">
+                                <xsl:with-param name="language" select=".//msContents/msItem/textLang/@otherLangs"/>
+                              </xsl:call-template>
+                            </xsl:if>
+                          </xsl:if>
+                          <xsl:element name="ol">
+                            <xsl:for-each select=".//msContents/msItem/textLang/p"> 
+                              <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
+                            </xsl:for-each>
+                          </xsl:element>
                         </xsl:element>
                         <xsl:element name="p">
                           <xsl:element name="span">
@@ -141,10 +176,10 @@
                         </xsl:element>
                         <hr/>
                       </xsl:for-each>
-                      
+
                     </xsl:when>
                     <xsl:when test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]">
-                      
+
                       <xsl:element name="p">
                       <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -167,19 +202,54 @@
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                          Main Langue: </xsl:element>
-                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"> 
+                          Languages: </xsl:element>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang">
                           <xsl:call-template name="language-tpl">
                           <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@mainLang"/>
                         </xsl:call-template>
+                          <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@otherLangs != ''">
+                            <xsl:text> and </xsl:text>
+                            <xsl:call-template name="language-tpl">
+                              <xsl:with-param name="language" select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/@otherLangs"/>
+                            </xsl:call-template>
+                          </xsl:if>
                         </xsl:if>
+                        <xsl:element name="ol">
+                          <xsl:for-each select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//msContents/msItem/textLang/p"> 
+                            <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
+                          </xsl:for-each>
+                      </xsl:element>
                       </xsl:element>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                           Corresponding Artefact: </xsl:element>
-                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp"/> <xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if>
+                        <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp">
+                          <xsl:element name="span">
+                            <xsl:attribute name="trigger">hover</xsl:attribute>
+                            <xsl:attribute name="class">artefact-label</xsl:attribute>
+                            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                            <xsl:attribute name="data-placement">top</xsl:attribute>
+                            <xsl:attribute name="title">
+                              <!--<xsl:variable name="conart-file"
+                                select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
+                              <xsl:variable name="idart" select="tokenize(substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#'), ' ')"/>
+                             
+                              <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>-->
+                              <xsl:call-template name="artefact-info">
+                                <xsl:with-param name="idart" select="tokenize(substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#'), ' ')"/>
+                              </xsl:call-template>
+                            </xsl:attribute>
+                            <xsl:apply-templates select="substring-after($metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/@corresp, '#')"/>
+                          </xsl:element>
+                           <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p != ''"><xsl:text> inscription on </xsl:text><xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/objectDesc/supportDesc/p"/></xsl:if></xsl:if>
                       </xsl:element>
+                      <xsl:if test="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/scriptDesc/p != ''"><xsl:element name="p">
+                        <xsl:element name="span">
+                          <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                          Technique: </xsl:element>
+                        <xsl:apply-templates select="$metadata-file//line[descendant::msIdentifier[idno = $idfile]]//physDesc/scriptDesc/p"/>
+                      </xsl:element></xsl:if>
                       <xsl:element name="p">
                         <xsl:element name="span">
                           <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -198,7 +268,7 @@
                       <xsl:element name="p">No metadata were provided in the table for this inscription</xsl:element></xsl:otherwise>
                   </xsl:choose>
                 </xsl:element>
-                        
+
           <xsl:variable name="maintxt">
             <xsl:apply-templates/>
          </xsl:variable>
@@ -212,6 +282,7 @@
 
    <!-- Called from htm-tpl-structure.xsl -->
    <xsl:template name="dharma-structure">
+     <xsl:param name="parm-internal-app-style" tunnel="yes" required="no"/>
       <xsl:variable name="title">
          <xsl:call-template name="dharma-title" />
       </xsl:variable>
@@ -247,6 +318,7 @@
                <xsl:value-of select="//t:teiHeader/t:fileDesc/t:titleStmt/t:title"/>
              </h1>
              <xsl:call-template name="dharma-body-structure"/>
+             <xsl:call-template name="tpl-dharma-apparatus"/>
            </xsl:element>
              <xsl:apply-templates select=".//t:persName[ancestor::t:body]" mode="modals"/>
              <xsl:apply-templates select=".//t:placeName[ancestor::t:body]" mode="modals"/>
@@ -288,7 +360,7 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/inscriptions/loader.js"></script>
-    
+
   </xsl:template>
 
   <!-- Nav bar template -->
@@ -298,7 +370,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -321,8 +393,8 @@
               Conventions
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="editorial">Editorial Conventions</a>
-              <a class="dropdown-item" href="https://erc-dharma.github.io/output/display-prosody.html">Prosodic Conventions</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -330,8 +402,11 @@
               Documentation
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
+              <div class="dropdown-divider"></div>
+              
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-              <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
@@ -341,6 +416,7 @@
               <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
               <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -355,6 +431,8 @@
               Authorities
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+              <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
               <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
@@ -369,6 +447,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
               <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+              <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
               <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
             </div>
           </li>
@@ -381,11 +460,11 @@
           <li class="nav-item">
             <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
           </li>
-        </ul> 
+        </ul>
       </div>
     </nav>
   </xsl:template>
-  
+
   <!-- side bar - table of contents -->
   <xsl:template name="table-contents">
     <xsl:element name="div">
@@ -405,7 +484,7 @@
                   <xsl:text>#</xsl:text>
                   <xsl:value-of select="@type"/>
                 </xsl:attribute>
-                <xsl:if test="@type='translation'">                  
+                <xsl:if test="@type='translation'">
                     <xsl:choose>
                       <xsl:when test="@xml:lang='fra'">
                         <xsl:text>French </xsl:text>
@@ -441,14 +520,14 @@
                   </xsl:for-each>
                 </xsl:element>
                 </xsl:if>
-              
+
             </xsl:element>
           </xsl:for-each>
         </xsl:element>
       </xsl:element>
     </xsl:element>
   </xsl:template>
-  
+
   <xsl:template name="language-tpl">
     <xsl:param name="language"/>
     <xsl:if test="$language !=''">
@@ -534,4 +613,44 @@
       </xsl:choose>
     </xsl:if>
   </xsl:template>
+  
+  <xsl:template name="artefact-info">
+    <xsl:param name="idart"/>
+    <xsl:variable name="artefact-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_artefacts.xml')"/>
+    <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
+    
+    <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//rightHolder"/>
+      <xsl:text>, </xsl:text>
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
+      <xsl:text>.</xsl:text>
+      <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat">  
+        <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat"/>
+        <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed">
+          <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed"/>
+        <xsl:text> plates observed. </xsl:text>
+        </xsl:if>
+      </xsl:if>
+      <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated">
+        <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated"/>
+        <xsl:text> plates estimated.</xsl:text></xsl:if>
+    </xsl:if>
+    <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//rightHolder">
+      <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
+    </xsl:if>
+   <!-- <xsl:choose>
+      <xsl:when test="starts-with($idart, 'CONART')">
+        
+          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>
+        </xsl:if>
+        
+      </xsl:when>
+      <xsl:when test="starts-with($idart, 'ART')">
+        <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//artefactDes[@type='main']">
+          <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//discoveryPlaceName"/>
+        </xsl:if>
+      </xsl:when>
+    </xsl:choose>-->
+  </xsl:template>
+
    </xsl:stylesheet>

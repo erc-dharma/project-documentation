@@ -18,7 +18,7 @@
     <xsl:param name="batak-regexes" as="element(regex)*">
         <!-- Transformation of consonants -->
         <regex>
-            <find>[ṅṁ]+</find>
+            <find>[ṅṁ]</find>
             <change>ng</change>
         </regex>
         <regex>

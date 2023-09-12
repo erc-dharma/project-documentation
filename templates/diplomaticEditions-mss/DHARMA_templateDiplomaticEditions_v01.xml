@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_DiplEDSchema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_DiplEDSchema.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_SQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
@@ -8,7 +8,7 @@
             <titleStmt>
                 <title type="main">Encoding Template for Diplomatic Editions</title>
                 <!--Change the title of the file with the name of your text-->
-                <title type="subtitle">Digital Diplomatic Edition of...</title>
+                <title type="sub">Digital Diplomatic Edition of...</title>
                 <!-- fill in the subtitle if necessary -->
                 <!-- Possibility to add the <editor> tag:
         <editor ref="part:ID">
@@ -108,6 +108,8 @@
                 <!-- choose the language(s) of your text, remove the others -->
                 <language ident="san-Latn">Sanskrit, romanized</language>
                 <language ident="kaw-Latn">Old Javanese, romanized</language>
+                <language ident="ori-Latn">Oriya, romanized</language>
+                <language ident="osn-Latn">Old Sundanese, romanized</language>
                 <language ident="tam-Latn">Tamil, romanized</language>
                 <language ident="kan-Latn">Kannada, romanized</language>
                 <language ident="tel-Latn">Telugu, romanized</language>

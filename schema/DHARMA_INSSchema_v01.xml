@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:sch="http://purl.oclc.org/dsdl/schematron" xml:lang="en">
     <teiHeader>
@@ -18,6 +18,11 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
+            <change who="part:axja" when="2023-05-10">Allowing the possibility to use corresp with lg to encodage Amandine stanzas</change>
+            <change who="part:axja" when="2023-04-19">Completing Salome addition and creating a schematron rule for @type undertermined</change>
+            <change who="part:sapi" when="2023-04-18">Learning to add value in attributes and updating the schematron rules</change>
+            <change who="part:axja" when="2023-04-18">Adding values for placeName - See Salome research</change>
+            <change who="part:axja" when="2022-10-18">adding seg/@rend="check"</change>
             <change who="part:axja" when="2022-06-15">Updating the values for abbreviations</change>
             <change who="part:axja" when="2022-04-08">Changing the values for placeName</change>
             <change who="part:axja" when="2022-04-05">Working on contraints for dates</change>
@@ -68,7 +73,7 @@
             <schemaSpec ident="dharma" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
                 source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
                 <!--source="https://svn.code.sf.net/p/epidoc/code/trunk/schema/tei-epidoc.xml"
-                
+
                 -->
                 <!--       MODULES USED BY THE DHARMA SCHEMA       -->
                 <moduleRef key="core"
@@ -246,9 +251,7 @@
                             <valList type="open" mode="replace">
                                 <valItem ident="fragment"/>
                                 <valItem ident="face"/>
-                                <valItem ident="facet"/>
                                 <valItem ident="faces"/>
-                                <valItem ident="facets"/>
                                 <valItem ident="zone"/>
                                 <valItem ident="column"/>
                                 <valItem ident="item"/>
@@ -285,6 +288,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
@@ -811,7 +815,7 @@
                                 <valItem ident="descender"/>
                                 <valItem ident="ascender"/>
                                 <valItem ident="feature"/>
-                                <valItem ident="other"/>
+                                <valItem ident="unclassified"/>
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change">
@@ -1057,6 +1061,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
@@ -1830,6 +1835,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -1913,6 +1919,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                     </attList>
@@ -2309,6 +2316,14 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="l" module="core" mode="change">
+                    <constraintSpec scheme="schematron" ident="mixed-verse">
+                        <constraint><sch:rule context="tei:l[parent::tei:lg[@met='mixed']]">
+                        <sch:assert
+                            test="self::tei:l[@real or @met]"
+                            >In a stanza identify as "mixed", the children verse lines must have at least an attribute @met or @real.</sch:assert>
+                    </sch:rule>
+                    </constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2383,6 +2398,7 @@
                                 <valItem ident="suvadanā"/>
                                 <valItem ident="sragdharā"/>
                                 <valItem ident="uncertain"/>
+                                <valItem ident="mixed"/>
                             </valList>
                         </attDef>
                         <attDef ident="real" mode="change">
@@ -2464,6 +2480,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -2635,7 +2652,6 @@
                         <attDef ident="org" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -2707,6 +2723,7 @@
                                 <valItem ident="kalippā"/>
                                 <valItem ident="vañcippā"/>
                                 <valItem ident="maruṭpā"/>
+                                <valItem ident="mixed"/>
                             </valList>
                         </attDef>
                         <attDef ident="n" mode="change" usage="req">
@@ -2744,6 +2761,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
@@ -2860,9 +2878,8 @@
                 <elementSpec ident="list" module="core" mode="change">
                     <constraintSpec scheme="isoschematron" ident="lists">
                         <constraint><sch:rule context="tei:list"><sch:assert
-                            test="ancestor::tei:div[@type='edition' or @type='translation'  or @type='commentary']"
-                            >List can only be used inside the edition, the commentary or the translation part of
-                            your file</sch:assert></sch:rule></constraint>
+                            test="parent::tei:p"
+                            >List can only be used inside a paragraph element.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3059,9 +3076,7 @@
                             <valList type="open" mode="replace">
                                 <valItem ident="fragment"/>
                                 <valItem ident="face"/>
-                                <valItem ident="facet"/>
                                 <valItem ident="faces"/>
-                                <valItem ident="facets"/>
                                 <valItem ident="zone"/>
                                 <valItem ident="column"/>
                                 <valItem ident="block"/>
@@ -3177,8 +3192,8 @@
                             >Note should the last element of the
                             biliography</sch:report></sch:rule><sch:rule
                             context="tei:note[parent::tei:app]"><sch:report
-                            test="not(following-sibling::tei:note)"
-                            >Note(s) should the last element
+                            test="following-sibling::tei:*[not(local-name () = 'note')]"
+                            >Note(s) be should the last element
                             of the apparatus entry</sch:report></sch:rule><sch:rule
                             context="tei:note"><sch:report test="child::tei:note"
                             >Note(s) may not
@@ -3296,13 +3311,18 @@
                 </elementSpec>
                 <elementSpec ident="p" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="p">
-                        <constraint><sch:rule context="tei:p"><sch:report
+                        <constraint>
+                            <sch:rule context="tei:p">
+                                <sch:report
                             test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])"
                             >@rend='stanza' can only be used in div[@type='translation'] and in
-                            div[@type='commentary']</sch:report></sch:rule><!--<sch:report
-                            test="not(@n) and ancestor::tei:div[@type='translation']"> @n is
-                            mandatory on p element in
-                            div[@type='translation']</sch:report>--></constraint>
+                            div[@type='commentary']</sch:report></sch:rule>
+                        <sch:rule context="tei:p[@corresp]">
+                            <sch:assert
+                                test="@rend='stanza' and ancestor::tei:div[@type='translation']"
+                                >@corresp can only be used with p in the context of a @rend="stanza" and inside a translatio </sch:assert>
+                        </sch:rule>
+                            </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3326,7 +3346,6 @@
                                 <valItem ident="wide"/>
                             </valList>
                         </attDef>
-                        <attDef ident="corresp" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
                         <attDef ident="select" mode="delete"/>
@@ -3366,6 +3385,7 @@
                                 <valItem ident="vie"/>
                                 <valItem ident="cja"/>
                                 <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
@@ -3571,29 +3591,33 @@
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:placeName[@type='region']"><sch:assert
-                            test="@subtype='district' or @subtype='province' or @subtype='country'"
+                            test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'"
                             >For @type="region", the @subtype should be one of the
-                                    following values: @subtype='district' or @subtype='province' or @subtype='country'</sch:assert></sch:rule><sch:rule
+                            following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='settlement']"><sch:assert
-                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp'"
+                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'"
                             >For @type="settlement", the @subtype should be one of the
-                                    following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp'</sch:assert></sch:rule><sch:rule
+                                following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='builtPlace']"><sch:assert
-                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'"
+                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'"
                             >For @type="builtPlace", the @subtype should be one of the following
-                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='cultivation']"><sch:assert
-                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchard'"
+                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'"
                             >For @type="cultivation", the @subtype should be one of the following
-                                    values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='hydrographic']"><sch:assert
-                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal'"
+                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'"
                             >For @type="hydrographic", the @subtype should be one of the following
-                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal'</sch:assert></sch:rule><sch:rule
+                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'</sch:assert></sch:rule><sch:rule
                             context="tei:placeName[@type='naturalPlace']"><sch:assert
-                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain'"
+                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'"
                             >For @type="naturalPlace", the @subtype should be one of the following
-                                    values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain'</sch:assert></sch:rule></constraint>
+                                values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'</sch:assert></sch:rule>
+                        <sch:rule context="tei:placeName[@type='undetermined']">
+                            <sch:assert test="not(@subtype)">@subtype isn't allowed with @type='undetermined'</sch:assert>
+
+                        </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3639,18 +3663,19 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="type" usage="rec">
-                            <valList type="open" mode="replace">
+                        <attDef ident="type" mode="change">
+                            <valList type="open" mode="change">
                                 <valItem ident="region"/>
                                 <valItem ident="settlement"/>
                                 <valItem ident="builtPlace"/>
                                 <valItem ident="cultivation"/>
                                 <valItem ident="hydrographic"/>
                                 <valItem ident="naturalPlace"/>
+                                <valItem ident="undetermined"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" usage="rec">
-                            <valList type="open" mode="replace">
+                        <attDef ident="subtype" mode="change">
+                            <valList type="open" mode="change">
                                 <valItem ident="province"/>
                                 <valItem ident="district"/>
                                 <valItem ident="country"/>
@@ -3678,7 +3703,19 @@
                                 <valItem ident="grove"/>
                                 <valItem ident="tree"/>
                                 <valItem ident="montain"/>
-                                <!-- 
+                                <valItem ident="land"/>
+                                <valItem ident="nursery"/>
+                                <valItem ident="island"/>
+                                <valItem ident="establishment"/>
+                                <valItem ident="fieldIrrigated"/>
+                                <valItem ident="fieldDry"/>
+                                <valItem ident="fieldSalted"/>
+                                <valItem ident="wetland"/>
+                                <valItem ident="pool"/>
+                                <valItem ident="lake"/>
+                                <valItem ident="mount"/>
+                                <valItem ident="undetermined"/>
+                                <!--
                                 <valItem ident="cave"/>
                                 <valItem ident="road"/>
                                 -->
@@ -4104,52 +4141,50 @@
                             >
                                 with the @type="month", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
                             </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='fortnight']"><sch:assert
+                                context="tei:rs[@type='fortnight']"><sch:assert
                             test="@subtype='dark' or @subtype='bright'">
                                     with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='tithi']"><sch:report test="@key"
-                            >@key shouldn't be used with tei:rs[@type='tithi'], favor @n. 
+                                    context="tei:rs[@type='tithi']"><sch:report test="@key"
+                            >@key shouldn't be used with tei:rs[@type='tithi'], favor @n.
                                 </sch:report></sch:rule><sch:rule
-                            context="tei:rs[@type='naksatra']"><sch:assert
+                                    context="tei:rs[@type='naksatra']"><sch:assert
                             test="@key='krttika'or @key='rohini'or @key='mrgasirsa'or @key='ardra'or @key='punarvasu'or @key='pusya'or @key='aslesa'or @key='magha'or @key='purva-phalguni'or @key='uttara-phalguni'or @key='hasta'or @key='citra'or @key='svati'or @key='visakha'or @key='anuradha'or @key='jyestha'or @key='mula'or @key='purva-asadha'or @key='uttara-asadha'or @key='sravana'or @key='dhanistha'or @key='satabhisaj'or @key='purva-bhadrapada'or @key='uttara-bhadrapada'or @key='revati'or @key='asvini'or @key='bharani'"
                             >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='sadvara']"><sch:assert
+                                context="tei:rs[@type='sadvara']"><sch:assert
                             test="@key='tunglai' or @key='hariyang' or @key='wurukung' or @key='paniruan' or @key='was' or @key='mawulu'"
-                            >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu. 
+                            >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
                             </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='pancavara']"><sch:assert
+                                context="tei:rs[@type='pancavara']"><sch:assert
                             test="@key='pahing' or @key='pon' or @key='wagai' or @key='kaliwuan' or @key='umanis'"
-                            >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis. 
+                            >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis.
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='season']"><sch:assert
+                                    context="tei:rs[@type='season']"><sch:assert
                             test="@key='hemanta' or @key='grisma' or @key='varsa'"
-                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa. 
+                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa.
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='wuku']"><sch:assert
+                                    context="tei:rs[@type='wuku']"><sch:assert
                             test="@key='sinta' or @key='landep' or @key='wukir' or @key='kurantil' or @key='tolu' or @key='gumbreg' or @key='warigalit' or @key='warigagung' or @key='julung' or @key='sungsang' or @key='galungan' or @key='dungulan' or @key='kuningan' or @key='langki' or @key='madasiha' or @key='pujut' or @key='pahang' or @key='kuruwlut' or @key='marakih' or @key='tambir' or @key='madangkungan' or @key='mahatal' or @key='wuyai' or @key='manahil' or @key='prangbakat' or @key='balamuki' or @key='wugu' or @key='wayang' or @key='kulawu' or @key='dukut' or @key='watugunung'"
-                            >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung. 
+                            >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung.
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='chinese']"><sch:assert
+                                    context="tei:rs[@type='chinese']"><sch:assert
                             test="@key='rat' or @key='buffalo-ox' or @key='tiger' or @key='hare-cat' or @key='dragon' or @key='snake' or @key='horse' or @key='goat' or @key='monkey' or @key='cock' or @key='dog' or @key='pig'"
                             >With the @type='chinese', you can only use one of the following values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse, goat, monkey, cock, dog, pig.
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='solstice']"><sch:assert
+                                    context="tei:rs[@type='solstice']"><sch:assert
                             test="@key='winter' or @key='summer'"
                             >With the @type='solstice', you can only use one of the following values: winter or summer.
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='equinox']"><sch:assert
+                                    context="tei:rs[@type='equinox']"><sch:assert
                             test="@key='autumn' or @key='spring'"
                             >With the @type='equinox', you can only use one of the following values: autumn or spring.
                                 </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='eclipse']"><sch:assert
+                                    context="tei:rs[@type='eclipse']"><sch:assert
                             test="@key='lunar' or @key='solar'"
                             >With the @type='eclipse', you can only use one of the following values: lunar or solar.
-                                </sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='individual']"><sch:assert
-                            test="@type='masc' or @type='fem' or @type='other'"
-                            >A gender is expected as another value of reference string @type='individual'.</sch:assert></sch:rule><sch:rule
-                            context="tei:rs[@type='individual']"><sch:assert
+                                </sch:assert></sch:rule>
+                            <sch:rule
+                                context="tei:rs[@type='individual-masc' or @type='individual-fem' or @type='individual-other']"><sch:assert
                             test="@subtype='deity' or @subtype='godLegalEntity' or @subtype='god_child' or @subtype='ruler' or @subtype='ruler_spouse' or @subtype='ruler_child' or @subtype='subordinateRuler' or @subtype='royalPreceptor' or @subtype='noble' or @subtype='landlord' or @subtype='chief' or @subtype='priest' or @subtype='brahmin' or @subtype='monk' or @subtype='cleric' or @subtype='officiant' or @subtype='officer' or @subtype='ascetic' or @subtype='hermit' or @subtype='merchant' or @subtype='artisan' or @subtype='brahminDelegate' or @subtype='regionalDelegate' or @subtype='dancer' or @subtype='singer' or @subtype='peasant' or @subtype='shepherd' or @subtype='slave' or @subtype='fieldWork' or @subtype='unknown'"
                             >one of the following @subtype value can only work with @type='individual'.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
@@ -4162,7 +4197,6 @@
                         <attDef ident="facs" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
-                        <attDef ident="ref" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
@@ -4188,6 +4222,7 @@
                                 <valItem ident="handwriter"/>
                                 <valItem ident="engraver"/>
                                 <valItem ident="sealer-solderer"/>
+                                <valItem ident="ruling"/>
                             </valList>
                         </attDef>
                         <attDef ident="sameAs" mode="delete"/>
@@ -4254,10 +4289,10 @@
                                 <valItem ident="solstice"/>
                                 <valItem ident="equinoxe"/>
                                 <valItem ident="eclipse"/>
-                                <valItem ident="individual"/>
-                                <valItem ident="masc"/>
-                                <valItem ident="fem"/>
-                                <valItem ident="other"/>
+                                <valItem ident="individual-masc"/>
+                                <valItem ident="individual-fem"/>
+                                <valItem ident="individual-other"/>
+                                <valItem ident="authorship"/>
                             </valList>
                         </attDef>
                         <attDef ident="key" mode="change">
@@ -4419,6 +4454,7 @@
                         <attDef ident="rend" mode="change">
                             <valList type="closed" mode="replace">
                                 <valItem ident="pun"/>
+                                <valItem ident="check"/>
                             </valList>
                         </attDef>
                         <attDef ident="met" mode="change">
@@ -5203,6 +5239,9 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
+                <elementSpec ident="principal" mode="delete"/>
+                <elementSpec ident="funder" mode="delete"/>
+                <elementSpec ident="sponsor" mode="delete"/>
             </schemaSpec>
         </body>
     </text>

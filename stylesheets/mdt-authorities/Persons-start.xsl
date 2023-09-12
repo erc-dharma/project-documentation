@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs tei"
     version="2.0">
-    
+
     <!-- Written by Axelle Janiak for DHARMA, starting August 2022 -->
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
-    
+
     <xsl:template match="File">
         <xsl:element name="html">
             <xsl:call-template name="dharma-head"/>
@@ -28,12 +28,12 @@
                             <xsl:text>©DHARMA, 2019-2025.</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                    <xsl:call-template name="dharma-script"/>            
-                </xsl:element>  
+                    <xsl:call-template name="dharma-script"/>
+                </xsl:element>
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="listPerson">
         <xsl:element name="div">
             <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
@@ -47,11 +47,11 @@
                     <xsl:value-of select="person/@xml:id"/>
                     <br/>
                     <xsl:value-of select="person/persName[1]"/>
-                </xsl:element>           
+                </xsl:element>
             </xsl:element>
             <xsl:element name="div">
                 <xsl:attribute name="class">col-8</xsl:attribute>
-                
+
                 <xsl:for-each select="person/persName">
                     <xsl:element name="p">
                         <xsl:value-of select="."/>
@@ -60,64 +60,64 @@
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        role: 
+                        role:
                     </xsl:element>
                     <xsl:value-of select="person/persName/@role"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        sex: 
+                        sex:
                     </xsl:element>
                     <xsl:value-of select="person/@sex"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        occupation: 
+                        occupation:
                     </xsl:element>
                     <xsl:value-of select="person/occupation"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        birth: 
+                        birth:
                     </xsl:element>
                     <xsl:value-of select="person/birth"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        death: 
+                        death:
                     </xsl:element>
                     <xsl:value-of select="person/death"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        floruit: 
+                        floruit:
                     </xsl:element>
                     <xsl:value-of select="person/floruit"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        bibliography: 
+                        bibliography:
                     </xsl:element>
                     <xsl:apply-templates select="person/listBibl/bibl"/>
                 </xsl:element>
                 <xsl:element name="p">
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                        relationships: 
+                        relationships:
                     </xsl:element>
                     <xsl:apply-templates select="listRelation/relation"/>
                 </xsl:element>
-            </xsl:element>                  
+            </xsl:element>
         </xsl:element>
         <hr/>
     </xsl:template>
-    
+
     <xsl:template match="relation">
         <xsl:variable name="metadata-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-authorities/main/temporary/DHARMA_persons.xml')"/>
         <xsl:variable name="active-person" select="@active"/>
@@ -129,10 +129,10 @@
             <xsl:value-of select="@name"/>
             <xsl:text> </xsl:text>
             <xsl:value-of select="$metadata-file//listPerson/person[@xml:id = $passive-person]/persName"/>
-            
+
         </xsl:for-each>
     </xsl:template>
-    
+
     <xsl:template match="bibl">
         <xsl:choose>
             <xsl:when test=".[ptr]">
@@ -142,19 +142,19 @@
                     <xsl:value-of
                         select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
-                
+
                     <xsl:analyze-string select="unparsed-text($zoteroapijson)"
                         regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
                         <xsl:matching-substring>
                             <xsl:value-of select="regex-group(2)"/>
                         </xsl:matching-substring>
                     </xsl:analyze-string>
-                
+
                         <!--<xsl:copy-of
                             select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-->
-                
-                   
-                <xsl:if test="citedRange"> 
+
+
+                <xsl:if test="citedRange">
                     <xsl:for-each select="citedRange">
                         <xsl:call-template name="citedRange-unit"/>
                         <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
@@ -167,10 +167,10 @@
             <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
             <xsl:otherwise>
                 <xsl:apply-templates/>
-            </xsl:otherwise>		
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
         <xsl:variable name="unit-value">
@@ -262,13 +262,13 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="dharma-head">
         <head>
             <title>
                 DHARMA Person Authority List
             </title>
-            
+
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
@@ -282,7 +282,7 @@
             </meta>
         </head>
     </xsl:template>
-    
+
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -290,7 +290,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -313,8 +313,8 @@
                             Conventions
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="editorial">Editorial Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/output/display-prosody.html">Prosodic Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -322,8 +322,11 @@
                             Documentation
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
+                            <div class="dropdown-divider"></div>
+                            
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-                            <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
@@ -333,6 +336,7 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
@@ -347,6 +351,8 @@
                             Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
@@ -361,6 +367,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -373,11 +380,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </nav>
     </xsl:template>
-    
+
     <xsl:template name="dharma-script">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
@@ -386,9 +393,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader  -->
         <script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>
-        
+
     </xsl:template>
-    
+
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
         <xsl:element name="div">
@@ -415,5 +422,5 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
 </xsl:stylesheet>

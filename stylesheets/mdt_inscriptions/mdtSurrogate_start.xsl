@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
@@ -21,26 +21,66 @@
         
     <xsl:variable name="lines">
         <xsl:for-each select="tokenize($data, '\r?\n')">
-            <xsl:if test="position() >= 6">
+            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
+            <xsl:choose>
+                <xsl:when test="$tokens[1] = '0'"/>
+                <xsl:when test="$tokens[3] = ''"/>
+                <xsl:otherwise>
                 <line>
-                    <xsl:variable name="tokens" as="xs:string*" select="tokenize(., ',')"/>
                     <resourceManagement>
                         <resourceID><xsl:value-of select="$tokens[3]"/></resourceID>
-                        <metadataOrigin><xsl:value-of select="$tokens[4]"/></metadataOrigin>
+                        <xsl:element name="metadataOrigin">
+                            <xsl:variable name="biblio" as="xs:string*" select="tokenize($tokens[4], '\$')"/>
+                            <xsl:if test="$tokens[5] != ''">
+                                <xsl:attribute name="when"><xsl:value-of select="$tokens[5]"/></xsl:attribute>
+                            </xsl:if>
+                            <xsl:for-each select="$biblio">
+                                <xsl:choose>
+                                    <xsl:when test="matches(., '\_\d\d')"> 
+                                        <bibl><xsl:element name="ptr">
+                                            <xsl:attribute name="target">
+                                                <xsl:text>bib:</xsl:text><xsl:apply-templates select="."/>
+                                            </xsl:attribute>
+                                        </xsl:element>
+                                        </bibl>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="$tokens[4]"/>
+                                    </xsl:otherwise>
+                                </xsl:choose> 
+                            </xsl:for-each>
+                        </xsl:element>
                         <metadataEditor>
                             <xsl:element name="change">
-                                <xsl:variable name="editors" as="xs:string*" select="tokenize($tokens[6], '\$')"/>
-                                <xsl:attribute name="when"><xsl:value-of select="$tokens[5]"/></xsl:attribute>
+                                <xsl:variable name="editors" as="xs:string*">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($tokens[6], '$')">
+                                            <xsl:value-of select="tokenize($tokens[6], '\$')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$tokens[6]"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
+                                <xsl:attribute name="when"><xsl:value-of select="$tokens[7]"/></xsl:attribute>
                                 <xsl:attribute name="who">
                                     <xsl:for-each select="$editors">part:<xsl:value-of select="."/> </xsl:for-each>
                                 </xsl:attribute>
-                                import of medadata
+                                edition of medadata
                             </xsl:element>
                         </metadataEditor>
                         <metadataContribution>
                             <xsl:element name="change">
-                                <xsl:variable name="contributors" as="xs:string*" select="tokenize($tokens[8], '\$')"/>
-                                <xsl:attribute name="when"><xsl:value-of select="$tokens[7]"/></xsl:attribute>
+                                <xsl:variable name="contributors" as="xs:string*">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($tokens[8], '$')">
+                                            <xsl:value-of select="tokenize($tokens[8], '\$')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$tokens[8]"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
                                 <xsl:attribute name="who">
                                     <xsl:for-each select="$contributors">part:<xsl:value-of select="."/> </xsl:for-each>
                                 </xsl:attribute>
@@ -49,7 +89,16 @@
                         </metadataContribution>
                         <metadataReview>
                             <xsl:element name="change">
-                                <xsl:variable name="reviewers" as="xs:string*" select="tokenize($tokens[9], '\$')"/>
+                                <xsl:variable name="reviewers" as="xs:string*">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($tokens[9], '$')">
+                                            <xsl:value-of select="tokenize($tokens[9], '\$')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$tokens[9]"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
                                 <xsl:attribute name="when"><xsl:value-of select="$tokens[10]"/></xsl:attribute>
                                 <xsl:attribute name="who">
                                     <xsl:for-each select="$reviewers">part:<xsl:value-of select="."/> </xsl:for-each>
@@ -65,21 +114,26 @@
                         <surrogateID><xsl:value-of select="$tokens[14]"/></surrogateID>
                         <surrogateType><xsl:value-of select="$tokens[18]"/></surrogateType>
                         <surrogateCreators>
-                            <xsl:variable name="creators" select="tokenize($tokens[19], '\$')"/>
+                            <xsl:variable name="creators" as="xs:string*">
+                                <xsl:choose>
+                                    <xsl:when test="contains($tokens[19], '$')">
+                                        <xsl:value-of select="tokenize($tokens[19], '\$')"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="$tokens[19]"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:variable>
                             <xsl:for-each select="$creators">
                             <surrogateCreator>
                                 <xsl:value-of select="."/>
                             </surrogateCreator>
-                        </xsl:for-each></surrogateCreators>
+                        </xsl:for-each>
+                        </surrogateCreators>
                         <surrogateCreationDate><xsl:value-of select="$tokens[20]"/></surrogateCreationDate>
-                        <materials>
-                            <xsl:variable name="materials" select="tokenize($tokens[21], '\$')"/>
-                            <xsl:for-each select="$materials">
                                 <material>
-                                    <xsl:value-of select="."/>
+                                    <xsl:value-of select="$tokens[21]"/>
                                 </material>
-                            </xsl:for-each>
-                        </materials>
                         <surrogateFormat>
                             <xsl:variable name="format" select="tokenize($tokens[22], 'x')"/>
                             <height unit="cm"><xsl:value-of select="$format[1]"/></height>
@@ -93,49 +147,62 @@
                         </estampageFormat>-->
                         <surrogatePreservation>
                             <inventoryNumber><xsl:value-of select="$tokens[25]"/></inventoryNumber><!-- may be repeated -->
-                            <condition><xsl:value-of select="$tokens[26]"/></condition><!-- may be repeated -->
-                            <surrogateLegends><p><xsl:value-of select="$tokens[27]"/></p></surrogateLegends>
-                            <surrogateCollection>
-                                <collectionName><xsl:value-of select="$tokens[28]"/></collectionName>
-                                <collectionID><xsl:value-of select="$tokens[29]"/></collectionID>
-                            </surrogateCollection>
-                            <surrogatePreservationPlace>
-                                <preservationPlaceName><xsl:value-of select="$tokens[30]"/></preservationPlaceName>
-                                <preservationPlaceID><xsl:value-of select="$tokens[31]"/></preservationPlaceID>
-                                <preservationLocation><xsl:value-of select="$tokens[32]"/></preservationLocation>
-                                <boxLegend><p><xsl:value-of select="$tokens[33]"/></p></boxLegend>
-                            </surrogatePreservationPlace>
+                            <surrogateLegends><p><xsl:value-of select="$tokens[26]"/></p></surrogateLegends>
+                            <xsl:element name="surrogateCollection">
+                                <xsl:attribute name="id"><xsl:value-of select="$tokens[28]"/></xsl:attribute>
+                                <xsl:value-of select="$tokens[27]"/>
+                            </xsl:element>
+                                <preservationLocation><xsl:value-of select="$tokens[28]"/></preservationLocation>
+                                <boxLegend><xsl:value-of select="$tokens[29]"/></boxLegend>
                         </surrogatePreservation>
                         <surrogateRights>
-                            <governmentalHolder><xsl:value-of select="$tokens[34]"/></governmentalHolder>
-                            <institutionalHolder><xsl:value-of select="$tokens[35]"/></institutionalHolder>
-                            <surrogateDistributionRights><xsl:value-of select="$tokens[36]"/></surrogateDistributionRights>
+                            <rightHolder><xsl:value-of select="$tokens[30]"/></rightHolder>                           
+                            <surrogateDistributionRights><xsl:value-of select="$tokens[31]"/></surrogateDistributionRights>
                         </surrogateRights>
                         <relatedEntities>
+                            <!-- un peu sale mais ça marche -->
                             <xsl:if test="$tokens[15] !=''">
                                 <xsl:element name="textID">
-                                    <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[15], '$', ' #')"/></xsl:attribute>
+                                    <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[15], '$', ' ')"/></xsl:attribute>
                                 </xsl:element>
                             </xsl:if>
                             <xsl:if test="$tokens[16] !=''">
                                 <xsl:element name="artefactID">
-                                    <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[15], '$', ' #')"/></xsl:attribute>
+                                    <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[16], '$', ' ')"/></xsl:attribute>
                                 </xsl:element>
                             </xsl:if>
                             <xsl:if test="$tokens[17] !=''">
                                 <xsl:element name="conArtID">
-                                    <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[17], '$', ' #')"/></xsl:attribute>
+                                    <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[17], '$', ' ')"/></xsl:attribute>
+                                </xsl:element>
+                            </xsl:if>
+                            <xsl:if test="$tokens[32] !=''">
+                                <xsl:element name="imageID">
+                                    <xsl:attribute name="idno">
+                                        <xsl:variable name="images-id" select="tokenize($tokens[32], '\$')"/>
+                                        <xsl:for-each select="$images-id">
+                                            <xsl:value-of select="."/>
+                                            <xsl:text> </xsl:text>
+                                        </xsl:for-each>
+                                    </xsl:attribute>
+                                </xsl:element>
+                            </xsl:if>
+                            <xsl:if test="$tokens[33] !=''">
+                                <xsl:element name="repoID">
+                                    <xsl:attribute name="idno">
+                                        <xsl:variable name="repo-id" select="tokenize($tokens[33], '\$')"/>
+                                        <xsl:for-each select="$repo-id">
+                                            <xsl:value-of select="."/>
+                                            <xsl:text> </xsl:text>
+                                        </xsl:for-each>
+                                    </xsl:attribute>
                                 </xsl:element>
                             </xsl:if>
                         </relatedEntities>
-                        <relatedMedia>
-                            <xsl:element name="digiID">
-                                <xsl:attribute name="idno"><xsl:value-of select="replace($tokens[37], '$', ' #')"/></xsl:attribute>
-                            </xsl:element>
-                        </relatedMedia>
                     </surrogateDescription>
                 </line>
-            </xsl:if>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>  
     </xsl:variable>
         <File>          

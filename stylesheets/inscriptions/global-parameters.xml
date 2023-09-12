@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <parameters>
   <!-- HTML site navigation -->
   <parameter>
@@ -9,21 +9,22 @@
 
   <parameter>
     <name>leiden-style</name>
-    <value on="yes">dharma</value>
     <value>ddbdp</value>
+    <value>dclp</value>
     <value>dohnicht</value>
     <value>edh-itx</value>
     <value>edh-names</value>
-    <value>edh-web</value>
+    <value>edh-web</value> 
     <value>ila</value>
     <value>iospe</value>
     <value>london</value>
-    <value >panciera</value>
+    <value>panciera</value>
     <value>petrae</value>
     <value>rib</value>
     <value>seg</value>
     <value>sammelbuch</value>
     <value>eagletxt</value>
+    <value on="yes">dharma</value>
   </parameter>
 
   <parameter>
@@ -37,6 +38,7 @@
     <value>edh-db</value>
     <value>rib</value>
     <value>sammelbuch</value>
+    <value>sample</value>
     <value>eagle</value>
     <value>igcyr</value>
     <value on="yes">dharma</value>
@@ -44,7 +46,7 @@
 
   <parameter>
     <name>verse-lines</name>
-    <value>yes</value><!-- print epigraphic lines at all times, whether text in ab or lg/l -->
+    <value>off</value><!-- print epigraphic lines at all times, whether text in ab or lg/l -->
     <value on="yes">on</value><!-- print verse lines when text in lg/l; interpret gaps as metre where so tagged -->
   </parameter>
 
@@ -57,11 +59,11 @@
   <parameter>
     <name>internal-app-style</name>
     <value>none</value>
-    <value on="yes">dharma</value>
     <value>ddbdp</value><!-- NB: change this parameter locally if you're running PN or SoSOL process! -->
     <value>iospe</value>
     <value>fullex</value> <!--this example uses all the currently specified internal apparatus features-->
-<value>minex</value> <!--this is the same as above but only uses some common examples-->
+    <value>minex</value> <!--this is the same as above but only uses some common examples-->
+    <value on="yes">dharma</value>
   </parameter>
 
   <parameter>
@@ -123,7 +125,8 @@
   <parameter>
     <name>css-loc</name>
     <!--<value>./../inscriptions/global.css</value>-->   <!--<value>https://raw.githubusercontent.com/erc-dharma/project-documentation/master/stylesheets/inscriptions/global.css</value>-->
-    <!-- Using  https://gitcdn.link/ to generate a CSS readable on server. raw.github transforming the content as text/plain. Chrome and FireFox dpn't apply the style to the html page--> <value>https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/inscriptions/global.css</value>
+    <!-- Using  https://gitcdn.link/ to generate a CSS readable on server. raw.github transforming the content as text/plain. Chrome and FireFox dpn't apply the style to the html page--> 
+    <value>https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/inscriptions/global.css</value>
   </parameter>
 
 <parameter>
@@ -131,4 +134,17 @@
     <value>../js/</value>
   </parameter>
 
+  <parameter>
+    <name>glyph-variant</name>
+    <value on="yes">standard</value>
+    <value>simplified</value>
+    <value>glyph-display</value>
+    <value>text-display</value>
+    <value>g-london</value>
+    <value>g-iospe</value>
+    <value>g-ddbdp</value>
+    <value>g-rib</value>
+    <value>g-creta</value>
+  </parameter>
+  
 </parameters>

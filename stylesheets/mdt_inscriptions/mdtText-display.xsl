@@ -1,13 +1,13 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs tei"
     version="2.0">
-    
+
     <!-- Written by Axelle Janiak for DHARMA, starting August 2022 -->
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
-    
+
     <xsl:template match="metadata">
         <xsl:element name="html">
             <xsl:call-template name="dharma-head"/>
@@ -27,29 +27,29 @@
                             <xsl:text>©DHARMA, 2019-2025.</xsl:text>
                         </xsl:element>
                     </xsl:element>
-                    <xsl:call-template name="dharma-script"/>            
-                </xsl:element>  
+                    <xsl:call-template name="dharma-script"/>
+                </xsl:element>
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="line">
         <xsl:element name="div">
             <xsl:attribute name="class">row justify-content-md-center</xsl:attribute>
             <xsl:attribute name="id">
                 <xsl:value-of select="generate-id()"/>
             </xsl:attribute>
-            
+
             <xsl:element name="div">
                 <br/>
                 <xsl:element name="h1">
                     <xsl:value-of select="fileDesc/sourceDesc/msDesc/msIdentifier/idno"/>
                     <xsl:text>: </xsl:text>
-                <xsl:value-of select="fileDesc/sourceDesc/msDesc/msContents/msItem/title"/>
+                <xsl:value-of select="fileDesc/sourceDesc/msDesc/msContents/msItem/title[@type='main']"/>
             </xsl:element>
             <br/>
             </xsl:element>
-           
+
                 <hr/>
         </xsl:element>
         <xsl:element name="div">
@@ -62,10 +62,40 @@
                     <xsl:apply-templates select="."/>
             </xsl:element>
             </xsl:for-each>
+            <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/title[@type='alt']">
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    <xsl:text>Alternative designation: </xsl:text>
+                </xsl:element>
+                <xsl:apply-templates select="."/>
+            </xsl:element>
+            </xsl:for-each>
+            <xsl:element name="p">
+                <xsl:element name="span">
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                    Languages: </xsl:element>
+                <xsl:if test="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang">
+                    <xsl:call-template name="language-tpl">
+                        <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang"/>
+                    </xsl:call-template>
+                    <xsl:if test="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@otherLangs != ''">
+                        <xsl:text> and </xsl:text>
+                        <xsl:call-template name="language-tpl">
+                            <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@otherLangs"/>
+                        </xsl:call-template>
+                    </xsl:if>
+                </xsl:if>
+                <xsl:element name="ol">
+                    <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/p"> 
+                        <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
+                    </xsl:for-each>
+                </xsl:element>
+            </xsl:element>
             <xsl:element name="p">
             <xsl:element name="span">
                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                Classification: 
+                Classification:
             </xsl:element>
             <xsl:element name="ul">
                 <xsl:for-each select="tokenize(fileDesc/sourceDesc/msDesc/msContents/msItem/@class, ' ')">
@@ -74,37 +104,42 @@
                     </xsl:element>
             </xsl:for-each>
             </xsl:element>
-            </xsl:element>
-            <xsl:element name="p">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:text>Main Langue: </xsl:text>
-                </xsl:element>
-                    <xsl:call-template name="language-tpl">
-                        <xsl:with-param name="language" select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/@mainLang"/>
-                    </xsl:call-template>
-            </xsl:element>
+            </xsl:element> 
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:text>Artefact: </xsl:text>
                 </xsl:element>
-                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp"/>
-                
+               <xsl:element name="span">
+                            <xsl:attribute name="trigger">hover</xsl:attribute>
+                            <xsl:attribute name="class">artefact-label</xsl:attribute>
+                            <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
+                            <xsl:attribute name="data-placement">top</xsl:attribute>
+                            <xsl:attribute name="title">
+                               
+                                <xsl:call-template name="artefact-info">
+                                    <xsl:with-param name="idart" select="tokenize(substring-after(fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp, '#'), ' ')"/>
+                                </xsl:call-template>
+                            </xsl:attribute>
+                   <xsl:apply-templates select="substring-after(fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp, '#')"/>
+                        </xsl:element>
+                <xsl:if test="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc/p != ''">
+                    <xsl:element name="p">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
+                            <xsl:text>Text's position on the artefact: </xsl:text>
+                        </xsl:element>
+                        <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc"/>
+                    </xsl:element>
+                </xsl:if>
             </xsl:element>
-            <xsl:element name="p">
-                <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    <xsl:text>Text's position on the artefact: </xsl:text>
-                </xsl:element>
-                    <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/supportDesc"/>
-            </xsl:element>
+           
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     Layout: </xsl:element>
             <xsl:for-each select="fileDesc/sourceDesc/msDesc/physDesc/objectDesc/layoutDesc/layout">
-                <xsl:apply-templates select="p/text()"/> 
+                <xsl:apply-templates select="p/text()"/>
                 <xsl:if test="p/child::dimensions">
                     <xsl:value-of select="./p/dimensions/@type"/>
                     <xsl:text> on </xsl:text>
@@ -141,12 +176,12 @@
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         History: </xsl:element>
                     <xsl:apply-templates select="fileDesc/sourceDesc/msDesc/history/origin/p"/>
-                </xsl:element>         
+                </xsl:element>
             <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/listBibl">
                 <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    Bibliography <xsl:value-of select="@type"/>: 
+                    Bibliography <xsl:value-of select="@type"/>:
                 </xsl:element>
                     <xsl:apply-templates/>
             </xsl:element>
@@ -181,7 +216,7 @@
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
-                    Linked resources: 
+                    Linked resources:
                 </xsl:element>
             <xsl:element name="ul">
                 <xsl:for-each select="fileDesc/sourceDesc/msDesc/additional/surrogates/bibl">
@@ -195,7 +230,7 @@
                             <xsl:text>digital image: </xsl:text>
                             <xsl:apply-templates select="substring-after(./ptr/@target, 'dig:')"/>
                         </xsl:when>
-                    </xsl:choose> 
+                    </xsl:choose>
                 </xsl:element>
             </xsl:for-each>
             </xsl:element>
@@ -208,7 +243,7 @@
             <title>
                 DHARMA – <xsl:value-of select="//sourceDesc/msDesc/msIdentifier/idno"/> Metadata
             </title>
-            
+
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
@@ -222,7 +257,7 @@
             </meta>
         </head>
     </xsl:template>
-    
+
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -230,7 +265,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -254,7 +289,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="editorial">Editorial Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/output/display-prosody.html">Prosodic Conventions</a>
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -262,8 +297,11 @@
                             Documentation
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
                             <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
+                            <a class="dropdown-item" href="DiplEd_elements">Diplomatic Editions Memo</a>
+                            <div class="dropdown-divider"></div>
+                            
+                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
@@ -287,6 +325,8 @@
                             Authorities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
@@ -301,6 +341,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
+                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
                             <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
                         </div>
                     </li>
@@ -313,11 +354,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </nav>
     </xsl:template>
-    
+
     <xsl:template name="dharma-script">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
@@ -326,9 +367,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader  -->
         <!--<script rel="stylesheet" src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/arie/arie-loader.js"></script>-->
-        
+
     </xsl:template>
-    
+
    <!-- <!-\- side bar - table of contents -\->
     <xsl:template name="table-contents">
         <xsl:element name="div">
@@ -355,7 +396,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>-->
-    
+
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
         <xsl:variable name="unit-value">
@@ -447,7 +488,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="bibl">
         <xsl:choose>
             <xsl:when test=".[ptr]">
@@ -457,19 +498,19 @@
                     <xsl:value-of
                         select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
-                
+
                 <xsl:analyze-string select="unparsed-text($zoteroapijson)"
                     regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;\()(.+)(\)&lt;/span&gt;&quot;)">
                     <xsl:matching-substring>
                         <xsl:value-of select="regex-group(2)"/>
                     </xsl:matching-substring>
                 </xsl:analyze-string>
-                
+
                 <!--<xsl:copy-of
                             select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-->
-                
-                
-                <xsl:if test="citedRange"> 
+
+
+                <xsl:if test="citedRange">
                     <xsl:for-each select="citedRange">
                         <xsl:text>, </xsl:text>
                         <xsl:call-template name="citedRange-unit"/>
@@ -483,10 +524,10 @@
             <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
             <xsl:otherwise>
                 <xsl:apply-templates/>
-            </xsl:otherwise>		
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="language-tpl">
         <xsl:param name="language"/>
         <xsl:if test="$language !=''">
@@ -570,6 +611,31 @@
                     <xsl:text>Vietnamese</xsl:text>
                 </xsl:when>
             </xsl:choose>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="artefact-info">
+        <xsl:param name="idart"/>
+        <xsl:variable name="artefact-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_artefacts.xml')"/>
+        <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
+        
+        <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
+            <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//rightHolder"/>
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
+            <xsl:text>.</xsl:text>
+            <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat">  
+                <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat"/>
+                <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed">
+                    <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed"/>
+                    <xsl:text> plates observed. </xsl:text>
+                </xsl:if>
+            </xsl:if>
+            <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated">
+                <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@estimated"/>
+                <xsl:text> plates estimated.</xsl:text></xsl:if>
+        </xsl:if>
+        <xsl:if test="$artefact-file//line[descendant::compositeArtefactID = $idart]//rightHolder">
+            <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
         </xsl:if>
     </xsl:template>
 

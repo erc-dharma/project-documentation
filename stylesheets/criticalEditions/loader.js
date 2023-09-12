@@ -1,4 +1,4 @@
-var content = $("#root").append(content);
+﻿var content = $("#root").append(content);
             initializePopovers();
                      
 function initializePopovers() {  
@@ -23,21 +23,9 @@ $(function () {
 
 /* Need to add the move the element to the following-sibling[1] of the ancestor <div> of apparat-col.  */
 
-/* move the main apparatus notes */
-/*$(document).ready(function() {
-    $('.move-to-right').each(function() {
-        $(this).parents('div').next('.apparat-col').append(this);
-    }); 
-});*/
 
 /* move the note for whole paragraph */
 $(document).ready(function() {
-    /*$('.move-to-right').each(function() {
-        $(this).prev('div').children('.apparat-col').append(this);
-    }); */
-/*    $('.lem-last-note').each(function() {
-        $(this).parents('div').children('.apparat-col').append(this);
-    });*/ 
     $("#sidebar-wrapper").mCustomScrollbar({
          theme: "minimal"
     });
@@ -136,12 +124,13 @@ $("span[class*='rdg-lacunaStart']" ).each(function() {
     /* lac. for bottom apparatus */
     $("span[class*='bottom-lacunaStart']").each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgOmission =$('<br/><span class="translit LatnLatn"><span class="font-italic" style="color:black;">lac. </span>')
+        var newRdgOmission =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">lac. </span>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
         var siglumOmission = $(this).find(".siglum:first").clone()
         var siglumWit = $(this).find(".siglum:first").attr("href")
         
-    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.popover-content').nextUntil('.app:has(span[class*="bottom-lacunaEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<span class="font-weight-bold "></span>').parent()).append(' (larger gap)');
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ 
+    $(this).parents('.app').nextUntil('.app:has(span[class*="bottom-lacunaEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<span class="font-weight-bold "></span>').parent()).sort().append(' (larger gap)');
     });
     
     /* omm. for bottom apparatus */
@@ -163,10 +152,10 @@ $('.explanation, .unclear').prepend('(');
 $('.explanation, .unclear').append(')');
 $('.subaudible, .lineation, .foliation, .lost-illegible, .gap').prepend('[');
 $('.subaudible, .lineation, .foliation, .lost-illegible, .gap').append(']');
-$('.hyphenfront, .hyphenaround').prepend('-');
-$('.hyphenback, .hyphenaround').append('-');
-$('.circlefront, .circlearound').prepend('°');
-$('.circleback, .circlearound').append('°');
+$('.hyphenleft, .hyphenaround').prepend('-');
+$('.hyphenright, .hyphenaround').append('-');
+$('.circleleft, .circlearound').prepend('°');
+$('.circleright, .circlearound').append('°');
 $('.surplus').prepend('{');
 $('.surplus').append('}');
 $('.ed-insertion').prepend('⟨⟨');

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:t="http://www.tei-c.org/ns/1.0"
   xmlns:EDF="http://epidoc.sourceforge.net/ns/functions" exclude-result-prefixes="t EDF" version="2.0">
@@ -64,15 +64,20 @@
       <xsl:if test="@n"><!-- prints div number -->
          <h3 class="textpartnumber" id="{$div-type}ab{$div-loc}{@n}">
            <!-- add ancestor textparts -->
-             <xsl:if test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch' or $parm-leiden-style = 'dharma')">
+             <xsl:if test="($parm-leiden-style = 'ddbdp' or $parm-leiden-style = 'sammelbuch')">
                <xsl:text>Textpart </xsl:text>
                <xsl:if test="@subtype">
                  <xsl:text>: </xsl:text>
               <xsl:value-of select="@subtype"/>
               <xsl:text> </xsl:text>
+                   <xsl:value-of select="@n"/>
             </xsl:if>
            </xsl:if>
-              <xsl:value-of select="@n"/>
+             <xsl:if test="$parm-leiden-style = 'dharma' and not(child::t:*[local-name()='head'][1])">
+                 <xsl:value-of select="concat(upper-case(substring(@subtype,1,1)), substring(@subtype, 2),' '[not(last())] )"/>
+                 <xsl:text> </xsl:text>
+                 <xsl:value-of select="@n"/>
+             </xsl:if>
          </h3>
           <xsl:if test="child::*[1][self::t:div[@type='textpart'][@n]]"><br /></xsl:if>
       </xsl:if>
