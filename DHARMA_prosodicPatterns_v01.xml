@@ -2309,8 +2309,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <measure unit="syllable">17/23</measure>
           <name xml:lang="kaw-Latn">bhujagavilasita</name>
           <!-- For the time being CK is the only source which provides this meter with such patterns.-->
-          <seg type="xml">+--+-+---+------=/--+------+-+---+------=</seg>
-          <seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓/⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="xml">--+------+-+---+------=</seg>
+          <seg type="prosody">⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana">bha-ra-sa-bha-na-la-ga/sa-na-na-ra-na-bha-na-la-ga</seg>
         </item>
         <item>
@@ -2364,7 +2364,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         </item>
         <item>
           <measure unit="syllable">23</measure>
-          <name xml:lang="san-Latn">jagaddhita</name>
+          <name xml:lang="kaw-Latn">jagaddhita</name>
           <name xml:lang="kaw-Latn">bhavacakra</name>
           <seg type="xml">+++--+-+---+------+-+-=</seg>
           <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
