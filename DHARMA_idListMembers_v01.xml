@@ -81,7 +81,7 @@
 						<surname>Griffiths</surname>
 					</persName>
 					<idno type="VIAF">http://viaf.org/viaf/11026260</idno>
-					<idno type="idHAL">arlo-griffiths</idno>
+					<idno type="IdHAL">arlo-griffiths</idno>
 					<idno type="IdRef">https://www.idref.fr/087383462</idno>
 					<idno type="ORCID"/>
 					<!-- to be created -->
@@ -373,8 +373,8 @@
 					<idno type="IdHAL">coline-lefrancq</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-8609-6119</idno>
 					<!-- nothing found -->
-					<!-- Manu: you may help Coline get a VIAF, idHAL, ORCID... -->
-					<!-- Manu dixit: will do for idHAL and ORCID -->
+					<!-- Manu: you may help Coline get a VIAF, IdHAL, ORCID... -->
+					<!-- Manu dixit: will do for IdHAL and ORCID -->
 				</person>
 				<person xml:id="adle">
 					<persName>
