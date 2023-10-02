@@ -922,7 +922,6 @@
                         <attDef ident="precision" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="quantity" mode="delete"/>
-                        <attDef ident="rend" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -948,6 +947,11 @@
                                 <valItem ident="illegible"/>
                                 <valItem ident="faded"/>
                                 <valItem ident="background_noise"/>
+                            </valList>
+                        </attDef>
+                        <attDef ident="rend" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="check"/>
                             </valList>
                         </attDef>
                     </attList>
