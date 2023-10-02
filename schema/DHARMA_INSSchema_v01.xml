@@ -945,6 +945,9 @@
                         <attDef ident="reason" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="eccentric_ductus"/>
+                                <valItem ident="illegible"/>
+                                <valItem ident="faded"/>
+                                <valItem ident="background_noise"/>
                             </valList>
                         </attDef>
                     </attList>

@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-06-12T14:40:35Z. .
+Schema generated from ODD source 2023-10-02T15:59:55Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3554,7 +3554,7 @@ Sample values include: 1] check</a:documentation>
          <optional>
             <attribute name="reason">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates why the material is hard to transcribe.
-Sample values include: 1] eccentric_ductus</a:documentation>
+Sample values include: 1] eccentric_ductus; 2] illegible; 3] faded; 4] background_noise</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="token">
