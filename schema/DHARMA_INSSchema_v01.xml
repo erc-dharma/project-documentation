@@ -429,7 +429,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
-                            <defaultVal>low</defaultVal>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="low"/>
+                            </valList>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -834,7 +836,7 @@
                 </elementSpec>
                 <elementSpec ident="supplied" module="transcr" mode="change">
                     <attList>
-                        <!-- suggested attribute list for supplied/@evidence -->
+                        <!-- constrained attribute list for supplied/@evidence -->
                         <attDef ident="evidence" mode="change" usage="opt">
                             <datatype maxOccurs="1">
                                 <dataRef key="teidata.word"/>
@@ -887,7 +889,6 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
-                            <defaultVal>low</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -936,7 +937,6 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
-                            <defaultVal>low</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -1001,7 +1001,6 @@
                         <attDef ident="cert" mode="replace">
                             <valList type="closed">
                                 <valItem ident="low"/>
-                                <valItem ident="high"/>
                             </valList>
                         </attDef>
                     </attList>

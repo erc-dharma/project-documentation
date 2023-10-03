@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-02T17:29:04Z. .
+Schema generated from ODD source 2023-10-03T08:12:11Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3604,13 +3604,11 @@ Normalization 12. Critical Apparatus]</a:documentation>
             </attribute>
          </optional>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="cert"
-                       a:defaultValue="low">
-               <a:documentation>(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
+            <attribute name="cert">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
                <choice>
                   <value>low</value>
-                  <a:documentation/>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
          </optional>
@@ -7675,22 +7673,11 @@ Sample values include: 1] glued; 2] pinned; 3] sewn</a:documentation>
             </sch:rule>
          </pattern>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="cert"
-                       a:defaultValue="low">
-               <a:documentation>(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
+            <attribute name="cert">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
                <choice>
-                  <data type="double"/>
-                  <choice>
-                     <value>high</value>
-                     <a:documentation/>
-                     <value>medium</value>
-                     <a:documentation/>
-                     <value>low</value>
-                     <a:documentation/>
-                     <value>unknown</value>
-                     <a:documentation/>
-                  </choice>
+                  <value>low</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
          </optional>
@@ -7940,13 +7927,11 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="cert"
-                       a:defaultValue="low">
-               <a:documentation>(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
+            <attribute name="cert">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(certainty) signifies the degree of certainty associated with the intervention or interpretation.</a:documentation>
                <choice>
                   <value>low</value>
-                  <a:documentation/>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
          </optional>
