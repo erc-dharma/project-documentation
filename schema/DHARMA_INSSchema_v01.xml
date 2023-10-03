@@ -503,7 +503,6 @@
                             @quantity and @unit="line" expect either the use of @precision="low" or
                             the element certainty.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
-                    <!-- constraining values of gap/@reason -->
                     <attList>
                         <attDef ident="reason" mode="change" usage="req">
                             <datatype>
@@ -517,7 +516,6 @@
                                 <valItem ident="undefined"/>
                             </valList>
                         </attDef>
-                        <!-- removing gap/@dur (not needed in EpiDoc) -->
                         <attDef ident="dur" mode="delete"/>
                         <attDef ident="agent" mode="delete"/>
                         <attDef ident="ana" mode="delete"/>
@@ -554,13 +552,11 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="extent" mode="change">
-                            <defaultVal>unknown</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="unknown"/>
                             </valList>
                         </attDef>
                         <attDef ident="precision" mode="change">
-                            <defaultVal>low</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -1407,6 +1403,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="certainty" module="certainty" mode="change">
+                    <content>
+                        <empty/>
+                    </content>
                     <constraintSpec scheme="schematron" ident="usage-certainty">
                         <constraint><sch:rule context="tei:certainty"><sch:report
                             test="@match='../@met' and not(parent::tei:lg)"
@@ -1459,6 +1458,7 @@
                         </attDef>
                         <attDef ident="match" mode="change" usage="req">
                             <defaultVal>..</defaultVal>
+                            <!-- Hackish but simplifies things -->
                             <valList type="closed" mode="replace">
                                 <valItem ident=".."/>
                                 <valItem ident="../@met"/>
