@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-03T10:09:45Z. .
+Schema generated from ODD source 2023-10-03T12:31:30Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -3453,7 +3453,6 @@ Normalization 12. Critical Apparatus]</a:documentation>
                             the element certainty.</sch:assert>
             </sch:rule>
          </pattern>
-         <ref name="tei_att.dimensions.attribute.quantity"/>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="precision"
@@ -3482,6 +3481,12 @@ Normalization 12. Critical Apparatus]</a:documentation>
                   <value>folio</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="quantity">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the length in the units specified</a:documentation>
+               <data type="positiveInteger"/>
             </attribute>
          </optional>
          <optional>

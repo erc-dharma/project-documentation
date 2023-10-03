@@ -575,6 +575,11 @@
                                 <valItem ident="folio"/>
                             </valList>
                         </attDef>
+                        <attDef ident="quantity" mode="change">
+                            <datatype>
+                                <dataRef name="positiveInteger"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <!-- suggesting but not constraining values of hi/@rend -->
