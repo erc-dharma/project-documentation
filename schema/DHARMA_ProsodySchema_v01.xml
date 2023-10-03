@@ -76,15 +76,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="name" module="core" mode="change">
-                    <!-- <constraintSpec scheme="schematron" ident="name">
-                        <constraint>
-                            <sch:rule context="tei:name[ancestor::tei:body]/text()">
-                                <sch:assert
-                                    test="@xml:lang"
-                            >@xml:lang is mandatory on the name of any prosodic pattern to identify the language of use.</sch:assert>
-                            </sch:rule>
-                        </constraint>
-                    </constraintSpec>-->
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -164,12 +155,15 @@
                         <attDef ident="select" mode="delete"/>
                         <attDef ident="source" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
                         <attDef ident="synch" mode="delete"/>
                         <attDef ident="valueDatcat" mode="delete"/>
+                        <attDef ident="targetDatcat" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="type" mode="change" usage="req">
-                            <valList type="open" mode="replace">
+                            <valList type="closed" mode="replace">
                                 <valItem ident="xml"/>
                                 <valItem ident="prosody"/>
                                 <valItem ident="gana"/>
@@ -268,10 +262,7 @@
                 </elementSpec>
                 <elementSpec ident="bibl" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="siglum">
-                        <constraint><!--<sch:rule context="tei:bibl"><sch:report
-                            test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
-                            the primary bibliography to declare
-                            sigla</sch:report></sch:rule>--><sch:rule
+                        <constraint><sch:rule
                             context="tei:bibl[ancestor::tei:listBibl]"><sch:report
                             test="child::tei:note[following-sibling::tei:*]"
                             >Note should be the last
