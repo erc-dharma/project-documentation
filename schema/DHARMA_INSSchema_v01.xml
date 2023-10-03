@@ -506,7 +506,7 @@
                     <!-- constraining values of gap/@reason -->
                     <attList>
                         <attDef ident="reason" mode="change" usage="req">
-                            <datatype minOccurs="1" maxOccurs="1">
+                            <datatype>
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="closed" mode="replace">
@@ -573,10 +573,6 @@
                                 <valItem ident="page"/>
                                 <valItem ident="plate"/>
                                 <valItem ident="folio"/>
-                                <!-- Addition possible after the update of the status of the list -->
-                                <!--<valItem ident="vowel"/>
-                                <valItem ident="number"/>
-                                <valItem ident="subscript"/>-->
                             </valList>
                         </attDef>
                     </attList>
@@ -585,7 +581,7 @@
                 <elementSpec ident="hi" module="core" mode="change">
                     <attList>
                         <attDef ident="rend" mode="change" usage="req">
-                            <datatype minOccurs="1" maxOccurs="unbounded">
+                            <datatype maxOccurs="unbounded">
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="closed" mode="replace">
@@ -677,7 +673,7 @@
                                     </sch:report></sch:rule></constraint>
                             </constraintSpec>-->
                         <attDef ident="rend" mode="change">
-                            <datatype minOccurs="1" maxOccurs="1">
+                            <datatype>
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="closed" mode="replace">
@@ -808,7 +804,11 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="quantity" mode="change"/>
+                        <attDef ident="quantity" mode="change">
+                            <datatype>
+                                <dataRef name="positiveInteger"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="type" mode="change">
                             <valList type="closed" mode="replace">
                                 <valItem ident="vacat"/>
@@ -838,7 +838,7 @@
                     <attList>
                         <!-- constrained attribute list for supplied/@evidence -->
                         <attDef ident="evidence" mode="change" usage="opt">
-                            <datatype maxOccurs="1">
+                            <datatype>
                                 <dataRef key="teidata.word"/>
                             </datatype>
                             <valList type="closed" mode="replace">
@@ -2008,7 +2008,7 @@
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
-                            <datatype minOccurs="1" maxOccurs="unbounded">
+                            <datatype maxOccurs="unbounded">
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="closed" mode="replace">
@@ -2490,7 +2490,7 @@
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
-                            <datatype minOccurs="1" maxOccurs="unbounded">
+                            <datatype maxOccurs="unbounded">
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="open" mode="replace">
@@ -2913,7 +2913,7 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
-                            <datatype minOccurs="1" maxOccurs="1">
+                            <datatype>
                                 <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
                             </datatype>
                             <valList type="closed" mode="replace">
