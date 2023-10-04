@@ -350,7 +350,7 @@
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change">
-                            <valList type="open" mode="replace">
+                            <valList type="closed" mode="replace">
                                 <valItem ident="character"/>
                                 <valItem ident="component"/>
                                 <valItem ident="line"/>
