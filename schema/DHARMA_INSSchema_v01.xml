@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:sch="http://purl.oclc.org/dsdl/schematron" xml:lang="en">
     <teiHeader>
@@ -2044,6 +2044,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="g" module="gaiji" mode="change">
+                    <content>
+                        <alternate>
+                            <dataRef name="positiveInteger"/>
+                            <dataRef name="string" restriction="[.§]?"></dataRef>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -2068,11 +2074,12 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="type" mode="change">
+                        <attDef ident="type" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="NCName"/>
+                            </datatype>
                             <valList mode="change" type="open">
-                                <valItem ident="filler"/>
                                 <valItem ident="numeral"/>
-                                <valItem ident="symbol"/>
                             </valList>
                         </attDef>
                     </attList>
