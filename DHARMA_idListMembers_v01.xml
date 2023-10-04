@@ -118,6 +118,12 @@
 					<idno type="ORCID"/>
 					<!-- to be created -->
 				</person>
+				<person xml:id="reda">
+					<persName>
+						<forename>Renato</forename>
+						<surname>Davalos</surname>
+					</persName>
+				</person>
 				<person xml:id="anac">
 					<persName>
 						<forename>Andrea</forename>
