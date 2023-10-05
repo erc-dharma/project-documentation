@@ -1751,6 +1751,7 @@
                 <classSpec ident="att.global" type="atts" mode="change" module="tei">
                     <attList>
                         <attDef ident="xml:lang" mode="change">
+                            <!-- MM: must generate this -->
                             <valList type="open" mode="replace">
                                 <valItem ident="und"/>
                                 <valItem ident="mya"/>
@@ -5070,6 +5071,96 @@
                 <elementSpec ident="principal" mode="delete"/>
                 <elementSpec ident="funder" mode="delete"/>
                 <elementSpec ident="sponsor" mode="delete"/>
+                <elementSpec ident="spoken" mode="delete"/>
+                <elementSpec ident="signatures" mode="delete"/>
+                <elementSpec ident="floatingText" mode="delete"/>
+                <elementSpec ident="abstract" mode="delete"/>
+                <elementSpec ident="additional" mode="delete"/>
+                <elementSpec ident="binding" mode="delete"/>
+                <elementSpec ident="bindingDesc" mode="delete"/>
+                <elementSpec ident="calendar" mode="delete"/>
+                <elementSpec ident="calendarDesc" mode="delete"/>
+                <elementSpec ident="catDesc" mode="delete"/>
+                <elementSpec ident="category" mode="delete"/>
+                <elementSpec ident="catRef" mode="delete"/>
+                <elementSpec ident="classCode" mode="delete"/>
+                <elementSpec ident="classDecl" mode="delete"/>
+                <elementSpec ident="collation" mode="delete"/>
+                <elementSpec ident="condition" mode="delete"/>
+                <elementSpec ident="conversion" mode="delete"/>
+                <elementSpec ident="correspAction" mode="delete"/>
+                <elementSpec ident="correspContext" mode="delete"/>
+                <elementSpec ident="correspDesc" mode="delete"/>
+                <elementSpec ident="country" mode="delete"/>
+                <elementSpec ident="creation" mode="delete"/>
+                <elementSpec ident="dateline" mode="delete"/>
+                <elementSpec ident="distributor" mode="delete"/>
+                <elementSpec ident="district" mode="delete"/>
+                <elementSpec ident="docAuthor" mode="delete"/>
+                <elementSpec ident="docDate" mode="delete"/>
+                <elementSpec ident="docEdition" mode="delete"/>
+                <elementSpec ident="docImprint" mode="delete"/>
+                <elementSpec ident="docTitle" mode="delete"/>
+                <elementSpec ident="email" mode="delete"/>
+                <elementSpec ident="epigraph" mode="delete"/>
+                <elementSpec ident="explicit" mode="delete"/>
+                <elementSpec ident="filiation" mode="delete"/>
+                <elementSpec ident="floruit" mode="delete"/>
+                <elementSpec ident="foliation" mode="delete"/>
+                <elementSpec ident="geoDecl" mode="delete"/>
+                <elementSpec ident="geogFeat" mode="delete"/>
+                <elementSpec ident="geogName" mode="delete"/>
+                <elementSpec ident="gloss" mode="delete"/>
+                <elementSpec ident="handNotes" mode="delete"/>
+                <elementSpec ident="hyphenation" mode="delete"/>
+                <elementSpec ident="incipit" mode="delete"/>
+                <elementSpec ident="index" mode="delete"/>
+                <elementSpec ident="interpGrp" mode="delete"/>
+                <elementSpec ident="linkGrp" mode="delete"/>
+                <elementSpec ident="listChange" mode="delete"/>
+                <elementSpec ident="listPerson" mode="delete"/>
+                <elementSpec ident="listPlace" mode="delete"/>
+                <elementSpec ident="listTranspose" mode="delete"/>
+                <elementSpec ident="location" mode="delete"/>
+                <elementSpec ident="msFrag" mode="delete"/>
+                <elementSpec ident="msItemStruct" mode="delete"/>
+                <elementSpec ident="msName" mode="delete"/>
+                <elementSpec ident="msPart" mode="delete"/>
+                <elementSpec ident="namespace" mode="delete"/>
+                <elementSpec ident="objectIdentifier" mode="delete"/>
+                <elementSpec ident="objectName" mode="delete"/>
+                <elementSpec ident="org" mode="delete"/>
+                <elementSpec ident="orgName" mode="delete"/>
+                <elementSpec ident="particDesc" mode="delete"/>
+                <elementSpec ident="person" mode="delete"/>
+                <elementSpec ident="persona" mode="delete"/>
+                <elementSpec ident="personGrp" mode="delete"/>
+                <elementSpec ident="quotation" mode="delete"/>
+                <elementSpec ident="rdgGrp" mode="delete"/>
+                <elementSpec ident="refState" mode="delete"/>
+                <elementSpec ident="region" mode="delete"/>
+                <elementSpec ident="scriptNote" mode="delete"/>
+                <elementSpec ident="seal" mode="delete"/>
+                <elementSpec ident="sealDesc" mode="delete"/>
+                <elementSpec ident="segmentation" mode="delete"/>
+                <elementSpec ident="series" mode="delete"/>
+                <elementSpec ident="seriesStmt" mode="delete"/>
+                <elementSpec ident="sourceDoc" mode="delete"/>
+                <elementSpec ident="state" mode="delete"/>
+                <elementSpec ident="stdVals" mode="delete"/>
+                <elementSpec ident="styleDefDecl" mode="delete"/>
+                <elementSpec ident="surface" mode="delete"/>
+                <elementSpec ident="surfaceGrp" mode="delete"/>
+                <elementSpec ident="surrogates" mode="delete"/>
+                <elementSpec ident="tagUsage" mode="delete"/>
+                <elementSpec ident="taxonomy" mode="delete"/>
+                <elementSpec ident="textLang" mode="delete"/>
+                <elementSpec ident="time" mode="delete"/>
+                <elementSpec ident="typeDesc" mode="delete"/>
+                <elementSpec ident="typeNote" mode="delete"/>
+                <elementSpec ident="unitDecl" mode="delete"/>
+                <elementSpec ident="unitDef" mode="delete"/>
+                <elementSpec ident="zone" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
