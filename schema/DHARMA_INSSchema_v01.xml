@@ -104,7 +104,7 @@
                 <moduleRef key="corpus"
                     except="activity channel constitution derivation domain factuality interaction locale partieDesc                     preparedness purpose setting settingDesc textDesc"/>
                 <moduleRef key="dictionaries"
-                    except="case colloc def dictScrap entry                     entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
+                    except="case colloc def dictScrap entry entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
                 <!--        CHANGED ELEMENT SPECS        -->
                 <elementSpec ident="add" module="core" mode="change">
                     <attList>
@@ -256,39 +256,6 @@
                                 <valItem ident="column"/>
                                 <valItem ident="item"/>
                                 <valItem ident="trial"/>
-                            </valList>
-                        </attDef>
-                        <attDef ident="xml:lang" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
@@ -1038,39 +1005,6 @@
                                 <valItem ident="wide"/>
                             </valList>
                         </attDef>
-                        <attDef ident="xml:lang" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
-                            </valList>
-                        </attDef>
                         <attDef ident="part" mode="change">
                             <valList type="closed" mode="replace">
                                 <valItem ident="Y"/>
@@ -1816,14 +1750,14 @@
                 </elementSpec>
                 <classSpec ident="att.global" type="atts" mode="change" module="tei">
                     <attList>
-                        <attDef ident="xml:space" mode="change">
+                        <attDef ident="xml:lang" mode="change">
                             <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
+                                <valItem ident="und"/>
                                 <valItem ident="mya"/>
                                 <valItem ident="obr"/>
                                 <valItem ident="cjm"/>
                                 <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
+                                <valItem ident="nld"/>
                                 <valItem ident="eng"/>
                                 <valItem ident="fra"/>
                                 <valItem ident="ind"/>
@@ -1900,39 +1834,6 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="xml:lang" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
-                            </valList>
-                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="forename" module="namesdates" mode="change">
@@ -2081,6 +1982,11 @@
                             <valList mode="change" type="open">
                                 <valItem ident="numeral"/>
                             </valList>
+                        </attDef>
+                        <attDef ident="subtype" mode="change">
+                            <datatype>
+                                <dataRef name="NCName"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -2242,15 +2148,6 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="xml:lang" mode="change" usage="req">
-                            <defaultVal>eng</defaultVal>
-                            <valList type="open" mode="replace">
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="vie"/>
-                            </valList>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -2644,17 +2541,6 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="xml:lang" mode="change">
-                            <defaultVal>eng</defaultVal>
-                            <valList type="open" mode="replace">
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="vie"/>
-                            </valList>
-                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="lg" module="core" mode="change">
@@ -2748,39 +2634,6 @@
                             <datatype>
                                 <dataRef key="teidata.numeric"/>
                             </datatype>
-                        </attDef>
-                        <attDef ident="xml:lang" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
-                            </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
                             <valList type="open" mode="replace">
@@ -3249,16 +3102,6 @@
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="resp" mode="change"/>
                         <attDef ident="source" mode="change"/>
-                        <attDef ident="xml:lang" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="vie"/>
-                            </valList>
-                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="num" module="core" mode="change">
@@ -3373,39 +3216,6 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="xml:lang" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
-                            </valList>
-                        </attDef>
                         <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
