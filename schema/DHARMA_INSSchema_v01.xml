@@ -6666,7 +6666,6 @@
                 <elementSpec ident="monogr" mode="delete"/>
                 <elementSpec ident="extent" mode="delete"/>
                 <elementSpec ident="notesStmt" mode="delete"/>
-                <elementSpec ident="biblFull" mode="delete"/>
                 <elementSpec ident="samplingDecl" mode="delete"/>
                 <elementSpec ident="editorialDecl" mode="delete"/>
                 <elementSpec ident="correction" mode="delete"/>
