@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-05T12:12:56Z. .
+Schema generated from ODD source 2023-10-05T15:36:20Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -844,12 +844,6 @@ Sample values include: 1] und; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] nld; 7] eng; 8
          <data type="anyURI"/>
       </attribute>
    </define>
-   <define name="tei_att.measurement.attributes">
-      <ref name="tei_att.measurement.attribute.unit"/>
-      <ref name="tei_att.measurement.attribute.unitRef"/>
-      <ref name="tei_att.measurement.attribute.quantity"/>
-      <ref name="tei_att.measurement.attribute.commodity"/>
-   </define>
    <define name="tei_att.measurement.attribute.unit">
       <optional>
          <attribute name="unit">
@@ -898,14 +892,6 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
                   <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
                </data>
             </choice>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.measurement.attribute.unitRef">
-      <optional>
-         <attribute name="unitRef">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a unique identifier stored in the <code xmlns="http://www.w3.org/1999/xhtml">@xml:id</code> of a <code xmlns="http://www.w3.org/1999/xhtml">&lt;unitDef&gt;</code> element that defines a unit of measure.</a:documentation>
-            <data type="anyURI"/>
          </attribute>
       </optional>
    </define>
@@ -1342,7 +1328,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <choice>
          <ref name="tei_num"/>
          <ref name="tei_measure"/>
-         <ref name="tei_unit"/>
          <ref name="tei_dim"/>
          <ref name="tei_height"/>
          <ref name="tei_depth"/>
@@ -1353,7 +1338,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <choice>
          <ref name="tei_num"/>
          <ref name="tei_measure"/>
-         <ref name="tei_unit"/>
          <ref name="tei_dim"/>
          <ref name="tei_height"/>
          <ref name="tei_depth"/>
@@ -1363,7 +1347,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
    <define name="tei_model.measureLike_sequence">
       <ref name="tei_num"/>
       <ref name="tei_measure"/>
-      <ref name="tei_unit"/>
       <ref name="tei_dim"/>
       <ref name="tei_height"/>
       <ref name="tei_depth"/>
@@ -1375,9 +1358,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </optional>
       <optional>
          <ref name="tei_measure"/>
-      </optional>
-      <optional>
-         <ref name="tei_unit"/>
       </optional>
       <optional>
          <ref name="tei_dim"/>
@@ -1400,9 +1380,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_measure"/>
       </zeroOrMore>
       <zeroOrMore>
-         <ref name="tei_unit"/>
-      </zeroOrMore>
-      <zeroOrMore>
          <ref name="tei_dim"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -1421,9 +1398,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_measure"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tei_unit"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_dim"/>
@@ -2327,7 +2301,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_model.msQuoteLike"/>
          <ref name="tei_idno"/>
          <ref name="tei_msItem"/>
-         <ref name="tei_decoNote"/>
       </choice>
    </define>
    <define name="tei_model.choicePart">
@@ -3593,17 +3566,6 @@ Measures]</a:documentation>
                </data>
             </attribute>
          </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tei_unit">
-      <element name="unit">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a symbol, a word or a phrase referring to a unit of measurement in any kind of formal or informal system. [3.5.3. Numbers and
-Measures]</a:documentation>
-         <ref name="tei_macro.phraseSeq"/>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
-         <ref name="tei_att.measurement.attributes"/>
          <empty/>
       </element>
    </define>
@@ -7556,22 +7518,11 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                </optional>
         
         
-               <oneOrMore>
-                  <ref name="tei_decoNote"/>
-               </oneOrMore>
+          
         
             </group>
          </choice>
          <ref name="tei_att.global.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tei_decoNote">
-      <element name="decoNote">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(note on decoration) contains a note describing either a decorative component of a manuscript or other object, or a fairly homogenous class of such components. [10.7.3. Bindings, Seals, and Additional Material]</a:documentation>
-         <ref name="tei_macro.specialPara"/>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
          <empty/>
       </element>
    </define>
@@ -7579,34 +7530,21 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
       <element name="history">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">groups elements describing the full history of a manuscript, manuscript part, or other object. [10.8. History]</a:documentation>
          <choice>
-      
             <oneOrMore>
                <ref name="tei_model.pLike"/>
             </oneOrMore>
-      
             <group>
-        
                <optional>
                   <ref name="tei_summary"/>
                </optional>
-        
-        
                <optional>
                   <ref name="tei_origin"/>
                </optional>
-        
-        
                <zeroOrMore>
                   <ref name="tei_provenance"/>
                </zeroOrMore>
-        
-        
-          
-        
             </group>
          </choice>
-         <ref name="tei_att.global.attributes"/>
-         <empty/>
       </element>
    </define>
    <define name="tei_origin">
