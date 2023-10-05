@@ -18,51 +18,54 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
-            <change who="part:axja" when="2023-05-10">Allowing the possibility to use corresp with lg to encodage Amandine stanzas</change>
-            <change who="part:axja" when="2023-04-19">Completing Salome addition and creating a schematron rule for @type undertermined</change>
-            <change who="part:sapi" when="2023-04-18">Learning to add value in attributes and updating the schematron rules</change>
-            <change who="part:axja" when="2023-04-18">Adding values for placeName - See Salome research</change>
+            <change who="part:axja" when="2023-05-10">Allowing the possibility to use corresp with
+                lg to encodage Amandine stanzas</change>
+            <change who="part:axja" when="2023-04-19">Completing Salome addition and creating a
+                schematron rule for @type undertermined</change>
+            <change who="part:sapi" when="2023-04-18">Learning to add value in attributes and
+                updating the schematron rules</change>
+            <change who="part:axja" when="2023-04-18">Adding values for placeName - See Salome
+                research</change>
             <change who="part:axja" when="2022-10-18">adding seg/@rend="check"</change>
             <change who="part:axja" when="2022-06-15">Updating the values for abbreviations</change>
             <change who="part:axja" when="2022-04-08">Changing the values for placeName</change>
             <change who="part:axja" when="2022-04-05">Working on contraints for dates</change>
-            <change who="part:axja" when="2022-04-04"
-                >Working on the list of attributes for rs</change>
+            <change who="part:axja" when="2022-04-04">Working on the list of attributes for
+                rs</change>
             <change who="part:axja" when="2022-03-29">Updating the model for placeName</change>
-            <change who="part:axja" when="2022-02-18"
-                >Updating the model to encode person's names, addding provisional values for a list of types with roleName</change>
+            <change who="part:axja" when="2022-02-18">Updating the model to encode person's names,
+                addding provisional values for a list of types with roleName</change>
             <change who="part:axja" when="2022-02-07">Adding xhm and cja in @xml:lang</change>
             <change who="part:axja" when="2022-01-05">Changes the behaviour of g with @type</change>
-            <change who="part:axja" when="2021-12-22"
-                >Adding some attributes and values for dates as well as for rs.</change>
-            <change who="part:axja" when="2021-11-02"
-                >Correcting the error message for list element</change>
+            <change who="part:axja" when="2021-12-22">Adding some attributes and values for dates as
+                well as for rs.</change>
+            <change who="part:axja" when="2021-11-02">Correcting the error message for list
+                element</change>
             <change who="part:axja" when="2021-10-22">Adding @unit="book" on citedRange</change>
             <change who="part:axja" when="2021-10-08">Adding a @type="feature" on space</change>
-            <change who="part:axja" when="2021-09-16"
-                >Adding values for @unit with gap, adding a rule to allow the l element into lem if the encoder requires it more than one verse line</change>
-            <change who="part:axja" when="2021-09-15"
-                >closing list attributes for unit with gap</change>
-            <change who="part:axja" when="2021-09-10"
-                >adding @unit="section" with citedRange</change>
-            <change who="part:axja" when="2021-08-13"
-                >Updating the encoding pattern for expan</change>
-            <change who="part:axja" when="2021-07-07"
-                >Updating the constraints for children of head element</change>
-            <change who="part:axja" when="2021-07-06"
-                >Adding the possibility to add a note inside a item, in the section commentary</change>
-            <change who="part:axja" when="2021-07-05"
-                >Changing the @corresp on div, p, ab, lg, l and seg elements in favor of @rendition</change>
-            <change who="part:axja" when="2021-06-11"
-                >Adding @unit="line" and @extent for space element</change>
-            <change who="part:axja" when="2021-06-03"
-                >Adding the @corresp on div, p, ab, lg, l and seg elements</change>
+            <change who="part:axja" when="2021-09-16">Adding values for @unit with gap, adding a
+                rule to allow the l element into lem if the encoder requires it more than one verse
+                line</change>
+            <change who="part:axja" when="2021-09-15">closing list attributes for unit with
+                gap</change>
+            <change who="part:axja" when="2021-09-10">adding @unit="section" with
+                citedRange</change>
+            <change who="part:axja" when="2021-08-13">Updating the encoding pattern for
+                expan</change>
+            <change who="part:axja" when="2021-07-07">Updating the constraints for children of head
+                element</change>
+            <change who="part:axja" when="2021-07-06">Adding the possibility to add a note inside a
+                item, in the section commentary</change>
+            <change who="part:axja" when="2021-07-05">Changing the @corresp on div, p, ab, lg, l and
+                seg elements in favor of @rendition</change>
+            <change who="part:axja" when="2021-06-11">Adding @unit="line" and @extent for space
+                element</change>
+            <change who="part:axja" when="2021-06-03">Adding the @corresp on div, p, ab, lg, l and
+                seg elements</change>
             <change who="part:axja" when="2021-03-10">Adding the @part on element l</change>
-            <change who="part:axja" when="2021-01"
-                >Updating the ODD to match the evolution of the
+            <change who="part:axja" when="2021-01">Updating the ODD to match the evolution of the
                 EGD</change>
-            <change who="part:axja" when="2020-07-13"
-                >Creating an ODD with legacy from the Epidoc
+            <change who="part:axja" when="2020-07-13">Creating an ODD with legacy from the Epidoc
                 Guidelines</change>
         </revisionDesc>
     </teiHeader>
@@ -173,22 +176,20 @@
                     <constraintSpec scheme="isoschematron" ident="div">
                         <!-- SQF add to delete @xml:lang='eng'. -->
                         <constraint><sch:rule context="tei:div"><sch:report
-                            test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"
-                            > Divs other than @type=textpart may not nest in divs of different @type
-                            </sch:report><sch:report
-                            test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
-                            > At least two divs @type=textpart are expected in the
-                            edition</sch:report><!--<sch:report
+                                    test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"
+                                    > Divs other than @type=textpart may not nest in divs of
+                                    different @type </sch:report><sch:report
+                                    test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
+                                    > At least two divs @type=textpart are expected in the
+                                    edition</sch:report><!--<sch:report
                             test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
                             div[@type='translation']</sch:report>--><sch:report
-                            test="@type='translation' and @resp and @source"
-                            >@resp and @source can
-                            not be used
-                            together</sch:report><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><sch:report
-                            test="@type='translation' and not(@resp or @source)"
-                            >@resp or @source is
-                            expected for
-                            div[@type='translation']</sch:report><!--<sch:rule context="tei:body">
+                                    test="@type='translation' and @resp and @source">@resp and
+                                    @source can not be used
+                                    together</sch:report><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><sch:report
+                                    test="@type='translation' and not(@resp or @source)">@resp or
+                                    @source is expected for
+                                div[@type='translation']</sch:report><!--<sch:rule context="tei:body">
                                 <sch:assert
                             test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
                             >The textpart structure in edition and in apparatus must be
@@ -355,11 +356,9 @@
                     <!-- testing for <ex> outside of <expan> -->
                     <constraintSpec scheme="isoschematron" ident="ex">
                         <constraint><sch:rule context="tei:ex"><sch:report
-                            test="not(ancestor::tei:expan)"
-                            >ex should only appear inside
-                            expan</sch:report><sch:report
-                            test="parent::tei:abbr">ex should not be a
-                            child of abbr</sch:report></sch:rule></constraint>
+                                    test="not(ancestor::tei:expan)">ex should only appear inside
+                                    expan</sch:report><sch:report test="parent::tei:abbr">ex should
+                                    not be a child of abbr</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -406,8 +405,8 @@
                     <!-- testing for <expan> with no descendant <ex> -->
                     <constraintSpec scheme="isoschematron" ident="expan">
                         <constraint><sch:rule context="tei:expan"><sch:report
-                            test="not(descendant::tei:ex or descendant::tei:abbr)"
-                            >expan should contain ex or abbr</sch:report></sch:rule></constraint>
+                                    test="not(descendant::tei:ex or descendant::tei:abbr)">expan
+                                    should contain ex or abbr</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -440,35 +439,31 @@
                     <!-- testing for <gap> with both quantity/extent, no unit, or contained in supplied -->
                     <constraintSpec ident="gap" scheme="isoschematron">
                         <constraint><sch:rule context="tei:gap"><sch:report
-                            test="@quantity and @extent"
-                            >gap may have @quantity (a figure) or
-                            @extent (a descriptive text value) but not both</sch:report><sch:report
-                            test="@quantity and not(@unit)"
-                            >If gap has @quantity then @unit is
-                            required</sch:report><sch:report
-                            test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]"
-                            >gap may not appear within supplied text</sch:report><sch:report
-                            test="@precision and not(@quantity)"
-                            >@precision can be use only with
-                            @quantity</sch:report><sch:report
-                            test="ancestor::tei:div[@type='aparatus'] and not(@reason)"
-                            >Only @reason
-                            is mandatory in
-                            div[@type='translation']</sch:report></sch:rule><sch:rule
-                            context="tei:gap[@reason='ellipsis']"><sch:report
-                            test="not(ancestor::tei:div[@type='apparatus'] or ancestor::tei:div[@type='translation'])"
-                            > The element gap with @reason='ellipsis' can only be used inside the
-                            apparatus or in translation.</sch:report></sch:rule><sch:rule
-                            context="tei:gap[@unit='component']"><sch:assert
-                            test="parent::tei:seg[@type='component']"
-                            >Gap with the attribute
-                            @unit="component" can only be used inside seg with the
-                            @type="component". </sch:assert></sch:rule><sch:rule
-                            context="tei:gap[@unit='line' and @quantity] "><sch:assert
-                            test="@precision='low' or child::tei:certainty"
-                            >The element gap with
-                            @quantity and @unit="line" expect either the use of @precision="low" or
-                            the element certainty.</sch:assert></sch:rule></constraint>
+                                    test="@quantity and @extent">gap may have @quantity (a figure)
+                                    or @extent (a descriptive text value) but not
+                                    both</sch:report><sch:report test="@quantity and not(@unit)">If
+                                    gap has @quantity then @unit is required</sch:report><sch:report
+                                    test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]"
+                                    >gap may not appear within supplied text</sch:report><sch:report
+                                    test="@precision and not(@quantity)">@precision can be use only
+                                    with @quantity</sch:report><sch:report
+                                    test="ancestor::tei:div[@type='aparatus'] and not(@reason)">Only
+                                    @reason is mandatory in
+                                div[@type='translation']</sch:report></sch:rule><sch:rule
+                                context="tei:gap[@reason='ellipsis']"><sch:report
+                                    test="not(ancestor::tei:div[@type='apparatus'] or ancestor::tei:div[@type='translation'])"
+                                    > The element gap with @reason='ellipsis' can only be used
+                                    inside the apparatus or in
+                                translation.</sch:report></sch:rule><sch:rule
+                                context="tei:gap[@unit='component']"><sch:assert
+                                    test="parent::tei:seg[@type='component']">Gap with the attribute
+                                    @unit="component" can only be used inside seg with the
+                                    @type="component". </sch:assert></sch:rule><sch:rule
+                                context="tei:gap[@unit='line' and @quantity] "><sch:assert
+                                    test="@precision='low' or child::tei:certainty">The element gap
+                                    with @quantity and @unit="line" expect either the use of
+                                    @precision="low" or the element
+                                certainty.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="reason" mode="change" usage="req">
@@ -729,9 +724,11 @@
                 <elementSpec ident="origDate" module="msdescription" mode="change">
                     <constraintSpec scheme="schematron" ident="origDate">
                         <constraint><sch:rule context="tei:origDate[ancestor::tei:teiHeader]"
-                            ><sch:assert
-                            test="@when or (@notBefore and @notAfter) or (@from and @to)"
-                            >The content of the element date should be translated into the W3C format thanks to @when or (@notBefore and @notAfter) or (@from and @to)</sch:assert></sch:rule></constraint>
+                                    ><sch:assert
+                                    test="@when or (@notBefore and @notAfter) or (@from and @to)"
+                                    >The content of the element date should be translated into the
+                                    W3C format thanks to @when or (@notBefore and @notAfter) or
+                                    (@from and @to)</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="evidence" mode="replace" usage="opt">
@@ -773,26 +770,79 @@
                                 </valItem>
                             </valList>
                         </attDef>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                        <attDef ident="atLeast" mode="delete"/>
+                        <attDef ident="atMost" mode="delete"/>
+                        <attDef ident="min" mode="delete"/>
+                        <attDef ident="max" mode="delete"/>
+                        <attDef ident="confidence" mode="delete"/>
+                        <attDef ident="precision" mode="delete"/>
+                        <attDef ident="unit" mode="delete"/>
+                        <attDef ident="quantity" mode="delete"/>
+                        <attDef ident="extent" mode="delete"/>
+                        <attDef ident="scope" mode="delete"/>
+                        <attDef ident="instant" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="space" module="transcr" mode="change">
                     <!-- testing for <space> with both quantity/extent or no unit -->
                     <constraintSpec ident="space" scheme="isoschematron">
-                        <constraint><sch:rule context="tei:space"><!--<sch:report
+                        <constraint><sch:rule context="tei:space"
+                                    ><!--<sch:report
                             test="@quantity and @extent">space may have @quantity (a figure) or
                             @extent (a descriptive text value) but not both</sch:report>--><sch:report
-                            test="@quantity and not(@unit)"
-                            >If space has @quantity then @unit is
-                            required</sch:report></sch:rule><sch:rule
-                            context="tei:space"><sch:assert
-                            test="@type='binding-hole' or @type='descender' or @type='ascender' and @quantity and @unit"
-                            >Space can't have @quantity and @unit attributes with
-                            @type='binding-hole' or @type='descender' or @type='ascender', the only
-                            @type possible is @type='defect'.</sch:assert></sch:rule><sch:rule
-                            context="tei:space"><sch:report test="@unit='page'"
-                            >Please note that the
-                            use of "space" for blank copperplate pages has been discarded; encode
-                            only a "pb" for the blank page</sch:report></sch:rule></constraint>
+                                    test="@quantity and not(@unit)">If space has @quantity then
+                                    @unit is required</sch:report></sch:rule><sch:rule
+                                context="tei:space"><sch:assert
+                                    test="@type='binding-hole' or @type='descender' or @type='ascender' and @quantity and @unit"
+                                    >Space can't have @quantity and @unit attributes with
+                                    @type='binding-hole' or @type='descender' or @type='ascender',
+                                    the only @type possible is
+                                @type='defect'.</sch:assert></sch:rule><sch:rule context="tei:space"
+                                    ><sch:report test="@unit='page'">Please note that the use of
+                                    "space" for blank copperplate pages has been discarded; encode
+                                    only a "pb" for the blank
+                            page</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1191,12 +1241,11 @@
                 <elementSpec ident="app" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="one-lem">
                         <constraint><sch:rule context="tei:app"><sch:report
-                            test="not(count(child::tei:lem) &gt;= 1)"
-                            >An apparatus entry must always
-                            contain a lem element</sch:report><sch:report
-                            test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)"
-                            >When the apparatus entry contains only a lem, the @source is
-                            mandatory</sch:report></sch:rule></constraint>
+                                    test="not(count(child::tei:lem) &gt;= 1)">An apparatus entry
+                                    must always contain a lem element</sch:report><sch:report
+                                    test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)"
+                                    >When the apparatus entry contains only a lem, the @source is
+                                    mandatory</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1290,15 +1339,14 @@
                             test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
                             the primary bibliography to declare
                             sigla</sch:report></sch:rule>--><sch:rule
-                            context="tei:bibl[ancestor::tei:listBibl]"><sch:report
-                            test="child::tei:note[following-sibling::tei:*]"
-                            >Note should be the last
-                            element of the bibl</sch:report></sch:rule><sch:rule
-                            context="tei:bibl[child::tei:note]"><sch:report
-                            test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
-                            >In the commentary, apparatus and the epigraphic lemma, note inside bibl
-                            is prohibited. Add the note element right after the bibl
-                            element.</sch:report></sch:rule></constraint>
+                                context="tei:bibl[ancestor::tei:listBibl]"><sch:report
+                                    test="child::tei:note[following-sibling::tei:*]">Note should be
+                                    the last element of the bibl</sch:report></sch:rule><sch:rule
+                                context="tei:bibl[child::tei:note]"><sch:report
+                                    test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
+                                    >In the commentary, apparatus and the epigraphic lemma, note
+                                    inside bibl is prohibited. Add the note element right after the
+                                    bibl element.</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1396,19 +1444,17 @@
                     </content>
                     <constraintSpec scheme="schematron" ident="usage-certainty">
                         <constraint><sch:rule context="tei:certainty"><sch:report
-                            test="@match='../@met' and not(parent::tei:lg)"
-                            >The pattern used in
-                            @match works with the element lg[@met]</sch:report></sch:rule><sch:rule
-                            context="tei:certainty"><sch:report
-                            test="@match='..' and not(parent::tei:gap)"
-                            >The pattern used in @match
-                            works within the element gap</sch:report></sch:rule><sch:rule
-                            context="tei:certainty"><sch:assert
-                            test="@match='../@met' and @locus='value'"
-                            > @match="../@met" and
-                            @locus="value" always work together. </sch:assert></sch:rule><sch:rule
-                            context="tei:certainty"><sch:assert test="@match='..' and @locus='name'"
-                            >@match='..' and @locus='name' always work
+                                    test="@match='../@met' and not(parent::tei:lg)">The pattern used
+                                    in @match works with the element
+                                lg[@met]</sch:report></sch:rule><sch:rule context="tei:certainty"
+                                    ><sch:report test="@match='..' and not(parent::tei:gap)">The
+                                    pattern used in @match works within the element
+                                gap</sch:report></sch:rule><sch:rule context="tei:certainty"
+                                    ><sch:assert test="@match='../@met' and @locus='value'">
+                                    @match="../@met" and @locus="value" always work together.
+                                </sch:assert></sch:rule><sch:rule context="tei:certainty"
+                                    ><sch:assert test="@match='..' and @locus='name'">@match='..'
+                                    and @locus='name' always work
                             together</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -1457,8 +1503,8 @@
                 <elementSpec ident="change" module="header" mode="change">
                     <constraintSpec scheme="schematron" ident="responsability">
                         <constraint><sch:rule context="@who"><sch:assert
-                            test="starts-with(.,'part:')">Project members prefix is
-                            part:</sch:assert></sch:rule></constraint>
+                                    test="starts-with(.,'part:')">Project members prefix is
+                                    part:</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1520,10 +1566,9 @@
                 <elementSpec ident="choice" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="unclear-limit">
                         <constraint><sch:rule context="tei:choice"><sch:report
-                            test="child::tei:unclear and count(child::tei:unclear) &gt; 3"
-                            >Choice
-                            can contained only maximum 3 unclear
-                            elements</sch:report></sch:rule></constraint>
+                                    test="child::tei:unclear and count(child::tei:unclear) &gt; 3"
+                                    >Choice can contained only maximum 3 unclear
+                                    elements</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1553,10 +1598,9 @@
                 <elementSpec ident="citedRange" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:citedRange"><sch:report
-                            test="child::tei:note and ancestor::tei:listBibl"
-                            >Note can not be used
-                            as a child of the element citedRange, only as a sibling of this
-                            element</sch:report></sch:rule></constraint>
+                                    test="child::tei:note and ancestor::tei:listBibl">Note can not
+                                    be used as a child of the element citedRange, only as a sibling
+                                    of this element</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1713,24 +1757,31 @@
                                     To be encoded a date must contained a year.
                                 </sch:assert>
                             </sch:rule>--><sch:rule
-                            context="tei:date[not(parent::tei:bibl)][@notBefore-custom or @notAfter-custom]"
-                            ><sch:assert test="@notBefore-custom and @notAfter-custom"
-                            >@notBefore-custom and @notAfter-custom must be used together</sch:assert></sch:rule><sch:rule
-                            context="tei:date[not(parent::tei:bibl)][@notBefore or @notAfter]"
-                            ><sch:assert test="@notBefore and @notAfter"
-                            >@notBefore and @notAfter must be used together</sch:assert></sch:rule><!-- <sch:rule context="tei:date[not(parent::tei:bibl)][@from or @to]"> <sch:assert
+                                context="tei:date[not(parent::tei:bibl)][@notBefore-custom or @notAfter-custom]"
+                                    ><sch:assert test="@notBefore-custom and @notAfter-custom"
+                                    >@notBefore-custom and @notAfter-custom must be used
+                                    together</sch:assert></sch:rule><sch:rule
+                                context="tei:date[not(parent::tei:bibl)][@notBefore or @notAfter]"
+                                    ><sch:assert test="@notBefore and @notAfter">@notBefore and
+                                    @notAfter must be used
+                                together</sch:assert></sch:rule><!-- <sch:rule context="tei:date[not(parent::tei:bibl)][@from or @to]"> <sch:assert
                                 test="@from and @to"
                                 >The attributes @from and @to must be used together</sch:assert>
                             </sch:rule>--><sch:rule
-                            context="tei:date[not(parent::tei:bibl)][@from-custom or @to-custom]"
-                            ><sch:assert test="@from-custom and @to-custom"
-                            >The attributes @from-custom and @to-custom must be used together</sch:assert></sch:rule><sch:rule
-                            context="tei:date[not(parent::tei:bibl)][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
-                            ><sch:assert test="@datingMethod"
-                            >When using a custom attribute such as @when-custom or @notAfter-custom or @notBefore-custom, the attribute @datingMethod is mandatory and should declare the calendar used to convert the dates expressed in those previous attributes.</sch:assert></sch:rule><sch:rule
-                            context="tei:date[not(parent::tei:bibl)][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
-                            ><sch:assert test="matches(., '\d\d\d\d')"
-                            >Only the year in a 4 digits format can be given for the vernacular calendar.</sch:assert></sch:rule><!--<sch:rule context="tei:date[not(parent::tei:bibl)][@when-custom]"> <sch:assert test="@when"
+                                context="tei:date[not(parent::tei:bibl)][@from-custom or @to-custom]"
+                                    ><sch:assert test="@from-custom and @to-custom">The attributes
+                                    @from-custom and @to-custom must be used
+                                together</sch:assert></sch:rule><sch:rule
+                                context="tei:date[not(parent::tei:bibl)][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
+                                    ><sch:assert test="@datingMethod">When using a custom attribute
+                                    such as @when-custom or @notAfter-custom or @notBefore-custom,
+                                    the attribute @datingMethod is mandatory and should declare the
+                                    calendar used to convert the dates expressed in those previous
+                                    attributes.</sch:assert></sch:rule><sch:rule
+                                context="tei:date[not(parent::tei:bibl)][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
+                                    ><sch:assert test="matches(., '\d\d\d\d')">Only the year in a 4
+                                    digits format can be given for the vernacular
+                                    calendar.</sch:assert></sch:rule><!--<sch:rule context="tei:date[not(parent::tei:bibl)][@when-custom]"> <sch:assert test="@when"
                                 >When @when-custom is used, you must provide an equivalent date in the official calendar of the project with @when. (Gregorian or Julian?)</sch:assert>
                             </sch:rule>--><!--<sch:rule context="tei:date[not(parent::tei:bibl)][@notBefore-custom and @notAfter-custom]">
                                 <sch:assert test="@notBefore and @notAfter"
@@ -1966,9 +2017,9 @@
                 <elementSpec ident="fw" module="transcr" mode="change">
                     <constraintSpec scheme="schematron" ident="fw-after-pb">
                         <constraint><sch:context rule="tei:fw"><sch:report
-                            test="not(preceding-sibling::tei:pb[1])"
-                            > The element fw must always be
-                            preceded by the element pb. </sch:report></sch:context></constraint>
+                                    test="not(preceding-sibling::tei:pb[1])"> The element fw must
+                                    always be preceded by the element pb.
+                                </sch:report></sch:context></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2041,7 +2092,7 @@
                     <content>
                         <alternate>
                             <dataRef name="positiveInteger"/>
-                            <dataRef name="string" restriction="[.§]?"></dataRef>
+                            <dataRef name="string" restriction="[.§]?"/>
                         </alternate>
                     </content>
                     <attList>
@@ -2210,9 +2261,9 @@
                 <elementSpec ident="head" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="head-childs">
                         <constraint><sch:rule context="tei:head/child::tei:*"><sch:assert
-                            test="local-name()= ('foreign')"
-                            >Foreign is the only element allowed as
-                            child of the element head</sch:assert></sch:rule></constraint>
+                                    test="local-name()= ('foreign')">Foreign is the only element
+                                    allowed as child of the element
+                            head</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2240,8 +2291,7 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="xml:lang" mode="change" usage="req">
-                        </attDef>
+                        <attDef ident="xml:lang" mode="change" usage="req"> </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="idno" module="header" mode="change">
@@ -2326,11 +2376,11 @@
                 <elementSpec ident="l" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="mixed-verse">
                         <constraint><sch:rule context="tei:l[parent::tei:lg[@met='mixed']]">
-                        <sch:assert
-                            test="self::tei:l[@real or @met]"
-                            >In a stanza identify as "mixed", the children verse lines must have at least an attribute @met or @real.</sch:assert>
-                    </sch:rule>
-                    </constraint>
+                                <sch:assert test="self::tei:l[@real or @met]">In a stanza identify
+                                    as "mixed", the children verse lines must have at least an
+                                    attribute @met or @real.</sch:assert>
+                            </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2841,9 +2891,9 @@
                 </elementSpec>
                 <elementSpec ident="list" module="core" mode="change">
                     <constraintSpec scheme="isoschematron" ident="lists">
-                        <constraint><sch:rule context="tei:list"><sch:assert
-                            test="parent::tei:p"
-                            >List can only be used inside a paragraph element.</sch:assert></sch:rule></constraint>
+                        <constraint><sch:rule context="tei:list"><sch:assert test="parent::tei:p"
+                                    >List can only be used inside a paragraph
+                                element.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2884,9 +2934,8 @@
                 <elementSpec ident="listApp" module="textcrit" mode="change">
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:listApp"><sch:assert
-                            test="ancestor::tei:div[@type='apparatus']"
-                            >ListApp can only be used
-                            inside the apparatus.</sch:assert></sch:rule></constraint>
+                                    test="ancestor::tei:div[@type='apparatus']">ListApp can only be
+                                    used inside the apparatus.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2977,25 +3026,22 @@
                 <elementSpec ident="milestone" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="att-unit-n">
                         <constraint><sch:rule context="tei:milestone"><sch:report
-                            test="not(@unit and @n)"
-                            > for milestone using the attribut @unit, the
-                            attribute @n is mandatory</sch:report></sch:rule><sch:rule
-                            context="tei:milestone[@type='yati']"><sch:assert
-                            test="@type='yati' and @break='no'"
-                            >Caesuras work with both @type='yati'
-                            and @break='no'.</sch:assert></sch:rule><sch:rule
-                            context="tei:milestone[@type='ref']"><sch:assert
-                            test="ancestor::tei:div[@type='translation']"
-                            >@type='ref' can only be
-                            used inside the translation part of the
-                            edition</sch:assert></sch:rule><sch:rule
-                            context="tei:milestone[@type='ref']"><sch:assert
-                            test="@unit='stanza' or @unit='line'"
-                            >@type='ref' requires the use of
-                            @unit="stanza" or @unit="line'</sch:assert></sch:rule><sch:rule
-                            context="tei:milestone[@type='ref']"><sch:report test="not(@n)"
-                            >@n is
-                            mandatory with
+                                    test="not(@unit and @n)"> for milestone using the attribut
+                                    @unit, the attribute @n is
+                                mandatory</sch:report></sch:rule><sch:rule
+                                context="tei:milestone[@type='yati']"><sch:assert
+                                    test="@type='yati' and @break='no'">Caesuras work with both
+                                    @type='yati' and @break='no'.</sch:assert></sch:rule><sch:rule
+                                context="tei:milestone[@type='ref']"><sch:assert
+                                    test="ancestor::tei:div[@type='translation']">@type='ref' can
+                                    only be used inside the translation part of the
+                                    edition</sch:assert></sch:rule><sch:rule
+                                context="tei:milestone[@type='ref']"><sch:assert
+                                    test="@unit='stanza' or @unit='line'">@type='ref' requires the
+                                    use of @unit="stanza" or
+                                @unit="line'</sch:assert></sch:rule><sch:rule
+                                context="tei:milestone[@type='ref']"><sch:report test="not(@n)">@n
+                                    is mandatory with
                             milestone/@type="ref"</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
@@ -3140,30 +3186,30 @@
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:note"><sch:report
-                            test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
-                            >Note is prohibited in div[@type='edition']</sch:report><sch:report
-                            test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)"
-                            >Inside div[@type='commentary'], note should be wrapped inside a p or an item
-                            element</sch:report><sch:report
-                            test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)"
-                            >Inside div[@type='apparatus'], note should be wrapped inside an app
-                            element. Please note that note(s) may not contain further
-                            notes.</sch:report><sch:report
-                            test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
-                            >Inside div[@type='bibliography'], note should be wrapped inside an p
-                            element for the epigraphic lemma</sch:report><sch:report
-                            test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
-                            >Note should the last element of the
-                            biliography</sch:report></sch:rule><sch:rule
-                            context="tei:note[parent::tei:app]"><sch:report
-                            test="following-sibling::tei:*[not(local-name () = 'note')]"
-                            >Note(s) be should the last element
-                            of the apparatus entry</sch:report></sch:rule><sch:rule
-                            context="tei:note"><sch:report test="child::tei:note"
-                            >Note(s) may not
-                            contain further notes (this is not a technical requirement but a
-                            convention we shall observe to reduce
-                            complication)</sch:report></sch:rule></constraint>
+                                    test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
+                                    >Note is prohibited in
+                                    div[@type='edition']</sch:report><sch:report
+                                    test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)"
+                                    >Inside div[@type='commentary'], note should be wrapped inside a
+                                    p or an item element</sch:report><sch:report
+                                    test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)"
+                                    >Inside div[@type='apparatus'], note should be wrapped inside an
+                                    app element. Please note that note(s) may not contain further
+                                    notes.</sch:report><sch:report
+                                    test="ancestor::tei:div[@type='bibliography'] and not(ancestor::tei:p) and not(ancestor::tei:listBibl)"
+                                    >Inside div[@type='bibliography'], note should be wrapped inside
+                                    an p element for the epigraphic lemma</sch:report><sch:report
+                                    test="parent::tei:bibl and ancestor::tei:listBibl and following-sibling::tei:*"
+                                    >Note should the last element of the
+                                biliography</sch:report></sch:rule><sch:rule
+                                context="tei:note[parent::tei:app]"><sch:report
+                                    test="following-sibling::tei:*[not(local-name () = 'note')]"
+                                    >Note(s) be should the last element of the apparatus
+                                    entry</sch:report></sch:rule><sch:rule context="tei:note"
+                                    ><sch:report test="child::tei:note">Note(s) may not contain
+                                    further notes (this is not a technical requirement but a
+                                    convention we shall observe to reduce
+                                complication)</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3200,13 +3246,12 @@
                 <elementSpec ident="num" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="valeur-or-interval">
                         <constraint><sch:rule context="tei:num"><sch:report
-                            test="@value and (@atMost or @atLeast)"
-                            >@value can not be used with the
-                            attributes of date range</sch:report><sch:report
-                            test="@atMost and not(@atLeast)">@atLeast is expected with
-                            @atMost</sch:report><sch:report
-                            test="@atLeast and not(@atMost)">@atMost
-                            is expected with @atLeast</sch:report></sch:rule></constraint>
+                                    test="@value and (@atMost or @atLeast)">@value can not be used
+                                    with the attributes of date range</sch:report><sch:report
+                                    test="@atMost and not(@atLeast)">@atLeast is expected with
+                                    @atMost</sch:report><sch:report test="@atLeast and not(@atMost)"
+                                    >@atMost is expected with
+                            @atLeast</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3268,15 +3313,16 @@
                         <constraint>
                             <sch:rule context="tei:p">
                                 <sch:report
-                            test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])"
-                            >@rend='stanza' can only be used in div[@type='translation'] and in
-                            div[@type='commentary']</sch:report></sch:rule>
-                        <sch:rule context="tei:p[@corresp]">
-                            <sch:assert
-                                test="@rend='stanza' and ancestor::tei:div[@type='translation']"
-                                >@corresp can only be used with p in the context of a @rend="stanza" and inside a translatio </sch:assert>
-                        </sch:rule>
-                            </constraint>
+                                    test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])"
+                                    >@rend='stanza' can only be used in div[@type='translation'] and
+                                    in div[@type='commentary']</sch:report></sch:rule>
+                            <sch:rule context="tei:p[@corresp]">
+                                <sch:assert
+                                    test="@rend='stanza' and ancestor::tei:div[@type='translation']"
+                                    >@corresp can only be used with p in the context of a
+                                    @rend="stanza" and inside a translatio </sch:assert>
+                            </sch:rule>
+                        </constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3442,12 +3488,15 @@
                     <!-- Constraint moved and complete with SQF in DHARMA_SQF.sch -->
                     <constraintSpec scheme="schematron" ident="reference">
                         <constraint><sch:rule context="tei:persName/@ref[ancestor::tei:teiHeader]"
-                            ><sch:assert test="starts-with(.,'part:') or starts-with(.,'http')"
-                            >Project members prefix is part: et non-members should be a
-                            URL</sch:assert></sch:rule></constraint>
+                                    ><sch:assert
+                                    test="starts-with(.,'part:') or starts-with(.,'http')">Project
+                                    members prefix is part: et non-members should be a
+                                    URL</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
                         <attDef ident="change" mode="delete"/>
@@ -3512,33 +3561,51 @@
                     <!--Vérifier l'usage des @subtype selon la valeur du @type -->
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:placeName[@type='region']"><sch:assert
-                            test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'"
-                            >For @type="region", the @subtype should be one of the
-                            following values: @subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'</sch:assert></sch:rule><sch:rule
-                            context="tei:placeName[@type='settlement']"><sch:assert
-                            test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'"
-                            >For @type="settlement", the @subtype should be one of the
-                                following values: @subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'</sch:assert></sch:rule><sch:rule
-                            context="tei:placeName[@type='builtPlace']"><sch:assert
-                            test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'"
-                            >For @type="builtPlace", the @subtype should be one of the following
-                                values: @subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'</sch:assert></sch:rule><sch:rule
-                            context="tei:placeName[@type='cultivation']"><sch:assert
-                            test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'"
-                            >For @type="cultivation", the @subtype should be one of the following
-                                values: @subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'</sch:assert></sch:rule><sch:rule
-                            context="tei:placeName[@type='hydrographic']"><sch:assert
-                            test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'"
-                            >For @type="hydrographic", the @subtype should be one of the following
-                                values: @subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'</sch:assert></sch:rule><sch:rule
-                            context="tei:placeName[@type='naturalPlace']"><sch:assert
-                            test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'"
-                            >For @type="naturalPlace", the @subtype should be one of the following
-                                values: @subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'</sch:assert></sch:rule>
-                        <sch:rule context="tei:placeName[@type='undetermined']">
-                            <sch:assert test="not(@subtype)">@subtype isn't allowed with @type='undetermined'</sch:assert>
-
-                        </sch:rule></constraint>
+                                    test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'"
+                                    >For @type="region", the @subtype should be one of the following
+                                    values: @subtype='district' or @subtype='province' or
+                                    @subtype='country' or @subtype='undetermined' or @subtype='land'
+                                    or @subtype='island'</sch:assert></sch:rule><sch:rule
+                                context="tei:placeName[@type='settlement']"><sch:assert
+                                    test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'"
+                                    >For @type="settlement", the @subtype should be one of the
+                                    following values: @subtype='town' or @subtype='village' or
+                                    @subtype='hamlet' or @subtype='armyCamp' or
+                                    @subtype='undetermined' or
+                                @subtype='establishment'</sch:assert></sch:rule><sch:rule
+                                context="tei:placeName[@type='builtPlace']"><sch:assert
+                                    test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'"
+                                    >For @type="builtPlace", the @subtype should be one of the
+                                    following values: @subtype='temple' or @subtype='monastery' or
+                                    @subtype='feedingHall' or @subtype='pavillion' or
+                                    @subtype='undetermined'</sch:assert></sch:rule><sch:rule
+                                context="tei:placeName[@type='cultivation']"><sch:assert
+                                    test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'"
+                                    >For @type="cultivation", the @subtype should be one of the
+                                    following values: @subtype='garden' or @subtype='field' or
+                                    @subtype='fieldPaddy' or @subtype='fieldMillet' or
+                                    @subtype='orchard' or @subtype='orchardAreca' or
+                                    @subtype='orchardCitrus' or @subtype='fieldIrrigated' or
+                                    @subtype='fieldDry' or @subtype='fieldSalted' or
+                                    @subtype='undetermined' or
+                                @subtype='nursery'</sch:assert></sch:rule><sch:rule
+                                context="tei:placeName[@type='hydrographic']"><sch:assert
+                                    test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'"
+                                    >For @type="hydrographic", the @subtype should be one of the
+                                    following values: @subtype='tank' or @subtype='river' or
+                                    @subtype='pond' or @subtype='canal' or @subtype='undetermined'
+                                    or @subtype='wetland' or @sutype='pool' or
+                                    @subtype='lake'</sch:assert></sch:rule><sch:rule
+                                context="tei:placeName[@type='naturalPlace']"><sch:assert
+                                    test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'"
+                                    >For @type="naturalPlace", the @subtype should be one of the
+                                    following values: @subtype='forest' or @subtype='wood' or
+                                    @subtype='grove' or @subtype='tree' or @subtype='mountain' or
+                                    @subtype='undetermined' or
+                                @subtype='mount'</sch:assert></sch:rule>
+                            <sch:rule context="tei:placeName[@type='undetermined']">
+                                <sch:assert test="not(@subtype)">@subtype isn't allowed with
+                                    @type='undetermined'</sch:assert> </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3557,6 +3624,8 @@
                         <attDef ident="full" mode="delete"/>
                         <attDef ident="instant" mode="delete"/>
                         <attDef ident="n" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
                         <attDef ident="notAfter" mode="delete"/>
                         <attDef ident="notAfter-custom" mode="delete"/>
                         <attDef ident="notAfter-iso" mode="delete"/>
@@ -3775,15 +3844,13 @@
                 </elementSpec>
                 <elementSpec ident="rdg" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="exclusion-inside-lem">
-                        <constraint><sch:rule context="tei:rdg"><sch:report test="child::tei:p"
-                            >The
-                            element p is not allowed in rdg</sch:report><sch:report
-                            test="child::tei:ab">The element ab is not allowed in
-                            rdg</sch:report><sch:report
-                            test="child::tei:lg">The element lg is not
-                            allowed in rdg</sch:report><sch:report
-                            test="child::tei:l">The element l
-                            is not allowed in rdg</sch:report></sch:rule></constraint>
+                        <constraint><sch:rule context="tei:rdg"><sch:report test="child::tei:p">The
+                                    element p is not allowed in rdg</sch:report><sch:report
+                                    test="child::tei:ab">The element ab is not allowed in
+                                    rdg</sch:report><sch:report test="child::tei:lg">The element lg
+                                    is not allowed in rdg</sch:report><sch:report
+                                    test="child::tei:l">The element l is not allowed in
+                                    rdg</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -4058,56 +4125,72 @@
                 <elementSpec ident="rs" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="rs-rules">
                         <constraint><sch:rule context="tei:rs[@type='month']"><sch:assert
-                            test="@key='caitra' or @key='vaisakha' or @key='jyaistha' or @key='asadha' or @key='sravana' or @key='bhadrapada' or @key='asvina' or @key='karttika' or @key='margasira' or @key='pausa' or @key='magha' or @key='phalguna'"
-                            >
-                                with the @type="month", you should used one of the following values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada, asvina, karttika, margasira, pausa, magha, phalguna.
-                            </sch:assert></sch:rule><sch:rule
+                                    test="@key='caitra' or @key='vaisakha' or @key='jyaistha' or @key='asadha' or @key='sravana' or @key='bhadrapada' or @key='asvina' or @key='karttika' or @key='margasira' or @key='pausa' or @key='magha' or @key='phalguna'"
+                                    > with the @type="month", you should used one of the following
+                                    values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada,
+                                    asvina, karttika, margasira, pausa, magha, phalguna.
+                                </sch:assert></sch:rule><sch:rule
                                 context="tei:rs[@type='fortnight']"><sch:assert
-                            test="@subtype='dark' or @subtype='bright'">
-                                    with the @type="fortnight", you should used either @subtype="dark" or @subtype="bright".
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='tithi']"><sch:report test="@key"
-                            >@key shouldn't be used with tei:rs[@type='tithi'], favor @n.
-                                </sch:report></sch:rule><sch:rule
-                                    context="tei:rs[@type='naksatra']"><sch:assert
-                            test="@key='krttika'or @key='rohini'or @key='mrgasirsa'or @key='ardra'or @key='punarvasu'or @key='pusya'or @key='aslesa'or @key='magha'or @key='purva-phalguni'or @key='uttara-phalguni'or @key='hasta'or @key='citra'or @key='svati'or @key='visakha'or @key='anuradha'or @key='jyestha'or @key='mula'or @key='purva-asadha'or @key='uttara-asadha'or @key='sravana'or @key='dhanistha'or @key='satabhisaj'or @key='purva-bhadrapada'or @key='uttara-bhadrapada'or @key='revati'or @key='asvini'or @key='bharani'"
-                            >with the @type="naksatra", you can only used one of the following values for @key: krttika, rohini, mrgasirsa, ardra, punarvasu, pusya, aslesa, magha, purva-phalguni, uttara-phalguni, hasta, citra, svati, visakha, anuradha, jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha, satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini, bharani</sch:assert></sch:rule><sch:rule
+                                    test="@subtype='dark' or @subtype='bright'"> with the
+                                    @type="fortnight", you should used either @subtype="dark" or
+                                    @subtype="bright". </sch:assert></sch:rule><sch:rule
+                                context="tei:rs[@type='tithi']"><sch:report test="@key">@key
+                                    shouldn't be used with tei:rs[@type='tithi'], favor @n.
+                                </sch:report></sch:rule><sch:rule context="tei:rs[@type='naksatra']"
+                                    ><sch:assert
+                                    test="@key='krttika'or @key='rohini'or @key='mrgasirsa'or @key='ardra'or @key='punarvasu'or @key='pusya'or @key='aslesa'or @key='magha'or @key='purva-phalguni'or @key='uttara-phalguni'or @key='hasta'or @key='citra'or @key='svati'or @key='visakha'or @key='anuradha'or @key='jyestha'or @key='mula'or @key='purva-asadha'or @key='uttara-asadha'or @key='sravana'or @key='dhanistha'or @key='satabhisaj'or @key='purva-bhadrapada'or @key='uttara-bhadrapada'or @key='revati'or @key='asvini'or @key='bharani'"
+                                    >with the @type="naksatra", you can only used one of the
+                                    following values for @key: krttika, rohini, mrgasirsa, ardra,
+                                    punarvasu, pusya, aslesa, magha, purva-phalguni,
+                                    uttara-phalguni, hasta, citra, svati, visakha, anuradha,
+                                    jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha,
+                                    satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini,
+                                    bharani</sch:assert></sch:rule><sch:rule
                                 context="tei:rs[@type='sadvara']"><sch:assert
-                            test="@key='tunglai' or @key='hariyang' or @key='wurukung' or @key='paniruan' or @key='was' or @key='mawulu'"
-                            >With the @type='sadvara', you can only use one of the following values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
-                            </sch:assert></sch:rule><sch:rule
+                                    test="@key='tunglai' or @key='hariyang' or @key='wurukung' or @key='paniruan' or @key='was' or @key='mawulu'"
+                                    >With the @type='sadvara', you can only use one of the following
+                                    values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
+                                </sch:assert></sch:rule><sch:rule
                                 context="tei:rs[@type='pancavara']"><sch:assert
-                            test="@key='pahing' or @key='pon' or @key='wagai' or @key='kaliwuan' or @key='umanis'"
-                            >With the @type='pancavara', you can only use one of the following values: pahing, pon, wagai, kaliwuan, umanis.
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='season']"><sch:assert
-                            test="@key='hemanta' or @key='grisma' or @key='varsa'"
-                            >With the @type='season', you can only use one of the following values: hemanta, grisma, varsa.
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='wuku']"><sch:assert
-                            test="@key='sinta' or @key='landep' or @key='wukir' or @key='kurantil' or @key='tolu' or @key='gumbreg' or @key='warigalit' or @key='warigagung' or @key='julung' or @key='sungsang' or @key='galungan' or @key='dungulan' or @key='kuningan' or @key='langki' or @key='madasiha' or @key='pujut' or @key='pahang' or @key='kuruwlut' or @key='marakih' or @key='tambir' or @key='madangkungan' or @key='mahatal' or @key='wuyai' or @key='manahil' or @key='prangbakat' or @key='balamuki' or @key='wugu' or @key='wayang' or @key='kulawu' or @key='dukut' or @key='watugunung'"
-                            >With the @type='wuku' or you can only use one of the following values: sinta or landep or wukir or kurantil or tolu or gumbreg or warigalit or warigagung or julung or sungsang or galungan or dungulan or kuningan or langki or madasiha or pujut or pahang or kuruwlut or marakih or tambir or madangkungan or mahatal or wuyai or manahil or prangbakat or balamuki or wugu or wayang or kulawu or dukut or watugunung.
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='chinese']"><sch:assert
-                            test="@key='rat' or @key='buffalo-ox' or @key='tiger' or @key='hare-cat' or @key='dragon' or @key='snake' or @key='horse' or @key='goat' or @key='monkey' or @key='cock' or @key='dog' or @key='pig'"
-                            >With the @type='chinese', you can only use one of the following values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse, goat, monkey, cock, dog, pig.
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='solstice']"><sch:assert
-                            test="@key='winter' or @key='summer'"
-                            >With the @type='solstice', you can only use one of the following values: winter or summer.
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='equinox']"><sch:assert
-                            test="@key='autumn' or @key='spring'"
-                            >With the @type='equinox', you can only use one of the following values: autumn or spring.
-                                </sch:assert></sch:rule><sch:rule
-                                    context="tei:rs[@type='eclipse']"><sch:assert
-                            test="@key='lunar' or @key='solar'"
-                            >With the @type='eclipse', you can only use one of the following values: lunar or solar.
+                                    test="@key='pahing' or @key='pon' or @key='wagai' or @key='kaliwuan' or @key='umanis'"
+                                    >With the @type='pancavara', you can only use one of the
+                                    following values: pahing, pon, wagai, kaliwuan, umanis.
+                                </sch:assert></sch:rule><sch:rule context="tei:rs[@type='season']"
+                                    ><sch:assert
+                                    test="@key='hemanta' or @key='grisma' or @key='varsa'">With the
+                                    @type='season', you can only use one of the following values:
+                                    hemanta, grisma, varsa. </sch:assert></sch:rule><sch:rule
+                                context="tei:rs[@type='wuku']"><sch:assert
+                                    test="@key='sinta' or @key='landep' or @key='wukir' or @key='kurantil' or @key='tolu' or @key='gumbreg' or @key='warigalit' or @key='warigagung' or @key='julung' or @key='sungsang' or @key='galungan' or @key='dungulan' or @key='kuningan' or @key='langki' or @key='madasiha' or @key='pujut' or @key='pahang' or @key='kuruwlut' or @key='marakih' or @key='tambir' or @key='madangkungan' or @key='mahatal' or @key='wuyai' or @key='manahil' or @key='prangbakat' or @key='balamuki' or @key='wugu' or @key='wayang' or @key='kulawu' or @key='dukut' or @key='watugunung'"
+                                    >With the @type='wuku' or you can only use one of the following
+                                    values: sinta or landep or wukir or kurantil or tolu or gumbreg
+                                    or warigalit or warigagung or julung or sungsang or galungan or
+                                    dungulan or kuningan or langki or madasiha or pujut or pahang or
+                                    kuruwlut or marakih or tambir or madangkungan or mahatal or
+                                    wuyai or manahil or prangbakat or balamuki or wugu or wayang or
+                                    kulawu or dukut or watugunung. </sch:assert></sch:rule><sch:rule
+                                context="tei:rs[@type='chinese']"><sch:assert
+                                    test="@key='rat' or @key='buffalo-ox' or @key='tiger' or @key='hare-cat' or @key='dragon' or @key='snake' or @key='horse' or @key='goat' or @key='monkey' or @key='cock' or @key='dog' or @key='pig'"
+                                    >With the @type='chinese', you can only use one of the following
+                                    values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse,
+                                    goat, monkey, cock, dog, pig. </sch:assert></sch:rule><sch:rule
+                                context="tei:rs[@type='solstice']"><sch:assert
+                                    test="@key='winter' or @key='summer'">With the @type='solstice',
+                                    you can only use one of the following values: winter or summer.
+                                </sch:assert></sch:rule><sch:rule context="tei:rs[@type='equinox']"
+                                    ><sch:assert test="@key='autumn' or @key='spring'">With the
+                                    @type='equinox', you can only use one of the following values:
+                                    autumn or spring. </sch:assert></sch:rule><sch:rule
+                                context="tei:rs[@type='eclipse']"><sch:assert
+                                    test="@key='lunar' or @key='solar'">With the @type='eclipse',
+                                    you can only use one of the following values: lunar or solar.
                                 </sch:assert></sch:rule>
                             <sch:rule
-                                context="tei:rs[@type='individual-masc' or @type='individual-fem' or @type='individual-other']"><sch:assert
-                            test="@subtype='deity' or @subtype='godLegalEntity' or @subtype='god_child' or @subtype='ruler' or @subtype='ruler_spouse' or @subtype='ruler_child' or @subtype='subordinateRuler' or @subtype='royalPreceptor' or @subtype='noble' or @subtype='landlord' or @subtype='chief' or @subtype='priest' or @subtype='brahmin' or @subtype='monk' or @subtype='cleric' or @subtype='officiant' or @subtype='officer' or @subtype='ascetic' or @subtype='hermit' or @subtype='merchant' or @subtype='artisan' or @subtype='brahminDelegate' or @subtype='regionalDelegate' or @subtype='dancer' or @subtype='singer' or @subtype='peasant' or @subtype='shepherd' or @subtype='slave' or @subtype='fieldWork' or @subtype='unknown'"
-                            >one of the following @subtype value can only work with @type='individual'.</sch:assert></sch:rule></constraint>
+                                context="tei:rs[@type='individual-masc' or @type='individual-fem' or @type='individual-other']"
+                                    ><sch:assert
+                                    test="@subtype='deity' or @subtype='godLegalEntity' or @subtype='god_child' or @subtype='ruler' or @subtype='ruler_spouse' or @subtype='ruler_child' or @subtype='subordinateRuler' or @subtype='royalPreceptor' or @subtype='noble' or @subtype='landlord' or @subtype='chief' or @subtype='priest' or @subtype='brahmin' or @subtype='monk' or @subtype='cleric' or @subtype='officiant' or @subtype='officer' or @subtype='ascetic' or @subtype='hermit' or @subtype='merchant' or @subtype='artisan' or @subtype='brahminDelegate' or @subtype='regionalDelegate' or @subtype='dancer' or @subtype='singer' or @subtype='peasant' or @subtype='shepherd' or @subtype='slave' or @subtype='fieldWork' or @subtype='unknown'"
+                                    >one of the following @subtype value can only work with
+                                    @type='individual'.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="cert" mode="delete"/>
@@ -4329,15 +4412,14 @@
                 <elementSpec ident="seg" module="linking" mode="change">
                     <constraintSpec scheme="schematron" ident="att-type-subtype">
                         <constraint><sch:rule context="tei:seg"><sch:report
-                            test="@subtype and not(@type='component')"
-                            >@subtype requires
-                            @type='component' to be used</sch:report><sch:report
-                            test="@cert='low' and not(ancestor::tei:div[@type='translation'])"
-                            >seg[@cert='low'] can be used only in
-                            div[@type='translation']</sch:report><sch:report
-                            test="@rend='pun' and not(ancestor::tei:div[@type='translation'])"
-                            >seg[@rend='pun'] only avaailable in
-                            div[@type='translation']</sch:report></sch:rule></constraint>
+                                    test="@subtype and not(@type='component')">@subtype requires
+                                    @type='component' to be used</sch:report><sch:report
+                                    test="@cert='low' and not(ancestor::tei:div[@type='translation'])"
+                                    >seg[@cert='low'] can be used only in
+                                    div[@type='translation']</sch:report><sch:report
+                                    test="@rend='pun' and not(ancestor::tei:div[@type='translation'])"
+                                    >seg[@rend='pun'] only avaailable in
+                                    div[@type='translation']</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -5052,15 +5134,14 @@
                 </elementSpec>
                 <elementSpec ident="lem" module="textcrit" mode="change">
                     <constraintSpec scheme="schematron" ident="exclusion-inside-lem">
-                        <constraint><sch:rule context="tei:lem"><sch:report test="child::tei:p"
-                            >The
-                            element p is not allowed in lem</sch:report><sch:report
-                            test="child::tei:ab">The element ab is not allowed in
-                            lem</sch:report><sch:report
-                            test="child::tei:lg">The element lg is not
-                            allowed in lem</sch:report><sch:report
-                            test="count(child::tei:l) eq 1"
-                            >Don't keep the l element in lem if you have only one of them</sch:report></sch:rule></constraint>
+                        <constraint><sch:rule context="tei:lem"><sch:report test="child::tei:p">The
+                                    element p is not allowed in lem</sch:report><sch:report
+                                    test="child::tei:ab">The element ab is not allowed in
+                                    lem</sch:report><sch:report test="child::tei:lg">The element lg
+                                    is not allowed in lem</sch:report><sch:report
+                                    test="count(child::tei:l) eq 1">Don't keep the l element in lem
+                                    if you have only one of
+                            them</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -5238,10 +5319,9 @@
                     <constraintSpec scheme="isoschematron" ident="ex">
                         <constraint>
                             <sch:rule context="tei:am">
-                                <sch:report test="not(ancestor::tei:abbr)"
-                            >am should only appear inside
-                            abbr</sch:report>
-                        </sch:rule>
+                                <sch:report test="not(ancestor::tei:abbr)">am should only appear
+                                    inside abbr</sch:report>
+                            </sch:rule>
                         </constraint>
                     </constraintSpec>
                     <attList>
@@ -5273,6 +5353,1157 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
+                <elementSpec ident="biblStruct" module="core" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="default" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="sortKey" mode="delete"/>
+                        <attDef ident="status" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="stage" module="core" mode="change">
+                    <attList>
+                        <attDef ident="who" mode="delete"/>
+                        <attDef ident="toWhom" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="place" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="editionStmt" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="edition" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="licence" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="targetLang" mode="delete"/>
+                        <attDef ident="evaluate" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="notBefore" mode="delete"/>
+                        <attDef ident="notAfter" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="encodingDesc" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="projectDesc" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="default" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="tagsDecl" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="rendition" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="schemeVersion" mode="delete"/>
+                        <attDef ident="scope" mode="delete"/>
+                        <attDef ident="selector" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="prefixDef" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="listPrefixDef" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="profileDesc" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="langUsage" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="default" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="language" module="header" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="usage" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="facsimile" module="transcr" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="decls" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="dimensions" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="atLeast" mode="delete"/>
+                        <attDef ident="atMost" mode="delete"/>
+                        <attDef ident="min" mode="delete"/>
+                        <attDef ident="max" mode="delete"/>
+                        <attDef ident="confidence" mode="delete"/>
+                        <attDef ident="precision" mode="delete"/>
+                        <attDef ident="unit" mode="delete"/>
+                        <attDef ident="quantity" mode="delete"/>
+                        <attDef ident="extent" mode="delete"/>
+                        <attDef ident="scope" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="height" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="atLeast" mode="delete"/>
+                        <attDef ident="atMost" mode="delete"/>
+                        <attDef ident="min" mode="delete"/>
+                        <attDef ident="max" mode="delete"/>
+                        <attDef ident="confidence" mode="delete"/>
+                        <attDef ident="precision" mode="delete"/>
+                        <attDef ident="quantity" mode="delete"/>
+                        <attDef ident="extent" mode="delete"/>
+                        <attDef ident="scope" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="depth" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="atLeast" mode="delete"/>
+                        <attDef ident="atMost" mode="delete"/>
+                        <attDef ident="min" mode="delete"/>
+                        <attDef ident="max" mode="delete"/>
+                        <attDef ident="confidence" mode="delete"/>
+                        <attDef ident="precision" mode="delete"/>
+                        <attDef ident="quantity" mode="delete"/>
+                        <attDef ident="extent" mode="delete"/>
+                        <attDef ident="scope" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="width" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="atLeast" mode="delete"/>
+                        <attDef ident="atMost" mode="delete"/>
+                        <attDef ident="min" mode="delete"/>
+                        <attDef ident="max" mode="delete"/>
+                        <attDef ident="confidence" mode="delete"/>
+                        <attDef ident="precision" mode="delete"/>
+                        <attDef ident="quantity" mode="delete"/>
+                        <attDef ident="extent" mode="delete"/>
+                        <attDef ident="scope" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="material" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="objectType" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="msIdentifier" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="institution" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="repository" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="altIdentifier" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="msContents" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="defective" mode="delete"/>
+                        <attDef ident="class" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="summary" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="physDesc" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="objectDesc" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="form" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="supportDesc" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="material" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="support" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="layoutDesc" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="layout" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="columns" mode="delete"/>
+                        <attDef ident="streams" mode="delete"/>
+                        <attDef ident="ruledLines" mode="delete"/>
+                        <attDef ident="writtenLines" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="decoDesc" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="origin" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="evidence" mode="delete"/>
+                        <attDef ident="instant" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="notBefore" mode="delete"/>
+                        <attDef ident="notAfter" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="provenance" module="msdescription" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="notBefore" mode="delete"/>
+                        <attDef ident="notAfter" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="settlement" module="namesdates" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="key" mode="delete"/>
+                        <attDef ident="ref" mode="delete"/>
+                        <attDef ident="role" mode="delete"/>
+                        <attDef ident="nymRef" mode="delete"/>
+                        <attDef ident="type" mode="delete"/>
+                        <attDef ident="subtype" mode="delete"/>
+                        <attDef ident="when" mode="delete"/>
+                        <attDef ident="notBefore" mode="delete"/>
+                        <attDef ident="notAfter" mode="delete"/>
+                        <attDef ident="from" mode="delete"/>
+                        <attDef ident="to" mode="delete"/>
+                        <attDef ident="when-iso" mode="delete"/>
+                        <attDef ident="notBefore-iso" mode="delete"/>
+                        <attDef ident="notAfter-iso" mode="delete"/>
+                        <attDef ident="from-iso" mode="delete"/>
+                        <attDef ident="to-iso" mode="delete"/>
+                        <attDef ident="when-custom" mode="delete"/>
+                        <attDef ident="notBefore-custom" mode="delete"/>
+                        <attDef ident="notAfter-custom" mode="delete"/>
+                        <attDef ident="from-custom" mode="delete"/>
+                        <attDef ident="to-custom" mode="delete"/>
+                        <attDef ident="datingPoint" mode="delete"/>
+                        <attDef ident="datingMethod" mode="delete"/>
+                        <attDef ident="calendar" mode="delete"/>
+                        <attDef ident="period" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="variantEncoding" module="textcrit" mode="change">
+                    <attList>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="method" mode="delete"/>
+                        <attDef ident="location" mode="delete"/>
+                    </attList>
+                </elementSpec>
+
                 <elementSpec ident="principal" mode="delete"/>
                 <elementSpec ident="funder" mode="delete"/>
                 <elementSpec ident="sponsor" mode="delete"/>
@@ -5369,6 +6600,28 @@
                 <elementSpec ident="unit" mode="delete"/>
                 <elementSpec ident="decoNote" mode="delete"/>
                 <elementSpec ident="monogr" mode="delete"/>
+                <elementSpec ident="extent" mode="delete"/>
+                <elementSpec ident="notesStmt" mode="delete"/>
+                <elementSpec ident="biblFull" mode="delete"/>
+                <elementSpec ident="samplingDecl" mode="delete"/>
+                <elementSpec ident="editorialDecl" mode="delete"/>
+                <elementSpec ident="correction" mode="delete"/>
+                <elementSpec ident="normalization" mode="delete"/>
+                <elementSpec ident="interpretation" mode="delete"/>
+                <elementSpec ident="punctuation" mode="delete"/>
+                <elementSpec ident="refsDecl" mode="delete"/>
+                <elementSpec ident="cRefPattern" mode="delete"/>
+                <elementSpec ident="textClass" mode="delete"/>
+                <elementSpec ident="keywords" mode="delete"/>
+                <elementSpec ident="line" mode="delete"/>
+                <elementSpec ident="dim" mode="delete"/>
+                <elementSpec ident="origPlace" mode="delete"/>
+                <elementSpec ident="collection" mode="delete"/>
+                <elementSpec ident="colophon" mode="delete"/>
+                <elementSpec ident="msItem" mode="delete"/>
+                <elementSpec ident="scriptDesc" mode="delete"/>
+                <elementSpec ident="place" mode="delete"/>
+                <elementSpec ident="object" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
