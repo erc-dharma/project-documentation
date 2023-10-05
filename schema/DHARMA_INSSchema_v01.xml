@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:sch="http://purl.oclc.org/dsdl/schematron" xml:lang="en">
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+    xmlns:rng="http://relaxng.org/ns/structure/1.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xml:lang="en">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -83,7 +86,7 @@
                     except="addrLine address analytic biblScope binaryObject cb distinct divGen emph gb headItem headLabel measureGrp media meeting mentioned postBox postCode relatedItem said soCalled sp street teiCorpus"/>
                 <moduleRef key="tei"/>
                 <!-- No reduction of the module Header-->
-                <moduleRef key="header" except="appInfo application"/>
+                <moduleRef key="header" except="appInfo application xenoData"/>
                 <moduleRef key="textstructure"
                     except="argument back byline closer div1 div2 div3 div4 div5 div6 div7 front group imprimatur                     opener postscript salute signed titlePage titlePart trailer"/>
                 <moduleRef key="transcr"
@@ -436,6 +439,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="gap" module="core" mode="change">
+                    <content>
+                        <empty/>
+                    </content>
                     <!-- testing for <gap> with both quantity/extent, no unit, or contained in supplied -->
                     <constraintSpec ident="gap" scheme="isoschematron">
                         <constraint><sch:rule context="tei:gap"><sch:report
@@ -825,6 +831,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="space" module="transcr" mode="change">
+                    <content>
+                        <empty/>
+                    </content>
                     <!-- testing for <space> with both quantity/extent or no unit -->
                     <constraintSpec ident="space" scheme="isoschematron">
                         <constraint><sch:rule context="tei:space"
@@ -1306,6 +1315,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="availability" module="header" mode="change">
+                    <content>
+                        <elementRef key="licence"/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1384,6 +1396,13 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="TEI" module="textstructure" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="teiHeader"/>
+                            <elementRef key="facsimile" minOccurs="0"/>
+                            <elementRef key="text"/>
+                        </sequence>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1412,6 +1431,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="body" module="textstructure" mode="change">
+                    <content>
+                        <elementRef key="div" maxOccurs="unbounded"/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1564,6 +1586,15 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="choice" module="core" mode="change">
+                    <content>
+                        <alternate maxOccurs="unbounded">
+                            <elementRef key="sic"/>
+                            <elementRef key="corr"/>
+                            <elementRef key="orig"/>
+                            <elementRef key="reg"/>
+                            <elementRef key="unclear"/>
+                        </alternate>
+                    </content>
                     <constraintSpec scheme="schematron" ident="unclear-limit">
                         <constraint><sch:rule context="tei:choice"><sch:report
                                     test="child::tei:unclear and count(child::tei:unclear) &gt; 3"
@@ -1981,6 +2012,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="forename" module="namesdates" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -3131,6 +3165,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="name" module="core" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -3779,6 +3816,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="pubPlace" module="core" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -3946,6 +3986,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="resp" module="core" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -3993,6 +4036,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="respStmt" module="core" mode="change">
+                    <content>
+                        <sequence maxOccurs="unbounded">
+                            <elementRef key="resp"/>
+                            <elementRef key="persName" maxOccurs="unbounded"/>
+                        </sequence>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -4048,6 +4097,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="revisionDesc" module="header" mode="change">
+                    <content>
+                        <elementRef key="change" maxOccurs="unbounded"/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -4717,6 +4769,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="surname" module="namesdates" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -4882,6 +4937,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="text" module="textstructure" mode="change">
+                    <content>
+                        <elementRef key="body"/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -5466,6 +5524,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="licence" module="header" mode="change">
+                    <content>
+                        <elementRef key="p" maxOccurs="unbounded"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6033,6 +6094,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="repository" module="msdescription" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
