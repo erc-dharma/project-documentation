@@ -109,8 +109,8 @@
                 <dataSpec ident="personRef">
                     <!--TODO fill with people ids-->
                     <content>
-                        <alternate>
-                            <dataRef name="string" restriction="part:[a-z]{4}"/>
+                        <alternate maxOccurs="unbounded">
+                            <dataRef name="string" restriction="part:[a-z]{4}"></dataRef>
                             <dataRef name="anyURI" restriction="http.*"/>
                         </alternate>
                     </content>
@@ -2543,6 +2543,7 @@
                             </valList>
                         </attDef>
                         <attDef ident="met" mode="change">
+                            <!--TODO fill with prosody data-->
                             <valList type="open" mode="replace">
                                 <valItem ident="sumānikā"/>
                                 <valItem ident="anuṣṭubh"/>

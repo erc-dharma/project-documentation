@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-06T15:24:40Z. .
+Schema generated from ODD source 2023-10-06T15:55:14Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -4680,14 +4680,16 @@ Sample values include: 1] filename</a:documentation>
          <text/>
          <attribute name="who">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
-            <choice>
-               <data type="string">
-                  <param name="pattern">part:[a-z]{4}</param>
-               </data>
-               <data type="anyURI">
-                  <param name="pattern">http.*</param>
-               </data>
-            </choice>
+            <oneOrMore>
+               <choice>
+                  <data type="string">
+                     <param name="pattern">part:[a-z]{4}</param>
+                  </data>
+                  <data type="anyURI">
+                     <param name="pattern">http.*</param>
+                  </data>
+               </choice>
+            </oneOrMore>
          </attribute>
          <attribute name="when">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the value of the date or time in a standard form, e.g. yyyy-mm-dd.</a:documentation>
@@ -6453,14 +6455,16 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
          <optional>
             <attribute name="ref">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
-               <choice>
-                  <data type="string">
-                     <param name="pattern">part:[a-z]{4}</param>
-                  </data>
-                  <data type="anyURI">
-                     <param name="pattern">http.*</param>
-                  </data>
-               </choice>
+               <oneOrMore>
+                  <choice>
+                     <data type="string">
+                        <param name="pattern">part:[a-z]{4}</param>
+                     </data>
+                     <data type="anyURI">
+                        <param name="pattern">http.*</param>
+                     </data>
+                  </choice>
+               </oneOrMore>
             </attribute>
          </optional>
          <optional>
