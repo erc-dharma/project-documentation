@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-06T08:02:59Z. .
+Schema generated from ODD source 2023-10-06T12:06:30Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -1223,7 +1223,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_abbr"/>
          <ref name="tei_expan"/>
          <ref name="tei_ex"/>
-         <ref name="tei_am"/>
          <ref name="tei_subst"/>
       </choice>
    </define>
@@ -1233,7 +1232,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_abbr"/>
          <ref name="tei_expan"/>
          <ref name="tei_ex"/>
-         <ref name="tei_am"/>
          <ref name="tei_subst"/>
       </choice>
    </define>
@@ -1242,7 +1240,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <ref name="tei_abbr"/>
       <ref name="tei_expan"/>
       <ref name="tei_ex"/>
-      <ref name="tei_am"/>
       <ref name="tei_subst"/>
    </define>
    <define name="tei_model.pPart.editorial_sequenceOptional">
@@ -1257,9 +1254,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </optional>
       <optional>
          <ref name="tei_ex"/>
-      </optional>
-      <optional>
-         <ref name="tei_am"/>
       </optional>
       <optional>
          <ref name="tei_subst"/>
@@ -1279,9 +1273,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_ex"/>
       </zeroOrMore>
       <zeroOrMore>
-         <ref name="tei_am"/>
-      </zeroOrMore>
-      <zeroOrMore>
          <ref name="tei_subst"/>
       </zeroOrMore>
    </define>
@@ -1297,9 +1288,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_ex"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tei_am"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_subst"/>
@@ -2592,7 +2580,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
    </define>
    <define name="tei_add">
       <element name="add">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(addition) contains letters, words, or phrases inserted in the source text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(addition) contains letters, words, or phrases inserted in the source text by an author, scribe, or a previous annotator or corrector. [EGD 4.4.2. Premodern insertion EGC 5.5.13.1. &lt;add&gt; – Additions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <optional>
             <attribute name="rend">
@@ -2601,7 +2589,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
                   <oneOrMore>
                      <choice>
                         <value>mark</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">when the addition is marked in the witness with any non-alphanumeric mark (such as the cross-shaped called kākapada in Sanskrit) </a:documentation>
                      </choice>
                   </oneOrMore>
                </list>
@@ -2613,23 +2601,23 @@ Normalization 12. Critical Apparatus]</a:documentation>
                <oneOrMore>
                   <choice>
                      <value>inline</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition made within the original text (in textu) </a:documentation>
                      <value>below</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition below the line (subscr.) </a:documentation>
                      <value>above</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition above the line (suprascr.) </a:documentation>
                      <value>top</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition in the top margin (in mg. sup. = in margine superiore) </a:documentation>
                      <value>bottom</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition in the bottom margin (in mg. inf. = in margine inferiore) </a:documentation>
                      <value>left</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition in the left margin (in mg. = in margine) </a:documentation>
                      <value>right</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition in the right margin (in mg. = in margine) </a:documentation>
                      <value>overstrike</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">addition made in the space where a previous string of text has been erased (in ras. = in rasura) </a:documentation>
                      <value>unspecified</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">no information on the place is currently available </a:documentation>
                   </choice>
                </oneOrMore>
             </list>
@@ -3939,7 +3927,7 @@ Elements 7.2.5. Speech Contents]</a:documentation>
    <define name="tei_author">
       <element name="author">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">in a bibliographic reference, contains the name(s) of an author, personal or corporate, of a work; for example in the same form as that provided by a recognized bibliographic name authority. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement]</a:documentation>
-         <ref name="tei_macro.phraseSeq"/>
+         <text/>
       </element>
    </define>
    <define name="tei_editor">
@@ -4112,18 +4100,12 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          <optional>
             <attribute name="rend">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
-               <list>
-                  <oneOrMore>
-                     <choice>
-                        <value>omitname</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>ibid</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>siglum</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     </choice>
-                  </oneOrMore>
-               </list>
+               <choice>
+                  <value>omitname</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">if the name of the author(s) is an integral part of your text and must thus appear independently of the citation </a:documentation>
+                  <value>ibid</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">if you wish to show “ibid.” instead of the name of the author(s) </a:documentation>
+               </choice>
             </attribute>
          </optional>
          <empty/>
@@ -4496,7 +4478,12 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
    <define name="tei_authority">
       <element name="authority">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(release authority) supplies the name of a person or other agency responsible for making a work available, other than a publisher or distributor. [2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
-         <ref name="tei_macro.phraseSeq.limited"/>
+         <oneOrMore>
+            <choice>
+               <ref name="tei_note"/>
+               <text/>
+            </choice>
+         </oneOrMore>
       </element>
    </define>
    <define name="tei_idno">
@@ -5221,35 +5208,12 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <empty/>
       </element>
    </define>
-   <define name="tei_am">
-      <element name="am">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(abbreviation marker) contains a sequence of letters or signs present in an abbreviation which are omitted or replaced in the expanded form of the abbreviation. [11.3.1.2. Abbreviation and Expansion]</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tei_model.gLike"/>
-               <ref name="tei_model.pPart.transcriptional"/>
-            </choice>
-         </zeroOrMore>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-am-ex-constraint-rule-56">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:am">
-                                <sch:report test="not(ancestor::tei:abbr)">am should only appear
-                                    inside abbr</sch:report>
-                            </sch:rule>
-         </pattern>
-      </element>
-   </define>
    <define name="tei_space">
       <element name="space">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the location of a significant space in the text. [11.5.1. Space]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-space-space-constraint-rule-57">
+                  id="dharma-space-space-constraint-rule-56">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5449,7 +5413,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the degree of certainty associated with some aspect of the text markup. [21.1.2. Structured Indications of Uncertainty]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-certainty-usage-certainty-constraint-rule-60">
+                  id="dharma-certainty-usage-certainty-constraint-rule-59">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5628,7 +5592,7 @@ Sample values include: 1] numeral</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-ab-constraint-report-50">
+                  id="dharma-ab-abstractModel-structure-ab-constraint-report-49">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5639,7 +5603,7 @@ Sample values include: 1] numeral</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-l-constraint-report-51">
+                  id="dharma-ab-abstractModel-structure-l-constraint-report-50">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5655,13 +5619,23 @@ Sample values include: 1] numeral</a:documentation>
          <ref name="tei_att.global.attribute.xmlspace"/>
          <optional>
             <attribute name="rend">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.
-Sample values include: 1] ornate; 2] large; 3] tall; 4] expanded; 5] small; 6] wide</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
                <list>
                   <oneOrMore>
-                     <data type="token">
-                        <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-                     </data>
+                     <choice>
+                        <value>ornate</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>large</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>tall</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>expanded</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">for character spacing</a:documentation>
+                        <value>small</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>wide</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
                   </oneOrMore>
                </list>
             </attribute>
@@ -5683,16 +5657,12 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
                        a:defaultValue="N">
                <a:documentation>specifies whether or not its parent element is fragmented in some way, typically by some other overlapping structure: for example a speech which is divided between two or more verse stanzas, a paragraph which is split across a page division, a verse line which is divided between two speakers.</a:documentation>
                <choice>
-                  <value>Y</value>
-                  <a:documentation/>
-                  <value>N</value>
-                  <a:documentation/>
                   <value>I</value>
-                  <a:documentation/>
+                  <a:documentation>for the initial part of a container (the end of which is lost or elsewhere) </a:documentation>
                   <value>M</value>
-                  <a:documentation/>
+                  <a:documentation>for the medial part of a container (both the beginning and end of which are lost or elsewhere) </a:documentation>
                   <value>F</value>
-                  <a:documentation/>
+                  <a:documentation>for the final part of a container (the beginning of which lost or elsewhere) </a:documentation>
                </choice>
             </attribute>
          </optional>
@@ -5704,7 +5674,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-seg-att-type-subtype-constraint-rule-64">
+                  id="dharma-seg-att-type-subtype-constraint-rule-63">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5817,7 +5787,7 @@ Sample values include: 1] body; 2] superscript; 3] subscript; 4] prescript; 5] p
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-dimensions-duplicateDim-constraint-report-55">
+                  id="dharma-dimensions-duplicateDim-constraint-report-54">
             <rule context="tei:dimensions">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5889,7 +5859,7 @@ The element <name/> may appear once only
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-origDate-origDate-constraint-rule-65">
+                  id="dharma-origDate-origDate-constraint-rule-64">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6089,7 +6059,7 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-msIdentifier-msId_minimal-constraint-report-58">
+                  id="dharma-msIdentifier-msId_minimal-constraint-report-57">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6615,7 +6585,7 @@ Sample values include: 1] king; 2] queen; 3] prince; 4] princess</a:documentatio
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an absolute or relative place name. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-placeName-div-constraint-rule-66">
+                  id="dharma-placeName-div-constraint-rule-65">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6723,11 +6693,6 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
          <ref name="tei_macro.phraseSeq"/>
       </element>
    </define>
-   <define name="tei_model.rdgLike">
-      <choice>
-         <ref name="tei_rdg"/>
-      </choice>
-   </define>
    <define name="tei_model.rdgPart">
       <notAllowed/>
    </define>
@@ -6735,25 +6700,21 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
       <element name="app">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(apparatus entry) contains one entry in a critical apparatus, with an optional lemma and usually one or more readings or notes on the relevant passage. [12.1.1. The Apparatus Entry]</a:documentation>
          <group>
-            <optional>
-               <ref name="tei_lem"/>
-            </optional>
-            <zeroOrMore>
+            <ref name="tei_lem"/>
+            <oneOrMore>
                <choice>
-                  <ref name="tei_model.rdgLike"/>
-                  <ref name="tei_model.noteLike"/>
+                  <ref name="tei_rdg"/>
+                  <ref name="tei_note"/>
                </choice>
-            </zeroOrMore>
+            </oneOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-app-one-lem-constraint-rule-73">
+                  id="dharma-app-one-lem-constraint-rule-72">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:app">
-               <sch:report test="not(count(child::tei:lem) &gt;= 1)">An apparatus entry
-                                    must always contain a lem element</sch:report>
                <sch:report test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)">When the apparatus entry contains only a lem, the @source is
                                     mandatory</sch:report>
             </sch:rule>
@@ -6789,7 +6750,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </oneOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-listApp-div-constraint-rule-74">
+                  id="dharma-listApp-div-constraint-rule-73">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6817,7 +6778,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lem-exclusion-inside-lem-constraint-rule-75">
+                  id="dharma-lem-exclusion-inside-lem-constraint-rule-74">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6854,7 +6815,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-76">
+                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-75">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"

@@ -84,7 +84,7 @@
                 <moduleRef key="textstructure"
                     except="argument back byline closer div1 div2 div3 div4 div5 div6 div7 front group imprimatur                     opener postscript salute signed titlePage titlePart trailer"/>
                 <moduleRef key="transcr"
-                    except="addSpan damageSpan delSpan metamark mod path redo restore retrace secl substJoin transpose undo"/>
+                    except="addSpan am damageSpan delSpan metamark mod path redo restore retrace secl substJoin transpose undo"/>
                 <moduleRef key="verse" except="caesura metDecl metSym rhyme"/>
                 <moduleRef key="analysis" except="c cl interp m pc phr s span spanGrp w"/>
                 <moduleRef key="certainty" except="precision respons"/>
@@ -114,23 +114,57 @@
                         </alternate>
                     </content>
                 </dataSpec>
-
-                <!--        CHANGED ELEMENT SPECS        -->
-
                 <elementSpec ident="add" module="core" mode="change">
+                    
                     <attList>
-                        <!-- constraining values of add/@place -->
                         <attDef ident="place" mode="change" usage="req">
                             <valList type="closed" mode="replace">
-                                <valItem ident="inline"/>
-                                <valItem ident="below"/>
-                                <valItem ident="above"/>
-                                <valItem ident="top"/>
-                                <valItem ident="bottom"/>
-                                <valItem ident="left"/>
-                                <valItem ident="right"/>
-                                <valItem ident="overstrike"/>
-                                <valItem ident="unspecified"/>
+                                <valItem ident="inline">
+                                    <desc>
+                                        addition made within the original text (in textu)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="below">
+                                    <desc>
+                                        addition below the line (subscr.)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="above">
+                                    <desc>
+                                        addition above the line (suprascr.)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="top">
+                                    <desc>
+                                        addition in the top margin (in mg. sup. = in margine superiore)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="bottom">
+                                    <desc>
+                                        addition in the bottom margin (in mg. inf. = in margine inferiore)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="left">
+                                    <desc>
+                                        addition in the left margin (in mg. = in margine)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="right">
+                                    <desc>
+                                        addition in the right margin (in mg. = in margine)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="overstrike">
+                                    <desc>
+                                        addition made in the space where a previous string of text has been erased
+                                        (in ras. = in rasura)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="unspecified">
+                                    <desc>
+                                        no information on the place is currently available
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="ana" mode="delete"/>
@@ -174,14 +208,22 @@
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <valList type="closed" mode="replace">
-                                <valItem ident="mark"/>
+                                <valItem ident="mark">
+                                    <desc>
+                                        when the addition is marked in the witness with any non-alphanumeric mark (such as the
+                                        cross-shaped called kākapada in Sanskrit)
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                     </attList>
+                    <listRef>
+                        <ref>EGD 4.4.2. Premodern insertion</ref>
+                        <ref>EGC 5.5.13.1. &lt;add&gt; – Additions</ref>
+                    </listRef>
                 </elementSpec>
                 <elementSpec ident="div" mode="change" module="textstructure">
                     <constraintSpec scheme="isoschematron" ident="div">
-                        <!-- SQF add to delete @xml:lang='eng'. -->
                         <constraint><sch:rule context="tei:div"><sch:report
                                     test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"
                                     > Divs other than @type=textpart may not nest in divs of
@@ -191,7 +233,7 @@
                                     edition</sch:report><sch:report
                                     test="@type='translation' and @resp and @source">@resp and
                                     @source can not be used
-                                    together</sch:report><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><sch:report
+                                    together</sch:report><sch:report
                                     test="@type='translation' and not(@resp or @source)">@resp or
                                     @source is expected for
                                 div[@type='translation']</sch:report></sch:rule></constraint>
@@ -1076,25 +1118,41 @@
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="rend" mode="change">
-                            <valList type="open" mode="replace">
+                            <!--EGD 7.5.6. Lettering-->
+                            <valList type="closed" mode="replace">
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
                                 <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
+                                <valItem ident="expanded">
+                                    <desc>for character spacing</desc>
+                                </valItem>
                                 <valItem ident="small"/>
                                 <valItem ident="wide"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
                             <valList type="closed" mode="replace">
-                                <valItem ident="Y"/>
-                                <valItem ident="N"/>
-                                <valItem ident="I"/>
-                                <valItem ident="M"/>
-                                <valItem ident="F"/>
+                                <!--EGD 2.1.3 Incomplete text containers-->
+                                <valItem ident="I">
+                                    <desc>
+                                        for the initial part of a container (the end of which is lost or elsewhere)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="M">
+                                    <desc>
+                                        for the medial part of a container (both the beginning and end of which are lost or
+                                        elsewhere)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="F">
+                                    <desc>
+                                        for the final part of a container (the beginning of which lost or elsewhere)
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
+                            <!--we ignore this-->
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
                                     <desc>Arabic script</desc>
@@ -1215,10 +1273,18 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="app" module="textcrit" mode="change">
+                    <!--EGD 9.1. The Critical Apparatus-->
+                    <content>
+                        <sequence>
+                            <elementRef key="lem"/>
+                            <alternate maxOccurs="unbounded">
+                                <elementRef key="rdg"/>
+                                <elementRef key="note"/>
+                            </alternate>
+                        </sequence>
+                    </content>
                     <constraintSpec scheme="schematron" ident="one-lem">
                         <constraint><sch:rule context="tei:app"><sch:report
-                                    test="not(count(child::tei:lem) &gt;= 1)">An apparatus entry
-                                    must always contain a lem element</sch:report><sch:report
                                     test="count(child::tei:lem) eq 1 and not(child::tei:lem[@source]) and not(child::tei:rdg or child::tei:note)"
                                     >When the apparatus entry contains only a lem, the @source is
                                     mandatory</sch:report></sch:rule></constraint>
@@ -1254,6 +1320,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="authority" module="header" mode="change">
+                    <content>
+                        <alternate maxOccurs="unbounded">
+                            <elementRef key="note"/>
+                            <textNode/>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1350,10 +1422,21 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
+                            <datatype>
+                                <dataRef key="teidata.word"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
-                                <valItem ident="omitname"/>
-                                <valItem ident="ibid"/>
-                                <valItem ident="siglum"/>
+                                <valItem ident="omitname">
+                                    <desc>
+                                        if the name of the author(s) is an integral part of your text and must thus appear
+                                        independently of the citation
+                                    </desc>
+                                </valItem>
+                                <valItem ident="ibid">
+                                    <desc>
+                                        if you wish to show “ibid.” instead of the name of the author(s)
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                     </attList>
@@ -5252,6 +5335,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="author" module="core" mode="change">
+                    <content>
+                        <rng:text/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5279,44 +5365,6 @@
                         <attDef ident="ref" mode="delete"/>
                         <attDef ident="role" mode="delete"/>
                         <attDef ident="nymRef" mode="delete"/>
-                    </attList>
-                </elementSpec>
-                <elementSpec ident="am" module="transcr" mode="change">
-                    <constraintSpec scheme="isoschematron" ident="ex">
-                        <constraint>
-                            <sch:rule context="tei:am">
-                                <sch:report test="not(ancestor::tei:abbr)">am should only appear
-                                    inside abbr</sch:report>
-                            </sch:rule>
-                        </constraint>
-                    </constraintSpec>
-                    <attList>
-                        <attDef ident="ana" mode="delete"/>
-                        <attDef ident="cert" mode="delete"/>
-                        <attDef ident="change" mode="delete"/>
-                        <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
-                        <attDef ident="evidence" mode="delete"/>
-                        <attDef ident="exclude" mode="delete"/>
-                        <attDef ident="facs" mode="delete"/>
-                        <attDef ident="instant" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>
-                        <attDef ident="next" mode="delete"/>
-                        <attDef ident="prev" mode="delete"/>
-                        <attDef ident="rend" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
-                        <attDef ident="resp" mode="delete"/>
-                        <attDef ident="sameAs" mode="delete"/>
-                        <attDef ident="select" mode="delete"/>
-                        <attDef ident="source" mode="delete"/>
-                        <attDef ident="style" mode="delete"/>
-                        <attDef ident="subtype" mode="delete"/>
-                        <attDef ident="synch" mode="delete"/>
-                        <attDef ident="type" mode="delete"/>
-                        <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
-                        <attDef ident="xml:lang" mode="delete"/>
-                        <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="biblStruct" module="core" mode="change">
@@ -6035,6 +6083,7 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="altIdentifier" module="msdescription" mode="change">
+                    <!--messy, ignore this-->
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
