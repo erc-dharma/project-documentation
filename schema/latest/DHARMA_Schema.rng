@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-06T12:06:30Z. .
+Schema generated from ODD source 2023-10-06T15:24:40Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -415,24 +415,6 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
          </attribute>
       </optional>
    </define>
-   <define name="tei_att.declarable.attributes">
-      <ref name="tei_att.declarable.attribute.default"/>
-   </define>
-   <define name="tei_att.declarable.attribute.default">
-      <optional>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="default"
-                    a:defaultValue="false">
-            <a:documentation>indicates whether or not this element is selected by default when its parent is selected.</a:documentation>
-            <choice>
-               <value>true</value>
-               <a:documentation>This element is selected if its parent is selected</a:documentation>
-               <value>false</value>
-               <a:documentation>This element can only be selected explicitly, unless it is the only one of its kind, in which case it is selected if its parent is selected.</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
-   </define>
    <define name="tei_att.fragmentable.attributes">
       <ref name="tei_att.fragmentable.attribute.part"/>
    </define>
@@ -454,22 +436,6 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
                <value>F</value>
                <a:documentation>(final) this is the final part of a fragmented element</a:documentation>
             </choice>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.docStatus.attributes">
-      <ref name="tei_att.docStatus.attribute.status"/>
-   </define>
-   <define name="tei_att.docStatus.attribute.status">
-      <optional>
-         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                    name="status"
-                    a:defaultValue="draft">
-            <a:documentation>describes the status of a document either currently or, when associated with a dated element, at the time indicated.
-Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] draft; 6] embargoed; 7] expired; 8] frozen; 9] galley; 10] proposed; 11] published; 12] recommendation; 13] submitted; 14] unfinished; 15] withdrawn</a:documentation>
-            <data type="token">
-               <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-            </data>
          </attribute>
       </optional>
    </define>
@@ -614,20 +580,6 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
             </list>
          </attribute>
       </optional>
-   </define>
-   <define name="tei_att.global.attributes">
-      <ref name="tei_att.global.rendition.attributes"/>
-      <ref name="tei_att.global.linking.attributes"/>
-      <ref name="tei_att.global.analytic.attributes"/>
-      <ref name="tei_att.global.facs.attributes"/>
-      <ref name="tei_att.global.change.attributes"/>
-      <ref name="tei_att.global.responsibility.attributes"/>
-      <ref name="tei_att.global.source.attributes"/>
-      <ref name="tei_att.global.attribute.xmlid"/>
-      <ref name="tei_att.global.attribute.n"/>
-      <ref name="tei_att.global.attribute.xmllang"/>
-      <ref name="tei_att.global.attribute.xmlbase"/>
-      <ref name="tei_att.global.attribute.xmlspace"/>
    </define>
    <define name="tei_att.global.attribute.xmlid">
       <optional>
@@ -869,19 +821,6 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
                   <data type="anyURI"/>
                </oneOrMore>
             </list>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.sortable.attributes">
-      <ref name="tei_att.sortable.attribute.sortKey"/>
-   </define>
-   <define name="tei_att.sortable.attribute.sortKey">
-      <optional>
-         <attribute name="sortKey">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the sort key for this element in an index, list or group which contains it.</a:documentation>
-            <data type="token">
-               <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-            </data>
          </attribute>
       </optional>
    </define>
@@ -1783,9 +1722,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_stage"/>
       </oneOrMore>
    </define>
-   <define name="tei_model.entryPart">
-      <notAllowed/>
-   </define>
    <define name="tei_model.global.edit">
       <choice>
          <ref name="tei_gap"/>
@@ -2376,16 +2312,17 @@ Sample values include: 1] block</a:documentation>
    <define name="tei_cit">
       <element name="cit">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 9.3.5.1. Examples]</a:documentation>
-         <oneOrMore>
-            <choice>
-               <ref name="tei_model.qLike"/>
-               <ref name="tei_model.egLike"/>
-               <ref name="tei_model.biblLike"/>
-               <ref name="tei_model.ptrLike"/>
-               <ref name="tei_model.global"/>
-               <ref name="tei_model.entryPart"/>
-            </choice>
-         </oneOrMore>
+         <choice>
+            <group>
+               <ref name="tei_quote"/>
+               <ref name="tei_bibl"/>
+            </group>
+            <group>
+               <ref name="tei_bibl"/>
+               <ref name="tei_quote"/>
+            </group>
+            <ref name="tei_quote"/>
+         </choice>
       </element>
    </define>
    <define name="tei_desc">
@@ -2423,7 +2360,16 @@ Sample values include: 1] block</a:documentation>
    <define name="tei_corr">
       <element name="corr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(correction) contains the correct form of a passage apparently erroneous in the copy text. [3.4.1. Apparent Errors]</a:documentation>
-         <ref name="tei_macro.paraContent"/>
+         <oneOrMore>
+            <choice>
+               <ref name="tei_hi"/>
+               <ref name="tei_g"/>
+               <ref name="tei_num"/>
+               <ref name="tei_supplied"/>
+               <ref name="tei_unclear"/>
+               <text/>
+            </choice>
+         </oneOrMore>
       </element>
    </define>
    <define name="tei_choice">
@@ -4005,7 +3951,13 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
    <define name="tei_citedRange">
       <element name="citedRange">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited range) defines the range of cited content, often represented by pages or other units [3.11.2.5. Scopes and Ranges in Bibliographic Citations]</a:documentation>
-         <ref name="tei_macro.phraseSeq"/>
+         <oneOrMore>
+            <choice>
+               <ref name="tei_supplied"/>
+               <ref name="tei_foreign"/>
+               <text/>
+            </choice>
+         </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="dharma-citedRange-note-constraint-rule-50">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
@@ -4546,32 +4498,13 @@ Sample values include: 1] filename</a:documentation>
    <define name="tei_biblFull">
       <element name="biblFull">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(fully-structured bibliographic citation) contains a fully-structured bibliographic citation, in which all components of the TEI file description are present. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2. The File Description 2.2.7. The Source Description 15.3.2. Declarable Elements]</a:documentation>
-         <choice>
-            <group>
-               <group>
-                  <ref name="tei_titleStmt"/>
-                  <optional>
-                     <ref name="tei_editionStmt"/>
-                  </optional>
-          
-                  <ref name="tei_publicationStmt"/>
-          
-          
-               </group>
-               <zeroOrMore>
-                  <ref name="tei_sourceDesc"/>
-               </zeroOrMore>
-            </group>
-            <group>
-               <ref name="tei_fileDesc"/>
-               <ref name="tei_profileDesc"/>
-            </group>
-         </choice>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.declarable.attributes"/>
-         <ref name="tei_att.sortable.attributes"/>
-         <ref name="tei_att.docStatus.attributes"/>
-         <empty/>
+         <group>
+            <ref name="tei_titleStmt"/>
+            <optional>
+               <ref name="tei_editionStmt"/>
+            </optional>
+            <ref name="tei_publicationStmt"/>
+         </group>
       </element>
    </define>
    <define name="tei_encodingDesc">
@@ -4744,7 +4677,7 @@ Sample values include: 1] filename</a:documentation>
    <define name="tei_change">
       <element name="change">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.7. Identifying Changes and Revisions]</a:documentation>
-         <ref name="tei_macro.specialPara"/>
+         <text/>
          <attribute name="who">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
             <choice>

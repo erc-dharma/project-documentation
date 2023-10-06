@@ -107,6 +107,7 @@
                     except="case colloc def dictScrap entry entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
 
                 <dataSpec ident="personRef">
+                    <!--TODO fill with people ids-->
                     <content>
                         <alternate>
                             <dataRef name="string" restriction="part:[a-z]{4}"/>
@@ -587,6 +588,19 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="cit" module="core" mode="change">
+                    <content>
+                        <alternate>
+                            <sequence>
+                                <elementRef key="quote"/>
+                                <elementRef key="bibl"/>
+                            </sequence>
+                            <sequence>
+                                <elementRef key="bibl"/>
+                                <elementRef key="quote"/>
+                            </sequence>
+                            <elementRef key="quote"/>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -1569,6 +1583,10 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="change" module="header" mode="change">
+                    <!--ignore this tag-->
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -1672,6 +1690,13 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="citedRange" module="core" mode="change">
+                    <content>
+                        <alternate maxOccurs="unbounded">
+                            <elementRef key="supplied"/>
+                            <elementRef key="foreign"/>
+                            <textNode/>
+                        </alternate>
+                    </content>
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:citedRange"><sch:report
                                     test="child::tei:note and ancestor::tei:listBibl">Note can not
@@ -1726,6 +1751,16 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="corr" module="core" mode="change">
+                    <content>
+                        <alternate maxOccurs="unbounded">
+                            <elementRef key="hi"/>
+                            <elementRef key="g"/>
+                            <elementRef key="num"/>
+                            <elementRef key="supplied"/>
+                            <elementRef key="unclear"/>
+                            <textNode/>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1824,6 +1859,42 @@
                         <attDef ident="height" mode="delete"/>
                         <attDef ident="scale" mode="delete"/>
                         <attDef ident="decls" mode="delete"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ident="biblFull" module="header" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="titleStmt"/>
+                            <elementRef key="editionStmt" minOccurs="0"/>
+                            <elementRef key="publicationStmt"/>
+                        </sequence>
+                    </content>
+                    <attList>
+                        <attDef ident="xml:id" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="rend" mode="delete"/>
+                        <attDef ident="style" mode="delete"/>
+                        <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="corresp" mode="delete"/>
+                        <attDef ident="synch" mode="delete"/>
+                        <attDef ident="sameAs" mode="delete"/>
+                        <attDef ident="copyOf" mode="delete"/>
+                        <attDef ident="next" mode="delete"/>
+                        <attDef ident="prev" mode="delete"/>
+                        <attDef ident="exclude" mode="delete"/>
+                        <attDef ident="select" mode="delete"/>
+                        <attDef ident="ana" mode="delete"/>
+                        <attDef ident="facs" mode="delete"/>
+                        <attDef ident="change" mode="delete"/>
+                        <attDef ident="cert" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
+                        <attDef ident="source" mode="delete"/>
+                        <attDef ident="default" mode="delete"/>
+                        <attDef ident="sortKey" mode="delete"/>
+                        <attDef ident="status" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="date" module="core" mode="change">
@@ -6642,6 +6713,7 @@
                 <elementSpec ident="scriptDesc" mode="delete"/>
                 <elementSpec ident="place" mode="delete"/>
                 <elementSpec ident="object" mode="delete"/>
+                <elementSpec ident="charProp" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
