@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-    xmlns:rng="http://relaxng.org/ns/structure/1.0"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xml:lang="en">
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:lang="en">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -78,14 +76,10 @@
                 Epidoc&#13; schema. </p>
             <schemaSpec ident="dharma" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
                 source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
-                <!--source="https://svn.code.sf.net/p/epidoc/code/trunk/schema/tei-epidoc.xml"
 
-                -->
-                <!--       MODULES USED BY THE DHARMA SCHEMA       -->
                 <moduleRef key="core"
                     except="addrLine address analytic biblScope binaryObject cb distinct divGen emph gb headItem headLabel measureGrp media meeting mentioned postBox postCode relatedItem said soCalled sp street teiCorpus"/>
                 <moduleRef key="tei"/>
-                <!-- No reduction of the module Header-->
                 <moduleRef key="header" except="appInfo application xenoData"/>
                 <moduleRef key="textstructure"
                     except="argument back byline closer div1 div2 div3 div4 div5 div6 div7 front group imprimatur                     opener postscript salute signed titlePage titlePart trailer"/>
@@ -111,7 +105,18 @@
                     except="activity channel constitution derivation domain factuality interaction locale partieDesc                     preparedness purpose setting settingDesc textDesc"/>
                 <moduleRef key="dictionaries"
                     except="case colloc def dictScrap entry entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
+
+                <dataSpec ident="personRef">
+                    <content>
+                        <alternate>
+                            <dataRef name="string" restriction="part:[a-z]{4}"/>
+                            <dataRef name="anyURI" restriction="http.*"/>
+                        </alternate>
+                    </content>
+                </dataSpec>
+
                 <!--        CHANGED ELEMENT SPECS        -->
+
                 <elementSpec ident="add" module="core" mode="change">
                     <attList>
                         <!-- constraining values of add/@place -->
@@ -174,7 +179,6 @@
                         </attDef>
                     </attList>
                 </elementSpec>
-                <!-- constraining values of div/@type -->
                 <elementSpec ident="div" mode="change" module="textstructure">
                     <constraintSpec scheme="isoschematron" ident="div">
                         <!-- SQF add to delete @xml:lang='eng'. -->
@@ -184,19 +188,13 @@
                                     different @type </sch:report><sch:report
                                     test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"
                                     > At least two divs @type=textpart are expected in the
-                                    edition</sch:report><!--<sch:report
-                            test="@type='translation' and not(@xml:lang)">@xml:lang is mandatory on
-                            div[@type='translation']</sch:report>--><sch:report
+                                    edition</sch:report><sch:report
                                     test="@type='translation' and @resp and @source">@resp and
                                     @source can not be used
                                     together</sch:report><!-- Rules @source and  @resp have been moved to DHARMA_SQF.sch--><sch:report
                                     test="@type='translation' and not(@resp or @source)">@resp or
                                     @source is expected for
-                                div[@type='translation']</sch:report><!--<sch:rule context="tei:body">
-                                <sch:assert
-                            test="count(tei:div[@type='edition']/tei:div[@type='textpart']) eq count(tei:div[@type='apparatus']/tei:div[@type='textpart'])"
-                            >The textpart structure in edition and in apparatus must be
-                            identical.</sch:assert>--></sch:rule></constraint>
+                                div[@type='translation']</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="type" mode="change" usage="req">
@@ -474,7 +472,7 @@
                     <attList>
                         <attDef ident="reason" mode="change" usage="req">
                             <datatype>
-                                <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
+                                <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="lost"/>
@@ -600,12 +598,11 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
-                <!-- suggesting but not constraining values of hi/@rend -->
                 <elementSpec ident="hi" module="core" mode="change">
                     <attList>
                         <attDef ident="rend" mode="change" usage="req">
                             <datatype maxOccurs="unbounded">
-                                <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
+                                <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="grantha"/>
@@ -686,18 +683,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="n" mode="change"/>
-                        <!-- Adding some schematron to make sure the value of @n is unique -->
-                        <!--<constraintSpec scheme="schematron" ident="uniquenessOfAttN">
-                                <constraint><sch:rule
-                                    context="tei:lb[ancestor::tei:div/@type='edition']"><sch:report
-                                    test="count(tei:lb[@n]) != count(distinct-values(tei:lb[@n]))"
-                                    > The content of the attribute @n for the element line
-                                    beginnning must be unique in all the edition division.
-                                    </sch:report></sch:rule></constraint>
-                            </constraintSpec>-->
                         <attDef ident="rend" mode="change">
                             <datatype>
-                                <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
+                                <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="bt-rotated"/>
@@ -836,10 +824,7 @@
                     </content>
                     <!-- testing for <space> with both quantity/extent or no unit -->
                     <constraintSpec ident="space" scheme="isoschematron">
-                        <constraint><sch:rule context="tei:space"
-                                    ><!--<sch:report
-                            test="@quantity and @extent">space may have @quantity (a figure) or
-                            @extent (a descriptive text value) but not both</sch:report>--><sch:report
+                        <constraint><sch:rule context="tei:space"><sch:report
                                     test="@quantity and not(@unit)">If space has @quantity then
                                     @unit is required</sch:report></sch:rule><sch:rule
                                 context="tei:space"><sch:assert
@@ -917,7 +902,6 @@
                 </elementSpec>
                 <elementSpec ident="supplied" module="transcr" mode="change">
                     <attList>
-                        <!-- constrained attribute list for supplied/@evidence -->
                         <attDef ident="evidence" mode="change" usage="opt">
                             <datatype>
                                 <dataRef key="teidata.word"/>
@@ -927,7 +911,6 @@
                                 <valItem ident="previouseditor"/>
                             </valList>
                         </attDef>
-                        <!-- constrained attribute list for supplied/@reason -->
                         <attDef ident="reason" mode="change" usage="req">
                             <valList type="closed" mode="replace">
                                 <valItem ident="lost"/>
@@ -976,7 +959,6 @@
                         </attDef>
                     </attList>
                 </elementSpec>
-                <!-- modifying <unclear> because in EpiDoc it should not contain anything but text and <g/> -->
                 <elementSpec ident="unclear" module="core" mode="change">
                     <desc>Character that cannot be identified unambiguously outside of its context.
                         May contain character data and <gi>g</gi> only.</desc>
@@ -1037,21 +1019,6 @@
                         </attDef>
                     </attList>
                 </elementSpec>
-                <!--       CHANGING ATTRIBUTE CLASSES         -->
-                <!--<classSpec type="atts" ident="att.datable.custom" mode="change">
-                    <constraintSpec scheme="isoschematron" ident="datable.custom">
-                         <constraint>
-                             <sch:rule context="tei:*[contains(@datingMethod,'julian')]">
-                                 <sch:report test="@when-custom[not(matches(.,'-?(\d{4})(-\d{2}(-\d{2})?)?'))]">
-                                     in Julian dating method @when-custom must be a date in the form [-]YYYY[-MM[-DD]]</sch:report>
-                                 <sch:report test="@notBefore-custom[not(matches(.,'-?(\d{4})(-\d{2}(-\d{2})?)?'))]">
-                                     in Julian dating method @notBefore-custom must be a date in the form [-]YYYY[-MM[-DD]]</sch:report>
-                                 <sch:report test="@notAfter-custom[not(matches(.,'-?(\d{4})(-\d{2}(-\d{2})?)?'))]">
-                                     in Julian dating method @notAfter-custom must be a date in the form [-]YYYY[-MM[-DD]]</sch:report>
-                             </sch:rule>
-                         </constraint>
-                     </constraintSpec>
-                </classSpec>-->
                 <classSpec type="atts" ident="att.dimensions" mode="change">
                     <attList>
                         <attDef ident="precision" mode="replace">
@@ -1347,11 +1314,7 @@
                 </elementSpec>
                 <elementSpec ident="bibl" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="siglum">
-                        <constraint><!--<sch:rule context="tei:bibl"><sch:report
-                            test="parent::tei:listBibl[@type='primary'] and not(@n)">@n mandatory in
-                            the primary bibliography to declare
-                            sigla</sch:report></sch:rule>--><sch:rule
-                                context="tei:bibl[ancestor::tei:listBibl]"><sch:report
+                        <constraint><sch:rule context="tei:bibl[ancestor::tei:listBibl]"><sch:report
                                     test="child::tei:note[following-sibling::tei:*]">Note should be
                                     the last element of the bibl</sch:report></sch:rule><sch:rule
                                 context="tei:bibl[child::tei:note]"><sch:report
@@ -1523,11 +1486,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="change" module="header" mode="change">
-                    <constraintSpec scheme="schematron" ident="responsability">
-                        <constraint><sch:rule context="@who"><sch:assert
-                                    test="starts-with(.,'part:')">Project members prefix is
-                                    part:</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -1581,7 +1539,11 @@
                                 <valItem ident="withdrawn"/>
                             </valList>
                         </attDef>
-                        <attDef ident="who" mode="change" usage="req"/>
+                        <attDef ident="who" mode="change" usage="req">
+                            <datatype>
+                                <dataRef key="personRef"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="when" mode="change" usage="req"/>
                     </attList>
                 </elementSpec>
@@ -1783,22 +1745,14 @@
                 </elementSpec>
                 <elementSpec ident="date" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="attributes">
-                        <constraint><!-- rule not working --><!-- <sch:rule context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]">
-                                <sch:assert test="contains('descendant-or-self::tei:*/text()', '[0-9]+')">
-                                    To be encoded a date must contained a year.
-                                </sch:assert>
-                            </sch:rule>--><sch:rule
+                        <constraint><sch:rule
                                 context="tei:date[not(parent::tei:bibl)][@notBefore-custom or @notAfter-custom]"
                                     ><sch:assert test="@notBefore-custom and @notAfter-custom"
                                     >@notBefore-custom and @notAfter-custom must be used
                                     together</sch:assert></sch:rule><sch:rule
                                 context="tei:date[not(parent::tei:bibl)][@notBefore or @notAfter]"
                                     ><sch:assert test="@notBefore and @notAfter">@notBefore and
-                                    @notAfter must be used
-                                together</sch:assert></sch:rule><!-- <sch:rule context="tei:date[not(parent::tei:bibl)][@from or @to]"> <sch:assert
-                                test="@from and @to"
-                                >The attributes @from and @to must be used together</sch:assert>
-                            </sch:rule>--><sch:rule
+                                    @notAfter must be used together</sch:assert></sch:rule><sch:rule
                                 context="tei:date[not(parent::tei:bibl)][@from-custom or @to-custom]"
                                     ><sch:assert test="@from-custom and @to-custom">The attributes
                                     @from-custom and @to-custom must be used
@@ -1812,15 +1766,7 @@
                                 context="tei:date[not(parent::tei:bibl)][@when-custom or @notAfter-custom or @notBefore-custom or @from-custom or @to-custom]"
                                     ><sch:assert test="matches(., '\d\d\d\d')">Only the year in a 4
                                     digits format can be given for the vernacular
-                                    calendar.</sch:assert></sch:rule><!--<sch:rule context="tei:date[not(parent::tei:bibl)][@when-custom]"> <sch:assert test="@when"
-                                >When @when-custom is used, you must provide an equivalent date in the official calendar of the project with @when. (Gregorian or Julian?)</sch:assert>
-                            </sch:rule>--><!--<sch:rule context="tei:date[not(parent::tei:bibl)][@notBefore-custom and @notAfter-custom]">
-                                <sch:assert test="@notBefore and @notAfter"
-                                    >When @notBefore-custom and @notAfter-custom are used, you must provide the equivalent in Gregorian calendar with @notBefore and @notAfter.</sch:assert>
-                            </sch:rule> <sch:rule context="tei:date[not(parent::tei:bibl)][@from-custom and @to-custom]"> <sch:assert
-                                test="@from and @to"
-                                >When @from-custom and @to-custom are used, you must provide the equivalent in Gregorian calendar with @from and @to.</sch:assert>
-                            </sch:rule>--></constraint>
+                                    calendar.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2577,7 +2523,7 @@
                         </attDef>
                         <attDef ident="rend" mode="change">
                             <datatype maxOccurs="unbounded">
-                                <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
+                                <rng:text/>
                             </datatype>
                             <valList type="open" mode="replace">
                                 <valItem ident="grantha"/>
@@ -2956,7 +2902,7 @@
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <datatype>
-                                <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
+                                <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="numbered"/>
@@ -3522,14 +3468,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="persName" module="namesdates" mode="change">
-                    <!-- Constraint moved and complete with SQF in DHARMA_SQF.sch -->
-                    <constraintSpec scheme="schematron" ident="reference">
-                        <constraint><sch:rule context="tei:persName/@ref[ancestor::tei:teiHeader]"
-                                    ><sch:assert
-                                    test="starts-with(.,'part:') or starts-with(.,'http')">Project
-                                    members prefix is part: et non-members should be a
-                                    URL</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
@@ -3560,6 +3498,11 @@
                         <attDef ident="period" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
+                        <attDef ident="ref" mode="change">
+                            <datatype>
+                                <dataRef key="personRef"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="role" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -3642,7 +3585,8 @@
                                 @subtype='mount'</sch:assert></sch:rule>
                             <sch:rule context="tei:placeName[@type='undetermined']">
                                 <sch:assert test="not(@subtype)">@subtype isn't allowed with
-                                    @type='undetermined'</sch:assert> </sch:rule></constraint>
+                                    @type='undetermined'</sch:assert>
+                            </sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -3751,11 +3695,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="ptr" module="core" mode="change">
-                    <!--<constraintSpec scheme="schematron" ident="target">
-                        <constraint><sch:rule context="tei:ptr/@target"><sch:assert
-                            test="starts-with(.,'bib:')">Bibliographic prefix is
-                            bib:</sch:assert></sch:rule></constraint>
-                    </constraintSpec>-->
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cRef" mode="delete"/>
@@ -4901,38 +4840,7 @@
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
-                        <attDef ident="xml:lang" mode="delete">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                            </valList>
-                        </attDef>
+                        <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
