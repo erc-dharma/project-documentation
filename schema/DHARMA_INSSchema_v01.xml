@@ -74,7 +74,7 @@
         <body>
             <p>DHARMA TEI Customization written by Daniel Balogh and Arlo Griffiths based on&#13;
                 Epidoc&#13; schema. </p>
-            <schemaSpec ident="dharma" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
+            <schemaSpec ident="dharma" docLang="en" start="TEI" xml:lang="en"
                 source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
 
                 <moduleRef key="core"
@@ -107,12 +107,117 @@
                     except="case colloc def dictScrap entry entryFree etym form gen gram gramGrp hom hyph iType lang lbl mood number oRef orth pRef                     per pos pron re sense stress subc superEntry syll tns usg xr"/>
 
                 <dataSpec ident="personRef">
-                    <!--TODO fill with people ids-->
                     <content>
                         <alternate maxOccurs="unbounded">
-                            <dataRef name="string" restriction="part:[a-z]{4}"></dataRef>
+                            <dataRef name="string" restriction="part:[a-z]{4}"/>
+                                <!-- TODO fill with
+                                    <valList type="closed">
+                                        sqlite3 dbs/people.sqlite "select printf('<valItem ident="%s"><desc>%s</desc></valItem>', dh_id, print_name) from people_main"
+                                    </valList>
+                                -->
                             <dataRef name="anyURI" restriction="http.*"/>
                         </alternate>
+                    </content>
+                </dataSpec>
+                <dataSpec ident="IndicScript">
+                    <content>
+                        <sequence>
+                            <alternate>
+                                <valList>
+                                    <valItem ident="class:57471">
+                                        <desc>Arabic script</desc>
+                                    </valItem>
+                                    <valItem ident="class:70417">
+                                        <desc>Jawi script - Narrower concept of Arabic Script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83217">
+                                        <desc>Brāhmī and derivatives</desc>
+                                    </valItem>
+                                    <valItem ident="class:83223">
+                                        <desc>northern class Brāhmī</desc>
+                                    </valItem>
+                                    <valItem ident="class:83229">
+                                        <desc>Gauḍī</desc>
+                                    </valItem>
+                                    <valItem ident="class:38771">
+                                        <desc>Nāgarī</desc>
+                                    </valItem>
+                                    <valItem ident="class:38774">
+                                        <desc>Siddhamātr̥kā </desc>
+                                    </valItem>
+                                    <valItem ident="class:83227">
+                                        <desc>southeast Asian Brāhmī</desc>
+                                    </valItem>
+                                    <valItem ident="class:83239">
+                                        <desc>Balinese script</desc>
+                                    </valItem>
+                                    <valItem ident="class:38767">
+                                        <desc>Batak script </desc>
+                                    </valItem>
+                                    <valItem ident="class:83233">
+                                        <desc>Cam script</desc>
+                                    </valItem>
+                                    <valItem ident="class:38769">
+                                        <desc>Kawi script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83231">
+                                        <desc>Khmer script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83235">
+                                        <desc>Mon-Burmese script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83241">
+                                        <desc>Old West Javanese script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83237">
+                                        <desc>Pyu script</desc>
+                                    </valItem>
+                                    <valItem ident="class:57470">
+                                        <desc>Sundanese script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83225">
+                                        <desc>southern class Brāhmī</desc>
+                                    </valItem>
+                                    <valItem ident="class:38768">
+                                        <desc>Grantha</desc>
+                                    </valItem>
+                                    <valItem ident="class:38776">
+                                        <desc>Tamil script</desc>
+                                    </valItem>
+                                    <valItem ident="class:57475">
+                                        <desc>Tamil with Grantha</desc>
+                                    </valItem>
+                                    <valItem ident="class:70420">
+                                        <desc>Vaṭṭeḻuṭṭu</desc>
+                                    </valItem>
+                                    <valItem ident="class:83221">
+                                        <desc>Chinese Script</desc>
+                                    </valItem>
+                                    <valItem ident="class:83219">
+                                        <desc>Kharoṣṭhī</desc>
+                                    </valItem>
+                                </valList>
+                            </alternate>
+                            <alternate>
+                                <valList>
+                                    <valItem ident="maturity:83207">
+                                        <desc>early Brāhmī</desc>
+                                    </valItem>
+                                    <valItem ident="maturity:83211">
+                                        <desc>late Brāhmī</desc>
+                                    </valItem>
+                                    <valItem ident="maturity:83209">
+                                        <desc>middle Brāhmi</desc>
+                                    </valItem>
+                                    <valItem ident="maturity:83213">
+                                        <desc>regional Brāhmī-derived script</desc>
+                                    </valItem>
+                                    <valItem ident="maturity:83215">
+                                        <desc>vernacular Brāhmī-derived script</desc>
+                                    </valItem>
+                                </valList>
+                            </alternate>
+                        </sequence>
                     </content>
                 </dataSpec>
                 <elementSpec ident="add" module="core" mode="change">
@@ -274,14 +379,52 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
+                            <datatype>
+                                <dataRef key="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
-                                <valItem ident="bt-rotated"/>
-                                <valItem ident="tb-rotated"/>
-                                <valItem ident="bt-upright"/>
-                                <valItem ident="tb-upright"/>
-                                <valItem ident="rl-upright"/>
-                                <valItem ident="rl-flipper"/>
-                                <valItem ident="rl-rotated"/>
+                                <valItem ident="bt-rotated">
+                                    <desc>
+                                        written vertically from bottom to top, with the tops
+                                        of characters facing left
+                                    </desc>
+                                </valItem>
+                                <valItem ident="tb-rotated">
+                                    <desc>
+                                        written vertically from top to bottom, with the tops
+                                        of characters facing right
+                                    </desc>
+                                </valItem>
+                                <valItem ident="bt-upright">
+                                    <desc>
+                                        written vertically from bottom to top, with the tops
+                                        of characters facing upward
+                                    </desc>
+                                </valItem>
+                                <valItem ident="tb-upright">
+                                    <desc>
+                                        written vertically from top to bottom, with the tops
+                                        of characters facing upward
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-upright">
+                                    <desc>
+                                        written horizontally from right to left, with
+                                        characters in their regular orientation
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-flipper">
+                                    <desc>
+                                        written horizontally from right to left, with
+                                        characters mirrored around their vertical axis as in true boustrophedon
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-rotated">
+                                    <desc>
+                                        written horizontally from right to left, with the tops
+                                        of characters facing downward
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="style" mode="change">
@@ -439,6 +582,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -446,6 +592,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="expan" module="transcr" mode="change">
+                    <content>
+                        <sequence maxOccurs="unbounded">
+                            <elementRef key="abbr"/>
+                            <elementRef key="ex"/>
+                        </sequence>
+                    </content>
                     <!-- testing for <expan> with no descendant <ex> -->
                     <constraintSpec scheme="isoschematron" ident="expan">
                         <constraint><sch:rule context="tei:expan"><sch:report
@@ -744,20 +896,48 @@
                                 <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
-                                <valItem ident="bt-rotated"/>
-                                <valItem ident="tb-rotated"/>
-                                <valItem ident="bt-upright"/>
-                                <valItem ident="tb-upright"/>
-                                <valItem ident="rl-upright"/>
-                                <valItem ident="rl-flipper"/>
-                                <valItem ident="rl-rotated"/>
-                                <valItem ident="grantha"/>
-                                <valItem ident="ornate"/>
-                                <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
-                                <valItem ident="small"/>
-                                <valItem ident="wide"/>
+                                <valItem ident="bt-rotated">
+                                    <desc>
+                                        written vertically from bottom to top, with the tops
+                                        of characters facing left
+                                    </desc>
+                                </valItem>
+                                <valItem ident="tb-rotated">
+                                    <desc>
+                                        written vertically from top to bottom, with the tops
+                                        of characters facing right
+                                    </desc>
+                                </valItem>
+                                <valItem ident="bt-upright">
+                                    <desc>
+                                        written vertically from bottom to top, with the tops
+                                        of characters facing upward
+                                    </desc>
+                                </valItem>
+                                <valItem ident="tb-upright">
+                                    <desc>
+                                        written vertically from top to bottom, with the tops
+                                        of characters facing upward
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-upright">
+                                    <desc>
+                                        written horizontally from right to left, with
+                                        characters in their regular orientation
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-flipper">
+                                    <desc>
+                                        written horizontally from right to left, with
+                                        characters mirrored around their vertical axis as in true boustrophedon
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-rotated">
+                                    <desc>
+                                        written horizontally from right to left, with the tops
+                                        of characters facing downward
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="style" mode="change" usage="opt">
@@ -1009,6 +1189,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -1056,6 +1239,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -1103,6 +1289,9 @@
                 <classSpec type="atts" ident="att.responsibility" mode="change">
                     <attList>
                         <attDef ident="cert" mode="replace">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed">
                                 <valItem ident="low"/>
                             </valList>
@@ -1640,11 +1829,6 @@
                                 <valItem ident="withdrawn"/>
                             </valList>
                         </attDef>
-                        <attDef ident="who" mode="change" usage="req">
-                            <datatype>
-                                <dataRef key="personRef"/>
-                            </datatype>
-                        </attDef>
                         <attDef ident="when" mode="change" usage="req"/>
                     </attList>
                 </elementSpec>
@@ -1791,6 +1975,14 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="damage" module="transcr" mode="change">
+                    <content>
+                        <alternate maxOccurs="unbounded">
+                            <elementRef key="supplied"/>
+                            <elementRef key="unclear"/>
+                            <elementRef key="gap"/>
+                            <textNode/>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="agent" mode="delete"/>
                         <attDef ident="ana" mode="delete"/>
@@ -1833,6 +2025,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="graphic" module="core" mode="change">
+                    <content>
+                        <elementRef key="desc"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -2193,16 +2388,51 @@
                         </attDef>
                         <attDef ident="rend" mode="change">
                             <datatype maxOccurs="unbounded">
-                                <rng:text xmlns:rng="http://relaxng.org/ns/structure/1.0"/>
+                                <dataRef name="string"/>
                             </datatype>
                             <valList type="closed" mode="replace">
-                                <valItem ident="bt-rotated"/>
-                                <valItem ident="tb-rotated"/>
-                                <valItem ident="bt-upright"/>
-                                <valItem ident="tb-upright"/>
-                                <valItem ident="rl-upright"/>
-                                <valItem ident="rl-flipper"/>
-                                <valItem ident="rl-rotated"/>
+                                <valItem ident="bt-rotated">
+                                    <desc>
+                                        written vertically from bottom to top, with the tops
+                                        of characters facing left
+                                    </desc>
+                                </valItem>
+                                <valItem ident="tb-rotated">
+                                    <desc>
+                                        written vertically from top to bottom, with the tops
+                                        of characters facing right
+                                    </desc>
+                                </valItem>
+                                <valItem ident="bt-upright">
+                                    <desc>
+                                        written vertically from bottom to top, with the tops
+                                        of characters facing upward
+                                    </desc>
+                                </valItem>
+                                <valItem ident="tb-upright">
+                                    <desc>
+                                        written vertically from top to bottom, with the tops
+                                        of characters facing upward
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-upright">
+                                    <desc>
+                                        written horizontally from right to left, with
+                                        characters in their regular orientation
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-flipper">
+                                    <desc>
+                                        written horizontally from right to left, with
+                                        characters mirrored around their vertical axis as in true boustrophedon
+                                    </desc>
+                                </valItem>
+                                <valItem ident="rl-rotated">
+                                    <desc>
+                                        written horizontally from right to left, with the tops
+                                        of characters facing downward
+                                    </desc>
+                                </valItem>
                                 <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
@@ -2223,6 +2453,7 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="g" module="gaiji" mode="change">
+                    <!--TODO fill with names-->
                     <content>
                         <alternate>
                             <dataRef name="positiveInteger"/>
@@ -2429,6 +2660,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="idno" module="header" mode="change">
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="calendar" mode="delete"/>
@@ -2692,8 +2926,6 @@
                         </attDef>
                         <attDef ident="part" mode="change">
                             <valList type="closed" mode="replace">
-                                <valItem ident="Y"/>
-                                <valItem ident="N"/>
                                 <valItem ident="I"/>
                                 <valItem ident="M"/>
                                 <valItem ident="F"/>
@@ -3067,6 +3299,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="listApp" module="textcrit" mode="change">
+                    <content>
+                        <elementRef key="app" maxOccurs="unbounded"/>
+                    </content>
                     <constraintSpec scheme="isoschematron" ident="div">
                         <constraint><sch:rule context="tei:listApp"><sch:assert
                                     test="ancestor::tei:div[@type='apparatus']">ListApp can only be
@@ -3653,11 +3888,6 @@
                         <attDef ident="period" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
-                        <attDef ident="ref" mode="change">
-                            <datatype>
-                                <dataRef key="personRef"/>
-                            </datatype>
-                        </attDef>
                         <attDef ident="resp" mode="delete"/>
                         <attDef ident="role" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -4596,6 +4826,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="cert" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="low"/>
                             </valList>
@@ -5162,11 +5395,23 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
-                                <valItem ident="strikeout"/>
-                                <valItem ident="other"/>
-                                <valItem ident="ui"/>
-                                <valItem ident="corrected"/>
+                                <valItem ident="strikeout">
+                                    <desc>text struck through or cross-hatched</desc>
+                                </valItem>
+                                <valItem ident="ui">
+                                    <desc>combined application of vowel markers u and i to characters to be deleted</desc>
+                                </valItem>
+                                <valItem ident="other">
+                                    <desc>deletion marker other than strikeout and ui</desc>
+                                </valItem>
+                                <valItem ident="corrected">
+                                    <desc>the text to be replaced was neither erased, nor marked for cancellation (i.e. it is either
+                                        overwritten with the post-correction text or left in place without any apparent alteration)</desc>
+                                </valItem>
                             </valList>
                         </attDef>
                     </attList>
@@ -5323,32 +5568,6 @@
                         <attDef ident="xml:space" mode="delete"/>
                     </attList>
                 </elementSpec>
-                <elementSpec ident="imprint" module="core" mode="change">
-                    <attList>
-                        <attDef ident="rend" mode="delete"/>
-                        <attDef ident="style" mode="delete"/>
-                        <attDef ident="rendition" mode="delete"/>
-                        <attDef ident="corresp" mode="delete"/>
-                        <attDef ident="synch" mode="delete"/>
-                        <attDef ident="sameAs" mode="delete"/>
-                        <attDef ident="copyOf" mode="delete"/>
-                        <attDef ident="next" mode="delete"/>
-                        <attDef ident="prev" mode="delete"/>
-                        <attDef ident="exclude" mode="delete"/>
-                        <attDef ident="select" mode="delete"/>
-                        <attDef ident="ana" mode="delete"/>
-                        <attDef ident="facs" mode="delete"/>
-                        <attDef ident="change" mode="delete"/>
-                        <attDef ident="cert" mode="delete"/>
-                        <attDef ident="resp" mode="delete"/>
-                        <attDef ident="source" mode="delete"/>
-                        <attDef ident="xml:id" mode="delete"/>
-                        <attDef ident="n" mode="delete"/>
-                        <attDef ident="xml:lang" mode="delete"/>
-                        <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:space" mode="delete"/>
-                    </attList>
-                </elementSpec>
                 <elementSpec ident="publisher" module="core" mode="change">
                     <attList>
                         <attDef ident="rend" mode="delete"/>
@@ -5378,6 +5597,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="editor" module="core" mode="change">
+                    <content>
+                        <alternate>
+                            <elementRef key="persName"/>
+                            <textNode/>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5404,11 +5629,23 @@
                         <attDef ident="key" mode="delete"/>
                         <attDef ident="ref" mode="delete"/>
                         <attDef ident="nymRef" mode="delete"/>
+                        <attDef ident="role" mode="change">
+                            <desc>
+                                may be used to specify further information about the entity referenced by this name
+                            </desc>
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="general"/>
+                                <valItem ident="contributor"/>
+                            </valList>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="author" module="core" mode="change">
                     <content>
-                        <rng:text/>
+                        <textNode/>
                     </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
@@ -5787,6 +6024,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="langUsage" module="header" mode="change">
+                    <content>
+                        <elementRef key="language" maxOccurs="unbounded"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5814,7 +6054,46 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="language" module="header" mode="change">
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
+                        <attDef ident="ident" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <valList mode="replace">
+                                <valItem ident="und"/>
+                                <valItem ident="mya"/>
+                                <valItem ident="obr"/>
+                                <valItem ident="cjm"/>
+                                <valItem ident="ocm"/>
+                                <valItem ident="nld"/>
+                                <valItem ident="eng"/>
+                                <valItem ident="fra"/>
+                                <valItem ident="ind"/>
+                                <valItem ident="jpn"/>
+                                <valItem ident="jav"/>
+                                <valItem ident="kaw"/>
+                                <valItem ident="kan"/>
+                                <valItem ident="khm"/>
+                                <valItem ident="okz"/>
+                                <valItem ident="zlm"/>
+                                <valItem ident="omy"/>
+                                <valItem ident="omx"/>
+                                <valItem ident="pli"/>
+                                <valItem ident="pra"/>
+                                <valItem ident="pyx"/>
+                                <valItem ident="san"/>
+                                <valItem ident="osn"/>
+                                <valItem ident="tam"/>
+                                <valItem ident="tel"/>
+                                <valItem ident="vie"/>
+                                <valItem ident="cja"/>
+                                <valItem ident="xhm"/>
+                                <valItem ident="ori"/>
+                            </valList>
+                        </attDef>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
                         <attDef ident="rendition" mode="delete"/>
@@ -6092,6 +6371,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="institution" module="msdescription" mode="change">
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6343,6 +6625,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="layoutDesc" module="msdescription" mode="change">
+                    <content>
+                        <elementRef key="layout"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6715,6 +7000,14 @@
                 <elementSpec ident="place" mode="delete"/>
                 <elementSpec ident="object" mode="delete"/>
                 <elementSpec ident="charProp" mode="delete"/>
+                <elementSpec ident="custodialHist" mode="delete"/>
+                <elementSpec ident="depth" mode="delete"/>
+                <elementSpec ident="width" mode="delete"/>
+                <elementSpec ident="height" mode="delete"/>
+                <elementSpec ident="dimensions" mode="delete"/>
+                <elementSpec ident="edition" mode="delete"/>
+                <elementSpec ident="gi" mode="delete"/>
+                <elementSpec ident="imprint" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
