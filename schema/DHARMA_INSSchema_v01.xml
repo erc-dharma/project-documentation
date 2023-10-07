@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:lang="en">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:lang="en" xml:base="foo">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -952,14 +952,9 @@
                 </elementSpec>
                 <!-- suggested attribute values for origDate/@evidence -->
                 <elementSpec ident="origDate" module="msdescription" mode="change">
-                    <constraintSpec scheme="schematron" ident="origDate">
-                        <constraint><sch:rule context="tei:origDate[ancestor::tei:teiHeader]"
-                                    ><sch:assert
-                                    test="@when or (@notBefore and @notAfter) or (@from and @to)"
-                                    >The content of the element date should be translated into the
-                                    W3C format thanks to @when or (@notBefore and @notAfter) or
-                                    (@from and @to)</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="evidence" mode="replace" usage="opt">
                             <datatype maxOccurs="6">
@@ -1247,6 +1242,9 @@
                             </valList>
                         </attDef>
                         <attDef ident="reason" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="open" mode="replace">
                                 <valItem ident="eccentric_ductus"/>
                                 <valItem ident="illegible"/>
@@ -1255,6 +1253,9 @@
                             </valList>
                         </attDef>
                         <attDef ident="rend" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="check"/>
                             </valList>
@@ -1320,6 +1321,7 @@
                         <attDef ident="synch" mode="delete"/>
                         <attDef ident="type" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
+                        <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <!--EGD 7.5.6. Lettering-->
                             <valList type="closed" mode="replace">
@@ -2026,7 +2028,7 @@
                 </elementSpec>
                 <elementSpec ident="graphic" module="core" mode="change">
                     <content>
-                        <elementRef key="desc"/>
+                        <elementRef key="desc" minOccurs="0"/>
                     </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
@@ -3337,6 +3339,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="listBibl" module="core" mode="change">
+                    <content>
+                        <elementRef key="bibl" maxOccurs="unbounded"/>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -3363,6 +3368,13 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="type" mode="change">
+                            <valList type="closed" mode="replace">
+                                <valItem ident="primary"/>
+                                <valItem ident="secondary"/>
+                            </valList>
+                        </attDef>
+                            
                     </attList>
                 </elementSpec>
                 <elementSpec ident="measure" module="core" mode="change">
@@ -3470,6 +3482,14 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="msDesc" module="msdescription" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="msIdentifier"/>
+                            <elementRef key="msContents" minOccurs="0"/>
+                            <elementRef key="physDesc" minOccurs="0"/>
+                            <elementRef key="history" minOccurs="0"/>
+                        </sequence>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -4141,7 +4161,7 @@
                 </elementSpec>
                 <elementSpec ident="pubPlace" module="core" mode="change">
                     <content>
-                        <rng:text/>
+                        <textNode/>
                     </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -4311,7 +4331,7 @@
                 </elementSpec>
                 <elementSpec ident="resp" module="core" mode="change">
                     <content>
-                        <rng:text/>
+                        <textNode/>
                     </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -5569,6 +5589,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="publisher" module="core" mode="change">
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5627,7 +5650,6 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="key" mode="delete"/>
-                        <attDef ident="ref" mode="delete"/>
                         <attDef ident="nymRef" mode="delete"/>
                         <attDef ident="role" mode="change">
                             <desc>
@@ -5865,6 +5887,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="projectDesc" module="header" mode="change">
+                    <content>
+                        <elementRef key="p"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5946,6 +5971,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="prefixDef" module="header" mode="change">
+                    <content>
+                        <elementRef key="p"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5972,6 +6000,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="listPrefixDef" module="header" mode="change">
+                    <content>
+                        <elementRef key="prefixDef" maxOccurs="unbounded"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -5998,6 +6029,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="profileDesc" module="header" mode="change">
+                    <content>
+                        <elementRef key="langUsage"/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6289,6 +6323,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="material" module="msdescription" mode="change">
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6317,6 +6354,9 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="objectType" module="msdescription" mode="change">
+                    <content>
+                        <textNode/>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6465,6 +6505,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="msContents" module="msdescription" mode="change">
+                    <content>
+                        <alternate maxOccurs="unbounded">
+                            <elementRef key="msItem"/>
+                            <elementRef key="summary"/>
+                        </alternate>
+                    </content>
                     <attList>
                         <attDef ident="rend" mode="delete"/>
                         <attDef ident="style" mode="delete"/>
@@ -6995,7 +7041,6 @@
                 <elementSpec ident="origPlace" mode="delete"/>
                 <elementSpec ident="collection" mode="delete"/>
                 <elementSpec ident="colophon" mode="delete"/>
-                <elementSpec ident="msItem" mode="delete"/>
                 <elementSpec ident="scriptDesc" mode="delete"/>
                 <elementSpec ident="place" mode="delete"/>
                 <elementSpec ident="object" mode="delete"/>
@@ -7008,6 +7053,8 @@
                 <elementSpec ident="edition" mode="delete"/>
                 <elementSpec ident="gi" mode="delete"/>
                 <elementSpec ident="imprint" mode="delete"/>
+                <elementSpec ident="variantEncoding" mode="delete"/>
+                <elementSpec ident="tagsDecl" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
