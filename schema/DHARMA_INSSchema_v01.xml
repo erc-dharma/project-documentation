@@ -119,7 +119,49 @@
                         </alternate>
                     </content>
                 </dataSpec>
-                <dataSpec ident="IndicScript">
+                <dataSpec ident="dharma.language">
+                    <content>
+                        <valList type="closed">
+                            <valItem ident="ara-Latn"><desc>Arabic</desc></valItem>
+                            <valItem ident="ban-Latn"><desc>Balinese</desc></valItem>
+                            <valItem ident="bya-Latn"><desc>Batak</desc></valItem>
+                            <valItem ident="cja-Latn"><desc>Cham, Western</desc></valItem>
+                            <valItem ident="cjm-Latn"><desc>Cham, Eastern</desc></valItem>
+                            <valItem ident="deu"><desc>German</desc></valItem>
+                            <valItem ident="eng"><desc>English</desc></valItem>    
+                            <valItem ident="fra-Latn"><desc>French</desc></valItem>
+                            <valItem ident="ind-Latn"><desc>Indonesian</desc></valItem>
+                            <valItem ident="jav-Latn"><desc>Javanese</desc></valItem>
+                            <valItem ident="jpn-Latn"><desc>Japanese</desc></valItem>
+                            <valItem ident="kan-Latn"><desc>Kannada</desc></valItem>
+                            <valItem ident="kaw-Latn"><desc>Kawi</desc></valItem>
+                            <valItem ident="khm-Latn"><desc>Khmer</desc></valItem>
+                            <valItem ident="kxm-Latn"><desc>Khmer, Northern</desc></valItem>
+                            <valItem ident="mya-Latn"><desc>Burmese</desc></valItem>
+                            <valItem ident="nld"><desc>Dutch</desc></valItem>
+                            <valItem ident="obr-Latn"><desc>Burmese, Old</desc></valItem>
+                            <valItem ident="ocm-Latn"><desc>Cham, Old</desc></valItem>
+                            <valItem ident="okz-Latn"><desc>Khmer, Old</desc></valItem>
+                            <valItem ident="omx-Latn"><desc>Mon, Old</desc></valItem>
+                            <valItem ident="omy-Latn"><desc>Malay, Old</desc></valItem>
+                            <valItem ident="osn-Latn"><desc>Sundanese, Old</desc></valItem>
+                            <valItem ident="pli-Latn"><desc>Pali</desc></valItem>
+                            <valItem ident="pra-Latn"><desc>Prakrit languages</desc></valItem>
+                            <valItem ident="pyx-Latn"><desc>Pyu (Myanmar)</desc></valItem>
+                            <valItem ident="san-Latn"><desc>Sanskrit</desc></valItem>
+                            <valItem ident="sas-Latn"><desc>Sasak</desc></valItem>
+                            <valItem ident="tam-Latn"><desc>Tamil</desc></valItem>
+                            <valItem ident="tel-Latn"><desc>Telugu</desc></valItem>
+                            <valItem ident="tgl-Latn"><desc>Tagalog</desc></valItem>
+                            <valItem ident="tha-Latn"><desc>Thai</desc></valItem>
+                            <valItem ident="und"><desc>Undetermined</desc></valItem>
+                            <valItem ident="vie-Latn"><desc>Vietnamese</desc></valItem>
+                            <valItem ident="xhm-Latn"><desc>Khmer, Middle (1400 to 1850 CE)</desc></valItem>
+                            <valItem ident="zlm-Latn"><desc>Malay (individual language)</desc></valItem>
+                        </valList>
+                    </content>
+                </dataSpec>
+                <dataSpec ident="dharma.indic_script">
                     <content>
                         <sequence>
                             <alternate>
@@ -221,7 +263,6 @@
                     </content>
                 </dataSpec>
                 <elementSpec ident="add" module="core" mode="change">
-
                     <attList>
                         <attDef ident="place" mode="change" usage="req">
                             <valList type="closed" mode="replace">
@@ -330,12 +371,17 @@
                     </constraintSpec>
                     <attList>
                         <attDef ident="type" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="apparatus"/>
                                 <valItem ident="bibliography"/>
                                 <valItem ident="commentary"/>
                                 <valItem ident="edition"/>
-                                <valItem ident="textpart"/>
+                                <valItem ident="textpart">
+                                    <desc>boxlike partition</desc>
+                                </valItem>
                                 <valItem ident="translation"/>
                             </valList>
                         </attDef>
@@ -353,6 +399,7 @@
                         <attDef ident="part" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="real" mode="delete"/>
+                        <attDef ident="resp" mode="delete"/>
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="rhyme" mode="delete"/>
                         <attDef ident="sameAs" mode="delete"/>
@@ -362,9 +409,14 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="n" mode="change">
+                            <datatype>
+                                <dataRef name="string" restriction="[^ ]+"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="rend" mode="change">
                             <datatype>
-                                <dataRef key="string"/>
+                                <dataRef name="string"/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="bt-rotated">
@@ -399,6 +451,9 @@
                             </valList>
                         </attDef>
                         <attDef ident="style" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="text-align: right"/>
                                 <valItem ident="text-align: center"/>
@@ -407,106 +462,48 @@
                             </valList>
                         </attDef>
                         <attDef ident="subtype" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="fragment"/>
-                                <valItem ident="face"/>
-                                <valItem ident="faces"/>
-                                <valItem ident="zone"/>
-                                <valItem ident="column"/>
-                                <valItem ident="item"/>
-                                <valItem ident="trial"/>
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="fragment">
+                                    <desc>for fragments bearing non-contiguous text</desc>
+                                </valItem>
+                                <valItem ident="face">
+                                    <desc>for a physically contiguous surface of a three-dimensional object of any shape and any
+                                        number of sides</desc>
+                                </valItem>
+                                <valItem ident="faces">
+                                    <desc>in texts where each line of a textpart continues across two or more surfaces such as the
+                                        frontal and lateral face of a four-sided stele</desc>
+                                </valItem>
+                                <valItem ident="zone">
+                                    <desc>for visually distinct zones on a single two-dimensional surface</desc>
+                                </valItem>
+                                <valItem ident="column">
+                                    <desc>for zones placed side by side and generally taller than they are wide (as in newspaper
+                                        columns)</desc>
+                                </valItem>
+                                <valItem ident="item">
+                                    <desc>for physically distinct objects such as architectural elements, e.g. when an inscription is
+                                        engraved on two pillars</desc>
+                                </valItem>
+                                <valItem ident="trial">
+                                    <desc>to explicitly flag short, often unintelligible, pieces of text outside the campus of the
+                                        main inscription and presumably not visible when the inscription was displayed in its original
+                                        setting, which you judge to be trial engravings</desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="class:57471">
-                                    <desc>Arabic script</desc>
-                                </valItem>
-                                <valItem ident="class:70417">
-                                    <desc>Jawi script - Narrower concept of Arabic Script</desc>
-                                </valItem>
-                                <valItem ident="class:83217">
-                                    <desc>Brāhmī and derivatives</desc>
-                                </valItem>
-                                <valItem ident="class:83223">
-                                    <desc>northern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83229">
-                                    <desc>Gauḍī</desc>
-                                </valItem>
-                                <valItem ident="class:38771">
-                                    <desc>Nāgarī</desc>
-                                </valItem>
-                                <valItem ident="class:38774">
-                                    <desc>Siddhamātr̥kā </desc>
-                                </valItem>
-                                <valItem ident="class:83227">
-                                    <desc>southeast Asian Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83239">
-                                    <desc>Balinese script</desc>
-                                </valItem>
-                                <valItem ident="class:38767">
-                                    <desc>Batak script </desc>
-                                </valItem>
-                                <valItem ident="class:83233">
-                                    <desc>Cam script</desc>
-                                </valItem>
-                                <valItem ident="class:38769">
-                                    <desc>Kawi script</desc>
-                                </valItem>
-                                <valItem ident="class:83231">
-                                    <desc>Khmer script</desc>
-                                </valItem>
-                                <valItem ident="class:83235">
-                                    <desc>Mon-Burmese script</desc>
-                                </valItem>
-                                <valItem ident="class:83241">
-                                    <desc>Old West Javanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83237">
-                                    <desc>Pyu script</desc>
-                                </valItem>
-                                <valItem ident="class:57470">
-                                    <desc>Sundanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83225">
-                                    <desc>southern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:38768">
-                                    <desc>Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:38776">
-                                    <desc>Tamil script</desc>
-                                </valItem>
-                                <valItem ident="class:57475">
-                                    <desc>Tamil with Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:70420">
-                                    <desc>Vaṭṭeḻuṭṭu</desc>
-                                </valItem>
-                                <valItem ident="class:83221">
-                                    <desc>Chinese Script</desc>
-                                </valItem>
-                                <valItem ident="class:83219">
-                                    <desc>Kharoṣṭhī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83207">
-                                    <desc>early Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83211">
-                                    <desc>late Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83209">
-                                    <desc>middle Brāhmi</desc>
-                                </valItem>
-                                <valItem ident="maturity:83213">
-                                    <desc>regional Brāhmī-derived script</desc>
-                                </valItem>
-                                <valItem ident="maturity:83215">
-                                    <desc>vernacular Brāhmī-derived script</desc>
-                                </valItem>
-                            </valList>
+                            <datatype>
+                                <dataRef key="dharma.indic_script"/>
+                            </datatype>
+                        </attDef>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -1298,6 +1295,11 @@
                                 <valItem ident="wide"/>
                             </valList>
                         </attDef>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="part" mode="change">
                             <valList type="closed" mode="replace">
                                 <!--EGD 2.1.3 Incomplete text containers-->
@@ -1316,96 +1318,9 @@
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
-                            <!--we ignore this-->
-                            <valList type="open" mode="replace">
-                                <valItem ident="class:57471">
-                                    <desc>Arabic script</desc>
-                                </valItem>
-                                <valItem ident="class:70417">
-                                    <desc>Jawi script - Narrower concept of Arabic Script</desc>
-                                </valItem>
-                                <valItem ident="class:83217">
-                                    <desc>Brāhmī and derivatives</desc>
-                                </valItem>
-                                <valItem ident="class:83223">
-                                    <desc>northern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83229">
-                                    <desc>Gauḍī</desc>
-                                </valItem>
-                                <valItem ident="class:38771">
-                                    <desc>Nāgarī</desc>
-                                </valItem>
-                                <valItem ident="class:38774">
-                                    <desc>Siddhamātr̥kā </desc>
-                                </valItem>
-                                <valItem ident="class:83227">
-                                    <desc>southeast Asian Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83239">
-                                    <desc>Balinese script</desc>
-                                </valItem>
-                                <valItem ident="class:38767">
-                                    <desc>Batak script </desc>
-                                </valItem>
-                                <valItem ident="class:83233">
-                                    <desc>Cam script</desc>
-                                </valItem>
-                                <valItem ident="class:38769">
-                                    <desc>Kawi script</desc>
-                                </valItem>
-                                <valItem ident="class:83231">
-                                    <desc>Khmer script</desc>
-                                </valItem>
-                                <valItem ident="class:83235">
-                                    <desc>Mon-Burmese script</desc>
-                                </valItem>
-                                <valItem ident="class:83241">
-                                    <desc>Old West Javanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83237">
-                                    <desc>Pyu script</desc>
-                                </valItem>
-                                <valItem ident="class:57470">
-                                    <desc>Sundanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83225">
-                                    <desc>southern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:38768">
-                                    <desc>Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:38776">
-                                    <desc>Tamil script</desc>
-                                </valItem>
-                                <valItem ident="class:57475">
-                                    <desc>Tamil with Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:70420">
-                                    <desc>Vaṭṭeḻuṭṭu</desc>
-                                </valItem>
-                                <valItem ident="class:83221">
-                                    <desc>Chinese Script</desc>
-                                </valItem>
-                                <valItem ident="class:83219">
-                                    <desc>Kharoṣṭhī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83207">
-                                    <desc>early Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83211">
-                                    <desc>late Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83209">
-                                    <desc>middle Brāhmi</desc>
-                                </valItem>
-                                <valItem ident="maturity:83213">
-                                    <desc>regional Brāhmī-derived script</desc>
-                                </valItem>
-                                <valItem ident="maturity:83215">
-                                    <desc>vernacular Brāhmī-derived script</desc>
-                                </valItem>
-                            </valList>
+                            <datatype>
+                                <dataRef key="dharma.indic_script"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -1434,6 +1349,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="app" module="textcrit" mode="change">
@@ -1636,6 +1556,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="body" module="textstructure" mode="change">
@@ -2117,7 +2042,11 @@
                         <attDef ident="unit" mode="delete"/>
                         <attDef ident="when-iso" mode="delete"/>
                         <attDef ident="xml:base" mode="delete"/>
-                        <attDef ident="xml:lang" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
@@ -2176,44 +2105,6 @@
                         </attDef>
                     </attList>
                 </elementSpec>
-                <classSpec ident="att.global" type="atts" mode="change" module="tei">
-                    <attList>
-                        <attDef ident="xml:lang" mode="change">
-                            <!-- MM: must generate this -->
-                            <valList type="open" mode="replace">
-                                <valItem ident="und"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="nld"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
-                            </valList>
-                        </attDef>
-                    </attList>
-                </classSpec>
                 <elementSpec ident="fileDesc" module="header" mode="change">
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -2263,6 +2154,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="forename" module="namesdates" mode="change">
@@ -2602,7 +2498,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="xml:lang" mode="change" usage="req"> </attDef>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="idno" module="header" mode="change">
@@ -2997,6 +2897,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="lg" module="core" mode="change">
@@ -3109,96 +3014,15 @@
                                 <valItem ident="F"/>
                             </valList>
                         </attDef>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="rendition" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="class:57471">
-                                    <desc>Arabic script</desc>
-                                </valItem>
-                                <valItem ident="class:70417">
-                                    <desc>Jawi script - Narrower concept of Arabic Script</desc>
-                                </valItem>
-                                <valItem ident="class:83217">
-                                    <desc>Brāhmī and derivatives</desc>
-                                </valItem>
-                                <valItem ident="class:83223">
-                                    <desc>northern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83229">
-                                    <desc>Gauḍī</desc>
-                                </valItem>
-                                <valItem ident="class:38771">
-                                    <desc>Nāgarī</desc>
-                                </valItem>
-                                <valItem ident="class:38774">
-                                    <desc>Siddhamātr̥kā </desc>
-                                </valItem>
-                                <valItem ident="class:83227">
-                                    <desc>southeast Asian Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83239">
-                                    <desc>Balinese script</desc>
-                                </valItem>
-                                <valItem ident="class:38767">
-                                    <desc>Batak script </desc>
-                                </valItem>
-                                <valItem ident="class:83233">
-                                    <desc>Cam script</desc>
-                                </valItem>
-                                <valItem ident="class:38769">
-                                    <desc>Kawi script</desc>
-                                </valItem>
-                                <valItem ident="class:83231">
-                                    <desc>Khmer script</desc>
-                                </valItem>
-                                <valItem ident="class:83235">
-                                    <desc>Mon-Burmese script</desc>
-                                </valItem>
-                                <valItem ident="class:83241">
-                                    <desc>Old West Javanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83237">
-                                    <desc>Pyu script</desc>
-                                </valItem>
-                                <valItem ident="class:57470">
-                                    <desc>Sundanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83225">
-                                    <desc>southern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:38768">
-                                    <desc>Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:38776">
-                                    <desc>Tamil script</desc>
-                                </valItem>
-                                <valItem ident="class:57475">
-                                    <desc>Tamil with Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:70420">
-                                    <desc>Vaṭṭeḻuṭṭu</desc>
-                                </valItem>
-                                <valItem ident="class:83221">
-                                    <desc>Chinese Script</desc>
-                                </valItem>
-                                <valItem ident="class:83219">
-                                    <desc>Kharoṣṭhī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83207">
-                                    <desc>early Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83211">
-                                    <desc>late Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83209">
-                                    <desc>middle Brāhmi</desc>
-                                </valItem>
-                                <valItem ident="maturity:83213">
-                                    <desc>regional Brāhmī-derived script</desc>
-                                </valItem>
-                                <valItem ident="maturity:83215">
-                                    <desc>vernacular Brāhmī-derived script</desc>
-                                </valItem>
-                            </valList>
+                            <datatype>
+                                <dataRef key="dharma.indic_script"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -3595,6 +3419,11 @@
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="resp" mode="change"/>
                         <attDef ident="source" mode="change"/>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="num" module="core" mode="change">
@@ -3709,6 +3538,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="rendition" mode="change">
                             <valList type="open" mode="replace">
                                 <valItem ident="class:57471">
@@ -4898,95 +4732,9 @@
                             </valList>
                         </attDef>
                         <attDef ident="rendition" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="class:57471">
-                                    <desc>Arabic script</desc>
-                                </valItem>
-                                <valItem ident="class:70417">
-                                    <desc>Jawi script - Narrower concept of Arabic Script</desc>
-                                </valItem>
-                                <valItem ident="class:83217">
-                                    <desc>Brāhmī and derivatives</desc>
-                                </valItem>
-                                <valItem ident="class:83223">
-                                    <desc>northern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83229">
-                                    <desc>Gauḍī</desc>
-                                </valItem>
-                                <valItem ident="class:38771">
-                                    <desc>Nāgarī</desc>
-                                </valItem>
-                                <valItem ident="class:38774">
-                                    <desc>Siddhamātr̥kā </desc>
-                                </valItem>
-                                <valItem ident="class:83227">
-                                    <desc>southeast Asian Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:83239">
-                                    <desc>Balinese script</desc>
-                                </valItem>
-                                <valItem ident="class:38767">
-                                    <desc>Batak script </desc>
-                                </valItem>
-                                <valItem ident="class:83233">
-                                    <desc>Cam script</desc>
-                                </valItem>
-                                <valItem ident="class:38769">
-                                    <desc>Kawi script</desc>
-                                </valItem>
-                                <valItem ident="class:83231">
-                                    <desc>Khmer script</desc>
-                                </valItem>
-                                <valItem ident="class:83235">
-                                    <desc>Mon-Burmese script</desc>
-                                </valItem>
-                                <valItem ident="class:83241">
-                                    <desc>Old West Javanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83237">
-                                    <desc>Pyu script</desc>
-                                </valItem>
-                                <valItem ident="class:57470">
-                                    <desc>Sundanese script</desc>
-                                </valItem>
-                                <valItem ident="class:83225">
-                                    <desc>southern class Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="class:38768">
-                                    <desc>Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:38776">
-                                    <desc>Tamil script</desc>
-                                </valItem>
-                                <valItem ident="class:57475">
-                                    <desc>Tamil with Grantha</desc>
-                                </valItem>
-                                <valItem ident="class:70420">
-                                    <desc>Vaṭṭeḻuṭṭu</desc>
-                                </valItem>
-                                <valItem ident="class:83221">
-                                    <desc>Chinese Script</desc>
-                                </valItem>
-                                <valItem ident="class:83219">
-                                    <desc>Kharoṣṭhī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83207">
-                                    <desc>early Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83211">
-                                    <desc>late Brāhmī</desc>
-                                </valItem>
-                                <valItem ident="maturity:83209">
-                                    <desc>middle Brāhmi</desc>
-                                </valItem>
-                                <valItem ident="maturity:83213">
-                                    <desc>regional Brāhmī-derived script</desc>
-                                </valItem>
-                                <valItem ident="maturity:83215">
-                                    <desc>vernacular Brāhmī-derived script</desc>
-                                </valItem>
-                            </valList>
+                            <datatype>
+                                <dataRef key="dharma.indic_script"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -5184,6 +4932,7 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="term" module="core" mode="change">
@@ -5435,6 +5184,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="xml:lang" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef key="dharma.language"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="code" module="tagdocs" mode="change">
@@ -5446,7 +5200,7 @@
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
-                        <attDef ident="lang" mode="delete"/>
+                        <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="n" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
