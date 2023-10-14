@@ -3350,26 +3350,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="milestone" module="core" mode="change">
-                    <constraintSpec scheme="schematron" ident="att-unit-n">
-                        <constraint><sch:rule context="tei:milestone"><sch:report
-                                    test="not(@unit and @n)"> for milestone using the attribut
-                                    @unit, the attribute @n is
-                                mandatory</sch:report></sch:rule><sch:rule
-                                context="tei:milestone[@type='yati']"><sch:assert
-                                    test="@type='yati' and @break='no'">Caesuras work with both
-                                    @type='yati' and @break='no'.</sch:assert></sch:rule><sch:rule
-                                context="tei:milestone[@type='ref']"><sch:assert
-                                    test="ancestor::tei:div[@type='translation']">@type='ref' can
-                                    only be used inside the translation part of the
-                                    edition</sch:assert></sch:rule><sch:rule
-                                context="tei:milestone[@type='ref']"><sch:assert
-                                    test="@unit='stanza' or @unit='line'">@type='ref' requires the
-                                    use of @unit="stanza" or
-                                @unit="line'</sch:assert></sch:rule><sch:rule
-                                context="tei:milestone[@type='ref']"><sch:report test="not(@n)">@n
-                                    is mandatory with
-                            milestone/@type="ref"</sch:report></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -3423,13 +3403,36 @@
                             <defaultVal>column</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="block"/>
-                                <valItem ident="column"/>
-                                <valItem ident="face"/>
-                                <valItem ident="faces"/>
+                                <valItem ident="column">
+                                    <desc>
+                                        for zones placed side by side and generally taller than they are wide (as in newspaper
+                                        columns)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="face">
+                                    <desc>for a physically contiguous surface of a three-dimensional object of any shape and any
+                                        number of sides
+                                    </desc>
+                                </valItem>
+                                <valItem ident="faces">
+                                    <desc>
+                                        in texts where each line of a pagelike zone runs across two or more surfaces such as the
+                                        frontal and lateral face of a four-sided stele
+                                    </desc>
+                                </valItem>
                                 <valItem ident="fragment"/>
-                                <valItem ident="item"/>
+                                <valItem ident="item">
+                                    <desc>
+                                        for physically distinct objects such as architectural elements, e.g. when an inscription is
+                                        engraved on two pillars or doorjambs
+                                    </desc>
+                                </valItem>
                                 <valItem ident="segment"/>
-                                <valItem ident="zone"/>
+                                <valItem ident="zone">
+                                    <desc>
+                                        for visually distinct zones on a single two-dimensional surface
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="n" mode="change" usage="req">
