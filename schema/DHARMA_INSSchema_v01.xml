@@ -78,7 +78,7 @@
                 source="https://www.tei-c.org/Vault/P5/3.6.0/xml/tei/odd/p5subset.xml">
 
                 <moduleRef key="core"
-                    except="addrLine address analytic biblScope binaryObject cb distinct divGen emph gb headItem headLabel measureGrp media meeting mentioned postBox postCode relatedItem said soCalled sp street teiCorpus"/>
+                    except="addrLine address analytic biblScope biblStruct binaryObject cb distinct divGen emph gb headItem headLabel measureGrp media meeting mentioned postBox postCode relatedItem said soCalled sp street teiCorpus"/>
                 <moduleRef key="tei"/>
                 <moduleRef key="header" except="appInfo application xenoData"/>
                 <moduleRef key="textstructure"
@@ -110,7 +110,7 @@
                     <content>
                         <alternate maxOccurs="unbounded">
                             <dataRef name="string" restriction="part:[a-z]{4}"/>
-                                <!-- TODO fill with
+                            <!-- TODO fill with
                                     <valList type="closed">
                                         sqlite3 dbs/people.sqlite "select printf('<valItem ident="%s"><desc>%s</desc></valItem>', dh_id, print_name) from people_main"
                                     </valList>
@@ -221,54 +221,40 @@
                     </content>
                 </dataSpec>
                 <elementSpec ident="add" module="core" mode="change">
-                    
+
                     <attList>
                         <attDef ident="place" mode="change" usage="req">
                             <valList type="closed" mode="replace">
                                 <valItem ident="inline">
-                                    <desc>
-                                        addition made within the original text (in textu)
-                                    </desc>
+                                    <desc> addition made within the original text (in textu) </desc>
                                 </valItem>
                                 <valItem ident="below">
-                                    <desc>
-                                        addition below the line (subscr.)
-                                    </desc>
+                                    <desc> addition below the line (subscr.) </desc>
                                 </valItem>
                                 <valItem ident="above">
-                                    <desc>
-                                        addition above the line (suprascr.)
-                                    </desc>
+                                    <desc> addition above the line (suprascr.) </desc>
                                 </valItem>
                                 <valItem ident="top">
-                                    <desc>
-                                        addition in the top margin (in mg. sup. = in margine superiore)
-                                    </desc>
+                                    <desc> addition in the top margin (in mg. sup. = in margine
+                                        superiore) </desc>
                                 </valItem>
                                 <valItem ident="bottom">
-                                    <desc>
-                                        addition in the bottom margin (in mg. inf. = in margine inferiore)
-                                    </desc>
+                                    <desc> addition in the bottom margin (in mg. inf. = in margine
+                                        inferiore) </desc>
                                 </valItem>
                                 <valItem ident="left">
-                                    <desc>
-                                        addition in the left margin (in mg. = in margine)
-                                    </desc>
+                                    <desc> addition in the left margin (in mg. = in margine) </desc>
                                 </valItem>
                                 <valItem ident="right">
-                                    <desc>
-                                        addition in the right margin (in mg. = in margine)
+                                    <desc> addition in the right margin (in mg. = in margine)
                                     </desc>
                                 </valItem>
                                 <valItem ident="overstrike">
-                                    <desc>
-                                        addition made in the space where a previous string of text has been erased
-                                        (in ras. = in rasura)
-                                    </desc>
+                                    <desc> addition made in the space where a previous string of
+                                        text has been erased (in ras. = in rasura) </desc>
                                 </valItem>
                                 <valItem ident="unspecified">
-                                    <desc>
-                                        no information on the place is currently available
+                                    <desc> no information on the place is currently available
                                     </desc>
                                 </valItem>
                             </valList>
@@ -315,10 +301,9 @@
                         <attDef ident="rend" mode="change">
                             <valList type="closed" mode="replace">
                                 <valItem ident="mark">
-                                    <desc>
-                                        when the addition is marked in the witness with any non-alphanumeric mark (such as the
-                                        cross-shaped called kākapada in Sanskrit)
-                                    </desc>
+                                    <desc> when the addition is marked in the witness with any
+                                        non-alphanumeric mark (such as the cross-shaped called
+                                        kākapada in Sanskrit) </desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -338,8 +323,7 @@
                                     > At least two divs @type=textpart are expected in the
                                     edition</sch:report><sch:report
                                     test="@type='translation' and @resp and @source">@resp and
-                                    @source can not be used
-                                    together</sch:report><sch:report
+                                    @source can not be used together</sch:report><sch:report
                                     test="@type='translation' and not(@resp or @source)">@resp or
                                     @source is expected for
                                 div[@type='translation']</sch:report></sch:rule></constraint>
@@ -384,46 +368,33 @@
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="bt-rotated">
-                                    <desc>
-                                        written vertically from bottom to top, with the tops
-                                        of characters facing left
-                                    </desc>
+                                    <desc> written vertically from bottom to top, with the tops of
+                                        characters facing left </desc>
                                 </valItem>
                                 <valItem ident="tb-rotated">
-                                    <desc>
-                                        written vertically from top to bottom, with the tops
-                                        of characters facing right
-                                    </desc>
+                                    <desc> written vertically from top to bottom, with the tops of
+                                        characters facing right </desc>
                                 </valItem>
                                 <valItem ident="bt-upright">
-                                    <desc>
-                                        written vertically from bottom to top, with the tops
-                                        of characters facing upward
-                                    </desc>
+                                    <desc> written vertically from bottom to top, with the tops of
+                                        characters facing upward </desc>
                                 </valItem>
                                 <valItem ident="tb-upright">
-                                    <desc>
-                                        written vertically from top to bottom, with the tops
-                                        of characters facing upward
-                                    </desc>
+                                    <desc> written vertically from top to bottom, with the tops of
+                                        characters facing upward </desc>
                                 </valItem>
                                 <valItem ident="rl-upright">
-                                    <desc>
-                                        written horizontally from right to left, with
-                                        characters in their regular orientation
-                                    </desc>
+                                    <desc> written horizontally from right to left, with characters
+                                        in their regular orientation </desc>
                                 </valItem>
                                 <valItem ident="rl-flipper">
-                                    <desc>
-                                        written horizontally from right to left, with
-                                        characters mirrored around their vertical axis as in true boustrophedon
+                                    <desc> written horizontally from right to left, with characters
+                                        mirrored around their vertical axis as in true boustrophedon
                                     </desc>
                                 </valItem>
                                 <valItem ident="rl-rotated">
-                                    <desc>
-                                        written horizontally from right to left, with the tops
-                                        of characters facing downward
-                                    </desc>
+                                    <desc> written horizontally from right to left, with the tops of
+                                        characters facing downward </desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -859,10 +830,11 @@
                     <attList>
                         <attDef ident="break" mode="change" usage="opt">
                             <datatype>
-                                <dataRef key="teidata.enumerated"/>
+                                <dataRef name="string"/>
                             </datatype>
-                            <defaultVal>no</defaultVal>
+                            <defaultVal>yes</defaultVal>
                             <valList type="closed" mode="replace">
+                                <valItem ident="yes"/>
                                 <valItem ident="no"/>
                             </valList>
                         </attDef>
@@ -890,53 +862,44 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="n" mode="change"/>
+                        <attDef ident="n" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string" restriction="[^ ]+"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="rend" mode="change">
                             <datatype>
                                 <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="bt-rotated">
-                                    <desc>
-                                        written vertically from bottom to top, with the tops
-                                        of characters facing left
-                                    </desc>
+                                    <desc> written vertically from bottom to top, with the tops of
+                                        characters facing left </desc>
                                 </valItem>
                                 <valItem ident="tb-rotated">
-                                    <desc>
-                                        written vertically from top to bottom, with the tops
-                                        of characters facing right
-                                    </desc>
+                                    <desc> written vertically from top to bottom, with the tops of
+                                        characters facing right </desc>
                                 </valItem>
                                 <valItem ident="bt-upright">
-                                    <desc>
-                                        written vertically from bottom to top, with the tops
-                                        of characters facing upward
-                                    </desc>
+                                    <desc> written vertically from bottom to top, with the tops of
+                                        characters facing upward </desc>
                                 </valItem>
                                 <valItem ident="tb-upright">
-                                    <desc>
-                                        written vertically from top to bottom, with the tops
-                                        of characters facing upward
-                                    </desc>
+                                    <desc> written vertically from top to bottom, with the tops of
+                                        characters facing upward </desc>
                                 </valItem>
                                 <valItem ident="rl-upright">
-                                    <desc>
-                                        written horizontally from right to left, with
-                                        characters in their regular orientation
-                                    </desc>
+                                    <desc> written horizontally from right to left, with characters
+                                        in their regular orientation </desc>
                                 </valItem>
                                 <valItem ident="rl-flipper">
-                                    <desc>
-                                        written horizontally from right to left, with
-                                        characters mirrored around their vertical axis as in true boustrophedon
+                                    <desc> written horizontally from right to left, with characters
+                                        mirrored around their vertical axis as in true boustrophedon
                                     </desc>
                                 </valItem>
                                 <valItem ident="rl-rotated">
-                                    <desc>
-                                        written horizontally from right to left, with the tops
-                                        of characters facing downward
-                                    </desc>
+                                    <desc> written horizontally from right to left, with the tops of
+                                        characters facing downward </desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -1339,20 +1302,16 @@
                             <valList type="closed" mode="replace">
                                 <!--EGD 2.1.3 Incomplete text containers-->
                                 <valItem ident="I">
-                                    <desc>
-                                        for the initial part of a container (the end of which is lost or elsewhere)
-                                    </desc>
+                                    <desc> for the initial part of a container (the end of which is
+                                        lost or elsewhere) </desc>
                                 </valItem>
                                 <valItem ident="M">
-                                    <desc>
-                                        for the medial part of a container (both the beginning and end of which are lost or
-                                        elsewhere)
-                                    </desc>
+                                    <desc> for the medial part of a container (both the beginning
+                                        and end of which are lost or elsewhere) </desc>
                                 </valItem>
                                 <valItem ident="F">
-                                    <desc>
-                                        for the final part of a container (the beginning of which lost or elsewhere)
-                                    </desc>
+                                    <desc> for the final part of a container (the beginning of which
+                                        lost or elsewhere) </desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -1632,15 +1591,13 @@
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="omitname">
-                                    <desc>
-                                        if the name of the author(s) is an integral part of your text and must thus appear
-                                        independently of the citation
+                                    <desc> if the name of the author(s) is an integral part of your
+                                        text and must thus appear independently of the citation
                                     </desc>
                                 </valItem>
                                 <valItem ident="ibid">
-                                    <desc>
-                                        if you wish to show “ibid.” instead of the name of the author(s)
-                                    </desc>
+                                    <desc> if you wish to show “ibid.” instead of the name of the
+                                        author(s) </desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -2394,46 +2351,33 @@
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="bt-rotated">
-                                    <desc>
-                                        written vertically from bottom to top, with the tops
-                                        of characters facing left
-                                    </desc>
+                                    <desc> written vertically from bottom to top, with the tops of
+                                        characters facing left </desc>
                                 </valItem>
                                 <valItem ident="tb-rotated">
-                                    <desc>
-                                        written vertically from top to bottom, with the tops
-                                        of characters facing right
-                                    </desc>
+                                    <desc> written vertically from top to bottom, with the tops of
+                                        characters facing right </desc>
                                 </valItem>
                                 <valItem ident="bt-upright">
-                                    <desc>
-                                        written vertically from bottom to top, with the tops
-                                        of characters facing upward
-                                    </desc>
+                                    <desc> written vertically from bottom to top, with the tops of
+                                        characters facing upward </desc>
                                 </valItem>
                                 <valItem ident="tb-upright">
-                                    <desc>
-                                        written vertically from top to bottom, with the tops
-                                        of characters facing upward
-                                    </desc>
+                                    <desc> written vertically from top to bottom, with the tops of
+                                        characters facing upward </desc>
                                 </valItem>
                                 <valItem ident="rl-upright">
-                                    <desc>
-                                        written horizontally from right to left, with
-                                        characters in their regular orientation
-                                    </desc>
+                                    <desc> written horizontally from right to left, with characters
+                                        in their regular orientation </desc>
                                 </valItem>
                                 <valItem ident="rl-flipper">
-                                    <desc>
-                                        written horizontally from right to left, with
-                                        characters mirrored around their vertical axis as in true boustrophedon
+                                    <desc> written horizontally from right to left, with characters
+                                        mirrored around their vertical axis as in true boustrophedon
                                     </desc>
                                 </valItem>
                                 <valItem ident="rl-rotated">
-                                    <desc>
-                                        written horizontally from right to left, with the tops
-                                        of characters facing downward
-                                    </desc>
+                                    <desc> written horizontally from right to left, with the tops of
+                                        characters facing downward </desc>
                                 </valItem>
                                 <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
@@ -3374,7 +3318,7 @@
                                 <valItem ident="secondary"/>
                             </valList>
                         </attDef>
-                            
+
                     </attList>
                 </elementSpec>
                 <elementSpec ident="measure" module="core" mode="change">
@@ -3452,32 +3396,46 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="break" mode="change">
-                            <defaultVal>no</defaultVal>
+                        <attDef ident="break" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <defaultVal>yes</defaultVal>
                             <valList type="closed" mode="replace">
+                                <valItem ident="yes"/>
                                 <valItem ident="no"/>
                             </valList>
                         </attDef>
-                        <attDef ident="type" mode="change">
-                            <valList type="open" mode="replace">
-                                <valItem ident="yati"/>
-                                <valItem ident="pageLike"/>
+                        <attDef ident="type" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <defaultVal>gridlike</defaultVal>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="pagelike"/>
+                                <valItem ident="gridlike"/>
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change" usage="req">
-                            <valList type="open" mode="replace">
-                                <valItem ident="fragment"/>
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <defaultVal>column</defaultVal>
+                            <valList type="closed" mode="replace">
+                                <valItem ident="block"/>
+                                <valItem ident="column"/>
                                 <valItem ident="face"/>
                                 <valItem ident="faces"/>
-                                <valItem ident="zone"/>
-                                <valItem ident="column"/>
-                                <valItem ident="block"/>
-                                <valItem ident="surface"/>
+                                <valItem ident="fragment"/>
                                 <valItem ident="item"/>
-                                <valItem ident="area"/>
-                                <valItem ident="line"/>
-                                <valItem ident="stanza"/>
+                                <valItem ident="segment"/>
+                                <valItem ident="zone"/>
                             </valList>
+                        </attDef>
+                        <attDef ident="n" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string" restriction="[^ ]+"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
@@ -3869,9 +3827,18 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="break" mode="change">
-                            <defaultVal>no</defaultVal>
+                        <attDef ident="n" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string" restriction="[^ ]+"/>
+                            </datatype>
+                        </attDef>
+                        <attDef ident="break" mode="change" usage="opt">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <defaultVal>yes</defaultVal>
                             <valList type="closed" mode="replace">
+                                <valItem ident="yes"/>
                                 <valItem ident="no"/>
                             </valList>
                         </attDef>
@@ -5423,14 +5390,17 @@
                                     <desc>text struck through or cross-hatched</desc>
                                 </valItem>
                                 <valItem ident="ui">
-                                    <desc>combined application of vowel markers u and i to characters to be deleted</desc>
+                                    <desc>combined application of vowel markers u and i to
+                                        characters to be deleted</desc>
                                 </valItem>
                                 <valItem ident="other">
                                     <desc>deletion marker other than strikeout and ui</desc>
                                 </valItem>
                                 <valItem ident="corrected">
-                                    <desc>the text to be replaced was neither erased, nor marked for cancellation (i.e. it is either
-                                        overwritten with the post-correction text or left in place without any apparent alteration)</desc>
+                                    <desc>the text to be replaced was neither erased, nor marked for
+                                        cancellation (i.e. it is either overwritten with the
+                                        post-correction text or left in place without any apparent
+                                        alteration)</desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -5652,9 +5622,8 @@
                         <attDef ident="key" mode="delete"/>
                         <attDef ident="nymRef" mode="delete"/>
                         <attDef ident="role" mode="change">
-                            <desc>
-                                may be used to specify further information about the entity referenced by this name
-                            </desc>
+                            <desc> may be used to specify further information about the entity
+                                referenced by this name </desc>
                             <datatype>
                                 <dataRef name="string"/>
                             </datatype>
@@ -7055,6 +7024,7 @@
                 <elementSpec ident="imprint" mode="delete"/>
                 <elementSpec ident="variantEncoding" mode="delete"/>
                 <elementSpec ident="tagsDecl" mode="delete"/>
+                <elementSpec ident="stage" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
