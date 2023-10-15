@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-14T23:43:21Z. .
+Schema generated from ODD source 2023-10-15T10:10:36Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -2166,7 +2166,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -2242,12 +2242,70 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
          </optional>
          <optional>
             <attribute name="rendition">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
-Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
                <list>
-                  <oneOrMore>
-                     <data type="anyURI"/>
-                  </oneOrMore>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic script</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi script - Narrower concept of Arabic Script</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">northern class Brāhmī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā </a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese script</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak script </a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam script</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi script</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer script</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese script</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese script</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu script</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese script</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil script</a:documentation>
+                     <value>class:57475</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil with Grantha</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese Script</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">middle Brāhmi</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">vernacular Brāhmī-derived script</a:documentation>
+                  </choice>
                </list>
             </attribute>
          </optional>
@@ -2277,7 +2335,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -2418,7 +2476,7 @@ Sample values include: 1] block</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -3477,7 +3535,7 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -3665,7 +3723,7 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -3910,7 +3968,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -4019,7 +4077,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -4145,7 +4203,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -4248,9 +4306,7 @@ Elements]</a:documentation>
          <empty/>
          <attribute name="n">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <data type="string">
-               <param name="pattern">[^ ]+</param>
-            </data>
+            <data type="token"/>
          </attribute>
          <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                     name="unit"
@@ -4311,9 +4367,7 @@ Elements]</a:documentation>
          <empty/>
          <attribute name="n">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <data type="string">
-               <param name="pattern">[^ ]+</param>
-            </data>
+            <data type="token"/>
          </attribute>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
@@ -4338,9 +4392,7 @@ Elements 7.2.5. Speech Contents]</a:documentation>
          <empty/>
          <attribute name="n">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <data type="string">
-               <param name="pattern">[^ ]+</param>
-            </data>
+            <data type="token"/>
          </attribute>
          <optional>
             <attribute name="rend">
@@ -4666,12 +4718,70 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
          </optional>
          <optional>
             <attribute name="rendition">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.
-Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:83223; 5] class:83229; 6] class:38771; 7] class:38774; 8] class:83227; 9] class:83239; 10] class:38767; 11] class:83233; 12] class:38769; 13] class:83231; 14] class:83235; 15] class:83241; 16] class:83237; 17] class:57470; 18] class:83225; 19] class:38768; 20] class:38776; 21] class:57475; 22] class:70420; 23] class:83221; 24] class:83219; 25] maturity:83207; 26] maturity:83211; 27] maturity:83209; 28] maturity:83213; 29] maturity:83215</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
                <list>
-                  <oneOrMore>
-                     <data type="anyURI"/>
-                  </oneOrMore>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic script</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi script - Narrower concept of Arabic Script</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">northern class Brāhmī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā </a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese script</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak script </a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam script</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi script</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer script</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese script</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese script</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu script</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese script</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil script</a:documentation>
+                     <value>class:57475</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil with Grantha</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese Script</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">middle Brāhmi</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">vernacular Brāhmī-derived script</a:documentation>
+                  </choice>
                </list>
             </attribute>
          </optional>
@@ -4777,13 +4887,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          <ref name="att.global.linking.attribute.corresp"/>
          <attribute name="n">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <choice>
-               <data type="double"/>
-               <data type="token">
-                  <param name="pattern">(\-?[\d]+/\-?[\d]+)</param>
-               </data>
-               <data type="decimal"/>
-            </choice>
+            <data type="token"/>
          </attribute>
          <optional>
             <attribute name="xml:lang">
@@ -4804,7 +4908,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -4881,7 +4985,70 @@ Sample values include: 1] grantha; 2] ornate; 3] large; 4] tall; 5] expanded; 6]
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
-               <empty/>
+               <list>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic script</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi script - Narrower concept of Arabic Script</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">northern class Brāhmī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā </a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese script</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak script </a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam script</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi script</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer script</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese script</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese script</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu script</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese script</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil script</a:documentation>
+                     <value>class:57475</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil with Grantha</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese Script</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">middle Brāhmi</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">vernacular Brāhmī-derived script</a:documentation>
+                  </choice>
+               </list>
             </attribute>
          </optional>
          <attribute name="met">
@@ -5277,7 +5444,7 @@ Sample values include: 1] filename</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -5464,13 +5631,12 @@ Sample values include: 1] filename</a:documentation>
       </report>
             </rule>
          </pattern>
+         <ref name="att.global.responsibility.attribute.resp"/>
          <ref name="att.global.source.attribute.source"/>
          <optional>
             <attribute name="n">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-               <data type="string">
-                  <param name="pattern">[^ ]+</param>
-               </data>
+               <data type="token"/>
             </attribute>
          </optional>
          <optional>
@@ -5492,7 +5658,7 @@ Sample values include: 1] filename</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -5592,7 +5758,6 @@ Sample values include: 1] filename</a:documentation>
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
-               <empty/>
             </attribute>
          </optional>
          <attribute name="type">
@@ -5735,7 +5900,7 @@ Sample values include: 1] filename</a:documentation>
          </sch:context>
          <attribute name="n">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-            <data type="string"/>
+            <data type="token"/>
          </attribute>
          <optional>
             <attribute name="rend">
@@ -6250,7 +6415,7 @@ Sample values include: 1] numeral</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">German</a:documentation>
                   <value>eng</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">English</a:documentation>
-                  <value>fra-Latn</value>
+                  <value>fra</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">French</a:documentation>
                   <value>ind-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indonesian</a:documentation>
@@ -6337,7 +6502,70 @@ Sample values include: 1] numeral</a:documentation>
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
-               <empty/>
+               <list>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic script</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi script - Narrower concept of Arabic Script</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">northern class Brāhmī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā </a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese script</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak script </a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam script</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi script</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer script</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese script</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese script</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu script</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese script</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil script</a:documentation>
+                     <value>class:57475</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil with Grantha</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese Script</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">middle Brāhmi</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">vernacular Brāhmī-derived script</a:documentation>
+                  </choice>
+               </list>
             </attribute>
          </optional>
          <optional>
@@ -6395,7 +6623,70 @@ Sample values include: 1] numeral</a:documentation>
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
-               <empty/>
+               <list>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic script</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi script - Narrower concept of Arabic Script</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">northern class Brāhmī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā </a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese script</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak script </a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam script</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi script</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer script</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese script</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese script</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu script</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese script</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil script</a:documentation>
+                     <value>class:57475</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil with Grantha</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese Script</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">middle Brāhmi</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">vernacular Brāhmī-derived script</a:documentation>
+                  </choice>
+               </list>
             </attribute>
          </optional>
          <optional>
