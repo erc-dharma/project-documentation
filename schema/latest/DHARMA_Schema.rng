@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-15T10:10:36Z. .
+Schema generated from ODD source 2023-10-16T07:58:22Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -63,9 +63,6 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
             <ref name="model.gLike"/>
          </choice>
       </zeroOrMore>
-   </define>
-   <define name="att.ascribed.attributes">
-      <ref name="att.ascribed.attribute.who"/>
    </define>
    <define name="att.ascribed.attribute.who">
       <optional>
@@ -4269,7 +4266,9 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(responsible party) indicates the agency responsible for the intervention or interpretation, for example an editor or transcriber.</a:documentation>
                <list>
                   <oneOrMore>
-                     <data type="anyURI"/>
+                     <data type="token">
+                        <param name="pattern">part:[a-z]{4}</param>
+                     </data>
                   </oneOrMore>
                </list>
             </attribute>
@@ -5361,7 +5360,16 @@ Sample values include: 1] filename</a:documentation>
       <element name="change">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.7. Identifying Changes and Revisions]</a:documentation>
          <text/>
-         <ref name="att.ascribed.attributes"/>
+         <attribute name="who">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="token">
+                     <param name="pattern">part:[a-z]{4}</param>
+                  </data>
+               </oneOrMore>
+            </list>
+         </attribute>
          <attribute name="when">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the value of the date or time in a standard form, e.g. yyyy-mm-dd.</a:documentation>
             <choice>
@@ -5758,6 +5766,70 @@ Sample values include: 1] filename</a:documentation>
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic script</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi script - Narrower concept of Arabic Script</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">northern class Brāhmī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā </a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese script</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak script </a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam script</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi script</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer script</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese script</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese script</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu script</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese script</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil script</a:documentation>
+                     <value>class:57475</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil with Grantha</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese Script</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">middle Brāhmi</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">vernacular Brāhmī-derived script</a:documentation>
+                  </choice>
+               </list>
             </attribute>
          </optional>
          <attribute name="type">
@@ -7456,7 +7528,19 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
          <ref name="macro.phraseSeq"/>
          <ref name="att.global.attribute.xmlid"/>
          <ref name="att.canonical.attribute.key"/>
-         <ref name="att.canonical.attribute.ref"/>
+         <optional>
+            <attribute name="ref">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
+               <choice>
+                  <data type="token">
+                     <param name="pattern">part:[a-z]{4}</param>
+                  </data>
+                  <data type="anyURI">
+                     <param name="pattern">http.+</param>
+                  </data>
+               </choice>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.

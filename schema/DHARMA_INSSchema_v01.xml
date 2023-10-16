@@ -273,6 +273,20 @@
                         </sequence>
                     </content>
                 </dataSpec>
+                <dataSpec ident="dharma.member">
+                    <desc>reference to a member of the DHARMA project</desc>
+                    <content>
+                        <dataRef name="token" restriction="part:[a-z]{4}"/>
+                    </content>
+                </dataSpec>
+                <dataSpec ident="dharma.person">
+                    <content>
+                        <alternate>
+                            <dataRef key="dharma.member"/>
+                            <dataRef name="anyURI" restriction="http.+"/>
+                        </alternate>
+                    </content>
+                </dataSpec>
                 <elementSpec ident="add" module="core" mode="change">
                     <attList>
                         <attDef ident="place" mode="change" usage="req">
@@ -507,7 +521,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="script_test"/>
+                                <dataRef key="dharma.indic_script"/>
                             </datatype>
                         </attDef>
                         <attDef ident="xml:lang" mode="change" usage="opt">
@@ -1724,6 +1738,11 @@
                             </valList>
                         </attDef>
                         <attDef ident="when" mode="change" usage="req"/>
+                        <attDef ident="who" mode="change" usage="req">
+                            <datatype maxOccurs="unbounded">
+                                <dataRef key="dharma.member"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="choice" module="core" mode="change">
@@ -3345,7 +3364,11 @@
                         <attDef ident="xml:base" mode="delete"/>
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="resp" mode="change"/>
+                        <attDef ident="resp" mode="change">
+                            <datatype maxOccurs="unbounded">
+                                <dataRef key="dharma.member"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="source" mode="change"/>
                         <attDef ident="xml:lang" mode="change" usage="opt">
                             <datatype>
@@ -3585,6 +3608,11 @@
                                 <valItem ident="title"/>
                                 <valItem ident="other"/>
                             </valList>
+                        </attDef>
+                        <attDef ident="ref" mode="change">
+                            <datatype>
+                                <dataRef key="dharma.person"/>
+                            </datatype>
                         </attDef>
                     </attList>
                 </elementSpec>
