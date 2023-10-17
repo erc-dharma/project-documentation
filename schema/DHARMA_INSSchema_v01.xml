@@ -1043,15 +1043,9 @@
                                     test="@quantity and not(@unit)">If space has @quantity then
                                     @unit is required</sch:report></sch:rule><sch:rule
                                 context="tei:space"><sch:assert
-                                    test="@type='binding-hole' or @type='descender' or @type='ascender' and @quantity and @unit"
+                                    test="@type='binding-hole' or @type='descender' or @type='ascender' or @type='defect' or @type='feature' and @quantity and @unit"
                                     >Space can't have @quantity and @unit attributes with
-                                    @type='binding-hole' or @type='descender' or @type='ascender',
-                                    the only @type possible is
-                                @type='defect'.</sch:assert></sch:rule><sch:rule context="tei:space"
-                                    ><sch:report test="@unit='page'">Please note that the use of
-                                    "space" for blank copperplate pages has been discarded; encode
-                                    only a "pb" for the blank
-                            page</sch:report></sch:rule></constraint>
+                                    @type='binding-hole|descender|ascender|defect|feature'.</sch:assert></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -1092,27 +1086,42 @@
                         </attDef>
                         <attDef ident="type" mode="change">
                             <valList type="closed" mode="replace">
-                                <valItem ident="vacat"/>
-                                <valItem ident="defect"/>
-                                <valItem ident="binding-hole"/>
-                                <valItem ident="descender"/>
-                                <valItem ident="ascender"/>
-                                <valItem ident="feature"/>
-                                <valItem ident="unclassified"/>
+                                <valItem ident="vacat">
+                                    <desc>area that was left blank when the rest of the inscription was engraved, possibly
+                                        with the intent to be filled later on</desc>
+                                </valItem>
+                                <valItem ident="binding-hole">
+                                    <desc>if the binding hole in a copper plate affects the text of a line</desc>
+                                </valItem>
+                                <valItem ident="descender">
+                                    <desc>if a space was left blank in a line because (part of) another character hanging down
+                                        from the previous line encroaches on the current line</desc>
+                                </valItem>
+                                <valItem ident="ascender">
+                                    <desc>if a space was left blank in a line because (part of) another (pre-conceived) character
+                                        popping up from the following line encroaches on the current line</desc>
+                                </valItem>
+                                <valItem ident="defect">
+                                    <desc>if the writing skips a blemish of the surface that was not deliberately created (such as a
+                                        natural crack or pit, or a fault in the creation of the writing surface)</desc>
+                                </valItem>
+                                <valItem ident="feature">
+                                    <desc>if the writing skips a deliberately created feature (other than binding holes, ascenders
+                                        and descenders covered above) on the surface (such as engraved artwork, high relief, or a seal attached
+                                        directly to a copper plate)</desc>
+                                </valItem>
+                                <valItem ident="unclassified">
+                                    <desc>significant space that does not fit the other categories</desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change">
+                            <defaultVal>character</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="character"/>
-                                <valItem ident="line"/>
                             </valList>
                         </attDef>
-                        <attDef ident="extent" mode="change">
-                            <defaultVal>unknown</defaultVal>
-                            <valList type="closed" mode="replace">
-                                <valItem ident="unknown"/>
-                            </valList>
-                        </attDef>
+                        <attDef ident="extent" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="supplied" module="transcr" mode="change">
