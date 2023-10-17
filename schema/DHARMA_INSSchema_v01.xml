@@ -1085,6 +1085,9 @@
                             </datatype>
                         </attDef>
                         <attDef ident="type" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="vacat">
                                     <desc>area that was left blank when the rest of the inscription was engraved, possibly
@@ -1116,6 +1119,9 @@
                             </valList>
                         </attDef>
                         <attDef ident="unit" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <defaultVal>character</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="character"/>
@@ -1756,19 +1762,29 @@
                 </elementSpec>
                 <elementSpec ident="choice" module="core" mode="change">
                     <content>
-                        <alternate maxOccurs="unbounded">
-                            <elementRef key="sic"/>
-                            <elementRef key="corr"/>
-                            <elementRef key="orig"/>
-                            <elementRef key="reg"/>
-                            <elementRef key="unclear"/>
+                        <alternate>
+                            <sequence>
+                                <elementRef key="sic"/>
+                                <elementRef key="corr"/>
+                            </sequence>
+                            <sequence>
+                                <elementRef key="orig"/>
+                                <elementRef key="reg"/>
+                            </sequence>
+                            <sequence>
+                                <elementRef key="unclear"/>
+                                <elementRef key="unclear"/>
+                                <alternate minOccurs="0">
+                                    <elementRef key="unclear"/>
+                                </alternate>
+                            </sequence>
                         </alternate>
                     </content>
                     <constraintSpec scheme="schematron" ident="unclear-limit">
                         <constraint><sch:rule context="tei:choice"><sch:report
                                     test="child::tei:unclear and count(child::tei:unclear) &gt; 3"
-                                    >Choice can contained only maximum 3 unclear
-                                    elements</sch:report></sch:rule></constraint>
+                                    >Choice can contain 3 unclear
+                                    elements at most</sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
