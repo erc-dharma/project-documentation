@@ -3940,7 +3940,6 @@
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
-            <attDef ident="resp" mode="delete"/>
             <attDef ident="sameAs" mode="delete"/>
             <attDef ident="scope" mode="delete"/>
             <attDef ident="select" mode="delete"/>

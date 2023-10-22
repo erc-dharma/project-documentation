@@ -121,7 +121,7 @@
                 </dataSpec>
                 <dataSpec ident="dharma.n">
                     <content>
-                        <dataRef name="token"/>
+                        <dataRef name="string" restriction="[^ ]+"/>
                     </content>
                 </dataSpec>
                 <dataSpec ident="dharma.language">
@@ -1780,12 +1780,6 @@
                             </sequence>
                         </alternate>
                     </content>
-                    <constraintSpec scheme="schematron" ident="unclear-limit">
-                        <constraint><sch:rule context="tei:choice"><sch:report
-                                    test="child::tei:unclear and count(child::tei:unclear) &gt; 3"
-                                    >Choice can contain 3 unclear
-                                    elements at most</sch:report></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1854,6 +1848,7 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="unit" mode="change">
+                            <defaultVal>page</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="page"/>
                                 <valItem ident="volume"/>
@@ -6677,6 +6672,12 @@
                 <elementSpec ident="variantEncoding" mode="delete"/>
                 <elementSpec ident="tagsDecl" mode="delete"/>
                 <elementSpec ident="stage" mode="delete"/>
+                <elementSpec ident="objectType" mode="delete"/>
+                <elementSpec ident="material" mode="delete"/>
+                <elementSpec ident="origin" mode="delete"/>
+                <elementSpec ident="provenance" mode="delete"/>
+                <elementSpec ident="settlement" mode="delete"/>
+                <elementSpec ident="speaker" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
