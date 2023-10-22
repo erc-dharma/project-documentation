@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-10-22T12:37:31Z. .
+Schema generated from ODD source 2023-10-22T23:12:50Z. .
 TEI Edition: Version 3.6.0. Last updated on
 	16th July 2019, revision daa3cc0b9
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
@@ -571,20 +571,6 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
             </list>
          </attribute>
       </optional>
-   </define>
-   <define name="att.global.attributes">
-      <ref name="att.global.rendition.attributes"/>
-      <ref name="att.global.linking.attributes"/>
-      <ref name="att.global.analytic.attributes"/>
-      <ref name="att.global.facs.attributes"/>
-      <ref name="att.global.change.attributes"/>
-      <ref name="att.global.responsibility.attributes"/>
-      <ref name="att.global.source.attributes"/>
-      <ref name="att.global.attribute.xmlid"/>
-      <ref name="att.global.attribute.n"/>
-      <ref name="att.global.attribute.xmllang"/>
-      <ref name="att.global.attribute.xmlbase"/>
-      <ref name="att.global.attribute.xmlspace"/>
    </define>
    <define name="att.global.attribute.xmlid">
       <optional>
@@ -1840,26 +1826,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <choice>
          <ref name="model.divWrapper"/>
          <ref name="model.divBottomPart"/>
-      </choice>
-   </define>
-   <define name="model.titlepagePart">
-      <choice>
-         <ref name="graphic"/>
-      </choice>
-   </define>
-   <define name="model.msQuoteLike">
-      <choice>
-         <ref name="title"/>
-      </choice>
-   </define>
-   <define name="model.msItemPart">
-      <choice>
-         <ref name="model.biblLike"/>
-         <ref name="model.quoteLike"/>
-         <ref name="model.respLike"/>
-         <ref name="model.msQuoteLike"/>
-         <ref name="idno"/>
-         <ref name="msItem"/>
       </choice>
    </define>
    <define name="model.imprintPart">
@@ -4630,7 +4596,12 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                                     bibl element.</sch:report>
             </sch:rule>
          </pattern>
-         <ref name="att.global.attribute.n"/>
+         <optional>
+            <attribute name="n">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
+               <data type="ID"/>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="rend">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
@@ -5366,17 +5337,8 @@ Sample values include: 1] filename</a:documentation>
             </list>
          </attribute>
          <attribute name="when">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the value of the date or time in a standard form, e.g. yyyy-mm-dd.</a:documentation>
-            <choice>
-               <data type="date"/>
-               <data type="gYear"/>
-               <data type="gMonth"/>
-               <data type="gDay"/>
-               <data type="gYearMonth"/>
-               <data type="gMonthDay"/>
-               <data type="time"/>
-               <data type="dateTime"/>
-            </choice>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the value of the date or time in the form yyyy-mm-dd.</a:documentation>
+            <data type="date"/>
          </attribute>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
@@ -6774,40 +6736,6 @@ Sample values include: 1] body; 2] superscript; 3] subscript; 4] prescript; 5] p
          <empty/>
       </element>
    </define>
-   <define name="att.msExcerpt.attributes">
-      <ref name="att.msExcerpt.attribute.defective"/>
-   </define>
-   <define name="att.msExcerpt.attribute.defective">
-      <optional>
-         <attribute name="defective">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates whether the passage being quoted is defective, i.e. incomplete through loss or damage.</a:documentation>
-            <choice>
-               <data type="boolean"/>
-               <choice>
-                  <value>unknown</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>inapplicable</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </choice>
-         </attribute>
-      </optional>
-   </define>
-   <define name="att.msClass.attributes">
-      <ref name="att.msClass.attribute.class"/>
-   </define>
-   <define name="att.msClass.attribute.class">
-      <optional>
-         <attribute name="class">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the text types or classifications applicable to this item by pointing to other elements or resources defining the classification concerned. </a:documentation>
-            <list>
-               <oneOrMore>
-                  <data type="anyURI"/>
-               </oneOrMore>
-            </list>
-         </attribute>
-      </optional>
-   </define>
    <define name="msDesc">
       <element name="msDesc">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript description) contains a description of a single identifiable manuscript or other text-bearing object. [10.1. Overview]</a:documentation>
@@ -7064,42 +6992,9 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript contents) describes the intellectual content of a manuscript, manuscript part, or other object either as a series of paragraphs or as a series of structured manuscript items. [10.6. Intellectual Content]</a:documentation>
          <oneOrMore>
             <choice>
-               <ref name="msItem"/>
                <ref name="summary"/>
             </choice>
          </oneOrMore>
-      </element>
-   </define>
-   <define name="msItem">
-      <element name="msItem">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript item) describes an individual work or item within the intellectual content of a manuscript, manuscript part, or other object. [10.6.1. The msItem and msItemStruct Elements]</a:documentation>
-         <group>
-      
-            <zeroOrMore>
-               <empty/>
-            </zeroOrMore>
-      
-            <choice>
-        
-               <oneOrMore>
-                  <ref name="model.pLike"/>
-               </oneOrMore>
-        
-        
-               <oneOrMore>
-                  <choice>
-                     <ref name="model.titlepagePart"/>
-                     <ref name="model.msItemPart"/>
-                     <ref name="model.global"/>
-                  </choice>
-               </oneOrMore>
-        
-            </choice>
-         </group>
-         <ref name="att.global.attributes"/>
-         <ref name="att.msExcerpt.attributes"/>
-         <ref name="att.msClass.attributes"/>
-         <empty/>
       </element>
    </define>
    <define name="summary">

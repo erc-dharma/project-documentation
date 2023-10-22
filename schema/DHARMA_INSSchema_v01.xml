@@ -1544,9 +1544,14 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
+                        <attDef ident="n" mode="change">
+                            <datatype>
+                                <dataRef name="ID"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="rend" mode="change">
                             <datatype>
-                                <dataRef key="teidata.word"/>
+                                <dataRef name="string"/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="omitname">
@@ -1752,7 +1757,12 @@
                                 <valItem ident="withdrawn"/>
                             </valList>
                         </attDef>
-                        <attDef ident="when" mode="change" usage="req"/>
+                        <attDef ident="when" mode="replace" usage="req">
+                            <desc>supplies the value of the date or time in the form yyyy-mm-dd.</desc>
+                            <datatype>
+                                <dataRef name="date"/>
+                            </datatype>
+                        </attDef>
                         <attDef ident="who" mode="change" usage="req">
                             <datatype maxOccurs="unbounded">
                                 <dataRef key="dharma.member"/>
@@ -6678,6 +6688,7 @@
                 <elementSpec ident="provenance" mode="delete"/>
                 <elementSpec ident="settlement" mode="delete"/>
                 <elementSpec ident="speaker" mode="delete"/>
+                <elementSpec ident="msItem" mode="delete"/>
             </schemaSpec>
         </body>
     </text>
