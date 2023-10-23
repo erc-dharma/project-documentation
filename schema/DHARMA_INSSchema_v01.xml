@@ -1400,10 +1400,8 @@
                     <content>
                         <sequence>
                             <elementRef key="lem"/>
-                            <alternate maxOccurs="unbounded">
-                                <elementRef key="rdg"/>
-                                <elementRef key="note"/>
-                            </alternate>
+                            <elementRef key="rdg" minOccurs="0" maxOccurs="unbounded"/>
+                            <elementRef key="note" minOccurs="0" maxOccurs="unbounded"/>
                         </sequence>
                     </content>
                     <constraintSpec scheme="schematron" ident="one-lem">
@@ -1439,7 +1437,11 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
-                        <attDef ident="loc" mode="change" usage="req"/>
+                        <attDef ident="loc" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                        </attDef>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="authority" module="header" mode="change">
@@ -2999,6 +3001,15 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="list" module="core" mode="change">
+                    <content>
+                        <alternate>
+                            <elementRef key="item" maxOccurs="unbounded"/>
+                            <sequence maxOccurs="unbounded">
+                                <elementRef key="label"/>
+                                <elementRef key="item"/>
+                            </sequence>
+                        </alternate>
+                    </content>
                     <constraintSpec scheme="isoschematron" ident="lists">
                         <constraint><sch:rule context="tei:list"><sch:assert test="parent::tei:p"
                                     >List can only be used inside a paragraph
@@ -3030,12 +3041,24 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
+                            <desc>list style</desc>
                             <datatype>
-                                <rng:text/>
+                                <dataRef name="string"/>
                             </datatype>
+                            <defaultVal>plain</defaultVal>
                             <valList type="closed" mode="replace">
-                                <valItem ident="numbered"/>
-                                <valItem ident="bulleted"/>
+                                <valItem ident="plain">
+                                    <desc>plain list, without bullets, etc.</desc>
+                                </valItem>
+                                <valItem ident="bulleted">
+                                    <desc>bulleted list, like &lt;ul&gt; in HTML</desc>
+                                </valItem>
+                                <valItem ident="numbered">
+                                    <desc>numbered list, like &lt;ol&gt; in HTML</desc>
+                                </valItem>
+                                <valItem ident="description">
+                                    <desc>description list, like &lt;dl&gt; in HTML</desc>
+                                </valItem>
                             </valList>
                         </attDef>
                     </attList>
