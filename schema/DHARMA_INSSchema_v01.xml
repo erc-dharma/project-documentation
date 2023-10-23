@@ -1508,16 +1508,6 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="bibl" module="core" mode="change">
-                    <constraintSpec scheme="schematron" ident="siglum">
-                        <constraint><sch:rule context="tei:bibl[ancestor::tei:listBibl]"><sch:report
-                                    test="child::tei:note[following-sibling::tei:*]">Note should be
-                                    the last element of the bibl</sch:report></sch:rule><sch:rule
-                                context="tei:bibl[child::tei:note]"><sch:report
-                                    test="ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:p[parent::tei:div[@type='bibliography']]"
-                                    >In the commentary, apparatus and the epigraphic lemma, note
-                                    inside bibl is prohibited. Add the note element right after the
-                                    bibl element.</sch:report></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
@@ -1545,23 +1535,28 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="n" mode="change">
+                            <desc>siglum</desc>
                             <datatype>
-                                <dataRef name="ID"/>
+                                <dataRef name="string"/>
                             </datatype>
                         </attDef>
                         <attDef ident="rend" mode="change">
+                            <desc>how to display the bibliographic reference</desc>
                             <datatype>
                                 <dataRef name="string"/>
                             </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="omitname">
-                                    <desc> if the name of the author(s) is an integral part of your
+                                    <desc>
+                                        if the name of the author(s) is an integral part of your
                                         text and must thus appear independently of the citation
                                     </desc>
                                 </valItem>
                                 <valItem ident="ibid">
-                                    <desc> if you wish to show “ibid.” instead of the name of the
-                                        author(s) </desc>
+                                    <desc>
+                                        if you wish to show “ibid.” instead of the name of the
+                                        author(s)
+                                    </desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -3114,6 +3109,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="type" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="primary"/>
                                 <valItem ident="secondary"/>
