@@ -127,41 +127,72 @@
                 <dataSpec ident="dharma.language">
                     <content>
                         <valList type="closed">
+                            <valItem ident="ara"><desc>Arabic</desc></valItem>
                             <valItem ident="ara-Latn"><desc>Arabic</desc></valItem>
+                            <valItem ident="ban"><desc>Balinese</desc></valItem>
                             <valItem ident="ban-Latn"><desc>Balinese</desc></valItem>
+                            <valItem ident="bya"><desc>Batak</desc></valItem>
                             <valItem ident="bya-Latn"><desc>Batak</desc></valItem>
+                            <valItem ident="cja"><desc>Cham, Western</desc></valItem>
                             <valItem ident="cja-Latn"><desc>Cham, Western</desc></valItem>
+                            <valItem ident="cjm"><desc>Cham, Eastern</desc></valItem>
                             <valItem ident="cjm-Latn"><desc>Cham, Eastern</desc></valItem>
                             <valItem ident="deu"><desc>German</desc></valItem>
                             <valItem ident="eng"><desc>English</desc></valItem>    
                             <valItem ident="fra"><desc>French</desc></valItem>
+                            <valItem ident="ind"><desc>Indonesian</desc></valItem>
                             <valItem ident="ind-Latn"><desc>Indonesian</desc></valItem>
+                            <valItem ident="jav"><desc>Javanese</desc></valItem>
                             <valItem ident="jav-Latn"><desc>Javanese</desc></valItem>
+                            <valItem ident="jpn"><desc>Japanese</desc></valItem>
                             <valItem ident="jpn-Latn"><desc>Japanese</desc></valItem>
+                            <valItem ident="kan"><desc>Kannada</desc></valItem>
                             <valItem ident="kan-Latn"><desc>Kannada</desc></valItem>
+                            <valItem ident="kaw"><desc>Kawi</desc></valItem>
                             <valItem ident="kaw-Latn"><desc>Kawi</desc></valItem>
+                            <valItem ident="khm"><desc>Khmer</desc></valItem>
                             <valItem ident="khm-Latn"><desc>Khmer</desc></valItem>
+                            <valItem ident="kxm"><desc>Khmer, Northern</desc></valItem>
                             <valItem ident="kxm-Latn"><desc>Khmer, Northern</desc></valItem>
+                            <valItem ident="mya"><desc>Burmese</desc></valItem>
                             <valItem ident="mya-Latn"><desc>Burmese</desc></valItem>
                             <valItem ident="nld"><desc>Dutch</desc></valItem>
+                            <valItem ident="obr"><desc>Burmese, Old</desc></valItem>
                             <valItem ident="obr-Latn"><desc>Burmese, Old</desc></valItem>
+                            <valItem ident="ocm"><desc>Cham, Old</desc></valItem>
                             <valItem ident="ocm-Latn"><desc>Cham, Old</desc></valItem>
+                            <valItem ident="okz"><desc>Khmer, Old</desc></valItem>
                             <valItem ident="okz-Latn"><desc>Khmer, Old</desc></valItem>
+                            <valItem ident="omx"><desc>Mon, Old</desc></valItem>
                             <valItem ident="omx-Latn"><desc>Mon, Old</desc></valItem>
+                            <valItem ident="omy"><desc>Malay, Old</desc></valItem>
                             <valItem ident="omy-Latn"><desc>Malay, Old</desc></valItem>
+                            <valItem ident="osn"><desc>Sundanese, Old</desc></valItem>
                             <valItem ident="osn-Latn"><desc>Sundanese, Old</desc></valItem>
+                            <valItem ident="pli"><desc>Pali</desc></valItem>
                             <valItem ident="pli-Latn"><desc>Pali</desc></valItem>
+                            <valItem ident="pra"><desc>Prakrit languages</desc></valItem>
                             <valItem ident="pra-Latn"><desc>Prakrit languages</desc></valItem>
+                            <valItem ident="pyx"><desc>Pyu (Myanmar)</desc></valItem>
                             <valItem ident="pyx-Latn"><desc>Pyu (Myanmar)</desc></valItem>
+                            <valItem ident="san"><desc>Sanskrit</desc></valItem>
                             <valItem ident="san-Latn"><desc>Sanskrit</desc></valItem>
+                            <valItem ident="sas"><desc>Sasak</desc></valItem>
                             <valItem ident="sas-Latn"><desc>Sasak</desc></valItem>
+                            <valItem ident="tam"><desc>Tamil</desc></valItem>
                             <valItem ident="tam-Latn"><desc>Tamil</desc></valItem>
+                            <valItem ident="tel"><desc>Telugu</desc></valItem>
                             <valItem ident="tel-Latn"><desc>Telugu</desc></valItem>
+                            <valItem ident="tgl"><desc>Tagalog</desc></valItem>
                             <valItem ident="tgl-Latn"><desc>Tagalog</desc></valItem>
+                            <valItem ident="tha"><desc>Thai</desc></valItem>
                             <valItem ident="tha-Latn"><desc>Thai</desc></valItem>
                             <valItem ident="und"><desc>Undetermined</desc></valItem>
+                            <valItem ident="vie"><desc>Vietnamese</desc></valItem>
                             <valItem ident="vie-Latn"><desc>Vietnamese</desc></valItem>
+                            <valItem ident="xhm"><desc>Khmer, Middle (1400 to 1850 CE)</desc></valItem>
                             <valItem ident="xhm-Latn"><desc>Khmer, Middle (1400 to 1850 CE)</desc></valItem>
+                            <valItem ident="zlm"><desc>Malay (individual language)</desc></valItem>
                             <valItem ident="zlm-Latn"><desc>Malay (individual language)</desc></valItem>
                         </valList>
                     </content>
@@ -265,7 +296,7 @@
                         </valList>
                     </content>
                 </dataSpec>
-                <dataSpec ident="dharma.indic_script">
+                <dataSpec ident="dharma.script">
                     <content>
                         <sequence>
                             <dataRef key="dharma.script_name"/>
@@ -521,7 +552,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="dharma.indic_script"/>
+                                <dataRef key="dharma.script"/>
                             </datatype>
                         </attDef>
                         <attDef ident="xml:lang" mode="change" usage="opt">
@@ -805,13 +836,14 @@
                                 <rng:text/>
                             </datatype>
                             <valList type="closed" mode="replace">
-                                <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
                                 <valItem ident="small"/>
+                                <valItem ident="tall"/>
                                 <valItem ident="wide"/>
+                                <valItem ident="expanded"/>
+                                <valItem ident="check"/>
+                                <valItem ident="grantha"/>
                                 <valItem ident="italic"/>
                                 <valItem ident="bold"/>
                                 <valItem ident="subscript"/>
@@ -1326,12 +1358,10 @@
                             <valList type="closed" mode="replace">
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded">
-                                    <desc>for character spacing</desc>
-                                </valItem>
                                 <valItem ident="small"/>
+                                <valItem ident="tall"/>
                                 <valItem ident="wide"/>
+                                <valItem ident="expanded"/>
                             </valList>
                         </attDef>
                         <attDef ident="xml:lang" mode="change" usage="opt">
@@ -1358,7 +1388,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="dharma.indic_script"/>
+                                <dataRef key="dharma.script"/>
                             </datatype>
                         </attDef>
                     </attList>
@@ -1548,17 +1578,14 @@
                                 <dataRef name="string"/>
                             </datatype>
                             <valList type="closed" mode="replace">
+                                <valItem ident="default">
+                                    <desc>produces a bibliographic reference of the form “Allen 1923”</desc>
+                                </valItem>
                                 <valItem ident="omitname">
-                                    <desc>
-                                        if the name of the author(s) is an integral part of your
-                                        text and must thus appear independently of the citation
-                                    </desc>
+                                    <desc>produces a bibliographic reference with just the date, of the form “1923”</desc>
                                 </valItem>
                                 <valItem ident="ibid">
-                                    <desc>
-                                        if you wish to show “ibid.” instead of the name of the
-                                        author(s)
-                                    </desc>
+                                    <desc>produces the string “ibid.”</desc>
                                 </valItem>
                             </valList>
                         </attDef>
@@ -2338,10 +2365,10 @@
                                 <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
                                 <valItem ident="small"/>
+                                <valItem ident="tall"/>
                                 <valItem ident="wide"/>
+                                <valItem ident="expanded"/>
                             </valList>
                         </attDef>
                         <attDef ident="style" mode="change">
@@ -2394,11 +2421,7 @@
                                 <valItem ident="numeral"/>
                             </valList>
                         </attDef>
-                        <attDef ident="subtype" mode="change">
-                            <datatype>
-                                <dataRef name="NCName"/>
-                            </datatype>
-                        </attDef>
+                        <attDef ident="subtype" mode="delete"/>
                     </attList>
                 </elementSpec>
                 <elementSpec ident="gloss" module="core" mode="change">
@@ -2630,6 +2653,7 @@
                         <attDef ident="corresp" mode="delete"/>
                         <attDef ident="exclude" mode="delete"/>
                         <attDef ident="facs" mode="delete"/>
+                        <attDef ident="n" mode="delete"/>
                         <attDef ident="next" mode="delete"/>
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="rend" mode="delete"/>
@@ -2783,39 +2807,7 @@
                                 <valItem ident="sragdharā"/>
                             </valList>
                         </attDef>
-                        <attDef ident="xml:lang" mode="delete">
-                            <valList type="open" mode="replace">
-                                <valItem ident="unknown"/>
-                                <valItem ident="mya"/>
-                                <valItem ident="obr"/>
-                                <valItem ident="cjm"/>
-                                <valItem ident="ocm"/>
-                                <valItem ident="ndl"/>
-                                <valItem ident="eng"/>
-                                <valItem ident="fra"/>
-                                <valItem ident="ind"/>
-                                <valItem ident="jpn"/>
-                                <valItem ident="jav"/>
-                                <valItem ident="kaw"/>
-                                <valItem ident="kan"/>
-                                <valItem ident="khm"/>
-                                <valItem ident="okz"/>
-                                <valItem ident="zlm"/>
-                                <valItem ident="omy"/>
-                                <valItem ident="omx"/>
-                                <valItem ident="pli"/>
-                                <valItem ident="pra"/>
-                                <valItem ident="pyx"/>
-                                <valItem ident="san"/>
-                                <valItem ident="osn"/>
-                                <valItem ident="tam"/>
-                                <valItem ident="tel"/>
-                                <valItem ident="vie"/>
-                                <valItem ident="cja"/>
-                                <valItem ident="xhm"/>
-                                <valItem ident="ori"/>
-                            </valList>
-                        </attDef>
+                        <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <datatype maxOccurs="unbounded">
                                 <rng:text/>
@@ -2824,10 +2816,10 @@
                                 <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
                                 <valItem ident="small"/>
+                                <valItem ident="tall"/>
                                 <valItem ident="wide"/>
+                                <valItem ident="expanded"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
@@ -2839,7 +2831,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="dharma.indic_script"/>
+                                <dataRef key="dharma.script"/>
                             </datatype>
                         </attDef>
                     </attList>
@@ -2975,10 +2967,10 @@
                                 <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
                                 <valItem ident="small"/>
+                                <valItem ident="tall"/>
                                 <valItem ident="wide"/>
+                                <valItem ident="expanded"/>
                             </valList>
                         </attDef>
                         <attDef ident="part" mode="change">
@@ -2995,7 +2987,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="dharma.indic_script"/>
+                                <dataRef key="dharma.script"/>
                             </datatype>
                         </attDef>
                     </attList>
@@ -3003,7 +2995,9 @@
                 <elementSpec ident="list" module="core" mode="change">
                     <content>
                         <alternate>
-                            <elementRef key="item" maxOccurs="unbounded"/>
+                            <alternate maxOccurs="unbounded">
+                                <elementRef key="item"/>
+                            </alternate>
                             <sequence maxOccurs="unbounded">
                                 <elementRef key="label"/>
                                 <elementRef key="item"/>
@@ -3522,13 +3516,12 @@
                         <attDef ident="prev" mode="delete"/>
                         <attDef ident="rend" mode="change">
                             <valList type="open" mode="replace">
-                                <valItem ident="grantha"/>
                                 <valItem ident="ornate"/>
                                 <valItem ident="large"/>
-                                <valItem ident="tall"/>
-                                <valItem ident="expanded"/>
                                 <valItem ident="small"/>
+                                <valItem ident="tall"/>
                                 <valItem ident="wide"/>
+                                <valItem ident="expanded"/>
                             </valList>
                         </attDef>
                         <attDef ident="resp" mode="delete"/>
@@ -3547,7 +3540,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="dharma.indic_script"/>
+                                <dataRef key="dharma.script"/>
                             </datatype>
                         </attDef>
                     </attList>
@@ -4654,7 +4647,7 @@
                         </attDef>
                         <attDef ident="rendition" mode="change">
                             <datatype>
-                                <dataRef key="dharma.indic_script"/>
+                                <dataRef key="dharma.script"/>
                             </datatype>
                         </attDef>
                     </attList>
