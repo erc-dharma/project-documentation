@@ -321,6 +321,10 @@
                 <elementSpec ident="add" module="core" mode="change">
                     <attList>
                         <attDef ident="place" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <defaultVal>unspecified</defaultVal>
                             <valList type="closed" mode="replace">
                                 <valItem ident="inline">
                                     <desc> addition made within the original text (in textu) </desc>
@@ -351,7 +355,7 @@
                                         text has been erased (in ras. = in rasura) </desc>
                                 </valItem>
                                 <valItem ident="unspecified">
-                                    <desc> no information on the place is currently available
+                                    <desc> when no information on the place is available
                                     </desc>
                                 </valItem>
                             </valList>
@@ -396,6 +400,9 @@
                         <attDef ident="xml:lang" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="rend" mode="change">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
                             <valList type="closed" mode="replace">
                                 <valItem ident="mark">
                                     <desc> when the addition is marked in the witness with any
@@ -3356,6 +3363,8 @@
                 <elementSpec ident="note" module="core" mode="change">
                     <constraintSpec scheme="schematron" ident="note">
                         <constraint><sch:rule context="tei:note"><sch:report
+                                    test="ancestor::tei:note"
+                                    >notes cannot nest</sch:report><sch:report
                                     test="not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'] or ancestor::tei:div[@type='apparatus'] or ancestor::tei:teiHeader or ancestor::tei:div[@type='bibliography'])"
                                     >Note is prohibited in
                                     div[@type='edition']</sch:report><sch:report
@@ -4706,6 +4715,12 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="subst" module="transcr" mode="change">
+                    <content>
+                        <sequence>
+                            <elementRef key="del"/>
+                            <elementRef key="add"/>
+                        </sequence>
+                    </content>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="atLeast" mode="delete"/>
@@ -5007,6 +5022,11 @@
                     </attList>
                 </elementSpec>
                 <elementSpec ident="del" module="core" mode="change">
+                    <constraintSpec scheme="isoschematron" ident="del-in-subst">
+                        <constraint><sch:rule context="tei:del"><sch:report
+                                test="@rend='corrected' and not(parent::tei:subst)"
+                                >@rend='corrected' is only allowed when del is a child of subst</sch:report></sch:rule></constraint>
+                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="atLeast" mode="delete"/>
