@@ -2290,10 +2290,10 @@
                 </elementSpec>
                 <elementSpec ident="fw" module="transcr" mode="change">
                     <constraintSpec scheme="schematron" ident="fw-after-pb">
-                        <constraint><sch:context rule="tei:fw"><sch:report
+                        <constraint><sch:rule context="tei:fw"><sch:report
                                     test="not(preceding-sibling::tei:pb[1])"> The element fw must
                                     always be preceded by the element pb.
-                                </sch:report></sch:context></constraint>
+                                </sch:report></sch:rule></constraint>
                     </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
@@ -6720,7 +6720,6 @@
                 <elementSpec ident="material" mode="delete"/>
                 <elementSpec ident="origin" mode="delete"/>
                 <elementSpec ident="provenance" mode="delete"/>
-                <elementSpec ident="settlement" mode="delete"/>
                 <elementSpec ident="speaker" mode="delete"/>
                 <elementSpec ident="msItem" mode="delete"/>
             </schemaSpec>
