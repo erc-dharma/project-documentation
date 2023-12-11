@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-11-14T10:42:15Z. . 
+Schema generated from ODD source 2023-12-11T11:27:07Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -3476,32 +3476,30 @@ Normalization 12. Critical Apparatus]</a:documentation>
                </list>
             </attribute>
          </optional>
-         <attribute name="place">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies where this item is placed.</a:documentation>
-            <list>
-               <oneOrMore>
-                  <choice>
-                     <value>inline</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>below</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>above</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>top</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>bottom</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>left</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>right</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>overstrike</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>unspecified</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  </choice>
-               </oneOrMore>
-            </list>
+         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                    name="place"
+                    a:defaultValue="unspecified">
+            <a:documentation>specifies where this item is placed.</a:documentation>
+            <choice>
+               <value>inline</value>
+               <a:documentation>addition made within the original text (in textu) </a:documentation>
+               <value>below</value>
+               <a:documentation>addition below the line (subscr.) </a:documentation>
+               <value>above</value>
+               <a:documentation>addition above the line (suprascr.) </a:documentation>
+               <value>top</value>
+               <a:documentation>addition in the top margin (in mg. sup. = in margine superiore) </a:documentation>
+               <value>bottom</value>
+               <a:documentation>addition in the bottom margin (in mg. inf. = in margine inferiore) </a:documentation>
+               <value>left</value>
+               <a:documentation>addition in the left margin (in mg. = in margine) </a:documentation>
+               <value>right</value>
+               <a:documentation>addition in the right margin (in mg. = in margine) </a:documentation>
+               <value>overstrike</value>
+               <a:documentation>addition made in the space where a previous string of text has been erased (in ras. = in rasura) </a:documentation>
+               <value>unspecified</value>
+               <a:documentation>when no information on the place is available </a:documentation>
+            </choice>
          </attribute>
          <empty/>
       </element>

@@ -74,18 +74,44 @@
                 <!--        CHANGED ELEMENT SPECS        -->
                 <elementSpec ident="add" module="core" mode="change">
                     <attList>
-                        <!-- constraining values of add/@place -->
                         <attDef ident="place" mode="change" usage="req">
+                            <datatype>
+                                <dataRef name="string"/>
+                            </datatype>
+                            <defaultVal>unspecified</defaultVal>
                             <valList type="closed" mode="replace">
-                                <valItem ident="inline"/>
-                                <valItem ident="below"/>
-                                <valItem ident="above"/>
-                                <valItem ident="top"/>
-                                <valItem ident="bottom"/>
-                                <valItem ident="left"/>
-                                <valItem ident="right"/>
-                                <valItem ident="overstrike"/>
-                                <valItem ident="unspecified"/>
+                                <valItem ident="inline">
+                                    <desc> addition made within the original text (in textu) </desc>
+                                </valItem>
+                                <valItem ident="below">
+                                    <desc> addition below the line (subscr.) </desc>
+                                </valItem>
+                                <valItem ident="above">
+                                    <desc> addition above the line (suprascr.) </desc>
+                                </valItem>
+                                <valItem ident="top">
+                                    <desc> addition in the top margin (in mg. sup. = in margine
+                                        superiore) </desc>
+                                </valItem>
+                                <valItem ident="bottom">
+                                    <desc> addition in the bottom margin (in mg. inf. = in margine
+                                        inferiore) </desc>
+                                </valItem>
+                                <valItem ident="left">
+                                    <desc> addition in the left margin (in mg. = in margine) </desc>
+                                </valItem>
+                                <valItem ident="right">
+                                    <desc> addition in the right margin (in mg. = in margine)
+                                    </desc>
+                                </valItem>
+                                <valItem ident="overstrike">
+                                    <desc> addition made in the space where a previous string of
+                                        text has been erased (in ras. = in rasura) </desc>
+                                </valItem>
+                                <valItem ident="unspecified">
+                                    <desc> when no information on the place is available
+                                    </desc>
+                                </valItem>
                             </valList>
                         </attDef>
                         <attDef ident="ana" mode="delete"/>
