@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<grammar xmlns:xlink="http://www.w3.org/1999/xlink"
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:tei="http://www.tei-c.org/ns/1.0"
          xmlns:teix="http://www.tei-c.org/ns/Examples"
-         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-11-07T13:02:04Z. .
-TEI Edition: Version 3.6.0. Last updated on
-	16th July 2019, revision daa3cc0b9
-TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.6.0/
+Schema generated from ODD source 2023-11-14T13:24:56Z. . 
+TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
+TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
 --><!---->
    <define name="macro.paraContent">
@@ -347,7 +346,7 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@when]">
-        <sch:report role="nonfatal" test="@notBefore|@notAfter|@from|@to">The @when attribute cannot be used with any other att.datable.w3c attributes.</sch:report>
+         <sch:report test="@notBefore|@notAfter|@from|@to" role="nonfatal">The @when attribute cannot be used with any other att.datable.w3c attributes.</sch:report>
       </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -357,7 +356,7 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@from]">
-        <sch:report role="nonfatal" test="@notBefore">The @from and @notBefore attributes cannot be used together.</sch:report>
+         <sch:report test="@notBefore" role="nonfatal">The @from and @notBefore attributes cannot be used together.</sch:report>
       </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -367,7 +366,7 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@to]">
-        <sch:report role="nonfatal" test="@notAfter">The @to and @notAfter attributes cannot be used together.</sch:report>
+         <sch:report test="@notAfter" role="nonfatal">The @to and @notAfter attributes cannot be used together.</sch:report>
       </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -377,10 +376,10 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@calendar]">
-            <sch:assert test="string-length(.) gt 0"> @calendar indicates the system or calendar to
+         <sch:assert test="string-length(.) gt 0"> @calendar indicates the system or calendar to
               which the date represented by the content of this element belongs, but this
               <sch:name/> element has no textual content.</sch:assert>
-          </sch:rule>
+      </sch:rule>
    </pattern>
    <define name="att.datcat.attribute.datcat">
       <optional>
@@ -733,7 +732,7 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@unitRef]">
-        <sch:report role="info" test="@unit">The @unit attribute may be unnecessary when @unitRef is present.</sch:report>
+         <sch:report test="@unit" role="info">The @unit attribute may be unnecessary when @unitRef is present.</sch:report>
       </sch:rule>
    </pattern>
    <define name="att.naming.attribute.role">
@@ -789,7 +788,7 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@subtype]">
-        <sch:assert test="@type">The <sch:name/> element should not be categorized in detail with @subtype unless also categorized in general with @type</sch:assert>
+         <sch:assert test="@type">The <sch:name/> element should not be categorized in detail with @subtype unless also categorized in general with @type</sch:assert>
       </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -799,8 +798,8 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[not(self::tei:schemaSpec)][@targetLang]">
-            <sch:assert test="@target">@targetLang should only be used on <sch:name/> if @target is specified.</sch:assert>
-          </sch:rule>
+         <sch:assert test="@target">@targetLang should only be used on <sch:name/> if @target is specified.</sch:assert>
+      </sch:rule>
    </pattern>
    <define name="att.pointing.attribute.target">
       <optional>
@@ -821,10 +820,10 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@spanTo]">
-            <sch:assert test="id(substring(@spanTo,2)) and following::*[@xml:id=substring(current()/@spanTo,2)]">
+         <sch:assert test="id(substring(@spanTo,2)) and following::*[@xml:id=substring(current()/@spanTo,2)]">
 The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow the current element <sch:name/>
-                  </sch:assert>
-          </sch:rule>
+         </sch:assert>
+      </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="dharma-att.styleDef-schemeVersion-schemeVersionRequiresScheme-constraint-rule-9">
@@ -833,10 +832,10 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 context="tei:*[@schemeVersion]">
-            <sch:assert test="@scheme and not(@scheme = 'free')">
+         <sch:assert test="@scheme and not(@scheme = 'free')">
               @schemeVersion can only be used if @scheme is specified.
             </sch:assert>
-          </sch:rule>
+      </sch:rule>
    </pattern>
    <define name="model.nameLike.agent">
       <choice>
@@ -1840,12 +1839,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.divBottomPart"/>
       </choice>
    </define>
-   <define name="model.imprintPart">
-      <choice>
-         <ref name="publisher"/>
-         <ref name="pubPlace"/>
-      </choice>
-   </define>
    <define name="model.addressLike">
       <notAllowed/>
    </define>
@@ -1869,7 +1862,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.nameLike.agent"/>
          <ref name="model.offsetLike"/>
          <ref name="model.placeStateLike"/>
-         <ref name="rs"/>
          <ref name="idno"/>
          <ref name="model.persNamePart"/>
       </choice>
@@ -1879,7 +1871,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.nameLike.agent_alternation"/>
          <ref name="model.offsetLike_alternation"/>
          <ref name="model.placeStateLike_alternation"/>
-         <ref name="rs"/>
          <ref name="idno"/>
          <ref name="model.persNamePart_alternation"/>
       </choice>
@@ -1888,7 +1879,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <ref name="model.nameLike.agent_sequence"/>
       <ref name="model.offsetLike_sequence"/>
       <ref name="model.placeStateLike_sequence"/>
-      <ref name="rs"/>
       <ref name="idno"/>
       <ref name="model.persNamePart_sequence"/>
    </define>
@@ -1901,9 +1891,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </optional>
       <optional>
          <ref name="model.placeStateLike_sequenceOptional"/>
-      </optional>
-      <optional>
-         <ref name="rs"/>
       </optional>
       <optional>
          <ref name="idno"/>
@@ -1923,9 +1910,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.placeStateLike_sequenceOptionalRepeatable"/>
       </zeroOrMore>
       <zeroOrMore>
-         <ref name="rs"/>
-      </zeroOrMore>
-      <zeroOrMore>
          <ref name="idno"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -1943,9 +1927,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.placeStateLike_sequenceRepeatable"/>
       </oneOrMore>
       <oneOrMore>
-         <ref name="rs"/>
-      </oneOrMore>
-      <oneOrMore>
          <ref name="idno"/>
       </oneOrMore>
       <oneOrMore>
@@ -1959,16 +1940,6 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.noteLike"/>
          <ref name="model.global.edit"/>
          <ref name="model.global.spoken"/>
-      </choice>
-   </define>
-   <define name="model.biblPart">
-      <choice>
-         <ref name="model.respLike"/>
-         <ref name="model.imprintPart"/>
-         <ref name="citedRange"/>
-         <ref name="bibl"/>
-         <ref name="availability"/>
-         <ref name="msIdentifier"/>
       </choice>
    </define>
    <define name="model.pPart.data">
@@ -2071,7 +2042,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:p">
-                                <sch:report test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])">@rend='stanza' can only be used in div[@type='translation'] and
+               <sch:report test="@rend='stanza' and not(ancestor::tei:div[@type='translation'] or ancestor::tei:div[@type='commentary'])">@rend='stanza' can only be used in div[@type='translation'] and
                                     in div[@type='commentary']</sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
@@ -2079,9 +2050,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:p[@corresp]">
-                                <sch:assert test="@rend='stanza' and ancestor::tei:div[@type='translation']">@corresp can only be used with p in the context of a
+               <sch:assert test="@rend='stanza' and ancestor::tei:div[@type='translation']">@corresp can only be used with p in the context of a
                                     @rend="stanza" and inside a translatio </sch:assert>
-                            </sch:rule>
+            </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="dharma-p-abstractModel-structure-p-constraint-report-6">
@@ -2692,17 +2663,10 @@ Sample values include: 1] block</a:documentation>
    <define name="cit">
       <element name="cit">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 9.3.5.1. Examples]</a:documentation>
-         <choice>
-            <group>
-               <ref name="quote"/>
-               <ref name="bibl"/>
-            </group>
-            <group>
-               <ref name="bibl"/>
-               <ref name="quote"/>
-            </group>
+         <group>
             <ref name="quote"/>
-         </choice>
+            <ref name="bibl"/>
+         </group>
       </element>
    </define>
    <define name="desc">
@@ -2716,7 +2680,7 @@ Sample values include: 1] block</a:documentation>
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:desc[ @type eq 'deprecationInfo']">
-	              <sch:assert test="../@validUntil">Information about a
+               <sch:assert test="../@validUntil">Information about a
 	deprecation should only be present in a specification element
 	that is being deprecated: that is, only an element that has a
 	@validUntil attribute should have a child &lt;desc
@@ -3017,542 +2981,13 @@ Sample values include: 1] eccentric_ductus; 2] illegible; 3] faded; 4] backgroun
          <empty/>
       </element>
    </define>
-   <define name="rs">
-      <element name="rs">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(referencing string) contains a general purpose name or referring string. [13.2.1. Personal Names 3.5.1. Referring Strings]</a:documentation>
-         <ref name="macro.phraseSeq"/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-rs-rs-rules-constraint-rule-18">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='month']">
-               <sch:assert test="@key='caitra' or @key='vaisakha' or @key='jyaistha' or @key='asadha' or @key='sravana' or @key='bhadrapada' or @key='asvina' or @key='karttika' or @key='margasira' or @key='pausa' or @key='magha' or @key='phalguna'"> with the @type="month", you should used one of the following
-                                    values: caitra, vaisakha, jyaistha, asadha, sravana, bhadrapada,
-                                    asvina, karttika, margasira, pausa, magha, phalguna.
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='fortnight']">
-               <sch:assert test="@subtype='dark' or @subtype='bright'"> with the
-                                    @type="fortnight", you should used either @subtype="dark" or
-                                    @subtype="bright". </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='tithi']">
-               <sch:report test="@key">@key
-                                    shouldn't be used with tei:rs[@type='tithi'], favor @n.
-                                </sch:report>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='naksatra']">
-               <sch:assert test="@key='krttika'or @key='rohini'or @key='mrgasirsa'or @key='ardra'or @key='punarvasu'or @key='pusya'or @key='aslesa'or @key='magha'or @key='purva-phalguni'or @key='uttara-phalguni'or @key='hasta'or @key='citra'or @key='svati'or @key='visakha'or @key='anuradha'or @key='jyestha'or @key='mula'or @key='purva-asadha'or @key='uttara-asadha'or @key='sravana'or @key='dhanistha'or @key='satabhisaj'or @key='purva-bhadrapada'or @key='uttara-bhadrapada'or @key='revati'or @key='asvini'or @key='bharani'">with the @type="naksatra", you can only used one of the
-                                    following values for @key: krttika, rohini, mrgasirsa, ardra,
-                                    punarvasu, pusya, aslesa, magha, purva-phalguni,
-                                    uttara-phalguni, hasta, citra, svati, visakha, anuradha,
-                                    jyestha, mula, purva-asadha, uttara-asadha, sravana, dhanistha,
-                                    satabhisaj, purva-bhadrapada, uttara-bhadrapada, revati, asvini,
-                                    bharani</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='sadvara']">
-               <sch:assert test="@key='tunglai' or @key='hariyang' or @key='wurukung' or @key='paniruan' or @key='was' or @key='mawulu'">With the @type='sadvara', you can only use one of the following
-                                    values: tunglai, hariyang, wurukung, paniruan, was, mawulu.
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='pancavara']">
-               <sch:assert test="@key='pahing' or @key='pon' or @key='wagai' or @key='kaliwuan' or @key='umanis'">With the @type='pancavara', you can only use one of the
-                                    following values: pahing, pon, wagai, kaliwuan, umanis.
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='season']">
-               <sch:assert test="@key='hemanta' or @key='grisma' or @key='varsa'">With the
-                                    @type='season', you can only use one of the following values:
-                                    hemanta, grisma, varsa. </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='wuku']">
-               <sch:assert test="@key='sinta' or @key='landep' or @key='wukir' or @key='kurantil' or @key='tolu' or @key='gumbreg' or @key='warigalit' or @key='warigagung' or @key='julung' or @key='sungsang' or @key='galungan' or @key='dungulan' or @key='kuningan' or @key='langki' or @key='madasiha' or @key='pujut' or @key='pahang' or @key='kuruwlut' or @key='marakih' or @key='tambir' or @key='madangkungan' or @key='mahatal' or @key='wuyai' or @key='manahil' or @key='prangbakat' or @key='balamuki' or @key='wugu' or @key='wayang' or @key='kulawu' or @key='dukut' or @key='watugunung'">With the @type='wuku' or you can only use one of the following
-                                    values: sinta or landep or wukir or kurantil or tolu or gumbreg
-                                    or warigalit or warigagung or julung or sungsang or galungan or
-                                    dungulan or kuningan or langki or madasiha or pujut or pahang or
-                                    kuruwlut or marakih or tambir or madangkungan or mahatal or
-                                    wuyai or manahil or prangbakat or balamuki or wugu or wayang or
-                                    kulawu or dukut or watugunung. </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='chinese']">
-               <sch:assert test="@key='rat' or @key='buffalo-ox' or @key='tiger' or @key='hare-cat' or @key='dragon' or @key='snake' or @key='horse' or @key='goat' or @key='monkey' or @key='cock' or @key='dog' or @key='pig'">With the @type='chinese', you can only use one of the following
-                                    values: rat, buffalo-ox, tiger, hare-cat, dragon, snake, horse,
-                                    goat, monkey, cock, dog, pig. </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='solstice']">
-               <sch:assert test="@key='winter' or @key='summer'">With the @type='solstice',
-                                    you can only use one of the following values: winter or summer.
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='equinox']">
-               <sch:assert test="@key='autumn' or @key='spring'">With the
-                                    @type='equinox', you can only use one of the following values:
-                                    autumn or spring. </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='eclipse']">
-               <sch:assert test="@key='lunar' or @key='solar'">With the @type='eclipse',
-                                    you can only use one of the following values: lunar or solar.
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:rs[@type='individual-masc' or @type='individual-fem' or @type='individual-other']">
-               <sch:assert test="@subtype='deity' or @subtype='godLegalEntity' or @subtype='god_child' or @subtype='ruler' or @subtype='ruler_spouse' or @subtype='ruler_child' or @subtype='subordinateRuler' or @subtype='royalPreceptor' or @subtype='noble' or @subtype='landlord' or @subtype='chief' or @subtype='priest' or @subtype='brahmin' or @subtype='monk' or @subtype='cleric' or @subtype='officiant' or @subtype='officer' or @subtype='ascetic' or @subtype='hermit' or @subtype='merchant' or @subtype='artisan' or @subtype='brahminDelegate' or @subtype='regionalDelegate' or @subtype='dancer' or @subtype='singer' or @subtype='peasant' or @subtype='shepherd' or @subtype='slave' or @subtype='fieldWork' or @subtype='unknown'">one of the following @subtype value can only work with
-                                    @type='individual'.</sch:assert>
-            </sch:rule>
-         </pattern>
-         <ref name="att.global.attribute.n"/>
-         <ref name="att.global.analytic.attribute.ana"/>
-         <ref name="att.naming.attribute.nymRef"/>
-         <ref name="att.canonical.attribute.ref"/>
-         <optional>
-            <attribute name="role">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">may be used to specify further information about the entity referenced by this name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.</a:documentation>
-               <list>
-                  <oneOrMore>
-                     <choice>
-                        <value>donor</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>donee</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>donativeObject</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>buyer</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>seller</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>petitioner</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>founder</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>administrator</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>inChargeDonation</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>witness</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>orderIssuer</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>orderAddressee</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>auditor</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>beneficaryMerit</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>commemoratedPerson</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>scribe</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>composer</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>handwriter</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>engraver</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>sealer-solderer</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                        <value>ruling</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     </choice>
-                  </oneOrMore>
-               </list>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="key">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides an externally-defined means of identifying the entity (or entities) being named, using a coded value of some kind.
-Suggested values include: 1] dark; 2] bright; 3] caitra; 4] vaisakha; 5] jyaistha; 6] asadha; 7] sravana; 8] bhadrapada; 9] asvina; 10] karttika; 11] margasira; 12] pausa; 13] magha; 14] phalguna; 15] krttika; 16] rohini; 17] mrgasirsa; 18] ardra; 19] punarvasu; 20] pusya; 21] aslesa; 22] magha; 23] purva-phalguni; 24] uttara-phalguni; 25] hasta; 26] citra; 27] svati; 28] visakha; 29] anuradha; 30] jyestha; 31] mula; 32] purva-asadha; 33] uttara-asadha; 34] sravana; 35] dhanistha; 36] satabhisaj; 37] purva-bhadrapada; 38] uttara-bhadrapada; 39] revati; 40] asvini; 41] bharani; 42] tunglai; 43] hariyang; 44] wurukung; 45] paniruan; 46] was; 47] mawulu; 48] pahing; 49] pon; 50] wagai; 51] kaliwuan; 52] umanis; 53] hemanta; 54] grisma; 55] varsa; 56] sinta; 57] landep; 58] wukir; 59] kurantil; 60] tolu; 61] gumbreg; 62] warigalit; 63] warigagung; 64] julung; 65] sungsang; 66] galungan; 67] dungulan; 68] kuningan; 69] langki; 70] madasiha; 71] pujut; 72] pahang; 73] kuruwlut; 74] marakih; 75] tambir; 76] madangkungan; 77] mahatal; 78] wuyai; 79] manahil; 80] prangbakat; 81] balamuki; 82] wugu; 83] wayang; 84] kulawu; 85] dukut; 86] watugunung; 87] rat; 88] buffalo-ox; 89] tiger; 90] hare-cat; 91] dragon; 92] snake; 93] horse; 94] goat; 95] monkey; 96] cock; 97] dog; 98] pig; 99] winter; 100] summer; 101] autumn; 102] spring; 103] lunar; 104] solar</a:documentation>
-               <choice>
-                  <value>dark</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>bright</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>caitra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>vaisakha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>jyaistha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>asadha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sravana</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>bhadrapada</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>asvina</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>karttika</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>margasira</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pausa</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>magha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>phalguna</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>krttika</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>rohini</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mrgasirsa</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ardra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>punarvasu</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pusya</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>aslesa</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>magha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>purva-phalguni</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>uttara-phalguni</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hasta</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>citra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>svati</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>visakha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>anuradha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>jyestha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mula</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>purva-asadha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>uttara-asadha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sravana</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dhanistha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>satabhisaj</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>purva-bhadrapada</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>uttara-bhadrapada</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>revati</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>asvini</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>bharani</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>tunglai</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hariyang</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wurukung</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>paniruan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>was</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mawulu</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pahing</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pon</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wagai</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>kaliwuan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>umanis</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hemanta</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>grisma</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>varsa</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sinta</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>landep</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wukir</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>kurantil</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>tolu</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>gumbreg</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>warigalit</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>warigagung</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>julung</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sungsang</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>galungan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dungulan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>kuningan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>langki</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>madasiha</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pujut</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pahang</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>kuruwlut</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>marakih</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>tambir</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>madangkungan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>mahatal</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wuyai</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>manahil</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>prangbakat</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>balamuki</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wugu</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wayang</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>kulawu</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dukut</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>watugunung</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>rat</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>buffalo-ox</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>tiger</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hare-cat</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dragon</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>snake</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>horse</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>goat</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>monkey</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>cock</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dog</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pig</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>winter</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>summer</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>autumn</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>spring</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>lunar</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>solar</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <data type="string"/>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="type">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
-               <choice>
-                  <value>month</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>fortnight</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>tithi</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>weekday</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>naksatra</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sadvara</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>pancavara</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>season</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>wuku</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>chinese</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>jovian-12</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>jovian-60</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>sunZodiac</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>lagna</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>solstice</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>equinoxe</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>eclipse</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>individual-masc</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>individual-fem</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>individual-other</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>authorship</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="subtype">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a sub-categorization of the element, if needed</a:documentation>
-               <choice>
-                  <value>deity</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>godLegalEntity</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>god_child</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ruler</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ruler_spouse</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ruler_child</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>subordinateRuler</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>royalPreceptor</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>noble</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>landlord</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>chief</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>priest</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>brahmin</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>monk</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>cleric</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>officiant</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>officer</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>ascetic</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>hermit</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>merchant</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>artisan</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>brahminDelegate</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>regionalDelegate</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dancer</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>singer</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>peasant</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>shepherd</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>slave</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>fieldWork</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>unknown</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>bright</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>dark</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
    <define name="num">
       <element name="num">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) contains a number, written in any form. [3.5.3. Numbers and
 Measures]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-num-valeur-or-interval-constraint-rule-31">
+                  id="dharma-num-valeur-or-interval-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3615,7 +3050,7 @@ Measures]</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-date-attributes-constraint-rule-32">
+                  id="dharma-date-attributes-constraint-rule-19">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3848,7 +3283,7 @@ Measures]</a:documentation>
             </attribute>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-date-calendar-calendar-constraint-rule-37">
+                  id="dharma-date-calendar-calendar-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4073,7 +3508,7 @@ Measures]</a:documentation>
             </group>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-expan-expan-constraint-rule-38">
+                  id="dharma-expan-expan-constraint-rule-25">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4090,7 +3525,7 @@ Measures]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(pointer) defines a pointer to another location. [3.6. Simple Links and Cross-References 16.1. Links]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ptr-ptrAtts-constraint-report-20">
+                  id="dharma-ptr-ptrAtts-constraint-report-19">
             <rule context="tei:ptr">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4117,7 +3552,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) defines a reference to another location, possibly modified by additional text or comment. [3.6. Simple Links and Cross-References 16.1. Links]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ref-refAtts-constraint-report-21">
+                  id="dharma-ref-refAtts-constraint-report-20">
             <rule context="tei:ref">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4149,7 +3584,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
             </oneOrMore>
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-list-lists-constraint-rule-39">
+                  id="dharma-list-lists-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4160,13 +3595,13 @@ attributes @target and @cRef may be supplied on <name/>.</report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-list-gloss-list-must-have-labels-constraint-rule-40">
+                  id="dharma-list-gloss-list-must-have-labels-constraint-rule-27">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:list[@type='gloss']">
-	              <sch:assert test="tei:label">The content of a "gloss" list should include a sequence of one or more pairs of a label element followed by an item element</sch:assert>
+               <sch:assert test="tei:label">The content of a "gloss" list should include a sequence of one or more pairs of a label element followed by an item element</sch:assert>
             </sch:rule>
          </pattern>
          <optional>
@@ -4359,7 +3794,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-head-head-childs-constraint-rule-41">
+                  id="dharma-head-head-childs-constraint-rule-28">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4520,7 +3955,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a note or annotation. [3.8.1. Notes and Simple Annotation 2.2.6. The Notes Statement 3.11.2.8. Notes and Statement of Language 9.3.5.4. Notes within Entries]</a:documentation>
          <ref name="macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-note-note-constraint-rule-42">
+                  id="dharma-note-note-constraint-rule-29">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4994,7 +4429,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </choice>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-citedRange-note-constraint-rule-45">
+                  id="dharma-citedRange-note-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5012,13 +4447,13 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                <a:documentation>identifies the unit of information conveyed by the element, e.g. columns, pages, volume, entry.</a:documentation>
                <choice>
                   <value>page</value>
-                  <a:documentation/>
+                  <a:documentation>for page numbers</a:documentation>
                   <value>volume</value>
-                  <a:documentation/>
+                  <a:documentation>for multi-volume publications</a:documentation>
                   <value>book</value>
-                  <a:documentation/>
+                  <a:documentation>where a single-volume publication is divided into “books” within each of which a reference system is restarted</a:documentation>
                   <value>item</value>
-                  <a:documentation/>
+                  <a:documentation>for a number in an anthology of editions, or an item in a numbered list</a:documentation>
                   <value>figure</value>
                   <a:documentation/>
                   <value>plate</value>
@@ -5028,15 +4463,15 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                   <value>appendix</value>
                   <a:documentation/>
                   <value>note</value>
-                  <a:documentation/>
+                  <a:documentation>for a numbered (foot or end) note</a:documentation>
                   <value>part</value>
-                  <a:documentation/>
+                  <a:documentation>to distinguish sections of publications where identical page numbers re-occur within a single volume (such as Epigraphia Carnatica)</a:documentation>
                   <value>entry</value>
-                  <a:documentation/>
+                  <a:documentation>for an entry in a dictionary or encyclopaedia</a:documentation>
                   <value>line</value>
                   <a:documentation/>
                   <value>section</value>
-                  <a:documentation/>
+                  <a:documentation>for one of many numbered paragraphs or short sections where this form of citation is practicable, such as many grammars (to be displayed as §, or §§ when the contents include a hyphen)</a:documentation>
                </choice>
             </attribute>
          </optional>
@@ -5052,19 +4487,12 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
    <define name="bibl">
       <element name="bibl">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(bibliographic citation) contains a loosely-structured bibliographic citation of which the sub-components may or may not be explicitly tagged. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements]</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="model.gLike"/>
-               <ref name="model.highlighted"/>
-               <ref name="model.pPart.data"/>
-               <ref name="model.pPart.edit"/>
-               <ref name="model.segLike"/>
-               <ref name="model.ptrLike"/>
-               <ref name="model.biblPart"/>
-               <ref name="model.global"/>
-            </choice>
-         </zeroOrMore>
+         <group>
+            <ref name="ptr"/>
+            <zeroOrMore>
+               <ref name="citedRange"/>
+            </zeroOrMore>
+         </group>
          <optional>
             <attribute name="n">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) siglum</a:documentation>
@@ -5120,19 +4548,19 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-l-mixed-verse-constraint-rule-46">
+                  id="dharma-l-mixed-verse-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:l[parent::tei:lg[@met='mixed']]">
-                                <sch:assert test="self::tei:l[@real or @met]">In a stanza identify
+               <sch:assert test="self::tei:l[@real or @met]">In a stanza identify
                                     as "mixed", the children verse lines must have at least an
                                     attribute @met or @real.</sch:assert>
-                            </sch:rule>
+            </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-l-abstractModel-structure-l-constraint-report-31">
+                  id="dharma-l-abstractModel-structure-l-constraint-report-30">
             <rule context="tei:l">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5297,7 +4725,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lg-atleast1oflggapl-constraint-assert-32">
+                  id="dharma-lg-atleast1oflggapl-constraint-assert-20">
             <rule context="tei:lg">
                <sch:assert xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -5308,7 +4736,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lg-abstractModel-structure-l-constraint-report-32">
+                  id="dharma-lg-abstractModel-structure-l-constraint-report-31">
             <rule context="tei:lg">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6152,7 +5580,7 @@ Sample values include: 1] filename</a:documentation>
             </optional>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-div-constraint-rule-47">
+                  id="dharma-div-div-constraint-rule-34">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6170,7 +5598,7 @@ Sample values include: 1] filename</a:documentation>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-abstractModel-structure-l-constraint-report-37">
+                  id="dharma-div-abstractModel-structure-l-constraint-report-36">
             <rule context="tei:div">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6181,7 +5609,7 @@ Sample values include: 1] filename</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-abstractModel-structure-p-constraint-report-38">
+                  id="dharma-div-abstractModel-structure-p-constraint-report-37">
             <rule context="tei:div">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6549,7 +5977,7 @@ Sample values include: 1] filename</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(editorial expansion) contains a sequence of letters added by an editor or transcriber when expanding an abbreviation. [11.3.1.2. Abbreviation and Expansion]</a:documentation>
          <ref name="macro.xtext"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ex-ex-constraint-rule-48">
+                  id="dharma-ex-ex-constraint-rule-35">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6578,7 +6006,7 @@ Sample values include: 1] filename</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(forme work) contains a running head (e.g. a header, footer), catchword, or similar material appearing on the current page. [11.6. Headers, Footers, and Similar Matter]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-fw-fw-after-pb-constraint-rule-49">
+                  id="dharma-fw-fw-after-pb-constraint-rule-36">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6687,7 +6115,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the location of a significant space in the text. [11.5.1. Space]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-space-space-constraint-rule-50">
+                  id="dharma-space-space-constraint-rule-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6754,7 +6182,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             <ref name="add"/>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-subst-substContents1-constraint-assert-34">
+                  id="dharma-subst-substContents1-constraint-assert-22">
             <rule context="tei:subst">
                <assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6861,7 +6289,7 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the degree of certainty associated with some aspect of the text markup. [21.1.2. Structured Indications of Uncertainty]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-certainty-usage-certainty-constraint-rule-52">
+                  id="dharma-certainty-usage-certainty-constraint-rule-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7034,7 +6462,7 @@ Sample values include: 1] numeral</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-ab-constraint-report-45">
+                  id="dharma-ab-abstractModel-structure-ab-constraint-report-44">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7045,7 +6473,7 @@ Sample values include: 1] numeral</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-l-constraint-report-46">
+                  id="dharma-ab-abstractModel-structure-l-constraint-report-45">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7314,7 +6742,7 @@ Sample values include: 1] numeral</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-seg-att-type-subtype-constraint-rule-56">
+                  id="dharma-seg-att-type-subtype-constraint-rule-43">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7659,7 +7087,7 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-msIdentifier-msId_minimal-constraint-report-50">
+                  id="dharma-msIdentifier-msId_minimal-constraint-report-49">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7766,9 +7194,11 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
             <oneOrMore>
                <ref name="model.pLike"/>
             </oneOrMore>
-            <optional>
-               <ref name="support"/>
-            </optional>
+            <group>
+               <optional>
+                  <ref name="support"/>
+               </optional>
+            </group>
          </choice>
       </element>
    </define>
@@ -7815,9 +7245,11 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
             <oneOrMore>
                <ref name="model.pLike"/>
             </oneOrMore>
-            <optional>
-               <ref name="summary"/>
-            </optional>
+            <group>
+               <optional>
+                  <ref name="summary"/>
+               </optional>
+            </group>
          </choice>
       </element>
    </define>
@@ -8148,7 +7580,7 @@ Sample values include: 1] king; 2] queen; 3] prince; 4] princess</a:documentatio
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an absolute or relative place name. [13.2.3. Place Names]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-placeName-div-constraint-rule-57">
+                  id="dharma-placeName-div-constraint-rule-44">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8221,9 +7653,9 @@ Sample values include: 1] king; 2] queen; 3] prince; 4] princess</a:documentatio
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:placeName[@type='undetermined']">
-                                <sch:assert test="not(@subtype)">@subtype isn't allowed with
+               <sch:assert test="not(@subtype)">@subtype isn't allowed with
                                     @type='undetermined'</sch:assert>
-                            </sch:rule>
+            </sch:rule>
          </pattern>
          <ref name="att.global.attribute.xmlid"/>
          <ref name="att.global.responsibility.attribute.cert"/>
@@ -8272,7 +7704,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-app-one-lem-constraint-rule-64">
+                  id="dharma-app-one-lem-constraint-rule-51">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8296,7 +7728,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             <ref name="app"/>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-listApp-div-constraint-rule-65">
+                  id="dharma-listApp-div-constraint-rule-52">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8324,7 +7756,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lem-exclusion-inside-lem-constraint-rule-66">
+                  id="dharma-lem-exclusion-inside-lem-constraint-rule-53">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8361,7 +7793,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-67">
+                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-54">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
