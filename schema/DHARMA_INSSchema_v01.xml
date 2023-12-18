@@ -1542,8 +1542,11 @@
                 <elementSpec ident="bibl" module="core" mode="change">
                     <content>
                         <sequence>
-                            <elementRef key="ptr"/>
-                            <elementRef key="citedRange" minOccurs="0" maxOccurs="unbounded"/>
+                            <sequence>
+                                <elementRef key="ptr"/>
+                                <elementRef key="citedRange" minOccurs="0" maxOccurs="unbounded"/>
+                            </sequence>
+                            <elementRef key="note" minOccurs="0" maxOccurs="1"/>
                         </sequence>
                     </content>
                     <attList>
