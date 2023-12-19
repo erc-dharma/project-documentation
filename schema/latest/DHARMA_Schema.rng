@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-12-18T12:19:31Z. . 
+Schema generated from ODD source 2023-12-19T13:21:28Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -6361,7 +6361,10 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
          <choice>
             <data type="positiveInteger"/>
             <data type="string">
-               <param name="pattern">[.§]?</param>
+               <param name="pattern">\.</param>
+            </data>
+            <data type="string">
+               <param name="pattern">§*</param>
             </data>
          </choice>
          <attribute name="type">

@@ -2414,7 +2414,8 @@
                     <content>
                         <alternate>
                             <dataRef name="positiveInteger"/>
-                            <dataRef name="string" restriction="[.§]?"/>
+                            <dataRef name="string" restriction="\."/>
+                            <dataRef name="string" restriction="§*"/>
                         </alternate>
                     </content>
                     <attList>
