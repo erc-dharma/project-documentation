@@ -4281,7 +4281,7 @@
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="type" mode="change">
+            <attDef ident="type" mode="change" usage="req">
               <valList type="closed" mode="change">
                 <valItem ident="parallels"/>
                 <valItem ident="apparatus"/>
