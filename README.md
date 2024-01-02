@@ -41,6 +41,7 @@ This repository is storing all the current documentation of the DHARMA Project.
 
 ## Open repository list
 |Repository name|Corpus Designation|
+|--|--|
 |arie|ARIE edition in open-source - only html|
 |digital-areal| xml-TEI introduction, lessons in French|
 |erc-dharma.github.io|Files for temporary website|
@@ -52,6 +53,7 @@ This repository is storing all the current documentation of the DHARMA Project.
 
 ## Closed repository list
 |Repository name|Corpus Designation|
+|--|--|
 |aditia-phd|Aditia's phd and latex scripts|
 |arie-corpus|All arie's sources files|
 |electronic-text|Project txt files|
