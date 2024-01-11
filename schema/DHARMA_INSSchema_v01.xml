@@ -693,7 +693,9 @@
                 </elementSpec>
                 <elementSpec ident="gap" module="core" mode="change">
                     <content>
-                        <empty/>
+                        <sequence minOccurs="0" maxOccurs="1">
+                            <elementRef key="certainty"/>
+                        </sequence>
                     </content>
                     <!-- testing for <gap> with both quantity/extent, no unit, or contained in supplied -->
                     <constraintSpec ident="gap" scheme="isoschematron">
