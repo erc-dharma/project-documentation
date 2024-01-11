@@ -52,13 +52,17 @@
 			<change who="#argr" when="2021-05-20">Added Wayan Jarrah Sastrawan's ID.</change>
 			<change who="#argr" when="2021-03-01">Added Roberta Zollo's ID.</change>
 			<change who="#argr" when="2020-08-27">Added Salomé Pichon's ID.</change>
-			<change who="#axja" when="2019-12-12">Updates on the metadata schema and applying Arlo
+			<change who="#axja" when="2019-12-12"
+				>Updates on the metadata schema and applying Arlo
 				Griffiths's suggestions on the IDs.</change>
-			<change who="#argr" when="2019-12-06">Proposed new four-letter IDs, filled in missing
+			<change who="#argr" when="2019-12-06"
+				>Proposed new four-letter IDs, filled in missing
 				roles, posed some question</change>
-			<change who="#axja" when="2019-12-06">Corrections requested by Annette Schmiedchen
+			<change who="#axja" when="2019-12-06"
+				>Corrections requested by Annette Schmiedchen
 				(4ca777f misspelling correction)</change>
-			<change who="#axja" when="2019-12-06">Creation of the file, adding some informations and
+			<change who="#axja" when="2019-12-06"
+				>Creation of the file, adding some informations and
 				minimal metadata</change>
 		</revisionDesc>
 	</teiHeader>
@@ -108,6 +112,25 @@
 					<idno type="IdRef">https://www.idref.fr/200880365</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-9845-1480</idno>
 				</person>
+				<person xml:id="ants">
+					<!--"ansa" already used for Anjaneya Sarma-->
+					<persName>
+						<forename>Antonella</forename>
+						<surname>Santoro</surname>
+					</persName>
+					<idno type="VIAF"/>
+					<idno type="IdRef"/>
+					<idno type="ORCID"/>
+				</person>				
+				<person xml:id="matr">
+					<persName>
+						<forename>Margherita</forename>
+						<surname>Trento</surname>
+					</persName>
+					<idno type="VIAF"/>
+					<idno type="IdRef"/>
+					<idno type="ORCID"/>
+				</person>
 				<person xml:id="dogo">
 					<persName>
 						<forename>Dominic</forename>
@@ -123,6 +146,9 @@
 						<forename>Renato</forename>
 						<surname>Dávalos</surname>
 					</persName>
+					<idno type="VIAF"/>
+					<idno type="IdRef"/>
+					<idno type="ORCID"/>
 				</person>
 				<person xml:id="anac">
 					<persName>
@@ -157,7 +183,8 @@
 					<persName>
 						<name>A. Moise Irudayaraj</name>
 					</persName>
-				</person><person xml:id="daba">
+				</person>
+				<person xml:id="daba">
 					<persName>
 						<forename>Dániel</forename>
 						<surname>Balogh</surname>
@@ -235,7 +262,7 @@
 				<person xml:id="chch">
 					<persName>
 						<forename>Chloé</forename>
-							<surname>Chollet</surname>
+						<surname>Chollet</surname>
 					</persName>
 				</person>
 				<person xml:id="vede">
@@ -302,9 +329,10 @@
 				</person>
 				<person xml:id="gege">
 					<persName>
-					<forename>Gerdi</forename>
-					<surname>Gerschheimer</surname>
-				</persName></person>
+						<forename>Gerdi</forename>
+						<surname>Gerschheimer</surname>
+					</persName>
+				</person>
 				<person xml:id="vagi">
 					<persName>
 						<forename>Valérie</forename>
@@ -317,9 +345,9 @@
 				</person>
 				<person xml:id="sagu">
 					<persName>
-					<forename>Samana</forename>
-					<surname>Gururaja</surname>
-				</persName>
+						<forename>Samana</forename>
+						<surname>Gururaja</surname>
+					</persName>
 				</person>
 				<person xml:id="chhu">
 					<persName>
@@ -460,7 +488,8 @@
 					<persName>
 						<name>N. Ramaswamy</name>
 					</persName>
-					<!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed --> <!-- Manu dixit: I confirm that iti is not him -->
+					<!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed -->
+					<!-- Manu dixit: I confirm that iti is not him -->
 				</person>
 				<person xml:id="anol">
 					<persName>
