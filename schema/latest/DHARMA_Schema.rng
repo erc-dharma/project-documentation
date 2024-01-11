@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-01-10T15:54:15Z. . 
+Schema generated from ODD source 2024-01-11T09:06:16Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -1088,6 +1088,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="abbr"/>
          <ref name="expan"/>
          <ref name="ex"/>
+         <ref name="am"/>
          <ref name="subst"/>
       </choice>
    </define>
@@ -1097,6 +1098,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="abbr"/>
          <ref name="expan"/>
          <ref name="ex"/>
+         <ref name="am"/>
          <ref name="subst"/>
       </choice>
    </define>
@@ -1105,6 +1107,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <ref name="abbr"/>
       <ref name="expan"/>
       <ref name="ex"/>
+      <ref name="am"/>
       <ref name="subst"/>
    </define>
    <define name="model.pPart.editorial_sequenceOptional">
@@ -1119,6 +1122,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </optional>
       <optional>
          <ref name="ex"/>
+      </optional>
+      <optional>
+         <ref name="am"/>
       </optional>
       <optional>
          <ref name="subst"/>
@@ -1138,6 +1144,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="ex"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="am"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="subst"/>
       </zeroOrMore>
    </define>
@@ -1153,6 +1162,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </oneOrMore>
       <oneOrMore>
          <ref name="ex"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="am"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="subst"/>
@@ -6115,6 +6127,18 @@ Sample values include: 1] text-align: right; 2] text-align: center; 3] text-alig
             </attribute>
          </optional>
          <empty/>
+      </element>
+   </define>
+   <define name="am">
+      <element name="am">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(abbreviation marker) contains a sequence of letters or signs present in an abbreviation which are omitted or replaced in the expanded form of the abbreviation. [11.3.1.2. Abbreviation and Expansion]</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="model.gLike"/>
+               <ref name="model.pPart.transcriptional"/>
+            </choice>
+         </zeroOrMore>
       </element>
    </define>
    <define name="space">
