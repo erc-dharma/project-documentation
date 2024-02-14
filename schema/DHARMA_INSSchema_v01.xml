@@ -2445,7 +2445,9 @@
                     <!--TODO fill with names-->
                     <content>
                         <alternate>
-                            <dataRef name="positiveInteger"/>
+                            <!-- for <g type="numeral" -->
+                            <dataRef name="string" restriction="([0-9]+)|([0-9]+/[1-9][0-9]*)|(I+)"/>
+                            <!-- for the rest -->
                             <dataRef name="string" restriction="\."/>
                             <dataRef name="string" restriction="§*"/>
                         </alternate>
