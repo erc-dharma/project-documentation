@@ -26,6 +26,8 @@ We have created two CSL stylesheets for the DHARMA project, based on the Chicago
 - Select the stylesheet you have previously stored in YourUsername > Zotero > styles and enter.
 - This new style will appear in the style Manager list
 
+@maintainer Validate CSL stylesheets with https://simonster.github.io/csl-validator.js/
+
 ## Using a Style from the Standalone
 
 To use a style to export an item, right- click on the item and choose `Create Bibliography from item`. You can select your style and your output method and mode.
