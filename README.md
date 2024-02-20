@@ -2,6 +2,10 @@
 
 This repository is storing all the current documentation of the DHARMA Project.
 
+When creating a new repository, do not rename its default branch to `main` or to something else. This default branch must remain called `master`. Otherwise, the DHARMA application will deal incorrectly with the repository.
+
+When creating a file, do not use question marks within its name. Files with question marks in their name are fine on Unix, but prevent pulling a repository in Github Desktop on Windows.
+
 ## Corpora repositories
 |Task Force|Corpus Designation|Repository name|
 |--|--|--|
