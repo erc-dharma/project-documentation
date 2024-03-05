@@ -1,18 +1,18 @@
 names	text	description
-danda dandaPlain	।	plain vertical bar
-dandaSerif	।	vertical bar with a headmark or small horizontal line on top
-dandaHooked	।	vertical bar with a hook on top
-dandaCross	।	vertical bar crossed by a predominantly horizontal line
-dandaStrokeLeft	।	vertical bar with short horizontal appendix at middle on the left
-dandaOrnate	।	vertical bar with more complex ornamentation
-ddanda ddandaPlain	 ǁ	plain double vertical bar
-ddandaSerif	 ǁ	double vertical bar with a headmark or small horizontal line on top
-ddandaHooked	 ǁ	double vertical bar with a hook on top of one or both bars
-ddandaCross	 ǁ	double vertical bar crossed by by one or more further strokes that meet the vertical lines more or less at right angles
-ddandaStrokeLeft	 ǁ	double vertical bar with short horizontal appendix at middle of left bar
-ddandaStrokeRight	 ǁ	double vertical bar with short horizontal appendix at middle of right bar
-ddandaDotTriple	 ǁ	double vertical bar enclosing three dots
-ddandaOrnate	 ǁ	double vertical bar with more complex ornamentation
+danda dandaPlain	|	plain vertical bar
+dandaSerif	|	vertical bar with a headmark or small horizontal line on top
+dandaHooked	|	vertical bar with a hook on top
+dandaCross	|	vertical bar crossed by a predominantly horizontal line
+dandaStrokeLeft	|	vertical bar with short horizontal appendix at middle on the left
+dandaOrnate	|	vertical bar with more complex ornamentation
+ddanda ddandaPlain	 ||	plain double vertical bar
+ddandaSerif	 ||	double vertical bar with a headmark or small horizontal line on top
+ddandaHooked	 ||	double vertical bar with a hook on top of one or both bars
+ddandaCross	 ||	double vertical bar crossed by by one or more further strokes that meet the vertical lines more or less at right angles
+ddandaStrokeLeft	 ||	double vertical bar with short horizontal appendix at middle of left bar
+ddandaStrokeRight	 ||	double vertical bar with short horizontal appendix at middle of right bar
+ddandaDotTriple	 ||	double vertical bar enclosing three dots
+ddandaOrnate	 ||	double vertical bar with more complex ornamentation
 comma	,	a short, curved vertical stroke at median height
 commaSmall dotCommaMid	,	a very short vertical line at median height
 commaHigh	,	a short vertical bar raised to head height
