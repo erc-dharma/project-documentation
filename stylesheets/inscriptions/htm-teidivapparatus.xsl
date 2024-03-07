@@ -285,7 +285,7 @@
           </xsl:variable>
             <xsl:variable name="zoteroapijsonresp">
               <xsl:value-of
-                select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $indresp, '&amp;format=json'), 'amp;', '')"
+                select="replace(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $indresp, '&amp;format=json'), 'amp;', '')"
               />
             </xsl:variable>
             <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>

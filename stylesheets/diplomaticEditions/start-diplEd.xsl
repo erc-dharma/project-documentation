@@ -483,23 +483,23 @@
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
                 <xsl:variable name="zoteroomitname">
                     <xsl:value-of
-                        select="unparsed-text(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+                        select="unparsed-text(replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
                     />
                 </xsl:variable>
                 <xsl:variable name="zoteroapitei">
                     <xsl:value-of
-                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="zoteroapijson">
                     <xsl:value-of
-                        select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                        select="replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
                 <xsl:variable name="pointerurl">
                     <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
                 </xsl:variable>
                 <xsl:variable name="bibwitness">
-                    <xsl:value-of select="replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                    <xsl:value-of select="replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:witness">
@@ -564,7 +564,7 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:copy-of
-                            select="document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+                            select="document(replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="ancestor::tei:listBibl and ancestor-or-self::tei:bibl/@n"> <!-- [@type='primary'] -->

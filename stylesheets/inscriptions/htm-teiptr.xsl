@@ -20,7 +20,7 @@
 
       <xsl:variable name="zoteroapijson">
         <xsl:value-of
-          select="replace(concat('https://api.zotero.org/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
+          select="replace(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
         />
       </xsl:variable>
 
