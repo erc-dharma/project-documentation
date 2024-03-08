@@ -1,6 +1,26 @@
 # DHARMA Stylesheets Documentation
 
-Before starting, you must clone the project-documentation repository in order to have a version of the Stylesheets on your computer. Remember to regularly update it to access the latest version of the codes. 
+Before starting, you must clone the project-documentation repository in order to have a version of the necessary data on your computer. Remember to regularly update it to access the latest version of the code.
+
+## How to display your inscription as on [dharman.in](https://dharman.in)
+
+In Oxygen's menu, click on `Tools > External Tools > Configure...`
+
+![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation1.png)
+
+Click on `New`.
+
+![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation2.png)
+
+Fill in the form as shown in the following picture. You need to replace `/home/michael/dharma/repos` with the appropriate value, viz. the path of the directory where you cloned the `project-documentation` repository on your computer. Confirm by clicking on `OK`.
+
+![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation3.png)
+
+You should now see a `Display` button in Oxygen's toolbar, as  in the following.
+
+![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation4.png)
+
+Click on this button to visualize your file. If all is well, your Web browser will open a new tab that displays the inscription. If not, please contact me so that I can amend the code.
 
 ## How to use the XSLT for inscriptions
 - Go `Document>Transformation>Configure Transformation Scenarios...` or click on the `Configure Transformation Scenarios` in the tools bar
