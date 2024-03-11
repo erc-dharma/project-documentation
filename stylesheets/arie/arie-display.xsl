@@ -39,7 +39,7 @@
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
             <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
             <xsl:variable name="bibref">
-                <xsl:value-of select="replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
             </xsl:variable>
         <xsl:element name="h1">
             <xsl:attribute name="class">text-center</xsl:attribute>
@@ -61,7 +61,7 @@
         <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
         <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
         <xsl:variable name="bibref">
-            <xsl:value-of select="replace(concat('http://195.154.222.146:8024/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+            <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
         </xsl:variable>
         <xsl:element name="h1">
             <xsl:attribute name="class">text-center</xsl:attribute>

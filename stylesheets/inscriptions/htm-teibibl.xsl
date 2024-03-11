@@ -89,21 +89,21 @@ bibliography. All examples only cater for book and article.
 						<xsl:variable name="zoteroapitei">
 
 							<xsl:value-of
-								select="replace(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
 							<!-- to go to the json with the escaped html included  use &amp;format=json&amp;include=bib,data and the code below: the result is anyway escaped... -->
 
 						</xsl:variable>
 
 						<xsl:variable name="zoteroapijsonomitname">
 							<xsl:value-of
-								select="replace(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json'), 'amp;', '')"
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json'), 'amp;', '')"
 							/>
 						</xsl:variable>
 						<xsl:variable name="unparsedomitname" select="unparsed-text($zoteroapijsonomitname)"/>
 
 						<xsl:variable name="zoteroapijson">
 							<xsl:value-of
-								select="replace(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
 							/>
 						</xsl:variable>
 						
@@ -111,7 +111,7 @@ bibliography. All examples only cater for book and article.
 
 						<xsl:variable name="zoteroapijournal">
 							<xsl:value-of
-								select="replace(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle), 'amp;', '')"
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle), 'amp;', '')"
 							/>
 						</xsl:variable>
 						<xsl:variable name="unparsedjournal" select="unparsed-text($zoteroapijournal)"/>
@@ -247,7 +247,7 @@ bibliography. All examples only cater for book and article.
 										</xsl:when>
 										<xsl:otherwise>
 												<xsl:copy-of
-													select="document(concat('http://195.154.222.146:8024/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
+													select="document(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
 										</xsl:otherwise>
 									</xsl:choose>
 								<!--</span>-->
