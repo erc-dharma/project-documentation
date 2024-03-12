@@ -2,7 +2,29 @@
 
 Before starting, you must clone the project-documentation repository in order to have a version of the necessary data on your computer. Remember to regularly update it to access the latest version of the code.
 
-## How to display your inscription as on [dharman.in](https://dharman.in)
+## How to display your inscription as on [dharmalekha.info](https://dharmalekha.info)
+
+You first need to install [Python](https://www.python.org) on your computer.
+
+### Installing Python
+
+#### On Windows
+
+Click on Windows' start button and type `cmd`. You should see an application called "Command Prompt" in the search results, as in the following picture. Open the Command Prompt.
+
+![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation_windows1.png)
+
+In the new window, type `python3`, then enter. If Python is already installed on your computer, you will see a banner like this:
+
+![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation_windows2.png)
+
+Otherwise, Windows will open a window that proposes you to install Python. Follow the instructions, and close the Command Prompt when done.
+
+#### On MacOS
+
+See [this download page](https://www.python.org/downloads/macos).
+
+### Setting Up the Conversion Tool in Oxygen
 
 In Oxygen's menu, click on `Tools > External Tools > Configure...`
 
@@ -12,7 +34,9 @@ Click on `New`.
 
 ![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation2.png)
 
-Fill in the form as shown in the following picture. You need to replace `/home/michael/dharma/repos` with the appropriate value, viz. the path of the directory where you cloned the `project-documentation` repository on your computer. Confirm by clicking on `OK`.
+
+
+Fill in the form as shown in the following picture. You need to replace `/home/michael/dharma/repos` with the appropriate value, viz. the path of the directory where you cloned the `project-documentation` repository on your computer. If you are on Windows and are using Github Desktop, the full path `${homeDir}/Documents/Github/project-documentation/stylesheets/convert.py` should work. Confirm by clicking on `OK`.
 
 ![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation3.png)
 
@@ -20,7 +44,7 @@ You should now see a `Display` button in Oxygen's toolbar, as  in the following.
 
 ![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation4.png)
 
-Click on this button to visualize your file. If all is well, your Web browser will open a new tab that displays the inscription. If not, please contact me so that I can amend the code.
+Click on this button to visualize your file. If all is well, your Web browser will open a new tab that displays the inscription. If not, please contact the Data Manager.
 
 ## How to use the XSLT for inscriptions
 - Go `Document>Transformation>Configure Transformation Scenarios...` or click on the `Configure Transformation Scenarios` in the tools bar
