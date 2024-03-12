@@ -138,7 +138,7 @@
                             <valItem ident="cjm"><desc>Cham, Eastern</desc></valItem>
                             <valItem ident="cjm-Latn"><desc>Cham, Eastern</desc></valItem>
                             <valItem ident="deu"><desc>German</desc></valItem>
-                            <valItem ident="eng"><desc>English</desc></valItem>    
+                            <valItem ident="eng"><desc>English</desc></valItem>
                             <valItem ident="fra"><desc>French</desc></valItem>
                             <valItem ident="ind"><desc>Indonesian</desc></valItem>
                             <valItem ident="ind-Latn"><desc>Indonesian</desc></valItem>
@@ -272,12 +272,15 @@
                             <valItem ident="class:83219">
                                 <desc>Kharoṣṭhī</desc>
                             </valItem>
-                        </valList>   
+                        </valList>
                     </content>
                 </dataSpec>
                 <dataSpec ident="dharma.script_maturity">
                     <content>
                         <valList>
+                            <valItem ident="maturity:00000">
+                                <desc>null</desc>é~
+                            </valItem>
                             <valItem ident="maturity:83207">
                                 <desc>early Brāhmī</desc>
                             </valItem>
