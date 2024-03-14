@@ -8,16 +8,16 @@
     version="2.0">
 
     <xsl:output indent="no" encoding="UTF-8"/>
-    
+
     <xsl:function name="functx:sort" as="item()*"
         xmlns:functx="http://www.functx.com">
         <xsl:param name="seq" as="item()*"/>
-        
+
         <xsl:for-each select="$seq">
             <xsl:sort select="."/>
             <xsl:copy-of select="."/>
         </xsl:for-each>
-        
+
     </xsl:function>
 
     <!-- Written by Axelle Janiak for DHARMA, starting February 2021 -->
@@ -30,7 +30,7 @@
                 <xsl:attribute name="data-spy">scroll</xsl:attribute>
                 <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
                 <xsl:call-template name="nav-bar"/>
-                
+
                 <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse">☰ Index</a>
                 <xsl:call-template name="table-contents"/>
                 <xsl:element name="div">
@@ -101,10 +101,10 @@
     <xsl:template match="tei:bibl">
         <xsl:choose>
             <xsl:when test=".[tei:ptr]">
-                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="biblentry" select="substring-after(./tei:ptr/@target, 'bib:')"/>
                 <xsl:variable name="zoteroapitei">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="pointerurl">
                     <xsl:value-of select="document($zoteroapitei)//tei:biblStruct/@corresp"/>
@@ -122,7 +122,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-   
+
    <!-- body -->
     <!--<xsl:template match="tei:body">
         <xsl:element name="div">
@@ -137,17 +137,17 @@
                         <xsl:attribute name="role">button</xsl:attribute>
                         <xsl:attribute name="aria-expanded">false</xsl:attribute>
                         <xsl:attribute name="aria-controls"><xsl:value-of select="generate-id()"/></xsl:attribute>
-                        
+
                         <xsl:element name="small">
                             <xsl:choose>
                                 <!-\- condition pour éviter la note dans le titre du head Introduction -\->
                                 <xsl:when test="child::tei:head[1]">
                                     <xsl:apply-templates select="tei:head/string()"/>
                                 </xsl:when>
-                               
+
                             </xsl:choose>
                         </xsl:element>
-                        
+
                     </xsl:element>
                     <xsl:element name="div">
                         <xsl:attribute name="id">
@@ -165,7 +165,7 @@
             <br></br>
         </xsl:element>
     </xsl:template>-->
-    
+
     <!-- cell -->
     <xsl:template match="tei:cell">
         <xsl:element name="td">
@@ -194,7 +194,7 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template name="participants">
         <xsl:param name="partid"/>
         <xsl:choose>
@@ -230,7 +230,7 @@
                             <xsl:element name="a">
                                 <xsl:attribute name="class">btn btn-block text-center<xsl:if test="not(contains(child::tei:head[1], 'RÉPERTOIRE'))">
                                     <xsl:text> collapsed</xsl:text>
-                                </xsl:if></xsl:attribute>                          
+                                </xsl:if></xsl:attribute>
                             <xsl:attribute name="role">button</xsl:attribute>
                             <xsl:attribute name="data-toggle">collapse</xsl:attribute>
                             <xsl:attribute name="data-target">#collapse<xsl:number count="tei:div[@type='chapter']" level="any"/></xsl:attribute>
@@ -250,7 +250,7 @@
                                 <xsl:when test="contains(child::tei:head[1], 'INTRODUCTION')">
                                     <xsl:apply-templates select="tei:head/text()"/>
                                 </xsl:when>
-                                
+
                                 <xsl:when test="child::tei:head[1]">
                                     <xsl:apply-templates select="tei:head/string()"/>
                                 </xsl:when>
@@ -270,7 +270,7 @@
                         </xsl:if></xsl:attribute>
                         <xsl:attribute name="aria-labelledby">header<xsl:number count="tei:div[@type='chapter']" level="any"/></xsl:attribute>
                         <xsl:attribute name="data-parent">#accordionStructure</xsl:attribute>
-                        <xsl:element name="div"> 
+                        <xsl:element name="div">
                             <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
                             <xsl:apply-templates/>
                         </xsl:element>
@@ -280,7 +280,7 @@
         </xsl:element>
         <!--</xsl:element>-->
     </xsl:template>
-    
+
     <xsl:template match="tei:div[not(@type='chapter')]">
         <!-- @type chapter, section, sub-section and alpha -->
         <xsl:choose>
@@ -513,7 +513,7 @@
                 </xsl:otherwise>
             </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="tei:note" mode="bypass">
         <xsl:if test="preceding-sibling::*[1][local-name()= 'choice']"><xsl:apply-templates/></xsl:if>
     </xsl:template>
@@ -534,7 +534,7 @@
             <xsl:attribute name="class">oreference</xsl:attribute>
             <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
             <!--<xsl:text>—</xsl:text>-->
-           <xsl:choose> 
+           <xsl:choose>
                <xsl:when test="child::text()">
                    <xsl:apply-templates/>
                </xsl:when>
@@ -649,9 +649,9 @@
 
     <!-- teiHeader -->
     <xsl:template match="tei:teiHeader"/>
-    
+
     <!-- title -->
-    
+
     <xsl:template match="tei:title">
         <xsl:choose>
             <xsl:when test="@level='m'">
@@ -665,7 +665,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- unclear -->
     <xsl:template match="tei:unclear">
         <xsl:text>(</xsl:text>
@@ -803,7 +803,7 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        
+
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader ec -->
@@ -880,8 +880,8 @@
         </xsl:if>
     </xsl:template>
 
-   
-    
+
+
     <xsl:template name="dharma-generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
@@ -907,8 +907,8 @@
                     <xsl:attribute name="data-target">
                         <xsl:value-of select="generate-id()"/>
                     </xsl:attribute>
-                    
-                    <xsl:attribute name="title">Note <xsl:value-of select="$number"/></xsl:attribute>                  
+
+                    <xsl:attribute name="title">Note <xsl:value-of select="$number"/></xsl:attribute>
                     <span class="tooltip-notes font-weight-normal">
                         <sup>
                             <!--<xsl:text>↓</xsl:text>-->
@@ -936,7 +936,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="tei:note[not(@type='geo')]" mode="modals">
         <xsl:variable name="notes">
                     <xsl:element name="span">

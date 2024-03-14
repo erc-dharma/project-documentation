@@ -7,18 +7,18 @@
     exclude-result-prefixes="tei xi fn functx">
     <xsl:output method="text"  indent="no"/>
     <xsl:strip-space elements="tei:*"/>
-    
+
     <xsl:function name="functx:trim" as="xs:string"
         xmlns:functx="http://www.functx.com">
         <xsl:param name="arg" as="xs:string?"/>
-        
+
         <xsl:sequence select="
             replace(replace($arg,'\s+$',''),'^\s+','')
             "/>
-        
+
     </xsl:function>
-    
-    <xsl:template match="text()">        
+
+    <xsl:template match="text()">
         <xsl:if test="matches(., '^\s') and not(matches(., '^\s+$'))">
                <xsl:text> </xsl:text>
             </xsl:if>
@@ -27,7 +27,7 @@
                <xsl:text> </xsl:text>
             </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="tei:ab">
         <xsl:text>&#xA;</xsl:text>
         <xsl:if test="@type">
@@ -36,7 +36,7 @@
         </xsl:if>
         <xsl:apply-templates/>
     </xsl:template>
-   
+
     <!--<xsl:template match="tei:app[not(@rend='hide')]">
         <xsl:apply-templates select="child::tei:lem"/>
         <xsl:text> (</xsl:text>
@@ -52,7 +52,7 @@
                 </xsl:when>
                     <xsl:when test="@type='conj'">
                     <xsl:text>conj.</xsl:text>
-                </xsl:when>   
+                </xsl:when>
         </xsl:choose>
             </xsl:when>
             <xsl:when test="@wit">
@@ -81,31 +81,31 @@
         </xsl:for-each>
         <xsl:text>)</xsl:text>
     </xsl:template>-->
-    
+
     <xsl:template match="tei:bibl">
         <xsl:choose>
             <xsl:when test=".[tei:ptr]">
-                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="biblentry" select="substring-after(./tei:ptr/@target, 'bib:')"/>
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
                 <xsl:variable name="zoteroomitname">
                     <xsl:value-of
-                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json'), 'amp;', ''))"
                     />
                 </xsl:variable>
                 <xsl:variable name="zoteroapitei">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="zoteroapijson">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
                 <xsl:variable name="pointerurl">
                     <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
                 </xsl:variable>
                 <xsl:variable name="bibwitness">
-                    <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                    <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="parent::tei:witness">
@@ -113,7 +113,7 @@
                             select="document($bibwitness)/div"/>
                     </xsl:when>
                     <xsl:when test="parent::tei:listBibl"/>
-                    <xsl:when test="parent::tei:p or parent::tei:note">			
+                    <xsl:when test="parent::tei:p or parent::tei:note">
                         <a href="{$pointerurl}">
                             <xsl:variable name="citation">
                                 <xsl:analyze-string select="$unparsedtext"
@@ -166,12 +166,12 @@
                         <xsl:if test="following::tei:quote[1] and ancestor::tei:cit">
                             <xsl:text>: </xsl:text>
                         </xsl:if>
-                        <!--	if it is in the bibliography print styled reference-->	
-                        
+                        <!--	if it is in the bibliography print styled reference-->
+
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:copy-of
-                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="ancestor::tei:listBibl and ancestor-or-self::tei:bibl/@n"> <!-- [@type='primary'] -->
@@ -188,16 +188,16 @@
             <!-- if there is no ptr, print simply what is inside bibl and a warning message-->
             <xsl:otherwise>
                 <xsl:apply-templates/>
-            </xsl:otherwise>		
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="tei:del">
         <xsl:text>⟦</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>⟧</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="tei:div">
         <xsl:if test="@type='dyad' or @type='chapter'">
             <xsl:text>&#xA;</xsl:text>
@@ -219,7 +219,7 @@
             <xsl:text>&#xA;</xsl:text>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="tei:gap">
         <xsl:choose>
             <xsl:when test="@reason='omitted'">
@@ -228,7 +228,7 @@
             <xsl:when test="@reason='lost' and not(@quantity|@unity)"/>
             <xsl:otherwise>
                 <xsl:text>[</xsl:text>
-                    <xsl:choose> 
+                    <xsl:choose>
                         <xsl:when test="@quantity and @unit">
                             <xsl:if test="@precision='low'">
                                 <xsl:text>ca. </xsl:text>
@@ -246,7 +246,7 @@
                                         <xsl:text>*</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
-                            </xsl:if> 
+                            </xsl:if>
                         </xsl:when>
                         <xsl:when test="@extent">
                             <xsl:text>...</xsl:text>
@@ -254,26 +254,26 @@
                         <xsl:otherwise>
                             <xsl:text>...</xsl:text>
                         </xsl:otherwise>
-                    </xsl:choose>         
+                    </xsl:choose>
                 <xsl:text>]</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
-        
+
     </xsl:template>
-    
+
     <xsl:template match="tei:head"/>
-    
+
     <xsl:template match="tei:hi">
         <xsl:apply-templates/>
     </xsl:template>
-    
+
     <xsl:template match="tei:lacunaStart"/>
     <xsl:template match="tei:lacunaEnd"/>
-    
+
 <xsl:template match="tei:lem">
     <xsl:apply-templates/>
-</xsl:template>    
-    
+</xsl:template>
+
     <xsl:template match="tei:listApp[@type='parallels' or @type='apparatus']"/>
         <!--<xsl:text>&#xA;</xsl:text>
         <xsl:text>parallels: </xsl:text>
@@ -289,7 +289,7 @@
            </xsl:for-each>
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>-->
-   
+
    <xsl:template match="tei:l">
       <xsl:apply-templates/>
       <xsl:if test="not(following-sibling::tei:l)">
@@ -302,15 +302,15 @@
                               <xsl:value-of select="ancestor::tei:div[@type='dyad'][1]/@n"/>
                               <xsl:text>.</xsl:text>
                           </xsl:if>
-                       </xsl:when>      
+                       </xsl:when>
                       <xsl:otherwise>
-                          
+
                               <xsl:value-of select="ancestor::tei:div[1]/@n"/>
                               <xsl:text>.</xsl:text>
-                          
+
                       </xsl:otherwise>
                   </xsl:choose>
-               
+
                <xsl:choose>
                    <xsl:when test="parent::tei:lg/@n">
                        <xsl:value-of select="parent::tei:lg/@n"/>
@@ -322,14 +322,14 @@
        <xsl:text>]</xsl:text></xsl:if>
        <xsl:text>&#xA;</xsl:text>
    </xsl:template>
-    
+
     <xsl:template match="tei:lg">
-        <xsl:apply-templates/>    
+        <xsl:apply-templates/>
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="tei:note"/>
-    
+
     <xsl:template match="tei:p">
         <xsl:text>[</xsl:text>
         <xsl:if test="parent::tei:div[1]">
@@ -341,7 +341,7 @@
         <xsl:apply-templates/>
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
-    
+
    <!-- <xsl:template match="tei:pb">
         <xsl:text>[ms</xsl:text>
         <xsl:value-of select="substring-after(@edRef, '#')"/>
@@ -349,7 +349,7 @@
         <xsl:value-of select="@n"/>
         <xsl:text>]</xsl:text>
     </xsl:template>-->
-    
+
     <xsl:template match="tei:ptr[@target]">
         <xsl:choose>
             <xsl:when test="fn:starts-with(@target, '#')">
@@ -361,38 +361,38 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="tei:rdg"/>
-    
+
     <xsl:template match="tei:sic">
         <xsl:text>†</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>†</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="tei:quote[@type='base-text']">
         <xsl:text>&#xA;</xsl:text>
         <xsl:text>base text: </xsl:text>
         <xsl:text>&#xA;</xsl:text>
         <xsl:apply-templates select="./tei:supplied/tei:lg"/>
     </xsl:template>
-    
+
     <xsl:template match="tei:supplied[not(@reason='implied')]">
         <xsl:text>(</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>)</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="tei:surplus">
         <xsl:text>{</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>}</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="tei:TEI">
         <xsl:apply-templates/>
     </xsl:template>
-    
+
     <xsl:template match="tei:teiHeader">
         <xsl:text>The </xsl:text>
         <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
@@ -404,8 +404,8 @@
          </xsl:if>
           <xsl:if test="tei:fileDesc/tei:titleStmt/tei:author">
           <xsl:text> by </xsl:text>
-          <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:author"/>                   
-          </xsl:if>  
+          <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:author"/>
+          </xsl:if>
                 <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
                         <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
                 </xsl:if>
@@ -435,7 +435,7 @@
                         </xsl:for-each>
                     <xsl:text>&#xA;</xsl:text>
                 </xsl:if>
-        
+
             <xsl:text>Witnesses:&#xA;</xsl:text>
         <xsl:for-each select="tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness">
             <xsl:text>ms</xsl:text><xsl:value-of select="@xml:id"/><xsl:text>: </xsl:text>
@@ -453,7 +453,7 @@
                 <xsl:value-of select="tei:msDesc/tei:msIdentifier/tei:repository"/>
                 <xsl:text>, </xsl:text>
             </xsl:if>
-            <xsl:if test="tei:msDesc/tei:msIdentifier/tei:idno">                           
+            <xsl:if test="tei:msDesc/tei:msIdentifier/tei:idno">
                 <xsl:value-of select="tei:msDesc/tei:msIdentifier/tei:idno"/>
             </xsl:if>
             </xsl:when>
@@ -483,17 +483,17 @@
         <xsl:value-of select="tei:fileDesc/tei:publicationStmt/tei:availability/tei:licence/tei:p[2]"/>
         <xsl:text>&#xA;</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="tei:term">
         <xsl:apply-templates/>
     </xsl:template>
-    
+
     <xsl:template match="tei:unclear">
         <xsl:text>⟨</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>⟩</xsl:text>
     </xsl:template>
-    
+
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
         <xsl:variable name="unit-value">
@@ -585,7 +585,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="journalTitle">
         <xsl:choose>
             <!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
@@ -623,5 +623,5 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
 </xsl:stylesheet>

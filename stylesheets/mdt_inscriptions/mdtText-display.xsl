@@ -87,7 +87,7 @@
                     </xsl:if>
                 </xsl:if>
                 <xsl:element name="ol">
-                    <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/p"> 
+                    <xsl:for-each select="fileDesc/sourceDesc/msDesc/msContents/msItem/textLang/p">
                         <xsl:element name="li"><xsl:apply-templates select="."/></xsl:element>
                     </xsl:for-each>
                 </xsl:element>
@@ -104,7 +104,7 @@
                     </xsl:element>
             </xsl:for-each>
             </xsl:element>
-            </xsl:element> 
+            </xsl:element>
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -116,7 +116,7 @@
                             <xsl:attribute name="data-toggle">tooltip</xsl:attribute>
                             <xsl:attribute name="data-placement">top</xsl:attribute>
                             <xsl:attribute name="title">
-                               
+
                                 <xsl:call-template name="artefact-info">
                                     <xsl:with-param name="idart" select="tokenize(substring-after(fileDesc/sourceDesc/msDesc/physDesc/objectDesc/@corresp, '#'), ' ')"/>
                                 </xsl:call-template>
@@ -133,7 +133,7 @@
                     </xsl:element>
                 </xsl:if>
             </xsl:element>
-           
+
             <xsl:element name="p">
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
@@ -300,7 +300,7 @@
                             <a class="dropdown-item" href="critEd_elements">Critical Editions Memo</a>
                             <a class="dropdown-item" href="DiplEd_elements">Diplomatic Editions Memo</a>
                             <div class="dropdown-divider"></div>
-                            
+
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
@@ -492,11 +492,11 @@
     <xsl:template match="bibl">
         <xsl:choose>
             <xsl:when test=".[ptr]">
-                <xsl:variable name="biblentry" select="replace(substring-after(./ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="biblentry" select="substring-after(./ptr/@target, 'bib:')"/>
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
                 <xsl:variable name="zoteroapijson">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
 
                 <xsl:analyze-string select="unparsed-text($zoteroapijson)"
@@ -507,7 +507,7 @@
                 </xsl:analyze-string>
 
                 <!--<xsl:copy-of
-                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-->
+                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>-->
 
 
                 <xsl:if test="citedRange">
@@ -617,13 +617,13 @@
         <xsl:param name="idart"/>
         <xsl:variable name="artefact-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_artefacts.xml')"/>
         <xsl:variable name="conart-file" select="document('https://raw.githubusercontent.com/erc-dharma/mdt-artefacts/main/temporary/mdt_conglomerate-artefacts.xml')"/>
-        
+
         <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]">
             <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//rightHolder"/>
             <xsl:text>, </xsl:text>
             <xsl:apply-templates select="$conart-file//line[descendant::compositeArtefactID = $idart]//inventoryNumber"/>
             <xsl:text>.</xsl:text>
-            <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat">  
+            <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat">
                 <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat"/>
                 <xsl:if test="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed">
                     <xsl:value-of select="$conart-file//line[descendant::compositeArtefactID = $idart]//copperplateFormat/@observed"/>

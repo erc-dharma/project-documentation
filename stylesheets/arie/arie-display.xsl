@@ -36,10 +36,10 @@
     </xsl:template>
 
     <!--<xsl:template match="H1">
-        <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
+        <xsl:variable name="biblentry" select="./arie/@ref"/>
             <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
             <xsl:variable name="bibref">
-                <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
             </xsl:variable>
         <xsl:element name="h1">
             <xsl:attribute name="class">text-center</xsl:attribute>
@@ -58,10 +58,10 @@
     </xsl:template>-->
 
     <xsl:template match="H1">
-        <xsl:variable name="biblentry" select="replace(./arie/@ref, '\+', '%2B')"/>
+        <xsl:variable name="biblentry" select="./arie/@ref"/>
         <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
         <xsl:variable name="bibref">
-            <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+            <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
         </xsl:variable>
         <xsl:element name="h1">
             <xsl:attribute name="class">text-center</xsl:attribute>
@@ -191,7 +191,7 @@
             </xsl:choose>
             <xsl:text>/</xsl:text>
             <xsl:choose>
-                
+
                 <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d\d\d')">
                     <xsl:analyze-string select="preceding::H2[1]/string()" regex="([0-9]+\-\d\d\d\d)">
                         <xsl:matching-substring>
@@ -199,7 +199,7 @@
                         </xsl:matching-substring>
                     </xsl:analyze-string>
                 </xsl:when>
-                <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d')">                
+                <xsl:when test="matches(preceding::H2[1], '[0-9]+\-\d\d')">
                     <xsl:analyze-string select="preceding::H2[1]/string()" regex="((\d\d)\d\d\-)(\d\d)">
                         <xsl:matching-substring>
                             <xsl:value-of select="regex-group(1)"/>
@@ -613,7 +613,7 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        
+
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader arie -->

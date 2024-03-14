@@ -5,36 +5,36 @@
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs tei"
     version="2.0">
-    
+
     <xsl:output method="html" indent="no" encoding="UTF-8"/>
-    
+
     <!-- Written by Axelle Janiak for DHARMA, starting mai 2023 -->
-    
+
     <!--  B ! -->
     <xsl:template match="tei:bibl">
         <xsl:choose>
             <xsl:when test=".[tei:ptr]">
-                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="biblentry" select="substring-after(./tei:ptr/@target, 'bib:')"/>
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
                 <xsl:variable name="zoteroomitname">
                     <xsl:value-of
-                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json'), 'amp;', ''))"
                     />
                 </xsl:variable>
                 <xsl:variable name="zoteroapitei">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="zoteroapijson">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
                 <xsl:variable name="pointerurl">
                     <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
                 </xsl:variable>
                 <xsl:variable name="bibwitness">
-                    <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                    <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="ancestor::tei:p or ancestor::tei:note">
@@ -90,11 +90,11 @@
                         <xsl:if test="following::tei:quote[1] and ancestor::tei:cit">
                             <xsl:text>: </xsl:text>
                         </xsl:if>
-                        
+
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:copy-of
-                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -104,9 +104,9 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- div -->
-    <xsl:template match="tei:div[@xml:id]"> 
+    <xsl:template match="tei:div[@xml:id]">
             <xsl:element name="div">
                 <xsl:attribute name="class">row justify-content</xsl:attribute>
                 <xsl:attribute name="id">
@@ -127,42 +127,42 @@
                                 <hr/>
                             </xsl:otherwise>
                         </xsl:choose>
-                    
+
                 </xsl:element>
             </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="tei:div[@type][not(@type='occurences' or @type='text')]">
 
                 <xsl:element name="div">
-                    
+
                         <xsl:element name="span">
-                            <xsl:attribute name="class">font-weight-bold</xsl:attribute> 
+                            <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="langague"/>
-                        <xsl:choose>                            
+                        <xsl:choose>
                             <xsl:when test="@type='inscriptions'">
-                                <xsl:text>Inscriptions</xsl:text> 
-                            </xsl:when>  
+                                <xsl:text>Inscriptions</xsl:text>
+                            </xsl:when>
                             <xsl:when test="@type='notes'">
-                                <xsl:text>Sircar's notes</xsl:text> 
+                                <xsl:text>Sircar's notes</xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="concat(upper-case(substring(@type,1,1)), substring(@type, 2),' '[not(last())] )"/>
                              </xsl:otherwise>
                         </xsl:choose>
                         </xsl:element>
-                    
+
                     <br/>
                     <xsl:choose>
                         <xsl:when test="@type='inscriptions'">
                             <xsl:element name="p">
                                 <xsl:text>Appart for the spelling differences, this stanza identically appears in : </xsl:text>
-                                
+
                             </xsl:element>
                         </xsl:when>
                         <xsl:when test="(@type='purāṇas' or @type='dharmaśāśtras')">
                             <p>This stanza occurs in : </p>
-                            
+
                         </xsl:when>
                         <xsl:when test="@type='variation'">
                             <p>This stanza appears with the following modifications here:</p>
@@ -180,9 +180,9 @@
                         </xsl:otherwise>
                     </xsl:choose>
         </xsl:element>
-            
+
     </xsl:template>
-    
+
     <!--  foreign ! -->
     <xsl:template match="tei:foreign">
         <xsl:element name="span">
@@ -190,7 +190,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!--  hi ! -->
     <xsl:template match="tei:hi">
         <xsl:choose>
@@ -220,9 +220,9 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="tei:l">
-           
+
             <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>l</xsl:text>
@@ -230,14 +230,14 @@
             <xsl:apply-templates/>
             </xsl:element>
         </xsl:template>
-    
+
     <!--  lg ! -->
     <xsl:template match="tei:lg">
         <xsl:element name="p">
             <xsl:attribute name="class">float-center</xsl:attribute>
-            
+
                 <xsl:element name="span">
-                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>                 
+                    <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:choose>
                             <xsl:when test="matches(@met,'[\+\-]+')">
                                 <xsl:call-template name="scansion">
@@ -251,9 +251,9 @@
                             </xsl:otherwise>
                         </xsl:choose>
                 </xsl:element>
-            
+
         </xsl:element>
-        
+
             <xsl:element name="div">
                 <xsl:attribute name="class">text-col</xsl:attribute>
                 <xsl:element name="div">
@@ -265,7 +265,7 @@
                 <br></br>
             </xsl:element>
     </xsl:template>
-    
+
     <!--  List -->
     <xsl:template match="tei:list">
         <xsl:element name="ul">
@@ -275,21 +275,21 @@
                     <xsl:apply-templates/>
                 </xsl:element>
             </xsl:for-each>
-            
+
         </xsl:element>
     </xsl:template>
-    
+
     <!--  listBibl -->
     <xsl:template match="tei:listBibl">
         <xsl:apply-templates/>
         <br/>
     </xsl:template>
-    
+
     <!-- p -->
     <xsl:template match="tei:p">
         <xsl:element name="p">
-           
-                <xsl:if test="@rend='stanza'"> 
+
+                <xsl:if test="@rend='stanza'">
                         <xsl:choose>
                             <xsl:when test="@n='1' and not(following-sibling::tei:*)"/>
                             <xsl:when test="matches(@n, '[rv]+')">
@@ -317,7 +317,7 @@
                                     <xsl:text>. </xsl:text>
                                 </xsl:element>
                             </xsl:when>
-                            
+
                             <!-- deleting the default since Amandine 's hasn't added any @n -->
                            <!-- <xsl:otherwise>
                                 <xsl:element name="div">
@@ -325,13 +325,13 @@
                                     <xsl:number value="@n" format="I"/><xsl:text>. </xsl:text>
                                 </xsl:element>
                             </xsl:otherwise>-->
-                
+
             </xsl:choose>
                 </xsl:if>
                 <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- ref -->
         <!--  -->
         <xsl:template match="tei:text//tei:ref">
@@ -364,10 +364,10 @@
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:template>
-    
+
     <!-- teiHeader -->
     <xsl:template match="tei:teiHeader"/>
-    
+
     <xsl:template match="tei:text">
         <xsl:element name="html">
             <xsl:call-template name="dharma-head"/>
@@ -388,9 +388,9 @@
                         <xsl:attribute name="class">text-center</xsl:attribute>
                         <xsl:text>by </xsl:text>
                         <xsl:if test="//tei:fileDesc/tei:titleStmt/tei:editor">
-                            
+
                             <xsl:apply-templates select="//tei:fileDesc/tei:titleStmt/tei:editor"/>
-                        </xsl:if> 
+                        </xsl:if>
                     </xsl:element>
                     <xsl:apply-templates/>
                     <xsl:element name="footer">
@@ -404,35 +404,35 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- Named templates -->
     <xsl:template name="dharma-head">
         <head>
             <title>
                 <xsl:value-of select="//tei:titleStmt/tei:title"/>
             </title>
-            
+
             <meta content-type="application/xhtml+xml" content="text/html; charset=UTF-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <!-- Bootstrap CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-                
+
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
-                
+
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
                 <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
                 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
-                
+
                 <!-- Font Awesome JS -->
                 <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
                 <script src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-                
+
             </meta>
         </head>
     </xsl:template>
-    
+
     <!--  title ! -->
     <xsl:template match="tei:title">
         <xsl:element name="span">
@@ -455,7 +455,7 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- Nav bar template -->
     <xsl:template name="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -463,7 +463,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -557,18 +557,18 @@
             </div>
         </nav>
     </xsl:template>
-    
+
     <xsl:template name="dharma-script">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        
+
         <!-- scrollbar -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- loader crit Ed -->
         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
     </xsl:template>
-    
+
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
         <xsl:variable name="unit-value">
@@ -660,7 +660,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="langague">
         <xsl:param name="lang"/>
         <xsl:choose>
@@ -668,7 +668,7 @@
             <xsl:when test="@xml:lang='fra'"><xsl:text>French </xsl:text></xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="scansion">
         <xsl:param name="met-string"/>
         <xsl:param name="string-len"/>
@@ -685,7 +685,7 @@
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template name="journalTitle">
         <xsl:choose>
             <!-- Handles ARIE1886-1887 or ARIE1890-1891_02 -->
@@ -723,7 +723,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- side bar -->
     <!-- side bar - table of contents -->
     <xsl:template name="table-contents">
@@ -744,14 +744,14 @@
                                     <xsl:value-of select="generate-id()"/>
                                 </xsl:attribute>
                                <xsl:value-of select="@xml:id"/>
-          
+
                             </xsl:element>
-                            
+
                         </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
             </xsl:element>
         </xsl:element>
     </xsl:template>
-       
+
 </xsl:stylesheet>

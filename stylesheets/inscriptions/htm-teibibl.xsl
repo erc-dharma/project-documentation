@@ -6,26 +6,26 @@
 
 Pietro notes on 14/8/2015 work on this template, from mail to Gabriel.
 
-- I have converted the TEI bibliography of IRT and IGCyr to ZoteroRDF 
-(https://github.com/EAGLE-BPN/BiblioTEI2ZoteroRDF) in this passage I have tried to 
+- I have converted the TEI bibliography of IRT and IGCyr to ZoteroRDF
+(https://github.com/EAGLE-BPN/BiblioTEI2ZoteroRDF) in this passage I have tried to
 distinguish books, bookparts, articles and conference proceedings.
 
-- I have uploaded these to the zotero eagle open group bibliography 
+- I have uploaded these to the zotero eagle open group bibliography
 (https://www.zotero.org/groups/eagleepigraphicbibliography)
 
-- I have created a parametrized template in my local epidoc xslts which looks at the json 
-and TEI output of the Zotero api basing the call on the content of ptr/@target in each 
-bibl. It needs both because the key to build the link is in the json but the TEI xml is 
-much more accessible for the other data. I tried also to grab the html div exposed in the 
-json, which would have been the easiest thing to do, but I can only get it escaped and 
+- I have created a parametrized template in my local epidoc xslts which looks at the json
+and TEI output of the Zotero api basing the call on the content of ptr/@target in each
+bibl. It needs both because the key to build the link is in the json but the TEI xml is
+much more accessible for the other data. I tried also to grab the html div exposed in the
+json, which would have been the easiest thing to do, but I can only get it escaped and
 thus is not usable.
-** If set on 'zotero' it prints surname, name, title and year with a link to the zotero 
+** If set on 'zotero' it prints surname, name, title and year with a link to the zotero
 item in the eagle group bibliography. It assumes bibl only contains ptr and citedRange.
-** If set on 'localTEI' it looks at a local bibliography (no zotero) and compares the 
-@target to the xml:id to take the results and print something (in the sample a lot, but 
+** If set on 'localTEI' it looks at a local bibliography (no zotero) and compares the
+@target to the xml:id to take the results and print something (in the sample a lot, but
 I'd expect more commonly Author-Year references(.
-** I have also created sample values for irt and igcyr which are modification of the 
-zotero option but deal with some of the project specific ways of encoding the 
+** I have also created sample values for irt and igcyr which are modification of the
+zotero option but deal with some of the project specific ways of encoding the
 bibliography. All examples only cater for book and article.
 
 
@@ -33,19 +33,19 @@ bibliography. All examples only cater for book and article.
 -->
 
 	<!--
-		
+
 		Pietro Notes on 10.10.2016
-		
+
 		this should be modified based on parameters to
-		
+
 		* decide wheather to use zotero or a local version of the bibliography in TEI
-	
+
 		* assuming that the user has entered a unique tag name as value of ptr/@target, decide group or user in zotero to look up based on parameter value entered at transformation time
-	
+
 		* output style based on Zotero Style Repository stored in a parameter value entered at transformation time
-		
-		
-	
+
+
+
 	-->
 
 	<xsl:template match="t:bibl" priority="1">
@@ -83,35 +83,35 @@ bibliography. All examples only cater for book and article.
 
 						<!--						check if a namespace is provided for tags/xml:ids and use it as part of the tag for zotero-->
 						<xsl:variable name="biblentry"
-							
-							select="replace(substring-after(./t:ptr/@target, ':'), '\+', '%2B')"/>
-							
+
+							select="substring-after(./t:ptr/@target, ':')"/>
+
 						<xsl:variable name="zoteroapitei">
 
 							<xsl:value-of
-								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
 							<!-- to go to the json with the escaped html included  use &amp;format=json&amp;include=bib,data and the code below: the result is anyway escaped... -->
 
 						</xsl:variable>
 
 						<xsl:variable name="zoteroapijsonomitname">
 							<xsl:value-of
-								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json'), 'amp;', '')"
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=json'), 'amp;', '')"
 							/>
 						</xsl:variable>
 						<xsl:variable name="unparsedomitname" select="unparsed-text($zoteroapijsonomitname)"/>
 
 						<xsl:variable name="zoteroapijson">
 							<xsl:value-of
-								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
 							/>
 						</xsl:variable>
-						
+
 						<xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
 
 						<xsl:variable name="zoteroapijournal">
 							<xsl:value-of
-								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle), 'amp;', '')"
+								select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$parm-zoteroStyle), 'amp;', '')"
 							/>
 						</xsl:variable>
 						<xsl:variable name="unparsedjournal" select="unparsed-text($zoteroapijournal)"/>
@@ -198,7 +198,7 @@ bibliography. All examples only cater for book and article.
 											<xsl:call-template name="citedRange-unit"/>
 										</xsl:otherwise>
 										</xsl:choose>
-										
+
 										<!-- NEED TO BE REVISED AT SOME POINT TO RENDER THE ITALIC
 										not the best solution but hierarchy too instabled to force it without breaking the current display - necessary to revise the code once the encoding is stable enough probably need to use the foreign element as the base rather than the bibl element -->
 										<xsl:choose>
@@ -247,7 +247,7 @@ bibliography. All examples only cater for book and article.
 										</xsl:when>
 										<xsl:otherwise>
 												<xsl:copy-of
-													select="document(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
+													select="document(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=',$var-zoteroStyle-abb))/div"/>
 										</xsl:otherwise>
 									</xsl:choose>
 								<!--</span>-->
@@ -430,7 +430,7 @@ bibliography. All examples only cater for book and article.
 		<xsl:when test="@unit='item'">
 			<xsl:text>&#8470; </xsl:text>
 		</xsl:when>
-		<xsl:when test="@unit='entry'">			
+		<xsl:when test="@unit='entry'">
 			<xsl:text>s.v. </xsl:text>
 		</xsl:when>
 		<xsl:when test="@unit='figure'">

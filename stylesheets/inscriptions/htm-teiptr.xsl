@@ -16,11 +16,11 @@
     <xsl:variable name="soughtSiglum" select="@target"/>
 
     <xsl:variable name="biblentry"
-      select="replace(substring-after(@target, ':'), '\+', '%2B')"/>
+      select="substring-after(@target, ':')"/>
 
       <xsl:variable name="zoteroapijson">
         <xsl:value-of
-          select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
+          select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation'), 'amp;', '')"
         />
       </xsl:variable>
 

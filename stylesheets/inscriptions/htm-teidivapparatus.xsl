@@ -281,11 +281,11 @@
         <xsl:variable name="bibl-resp" select="tokenize(./@source,' ')"/>
           <xsl:for-each select="$bibl-resp">
           <xsl:variable name="indresp">
-            <xsl:sequence select="replace(substring-after(., ':'), '\+', '%2B')"/>
+            <xsl:sequence select="substring-after(., ':')"/>
           </xsl:variable>
             <xsl:variable name="zoteroapijsonresp">
               <xsl:value-of
-                select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $indresp, '&amp;format=json'), 'amp;', '')"
+                select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($indresp), '&amp;format=json'), 'amp;', '')"
               />
             </xsl:variable>
             <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>
@@ -338,11 +338,11 @@
     <xsl:attribute name="title">
       <xsl:value-of select="$authors"/>
       <!--<xsl:choose>
-      <xsl:when test="matches(@source, '\+[a][l]')">     
-          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>      
+      <xsl:when test="matches(@source, '\+[a][l]')">
+          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
       </xsl:when>
-      <xsl:when test="matches(@source, '\+[A-Z]')">      
-          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>    
+      <xsl:when test="matches(@source, '\+[A-Z]')">
+          <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '\+', ' &amp; '), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>
       </xsl:when>
       <xsl:otherwise>
           <xsl:value-of select="replace(replace(replace(replace(substring-after(@source, ':'), '_[0-9][0-9]', ''), '([a-z])([A-Z])', '$1 $2'), '([a-z])([0-9])', '$1 $2'), ' bib:', ' ')"/>

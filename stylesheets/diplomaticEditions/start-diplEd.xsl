@@ -12,7 +12,7 @@
 
     <xsl:param name="edition-type" as="xs:string"/>
     <xsl:param name="corpus-type" as="xs:string"/>
-    
+
     <xsl:output method="html" indent="no" encoding="UTF-8" version="4.0"/>
 
     <xsl:function name="functx:escape-for-regex" as="xs:string"
@@ -171,7 +171,7 @@
                         <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:author"/>
                     </xsl:if>
                 </xsl:element>
-                
+
                 <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
                     <xsl:element name="h2">
                         <xsl:attribute name="class">display-5</xsl:attribute>
@@ -210,7 +210,7 @@
                 <xsl:choose>
                     <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
                         <xsl:value-of select="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status"/>
-                        
+
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>draft</xsl:text>
@@ -270,7 +270,7 @@
                         </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <!--  app ! -->
     <xsl:template match="tei:app" mode="modals">
         <xsl:param name="line-break"/>
@@ -479,27 +479,27 @@
     <xsl:template match="tei:bibl">
         <xsl:choose>
             <xsl:when test=".[tei:ptr]">
-                <xsl:variable name="biblentry" select="replace(substring-after(./tei:ptr/@target, 'bib:'), '\+', '%2B')"/>
+                <xsl:variable name="biblentry" select="substring-after(./tei:ptr/@target, 'bib:')"/>
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
                 <xsl:variable name="zoteroomitname">
                     <xsl:value-of
-                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json'), 'amp;', ''))"
+                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json'), 'amp;', ''))"
                     />
                 </xsl:variable>
                 <xsl:variable name="zoteroapitei">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="zoteroapijson">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
                 <xsl:variable name="pointerurl">
                     <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
                 </xsl:variable>
                 <xsl:variable name="bibwitness">
-                    <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
+                    <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:witness">
@@ -564,7 +564,7 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:copy-of
-                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
+                            select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=',$zoteroStyle), 'amp;', ''))/div"/>
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="ancestor::tei:listBibl and ancestor-or-self::tei:bibl/@n"> <!-- [@type='primary'] -->
@@ -602,7 +602,7 @@
        </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]">
         <xsl:param name="location"/>
         <xsl:variable name="app-num">
@@ -625,7 +625,7 @@
             <xsl:attribute name="data-app">
                 <xsl:value-of select="generate-id()"/>
             </xsl:attribute>
-            
+
             <xsl:element name="span">
                 <xsl:attribute name="class">lem sic</xsl:attribute>
                 <xsl:apply-templates select="tei:sic"/>
@@ -638,7 +638,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
         <xsl:variable name="apparatus">
             <xsl:element name="span">
@@ -742,7 +742,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <!--  fw ! -->
     <xsl:template match="tei:fw">
         <xsl:choose>
@@ -772,7 +772,7 @@
                         <xsl:text>[fw </xsl:text>
                         <xsl:apply-templates/>
                     <xsl:text>]</xsl:text>
-                </xsl:element> 
+                </xsl:element>
             </xsl:when>-->
             <xsl:when test="child::tei:choice">
                 <xsl:apply-templates/>
@@ -782,7 +782,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!--  G ! -->
     <xsl:template match="tei:g">
         <xsl:element name="span">
@@ -890,7 +890,7 @@
             </xsl:otherwise>
         </xsl:choose>
         <!--<xsl:for-each-group select="*" group-starting-with="tei:lb">
-            
+
                 <xsl:for-each select="current-group()">
                     <xsl:copy>
                         <xsl:element name="div">
@@ -1062,7 +1062,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
    <xsl:template match="tei:note" mode="modals">
         <xsl:variable name="apparatus-note">
             <xsl:if test="self::tei:note[position() = last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
@@ -1088,7 +1088,7 @@
             <xsl:copy-of select="$apparatus-note"/>
         </span>
     </xsl:template>
-   
+
     <!--  P ! -->
     <!--  p ! -->
     <xsl:template match="tei:p">
@@ -1157,13 +1157,13 @@
                     <!--<xsl:choose>
                         <xsl:when test="following-sibling::tei:*[1][local-name()=('fw')][not(@place='right')]">
                             <xsl:text>: </xsl:text>
-                            
+
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:text>]</xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>-->
-                </xsl:element>     
+                </xsl:element>
     </xsl:template>
 
     <!-- ptr -->
@@ -2688,7 +2688,7 @@
                             <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
                             <div class="dropdown-divider"></div>
-                            
+
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
                             <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>

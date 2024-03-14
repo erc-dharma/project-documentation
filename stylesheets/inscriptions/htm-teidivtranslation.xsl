@@ -59,12 +59,12 @@
       	<xsl:param name="parm-zoteroKey" tunnel="yes" required="no"/>
      <!-- The responsability template could probably be used in several part, rather than repeating the code. Need to be cleaned at some point-->
       <xsl:variable name="biblresp"
-        select="replace(substring-after(@source, ':'), '\+', '%2B')"/>
+        select="substring-after(@source, ':')"/>
 
 
   <xsl:variable name="zoteroapijsonresp">
        <xsl:value-of
-         select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblresp, '&amp;format=json'), 'amp;', '')"
+         select="replace(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblresp), '&amp;format=json'), 'amp;', '')"
        />
      </xsl:variable>
      <xsl:variable name="unparsedresp" select="unparsed-text($zoteroapijsonresp)"/>
@@ -162,7 +162,7 @@
                                    </xsl:otherwise>
                                    </xsl:choose>
                                 <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[1]"/>
-                                <xsl:text> </xsl:text> 
+                                <xsl:text> </xsl:text>
                                   <xsl:value-of select="./child::*[1]/child::node()[1]/following-sibling::*[2]"/>
                              <!--  <xsl:value-of select="./child::*/node()[2]"/>-->
                             </xsl:when>

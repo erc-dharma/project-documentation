@@ -82,13 +82,13 @@ bibliography. All examples only cater for book and article.
 
 						<xsl:variable name="zoteroapitei">
 
-							<xsl:value-of select="concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=tei')"/>
+							<xsl:value-of select="concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=tei')"/>
 							<!-- to go to the json with the escaped html included  use &format=json&include=bib,data and the code below: the result is anyway escaped... -->
 
 						</xsl:variable>
 
 						<xsl:variable name="zoteroapijson">
-							<xsl:value-of select="concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation')"/>
+							<xsl:value-of select="concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$parm-zoteroStyle,'&amp;include=citation')"/>
 						</xsl:variable>
 			
 						
@@ -141,7 +141,7 @@ bibliography. All examples only cater for book and article.
 							<!--	if it is in the bibliography print styled reference-->
 							<xsl:otherwise>
 								<!--	print out using Zotoro parameter format with value bib and the selected style-->
-								<xsl:copy-of select="document(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', $biblentry, '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
+								<xsl:copy-of select="document(concat('https://dharmalekha.info/zotero-proxy/',$parm-zoteroUorG,'/',$parm-zoteroKey,'/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=',$parm-zoteroStyle))/div"/>
 
 							</xsl:otherwise>
 						</xsl:choose>
