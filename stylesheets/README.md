@@ -4,11 +4,12 @@ Before starting, you must clone the project-documentation repository in order to
 
 ## How to display your inscription as on [dharmalekha.info](https://dharmalekha.info)
 
-You first need to install [Python](https://www.python.org) on your computer.
+1. You first need to install [Python](https://www.python.org) on your computer.
+2. You then need to set up the conversion tool in Oxygen.
 
-### Installing Python
+### 1. Installing Python on your computer
 
-#### On Windows
+#### 1.1. If you are on Windows
 
 Click on Windows' start button and type `cmd`. You should see an application called "Command Prompt" in the search results, as in the following picture. Open the Command Prompt.
 
@@ -20,11 +21,15 @@ In the new window, type `python3`, then enter. If Python is already installed on
 
 Otherwise, Windows will open a window that proposes you to install Python. Follow the instructions, and close the Command Prompt when done.
 
-#### On MacOS
+#### 1.2. If you are on MacOS
 
-See [this download page](https://www.python.org/downloads/macos).
+To check whether Python is installed on your computer, open MacOS' terminal (called `Terminal.app`), type `python3` in the terminal window, then enter. If Python is installed, you will see a banner like this:
 
-### Setting Up the Conversion Tool in Oxygen
+![](https://flaviocopes.com/images/python-installation-macos/Screen_Shot_2020-11-09_at_14.14.18.png)
+
+If you do not see this, go to [this download page](https://www.python.org/downloads/macos) and follow the instructions.
+
+### 2. Setting Up the Conversion Tool in Oxygen
 
 In Oxygen's menu, click on `Tools > External Tools > Configure...`
 
@@ -34,13 +39,17 @@ Click on `New`.
 
 ![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation2.png)
 
+Fill in the form as shown in the following picture. However, you need to replace `/home/michael/dharma/repos/project-documentation/stylesheets/convert.py` with the appropriate path, which depends on where you cloned the `project-documentation` repository on your computer.
 
+If you are using Github Desktop, on Windows or on MacOS, and have not changed the default settings, the following should work:
 
-Fill in the form as shown in the following picture. You need to replace `/home/michael/dharma/repos` with the appropriate value, viz. the path of the directory where you cloned the `project-documentation` repository on your computer. If you are on Windows and are using Github Desktop, the full path `${homeDir}/Documents/Github/project-documentation/stylesheets/convert.py` should work. Confirm by clicking on `OK`.
+```
+python3 "${homeDir}/Documents/Github/project-documentation/stylesheets/convert.py" "${cf}"
+```
 
 ![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation3.png)
 
-You should now see a `Display` button in Oxygen's toolbar, as  in the following.
+When done, confirm by clicking on `OK`, and do the same with the "Preferences" window. You should now see a `Display` button in Oxygen's toolbar, as in the following.
 
 ![](https://github.com/erc-dharma/project-documentation/blob/master/stylesheets/images/new_transformation4.png)
 
