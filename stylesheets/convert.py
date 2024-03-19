@@ -16,8 +16,8 @@ if len(sys.argv) != 2:
 	sys.exit(1)
 
 path = sys.argv[1]
-with open(path) as f:
-	data = f.read()
+with open(path, "rb") as f:
+	data = f.read().decode("UTF-8")
 
 tmp_dir = tempfile.gettempdir()
 output = os.path.join(tmp_dir, "dharma_output.html")
