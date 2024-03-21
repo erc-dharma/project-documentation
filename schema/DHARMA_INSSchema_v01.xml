@@ -279,7 +279,7 @@
                     <content>
                         <valList>
                             <valItem ident="maturity:00000">
-                                <desc>null</desc>é~
+                                <desc>null</desc>
                             </valItem>
                             <valItem ident="maturity:83207">
                                 <desc>early Brāhmī</desc>
@@ -3070,11 +3070,6 @@
                             </sequence>
                         </alternate>
                     </content>
-                    <constraintSpec scheme="isoschematron" ident="lists">
-                        <constraint><sch:rule context="tei:list"><sch:assert test="parent::tei:p"
-                                    >List can only be used inside a paragraph
-                                element.</sch:assert></sch:rule></constraint>
-                    </constraintSpec>
                     <attList>
                         <attDef ident="ana" mode="delete"/>
                         <attDef ident="cert" mode="delete"/>
