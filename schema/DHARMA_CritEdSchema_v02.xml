@@ -3475,6 +3475,7 @@
                 <valItem ident="section"/>
                 <valItem ident="group"/>
                 <valItem ident="interpolation"/>
+                <valItem ident="subchapter"/>
               </valList>
             </attDef>
             <attDef ident="style" mode="delete"/>
