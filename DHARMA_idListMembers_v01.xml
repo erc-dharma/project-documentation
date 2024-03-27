@@ -385,7 +385,7 @@
 						<forename>Csaba</forename>
 						<surname>Kiss</surname>
 					</persName>
-					<idno type="VIAF">ttp://viaf.org/viaf/163770541</idno>
+					<idno type="VIAF">http://viaf.org/viaf/163770541</idno>
 					<idno type="IdRef">https://www.idref.fr/186191634</idno>
 				</person>
 				<person xml:id="kala">
@@ -504,7 +504,7 @@
 						<forename>Andrew</forename>
 						<surname>Ollett</surname>
 					</persName>
-					<idno type="VIAF">ttp://viaf.org/viaf/372149294434280521495</idno>
+					<idno type="VIAF">http://viaf.org/viaf/372149294434280521495</idno>
 					<idno type="IdRef">https://www.idref.fr/224232371</idno>
 				</person>
 				<person xml:id="pepa">
