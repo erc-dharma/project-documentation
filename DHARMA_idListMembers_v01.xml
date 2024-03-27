@@ -74,6 +74,7 @@
 						<forename>Emmanuel</forename>
 						<surname>Francis</surname>
 					</persName>
+					<affiliation>Centre for South Asia and India studies (CESAH, EHESS &amp; CNRS)</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/156480842</idno>
 					<idno type="IdHAL">emmanuel-francis</idno>
 					<idno type="IdRef">https://www.idref.fr/127901175</idno>
@@ -84,6 +85,7 @@
 						<forename>Arlo</forename>
 						<surname>Griffiths</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/11026260</idno>
 					<idno type="IdHAL">arlo-griffiths</idno>
 					<idno type="IdRef">https://www.idref.fr/087383462</idno>
@@ -97,6 +99,7 @@
 						<forename>Annette</forename>
 						<surname>Schmiedchen</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/22841678</idno>
 					<idno type="IdRef">https://www.idref.fr/117063657</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q19804226</idno>
@@ -108,6 +111,7 @@
 						<forename>Florinda</forename>
 						<surname>De Simini</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/306369495</idno>
 					<idno type="IdRef">https://www.idref.fr/200880365</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-9845-1480</idno>
@@ -116,6 +120,7 @@
 					<persName>
 						<name>Vigneshwaran Muralidaran</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -126,6 +131,7 @@
 						<forename>Antonella</forename>
 						<surname>Santoro</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -135,6 +141,7 @@
 						<forename>Margherita</forename>
 						<surname>Trento</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -144,6 +151,7 @@
 						<forename>Dominic</forename>
 						<surname>Goodall</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/81394618</idno>
 					<idno type="IdRef">https://www.idref.fr/057684251</idno>
 					<idno type="ORCID"/>
@@ -154,6 +162,7 @@
 						<forename>Renato</forename>
 						<surname>Dávalos</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -163,6 +172,7 @@
 						<forename>Andrea</forename>
 						<surname>Acri</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/201252222</idno>
 					<idno type="IdRef">https://www.idref.fr/150577419</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q50221197</idno>
@@ -173,6 +183,7 @@
 					<persName>
 						<name>Aditia Gunawan</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/215307091</idno>
 					<!-- http://viaf.org/viaf/283969266 -->
 					<!-- EF dixit: So he has 2 VIAF -->
@@ -184,6 +195,7 @@
 					<persName>
 						<name>Agustijanto Indrajaya</name>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="moir" role="?">
 					<!-- Can't we remove this person? -->
@@ -191,12 +203,14 @@
 					<persName>
 						<name>A. Moise Irudayaraj</name>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="daba">
 					<persName>
 						<forename>Dániel</forename>
 						<surname>Balogh</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/90419463</idno>
 					<idno type="IdRef">https://www.idref.fr/151908052</idno>
 					<idno type="ORCID">https://orcid.org/0000-0003-4203-6776</idno>
@@ -207,6 +221,7 @@
 						<forename>Peter</forename>
 						<surname>Bisschop</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/52000636</idno>
 					<idno type="IdRef">https://www.idref.fr/117203297</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q77085917</idno>
@@ -217,6 +232,7 @@
 						<forename>Gabriel</forename>
 						<surname>Bodard</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/106795353</idno>
 					<idno type="IdRef">https://www.idref.fr/146917901</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-8566-6666</idno>
@@ -226,6 +242,7 @@
 						<forename>Natasja</forename>
 						<surname>Bosma</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/124153651793655782535</idno>
 					<idno type="IdRef">https://www.idref.fr/22980845X</idno>
 				</person>
@@ -234,6 +251,7 @@
 						<forename>Sylvain</forename>
 						<surname>Brocquet</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/159939465</idno>
 					<idno type="IdRef">https://www.idref.fr/100933807</idno>
 				</person>
@@ -242,12 +260,14 @@
 						<forename>Giulia</forename>
 						<surname>Buriola</surname>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="nica">
 					<persName>
 						<forename>Nicolas</forename>
 						<surname>Cane</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/55154196826820112429</idno>
 					<idno type="IdRef">https://www.idref.fr/231188013</idno>
 				</person>
@@ -256,6 +276,7 @@
 						<forename>Socheat</forename>
 						<surname>Chea</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/194153953223705560160</idno>
 					<idno type="IdRef">https://www.idref.fr/230437257</idno>
 				</person>
@@ -264,6 +285,7 @@
 						<forename>Kunthea</forename>
 						<surname>Chhom</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/262148704025336930123</idno>
 					<idno type="IdRef">https://www.idref.fr/197571670</idno>
 				</person>
@@ -272,12 +294,14 @@
 						<forename>Chloé</forename>
 						<surname>Chollet</surname>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="vede">
 					<persName>
 						<forename>Véronique</forename>
 						<surname>Degroot</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/168944273</idno>
 					<idno type="IdRef">https://www.idref.fr/10481960X</idno>
 				</person>
@@ -286,6 +310,7 @@
 						<forename>Csaba</forename>
 						<surname>Dezsö</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/119084903</idno>
 					<idno type="IdRef">https://www.idref.fr/119884275</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-3595-0941</idno>
@@ -295,6 +320,7 @@
 						<forename>Edward</forename>
 						<surname>Swenson</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/103600754</idno>
 					<idno type="IdRef">https://www.idref.fr/230438458</idno>
 				</person>
@@ -302,12 +328,14 @@
 					<persName>
 						<name>Eko Bastiawan</name>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="toel">
 					<persName>
 						<forename>Tom</forename>
 						<surname>Elliot</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/163074381</idno>
 				</person>
 				<person xml:id="jues">
@@ -315,6 +343,7 @@
 						<forename>Julia</forename>
 						<surname>Estève</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/216403335</idno>
 					<idno type="IdRef">https://www.idref.fr/151150907</idno>
 				</person>
@@ -323,6 +352,7 @@
 						<forename>Marco</forename>
 						<surname>Franceschini</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/36746999</idno>
 					<idno type="IdRef">https://www.idref.fr/154017841</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-4135-6893</idno>
@@ -333,6 +363,7 @@
 						<forename>Ryosuke</forename>
 						<surname>Furui</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
 				</person>
 				<person xml:id="gege">
@@ -340,12 +371,14 @@
 						<forename>Gerdi</forename>
 						<surname>Gerschheimer</surname>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="vagi">
 					<persName>
 						<forename>Valérie</forename>
 						<surname>Gillet</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/227078529</idno>
 					<idno type="IdRef">https://www.idref.fr/11025029X</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
@@ -356,12 +389,14 @@
 						<forename>Samana</forename>
 						<surname>Gururaja</surname>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="chhu">
 					<persName>
 						<forename>Chhunteng</forename>
 						<surname>Hun</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!-- no idno -->
 				</person>
 				<person xml:id="thhu">
@@ -369,6 +404,7 @@
 						<forename>Thomas</forename>
 						<surname>Hunter</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/14319585</idno>
 					<idno type="IdRef">https://www.idref.fr/11251250X</idno>
 				</person>
@@ -377,6 +413,7 @@
 						<forename>Axelle</forename>
 						<surname>Janiak</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
 					<idno type="IdHAL">axelle-janiak</idno>
 				</person>
@@ -385,6 +422,7 @@
 						<forename>Csaba</forename>
 						<surname>Kiss</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/163770541</idno>
 					<idno type="IdRef">https://www.idref.fr/186191634</idno>
 				</person>
@@ -393,6 +431,7 @@
 						<forename>Karine</forename>
 						<surname>Ladrech</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/12622237</idno>
 					<idno type="IdRef">https://www.idref.fr/095075704</idno>
 				</person>
@@ -401,6 +440,7 @@
 						<forename>Vincent</forename>
 						<surname>Lefèvre</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/76561955</idno>
 					<idno type="IdRef">https://www.idref.fr/080135072</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q38239987</idno>
@@ -410,6 +450,7 @@
 						<forename>Coline</forename>
 						<surname>Lefrancq</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/72161511995670560688</idno>
 					<idno type="IdRef">https://www.idref.fr/253581214</idno>
 					<idno type="IdHAL">coline-lefrancq</idno>
@@ -423,6 +464,7 @@
 						<forename>Adeline</forename>
 						<surname>Levivier</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/131146574008638102599</idno>
 					<idno type="IdRef">https://www.idref.fr/193202719</idno>
 					<idno type="IdHAL">adeline-levivier</idno>
@@ -432,6 +474,7 @@
 						<forename>Pietro Maria</forename>
 						<surname>Liuzzo</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/310697060</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-5714-4011</idno>
 				</person>
@@ -440,12 +483,14 @@
 						<forename>Nicholas</forename>
 						<surname>Lua Swee Yang</surname>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="tilu">
 					<persName>
 						<forename>Timothy</forename>
 						<surname>Lubin</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/120435268</idno>
 					<idno type="IdRef">https://www.idref.fr/170559610</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-8352-5870</idno>
@@ -455,6 +500,7 @@
 						<forename>Indra</forename>
 						<surname>Manuel</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/68558778</idno>
 					<idno type="IdRef">https://www.idref.fr/183697367</idno>
 				</person>
@@ -464,6 +510,7 @@
 						<forename>Nina</forename>
 						<surname>Mirnig</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/169826577</idno>
 					<idno type="IdRef">https://www.idref.fr/176193774</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-4944-6535</idno>
@@ -473,6 +520,7 @@
 						<forename>Michaël</forename>
 						<surname>Meyer</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!-- idno à chercher -->
 				</person>
 				<person xml:id="emmo">
@@ -480,6 +528,7 @@
 						<forename>Emmanuelle</forename>
 						<surname>Morlock</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/316672978</idno>
 					<idno type="IdHAL">emmanuelle-morlock</idno>
 					<idno type="IdRef">https://www.idref.fr/185971202</idno>
@@ -489,6 +538,7 @@
 					<persName>
 						<name>Nurmalia Habibah</name>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="rama">
 					<!-- Manu: do we need to keep him? -->
@@ -496,6 +546,7 @@
 					<persName>
 						<name>N. Ramaswamy</name>
 					</persName>
+					<affiliation></affiliation>
 					<!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed -->
 					<!-- Manu dixit: I confirm that iti is not him -->
 				</person>
@@ -504,6 +555,7 @@
 						<forename>Andrew</forename>
 						<surname>Ollett</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/372149294434280521495</idno>
 					<idno type="IdRef">https://www.idref.fr/224232371</idno>
 				</person>
@@ -512,6 +564,7 @@
 						<forename>Peter</forename>
 						<surname>Pasedach</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!-- nothing -->
 				</person>
 				<person xml:id="sapi">
@@ -519,6 +572,7 @@
 						<forename>Salomé</forename>
 						<surname>Pichon</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!-- nothing -->
 				</person>
 				<person xml:id="prem" role="?">
@@ -527,6 +581,7 @@
 					<persName>
 						<name>Premukumar S.</name>
 					</persName>
+					<affiliation></affiliation>
 					<!-- nothing?  -->
 				</person>
 				<person xml:id="rasa">
@@ -534,6 +589,7 @@
 						<forename>Rajat</forename>
 						<surname>Sanyal</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/315733752</idno>
 					<idno type="IdRef">https://www.idref.fr/18506194X</idno>
 				</person>
@@ -541,6 +597,7 @@
 					<persName>
 						<name>Anjaneya Sarma</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/206189621</idno>
 					<idno type="IdRef">https://www.idref.fr/138870241</idno>
 				</person>
@@ -548,6 +605,7 @@
 					<persName>
 						<name>S.A.S. Sarma</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/34006731</idno>
 					<idno type="IdRef">https://www.idref.fr/079236472</idno>
 				</person>
@@ -556,6 +614,7 @@
 						<forename>Wayan Jarrah</forename>
 						<surname>Sastrawan</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!--<idno type="ORCID">...</idno>
 					<idno type="VIAF">...</idno>
 					<idno type="IdRef">...</idno>-->
@@ -564,6 +623,7 @@
 					<persName>
 						<name>R. Sathyanarayanan</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/304053379</idno>
 					<idno type="IdRef">https://www.idref.fr/169903370</idno>
 				</person>
@@ -572,6 +632,7 @@
 						<forename>Marine</forename>
 						<surname>Schoettel</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/237151594453005351072</idno>
 					<idno type="IdRef">https://www.idref.fr/221601880</idno>
 				</person>
@@ -581,6 +642,7 @@
 					<persName>
 						<name>S. Kavitha</name>
 					</persName>
+					<affiliation></affiliation>
 					<!-- nathing? not sure about the identification-->
 				</person>
 				<person xml:id="doso">
@@ -588,6 +650,7 @@
 						<forename>Dominique</forename>
 						<surname>Soutif</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/189739901</idno>
 					<idno type="IdRef">https://www.idref.fr/131352520</idno>
 				</person>
@@ -596,6 +659,7 @@
 						<forename>Simona</forename>
 						<surname>Stoyanova</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!-- Nothing?-->
 				</person>
 				<person xml:id="jeth">
@@ -603,12 +667,14 @@
 						<forename>Jens</forename>
 						<surname>Thomas</surname>
 					</persName>
+					<affiliation></affiliation>
 					<!-- must be created-->
 				</person>
 				<person xml:id="tisn">
 					<persName>
 						<name>Titi Surti Nastiti</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/72800314</idno>
 				</person>
 				<person xml:id="vito">
@@ -616,6 +682,7 @@
 						<forename>Vincent</forename>
 						<surname>Tournier</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/308304168</idno>
 					<idno type="IdRef">https://www.idref.fr/177429623</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
@@ -625,6 +692,7 @@
 					<persName>
 						<name>Tyassanti Kusumo Dewanti</name>
 					</persName>
+					<affiliation></affiliation>
 					<!-- must be created-->
 				</person>
 				<person xml:id="utve">
@@ -632,6 +700,7 @@
 						<forename>Uthaya</forename>
 						<surname>Veluppillai</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/309907661</idno>
 					<idno type="IdRef">https://www.idref.fr/176321616</idno>
 				</person>
@@ -639,6 +708,7 @@
 					<persName>
 						<name>G. Vijayavenugopal</name>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/30722592</idno>
 					<idno type="IdRef">https://www.idref.fr/106412329</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-6061-0140</idno>
@@ -648,6 +718,7 @@
 						<forename>Amandine</forename>
 						<surname>Wattelier-Bricout</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="IdHAL">amandine-wattelier-bricout</idno>
 				</person>
 				<person xml:id="rozo">
@@ -655,17 +726,20 @@
 						<forename>Roberta</forename>
 						<surname>Zollo</surname>
 					</persName>
+					<affiliation></affiliation>
 					<idno type="ORCID">https://orcid.org/0000-0002-1014-4660</idno>
 				</person>
 				<person xml:id="zapa">
 					<persName>
 						<name>Zakariya Pamuji Aminullah</name>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="ilnu">
 					<persName>
 						<name>Ilham Nurwansah</name>
 					</persName>
+					<affiliation></affiliation>
 				</person>
 			</listPerson>
 		</body>
