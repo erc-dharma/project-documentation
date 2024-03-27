@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os, sys, platform, tempfile, subprocess, json
-from urllib import request
+from urllib import request, error
 
 system = platform.system()
 if system == "Windows":
@@ -37,9 +37,15 @@ headers = {
 }
 req = request.Request(url, json.dumps(doc).encode("UTF-8"), headers=headers)
 
-resp = request.urlopen(req)
-with open(output, "wb") as f:
-	f.write(resp.read())
+try:
+	resp = request.urlopen(req)
+	with open(output, "wb") as f:
+		f.write(resp.read())
+except error.URLError as e:
+	code = getattr(e, "code", "no error code")
+	print(f"Server unreachable: {e.reason} ({code}).", file=sys.stderr)
+	print(f"Please retry in a few minutes. If this persists, contact the data manager.", file=sys.stderr)
+	sys.exit(1)
 
 # We do not add check_output=True to the following because Windows returns
 # EXIT_FAILURE even on success, for some reason.
