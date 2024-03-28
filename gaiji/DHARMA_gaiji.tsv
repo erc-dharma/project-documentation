@@ -53,7 +53,7 @@ gomutraFinal finalGomutra	⁋	final gomūtra
 gomutraInitial initialGomutra	¶	initial gomūtra
 gomutraFinalBars	⁋	final gomūtra rendered as a tapering series of vertical bars
 gomutraFinalComplex	⁋	final gomūtra involving a more complex design than the archetypal rendering
-squiggleVertical braceCurlyClose		
+squiggleVertical braceCurlyClose	⌇	
 indistinct		symbol that is definitely present, but is so damaged (or unclear in the surrogate for a reason other than damage) that it cannot be assigned to any of the primary categories
 unknown		symbol that cannot be assigned to a genus
 spiral	@	
