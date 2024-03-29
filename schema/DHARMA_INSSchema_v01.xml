@@ -124,6 +124,13 @@
                         <dataRef name="string" restriction="[^ ]+"/>
                     </content>
                 </dataSpec>
+                <dataSpec ident="dharma.lg_n">
+                    <content>
+                        <!-- Should be > 0, will be converted to Roman.
+                            Also should be <= 3999. -->
+                        <dataRef name="positiveInteger"/>
+                    </content>
+                </dataSpec>
                 <dataSpec ident="dharma.language">
                     <content>
                         <valList type="closed">
@@ -2963,6 +2970,7 @@
                         <attDef ident="xml:id" mode="delete"/>
                         <attDef ident="xml:space" mode="delete"/>
                         <attDef ident="met" mode="change" usage="req">
+                            <!-- TODO replace with db values -->
                             <valList type="open" mode="replace">
                                 <valItem ident="sumānikā"/>
                                 <valItem ident="anuṣṭubh"/>
@@ -3025,7 +3033,7 @@
                         </attDef>
                         <attDef ident="n" mode="change" usage="req">
                             <datatype>
-                                <dataRef key="dharma.n"/>
+                                <dataRef key="dharma.lg_n"/>
                             </datatype>
                         </attDef>
                         <attDef ident="rend" mode="change">
