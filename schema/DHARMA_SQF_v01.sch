@@ -3,7 +3,7 @@
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" queryBinding="xslt3"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="t"/>
-    
+
     <!--  Written by Axelle Janiak for ERC-DHARMA, 2021-->
 
     <sch:pattern>
@@ -123,16 +123,16 @@
             <sch:assert test="starts-with($fileName, 'DHARMA_INS') or starts-with($fileName, 'DHARMA_DiplEd')">The filename should start with DHARMA_INS or DHARMA_DiplEd, and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <!-- Adding feature to check if another file has the same name per Arlo's request -->
     <!--<sch:pattern>
-        <sch:rule context="/"> 
+        <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
             <sch:let name="path" value="substring-before(document-uri(/), $fileName)"/>
             <sch:assert test="distinct-values(for $fileName in /folders/folder/uri-collection(iri-to-uri(concat(@name, '/?select=*.xml'))) return tokenize($fileName, '/')[last()])">The context is <sch:value-of select="$path"/>.</sch:assert>
         </sch:rule>
     </sch:pattern>-->
-    
+
     <sch:pattern>
         <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull or ancestor::t:msDesc)]">
             <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
@@ -152,31 +152,31 @@
     </sch:pattern>
 
     <!-- Still under construction: when ST missing in Zotero also apply the code for controlling the entry numbers -->
-    
+
     <sch:pattern>
         <!-- Check if the ST exists in Zotero -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
-            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))"/>
+            <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblEntry), '&amp;format=tei'))"/>
             <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
         </sch:rule>
     </sch:pattern>
-    
+
     <sch:pattern>
         <!-- Make sure the ST matches one item and not several -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
-            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
-            <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
+            <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
+            <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblEntry), '&amp;format=tei'))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
         </sch:rule>
     </sch:pattern>
- 
+
     <!-- Adding codes to check the content of the attribute @rendition - juillet 2021 -->
     <sch:pattern>
         <sch:rule context="t:*/@rendition">
             <sch:assert test="contains(.,'class:') and contains(.,'maturity:')">The content of the attribute @corresp should contained ids for both script classification and script maturity, respectively represented by the following prefixes "class:" and "maturity:".</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <!-- controlling the beginning of the value for calendar and datingMethod -->
     <sch:pattern>
         <sch:rule context="t:*/@calendar | t:*/@datingMethod">
@@ -196,7 +196,7 @@
                 sigla of this source.</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <!-- controlling corresp on lg and p - BESTOW addition-->
     <sch:pattern>
         <sch:rule context="t:lg/@corresp | t:p/@corresp">
@@ -205,7 +205,7 @@
             <sch:assert test="substring-after(., '#') = $list-id//t:div/@xml:id">the value inside corresp must match a value declared in BESTOW reference file</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
     <!-- controlling ref on rs - BESTOW addition-->
     <sch:pattern>
         <sch:rule context="t:rs/@ref">
