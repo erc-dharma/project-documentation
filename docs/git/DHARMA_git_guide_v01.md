@@ -6,7 +6,7 @@ This repository assembles documentation produced by the DHARMA project.
 See <https://training.github.com/kit/downloads/fr/github-git-cheat-sheet.pdf>
 
 ### Things you always need to do:
-### Commands Lines Users
+### Command Line Users
 + Open Terminal.app.
   * If it isn't in your Dock yet, find it under Applications/Utilities.
   * You communicate with this application by UNIX commands, also called "command line".
