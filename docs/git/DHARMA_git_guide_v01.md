@@ -14,7 +14,7 @@ See <https://training.github.com/kit/downloads/fr/github-git-cheat-sheet.pdf>
 + Then make sure you are in your proper working directory.
   * If you don't know where you are, use `pwd`.
   * To navigate between folders with the Terminal, use command such as
-      + cd to change your working folder (`cd ..` allows you to return in the parent level folder while `cd folderName1/folderName2` allow to jump directly into folderName2 in one command line).
+      + cd to change your working folder (`cd ..` allows you to return to the parent folder while `cd folderName1/folderName2` allow to jump directly into folderName2 in one command line).
       + if you are lost in your folders, use `pwd`, it will give you your position.
    * type the key TAB once you’ve filled in 3 or 4 of the first letters of a directory name: Terminal will fill in the rest if there’s no other directory beginning with the same letters.
 + Once you’re there, type the following command followed by ENTER:
