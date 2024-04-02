@@ -46,7 +46,7 @@ spiralR	@	clockwise (right-turning) spiral (like a figure 6 or 9)
 spiralL	@	counter-clockwise (left-turning) spiral (like a mirrored figure 6 or 9)
 crossPlus	+	cross in the shape of a + sign
 crossX	×	cross in the shape of an ×
-floret	✤	flower-shaped designs not matching any particular species of floret
+floret	✤	flower-shaped design not matching any particular species of floret
 floretQuatrefoil simpleFinial	✤	floret with four petals, potentially with spikes or smaller petals interspersed between the four cardinal petals
 floretComplex complexFinial	✤	floral design with more detail than a centre and petals (including flowers with eight identical petals)
 gomutraFinal finalGomutra	⁋	final gomūtra
