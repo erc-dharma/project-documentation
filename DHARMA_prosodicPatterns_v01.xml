@@ -155,7 +155,7 @@
           <name xml:lang="kaw-Latn">nārī</name>
           <!-- <note resp="part:zapa">The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".</note> -->
           <seg type="xml">++=</seg>
-          <seg type="prosody">–-⏓</seg>
+          <seg type="prosody">––⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
           <listBibl>
             <bibl>
@@ -183,7 +183,7 @@
           <name xml:lang="kaw-Latn">rasanetra</name>
           <!-- CK -->
           <seg type="xml">+--+=</seg>
-          <seg type="prosody">–⏑⏑-⏓</seg>
+          <seg type="prosody">–⏑⏑–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
           <listBibl>
             <bibl>
