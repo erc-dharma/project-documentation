@@ -309,6 +309,10 @@
           <seg type="prosody">––⏑⏑⏑⏑⏑⏓/––⏑–⏑⏑⏑⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
           <note resp="part:zapa">The meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
+          <!--daba 20240415: this needs correction. 
+A: 8/8 and the slash sign in the formulae means that the pattern for odd lines is that before the slash, and the pattern for even lines is that after the slash. I gather that this is not the case here. We cannot show "alternative" prosodic patterns in this way; the only way to do that would be to use ––⏑⏓⏑⏑⏑⏓, i.e. say that the fourth syllable may be either short or long. Or encode these as two separate metres, e.g. śāpantika1 and śāpantika2 or whatever.
+B: the XML and the prosodic symbol notation for the bit after the slash does not match. Check which is right and correct the other.
+-->
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
@@ -438,7 +442,8 @@
           <!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing,
 and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.-->
           <seg type="xml">========</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody">⏓⏓⏓⏓⏓⏓⏓⏓</seg><!--daba20240415: added the prosodic notation. The person who created this entry should supply the bibliographic details. Also, if it is really free octosyllabic verse, then its place is definitely NOT among syllabo-quantitative metres.-->
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓/⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana"/>
           <listBibl>
             <bibl>
@@ -1355,7 +1360,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <name xml:lang="san-Latn">rucirā</name>
           <name xml:lang="kaw-Latn">rucira</name>
           <name xml:lang="san-Latn">śasadana</name>
-          <seg type="xml">-+-||+----+-+-=</seg>
+          <seg type="xml">-+-+||----+-+-=</seg>
           <seg type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">ja-bha-sa-ja-ga</seg>
           <listBibl>
@@ -1691,7 +1696,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓/––––⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
           <seg type="gana">na-ja-bha-ja-bha-la-ga/ma-ra-ja-sa-ja-sa</seg>
 -->
-          <!--daba 20240415: There's something seriously wrong with this one. In Apte's appendix, vilāsinī is a 17-syllable metre with the pattern na-ja-bha-ja-bha-la-ga with a caesura after the 12th syllable, correctly rendered in the first half of the metre shown here. But it is NOT a 17/18 metre with a completely different pattern in the odd lines. The same goes for viśvalalita in Zoetmulder, except that he does not mention the caesura. I find nothing about a 18-syllable odd line for this metre. Commented out the above and wrote the correct deatils below.-->
+          <!--daba 20240415: There's something seriously wrong with this one. In Apte's appendix, vilāsinī is a 17-syllable metre with the pattern na-ja-bha-ja-bha-la-ga with a caesura after the 12th syllable, correctly rendered in the first half of the metre shown here. But it is NOT a 17/18 metre with a completely different pattern in the odd lines. The same goes for viśvalalita in Zoetmulder, except that he does not mention the caesura. I find nothing about a 18-syllable odd line for this metre. Commented out the above and wrote the correct deatils below. Also compare the record for śāpantika, which (as of today) is shown as a 8/8 metre while in fact the encoder probably intended to record two alternative variants for an 8-syllable samavr̥tta. The same may be the case here.-->
           <measure unit="syllable">17</measure>
           <name xml:lang="san-Latn">vilāsinī</name>
           <name xml:lang="kaw-Latn">viśvalalita</name>
@@ -1985,11 +1990,11 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         <!-- krti class -->
         <item>
           <measure unit="syllable">20</measure>
-          <label type="generic" xml:lang="san-Latn">kr̥ti</label>
+          <label type="generic" xml:lang="san-Latn">kr̥ti</label><!--daba20240415: corrected this metre on the basis of Zoetmulder's appendix. The XML code was correct, but the prosodic notation and the gana code were not.-->
           <name/>
           <seg type="xml">--+-+---+------+-+-=</seg>
-          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
-          <seg type="gana">sa-ja-sa-na-na-ja-ra</seg>
+          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana">sa-ja-sa-na-na-ra-la-ga</seg>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -2221,7 +2226,11 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         <!-- vikr̥ti class -->
         <item>
           <measure unit="syllable">22</measure>
-          <label type="generic" xml:lang="san-Latn">vikr̥ti</label>
+          <label type="generic" xml:lang="san-Latn">vikr̥ti</label><!--daba20240415: the person who created this entry should CHECK, correct and complete. 
+A: Apte's appendix and Zoetmulder's appendix agree that the vikr̥ti class has 23 (not 22) syllables. This also means that the comment heading "vikr̥ti class" above is incorrect. The collective name of 22-syllable metres is ākr̥ti.
+B: bibliographic references are missing.
+C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot check which if any of the formulae recorded here is correct. The XML code has 22 syllables, so may well be correct for this metre. The prosodic code has only 13 syllables and is not remotely similar to the XML code, so is in all probability altogether wrong. The gana code matches the prosodic code.
+-->
           <name/>
           <seg type="xml">++------+-+---+------=</seg>
           <seg type="prosody">⏑⏑⏑⏑–⏑⏑–⏑⏑⏑⏑⏓</seg>
@@ -2267,7 +2276,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         <item>
           <measure unit="syllable">22</measure>
           <name xml:lang="kaw-Latn">madraka</name>
-          <seg type="xml">+--+-+---+||-+----+----=</seg>
+          <seg type="xml">+--+-+---+||-+---+-+---=</seg><!--daba20240415 corrected XML code to match prosody and gana, checked in Apte.-->
           <seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–||⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
           <seg type="gana">bha-ra-na-ra-na-ra-na-ga</seg>
           <listBibl>
