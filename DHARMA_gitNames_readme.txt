@@ -5,6 +5,10 @@ user names" we mean the output of:
 
 	git log --format=%aN
 
+To check your own git name, use:
+
+	git config user.name
+
 This is different from Github user names. Github user names do not appear in
 git's commit history, they are only relevant on Github itself. Arguably, it
 might be better to use email addresses to identify people, or maybe both emails
