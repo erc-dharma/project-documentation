@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-04-15T08:51:14Z. . 
+Schema generated from ODD source 2024-04-17T12:46:42Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -5620,19 +5620,26 @@ Sample values include: 1] filename</a:documentation>
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:div">
-               <sch:report test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type"> Divs other than @type=textpart may not nest in divs of
-                                    different @type </sch:report>
-               <sch:report test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1"> At least two divs @type=textpart are expected in the
-                                    edition</sch:report>
-               <sch:report test="@type='translation' and @resp and @source">@resp and
-                                    @source can not be used together</sch:report>
-               <sch:report test="@type='translation' and not(@resp or @source)">@resp or
-                                    @source is expected for
-                                div[@type='translation']</sch:report>
+               <sch:report test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type">
+                                    Divs other than @type=textpart may not nest in divs of
+                                    different @type
+                                </sch:report>
+               <sch:report test="count(tei:div[@type='textpart'][parent::tei:div/@type='edition']) eq 1">
+                                    At least two divs @type=textpart are expected in the edition
+                                </sch:report>
+               <sch:report test="@type='translation' and @resp and @source">
+                                    @resp and @source can not be used together
+                                </sch:report>
+               <sch:report test="@type='translation' and not(@resp or @source)">
+                                    @resp or @source is expected for div[@type='translation']
+                                </sch:report>
+               <sch:report test="@type='textpart' and ancestor::tei:div[@type='textpart']">
+                                    div[@type='textpart'] must not nest
+                                </sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-abstractModel-structure-l-constraint-report-36">
+                  id="dharma-div-abstractModel-structure-l-constraint-report-37">
             <rule context="tei:div">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5643,7 +5650,7 @@ Sample values include: 1] filename</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-div-abstractModel-structure-p-constraint-report-37">
+                  id="dharma-div-abstractModel-structure-p-constraint-report-38">
             <rule context="tei:div">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6517,7 +6524,7 @@ Sample values include: 1] numeral</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-ab-constraint-report-44">
+                  id="dharma-ab-abstractModel-structure-ab-constraint-report-45">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6528,7 +6535,7 @@ Sample values include: 1] numeral</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ab-abstractModel-structure-l-constraint-report-45">
+                  id="dharma-ab-abstractModel-structure-l-constraint-report-46">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7146,7 +7153,7 @@ Suggested values include: 1] archaeological-context; 2] internal-date; 3] letter
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-msIdentifier-msId_minimal-constraint-report-49">
+                  id="dharma-msIdentifier-msId_minimal-constraint-report-50">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
