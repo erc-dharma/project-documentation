@@ -1,37 +1,30 @@
-Id	Print_Name	Inverted_Name
-und	Undetermined	Undetermined
-ara	Arabic	Arabic
-ban	Modern Balinese	Balinese, Modern
-oldbalinese	Old Balinese	Balinese, Old
-bya	Batak	Batak
-mya	Modern Burmese	Burmese, Modern
-obr	Old Burmese	Burmese, Old
-cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)
-cjm	Modern Cham (of Phanrang)	Cham, Modern (of Phanrang)
-ocm	Old Cham	Cham, Old
-nld	Dutch	Dutch
-eng	English	English
-fra	French	French
-deu	German	German
-ind	Indonesian	Indonesian
-jpn	Japanese	Japanese
-jav	Modern Javanese	Javanese, Modern
-kaw	Old Javanese	Javanese, Old
-kan	Kannada	Kannada
-xhm	Middle Khmer	Khmer, Middle
-khm	Modern Khmer	Khmer, Modern
-okz	Old Khmer	Khmer, Old
-zlm	Modern Malay (Bahasa Malaysia)	Malay, Modern (Bahasa Malaysia)
-omy	Old Malay	Malay, Old
-omx	Old Mon	Mon, Old
-pli	Pali	Pali
-pra	Prakrit	Prakrit
-pyx	Pyu	Pyu
-und	Undetermined	Undetermined
-ara	Arabic	Arabic
-ban	Modern Balinese	Balinese, Modern
-bya	Batak	Batak
-mya	Modern Burmese	Burmese, Modern
-obr	Old Burmese	Burmese, Old
-cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)
-ori	Oriya	Oriya
+Id	Print_Name	Inverted_Name	source
+ara	Arabic	Arabic	
+ban	Modern Balinese	Balinese, Modern	
+bya	Batak	Batak	
+cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)	
+cjm	Modern Cham (of Phanrang)	Cham, Modern (of Phanrang)	
+deu	German	German	false
+eng	English	English	false
+fra	French	French	false
+ind	Indonesian	Indonesian	
+jav	Modern Javanese	Javanese, Modern	
+jpn	Japanese	Japanese	
+kan	Kannada	Kannada	
+kaw	Old Javanese	Javanese, Old	
+khm	Modern Khmer	Khmer, Modern	
+mya	Modern Burmese	Burmese, Modern	
+nld	Dutch	Dutch	false
+obr	Old Burmese	Burmese, Old	
+ocm	Old Cham	Cham, Old	
+okz	Old Khmer	Khmer, Old	
+oldbalinese	Old Balinese	Balinese, Old	
+omx	Old Mon	Mon, Old	
+omy	Old Malay	Malay, Old	
+ori	Oriya	Oriya	
+pli	Pali	Pali	
+pra	Prakrit	Prakrit	
+pyx	Pyu	Pyu	
+und	Undetermined	Undetermined	
+xhm	Middle Khmer	Khmer, Middle	
+zlm	Modern Malay (Bahasa Malaysia)	Malay, Modern (Bahasa Malaysia)	
