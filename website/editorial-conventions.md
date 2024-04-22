@@ -1,3 +1,34 @@
+<!-- Source file for https://dharmalekha.info/editorial-conventions
+
+This is converted to HTML by the dharma app (using pandoc), with a few
+adjustements:
+
+* Level 6 headings (######) are represented as card headings. Higher-level
+  headings can be used freely.
+* Everything that follows level 6 headings, upto the next heading
+  (whatever its level), form a card's body.
+* Code blocks are evaluated and the output is displayed.
+
+Our display sometimes varies depending on the context. For now, we have two
+main contexts: the edition division and the translation. Plain code blocks
+like the following are evaluated as if they occurred within
+<div type="edition">:
+
+	```
+	<gap reason="ellipsis"/>
+	```
+
+And code blocks like the following are treated as if they occurred within
+<div type="translation">:
+
+	```translation
+	<gap reason="ellipsis"/>
+	```
+
+Everything else in this file is kept as is (even HTML tags, if any).
+
+-->
+
 # Editorial Conventions
 
 ## 1. Semantic and metrical structure (intrinsic structure)
