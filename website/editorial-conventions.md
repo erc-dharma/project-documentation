@@ -1,3 +1,5 @@
+# Editorial Conventions
+
 ## 1. Semantic and metrical structure (intrinsic structure)
 
 ###### Stanza in named metre
