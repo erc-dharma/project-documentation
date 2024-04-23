@@ -68,11 +68,8 @@ The hyphen at the beginning of the second line is editorial compound segmentatio
 <milestone type="pagelike" unit="zone" n="A"/>svasti śrī
 ```
 
-###### Beginning of inscribed zone
+The auto-generated label is based on the `@unit` and `@n` of the `<milestone>` element.
 
-```
-<milestone type="pagelike" unit="item" n="A"/>svasti śrī
-```
 
 ###### Beginning of surface or zone, with editorial label
 
@@ -80,22 +77,31 @@ The hyphen at the beginning of the second line is editorial compound segmentatio
 <milestone type="pagelike" unit="item" n="N"/><label xml:lang="eng">Northern Doorjamb</label>svasti śrī
 ```
 
+Editorial labels may be added when the auto-generated label is insufficient.
+
+
 ###### Beginning of page in copperplate inscription
 
 ```
 <pb n="1r"/>svasti śrī
 ```
 
+Page numbers always consist of an Arabic number for the plate and r(ecto) and v(erso) for its two faces.
+
+
 ###### Beginning of line
 
 ```
-<lb n="1"/>svasti śrī<lb n="2"/>kōpparakēcari
+<lb n="1"/>svasti śrī <lb n="2"/>kōpparakēcari
 ```
+
+In physical view, line beginnings are shown in new lines.
+
 
 ###### Beginning of non-hierarchical division (fragment, masonry block, etc.)
 
 ```
-<milestone unit="block" n="a"/>svasti śrī
+<lb n="1"/><milestone unit="block" n="a"/>svasti śrī <milestone unit="block" n="b"/>kōpparakēcari
 ```
 
 ###### Word divided across break
@@ -104,22 +110,11 @@ The hyphen at the beginning of the second line is editorial compound segmentatio
 <lb n="1"/>…dhar<lb n="2" break="no"/>ma…
 ```
 
-Same display and same attribute for breaks other than line beginnings.
+Breaks other than line beginnings take the same attribute when they fall inside a word. In physical view, with line beginnings shown in new lines, a hyphen is added at the end of the former line. If the break is between elements of a compound word, the editorial hyphen for compound analysis is at the beginning of the latter line.
 
 
 ## 3. Palaeographic features
 
-###### Vowel
-
-```
-<seg type="component" subtype="prescript"/> <seg type="component" subtype="postscript"/>`
-```
-
-###### Consonant
-
-```
-<seg type="component" subtype="body"/>
-```
 
 ###### Single symbol representing a number above 9
 
@@ -130,7 +125,7 @@ Same display and same attribute for breaks other than line beginnings.
 ###### Symbol interpreted as punctuation
 
 ```
-<g type="danda">.</g>
+<g type="danda">.</g> ... <g type="dash">.</g>
 ```
 
 Display depends on `@type`.
@@ -146,7 +141,7 @@ Display depends on `@type`.
 ###### Uninterpreted symbol
 
 ```
-<g type="floretComplex"/>
+<g type="floretComplex"/> ... <g type="spiralR"/>
 ```
 
 Display depends on `@type`.
@@ -154,7 +149,7 @@ Display depends on `@type`.
 ###### Small space between words
 
 ```
-<space/>
+viditam astu vo <space/> yathā
 ```
 
 “Small” is defined as less than two typical character widths.
@@ -162,15 +157,15 @@ Display depends on `@type`.
 ###### Large space between words or semantic units
 
 ```
-<space quantity="3" unit="character"/>
+viditam astu vo <space quantity="3" unit="character"/> yathā
 ```
 
-Approximate width of space in typical-sized character.
+The approximate size of the space is recorded in typical character widths.
 
 ###### Space left blank because it was not possible to write in a given spot
 
 ```
-<space type="binding-hole"/>
+mahā<space type="binding-hole"/>rājaḥ
 ```
 
 Other values of `@type` for other reasons of inability to write. The size of these spaces is never encoded.
@@ -178,18 +173,18 @@ Other values of `@type` for other reasons of inability to write. The size of the
 ###### Space left blank presumably with the intent to fill later
 
 ```
-<space type="vacat" quantity="5" unit="character"/>
+tasmai <space type="vacat" quantity="5" unit="character"/> nāma grāmo dattaḥ
 ```
 
-Approximate width of space in typical-sized character. The size of these spaces must always be encoded.
+The approximate size of the space is recorded in typical character widths. The size of such spaces must always be encoded.
 
 ###### Space of uninterpreted function
 
 ```
-<space type="unclassified"/>
+parama-brahmaṇyaḥ <space type="unclassified" quantity="6" unit="character"/> mātā-pitr̥-pādānudhyātaḥ
 ```
 
-Size optionally encoded with `@quantity` and `@unit`.
+Size is to be encoded with `@quantity` and `@unit` if the space is larger than two typical character widths.
 
 
 ## 4. Scribal alterations in text
@@ -197,18 +192,18 @@ Size optionally encoded with `@quantity` and `@unit`.
 ###### Characters added by premodern scribe
 
 ```
-dha<add>rma</add>
+dha<add place="below" rend="mark">rma</add>
 ```
 
-Locus of insertion and eventual addition mark encoded by attributes.
+Attributes specify the locus of insertion and the presence of a scribal mark.
 
 ###### Characters deleted by premodern scribe but still legible
 
 ```
-dharma<del>ma</del>
+dharma<del rend="strikeout">ma</del>
 ```
 
-Manner of deletion encoded by attributes. If the deleted text is unclear or only tentatively legible, this is encoded and displayed normally (section 5).
+The manner of deletion is assumed to be erasure; other indications of deletion are encoded in the attribute. If the deleted text is unclear or only tentatively legible, this is encoded and displayed normally (section 5).
 
 ###### Characters deleted by premodern scribe and no longer legible
 
@@ -216,7 +211,7 @@ Manner of deletion encoded by attributes. If the deleted text is unclear or only
 <del><gap reason="illegible" quantity="1" unit="character"/></del>
 ```
 
-Manner of deletion encoded by attributes. Number of illegible characters encoded as in other lacunae (section 5).
+The manner of deletion may be encoded as above. The number of illegible deleted characters is encoded as in other lacunae (section 5).
 
 ###### Scribal correction
 
@@ -224,7 +219,7 @@ Manner of deletion encoded by attributes. Number of illegible characters encoded
 bottun<subst><del rend="corrected">u</del><add place="overstrike">a</add></subst>
 ```
 
-Manner of deletion and locus of addition may be encoded with different attributes.
+The manner of deletion and the locus of addition may be encoded with different attributes.
 
 
 ## 5. Imperfectly legible text
@@ -248,7 +243,7 @@ This indicates reduced confidence in the reading, not reduced legibility of the 
 ###### Ambiguous reading with two or more possible alternatives
 
 ```
-<choice> <unclear>a</unclear> <unclear>o</unclear> </choice>
+<choice><unclear>ā</unclear><unclear>o</unclear></choice>
 ```
 
 ###### Lacuna: unknown number of characters irretrievably lost
@@ -343,7 +338,7 @@ Similarly with reason “illegible” and “undefined”
 dha<supplied reason="lost">r</supplied>ma
 ```
 
-Similarly with reason “undefined”, but NOT with reason “illegible”. If vestiges are present, a restoration is to be shown as an unclear reading. Basis of restoration may be encoded with `@evidence`.
+Similarly with reason “undefined”, but NOT with reason “illegible”. If vestiges are present, a restoration is to be shown as an unclear reading. The basis of restoration may be encoded with `@evidence`.
 
 ###### Lacuna tentatively restored by editor
 
@@ -351,7 +346,7 @@ Similarly with reason “undefined”, but NOT with reason “illegible”. If v
 dha<supplied reason="lost" cert="low">r</supplied>ma
 ```
 
-Similarly with reason “undefined”, but NOT with reason “illegible”. If vestiges are present, a tentative restoration is to be shown as a tentative reading.  Basis of restoration may be encoded with `@evidence`.
+Similarly with reason “undefined”, but NOT with reason “illegible”. If vestiges are present, a tentative restoration is to be shown as a tentative reading. The basis of restoration may be encoded with `@evidence`.
 
 ###### Lacuna with differently treated parts
 
@@ -377,30 +372,30 @@ Similarly with reason “undefined”, but NOT with reason “illegible”. If v
 ###### Erroneous or unintelligible original
 
 ```
-<sic>dhoma</sic>
+<sic>dharva</sic>
 ```
 
 ###### Erroneous or unintelligible original corrected by the editor
 
 ```
-dha<choice><sic>t</sic><corr>r</corr></choice>ma
+dhar<choice><sic>v</sic><corr>m</corr></choice>a
 ```
 
-###### Character(s) omitted by scribe and restored by the editor (editorial addition)
+###### Text omitted by scribe and restored by the editor (editorial addition)
 
 ```
 dha<supplied reason="omitted">rma</supplied>
 ```
 
-###### Character(s) omitted by the scribe and not restored by the editor
+###### Text omitted by the scribe and not restored by the editor
 
 ```
 catvāriṁśat samā<seg met="-="><gap reason="omitted" quantity="2" unit="character"/></seg>
 ```
 
-Unrestored omissions tend to occur in metrical text, since without a known prosody it is hard to be certain that something was omitted. But the same encoding may also be used without `<seg>` and `@met`, and also with `@extent="unknown"` instead of `@quantity`.
+Unrestored omissions tend to occur in metrical text, since without a known prosodic pattern it is hard to be certain that something was omitted unless the editor also knows what it was. But the same encoding may also be used without `<seg>` and `@met`, and also with `@extent="unknown"` instead of `@quantity`.
 
-###### Superfluous characters engraved by scribe (e.g. dittography) and suppressed by the editor
+###### Superfluous text engraved by scribe (e.g. dittography) and suppressed by the editor
 
 ```
 dharma<surplus>ma</surplus>
