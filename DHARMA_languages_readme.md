@@ -20,10 +20,13 @@ Columns are:
    provide here overrides the one from the ISO standard, as for `Print_Name`.
 * `source`. This is a DHARMA-specific field, which should contain a boolean
    value viz. `true` or `false`. If this column is empty, `true` is assumed.
+   `true` is also assumed for languages that are not enumerated in this table.
    Languages that have `source` set to `true` are treated as source languages by
    the DHARMA application, per contrast with translation languages (all the
    others: English, etc.) Source languages are displayed in texts' metadata and
-   in data aggregations, while the others are not. This field is needed
-   because translation languages do appear in our texts' `div[@type='edition']`
-   (`head` elements are in English, for instance). Thus, we cannot determine
-   automatically which languages are source languages and which are not.
+   in data aggregations, while the others are not.
+
+The `source` field is needed because translation languages do appear in our
+texts' `div[@type='edition']` (`head` elements are in English, for instance).
+Thus, we cannot determine automatically which languages are source languages
+and which are not.
