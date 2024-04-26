@@ -14,6 +14,10 @@ launched on May 1st 2019. It is a 7-year project (2019--2026) financed on an ERC
 Synergy Grant 2018 through the European Union’s Research and Innovation
 Programme Horizon 2020.
 
+<!--
+
+We're supposed to fill the following.
+
 ## Publishing Director
 
 dénomination sociale
@@ -27,6 +31,8 @@ adresse de courrier électronique ou numéro de téléphone pour contacter votre
 nom du directeur de la publication
 
 nom du responsable de la rédaction le cas échéant
+
+-->
 
 ## Accomodation Provider
 
