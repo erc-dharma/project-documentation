@@ -1,18 +1,12 @@
 # Legal Notice
 
-For general information about the project and its goals, head over to
-[our blog on Hypotheses.org](https://dharma.hypotheses.org). The present website
-allows you to access the project's database, but it does not record
-participants' other activities. You migh also want to consult [our previous
-website](https://erc-dharma.github.io), which is more documented than this
-one.
-
 ## Funding
 
 The DHARMA project [ERC n°809994](https://doi.org/10.3030/809994) has been
 launched on May 1st 2019. It is a 7-year project (2019--2026) financed on an ERC
 Synergy Grant 2018 through the European Union’s Research and Innovation
-Programme Horizon 2020.
+Programme Horizon 2020. For general information about the project and its goals,
+head over to [our blog on Hypotheses.org](https://dharma.hypotheses.org).
 
 <!--
 
