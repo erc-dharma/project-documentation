@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-04-29T14:33:43Z. . 
+Schema generated from ODD source 2024-04-29T17:18:49Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -2787,16 +2787,35 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                </choice>
             </attribute>
          </optional>
+         <optional>
+            <attribute name="rend">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>block</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
    <define name="cit">
       <element name="cit">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 9.3.5.1. Examples]</a:documentation>
-         <group>
-            <ref name="quote"/>
-            <ref name="bibl"/>
-         </group>
+         <choice>
+            <group>
+               <ref name="quote"/>
+               <ref name="bibl"/>
+            </group>
+            <group>
+               <ref name="q"/>
+               <ref name="bibl"/>
+            </group>
+         </choice>
       </element>
    </define>
    <define name="desc">
