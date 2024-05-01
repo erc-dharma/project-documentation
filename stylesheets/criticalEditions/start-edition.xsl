@@ -4964,7 +4964,7 @@
         <xsl:when test="parent::tei:l">
             <xsl:choose>
                 <xsl:when test="parent::tei:l/child::node()[1][self::text()]">
-                    <xsl:value-of select="substring-before(parent::tei:l/text(), ' ')"/>
+                    <xsl:value-of select="substring-before(parent::tei:l/text()[1], ' ')"/>
                 </xsl:when>
                 <xsl:when test="parent::tei:l/child::node()[1][self::tei:app]">
                     <xsl:value-of select="parent::tei:l/tei:app[1]/tei:lem"/>
