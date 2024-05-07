@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-05-06T17:17:11Z. . 
+Schema generated from ODD source 2024-05-07T15:21:14Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -4282,6 +4282,8 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                   <a:documentation/>
                   <value>section</value>
                   <a:documentation>for one of many numbered paragraphs or short sections where this form of citation is practicable, such as many grammars (to be displayed as §, or §§ when the contents include a hyphen)</a:documentation>
+                  <value>mixed</value>
+                  <a:documentation>custom formatting</a:documentation>
                </choice>
             </attribute>
          </optional>
