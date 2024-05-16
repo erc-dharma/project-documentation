@@ -401,6 +401,12 @@ Unrestored omissions tend to occur in metrical text, since without a known proso
 dharma<surplus>ma</surplus>
 ```
 
+###### Punctuation or avagraha supplied to clarify editorial interpretation
+
+```
+so <supplied reason="subaudible">’</supplied>dharmaḥ<supplied reason="subaudible">.</supplied>
+```
+
 
 ## 7. Editorial markup in translations and commentary
 
