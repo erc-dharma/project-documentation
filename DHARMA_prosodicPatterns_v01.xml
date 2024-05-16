@@ -513,7 +513,6 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
           </listBibl>
         </item>
-@@@
         <item>
           <measure unit="syllable">9</measure>
           <name xml:lang="san-Latn">bhujagaśiśubhr̥tā</name>
@@ -2985,6 +2984,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <seg type="gana"/>
           <note resp="part:daba">Any number of iterations of the foot ⏑⏑–.</note>
         </item>
+      </list>
       <list>
         <head>Additions in need of processing</head>
         <!-- additions from Zaki's file -->
