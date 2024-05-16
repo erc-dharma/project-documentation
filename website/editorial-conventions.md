@@ -255,13 +255,13 @@ This indicates reduced confidence in the reading, not reduced legibility of the 
 ###### Lacuna: confidently estimated number of characters irretrievably lost
 
 ```
-<gap reason="lost" unit="character" quantity="3"/>
+<gap reason="lost" quantity="3" unit="character"/>
 ```
 
 ###### Lacuna: tentatively estimated number of characters irretrievably lost
 
 ```
-<gap reason="lost" unit="character" quantity="3" precision="low"/>
+<gap reason="lost" quantity="3" unit="character" precision="low"/>
 ```
 
 ###### Lacuna: unknown number of characters illegible, but vestiges are present
@@ -273,13 +273,13 @@ This indicates reduced confidence in the reading, not reduced legibility of the 
 ###### Lacuna: confidently estimated number of characters illegible, but vestiges are present
 
 ```
-<gap reason="illegible" unit="character" quantity="3"/>
+<gap reason="illegible" quantity="3" unit="character"/>
 ```
 
 ###### Lacuna: tentatively estimated number of characters illegible, but vestiges are present
 
 ```
-<gap reason="illegible" unit="character" quantity="3" precision="low"/>
+<gap reason="illegible" quantity="3" unit="character" precision="low"/>
 ```
 
 ###### Lacuna: unknown number of characters (encoded from previous edition that makes no distinction between loss and illegibility)
@@ -291,13 +291,13 @@ This indicates reduced confidence in the reading, not reduced legibility of the 
 ###### Lacuna: confidently estimated number of characters (encoded from previous edition that makes no distinction between loss and illegibility)
 
 ```
-<gap reason="undefined" unit="character" quantity="3"/>
+<gap reason="undefined" quantity="3" unit="character"/>
 ```
 
 ###### Lacuna: tentatively estimated number of characters (encoded from previous edition that makes no distinction between loss and illegibility)
 
 ```
-<gap reason="undefined" unit="character" quantity="3" precision="low"/>
+<gap reason="undefined" quantity="3" unit="character" precision="low"/>
 ```
 
 ###### Lacuna: confidently estimated number of lines
@@ -320,6 +320,16 @@ Similarly with reason “illegible” and “undefined”
 
 ```
 <gap reason="lost" extent="unknown" unit="line"/>
+```
+
+Similarly with reason “illegible” and “undefined”
+
+
+###### Lacuna affecting only part of an akṣara
+
+```
+<seg type="component" subtype="body"><gap reason="lost" quantity="1" unit="component"/></seg>ā
+t<seg type="component" subtype="vowel"><gap reason="lost" quantity="1" unit="component"/></seg>
 ```
 
 Similarly with reason “illegible” and “undefined”
