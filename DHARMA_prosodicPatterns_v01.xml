@@ -58,6 +58,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="draft" when="2024-05-16" who="part:daba">Some tidying and adding vipulā anuṣṭubh</change>
       <change status="draft" when="2023-09-05" who="part:argr">Inserted altname prabodhitā under viyoginī and completed Zoetmulder reference</change>
       <change status="draft" when="2022-05-30" who="part:daba">Sectioning and restructuring</change>
       <change status="draft" when="2022-04-26" who="part:daba">Adding references to Apte's appendix and some tidying</change>
@@ -420,6 +421,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="xml">====-++=/====-+-=</seg>
           <seg type="prosody">⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">The second and third syllables of any quarter must not be both short in anuṣṭubh.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -437,18 +439,14 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">8</measure>
-          <name xml:lang="kaw-Latn">pādānuṣṭubh</name>
-          <name xml:lang="eng">free_octosyllabic</name>
-          <!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing,
-and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.-->
-          <seg type="xml">========</seg>
-          <seg type="prosody">⏓⏓⏓⏓⏓⏓⏓⏓</seg><!--daba20240415: added the prosodic notation. The person who created this entry should supply the bibliographic details. Also, if it is really free octosyllabic verse, then its place is definitely NOT among syllabo-quantitative metres.-->
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓/⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
-          <seg type="gana"/>
+          <name xml:lang="san-Latn">na-vipulā</name>
+          <seg type="xml">===+---=</seg>
+          <seg type="prosody">⏓⏓⏓–⏑⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
-              <!--not discussed as such in Apte-->
             </bibl>
             <bibl>
               <ptr target="bib:Velankar1949_01"/>
@@ -456,11 +454,66 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
             </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">bha-vipulā</name>
+          <seg type="xml">=+-++--=</seg>
+          <seg type="prosody">⏓–⏑––⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
+          <listBibl>
             <bibl>
-              <ptr target="bib:Noorduyn+Teeuw2006_01"/>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
             </bibl>
           </listBibl>
         </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">ma-vipulā</name>
+          <seg type="xml">=+-++||++=</seg>
+          <seg type="prosody">⏓–⏑––||––⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">ra-vipulā</name>
+          <seg type="xml">===++-+=</seg>
+          <seg type="prosody">⏓⏓⏓––⏑–⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+@@@
         <item>
           <measure unit="syllable">9</measure>
           <name xml:lang="san-Latn">bhujagaśiśubhr̥tā</name>
@@ -2791,14 +2844,14 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         </item>
       </list>
       <list>
-        <head>Miscellaneous metres</head>
-        <!--additions by daba 20211215. Not sure if anybody has ever used these names of variable metre families, which are not in the EGD list but discussed in the text sections after it. If this file is meant to be a list of the permitted values of @met in <lg>, then the following should be added. If we do not add these (deciding that the file is only for metres definable by a clear pattern), then perhaps triṣṭubh and jagatī should likewise be removed from the list.-->
+        <head>Syllabic metres with loose constraints</head>
         <item>
           <measure unit="syllable"/>
-          <name xml:lang="">trimeter</name>
-          <seg type="xml">no data available</seg>
-          <seg type="prosody">no data available</seg>
+          <name xml:lang="">trimeter</name><!--daba20240516: add eng as the value of @xml:lang? -->
+          <seg type="xml"/>
+          <seg type="prosody"/>
           <seg type="gana"/>
+          <note resp="part:daba">Vedic trimeter consisting of loosely constrained 11- or 12-syllable lines that do not conform to the fixed patterns of triṣṭubh or jagatī.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -2813,6 +2866,35 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
           </listBibl>
         </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">pādānuṣṭubh</name>
+          <name xml:lang="eng">free_octosyllabic</name><!--daba20240516: I think this should be deleted. I am not aware of a rule of adding English alternative names. After deleting it, perhaps add a note with the text "Free octosyllabic verse".-->
+          <!--argr: of course pādānuṣṭubh and pādānuṣṭup are just different spellings of the same thing,
+and the first is preferable from the Sanskrit viewpoint, but the author of CK would of course have seen the second as the 'standard' form.-->
+          <seg type="xml">========</seg>
+          <seg type="prosody">⏓⏓⏓⏓⏓⏓⏓⏓</seg><!--daba20240415: added the prosodic notation. The person who created this entry should supply the bibliographic details. Also, if it is really free octosyllabic verse, then its place is definitely NOT among syllabo-quantitative metres.--><!--daba20240516: I have moved this to a new section with loosely defined metres (was among the syllabo-quantitative ones before now). -->
+          <!--<seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓/⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg> daba20240516 commented this out; if this mthis is probably a mistake and should be deleted altogether. But the Javanese experts should check; Arlo in email 20240516 said "free octosyllabic verse, so ⏕⏕⏕⏕" - but to me, "free octosyllabic verse" means 8 syllables of any length (i.e. ⏓⏓⏓⏓⏓⏓⏓⏓), while Arlo's formula can meen 4 to 8 syllables; it's free octomoraic, not octosyllabic. -->
+          <seg type="gana"/>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <!--not discussed as such in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Noorduyn+Teeuw2006_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+      </list>
+      <list>
+        <head>The vaitālīya class: metres with a moraic part and a syllabo-quantitative cadence</head>
         <item>
           <measure unit="syllable"/>
           <name xml:lang="">vaitālīya</name>
@@ -2877,22 +2959,22 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         </item>
       </list>
       <list>
-        <head>Additions in need of processing</head>
-        <!-- additions from Zaki's file -->
-        <!--daba 20220530: I assume these will be moved after being finalised to the syllabo-quantitative section to their proper place by syllable count.-->
+        <head>The daṇḍaka class: metres involving many repetitions of a foot</head><!--daba20240516: I've created this section to house these metres, which were "in need of processing" up to now. Suggestions for an improved title are welcome.-->
         <item>
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">daṇḍa</name>
-          <seg type="xml">‖+-+‖|+--+-+-=</seg>
-          <seg type="prosody">‖–⏑⏑‖|–⏑⏑–⏑–⏑⏓</seg>
+          <seg type="xml"></seg>
+          <seg type="prosody"></seg>
           <seg type="gana"/>
+          <note resp="part:daba">Any number of iterations of the foot –⏑⏑, followed by –⏑⏑–⏑–⏑⏓.</note><!--daba20240516: Javanists: please check the pattern for the iterated foot. Before my edit, the XML code for the iterated foot was ‖+-+‖ while the prosodic code was ‖–⏑⏑‖ . Also, I don't know what the third bar is supposed to mean. Is this a caesura between the iterative sequence and the syllabo-quantitative sequence? -->
         </item>
         <item>
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">daṇḍaka</name>
-          <seg type="xml">------|‖+-+‖</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑|‖–⏑–‖</seg>
+          <seg type="xml"></seg>
+          <seg type="prosody"></seg>
           <seg type="gana"/>
+          <note resp="part:daba">The sequence ⏑⏑⏑⏑⏑⏑ followed by any number of iterations of the foot –⏑–.</note><!--daba20240516: Javanists: I don't know what the third bar is supposed to mean. Is this a caesura between the iterative sequence and the syllabo-quantitative sequence? -->
         </item>
         <item>
           <measure unit="syllable"/>
@@ -2901,7 +2983,12 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <seg type="xml">‖--+‖</seg>
           <seg type="prosody">‖⏑⏑–‖</seg>
           <seg type="gana"/>
+          <note resp="part:daba">Any number of iterations of the foot ⏑⏑–.</note>
         </item>
+      <list>
+        <head>Additions in need of processing</head>
+        <!-- additions from Zaki's file -->
+        <!--daba 20220530: I assume these will be moved after being finalised to the syllabo-quantitative section to their proper place by syllable count.-->
         <item>
           <measure unit="syllable">12</measure>
           <name xml:lang="">kusumāyudha</name>
