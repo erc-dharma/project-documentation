@@ -1,4 +1,3 @@
-<!-- Michaël: there are two distinct entries paṅkti in this file, need to deal with this -->
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xml:lang="eng" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -3011,15 +3010,10 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         </item>
         <item>
           <measure unit="syllable">10</measure>
-          <name xml:lang="">paṅkti</name>
+          <label type="generic" xml:lang="san-Latn">paṅkti</label>
+          <name/>
           <seg type="xml">--------+=</seg>
           <seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑–⏓</seg>
-          <!--daba: CHECK @argr will be needed here.
-	I've removed the bars from the template and added the XML code and syllable number.
-	Apte's appendix has no metre matching the pattern ⏑⏑⏑⏑⏑⏑⏑⏑-⏓.
-	If this is a metre used in SE Asia, I would strongly suggest finding a different name for it, if one can be found, since in the Indian tradition paṅkti is a generic name for 10-syllable verse and we should avoid using it for a specific template.
-	If all else fails, I might suggest paṅktiviśeṣa. Or, if the metre is a rare one, keeping it unnamed and just giving the code for its @met in the XML would work.
-	daba 20220426: now that we've introduced label type="generic", I guess this should be a generic "paṅkti class" item. -->
           <seg type="gana"/>
           <listBibl>
             <bibl>
