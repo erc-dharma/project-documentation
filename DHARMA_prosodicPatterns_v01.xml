@@ -1071,9 +1071,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">12</measure>
           <name xml:lang="san-Latn">jagatī</name>
-          <seg type="xml">no data available</seg>
+          <seg type="xml"></seg>
           <note resp="part:daba">There is no simple way to codify or summarise jagatī because of the degree of variation permitted. See EGD Appendix B, "Vedic trimeter".</note>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <seg type="gana"/>
           <listBibl>
             <bibl>
@@ -1262,7 +1262,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <name xml:lang="san-Latn">vaṁśamālā</name>
           <seg type="xml">=+-++--+-+-=</seg>
           <seg type="prosody">⏓–⏑––⏑⏑–⏑–⏑⏓</seg>
-          <seg type="gana"><!--not quite applicable--></seg>
+          <seg type="gana"></seg>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -2651,7 +2651,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">āryā</name>
           <seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|1|4|2</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2673,7 +2673,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">gīti</name>
           <seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|2</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2695,7 +2695,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">upagīti</name>
           <seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|1|4|2</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2717,7 +2717,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">udgīti</name>
           <seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|2</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2739,7 +2739,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">āryāgīti</name>
           <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2761,7 +2761,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">sugīti</name>
           <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|1|4|2</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2782,7 +2782,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">anugīti</name>
           <seg type="xml">4|4|4||4|4|1|4|2/4|4|4||4|4|4|4|4</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2803,7 +2803,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">vallarī</name>
           <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|2</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -2824,7 +2824,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable"/>
           <name xml:lang="">lalitā</name>
           <seg type="xml">4|4|4||4|4|4|4|2/4|4|4||4|4|4|4|4</seg>
-          <seg type="prosody">no data available</seg>
+          <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
           <seg type="gana"/>
           <listBibl>
@@ -3013,8 +3013,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <measure unit="syllable">10</measure>
           <name xml:lang="">paṅkti</name>
           <seg type="xml">--------+=</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑–⏓[need to be checked]</seg>
-          <!--daba: @argr will be needed here.
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑–⏓</seg>
+          <!--daba: CHECK @argr will be needed here.
 	I've removed the bars from the template and added the XML code and syllable number.
 	Apte's appendix has no metre matching the pattern ⏑⏑⏑⏑⏑⏑⏑⏑-⏓.
 	If this is a metre used in SE Asia, I would strongly suggest finding a different name for it, if one can be found, since in the Indian tradition paṅkti is a generic name for 10-syllable verse and we should avoid using it for a specific template.
