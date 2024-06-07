@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-05-16T09:03:47Z. . 
+Schema generated from ODD source 2024-06-07T08:15:20Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -2314,9 +2314,9 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                      <value>class:telugu</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
                      <value>class:70420</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
-                     <value>class:vaṭṭeḻuṭṭu</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
                      <value>class:83221</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
                      <value>class:chinese</value>
@@ -4521,9 +4521,9 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                      <value>class:telugu</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
                      <value>class:70420</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
-                     <value>class:vaṭṭeḻuṭṭu</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
                      <value>class:83221</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
                      <value>class:chinese</value>
@@ -4963,9 +4963,9 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                      <value>class:telugu</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
                      <value>class:70420</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
-                     <value>class:vaṭṭeḻuṭṭu</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
                      <value>class:83221</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
                      <value>class:chinese</value>
@@ -5965,9 +5965,9 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                      <value>class:telugu</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
                      <value>class:70420</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
-                     <value>class:vaṭṭeḻuṭṭu</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
                      <value>class:83221</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
                      <value>class:chinese</value>
@@ -6923,9 +6923,9 @@ Sample values include: 1] numeral</a:documentation>
                      <value>class:telugu</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
                      <value>class:70420</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
-                     <value>class:vaṭṭeḻuṭṭu</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
                      <value>class:83221</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
                      <value>class:chinese</value>
@@ -7122,9 +7122,9 @@ Sample values include: 1] numeral</a:documentation>
                      <value>class:telugu</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
                      <value>class:70420</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
-                     <value>class:vaṭṭeḻuṭṭu</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuṭṭu</a:documentation>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
                      <value>class:83221</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
                      <value>class:chinese</value>
