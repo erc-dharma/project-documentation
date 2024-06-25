@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-06-21T11:54:51Z. . 
+Schema generated from ODD source 2024-06-25T09:38:26Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -5552,36 +5552,6 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:div[@type='edition']">
-               <sch:assert test="count(distinct-values(tei:div[@type='textpart']/@n))                                     = count(tei:div[@type='textpart']/@n)">
-                                    textpart @n are not unique in this division
-                                </sch:assert>
-               <sch:assert test="count(distinct-values(tei:lg/@n)) = count(tei:lg/@n)">
-                                    lg elements do not have unique @n within this division
-                                </sch:assert>
-               <sch:assert test="count(distinct-values(*/(tei:pb | tei:milestone[@type='pagelike'])/@n))                                     = count(*/(tei:pb | tei:milestone[@type='pagelike'])/@n)">
-                                    pb and pagelike milestone elements do not have unique @n within this division
-                                </sch:assert>
-               <sch:assert test="count(distinct-values(*/tei:lb/@n)) = count(*/tei:lb/@n)">
-                                    lb elements do not have unique @n within this division
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:div[@type='edition']">
-               <sch:assert test="@xml:lang or count(*[@xml:lang]) = count(*)">
-                                    @lang must be set on div[@type='edition'] or on all its children
-                                </sch:assert>
-               <sch:assert test="@rendition or count(*[@rendition]) = count(*)">
-                                    @rendition must be set on div[@type='edition'] or on all its children
-                                </sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:div">
                <sch:report test="./@type != 'textpart' and parent::tei:div and @type!=parent::tei:div/@type">
                                     Divs other than @type=textpart may not nest in divs of
@@ -5604,18 +5574,39 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:div[@type='edition']/tei:div[@type='textpart']">
-               <sch:assert test="count(distinct-values(tei:lg/@n)) = count(tei:lg/@n)">
-                                   lg elements do not have unique @n within this division
+                      context="tei:div[@type='edition']">
+               <sch:assert test="@xml:lang or count(*[@xml:lang]) = count(*)">
+                                    @lang must be set on div[@type='edition'] or on all its children
                                 </sch:assert>
-               <sch:assert test="count(distinct-values(*/tei:lb/@n)) = count(*/tei:lb/@n)">
-                                    lb elements do not have unique @n within this division
+               <sch:assert test="@rendition or count(*[@rendition]) = count(*)">
+                                    @rendition must be set on div[@type='edition'] or on all its children
                                 </sch:assert>
-               <sch:assert test="count(distinct-values(*/(tei:pb | tei:milestone[@type='pagelike'])/@n))                                     = count(*/(tei:pb | tei:milestone[@type='pagelike'])/@n)">
+               <sch:assert test="count(distinct-values(tei:div[@type='textpart']/@n))                                     = count(tei:div[@type='textpart']/@n)">
+                                    textpart @n are not unique in this division
+                                </sch:assert>
+               <sch:assert test="tei:div[@type='textpart'] or count(distinct-values(.//tei:lg/@n)) = count(.//tei:lg/@n)">
+                                    lg elements do not have unique @n within this division
+                                </sch:assert>
+               <sch:assert test="tei:div[@type='textpart'] or count(distinct-values(.//(tei:pb | tei:milestone[@type='pagelike'])/@n))                                     = count(.//(tei:pb | tei:milestone[@type='pagelike'])/@n)">
                                     pb and pagelike milestone elements do not have unique @n within this division
                                 </sch:assert>
-               <sch:assert test="count(distinct-values(tei:lg/@n)) = count(tei:lg/@n)">
-                                    lg elements do not have unique @n within this division
+               <sch:assert test="tei:div[@type='textpart'] or count(distinct-values(.//tei:lb/@n)) = count(.//tei:lb/@n)">
+                                    lb elements do not have unique @n within this division
+                                </sch:assert>
+            </sch:rule>
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                      context="tei:div[@type='edition']/tei:div[@type='textpart']">
+               <sch:assert test="count(distinct-values(.//tei:lg/@n)) = count(.//tei:lg/@n)">
+                                   lg elements do not have unique @n within this division
+                                </sch:assert>
+               <sch:assert test="count(distinct-values(.//tei:lb/@n)) = count(.//tei:lb/@n)">
+                                    lb elements do not have unique @n within this division
+                                </sch:assert>
+               <sch:assert test="count(distinct-values(.//(tei:pb | tei:milestone[@type='pagelike'])/@n))                                     = count(.//(tei:pb | tei:milestone[@type='pagelike'])/@n)">
+                                    pb and pagelike milestone elements do not have unique @n within this division
                                 </sch:assert>
             </sch:rule>
          </pattern>
@@ -6083,7 +6074,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(editorial expansion) contains a sequence of letters added by an editor or transcriber when expanding an abbreviation. [11.3.1.2. Abbreviation and Expansion]</a:documentation>
          <ref name="macro.xtext"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-ex-ex-constraint-rule-32">
+                  id="dharma-ex-ex-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6112,7 +6103,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(forme work) contains a running head (e.g. a header, footer), catchword, or similar material appearing on the current page. [11.6. Headers, Footers, and Similar Matter]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-fw-fw-after-pb-constraint-rule-33">
+                  id="dharma-fw-fw-after-pb-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6243,7 +6234,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the location of a significant space in the text. [11.5.1. Space]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-space-space-constraint-rule-34">
+                  id="dharma-space-space-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6310,7 +6301,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
             <ref name="add"/>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-subst-substContents1-constraint-assert-26">
+                  id="dharma-subst-substContents1-constraint-assert-25">
             <rule context="tei:subst">
                <assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6417,7 +6408,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the degree of certainty associated with some aspect of the text markup. [21.1.2. Structured Indications of Uncertainty]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-certainty-usage-certainty-constraint-rule-36">
+                  id="dharma-certainty-usage-certainty-constraint-rule-35">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6959,7 +6950,7 @@ Sample values include: 1] numeral</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-seg-att-type-subtype-constraint-rule-40">
+                  id="dharma-seg-att-type-subtype-constraint-rule-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7631,84 +7622,6 @@ Sample values include: 1] king; 2] queen; 3] prince; 4] princess</a:documentatio
       <element name="placeName">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an absolute or relative place name. [13.2.3. Place Names]</a:documentation>
          <ref name="macro.phraseSeq"/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-placeName-div-constraint-rule-41">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='region']">
-               <sch:assert test="@subtype='district' or @subtype='province' or @subtype='country' or @subtype='undetermined' or @subtype='land' or @subtype='island'">For @type="region", the @subtype should be one of the following
-                                    values: @subtype='district' or @subtype='province' or
-                                    @subtype='country' or @subtype='undetermined' or @subtype='land'
-                                    or @subtype='island'</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='settlement']">
-               <sch:assert test="@subtype='town' or @subtype='village' or @subtype='hamlet' or @subtype='armyCamp' or @subtype='undetermined' or @subtype='establishment'">For @type="settlement", the @subtype should be one of the
-                                    following values: @subtype='town' or @subtype='village' or
-                                    @subtype='hamlet' or @subtype='armyCamp' or
-                                    @subtype='undetermined' or
-                                @subtype='establishment'</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='builtPlace']">
-               <sch:assert test="@subtype='temple' or @subtype='monastery' or @subtype='feedingHall' or @subtype='pavillion' or @subtype='undetermined'">For @type="builtPlace", the @subtype should be one of the
-                                    following values: @subtype='temple' or @subtype='monastery' or
-                                    @subtype='feedingHall' or @subtype='pavillion' or
-                                    @subtype='undetermined'</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='cultivation']">
-               <sch:assert test="@subtype='garden' or @subtype='field' or @subtype='fieldPaddy' or @subtype='fieldMillet' or @subtype='orchard' or @subtype='orchardAreca' or @subtype='orchardCitrus' or @subtype='fieldIrrigated' or @subtype='fieldDry' or @subtype='fieldSalted' or @subtype='undetermined' or @subtype='nursery'">For @type="cultivation", the @subtype should be one of the
-                                    following values: @subtype='garden' or @subtype='field' or
-                                    @subtype='fieldPaddy' or @subtype='fieldMillet' or
-                                    @subtype='orchard' or @subtype='orchardAreca' or
-                                    @subtype='orchardCitrus' or @subtype='fieldIrrigated' or
-                                    @subtype='fieldDry' or @subtype='fieldSalted' or
-                                    @subtype='undetermined' or
-                                @subtype='nursery'</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='hydrographic']">
-               <sch:assert test="@subtype='tank' or @subtype='river' or @subtype='pond' or @subtype='canal' or @subtype='undetermined' or @subtype='wetland' or @sutype='pool' or @subtype='lake'">For @type="hydrographic", the @subtype should be one of the
-                                    following values: @subtype='tank' or @subtype='river' or
-                                    @subtype='pond' or @subtype='canal' or @subtype='undetermined'
-                                    or @subtype='wetland' or @sutype='pool' or
-                                    @subtype='lake'</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='naturalPlace']">
-               <sch:assert test="@subtype='forest' or @subtype='wood' or @subtype='grove' or @subtype='tree' or @subtype='mountain' or @subtype='undetermined' or @subtype='mount'">For @type="naturalPlace", the @subtype should be one of the
-                                    following values: @subtype='forest' or @subtype='wood' or
-                                    @subtype='grove' or @subtype='tree' or @subtype='mountain' or
-                                    @subtype='undetermined' or
-                                @subtype='mount'</sch:assert>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                      context="tei:placeName[@type='undetermined']">
-               <sch:assert test="not(@subtype)">@subtype isn't allowed with
-                                    @type='undetermined'</sch:assert>
-            </sch:rule>
-         </pattern>
          <ref name="att.global.attribute.xmlid"/>
          <ref name="att.global.responsibility.attribute.cert"/>
          <ref name="att.canonical.attribute.key"/>
@@ -7756,7 +7669,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-app-one-lem-constraint-rule-48">
+                  id="dharma-app-one-lem-constraint-rule-40">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7782,7 +7695,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             <ref name="app"/>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-listApp-div-constraint-rule-49">
+                  id="dharma-listApp-div-constraint-rule-41">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7810,7 +7723,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-lem-exclusion-inside-lem-constraint-rule-50">
+                  id="dharma-lem-exclusion-inside-lem-constraint-rule-42">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -7847,7 +7760,7 @@ Sample values include: 1] province; 2] district; 3] country; 4] town; 5] village
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-51">
+                  id="dharma-rdg-exclusion-inside-lem-constraint-rule-43">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
