@@ -152,9 +152,9 @@
         </item>
         <item>
           <measure unit="syllable">3</measure>
-          <name xml:lang="kaw-Latn">bhadroti</name>
+          <name xml:lang="kaw-Latn">bhadrokti</name>
           <name xml:lang="kaw-Latn">nārī</name>
-          <!-- <note resp="part:zapa">The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".</note> -->
+          <!-- <note resp="part:zapa">The name of this meter in CK is "bhadrokti", while in Vr̥t is "nārī".</note> -->
           <seg type="xml">++=</seg>
           <seg type="prosody">––⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
@@ -3196,9 +3196,9 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>
 <item>
 	<measure unit="syllable">3</measure>
-	<name xml:lang="kaw-Latn">bhadroti</name>
+	<name xml:lang="kaw-Latn">bhadrokti</name>
 	<name xml:lang="kaw-Latn">nārī</name>
-	<!-- <note resp="part:zapa">The name of this meter in CK is "bhadroti", while in Vr̥t is "nārī".</note> -->
+	<!-- <note resp="part:zapa">The name of this meter in CK is "bhadrokti", while in Vr̥t is "nārī".</note> -->
 	<seg type="xml">++=</seg>
 	<seg type="prosody">–-⏓</seg>
 	  <seg type="gana"><!--not applicable--></seg>
