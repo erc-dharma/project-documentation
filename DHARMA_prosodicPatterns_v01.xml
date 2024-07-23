@@ -304,13 +304,13 @@
         </item>
         <item>
           <measure unit="syllable">8/8</measure>
-          <name xml:lang="kaw-Latn">śāpantika</name>
+          <name xml:lang="kaw-Latn">śāpāntika</name>
           <seg type="xml">++-----=/++--+--=</seg>
           <seg type="prosody">––⏑⏑⏑⏑⏑⏓/––⏑–⏑⏑⏑⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:zapa">The meter pattern of śāpantika is slightly different in CK and Vr̥t. In CK, śāpantika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
+          <note resp="part:zapa">The meter pattern of śāpāntika is slightly different in CK and Vr̥t. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
           <!--daba 20240415: this needs correction. 
-A: 8/8 and the slash sign in the formulae means that the pattern for odd lines is that before the slash, and the pattern for even lines is that after the slash. I gather that this is not the case here. We cannot show "alternative" prosodic patterns in this way; the only way to do that would be to use ––⏑⏓⏑⏑⏑⏓, i.e. say that the fourth syllable may be either short or long. Or encode these as two separate metres, e.g. śāpantika1 and śāpantika2 or whatever.
+A: 8/8 and the slash sign in the formulae means that the pattern for odd lines is that before the slash, and the pattern for even lines is that after the slash. I gather that this is not the case here. We cannot show "alternative" prosodic patterns in this way; the only way to do that would be to use ––⏑⏓⏑⏑⏑⏓, i.e. say that the fourth syllable may be either short or long. Or encode these as two separate metres, e.g. śāpāntika1 and śāpāntika2 or whatever.
 B: the XML and the prosodic symbol notation for the bit after the slash does not match. Check which is right and correct the other.
 -->
           <listBibl>
