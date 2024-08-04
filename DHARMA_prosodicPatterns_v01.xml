@@ -538,7 +538,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">9</measure>
           <name xml:lang="san-Latn">halamukhī</name>
-          <name xml:lang="kaw-Latn">ayamukha</name>
+          <name xml:lang="kaw-Latn">halamukha</name>
           <seg type="xml">+-+-----=</seg>
           <seg type="prosody">–⏑–⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
@@ -1717,7 +1717,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <name xml:lang="san-Latn">nardaṭaka</name>
           <name xml:lang="san-Latn">avitatha</name>
           <name xml:lang="kaw-Latn">rajanī</name>
-          <name xml:lang="kaw-Latn">avitana</name>
+          <name xml:lang="kaw-Latn">avitāna</name>
           <seg type="xml">----+-+---+--+--=</seg>
           <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑–⏑⏑⏓</seg>
           <seg type="gana">na-ja-bha-ja-ja-la-ga</seg>
@@ -1818,8 +1818,8 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">17</measure>
-          <name xml:lang="san-Latn">vaṁśapatrapatita</name>
-          <name xml:lang="kaw-Latn">vaṅśapatrapatita</name>
+          <name xml:lang="san-Latn">vaṁśapattrapatita</name>
+          <name xml:lang="kaw-Latn">vaṅśapattrapatita</name>
           <seg type="xml">+--+-+---+||------=</seg>
           <!--daba 20220601 made a correction here; the long sequence of shorts at the end contained an extra syllable in the XML notation.-->
           <seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–||⏑⏑⏑⏑⏑⏑⏓</seg>
