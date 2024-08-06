@@ -2088,7 +2088,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <measure unit="syllable">20</measure>
           <name xml:lang="san-Latn">mr̥gāṅkacarita</name>
           <name xml:lang="san-Latn">śaśāṅkaracita</name>
-          <name xml:lang="kaw-Latn">mr̥gaṅśarajanī</name>
+          <name xml:lang="kaw-Latn">mr̥gāṅśarajanī</name>
           <name xml:lang="kaw-Latn">mattarāga</name>
           <seg type="xml">++-+---+-+---+-+---=</seg>
           <seg type="prosody">––⏑–⏑⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
