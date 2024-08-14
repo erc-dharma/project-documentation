@@ -2372,11 +2372,12 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         </item>
         <item>
           <measure unit="syllable">17/23</measure>
+          <name xml:lang="kaw-Latn">bhujaṅgavilasita</name>
           <name xml:lang="kaw-Latn">bhujagavilasita</name>
           <!-- For the time being CK is the only source which provides this meter with such patterns.-->
-          <seg type="xml">+--+-+---+------=/--+------+-+---+------=</seg>
-          <seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓/⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
-          <seg type="gana">bha-ra-sa-bha-na-la-ga/sa-na-na-ra-na-bha-na-la-ga</seg>
+          <seg type="xml">+--+-+---+-+----=/--+------+-+---+------=</seg>
+          <seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏑⏓/⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">bha–ra–na–ra–na–la–ga/sa-na-na-ra-na-bha-na-la-ga</seg>
         </item>
         <item>
           <measure unit="syllable">23</measure>
