@@ -50,6 +50,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#argr" when="2024-09-20">Added Mekhola Gomes' ID.</change>
 			<change who="#argr" when="2024-04-23">Added Ryugen Tanemura's and Shiori Ijuin's IDs.</change>
 			<change who="#axja" when="2023-05-10">Added Michaël Meyer's ID.</change>
 			<change who="#argr" when="2023-03-31">Added Tyassanti Kusumo Dewanti's ID.</change>
@@ -385,6 +386,15 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="IdRef">https://www.idref.fr/11025029X</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-8403-3111</idno>
+				</person>
+				<person xml:id="mego">
+					<persName>
+						<forename>Mekhola</forename>
+						<surname>Gomes</surname>
+					</persName>
+					<affiliation></affiliation>
+					<idno type="VIAF">http://viaf.org/viaf/1587163464178605680008</idno>
+					<idno type="ORCID">https://orcid.org/0000-0002-8034-4254</idno>
 				</person>
 				<person xml:id="sagu">
 					<persName>
