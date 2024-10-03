@@ -2638,11 +2638,11 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <seg type="gana">na-ja-sa-sa-na-na-na-bha-la-ga</seg>
         </item>
         <item>
-          <measure unit="syllable">50</measure>
+          <measure unit="syllable">48</measure>
           <name xml:lang="kaw-Latn">lalu</name>
-          <seg type="xml">------+---+-----------+----------+------+------+-=</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏓</seg>
-          <seg type="gana">na-na-bha-ja-na-na-na-ja-na-na-na-bha-na-ja-na-sa-la-ga</seg>
+          <seg type="xml">------+---+-----------+----------+------+------=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">na-na-bha-ja-na-na-na-ja-na-na-na-bha-na-ja-na-sa</seg>
         </item>
       </list>
       <list>
