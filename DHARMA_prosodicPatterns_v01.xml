@@ -513,12 +513,13 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           </listBibl>
         </item>
         <item>
-          <measure unit="syllable">9</measure>
+          <measure unit="syllable">9/18</measure>
           <name xml:lang="san-Latn">bhujagaśiśubhr̥tā</name>
           <name xml:lang="kaw-Latn">bhujagaśiśukr̥ta</name>
+          <name xml:lang="kaw-Latn">bhujaṅgaśiśukr̥ta</name>
           <name xml:lang="kaw-Latn">bhujagaśiśusr̥ta</name>
-          <seg type="xml">------++=/--------=</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓/⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="xml">------++=/-+---------------=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑––⏓/⏑-⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana">na–na–ma/na-na-sa</seg>
           <listBibl>
             <bibl>
@@ -2033,10 +2034,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">19</measure>
-          <name xml:lang="kaw-Latn">karuṇālalita</name>
-          <seg type="xml">+----+------+-----=</seg>
-          <seg type="prosody">–⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏓</seg>
-          <seg type="gana">bha-sa-na-na-bha-na-ga</seg>
+          <name xml:lang="kaw-Latn">karuṇalalita</name>
+          <seg type="xml">+-+---------+-----=</seg>
+          <seg type="prosody">–⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">ra-na-na-na-bha-na-ga</seg>
         </item>
         <!-- krti class -->
         <item>
@@ -2492,13 +2493,13 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           </listBibl>
         </item>
         <item>
-          <measure unit="syllable">23</measure>
+          <measure unit="syllable">26</measure>
           <name xml:lang="kaw-Latn">surakusuma</name>
           <name xml:lang="kaw-Latn">vadaragumuluṅ</name>
           <!--% ⏑⏑⏑|–⏑⏑ |–⏑⏑|⏑⏑⏑|⏑–⏑|⏑–⏑|⏑⏓ (dr Sugriwa) vadaragumuluṅ -->
-          <seg type="xml">------+------+--------=</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
-          <seg type="gana">na-na-bha-na-ja-na-na-la-ga</seg>
+          <seg type="xml">------+------+-----------=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">na-na-bha-na-ja-na-na-na-la-ga</seg>
         </item>
         <!-- saṁkr̥ti class -->
         <item>
@@ -2572,9 +2573,9 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         <item>
           <measure unit="syllable">25</measure>
           <name xml:lang="kaw-Latn">kusumasari</name>
-          <seg type="xml">-----++-+--+--------+---=</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑––⏑–⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏓</seg>
-          <seg type="gana">na-sa-ra-sa-na-na-sa-na-ga</seg>
+          <seg type="xml">------+-+--+------+-+---=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑–⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+          <seg type="gana">na-na-ra-sa-na-na-ra-na-ga</seg>
         </item>
         <!-- utkr̥ti class -->
         <item>
@@ -3076,11 +3077,11 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           </listBibl>
         </item>
         <item>
-          <measure unit="syllable">13</measure>
+          <measure unit="syllable">21</measure>
           <name xml:lang="kaw-Latn">siṅharūpa</name>
-          <seg type="xml">--+-++-----=</seg>
-          <seg type="prosody">⏑⏑–⏑––⏑⏑⏑⏑⏑⏓</seg>
-          <seg type="gana">sa-bha-na-sa</seg>
+          <seg type="xml">--+-++--------------=</seg>
+          <seg type="prosody">⏑⏑–⏑––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">sa-ya-na-na-na-na-sa</seg>
         </item>
         <!-- atijagatī class -->
         <item>
