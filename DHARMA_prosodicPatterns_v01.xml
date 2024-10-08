@@ -2961,18 +2961,20 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
       <list>
         <head>The daṇḍaka class: metres involving many repetitions of a foot</head><!--daba20240516: I've created this section to house these metres, which were "in need of processing" up to now. Suggestions for an improved title are welcome.-->
         <item>
+         <!-- additions from Zaki's file -->
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">daṇḍa</name>
-          <seg type="xml"></seg>
-          <seg type="prosody"></seg>
+          <seg type="xml">‖+--‖+-+|⏑⏓</seg>
+          <seg type="prosody">‖–⏑⏑‖–⏑–|⏑⏓</seg>
           <seg type="gana"/>
           <note resp="part:daba">Any number of iterations of the foot –⏑⏑, followed by –⏑⏑–⏑–⏑⏓.</note><!--daba20240516: Javanists: please check the pattern for the iterated foot. Before my edit, the XML code for the iterated foot was ‖+-+‖ while the prosodic code was ‖–⏑⏑‖ . Also, I don't know what the third bar is supposed to mean. Is this a caesura between the iterative sequence and the syllabo-quantitative sequence? -->
         </item>
         <item>
+         <!-- additions from Zaki's file -->
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">daṇḍaka</name>
-          <seg type="xml"></seg>
-          <seg type="prosody"></seg>
+          <seg type="xml">---|---‖+-+‖</seg>
+          <seg type="prosody">⏑⏑⏑|⏑⏑⏑‖–⏑–‖</seg>
           <seg type="gana"/>
           <note resp="part:daba">The sequence ⏑⏑⏑⏑⏑⏑ followed by any number of iterations of the foot –⏑–.</note><!--daba20240516: Javanists: I don't know what the third bar is supposed to mean. Is this a caesura between the iterative sequence and the syllabo-quantitative sequence? -->
         </item>
