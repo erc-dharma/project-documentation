@@ -119,7 +119,17 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="IdRef">https://www.idref.fr/200880365</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-9845-1480</idno>
 				</person>
-				<person xml:id="vimu">
+			    <person xml:id="doop">
+			        <persName>
+			            <forename>Dorotea</forename>
+			            <surname>Operato</surname>
+			        </persName>
+			        <affiliation>Centre for South Asian and Himalayan Studies (CESAH, EHESS &amp; CNRS)</affiliation>
+			        <idno type="VIAF"/>
+			        <idno type="IdRef"/>
+			        <idno type="ORCID"/>
+			    </person>
+			    <person xml:id="vimu">
 					<persName>
 						<name>Vigneshwaran Muralidaran</name>
 					</persName>
