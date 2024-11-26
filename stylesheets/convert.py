@@ -18,7 +18,7 @@ if len(sys.argv) != 2:
 	sys.exit(1)
 
 path = sys.argv[1]
-with open(path, "rb") as f:
+with open(path.rstrip(), "rb") as f:
 	data = f.read().decode("UTF-8")
 
 tmp_dir = tempfile.gettempdir()
