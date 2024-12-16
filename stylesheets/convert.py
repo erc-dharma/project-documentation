@@ -18,7 +18,10 @@ if len(sys.argv) != 2:
 	sys.exit(1)
 
 path = sys.argv[1]
-with open(path.rstrip(), "rb") as f:
+# Adding rstrip() below because newline chars appear at the end of filenames on
+# Dorotea's computer, for some reason. We can reasonably expect newline chars
+# not to appear in filenames on a "normal" computer.
+with open(path.rstrip("\r\n"), "rb") as f:
 	data = f.read().decode("UTF-8")
 
 tmp_dir = tempfile.gettempdir()
