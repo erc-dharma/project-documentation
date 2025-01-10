@@ -50,6 +50,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#argr" when="2025-01-10">Added Dewa Ayu Carma Citrawati's, Ida Bagus Komang Sudarma's, Putu Eka Guna Yasa's and I Gde Agus Darma Putra's IDs.</change>
 			<change who="#argr" when="2024-09-20">Added Mekhola Gomes' ID.</change>
 			<change who="#argr" when="2024-04-23">Added Ryugen Tanemura's and Shiori Ijuin's IDs.</change>
 			<change who="#axja" when="2023-05-10">Added Michaël Meyer's ID.</change>
@@ -309,6 +310,18 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 				</person>
+				<person xml:id="dacc">
+					<persName>
+						<name>Dewa Ayu Carma Citrawati</name>
+					</persName>
+					<affiliation></affiliation>
+				</person>
+				<person xml:id="dapu">
+					<persName>
+						<name>I Gde Agus Darma Putra</name>
+					</persName>
+					<affiliation></affiliation>
+				</person>
 				<person xml:id="vede">
 					<persName>
 						<forename>Véronique</forename>
@@ -405,6 +418,12 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/1587163464178605680008</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-8034-4254</idno>
+				</person>
+				<person xml:id="pegy">
+					<persName>
+						<name>Putu Eka Guna Yasa</name>
+					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="sagu">
 					<persName>
@@ -691,6 +710,12 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 					<!-- Nothing?-->
+				</person>
+				<person xml:id="ibks">
+					<persName>
+						<name>Ida Bagus Komang Sudarma</name>
+					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="ryta">
 					<persName>
