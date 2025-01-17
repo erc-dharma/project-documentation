@@ -666,7 +666,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="tei:rdg/@wit"/>
+                                <xsl:with-param name="string" select="tei:rdg[1]/@wit"/>
                                 <xsl:with-param name="wit-hand" select="tei:rdg/@hand"/>
                             </xsl:call-template>
                         </xsl:element>
@@ -1692,7 +1692,7 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                         <xsl:call-template name="tokenize-witness-list">
-                            <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@wit"/>
+                            <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost][1]/@wit"/>
                         </xsl:call-template>
                     </xsl:element>
                     <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
@@ -2926,7 +2926,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
+                                <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission][1]/@wit"/>
                             </xsl:call-template>
                         </xsl:element>
                         <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
@@ -2982,7 +2982,7 @@
                 <xsl:element name="span">
                     <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                     <xsl:call-template name="tokenize-witness-list">
-                        <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@wit"/>
+                        <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost][1]/@wit"/>
                     </xsl:call-template>
                 </xsl:element>
                 <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
@@ -3043,7 +3043,7 @@
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                                 <xsl:call-template name="tokenize-witness-list">
-                                    <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@wit"/>
+                                    <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission][1]/@wit"/>
                                 </xsl:call-template>
                             </xsl:element>
                             <xsl:if test="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission]/@cause">
@@ -3105,7 +3105,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:lem[@type='retained']/@wit"/>
+                                <xsl:with-param name="string" select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:lem[@type='retained'][1]/@wit"/>
                             </xsl:call-template>
                         </xsl:element>
                     </xsl:element>
@@ -4296,7 +4296,7 @@
                         <xsl:element name="span">
                             <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="following-sibling::tei:rdg/@wit"/>
+                                <xsl:with-param name="string" select="following-sibling::tei:rdg[1]/@wit"/>
                             </xsl:call-template>
                         </xsl:element>
                         <xsl:text> presents the lines in order </xsl:text>
