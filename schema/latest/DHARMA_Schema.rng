@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-28T14:27:05Z. . 
+Schema generated from ODD source 2025-01-29T12:02:10Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -3753,7 +3753,7 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       context="tei:note">
                <sch:report test="ancestor::tei:note">notes cannot nest</sch:report>
-               <sch:report test="ancestor::tei:div[@type='commentary'] and not(parent::tei:p or parent::tei:item)">Inside div[@type='commentary'], note should be wrapped inside a
+               <sch:report test="ancestor::tei:div[@type='commentary'] and not(ancestor::tei:p or ancestor::tei:item)">Inside div[@type='commentary'], note should be wrapped inside a
                                     p or an item element</sch:report>
                <sch:report test="ancestor::tei:div[@type='apparatus'] and not(parent::tei:app)">Inside div[@type='apparatus'], note should be wrapped inside an
                                     app element. Please note that note(s) may not contain further
