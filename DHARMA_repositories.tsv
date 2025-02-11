@@ -41,7 +41,7 @@ tfc-khmer-epigraphy	true	Khmer
 tfc-nusantara-epigraphy	true	Nusantara Epigraphy
 tfd-nusantara-philology	true	Nusantara Philology
 tfd-sanskrit-philology	true	Sanskrit
-repo-test	true	Test Repository
+test	true	Test Repository
 tfb-nandodbhava-epigraphy	true	Nandodbhava dynasty
 tfb-tunga-epigraphy	true	Tuṅga dynasty
 tfb-nalodbhava-epigraphy	true	Nalodbhava dynasty
