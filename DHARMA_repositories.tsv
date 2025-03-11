@@ -10,7 +10,7 @@ tfa-kotumpalur-epigraphy	true	Koṭumpāḷūr
 tfa-melappaluvur-kilappaluvur-epigraphy	true	Mēlappaḻuvūr & Kīḻappaḻuvūr
 tfa-pallava-epigraphy	true	Pallava
 tfa-pandya-epigraphy	true	Pāṇḍya
-tfa-sii-epigraphy	true	South Indian Inscriptions
+tfa-sii-epigraphy	true	South Indian Inscriptions (tfa)
 tfa-tamil-outside-TN-epigraphy	true	Tamil Outside of Tamil Nadu (varia)
 tfa-tamilnadu-epigraphy	true	Tamil Nadu (varia)
 tfa-tiruvavatuturai-TN-epigraphy	true	Tiruvāvaṭutuṟai
@@ -45,4 +45,4 @@ test	true	Test Repository
 tfb-nandodbhava-epigraphy	true	Nandodbhava dynasty
 tfb-tunga-epigraphy	true	Tuṅga dynasty
 tfb-nalodbhava-epigraphy	true	Nalodbhava dynasty
-South-indian-inscriptions	true	South Indian Inscription (Original Edition)
+south-indian-inscriptions	true	South Indian Inscriptions (Original Edition)
