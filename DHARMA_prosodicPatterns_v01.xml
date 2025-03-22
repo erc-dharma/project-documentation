@@ -2383,7 +2383,6 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         <item>
           <measure unit="syllable">23</measure>
           <name xml:lang="san-Latn">aśvalalita</name>
-          <name xml:lang="kaw-Latn">aśvalalita</name>
           <seg type="xml">----+-+---+||-+---+-+---=</seg>
           <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–||⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
           <seg type="gana">na-ja-bha-ja-bha-ja-bha-la-ga</seg>
@@ -2453,7 +2452,6 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         <item>
           <measure unit="syllable">23</measure>
           <name xml:lang="san-Latn">mattākrīḍā</name>
-          <name xml:lang="kaw-Latn">mattākrīḍā</name>
           <seg type="xml">++++++++--------------=</seg>
           <seg type="prosody">––––––––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana">ma-ma-ta-na-na-na-na-la-ga</seg>
