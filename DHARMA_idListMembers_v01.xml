@@ -804,6 +804,13 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 				</person>
+				<person xml:id="anol">
+				  <persName>
+				    <forename>Andrew</forename>
+				    <surname>Ollett</surname>
+				  </persName>
+				  <idno type="ORCID">https://orcid.org/0000-0002-2425-2806</idno>
+				</person>
 			</listPerson>
 		</body>
 	</text>
