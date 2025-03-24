@@ -57,6 +57,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="draft" when="2025-03-22" who="part:anol">Revised references from Zoetmulder up to 10 syllables (leaving out 8 syllables for now)</change>
       <change status="draft" when="2024-05-16" who="part:daba">Some tidying and adding vipulā anuṣṭubh</change>
       <change status="draft" when="2023-09-05" who="part:argr">Inserted altname prabodhitā under viyoginī and completed Zoetmulder reference</change>
       <change status="draft" when="2022-05-30" who="part:daba">Sectioning and restructuring</change>
@@ -134,6 +135,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">I.1</citedRange>
+	      <!-- Zoetmulder reference: WS 9 !-->
             </bibl>
           </listBibl>
         </item>
@@ -146,6 +151,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">II.1</citedRange>
+	      <!-- Zoetmulder reference: WS 10 (names: bhadra, śrī) !-->
             </bibl>
           </listBibl>
         </item>
@@ -160,6 +169,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">III.1</citedRange>
+	      <!-- Zoetmulder reference: WS 11 (names: nārī) !-->
             </bibl>
           </listBibl>
         </item>
@@ -172,6 +185,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">IV.1</citedRange>
+	      <!-- Zoetmulder reference: WS 12 (names: wanamṛgī) !-->
             </bibl>
           </listBibl>
         </item>
@@ -197,6 +214,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">V.1</citedRange>
+	      <!-- Zoetmulder reference: WS 13 (names: vijayanti) !-->
             </bibl>
           </listBibl>
         </item>
@@ -209,6 +230,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">VI.2</citedRange>
+	      <!-- Zoetmulder reference: WS 14 (names: tanumadhya) !-->
             </bibl>
           </listBibl>
         </item>
@@ -223,6 +248,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">VI.1</citedRange>
+	      <!-- Zoetmulder reference: WS 15 (names: kusumitajanma) !-->
               <note resp="part:zapa">Zoetmulder in Kalangwan (p. 451) incorrectly describes the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable).</note>
             </bibl>
           </listBibl>
@@ -246,6 +275,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">VII.1</citedRange>
+	      <!-- Zoetmulder reference: WS 16 (names: madhukaralalita) !-->
             </bibl>
           </listBibl>
         </item>
@@ -258,6 +291,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">VII.2</citedRange>
+	      <!-- Zoetmulder reference: WS 17 (names: madalekha) !-->
             </bibl>
           </listBibl>
         </item>
@@ -288,6 +325,15 @@
           <seg type="xml">-+---+=</seg>
           <seg type="prosody">⏑–⏑⏑⏑–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
+         <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">VII.2</citedRange>
+	      <!-- Zoetmulder reference: WS 18 (names: kumāralalita) !-->
+	    </bibl>
+	 </listBibl>
         </item>
         <item>
           <measure unit="syllable">8</measure>
@@ -538,17 +584,106 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">9</measure>
+          <name xml:lang="kaw-Latn">tatigurvi</name>
+          <seg type="xml">-----+-+=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑–⏑–⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">IX.2</citedRange>
+	      <!-- Zoetmulder reference: WS 38 (names: tatigurwi) !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">9</measure>
+          <name xml:lang="san-Latn">sundaralēkhā</name>
+	  <!-- 9.103 !-->
+          <seg type="xml">+--++--+=</seg>
+          <seg type="prosody">–⏑⏑––⏑⏑–⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">IX.3</citedRange>
+	      <!-- no (?) OJ name !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">9</measure>
           <name xml:lang="san-Latn">halamukhī</name>
           <name xml:lang="kaw-Latn">halamukha</name>
+	  <!-- 9.251 !-->
           <seg type="xml">+-+-----=</seg>
           <seg type="prosody">–⏑–⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">IX.4</citedRange>
+	      <!-- Zoetmulder reference: WS 37 (names: halamukhī) !-->
             </bibl>
           </listBibl>
         </item>
+        <item>
+          <measure unit="syllable">9</measure>
+	  <!-- 9.103 !-->
+          <seg type="xml">++--++--=</seg>
+          <seg type="prosody">––⏑⏑––⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">IX.5</citedRange>
+	      <!-- no OJ name !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">9</measure>
+	  <name xml:lang="san-Latn">pavitrā</name>
+	  <!-- 9.241 !-->
+          <seg type="xml">++++----=</seg>
+          <seg type="prosody">––––⏑⏑⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">IX.6</citedRange>
+	      <!-- no OJ name !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">9</measure>
+	  <name xml:lang="san-Latn">sundaralekhā</name>
+	  <!-- 9.97 !-->
+          <seg type="xml">+++++--+=</seg>
+          <seg type="prosody">–––––⏑⏑–⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">IX.7</citedRange>
+	      <!-- no OJ name, also name is the same as IX.3 !-->
+            </bibl>
+          </listBibl>
+        </item>
+
         <item>
           <measure unit="syllable">10</measure>
           <name xml:lang="san-Latn">tvaritagati</name>
@@ -568,6 +703,31 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.1</citedRange>
+	      <!-- Zoetmulder's source for name is WS 40 !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">10</measure>
+          <name xml:lang="san-Latn">meghavitānā</name>
+          <seg type="xml">--+--+--+=</seg>
+          <seg type="prosody">⏑⏑–⏑⏑–⏑⏑–⏓</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">451</citedRange>
+              <citedRange unit="item">X.2</citedRange>
+	      <!-- no OJ NAME !-->
             </bibl>
           </listBibl>
         </item>
@@ -581,6 +741,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.6</citedRange>
+	      <!-- Zoetmulder's source for name is WS 41 !-->
             </bibl>
           </listBibl>
         </item>
@@ -604,6 +768,76 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.3</citedRange>
+	      <!-- Zoetmulder's source for name is WS 39 and 42 !-->
+	      <!-- The difference between Campakamālā and Rukmavatī is
+		   apparently whether there is a caesura, which Zoetmulder
+		   ignores. !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">10</measure>
+          <name xml:lang="san-Latn">uddhatā</name>
+          <seg type="xml">+++--+--+=</seg>
+          <seg type="prosody">–––⏑⏑–⏑⏑⏓</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.5</citedRange>
+	      <!-- no OJ name !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">10</measure>
+          <name xml:lang="san-Latn">mattā</name>
+          <seg type="xml">++++----+=</seg>
+          <seg type="prosody">––––⏑⏑⏑⏑–⏓</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.7</citedRange>
+	      <!-- no OJ name !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">10</measure>
+	  <!-- 10.145 !-->
+          <seg type="xml">++++-++-+=</seg>
+          <seg type="prosody">––––⏑––⏑–⏓</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.8</citedRange>
+	      <!-- no OJ name !-->
             </bibl>
           </listBibl>
         </item>
