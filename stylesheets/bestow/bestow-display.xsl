@@ -335,27 +335,10 @@
     <!-- ref -->
         <!--  -->
         <xsl:template match="tei:text//tei:ref">
-            <xsl:variable name="url-somavamsin" select="'https://erc-dharma.github.io/tfb-somavamsin-epigraphy/workflow-output/html/'"/>
-            <xsl:variable name="url-bengalCharters" select="'https://erc-dharma.github.io/tfb-bengalcharters-epigraphy/workflow-output/html/'"/>
-            <xsl:variable name="url-maitraka" select="'https://erc-dharma.github.io/tfb-maitraka-epigraphy/workflow-output/html/'"/>
-            <xsl:variable name="url-pallava" select="'https://erc-dharma.github.io/tfa-pallava-epigraphy/texts/htmloutput/'"/>
             <xsl:element name="a">
                 <xsl:attribute name="class">ref</xsl:attribute>
                 <xsl:attribute name="href">
                     <xsl:choose>
-                        <!-- link to the epigraphy -->
-                        <xsl:when test="matches(@target, 'Somavamsin')">
-                            <xsl:value-of select="concat($url-somavamsin , @target)"/>
-                        </xsl:when>
-                        <xsl:when test="matches(@target, 'BengalCharters')">
-                            <xsl:value-of select="concat($url-bengalCharters , @target)"/>
-                        </xsl:when>
-                        <xsl:when test="matches(@target, 'Maitraka')">
-                            <xsl:value-of select="concat($url-maitraka , @target)"/>
-                        </xsl:when>
-                        <xsl:when test="matches(@target, 'Pallava')">
-                            <xsl:value-of select="concat($url-pallava , @target)"/>
-                        </xsl:when>
                         <xsl:when test="matches(@target, '/')">
                             <xsl:value-of select="@target"/>
                         </xsl:when>
