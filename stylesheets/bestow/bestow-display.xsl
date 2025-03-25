@@ -356,8 +356,11 @@
                         <xsl:when test="matches(@target, 'Pallava')">
                             <xsl:value-of select="concat($url-pallava , @target)"/>
                         </xsl:when>
-                        <xsl:otherwise>
+                        <xsl:when test="matches(@target, '/')">
                             <xsl:value-of select="@target"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="concat('https://dharmalekha.info/texts/', @target)"/>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:attribute>
