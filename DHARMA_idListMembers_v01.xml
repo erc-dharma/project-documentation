@@ -50,6 +50,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#argr" when="2025-04-07">Added Diwakar Acharya's ID.</change>
 			<change who="#argr" when="2025-01-10">Added Dewa Ayu Carma Citrawati's, Ida Bagus Komang Sudarma's, Putu Eka Guna Yasa's and I Gde Agus Darma Putra's IDs.</change>
 			<change who="#argr" when="2024-09-20">Added Mekhola Gomes' ID.</change>
 			<change who="#argr" when="2024-04-23">Added Ryugen Tanemura's and Shiori Ijuin's IDs.</change>
@@ -89,14 +90,11 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Arlo</forename>
 						<surname>Griffiths</surname>
 					</persName>
-					<affiliation></affiliation>
+					<affiliation>École française d'Extrême-Orient</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/11026260</idno>
 					<idno type="IdHAL">arlo-griffiths</idno>
 					<idno type="IdRef">https://www.idref.fr/087383462</idno>
-					<idno type="ORCID"/>
-					<!-- to be created -->
-					<!-- Axelle: is this important? If yes, how do Annette and I do it? -->
-					<!-- EF dixit: see https://orcid.org/register -->
+					<idno type="ORCID">https://orcid.org/0009-0001-6088-6718</idno>
 				</person>
 				<person xml:id="ansc">
 					<persName>
@@ -180,6 +178,16 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
+				</person>
+				<person xml:id="diac">
+					<persName>
+						<forename>Diwakar</forename>
+						<surname>Acharya</surname>
+					</persName>
+					<affiliation></affiliation>
+					<idno type="VIAF">http://viaf.org/viaf/26501648</idno>
+					<idno type="IdRef">http://www.idref.fr/138003556/id</idno>
+					<idno type="ORCID">https://orcid.org/0000-0002-5482-7754</idno>
 				</person>
 				<person xml:id="anac">
 					<persName>
@@ -604,9 +612,10 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Andrew</forename>
 						<surname>Ollett</surname>
 					</persName>
-					<affiliation></affiliation>
+					<affiliation>University of Chicago</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/372149294434280521495</idno>
 					<idno type="IdRef">https://www.idref.fr/224232371</idno>
+					<idno type="ORCID">https://orcid.org/0000-0002-2425-2806</idno>
 				</person>
 				<person xml:id="pepa">
 					<persName>
@@ -803,13 +812,6 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<name>Ilham Nurwansah</name>
 					</persName>
 					<affiliation></affiliation>
-				</person>
-				<person xml:id="anol">
-				  <persName>
-				    <forename>Andrew</forename>
-				    <surname>Ollett</surname>
-				  </persName>
-				  <idno type="ORCID">https://orcid.org/0000-0002-2425-2806</idno>
 				</person>
 			</listPerson>
 		</body>
