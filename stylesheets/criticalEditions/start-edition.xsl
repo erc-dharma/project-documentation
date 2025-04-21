@@ -979,9 +979,16 @@
                     select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
             </xsl:variable>
             <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
-            <xsl:variable name="pointerurl">
-               <xsl:value-of select="document($zoteroapitei)//tei:idno[@type = 'url']"/>
-            </xsl:variable>
+            <!-- pointer to update -->
+            <!--<xsl:variable name="pointerurl">
+                    <xsl:analyze-string select="$unparsedtext"
+                        regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(2)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                
+            </xsl:variable>-->
             <xsl:variable name="bibwitness">
                 <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', '')"/>
             </xsl:variable>
@@ -992,7 +999,8 @@
 			    </xsl:when>
 			    <xsl:when test="parent::tei:listBibl"/>
 			    <xsl:when test="parent::tei:p or parent::tei:note">
-            <a href="{$pointerurl}">
+			        <!--<a href="{$pointerurl}">-->
+            <a>
 									<xsl:variable name="citation">
 										<xsl:analyze-string select="$unparsedtext"
 											regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
