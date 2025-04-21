@@ -55,6 +55,7 @@
 
     <!-- Coded initially written by Andrew Ollet, for DHARMA Berlin workshop in septembre 2020 -->
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021 -->
+    <!-- Updated by Michaël Meyer, starting 2024-->
 
     <xsl:variable name="script">
         <xsl:for-each select="//tei:profileDesc/tei:langUsage/tei:language">
@@ -66,8 +67,26 @@
         <xsl:value-of select="//tei:TEI[@type='edition']/@xml:id"/>
     </xsl:variable>
 
-    <xsl:variable name="edition-root">
+<!-- Need to update this - critical or diplomatic editions -->
+    <!--<xsl:param name="edition-type" as="xs:string"/>
+    <xsl:param name="corpus-type" as="xs:string"/>-->
+    <xsl:param name="edition-type">
+        <xsl:variable name="uri" select="base-uri(.)"/>
+        <xsl:choose>
+            <xsl:when test="contains($uri,'DiplEd')">
+                <xsl:text>diplomatic</xsl:text>
+            </xsl:when>
+            <xsl:when test="contains($uri,'CritEd')">
+                <xsl:text>critical</xsl:text>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:param>
+    <!--<xsl:variable name="edition-root">
         <xsl:value-of select="//tei:TEI[@type='edition']"/>
+    </xsl:variable>-->
+    
+    <xsl:variable name="filename">
+        <xsl:value-of select="//tei:idno[@type='filename']"/>
     </xsl:variable>
 
    <!-- main display structure - appelle les templates et les modes-->
@@ -75,32 +94,28 @@
         <xsl:element name="html" xmlns="http://www.w3.org/1999/xhtml">
         <xsl:call-template name="dharma-head"/>
         <xsl:element name="body">
-            <xsl:attribute name="class">font-weight-light</xsl:attribute>
+            <!-- previous version -->
+            <!--<xsl:attribute name="class">font-weight-light</xsl:attribute>
             <xsl:attribute name="data-spy">scroll</xsl:attribute>
             <xsl:attribute name="data-target">#myScrollspy</xsl:attribute>
-            <xsl:attribute name="data-offset">5</xsl:attribute>
+            <xsl:attribute name="data-offset">5</xsl:attribute>-->
 
             <xsl:element name="div">
-                <xsl:attribute name="class">wrapper-content</xsl:attribute>
-                <xsl:call-template name="table-contents"/>
+                <xsl:attribute name="id">contents</xsl:attribute>
+                <!-- previous version -->
+                <!--<xsl:call-template name="table-contents"/>-->
 
-            <xsl:element name="div">
-                <xsl:attribute name="id">content</xsl:attribute>
-                <xsl:call-template name="nav-bar"/>
-
-                <a class="btn btn-info" data-toggle="collapse" href="#sidebar-wrapper" role="button" aria-expanded="false" aria-controls="sidebar-wrapper" id="sidebarCollapse">
-                    <span>☰ Document Outline</span>
-                </a>
-
-                <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button> -->
+            <xsl:element name="header">
                 <xsl:element name="div">
-                    <xsl:attribute name="id">edition-content</xsl:attribute>
+                <xsl:attribute name="id">menu_bar</xsl:attribute>
+               <!-- <xsl:call-template name="nav-bar"/>-->
+                </xsl:element>
+            </xsl:element>
+
+                   <!-- <xsl:call-template name="table-contents"/>-->
+
+                <xsl:element name="main">
+                    <!--<xsl:attribute name="id">edition-content</xsl:attribute>-->
             <xsl:apply-templates select="./tei:teiHeader"/>
                     <xsl:element name="div">
                         <xsl:attribute name="class">row wrapper</xsl:attribute>
@@ -125,7 +140,14 @@
                             <xsl:attribute name="aria-selected">true</xsl:attribute>
                             <xsl:element name="div">
                                 <xsl:attribute name="class">panel</xsl:attribute>
-                            <xsl:text>Witnesses</xsl:text>
+                                <xsl:choose>
+                                    <xsl:when test="count(//tei:listWit/tei:witness) = 1">
+                                        <xsl:text>Witness</xsl:text>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:text>List of Witnesses</xsl:text>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                             </xsl:element>
                         </xsl:element>
                     </xsl:element>
@@ -171,29 +193,29 @@
                     <xsl:call-template name="tab-metadata"/>
                 </xsl:element>
                         </xsl:element>
-                <xsl:apply-templates select="./tei:text"/>
+                    <xsl:apply-templates select="./tei:text"/>
                     <xsl:apply-templates select=".//tei:app[not(@rend='hide')]" mode="modals"/>
                     <xsl:apply-templates select=".//tei:lacunaStart" mode="modals"/>
                 <xsl:apply-templates select=".//tei:note" mode="modals"/>
                 <xsl:apply-templates select=".//tei:span[@type='omissionStart']" mode="modals"/>
                     <xsl:apply-templates select=".//tei:span[@type='reformulationStart']" mode="modals"/>
                     <xsl:apply-templates select=".//tei:l[@real]" mode="modals"/>
-                <xsl:call-template name="tpl-apparatus"/>
-                <xsl:call-template name="tpl-notes-trans"/>
+                <!--<xsl:call-template name="tpl-apparatus"/>-->
+                <!--<xsl:call-template name="tpl-notes-trans"/>
                 <xsl:call-template name="tpl-com"/>
-                <xsl:call-template name="tpl-biblio"/>
+                <xsl:call-template name="tpl-biblio"/>-->
                 </xsl:element>
         </xsl:element>
-            <xsl:element name="footer">
+            <!--<xsl:element name="footer">
                 <xsl:attribute name="class">footer mt-auto py-3</xsl:attribute>
                 <xsl:element name="div">
                     <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
                 </xsl:element>
-            </xsl:element>
+            </xsl:element>-->
                 <xsl:call-template name="dharma-script"/>
         </xsl:element>
         </xsl:element>
-        </xsl:element>
+       
     </xsl:template>
 
     <!--  teiHeader ! -->
@@ -204,10 +226,9 @@
                 <xsl:attribute name="class">col text-center my-5</xsl:attribute>
                 <xsl:element name="h1">
                     <xsl:attribute name="class">display-5</xsl:attribute>
-                    <xsl:text>The </xsl:text>
                     <xsl:element name="span">
                         <xsl:attribute name="class">font-italic</xsl:attribute>
-                    <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='main']"/>
+                    <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[1]"/>
                     </xsl:element>
                     <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
                             <xsl:text> or ‘</xsl:text>
@@ -219,42 +240,23 @@
                         <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:author"/>
                 </xsl:if>
                 </xsl:element>
-
-                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
+                 <!-- Deleting subtitles -->
+                <!--<xsl:if test="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']">
                     <xsl:element name="h2">
                     <xsl:attribute name="class">display-5</xsl:attribute>
                         <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:title[@type='sub']"/>
                 </xsl:element>
-                </xsl:if>
-                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:editor">
+                </xsl:if>-->
+                <xsl:if test="tei:fileDesc/tei:titleStmt/tei:respStmt/tei:resp[text()='Author of the digital edition']">
                     <xsl:element name="h3">
                         <xsl:attribute name="class">display-6</xsl:attribute>
-                    <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:editor">
-                            <xsl:choose>
-                                <xsl:when test="position()= 1">
-                                    <xsl:text>edited by </xsl:text>
-                                </xsl:when>
-                                <xsl:when test="position()=last()">
-                                    <xsl:text> &amp; </xsl:text>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:text>, </xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        <xsl:choose>
-                            <xsl:when test="child::tei:forename">
-                                <xsl:apply-templates select="tei:forename"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:apply-templates select="tei:surname"/>
-                            </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:apply-templates select="normalize-space(.)"/>
-                        </xsl:otherwise>
-                        </xsl:choose>
-                    </xsl:for-each>
+                        <xsl:call-template name="editors">
+                            <xsl:with-param name="list-editors" select="tei:fileDesc/tei:titleStmt/tei:respStmt[tei:resp[text()='Author of the digital edition']]/tei:persName"/>
+                        </xsl:call-template>
                     </xsl:element>
                 </xsl:if>
-                <xsl:text>Current Version: </xsl:text>
+                <!-- Deleting the current version -->
+                <!--<xsl:text>Current Version: </xsl:text>
                 <xsl:choose>
                     <xsl:when test="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status">
                             <xsl:value-of select="tei:fileDesc/following-sibling::tei:revisionDesc/tei:change[1]/@status"/>
@@ -265,14 +267,18 @@
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="current-date()"/>
-                <br/>
-                <xsl:text>Still in progress – do not quote without permission.</xsl:text>
+                <xsl:value-of select="current-date()"/>-->
+                <!--<br/>
+                <xsl:text>Still in progress – do not quote without permission.</xsl:text>-->
             </xsl:element>
         </xsl:element>
     </xsl:template>
     <!--  text ! -->
     <xsl:template match="tei:text">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
+    <xsl:template match="tei:div[@type='edition']">
         <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
@@ -404,7 +410,9 @@
                                         </xsl:if>
                                         <xsl:copy-of select="$ab-line"/>
                                         <br/>
-                                        <xsl:call-template name="translation-button"/>
+                                        <!--<xsl:if test="not($edition-type='diplomatic')">
+                                            <xsl:call-template name="translation-button"/>
+                                        </xsl:if>-->
                                     </xsl:element>
                                 </xsl:element>
                                 <xsl:element name="div">
@@ -1127,6 +1135,7 @@
                                 <xsl:text>⟩</xsl:text>
                             </span>
     </xsl:template>
+    
     <!-- citedRange -->
     <xsl:template match="tei:citedRange">
                 <xsl:element name="span">
@@ -1138,6 +1147,7 @@
                     <xsl:text>, </xsl:text>
                 </xsl:if>
     </xsl:template>
+    
     <!-- colophon -->
     <xsl:template match="tei:colophon">
         <xsl:apply-templates/>
@@ -1178,6 +1188,9 @@
     </xsl:template>
 
     <!--  div ! -->
+    <xsl:template match="tei:div[@type]">
+        <xsl:apply-templates/>
+    </xsl:template>
     <xsl:template match="tei:div[not(@type='metrical'or @type='section' or not(@type))]">
             <xsl:variable name="metrical" select="@met"/>
         <xsl:element name="div">
@@ -1237,7 +1250,7 @@
                 <xsl:apply-templates/>
                 <xsl:if test="@xml:id and @type='canto'">
                     <br/>
-                    <xsl:call-template name="translation-button"/>
+                    <!--<xsl:call-template name="translation-button"/>-->
                 </xsl:if>
             </xsl:element>
         </xsl:element>
@@ -1348,6 +1361,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
     <!--  F ! -->
     <!--  foreign ! -->
     <xsl:template match="tei:foreign">
@@ -1359,6 +1373,27 @@
             <xsl:attribute name="class">font-italic</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+    
+    <!--  fw ! -->
+    <xsl:template match="tei:fw">
+        <xsl:choose>
+            <xsl:when test="@n and $edition-type='diplomatic'">
+                <xsl:variable name="refnum" select="@n"/>
+                <xsl:for-each select=".">
+                    <xsl:text> #</xsl:text>
+                    <xsl:value-of select="(count(preceding-sibling::tei:*[@n =$refnum][local-name() ='fw']) + 1)"/>
+                    <xsl:text> </xsl:text>
+                    <xsl:apply-templates/>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:when test="child::tei:choice and $edition-type='diplomatic'">
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!--  G ! -->
@@ -1435,6 +1470,7 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <!--  hi ! -->
     <xsl:template match="tei:hi">
         <xsl:choose>
@@ -1710,6 +1746,12 @@
 
     <!--  lb ! -->
     <xsl:template match="tei:lb">
+        <xsl:choose>
+            <xsl:when test="$edition-type='critical'"/>
+            <xsl:otherwise>
+                <xsl:call-template name="lbrk-app"/>
+            </xsl:otherwise>
+        </xsl:choose>
         <xsl:element name="span">
             <xsl:attribute name="class">text-muted lineation</xsl:attribute>
             <xsl:value-of select="@n"/>
@@ -1761,7 +1803,7 @@
                        <xsl:call-template name="lg-content"/>
                        <br/>
                        <xsl:if test="not(parent::tei:p or parent::tei:div[@type='canto'])">
-                           <xsl:call-template name="translation-button"/>
+                          <!-- <xsl:call-template name="translation-button"/>-->
                        </xsl:if>
             </xsl:element>
            <!--</xsl:otherwise>
@@ -2022,7 +2064,15 @@
             <xsl:attribute name="id">witnesses</xsl:attribute>
         <xsl:attribute name="role">tabpanel</xsl:attribute>
         <xsl:attribute name="aria-labelledby">witnesses-tab</xsl:attribute>
-            <xsl:element name="h4">List of Witnesses</xsl:element>
+            <xsl:element name="h4">
+                <xsl:choose>
+                    <xsl:when test="count(tei:witness) = 1">
+                        <xsl:text>Witness</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>List of Witnesses</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose></xsl:element>
             <xsl:element name="ul">
                 <xsl:for-each select="tei:witness">
                     <xsl:element name="li">
@@ -2205,11 +2255,11 @@
 
     <xsl:template match="tei:note[@type='prosody']"/>
 
-    <xsl:template match="tei:note[//tei:TEI[@type='translation']]">
+    <!--<xsl:template match="tei:note[//tei:TEI[@type='translation']]">
         <xsl:call-template name="generate-trans-link">
             <xsl:with-param name="situation" select="'text'"/>
         </xsl:call-template>
-    </xsl:template>
+    </xsl:template>-->
 
     <xsl:template match="tei:note[ancestor-or-self::tei:colophon]">
         <xsl:apply-templates/>
@@ -2438,10 +2488,10 @@
             </xsl:otherwise>
         </xsl:choose>
         <xsl:choose>
-            <xsl:when test="//tei:TEI[@type='edition'] and ancestor::tei:body and child::tei:quote[@type='base-text']">
+            <xsl:when test="//tei:div[@type='edition'] and ancestor::tei:body and child::tei:quote[@type='base-text']">
                 <xsl:apply-templates/>
             </xsl:when>
-            <xsl:when test="//tei:TEI[@type='edition'] and ancestor::tei:body">
+            <xsl:when test="//tei:div[@type='edition'] and ancestor::tei:body">
             <xsl:element name="div">
             <xsl:attribute name="class">row</xsl:attribute>
             <xsl:element name="div">
@@ -2454,7 +2504,7 @@
                 <xsl:copy-of select="$p-line"/>
 
                 <xsl:if test="@xml:id">
-                    <xsl:call-template name="translation-button"/>
+                    <!--<xsl:call-template name="translation-button"/>-->
                 </xsl:if>
 
 
@@ -2498,25 +2548,38 @@
         </xsl:choose>
     </xsl:template>
 
-    <!--  pb ! -->
+    <!--  pb ! -->    
     <xsl:template match="tei:pb">
         <xsl:choose>
-            <xsl:when test="ancestor-or-self::tei:lem|ancestor-or-self::tei:rdg"/>
+            <xsl:when test="ancestor-or-self::tei:lem|ancestor-or-self::tei:rdg and $edition-type='critical'"/>
+            <xsl:when test="tei:pb[not(preceding::node()/text())] and $edition-type='diplomatic'"/>
             <xsl:otherwise>
-                <xsl:element name="span">
-            <xsl:attribute name="class">text-muted foliation</xsl:attribute>
-                    <xsl:call-template name="tokenize-witness-list">
-                        <xsl:with-param name="string" select="@edRef"/>
-                        <xsl:with-param name="witdetail-string"/>
-                        <xsl:with-param name="witdetail-type"/>
-                        <xsl:with-param name="witdetail-text"/>
-                        <xsl:with-param name="tpl" select="'content-pb'"/>
-                    </xsl:call-template>
-                    <!-- old display -->
-              <!--<xsl:value-of select="substring-after(@edRef, '#')"/>-->
-                    <xsl:text>:</xsl:text>
-                <xsl:value-of select="@n"/>
-        </xsl:element>
+                <xsl:choose>
+                    <xsl:when test="$edition-type='diplomatic'">
+                        <xsl:call-template name="lbrk-app"/>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">text-muted</xsl:attribute>
+                            <xsl:attribute name="id"><xsl:value-of select="@xml:id"/></xsl:attribute>
+                            <xsl:text>[Folio </xsl:text>
+                            <xsl:value-of select="@n"/>
+                            <xsl:text>]</xsl:text>
+                        </xsl:element>
+                    </xsl:when>
+                    <xsl:when test="$edition-type='critical'">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">text-muted foliation</xsl:attribute>
+                            <xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="@edRef"/>
+                                <xsl:with-param name="witdetail-string"/>
+                                <xsl:with-param name="witdetail-type"/>
+                                <xsl:with-param name="witdetail-text"/>
+                                <xsl:with-param name="tpl" select="'content-pb'"/>
+                            </xsl:call-template> 
+                            <xsl:text>:</xsl:text>
+                            <xsl:value-of select="@n"/>
+                        </xsl:element>
+                    </xsl:when>
+                </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -3522,6 +3585,7 @@
             <xsl:value-of select="translate($n3, '.', $separator)"/>
         </xsl:if>
     </xsl:template>
+    
     <!--  WORK-ABBREV ! -->
     <xsl:template name="work-abbrev">
         <xsl:param name="encoding"/>
@@ -3534,6 +3598,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
     <!--  NAMED TEMPLATES ! -->
 
     <xsl:template name="tokenize-witness-list">
@@ -3668,10 +3733,10 @@
     <xsl:template name="dharma-head">
         <xsl:variable name="title">
             <xsl:if test="//tei:titleStmt/tei:title/text()">
-                <xsl:if test="//tei:idno[@type='filename']/text()">
+                <!--<xsl:if test="//tei:idno[@type='filename']/text()">
                     <xsl:value-of select="//tei:idno[@type='filename']"/>
                     <xsl:text>. </xsl:text>
-                </xsl:if>
+                </xsl:if>-->
                 <xsl:value-of select="//tei:titleStmt/tei:title"/>
             </xsl:if>
         </xsl:variable>
@@ -3680,22 +3745,34 @@
                 <xsl:value-of select="$title"/>
             </title>
 
-            <meta content-type="application/xhtml+xml" content="text/html; charset=UTF-8"></meta>
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <!-- Bootstrap CSS -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+            <meta content-type="application/xhtml+xml" content="charset=UTF-8"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+           <!-- Commenting previous links to import the new one the Dharmalekha -->
+                    <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
 
                 <!-- scrollbar CSS -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"></link>
 
                 <!-- site-specific css !-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
-                <!--<link rel="stylesheet" href="./../criticalEditions/dharma-ms.css"></link>-->
-                <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif"/>-->
+                
 
                 <!-- Font Awesome JS -->
                 <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
                 <script src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/dharma-ms.css"></link>
+                
+                <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
+                
+                <!--<link rel="stylesheet" href="fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></link> -->               
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
+                <!--<link rel="stylesheet" href="base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></link>-->
+                 <link rel="icon" href="favicon.svg"></link>
+                <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"></script>
+                <!--<script src="base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>-->
 
             </meta>
         </head>
@@ -3711,18 +3788,19 @@
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@latest/stylesheets/criticalEditions/loader.js"></script>
-        <!--<script src="../criticalEditions/loader.js"></script>-->
+        
     </xsl:template>
 
     <!-- side bar - table of contents -->
-    <xsl:template name="table-contents">
+    <!-- previous version -->
+    <!--<xsl:template name="table-contents">
         <xsl:element name="div">
             <xsl:attribute name="id">sidebar-wrapper</xsl:attribute>
             <xsl:attribute name="class">collapse</xsl:attribute>
-            <!--<xsl:element name="h4">
+            <!-\-<xsl:element name="h4">
                 <xsl:attribute name="class">text-align-center</xsl:attribute>
                 <xsl:text>Document Outline</xsl:text>
-            </xsl:element>-->
+            </xsl:element>-\->
             <xsl:element name="nav">
                 <xsl:attribute name="id">myScrollspy</xsl:attribute>
             <xsl:element name="ul">
@@ -3800,109 +3878,150 @@
             </xsl:element>
             </xsl:element>
         </xsl:element>
+    </xsl:template>-->
+    <!-- new version -->
+    <xsl:template name="table-contents">
+        <div id="sidebar">
+            <div id="toc">
+                <div id="toc-heading" class="toc-heading">Contents</div>
+                <nav id="toc-contents">
+                    
+                            <xsl:element name="ul">
+                                <xsl:attribute name="class">nav nav-pills flex-column</xsl:attribute>
+                                <xsl:for-each select="//tei:div[not(ancestor::tei:div)]">
+                                    <xsl:element name="li">
+                                        <xsl:attribute name="class">nav-item</xsl:attribute>
+                                        <xsl:element name="a">
+                                            <xsl:attribute name="class">nav-link</xsl:attribute>
+                                            <xsl:attribute name="href">
+                                                <xsl:text>#</xsl:text>
+                                                <xsl:value-of select="@xml:id"/>
+                                            </xsl:attribute>
+                                            <xsl:choose>
+                                                <xsl:when test="@type">
+                                                    <xsl:value-of select="@type"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:choose>
+                                                        <xsl:when test="child::tei:ab[1]">
+                                                            <xsl:value-of select="child::tei:ab/@type"/>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <xsl:value-of select="name()"/>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                            <xsl:text> </xsl:text>
+                                            <xsl:value-of select="@n"/>
+                                            <xsl:if test="child::tei:head[@type='editorial']">
+                                                <xsl:text>: </xsl:text><xsl:value-of select="child::tei:head"/>
+                                            </xsl:if>
+                                        </xsl:element>
+                                        <xsl:if test="descendant::tei:div">
+                                            <xsl:element name="ul">
+                                                <xsl:attribute name="class">navbar-nav nav-second</xsl:attribute>
+                                                <xsl:for-each select="descendant::tei:div">
+                                                    
+                                                    <xsl:element name="li">
+                                                        <xsl:attribute name="class">nav-item-second nav-item</xsl:attribute>
+                                                        <xsl:element name="a">
+                                                            <xsl:attribute name="class">nav-link-second nav-link</xsl:attribute>
+                                                            <xsl:attribute name="href">
+                                                                <xsl:text>#</xsl:text>
+                                                                <xsl:value-of select="@xml:id"/>
+                                                            </xsl:attribute>
+                                                            <xsl:choose>
+                                                                <xsl:when test="@type">
+                                                                    <xsl:value-of select="@type"/>
+                                                                </xsl:when>
+                                                                <xsl:otherwise>
+                                                                    <xsl:choose>
+                                                                        <xsl:when test="child::tei:ab[1]">
+                                                                            <xsl:value-of select="child::tei:ab/@type"/>
+                                                                        </xsl:when>
+                                                                        <xsl:otherwise>
+                                                                            <xsl:value-of select="name()"/>
+                                                                        </xsl:otherwise>
+                                                                    </xsl:choose>
+                                                                </xsl:otherwise>
+                                                            </xsl:choose>
+                                                            <xsl:text> </xsl:text>
+                                                            <xsl:value-of select="@n"/>
+                                                            <xsl:if test="child::tei:head[@type='editorial']">
+                                                                <xsl:text> (</xsl:text><xsl:value-of select="child::tei:head"/><xsl:text>)</xsl:text>
+                                                            </xsl:if>
+                                                        </xsl:element>
+                                                    </xsl:element>
+                                                </xsl:for-each>
+                                            </xsl:element>
+                                        </xsl:if>
+                                    </xsl:element>
+                                </xsl:for-each>
+                            </xsl:element>
+                    
+                    
+                </nav>
+            </div>
+            <div class="toc-heading">Display</div>
+            <label>Source view
+                <input id="toggle-xml-display" type="checkbox"></input>
+            </label>
+            <div class="toc-heading">External Links</div>
+            <nav>
+                <ul>
+                    <li>
+                        <xsl:element name="a">
+                            <xsl:attribute name="href"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '.xml')"/></xsl:attribute><i class="fa-solid fa-code"></i> XML File
+                        </xsl:element>
+                        </li>
+                </ul>
+            </nav>
+        </div>
+        
     </xsl:template>
 
     <!-- Nav bar template -->
-    <xsl:template name="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://erc-dharma.github.io/">ERC-DHARMA</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://erc-dharma.github.io/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Collections
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/#tfa-collection">Task-Force A</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/#tfb-collection">Task-Force B</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/#tfc-collection">Task-Force C</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/#tfd-collection">Task-Force D</a>
-                            <a class="dropdown-item" href="https://github.com/erc-dharma">All the repositories</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownConv" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Conventions
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/editorial">Editorial Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/output-prosody/display-prosody.html">Prosodic Conventions</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Documentation
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/critEd_elements">Critical Editions Memo</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/DiplEd_elements">Diplomatic Editions Memo</a>
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/encoding-diplomatic/DHARMA%20EGD%20v1%20release.pdf">Encoding Guide for Diplomatic editions</a>
-
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/FNC/DHARMA_FNC_v01.1.pdf">File Naming Conventions</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/transliteration/DHARMA%20Transliteration%20Guide%20v3%20release.pdf">Transliteration Guide</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/zotero/DHARMA_ZoteroGuide_v01.1.1.pdf">Zotero Guide</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactControlledVoc">Artefacts – Controlled Vocabularies</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_artefactClosedLists">Artefacts – Closed List</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc">Texts – Controlled Vocabularies</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists">Texts – Closed List for texts</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/visual-code/UsingVS_v01">Starting with Visual Studio Code</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtom_v01">Starting with Atom</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomGit_v01">Starting with Atom &amp; Git</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/atom/UsingAtomTeletype_v01">Starting with Atom Teletype</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/git/DHARMA_git_guide_v01">Starting with git</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/github-issuetracker/UsingGitHubIssueTracker.pdf">Starting with GitHub issues</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/project-documentation/github-issuetracker/UsingMarkdownSyntax_v01">Starting with markdown</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/digital-areal/">Starting with XML in French</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownConv" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Authorities
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="https://opentheso.huma-num.fr/opentheso/?idt=th347">Controlled Vocabularies</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">Documentation for metadata and authorities - coming</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_places.html">Places</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_persons.html">Persons</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_monuments.html">Monuments</a>
-                            <a class="dropdown-item" href="https://erc-dharma.github.io/mdt-authorities/output/DHARMA_collections.html">Collections</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownDoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Epigraphical Publications
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link" href="https://erc-dharma.github.io/arie">ARIE</a>
-                            <a class="nav-link" href="https://erc-dharma.github.io/tfb-ec-epigraphy/">Epigraphia Carnatica</a>
-                            <a class="nav-link" href="https://erc-dharma.github.io/output-roej/display-roej.html">Répertoire Onomastique Java</a>
-                            <a class="nav-link" href="https://erc-dharma.github.io/tfa-sii-epigraphy/index-sii.html">South-Indian Inscriptions</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/erc-dharma">GitHub</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.zotero.org/groups/1633743/erc-dharma/library">Zotero Library</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://dharma.hypotheses.org/">Blog</a>
-                    </li>
+    <xsl:template name="nav-bar"> 
+        <a id="dharma-logo" href="/"><img alt="DHARMA Logo" src="/dharma_bar_logo.svg"></img></a>
+        <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
+        <ul id="menu" class="hidden">
+            <li>
+                <a href="/repositories">
+                    <i class="fa-brands fa-git-alt"></i> Repositories</a>
+            </li>
+            <li>
+                <a href="/texts">
+                    <i class="fa-regular fa-file-lines"></i> Texts</a>
+            </li>
+            <li class="submenu">
+                <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="hidden">
+                    <li><a href="/editorial-conventions">Editorial Conventions</a></li>
+                    <li><a href="/prosody">Prosodic Patterns</a></li>
                 </ul>
-            </div>
-        </nav>
+                <li>
+                    <a href="/parallels">
+                        <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
+                </li>
+                <li class="submenu">
+                    <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="hidden">
+                        <li>
+                            <a href="/errors">
+                                <i class="fa-solid fa-bug"></i> Texts Errors</a>
+                        </li>
+                        <li>
+                            <a href="/bibliography-errors">
+                                <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
+                        </li>
+                        <li>
+                            <a href="/display">Display List</a>
+                        </li>
+                    </ul>
+                </li>
+                </li>
+        </ul>
     </xsl:template>
 
     <!-- Templates for Apparatus at the botton of the page -->
@@ -3953,7 +4072,7 @@
     <br/>
   </xsl:template>
 
-    <xsl:template name="tpl-notes-trans">
+   <!-- <xsl:template name="tpl-notes-trans">
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
@@ -3986,7 +4105,7 @@
                     <br/>
                 </xsl:for-each>
             </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
 
     <xsl:template name="app-link">
         <!-- location defines the direction of linking -->
@@ -3996,7 +4115,7 @@
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
 
         <xsl:if test="not((local-name() = 'choice' or local-name() = 'subst')
-            and (ancestor::tei:choice or ancestor::tei:subst)) and not(//tei:TEI[@type='translation'])">
+            and (ancestor::tei:choice or ancestor::tei:subst))">
             <xsl:variable name="app-num">
                 <xsl:value-of select="name()"/>
                 <xsl:number level="any" format="0001"/>
@@ -4812,8 +4931,7 @@
                             <xsl:text>Title</xsl:text>
                         </xsl:element>
                         <xsl:text>: </xsl:text>
-                        <xsl:for-each select="//tei:title[@type='main']">
-                            <xsl:text>The </xsl:text>
+                        <xsl:for-each select="//tei:title[1]">  
                             <xsl:element name="span">
                                 <xsl:attribute name="class">font-italic</xsl:attribute>
                                 <xsl:apply-templates/>
@@ -4824,10 +4942,10 @@
                         <xsl:apply-templates select="//tei:title[@type='alt']"/>
                         <xsl:text>’</xsl:text>
                         </xsl:if>
-                        <xsl:if test="//tei:title[@type='sub']">
+                        <!--<xsl:if test="//tei:title[@type='sub']">
                             <xsl:text>. </xsl:text>
                             <xsl:apply-templates select="//tei:title[@type='sub']"/>
-                        </xsl:if>
+                        </xsl:if>-->
                     </xsl:element>
                 <xsl:element name="li">
                     <xsl:element name="b">
@@ -4836,42 +4954,49 @@
                     <xsl:text>: </xsl:text>
                     <xsl:value-of select="//tei:idno[@type='filename']"/>
                 </xsl:element>
+                <xsl:if test="//tei:fileDesc/tei:titleStmt/tei:respStmt/tei:resp[text()='Author of the digital edition']">
                     <xsl:element name="li">
-                        <xsl:for-each select="//tei:titleStmt/tei:editor">
-                            <xsl:choose>
-                                <xsl:when test="position()= 1">
-                                    <xsl:element name="b">
-                                    <xsl:text>Edited by </xsl:text>
-                                    </xsl:element>
-                                </xsl:when>
-                                <xsl:when test="position()=last()">
-                                    <xsl:text> &amp; </xsl:text>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:text>, </xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                            <xsl:choose>
-                                <xsl:when test="child::tei:forename">
-                                    <xsl:apply-templates select="tei:forename"/>
-                                    <xsl:text> </xsl:text>
-                                    <xsl:apply-templates select="tei:surname"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:apply-templates select="normalize-space(.)"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:for-each>
+                        <xsl:call-template name="editors">
+                            <xsl:with-param name="list-editors" select="//tei:fileDesc/tei:titleStmt/tei:respStmt[tei:resp[text()='Author of the digital edition']]/tei:persName"/>
+                        </xsl:call-template>
                 </xsl:element>
-                <xsl:element name="li">
+                </xsl:if>
+               <!-- <xsl:element name="li">
                     <xsl:value-of select="replace(//tei:fileDesc/tei:publicationStmt//tei:licence/tei:p[2], '\(c\)', '©')"/>
-                </xsl:element>
+                </xsl:element>-->
             </xsl:element>
                 <xsl:if test="//tei:projectDesc/tei:p">
 
                     <xsl:apply-templates select="//tei:projectDesc/tei:p"/>
                 </xsl:if>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template name="editors">
+        <xsl:param name="list-editors"/>
+        <xsl:for-each select="$list-editors">
+            <xsl:choose>
+                <xsl:when test="position()= 1">
+                    <xsl:text>edited by </xsl:text>
+                </xsl:when>
+                <xsl:when test="position()=last()">
+                    <xsl:text> &amp; </xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>, </xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:choose>
+                <xsl:when test="child::tei:forename">
+                    <xsl:apply-templates select="tei:forename"/>
+                    <xsl:text> </xsl:text>
+                    <xsl:apply-templates select="tei:surname"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates select="normalize-space(.)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each>
     </xsl:template>
 
 <xsl:template name="fake-lem-making">
@@ -5025,20 +5150,20 @@
                    <xsl:attribute name="class">collapse</xsl:attribute>
                    <xsl:element name="div">
                        <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
-                       <xsl:call-template name="tpl-translation">
+                       <!--<xsl:call-template name="tpl-translation">
                            <xsl:with-param name="textpart-id" select="@xml:id"/>
-                       </xsl:call-template>
+                       </xsl:call-template>-->
                    </xsl:element>
                </xsl:element>
            </xsl:element>
    </xsl:template>
 
     <!-- tpl-translation -->
-    <xsl:template name="tpl-translation">
+    <!--<xsl:template name="tpl-translation">
         <xsl:param name="textpart-id"/>
-        <!-- https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/ -->
+        <!-\- https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/ -\->
 
-       <!-- <xsl:variable name="collection">
+       <!-\- <xsl:variable name="collection">
             <xsl:value-of select="'https://api.github.com/repositories/213335970/contents/editions'"/>
         </xsl:variable>
         <xsl:variable name="unparsedtext" select="unparsed-text($collection)"/>
@@ -5054,11 +5179,11 @@
             <xsl:value-of select="for $name in $names return concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $name)"/>
         </xsl:variable>
         <xsl:element name="div">
-            <!-\-<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-\->
+            <!-\\-<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-\\->
             <xsl:choose>
                 <xsl:when test="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]">
                     <xsl:apply-templates select="document(contains($document-trans, $filename))//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
-                </xsl:when>-->
+                </xsl:when>-\->
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
         </xsl:variable>
@@ -5076,7 +5201,7 @@
             </xsl:choose>
         </xsl:variable>
         <xsl:element name="div">
-            <!--<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-->
+            <!-\-<xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>-\->
             <xsl:choose>
                 <xsl:when test="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]">
                     <xsl:apply-templates select="document($document-trans)//tei:*[substring-after(@corresp, '#') = $textpart-id]"/>
@@ -5091,7 +5216,7 @@
             </xsl:choose>
 
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
 
     <xsl:template name="citedRange-unit">
         <xsl:variable name="CurPosition" select="position()"/>
@@ -5223,7 +5348,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- tpl-com -->
+    <!--<!-\- tpl-com -\->
     <xsl:template name="tpl-com">
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
@@ -5254,7 +5379,7 @@
         </xsl:element>
     </xsl:template>
 
-    <!-- tpl-biblio -->
+    <!-\- tpl-biblio -\->
     <xsl:template name="tpl-biblio">
         <xsl:variable name="filename">
             <xsl:value-of select="//tei:idno[@type='filename']"/>
@@ -5283,7 +5408,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
 
     <xsl:template name="scansion">
         <xsl:param name="met-string"/>
