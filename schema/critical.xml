@@ -87,11 +87,11 @@
       <schemaSpec ident="DHARMA_CritEdSchema_v01" start="TEI" prefix="tei_" docLang="en" targetLang="en">
         <moduleRef key="header" except="abstract appInfo application cRefPattern calendar calendarDesc catDesc catRef category citeData citeStructure classCode classDecl conversion correspAction correspContext correspDesc creation distributor edition extent geoDecl listChange namespace quotation refState refsDecl rendition segmentation seriesStmt sponsor stdVals styleDefDecl tagUsage tagsDecl taxonomy unitDecl unitDef xenoData funder principal"/>
         <moduleRef key="linking" except="alt altGrp annotation joinGrp link linkGrp listAnnotation standOff timeline when"/>
-        <moduleRef key="core" except="addrLine address analytic biblScope binaryObject cb distinct divGen ellipsis email emph gb graphic headItem headLabel index measureGrp media meeting mentioned milestone noteGrp postBox postCode rb relatedItem rs rt ruby series soCalled street teiCorpus time unit editor rs"/>
+        <moduleRef key="core" except="addrLine address analytic biblScope binaryObject cb distinct divGen ellipsis email emph gb graphic headItem headLabel index measureGrp media meeting mentioned noteGrp postBox postCode rb relatedItem rs rt ruby series soCalled street teiCorpus time unit editor rs"/>
         <moduleRef key="tei"/>
         <moduleRef key="textstructure" except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText group imprimatur opener postscript salute signed titlePage titlePart trailer"/>
         <moduleRef key="namesdates" except="addName affiliation age birth bloc climate country death district education event faith floruit genName geo geogFeat geogName langKnowledge langKnown listEvent listNym listObject listOrg listPerson listPlace listRelation location nameLink nationality nym occupation offset org orgName persPronouns personGrp persona population region relation residence sex socecStatus state terrain trait person place"/>
-        <moduleRef key="transcr" except="addSpan am damage damageSpan delSpan ex handShift line listTranspose metamark mod path redo restore retrace sourceDoc substJoin surface surfaceGrp transpose undo zone facsimile handNotes"/>
+        <moduleRef key="transcr" except="addSpan am damageSpan delSpan ex handShift line listTranspose metamark mod path redo restore retrace sourceDoc substJoin surface surfaceGrp transpose undo zone facsimile handNotes"/>
         <moduleRef key="msdescription" except="accMat acquisition additional additions adminInfo catchwords collation condition custEvent custodialHist depth explicit finalRubric foliation heraldry locusGrp material msItemStruct musicNotation provenance recordHist rubric seal sealDesc secFol signatures stamp surrogates typeDesc typeNote watermark dim dimensions height source support"/>
         <moduleRef key="certainty" except="precision respons"/>
         <moduleRef key="verse" except="caesura metDecl metSym rhyme"/>
@@ -1301,6 +1301,48 @@
             </attDef>
           </attList>
         </elementSpec>
+        <elementSpec ident="damage" module="transcr" mode="change">
+          <attList>
+            <attDef ident="agent" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="atLeast" mode="delete"/>
+            <attDef ident="atMost" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="confidence" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="degree" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="extent" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="group" mode="delete"/>
+            <attDef ident="hand" mode="delete"/>
+            <attDef ident="max" mode="delete"/>
+            <attDef ident="min" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="precision" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="quantity" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="scope" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="unit" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+          </attList>
+        </elementSpec>
         <elementSpec ident="date" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="attributes">
             <constraint><sch:rule context="tei:date[not(parent::tei:bibl) and ancestor::tei:body]"><sch:assert test="matches('./text()', '\d+')">
@@ -2125,6 +2167,85 @@
                 <valItem ident="volume"/>
                 <valItem ident="weight"/>
                 <valItem ident="currency"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="milestone" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="att-unit-n">
+            <constraint><sch:rule context="tei:milestone"><sch:report
+              test="not(@unit and @n)"
+              > for milestone using the attribut @unit, the
+              attribute @n is mandatory</sch:report></sch:rule><sch:rule
+                context="tei:milestone[@type='yati']"><sch:assert
+                  test="@type='yati' and @break='no'"
+                  >Caesuras work with both @type='yati'
+                  and @break='no'.</sch:assert></sch:rule><sch:rule
+                    context="tei:milestone[@type='ref']"><sch:assert
+                      test="ancestor::tei:div[@type='translation']"
+                      >@type='ref' can only be
+                      used inside the translation part of the
+                      edition</sch:assert></sch:rule><sch:rule
+                        context="tei:milestone[@type='ref']"><sch:assert
+                          test="@unit='stanza' or @unit='line'"
+                          >@type='ref' requires the use of
+                          @unit="stanza" or @unit="line'</sch:assert></sch:rule><sch:rule
+                            context="tei:milestone[@type='ref']"><sch:report test="not(@n)"
+                              >@n is
+                              mandatory with
+                              milestone/@type="ref"</sch:report></sch:rule></constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="ed" mode="delete"/>
+            <attDef ident="edRef" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="spanTo" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="break" mode="change">
+              <defaultVal>no</defaultVal>
+              <valList type="closed" mode="replace">
+                <valItem ident="no"/>
+              </valList>
+            </attDef>
+            <attDef ident="type" mode="change">
+              <valList type="open" mode="replace">
+                <valItem ident="yati"/>
+                <valItem ident="pageLike"/>
+              </valList>
+            </attDef>
+            <attDef ident="unit" mode="change" usage="req">
+              <valList type="open" mode="replace">
+                <valItem ident="fragment"/>
+                <valItem ident="face"/>
+                <valItem ident="faces"/>
+                <valItem ident="zone"/>
+                <valItem ident="column"/>
+                <valItem ident="block"/>
+                <valItem ident="surface"/>
+                <valItem ident="item"/>
+                <valItem ident="area"/>
+                <valItem ident="line"/>
+                <valItem ident="stanza"/>
               </valList>
             </attDef>
           </attList>
@@ -3107,12 +3228,10 @@
             <attDef ident="prev" mode="delete"/>
             <attDef ident="real" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
-            <attDef ident="resp" mode="delete"/>
             <attDef ident="rhyme" mode="delete"/>
             <attDef ident="sameAs" mode="delete"/>
             <attDef ident="sample" mode="delete"/>
             <attDef ident="select" mode="delete"/>
-            <attDef ident="source" mode="delete"/>
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
@@ -4190,7 +4309,7 @@
         </elementSpec>
         <elementSpec ident="choice" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:choice"><sch:assert test="ancestor::tei:colophon">Choice can only be used in the element colophon in the critical editions</sch:assert></sch:rule><sch:rule context="tei:choice"><sch:report test="child::tei:unclear and count(child::tei:unclear) &gt; 3">Choice
+            <constraint><sch:rule context="tei:choice"><sch:assert test="ancestor::tei:colophon and contains(base-uri(.), 'CritEd')">Choice can only be used in the element colophon in the critical editions</sch:assert></sch:rule><sch:rule context="tei:choice"><sch:report test="child::tei:unclear and count(child::tei:unclear) &gt; 3">Choice
                   can contained only maximum 3 unclear
                   elements</sch:report></sch:rule></constraint>
           </constraintSpec>
@@ -4991,7 +5110,7 @@
         </elementSpec>
         <elementSpec ident="corr" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:corr[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon and not(ccontains(base-uri(.), 'DiplEd'))">Corr in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:corr"><sch:assert test="parent::tei:choice">Corr should be used in choice</sch:assert></sch:rule></constraint>
+            <constraint><sch:rule context="tei:corr[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon and contains(base-uri(.), 'CritEd')">Corr in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:corr"><sch:assert test="parent::tei:choice">Corr should be used in choice</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -5053,7 +5172,7 @@
         </elementSpec>
         <elementSpec ident="reg" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:reg[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon">Reg in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:reg"><sch:assert test="parent::tei:choice">Reg should be used in choice</sch:assert></sch:rule></constraint>
+            <constraint><sch:rule context="tei:reg[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon and contains(base-uri(.), 'CritEd')">Reg in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:reg"><sch:assert test="parent::tei:choice">Reg should be used in choice</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -5163,6 +5282,8 @@
               <valItem mode="add" ident="top-right"/>
               <valItem mode="add" ident="bot-left"/>
               <valItem mode="add" ident="bot-right"/>
+              <valItem mode="add" ident="right"/>
+              <valItem mode="add" ident="left"/>
               <valItem mode="delete" ident="margin"/>
               <valItem mode="delete" ident="opposite"/>
               <valItem mode="delete" ident="overleaf"/>
