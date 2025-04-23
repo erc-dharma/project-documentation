@@ -2669,7 +2669,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:corr[parent::tei:choice]">
-               <sch:assert test="ancestor::tei:colophon and not(ccontains(base-uri(.), 'DiplEd'))">Corr in choice can only be used for colophon</sch:assert>
+               <sch:assert test="ancestor::tei:colophon and not(contains(base-uri(.), 'DiplEd'))">Corr in choice can only be used for colophon</sch:assert>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
