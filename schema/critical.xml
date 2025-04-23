@@ -982,6 +982,19 @@
               <valList type="closed" mode="change">
                 <valItem ident="highlight"/>
                 <valItem ident="interpolation"/>
+                <valItem ident="component"/>
+                <valItem ident="aksara"/>
+              </valList>
+            </attDef>
+            <attDef ident="subtype" mode="change">
+              <valList type="closed" mode="change">
+                <valItem ident="body"/>
+                <valItem ident="consonant"/>
+                <valItem ident="conjunct"/>
+                <valItem ident="vowel"/>
+                <valItem ident="subscript"/>
+                <valItem ident="prescript"/>
+                <valItem ident="postscript"/>
               </valList>
             </attDef>
             <attDef ident="valueDatcat" mode="delete"/>
@@ -2413,7 +2426,7 @@
         </elementSpec>
         <elementSpec ident="p" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="p">
-            <constraint><sch:rule context="tei:p[@rend='stanza']"><sch:assert test="not(ancestor::tei:div[@type='translation'])">
+            <constraint><sch:rule context="tei:p[@rend='stanza']"><sch:assert test="ancestor::tei:div[@type='translation']">
                   @rend='stanza' can only be used in translations</sch:assert></sch:rule><sch:rule context="tei:p[@corresp]"><sch:report test="not(ancestor::tei:div[@type='translation'])">
                   @n can only be used for paragraphs in translations</sch:report></sch:rule></constraint>
           </constraintSpec>
@@ -2776,9 +2789,6 @@
         </elementSpec>
         <elementSpec ident="rs" module="core" mode="delete"/>
         <elementSpec ident="sic" module="core" mode="change">
-          <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:sic[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon and not(contains(base-uri(.), 'DiplEd'))">Sic in choice can only be used for colophon, in critical editions</sch:assert></sch:rule></constraint>
-          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -4309,7 +4319,7 @@
         </elementSpec>
         <elementSpec ident="choice" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:choice"><sch:assert test="ancestor::tei:colophon and contains(base-uri(.), 'CritEd')">Choice can only be used in the element colophon in the critical editions</sch:assert></sch:rule><sch:rule context="tei:choice"><sch:report test="child::tei:unclear and count(child::tei:unclear) &gt; 3">Choice
+            <constraint><sch:rule context="tei:choice"><sch:report test="child::tei:unclear and count(child::tei:unclear) &gt; 3">Choice
                   can contained only maximum 3 unclear
                   elements</sch:report></sch:rule></constraint>
           </constraintSpec>
@@ -5110,7 +5120,7 @@
         </elementSpec>
         <elementSpec ident="corr" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:corr[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon and contains(base-uri(.), 'CritEd')">Corr in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:corr"><sch:assert test="parent::tei:choice">Corr should be used in choice</sch:assert></sch:rule></constraint>
+            <constraint><sch:rule context="tei:corr"><sch:assert test="parent::tei:choice">Corr should be used in choice</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -5143,7 +5153,7 @@
         </elementSpec>
         <elementSpec ident="orig" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:orig[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon">Orig in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:orig"><sch:assert test="parent::tei:choice">Orig should be used in choice</sch:assert></sch:rule></constraint>
+            <constraint><sch:rule context="tei:orig"><sch:assert test="parent::tei:choice">Orig should be used in choice</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -5172,7 +5182,7 @@
         </elementSpec>
         <elementSpec ident="reg" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="choice-colophon">
-            <constraint><sch:rule context="tei:reg[parent::tei:choice]"><sch:assert test="ancestor::tei:colophon and contains(base-uri(.), 'CritEd')">Reg in choice can only be used for colophon</sch:assert></sch:rule><sch:rule context="tei:reg"><sch:assert test="parent::tei:choice">Reg should be used in choice</sch:assert></sch:rule></constraint>
+            <constraint><sch:rule context="tei:reg"><sch:assert test="parent::tei:choice">Reg should be used in choice</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
