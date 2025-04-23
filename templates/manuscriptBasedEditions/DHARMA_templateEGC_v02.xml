@@ -84,10 +84,24 @@
             </sourceDesc>
         </fileDesc>
         <encodingDesc>
-            <!-- Part mandatory -->
-            <p>This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
-            <!-- Optionally add here a second <p> to describe the specifics of the subproject that has led to this edition. -->            
-  </encodingDesc>
+            <projectDesc>
+                <p>Encoded in TEI according to the <ref target="{URI for DHARMA editorial conventions or page with link to Encoding Guides}">Conventions of Project DHARMA</ref></p>
+            </projectDesc>
+            <editorialDecl>        
+                <correction>
+                    <p/>
+                </correction>
+                <normalization>
+                    <p/>
+                </normalization>
+                <interpretation>
+                    <p/>
+                </interpretation>
+            </editorialDecl>
+            <samplingDecl>
+                <p/>
+            </samplingDecl>    
+        </encodingDesc>
         <profileDesc>
             <langUsage>
                 <!-- choose the language(s) of your text, remove the others -->
