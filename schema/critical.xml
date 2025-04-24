@@ -1549,7 +1549,7 @@
         <elementSpec ident="gap" module="core" mode="change">
           <constraintSpec ident="gap" scheme="isoschematron">
             <constraint><sch:rule context="tei:gap"><sch:report test="@quantity and @extent">gap may have @quantity (a figure) or
-              @extent (a descriptive text value) but not both at the same time.</sch:report><sch:report test="@extent and not(@unit='character')">gap may have @extent only with @unit='character'.</sch:report><sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report><sch:report test="not(@reason='lost' or @reason='illegible') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost' and 'illegible' for @reason.</sch:report><sch:report test="@precision and not(@quantity)">@precision can be use only with
+              @extent (a descriptive text value) but not both at the same time.</sch:report><sch:report test="@extent and not(@unit='character')">gap may have @extent only with @unit='character'.</sch:report><sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report><sch:report test="not(@reason='lost' or @reason='illegible' or @reason='omitted') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost', 'omitted' and 'illegible' for @reason.</sch:report><sch:report test="@precision and not(@quantity)">@precision can be use only with
                     @quantity</sch:report><sch:report test="ancestor::tei:div[@type='translation'] and not(@reason)">Only @reason
                       is mandatory in translation with gap</sch:report></sch:rule><sch:rule context="tei:gap[@reason='ellipsis']"><sch:report test="not(ancestor::tei:div[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report></sch:rule><sch:rule context="tei:gap[@unit='component']"><sch:assert test="parent::tei:seg[@type='component']">Gap with the attribute
                               @unit="component" can only be used inside seg with the
@@ -3965,7 +3965,7 @@
         <elementSpec ident="lem" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="lem-hand">
             <constraint><sch:rule context="tei:lem[@hand]"><sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert><sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
-                The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule><sch:rule context="tei:lem[@type]"><sch:report test="@wit">No @wit should be given on a lem with @type </sch:report></sch:rule><sch:rule context="tei:lem[child::tei:app]"><sch:report test="not(@wit or @wit)">An element lem containing an embedded apparatus entry should have an attribute @type or @wit</sch:report></sch:rule></constraint>
+                The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
@@ -3982,7 +3982,6 @@
             <attDef ident="require" mode="delete"/>
             <attDef ident="sameAs" mode="delete"/>
             <attDef ident="select" mode="delete"/>
-            <attDef ident="source" mode="delete"/>
             <attDef ident="style" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>

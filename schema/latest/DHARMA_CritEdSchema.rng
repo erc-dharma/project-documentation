@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-04-23T15:40:28Z. .
+Schema generated from ODD source 2025-04-24T09:32:37Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -2748,7 +2748,7 @@ Normalization 12. Critical Apparatus]</a:documentation>
               @extent (a descriptive text value) but not both at the same time.</sch:report>
                <sch:report test="@extent and not(@unit='character')">gap may have @extent only with @unit='character'.</sch:report>
                <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report>
-               <sch:report test="not(@reason='lost' or @reason='illegible') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost' and 'illegible' for @reason.</sch:report>
+               <sch:report test="not(@reason='lost' or @reason='illegible' or @reason='omitted') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost', 'omitted' and 'illegible' for @reason.</sch:report>
                <sch:report test="@precision and not(@quantity)">@precision can be use only with
                     @quantity</sch:report>
                <sch:report test="ancestor::tei:div[@type='translation'] and not(@reason)">Only @reason
@@ -7691,19 +7691,10 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
             </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:lem[@type]">
-               <sch:report test="@wit">No @wit should be given on a lem with @type </sch:report>
-            </sch:rule>
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:lem[child::tei:app]">
-               <sch:report test="not(@wit or @wit)">An element lem containing an embedded apparatus entry should have an attribute @type or @wit</sch:report>
-            </sch:rule>
          </pattern>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
+         <ref name="tei_att.global.source.attribute.source"/>
          <ref name="tei_att.written.attribute.hand"/>
          <ref name="tei_att.witnessed.attributes"/>
          <optional>
@@ -7795,7 +7786,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-74">
+                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-72">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg[@hand]">
@@ -7957,7 +7948,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-76">
+                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-74">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
@@ -8019,7 +8010,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </oneOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-listWit-listWit-family-constraint-rule-77">
+                  id="DHARMA_CritEdSchema_v01-listWit-listWit-family-constraint-rule-75">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:listWit[parent::tei:listWit]">
@@ -8085,7 +8076,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             </choice>
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-78">
+                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-76">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8118,7 +8109,7 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">associates an interpretative annotation directly with a span of text. [17.3. Spans and Interpretations]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-targetfrom-constraint-report-48">
+                  id="DHARMA_CritEdSchema_v01-span-targetfrom-constraint-report-46">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@from and @target">
 Only one of the attributes @target and @from may be supplied on <name/>
@@ -8126,7 +8117,7 @@ Only one of the attributes @target and @from may be supplied on <name/>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-targetto-constraint-report-49">
+                  id="DHARMA_CritEdSchema_v01-span-targetto-constraint-report-47">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@to and @target">
 Only one of the attributes @target and @to may be supplied on <name/>
@@ -8134,14 +8125,14 @@ Only one of the attributes @target and @to may be supplied on <name/>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-tonotfrom-constraint-report-50">
+                  id="DHARMA_CritEdSchema_v01-span-tonotfrom-constraint-report-48">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@to and not(@from)">
 If @to is supplied on <name/>, @from must be supplied as well</report>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="DHARMA_CritEdSchema_v01-span-tofrom-constraint-report-51">
+                  id="DHARMA_CritEdSchema_v01-span-tofrom-constraint-report-49">
             <rule context="tei:span">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="contains(normalize-space(@to),' ') or contains(normalize-space(@from),' ')">
