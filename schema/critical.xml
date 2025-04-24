@@ -875,6 +875,7 @@
               <valList mode="change" type="closed">
                 <valItem ident="invocation"/>
                 <valItem ident="colophon"/>
+                <valItem ident="mantra"/>
                 <valItem ident="speaker"/>
               </valList>
             </attDef>
