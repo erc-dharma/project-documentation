@@ -4121,9 +4121,7 @@
             <attDef ident="prev" mode="delete"/>
             <attDef ident="rendition" mode="delete"/>
             <attDef ident="require" mode="delete"/>
-            <attDef ident="resp" mode="delete"/>
             <attDef ident="select" mode="delete"/>
-            <attDef ident="source" mode="delete"/>
             <attDef ident="style" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
