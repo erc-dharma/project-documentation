@@ -985,6 +985,7 @@
                 <valItem ident="interpolation"/>
                 <valItem ident="component"/>
                 <valItem ident="aksara"/>
+                <valItem ident="mantra"/>
               </valList>
             </attDef>
             <attDef ident="subtype" mode="change">
