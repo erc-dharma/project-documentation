@@ -951,7 +951,7 @@
         <elementSpec ident="seg" module="linking" mode="change">
           <constraintSpec scheme="schematron" ident="att-type-subtype">
             <constraint><sch:rule context="tei:seg"><sch:report test="@subtype and not(@type='component')">@subtype requires
-              @type='component' to be used</sch:report><sch:report test="@cert='low' and not(ancestor::tei:div[@type='translation'])">seg[@cert='low'] can be used only in a translation file.</sch:report><sch:report test="@rend='pun' and not(ancestor::tei:div[@type='translation'])">seg[@rend='pun'] only available in a translation file.</sch:report></sch:rule><sch:rule context="tei:seg[@type='highlight']"><sch:assert test="parent::tei:lem or parent::tei:rdg">
+              @type='component' to be used</sch:report><sch:report test="@cert='low' and not(ancestor-or-self::tei:div[@type='translation'])">seg[@cert='low'] can be used only in a translation file.</sch:report><sch:report test="@rend='pun' and not(ancestor-or-self::tei:div[@type='translation'])">seg[@rend='pun'] only available in a translation file.</sch:report></sch:rule><sch:rule context="tei:seg[@type='highlight']"><sch:assert test="parent::tei:lem or parent::tei:rdg">
                   seg[@rend='highlight'] can only be used as a child of lem or rdg elements.
                 </sch:assert></sch:rule></constraint>
           </constraintSpec>
@@ -1552,8 +1552,8 @@
           <constraintSpec ident="gap" scheme="isoschematron">
             <constraint><sch:rule context="tei:gap"><sch:report test="@quantity and @extent">gap may have @quantity (a figure) or
               @extent (a descriptive text value) but not both at the same time.</sch:report><sch:report test="@extent and not(@unit='character')">gap may have @extent only with @unit='character'.</sch:report><sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report><sch:report test="not(@reason='lost' or @reason='illegible' or @reason='omitted') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost', 'omitted' and 'illegible' for @reason.</sch:report><sch:report test="@precision and not(@quantity)">@precision can be use only with
-                    @quantity</sch:report><sch:report test="ancestor::tei:div[@type='translation'] and not(@reason)">Only @reason
-                      is mandatory in translation with gap</sch:report></sch:rule><sch:rule context="tei:gap[@reason='ellipsis']"><sch:report test="not(ancestor::tei:div[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report></sch:rule><sch:rule context="tei:gap[@unit='component']"><sch:assert test="parent::tei:seg[@type='component']">Gap with the attribute
+                @quantity</sch:report><sch:report test="ancestor-or-self::tei:div[@type='translation'] and not(@reason)">Only @reason
+                  is mandatory in translation with gap</sch:report></sch:rule><sch:rule context="tei:gap[@reason='ellipsis']"><sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report></sch:rule><sch:rule context="tei:gap[@unit='component']"><sch:assert test="parent::tei:seg[@type='component']">Gap with the attribute
                               @unit="component" can only be used inside seg with the
                               @type="component". </sch:assert></sch:rule><sch:rule context="tei:gap[@unit='line' and @quantity]"><sch:assert test="@precision='low' or child::tei:certainty">The element gap with
                                   @quantity and @unit="line" expect either the use of @precision="low" or
@@ -2428,8 +2428,8 @@
         </elementSpec>
         <elementSpec ident="p" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="p">
-            <constraint><sch:rule context="tei:p[@rend='stanza']"><sch:assert test="ancestor::tei:div[@type='translation']">
-                  @rend='stanza' can only be used in translations</sch:assert></sch:rule><sch:rule context="tei:p[@corresp]"><sch:report test="not(ancestor::tei:div[@type='translation'])">
+            <constraint><sch:rule context="tei:p[@rend='stanza']"><sch:assert test="ancestor-or-self::tei:div[@type='translation']">
+              @rend='stanza' can only be used in translations</sch:assert></sch:rule><sch:rule context="tei:p[@corresp]"><sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">
                   @n can only be used for paragraphs in translations</sch:report></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -3692,7 +3692,7 @@
         </elementSpec>
         <elementSpec ident="supplied" module="transcr" mode="change">
           <constraintSpec scheme="schematron" ident="supplied-translation">
-            <constraint><sch:rule context="tei:supplied[@reason='explanation' or @reason='subaudible']"><sch:report test="not(//tei:TEI[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report></sch:rule></constraint>
+            <constraint><sch:rule context="tei:supplied[@reason='explanation' or @reason='subaudible']"><sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>

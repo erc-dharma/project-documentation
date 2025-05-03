@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-05-03T08:22:53Z. .
+Schema generated from ODD source 2025-05-03T16:33:36Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -2366,13 +2366,13 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:p[@rend='stanza']">
-               <sch:assert test="ancestor::tei:div[@type='translation']">
-                  @rend='stanza' can only be used in translations</sch:assert>
+               <sch:assert test="ancestor-or-self::tei:div[@type='translation']">
+              @rend='stanza' can only be used in translations</sch:assert>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:p[@corresp]">
-               <sch:report test="not(ancestor::tei:div[@type='translation'])">
+               <sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">
                   @n can only be used for paragraphs in translations</sch:report>
             </sch:rule>
          </pattern>
@@ -2750,14 +2750,14 @@ Normalization 12. Critical Apparatus]</a:documentation>
                <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report>
                <sch:report test="not(@reason='lost' or @reason='illegible' or @reason='omitted') and @quantity and @unit">@quantity and @unit can only be used with the values 'lost', 'omitted' and 'illegible' for @reason.</sch:report>
                <sch:report test="@precision and not(@quantity)">@precision can be use only with
-                    @quantity</sch:report>
-               <sch:report test="ancestor::tei:div[@type='translation'] and not(@reason)">Only @reason
-                      is mandatory in translation with gap</sch:report>
+                @quantity</sch:report>
+               <sch:report test="ancestor-or-self::tei:div[@type='translation'] and not(@reason)">Only @reason
+                  is mandatory in translation with gap</sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:gap[@reason='ellipsis']">
-               <sch:report test="not(ancestor::tei:div[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report>
+               <sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">The element gap with @reason='ellipsis' can only be used in translation.</sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -5135,8 +5135,8 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
                       context="tei:seg">
                <sch:report test="@subtype and not(@type='component')">@subtype requires
               @type='component' to be used</sch:report>
-               <sch:report test="@cert='low' and not(ancestor::tei:div[@type='translation'])">seg[@cert='low'] can be used only in a translation file.</sch:report>
-               <sch:report test="@rend='pun' and not(ancestor::tei:div[@type='translation'])">seg[@rend='pun'] only available in a translation file.</sch:report>
+               <sch:report test="@cert='low' and not(ancestor-or-self::tei:div[@type='translation'])">seg[@cert='low'] can be used only in a translation file.</sch:report>
+               <sch:report test="@rend='pun' and not(ancestor-or-self::tei:div[@type='translation'])">seg[@rend='pun'] only available in a translation file.</sch:report>
             </sch:rule>
             <sch:rule xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -6559,7 +6559,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:supplied[@reason='explanation' or @reason='subaudible']">
-               <sch:report test="not(//tei:TEI[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report>
+               <sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
