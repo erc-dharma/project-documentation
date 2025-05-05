@@ -1152,6 +1152,21 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           </listBibl>
         </item>
         <item>
+          <measure unit="syllable">11</measure>
+          <name xml:lang="kaw-Latn">mr̥tatodaka</name>
+          <!-- AV -->
+          <seg type="xml">+++--+----=</seg>
+          <seg type="prosody">–––⏑⏑–⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">ma-sa-na-la-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">454</citedRange>
+              <citedRange unit="item">XI.16</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
           <measure unit="syllable">11/11</measure>
           <name xml:lang="san-Latn">upacitra</name>
           <seg type="xml">--+--+--+-=/+--+--+--+=</seg>
@@ -1284,6 +1299,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">12</measure>
           <name xml:lang="san-Latn">indravaṁśā</name>
+          <name xml:lang="kaw-Latn">indravaṅśa</name>
           <seg type="xml">++-++--+-+-=</seg>
           <seg type="prosody">––⏑––⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">ta-ta-ja-ra</seg>
@@ -1661,6 +1677,25 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">13</measure>
+          <name xml:lang="san-Latn">caṇḍī</name>
+          <name xml:lang="san-Latn">kamalalocanā</name>
+          <name xml:lang="san-Latn">kamalākṣī</name>
+          <seg type="xml">--------+--+=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑–⏓</seg>
+          <seg type="gana">na-na-sa-sa-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <citedRange unit="page">18</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
             </bibl>
           </listBibl>
         </item>
@@ -2204,6 +2239,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">19</measure>
           <name xml:lang="kaw-Latn">navaharṣa</name>
+          <name xml:lang="kaw-Latn">navahaṣa</name>
           <seg type="xml">--+--+------+--+--=</seg>
           <seg type="prosody">⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑–⏑⏑⏓</seg>
           <seg type="gana">sa-sa-na-na-bha-bha-ga</seg>
@@ -2226,6 +2262,24 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">19</measure>
+          <name xml:lang="kaw-Latn">vijayagati</name>
+          <name xml:lang="kaw-Latn">mr̥gāṅśa</name>
+          <name xml:lang="kaw-Latn">mr̥tagaṅśa</name>
+          <!-- SD -->
+          <seg type="xml">+++--+-+---+------=</seg>
+          <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">ma-sa-ja-sa-na-na-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">462</citedRange>
+              <citedRange unit="item">XIX.8</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">19</measure>
           <name xml:lang="san-Latn">śārdūlavikrīḍita</name>
           <seg type="xml">+++--+-+---+||++-++-=</seg>
           <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–||––⏑––⏑⏓</seg>
@@ -2242,6 +2296,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">462</citedRange>
+              <citedRange unit="item">XIX.9</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -2278,6 +2335,8 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <measure unit="syllable">20</measure>
           <label type="generic" xml:lang="san-Latn">kr̥ti</label><!--daba20240415: corrected this metre on the basis of Zoetmulder's appendix. The XML code was correct, but the prosodic notation and the gana code were not.-->
           <name/>
+          <name xml:lang="kaw-Latn">kāmamāla</name>
+          <!-- Sugriwa 1961 -->
           <seg type="xml">--+-+---+------+-+-=</seg>
           <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">sa-ja-sa-na-na-ra-la-ga</seg>
@@ -2391,6 +2450,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">20</measure>
           <name xml:lang="san-Latn">suvadanā</name>
+          <name xml:lang="kaw-Latn">suravadanā</name>
           <seg type="xml">++++-++||------+||++---=</seg>
           <seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg>
           <seg type="gana">ma-ra-bha-na-ya-bha-la-ga</seg>
@@ -2586,6 +2646,8 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         <item>
           <measure unit="syllable">22</measure>
           <name xml:lang="kaw-Latn">kilayu anəḍəṅ</name>
+          <name xml:lang="kaw-Latn">kilayu manəḍəṅ</name>
+          <!-- AV -->
           <seg type="xml">++------+-+---+------=</seg>
           <seg type="prosody">––⏑⏑⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana"/>
@@ -2666,6 +2728,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <measure unit="syllable">23</measure>
           <name xml:lang="san-Latn">jagaddhita</name>
           <name xml:lang="kaw-Latn">bhavacakra</name>
+          <name xml:lang="kaw-Latn">rāgakusuma</name>
           <seg type="xml">+++--+-+---+------+-+-=</seg>
           <seg type="prosody">–––⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">ma-sa-ja-sa-na-na-ra-la-ga</seg>
@@ -2680,6 +2743,8 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">467</citedRange>
+              <citedRange unit="item">XXIII.8</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -2721,6 +2786,20 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">23</measure>
+          <name xml:lang="kaw-Latn">puṣpasañcaya</name>
+          <seg type="xml">+--+--+--+--+--+--+-+-=</seg>
+          <seg type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏑⏑–⏑⏑–⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana">bha-bha-bha-bha-bha-bha-ra-la-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">466</citedRange>
+              <citedRange unit="item">XXIII.5</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -2868,6 +2947,29 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <seg type="xml">----+---+--+---------+---=</seg>
           <seg type="prosody">⏑⏑⏑⏑–⏑⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏓</seg>
           <seg type="gana">na-ja-sa-sa-na-na-na-bha-la-ga</seg>
+        </item>
+        <item>
+          <measure unit="syllable">29</measure>
+          <name xml:lang="san-Latn">maṇikiraṇa</name>
+          <name xml:lang="kaw-Latn">daṇḍasagala</name>
+          <seg type="xml">------+------+-------------=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">na-na-bha-na-ja-na-na-na-na-la-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <citedRange unit="page">26</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">469</citedRange>
+              <citedRange unit="item">XXIX.1</citedRange>
+            </bibl>
+          </listBibl>
         </item>
         <item>
           <measure unit="syllable">48</measure>
