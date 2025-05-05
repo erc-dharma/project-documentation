@@ -54,7 +54,7 @@
       <sourceDesc>
         <p>Written from scratch.</p>
       </sourceDesc>
-    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
+    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
     <revisionDesc>
       <change who="part:axja" when="2023-05-23">adding the possibility to add BESTOW ref</change>
       <change who="part:axja" when="2023-04-19">Changing the @cause ordinal for transposition; changing tei:lem/@cause='transposition' for tei:lem/@type='transposition'; deleting the schematron rule limiting the use of n with p to translations ; deleting a rule regarding the use of @cause transposition on rdg only if there is no lem </change>
@@ -2188,25 +2188,12 @@
         </elementSpec>
         <elementSpec ident="milestone" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="att-unit-n">
-            <constraint><sch:rule context="tei:milestone"><sch:report
-              test="not(@unit and @n)"
-              > for milestone using the attribut @unit, the
-              attribute @n is mandatory</sch:report></sch:rule><sch:rule
-                context="tei:milestone[@type='yati']"><sch:assert
-                  test="@type='yati' and @break='no'"
-                  >Caesuras work with both @type='yati'
-                  and @break='no'.</sch:assert></sch:rule><sch:rule
-                    context="tei:milestone[@type='ref']"><sch:assert
-                      test="ancestor::tei:div[@type='translation']"
-                      >@type='ref' can only be
+            <constraint><sch:rule context="tei:milestone"><sch:report test="not(@unit and @n)"> for milestone using the attribut @unit, the
+              attribute @n is mandatory</sch:report></sch:rule><sch:rule context="tei:milestone[@type='yati']"><sch:assert test="@type='yati' and @break='no'">Caesuras work with both @type='yati'
+                  and @break='no'.</sch:assert></sch:rule><sch:rule context="tei:milestone[@type='ref']"><sch:assert test="ancestor::tei:div[@type='translation']">@type='ref' can only be
                       used inside the translation part of the
-                      edition</sch:assert></sch:rule><sch:rule
-                        context="tei:milestone[@type='ref']"><sch:assert
-                          test="@unit='stanza' or @unit='line'"
-                          >@type='ref' requires the use of
-                          @unit="stanza" or @unit="line'</sch:assert></sch:rule><sch:rule
-                            context="tei:milestone[@type='ref']"><sch:report test="not(@n)"
-                              >@n is
+                      edition</sch:assert></sch:rule><sch:rule context="tei:milestone[@type='ref']"><sch:assert test="@unit='stanza' or @unit='line'">@type='ref' requires the use of
+                          @unit="stanza" or @unit="line'</sch:assert></sch:rule><sch:rule context="tei:milestone[@type='ref']"><sch:report test="not(@n)">@n is
                               mandatory with
                               milestone/@type="ref"</sch:report></sch:rule></constraint>
           </constraintSpec>
@@ -3747,7 +3734,13 @@
               </valList>
             </attDef>
             <attDef ident="evidence" mode="change">
-              <valList type="closed" mode="change"/>
+              <valList type="closed" mode="change">
+                <valItem ident="parallel" mode="add"/>
+                <valItem ident="previouseditor" mode="add"/>
+              <valItem mode="delete" ident="internal"/>
+                <valItem mode="delete" ident="external"/>
+                <valItem mode="delete" ident="conjecture"/>
+              </valList>
             </attDef>
           </attList>
         </elementSpec>
