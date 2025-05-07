@@ -62,8 +62,8 @@
         
     </sch:pattern>
     <sch:pattern>
-        <sch:rule context="t:TEI[@type='translation']/t:text">
-            <sch:report test="./@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't be used with div[@type='translation']</sch:report>
+        <sch:rule context="t:div[@type='translation']">
+            <sch:report test="@xml:lang='eng'" sqf:fix="eng-translation">@xml:lang="eng" shouldn't be used with div[@type='translation']</sch:report>
             <sqf:fix id="eng-translation">
                 <sqf:description>
                     <sqf:title>Delete @xml:lang="eng"</sqf:title>
@@ -74,20 +74,20 @@
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="t:TEI[@type='edition']//t:l">
+        <sch:rule context="t:div[@type='edition']//t:l">
             <sch:assert test="parent::t:lg">Line verses should be wrapped into lg element</sch:assert>
         </sch:rule> 
     </sch:pattern>
     
     <sch:pattern>
-        <sch:rule context="t:TEI[@type='translation']//t:l">
+        <sch:rule context="t:div[@type='translation']//t:l">
             <sch:assert test="parent::t:p">Line verses should be wrapped into a paragraph in translation as parent, lg element is not expected inside translations.</sch:assert></sch:rule>
     </sch:pattern>
     
     <sch:pattern>
         <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
-            <sch:assert test="starts-with($fileName, 'DHARMA_CritEd')">The filename should start with DHARMA_CritEd and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
+            <sch:assert test="starts-with($fileName, 'DHARMA_CritEd') or starts-with($fileName, 'DHARMA_DiplEd')">The filename should start with DHARMA_CritEd and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
     
@@ -108,18 +108,11 @@
     
     <sch:pattern>
         <!-- Check if the ST exists in Zotero -->
+        <!-- json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=',encode-for-uri($biblentry))))/* -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
             <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblEntry), '&amp;format=tei'), 'amp;', ''))"/>
             <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
-        </sch:rule>
-    </sch:pattern>
-    
-    <sch:pattern>
-        <!-- Make sure the ST matches one item and not several -->
-        <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
-            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
-            <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(replace(concat('https://api.zotero.org/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
         </sch:rule>
     </sch:pattern>
     
@@ -257,15 +250,6 @@
             </sch:assert>
         </sch:rule>
     </sch:pattern>-->
-    
-    <!-- controlling corresp on lg and p - BESTOW addition-->
-    <sch:pattern>
-        <sch:rule context="t:lg/@corresp | t:p/@corresp">
-            <sch:let name="list-id" value="doc('https://raw.githubusercontent.com/erc-dharma/BESTOW/main/DHARMA_Sircar1965.xml')"/>
-            <sch:assert test=".[starts-with(., '#')]">corresp must starts with #</sch:assert>
-            <sch:assert test="substring-after(., '#') = $list-id//t:div/@xml:id">the value inside corresp must match a value declared in BESTOW reference file</sch:assert>
-        </sch:rule>
-    </sch:pattern>
     
     <!-- controlling ref on rs - BESTOW addition-->
     <sch:pattern>
