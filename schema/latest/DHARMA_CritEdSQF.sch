@@ -111,7 +111,7 @@
         <!-- json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=',encode-for-uri($biblentry))))/* -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
             <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblEntry), '&amp;format=tei'), 'amp;', ''))"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))"/>
             <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
         </sch:rule>
     </sch:pattern>
