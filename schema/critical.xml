@@ -1312,6 +1312,7 @@
                 <valItem ident="entry"/>
                 <valItem ident="line"/>
                 <valItem ident="section"/>
+                <valItem ident="mixed"/>
               </valList>
             </attDef>
           </attList>
