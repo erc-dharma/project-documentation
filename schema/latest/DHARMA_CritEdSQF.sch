@@ -87,14 +87,14 @@
     <sch:pattern>
         <sch:rule context="/">
             <sch:let name="fileName" value="tokenize(document-uri(/), '/')[last()]"/>
-            <sch:assert test="starts-with($fileName, 'DHARMA_CritEd') or starts-with($fileName, 'DHARMA_DiplEd')">The filename should start with DHARMA_CritEd and is currently "<sch:value-of select="$fileName"/>"</sch:assert>
+            <sch:assert test="starts-with($fileName, 'DHARMA_CritEd') or starts-with($fileName, 'DHARMA_DiplEd')">The filename should start with DHARMA_CritEd and is currently or DiplEd "<sch:value-of select="$fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
     
     <sch:pattern>
         <sch:rule context="//t:idno[@type='filename'][not(ancestor::t:biblFull)]">
-            <sch:let name="idno-fileName" value="substring-before(tokenize(document-uri(/), '/')[last()], '.xml')"/>
-            <sch:assert test="./text() eq $idno-fileName">The idno[@type='filename'] must match the filename of the file "<sch:value-of select="$idno-fileName"/>"; without the extension ".xml"  </sch:assert>
+            <sch:let name="idno-fileName" value="tokenize(document-uri(/), '/')[last()]"/>
+            <sch:assert test="./text() eq $idno-fileName">The idno[@type='filename'] must match the filename of the file "<sch:value-of select="$idno-fileName"/>"</sch:assert>
         </sch:rule>
     </sch:pattern>
     
@@ -110,8 +110,8 @@
         <!-- Check if the ST exists in Zotero -->
         <!-- json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=',encode-for-uri($biblentry))))/* -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
-            <sch:let name="biblEntries" value="for $w in tokenize(replace(., '\+', '%2B'), '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', $biblEntry, '&amp;format=tei'), 'amp;', ''))"/>
+            <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblEntry)), 'amp;', ''))"/>
             <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
         </sch:rule>
     </sch:pattern>
