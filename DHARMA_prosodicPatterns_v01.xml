@@ -145,6 +145,7 @@
         <item>
           <measure unit="syllable">2</measure>
           <name xml:lang="kaw-Latn">bhadra</name>
+          <name xml:lang="kaw-Latn">śrī</name>
           <seg type="xml">+=</seg>
           <seg type="prosody">–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
@@ -155,6 +156,7 @@
               <citedRange unit="page">451</citedRange>
               <citedRange unit="item">II.1</citedRange>
 	      <!-- Zoetmulder reference: WS 10 (names: bhadra, śrī) !-->
+        <!-- Kern (1875: 23) record it as bhadrāśrīvaneh !-->
             </bibl>
           </listBibl>
         </item>
@@ -371,7 +373,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="xml">+--+---=</seg>
           <seg type="prosody">–⏑⏑–⏑⏑⏑⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:zapa">In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓.</note>
+          <note resp="part:zapa">In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓. But, Zoetmulder records vitānā's pattern as –⏑–|–⏑–|–⏓</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
@@ -393,6 +395,34 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">capala</name>
+          <name xml:lang="kaw-Latn">nakāravipula</name>
+          <seg type="xml">+--+--+=</seg>
+          <seg type="prosody">–⏑––⏑⏑⏑⏓</seg>
+          <seg type="gana">ra-bha-la-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">suvilāsā</name>
+          <name xml:lang="kaw-Latn">vipula</name>
+          <seg type="xml">--++-++=</seg>
+          <seg type="prosody">⏑⏑––⏑––⏓</seg>
+          <seg type="gana">sa-ra-ga-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
           <name xml:lang="kaw-Latn">māṇavakakrīḍita</name>
           <seg type="xml">+--++--=</seg>
           <seg type="prosody">–⏑⏑––⏑⏑⏓</seg>
@@ -400,6 +430,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -479,6 +510,115 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">vaktra</name>
+          <seg type="xml">+-+--++=</seg>
+          <seg type="prosody">–⏑–⏑⏑––⏓</seg>
+          <seg type="gana">ra-sa-ga-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">sarvavipula</name>
+          <seg type="xml">+-+--+-=</seg>
+          <seg type="prosody">–⏑–⏑⏑–⏑⏓</seg>
+          <seg type="gana">ra-sa-la-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">bhakāravipula</name>
+          <seg type="xml">--+++--=</seg>
+          <seg type="prosody">⏑⏑–––⏑⏑⏓</seg>
+          <seg type="gana">sa-ra-la-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">rakāravipula</name>
+          <seg type="xml">+++++-+=</seg>
+          <seg type="prosody">–––––⏑–⏓</seg>
+          <seg type="gana">ma-ta-ga-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">nakāravipula</name>
+          <seg type="xml">+-++---=</seg>
+          <seg type="prosody">–⏑––⏑⏑⏑⏓</seg>
+          <seg type="gana">ra-bha-la-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">takāravipula</name>
+          <seg type="xml">++-+++-=</seg>
+          <seg type="prosody">––⏑–––⏑⏓</seg>
+          <seg type="gana">ta-ma-la-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">samānī</name>
+          <seg type="xml">+-+-+-+=</seg>
+          <seg type="prosody">–⏑–⏑–⏑–⏓</seg>
+          <seg type="gana">ra-ja-ga-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">pramāṇikā</name>
+          <name xml:lang="kaw-Latn">rūpinī</name>
+          <seg type="xml">-+-+-+-=</seg>
+          <seg type="prosody">⏑–⏑–⏑–⏑⏓</seg>
+          <seg type="gana">ja-ra-la-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">śāpāntika</name>
+          <seg type="xml">++-+---=</seg>
+          <seg type="prosody">––⏑–⏑⏑⏑⏓</seg>
+          <seg type="gana">ta-bha-la-ga</seg><listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
             </bibl>
           </listBibl>
         </item>
