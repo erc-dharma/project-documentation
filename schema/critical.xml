@@ -2701,7 +2701,7 @@
         </elementSpec>
         <elementSpec ident="resp" module="core" mode="change">
           <constraintSpec scheme="schematron" ident="resp-author">
-            <constraint><sch:rule context="tei:respStmt"><sch:assert test="tei:resp[text() ='Author of digital edition']">the content of resp should allowed the used to declare authorship of the digital edition itself. To declare the authorship of the text, you can use the element author. Other contribution should declared in the lemma paragraph of the bibliography division</sch:assert></sch:rule></constraint>
+            <constraint><sch:rule context="tei:respStmt"><sch:assert test="tei:resp[text() ='author of digital edition']">the content of resp should allowed the used to declare authorship of the digital edition itself. To declare the authorship of the text, you can use the element author. Other contribution should declared in the lemma paragraph of the bibliography division</sch:assert></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
