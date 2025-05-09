@@ -6,15 +6,16 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Digital Critical/Diplomatic Edition of...</title>
-                <!--Change the title of the file with the name of your text-->
+                <title type="editorial"><!-- Title given by the editor to this digital edition--></title>
+                <!--change the title of the edition starting, if possible, with the title of your text-->
+		<!-- include a translation of the title and the author's name if relevant; form a subtitle after a colon -->
                 <!--<title type="alt"></title>-->
-                <!-- fill in any alternative title if necessary -->
+                <!-- fill in any alternative title if necessary; it may also form a comment on the editorial title -->
                 <!--<author></author>-->
-                <!-- fill in any author if necessary -->
+                <!-- fill in the name of the author if relevant; repeat author is there is more than one -->
                 <respStmt>
                     <!-- repeat the respStmt when necessary; you can also provided a free text explanation of the process in the bibliography part-->
-                    <resp>Author of the digital edition</resp>
+                    <resp>author of digital edition</resp>
                     <!-- work done in the file, e.g. editor, intellectual authorship of edition ...-->
                     <persName ref="part:jodo"><!-- update the id -->
                         <forename>John</forename><!-- fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
