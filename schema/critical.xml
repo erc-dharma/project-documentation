@@ -54,7 +54,7 @@
       <sourceDesc>
         <p>Written from scratch.</p>
       </sourceDesc>
-    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
+    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-09T17:30:41.352Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
     <revisionDesc>
       <change who="part:axja" when="2023-05-23">adding the possibility to add BESTOW ref</change>
       <change who="part:axja" when="2023-04-19">Changing the @cause ordinal for transposition; changing tei:lem/@cause='transposition' for tei:lem/@type='transposition'; deleting the schematron rule limiting the use of n with p to translations ; deleting a rule regarding the use of @cause transposition on rdg only if there is no lem </change>
@@ -3025,9 +3025,9 @@
               <valList type="closed" mode="change">
                 <valItem mode="delete" ident="short"/>
                 <valItem mode="delete" ident="desc"/>
-              </valList>
+              <valItem mode="add" ident="editorial"/><valItem mode="add" ident="original"/><valItem mode="delete" ident="main"/><valItem mode="delete" ident="sub"/></valList>
             </attDef>
-            <attDef ident="subtype" mode="change">
+            <!--<attDef ident="subtype" mode="change">
               <desc versionDate="2021-10-19" xml:lang="en"/>
               <valList type="semi" mode="change">
                 <valItem ident="base-text"/>
@@ -3036,7 +3036,7 @@
                 <valItem ident="translation"/>
               </valList>
             </attDef>
-            <!-- <attDef ident="cert" mode="change">
+-->            <!-- <attDef ident="cert" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="low"/>
               </valList>
