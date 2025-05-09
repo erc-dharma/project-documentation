@@ -10,7 +10,9 @@
                 <!--change the title of the edition starting, if possible, with the title of your text-->
 		<!-- include a translation of the title and the author's name if relevant; form a subtitle after a colon -->
                 <!--<title type="alt"></title>-->
-                <!-- fill in any alternative title if necessary; it may also form a comment on the editorial title -->
+		    <!-- fill in any alternative title if necessary; it may also form a comment on the editorial title -->
+		<!--<title type="original" xml:lang="...-Latn"></title>-->
+                    <!-- fill in the Romanized original title if relevant, and apply the relevant three-letter ISO language code -->
                 <!--<author></author>-->
                 <!-- fill in the name of the author if relevant; repeat author is there is more than one -->
                 <respStmt>
