@@ -57,6 +57,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="draft" when="2024-05-09">Inserted references from Zoetmulder, Sugriwa, and Candrakiraṇa text</change>
       <change status="draft" when="2025-03-22" who="part:anol">Revised references from Zoetmulder up to 10 syllables (leaving out 8 syllables for now)</change>
       <change status="draft" when="2024-05-16" who="part:daba">Some tidying and adding vipulā anuṣṭubh</change>
       <change status="draft" when="2023-09-05" who="part:argr">Inserted altname prabodhitā under viyoginī and completed Zoetmulder reference</change>
@@ -2474,10 +2475,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <!-- krti class -->
         <item>
           <measure unit="syllable">20</measure>
-          <label type="generic" xml:lang="san-Latn">kr̥ti</label><!--daba20240415: corrected this metre on the basis of Zoetmulder's appendix. The XML code was correct, but the prosodic notation and the gana code were not.-->
-          <name/>
-          <name xml:lang="kaw-Latn">kāmamāla</name>
-          <!-- Sugriwa 1961 -->
+          <!--<label type="generic" xml:lang="san-Latn">kr̥ti</label>daba20240415: corrected this metre on the basis of Zoetmulder's appendix. The XML code was correct, but the prosodic notation and the gana code were not. 
+          <name/>-->
+          <name xml:lang="kaw-Latn">kāmamālā</name>
+           <!--zapa20250509: Zaki has identified that the proper name for this metre is kāmamāla, based on the information provided in Sugriwa (1978). This name was later adopted by Wiryamartana (1990) in his edition of the Arjunavivāha. Other names identified by Zoetmulder are "virat təbu sol," and "kaləṅəṅan" for 23 syllables or "virat," "təbu," "ləṅəṅ" for 20 syllables -->
           <seg type="xml">--+-+---+------+-+-=</seg>
           <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">sa-ja-sa-na-na-ra-la-ga</seg>
@@ -2494,6 +2495,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
               <ptr target="bib:Zoetmulder1974_01"/>
               <citedRange unit="page">463</citedRange>
               <citedRange unit="item">XX.1</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Sugriwa1978_01"/>
+              <citedRange unit="page">12</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -3120,6 +3125,55 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
           <seg type="gana">na-na-bha-na-na-na-na-ja-na-na-na-bha-na-ja-na-sa</seg>
         </item>
       </list>
+     <list>
+      <head>Uneven Syllabic Meters (Viṣama)</head>
+      <!-- zapa20250509: it has been added in reference to Zoetmulder, but I am not sure with the structure recorded. Some names can be normalized to their Sanskrit counterparts. -->
+        <item>
+          <measure unit="syllable" >20, 10, 13</measure>
+          <name xml:lang="san-Latn">saurabhaviṣama</name>
+          <name xml:lang="kaw-Latn">sorabhavisama</name>
+          <seg type="xml">--+-+---+------+-+-=, +-+---+--=, --+-+---+-+-=</seg>
+          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓, –⏑–⏑⏑⏑–⏑⏑⏓, ⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana">sa-ja-sa-na-na-ra-la-ga, ra-na-bha-ga, sa-ja-sa-ja-ga</seg>
+          <listBibl>
+          <bibl>
+            <ptr target="bib:Zoetmulder1974_01"/>
+            <citedRange unit="page">471</citedRange>
+            <citedRange unit="item">XXIX.1</citedRange>
+          </bibl>
+        </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable" >20, 11, 13</measure>
+          <name xml:lang="san-Latn">udgataviṣama</name>
+          <name xml:lang="kaw-Latn">udgatavisama</name>
+          <seg type="xml">--+-+---+------+-+-=, +-----+-+-=, --+-+---+-+-=</seg>
+          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓, –⏑⏑⏑⏑⏑⏑–⏑⏑⏓, ⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana">sa-ja-sa-na-na-ra-la-ga, bha-na-ja-la-ga, sa-ja-sa-ja-ga</seg>
+          <listBibl>
+          <bibl>
+            <ptr target="bib:Zoetmulder1974_01"/>
+            <citedRange unit="page">471</citedRange>
+            <citedRange unit="item">XXIX.1</citedRange>
+          </bibl>
+        </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable" >20, 12, 13</measure>
+          <name xml:lang="san-Latn">lalitaviṣama</name>
+          <name xml:lang="kaw-Latn">lalitavisama</name>
+          <seg type="xml">--+-+---+------+-+-=, --------+--=, --+-+---+-+-=</seg>
+          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓, ⏑⏑⏑⏑⏑⏑⏑⏑–⏑⏑⏓, ⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana">sa-ja-sa-na-na-ra-la-ga, na-na-sa-sa, sa-ja-sa-ja-ga</seg>
+          <listBibl>
+          <bibl>
+            <ptr target="bib:Zoetmulder1974_01"/>
+            <citedRange unit="page">471</citedRange>
+            <citedRange unit="item">XXIX.1</citedRange>
+          </bibl>
+        </listBibl>
+        </item>
+     </list>
       <list>
         <head>Moraic metres</head>
         <!--also additions by daba 20211215: gaṇacchandas (āryā family) metres. Definitely used in XML files, but not fully definable with a simple pattern. The prosodic patterns I give below are only approximations of the more nuanced rules for these metres. I do not know if they belong on the list.-->
