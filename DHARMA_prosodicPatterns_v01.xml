@@ -348,6 +348,7 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -365,6 +366,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -378,6 +380,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -387,10 +390,27 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="xml">+--+--+=</seg>
           <seg type="prosody">–⏑⏑–⏑⏑–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
-          <!-- @zapa: Should we distinguish vitana from vitāna? -->
+          <!-- @zapa: Should we distinguish vitana from vitāna and vitānā? -->
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">vitānā</name>
+          <name xml:lang="san-Latn">citrapada</name>
+          <name xml:lang="kaw-Latn">viparītapatya</name>
+          <seg type="xml">+-++-++=</seg>
+          <seg type="prosody">–⏑––⏑––⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <listBibl>
+            <!-- zapa20250510: this item is only based on Zoetmulder list and its Sanskrit reference needs to be checked -->
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">452</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1158,6 +1178,23 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">454</citedRange>
+              <citedRange unit="item">XI.12</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">11</measure>
+          <name xml:lang="kaw-Latn">śyeni</name>
+          <!-- CK -->
+          <seg type="xml">+-+-+-+-+-=</seg>
+          <seg type="prosody">–⏑–⏑–⏑–⏑–⏑⏓</seg>
+          <seg type="gana">ra-ja-ra-la-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">454</citedRange>
+              <citedRange unit="item">XI.13</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1331,6 +1368,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">11/12</measure>
           <name xml:lang="san-Latn">aparavaktra</name>
+          <name xml:lang="kaw-Latn">bhadrika</name> <!-- Vr̥t-->
           <seg type="xml">------+-+-=/----+--+-+-=</seg>
           <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑–⏑⏓/⏑⏑⏑⏑–⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">na-na-ra-la-ga/na-ja-ja-ra</seg>
@@ -1346,6 +1384,8 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">XI.3</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1482,7 +1522,6 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">12</measure>
           <name xml:lang="san-Latn">kusumavicitrā</name>
-          <name xml:lang="kaw-Latn">kusumavicitra</name>
           <name xml:lang="kaw-Latn">kusumapadānta</name>
           <seg type="xml">----++----+=</seg>
           <seg type="prosody">⏑⏑⏑⏑––⏑⏑⏑⏑–⏓</seg>
@@ -1686,6 +1725,8 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XII.15</citedRange>
             </bibl>
           </listBibl>
         </item>
