@@ -1455,9 +1455,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">12</measure>
           <name xml:lang="san-Latn">bhujaṁgaprayāta</name>
-          <name xml:lang="san-Latn">bhujaṅgaprayatna</name>
+          <name xml:lang="kaw-Latn">bhujaṅgaprayatna</name>
           <!-- CK -->
-          <name xml:lang="san-Latn">bhujaṅgaprayāta</name>
+          <name xml:lang="kaw-Latn">bhujaṅgaprayāta</name>
           <!-- Vr̥t -->
           <seg type="xml">-++-++-++-+=</seg>
           <seg type="prosody">⏑––⏑––⏑––⏑–⏓</seg>
@@ -1474,6 +1474,8 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XII.18</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1703,6 +1705,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <!-- not in Zoetmulder -->
             </bibl>
           </listBibl>
         </item>
@@ -1732,6 +1735,30 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">12</measure>
+          <name xml:lang="san-Latn">jaladharamālā</name>
+          <seg type="xml">++++----+++=</seg>
+          <seg type="prosody">––––⏑⏑⏑⏑–––⏓</seg>
+          <seg type="gana">ma-bha-sa-ma</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <citedRange unit="page">6</citedRange>
+              <citedRange unit="item">I.A.12.3</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XII.26</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">12</measure>
           <name xml:lang="san-Latn">vaiśvadevī</name>
           <seg type="xml">+++++||+-++-+=</seg>
           <seg type="prosody">–––––||–⏑––⏑–⏓</seg>
@@ -1748,6 +1775,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XII.26</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1815,6 +1845,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">457</citedRange>
+              <citedRange unit="item">XIII.15</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1836,6 +1869,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">457</citedRange>
+              <citedRange unit="item">XIII.12</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1843,7 +1879,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <measure unit="syllable">13</measure>
           <name xml:lang="san-Latn">rucirā</name>
           <name xml:lang="kaw-Latn">rucira</name>
-          <name xml:lang="san-Latn">śasadana</name>
+          <name xml:lang="san-Latn">śasadana</name> <!-- CK -->
           <seg type="xml">-+-+||----+-+-=</seg>
           <seg type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">ja-bha-sa-ja-ga</seg>
@@ -1859,6 +1895,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">457</citedRange>
+              <citedRange unit="item">XIII.5</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -1883,6 +1922,27 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           </listBibl>
         </item>
         <item>
+          <measure unit="syllable">13</measure>
+          <name xml:lang="san-Latn">ambudhivīci</name>
+          <seg type="xml">++++----+--+=</seg>
+          <seg type="prosody">––––⏑⏑⏑⏑–⏑⏑–⏓</seg>
+          <seg type="gana">ma-bha-sa-sa-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">457</citedRange>
+              <citedRange unit="item">XIII.14</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
           <measure unit="syllable">14</measure>
           <name xml:lang="san-Latn">asaṁbādhā</name>
           <name xml:lang="kaw-Latn">sambaddha</name>
@@ -1901,6 +1961,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">457</citedRange>
+              <citedRange unit="item">XIII.14</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -3679,7 +3742,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         <!-- from Andrea's file -->
         <item>
           <measure unit="syllable">13</measure>
-          <name xml:lang="">punarmada</name>
+          <name xml:lang="kaw-Latn">punarmada</name>
           <seg type="xml">--+-+---+-+-=</seg>
           <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana"/>
@@ -3694,6 +3757,9 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XIII.4</citedRange>
             </bibl>
           </listBibl>
         </item>
