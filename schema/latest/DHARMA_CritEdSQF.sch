@@ -192,8 +192,9 @@
     <sch:pattern>
         <sch:rule context="t:div/@met[not(matches(.,'[=\+\-]+') or contains(., 'free'))] | t:lg/@met[not(matches(.,'[=\+\-]+') or contains(., 'free'))]">
             <sch:let name="prosody" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
-            <sch:let name="metricals" value="for $metrical in tokenize(., '\s+') return $metrical"/>
-            <sch:assert test="every $metrical in $metricals satisfies $metricals = $prosody//t:item/t:name">The attribute @met should match one entry in the prosodic patterns file, when filled with textual content.</sch:assert>
+            <!--<sch:let name="metricals" value="for $metrical in tokenize(., '\s+') return $metrical"/>
+            <sch:assert test="every $metrical in $metricals satisfies $metricals = $prosody//t:item/t:name">The attribute @met should match one entry in the prosodic patterns file, when filled with textual content.</sch:assert>-->
+            <sch:assert test=".= $prosody//t:item/t:name">The attribute @met should match one entry in the prosodic patterns file, when filled with textual content.</sch:assert>
         </sch:rule>
     </sch:pattern>
     
