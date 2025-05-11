@@ -1825,6 +1825,29 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         </item>
         <item>
           <measure unit="syllable">13</measure>
+          <name xml:lang="kaw-Latn">punarmada</name> <!-- Vr̥t -->
+          <seg type="xml">--+-+---+-+-=</seg>
+          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana"/>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XIII.4</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">13</measure>
           <name xml:lang="san-Latn">mattamayūrī</name>
           <name xml:lang="kaw-Latn">mattamayūrā</name>
           <!-- CK -->
@@ -2643,8 +2666,9 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
         <item>
           <measure unit="syllable">20</measure>
           <!-- <name xml:lang="san-Latn">vr̥tta</name> --> <!-- Sanskrit name is given by Zoetmulder, source still unknown -->
-          <!-- <name xml:lang="san-Latn">gaṇḍakā</name> --> <!-- Sanskrit name is given by Zoetmulder, source still unknown -->
-          <name xml:lang="kaw-Latn">gəli</name>
+          <name xml:lang="san-Latn">gaṇḍakā</name>
+          <name xml:lang="kaw-Latn">gəli</name> <!-- name given by Zoetmulder -->
+          <name xml:lang="kaw-Latn">glisosyan</name> <!-- name given by Sugriwa -->
           <seg type="xml">+-+-+-+-+-+-+-+-+-+=</seg>
           <seg type="prosody">–⏑–⏑–⏑–⏑–⏑–⏑–⏑–⏑–⏑–⏓</seg>
           <seg type="gana">ra-ja-ra-ja-ra-ja-ra-ja-ga-ga</seg>
@@ -2656,12 +2680,18 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Velankar1949_01"/>
+              <citedRange unit="page">142</citedRange>
+              <citedRange unit="item">20.13</citedRange>
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">463</citedRange>
               <citedRange unit="item">XX.5</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1978_01"/>
+              <citedRange unit="page">11</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -3090,27 +3120,6 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         </item>
         <item>
           <measure unit="syllable">23</measure>
-          <name xml:lang="kaw-Latn">sakrauñca</name>
-          <name xml:lang="kaw-Latn">krauñcapada</name>
-          <seg type="xml">+--+++--++----=--+----=</seg>
-          <seg type="prosody">–⏑⏑–––⏑⏑––⏑⏑⏑⏑⏓⏑⏑–⏑⏑⏑⏑⏓</seg>
-          <seg type="gana">bha-ma-ta-bha-sa-bha-na-la-ga</seg>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
-              <!--not in Apte-->
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">23</measure>
           <name xml:lang="kaw-Latn">puṣpasañcaya</name>
           <seg type="xml">+--+--+--+--+--+--+-+-=</seg>
           <seg type="prosody">–⏑⏑–⏑⏑–⏑⏑–⏑⏑–⏑⏑–⏑⏑–⏑–⏑⏓</seg>
@@ -3123,20 +3132,11 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
           </listBibl>
         </item>
-        <item>
-          <measure unit="syllable">26</measure>
-          <name xml:lang="kaw-Latn">surakusuma</name>
-          <name xml:lang="kaw-Latn">vadaragumuluṅ</name>
-          <!--% ⏑⏑⏑|–⏑⏑ |–⏑⏑|⏑⏑⏑|⏑–⏑|⏑–⏑|⏑⏓ (dr Sugriwa) vadaragumuluṅ -->
-          <seg type="xml">------+------+-----------=</seg>
-          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
-          <seg type="gana">na-na-bha-na-ja-na-na-na-la-ga</seg>
-        </item>
         <!-- saṁkr̥ti class -->
         <item>
           <measure unit="syllable">24</measure>
-          <name xml:lang="kaw-Latn">kendran</name>
-          <name xml:lang="kaw-Latn">gәli</name>
+          <name xml:lang="kaw-Latn">kendran</name> <!-- CK -->
+          <name xml:lang="kaw-Latn">glis</name> <!-- Sugriwa -->
           <seg type="xml">+--+++--++------------+=</seg>
           <seg type="prosody">–⏑⏑–––⏑⏑––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑–⏓</seg>
           <seg type="gana">bha-ma-ta-bha-ma-ma-ma-ya</seg>
@@ -3150,7 +3150,30 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
               <ptr target="bib:Velankar1949_01"/>
             </bibl>
             <bibl>
+              <ptr target="bib:Sugriwa1978_01"/>
+              <citedRange unit="page">12</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">24</measure>
+          <name xml:lang="kaw-Latn">tanvī</name> <!-- Vr̥t -->
+          <seg type="xml">+--+-------++--+------+=</seg>
+          <seg type="prosody">–⏑⏑–⏑⏑⏑⏑⏑⏑⏑––⏑⏑–⏑⏑⏑⏑⏑⏑–⏓</seg>
+          <seg type="gana">bha-bha-na-sa-bha-bha-na-ya</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="page">468</citedRange>
+              <citedRange unit="item">XXIV.5</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -3174,8 +3197,36 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">468</citedRange>
               <citedRange unit="item">XXV.1</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">25</measure>
+          <name xml:lang="san-Latn">krauñcapadā</name>
+          <name xml:lang="kaw-Latn">sakrauñca</name> <!-- CK -->
+          <name xml:lang="kaw-Latn">vikasitakusuma</name> <!-- Vr̥t -->
+          <seg type="xml">+--+++--++--------------=</seg>
+          <seg type="prosody">–⏑⏑–––⏑⏑––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">bha-ma-sa-bha-na-na-na-na-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+              <citedRange unit="page">145</citedRange>
+              <citedRange unit="item">25.4</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">468</citedRange>
+              <citedRange unit="item">XXV.4</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -3211,7 +3262,38 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
         <!-- utkr̥ti class -->
         <item>
           <measure unit="syllable">26</measure>
-          <name xml:lang="kaw-Latn">pādaviśāla</name>
+          <name xml:lang="kaw-Latn">surakusuma</name> <!-- CK-->
+          <name xml:lang="kaw-Latn">vadaragumuluṅ</name>
+          <!--% ⏑⏑⏑|–⏑⏑|–⏑⏑|⏑⏑⏑|⏑–⏑|⏑–⏑|⏑⏓ (dr Sugriwa) vadaragumuluṅ -->
+          <seg type="xml">------+------+-----------=</seg>
+          <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana">na-na-bha-na-ja-na-na-na-la-ga</seg>
+        </item>
+
+        <item>
+          <measure unit="syllable">26</measure>
+          <name xml:lang="san-Latn">apavāha</name>
+          <seg type="xml">++---------------------++=</seg>
+          <seg type="prosody">––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑––⏓</seg>
+          <seg type="gana">ta-na-na-na-na-na-na-sa-ga-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">469</citedRange>
+              <citedRange unit="item">XXVI.2</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">26</measure>
+          <name xml:lang="kaw-Latn">pādaviśāla</name> <!-- CK -->
           <seg type="xml">+--+++--++-------------++=</seg>
           <seg type="prosody">–⏑⏑–––⏑⏑––⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑––⏓</seg>
           <seg type="gana">bha-ma-sa-bha-na-na-na-sa-ga-ga</seg>
@@ -3226,8 +3308,7 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="page">468</citedRange>
-              <!--not in Apte-->
+              <!--not in Zoetmulder-->
             </bibl>
           </listBibl>
         </item>
@@ -3249,8 +3330,9 @@ C: I do not see a metre named vikr̥ti (or wikr̥ti) in Zoetmulder, so I cannot 
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="page">468</citedRange>
-              <citedRange unit="item">XXV.5</citedRange>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">469</citedRange>
+              <citedRange unit="item">XXVI.4</citedRange>
             </bibl>
           </listBibl>
         </item>
@@ -3809,30 +3891,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
           </listBibl>
         </item>
-        <!-- from Andrea's file -->
-        <item>
-          <measure unit="syllable">13</measure>
-          <name xml:lang="kaw-Latn">punarmada</name>
-          <seg type="xml">--+-+---+-+-=</seg>
-          <seg type="prosody">⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
-          <seg type="gana"/>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
-              <!--not in Apte-->
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
-              <citedRange unit="page">456</citedRange>
-              <citedRange unit="item">XIII.4</citedRange>
-            </bibl>
-          </listBibl>
-        </item>
+      
         <!--<item>
 	<measure unit="syllable">10</measure>
 	<name xml:lang="">tvaritagati</name>
