@@ -108,11 +108,18 @@
     
     <sch:pattern>
         <!-- Check if the ST exists in Zotero -->
-        <!-- json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=',encode-for-uri($biblentry))))/* -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
             <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblEntry)), 'amp;', ''))"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies doc-available(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblEntry), '&amp;format=tei'))"/>
             <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
+        </sch:rule>
+    </sch:pattern>
+    
+    <sch:pattern>
+        <!-- Make sure the ST matches one item and not several -->
+        <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
+            <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
+            <sch:assert test="every $biblEntry in $biblEntries satisfies 1 eq count(document(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblEntry), '&amp;format=tei'))//t:biblStruct)">The Short Title seems to match several entities in Zotero Library</sch:assert>
         </sch:rule>
     </sch:pattern>
     
