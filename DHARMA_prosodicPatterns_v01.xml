@@ -348,26 +348,47 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.7</citedRange>
+	      <!-- Zoemulder references: WS 20 (names: pathya) !-->
             </bibl>
           </listBibl>
         </item>
-        <item>
-          <measure unit="syllable">8/8</measure>
-          <name xml:lang="kaw-Latn">śāpāntika</name>
-          <seg type="xml">++-----=/++--+--=</seg>
-          <seg type="prosody">––⏑⏑⏑⏑⏑⏓/––⏑–⏑⏑⏑⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:zapa">The meter pattern of śāpāntika is slightly different in CK and Vr̥t. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
-          <!--daba 20240415: this needs correction. 
-A: 8/8 and the slash sign in the formulae means that the pattern for odd lines is that before the slash, and the pattern for even lines is that after the slash. I gather that this is not the case here. We cannot show "alternative" prosodic patterns in this way; the only way to do that would be to use ––⏑⏓⏑⏑⏑⏓, i.e. say that the fourth syllable may be either short or long. Or encode these as two separate metres, e.g. śāpāntika1 and śāpāntika2 or whatever.
-B: the XML and the prosodic symbol notation for the bit after the slash does not match. Check which is right and correct the other.
+        <!--daba 20240415: this needs correction. 
+	    A: 8/8 and the slash sign in the formulae means that the pattern for odd lines is that before the slash, and the pattern for even lines is that after the slash. I gather that this is not the case here. We cannot show "alternative" prosodic patterns in this way; the only way to do that would be to use ––⏑⏓⏑⏑⏑⏓, i.e. say that the fourth syllable may be either short or long. Or encode these as two separate metres, e.g. śāpāntika1 and śāpāntika2 or whatever.
+	    B: the XML and the prosodic symbol notation for the bit after the slash does not match. Check which is right and correct the other.
 -->
+	<!-- Andrew 20250512: I have corrected the earlier entry, so that we have 2 śāpāntikas, both of which 
+	     are anuṣṭubh samavr̥ttas. !-->
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">śāpāntika</name>
+          <seg type="xml">++-----=</seg>
+          <seg type="prosody">––⏑⏑⏑⏑⏑⏓</seg>
+          <note resp="part:zapa">The meter pattern of śāpāntika is slightly different in CK and Vr̥t. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+	      <!-- This is not found in Kalangwan. !-->
+	    </bibl>
+          </listBibl>
+	</item>
+	<item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="kaw-Latn">śāpāntika</name>
+	  <seg type="xml">++--+--=</seg>
+	  <seg type="prosody">––⏑–⏑⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:zapa">The meter pattern of śāpāntika is slightly different in CK and Vr̥t. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
-            </bibl>
+              <citedRange unit="item">VIII.15</citedRange>
+	      <!-- Zoemulder references: WS 32 (names: śāpantika) !-->
+	    </bibl>
           </listBibl>
         </item>
         <item>
@@ -380,7 +401,7 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="page">452</citedRange>
+	      <!-- This is not found in Kalangwan. !-->
             </bibl>
           </listBibl>
         </item>
@@ -394,7 +415,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.8</citedRange>
+	      <!-- Zoemulder references: WS 33 (names: witāna) !-->
             </bibl>
           </listBibl>
         </item>
@@ -402,15 +426,19 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <measure unit="syllable">8</measure>
           <name xml:lang="san-Latn">vitānā</name>
           <name xml:lang="san-Latn">citrapada</name>
-          <name xml:lang="kaw-Latn">viparītapatya</name>
+          <!--<name xml:lang="kaw-Latn">viparītapatya</name>!-->
           <seg type="xml">+-++-++=</seg>
           <seg type="prosody">–⏑––⏑––⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
           <listBibl>
             <!-- zapa20250510: this item is only based on Zoetmulder list and its Sanskrit reference needs to be checked -->
+	    <!-- andrew 20250512: removed viparītapathya, which is an ardhasamacatuṣpadī !-->
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.14</citedRange>
+	      <!-- no OJ name recorded !-->
             </bibl>
           </listBibl>
         </item>
@@ -424,7 +452,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.13</citedRange>
+	      <!-- Zoemulder references: WS 17 (names: nakārawipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -438,7 +469,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.4</citedRange>
+	      <!-- Zoemulder references: WS 27 (names: wipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -451,7 +485,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.9</citedRange>
+	      <!-- Zoemulder references: WS 31 (names: mānawakakrīḍita) !-->
             </bibl>
           </listBibl>
         </item>
@@ -474,6 +511,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.21</citedRange>
+	      <!-- Zoemulder references: WS 34 (names: widyutmālā) !-->
             </bibl>
           </listBibl>
         </item>
@@ -486,12 +527,17 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.1</citedRange>
+	      <!-- Zoemulder references: WS 35 (names: bhramaravilambita) !-->
             </bibl>
           </listBibl>
         </item>
         <item>
           <measure unit="syllable">8</measure>
           <name xml:lang="san-Latn">pramāṇikā</name>
+          <name xml:lang="kaw-Latn">rūpinī</name>
           <seg type="xml">-+-+-+-=</seg>
           <!--zapa: I find the use of symbols "+" and "-" in this segment is inconsistent comparing to other item.-->
           <!--daba 20220530: not sure what you mean. The + and - signs are correct here, but they may be wrong somewhere else. However, there was a mistake with the "prosody" pattern: the first syllable was missing from that (was –⏑–⏑–⏑⏓, now corrected). This resulted in an inverted pattern of long-short syllables for most of this metre, so perhaps that was the only reason why the xml notation seemed wrong. -->
@@ -509,6 +555,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.6</citedRange>
+	      <!-- Zoemulder references: WS 30 (names: rūpini) !-->
             </bibl>
           </listBibl>
         </item>
@@ -542,7 +592,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">ra-sa-ga-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.11</citedRange>
+	      <!-- Zoemulder references: WS 19 (names: waktra) !-->
             </bibl>
           </listBibl>
         </item>
@@ -554,7 +607,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">ra-sa-la-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.10</citedRange>
+	      <!-- Zoemulder references: WS 24 (names: sarwawipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -566,7 +622,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">sa-ra-la-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.5</citedRange>
+	      <!-- Zoemulder references: WS 25 (names: bhakārawipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -578,7 +637,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">ma-ta-ga-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.20</citedRange>
+	      <!-- Zoemulder references: WS 26 (names: rakārawipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -590,7 +652,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">ra-bha-la-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.13</citedRange>
+	      <!-- Zoemulder references: WS 27 (names: nakārawipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -602,7 +667,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">ta-ma-la-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.16</citedRange>
+	      <!-- Zoemulder references: WS 28 (names: takārawipula) !-->
             </bibl>
           </listBibl>
         </item>
@@ -614,32 +682,10 @@ B: the XML and the prosodic symbol notation for the bit after the slash does not
           <seg type="gana">ra-ja-ga-ga</seg><listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">452</citedRange>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="san-Latn">pramāṇikā</name>
-          <name xml:lang="kaw-Latn">rūpinī</name>
-          <seg type="xml">-+-+-+-=</seg>
-          <seg type="prosody">⏑–⏑–⏑–⏑⏓</seg>
-          <seg type="gana">ja-ra-la-ga</seg><listBibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="page">452</citedRange>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="kaw-Latn">śāpāntika</name>
-          <seg type="xml">++-+---=</seg>
-          <seg type="prosody">––⏑–⏑⏑⏑⏓</seg>
-          <seg type="gana">ta-bha-la-ga</seg><listBibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="page">452</citedRange>
+              <citedRange unit="item">VIII.12</citedRange>
+	      <!-- Zoemulder references: WS 29 (names: samani) !-->
             </bibl>
           </listBibl>
         </item>
