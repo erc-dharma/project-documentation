@@ -1063,6 +1063,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">453</citedRange>
+              <citedRange unit="item">X.4</citedRange>
+	      <!-- Zoetmulder's source: WS 43 (panawa) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1084,6 +1088,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">470</citedRange>
+              <citedRange unit="item">(10–11).1</citedRange>
+	      <!-- Zoetmulder lists no OJ name !-->
             </bibl>
           </listBibl>
         </item>
@@ -1106,7 +1114,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">470</citedRange>
+              <citedRange unit="item">(10–11).2</citedRange>
+	      <!-- Zoetmulder lists no OJ name !-->
             </bibl>
           </listBibl>
         </item>
@@ -1224,8 +1235,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">454</citedRange>
               <citedRange unit="item">XI.12</citedRange>
+	      <!-- Zoetmulder's source: WS 52 (ratoddhata) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1239,8 +1252,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">454</citedRange>
               <citedRange unit="item">XI.13</citedRange>
+	      <!-- Zoetmulder's source: WS 55 (śyeni) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1264,6 +1279,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XI.22</citedRange>
+	      <!-- Zoetmulder's source: WS 49 (śālinī) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1289,6 +1308,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XI.20</citedRange>
+	      <!-- Zoetmulder's source: WS 50 (vātōrmimālā) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1310,6 +1333,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XI.11</citedRange>
+	      <!-- Zoetmulder's source: WS 53 (swāgata) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1356,6 +1383,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">454</citedRange>
               <citedRange unit="item">XI.18</citedRange>
+	      <!-- Zoetmulder's source: WS 47 (bhramarawilasita) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1385,8 +1413,10 @@
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">454</citedRange>
               <citedRange unit="item">XI.16</citedRange>
+	      <!-- Zoetmulder seems to have no source for the name? !-->
             </bibl>
           </listBibl>
         </item>
@@ -1495,6 +1525,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XII.9</citedRange>
+	      <!-- Source: WS 58 (toṭaka) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1520,8 +1554,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="page">456</citedRange>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.18</citedRange>
+	      <!-- Source: WS 62 (bhujanggaprayāta) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1544,6 +1580,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XII.23</citedRange>
+	      <!-- Zoetmulder says that it is called swandewi in Balinese. !-->
             </bibl>
           </listBibl>
         </item>
@@ -1589,6 +1629,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.6</citedRange>
+	      <!-- Source: WS 59 (kusumawicitra) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1616,6 +1657,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.4</citedRange>
+	      <!-- Source: WS 64 (nawamālinī) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1641,6 +1683,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.4</citedRange>
+	      <!-- No source for name !-->
             </bibl>
           </listBibl>
         </item>
@@ -1683,6 +1726,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XII.8</citedRange>
+	      <!-- Source: WS 57 (drutawilambita) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1708,6 +1755,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.11</citedRange>
+	      <!-- Source: WS 65 (bramitākṣara) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1732,6 +1780,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.14</citedRange>
+	      <!-- Source: WS 60 (jaloddhatagati) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1774,8 +1823,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">456</citedRange>
               <citedRange unit="item">XII.15</citedRange>
+	      <!-- Source: WS 56 (wangśastha) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1800,6 +1851,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">456</citedRange>
               <citedRange unit="item">XII.26</citedRange>
+	      <!-- Source: WS 66 (jaladharamālā) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1824,6 +1876,7 @@
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">456</citedRange>
               <citedRange unit="item">XII.26</citedRange>
+	      <!-- Source: WS 63 (waiśwadewī) !-->
             </bibl>
           </listBibl>
         </item>
@@ -1845,6 +1898,10 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">471</citedRange>
+              <citedRange unit="item">(12–13).2</citedRange>
+	      <!-- Zoetmulder lists no source for name !-->
             </bibl>
           </listBibl>
         </item>
