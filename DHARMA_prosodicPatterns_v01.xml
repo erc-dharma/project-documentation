@@ -3078,6 +3078,30 @@
         </item>
         <item>
           <measure unit="syllable">22</measure>
+          <name xml:lang="kaw-Latn">sandhyakāra</name>
+          <seg type="xml">----+-+---+-+---+-++-=</seg>
+          <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑-⏑⏑⏑–⏑––⏑⏓</seg>
+          <seg type="gana">na-ja-bha-ja-bha-ja-ta-ga</seg>
+          <!-- @zapa: the previous name is turidagati, but all CK evidences describe turidagati as the name of paṅkti class meter, not akr̥ti. In addtion, Zoetmulder (1974) is still in doubt with that name. -->
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">465</citedRange>
+              <citedRange unit="item">XXII.2</citedRange>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">22</measure>
           <name xml:lang="kaw-Latn">madraka</name>
           <seg type="xml">+--+-+---+||-+---+-+---=</seg><!--daba20240415 corrected XML code to match prosody and gana, checked in Apte.-->
           <seg type="prosody">–⏑⏑–⏑–⏑⏑⏑–||⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
@@ -3277,6 +3301,31 @@
               <citedRange unit="page">12</citedRange>
             </bibl>
 	    <!-- Not in Zoetmulder !-->
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">24</measure>
+          <name xml:lang="kaw-Latn">madhulinda</name>
+          <name xml:lang="kaw-Latn">madhulenda</name> <!-- name given by Supomo 1977 -->
+          <seg type="xml">-+---+-+---+-+---+-+---=</seg>
+          <seg type="prosody">⏑–⏑⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+          <seg type="gana">ja-sa-ja-sa-ja-sa-ja-sa</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">468</citedRange>
+              <citedRange unit="item">XXIV.3</citedRange>
+	      <!-- AVj 9 as source for name madhulinda !-->
+            </bibl>
           </listBibl>
         </item>
         <item>
