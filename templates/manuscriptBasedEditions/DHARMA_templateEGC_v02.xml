@@ -70,7 +70,7 @@
                                 </objectDesc>
                                 <handDesc> <!-- Add an attribute @hands if you have more than one hand -->
                                     <!-- Create a handNote for each hand -->
-                                    <handNote xml:id= "A1_H1" scriptRef="class:57470 maturity:83215"> <!-- update the content of the @xml:id and the @scriptRef -->
+                                    <handNote xml:id= "A1_H1" scriptRef="class:57470 maturity:83215"> <!-- update the content of the @xml:id and the @scriptRef using the xml:id-of-the-witness -->
                                         <abbr type="hand">A<hi rend="superscript">1</hi>H<hi rend="subscript">1</hi></abbr><!-- Give the abbreviation siglum for the hand built on siglum-of-the-manuscript_H1, the number being incremental -->
                                         <p>main hand of the manuscript, black ink, Sundanese script</p><!-- provide a description of the hand -->
                                     </handNote>
