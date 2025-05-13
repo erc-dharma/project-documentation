@@ -227,15 +227,25 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 				</person>
+				<person xml:id="kema">
+					<persName>
+						<forename>Kelsey</forename>
+						<surname>Martini</surname>
+					</persName>
+					<affiliation></affiliation>
+				</person>
+				<person xml:id="fufa">
+					<persName>
+						<forename>Fu</forename>
+						<surname>Fan</surname>
+					</persName>
+					<affiliation></affiliation>
+				</person>
 				<person xml:id="daba">
 					<persName>
 						<forename>Dániel</forename>
 						<surname>Balogh</surname>
 					</persName>
-					<affiliation></affiliation>
-					<idno type="VIAF">http://viaf.org/viaf/90419463</idno>
-					<idno type="IdRef">https://www.idref.fr/151908052</idno>
-					<idno type="ORCID">https://orcid.org/0000-0003-4203-6776</idno>
 				</person>
 				<person xml:id="pebi">
 					<!-- I think this person can be removed -->
