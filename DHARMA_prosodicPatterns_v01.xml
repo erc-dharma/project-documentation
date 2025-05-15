@@ -363,7 +363,7 @@
 	     are anuṣṭubh samavr̥ttas. !-->
         <item>
           <measure unit="syllable">8</measure>
-          <name xml:lang="kaw-Latn">śāpāntika</name>
+          <name xml:lang="kaw-Latn">śāpāntika</name><!-- CK-->
           <seg type="xml">++-----=</seg>
           <seg type="prosody">––⏑⏑⏑⏑⏑⏓</seg>
           <note resp="part:zapa">The meter pattern of śāpāntika is slightly different in CK and Vr̥t. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
