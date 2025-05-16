@@ -1049,44 +1049,14 @@
     <!-- à retravailler -->
     <xsl:template name="bibliography">
         <xsl:param name="biblentry"/>
-                <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v03.csl</xsl:variable>
         <xsl:variable name="zoteroapi" select="json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=',encode-for-uri($biblentry))))/*"/>
-            <xsl:variable name="zoteroapi-tested">
-            <xsl:choose>
-                <xsl:when test="doc-available($zoteroapi)">
-                    <xsl:value-of select="$zoteroapi"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>bibl not available</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable> 
-            <xsl:variable name="zoteroapijson" select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', $biblentry, '&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
-            <xsl:variable name="zoteroapijson-tested">
-                    <xsl:choose>
-                        <xsl:when test="doc-available($zoteroapijson)">
-                        <xsl:value-of select="$zoteroapijson"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text>bibl not available</xsl:text></xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
-            <xsl:variable name="zoteroapitei" select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
-            <xsl:variable name="zoteroapitei-tested">
-            <xsl:choose>
-                <xsl:when test="doc-available($zoteroapitei)"><xsl:value-of select="$zoteroapitei"/></xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>bibl not available</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
-                </xsl:variable>
-            <xsl:variable name="key-item" select="$zoteroapi-tested//(*[@key='key'][1])"/>
-        <xsl:variable name="tei-bib" select="document($zoteroapitei-tested)//tei:listBibl"/>
+            <xsl:variable name="zoteroapitei" select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>        
+            <xsl:variable name="key-item" select="$zoteroapi//(*[@key='key'][1])"/>
+        <xsl:variable name="tei-bib" select="document($zoteroapitei)//tei:listBibl"/>
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:listBibl">
                         
                         <p class="bib-entry" id="bib-key-{$key-item[1]}">
-                            <!--<xsl:copy-of select="document(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=bib&amp;style=', $zoteroStyle), 'amp;', ''))//div/div"/>-->
                             <xsl:call-template name="biblio-tei">
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
@@ -1097,25 +1067,11 @@
                             </a> 
                         </p>
                     </xsl:when>
-                    <xsl:otherwise>
-                        
+                    <xsl:when test="not(ancestor-or-self::tei:listBibl)">
                         <a class="bib-ref" href="#bib-key-{$key-item[1]}">
-                            <xsl:variable name="citation">
-                                <xsl:analyze-string select="$zoteroapijson-tested"
-                                    regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
-                                    <xsl:matching-substring>
-                                        <xsl:value-of select="regex-group(2)"/>
-                                    </xsl:matching-substring>
-                                </xsl:analyze-string>
-                            </xsl:variable>
                             <xsl:choose>
                                 <xsl:when test="@rend='omitname'">
-                                    <xsl:analyze-string select="$zoteroapi-tested"
-                                        regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
-                                        <xsl:matching-substring>
-                                            <xsl:value-of select="regex-group(2)"/>
-                                        </xsl:matching-substring>
-                                    </xsl:analyze-string>
+                                    <xsl:apply-templates select="$zoteroapi//(*[@key='parsedDate'][1])"/>
                                 </xsl:when>
                                 <xsl:when test="@rend='ibid'">
                                     <xsl:element name="i">
@@ -1123,10 +1079,18 @@
                                     </xsl:element>
                                 </xsl:when>
                                 <xsl:when test="matches(./child::tei:ptr/@target, '[A-Z][A-Z]')">
-                                    <!-- <xsl:call-template name="journalTitle"/>-->
+                                     <xsl:call-template name="journalTitle"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:value-of select="replace(replace(replace(replace($citation, '^[\(]+([&lt;][a-z][&gt;])*', ''), '([&lt;/][a-z][&gt;])+[\)]+$', ''), '\)', ''), '&lt;/[i]&gt;', '')"/>
+                                    <xsl:choose>
+                                        <xsl:when test="$zoteroapi//(*[@key='creatorSummary'][1])">
+                                            <xsl:apply-templates select="$zoteroapi//(*[@key='creatorSummary'][1])"/><xsl:text> </xsl:text><xsl:apply-templates select="$zoteroapi//(*[@key='parsedDate'][1])"/>
+                                            
+                                        </xsl:when>
+                                            <xsl:otherwise>
+                                                <span class="bib-entry" data-tip="Zotero's routine not working or ShortTitle not found"><xsl:value-of select="$biblentry"/></span>
+                                            </xsl:otherwise>
+                                    </xsl:choose>    
                                 </xsl:otherwise>
                             </xsl:choose>
                         </a>
@@ -1149,7 +1113,9 @@
                         </xsl:if>
                         <!--	if it is in the bibliography print styled reference-->
                         
-                        
+                        </xsl:when>
+                    <xsl:otherwise>
+                        <span class="bib-entry" data-tip="Zotero's routine not working or ShortTitle not found"><xsl:value-of select="$biblentry"/></span>
                     </xsl:otherwise>
                 </xsl:choose>
     </xsl:template>
