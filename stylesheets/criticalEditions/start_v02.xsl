@@ -1051,17 +1051,37 @@
         <xsl:param name="biblentry"/>
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v03.csl</xsl:variable>
         <xsl:variable name="zoteroapi" select="json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=',encode-for-uri($biblentry))))/*"/>
-
-                <xsl:variable name="zoteroapijson">
-                    <xsl:value-of
-                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', $biblentry, '&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', ''))"/>
+            <xsl:variable name="zoteroapi-tested">
+            <xsl:choose>
+                <xsl:when test="doc-available($zoteroapi)">
+                    <xsl:value-of select="$zoteroapi"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>bibl not available</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable> 
+            <xsl:variable name="zoteroapijson" select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', $biblentry, '&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
+            <xsl:variable name="zoteroapijson-tested">
+                    <xsl:choose>
+                        <xsl:when test="doc-available($zoteroapijson)">
+                        <xsl:value-of select="$zoteroapijson"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>bibl not available</xsl:text></xsl:otherwise>
+                    </xsl:choose>
                 </xsl:variable>
-                
-        <xsl:variable name="zoteroapitei">
-            <xsl:value-of select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
+            <xsl:variable name="zoteroapitei" select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
+            <xsl:variable name="zoteroapitei-tested">
+            <xsl:choose>
+                <xsl:when test="doc-available($zoteroapitei)"><xsl:value-of select="$zoteroapitei"/></xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>bibl not available</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
                 </xsl:variable>
-        <xsl:variable name="key-item" select="$zoteroapi//(*[@key='key'][1])"/>
-        <xsl:variable name="tei-bib" select="document($zoteroapitei)//tei:listBibl"/>
+            <xsl:variable name="key-item" select="$zoteroapi-tested//(*[@key='key'][1])"/>
+        <xsl:variable name="tei-bib" select="document($zoteroapitei-tested)//tei:listBibl"/>
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:listBibl">
                         
@@ -1081,7 +1101,7 @@
                         
                         <a class="bib-ref" href="#bib-key-{$key-item[1]}">
                             <xsl:variable name="citation">
-                                <xsl:analyze-string select="$zoteroapijson"
+                                <xsl:analyze-string select="$zoteroapijson-tested"
                                     regex="(\s+&quot;citation&quot;:\s&quot;&lt;span&gt;)(.+)(&lt;/span&gt;&quot;)">
                                     <xsl:matching-substring>
                                         <xsl:value-of select="regex-group(2)"/>
@@ -1090,7 +1110,7 @@
                             </xsl:variable>
                             <xsl:choose>
                                 <xsl:when test="@rend='omitname'">
-                                    <xsl:analyze-string select="$zoteroapi"
+                                    <xsl:analyze-string select="$zoteroapi-tested"
                                         regex="(\s+&quot;date&quot;:\s&quot;)(.+)(&quot;)">
                                         <xsl:matching-substring>
                                             <xsl:value-of select="regex-group(2)"/>
