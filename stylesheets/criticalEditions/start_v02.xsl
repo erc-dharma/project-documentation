@@ -64,6 +64,12 @@
         </xsl:for-each>
     </xsl:function>
 
+    <!-- Paramètre contexte de développement -->
+    <xsl:variable name="viz-context">
+        <xsl:value-of select="'github'"/>
+        <!--<xsl:value-of select="'dharmalekha'"/>-->
+    </xsl:variable>
+    
     <!-- Variables -->
     <!-- $filename; use to generate the link for external files -->
     <xsl:variable name="filename">
@@ -111,6 +117,22 @@
     
     <!-- variable= chemin vers prosody -->
     <xsl:variable name="prosody" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
+    
+    <!-- varaible = chemin vers les ids des texts -->
+    <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
+    
+    <!--  variable = vers le ids des participants du projet-->
+    <xsl:variable name="list-members" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/refs/heads/master/DHARMA_idListMembers_v01.xml')//tei:listPerson"/>
+    
+    <!--  variable= chemin vers les langages utilisés dans le project-->
+    <xsl:variable name="list-languages">
+        <xsl:value-of select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_languages.tsv')"/>
+    </xsl:variable>
+    
+    <!-- variable = chemin vers les symboles -->
+    <xsl:variable name="list-symbol">
+        <xsl:value-of select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/gaiji/DHARMA_gaiji.tsv')"/>
+    </xsl:variable>
     
     <!-- editions id -->
     <xsl:variable name="edition-id">
@@ -218,8 +240,8 @@
                </xsl:choose> 
         </p>
         <p>
-            <xsl:text>Version: part commented</xsl:text>
-            <!--<xsl:call-template name="api-rest-github-history"/>-->
+            <xsl:text>Version: </xsl:text>
+            <xsl:call-template name="api-rest-github-history"/>
         </p>
         <hr/>
         <h2 id="witnesses">
@@ -305,7 +327,6 @@
     
     <xsl:template name="responsibility-display">
         <xsl:param name="responsability"/>
-        <xsl:variable name="list-members" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/refs/heads/master/DHARMA_idListMembers_v01.xml')//tei:listPerson"/>
         <!-- //tei:bibl[@xml:id=$MSlink-part] -->
             <xsl:choose>
                 <xsl:when test="contains($responsability, ' ')">
@@ -342,27 +363,14 @@
     <!-- I have only added the main languages found while writing the XSLT -->
     <xsl:template name="language-interpretation">
         <xsl:param name="language"/>
-        <xsl:variable name="data">
-            <xsl:value-of select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_languages.tsv')"/>
-        </xsl:variable>
         <xsl:variable name="lines">
-            <xsl:for-each select="tokenize($data, '\r?\n')">            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., '\t+')"/>
+            <xsl:for-each select="tokenize($list-languages, '\r?\n')">            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., '\t+')"/>
                 <!-- je ne cherche pas à tokenizer le contenu du premier token -->
                 <xsl:if test="$language = $tokens[1]"><xsl:value-of select="$tokens[2]"/>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="$lines"/>
-        <!--<xsl:choose>
-            <xsl:when test="$language='kaw-Latn'">Old Javanese</xsl:when>
-            <xsl:when test="$language='osn-Latn'">Old Sundanese</xsl:when>
-            <xsl:when test="$language='san-Latn'">Sanskrit</xsl:when>
-            <xsl:when test="$language='und'">Undefined</xsl:when>
-            <xsl:when test="$language='ind'">Indonesian</xsl:when>
-            <xsl:when test="$language='fre'">French</xsl:when>
-            <xsl:when test="$language='eng'">English</xsl:when>
-            <xsl:when test="$language='nld'">Dutch</xsl:when>
-        </xsl:choose>-->
     </xsl:template>
     
     <!-- Header imported from Dharmalekha -->
@@ -1383,7 +1391,6 @@
     <xsl:template name="metrical-list">
         <xsl:param name="metrical"/>
         <xsl:param name="line-context"/>
-        <xsl:variable name="prosody" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>
         <xsl:choose>
             <xsl:when test="matches($metrical,'[=\+\-]+')">
                 <xsl:choose>
@@ -1445,12 +1452,8 @@
     <!-- vérifier la stabilité des display!  -->
     <xsl:template match="tei:g">
         <xsl:variable name="type-symbol" select="@type"/>        
-        <!-- fetch the raw file -->
-        <xsl:variable name="data">
-            <xsl:value-of select="unparsed-text('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/gaiji/DHARMA_gaiji.tsv')"/>
-        </xsl:variable>
         <xsl:variable name="lines">
-            <xsl:for-each select="tokenize($data, '\r?\n')">            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., '\t+')"/>
+            <xsl:for-each select="tokenize($list-symbol, '\r?\n')">            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., '\t+')"/>
                 <!-- je ne cherche pas à tokenizer le contenu du premier token -->
                 <xsl:if test="contains($tokens[1], $type-symbol)">
                         <xsl:element name="span">
@@ -2253,7 +2256,7 @@
         <xsl:param name="MSlink"/>
         <xsl:param name="rendcontent"/>
         <xsl:variable name="rootHand" select="//tei:handDesc"/>
-        <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
+        
                <xsl:choose>
                    <xsl:when test="contains($MSlink, 'txt:')">
                        <xsl:variable name="MSlink-part" select="substring-after($MSlink, 'txt:')"/>
@@ -3268,26 +3271,55 @@
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
                 <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
-               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-                               
-                <link rel="stylesheet" href="./base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                <link rel="icon" href="./favicon.svg"/>
-                <script src="./base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-            </meta>
+                <xsl:choose>
+                    <xsl:when test="$viz-context='github'"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.css"></link>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css"/>
+                        <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js"></script>
+                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js"></script>
+                    
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <!-- liens pour le système intégré de Michaël -->
+         <!-- lien vers bootstrap 4 à faire -->
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>                        
+                     <link rel="stylesheet" href="./base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="./fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="icon" href="./favicon.svg"/>
+                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>   
+                        <script src="./base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                    </xsl:otherwise>
+                </xsl:choose>    
+         </meta>
         </head>
     </xsl:template>
     
 
     <!-- DHARMA html JS scripts  -->
     <xsl:template name="dharma-script">
+        <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
+        <xsl:choose>
+            <xsl:when test="$viz-context='github'">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js"></script>
+            </xsl:when>
+            <xsl:otherwise>
+        <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                
+                <!-- Popper.JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <!-- Bootstrap JS -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
         <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- side bar - table of contents -->
@@ -3391,49 +3423,6 @@
             </nav>
         </div>
         
-    </xsl:template>
-
-    <!-- Nav bar template -->
-    <xsl:template name="nav-bar"> 
-        <a id="dharma-logo" href="/"><img alt="DHARMA Logo" src="/dharma_bar_logo.svg"></img></a>
-        <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
-        <ul id="menu" class="hidden">
-            <li>
-                <a href="/repositories">
-                    <i class="fa-brands fa-git-alt"></i> Repositories</a>
-            </li>
-            <li>
-                <a href="/texts">
-                    <i class="fa-regular fa-file-lines"></i> Texts</a>
-            </li>
-            <li class="submenu">
-                <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
-                <ul class="hidden">
-                    <li><a href="/editorial-conventions">Editorial Conventions</a></li>
-                    <li><a href="/prosody">Prosodic Patterns</a></li>
-                </ul>
-                <li>
-                    <a href="/parallels">
-                        <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
-                </li>
-                <li class="submenu">
-                    <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="hidden">
-                        <li>
-                            <a href="/errors">
-                                <i class="fa-solid fa-bug"></i> Texts Errors</a>
-                        </li>
-                        <li>
-                            <a href="/bibliography-errors">
-                                <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
-                        </li>
-                        <li>
-                            <a href="/display">Display List</a>
-                        </li>
-                    </ul>
-                </li>
-                </li>
-        </ul>
     </xsl:template>
 
     <!-- Templates for Apparatus at the botton of the page -->
@@ -4234,8 +4223,7 @@
         </xsl:for-each>
        </xsl:element>-->
 
-        <xsl:variable name="IdListTexts"> https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml
-        </xsl:variable>
+
                     <xsl:for-each select="descendant-or-self::tei:app">
                         <xsl:if test="@type">   
                         <b><xsl:value-of select="@type"/></b>                       
