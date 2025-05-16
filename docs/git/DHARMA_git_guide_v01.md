@@ -32,7 +32,9 @@ See <https://training.github.com/kit/downloads/fr/github-git-cheat-sheet.pdf>
       + this needs to be done if you have done `git commit`, for others to get your changes with a `pull`
   * `git checkout -f`
       + this helps to get out of the problem ‘Your local changes to the following files would be overwritten by merge'
-      + do `git pull` after this    
+      + do `git pull` after this
++ If you have made changes and forgotten what they were. Please check them before pushing them. 
+  * Would you wish to revert to the prevision version because those changes might not be worht pushing, use `git restore` + __path-of-the-file__
 
 ### If your regular command line screen suddenly changes
 + This may happen if you forget to type `-m "..."` during a `git commit`, or if you forget to do a `git pull` before a `git add git commit`.
