@@ -161,7 +161,10 @@
                             </xsl:if>
                         </h1>
                         <div id="inscription-display">
-                            <xsl:apply-templates select="tei:teiHeader"/>
+                            
+                            <xsl:apply-templates select="tei:teiHeader/tei:fileDesc"/>
+                            <xsl:apply-templates select="tei:teiHeader/tei:encodingDesc"/>
+                            <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:sourceDesc"/>
                             
                             <div class="edition">
                                 <h2 id="edition">Edition</h2>
@@ -195,13 +198,15 @@
                                 <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='bibliography']"/>
                             </div>
                             </xsl:if>
-                            </div>
+
                             <xsl:if test="tei:text/tei:body/tei:div[@type='translation']/descendant-or-self::tei:note">
                                 <div class="notes">
                                     <h2 id="notes">Notes</h2>
                                     <xsl:call-template name="translation-bottom-notes"/>
                                 </div>
-                            </xsl:if>                        <!-- TO BE DONE -->
+                            </xsl:if> 
+                        </div>
+                                                   <!-- TO BE DONE -->
                         <!-- inscription source -->
                     </main>
                 </div>
@@ -212,11 +217,11 @@
     
 
     <!--  teiHeader – matching metadata in dharmalekha ! -->
-    <xsl:template match="tei:teiHeader">
+    <xsl:template match="tei:fileDesc">
         <p>
-            <xsl:if test="tei:fileDesc/tei:titleStmt/tei:respStmt/tei:resp[text()='author of digital edition']">
+            <xsl:if test="tei:titleStmt/tei:respStmt/tei:resp[text()='author of digital edition']">
                 <xsl:call-template name="editors">
-                    <xsl:with-param name="list-editors" select="tei:fileDesc/tei:titleStmt/tei:respStmt[tei:resp[text()='author of digital edition']]/tei:persName"/>
+                    <xsl:with-param name="list-editors" select="tei:titleStmt/tei:respStmt[tei:resp[text()='author of digital edition']]/tei:persName"/>
                 </xsl:call-template>
             </xsl:if>
         </p>
@@ -242,23 +247,10 @@
                </xsl:choose> 
         </p>
         <p>
-            <xsl:text>Version: </xsl:text>
+            <xsl:text>Version: part commented</xsl:text>
             <xsl:call-template name="api-rest-github-history"/>
         </p>
-        <hr/>
-        <h2 id="witnesses">
-            <xsl:choose>
-                <xsl:when test="count(tei:fileDesc/tei:sourceDesc/tei:listWit[1]/tei:witness) = 1">
-                    <xsl:text>Witness</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>Witnesses</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
-        </h2>
-        <ul>
-            <xsl:apply-templates select="tei:fileDesc/tei:sourceDesc/tei:listWit"/>
-        </ul>
+        
     </xsl:template>
    
  <!-- call to api github -->
@@ -996,23 +988,6 @@
             <xsl:attribute name="data-app">
                 <xsl:value-of select="generate-id()"/>
             </xsl:attribute>
-
-            <!--<xsl:attribute name="tabindex">0</xsl:attribute>
-            <xsl:attribute name="data-toggle">popover</xsl:attribute>
-            <xsl:attribute name="data-html">true</xsl:attribute>
-            <xsl:attribute name="data-target">
-                <xsl:value-of select="generate-id()"/>
-            </xsl:attribute>
-            <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
-                <xsl:value-of select="$app-num"/></xsl:attribute>
-            <xsl:attribute name="title">Apparatus <xsl:number level="any" count="//tei:app[not(parent::tei:listApp)] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(//tei:TEI[@type='translation'])]"/></xsl:attribute>
-            <xsl:attribute name="id">
-                <xsl:text>from-app-</xsl:text>
-                <xsl:value-of select="$app-num"/>
-            </xsl:attribute>-->
-                        <!--<xsl:call-template name="app-link">
-                            <xsl:with-param name="location" select="'apparatus'"/>
-                        </xsl:call-template>-->
              <xsl:choose>
                  <xsl:when test="not(tei:lem) and tei:rdg[@cause='transposition'] or tei:rdgGrp[@cause='transposition']">
                      <xsl:text>[transposed segment]</xsl:text>
@@ -1440,6 +1415,54 @@
     <!-- updated -->
     <xsl:template match="tei:foreign">
         <i><xsl:apply-templates/></i>
+    </xsl:template>
+    
+    <xsl:template match="tei:encodingDesc">
+        <hr/>
+        <h2 id="liminaries">Liminaries</h2>
+        <xsl:if test="tei:projectDesc/tei:p/text()">
+            <ul><li><b>Project</b>: 
+                <ul><xsl:for-each select="tei:projectDesc/tei:p">
+                    <li><xsl:apply-templates select="."/></li>
+                </xsl:for-each></ul></li></ul>
+        </xsl:if>
+        
+        <xsl:if test="tei:editorialDecl//tei:p/text()">
+            <ul><li><b>Editorial declaration</b>: 
+            <ul><xsl:if test="tei:editorialDecl/tei:correction/tei:p/text()">
+                <li>correction: 
+                    <ul><xsl:for-each select="tei:editorialDecl/tei:correction/tei:p">
+                        <li><xsl:apply-templates select="."/></li>
+                    </xsl:for-each>
+                    </ul>
+                    </li>
+            </xsl:if>
+                <xsl:if test="tei:editorialDecl/tei:normalization/tei:p/text()">
+                    <li>normalization: 
+                        <ul><xsl:for-each select="tei:editorialDecl/tei:normalization/tei:p">
+                            <li><xsl:apply-templates select="."/></li>
+                        </xsl:for-each>
+                        </ul>
+                    </li>
+                </xsl:if>
+                <xsl:if test="tei:editorialDecl/tei:interpretation/tei:p/text()">
+                    <li>interpretation: 
+                        <ul><xsl:for-each select="tei:editorialDecl/tei:interpretation/tei:p">
+                            <li><xsl:apply-templates select="."/></li>
+                        </xsl:for-each>
+                        </ul>
+                    </li>
+                </xsl:if>
+                <xsl:if test="tei:samplingDecl/tei:p/text()">
+                    <li>Text sample: 
+                        <ul><xsl:for-each select="tei:samplingDecl/tei:p">
+                            <li><xsl:apply-templates select="."/></li>
+                        </xsl:for-each>
+                        </ul>
+                    </li>
+                </xsl:if></ul></li>
+        </ul>
+         </xsl:if>        
     </xsl:template>
     
     <!--  fw ! -->
@@ -1952,12 +1975,6 @@
             <xsl:apply-templates/>
     </xsl:template>
 
-    <!--<xsl:template match="tei:note[//tei:TEI[@type='translation']]">
-        <xsl:call-template name="generate-trans-link">
-            <xsl:with-param name="situation" select="'text'"/>
-        </xsl:call-template>
-    </xsl:template>-->
-
     <xsl:template name="generate-trans-link">
         <xsl:param name="situation"/>
         <xsl:variable name="trans-num">
@@ -2020,8 +2037,13 @@
     <xsl:template match="tei:note">
         <xsl:choose>
             <xsl:when test="tei:note[@type='prosody']"/>
+            <xsl:when test="ancestor-or-self::tei:div[@type='translation']">
+                <xsl:call-template name="generate-trans-link">
+                    <xsl:with-param name="situation" select="'text'"/>
+                </xsl:call-template>
+            </xsl:when>
             <xsl:when test="self::tei:note[parent::tei:p or parent::tei:lg or parent::tei:l][position() = last()] or self::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]"/>
-            <xsl:otherwise>
+                        <xsl:otherwise>
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
@@ -2410,15 +2432,19 @@
     <!--  R ! -->
     <!-- to be done -->
     <xsl:template match="tei:ref">
-        <xsl:element name="a">
+        <xsl:choose>
+            <xsl:when test="$viz-context='github'">
+                <xsl:element name="a">
             <xsl:attribute name="class">ref</xsl:attribute>
             <xsl:attribute name="href">
                 <xsl:choose>
                     <!-- link to the epigraphy -->
+                    <!-- https://dharmalekha.info/texts/INSIDENKAbhayananda -->
                     <xsl:when test="matches(@target, 'DHARMA_INSIDENK')">
-                        <xsl:value-of select="@target"/>
+                        <xsl:variable name="target-match" select="substring-before(substring-after(@target, 'DHARMA_'), '.xml')"/>
+                        <xsl:value-of select="concat('https://dharmalekha.info/texts/', $target-match)"/>
                     </xsl:when>
-                    <xsl:when test="matches(@target,'DHARMA_CritEd') ">
+                    <xsl:when test="matches(@target,'DHARMA_CritEd') or matches(@target,'DHARMA_DiplEd')">
                         <xsl:value-of select="replace(concat('https://erc-dharma.github.io/tfd-nusantara-philology/output/critical-edition/html/', @target), '.xml#', '.html#')"/>
                     </xsl:when>
                     <xsl:otherwise>
@@ -2426,8 +2452,32 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
-            <xsl:apply-templates/>
+                    <xsl:apply-templates/>
         </xsl:element>
+            </xsl:when>
+            <!-- conditions pour le système de Michaël -->
+            <xsl:otherwise>
+                <xsl:element name="a">
+                    <xsl:attribute name="class">ref</xsl:attribute>
+                    <xsl:attribute name="href">
+                <xsl:choose>
+                    <!-- une règle pour tous les cas de figures dans la DB -->
+                    <!-- à vérifier, une fois implémenter -->
+                    <xsl:when test="matches(@target, 'DHARMA_')">
+                        <xsl:variable name="target-match" select="substring-before(substring-after(@target, 'DHARMA_'), '.xml')"/>
+                        <xsl:value-of select="concat('https://dharmalekha.info/texts/', $target-match)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="@target"/>
+                    </xsl:otherwise>
+ </xsl:choose>
+                    </xsl:attribute>
+
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:template>
     
     <!--  S ! -->
@@ -2835,6 +2885,23 @@
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus-reformulation"/>
         </span>
+    </xsl:template>
+    
+    <xsl:template match="tei:sourceDesc">
+        <hr/>
+        <h2 id="witnesses">
+            <xsl:choose>
+                <xsl:when test="count(tei:listWit[1]/tei:witness) = 1">
+                    <xsl:text>Witness</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>Witnesses</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </h2>
+        <ul>
+            <xsl:apply-templates select="tei:listWit"/>
+        </ul>
     </xsl:template>
 
     <!--  subst ! -->
@@ -3475,41 +3542,6 @@
     <br/>
   </xsl:template>
 
-   <!-- <xsl:template name="tpl-notes-trans">
-        <xsl:variable name="filename">
-            <xsl:value-of select="//tei:idno[@type='filename']"/>
-        </xsl:variable>
-        <xsl:variable name="document-trans">
-            <xsl:choose>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml'))">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transNdl01.xml')"/>
-                </xsl:when>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml.xml'))">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_transEng01.xml.xml')"/>
-                </xsl:when>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml.xml'))">
-                    <xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_transEng01.xml.xml')"/>
-                </xsl:when>
-            </xsl:choose>
-        </xsl:variable>
-
-            <xsl:element name="div">
-                <xsl:attribute name="id">translation-notes</xsl:attribute>
-            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-                <xsl:element name="h4">Translation Notes</xsl:element>
-                <xsl:for-each select="document($document-trans)//tei:note">
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">translation-notes</xsl:attribute>
-                        <xsl:call-template name="generate-trans-link">
-                            <xsl:with-param name="situation" select="'apparatus-bottom'"/>
-                        </xsl:call-template>
-                        <xsl:apply-templates/>
-                    </xsl:element>
-                    <br/>
-                </xsl:for-each>
-            </xsl:element>
-    </xsl:template>-->
-
     <xsl:template name="app-link">
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
@@ -3536,7 +3568,7 @@
         <xsl:param name="app-num"/>
         <xsl:param name="trans-num"/>
         <xsl:param name="type"/>
-            <xsl:if test="$location = 'bottom' or $location='translation-bottom'">
+            <xsl:if test="$location = 'bottom'">
                 <a>
                     <xsl:attribute name="id">
                         <xsl:text>to-app-</xsl:text>
@@ -3640,9 +3672,12 @@
             <xsl:when test="tei:note[ancestor::tei:div[@type='translation']]">
                 <xsl:call-template name="lbrk-app"/>
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
-                <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'translation-bottom'"/>
+                <xsl:call-template name="generate-trans-link">
+                    <xsl:with-param name="situation" select="'apparatus-bottom'"/>
                 </xsl:call-template>
+                <!--<xsl:call-template name="app-link">
+                    <xsl:with-param name="location" select="'translation-bottom'"/>
+                </xsl:call-template>-->
                 <xsl:text>. </xsl:text>
             </xsl:when>
             <xsl:otherwise>
@@ -4584,6 +4619,7 @@
                                         <xsl:call-template name="generate-trans-link">
                                             <xsl:with-param name="situation" select="'apparatus-internal'"/>
                                         </xsl:call-template>
+                                        
                                         <xsl:apply-templates/>
                                     </xsl:element>
                                     <br/>
@@ -4606,18 +4642,10 @@
             <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']/descendant-or-self::tei:note">
                 <xsl:call-template name="lbrk-app"/>
                 <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
-                <xsl:call-template name="app-link">
-                    <xsl:with-param name="location" select="'translation-bottom'"/>
+                <xsl:call-template name="generate-trans-link">
+                    <xsl:with-param name="situation" select="'apparatus-bottom'"/>
                 </xsl:call-template>
-                <xsl:text>. </xsl:text>
                 <xsl:apply-templates/>
-            <!--<li class="note" id="note{generate-id(.)}">
-                <xsl:element name="a">
-                    <xsl:attribute name="class">note-ref</xsl:attribute>
-                    <xsl:attribute name="href">#<xsl:value-of select="generate-id()"/></xsl:attribute>
-                    <xsl:apply-templates/>
-                </xsl:element>
-            </li>-->
         </xsl:for-each>
         </ol>
       </xsl:template>
