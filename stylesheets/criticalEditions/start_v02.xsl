@@ -243,7 +243,7 @@
         </p>
         <p>
             <xsl:text>Version: </xsl:text>
-            <!--<xsl:call-template name="api-rest-github-history"/>-->
+            <xsl:call-template name="api-rest-github-history"/>
         </p>
         <hr/>
         <h2 id="witnesses">
@@ -1793,6 +1793,9 @@
         </span>
     </xsl:template>
 
+    <xsl:template match="tei:label">
+                <b><xsl:apply-templates/></b>
+    </xsl:template>
     <!--  lb ! -->
     <!-- <span class="lb" data-tip="Line start">⟨1r5⟩</span> -->
     <!-- <span class="hyphen-break" data-tip="Hyphen break">-</span> -->
