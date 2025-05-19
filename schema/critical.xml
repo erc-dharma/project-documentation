@@ -2357,9 +2357,6 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem ident="prosody">
-                  <desc versionDate="2021-10-25" xml:lang="en">To be used as the first child to declare a prosodic pattern</desc>
-                </valItem>
                 <valItem ident="credit">
                   <desc versionDate="2021-10-25" xml:lang="en">To be used only inside the translation</desc>
                 </valItem>
