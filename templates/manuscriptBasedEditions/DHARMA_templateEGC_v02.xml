@@ -26,13 +26,12 @@
                 </respStmt>
             </titleStmt>
             <publicationStmt>
-                <authority>DHARMA</authority>
+                <authority><ref target="{URI for DHARMA website}">DHARMA</ref></authority>
                 <pubPlace><!-- fill in here the place or places where the encoding has been done --></pubPlace>
                 <idno type="filename">Fill in the filename with the xml extension</idno>
                 <availability>
                     <licence target="https://creativecommons.org/licenses/by/4.0/">
                         <p>This work is licenced under the Creative Commons Attribution 4.0 Unported Licence. To view a copy of the licence, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
-                        <p>Copyright (c) 2019-2025 by John Doe.</p><!-- Replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
                     </licence>
                 </availability>
                 <date from="2019" to="2025">2019-2025</date>
@@ -60,7 +59,7 @@
                                     <!--<colophon>
 										<quote></quote>
 										</colophon> -->
-                                    <!-- colophon should be structures with quote elements with attribute @type and @xml:lang when necessary -->
+                                    <!-- colophon should be *structured* with quote elements with *attributes* @type and @xml:lang when necessary -->
                                 </msItem>
                             </msContents>
                             <physDesc>
@@ -86,7 +85,6 @@
             </sourceDesc>
         </fileDesc>
         <encodingDesc>
-            <encodingDesc>
                 <projectDesc>
                     <p>Encoded in TEI according to the <ref target="{URI for DHARMA editorial conventions or page with link to Encoding Guides}">Conventions of ERC-Project DHARMA</ref>.</p>
                     <!-- A second paragraph can be used to acknowledge any relevant funding agency, project acronym and number, any to specify for instance that the edition results from a personal research project such as a PhD.  

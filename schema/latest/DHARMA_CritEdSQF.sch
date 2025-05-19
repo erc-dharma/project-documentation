@@ -195,7 +195,7 @@
         </sch:rule>
     </sch:pattern>
     
-    <!-- controlling the prosdoy with @met -->
+    <!-- controlling the prosody with @met -->
     <sch:pattern>
         <sch:rule context="t:div/@met[not(matches(.,'[=\+\-]+') or contains(., 'free'))] | t:lg/@met[not(matches(.,'[=\+\-]+') or contains(., 'free'))]">
             <sch:let name="prosody" value="doc('https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_prosodicPatterns_v01.xml')"/>

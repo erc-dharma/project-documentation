@@ -54,7 +54,7 @@
       <sourceDesc>
         <p>Written from scratch.</p>
       </sourceDesc>
-    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-09T17:30:41.352Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
+    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-09T17:30:41.352Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-19T09:40:37.313Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
     <revisionDesc>
       <change who="part:axja" when="2023-05-23">adding the possibility to add BESTOW ref</change>
       <change who="part:axja" when="2023-04-19">Changing the @cause ordinal for transposition; changing tei:lem/@cause='transposition' for tei:lem/@type='transposition'; deleting the schematron rule limiting the use of n with p to translations ; deleting a rule regarding the use of @cause transposition on rdg only if there is no lem </change>
@@ -1940,9 +1940,9 @@
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
-            <attDef ident="xml:lang" mode="delete"/>
+            
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="type" mode="delete"/>
+            <attDef ident="type" mode="delete"><valList mode="change"><valItem mode="add" ident="speaker"/><valItem mode="add" ident="headword"/></valList></attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="lb" module="core" mode="change">
@@ -2357,9 +2357,6 @@
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="change">
-                <valItem ident="prosody">
-                  <desc versionDate="2021-10-25" xml:lang="en">To be used as the first child to declare a prosodic pattern</desc>
-                </valItem>
                 <valItem ident="credit">
                   <desc versionDate="2021-10-25" xml:lang="en">To be used only inside the translation</desc>
                 </valItem>

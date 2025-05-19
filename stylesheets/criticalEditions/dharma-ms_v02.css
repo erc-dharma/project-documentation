@@ -1,0 +1,116 @@
+﻿/* CSS file based on salit.css written by Andrew Ollett */
+/* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
+/* For the tables and stuff */
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.base-text {
+    font-size:1.20em;
+}
+
+.footnote {
+    display:block;
+}
+.footnotes {
+    font-size:0.9rem;
+    padding-top:0.4rem;
+    border-top: 1px solid #dee2e6!important;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(222, 226, 230);
+}
+
+.quote.single:before {
+    content:"‘";
+}
+.quote.single:after {
+    content:"’";
+}
+
+/* Ajouter pour remettre la couleur seulement ds le corps et plus dans les popovers */
+span.lem >a, .lem{
+    color:blue;
+}
+
+
+#apparatus >a{
+    color:blue;
+}
+
+#translation-notes >a{
+    color: blue;
+}
+
+.lemma-line, .reading-line, .note-line {
+    display:block;
+}
+
+
+.tooltipApp {
+    color: blue;
+}
+     
+.tooltipApp a{
+    color: blue; 
+    font-style: normal;
+}
+.lem-last-note{
+    color: black;
+    font-style: normal;
+    }
+
+.apparat-col {
+   display: inline-block;
+   position: relative;
+   font-size: 75%;
+}
+
+.lem-last-note a{
+    color: blue; 
+    right: -950px;
+    position:relative;
+}
+
+.mark {
+    background-color: yellow;
+}
+
+.block{
+  left: 35px;
+  max-width: 90%;
+  position: relative;
+  display: block;
+}
+
+.parallel-text{
+    color: black;
+}
+
+.supsub a sup+sub {
+    position: relative;
+    display: block;
+    right: -20px; 
+    top: -7px;  
+    font-size: 65%;
+}
+
+.supsub a{
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.text-break{
+    word-break: break-all;
+}
+
+.unmetrical{
+   background-color: pink;
+}
+                  
