@@ -1220,7 +1220,7 @@
                     <xsl:attribute name="data-tip">Non-standard text<xsl:if test="tei:reg"> (standardisation: <span class="reg">⟨<xsl:apply-templates/>⟩</span></xsl:if></xsl:attribute>¡<xsl:apply-templates/>!</xsl:element>
             </xsl:when>
             <!-- <span class="reg" data-tip="Standardised text (original: <span class=&quot;orig&quot;>¡coloṁ!</span>)">⟨celeṁ⟩</span> -->
-            <xsl:when test="tei:reg">
+            <xsl:when test="tei:reg and $edition-type='critical'">
                 <xsl:element name="span">
                     <xsl:attribute name="class">reg</xsl:attribute>
                     <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates/>!</span></xsl:if></xsl:attribute>
@@ -1234,12 +1234,28 @@
                     <xsl:attribute name="data-tip">Incorrect text<xsl:if test="tei:corr">  (emendation: <span class="corr">⟨<xsl:apply-templates/>⟩</span></xsl:if></xsl:attribute>¿<xsl:apply-templates/>?</xsl:element>
             </xsl:when>
             <!-- <span class="corr" data-tip="Emended text (original: <span class=&quot;sic&quot;>¿l?</span>)">⟨kh⟩</span> -->
-            <xsl:when test="tei:corr">
+            <xsl:when test="tei:corr and $edition-type='critical'">
                 <xsl:element name="span">
                     <xsl:attribute name="class">corr</xsl:attribute>
                     <xsl:attribute name="data-tip">Emended text<xsl:if test="tei:sic">  (original: <span class="sic">¿<xsl:apply-templates/>?</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates/>⟩</xsl:element>
             </xsl:when>
         </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
+        <xsl:variable name="apparatus">
+            <span>
+                <span class="mb-1 lemma-line">
+                    <span class="app-corr">
+                        <xsl:apply-templates select="child::tei:corr"/>
+                        <xsl:text> (corr)</xsl:text>
+                    </span>
+                </span>
+            </span>
+        </xsl:variable>
+        <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$apparatus"/>
+        </span>
     </xsl:template>
     
     <!-- citedRange -->
@@ -3081,21 +3097,20 @@
     
     <xsl:template match="tei:witness">
             <li>
-                <xsl:element name="a">
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="@xml:id"/>
-                    </xsl:attribute>
-                </xsl:element>
+                <a id='{@xml:id}'>
                 <b>
                     <xsl:choose>
-                        <xsl:when test="tei:abbr[1]">
+                        <!-- pour éviter les abbr vides -->
+                        <xsl:when test="tei:abbr[@type='siglum'][1]/text() =' '">
                             [<xsl:apply-templates select="tei:abbr"/>]
                         </xsl:when>
-                        <xsl:otherwise>
+                        <!-- pour éviter les id non édités -->
+                        <xsl:when test="@xml:id='fakeID'"/>
+                       <xsl:otherwise>
                             [<xsl:value-of select="@xml:id"/>]
                         </xsl:otherwise>
                     </xsl:choose>
-                </b><xsl:text> </xsl:text>
+                </b></a><xsl:text> </xsl:text>
                 <xsl:choose>
                     <xsl:when test="tei:msDesc">
                         <xsl:if test="tei:msDesc/tei:msIdentifier//text()">
