@@ -1335,7 +1335,8 @@
                         </xsl:attribute>
                     </xsl:if>
                     <xsl:if test="@type='canto' or @type='dyad'">
-                        <h4 class="ed-heading" id="toc{generate-id(.)}"><b>Canto <xsl:number count="tei:div[@type='canto']" level="multiple" format="1"/></b>
+                        <xsl:variable name="type-div" select="@type"/>
+                        <h4 class="ed-heading" id="toc{generate-id(.)}"><b><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/></b>
                             <xsl:if test="@rend='met'">
                                 <xsl:call-template name="metrical-list">
                                     <xsl:with-param name="metrical" select="$metrical"/>
@@ -1379,11 +1380,14 @@
                     <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical][1]">
                         <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
                         <span data-tip=" &lt;span class=&quot;prosody&quot;&gt;{$prosody//tei:item[tei:seg[@type='xml']]/tei:seg[@type='prosody']}&lt;/span&gt;">
-                        <i><xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/></i>
+                            Name unknown <i><xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/></i>
                          class</span>
                     </xsl:when>
                     <xsl:otherwise>
-                        <span class="prosody"><xsl:value-of select="translate($metrical, '-=+', '⏑⏓–')"/></span>
+                        <xsl:element name="span">
+                            <xsl:attribute name="data-tip">&lt;span class=&quot;prosody&quot;&gt;<xsl:value-of select="translate($metrical, '-=+', '⏑⏓–')"/>&lt;/span&gt;</xsl:attribute>
+                            <xsl:text> Name unknown</xsl:text>
+                        </xsl:element>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -1485,14 +1489,32 @@
         <xsl:variable name="type-symbol" select="@type"/>        
         <xsl:variable name="lines">
             <xsl:for-each select="tokenize($list-symbol, '\r?\n')">            <xsl:variable name="tokens" as="xs:string*" select="tokenize(., '\t+')"/>
-                <!-- je ne cherche pas à tokenizer le contenu du premier token -->
-                <xsl:if test="contains($tokens[1], $type-symbol)">
+            <xsl:choose>
+                <!-- condition pour gérer l'espace; seulement un espace pris en compte pour éviter l'itération -->
+                <xsl:when test="contains($tokens[1], ' ')">                       
+                    <xsl:if test="substring-before($tokens[1], ' ') = $type-symbol">
+                            <xsl:element name="span">
+                                <xsl:attribute name="class">symbol</xsl:attribute>
+                                <xsl:attribute name="data-tip">Symbol: <xsl:value-of select="$tokens[3]"/></xsl:attribute>
+                                <xsl:value-of select="$tokens[2]"/>
+                            </xsl:element>
+                        </xsl:if>
+                    <xsl:if test="substring-after($tokens[1], ' ') = $type-symbol">
                         <xsl:element name="span">
                             <xsl:attribute name="class">symbol</xsl:attribute>
                             <xsl:attribute name="data-tip">Symbol: <xsl:value-of select="$tokens[3]"/></xsl:attribute>
                             <xsl:value-of select="$tokens[2]"/>
                         </xsl:element>
-                </xsl:if>
+                    </xsl:if>
+                </xsl:when>
+                <xsl:when test="$tokens[1] =$type-symbol">
+                     <xsl:element name="span">
+                            <xsl:attribute name="class">symbol</xsl:attribute>
+                            <xsl:attribute name="data-tip">Symbol: <xsl:value-of select="$tokens[3]"/></xsl:attribute>
+                            <xsl:value-of select="$tokens[2]"/>
+                        </xsl:element>
+                </xsl:when>
+            </xsl:choose>  
             </xsl:for-each>
                     </xsl:variable>
         
@@ -1819,10 +1841,6 @@
         <!-- condition pour éviter le bruit généré par les base-text -->
         <xsl:if test="not(parent::tei:quote[@type='base-text'])">  
             <h6 class="ed-heading">
-                                   <!--<xsl:if test="parent::tei:div[@type='canto']">
-                            <xsl:value-of select="parent::tei:div[@type='canto']/@n"/>
-                            <xsl:text>.</xsl:text>
-                        </xsl:if>-->
                         <xsl:if test="@n">
                             <xsl:number format="I" value="@n"/>.
                         </xsl:if>               
@@ -1832,18 +1850,15 @@
                     </xsl:call-template>
                 </xsl:if> 
         </h6></xsl:if>
-        <xsl:element name="div">
-            <xsl:attribute name="class">row</xsl:attribute>
-        
-                   <xsl:element name="div">
-                       <xsl:attribute name="class">col-10 text-col</xsl:attribute>
+        <div class="row">
+            <div class="col-10 text-col">                
                        <xsl:call-template name="lg-content"/>
                        <xsl:call-template name="lbrk-app"/>
-            </xsl:element>     
+            </div>    
         <xsl:if test="descendant-or-self::tei:app and not(parent::tei:p) or following-sibling::tei:*[1][local-name() ='listApp'][@type='apparatus'] or ancestor::tei:app"> <!-- not(ancestor::tei:quote[@type='base-text']) or -->
-            <xsl:call-template name="launch-app"/>            
+            <xsl:call-template name="launch-app"/>          
         </xsl:if>
-        </xsl:element>
+        </div>
         <xsl:if test="//tei:div[@type='translation']/descendant-or-self::tei:*[substring-after(@corresp, '#') = $textpart-id]"><xsl:call-template name="translation-button">
             <xsl:with-param name="textpart-id" select="$textpart-id "/>
         </xsl:call-template></xsl:if>
@@ -2883,12 +2898,12 @@
     
     <xsl:template match="tei:witness">
             <li>
-                <a id='{@xml:id}'>
+                <a id="{@xml:id}">
                 <b>
                     <xsl:choose>
                         <!-- pour éviter les abbr vides -->
-                        <xsl:when test="tei:abbr[@type='siglum'][1]/text() =' '">
-                            [<xsl:apply-templates select="tei:abbr"/>]
+                        <xsl:when test="tei:abbr[@type='siglum'][1]">
+                            [<xsl:apply-templates select="tei:abbr[@type='siglum']"/>]
                         </xsl:when>
                         <!-- pour éviter les id non édités -->
                         <xsl:when test="@xml:id='fakeID'"/>
@@ -3099,8 +3114,8 @@
         </xsl:if>
         <a class="siglum" href="#{$target}">
             <xsl:choose>
-                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr">
-                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr"/>
+                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum']">
+                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum']"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="$target"/>
@@ -3939,7 +3954,7 @@
     <xsl:template name="source-siglum">
         <xsl:param name="string-to-siglum"/>
             <b>Ed<sup class="ed-siglum">
-                    <xsl:value-of select="//tei:listBibl/tei:biblStruct[@xml:id=$string-to-siglum]/tei:author/tei:surname"/></sup></b>
+                <xsl:apply-templates select="//tei:witness[@xml:id=$string-to-siglum]/tei:abbr"/></sup></b>
     </xsl:template>
 
     <!-- Parallels: generate the content  -->
@@ -4149,21 +4164,16 @@
        <div class="row">
            <div class="col-10 text-col">
                <a class="btn btn-outline-dark btn-block" data-toggle="collapse" href="#{generate-id()}" role="button" aria-expanded="false" aria-controls="generate-id()">
-                   <xsl:element name="small">Translation</xsl:element>
+                   <span class="smallcaps">Translation</span>
                    <!-- need to add the language -->
                </a>
-               <xsl:element name="div">
-                   <xsl:attribute name="id">
-                       <xsl:value-of select="generate-id()"/>
-                   </xsl:attribute>
-                   <xsl:attribute name="class">collapse</xsl:attribute>
-                   <xsl:element name="div">
-                       <xsl:attribute name="class">card card-body border-dark</xsl:attribute>
+               <div id="{generate-id()}" class="collapse">
+                   <div class="card card-body border-dark">
                        <xsl:call-template name="tpl-translation">
                            <xsl:with-param name="textpart-id" select="$textpart-id"/>
                        </xsl:call-template>
-                   </xsl:element>
-               </xsl:element>
+                   </div>
+               </div>
            </div>
        </div>
        <xsl:call-template name="lbrk-app"/>
@@ -4180,35 +4190,27 @@
                             <xsl:apply-templates select="$trans-path"/>
                     <xsl:if test="$trans-path/child::tei:note">
                         <hr/>
-                        <xsl:element name="div">
-                            <xsl:attribute name="class">bloc-notes</xsl:attribute>
-                            <xsl:element name="h5">
-                                <xsl:text>Notes</xsl:text>
-                            </xsl:element>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">notes-translation</xsl:attribute>
+                        <div class="bloc-notes">
+                            <h5>Notes</h5>
+                            <span class="notes-translation">
                                 <!-- An entry is created for-each of the following instances
                                 * notes.  -->
                                 <xsl:for-each select="$trans-path/tei:note">
-                                    <xsl:element name="span">
-                                        <xsl:attribute name="class">tooltiptext-notes</xsl:attribute>
+                                    <span>
                                         <xsl:call-template name="generate-trans-link">
                                             <xsl:with-param name="situation" select="'apparatus-internal'"/>
                                         </xsl:call-template>
                                         
                                         <xsl:apply-templates/>
-                                    </xsl:element>
+                                    </span>
                                     <xsl:call-template name="lbrk-app"/>
                                 </xsl:for-each>
-                            </xsl:element>
-                        </xsl:element>
+                            </span>
+                        </div>
                     </xsl:if>
                 </xsl:when>
                 <xsl:otherwise>
-                    <p>
-                        <xsl:text>No translation available yet for this part of the edition </xsl:text>
-                        <xsl:value-of select="$filename"/>
-                    </p>
+                    <p>No translation available yet for this part of the edition <xsl:value-of select="$filename"/></p>
                 </xsl:otherwise>
             </xsl:choose>
     </xsl:template>
@@ -4217,8 +4219,7 @@
         <ol>
             <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']/descendant-or-self::tei:note">
                 <xsl:call-template name="lbrk-app"/>
-                <!-- in htm-tpl-apparatus.xsl or txt-tpl-apparatus.xsl -->
-                <xsl:call-template name="generate-trans-link">
+                  <xsl:call-template name="generate-trans-link">
                     <xsl:with-param name="situation" select="'apparatus-bottom'"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
@@ -4293,19 +4294,6 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:when>
-               <!-- <xsl:otherwise>
-                    <xsl:choose>
-                        <xsl:when test="matches(., '[\-]+')">
-                            <xsl:text>pages </xsl:text>
-                        </xsl:when>
-                        <xsl:when test="matches(., ',')">
-                            <xsl:text>pages </xsl:text>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text>page </xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:otherwise> -->
             </xsl:choose>
         </xsl:variable>
         <xsl:choose>
@@ -4355,23 +4343,6 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-
-    <xsl:template name="scansion">
-        <xsl:param name="met-string"/>
-        <xsl:param name="string-len"/>
-        <xsl:param name="string-pos"/>
-        <xsl:param name="parm-leiden-style" tunnel="yes" required="no"></xsl:param>
-        <xsl:if test="$string-pos > -1">
-            <xsl:text>&#xa0;</xsl:text>
-            <xsl:value-of select="substring($met-string, number($string-len - $string-pos), 1)"/>
-            <xsl:text>&#xa0;</xsl:text>
-            <xsl:call-template name="scansion">
-                <xsl:with-param name="met-string" select="$met-string"/>
-                <xsl:with-param name="string-len" select="$string-len"/>
-                <xsl:with-param name="string-pos" select="$string-pos - 1"/>
-            </xsl:call-template>
-        </xsl:if>
-    </xsl:template>
     
     <!-- source display hidden by default -->
     <!-- structure préparée, mais contenu à faire -->
@@ -4394,7 +4365,7 @@
                                 </xsl:choose>
                                 </span>
                             <span class="xml-line-contents">
-                                <!-- pour le moment, je n'ai mis en place que l'identification des lignes de processing-instructiona -->
+                                <!-- pour le moment, je n'ai mis en place que l'identification des lignes de processing-instructions -->
                                 <xsl:choose>
                                     <xsl:when test="matches(., '&lt;?xml')">
                                         <span class="instruction"><xsl:copy-of select="."/></span>
