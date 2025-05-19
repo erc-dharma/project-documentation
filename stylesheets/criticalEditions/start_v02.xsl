@@ -64,7 +64,7 @@
         </xsl:for-each>
     </xsl:function>
 
-    <!-- Paramètre contexte de développement -->
+    <!-- Paramètre contexte de développement pour intégration à Dharmalekha-->
     <xsl:variable name="viz-context">
         <xsl:value-of select="'github'"/>
         <!--<xsl:value-of select="'dharmalekha'"/>-->
@@ -163,7 +163,7 @@
                         <div id="inscription-display">
                             
                             <xsl:apply-templates select="tei:teiHeader/tei:fileDesc"/>
-                            <xsl:apply-templates select="tei:teiHeader/tei:encodingDesc"/>
+                            <xsl:if test="tei:teiHeader/tei:encodingDesc/tei:projectDesc/tei:p[2]/text() or tei:teiHeader/tei:encodingDesc/tei:editorialDecl//tei:p/text()"><xsl:apply-templates select="tei:teiHeader/tei:encodingDesc"/></xsl:if>
                             <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:sourceDesc"/>
                             
                             <div class="edition">
@@ -175,7 +175,7 @@
                                 <h2 id="apparatus" class="collapsible">Apparatus</h2>
                                 <xsl:call-template name="tpl-apparatus"/>
                             </div>
-                            <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//text()">
+                            <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//tei:p/text()">
                                 <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']">
                                     <div class="translation">
                                         <xsl:element name="h2">
@@ -208,6 +208,7 @@
                         </div>
                                                    <!-- TO BE DONE -->
                         <!-- inscription source -->
+                        <xsl:call-template name="source-display"/>
                     </main>
                 </div>
             </body>
@@ -248,8 +249,8 @@
         </p>
         <p>
             <xsl:text>Version: part commented</xsl:text>
-            <xsl:call-template name="api-rest-github-history"/>
-        </p>
+            <!--<xsl:call-template name="api-rest-github-history"/>
+-->        </p>
         
     </xsl:template>
    
@@ -464,8 +465,14 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>         
-        <!-- un ID devra être ajouter sur les sous-titres -->
-                    <h6 class="ed-heading">
+        
+                <xsl:choose>
+                    <!-- condition ajouter pour faire une autre structure basée sur les lb; voir le template tei:lb -->
+                    <xsl:when test="$edition-type='diplomatic'">
+                        <xsl:apply-templates/>
+                    </xsl:when>
+                    <xsl:otherwise>    
+                        <h6 class="ed-heading" id="{generate-id(.)}">
                         <xsl:if test="@type">
                             <xsl:value-of select="@type"/>
                         </xsl:if>
@@ -490,7 +497,7 @@
                     </xsl:element>
         <xsl:if test="//tei:div[@type='translation']/descendant-or-self::tei:*[substring-after(@corresp, '#') = $textpart-id]"><xsl:call-template name="translation-button">
             <xsl:with-param name="textpart-id" select="$textpart-id "/>
-        </xsl:call-template></xsl:if>
+        </xsl:call-template></xsl:if></xsl:otherwise></xsl:choose>
     </xsl:template>
     
     <!-- Abbr -->
@@ -530,7 +537,7 @@
             <xsl:otherwise>
                 <xsl:element name="span">
             <xsl:attribute name="class">add</xsl:attribute>
-            <xsl:attribute name="data-tip">Scribal addition</xsl:attribute>
+            <xsl:attribute name="data-tip">Scribal addition: 
             <xsl:if test="@hand">
                 <xsl:text>H</xsl:text>
                 <xsl:element name="sub">
@@ -568,7 +575,8 @@
                         </xsl:when>
             </xsl:choose>
                 </i>
-            </xsl:if>
+                        </xsl:if>
+            </xsl:attribute>
             ⟨⟨<xsl:apply-templates/>⟩⟩
         </xsl:element>
             </xsl:otherwise>
@@ -1419,8 +1427,9 @@
     
     <xsl:template match="tei:encodingDesc">
         <hr/>
-        <h2 id="liminaries">Liminaries</h2>
-        <xsl:if test="tei:projectDesc/tei:p/text()">
+        <div class="liminaries">
+        <h2 id="liminaries" class="collapsible">Liminaries</h2>
+        <xsl:if test="tei:projectDesc/tei:p[2]/text()">
             <ul><li><b>Project</b>: 
                 <ul><xsl:for-each select="tei:projectDesc/tei:p">
                     <li><xsl:apply-templates select="."/></li>
@@ -1462,7 +1471,8 @@
                     </li>
                 </xsl:if></ul></li>
         </ul>
-         </xsl:if>        
+         </xsl:if>
+        </div>
     </xsl:template>
     
     <!--  fw ! -->
@@ -1819,6 +1829,7 @@
     <xsl:template match="tei:label">
                 <b><xsl:apply-templates/></b>
     </xsl:template>
+    
     <!--  lb ! -->
     <!-- <span class="lb" data-tip="Line start">⟨1r5⟩</span> -->
     <!-- <span class="hyphen-break" data-tip="Hyphen break">-</span> -->
@@ -1831,7 +1842,22 @@
                 <xsl:call-template name="lbrk-app"/>
             </xsl:otherwise>
         </xsl:choose>
-        <span class="lb" data-tip="Line Start">⟨<xsl:choose><xsl:when test="@n"><xsl:value-of select="@n"/></xsl:when><xsl:otherwise>lb</xsl:otherwise></xsl:choose>⟩</span>
+        <xsl:choose>
+            <xsl:when test="$edition-type='critical'">
+                <span class="lb" data-tip="Line Start">⟨<xsl:choose><xsl:when test="@n"><xsl:value-of select="@n"/></xsl:when><xsl:otherwise>lb</xsl:otherwise></xsl:choose>⟩</span>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- generer des blocs pour les éditions diplomatiques afin d'avoir des row pour placer les app -->
+                <xsl:for-each-group select="*" group-starting-with="tei:lb">
+                <div class="row">
+                    <div class="col-10 text-col">
+                        <p><xsl:copy><xsl:apply-templates select="current-group()"/></xsl:copy></p> 
+                    </div>
+                    <xsl:call-template name="launch-app"/>
+                </div>
+        </xsl:for-each-group>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <xsl:template match="tei:lg[not(ancestor::tei:rdg)]">
@@ -4780,68 +4806,6 @@
         </xsl:choose>
     </xsl:template>
 
-    <!--<!-\- tpl-com -\->
-    <xsl:template name="tpl-com">
-        <xsl:variable name="filename">
-            <xsl:value-of select="//tei:idno[@type='filename']"/>
-        </xsl:variable>
-        <xsl:variable name="document-com">
-            <xsl:choose>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_com.xml'))"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_com.xml')"/>
-                </xsl:when>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_com.xml'))"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_com.xml')"/>
-                </xsl:when>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:element name="div">
-            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-            <xsl:element name="h4">Commentary</xsl:element>
-            <xsl:choose>
-                <xsl:when test="document($document-com)">
-                    <xsl:apply-templates select="document($document-com)//tei:text"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:element name="p">
-                        <xsl:attribute name="class">textContent</xsl:attribute>
-                        <xsl:text>No commentary available yet for </xsl:text>
-                        <xsl:value-of select="$filename"/>
-                    </xsl:element>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:element>
-    </xsl:template>
-
-    <!-\- tpl-biblio -\->
-    <xsl:template name="tpl-biblio">
-        <xsl:variable name="filename">
-            <xsl:value-of select="//tei:idno[@type='filename']"/>
-        </xsl:variable>
-        <xsl:variable name="document-biblio">
-            <xsl:choose>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_biblio.xml'))"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '_biblio.xml')"/>
-                </xsl:when>
-                <xsl:when test="doc-available(concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_biblio.xml'))"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-sanskrit-philology/master/texts/xml/', $filename, '_biblio.xml')"/>
-                </xsl:when>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:element name="div">
-            <xsl:attribute name="class">mx-5 mt-3 mb-4</xsl:attribute>
-            <xsl:element name="h4">Bibliography</xsl:element>
-            <xsl:choose>
-                <xsl:when test="document($document-biblio)">
-                    <xsl:apply-templates select="document($document-biblio)//tei:text"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:element name="p">
-                        <xsl:attribute name="class">textContent</xsl:attribute>
-                        <xsl:text>No bibliography available yet for </xsl:text>
-                        <xsl:value-of select="$filename"/>
-                    </xsl:element>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:element>
-    </xsl:template>-->
-
     <xsl:template name="scansion">
         <xsl:param name="met-string"/>
         <xsl:param name="string-len"/>
@@ -4857,5 +4821,60 @@
                 <xsl:with-param name="string-pos" select="$string-pos - 1"/>
             </xsl:call-template>
         </xsl:if>
+    </xsl:template>
+    
+    <!-- source display hidden by default -->
+    <!-- structure préparée, mais contenu à faire -->
+    <xsl:template name="source-display">
+        <xsl:variable name="file-content" select="unparsed-text($fileuri)"/>
+        <div id="inscription-source" class="hidden">
+            <xsl:call-template name="fieldset-source-display"/>
+            <div id="xml" class="xml xml-wrap xml-lines-nos">
+                <!-- découper xml en lignes -->
+                <!-- ça tokenize mais je n'arrive pas à copier les noeuds xml -->
+                <xsl:variable name="file-lines" select="tokenize($file-content, '\r?\n')"/>
+                <xsl:for-each select="$file-lines">
+                        <div class="xml-line">
+                            <span class="xml-line-no hidden">
+                                <xsl:choose>
+                                    <!-- il manque le 1 dans mon système, mais les autres lignes sont numérotées donc c'est déjà ça -->
+                                    <xsl:when test="(position() mod 5) = 0">
+                                        <xsl:value-of select="position()"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>.</xsl:otherwise>
+                                </xsl:choose>
+                                </span>
+                            <span class="xml-line-contents">
+                                <xsl:choose>
+                                    <xsl:when test="matches(., '&lt;?xml')">
+                                        <span class="instruction"><xsl:copy-of select="."/></span>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:copy-of select="."/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </span>
+                        </div>
+                    </xsl:for-each>                
+            </div>
+        </div>
+    </xsl:template>
+    
+    <xsl:template name="fieldset-source-display">
+        <fieldset>
+            <legend>Display Options</legend>
+            <label>Word Wrap
+                <input class="display-option" name="xml-wrap" type="checkbox" checked=""/>
+            </label>
+            <label>Line Numbers
+                <input class="display-option" name="xml-line-nos" type="checkbox" checked=""/>
+            </label>
+            <label>Comments
+                <input class="display-option" name="xml-hide-comments" type="checkbox" checked=""/>
+            </label>
+            <label>Processing Instructions
+                <input class="display-option" name="xml-hide-instructions" type="checkbox" checked=""/>
+            </label>
+        </fieldset>
     </xsl:template>
 </xsl:stylesheet>
