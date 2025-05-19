@@ -59,7 +59,7 @@
                                     <!--<colophon>
 										<quote></quote>
 										</colophon> -->
-                                    <!-- colophon should be structures with quote elements with attribute @type and @xml:lang when necessary -->
+                                    <!-- colophon should be *structured* with quote elements with *attributes* @type and @xml:lang when necessary -->
                                 </msItem>
                             </msContents>
                             <physDesc>
