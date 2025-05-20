@@ -1,30 +1,31 @@
 Id	Print_Name	Inverted_Name	source
-ara	Arabic	Arabic
-ban	Modern Balinese	Balinese, Modern
-bya	Batak	Batak
-cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)
-cjm	Modern Cham (of Phanrang)	Cham, Modern (of Phanrang)
+ara	Arabic	Arabic	
+ban	Modern Balinese	Balinese, Modern	
+bya	Batak	Batak	
+cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)	
+cjm	Modern Cham (of Phanrang)	Cham, Modern (of Phanrang)	
 deu	German	German	false
 eng	English	English	false
 fra	French	French	false
-ind	Indonesian	Indonesian
-jav	Modern Javanese	Javanese, Modern
-jpn	Japanese	Japanese
-kan	Kannada	Kannada
-kaw	Old Javanese	Javanese, Old
-khm	Modern Khmer	Khmer, Modern
-mya	Modern Burmese	Burmese, Modern
+ind	Indonesian	Indonesian	
+jav	Modern Javanese	Javanese, Modern	
+jpn	Japanese	Japanese	
+kan	Kannada	Kannada	
+kaw	Old Javanese	Javanese, Old	
+khm	Modern Khmer	Khmer, Modern	
+mya	Modern Burmese	Burmese, Modern	
 nld	Dutch	Dutch	false
-obr	Old Burmese	Burmese, Old
-ocm	Old Cham	Cham, Old
-okz	Old Khmer	Khmer, Old
-oldbalinese	Old Balinese	Balinese, Old
-omx	Old Mon	Mon, Old
-omy	Old Malay	Malay, Old
-ori	Oriya	Oriya
-pli	Pali	Pali
-pra	Middle Indo-Aryan	Indo-Aryan, Middle
-pyx	Pyu	Pyu
-und	Undetermined	Undetermined
-xhm	Middle Khmer	Khmer, Middle
-zlm	Modern Malay (Bahasa Malaysia)	Malay, Modern (Bahasa Malaysia)
+obr	Old Burmese	Burmese, Old	
+ocm	Old Cham	Cham, Old	
+okz	Old Khmer	Khmer, Old	
+oldbalinese	Old Balinese	Balinese, Old	
+omx	Old Mon	Mon, Old	
+omy	Old Malay	Malay, Old	
+ori	Oriya	Oriya	
+osn	Old Sundanese	Sundanese, Old	
+pli	Pali	Pali	
+pra	Middle Indo-Aryan	Indo-Aryan, Middle	
+pyx	Pyu	Pyu	
+und	Undetermined	Undetermined	
+xhm	Middle Khmer	Khmer, Middle	
+zlm	Modern Malay (Bahasa Malaysia)	Malay, Modern (Bahasa Malaysia)	
