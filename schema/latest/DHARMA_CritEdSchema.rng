@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-05-19T11:06:16Z. .
+Schema generated from ODD source 2025-05-21T17:07:25Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -3520,6 +3520,8 @@ Suggested values include: 1] check; 2] bulleted; 3] numbered</a:documentation>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.global.linking.attribute.sameAs"/>
          <ref name="tei_att.global.linking.attribute.copyOf"/>
+         <ref name="tei_att.global.responsibility.attribute.resp"/>
+         <ref name="tei_att.global.source.attribute.source"/>
          <optional>
             <attribute name="rend">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
@@ -7674,8 +7676,8 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem[@hand]">
-               <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
-               <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
+               <sch:assert test="@hand and (following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+               <sch:report test="following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
             </sch:rule>
          </pattern>
@@ -7743,17 +7745,6 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                </choice>
             </attribute>
          </optional>
-         <optional>
-            <attribute name="varSeq">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(variant sequence) provides a number indicating the position of this reading in a sequence, when there is reason to presume a sequence to the variants. </a:documentation>
-               <choice>
-                  <value>1</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>2</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </attribute>
-         </optional>
          <empty/>
       </element>
    </define>
@@ -7777,8 +7768,8 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg[@hand]">
-               <sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
-               <sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
+               <sch:assert test="@hand and (following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert>
+               <sch:report test="following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report>
             </sch:rule>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
@@ -7811,6 +7802,12 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                <choice>
                   <value>paradosis</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>emn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>conj</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>norm</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>
          </optional>
@@ -7841,17 +7838,6 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
                   <value>transposition</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>graphic</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="varSeq">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(variant sequence) provides a number indicating the position of this reading in a sequence, when there is reason to presume a sequence to the variants. </a:documentation>
-               <choice>
-                  <value>1</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>2</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
             </attribute>

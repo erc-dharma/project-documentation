@@ -54,7 +54,7 @@
       <sourceDesc>
         <p>Written from scratch.</p>
       </sourceDesc>
-    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-09T17:30:41.352Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-19T09:40:37.313Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
+    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-22T15:29:38.588Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-23T09:00:39.671Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-05T14:30:51.483Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-09T17:30:41.352Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-19T09:40:37.313Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-05-21T17:06:21.246Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
     <revisionDesc>
       <change who="part:axja" when="2023-05-23">adding the possibility to add BESTOW ref</change>
       <change who="part:axja" when="2023-04-19">Changing the @cause ordinal for transposition; changing tei:lem/@cause='transposition' for tei:lem/@type='transposition'; deleting the schematron rule limiting the use of n with p to translations ; deleting a rule regarding the use of @cause transposition on rdg only if there is no lem </change>
@@ -2343,9 +2343,9 @@
               </valList>
             </attDef>
             <attDef ident="rendition" mode="delete"/>
-            <attDef ident="resp" mode="delete"/>
+            
             <attDef ident="select" mode="delete"/>
-            <attDef ident="source" mode="delete"/>
+            
             <attDef ident="style" mode="delete"/>
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
@@ -3956,7 +3956,7 @@
         </elementSpec>
         <elementSpec ident="lem" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="lem-hand">
-            <constraint><sch:rule context="tei:lem[@hand]"><sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert><sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
+            <constraint><sch:rule context="tei:lem[@hand]"><sch:assert test="@hand and (following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on lem with the attribute @varSeq or the following sibling witDetail.</sch:assert><sch:report test="following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule></constraint>
           </constraintSpec>
           <attList>
@@ -3984,12 +3984,7 @@
                 <valItem ident="low"/>
               </valList>
             </attDef>
-            <attDef ident="varSeq" mode="change">
-              <valList type="closed" mode="change">
-                <valItem ident="1"/>
-                <valItem ident="2"/>
-              </valList>
-            </attDef>
+            <attDef ident="varSeq" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="replace">
                 <valItem ident="emn"/>
@@ -4081,7 +4076,7 @@
         </elementSpec>
         <elementSpec ident="rdg" module="textcrit" mode="change">
           <constraintSpec scheme="schematron" ident="rdg-hand">
-            <constraint><sch:rule context="tei:rdg[@hand]"><sch:assert test="@hand and (@varSeq or following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert><sch:report test="@varSeq and following-sibling::*[1][local-name()=('witDetail')]">
+            <constraint><sch:rule context="tei:rdg[@hand]"><sch:assert test="@hand and (following-sibling::*[1][local-name()=('witDetail')])">The attribute @hand can only be used on rdg with the attribute @varSeq or the following sibling witDetail.</sch:assert><sch:report test="following-sibling::*[1][local-name()=('witDetail')]">
                 The attribute @varSeq and the element witDetail can't be used together. You should choose only one of the two solutions to express the ante and post correctionem process. </sch:report></sch:rule><sch:rule context="child::tei:span[@type='omissionStart|omissionEnd']"><sch:assert test="@cause='eye-skip'">The only value allowed with @cause for a rdg containing a span[@type='omissionStart'] or span[@type='omissionEnd'] is 'eyeskip'.</sch:assert></sch:rule>
               </constraint>
           </constraintSpec>
@@ -4120,15 +4115,13 @@
             <attDef ident="xml:id" mode="delete"/>
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="varSeq" mode="change">
-              <valList type="closed" mode="change">
-                <valItem ident="1"/>
-                <valItem ident="2"/>
-              </valList>
-            </attDef>
+            <attDef ident="varSeq" mode="delete"/>
             <attDef ident="type" mode="change">
               <valList type="closed" mode="replace">
                 <valItem ident="paradosis"/>
+                <valItem ident="emn"/>
+                <valItem ident="conj"/>
+                <valItem ident="norm"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
