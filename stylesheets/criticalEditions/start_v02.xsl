@@ -57,8 +57,7 @@
     </xsl:function>
     <xsl:function name="functx:repeat" as="item()+">
         <xsl:param name="pThis" as="item()"/>
-        <xsl:param name="pTimes" as="xs:integer"/>
-        
+        <xsl:param name="pTimes" as="xs:integer"/>     
         <xsl:for-each select="1 to $pTimes">
             <xsl:sequence select="$pThis"/>
         </xsl:for-each>
@@ -69,6 +68,9 @@
         <xsl:value-of select="'github'"/>
         <!--<xsl:value-of select="'dharmalekha'"/>-->
     </xsl:variable>
+    
+    <!-- récupérer l'authentification donnée par l'action github -->
+    <xsl:param name="access-token" as="xs:string"/>
     
     <!-- Variables -->
     <!-- $filename; use to generate the link for external files -->
@@ -211,6 +213,7 @@
                             </xsl:if> 
                         </div>  
                         <!-- inscription source -->
+                        <!-- tpl incomplet, mais suffisant pour une 1er viz.-->
                         <xsl:call-template name="source-display"/>
                     </main>
                 </div>
@@ -235,7 +238,6 @@
                 <xsl:apply-templates select="$filename"/>
             </span>
         </p>
-        <!-- I have added only the languages used in the repo -->
         <p>
             <xsl:text>Language: </xsl:text>
             <xsl:call-template name="language-interpretation">
@@ -271,7 +273,7 @@
         </xsl:variable>
             <xsl:variable name="path-to-blob" select="concat('https://github.com/erc-dharma/', $repository-name, '/blob/')"/>
         <!-- retrieving sha and date for the latest commit on the file-->
-        <xsl:variable name="call-to-log-file" select="json-to-xml(unparsed-text(concat($api-github-path, '?path=', $path-file)))//*"/>
+        <xsl:variable name="call-to-log-file" select="json-to-xml(unparsed-text(concat($api-github-path, '?path=', $path-file, '?access_token=', $access-token)))//*"/>
         <xsl:variable name="sha-commit-file">
             <xsl:value-of select="$call-to-log-file//*[@key='sha'][1]"/>
         </xsl:variable>
@@ -325,7 +327,7 @@
     <xsl:template name="responsability-display">
         <xsl:param name="responsability"/>
         <xsl:param name="display-behaviour"/>
-        <!-- param pour éviter la redondance de tpl pour établir la différence de traitement attendu dansles noms de familles occidentaux  -->
+        <!-- param pour éviter la redondance de tpl pour établir la différence de traitement attendu dans les noms de familles occidentaux  -->
         <!-- //tei:bibl[@xml:id=$MSlink-part] -->
             <xsl:choose>
                 <xsl:when test="contains($responsability, ' ')">
@@ -479,11 +481,7 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>   
-<!-- <xsl:choose>
-     <xsl:when test="$edition-type='diplomatic'">
-         
-     </xsl:when>
-     <xsl:otherwise>--><xsl:if test="@type">          
+        <xsl:if test="@type">          
                           <h6 class="ed-heading" id="{generate-id(.)}">
                         <xsl:if test="@type">
                             <xsl:value-of select="@type"/>
@@ -508,8 +506,6 @@
             <xsl:with-param name="textpart-id" select="$textpart-id "/>
         </xsl:call-template>
         </xsl:if>
-     <!--</xsl:otherwise>
- </xsl:choose>-->
 </xsl:template>
     
     <!-- Abbr -->
@@ -3305,10 +3301,10 @@
                 <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
                 <xsl:choose>
                     <xsl:when test="$viz-context='github'"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.css"></link>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css"/>
-                        <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js"></script>
-                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js"></script>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></link>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
                     
                     </xsl:when>
                     <xsl:otherwise>
@@ -3334,12 +3330,12 @@
         <xsl:choose>
             <xsl:when test="$viz-context='github'">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        
+                <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js"></script>
+                <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
