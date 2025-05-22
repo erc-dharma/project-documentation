@@ -251,8 +251,8 @@
                </xsl:choose> 
         </p>
         <p>
-            <xsl:text>Version: <!--part commented based on limited calls--></xsl:text>
-            <xsl:call-template name="api-rest-github-history"/>
+            <xsl:text>Version: part commented based on limited calls</xsl:text>
+            <!--<xsl:call-template name="api-rest-github-history"/>-->
         </p>
     </xsl:template>
    
