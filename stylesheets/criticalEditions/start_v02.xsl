@@ -171,12 +171,12 @@
                                         <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='edition']"/>                                                            
                             </div>
                             <!-- condition pour n'afficher que si l'édition contient des app -->
-                            <!--<xsl:if test="tei:div[@type='edition']/descendant-or-self::tei:app">--><div class="apparatus">
+                            <xsl:if test="tei:text/tei:body/tei:div[@type='edition']//descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]"><div class="apparatus">
                                 <h2 id="apparatus" class="collapsible">Apparatus <i class="fa-solid fa-angles-down"></i></h2>
                                 <div class="collapsible-content">
                                 <xsl:call-template name="tpl-apparatus"/>
                                 </div>
-                            </div><!--</xsl:if>-->
+                            </div></xsl:if>
                             <!-- condition pour n'afficher que si des traductions sont disponibles -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//tei:p/text()">
                                 <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']">
@@ -216,6 +216,7 @@
                         <!-- tpl incomplet, mais suffisant pour une 1er viz.-->
                         <xsl:call-template name="source-display"/>
                     </main>
+                    <!-- app modals -->
                     <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/> 
                 </div>
                 <div id="tip-box" class="hidden">
@@ -239,7 +240,7 @@
         </p>
         <p>
             <xsl:text>Filename: </xsl:text>
-            <span id="text-id">
+            <span class="text-id">
                 <xsl:apply-templates select="$filename"/>
             </span>
         </p>
@@ -253,8 +254,8 @@
             <xsl:text>Repository: </xsl:text>
             
                <xsl:choose>
-                   <xsl:when test="contains($repository-name, 'tfd-nusantara')">Nusantara Philology <span id="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
-                   <xsl:when test="contains($repository-name, 'tfd-sanskrit')">Sanskrit Philology <span id="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
+                   <xsl:when test="contains($repository-name, 'tfd-nusantara')">Nusantara Philology <span class="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
+                   <xsl:when test="contains($repository-name, 'tfd-sanskrit')">Sanskrit Philology <span class="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
                </xsl:choose> 
         </p>
         <p>
@@ -2886,6 +2887,7 @@
         <ul>
             <xsl:apply-templates select="tei:listWit"/>
         </ul>
+        <hr/>
     </xsl:template>
 
     <!--  subst ! -->
@@ -4369,7 +4371,7 @@
                     <xsl:if test="$trans-path/child::tei:note">
                         <hr/>
                         <div class="bloc-notes">
-                            <h5>Notes</h5>
+                            <h6>Notes</h6>
                             <span class="notes-translation">
                                 <!-- An entry is created for-each of the following instances
                                 * notes.  -->
@@ -4396,11 +4398,10 @@
     <xsl:template name="translation-bottom-notes">
         <ol>
             <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']/descendant-or-self::tei:note">
-                <xsl:call-template name="lbrk-app"/>
-                  <xsl:call-template name="generate-trans-link">
+                  <li><xsl:call-template name="generate-trans-link">
                     <xsl:with-param name="situation" select="'apparatus-bottom'"/>
                 </xsl:call-template>
-                <xsl:apply-templates/>
+                <xsl:apply-templates/></li>
         </xsl:for-each>
         </ol>
       </xsl:template>
