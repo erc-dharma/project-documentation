@@ -257,7 +257,7 @@
         </p>
         <p>
             <xsl:text>Version:  part commented since without access_token with github actions api calls are limited – still working on it</xsl:text>
-            <xsl:call-template name="api-rest-github-history"/>
+            <!--<xsl:call-template name="api-rest-github-history"/>-->
         </p>
     </xsl:template>
    
@@ -391,41 +391,41 @@
     <xsl:template name="header">
         <header>
             <div id="menu_bar">
-        <a id="dharma-logo" href="/"><img alt="DHARMA Logo" src="/dharma_bar_logo.svg"></img></a>
+                <a id="dharma-logo" href="https://dharmalekha.info/"><img alt="DHARMA Logo" src="https://dharmalekha.info/dharma_bar_logo.svg"></img></a>
         <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
         <ul id="menu" class="hidden">
             <li>
-                <a href="/repositories">
+                <a href="https://dharmalekha.info/repositories">
                     <i class="fa-brands fa-git-alt"></i> Repositories</a>
             </li>
             <li>
-                <a href="/texts">
+                <a href="https://dharmalekha.info/texts">
                     <i class="fa-regular fa-file-lines"></i> Texts</a>
             </li>
             <li class="submenu">
                 <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
                 <ul class="hidden">
-                    <li><a href="/editorial-conventions">Editorial Conventions</a></li>
-                    <li><a href="/prosody">Prosodic Patterns</a></li>
+                    <li><a href="https://dharmalekha.info/editorial-conventions">Editorial Conventions</a></li>
+                    <li><a href="https://dharmalekha.info/prosody">Prosodic Patterns</a></li>
                 </ul>
             </li>
             <li>
-                <a href="/parallels">
+                <a href="https://dharmalekha.info/parallels">
                     <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
             </li>
             <li class="submenu">
                 <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
                 <ul class="hidden">
                     <li>
-                        <a href="/errors">
+                        <a href="https://dharmalekha.info/errors">
                             <i class="fa-solid fa-bug"></i> Texts Errors</a>
                     </li>
                     <li>
-                        <a href="/bibliography-errors">
+                        <a href="https://dharmalekha.info/bibliography-errors">
                             <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
                     </li>
                     <li>
-                        <a href="/display">Display List</a>
+                        <a href="https://dharmalekha.info/display">Display List</a>
                     </li>
                 </ul>
             </li>
@@ -1520,7 +1520,7 @@
                 <xsl:variable name="prosody-segment"><xsl:value-of select="$prosody//tei:item[tei:name =$metrical]/tei:seg[@type='prosody']"/></xsl:variable>
                 
                 <xsl:element name="a">
-                    <xsl:attribute name="href">                                <xsl:value-of select="concat('/prosody#prosody-', $prosody-numb)"/>
+                    <xsl:attribute name="href">                                <xsl:value-of select="concat('https://dharmalekha.info/prosody#prosody-', $prosody-numb)"/>
                     </xsl:attribute>
                     <!-- pb de l'ajout des balises dans la data-tip -->
                     <span data-tip="&lt;span class=&quot;prosody&quot;&gt;{$prosody-segment}&lt;/span&gt;">
@@ -3304,10 +3304,13 @@
                 <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
                 <xsl:choose>
                     <xsl:when test="$viz-context='github'"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></link>
+                        <link rel="stylesheet" href="https://dharmalekha.info/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></link>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+                        <link rel="stylesheet" href="https://dharmalekha.info/fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
                         <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+                        
+                        
                     
                     </xsl:when>
                     <xsl:otherwise>
