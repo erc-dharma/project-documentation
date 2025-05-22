@@ -69,9 +69,6 @@
         <!--<xsl:value-of select="'dharmalekha'"/>-->
     </xsl:variable>
     
-    <!-- récupérer l'authentification donnée par l'action github -->
-    <xsl:param name="access-token" as="xs:string"/>
-    
     <!-- Variables -->
     <!-- $filename; use to generate the link for external files -->
     <xsl:variable name="filename">
@@ -171,10 +168,7 @@
                             <div class="edition">
                                 <h2 id="edition">Edition</h2>
 
-                                        <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='edition']"/>
-                                    
-                                <!-- redondant; voir si je peux fusionner les deux display d'apparat presque identique; juste une différence de contexte. Impose de revoir les manières dont l'ensemble se lit; pas sûre d'avoir le temps -->
-                                <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/>  
+                                        <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='edition']"/>                                                            
                             </div>
                             <!-- condition pour n'afficher que si l'édition contient des app -->
                             <xsl:if test="tei:div[@type='edition']/descendant::tei:app[not(@rend='hide' or parent::listApp)]"><div class="apparatus">
@@ -220,6 +214,11 @@
                         <!-- tpl incomplet, mais suffisant pour une 1er viz.-->
                         <xsl:call-template name="source-display"/>
                     </main>
+                    <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/> 
+                </div>
+                <div id="tip-box" class="hidden">
+                    <div id="tip-contents"></div>
+                    <div id="tip-arrow"></div>
                 </div>
             </body>
             <xsl:call-template name="dharma-script"/>
@@ -257,14 +256,14 @@
                </xsl:choose> 
         </p>
         <p>
-            <xsl:text>Version: <!--a--></xsl:text>
+            <xsl:text>Version:  part commented since without access_token with github actions api calls are limited – still working on it</xsl:text>
             <xsl:call-template name="api-rest-github-history"/>
         </p>
     </xsl:template>
    
  <!-- call to api github -->
     <xsl:template name="api-rest-github-history">
-        <xsl:variable name="api-github-path" select="concat('https://api.github.com/repos/erc-dharma/', $repository-name,'/commits', '?access_token=', $access-token)"/>
+        <xsl:variable name="api-github-path" select="concat('https://api.github.com/repos/erc-dharma/', $repository-name,'/commits')"/>
         <xsl:variable name="path-file">
             <xsl:choose>
                 <xsl:when test="contains($repository-name, 'tfd-nusantara')">
@@ -277,7 +276,7 @@
         </xsl:variable>
             <xsl:variable name="path-to-blob" select="concat('https://github.com/erc-dharma/', $repository-name, '/blob/')"/>
         <!-- retrieving sha and date for the latest commit on the file-->
-        <xsl:variable name="call-to-log-file" select="json-to-xml(unparsed-text(concat($api-github-path, '?path=', $path-file, '?access_token=', $access-token)))//*"/>
+        <xsl:variable name="call-to-log-file" select="json-to-xml(unparsed-text(concat($api-github-path, '?path=', $path-file)))//*"/>
         <xsl:variable name="sha-commit-file">
             <xsl:value-of select="$call-to-log-file//*[@key='sha'][1]"/>
         </xsl:variable>
