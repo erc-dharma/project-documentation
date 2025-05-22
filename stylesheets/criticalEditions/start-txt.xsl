@@ -89,16 +89,16 @@
                 <xsl:variable name="zoteroStyle">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/bibliography/DHARMA_modified-Chicago-Author-Date_v01.csl</xsl:variable>
                 <xsl:variable name="zoteroomitname">
                     <xsl:value-of
-                        select="unparsed-text(replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=json'), 'amp;', ''))"
+                        select="unparsed-text(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=',encode-for-uri($biblentry)))"
                     />
                 </xsl:variable>
                 <xsl:variable name="zoteroapitei">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/groups/1633743/items?tag=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="zoteroapijson">
                     <xsl:value-of
-                        select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;format=tei'), 'amp;', '')"/>
+                        select="replace(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=', encode-for-uri($biblentry), '&amp;style=',$zoteroStyle,'&amp;include=citation'), 'amp;', '')"/>
                 </xsl:variable>
                 <xsl:variable name="unparsedtext" select="unparsed-text($zoteroapijson)"/>
                 <xsl:variable name="pointerurl">
