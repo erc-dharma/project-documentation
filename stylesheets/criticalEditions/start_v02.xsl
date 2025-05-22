@@ -391,49 +391,49 @@
     
     <!-- Header imported from Dharmalekha -->
     <xsl:template name="header">
-        <header>
-            <div id="menu_bar">
-                <a id="dharma-logo" href="https://dharmalekha.info/"><img alt="DHARMA Logo" src="dharma_bar_logo.svg"></img></a>
-        <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
-        <ul id="menu" class="hidden">
-            <li>
-                <a href="https://dharmalekha.info/repositories">
-                    <i class="fa-brands fa-git-alt"></i> Repositories</a>
-            </li>
-            <li>
-                <a href="https://dharmalekha.info/texts">
-                    <i class="fa-regular fa-file-lines"></i> Texts</a>
-            </li>
-            <li class="submenu">
-                <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
-                <ul class="hidden">
-                    <li><a href="https://dharmalekha.info/editorial-conventions">Editorial Conventions</a></li>
-                    <li><a href="https://dharmalekha.info/prosody">Prosodic Patterns</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="https://dharmalekha.info/parallels">
-                    <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
-            </li>
-            <li class="submenu">
-                <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
-                <ul class="hidden">
+        <header><div id="menu-bar">
+            <a id="dharma-logo" href="/"><img alt="DHARMA Logo" src="https://dharmalekha.info/dharma_bar_logo.svg"/></a>
+            <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
+            <ul id="menu" class="hidden">
+                <li>
+                    <a href="https://dharmalekha.info/repositories">
+                        <i class="fa-brands fa-git-alt"></i> Repositories</a>
+                </li>
+                <li>
+                    <a href="https://dharmalekha.info/texts">
+                        <i class="fa-regular fa-file-lines"></i> Texts</a>
+                </li>
+                <li class="submenu">
+                    <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="hidden">
+                        <li><a href="https://dharmalekha.info/editorial-conventions">Editorial Conventions</a></li>
+                        <li><a href="https://dharmalekha.info/prosody">Prosodic Patterns</a></li>
+                    </ul>
+                </li>
                     <li>
-                        <a href="https://dharmalekha.info/errors">
-                            <i class="fa-solid fa-bug"></i> Texts Errors</a>
+                        <a href="https://dharmalekha.info/parallels">
+                            <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
                     </li>
-                    <li>
-                        <a href="https://dharmalekha.info/bibliography-errors">
-                            <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
+                    <li class="submenu">
+                        <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="hidden">
+                            <li>
+                                <a href="https://dharmalekha.info/errors">
+                                    <i class="fa-solid fa-bug"></i> Texts Errors</a>
+                            </li>
+                            <li>
+                                <a href="https://dharmalekha.info/bibliography-errors">
+                                    <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
+                            </li>
+                            <li>
+                                <a href="https://dharmalekha.info/display">Display List</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="https://dharmalekha.info/display">Display List</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-            </div>
+            </ul>
+        </div>
         </header>
+
         <div id="sidebar">
             <div id="toc">
                 <div id="toc-heading" class="toc-heading">Contents</div>
