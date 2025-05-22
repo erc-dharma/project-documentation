@@ -910,11 +910,11 @@
         <xsl:element name="span">
             <xsl:choose>
             <xsl:when test="$parent-rdg='no' or $display-context='modalapp'">
-                <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
+                <xsl:attribute name="class">reading reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
             </xsl:attribute>
             </xsl:when>
                 <xsl:when test="$display-context='printedapp'">
-                    <xsl:attribute name="class">bottom-reading-line</xsl:attribute>
+                    <xsl:attribute name="class">reading bottom-reading-line</xsl:attribute>
                     <xsl:text>, </xsl:text>
                 </xsl:when>
                 <xsl:otherwise><xsl:call-template name="lbrk-app"/></xsl:otherwise>
@@ -947,6 +947,7 @@
                     </xsl:choose>
                 </xsl:element>
             </span>
+        </xsl:element>
             <xsl:text> </xsl:text>
             <xsl:element name="b">
                 <xsl:if test="following-sibling::*[local-name()='witDetail']"> <xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
@@ -985,7 +986,6 @@
                     </xsl:when>
                 </xsl:choose>
             </xsl:if>
-            </xsl:element>
             <xsl:if test="./@cause and $parent-rdg='no'">
                 <xsl:element name="span">
                     <xsl:attribute name="style">color:black;</xsl:attribute>
@@ -2850,12 +2850,12 @@
                     <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
                         <span class="reading-line reading">
                             <span class="app-rdg"><xsl:apply-templates/></span>
+                        </span>
                         <b>
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="@wit"/>
                             </xsl:call-template>
                         </b>
-                    </span>
                     </xsl:for-each>
                         <hr/>
                     <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]">
@@ -3865,7 +3865,7 @@
                 <xsl:for-each select="descendant-or-self::tei:rdg[not(preceding-sibling::tei:lem[@type='transposition'])]">
 
                     <xsl:element name="span">
-                        <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
+                        <xsl:attribute name="class">reading bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
                         </xsl:attribute>
                             <xsl:if test="position()!=1 and $display-context='printedapp'">
                         <xsl:text>, </xsl:text>
@@ -3906,7 +3906,7 @@
                             <xsl:choose>
                                 <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
                             </xsl:choose>
-
+                    </xsl:element>
                     <xsl:if test="@*">
                         <xsl:if test="@wit">
                             <xsl:element name="b">
@@ -3988,7 +3988,7 @@
                                     <xsl:apply-templates/>
                                 </span>
                     </xsl:if>
-                    </xsl:element>
+                    
                 </xsl:for-each>
                 <xsl:for-each select="ancestor::*[local-name()='lem'][not(@type='reformulation' or @type='transposition')][1]/following-sibling::tei:rdg[1]">
                    <xsl:call-template name="rdg-content">
@@ -4108,17 +4108,18 @@
 
                         <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
                             <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
-                                <span class="bottom-reading-line">
+                                <span class="reading bottom-reading-line">
                                 <xsl:apply-templates/>
+                                </span>
                                 <b><xsl:call-template name="tokenize-witness-list">
                                     <xsl:with-param name="string" select="./@wit"/>
                                 </xsl:call-template></b>
-                        </span>
+                        
                         </xsl:for-each>
                     </xsl:if>
                         <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]"> • </xsl:if>
                         <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]">
-                            <span class="bottom-reading-line">
+                            <span class="reading bottom-reading-line">
                             <xsl:apply-templates/>
                             </span>
                     </xsl:for-each>
