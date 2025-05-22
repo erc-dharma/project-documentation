@@ -171,10 +171,12 @@
                                         <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='edition']"/>                                                            
                             </div>
                             <!-- condition pour n'afficher que si l'édition contient des app -->
-                            <xsl:if test="tei:div[@type='edition']/descendant::tei:app[not(@rend='hide' or parent::listApp)]"><div class="apparatus">
-                                <h2 id="apparatus" class="collapsible">Apparatus</h2>
+                            <!--<xsl:if test="tei:div[@type='edition']/descendant-or-self::tei:app">--><div class="apparatus">
+                                <h2 id="apparatus" class="collapsible">Apparatus <i class="fa-solid fa-angles-down"></i></h2>
+                                <div class="collapsible-content">
                                 <xsl:call-template name="tpl-apparatus"/>
-                            </div></xsl:if>
+                                </div>
+                            </div><!--</xsl:if>-->
                             <!-- condition pour n'afficher que si des traductions sont disponibles -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//tei:p/text()">
                                 <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']">
@@ -391,7 +393,7 @@
     <xsl:template name="header">
         <header>
             <div id="menu_bar">
-                <a id="dharma-logo" href="https://dharmalekha.info/"><img alt="DHARMA Logo" src="https://dharmalekha.info/dharma_bar_logo.svg"></img></a>
+                <a id="dharma-logo" href="https://dharmalekha.info/"><img alt="DHARMA Logo" src="dharma_bar_logo.svg"></img></a>
         <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
         <ul id="menu" class="hidden">
             <li>
@@ -1090,10 +1092,8 @@
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
                             </xsl:call-template>
-                            
                             <a href="https://www.zotero.org/groups/erc-dharma/items/{$key-item[1]}">
-                                <i class="fas fa-edit" style="display:inline;" data-tip="Edit on zotero.org"> </i>
-                            </a> 
+                            <i class="fas fa-edit" style="display:inline;" data-tip="Edit on zotero.org"> </i></a>
                         </p>
                     </xsl:when>
                     <xsl:when test="not(ancestor-or-self::tei:listBibl)">
@@ -1545,8 +1545,8 @@
     <xsl:template match="tei:encodingDesc">
         <hr/>
         <div class="liminaries">
-        <h2 id="liminaries" class="collapsible">Liminaries</h2>
-        <xsl:if test="tei:projectDesc/tei:p[2]/text()">
+            <h2 id="liminaries" class="collapsible">Liminaries <i class="fa-solid fa-angles-down"></i></h2>
+        <div class="collapsible-content"><xsl:if test="tei:projectDesc/tei:p[2]/text()">
             <ul><li><b>Project</b>: 
                 <ul><xsl:for-each select="tei:projectDesc/tei:p">
                     <li><xsl:apply-templates select="."/></li>
@@ -1588,7 +1588,7 @@
                     </li>
                 </xsl:if></ul></li>
         </ul>
-         </xsl:if>
+         </xsl:if></div>
         </div>
     </xsl:template>
     
@@ -3303,15 +3303,18 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
                 <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
                 <xsl:choose>
-                    <xsl:when test="$viz-context='github'"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-                        <link rel="stylesheet" href="https://dharmalekha.info/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></link>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                    <xsl:when test="$viz-context='github'"> 
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
                         <link rel="stylesheet" href="https://dharmalekha.info/fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
-                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+                            <link rel="icon" href="https://dharmalekha.info/favicon.svg"/>
+                            <link rel="stylesheet" href="https://dharmalekha.info/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                            <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"/>
+                            <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"/>
+                        <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>                  
                         
-                        
-                    
                     </xsl:when>
                     <xsl:otherwise>
                         <!-- liens pour le système intégré de Michaël -->
@@ -3320,7 +3323,10 @@
                      <link rel="stylesheet" href="./base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <link rel="stylesheet" href="./fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <link rel="icon" href="./favicon.svg"/>
-                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>   
+                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+                        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"></script>
                         <script src="./base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                     </xsl:otherwise>
@@ -3336,7 +3342,7 @@
         <xsl:choose>
             <xsl:when test="$viz-context='github'">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-                <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+                <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
@@ -3375,7 +3381,7 @@
                 <ul>
                     <li>
                         <xsl:element name="a">
-                            <xsl:attribute name="href"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '.xml')"/></xsl:attribute><i class="fa-solid fa-code"></i> XML File
+                            <xsl:attribute name="href"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '.xml')"/></xsl:attribute><i class="fa-solid fa-code"> </i> XML File
                         </xsl:element>
                         </li>
                 </ul>
@@ -3390,8 +3396,7 @@
         <xsl:when test="$edition-type='diplomatic'">
             <!-- je vais devoir ajouter les choice et peut-être les subst -->
             <xsl:if test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
-                
-                <div class="collapsible-content">
+
                     <div class="ed-section">
                         <xsl:for-each
                             select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
@@ -3426,13 +3431,12 @@
                             </xsl:call-template>
                         </xsl:for-each>
                     </div>
-                </div>
+                
             </xsl:if>
         </xsl:when>
         <xsl:otherwise>
             <xsl:if
         test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
-      <div class="collapsible-content">
       <div class="ed-section">
         <xsl:for-each
             select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
@@ -3464,7 +3468,7 @@
           </xsl:call-template>
         </xsl:for-each>
       </div>
-        </div>
+        
     </xsl:if>
     </xsl:otherwise>
     </xsl:choose>
