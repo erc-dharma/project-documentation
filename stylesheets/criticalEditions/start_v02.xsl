@@ -176,10 +176,12 @@
                                 <!-- redondant; voir si je peux fusionner les deux display d'apparat presque identique; juste une différence de contexte. Impose de revoir les manières dont l'ensemble se lit; pas sûre d'avoir le temps -->
                                 <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/>  
                             </div>
-                            <div class="apparatus">
+                            <!-- condition pour n'afficher que si l'édition contient des app -->
+                            <xsl:if test="tei:div[@type='edition']/descendant::tei:app[not(@rend='hide' or parent::listApp)]"><div class="apparatus">
                                 <h2 id="apparatus" class="collapsible">Apparatus</h2>
                                 <xsl:call-template name="tpl-apparatus"/>
-                            </div>
+                            </div></xsl:if>
+                            <!-- condition pour n'afficher que si des traductions sont disponibles -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//tei:p/text()">
                                 <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']">
                                     <div class="translation">
@@ -193,10 +195,12 @@
                                     </div>
                                 </xsl:for-each>
                             </xsl:if>
+                            <!-- condition pour n'afficher que si commentary contient du text -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='commentary']/tei:p/text()"><div class="commentary">
                                 <h2 id="commentary">Commentary</h2>
                                 <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='commentary']"/>
                             </div></xsl:if>
+                            <!-- condition pour n'afficher que si bibliography contient du text -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='bibliography']/tei:p/text() or tei:text/tei:body/tei:div[@type='bibliography']/tei:listBibl/tei:bibl/text()">
                                 
                             <div class="bibliography">
@@ -253,14 +257,14 @@
                </xsl:choose> 
         </p>
         <p>
-            <xsl:text>Version: part commented based on limited calls</xsl:text>
-            <!--<xsl:call-template name="api-rest-github-history"/>-->
+            <xsl:text>Version: <!--a--></xsl:text>
+            <xsl:call-template name="api-rest-github-history"/>
         </p>
     </xsl:template>
    
  <!-- call to api github -->
     <xsl:template name="api-rest-github-history">
-            <xsl:variable name="api-github-path" select="concat('https://api.github.com/repos/erc-dharma/', $repository-name,'/commits')"/>
+        <xsl:variable name="api-github-path" select="concat('https://api.github.com/repos/erc-dharma/', $repository-name,'/commits', '?access_token=', $access-token)"/>
         <xsl:variable name="path-file">
             <xsl:choose>
                 <xsl:when test="contains($repository-name, 'tfd-nusantara')">
