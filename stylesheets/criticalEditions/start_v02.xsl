@@ -151,8 +151,9 @@
                             <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[1]"/>
                            
                             <xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
-                                <xsl:text>— </xsl:text>
-                                <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
+                                <xsl:for-each select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                                    <xsl:text> — </xsl:text>
+                                <xsl:apply-templates/></xsl:for-each>
                             </xsl:if>
                             <!-- no mention of author -->
                         </h1>
@@ -178,12 +179,11 @@
                             <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//tei:p/text()">
                                 <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']">
                                     <div class="translation">
-                                        <xsl:element name="h2">
-                                            <xsl:attribute name="id">Translation<xsl:value-of select="count(tei:text/tei:body/preceding-sibling::tei:div[@type='translation']) + 1"/></xsl:attribute>Translation<xsl:if test="@xml:lang or @resp or @source"><xsl:call-template name="translation-title">
+                                        <h2 id="translation{generate-id()}">Translation<xsl:if test="@xml:lang or @resp or @source"><xsl:call-template name="translation-title">
                                                 <xsl:with-param name="language-title" select="@xml:lang"/>
                                                 <xsl:with-param name="responsability" select="@resp"/>
                                                 <xsl:with-param name="source" select="@source"/>
-                                            </xsl:call-template></xsl:if></xsl:element>
+                                            </xsl:call-template></xsl:if></h2>
                                         <xsl:apply-templates select="."/>
                                     </div>
                                 </xsl:for-each>
@@ -1467,7 +1467,19 @@
                 </xsl:if>
             </h3></xsl:if>
         <xsl:choose>
-            <xsl:when test="not(@type='metrical'or @type='section') or @type">
+            <xsl:when test="@type='section'">
+                <h4 class="ed-heading" id="toc{generate-id(.)}">
+                    <xsl:if test="@n">
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="@n"/>
+                    </xsl:if>
+                    <xsl:if test="tei:head">
+                        <xsl:text> </xsl:text>
+                        <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
+                    </xsl:if>
+                </h4>
+            </xsl:when>
+            <xsl:when test="@type">
                 <div>
                     <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:if test="@xml:id">
@@ -1483,31 +1495,33 @@
                                     <xsl:with-param name="metrical" select="$metrical"/>
                                 </xsl:call-template>
                             </xsl:if>
+                            <xsl:if test="tei:head">
+                                <xsl:text> </xsl:text>
+                                <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
+                            </xsl:if>
                         </h4>
                     </xsl:if>
                     
                 </div>
             </xsl:when>
-            <xsl:when test="tei:div[@type='metrical' or @type='section' or not(@type)][not(child::tei:ab[@type='colophon' or @type='invocation'])]">
-                <xsl:if test="@type='metrical' or @type='section'">
-                    <h4 class="ed-heading" id="toc{generate-id(.)}">
-                        <xsl:if test="@n">
-                            <xsl:value-of select="@n"/>
-                        </xsl:if>
-                        <xsl:if test="@rend='met'">
-                            <xsl:call-template name="metrical-list">
-                                <xsl:with-param name="metrical" select="$metrical"/>
-                            </xsl:call-template>
-                            </xsl:if>    
-                    </h4>
+            
+            <!--<xsl:when test="@type='section'">
+                <h4><xsl:if test="@n">
+                    <xsl:text> </xsl:text>
+                    <xsl:value-of select="@n"/>
                 </xsl:if>
-            </xsl:when>
+                <xsl:if test="tei:head">
+                    <xsl:text> </xsl:text>
+                    <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
+                </xsl:if>
+                </h4>
+            </xsl:when>-->
         </xsl:choose>
         <xsl:apply-templates select="* except tei:head"/>
-        <xsl:if test="./following-sibling::tei:div">
+        <xsl:if test="./following::tei:div[@type='chapter'][1]">
             <xsl:element name="br"/>
         </xsl:if>
-        <xsl:if test="./following-sibling::tei:div[child::tei:ab[@type='colophon']]">
+        <xsl:if test="./following-sibling::tei:div[child::tei:ab[@type='colophon']][1]">
             <xsl:element name="hr"/>
         </xsl:if>               
     </xsl:template>
@@ -1761,7 +1775,7 @@
     </xsl:template>
     
     <xsl:template match="tei:head">
-        <xsl:apply-templates/>
+                <xsl:apply-templates/>
         <xsl:if test="following-sibling::tei:desc[1]">: </xsl:if>
     </xsl:template>
     <!--  hi ! -->
