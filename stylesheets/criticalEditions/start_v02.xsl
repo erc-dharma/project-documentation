@@ -485,15 +485,16 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>   
-        <xsl:if test="@type">          
-                          <h6 class="ed-heading" id="{generate-id(.)}">
+        <xsl:if test="@type"> 
                         <xsl:if test="@type">
+                            <span class="lb" data-tip="{@type}">
                             <xsl:value-of select="@type"/>
+                            </span>
                         </xsl:if>
                         <xsl:if test="@n and not(@type='invocation' or @type='colophon')">
-                            <xsl:value-of select="@n"/>
+                            <b class="lb" data-tip="Paragraph number">§<xsl:value-of select="@n"/><xsl:text> </xsl:text></b>
                         </xsl:if>
-                    </h6></xsl:if>
+                    </xsl:if>
                     <div class="row">
                         <div class="col-10 text-col">
                             <xsl:element name="p">
@@ -1571,8 +1572,8 @@
     
     <xsl:template match="tei:encodingDesc">
         <hr/>
-        <div class="liminaries">
-            <h2 id="liminaries" class="collapsible">Liminaries <i class="fa-solid fa-angles-down"></i></h2>
+        <div class="editorial">
+            <h2 id="editorial" class="collapsible">Editorial <i class="fa-solid fa-angles-down"></i></h2>
         <div class="collapsible-content"><xsl:if test="tei:projectDesc/tei:p[2]/text()">
             <ul><li><b>Project</b>: 
                 <ul><xsl:for-each select="tei:projectDesc/tei:p">
@@ -2218,7 +2219,7 @@
                 <div class="row">
                 <div class="col-10 text-col">
                     <p><xsl:if test="@n">
-                        <b class="lb" data-tip="Paragraph Number">§<xsl:value-of select="@n"/><xsl:text> </xsl:text></b></xsl:if>
+                        <b class="lb" data-tip="Paragraph number">§<xsl:value-of select="@n"/><xsl:text> </xsl:text></b></xsl:if>
                         <xsl:copy-of select="$p-line"/></p>
                 </div>
                 <xsl:call-template name="launch-app"/>
