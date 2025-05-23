@@ -149,15 +149,12 @@
                     <main>
                         <h1>
                             <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[1]"/>
-                            <!-- commenting title alt parce que son usage est un peu abusif dans certains fichiers -->
-                            <!--<xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
-                                <xsl:text> or </xsl:text>
+                           
+                            <xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                                <xsl:text>— </xsl:text>
                                 <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
-                            </xsl:if>-->
-                            <xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author">
-                                <xsl:text> by </xsl:text>
-                                <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author"/>
                             </xsl:if>
+                            <!-- no mention of author -->
                         </h1>
                         <div id="inscription-display">
                             
