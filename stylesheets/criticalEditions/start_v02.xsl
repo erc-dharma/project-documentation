@@ -2964,19 +2964,15 @@
             </xsl:choose>
             </xsl:attribute>
             <xsl:choose>
-                <xsl:when test="@reason='lost' or @reason='illegible' or @reason='subaudible' or @reason='unknown'">
-                    [<xsl:apply-templates/>]
-                    <xsl:if test="@cert='low'">
+                <xsl:when test="@reason='lost' or @reason='illegible' or @reason='subaudible' or @reason='unknown'">[<xsl:apply-templates/><xsl:if test="@cert='low'">
                         <xsl:text>?</xsl:text>
-                    </xsl:if>
+                    </xsl:if><xsl:text>]</xsl:text>
                 </xsl:when>
                 <xsl:when test="@reason='omitted' and not(child::tei:lg)">⟨<xsl:apply-templates/>⟩</xsl:when>
-                <xsl:when test="@reason='explanation'">
-                        (<xsl:apply-templates/>
+                <xsl:when test="@reason='explanation'">(<xsl:apply-templates/>
                         <xsl:if test="@cert='low'">
                             <xsl:text>?</xsl:text>
-                        </xsl:if>)
-                </xsl:when>
+                        </xsl:if>)</xsl:when>
                 <xsl:when test="@reason='implied' and not(parent::tei:ab)">
                     <xsl:choose>
                         <xsl:when test="not(parent::tei:quote[@type='base-text'])">
