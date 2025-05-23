@@ -815,6 +815,15 @@
           </attList>
         </elementSpec>
         <elementSpec ident="titleStmt" module="header" mode="change">
+          <constraintSpec scheme="schematron" ident="title-rules">
+            <constraint><sch:rule context="tei:titleStmt">
+              <sch:assert test="./tei:title[@type='editorial'][1]">title with @type='editorial' is mandatory and must be the first title given</sch:assert>
+              <sch:assert test="./tei:title[@type='original']">One title must have a @type='original'</sch:assert>
+              <sch:assert test="./tei:title[@type='original' and @xml:lang]">@xml:lang is mandatory with title[@type='original']</sch:assert>
+              
+            </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
