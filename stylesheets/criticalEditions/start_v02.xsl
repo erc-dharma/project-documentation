@@ -2217,7 +2217,9 @@
             <xsl:otherwise>
                 <div class="row">
                 <div class="col-10 text-col">
-                    <p><xsl:copy-of select="$p-line"/></p>
+                    <p><xsl:if test="@n">
+                        <b class="lb" data-tip="Paragraph Number">§<xsl:value-of select="@n"/><xsl:text> </xsl:text></b></xsl:if>
+                        <xsl:copy-of select="$p-line"/></p>
                 </div>
                 <xsl:call-template name="launch-app"/>
                 </div>
