@@ -818,7 +818,7 @@
           <constraintSpec scheme="schematron" ident="title-rules">
             <constraint><sch:rule context="tei:titleStmt">
               <sch:assert test="./tei:title[@type='editorial'][1]">title with @type='editorial' is mandatory and must be the first title given</sch:assert></sch:rule>
-              <sch:rule contexte="./tei:title[@type='original']">
+              <sch:rule context="./tei:title[@type='original']">
               <sch:assert test="@xml:lang">@xml:lang is mandatory with title[@type='original']</sch:assert>
               
             </sch:rule>
