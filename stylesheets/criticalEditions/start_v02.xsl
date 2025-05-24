@@ -3020,7 +3020,7 @@
     <!-- updates -->
     <xsl:template match="tei:title">
             <xsl:choose>
-                <xsl:when test="@rend='plain'">
+                <xsl:when test="@rend='plain'  or @type='editorial' or @type='alt'">
                     <xsl:apply-templates/>
                 </xsl:when>
                 <xsl:when test="@level='a'">
