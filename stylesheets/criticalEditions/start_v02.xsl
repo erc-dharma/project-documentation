@@ -214,7 +214,7 @@
                         <xsl:call-template name="source-display"/>
                     </main>
                     <!-- app modals -->
-                    <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/> 
+                    <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/>
                 </div>
                 <div id="tip-box" class="hidden">
                     <div id="tip-contents"></div>
@@ -1317,30 +1317,29 @@
                     <xsl:attribute name="data-tip">Non-standard text<xsl:if test="tei:reg"> (standardisation: <span class="reg">⟨<xsl:apply-templates select="tei:reg"/>⟩)</span></xsl:if></xsl:attribute>¡<xsl:apply-templates select="tei:orig"/>!</xsl:element>
             </xsl:when>
             <!-- <span class="reg" data-tip="Standardised text (original: <span class=&quot;orig&quot;>¡coloṁ!</span>)">⟨celeṁ⟩</span> -->
-            <xsl:when test="tei:reg and $edition-type='critical'">
+            <xsl:when test="tei:reg">
                 <xsl:element name="span">
                     <xsl:attribute name="class">reg</xsl:attribute>
-                    <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates select="tei:orig"/>!)</span></xsl:if></xsl:attribute>
-                    ⟨<xsl:apply-templates select="tei:reg"/>⟩
-                </xsl:element>
+                    <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates select="tei:orig"/>!)</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates select="tei:reg"/>⟩</xsl:element>
             </xsl:when>
             <!-- <span class="sic" data-tip="Incorrect text (emendation: <span class=&quot;corr&quot;>⟨kh⟩</span>)">¿l?</span> -->
             <xsl:when test="tei:sic">
                 <xsl:element name="span">
                     <xsl:attribute name="class">sic</xsl:attribute>
-                    <xsl:attribute name="data-tip">Incorrect text<xsl:if test="tei:corr">  (emendation: <span class="corr">⟨<xsl:apply-templates/>⟩</span></xsl:if></xsl:attribute>¿<xsl:apply-templates/>?</xsl:element>
+                    <xsl:attribute name="data-tip">Incorrect text<xsl:if test="tei:corr">  (emendation: <span class="corr">⟨<xsl:apply-templates select="tei:corr"/>⟩)</span></xsl:if></xsl:attribute>¿<xsl:apply-templates select="tei:sic"/>?</xsl:element>
             </xsl:when>
             <!-- <span class="corr" data-tip="Emended text (original: <span class=&quot;sic&quot;>¿l?</span>)">⟨kh⟩</span> -->
-            <xsl:when test="tei:corr and $edition-type='critical'">
+            <xsl:when test="tei:corr">
                 <xsl:element name="span">
                     <xsl:attribute name="class">corr</xsl:attribute>
-                    <xsl:attribute name="data-tip">Emended text<xsl:if test="tei:sic">  (original: <span class="sic">¿<xsl:apply-templates/>?</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates/>⟩</xsl:element>
+                    <xsl:attribute name="data-tip">Emended text<xsl:if test="tei:sic">  (original: <span class="sic">¿<xsl:apply-templates/>?</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates select="tei:corr"/>⟩</xsl:element>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
     
     <!-- à voir si stable - pour diplEd -->
-    <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
+    <!-- préparation pour intégrer les choice, si j'ai le temps -->
+   <!-- <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
         <xsl:variable name="apparatus">
                 <span class="mb-1 lemma-line">
                     <span class="app-corr">
@@ -1348,12 +1347,12 @@
                         <xsl:text> (corr)</xsl:text>
                     </span>
                 </span>
-            
         </xsl:variable>
-        <span class="popover-content d-none" id="{generate-id()}">
+        <xsl:if test="$edition-type='diplomatic'">
+            <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus"/>
-        </span>
-    </xsl:template>
+        </span></xsl:if>
+    </xsl:template>-->
     
     <!-- citedRange -->
     <xsl:template match="tei:citedRange">
@@ -2083,7 +2082,7 @@
                     <xsl:if test="descendant::tei:note">
                         <a class="btn btn-outline-dark btn-block" data-toggle="collapse" href="#{generate-id()}" role="button" aria-expanded="false" aria-controls="{generate-id()}"><span class="smallcaps">Parallels</span></a>
                         <div id="{generate-id()}" class="collapse">                    
-                            <div class="card card-body border-dark">
+                            <div class="card-body">
                         <xsl:call-template name="parallels-content"/>
                     </div>
                 </div>
@@ -2348,7 +2347,7 @@
             <xsl:choose>
                 <xsl:when test="$edition-type='diplomatic'">
                     <!-- difference pour ajouter les choice et les subst? to be added -->
-                    <xsl:for-each select="current-group()/descendant-or-self::tei:app | descendant-or-self::tei:choice | descendant-or-self::tei:subst">
+                    <xsl:for-each select="current-group()/descendant-or-self::tei:app[not(parent::tei:listApp) or not(@rend='hide')] | descendant-or-self::tei:choice[child::tei:sic and child::tei:corr] | descendant-or-self::tei:note[last()][parent::tei:p or parent::tei:lg]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
@@ -2357,7 +2356,9 @@
                                         <xsl:text>lem-last-note</xsl:text>
                                     </xsl:when>
                                     <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
-                                        <xsl:text>trans-note</xsl:text>
+                                        <xsl:text>trans-note</xsl:text></xsl:when>
+                                        <xsl:when test="self::tei:choice[child::tei:sic and child::tei:corr]">
+                                            <xsl:text>siccorr</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:with-param>
@@ -3042,10 +3043,11 @@
                     <xsl:attribute name="data-tip">Tentative reading</xsl:attribute>
                 </xsl:when>
     <xsl:otherwise>
-            <xsl:attribute name="data-tip">Unclear text<xsl:choose><xsl:when test="@reason='eccentric_ductus'"> (<i>eccentric ductus</i>)</xsl:when><xsl:otherwise> (<xsl:apply-templates select="replace(@reason, '_', ' ')"/>)</xsl:otherwise></xsl:choose></xsl:attribute>
+            <xsl:attribute name="data-tip">Unclear text<xsl:if test="@reason"><xsl:choose>
+                <xsl:when test="@reason='eccentric_ductus'"> (&lt;i&gt;eccentric ductus&lt;/i&gt;)</xsl:when>
+                <xsl:otherwise> (<xsl:apply-templates select="replace(@reason, '_', ' ')"/>)</xsl:otherwise></xsl:choose></xsl:if></xsl:attribute>
     </xsl:otherwise>
-            </xsl:choose>
-            (<xsl:apply-templates/><xsl:if test="@cert='low'">?</xsl:if>)
+            </xsl:choose> <xsl:text>(</xsl:text><xsl:apply-templates/><xsl:if test="@cert='low'">?</xsl:if><xsl:text>)</xsl:text>
         </xsl:element>
     </xsl:template>
 
@@ -4140,6 +4142,11 @@
                     </span>
                 </xsl:if>
             </xsl:when>
+            <xsl:when test="$apptype='siccorr'">
+                <!-- **CORR - <xsl:value-of select="$path/t:corr/node()"/>** -->
+                <xsl:apply-templates select="$path/tei:corr/node()"/>
+                <xsl:text> (corr)</xsl:text>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
 
@@ -4379,7 +4386,7 @@
                    <!-- need to add the language -->
                </a>
                <div id="{generate-id()}" class="collapse">
-                   <div class="card card-body border-dark">
+                   <div class="card-body">
                        <xsl:call-template name="tpl-translation">
                            <xsl:with-param name="textpart-id" select="$textpart-id"/>
                        </xsl:call-template>
