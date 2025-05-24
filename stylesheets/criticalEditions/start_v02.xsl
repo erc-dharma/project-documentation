@@ -482,7 +482,25 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>   
-        <xsl:if test="@type"> 
+        <xsl:choose>
+            <xsl:when test="$edition-type='diplomatic'">
+                <!-- group sur pb pour faire des row pour aligner plus précisement l'apparat -->
+              
+                <xsl:if test="tei:pb"><xsl:for-each-group select="node()" group-starting-with="tei:pb">
+                    <div class="row">
+                        <div class="col-10 text-col">
+                            <xsl:element name="span">
+                    <xsl:for-each select="current-group()">
+                        <xsl:apply-templates select="."/>
+                        </xsl:for-each>
+                            </xsl:element>    
+                        </div>      
+                            <xsl:call-template name="launch-app"/>
+                    </div>
+                </xsl:for-each-group>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise><xsl:if test="@type"> 
                         <xsl:if test="@type">
                             <span class="lb" data-tip="{@type}">
                             <xsl:value-of select="@type"/>
@@ -503,7 +521,8 @@
                             </xsl:element>
                         </div>
                         <xsl:call-template name="launch-app"/>
-                    </div>
+                    </div></xsl:otherwise>
+        </xsl:choose>
         <xsl:if test="//tei:div[@type='translation']/descendant-or-self::tei:*[substring-after(@corresp, '#') = $textpart-id]"><xsl:call-template name="translation-button">
             <xsl:with-param name="textpart-id" select="$textpart-id "/>
         </xsl:call-template>
@@ -1295,14 +1314,14 @@
             <xsl:when test="tei:orig">
                 <xsl:element name="span">
                     <xsl:attribute name="class">orig</xsl:attribute>
-                    <xsl:attribute name="data-tip">Non-standard text<xsl:if test="tei:reg"> (standardisation: <span class="reg">⟨<xsl:apply-templates/>⟩</span></xsl:if></xsl:attribute>¡<xsl:apply-templates/>!</xsl:element>
+                    <xsl:attribute name="data-tip">Non-standard text<xsl:if test="tei:reg"> (standardisation: <span class="reg">⟨<xsl:apply-templates select="tei:reg"/>⟩)</span></xsl:if></xsl:attribute>¡<xsl:apply-templates select="tei:orig"/>!</xsl:element>
             </xsl:when>
             <!-- <span class="reg" data-tip="Standardised text (original: <span class=&quot;orig&quot;>¡coloṁ!</span>)">⟨celeṁ⟩</span> -->
             <xsl:when test="tei:reg and $edition-type='critical'">
                 <xsl:element name="span">
                     <xsl:attribute name="class">reg</xsl:attribute>
-                    <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates/>!</span></xsl:if></xsl:attribute>
-                    ⟨<xsl:apply-templates/>⟩
+                    <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates select="tei:orig"/>!)</span></xsl:if></xsl:attribute>
+                    ⟨<xsl:apply-templates select="tei:reg"/>⟩
                 </xsl:element>
             </xsl:when>
             <!-- <span class="sic" data-tip="Incorrect text (emendation: <span class=&quot;corr&quot;>⟨kh⟩</span>)">¿l?</span> -->
@@ -1489,7 +1508,7 @@
                     </xsl:if>
                     <xsl:if test="@type='canto' or @type='dyad'">
                         <xsl:variable name="type-div" select="@type"/>
-                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:choose><xsl:when test="@type='canto'"><b><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/></b></xsl:when><xsl:otherwise><b><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/></b></xsl:otherwise></xsl:choose>
+                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:choose><xsl:when test="@type='canto'"><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/></xsl:when><xsl:otherwise><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:otherwise></xsl:choose>
                             <xsl:if test="@rend='met'">
                                 <xsl:call-template name="metrical-list">
                                     <xsl:with-param name="metrical" select="$metrical"/>
@@ -2324,39 +2343,16 @@
     </xsl:template>
     
     <xsl:template name="launch-app">
+        <xsl:param name="context-diplomatic-app"/>
         <div class="col-2 apparat-col text-center">
             <xsl:choose>
                 <xsl:when test="$edition-type='diplomatic'">
                     <!-- difference pour ajouter les choice et les subst? to be added -->
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] |descendant::tei:span[@type='omissionStart'] | descendant::tei:lacunaStart | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+                    <xsl:for-each select="current-group()/descendant-or-self::tei:app | descendant-or-self::tei:choice | descendant-or-self::tei:subst">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
                                 <xsl:choose>
-                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
-                                        <xsl:text>lem-omissionStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
-                                        <xsl:text>lem-omissionEnd</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
-                                        <xsl:text>lem-lacunaStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
-                                        <xsl:text>lem-lacunaEnd</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']">
-                                        <xsl:text>lem-reformulationStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationEnd']">
-                                        <xsl:text>lem-reformulationEnd</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
-                                        <xsl:text>lem-lacunaStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
-                                        <xsl:text>lem-lacunaEnd</xsl:text>
-                                    </xsl:when>
                                     <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(ancestor::tei:div[@type='translation'])">
                                         <xsl:text>lem-last-note</xsl:text>
                                     </xsl:when>
@@ -3579,7 +3575,6 @@
                 <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:if>
-        <xsl:if test="$location = 'text'"/>
     </xsl:template>
     
     <xsl:template name="dharma-app">
