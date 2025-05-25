@@ -482,11 +482,12 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>   
-        <xsl:choose>
+        <!--<xsl:choose>
             <xsl:when test="$edition-type='diplomatic'">
-                <!-- group sur pb pour faire des row pour aligner plus précisement l'apparat -->
+                <!-\- group sur pb pour faire des row pour aligner plus précisement l'apparat -\->
               
-                <xsl:if test="tei:pb"><xsl:for-each-group select="node()" group-starting-with="tei:pb">
+                <xsl:if test="tei:pb">
+                    <xsl:for-each-group select="node()" group-starting-with="tei:pb">
                     <div class="row">
                         <div class="col-10 text-col">
                             <xsl:element name="span">
@@ -495,12 +496,14 @@
                         </xsl:for-each>
                             </xsl:element>    
                         </div>      
+                        <xsl:if test="current-group()/descendant-or-self::node()[local-name()='app']">
                             <xsl:call-template name="launch-app"/>
+                        </xsl:if>      
                     </div>
                 </xsl:for-each-group>
                 </xsl:if>
             </xsl:when>
-            <xsl:otherwise><xsl:if test="@type"> 
+            <xsl:otherwise>--><xsl:if test="@type"> 
                         <xsl:if test="@type">
                             <span class="lb" data-tip="{@type}">
                             <xsl:value-of select="@type"/>
@@ -521,8 +524,8 @@
                             </xsl:element>
                         </div>
                         <xsl:call-template name="launch-app"/>
-                    </div></xsl:otherwise>
-        </xsl:choose>
+                    </div><!--</xsl:otherwise>
+        </xsl:choose>-->
         <xsl:if test="//tei:div[@type='translation']/descendant-or-self::tei:*[substring-after(@corresp, '#') = $textpart-id]"><xsl:call-template name="translation-button">
             <xsl:with-param name="textpart-id" select="$textpart-id "/>
         </xsl:call-template>
@@ -2347,7 +2350,7 @@
             <xsl:choose>
                 <xsl:when test="$edition-type='diplomatic'">
                     <!-- difference pour ajouter les choice et les subst? to be added -->
-                    <xsl:for-each select="current-group()/descendant-or-self::tei:app[not(parent::tei:listApp) or not(@rend='hide')] | descendant-or-self::tei:choice[child::tei:sic and child::tei:corr] | descendant-or-self::tei:note[last()][parent::tei:p or parent::tei:lg]">
+                    <xsl:for-each select="descendant-or-self::tei:app[not(parent::tei:listApp) or not(@rend='hide')] | descendant-or-self::tei:note[last()][parent::tei:p or parent::tei:lg]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
