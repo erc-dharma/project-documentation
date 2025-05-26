@@ -1106,6 +1106,12 @@
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:listBibl">
                         <p class="bib-entry" id="bib-key-{$key-item[1]}">
+                            <!-- special cas: ajouter au dernier moment pour la liste des abbr. editions -->
+                            <xsl:if test="ancestor-or-self::tei:listBibl/@type='editions'">
+                                <a id="{@xml:id}">
+                                   <b>[<xsl:apply-templates select="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='editions']]/tei:abbr[@type='siglum']"/>]</b>
+                                </a>: <xsl:apply-templates select="./tei:abbr[@type='siglum']/following-sibling::tei:* except tei:bibl"/>.  </xsl:if>
+                            <!-- condition pour le apply-templates vague parce que je ne sais pas ce qu'il pourrait contenir -->
                             <xsl:call-template name="biblio-tei">
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
@@ -2096,7 +2102,12 @@
 
     <!--  listBibl -->
     <xsl:template match="tei:listBibl">
-        <div class="ed-section"><xsl:apply-templates/></div>
+        <div class="ed-section">
+                <xsl:if test="@type='editions'">
+                    <h2 class="ed-heading" id="{generate-id()}">List of Abbreviated texts</h2></xsl:if>
+                    <!-- pas de titre pour la biblio qui serait alors redondant -->            
+            <xsl:apply-templates/>
+        </div>
     </xsl:template>
 
     <!--  listWit ! -->
@@ -2443,6 +2454,10 @@
                       
                        <a href="{$MSlink}">
                            <b><xsl:choose>
+                               <!-- scenario pour les text abbreviated for parallels -->
+                               <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='bibl']">
+                                   <xsl:apply-templates select="tei:*[@xml:id =$targetLink][local-name() ='bibl']/tei:abbr[@type='siglum']"/>
+                               </xsl:when>
                                <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='div']/@type">
                                    <xsl:value-of select="//tei:*[@xml:id =$targetLink]/@type"/>
                                    <xsl:text> </xsl:text>
@@ -3398,7 +3413,7 @@
         </xsl:choose>
     </xsl:template>
     
-    <!-- Templates for Apparatus at the botton of the page -->
+    <!-- Templates for Apparatus at the botton of the page : inspired from DDbDP Apparatus framework provided in Epidoc stylesheets. -->    
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
     <xsl:choose>
@@ -3447,37 +3462,54 @@
             <xsl:if
         test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
       <div class="ed-section">
-        <xsl:for-each
-            select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
-
-          <xsl:call-template name="dharma-app">
-            <xsl:with-param name="apptype">
-              <xsl:choose>
-                <xsl:when test="self::tei:app">
-                  <xsl:text>app</xsl:text>
-                </xsl:when>
-                  <xsl:when test="self::tei:note">
-                      <xsl:text>note</xsl:text>
-                  </xsl:when>
-                  <xsl:when test="self::tei:span[@type='omissionStart']">
-                      <xsl:text>omission</xsl:text>
-                  </xsl:when>
-                  <xsl:when test="self::tei:span[@type='reformulationStart']">
-                      <xsl:text>reformulation</xsl:text>
-                  </xsl:when>
-                  <xsl:when test="self::tei:lacunaStart">
-                      <xsl:text>lost</xsl:text>
-                  </xsl:when>
-                  <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
-                      <xsl:text>trans</xsl:text>
-                  </xsl:when>
-              </xsl:choose>
-            </xsl:with-param>
-              <xsl:with-param name="display-context" select="'printedapp'"/>
-          </xsl:call-template>
-        </xsl:for-each>
+          <xsl:variable name="apparatus">
+              <!-- An entry is created for-each of the following instances
+                  * app not nested in another: [not(ancestor::tei:*[local-name()=('app')])] => deleted, since i need it, but need another rule to deal with it
+                  * app not hidden by the editor
+                  * app not used for parallels
+                  * note used as last element of a block - to be treated as a lem/note combo
+                  *span reformulation start; avoid reformulationEnd
+                  * unmetrical verse line 
+        -->
+              <xsl:for-each select="( .//tei:app)[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
+                  <app>
+                      <xsl:call-template name="dharma-app">
+                          <xsl:with-param name="apptype">
+                              <xsl:choose>
+                                  <xsl:when test="self::tei:app">
+                                      <xsl:text>app</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:note">
+                                      <xsl:text>note</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:span[@type='omissionStart']">
+                                      <xsl:text>omission</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:span[@type='reformulationStart']">
+                                      <xsl:text>reformulation</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:lacunaStart">
+                                      <xsl:text>lost</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
+                                      <xsl:text>trans</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:app[ancestor::tei:*[local-name()=('app')]]">
+                                      <xsl:text>embeddedapp</xsl:text>
+                                      
+                                  </xsl:when>
+                              </xsl:choose>
+                          </xsl:with-param>
+                          <xsl:with-param name="display-context" select="'printedapp'"/>
+                      </xsl:call-template>
+                  </app>
+              </xsl:for-each>
+          </xsl:variable>
+          <!-- XSL for-each-group effectively suppresses any duplicate apparatus generated due to sibling triggers.   -->
+          <xsl:for-each-group select="$apparatus/*:app" group-by=".">
+              <xsl:copy-of select="node()"/>
+          </xsl:for-each-group>
       </div>
-        
     </xsl:if>
     </xsl:otherwise>
     </xsl:choose>
@@ -3492,29 +3524,31 @@
         <!-- location defines the direction of linking -->
         <xsl:param name="location"/>
         <xsl:param name="type"/>
+        <!-- Does not produce links for translations -->
+        <xsl:if test="not(ancestor::tei:div[@type = 'translation'])">
             <!-- Only produces a link if it is not nested in an element that would be in apparatus -->
-        <!-- I need to revise this!!! -->
-        <xsl:if test="not((local-name() = 'choice' or local-name() = 'subst')
-            and (ancestor::tei:choice or ancestor::tei:subst))">
-            <xsl:variable name="app-num">
-                <xsl:value-of select="name()"/>
-                <xsl:number level="any" format="0001"/>
-            </xsl:variable>
-                    <xsl:call-template name="generate-app-link">
+            <!--<xsl:if test="not((local-name() = 'app') and (ancestor::tei:app))">-->
+                <xsl:variable name="app-num">
+                    <xsl:value-of select="name()"/>
+                    <xsl:number level="any" format="00001"/>
+                </xsl:variable>
+                <xsl:call-template name="generate-app-link">
                     <xsl:with-param name="location" select="$location"/>
                     <xsl:with-param name="app-num" select="$app-num"/>
                     <xsl:with-param name="type" select="$type"/>
                 </xsl:call-template>
-            </xsl:if>
+            <!--</xsl:if>-->
+        </xsl:if>
     </xsl:template>
-
+    
+    <!-- Called by app-link to generate the actual HTML -->
     <xsl:template name="generate-app-link">
         <xsl:param name="location"/>
         <xsl:param name="app-num"/>
         <xsl:param name="trans-num"/>
         <xsl:param name="type"/>
             <xsl:if test="$location = 'bottom'">
-                <a>
+                <xsl:element name="a">
                     <xsl:attribute name="id">
                         <xsl:text>to-app-</xsl:text>
                         <xsl:value-of select="$app-num"/>
@@ -3524,8 +3558,8 @@
                         <xsl:value-of select="$app-num"/>
                     </xsl:attribute>
                     <xsl:text>^</xsl:text>
-                    <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] | //tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | //tei:note[ancestor::tei:div[@type='translation']] //tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart']| .//tei:l[@real] |.//tei:lacunaStart"/>
-                </a>
+                    <xsl:call-template name="number-counter"/>
+                </xsl:element>
             </xsl:if>
         <xsl:if test="$location = 'apparatus'">
             <xsl:element name="a">
@@ -3566,7 +3600,7 @@
                 </xsl:attribute>
                 <xsl:attribute name="href"><xsl:text>#to-app-</xsl:text>
                     <xsl:value-of select="$app-num"/></xsl:attribute>
-                <xsl:attribute name="title">Apparatus <xsl:number level="any" count=" //tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | //tei:note[ancestor::tei:div[@type='translation']] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |.//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart']| .//tei:l[@real] |.//tei:lacunaStart"></xsl:number></xsl:attribute>
+                <xsl:attribute name="title">Apparatus <xsl:call-template name="number-counter"/></xsl:attribute>
                 <xsl:attribute name="id">
                     <xsl:text>from-app-</xsl:text>
                     <xsl:value-of select="$app-num"/>
@@ -3575,10 +3609,15 @@
                     <xsl:value-of select="generate-id()"/>
                 </xsl:attribute>
                 <xsl:text>(</xsl:text>
-                <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | //tei:note[ancestor::tei:div[@type='translation']] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]| .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart']| .//tei:l[@real] |.//tei:lacunaStart"/>
+                <xsl:call-template name="number-counter"/>
                 <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:if>
+    </xsl:template>
+    
+    <!-- count app numbers -->
+    <xsl:template name="number-counter">
+        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:note[ancestor::tei:div[@type='translation']] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |  .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart']| .//tei:l[@real] |.//tei:lacunaStart"/>
     </xsl:template>
     
     <xsl:template name="dharma-app">
@@ -3835,6 +3874,9 @@
                             </xsl:otherwise>
                         </xsl:choose>
                             </xsl:if>
+                        <xsl:if test="./@type='silemn'">
+                            (<i>sil. em.</i>)
+                        </xsl:if>
                     <xsl:if test="self::tei:lem[@type='transposition']">
                         <xsl:choose>
                             <xsl:when test=".[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
@@ -3965,6 +4007,9 @@
                                     </xsl:call-template>
                                 </xsl:when>
                             </xsl:choose>
+                        </xsl:if>
+                        <xsl:if test="./@type='silemn'">
+                            (<i>sil. em.</i>)
                         </xsl:if>
                         <xsl:if test="@cause">
                             <xsl:choose>
@@ -4166,6 +4211,7 @@
             <xsl:when test="$type-app='conj'">
                 <xsl:text>conj.</xsl:text>
            </xsl:when>
+            <!-- other placement for silemn, so not in this list --> 
         </xsl:choose>
     </xsl:template>
 
