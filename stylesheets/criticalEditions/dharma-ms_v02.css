@@ -109,3 +109,7 @@ span.lem >a, .lem{
 .unmetrical{
    background-color: pink;
 }
+
+a.href {
+    color: blue!important;
+}
