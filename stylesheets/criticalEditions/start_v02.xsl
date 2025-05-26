@@ -3270,14 +3270,13 @@
         <xsl:param name="witdetail-text"/>
         <xsl:param name="wit-hand"/>
         <xsl:param name="tpl"/>
-        <!-- Changement dans la gestion des espaces donc $tpl='content-ptr' n'est plus nécessaire -->
         <xsl:if test="not($tpl='content-pb')">
             <xsl:text> </xsl:text>
         </xsl:if>
-        <a class="siglum ref" href="#{$target}">
+        <a class="siglum" href="#{$target}">
             <xsl:choose>
-                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum'][1]">
-                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum'][1]"/>
+                <xsl:when test="//tei:witness[@xml:id=$target]/tei:abbr[@type='siglum']">
+                    <xsl:apply-templates select="//tei:witness[@xml:id=$target]/tei:abbr[@type='siglum']"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="$target"/>
@@ -3736,25 +3735,25 @@
                             
                         </xsl:attribute>
                             <xsl:choose>
-                            <xsl:when test="$path/tei:lem/following-sibling::tei:note[@type='altLem']">
-                                <xsl:apply-templates select="replace($path/tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
+                            <xsl:when test="following-sibling::tei:note[@type='altLem']">
+                                <xsl:apply-templates select="replace(following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
                             </xsl:when>
-                            <xsl:when test="$path/tei:lem[@type='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))]"/>
+                            <xsl:when test=".[@type='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))]"/>
                             <xsl:otherwise>
-                                <xsl:apply-templates select="$path/tei:lem"/>
+                                <xsl:apply-templates select="."/>
                             </xsl:otherwise>
                         </xsl:choose>
                     
-                    <xsl:if test="not($path/tei:lem[@type='transposition'][following-sibling::tei:rdg[descendant::*[@corresp]]]) and $display-context='printedapp'">
+                    <xsl:if test="not(.[@type='transposition'][following-sibling::tei:rdg[descendant::*[@corresp]]]) and $display-context='printedapp'">
                         <b><xsl:text>]</xsl:text></b>
                     </xsl:if>
-                    <xsl:if test="$path/tei:lem/@type">
+                    <xsl:if test="@type">
                         <i><xsl:text> </xsl:text><xsl:call-template name="apparatus-type"><xsl:with-param name="type-app" select="$path/tei:lem/@type"/></xsl:call-template></i></xsl:if>
                         <!-- @resp and @source -->
-                        <xsl:if test="$path/tei:lem/@resp">
+                        <xsl:if test="@resp">
                             <xsl:text> </xsl:text>
                             <xsl:call-template name="responsability-display">
-                                <xsl:with-param name="responsability" select="$path/tei:lem/@resp"/>
+                                <xsl:with-param name="responsability" select="@resp"/>
                                 <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
                             </xsl:call-template>
                         </xsl:if>                            
@@ -3856,10 +3855,10 @@
                             </xsl:when>
                         </xsl:choose>
                     </xsl:if>
-                    <xsl:if test="$path/tei:lem[not(@type='transposition')] and $display-context='printedapp'">
+                    <xsl:if test="self::tei:lem[not(@type='transposition')] and $display-context='printedapp'">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
-                        <xsl:if test="$path/tei:lem[not(@type='transposition')] and $display-context='modalapp'">
+                        <xsl:if test="self::tei:lem[not(@type='transposition')] and $display-context='modalapp'">
                             <xsl:call-template name="lbrk-app"/>
                         </xsl:if>
                     </xsl:element>
@@ -4067,9 +4066,9 @@
                     </xsl:apply-templates>
                 </xsl:when>
             <xsl:when test="$apptype='note'">
-                <xsl:for-each select="$path/tei:note">
+                <xsl:for-each select="tei:note">
                     <span class="bottom-note-line">
-                    <xsl:apply-templates select="$path/tei:note"/>
+                    <xsl:apply-templates select="."/>
                 </span>
                 </xsl:for-each>
             </xsl:when>
