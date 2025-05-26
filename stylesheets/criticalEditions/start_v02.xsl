@@ -2020,7 +2020,7 @@
         <xsl:if test="not(parent::tei:quote[@type='base-text'])">  
             <h6 class="ed-heading">
                         <xsl:if test="@n">
-                            <xsl:number format="I" value="@n"/>.
+                            <xsl:number format="1" value="@n"/>.
                         </xsl:if>               
                 <xsl:if test="@rend='met' or parent::tei:div[@type='metrical'][1]/@rend='met'">
                     <xsl:call-template name="metrical-list">
