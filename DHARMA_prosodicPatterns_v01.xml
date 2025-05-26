@@ -1,4 +1,4 @@
-﻿<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xml:lang="eng" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -57,6 +57,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="draft" when="2025-05-26" who="part:argr">added visarjita and nāgata</change>
       <change status="draft" when="2024-05-09">Inserted references from Zoetmulder, Sugriwa, and Candrakiraṇa text</change>
       <change status="draft" when="2025-03-22" who="part:anol">Revised references from Zoetmulder up to 10 syllables (leaving out 8 syllables for now)</change>
       <change status="draft" when="2024-05-16" who="part:daba">Some tidying and adding vipulā anuṣṭubh</change>
@@ -2256,6 +2257,30 @@
             </bibl>
           </listBibl>
         </item>
+      	<item>
+      		<measure unit="syllable">15</measure>
+      		<name xml:lang="kaw-Latn">nāgata</name>
+      		<seg type="xml">+-----++++----=</seg>
+      		<seg type="prosody">–⏑⏑⏑⏑⏑––––⏑⏑⏑⏑⏓</seg>
+      		<seg type="gana">bha-na-ya-bha-sa</seg>
+      		<listBibl>
+      			<bibl>
+      				<ptr target="bib:Apte1890_01"/>
+      				<citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+      				<!-- absent from Apte -->
+      			</bibl>
+      			<bibl>
+      				<ptr target="bib:Velankar1949_01"/>
+      			</bibl>
+      			<bibl>
+      				<ptr target="bib:Zoetmulder1974_01"/>
+      				<citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+      				<citedRange unit="page">459</citedRange>
+      				<citedRange unit="item">XV.6</citedRange>
+      				<!-- Sources for name: ... -->
+      			</bibl>
+      		</listBibl>
+      	</item>
         <item>
           <measure unit="syllable">16</measure>
           <name xml:lang="kaw-Latn">giriśa</name>
@@ -2767,7 +2792,7 @@
             </bibl>
             <bibl>
               <ptr target="bib:Velankar1949_01"/>
-            </bibl>
+            </bibl>v
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
@@ -2834,6 +2859,30 @@
             </bibl>
           </listBibl>
         </item>
+      	<item>
+      		<measure unit="syllable">20</measure>
+      		<name xml:lang="kaw-Latn">visarjita</name>
+      		<seg type="xml">+--+--+------+--+--=</seg>
+      		<seg type="prosody">–⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑–⏑⏑⏓</seg>
+      		<seg type="gana">bha-bha-bha-na-ja-ja-ga-ga</seg>
+      		<listBibl>
+      			<bibl>
+      				<ptr target="bib:Apte1890_01"/>
+      				<citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+      				<!--not in Apte-->
+      			</bibl>
+      			<bibl>
+      				<ptr target="bib:Velankar1949_01"/>
+      			</bibl>
+      			<bibl>
+      				<ptr target="bib:Zoetmulder1974_01"/>
+      				<citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+      				<citedRange unit="page">464</citedRange>
+      				<citedRange unit="item">XX.3</citedRange>
+      				<!-- Source for name: ... -->
+      			</bibl>
+      		</listBibl>
+      	</item>
         <item>
           <measure unit="syllable">20</measure>
           <name xml:lang="san-Latn">mr̥gāṅkacarita</name>
@@ -3215,7 +3264,7 @@
         </item>
         <item>
           <measure unit="syllable">23</measure>
-          <name xml:lang="san-Latn">jagaddhita</name>
+          <name xml:lang="kaw-Latn">jagaddhita</name>
           <name xml:lang="kaw-Latn">bhavacakra</name>
           <name xml:lang="kaw-Latn">rāgakusuma</name>
           <seg type="xml">+++--+-+---+------+-+-=</seg>

@@ -57,8 +57,7 @@
     </xsl:function>
     <xsl:function name="functx:repeat" as="item()+">
         <xsl:param name="pThis" as="item()"/>
-        <xsl:param name="pTimes" as="xs:integer"/>
-        
+        <xsl:param name="pTimes" as="xs:integer"/>     
         <xsl:for-each select="1 to $pTimes">
             <xsl:sequence select="$pThis"/>
         </xsl:for-each>
@@ -150,15 +149,13 @@
                     <main>
                         <h1>
                             <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[1]"/>
-                            <!-- commenting title alt parce que son usage est un peu abusif dans certains fichiers -->
-                            <!--<xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
-                                <xsl:text> or </xsl:text>
-                                <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']"/>
-                            </xsl:if>-->
-                            <xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author">
-                                <xsl:text> by </xsl:text>
-                                <xsl:apply-templates select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author"/>
+                           
+                            <xsl:if test="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                                <xsl:for-each select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title[@type='alt']">
+                                    <xsl:text> — </xsl:text>
+                                <xsl:apply-templates/></xsl:for-each>
                             </xsl:if>
+                            <!-- no mention of author -->
                         </h1>
                         <div id="inscription-display">
                             
@@ -168,30 +165,35 @@
                             
                             <div class="edition">
                                 <h2 id="edition">Edition</h2>
-                                <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='edition']"/>
-                                <!-- redondant; voir si je peux fusionner les deux display d'apparat presque identique; juste une différence de contexte. Impose de revoir les manières dont l'ensemble se lit; pas sûre d'avoir le temps -->
-                                <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/>  
+
+                                        <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='edition']"/>                                                            
                             </div>
-                            <div class="apparatus">
-                                <h2 id="apparatus" class="collapsible">Apparatus</h2>
+                            <!-- condition pour n'afficher que si l'édition contient des app -->
+                            <xsl:if test="tei:text/tei:body/tei:div[@type='edition']//descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide')]"><div class="apparatus">
+                                <h2 id="apparatus" class="collapsible">Apparatus <i class="fa-solid fa-angles-down"></i></h2>
+                                <div class="collapsible-content">
                                 <xsl:call-template name="tpl-apparatus"/>
-                            </div>
+                                </div>
+                            </div></xsl:if>
+                            <!-- condition pour n'afficher que si des traductions sont disponibles -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='translation']//tei:p/text()">
                                 <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']">
                                     <div class="translation">
-                                        <xsl:element name="h2">
-                                            <xsl:attribute name="id">Translation<xsl:value-of select="count(tei:text/tei:body/preceding-sibling::tei:div[@type='translation']) + 1"/></xsl:attribute>Translation<xsl:if test="@xml:lang or @resp or @source"><xsl:call-template name="translation-title">
+                                        <h2 id="translation{generate-id()}">Translation<xsl:if test="@xml:lang or @resp or @source"><xsl:call-template name="translation-title">
                                                 <xsl:with-param name="language-title" select="@xml:lang"/>
-                                                <xsl:with-param name="responsability" select="@resp"/><xsl:with-param name="source" select="@source"/>
-                                            </xsl:call-template></xsl:if></xsl:element>
+                                                <xsl:with-param name="responsability" select="@resp"/>
+                                                <xsl:with-param name="source" select="@source"/>
+                                            </xsl:call-template></xsl:if></h2>
                                         <xsl:apply-templates select="."/>
                                     </div>
                                 </xsl:for-each>
                             </xsl:if>
+                            <!-- condition pour n'afficher que si commentary contient du text -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='commentary']/tei:p/text()"><div class="commentary">
                                 <h2 id="commentary">Commentary</h2>
                                 <xsl:apply-templates select="tei:text/tei:body/tei:div[@type='commentary']"/>
                             </div></xsl:if>
+                            <!-- condition pour n'afficher que si bibliography contient du text -->
                             <xsl:if test="tei:text/tei:body/tei:div[@type='bibliography']/tei:p/text() or tei:text/tei:body/tei:div[@type='bibliography']/tei:listBibl/tei:bibl/text()">
                                 
                             <div class="bibliography">
@@ -208,8 +210,15 @@
                             </xsl:if> 
                         </div>  
                         <!-- inscription source -->
+                        <!-- tpl incomplet, mais suffisant pour une 1er viz.-->
                         <xsl:call-template name="source-display"/>
                     </main>
+                    <!-- app modals -->
+                    <xsl:apply-templates select=".//tei:app[not(@rend='hide')] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/>
+                </div>
+                <div id="tip-box" class="hidden">
+                    <div id="tip-contents"></div>
+                    <div id="tip-arrow"></div>
                 </div>
             </body>
             <xsl:call-template name="dharma-script"/>
@@ -228,11 +237,10 @@
         </p>
         <p>
             <xsl:text>Filename: </xsl:text>
-            <span id="text-id">
+            <span class="text-id">
                 <xsl:apply-templates select="$filename"/>
             </span>
         </p>
-        <!-- I have added only the languages used in the repo -->
         <p>
             <xsl:text>Language: </xsl:text>
             <xsl:call-template name="language-interpretation">
@@ -243,20 +251,19 @@
             <xsl:text>Repository: </xsl:text>
             
                <xsl:choose>
-                   <xsl:when test="contains($repository-name, 'tfd-nusantara')">Nusantara Philology <span id="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
-                   <xsl:when test="contains($repository-name, 'tfd-sanskrit')">Sanskrit Philology <span id="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
+                   <xsl:when test="contains($repository-name, 'tfd-nusantara')">Nusantara Philology <span class="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
+                   <xsl:when test="contains($repository-name, 'tfd-sanskrit')">Sanskrit Philology <span class="text-id">(<xsl:value-of select="$repository-name"/>)</span></xsl:when>
                </xsl:choose> 
         </p>
         <p>
-            <xsl:text>Version: <!--part commented based on limited calls--></xsl:text>
-            <xsl:call-template name="api-rest-github-history"/>
+            <xsl:text>Version:  part commented since without access_token with github actions api calls are limited – still working on it</xsl:text>
+            <!--<xsl:call-template name="api-rest-github-history"/>-->
         </p>
-        
     </xsl:template>
    
  <!-- call to api github -->
     <xsl:template name="api-rest-github-history">
-            <xsl:variable name="api-github-path" select="concat('https://api.github.com/repos/erc-dharma/', $repository-name,'/commits')"/>
+        <xsl:variable name="api-github-path" select="concat('https://api.github.com/repos/erc-dharma/', $repository-name,'/commits')"/>
         <xsl:variable name="path-file">
             <xsl:choose>
                 <xsl:when test="contains($repository-name, 'tfd-nusantara')">
@@ -308,7 +315,7 @@
             </xsl:if>
         <xsl:if test="$responsability">
             <xsl:text> by </xsl:text>
-            <xsl:call-template name="responsibility-display">
+            <xsl:call-template name="responsability-display">
                 <xsl:with-param name="responsability" select="$responsability"/>
             </xsl:call-template>
         </xsl:if>
@@ -320,15 +327,24 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template name="responsibility-display">
+    <xsl:template name="responsability-display">
         <xsl:param name="responsability"/>
+        <xsl:param name="display-behaviour"/>
+        <!-- param pour éviter la redondance de tpl pour établir la différence de traitement attendu dans les noms de familles occidentaux  -->
         <!-- //tei:bibl[@xml:id=$MSlink-part] -->
             <xsl:choose>
                 <xsl:when test="contains($responsability, ' ')">
                     <xsl:variable name="first-id"
                         select="substring-after(normalize-space(substring-before($responsability, ' ')), 'part:')"/>
                     <xsl:if test="$first-id">
-                        <xsl:apply-templates select="$list-members//tei:person[@xml:id = $first-id]/child::tei:persName"/>
+                        <xsl:choose>
+                            <!-- ligne pénible pour vérifier, si j'ai un nom de famille occidental -->
+                            <xsl:when test="$display-behaviour='western-surname-only' and $list-members//tei:person[@xml:id = $first-id]/tei:persName/tei:surname"><xsl:apply-templates select="$list-members//tei:person[@xml:id = $first-id]/tei:persName/tei:surname"/></xsl:when>
+                            <!-- ligne pour le western display, pour les noms non occidentaux -->
+                            <xsl:when test="$display-behaviour='western-surname-only' and $list-members//tei:person[@xml:id = $first-id]/tei:persName/tei:name">
+                                <xsl:apply-templates select="$list-members//tei:person[@xml:id = $first-id]/tei:persName/tei:name"/>
+                            </xsl:when>
+                            <xsl:otherwise><xsl:apply-templates select="$list-members//tei:person[@xml:id = $first-id]/child::tei:persName"/></xsl:otherwise></xsl:choose>
                         <xsl:choose>
                             <xsl:when test="substring-after(substring-after($responsability, ' '), ' ')">
                                 <xsl:text>, </xsl:text>
@@ -337,7 +353,7 @@
                                 <xsl:text> and </xsl:text>
                             </xsl:otherwise>
                         </xsl:choose>
-                        <xsl:call-template name="responsibility-display">
+                        <xsl:call-template name="responsability-display">
                             <xsl:with-param name="responsability" select="substring-after($responsability, ' ')"/>
                         </xsl:call-template>
                     </xsl:if>
@@ -348,14 +364,17 @@
                             <xsl:text/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:apply-templates select="$list-members//tei:person[@xml:id = substring-after($responsability, 'part:')]/child::tei:persName"/>
+                            <xsl:choose><xsl:when test="$display-behaviour='western-surname-only'"><xsl:apply-templates select="$list-members//tei:person[@xml:id = substring-after($responsability, 'part:')]/tei:persName/tei:surname"/></xsl:when>  
+                            <xsl:otherwise><xsl:apply-templates select="$list-members//tei:person[@xml:id = substring-after($responsability, 'part:')]/child::tei:persName"/>
+</xsl:otherwise></xsl:choose>                        
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:otherwise>
             </xsl:choose>
     </xsl:template>
     
-    <!-- I have only added the main languages found while writing the XSLT -->
+    <!-- I have based my code on the lg file kept in project-documentation -->
+    <!-- Attention: ce fichier n'est pas exhaustif, il pourrait donc y avoir des lg manquantes -->
     <xsl:template name="language-interpretation">
         <xsl:param name="language"/>
         <xsl:variable name="lines">
@@ -370,55 +389,53 @@
     
     <!-- Header imported from Dharmalekha -->
     <xsl:template name="header">
-        <header>
-            <div id="menu_bar">
-        <a id="dharma-logo" href="/"><img alt="DHARMA Logo" src="/dharma_bar_logo.svg"></img></a>
-        <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
-        <ul id="menu" class="hidden">
-            <li>
-                <a href="/repositories">
-                    <i class="fa-brands fa-git-alt"></i> Repositories</a>
-            </li>
-            <li>
-                <a href="/texts">
-                    <i class="fa-regular fa-file-lines"></i> Texts</a>
-            </li>
-            <li class="submenu">
-                <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
-                <ul class="hidden">
-                    <li><a href="/editorial-conventions">Editorial Conventions</a></li>
-                    <li><a href="/prosody">Prosodic Patterns</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="/parallels">
-                    <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
-            </li>
-            <li class="submenu">
-                <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
-                <ul class="hidden">
+        <header><div id="menu-bar">
+            <a id="dharma-logo" href="/"><img alt="DHARMA Logo" src="https://dharmalekha.info/dharma_bar_logo.svg"/></a>
+            <a id="menu-toggle"><i class="fa-solid fa-caret-down fa-fw"></i></a>
+            <ul id="menu" class="hidden">
+                <li>
+                    <a href="https://dharmalekha.info/repositories">
+                        <i class="fa-brands fa-git-alt"></i> Repositories</a>
+                </li>
+                <li>
+                    <a href="https://dharmalekha.info/texts">
+                        <i class="fa-regular fa-file-lines"></i> Texts</a>
+                </li>
+                <li class="submenu">
+                    <a>Conventions <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="hidden">
+                        <li><a href="https://dharmalekha.info/editorial-conventions">Editorial Conventions</a></li>
+                        <li><a href="https://dharmalekha.info/prosody">Prosodic Patterns</a></li>
+                    </ul>
+                </li>
                     <li>
-                        <a href="/errors">
-                            <i class="fa-solid fa-bug"></i> Texts Errors</a>
+                        <a href="https://dharmalekha.info/parallels">
+                            <i class="fa-solid fa-grip-lines-vertical"></i> Parallels</a>
                     </li>
-                    <li>
-                        <a href="/bibliography-errors">
-                            <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
+                    <li class="submenu">
+                        <a>Project Internal <i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="hidden">
+                            <li>
+                                <a href="https://dharmalekha.info/errors">
+                                    <i class="fa-solid fa-bug"></i> Texts Errors</a>
+                            </li>
+                            <li>
+                                <a href="https://dharmalekha.info/bibliography-errors">
+                                    <i class="fa-solid fa-bug"></i> Bibliography Errors</a>
+                            </li>
+                            <li>
+                                <a href="https://dharmalekha.info/display">Display List</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="/display">Display List</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-            </div>
+            </ul>
+        </div>
         </header>
+
         <div id="sidebar">
             <div id="toc">
                 <div id="toc-heading" class="toc-heading">Contents</div>
                 <nav id="toc-contents">
-                    <xsl:element name="ul"> 
-                    </xsl:element>
                 </nav>
             </div>
             <div class="toc-heading">Display</div>
@@ -465,15 +482,37 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>   
- <xsl:if test="@type">          
-                          <h6 class="ed-heading" id="{generate-id(.)}">
+        <!--<xsl:choose>
+            <xsl:when test="$edition-type='diplomatic'">
+                <!-\- group sur pb pour faire des row pour aligner plus précisement l'apparat -\->
+              
+                <xsl:if test="tei:pb">
+                    <xsl:for-each-group select="node()" group-starting-with="tei:pb">
+                    <div class="row">
+                        <div class="col-10 text-col">
+                            <xsl:element name="span">
+                    <xsl:for-each select="current-group()">
+                        <xsl:apply-templates select="."/>
+                        </xsl:for-each>
+                            </xsl:element>    
+                        </div>      
+                        <xsl:if test="current-group()/descendant-or-self::node()[local-name()='app']">
+                            <xsl:call-template name="launch-app"/>
+                        </xsl:if>      
+                    </div>
+                </xsl:for-each-group>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>--><xsl:if test="@type"> 
                         <xsl:if test="@type">
+                            <span class="lb" data-tip="{@type}">
                             <xsl:value-of select="@type"/>
+                            </span>
                         </xsl:if>
                         <xsl:if test="@n and not(@type='invocation' or @type='colophon')">
-                            <xsl:value-of select="@n"/>
+                            <b class="lb" data-tip="Paragraph number">§<xsl:value-of select="@n"/><xsl:text> </xsl:text></b>
                         </xsl:if>
-                    </h6></xsl:if>
+                    </xsl:if>
                     <div class="row">
                         <div class="col-10 text-col">
                             <xsl:element name="p">
@@ -485,7 +524,8 @@
                             </xsl:element>
                         </div>
                         <xsl:call-template name="launch-app"/>
-                    </div>
+                    </div><!--</xsl:otherwise>
+        </xsl:choose>-->
         <xsl:if test="//tei:div[@type='translation']/descendant-or-self::tei:*[substring-after(@corresp, '#') = $textpart-id]"><xsl:call-template name="translation-button">
             <xsl:with-param name="textpart-id" select="$textpart-id "/>
         </xsl:call-template>
@@ -513,13 +553,24 @@
            <xsl:when test="parent::tei:subst">
                <xsl:element name="span">
                    <xsl:attribute name="class">add</xsl:attribute>
-                   <xsl:attribute name="data-tip">Scribal addition made in the space where a previous string of text has been erased (overwritten text: &lt;span class&quot;del&quot;&gt;⟦<xsl:value-of select="preceding-sibling::tei:del[1]"/>⟧&lt;span&gt;</xsl:attribute>
+                   <xsl:attribute name="data-tip">Scribal addition made in the space where a previous string of text has been erased (overwritten text: &lt;span class&quot;del&quot;&gt;⟦<xsl:value-of select="preceding-sibling::tei:del[1]"/>⟧&lt;span&gt;
                    <xsl:if test="@hand">
                        <xsl:text> H</xsl:text>
                        <xsl:element name="sub">
                            <xsl:value-of select="substring-after(@hand, '_H')"/>
                        </xsl:element>
                    </xsl:if>
+                   <xsl:if test="@resp">
+                       <xsl:call-template name="responsability-display">
+                           <xsl:with-param name="responsability" select="@resp"/>
+                           <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                       </xsl:call-template>
+                   </xsl:if>
+                   <xsl:if test="@source">
+                       <xsl:call-template name="bibliography">
+                           <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
+                       </xsl:call-template>
+                   </xsl:if></xsl:attribute>
                    ⟨⟨<xsl:apply-templates/>⟩⟩
                </xsl:element>
            </xsl:when>
@@ -566,6 +617,17 @@
             </xsl:choose>
                 </i>
                         </xsl:if>
+                <xsl:if test="@resp">
+                    <xsl:call-template name="responsability-display">
+                        <xsl:with-param name="responsability" select="@resp"/>
+                        <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                    </xsl:call-template>
+                </xsl:if>
+                <xsl:if test="@source">
+                    <xsl:call-template name="bibliography">
+                        <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
+                    </xsl:call-template>
+                </xsl:if>
             </xsl:attribute>
             ⟨⟨<xsl:apply-templates/>⟩⟩
         </xsl:element>
@@ -576,220 +638,250 @@
     <!--  app ! -->
     <xsl:template match="tei:app[not(@rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]" mode="modals">
         <xsl:variable name="apparatus">
+            <xsl:call-template name="dharma-app">
+                <xsl:with-param name="apptype">
+                    <xsl:choose>
+                        <xsl:when test="self::tei:app">
+                            <xsl:text>app</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="self::tei:note">
+                            <xsl:text>note</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="self::tei:span[@type='omissionStart']">
+                            <xsl:text>omission</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="self::tei:span[@type='reformulationStart']">
+                            <xsl:text>reformulation</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="self::tei:lacunaStart">
+                            <xsl:text>lost</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
+                            <xsl:text>trans</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:with-param>
+                <xsl:with-param name="display-context" select="'modalapp'"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$apparatus"/>
+        </span>
+
+    </xsl:template>
+    
+    <!--<xsl:template name="app-content">
             <span class="mb-1 lemma-line">
-                    <span class="app-lem">
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">
-                                    <xsl:choose><xsl:when test="not(child::tei:lem/following-sibling::tei:note[@type='altLem'])">
-                                        
-                                        <xsl:call-template name="lem-type"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:text>lem</xsl:text>
-                                    </xsl:otherwise>
-                                    </xsl:choose>
-                            </xsl:attribute>
+                <span class="app-lem">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">
                             <xsl:choose>
-                                <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
-                                    <xsl:apply-templates select="replace(tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
-                                </xsl:when>
-                                <xsl:when test="tei:lem[@type='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))]"/>
-                                <xsl:when test="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
-                                    <xsl:variable name="corresp-id" select="tei:rdg[@cause='transposition']/@corresp"/>
-                                    <xsl:apply-templates select="replace(//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
-                                        "/>
+                                <xsl:when test="not(child::tei:lem/following-sibling::tei:note[@type='altLem'])">
+                                    
+                                    <xsl:call-template name="lem-type"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:apply-templates select="tei:lem"/>
+                                    <xsl:text>lem</xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </xsl:element>
-                    </span>
-                    <xsl:if test="tei:lem">
-                        <xsl:if test="tei:lem/@type">
-                                <xsl:text> </xsl:text>
-                                <i><xsl:call-template name="apparatus-type"/>
-                                </i>
-                            <!-- need to be reintroduced as well as @resp -->
-                                <!--<xsl:if test="tei:lem/@source">
-                                    <xsl:text> </xsl:text>
-                                </xsl:if>-->
-                            </xsl:if>
-                            <!--<xsl:if test="tei:lem/@type='absent_elsewhere'">
+                        </xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="tei:lem/following-sibling::tei:note[@type='altLem']">
+                                <xsl:apply-templates select="replace(tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
+                            </xsl:when>
+                            <xsl:when test="tei:lem[@type='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))]"/>
+                            <xsl:when test="tei:rdg[@type='transposition'][not(preceding-sibling::tei:lem)]">
+                                <xsl:variable name="corresp-id" select="tei:rdg[@cause='transposition']/@corresp"/>
+                                <xsl:apply-templates select="replace(//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
+                                    "/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:apply-templates select="tei:lem"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:element>
+                </span>
+                <xsl:if test="tei:lem">
+                    <xsl:if test="tei:lem/@type">
+                        <xsl:text> </xsl:text>
+                        <i><xsl:call-template name="apparatus-type">
+                            <xsl:with-param name="type-app" select="tei:lem/@type"/>
+                        </xsl:call-template>
+                        </i>
+                    </xsl:if>
+                    <!-\- @resp and @source -\->
+                    <xsl:if test="tei:lem/@resp">
+                        <xsl:text> </xsl:text>
+                        <xsl:call-template name="responsability-display">
+                            <xsl:with-param name="responsability" select="tei:lem/@resp"/>
+                            <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                        </xsl:call-template>
+                    </xsl:if>          
+                    <xsl:if test="tei:lem/@source">
+                        <xsl:text> </xsl:text>
+                        <xsl:choose>
+                            <xsl:when test="contains(tei:lem/@source, '#')"><xsl:call-template name="source-siglum">
+                                <xsl:with-param name="string-to-siglum" select="tei:lem/@source"/>
+                            </xsl:call-template></xsl:when>
+                            <xsl:when test="contains(tei:lem/@source, 'bib:')">
+                                <xsl:call-template name="bibliography">
+                                    <xsl:with-param name="biblentry" select="substring-after(tei:lem/@source, 'bib:')"/>
+                                </xsl:call-template>
+                            </xsl:when>
+                        </xsl:choose>
+                    </xsl:if>
+                </xsl:if>
+                <!-\-<xsl:if test="tei:lem/@type='absent_elsewhere'">
                                     <xsl:text> only in </xsl:text>
-                                </xsl:if>-->
-                        <xsl:if test="tei:lem[@type='reformulated_elsewhere'] or tei:lem[following-sibling::tei:rdg[@type='paradosis']] "> <!-- or tei:lem[following-sibling::tei:witDetail[@type='retained']] -->
-                                    <xsl:text> Thus formulated in </xsl:text>
-                                <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
-                                <xsl:call-template name="tokenize-witness-list">
-                                    <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-
-                                    <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                    <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
-
-                                </xsl:call-template>
-                                </xsl:element>
-                                </xsl:if>
-                        <xsl:if test="tei:lem[@type='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]">
-
-                            <b><xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="tei:lem[@type='transposition']/following-sibling::tei:rdg/@wit"/>
-                                <xsl:with-param name="wit-hand" select="tei:lem[@type='transposition']/following-sibling::tei:rdg/@hand"/>
-                              </xsl:call-template></b>
+                                </xsl:if>-\->
+                <xsl:if test="tei:lem[@type='reformulated_elsewhere'] or tei:lem[following-sibling::tei:rdg[@type='paradosis']] "> <!-\- or tei:lem[following-sibling::tei:witDetail[@type='retained']] -\->
+                    <xsl:text> Thus formulated in </xsl:text>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail']"> supsub</xsl:if></xsl:attribute>
+                        <xsl:call-template name="tokenize-witness-list">
+                            <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                             
-                                    <xsl:text> presents the lines in order </xsl:text>
-                            <xsl:for-each select="tei:lem[@type='transposition']/following-sibling::tei:rdg/descendant-or-self::tei:l">
-                                        <xsl:variable name="id-corresp" select="substring-after(@corresp, '#')"/>
-                                <xsl:value-of select="ancestor-or-self::tei:rdg/preceding-sibling::tei:lem/descendant-or-self::tei:l[@xml:id = $id-corresp]/@n"/>
-                                    </xsl:for-each>
-                        </xsl:if>
-                        <!-- witness display for transposition section 5.8.4 -->
-                        <xsl:if test="tei:lem[@type='transposition'][matches(@xml:id, 'trsp\d\d\d')]">
+                            <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                            <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
                             
-                                
-                                <b><xsl:call-template name="tokenize-witness-list">
-                                    <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-
-                                    <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                    <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
-                                </xsl:call-template></b>
+                        </xsl:call-template>
+                    </xsl:element>
+                </xsl:if>
+                <xsl:if test="tei:lem[@type='transposition'][not(matches(@xml:id, 'trsp\d\d\d'))][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]">
+                    
+                    <b><xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="tei:lem[@type='transposition']/following-sibling::tei:rdg/@wit"/>
+                        <xsl:with-param name="wit-hand" select="tei:lem[@type='transposition']/following-sibling::tei:rdg/@hand"/>
+                    </xsl:call-template></b>
+                    
+                    <xsl:text> presents the lines in order </xsl:text>
+                    <xsl:for-each select="tei:lem[@type='transposition']/following-sibling::tei:rdg/descendant-or-self::tei:l">
+                        <xsl:variable name="id-corresp" select="substring-after(@corresp, '#')"/>
+                        <xsl:value-of select="ancestor-or-self::tei:rdg/preceding-sibling::tei:lem/descendant-or-self::tei:l[@xml:id = $id-corresp]/@n"/>
+                    </xsl:for-each>
+                </xsl:if>
+                <!-\- witness display for transposition section 5.8.4 -\->
+                <xsl:if test="tei:lem[@type='transposition'][matches(@xml:id, 'trsp\d\d\d')]">
+                    
+                    
+                    <b><xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                        
+                        <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                        <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
+                    </xsl:call-template></b>
+                    
+                </xsl:if>
+                <xsl:if test="tei:lem[@type='omitted_elsewhere']">
+                    <xsl:text> transmitted in </xsl:text>
+                    <xsl:element name="b">
+                        <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                        <xsl:call-template name="tokenize-witness-list">
+                            <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                             
-                        </xsl:if>
-                        <xsl:if test="tei:lem[@type='omitted_elsewhere']">
-                            <xsl:text> transmitted in </xsl:text>
+                            <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                            <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
+                            
+                        </xsl:call-template>
+                    </xsl:element>
+                </xsl:if>
+                <xsl:if test="tei:lem[@type='lost_elsewhere']">
+                    <xsl:text> preserved in </xsl:text>
+                    <xsl:element name="b">
+                        <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                        <xsl:call-template name="tokenize-witness-list">
+                            <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
+                            
+                            <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                            <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
+                            
+                        </xsl:call-template>
+                    </xsl:element>
+                </xsl:if>
+                <xsl:if test="tei:lem/@wit">
+                    <xsl:choose>
+                        <xsl:when test="tei:lem[@type='transposition'][not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
+                        <xsl:otherwise>
                             <xsl:element name="b">
-                                <xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                                <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                                 <xsl:call-template name="tokenize-witness-list">
-                                    <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-
+                                    <xsl:with-param name="string" select="tei:lem/@wit"/>
+                                    <xsl:with-param name="witdetail-string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                     <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
+                                    <xsl:with-param name="witdetail-text" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                     <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
-
-                                </xsl:call-template>
+                                </xsl:call-template>                           
                             </xsl:element>
-                        </xsl:if>
-                        <xsl:if test="tei:lem[@type='lost_elsewhere']">
-                            <xsl:text> preserved in </xsl:text>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold<xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"> supsub</xsl:if></xsl:attribute>
-                                <xsl:call-template name="tokenize-witness-list">
-                                    <xsl:with-param name="string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-
-                                    <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                    <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
-
-                                </xsl:call-template>
-                            </xsl:element>
-                        </xsl:if>
-                        <xsl:if test="tei:lem/@wit">
-                                    <xsl:choose>
-                                        <xsl:when test="tei:lem[@type='transposition'][not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
-                                        <xsl:otherwise>
-                                            <xsl:element name="span">
-                                    <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
-                                    </xsl:attribute>
-
-                                            <xsl:call-template name="tokenize-witness-list">
-                                                <xsl:with-param name="string" select="tei:lem/@wit"/>
-                                        <xsl:with-param name="witdetail-string" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@wit"/>
-                                        <xsl:with-param name="witdetail-type" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/@type"/>
-                                        <xsl:with-param name="witdetail-text" select="tei:lem/following-sibling::*[local-name()='witDetail'][1]/text()"/>
-                                                <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
-                                </xsl:call-template>
-                                    <xsl:if test="tei:lem/@varSeq">
-                                        <xsl:choose>
-                                            <xsl:when test="tei:lem/@varSeq='1'">
-                                                <xsl:element name="sub">
-                                                    <xsl:text>ac</xsl:text>
-                                                </xsl:element>
-                                            </xsl:when>
-                                            <xsl:when test="tei:lem/@varSeq='2'">
-                                                <xsl:element name="sub">
-                                                    <xsl:text>pc</xsl:text>
-                                                </xsl:element>
-                                            </xsl:when>
-                                        </xsl:choose>
-                                    </xsl:if>
-                                </xsl:element></xsl:otherwise>
-                                    </xsl:choose>
-                        </xsl:if>
-                                <!--<xsl:if test="tei:lem/attribute::source">
-                                    <xsl:text> </xsl:text>
-                                </xsl:if>-->
-
-                        <xsl:if test="tei:lem[@type='transposition']">
-                            <xsl:choose>
-                                <xsl:when test="tei:lem[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"></xsl:when>
-                                <xsl:otherwise>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:if>
+                <xsl:if test="tei:lem[@type='transposition']">
+                    <xsl:choose>
+                        <xsl:when test="tei:lem[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"></xsl:when>
+                        <xsl:otherwise>
                             <xsl:text> (transposition)</xsl:text>
                         </xsl:otherwise></xsl:choose>
-                        </xsl:if>
-                        <xsl:if test="tei:lem/@source">
-                                <xsl:call-template name="source-siglum">
-                                    <xsl:with-param name="string-to-siglum" select="tei:lem/@source"/>
-                                </xsl:call-template>
-                            </xsl:if>
-                    </xsl:if>
-                    <!-- witnesses pour la transposition  -->
-                    <xsl:if test="tei:rdg[@cause='transposition'][not(preceding-sibling::tei:lem)]">
-                        <xsl:variable name="corresp-id" select="tei:rdg[@cause='transposition']/@corresp"/>
-                        
-                            <b><xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="tei:rdg[1]/@wit"/>
-                                <xsl:with-param name="wit-hand" select="tei:rdg/@hand"/>
-                            </xsl:call-template></b>
-                        
-                        <xsl:text> (</xsl:text>
-                        <xsl:value-of select="tei:rdg/@cause"/>
-                        <xsl:text>, see </xsl:text>
-                        <xsl:element name="a">
-                            <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/@xml:id"/></xsl:attribute>
+                </xsl:if> 
+                <!-\- witnesses pour la transposition  -\->
+                <xsl:if test="tei:rdg[@cause='transposition'][not(preceding-sibling::tei:lem)]">
+                    <xsl:variable name="corresp-id" select="tei:rdg[@cause='transposition']/@corresp"/>
+                    
+                    <b><xsl:call-template name="tokenize-witness-list">
+                        <xsl:with-param name="string" select="tei:rdg[1]/@wit"/>
+                        <xsl:with-param name="wit-hand" select="tei:rdg/@hand"/>
+                    </xsl:call-template></b>
+                    
+                    <xsl:text> (</xsl:text>
+                    <xsl:value-of select="tei:rdg/@cause"/>
+                    <xsl:text>, see </xsl:text>
+                    <xsl:element name="a">
+                        <xsl:attribute name="href"><xsl:text>#</xsl:text><xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/@xml:id"/></xsl:attribute>
                         <xsl:text>st. </xsl:text>
-                            <xsl:choose>
-                                <xsl:when test="@n">
-                                    <xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/child::tei:lg/@n"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:element>
-                        <xsl:text>)</xsl:text>
-                    </xsl:if>
-                </span>
-                <!--  Variant readings ! -->
+                        <xsl:choose>
+                            <xsl:when test="@n">
+                                <xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/child::tei:lg/@n"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:number from="tei:body" count="tei:div[not(@type='metrical' or child::tei:ab[@type])] | tei:p | tei:ab[not(@type='invocation' or @type='colophon')] | tei:lg[not(ancestor::tei:listApp)] | tei:quote[not(@type='base-text')]" level="multiple" format="1"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:element>
+                    <xsl:text>)</xsl:text>
+                </xsl:if>
+            </span>
+            
+            <!-\-  Variant readings ! -\->
             <xsl:if test="descendant-or-self::tei:rdg[not(@type='paradosis' or  @cause='transposition')][not(preceding-sibling::tei:lem[@type='transposition'])]">
-                            <xsl:element name="hr"/>
-                            <!--<xsl:if test="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']">
+                <xsl:element name="hr"/>
+                <!-\-<xsl:if test="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']">
                                 <xsl:apply-templates select="ancestor::*[local-name()='lem'][1][@type='absent_elsewhere']/following-sibling::tei:rdg[1]"/>
-                            </xsl:if>-->
+                            </xsl:if>-\->
                 <xsl:for-each select="descendant-or-self::tei:rdg">
-                                       <xsl:call-template name="rdg-content">
-                                           <xsl:with-param name="parent-rdg" select="'no'"/>
-                                       </xsl:call-template>
-                                   </xsl:for-each>
-
+                    <xsl:call-template name="rdg-content">
+                        <xsl:with-param name="parent-rdg" select="'no'"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                
                 <xsl:for-each select="ancestor::*[local-name()='lem'][not(@type='reformulated_elsewhere' or @type='transposition')][1]/following-sibling::tei:rdg[1]">
-                                <xsl:call-template name="rdg-content">
-                                    <xsl:with-param name="parent-rdg" select="'yes-inline'"/>
-                                </xsl:call-template>
-                            </xsl:for-each>
-
-                 </xsl:if>
+                    <xsl:call-template name="rdg-content">
+                        <xsl:with-param name="display-context" select="'modalapp'"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                
+            </xsl:if>
             <xsl:if test="descendant-or-self::tei:rdg[@type='paradosis']">
-                    <xsl:element name="hr"/>
+                <xsl:element name="hr"/>
                 <xsl:for-each select="descendant-or-self::tei:rdg[@type='paradosis']">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">paradosis-line</xsl:attribute>
                         <xsl:element name="span">
-                            <xsl:attribute name="class">paradosis-line</xsl:attribute>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">font-italic</xsl:attribute>
-                                <xsl:text>Paradosis</xsl:text>
-                            </xsl:element>
-                            <xsl:text> of </xsl:text>
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq">supsub</xsl:if>
-                                </xsl:attribute>
+                            <xsl:attribute name="class">font-italic</xsl:attribute>
+                            <xsl:text>Paradosis</xsl:text>
+                        </xsl:element>
+                        <xsl:text> of </xsl:text>
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">font-weight-bold <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail']">supsub</xsl:if>
+                            </xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="@wit"/>
                                 <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -797,31 +889,30 @@
                                 <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                 <xsl:with-param name="wit-hand" select="tei:lem/@hand"/>
                             </xsl:call-template>
-                            </xsl:element>
-                            <xsl:text>: </xsl:text>
-                            <!--<xsl:apply-templates select="node() except child::tei:span[@type='omissionStart']"/>-->
-                            <xsl:apply-templates/>
                         </xsl:element>
-                    </xsl:for-each>
-                </xsl:if>
-                <!--  Notes ! -->
+                        <xsl:text>: </xsl:text>
+                        <!-\-<xsl:apply-templates select="node() except child::tei:span[@type='omissionStart']"/>-\->
+                        <xsl:apply-templates/>
+                    </xsl:element>
+                </xsl:for-each>
+            </xsl:if>
+            <!-\-  Notes ! -\->
             <xsl:if test="tei:note[not(@type='altLem') or ancestor::tei:listApp]">
-                    <xsl:element name="hr"/>
-                    <xsl:for-each select="tei:note[not(@type='altLem')]">
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">note-line</xsl:attribute>
-                            <xsl:apply-templates/>
-                        </xsl:element>
-                    </xsl:for-each>
-                </xsl:if>
-            <!-- commentaire du witDetail -->
-            <!-- temporary disabled, waiting for Arlo's answer on where to place it -->
-            <!--<xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">
+                <xsl:element name="hr"/>
+                <xsl:for-each select="tei:note[not(@type='altLem')]">
+                    <span class="note-line"> 
+                        <xsl:apply-templates/>
+                    </span>
+                </xsl:for-each>
+            </xsl:if>
+            <!-\- commentaire du witDetail -\->
+            <!-\- temporary disabled, waiting for Arlo's answer on where to place it -\->
+            <!-\-<xsl:if test="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">
                 <xsl:for-each select="ancestor-or-self::tei:app[1]/descendant-or-self::tei:witDetail/text()">
                     <xsl:element name="hr"/>
                     <xsl:element name="span">
                         <xsl:attribute name="class">witDetail-line</xsl:attribute>
-                        <!-\-<xsl:element name="span">
+                        <!-\\-<xsl:element name="span">
                                <xsl:attribute name="class">font-weight-bold</xsl:attribute>
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="parent::tei:witDetail/@wit"/>
@@ -829,37 +920,32 @@
                                 <xsl:with-param name="wit-hand" select="parent::tei:witDetail/preceding-sibling::tei:*[1]/@hand"/>
                             </xsl:call-template>
                         </xsl:element>
-                        <xsl:text>: </xsl:text>-\->
+                        <xsl:text>: </xsl:text>-\\->
                         <xsl:apply-templates select="."/>
                     </xsl:element>
                 </xsl:for-each>
-            </xsl:if>-->
-            <!--</xsl:element>-->
-        </xsl:variable>
-        <span class="popover-content d-none" id="{generate-id()}">
-            <xsl:copy-of select="$apparatus"/>
-        </span>
+            </xsl:if>-\->
+    </xsl:template>-->
 
-    </xsl:template>
-
+    <!-- le param pour parent-rdg a été conservé pour le moment en raison de la valeur no; pour laquelle je n'arrive pas à retrouver l'intention initiale que j'avais -->
     <xsl:template name="rdg-content">
         <xsl:param name="parent-rdg"/>
+        <xsl:param name="display-context"/>
         <xsl:element name="span">
             <xsl:choose>
-            <xsl:when test="$parent-rdg='no' or $parent-rdg='yes-inline'">
+            <xsl:when test="$parent-rdg='no' or $display-context='modalapp'">
                 <xsl:attribute name="class">reading reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
             </xsl:attribute>
             </xsl:when>
-                <xsl:when test="$parent-rdg='yes-bottom'">
+                <xsl:when test="$display-context='printedapp'">
                     <xsl:attribute name="class">reading bottom-reading-line</xsl:attribute>
                     <xsl:text>, </xsl:text>
                 </xsl:when>
+                <xsl:otherwise><xsl:call-template name="lbrk-app"/></xsl:otherwise>
             </xsl:choose>
-            <xsl:element name="span">
-                <xsl:attribute name="class">app-rdg</xsl:attribute>
+            <span class="app-rdg">
                 <xsl:element name="span">
                     <xsl:attribute name="class">
-                        <xsl:text>translit </xsl:text>
                         <xsl:if test="@rend='check'">
                             <xsl:text> mark</xsl:text>
                         </xsl:if>
@@ -869,16 +955,10 @@
                     </xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="tei:gap[@reason='omitted']">
-                            <xsl:element name="i">
-                                <xsl:attribute name="style">color:black;</xsl:attribute>
-                                <xsl:text>om.</xsl:text>
-                            </xsl:element>
+                            <i>om.</i>
                         </xsl:when>
                         <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity|@unit)]">
-                            <xsl:element name="i">
-                                <xsl:attribute name="style">color:black;</xsl:attribute>
-                                <xsl:text>lac.</xsl:text>
-                            </xsl:element>
+                            <i>lac.</i>
                         </xsl:when>
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                     </xsl:choose>
@@ -890,10 +970,11 @@
                         <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
                     </xsl:choose>
                 </xsl:element>
-            </xsl:element>
+            </span>
+        </xsl:element>
             <xsl:text> </xsl:text>
-            <xsl:element name="span">
-                <xsl:attribute name="class">font-weight-bold <xsl:if test="following-sibling::*[local-name()='witDetail'] or ./@varSeq"> supsub</xsl:if></xsl:attribute>
+            <xsl:element name="b">
+                <xsl:if test="following-sibling::*[local-name()='witDetail']"> <xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                 <xsl:call-template name="tokenize-witness-list">
                     <xsl:with-param name="string" select="./@wit"/>
                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -901,26 +982,34 @@
                     <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                     <xsl:with-param name="wit-hand" select="./@hand"/>
                 </xsl:call-template>
-                <xsl:if test="./@varSeq">
-                    <xsl:choose>
-                        <xsl:when test="./@varSeq='1'">
-                            <xsl:element name="sub">
-                                <xsl:text>ac</xsl:text>
-                            </xsl:element>
-                        </xsl:when>
-                        <xsl:when test="./@varSeq='2'">
-                            <xsl:element name="sub">
-                                <xsl:text>pc</xsl:text>
-                            </xsl:element>
-                        </xsl:when>
-                    </xsl:choose>
-                </xsl:if>
-                <xsl:if test="./@source">
-                    <xsl:call-template name="source-siglum">
-                        <xsl:with-param name="string-to-siglum" select="./@source"/>
+            </xsl:element>
+                <xsl:if test="./@type">
+                    <xsl:text> </xsl:text>
+                    <xsl:call-template name="apparatus-type">
+                        <xsl:with-param name="type-app" select="./@type"/>
                     </xsl:call-template>
                 </xsl:if>
-            </xsl:element>
+                <!-- @resp and @source -->
+                <xsl:if test="./@resp">
+                    <xsl:text> </xsl:text>
+                    <xsl:call-template name="responsability-display">
+                        <xsl:with-param name="responsability" select="./@resp"/>
+                        <xsl:with-param name="display-behaviour" select="''"/>
+                    </xsl:call-template>
+                </xsl:if>    
+            <xsl:if test="./@source">
+                <xsl:text> </xsl:text>                
+                <xsl:choose>
+                    <xsl:when test="contains(./@source, '#')"><xsl:call-template name="source-siglum">
+                        <xsl:with-param name="string-to-siglum" select="./@source"/>
+                    </xsl:call-template></xsl:when>
+                    <xsl:when test="contains(./@source, 'bib:')">
+                        <xsl:call-template name="bibliography">
+                            <xsl:with-param name="biblentry" select="substring-after(./@source, 'bib:')"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:if>
             <xsl:if test="./@cause and $parent-rdg='no'">
                 <xsl:element name="span">
                     <xsl:attribute name="style">color:black;</xsl:attribute>
@@ -929,18 +1018,12 @@
                     <xsl:text>)</xsl:text>
                 </xsl:element>
             </xsl:if>
-            <xsl:if test="$parent-rdg='yes-bottom' or $parent-rdg='yes-inline'">
+        <xsl:if test="$display-context='modalapp' or $display-context='printedapp'">
                 <xsl:element name="span">
                     <xsl:attribute name="style">color:black;</xsl:attribute>
                     <xsl:text> (larger gap)</xsl:text>
                 </xsl:element>
             </xsl:if>
-
-            <!--<xsl:if test="./following-sibling::tei:rdg">
-                                <xsl:text>; </xsl:text>
-                            </xsl:if>-->
-
-        </xsl:element>
     </xsl:template>
 
     <xsl:template match="tei:app[not(parent::tei:listApp[@type='parallels'] or preceding-sibling::tei:span[@type='reformulationEnd'][1])]">
@@ -1013,7 +1096,7 @@
         </xsl:choose>
     </xsl:template>
     
-    <!-- à retravailler -->
+    <!-- à retravailler: display incomplet -->
     <xsl:template name="bibliography">
         <xsl:param name="biblentry"/>
         <xsl:variable name="zoteroapi" select="json-to-xml(unparsed-text(concat('https://dharmalekha.info/zotero-proxy/extra?shortTitle=',encode-for-uri($biblentry))))/*"/>
@@ -1028,10 +1111,8 @@
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
                             </xsl:call-template>
-                            
                             <a href="https://www.zotero.org/groups/erc-dharma/items/{$key-item[1]}">
-                                <i class="fas fa-edit" style="display:inline;" data-tip="Edit on zotero.org"> </i>
-                            </a> 
+                            <i class="fas fa-edit" style="display:inline;" data-tip="Edit on zotero.org"> </i></a>
                         </p>
                     </xsl:when>
                     <xsl:when test="not(ancestor-or-self::tei:listBibl)">
@@ -1114,7 +1195,13 @@
                     <xsl:text> (ed.)</xsl:text>
                 </xsl:for-each>
                 
-                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> </xsl:text><i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/></i>.<xsl:if test="$bib-content//tei:monogr/tei:edition"><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:edition"/>.</xsl:if><xsl:if test="$bib-content//tei:monogr/tei:series"><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:series/tei:title[@level='s']"/> <xsl:apply-templates select="$bib-content//tei:monogr/tei:series/tei:biblScope"/>.</xsl:if> <xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>. <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL].</xsl:element></xsl:if>
+                <xsl:text>. </xsl:text>
+                <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/><xsl:text>. </xsl:text>
+                <i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/>
+                </i><xsl:text>. </xsl:text>
+                <xsl:if test="$bib-content//tei:monogr/tei:edition"><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:edition"/><xsl:text>. </xsl:text></xsl:if>
+                <xsl:if test="$bib-content//tei:series">
+                    <xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/><xsl:if test="$bib-content//tei:series/tei:biblScope"><xsl:text>, </xsl:text> <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope"/></xsl:if>.</xsl:if> <xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>. <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL].</xsl:element></xsl:if>
             </xsl:when>
             <xsl:when test="$bib-type='bookSection'">
                 <!-- Bosch, Frederik David Kan. 1961. “Buddhist Data from Balinese Texts.” In Selected Studies in Indonesian Archaeology, 109–33. Koninklijk Instituut Voor Taal-, Land- En Volkenkunde Translation Series 5. The Hague: Martinus Nijhoff. -->
@@ -1128,8 +1215,30 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
-                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/>.” In <i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/></i><xsl:if test="$bib-content//tei:monogr/tei:author">, by <!--<xsl:call-template name="author-name"/>--></xsl:if><xsl:if test="$bib-content//tei:monogr/tei:editor">, edited by <!--<xsl:call-template name="author-name"/>--></xsl:if>. <xsl:if test="$bib-content//tei:series"><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/> <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope[@unit='volume']"/>.</xsl:if> <xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>, pp. <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']"/>
-                
+                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/>.” In <i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/></i><xsl:if test="$bib-content//tei:monogr/tei:author">, by <xsl:for-each select="$bib-content//tei:monogr/tei:author">
+                    <xsl:choose>
+                        <xsl:when test="position()[1]">
+                            <xsl:call-template name="first-author"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:call-template name="following-authors"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+                </xsl:if>
+                <xsl:if test="$bib-content//tei:monogr/tei:editor">, <xsl:for-each select="$bib-content//tei:monogr/tei:editor">
+                    <xsl:choose>
+                        <xsl:when test="position()[1]">
+                            <xsl:call-template name="first-author"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:call-template name="following-authors"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:text> (ed.)</xsl:text>
+                </xsl:for-each></xsl:if>. <xsl:if test="$bib-content//tei:series"><xsl:text> </xsl:text>
+                    <xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/> <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope[@unit='volume']"/>. </xsl:if> 
+               <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>, pp. <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']"/><xsl:text>. </xsl:text>
             </xsl:when>
             <xsl:when test="$bib-type='journalArticle'">
                 <xsl:for-each select="$bib-content//tei:analytic/tei:author">
@@ -1208,33 +1317,32 @@
             <xsl:when test="tei:orig">
                 <xsl:element name="span">
                     <xsl:attribute name="class">orig</xsl:attribute>
-                    <xsl:attribute name="data-tip">Non-standard text<xsl:if test="tei:reg"> (standardisation: <span class="reg">⟨<xsl:apply-templates/>⟩</span></xsl:if></xsl:attribute>¡<xsl:apply-templates/>!</xsl:element>
+                    <xsl:attribute name="data-tip">Non-standard text<xsl:if test="tei:reg"> (standardisation: <span class="reg">⟨<xsl:apply-templates select="tei:reg"/>⟩)</span></xsl:if></xsl:attribute>¡<xsl:apply-templates select="tei:orig"/>!</xsl:element>
             </xsl:when>
             <!-- <span class="reg" data-tip="Standardised text (original: <span class=&quot;orig&quot;>¡coloṁ!</span>)">⟨celeṁ⟩</span> -->
-            <xsl:when test="tei:reg and $edition-type='critical'">
+            <xsl:when test="tei:reg">
                 <xsl:element name="span">
                     <xsl:attribute name="class">reg</xsl:attribute>
-                    <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates/>!</span></xsl:if></xsl:attribute>
-                    ⟨<xsl:apply-templates/>⟩
-                </xsl:element>
+                    <xsl:attribute name="data-tip">Standardised text<xsl:if test="tei:orig"> (original: <span class="orig">¡<xsl:apply-templates select="tei:orig"/>!)</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates select="tei:reg"/>⟩</xsl:element>
             </xsl:when>
             <!-- <span class="sic" data-tip="Incorrect text (emendation: <span class=&quot;corr&quot;>⟨kh⟩</span>)">¿l?</span> -->
             <xsl:when test="tei:sic">
                 <xsl:element name="span">
                     <xsl:attribute name="class">sic</xsl:attribute>
-                    <xsl:attribute name="data-tip">Incorrect text<xsl:if test="tei:corr">  (emendation: <span class="corr">⟨<xsl:apply-templates/>⟩</span></xsl:if></xsl:attribute>¿<xsl:apply-templates/>?</xsl:element>
+                    <xsl:attribute name="data-tip">Incorrect text<xsl:if test="tei:corr">  (emendation: <span class="corr">⟨<xsl:apply-templates select="tei:corr"/>⟩)</span></xsl:if></xsl:attribute>¿<xsl:apply-templates select="tei:sic"/>?</xsl:element>
             </xsl:when>
             <!-- <span class="corr" data-tip="Emended text (original: <span class=&quot;sic&quot;>¿l?</span>)">⟨kh⟩</span> -->
-            <xsl:when test="tei:corr and $edition-type='critical'">
+            <xsl:when test="tei:corr">
                 <xsl:element name="span">
                     <xsl:attribute name="class">corr</xsl:attribute>
-                    <xsl:attribute name="data-tip">Emended text<xsl:if test="tei:sic">  (original: <span class="sic">¿<xsl:apply-templates/>?</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates/>⟩</xsl:element>
+                    <xsl:attribute name="data-tip">Emended text<xsl:if test="tei:sic">  (original: <span class="sic">¿<xsl:apply-templates/>?</span></xsl:if></xsl:attribute>⟨<xsl:apply-templates select="tei:corr"/>⟩</xsl:element>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
     
     <!-- à voir si stable - pour diplEd -->
-    <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
+    <!-- préparation pour intégrer les choice, si j'ai le temps -->
+   <!-- <xsl:template match="tei:choice[child::tei:sic and child::tei:corr]" mode="modals">
         <xsl:variable name="apparatus">
                 <span class="mb-1 lemma-line">
                     <span class="app-corr">
@@ -1242,12 +1350,12 @@
                         <xsl:text> (corr)</xsl:text>
                     </span>
                 </span>
-            
         </xsl:variable>
-        <span class="popover-content d-none" id="{generate-id()}">
+        <xsl:if test="$edition-type='diplomatic'">
+            <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus"/>
-        </span>
-    </xsl:template>
+        </span></xsl:if>
+    </xsl:template>-->
     
     <!-- citedRange -->
     <xsl:template match="tei:citedRange">
@@ -1275,23 +1383,76 @@
             <xsl:when test="parent::tei:subst">
                 <xsl:element name="span">
                     <xsl:attribute name="class">del</xsl:attribute>
-                    <xsl:attribute name="data-tip">Scribal deletion: corrected text (replacement text: &lt;span class=&quot;add&quot;&gt;⟨⟨<xsl:value-of select="following-sibling::tei:add[1]"/>⟩⟩&lt;/span&gt;</xsl:attribute>
+                    <xsl:attribute name="data-tip">Scribal deletion: corrected text (replacement text: &lt;span class=&quot;add&quot;&gt;⟨⟨<xsl:value-of select="following-sibling::tei:add[1]"/>⟩⟩&lt;/span&gt;
                     <xsl:if test="@hand">
                         <xsl:text> H</xsl:text>
                         <xsl:element name="sub">
                             <xsl:value-of select="substring-after(@hand, '_H')"/>
                         </xsl:element>
                     </xsl:if>
+                    <xsl:if test="@resp">
+                        <xsl:call-template name="responsability-display">
+                            <xsl:with-param name="responsability" select="@resp"/>
+                            <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                        </xsl:call-template>
+                    </xsl:if>
+                    <xsl:if test="@source">
+                        <xsl:call-template name="bibliography">
+                            <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
+                        </xsl:call-template>
+                    </xsl:if></xsl:attribute>
                     ⟦<xsl:apply-templates/>⟧
                 </xsl:element>
             </xsl:when>
             <!-- Characters deleted by premodern scribe and no longer legible -->
             <xsl:when test="child::tei:gap">
-                <span class="del" data-tip="Scribal deletion">⟦<xsl:apply-templates/></span>
+                <xsl:element name="span">
+                    <xsl:attribute name="class">del</xsl:attribute>
+                    <xsl:attribute name="data-tip">Scribal deletion
+                        <xsl:if test="@hand">
+                            <xsl:text> H</xsl:text>
+                            <xsl:element name="sub">
+                                <xsl:value-of select="substring-after(@hand, '_H')"/>
+                            </xsl:element>
+                        </xsl:if>
+                        <xsl:if test="@resp">
+                            <xsl:call-template name="responsability-display">
+                                <xsl:with-param name="responsability" select="@resp"/>
+                                <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                        <xsl:if test="@source">
+                            <xsl:call-template name="bibliography">
+                                <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:attribute>
+                    ⟦<xsl:apply-templates/>⟧
+                </xsl:element>
             </xsl:when>
             <!-- condition en dehors de subst -->
             <xsl:otherwise>
-        <span class="del" data-tip="Scribal deletion: text struck through or cross-hatched">⟦<xsl:apply-templates/>⟧</span> 
+                <xsl:element name="span">
+                    <xsl:attribute name="class">del</xsl:attribute>
+                    <xsl:attribute name="data-tip">Scribal deletion: text struck through or cross-hatched
+            <xsl:if test="@hand">
+                <xsl:text> H</xsl:text>
+                <xsl:element name="sub">
+                    <xsl:value-of select="substring-after(@hand, '_H')"/>
+                </xsl:element>
+            </xsl:if>
+            <xsl:if test="@resp">
+                <xsl:call-template name="responsability-display">
+                    <xsl:with-param name="responsability" select="@resp"/>
+                    <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="@source">
+                <xsl:call-template name="bibliography">
+                    <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
+                </xsl:call-template>
+            </xsl:if></xsl:attribute>
+            ⟦<xsl:apply-templates/>⟧</xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -1315,6 +1476,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:when>
+            <xsl:when test="@type='chapter'">Chapter <xsl:value-of select="@n"/></xsl:when>
                 <xsl:when test="@type='canto'"/>
                 <xsl:otherwise>
                     <xsl:value-of select="@n"/>
@@ -1326,7 +1488,19 @@
                 </xsl:if>
             </h3></xsl:if>
         <xsl:choose>
-            <xsl:when test="not(@type='metrical'or @type='section') or @type">
+            <xsl:when test="@type='section'">
+                <h4 class="ed-heading" id="toc{generate-id(.)}">
+                    <xsl:if test="@n">
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="@n"/>
+                    </xsl:if>
+                    <xsl:if test="tei:head">
+                        <xsl:text> </xsl:text>
+                        <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
+                    </xsl:if>
+                </h4>
+            </xsl:when>
+            <xsl:when test="@type">
                 <div>
                     <xsl:attribute name="class">col-10</xsl:attribute>
                     <xsl:if test="@xml:id">
@@ -1336,37 +1510,39 @@
                     </xsl:if>
                     <xsl:if test="@type='canto' or @type='dyad'">
                         <xsl:variable name="type-div" select="@type"/>
-                        <h4 class="ed-heading" id="toc{generate-id(.)}"><b><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/></b>
+                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:choose><xsl:when test="@type='canto'"><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/></xsl:when><xsl:otherwise><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:otherwise></xsl:choose>
                             <xsl:if test="@rend='met'">
                                 <xsl:call-template name="metrical-list">
                                     <xsl:with-param name="metrical" select="$metrical"/>
                                 </xsl:call-template>
+                            </xsl:if>
+                            <xsl:if test="tei:head">
+                                <xsl:text> </xsl:text>
+                                <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
                             </xsl:if>
                         </h4>
                     </xsl:if>
                     
                 </div>
             </xsl:when>
-            <xsl:when test="tei:div[@type='metrical' or @type='section' or not(@type)][not(child::tei:ab[@type='colophon' or @type='invocation'])]">
-                <xsl:if test="@type='metrical' or @type='section'">
-                    <h4 class="ed-heading" id="toc{generate-id(.)}">
-                        <xsl:if test="@n">
-                            <xsl:value-of select="@n"/>
-                        </xsl:if>
-                        <xsl:if test="@rend='met'">
-                            <xsl:call-template name="metrical-list">
-                                <xsl:with-param name="metrical" select="$metrical"/>
-                            </xsl:call-template>
-                            </xsl:if>    
-                    </h4>
+            
+            <!--<xsl:when test="@type='section'">
+                <h4><xsl:if test="@n">
+                    <xsl:text> </xsl:text>
+                    <xsl:value-of select="@n"/>
                 </xsl:if>
-            </xsl:when>
+                <xsl:if test="tei:head">
+                    <xsl:text> </xsl:text>
+                    <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
+                </xsl:if>
+                </h4>
+            </xsl:when>-->
         </xsl:choose>
         <xsl:apply-templates select="* except tei:head"/>
-        <xsl:if test="./following-sibling::tei:div">
+        <xsl:if test="./following::tei:div[@type='chapter'][1]">
             <xsl:element name="br"/>
         </xsl:if>
-        <xsl:if test="./following-sibling::tei:div[child::tei:ab[@type='colophon']]">
+        <xsl:if test="./following-sibling::tei:div[child::tei:ab[@type='colophon']][1]">
             <xsl:element name="hr"/>
         </xsl:if>               
     </xsl:template>
@@ -1380,7 +1556,7 @@
                     <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical][1]">
                         <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
                         <span data-tip=" &lt;span class=&quot;prosody&quot;&gt;{$prosody//tei:item[tei:seg[@type='xml']]/tei:seg[@type='prosody']}&lt;/span&gt;">
-                            Name unknown <i><xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/></i>
+                            Name unknown <xsl:if test="$label-group = ' '">(<i><xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/></i>)</xsl:if>
                          class</span>
                     </xsl:when>
                     <xsl:otherwise>
@@ -1404,7 +1580,7 @@
                 <xsl:variable name="prosody-segment"><xsl:value-of select="$prosody//tei:item[tei:name =$metrical]/tei:seg[@type='prosody']"/></xsl:variable>
                 
                 <xsl:element name="a">
-                    <xsl:attribute name="href">                                <xsl:value-of select="concat('/prosody#prosody-', $prosody-numb)"/>
+                    <xsl:attribute name="href">                                <xsl:value-of select="concat('https://dharmalekha.info/prosody#prosody-', $prosody-numb)"/>
                     </xsl:attribute>
                     <!-- pb de l'ajout des balises dans la data-tip -->
                     <span data-tip="&lt;span class=&quot;prosody&quot;&gt;{$prosody-segment}&lt;/span&gt;">
@@ -1428,9 +1604,9 @@
     
     <xsl:template match="tei:encodingDesc">
         <hr/>
-        <div class="liminaries">
-        <h2 id="liminaries" class="collapsible">Liminaries</h2>
-        <xsl:if test="tei:projectDesc/tei:p[2]/text()">
+        <div class="editorial">
+            <h2 id="editorial" class="collapsible">Editorial <i class="fa-solid fa-angles-down"></i></h2>
+        <div class="collapsible-content"><xsl:if test="tei:projectDesc/tei:p[2]/text()">
             <ul><li><b>Project</b>: 
                 <ul><xsl:for-each select="tei:projectDesc/tei:p">
                     <li><xsl:apply-templates select="."/></li>
@@ -1472,7 +1648,7 @@
                     </li>
                 </xsl:if></ul></li>
         </ul>
-         </xsl:if>
+         </xsl:if></div>
         </div>
     </xsl:template>
     
@@ -1606,6 +1782,10 @@
         </xsl:choose>
     </xsl:template>
     
+    <xsl:template match="tei:gloss">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
     <xsl:template match="tei:idno">
         <xsl:apply-templates/>
     </xsl:template>
@@ -1616,7 +1796,7 @@
     </xsl:template>
     
     <xsl:template match="tei:head">
-        <xsl:apply-templates/>
+                <xsl:apply-templates/>
         <xsl:if test="following-sibling::tei:desc[1]">: </xsl:if>
     </xsl:template>
     <!--  hi ! -->
@@ -1820,7 +2000,7 @@
     <!-- <span class="hyphen-break" data-tip="Hyphen break">-</span> -->
     <!-- updated -->
     <xsl:template match="tei:lb">
-        <xsl:if test="@break='yes'"><span class="hyphen-break" data-tip="Hyphen break">-</span></xsl:if>
+        <xsl:if test="@break='no'"><span class="hyphen-break" data-tip="Hyphen break">-</span></xsl:if>
         <xsl:choose>
             <xsl:when test="$edition-type='critical'"/>
             <xsl:otherwise>
@@ -1905,7 +2085,7 @@
                     <xsl:if test="descendant::tei:note">
                         <a class="btn btn-outline-dark btn-block" data-toggle="collapse" href="#{generate-id()}" role="button" aria-expanded="false" aria-controls="{generate-id()}"><span class="smallcaps">Parallels</span></a>
                         <div id="{generate-id()}" class="collapse">                    
-                            <div class="card card-body border-dark">
+                            <div class="card-body">
                         <xsl:call-template name="parallels-content"/>
                     </div>
                 </div>
@@ -2070,7 +2250,9 @@
             <xsl:otherwise>
                 <div class="row">
                 <div class="col-10 text-col">
-                    <p><xsl:copy-of select="$p-line"/></p>
+                    <p><xsl:if test="@n">
+                        <b class="lb" data-tip="Paragraph number">§<xsl:value-of select="@n"/><xsl:text> </xsl:text></b></xsl:if>
+                        <xsl:copy-of select="$p-line"/></p>
                 </div>
                 <xsl:call-template name="launch-app"/>
                 </div>
@@ -2087,10 +2269,19 @@
             <xsl:otherwise>
                 <xsl:choose>
                     <xsl:when test="$edition-type='diplomatic'">
-                       
                         <xsl:call-template name="lbrk-app"/>
                         <span class="pagelike" data-tip="Page start" id="{@xml:id}">
-                            <xsl:text>⟨Folio </xsl:text>
+                            <xsl:text>⟨</xsl:text>
+                                <xsl:if test="count(//tei:witness) gt 1"><xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="@edRef"/>
+                                <xsl:with-param name="witdetail-string"/>
+                                <xsl:with-param name="witdetail-type"/>
+                                <xsl:with-param name="witdetail-text"/>
+                                <xsl:with-param name="tpl" select="'content-pb'"/>
+                            </xsl:call-template> 
+                            <xsl:text>: </xsl:text>
+                                    </xsl:if>
+                                <xsl:text>Folio </xsl:text>
                             <xsl:value-of select="@n"/>
                             <xsl:text>⟩</xsl:text>
                         </span>
@@ -2099,7 +2290,7 @@
                         <span class="pagelike" data-tip="Page start">
                             <xsl:text>⟨</xsl:text>
                             <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="./@edRef"/>
+                                <xsl:with-param name="string" select="@edRef"/>
                                 <xsl:with-param name="witdetail-string"/>
                                 <xsl:with-param name="witdetail-type"/>
                                 <xsl:with-param name="witdetail-text"/>
@@ -2154,44 +2345,23 @@
     </xsl:template>
     
     <xsl:template name="launch-app">
+        <xsl:param name="context-diplomatic-app"/>
         <div class="col-2 apparat-col text-center">
             <xsl:choose>
                 <xsl:when test="$edition-type='diplomatic'">
                     <!-- difference pour ajouter les choice et les subst? to be added -->
-                    <xsl:for-each select="descendant::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] |descendant::tei:span[@type='omissionStart'] | descendant::tei:lacunaStart | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]]">
+                    <xsl:for-each select="descendant-or-self::tei:app[not(parent::tei:listApp) or not(@rend='hide')] | descendant-or-self::tei:note[last()][parent::tei:p or parent::tei:lg]">
                         <xsl:call-template name="app-link">
                             <xsl:with-param name="location" select="'apparatus'"/>
                             <xsl:with-param name="type">
                                 <xsl:choose>
-                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionStart']">
-                                        <xsl:text>lem-omissionStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:span[@type='omissionEnd']">
-                                        <xsl:text>lem-omissionEnd</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
-                                        <xsl:text>lem-lacunaStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
-                                        <xsl:text>lem-lacunaEnd</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']">
-                                        <xsl:text>lem-reformulationStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationEnd']">
-                                        <xsl:text>lem-reformulationEnd</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
-                                        <xsl:text>lem-lacunaStart</xsl:text>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
-                                        <xsl:text>lem-lacunaEnd</xsl:text>
-                                    </xsl:when>
                                     <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(ancestor::tei:div[@type='translation'])">
                                         <xsl:text>lem-last-note</xsl:text>
                                     </xsl:when>
                                     <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
-                                        <xsl:text>trans-note</xsl:text>
+                                        <xsl:text>trans-note</xsl:text></xsl:when>
+                                        <xsl:when test="self::tei:choice[child::tei:sic and child::tei:corr]">
+                                            <xsl:text>siccorr</xsl:text>
                                     </xsl:when>
                                 </xsl:choose>
                             </xsl:with-param>
@@ -2724,12 +2894,12 @@
                     <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
                         <span class="reading-line reading">
                             <span class="app-rdg"><xsl:apply-templates/></span>
+                        </span>
                         <b>
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="@wit"/>
                             </xsl:call-template>
                         </b>
-                    </span>
                     </xsl:for-each>
                         <hr/>
                     <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]">
@@ -2759,6 +2929,7 @@
         <ul>
             <xsl:apply-templates select="tei:listWit"/>
         </ul>
+        <hr/>
     </xsl:template>
 
     <!--  subst ! -->
@@ -2804,21 +2975,15 @@
             </xsl:choose>
             </xsl:attribute>
             <xsl:choose>
-                <xsl:when test="@reason='lost' or @reason='illegible' or @reason='subaudible' or @reason='unknown'">
-                    [<xsl:apply-templates/>]
-                    <xsl:if test="@cert='low'">
+                <xsl:when test="@reason='lost' or @reason='illegible' or @reason='subaudible' or @reason='unknown'">[<xsl:apply-templates/><xsl:if test="@cert='low'">
                         <xsl:text>?</xsl:text>
-                    </xsl:if>
+                    </xsl:if><xsl:text>]</xsl:text>
                 </xsl:when>
-                <xsl:when test="@reason='omitted' and not(child::tei:lg)">
-                    ⟨<xsl:apply-templates/>⟩
-                </xsl:when>
-                <xsl:when test="@reason='explanation'">
-                        (<xsl:apply-templates/>
+                <xsl:when test="@reason='omitted' and not(child::tei:lg)">⟨<xsl:apply-templates/>⟩</xsl:when>
+                <xsl:when test="@reason='explanation'">(<xsl:apply-templates/>
                         <xsl:if test="@cert='low'">
                             <xsl:text>?</xsl:text>
-                        </xsl:if>)
-                </xsl:when>
+                        </xsl:if>)</xsl:when>
                 <xsl:when test="@reason='implied' and not(parent::tei:ab)">
                     <xsl:choose>
                         <xsl:when test="not(parent::tei:quote[@type='base-text'])">
@@ -2855,7 +3020,7 @@
     <!-- updates -->
     <xsl:template match="tei:title">
             <xsl:choose>
-                <xsl:when test="@rend='plain'">
+                <xsl:when test="@rend='plain'  or @type='editorial' or @type='alt'">
                     <xsl:apply-templates/>
                 </xsl:when>
                 <xsl:when test="@level='a'">
@@ -2881,10 +3046,11 @@
                     <xsl:attribute name="data-tip">Tentative reading</xsl:attribute>
                 </xsl:when>
     <xsl:otherwise>
-            <xsl:attribute name="data-tip">Unclear text<xsl:choose><xsl:when test="@reason='eccentric_ductus'"> (<i>eccentric ductus</i>)</xsl:when><xsl:otherwise> (<xsl:apply-templates select="replace(@reason, '_', ' ')"/>)</xsl:otherwise></xsl:choose></xsl:attribute>
+            <xsl:attribute name="data-tip">Unclear text<xsl:if test="@reason"><xsl:choose>
+                <xsl:when test="@reason='eccentric_ductus'"> (&lt;i&gt;eccentric ductus&lt;/i&gt;)</xsl:when>
+                <xsl:otherwise> (<xsl:apply-templates select="replace(@reason, '_', ' ')"/>)</xsl:otherwise></xsl:choose></xsl:if></xsl:attribute>
     </xsl:otherwise>
-            </xsl:choose>
-            (<xsl:apply-templates/><xsl:if test="@cert='low'">?</xsl:if>)
+            </xsl:choose> <xsl:text>(</xsl:text><xsl:apply-templates/><xsl:if test="@cert='low'">?</xsl:if><xsl:text>)</xsl:text>
         </xsl:element>
     </xsl:template>
 
@@ -2902,7 +3068,7 @@
                 <b>
                     <xsl:choose>
                         <!-- pour éviter les abbr vides -->
-                        <xsl:when test="tei:abbr[@type='siglum'][1]">
+                        <xsl:when test="tei:abbr[@type='siglum'][1]/text()">
                             [<xsl:apply-templates select="tei:abbr[@type='siglum']"/>]
                         </xsl:when>
                         <!-- pour éviter les id non édités -->
@@ -3114,8 +3280,8 @@
         </xsl:if>
         <a class="siglum" href="#{$target}">
             <xsl:choose>
-                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum']">
-                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum']"/>
+                <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum'][1]">
+                    <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum'][1]"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="$target"/>
@@ -3174,12 +3340,18 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
                 <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
                 <xsl:choose>
-                    <xsl:when test="$viz-context='github'"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.css"></link>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css"/>
-                        <script src="https://cdn.jsdelivr.net/gh/michaelnmmeyer/dharma@refs/heads/master/static/base.js"></script>
-                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js"></script>
-                    
+                    <xsl:when test="$viz-context='github'"> 
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                        <link rel="stylesheet" href="https://dharmalekha.info/fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+                            <link rel="icon" href="https://dharmalekha.info/favicon.svg"/>
+                            <link rel="stylesheet" href="https://dharmalekha.info/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                            <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"/>
+                            <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"/>
+                        <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>                  
+                        
                     </xsl:when>
                     <xsl:otherwise>
                         <!-- liens pour le système intégré de Michaël -->
@@ -3188,7 +3360,10 @@
                      <link rel="stylesheet" href="./base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <link rel="stylesheet" href="./fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <link rel="icon" href="./favicon.svg"/>
-                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>   
+                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+                        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"></script>
                         <script src="./base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                     </xsl:otherwise>
@@ -3204,12 +3379,12 @@
         <xsl:choose>
             <xsl:when test="$viz-context='github'">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        
+                <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js"></script>
+                <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
@@ -3223,34 +3398,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
-    <!-- side bar - table of contents -->
-    <!-- new version -->
-    <xsl:template name="table-contents">
-        <div id="sidebar">
-            <div id="toc">
-                <div id="toc-heading" class="toc-heading">Contents</div>
-                <nav id="toc-contents">
-                            <ul><!-- content generated by js --></ul>
-                </nav>
-            </div>
-            <div class="toc-heading">Display</div>
-            <label>Source view
-                <input id="toggle-xml-display" type="checkbox"></input>
-            </label>
-            <div class="toc-heading">External Links</div>
-            <nav>
-                <ul>
-                    <li>
-                        <xsl:element name="a">
-                            <xsl:attribute name="href"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename, '.xml')"/></xsl:attribute><i class="fa-solid fa-code"></i> XML File
-                        </xsl:element>
-                        </li>
-                </ul>
-            </nav>
-        </div>
-    </xsl:template>
-
+    
     <!-- Templates for Apparatus at the botton of the page -->
   <xsl:template name="tpl-apparatus">
     <!-- An apparatus is only created if one of the following is true -->
@@ -3258,8 +3406,7 @@
         <xsl:when test="$edition-type='diplomatic'">
             <!-- je vais devoir ajouter les choice et peut-être les subst -->
             <xsl:if test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
-                
-                <div class="collapsible-content">
+
                     <div class="ed-section">
                         <xsl:for-each
                             select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
@@ -3289,16 +3436,17 @@
                                         <xsl:when test="self::subst">subst</xsl:when>-->
                                     </xsl:choose>
                                 </xsl:with-param>
+                                <xsl:with-param name="display-context" select="'printedapp'"/>
+                                
                             </xsl:call-template>
                         </xsl:for-each>
                     </div>
-                </div>
+                
             </xsl:if>
         </xsl:when>
         <xsl:otherwise>
             <xsl:if
         test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
-      <div class="collapsible-content">
       <div class="ed-section">
         <xsl:for-each
             select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
@@ -3326,10 +3474,11 @@
                   </xsl:when>
               </xsl:choose>
             </xsl:with-param>
+              <xsl:with-param name="display-context" select="'printedapp'"/>
           </xsl:call-template>
         </xsl:for-each>
       </div>
-        </div>
+        
     </xsl:if>
     </xsl:otherwise>
     </xsl:choose>
@@ -3431,11 +3580,11 @@
                 <xsl:text>)</xsl:text>
             </xsl:element>
         </xsl:if>
-        <xsl:if test="$location = 'text'"/>
     </xsl:template>
     
     <xsl:template name="dharma-app">
         <xsl:param name="apptype"/>
+        <xsl:param name="display-context"/>
        <xsl:variable name="childtype">
             <xsl:choose>
                 <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice[child::tei:orig and child::tei:reg]">
@@ -3454,7 +3603,8 @@
             </xsl:choose>
         </xsl:variable>
         <xsl:choose>
-            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst) or //tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] ">
+            <xsl:when test="$display-context='modalapp'"/>
+            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst) or //tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] and $display-context='printedapp'">
                 <xsl:call-template name="lbrk-app"/>
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'bottom'"/>
@@ -3472,8 +3622,10 @@
                 <xsl:text>:&#x202F;</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
-        <span class="app">
-          <xsl:choose>
+        <span class="app-entry">
+            <!-- commenter afin de ne le déclarer qu'une unique fois! -->
+            <!-- à bouger -->
+          <!--<xsl:choose>
               <xsl:when test=".[local-name() = 'note'][ not(ancestor::tei:div[@type='translation'])]">
                       <xsl:call-template name="fake-lem-making"/>
                       <b><xsl:text>] </xsl:text></b>
@@ -3494,13 +3646,14 @@
                   <span class="prosody"><xsl:value-of select="translate(@real, '-=+', '⏑⏓–')"/></span>
                   <xsl:text>.</xsl:text>
               </xsl:when>
-              <xsl:otherwise>
+              <xsl:otherwise>-->
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>
                 <xsl:with-param name="childtype" select="$childtype" />
+                  <xsl:with-param name="display-context" select="$display-context"/>
             </xsl:call-template>
-              </xsl:otherwise>
-          </xsl:choose>
+              <!--</xsl:otherwise>
+          </xsl:choose>-->
         </span>
     </xsl:template>
 
@@ -3508,6 +3661,7 @@
     <xsl:template name="appcontent">
         <xsl:param name="apptype"/>
      <xsl:param name="childtype"/>
+        <xsl:param name="display-context"/>
         <xsl:variable name="path">
            <xsl:choose>
                 <xsl:when test="$childtype='origreg' or $childtype='siccorr'">
@@ -3546,6 +3700,7 @@
                    <xsl:with-param name="parent-lang">
                        <xsl:value-of select="$parent-lang" />
                    </xsl:with-param>
+                    <xsl:with-param name="display-context" select="$display-context"/>
                 </xsl:call-template>
                <xsl:text> </xsl:text>
             </xsl:when>
@@ -3555,26 +3710,35 @@
                     <xsl:with-param name="child"><xsl:if test="$childtype != ''">true</xsl:if></xsl:with-param>
                     <xsl:with-param name="path"><xsl:copy-of select="$path"/></xsl:with-param>
                    <xsl:with-param name="parent-lang"><xsl:value-of select="$parent-lang" /></xsl:with-param>
+                    <xsl:with-param name="display-context" select="$display-context"/>
                 </xsl:call-template>
         </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
+    <!-- contenu de tous les app; printed et modaux; nombreuses conditions sur $display-content pour éviter de répéter plusieurs le contenu -->
     <xsl:template name="appchoice">
         <xsl:param name="apptype" />
        <xsl:param name="child" />
         <xsl:param name="path" />
        <xsl:param name="parent-lang"/>
-
+        <xsl:param name="display-context"/>
         <xsl:choose>
             <xsl:when test="$apptype='app'">
                 <!-- **ALT - <xsl:value-of select="$path/tei:rdg"/>** -->
                 <xsl:for-each select="tei:lem">
-                    <span class="bottom-lemma-reading">
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">
+                            <xsl:choose>
+                                <xsl:when test="$display-context='printedapp'">bottom-lemma-line</xsl:when>
+                                <xsl:otherwise>lemma-line</xsl:otherwise>
+                            </xsl:choose>
                             <xsl:if test="not($path/tei:lem/following-sibling::tei:note[@type='altLem'])">
-                                <xsl:call-template name="lem-type"/>
+                                <xsl:call-template name="truncation-type"/>
                             </xsl:if>
-                        <xsl:choose>
+                            
+                        </xsl:attribute>
+                            <xsl:choose>
                             <xsl:when test="$path/tei:lem/following-sibling::tei:note[@type='altLem']">
                                 <xsl:apply-templates select="replace($path/tei:lem/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')"/>
                             </xsl:when>
@@ -3583,20 +3747,24 @@
                                 <xsl:apply-templates select="$path/tei:lem"/>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </span>
-                    <xsl:if test="not($path/tei:lem[@type='transposition'][following-sibling::tei:rdg[descendant::*[@corresp]]])">
+                    
+                    <xsl:if test="not($path/tei:lem[@type='transposition'][following-sibling::tei:rdg[descendant::*[@corresp]]]) and $display-context='printedapp'">
                         <b><xsl:text>]</xsl:text></b>
                     </xsl:if>
-                    <xsl:if test="@type">
-                         <i><xsl:text> </xsl:text><xsl:call-template name="apparatus-type"/></i>
-                                <xsl:if test="@wit or @source">
-                                    <xsl:text> </xsl:text>
-                                </xsl:if>
-                            </xsl:if>
+                    <xsl:if test="$path/tei:lem/@type">
+                        <i><xsl:text> </xsl:text><xsl:call-template name="apparatus-type"><xsl:with-param name="type-app" select="$path/tei:lem/@type"/></xsl:call-template></i></xsl:if>
+                        <!-- @resp and @source -->
+                        <xsl:if test="$path/tei:lem/@resp">
+                            <xsl:text> </xsl:text>
+                            <xsl:call-template name="responsability-display">
+                                <xsl:with-param name="responsability" select="$path/tei:lem/@resp"/>
+                                <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                            </xsl:call-template>
+                        </xsl:if>                            
                     <xsl:if test="self::tei:lem[@type='reformulated_elsewhere'] or .[following-sibling::tei:rdg[@type='paradosis']]"><!-- or .[following-sibling::tei:witDetail[@type='retained']] -->
                             <xsl:text> Thus formulated in </xsl:text>
                             <xsl:element name="b">
-                                <xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                                <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
 
@@ -3630,7 +3798,7 @@
                     <xsl:if test="self::tei:lem/@type='omitted_elsewhere'">
                         <xsl:text> transmitted in </xsl:text>
                         <xsl:element name="b">
-                            <xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                            <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                             <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
                                 <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
@@ -3642,7 +3810,7 @@
                     <xsl:if test="self::tei:lem/@type='lost_elsewhere'">
                         <xsl:text> preserved in </xsl:text>
                         <xsl:element name="b">
-                            <xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>                            <xsl:call-template name="tokenize-witness-list">
+                            <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>                            <xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
 
                                 <xsl:with-param name="witdetail-type" select="following-sibling::*[local-name()='witDetail'][1]/@type"/>
@@ -3656,7 +3824,7 @@
                             <xsl:when test="self::tei:lem[@type='transposition'][not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
                             <xsl:otherwise>
                                 <xsl:element name="b">
-                                    <xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                                    <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="@wit"/>
                                         <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -3664,26 +3832,10 @@
                                         <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                         <xsl:with-param name="wit-hand" select="@hand"/>
                                     </xsl:call-template>
-<!-- à supprimer?-->
-                                    <xsl:if test="@varSeq">
-                                      <xsl:choose>
-                                          <xsl:when test="@varSeq='1'">
-                                              <xsl:element name="sub">
-                                                  <xsl:text>ac</xsl:text>
-                                              </xsl:element>
-                                          </xsl:when>
-                                          <xsl:when test="@varSeq='2'">
-                                              <xsl:element name="sub">
-                                                  <xsl:text>pc</xsl:text>
-                                              </xsl:element>
-                                          </xsl:when>
-                                      </xsl:choose>
-                                  </xsl:if>
                                 </xsl:element>
                             </xsl:otherwise>
                         </xsl:choose>
                             </xsl:if>
-
                     <xsl:if test="self::tei:lem[@type='transposition']">
                         <xsl:choose>
                             <xsl:when test=".[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
@@ -3694,16 +3846,29 @@
                        <!-- <xsl:value-of select="@type"/>
                         <xsl:text>)</xsl:text>-->
                     </xsl:if>
-                        <xsl:if test="@source">
-                                <xsl:call-template name="source-siglum">
-                                    <xsl:with-param name="string-to-siglum" select="@source"/>
+                    <xsl:if test="@source">
+                        <xsl:text> </xsl:text>
+                        <xsl:choose>
+                            <xsl:when test="contains(@source, '#')"><xsl:call-template name="source-siglum">
+                                <xsl:with-param name="string-to-siglum" select="@source"/>
+                            </xsl:call-template></xsl:when>
+                            <xsl:when test="contains(@source, 'bib:')">
+                                <xsl:call-template name="bibliography">
+                                    <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
                                 </xsl:call-template>
-                            </xsl:if>
-
-                    <xsl:if test="$path/tei:lem[not(@type='transposition')]">
+                            </xsl:when>
+                        </xsl:choose>
+                    </xsl:if>
+                    <xsl:if test="$path/tei:lem[not(@type='transposition')] and $display-context='printedapp'">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
-
+                        <xsl:if test="$path/tei:lem[not(@type='transposition')] and $display-context='modalapp'">
+                            <xsl:call-template name="lbrk-app"/>
+                        </xsl:if>
+                    </xsl:element>
+                    <xsl:if test="$display-context='modalapp'">
+                        <hr/>
+                    </xsl:if>
                 </xsl:for-each>
                 <!-- create the fake lem for transposition only containing rdg -->
                 <xsl:for-each select="tei:rdg[@cause='transposition'][not(preceding-sibling::tei:lem)]">
@@ -3711,7 +3876,9 @@
                     <xsl:apply-templates select="replace(//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/following-sibling::tei:note[@type='altLem'], '\.\.\.', '&#8230;')
                             "/>
                         <!--  adding the bracket since it can't be diplayed without element lem-->
-                        <b><xsl:text>]</xsl:text></b>
+                        <xsl:if test="$display-context='printedapp'">
+                            <b><xsl:text>]</xsl:text></b>
+                        </xsl:if>
 
                 </xsl:for-each>
                 <xsl:for-each select="descendant-or-self::tei:rdg[not(preceding-sibling::tei:lem[@type='transposition'])]">
@@ -3719,10 +3886,12 @@
                     <xsl:element name="span">
                         <xsl:attribute name="class">reading bottom-reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
                         </xsl:attribute>
-                            <xsl:if test="position()!=1">
+                            <xsl:if test="position()!=1 and $display-context='printedapp'">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
-
+                        <xsl:if test="position()!=1 and $display-context='modalapp'">
+                            <xsl:call-template name="lbrk-app"/>
+                        </xsl:if>
                     <xsl:choose>
                         <xsl:when test="child::tei:pb"/>
                         <xsl:when test="child::tei:gap[@reason='omitted']">
@@ -3756,11 +3925,11 @@
                             <xsl:choose>
                                 <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
                             </xsl:choose>
-
+                    </xsl:element>
                     <xsl:if test="@*">
                         <xsl:if test="@wit">
                             <xsl:element name="b">
-                                <xsl:if test="following-sibling::*[local-name()='witDetail'] or @varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                                <xsl:if test="following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                                 <xsl:call-template name="tokenize-witness-list">
                                     <xsl:with-param name="string" select="@wit"/>
                                     <xsl:with-param name="witdetail-string" select="following-sibling::*[local-name()='witDetail'][1]/@wit"/>
@@ -3768,28 +3937,36 @@
                                     <xsl:with-param name="witdetail-text" select="following-sibling::*[local-name()='witDetail'][1]/text()"/>
                                     <xsl:with-param name="wit-hand" select="@hand"/>
                                 </xsl:call-template>
-                               <!-- to be deleted? -->
-                                <xsl:if test="@varSeq">
-                                    <xsl:choose>
-                                        <xsl:when test="@varSeq='1'">
-                                            <xsl:element name="sub">
-                                                <xsl:text>ac</xsl:text>
-                                            </xsl:element>
-                                        </xsl:when>
-                                        <xsl:when test="@varSeq='2'">
-                                            <xsl:element name="sub">
-                                                <xsl:text>pc</xsl:text>
-                                            </xsl:element>
-                                        </xsl:when>
-                                    </xsl:choose>
-                                </xsl:if>
                             </xsl:element>
                         </xsl:if>
-                            <xsl:if test="@source">
-                                <xsl:call-template name="source-siglum">
+                        <xsl:if test="@type">
+                            <xsl:text> </xsl:text>
+                            <xsl:call-template name="apparatus-type">
+                                <xsl:with-param name="type-app" select="@type"/>
+                            </xsl:call-template>
+                        </xsl:if>
+
+                        <!-- @resp and @source -->
+                        <xsl:if test="@resp">
+                            <xsl:text> </xsl:text>
+                            <xsl:call-template name="responsability-display">
+                                <xsl:with-param name="responsability" select="@resp"/>
+                                <xsl:with-param name="display-behaviour" select="'western-surname-only'"/>
+                            </xsl:call-template>
+                        </xsl:if>                                
+                        <xsl:if test="@source">
+                            <xsl:text> </xsl:text>
+                            <xsl:choose>
+                                <xsl:when test="contains(@source, '#')"><xsl:call-template name="source-siglum">
                                     <xsl:with-param name="string-to-siglum" select="@source"/>
-                                </xsl:call-template>
-                            </xsl:if>
+                                </xsl:call-template></xsl:when>
+                                <xsl:when test="contains(@source, 'bib:')">
+                                    <xsl:call-template name="bibliography">
+                                        <xsl:with-param name="biblentry" select="substring-after(@source, 'bib:')"/>
+                                    </xsl:call-template>
+                                </xsl:when>
+                            </xsl:choose>
+                        </xsl:if>
                         <xsl:if test="@cause">
                             <xsl:choose>
                                 <xsl:when test="@cause='transposition'">
@@ -3816,7 +3993,7 @@
                         <span class="paradosis-line">
                             <i>Paradosis</i><xsl:text> of </xsl:text>
                                     <xsl:element name="b">
-                                        <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail'] or tei:lem/@varSeq"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
+                                        <xsl:if test="tei:lem/following-sibling::*[local-name()='witDetail']"><xsl:attribute name="class">supsub</xsl:attribute></xsl:if>
                                         
                                     <xsl:call-template name="tokenize-witness-list">
                                         <xsl:with-param name="string" select="@wit"/>
@@ -3830,32 +4007,68 @@
                                     <xsl:apply-templates/>
                                 </span>
                     </xsl:if>
-                    </xsl:element>
+                    
                 </xsl:for-each>
                 <xsl:for-each select="ancestor::*[local-name()='lem'][not(@type='reformulation' or @type='transposition')][1]/following-sibling::tei:rdg[1]">
                    <xsl:call-template name="rdg-content">
-                       <xsl:with-param name="parent-rdg" select="'yes-bottom'"/>
+                       <xsl:with-param name="display-context" select="$display-context"/>
                    </xsl:call-template>
                 </xsl:for-each>
-
-                <xsl:for-each select="tei:rdg/following-sibling::tei:note[not(@type='altLem')]"><span class="bottom-note-line"><xsl:text> • </xsl:text>
-                      <xsl:apply-templates/>
-                   </span>
+                    
+                <xsl:for-each select="tei:rdg/following-sibling::tei:note[not(@type='altLem')]">
+                    <xsl:if test="$display-context='modalapp'">
+                        <hr/>
+                    </xsl:if>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">
+                            <xsl:choose>
+                                <xsl:when test="$display-context='printedapp'">
+                                    <xsl:text>bottom-note-line</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>note-line</xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="$display-context='printedapp'">
+                                <xsl:text> • </xsl:text>
+                                <xsl:apply-templates/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:apply-templates/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:element>
                     </xsl:for-each>
 
                 <xsl:if test="not(tei:rdg) and tei:lem/following-sibling::tei:note[not(@type='altLem')]">
-                    <xsl:text> • </xsl:text>
-                    <span class="bottom-note-line">
-                        <xsl:apply-templates select="tei:lem/following-sibling::tei:note[not(@type='altLem')]"/>
-                    </span>
+                    <xsl:element name="span">
+                        <xsl:attribute name="class">
+                            <xsl:choose>
+                                <xsl:when test="$display-context='printedapp'">
+                                    bottom-note-line
+                                </xsl:when>
+                                <xsl:otherwise>note-line</xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="$display-context='printedapp'">
+                                <xsl:text> • </xsl:text>
+                                <xsl:apply-templates select="tei:lem/following-sibling::tei:note[not(@type='altLem')]"/>
+                                
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:apply-templates select="tei:lem/following-sibling::tei:note[not(@type='altLem')]"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:element> 
                 </xsl:if>
             </xsl:when>
 
-                <!--<xsl:when test="$child=('appalt') or $apptype=('appalt')">
+                <xsl:when test="$child=('appalt') or $apptype=('appalt')">
                     <xsl:apply-templates select="child::tei:*[local-name()=('orig','sic','add','lem')]">
                         <xsl:with-param name="location" select="'text'"/>
                     </xsl:apply-templates>
-                </xsl:when>-->
+                </xsl:when>
             <xsl:when test="$apptype='note'">
                 <xsl:for-each select="$path/tei:note">
                     <span class="bottom-note-line">
@@ -3908,7 +4121,7 @@
                                 <xsl:with-param name="string" select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:lem[@type='retained']/@wit"/>
                             </xsl:call-template>
                         </b>
-                        <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
+                        <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg and $display-context='printedapp'">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
 
@@ -3916,10 +4129,11 @@
                             <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
                                 <span class="reading bottom-reading-line">
                                 <xsl:apply-templates/>
+                                </span>
                                 <b><xsl:call-template name="tokenize-witness-list">
                                     <xsl:with-param name="string" select="./@wit"/>
                                 </xsl:call-template></b>
-                        </span>
+                        
                         </xsl:for-each>
                     </xsl:if>
                         <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]"> • </xsl:if>
@@ -3931,20 +4145,26 @@
                     </span>
                 </xsl:if>
             </xsl:when>
+            <xsl:when test="$apptype='siccorr'">
+                <!-- **CORR - <xsl:value-of select="$path/t:corr/node()"/>** -->
+                <xsl:apply-templates select="$path/tei:corr/node()"/>
+                <xsl:text> (corr)</xsl:text>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
 
 
     <!-- Apparatus: type to display -->
     <xsl:template name="apparatus-type">
+        <xsl:param name="type-app"/>
         <xsl:choose>
-            <xsl:when test="./@type='emn' or tei:lem/@type='emn'">
+            <xsl:when test="$type-app='emn'">
                 <xsl:text>em.</xsl:text>
             </xsl:when>
-            <xsl:when test="./@type='norm' or tei:lem/@type='norm'">
+            <xsl:when test="$type-app='norm'">
                 <xsl:text>norm.</xsl:text>
             </xsl:when>
-            <xsl:when test="./@type='conj' or tei:lem/@type='conj'">
+            <xsl:when test="$type-app='conj'">
                 <xsl:text>conj.</xsl:text>
            </xsl:when>
         </xsl:choose>
@@ -3978,26 +4198,27 @@
                     </xsl:for-each>
     </xsl:template>
 
-    <!-- lem: render the compound in the apparatus entries -->
-    <xsl:template name="lem-type">
+    <!-- lem: render the compound in the apparatus entries for any truncation -->
+    <!-- Given as class attribute and completed with js preappend and append -->
+    <xsl:template name="truncation-type">
         <xsl:choose>
-            <xsl:when test="./@rend='hyphenleft' or tei:lem/@rend='hyphenleft'">
-                <xsl:text>hyphenleft</xsl:text>
+            <xsl:when test="@rend='hyphenleft'">
+                <xsl:text> hyphenleft</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='hyphenright' or tei:lem/@rend='hyphenright'">
-                <xsl:text>hyphenright</xsl:text>
+            <xsl:when test="@rend='hyphenright'">
+                <xsl:text> hyphenright</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='hyphenaround' or tei:lem/@rend='hyphenaround'">
-                <xsl:text>hyphenaround</xsl:text>
+            <xsl:when test="@rend='hyphenaround'">
+                <xsl:text> hyphenaround</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='circleleft' or tei:lem/@rend='circleleft'">
-                <xsl:text>circleleft</xsl:text>
+            <xsl:when test="@rend='circleleft'">
+                <xsl:text> circleleft</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='circleright' or tei:lem/@rend='circleright'">
-                <xsl:text>circleright</xsl:text>
+            <xsl:when test="@rend='circleright'">
+                <xsl:text> circleright</xsl:text>
             </xsl:when>
-            <xsl:when test="./@rend='circlearound' or tei:lem/@rend='circlearound'">
-                <xsl:text>circlearound</xsl:text>
+            <xsl:when test="@rend='circlearound'">
+                <xsl:text> circlearound</xsl:text>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
@@ -4168,7 +4389,7 @@
                    <!-- need to add the language -->
                </a>
                <div id="{generate-id()}" class="collapse">
-                   <div class="card card-body border-dark">
+                   <div class="card-body">
                        <xsl:call-template name="tpl-translation">
                            <xsl:with-param name="textpart-id" select="$textpart-id"/>
                        </xsl:call-template>
@@ -4191,7 +4412,7 @@
                     <xsl:if test="$trans-path/child::tei:note">
                         <hr/>
                         <div class="bloc-notes">
-                            <h5>Notes</h5>
+                            <h6>Notes</h6>
                             <span class="notes-translation">
                                 <!-- An entry is created for-each of the following instances
                                 * notes.  -->
@@ -4218,11 +4439,10 @@
     <xsl:template name="translation-bottom-notes">
         <ol>
             <xsl:for-each select="tei:text/tei:body/tei:div[@type='translation']/descendant-or-self::tei:note">
-                <xsl:call-template name="lbrk-app"/>
-                  <xsl:call-template name="generate-trans-link">
+                  <li><xsl:call-template name="generate-trans-link">
                     <xsl:with-param name="situation" select="'apparatus-bottom'"/>
                 </xsl:call-template>
-                <xsl:apply-templates/>
+                <xsl:apply-templates/></li>
         </xsl:for-each>
         </ol>
       </xsl:template>
