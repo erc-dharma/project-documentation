@@ -2257,6 +2257,30 @@
             </bibl>
           </listBibl>
         </item>
+      	<item>
+      		<measure unit="syllable">15</measure>
+      		<name xml:lang="kaw-Latn">nāgata</name>
+      		<seg type="xml">+-----++++----=</seg>
+      		<seg type="prosody">–⏑⏑⏑⏑⏑––––⏑⏑⏑⏑⏓</seg>
+      		<seg type="gana">bha-na-ya-bha-sa</seg>
+      		<listBibl>
+      			<bibl>
+      				<ptr target="bib:Apte1890_01"/>
+      				<citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+      				<!-- absent from Apte -->
+      			</bibl>
+      			<bibl>
+      				<ptr target="bib:Velankar1949_01"/>
+      			</bibl>
+      			<bibl>
+      				<ptr target="bib:Zoetmulder1974_01"/>
+      				<citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+      				<citedRange unit="page">459</citedRange>
+      				<citedRange unit="item">XV.6</citedRange>
+      				<!-- Sources for name: ... -->
+      			</bibl>
+      		</listBibl>
+      	</item>
         <item>
           <measure unit="syllable">16</measure>
           <name xml:lang="kaw-Latn">giriśa</name>
