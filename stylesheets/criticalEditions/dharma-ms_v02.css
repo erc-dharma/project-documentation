@@ -1,6 +1,5 @@
 ﻿/* CSS file based on salit.css written by Andrew Ollett */
 /* Updated and reworked for DHARMA by Axelle Janiak, CNRS-EHES, 2021. */
-/* For the tables and stuff */
 
 blockquote {
   background: #f9f9f9;
@@ -108,8 +107,4 @@ span.lem >a, .lem{
 
 .unmetrical{
    background-color: pink;
-}
-
-a.href {
-    color: blue!important;
 }

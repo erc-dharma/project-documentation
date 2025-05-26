@@ -228,7 +228,7 @@
 
     <!--  teiHeader – matching metadata in dharmalekha ! -->
     <xsl:template match="tei:fileDesc">
-        <p>
+        <p>Author<xsl:if test="count(tei:titleStmt/tei:respStmt[tei:resp[text()='author of digital edition']]/tei:persName) gt 1">s</xsl:if> of digital edition: 
             <xsl:if test="tei:titleStmt/tei:respStmt/tei:resp[text()='author of digital edition']">
                 <xsl:call-template name="editors">
                     <xsl:with-param name="list-editors" select="tei:titleStmt/tei:respStmt[tei:resp[text()='author of digital edition']]/tei:persName"/>
@@ -447,6 +447,7 @@
                 <ul>
                     <li>
                         <xsl:element name="a">
+                            <xsl:attribute name="class">nav-link</xsl:attribute>
                             <xsl:attribute name="href"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename)"/></xsl:attribute><i class="fa-solid fa-code"></i> XML File
                         </xsl:element>
                     </li>
@@ -1105,12 +1106,12 @@
         <xsl:variable name="tei-bib" select="document($zoteroapitei)//tei:listBibl"/>
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:listBibl">
-                        
                         <p class="bib-entry" id="bib-key-{$key-item[1]}">
                             <xsl:call-template name="biblio-tei">
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
                             </xsl:call-template>
+                            <xsl:call-template name="tpl-citedRange"/>
                             <a href="https://www.zotero.org/groups/erc-dharma/items/{$key-item[1]}">
                             <i class="fas fa-edit" style="display:inline;" data-tip="Edit on zotero.org"> </i></a>
                         </p>
@@ -1142,23 +1143,9 @@
                                 </xsl:otherwise>
                             </xsl:choose>
                         </a>
-                        <xsl:if test="tei:citedRange">
-                            <xsl:choose>
-                                <xsl:when test="tei:citedRange and not(ancestor::tei:cit)">
-                                    <xsl:text>: </xsl:text>
-                                </xsl:when>
-                                <xsl:when test="tei:citedRange and ancestor::tei:cit">
-                                    <xsl:text>, </xsl:text>
-                                </xsl:when>
-                            </xsl:choose>
-                            <xsl:for-each select="tei:citedRange">
-                                <xsl:call-template name="citedRange-unit"/>
-                                <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
-                                <xsl:if test="following-sibling::tei:citedRange[1]">
-                                    <xsl:text>, </xsl:text>
-                                </xsl:if>
-                            </xsl:for-each>
-                        </xsl:if>
+                                <xsl:call-template name="tpl-citedRange"/>
+                            
+                        
                         <!--	if it is in the bibliography print styled reference-->
                         
                         </xsl:when>
@@ -1201,7 +1188,7 @@
                 </i><xsl:text>. </xsl:text>
                 <xsl:if test="$bib-content//tei:monogr/tei:edition"><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:edition"/><xsl:text>. </xsl:text></xsl:if>
                 <xsl:if test="$bib-content//tei:series">
-                    <xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/><xsl:if test="$bib-content//tei:series/tei:biblScope"><xsl:text>, </xsl:text> <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope"/></xsl:if>.</xsl:if> <xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>. <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL].</xsl:element></xsl:if>
+                    <xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/><xsl:if test="$bib-content//tei:series/tei:biblScope"><xsl:text>, </xsl:text> <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope"/></xsl:if>.</xsl:if> <xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>. <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL]</xsl:element>. </xsl:if>
             </xsl:when>
             <xsl:when test="$bib-type='bookSection'">
                 <!-- Bosch, Frederik David Kan. 1961. “Buddhist Data from Balinese Texts.” In Selected Studies in Indonesian Archaeology, 109–33. Koninklijk Instituut Voor Taal-, Land- En Volkenkunde Translation Series 5. The Hague: Martinus Nijhoff. -->
@@ -1251,8 +1238,9 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
-                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/><xsl:text>.”</xsl:text> <xsl:element name="abbr">
-                    <xsl:attribute name="data-tip">&lt;i&gt;<xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/>&lt;/i&gt;</xsl:attribute><i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/></i></xsl:element> <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='volume']"/><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"> (<xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"/>)</xsl:if><xsl:text>, pp. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='unit']"/><xsl:text>.</xsl:text><xsl:if test="$bib-content//tei:analytic/tei:idno[@type='DOI']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href">https://doi.org/<xsl:apply-templates select="$bib-content//tei:analytic/tei:idno[@type='DOI']"/></xsl:attribute>DOI: <xsl:apply-templates select="$bib-content//tei:analytic/tei:idno[@type='DOI']"/></xsl:element>. </xsl:if><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL].</xsl:element></xsl:if>
+                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/><xsl:text>.”</xsl:text>
+                <!-- partially implemented --><xsl:text> </xsl:text><xsl:element name="abbr">
+                    <xsl:attribute name="data-tip">&lt;i&gt;<xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/>&lt;/i&gt;</xsl:attribute><i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/></i></xsl:element><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='volume']"/><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"> <xsl:text> </xsl:text>(<xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"/>)</xsl:if> <xsl:text>, pp. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']"/><xsl:text>.</xsl:text><xsl:if test="$bib-content//tei:analytic/tei:idno[@type='DOI']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href">https://doi.org/<xsl:apply-templates select="$bib-content//tei:analytic/tei:idno[@type='DOI']"/></xsl:attribute>[DOI]</xsl:element>. </xsl:if><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL]</xsl:element>. </xsl:if>
                        
             </xsl:when>
             <xsl:when test="$bib-type='thesis'">
@@ -1266,7 +1254,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
-                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/>.” PhD Dissertation, <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>. <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL].</xsl:element></xsl:if> 
+                <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/>.” PhD Dissertation, <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>. <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL]</xsl:element>. </xsl:if> 
             </xsl:when>
         </xsl:choose>
         
@@ -1358,13 +1346,23 @@
     </xsl:template>-->
     
     <!-- citedRange -->
-    <xsl:template match="tei:citedRange">
-                
-                    <b><xsl:call-template name="citedRange-unit"/>
-                    <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/></b>
-                <xsl:if test="following-sibling::tei:citedRange">
+    <xsl:template name="tpl-citedRange">  
+            <xsl:choose>
+                <xsl:when test="tei:citedRange and not(ancestor::tei:cit or ancestor::tei:listBibl)">
+                    <xsl:text>: </xsl:text>
+                </xsl:when>
+                <xsl:when test="tei:citedRange and ancestor::tei:cit">
+                    <xsl:text>, </xsl:text>
+                </xsl:when>
+            </xsl:choose>
+        <xsl:for-each select="tei:citedRange">
+                <xsl:call-template name="citedRange-unit"/>
+                <xsl:apply-templates select="replace(normalize-space(.), '-', '–')"/>
+                <xsl:if test="following-sibling::tei:citedRange[1]">
                     <xsl:text>, </xsl:text>
                 </xsl:if>
+            </xsl:for-each>
+        <xsl:text>. </xsl:text>
     </xsl:template>
     
     <!-- colophon -->
@@ -2549,7 +2547,6 @@
         <xsl:choose>
             <xsl:when test="$viz-context='github'">
                 <xsl:element name="a">
-            <xsl:attribute name="class">ref</xsl:attribute>
             <xsl:attribute name="href">
                 <xsl:choose>
                     <!-- link to the epigraphy -->
@@ -2572,7 +2569,6 @@
             <!-- conditions pour le système de Michaël -->
             <xsl:otherwise>
                 <xsl:element name="a">
-                    <xsl:attribute name="class">ref</xsl:attribute>
                     <xsl:attribute name="href">
                 <xsl:choose>
                     <!-- une règle pour tous les cas de figures dans la DB -->
@@ -3278,7 +3274,7 @@
         <xsl:if test="not($tpl='content-pb')">
             <xsl:text> </xsl:text>
         </xsl:if>
-        <a class="siglum" href="#{$target}">
+        <a class="siglum ref" href="#{$target}">
             <xsl:choose>
                 <xsl:when test="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum'][1]">
                     <xsl:apply-templates select="//tei:listWit/tei:witness[@xml:id=$target]/tei:abbr[@type='siglum'][1]"/>
@@ -3340,13 +3336,14 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
                 <!-- Attention pour des raisons de test les liens ne sont pas tout à fait correct -->
                 <xsl:choose>
-                    <xsl:when test="$viz-context='github'"> 
+                    <xsl:when test="$viz-context='github'">
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-                        <link rel="stylesheet" href="https://dharmalekha.info/fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-                            <link rel="icon" href="https://dharmalekha.info/favicon.svg"/>
+                        <link rel="icon" href="https://dharmalekha.info/favicon.svg"/>
+                        <link rel="stylesheet" href="https://dharmalekha.info/fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>                       
                             <link rel="stylesheet" href="https://dharmalekha.info/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>-->
                             <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"/>
                             <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"/>
                         <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
@@ -4227,9 +4224,7 @@
         <xsl:param name="list-editors"/>
         <xsl:for-each select="$list-editors">
             <xsl:choose>
-                <xsl:when test="position()= 1">
-                    <xsl:text>edited by </xsl:text>
-                </xsl:when>
+                <xsl:when test="position()= 1"/>
                 <xsl:when test="position()=last()">
                     <xsl:text> &amp; </xsl:text>
                 </xsl:when>
@@ -4471,7 +4466,7 @@
                     <xsl:text>volume </xsl:text>
                 </xsl:when>
                 <xsl:when test="@unit='note'">
-                    <xsl:text>note </xsl:text>
+                    <xsl:text>n. </xsl:text>
                 </xsl:when>
                 <xsl:when test="@unit='item'">
                     <xsl:text>&#8470; </xsl:text>
