@@ -818,10 +818,6 @@
           <constraintSpec scheme="schematron" ident="title-rules">
             <constraint><sch:rule context="tei:titleStmt">
               <sch:assert test="./tei:title[@type='editorial'][1]">title with @type='editorial' is mandatory and must be the first title given</sch:assert></sch:rule>
-              <sch:rule context="./tei:title[@type='original']">
-              <sch:assert test="@xml:lang">@xml:lang is mandatory with title[@type='original']</sch:assert>
-              
-            </sch:rule>
             </constraint>
           </constraintSpec>
           <attList>
@@ -2974,6 +2970,14 @@
           </attList>
         </elementSpec>
         <elementSpec ident="title" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="title-original">
+            <constraint>
+              <sch:rule context="tei:title[@type='original']">
+                <sch:assert test="@xml:lang">@xml:lang is mandatory with title[@type='original']</sch:assert>
+                
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="calendar" mode="delete"/>
@@ -3685,7 +3689,7 @@
         </elementSpec>
         <elementSpec ident="supplied" module="transcr" mode="change">
           <constraintSpec scheme="schematron" ident="supplied-translation">
-            <constraint><sch:rule context="tei:supplied[@reason='explanation' or @reason='subaudible']"><sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">The supplied @reason='explanation or subaudible' can only be used in translations</sch:report></sch:rule></constraint>
+            <constraint><sch:rule context="tei:supplied[@reason='explanation']"><sch:report test="not(ancestor-or-self::tei:div[@type='translation'])">The supplied @reason='explanation' can only be used in translations</sch:report></sch:rule></constraint>
           </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
