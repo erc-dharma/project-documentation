@@ -447,7 +447,6 @@
                 <ul>
                     <li>
                         <xsl:element name="a">
-                            <xsl:attribute name="class">nav-link</xsl:attribute>
                             <xsl:attribute name="href"><xsl:value-of select="concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $filename)"/></xsl:attribute><i class="fa-solid fa-code"></i> XML File
                         </xsl:element>
                     </li>
@@ -1110,6 +1109,7 @@
                             <xsl:call-template name="biblio-tei">
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
+                                <xsl:with-param name="journal-abb" select="$zoteroapi//(*[@key='journalAbbreviation'][1])"/>
                             </xsl:call-template>
                             <xsl:call-template name="tpl-citedRange"/>
                             <a href="https://www.zotero.org/groups/erc-dharma/items/{$key-item[1]}">
@@ -1158,6 +1158,7 @@
     <xsl:template name="biblio-tei">
         <xsl:param name="bib-type"/>
         <xsl:param name="bib-content"/>
+        <xsl:param name="journal-abb"/>
         <xsl:choose>
             <xsl:when test="$bib-type='book'">
                 <xsl:for-each select="$bib-content//tei:monogr/tei:author">
@@ -1240,7 +1241,7 @@
                 </xsl:for-each>
                 <xsl:text>. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>.<xsl:text> “</xsl:text><xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/><xsl:text>.”</xsl:text>
                 <!-- partially implemented --><xsl:text> </xsl:text><xsl:element name="abbr">
-                    <xsl:attribute name="data-tip">&lt;i&gt;<xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/>&lt;/i&gt;</xsl:attribute><i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/></i></xsl:element><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='volume']"/><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"> <xsl:text> </xsl:text>(<xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"/>)</xsl:if> <xsl:text>, pp. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']"/><xsl:text>.</xsl:text><xsl:if test="$bib-content//tei:analytic/tei:idno[@type='DOI']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href">https://doi.org/<xsl:apply-templates select="$bib-content//tei:analytic/tei:idno[@type='DOI']"/></xsl:attribute>[DOI]</xsl:element>. </xsl:if><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL]</xsl:element>. </xsl:if>
+                    <xsl:attribute name="data-tip">&lt;i&gt;<xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='j']"/>&lt;/i&gt;</xsl:attribute><i><xsl:apply-templates select="$journal-abb"/></i></xsl:element><xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='volume']"/><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"> <xsl:text> </xsl:text>(<xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']"/>)</xsl:if> <xsl:text>, pp. </xsl:text><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']"/><xsl:text>.</xsl:text><xsl:if test="$bib-content//tei:analytic/tei:idno[@type='DOI']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href">https://doi.org/<xsl:apply-templates select="$bib-content//tei:analytic/tei:idno[@type='DOI']"/></xsl:attribute>[DOI]</xsl:element>. </xsl:if><xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"><xsl:element name="a"><xsl:attribute name="class">url</xsl:attribute><xsl:attribute name="href"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:note[@type='url']"/></xsl:attribute>[URL]</xsl:element>. </xsl:if>
                        
             </xsl:when>
             <xsl:when test="$bib-type='thesis'">
@@ -3857,7 +3858,7 @@
                             </xsl:when>
                         </xsl:choose>
                     </xsl:if>
-                    <xsl:if test="self::tei:lem[not(@type='transposition')] and $display-context='printedapp'">
+                    <xsl:if test="self::tei:lem[not(@type='transposition')][following-sibling::tei:rdg] and $display-context='printedapp'">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                         <xsl:if test="self::tei:lem[not(@type='transposition')] and $display-context='modalapp'">
