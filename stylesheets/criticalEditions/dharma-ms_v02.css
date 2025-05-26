@@ -50,7 +50,6 @@ span.lem >a, .lem{
     display:block;
 }
 
-
 .tooltipApp {
     color: blue;
 }
@@ -107,4 +106,9 @@ span.lem >a, .lem{
 
 .unmetrical{
    background-color: pink;
+}
+
+.title-head{
+    font-weight: bold;
+     font-size: 120%;
 }

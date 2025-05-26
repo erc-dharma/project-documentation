@@ -2100,7 +2100,10 @@
 
     <!--  listWit ! -->
     <xsl:template match="tei:listWit">
-        <xsl:apply-templates/>
+        <xsl:if test="tei:head"> 
+            <span class="title-head"><xsl:apply-templates select="tei:head"/></span>
+        </xsl:if>
+        <xsl:apply-templates select="* except tei:head"/>
     </xsl:template>
     
     <!-- locus -->
@@ -3341,8 +3344,7 @@
                         <link rel="icon" href="https://dharmalekha.info/favicon.svg"/>
                         <link rel="stylesheet" href="https://dharmalekha.info/fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>                       
                             <link rel="stylesheet" href="https://dharmalekha.info/base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>-->
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/dharma-ms_v02.css?v=1xa9450aa77c9b125526d71a0e58819c086fa4cab"/>
                             <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"/>
                             <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"/>
                         <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
