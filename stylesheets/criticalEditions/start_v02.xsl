@@ -1088,13 +1088,13 @@
     <!--  B ! -->
     <xsl:template match="tei:bibl">
         <xsl:choose>
-            <!-- special cas: ajouter au dernier moment pour la liste des abbr. editions -->
-            <xsl:when test="ancestor-or-self::tei:listBibl/@type='editions'">
-                <a id="{@xml:id}">
-                    <b>[<xsl:apply-templates select="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='editions']]/tei:abbr[@type='siglum']"/>]</b>
-                </a>: <xsl:apply-templates select="./tei:abbr[@type='siglum']/following-sibling::tei:* except tei:bibl"/>
+            <!-- special cas: ajouter au dernier moment pour la liste des abbr. editions --><!-- <xsl:when test=".[ancestor-or-self::tei:listBibl[@type='editions']]/text()"> -->
+            <xsl:when test="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='editions']]">
+                <xsl:if test="tei:abbr"><a id="{@xml:id}">
+                    <b>[<xsl:apply-templates select="tei:abbr[@type='siglum']"/>]</b>
+                </a>: <xsl:apply-templates select="tei:abbr[@type='siglum']/following-sibling::tei:* except tei:bibl"/>
                 <!-- condition pour le apply-templates vague parce que je ne sais pas ce qu'il pourrait contenir -->
-                <xsl:text>. </xsl:text>
+                <xsl:text>. </xsl:text></xsl:if>
                 <!-- cas de figure pour plusieurs ptr; avec list -->
                 <ul><xsl:for-each select="tei:ptr">
                 <li><xsl:call-template name="bibliography">
@@ -1103,13 +1103,10 @@
                 </li>
                 </xsl:for-each></ul>
             </xsl:when>
-            <xsl:when test="ancestor-or-self::tei:listBibl/@type='bibliography'">
+            <xsl:otherwise>
                 <xsl:call-template name="bibliography">
                     <xsl:with-param name="biblentry" select="substring-after(tei:ptr/@target, 'bib:')"/>
-                </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-                <p class="bib-entry"><xsl:apply-templates/></p>   
+                </xsl:call-template> 
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -2218,7 +2215,7 @@
     <xsl:template match="tei:listBibl">
                 <div class="ed-section">
                     <!-- pas de titre pour la biblio qui serait alors redondant -->
-                    <xsl:if test="@type='editions' and ./tei:bibl/text()">
+                    <xsl:if test="@type='editions' and ./tei:bibl/node()">
                         <h2 class="ed-heading" id="{generate-id()}">Abbreviation of texts</h2>
                     </xsl:if>                  
                     <xsl:apply-templates/>
