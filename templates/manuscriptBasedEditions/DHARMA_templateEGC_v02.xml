@@ -132,7 +132,12 @@
 			  </div>
 		    <div type="bibliography">
 		        <p><!-- explain the process of your edition here --></p>
-		        <listBibl>
+		        <!-- provide a list of bibliographic references used in your digital editions -->
+		        <listBibl type="bibliography">
+		            <bibl/>
+		        </listBibl>
+		        <!-- the listBibl editions is used to create a list of abbreviated text used in notes and parallels, it is more or less the equivalent of a list of abbreviations, you would find a printed edition  -->
+		        <listBibl type="editions">
 		            <bibl/>
 		        </listBibl>
 		    </div>
