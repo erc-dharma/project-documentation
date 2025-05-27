@@ -1635,19 +1635,30 @@
     <xsl:template name="metrical-list">
         <xsl:param name="metrical"/>
         <xsl:param name="line-context"/>
+        <!-- conditions for seg[@met] ajoutées -->
         <xsl:choose>
             <xsl:when test="matches($metrical,'[=\+\-]+')">
                 <xsl:choose>
                     <xsl:when test="$prosody//tei:item[tei:seg[@type='xml'] =$metrical][1]">
                         <xsl:variable name="label-group" select="$prosody//tei:item[tei:seg[@type='xml'] =$metrical]/child::tei:label"/>
                         <span data-tip=" &lt;span class=&quot;prosody&quot;&gt;{$prosody//tei:item[tei:seg[@type='xml']]/tei:seg[@type='prosody']}&lt;/span&gt;">
-                            Name unknown <xsl:if test="$label-group = ' '">(<i><xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/></i>)</xsl:if>
-                         class</span>
-                    </xsl:when>
+                            <xsl:choose>
+                                <xsl:when test="self::tei:seg">
+                                    <xsl:value-of select="translate($metrical, '-=+', '⏑⏓–')"/> 
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text> Name unknown</xsl:text></xsl:otherwise></xsl:choose><xsl:if test="$label-group = ' '">(<i><xsl:value-of select="concat(upper-case(substring($label-group,1,1)), substring($label-group, 2),' '[not(last())] )"/></i>)</xsl:if>
+                            class</span>
+                    </xsl:when> 
                     <xsl:otherwise>
                         <xsl:element name="span">
                             <xsl:attribute name="data-tip">&lt;span class=&quot;prosody&quot;&gt;<xsl:value-of select="translate($metrical, '-=+', '⏑⏓–')"/>&lt;/span&gt;</xsl:attribute>
-                            <xsl:text> Name unknown</xsl:text>
+                            <xsl:choose>
+                                <xsl:when test="self::tei:seg">
+                                    <xsl:value-of select="translate($metrical, '-=+', '⏑⏓–')"/> 
+                                </xsl:when>
+                                <xsl:otherwise>
+                                <xsl:text> Name unknown</xsl:text></xsl:otherwise></xsl:choose>
                         </xsl:element>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -2710,6 +2721,7 @@
             <xsl:when test="@type='aksara'">
                 <xsl:apply-templates/>
             </xsl:when>
+            <!-- change the seg part!  -->
             <xsl:when test="@met and child::tei:gap">
                 <span class="gap" data-tip="{child::tei:gap/@quantity} {child::tei:gap/@reason} characters">[<xsl:call-template name="metrical-list"><xsl:with-param name="metrical" select="@met"/></xsl:call-template>]</span>
             </xsl:when>
