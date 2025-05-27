@@ -2710,6 +2710,9 @@
             <xsl:when test="@type='aksara'">
                 <xsl:apply-templates/>
             </xsl:when>
+            <xsl:when test="@met and child::tei:gap">
+                <span class="gap" data-tip="{child::tei:gap/@quantity} {child::tei:gap/@reason} characters">[<xsl:call-template name="metrical-list"><xsl:with-param name="metrical" select="@met"/></xsl:call-template>]</span>
+            </xsl:when>
             <xsl:when test="@type='component' and child::tei:gap">
                 <xsl:element name="span">
                     <xsl:attribute name="class">gap</xsl:attribute>
@@ -2722,9 +2725,7 @@
                 </xsl:element>
             </xsl:when>
             <xsl:when test="@type='component' and not(child::tei:gap)"><xsl:apply-templates/></xsl:when>
-            <xsl:when test="@met and child::tei:gap">
-                <span class="gap" data-tip="{child::tei:gap/@quantity} {child::tei:gap/@reason} characters">[<xsl:call-template name="metrical-list"><xsl:with-param name="metrical" select="@met"/></xsl:call-template>]</span>
-            </xsl:when>
+            
         </xsl:choose>
     </xsl:template>
     
