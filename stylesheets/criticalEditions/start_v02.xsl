@@ -1245,9 +1245,10 @@
                     </xsl:choose>
                 </xsl:for-each>
                 <xsl:text>. </xsl:text>
-                <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>
+                <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:date"><xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>
+                <xsl:text>. </xsl:text></xsl:if>
                 <!-- les guillements sont gérés dans le tpl title -->
-                <xsl:text> </xsl:text><xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/>.” In <i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/></i><xsl:if test="$bib-content//tei:monogr/tei:author">, by <xsl:for-each select="$bib-content//tei:monogr/tei:author">
+                <xsl:apply-templates select="$bib-content//tei:analytic/tei:title[@level='a']"/>. In: <i><xsl:apply-templates select="$bib-content//tei:monogr/tei:title[@level='m']"/></i>. <xsl:if test="$bib-content//tei:monogr/tei:author">Edited by <xsl:for-each select="$bib-content//tei:monogr/tei:author">
                     <xsl:choose>
                         <xsl:when test="position()[1]">
                             <xsl:call-template name="first-author"/>
@@ -1257,8 +1258,9 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
+                    <xsl:text>. </xsl:text>
                 </xsl:if>
-                <xsl:if test="$bib-content//tei:monogr/tei:editor">, <xsl:for-each select="$bib-content//tei:monogr/tei:editor">
+                <xsl:if test="$bib-content//tei:monogr/tei:editor">Edited by <xsl:for-each select="$bib-content//tei:monogr/tei:editor">
                     <xsl:choose>
                         <xsl:when test="position()[1]">
                             <xsl:call-template name="first-author"/>
@@ -1267,10 +1269,23 @@
                             <xsl:call-template name="following-authors"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:text> (ed.)</xsl:text>
-                </xsl:for-each></xsl:if>. <xsl:if test="$bib-content//tei:series"><xsl:text> </xsl:text>
-                    <xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/> <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope[@unit='volume']"/>. </xsl:if> 
-                <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>: <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>, pp. <xsl:apply-templates select="replace(normalize-space($bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']), '-', '–')"/><xsl:text>. </xsl:text>
+                    <xsl:text>. </xsl:text>
+                </xsl:for-each>
+                </xsl:if>
+                <xsl:if test="$bib-content//tei:series">
+                    <xsl:apply-templates select="$bib-content//tei:series/tei:title[@level='s']"/>
+                    <xsl:text>, </xsl:text>
+                    <xsl:apply-templates select="$bib-content//tei:series/tei:biblScope[@unit='volume']"/>
+                    <xsl:text>. </xsl:text>
+                </xsl:if> 
+                <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:pubPlace">
+                    <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:pubPlace"/>
+                    <xsl:text>: </xsl:text>
+                    <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:publisher"/>
+                </xsl:if>
+                <xsl:text>, pp. </xsl:text>
+                <xsl:apply-templates select="replace(normalize-space($bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']), '-', '–')"/>
+                <xsl:text>. </xsl:text>
             </xsl:when>
             <xsl:when test="$bib-type='journalArticle'">
                 <xsl:for-each select="$bib-content//tei:analytic/tei:author">
@@ -1306,7 +1321,6 @@
                         <xsl:apply-templates select="replace(normalize-space($bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']), '-', '–')"/>
                         <xsl:text>)</xsl:text>
                     </xsl:if>
-                    <xsl:text> </xsl:text>
                 </xsl:if>
                 <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:biblScope[@unit='page']">
                     <xsl:text>, pp. </xsl:text>
@@ -3496,13 +3510,13 @@
                     <xsl:otherwise>
                         <!-- liens pour le système intégré de Michaël -->
          <!-- lien vers bootstrap 4 à faire -->
-                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>                        
-                     <link rel="stylesheet" href="./base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <link rel="stylesheet" href="./fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <link rel="icon" href="./favicon.svg"/>
-                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
                         <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"></script>
+                        <link rel="icon" href="./favicon.svg"/>
+                        <link rel="stylesheet" href="./fonts.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>                        
+                     <link rel="stylesheet" href="./base.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                <link rel="stylesheet" href="./dharma-ms_v02.css?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>                    
                         <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"></script>
                         <script src="./base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
                         <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
