@@ -1920,6 +1920,13 @@
           </attList>
         </elementSpec>
         <elementSpec ident="label" module="core" mode="change">
+          <constraintSpec scheme="schematron" ident="label">
+            <constraint>
+              <sch:rule context="tei:label[@type='marginalia']">
+                <sch:assert test="@n and @place">The attributes @n and @place are mandatory with a label[@type='marginalia'].</sch:assert>
+            </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="ana" mode="delete"/>
             <attDef ident="cert" mode="delete"/>
@@ -1929,7 +1936,6 @@
             <attDef ident="exclude" mode="delete"/>
             <attDef ident="facs" mode="delete"/>
             <attDef ident="hand" mode="delete"/>
-            <attDef ident="n" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="place" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
@@ -1944,9 +1950,33 @@
             <attDef ident="synch" mode="delete"/>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:id" mode="delete"/>
-            
             <attDef ident="xml:space" mode="delete"/>
-            <attDef ident="type" mode="delete"><valList mode="change"><valItem mode="add" ident="speaker"/><valItem mode="add" ident="headword"/></valList></attDef>
+            <attDef ident="type" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="speaker"/>
+                <valItem mode="add" ident="headword"/>
+                <valItem mode="add" ident="marginalia"/>
+                <valItem mode="add" ident="editorial"/>
+              </valList>
+            </attDef>
+            <attDef ident="place" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="top-left"/>
+                <valItem mode="add" ident="top-right"/>
+                <valItem mode="add" ident="bot-left"/>
+                <valItem mode="add" ident="bot-right"/>
+                <valItem mode="add" ident="right"/>
+                <valItem mode="add" ident="left"/>
+                <valItem mode="delete" ident="margin"/>
+                <valItem mode="delete" ident="opposite"/>
+                <valItem mode="delete" ident="overleaf"/>
+                <valItem mode="delete" ident="above"/>
+                <valItem mode="delete" ident="below"/>
+                <valItem mode="delete" ident="end"/>
+                <valItem mode="delete" ident="inline"/>
+                <valItem mode="delete" ident="inspace"/>
+              </valList>
+            </attDef>
           </attList>
         </elementSpec>
         <elementSpec ident="lb" module="core" mode="change">
