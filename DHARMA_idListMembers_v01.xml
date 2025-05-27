@@ -427,6 +427,13 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 				</person>
+				<person xml:id="hecr">
+					<persName ref="part:hecr">
+						<forename>Helen</forename>
+						<surname>Creese</surname>
+                			</persName>
+					<affiliation></affiliation>
+				</person>
 				<person xml:id="vagi">
 					<persName>
 						<forename>Valérie</forename>
