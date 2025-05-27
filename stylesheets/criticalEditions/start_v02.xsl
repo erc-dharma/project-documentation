@@ -2540,15 +2540,22 @@
                            <xsl:with-param name="string-to-siglum" select="substring-after($MSlink, 'bib:')"/>
                        </xsl:call-template>
                    </xsl:when>
-                   <xsl:when test="contains($MSlink, $edition-id)">
+                   <xsl:when test="contains($MSlink, '#')">
                        <xsl:variable name="targetLink" select="substring-after($MSlink, '#')"/>
-                      
-                       <a href="{$MSlink}">
-                           <b><xsl:choose>
-                               <!-- scenario pour les text abbreviated for parallels -->
-                               <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='bibl']">
-                                   <xsl:apply-templates select="tei:*[@xml:id =$targetLink][local-name() ='bibl']/tei:abbr[@type='siglum']"/>
-                               </xsl:when>
+                       <xsl:choose>
+                          
+                           <xsl:when test="//tei:listBibl[@type='editions']/tei:bibl[@xml:id =$targetLink]">
+                               <xsl:element name="a">
+                                   <xsl:attribute name="href">
+                                       <xsl:value-of select="//tei:listBibl[@type='editions']/tei:bibl[@xml:id =$targetLink]/tei:abbr[@type='siglum']"/></xsl:attribute>
+                                   <xsl:choose>
+                                       <xsl:when test="$rendcontent= 'title'"><i><xsl:apply-templates select="//tei:listBibl[@type='editions']/tei:bibl[@xml:id =$targetLink]/tei:title"/></i></xsl:when>
+                                   
+                                       <xsl:when test="$rendcontent= 'siglum'"><b><xsl:apply-templates select="//tei:listBibl[@type='editions']/tei:bibl[@xml:id =$targetLink]/tei:abbr[@type='siglum']"/></b></xsl:when>
+                                       <xsl:otherwise><xsl:apply-templates select="//tei:listBibl[@type='editions']/tei:bibl[@xml:id =$targetLink]/tei:abbr[@type='siglum']"/></xsl:otherwise>
+                                   </xsl:choose>
+                               </xsl:element>
+                           </xsl:when>
                                <xsl:when test="//tei:*[@xml:id =$targetLink][local-name() ='div']/@type">
                                    <xsl:value-of select="//tei:*[@xml:id =$targetLink]/@type"/>
                                    <xsl:text> </xsl:text>
@@ -2589,8 +2596,7 @@
                                 <xsl:otherwise>
                                    <xsl:text>Issue in the code</xsl:text>
                                </xsl:otherwise>
-                           </xsl:choose></b>
-                       </a>
+                           </xsl:choose>
                    </xsl:when>
                    <xsl:when test="contains($MSlink, '_H')">
                        <xsl:variable name="hand-id" select="substring-after($MSlink, '#')"/>
