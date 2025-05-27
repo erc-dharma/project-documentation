@@ -337,9 +337,9 @@ When adding a new person to this list, the file DHARMA_gitNames
 				</person>
 				<person xml:id="hecr">
 					<persName>
-					<forename>Helen</forename>
-					<surname>Creese</surname>
-				</persName>
+						<forename>Helen</forename>
+						<surname>Creese</surname>
+					</persName>
 					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/97751164</idno>
 					<idno type="IdRef">http://www.idref.fr/092886981/id</idno>
@@ -425,13 +425,6 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Gerdi</forename>
 						<surname>Gerschheimer</surname>
 					</persName>
-					<affiliation></affiliation>
-				</person>
-				<person xml:id="hecr">
-					<persName ref="part:hecr">
-						<forename>Helen</forename>
-						<surname>Creese</surname>
-                			</persName>
 					<affiliation></affiliation>
 				</person>
 				<person xml:id="vagi">
