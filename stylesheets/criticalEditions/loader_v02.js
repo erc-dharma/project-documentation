@@ -25,7 +25,6 @@ $('.circleright, .circlearound').append('°');
 
 /* Need to add the move the element to the following-sibling[1] of the ancestor <div> of apparat-col.  */
 
-
 /* move sub into the previous <a> element of siglum */
 $(document).ready(function() {
     $('sub').each(function() {
@@ -90,7 +89,7 @@ $(document).ready(function() {
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
 $("span[class*='rdg-omissionStart']" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgOmission =$('<br/><span class="translit LatnLatn"><i style="color:black;">om. </i>')
+        var newRdgOmission =$('<br/><span><i style="color:black;">om. </i>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
         var siglumOmission = $(this).find(".siglum:first").clone()
         var siglumWit = $(this).find(".siglum:first").attr("href")
@@ -119,7 +118,7 @@ $("span[class*='rdg-lacunaStart']" ).each(function() {
         var siglumWit = $(this).find(".siglum:first").attr("href")
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ 
-    $(this).parents('.appentry').nextUntil('.appentry:has(span[class*="bottom-lacunaEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<b></b>').parent()).sort().append(' (larger gap)');
+    $(this).parents('.app-entry').nextUntil('.app-entry:has(span[class*="bottom-lacunaEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<b></b>').parent()).sort().append(' (larger gap)');
     });
     
     /* omm. for bottom apparatus */
@@ -131,6 +130,6 @@ $("span[class*='rdg-lacunaStart']" ).each(function() {
         var siglumWit = $(this).find(".siglum:first").attr("href")
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.appentry').nextUntil('.appentry:has(span[class*="bottom-omissionEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgBottomOmission, siglumBottomOmission.wrap( '<span class="font-weight-bold "></span>').parent()).append(' (larger gap)');
+            $(this).parents('.app-entry').nextUntil('.app-entry:has(span[class*="bottom-omissionEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgBottomOmission, siglumBottomOmission.wrap( '<span class="font-weight-bold "></span>').parent()).append(' (larger gap)');
     });
 });
