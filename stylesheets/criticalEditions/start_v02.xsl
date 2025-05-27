@@ -1087,15 +1087,29 @@
 
     <!--  B ! -->
     <xsl:template match="tei:bibl">
-        <xsl:variable name="biblentry" select="substring-after(./tei:ptr/@target, 'bib:')"/>
         <xsl:choose>
-            <xsl:when test="tei:ptr"> 
-               <xsl:call-template name="bibliography">
-            <xsl:with-param name="biblentry" select="$biblentry"/>
-        </xsl:call-template>
-           </xsl:when>
+            <!-- special cas: ajouter au dernier moment pour la liste des abbr. editions -->
+            <xsl:when test="ancestor-or-self::tei:listBibl/@type='editions'">
+                <a id="{@xml:id}">
+                    <b>[<xsl:apply-templates select="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='editions']]/tei:abbr[@type='siglum']"/>]</b>
+                </a>: <xsl:apply-templates select="./tei:abbr[@type='siglum']/following-sibling::tei:* except tei:bibl"/>
+                <!-- condition pour le apply-templates vague parce que je ne sais pas ce qu'il pourrait contenir -->
+                <xsl:text>. </xsl:text>
+                <!-- cas de figure pour plusieurs ptr; avec list -->
+                <ul><xsl:for-each select="tei:ptr">
+                <li><xsl:call-template name="bibliography">
+                    <xsl:with-param name="biblentry" select="substring-after(@target, 'bib:')"/>
+                </xsl:call-template>
+                </li>
+                </xsl:for-each></ul>
+            </xsl:when>
+            <xsl:when test="ancestor-or-self::tei:listBibl/@type='bibliography'">
+                <xsl:call-template name="bibliography">
+                    <xsl:with-param name="biblentry" select="substring-after(tei:ptr/@target, 'bib:')"/>
+                </xsl:call-template>
+            </xsl:when>
             <xsl:otherwise>
-                <p class="bib-entry"><xsl:apply-templates/></p>
+                <p class="bib-entry"><xsl:apply-templates/></p>   
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -1110,12 +1124,6 @@
                 <xsl:choose>
                     <xsl:when test="ancestor-or-self::tei:listBibl">
                         <p class="bib-entry" id="bib-key-{$key-item[1]}">
-                            <!-- special cas: ajouter au dernier moment pour la liste des abbr. editions -->
-                            <xsl:if test="ancestor-or-self::tei:listBibl/@type='editions'">
-                                <a id="{@xml:id}">
-                                   <b>[<xsl:apply-templates select="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='editions']]/tei:abbr[@type='siglum']"/>]</b>
-                                </a>: <xsl:apply-templates select="./tei:abbr[@type='siglum']/following-sibling::tei:* except tei:bibl"/><xsl:text>. </xsl:text></xsl:if>
-                            <!-- condition pour le apply-templates vague parce que je ne sais pas ce qu'il pourrait contenir -->
                             <xsl:call-template name="biblio-tei">
                                 <xsl:with-param name="bib-type" select="$tei-bib//tei:biblStruct/@type"/>
                                 <xsl:with-param name="bib-content" select="$tei-bib//tei:biblStruct"/>
@@ -2208,12 +2216,13 @@
 
     <!--  listBibl -->
     <xsl:template match="tei:listBibl">
-        <div class="ed-section">
-            <xsl:if test="@type='editions' and ./tei:bibl/text()">
-                    <h2 class="ed-heading" id="{generate-id()}">Abbreviation of texts</h2></xsl:if>
-                    <!-- pas de titre pour la biblio qui serait alors redondant -->            
-            <xsl:apply-templates/>
-        </div>
+                <div class="ed-section">
+                    <!-- pas de titre pour la biblio qui serait alors redondant -->
+                    <xsl:if test="@type='editions' and ./tei:bibl/text()">
+                        <h2 class="ed-heading" id="{generate-id()}">Abbreviation of texts</h2>
+                    </xsl:if>                  
+                    <xsl:apply-templates/>
+                </div>
     </xsl:template>
 
     <!--  listWit ! -->
