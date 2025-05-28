@@ -4034,6 +4034,7 @@
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
+                <valItem ident="silemn"/>
                 <valItem ident="note"/>
                 <valItem ident="omitted_elsewhere"/>
                 <valItem ident="lost_elsewhere"/>
