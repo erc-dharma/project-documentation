@@ -2792,7 +2792,7 @@
             </bibl>
             <bibl>
               <ptr target="bib:Velankar1949_01"/>
-            </bibl>v
+            </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
@@ -2963,7 +2963,6 @@
         <item>
           <measure unit="syllable">20</measure>
           <name xml:lang="san-Latn">suvadanā</name>
-          <!--<name xml:lang="kaw-Latn">suravadanā</name>--> <!-- zapa20250513: I don't know from which AV edition (from Poerbatjaraka's? or Robson's?) the name suravadanā exists, Wiryamartana records the meter name as suvadanā -->
           <seg type="xml">++++-++||------+||++---=</seg>
           <seg type="prosody">––––⏑––||⏑⏑⏑⏑⏑⏑–||––⏑⏑⏑⏓</seg>
           <seg type="gana">ma-ra-bha-na-ya-bha-la-ga</seg>
