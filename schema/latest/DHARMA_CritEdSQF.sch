@@ -151,6 +151,15 @@
         </sch:rule>
     </sch:pattern> 
     
+    <!-- controlling the syntax for @corresp -->
+    <sch:pattern>
+        <sch:rule context="@sameAs">
+            <sch:assert test="starts-with(., '#')">
+                @sameAs attributes must begin with a hashtag. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern> 
+    
     <!-- controlling the syntax for @wit -->
     <sch:pattern>
         <sch:rule context="@wit">
@@ -207,7 +216,7 @@
     
     <!-- controlling the corresp for translation -->
     <sch:pattern>
-        <sch:rule context="t:*[@corresp][ancestor::t:TEI[@type='translation']]">
+        <sch:rule context="t:*[@corresp][ancestor::t:div[@type='translation']]">
             <sch:let name="current-translation" value="substring-before(tokenize(document-uri(/), '/')[last()], '_transEng01.xml')"/>
             <sch:let name="editionfile" value="doc(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $current-translation, '.xml'))"/>
             <sch:let name="textpart-id" value="for $id in substring-after(tokenize(@corresp, '\s+'), '#') return $id"/>

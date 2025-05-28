@@ -4166,6 +4166,7 @@
                 <valItem ident="emn"/>
                 <valItem ident="conj"/>
                 <valItem ident="norm"/>
+                <valItem ident="silemn"/>
               </valList>
             </attDef>
             <attDef ident="rend" mode="change">
@@ -4173,7 +4174,7 @@
                 <valItem ident="check"/>
               </valList>
             </attDef>
-            <attDef ident="wit" mode="change" usage="req"/>
+            <attDef ident="wit" mode="change"/>
           </attList>
         </elementSpec>
         <elementSpec ident="variantEncoding" module="textcrit" mode="change">
