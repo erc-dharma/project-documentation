@@ -955,10 +955,10 @@
                     </xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="tei:gap[@reason='omitted']">
-                            <i>om.</i>
+                            <span class="om"><i>om.</i></span>
                         </xsl:when>
                         <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity|@unit)]">
-                            <i>lac.</i>
+                            <span class="lac"><i>lac.</i></span>
                         </xsl:when>
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                     </xsl:choose>
@@ -1103,10 +1103,13 @@
                 </li>
                 </xsl:for-each></ul>
             </xsl:when>
-            <xsl:otherwise>
+            <xsl:when test="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='bibliography']]">
                 <xsl:call-template name="bibliography">
                     <xsl:with-param name="biblentry" select="substring-after(tei:ptr/@target, 'bib:')"/>
                 </xsl:call-template> 
+            </xsl:when>
+            <xsl:otherwise>
+                <p class="bib-entry"><xsl:apply-templates/></p>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -2229,9 +2232,16 @@
     <xsl:template match="tei:listBibl">
                 <div class="ed-section">
                     <!-- pas de titre pour la biblio qui serait alors redondant -->
-                    <xsl:if test="@type='editions' and ./tei:bibl/node()">
-                        <h2 class="ed-heading" id="{generate-id()}">Abbreviation of texts</h2>
-                    </xsl:if>                  
+                    <xsl:choose><xsl:when test="@type='editions' and ./tei:bibl/text()">
+                        <h3 class="ed-heading" id="{generate-id()}">Abbreviations for texts</h3>
+                    </xsl:when>
+                        <xsl:when test="@type='bibliography' and ./tei:bibl/text()">
+                            <h3 class="ed-heading" id="{generate-id()}">References</h3>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:apply-templates/>
+                        </xsl:otherwise>
+                    </xsl:choose>                  
                     <xsl:apply-templates/>
                 </div>
     </xsl:template>
@@ -3929,19 +3939,7 @@
                     <xsl:if test="not(.[@type='transposition'][following-sibling::tei:rdg[descendant::*[@corresp]]]) and $display-context='printedapp'">
                         <b><xsl:text>]</xsl:text></b>
                     </xsl:if>
-                        <xsl:if test="@corresp or @sameAs or @copyOf">
-                            <xsl:text> (←</xsl:text>
-                            <xsl:if test="@corresp"><xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="@corresp"/>
-                            </xsl:call-template></xsl:if>
-                            <xsl:if test="@sameAs"><xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="@sameAs"/>
-                            </xsl:call-template></xsl:if>
-                            <xsl:if test="@copyOf"><xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="@copy-of"/>
-                            </xsl:call-template></xsl:if>
-                            <xsl:text>) </xsl:text>
-                        </xsl:if>
+                        
                     <xsl:if test="@type">
                         <i><xsl:text> </xsl:text><xsl:call-template name="apparatus-type"><xsl:with-param name="type-app" select="$path/tei:lem/@type"/></xsl:call-template></i></xsl:if>
                         <!-- @resp and @source -->
@@ -4031,6 +4029,19 @@
                         <xsl:if test="self::tei:lem/@type='silemn' or following-sibling::*[local-name()='witDetail'][@type='silemn']">
                             (<i>sil. em.</i>)
                         </xsl:if>
+                        <xsl:if test="@corresp or @sameAs or @copyOf">
+                            <xsl:text> (←</xsl:text>
+                            <xsl:if test="@corresp"><xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="@corresp"/>
+                            </xsl:call-template></xsl:if>
+                            <xsl:if test="@sameAs"><xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="@sameAs"/>
+                            </xsl:call-template></xsl:if>
+                            <xsl:if test="@copyOf"><xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="@copy-of"/>
+                            </xsl:call-template></xsl:if>
+                            <xsl:text>) </xsl:text>
+                        </xsl:if>
                     <xsl:if test="self::tei:lem[@type='transposition']">
                         <xsl:choose>
                             <xsl:when test=".[not(@xml:id)][following-sibling::tei:rdg[descendant-or-self::tei:*[@corresp]]]"/>
@@ -4090,10 +4101,10 @@
                     <xsl:choose>
                         <xsl:when test="child::tei:pb"/>
                         <xsl:when test="child::tei:gap[@reason='omitted']">
-                            <i>om.</i>
+                            <span class="om"><i>om.</i></span>
                         </xsl:when>
                         <xsl:when test="child::tei:gap[@reason='lost' and not(@quantity or @unit)]">
-                            <i>lac.</i>
+                            <span class="lac"><i>lac.</i></span>
                         </xsl:when>
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
 
