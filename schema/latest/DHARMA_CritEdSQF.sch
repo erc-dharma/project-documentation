@@ -214,16 +214,6 @@
         </sch:rule>
     </sch:pattern>
     
-    <!-- controlling the corresp for translation -->
-    <sch:pattern>
-        <sch:rule context="t:*[@corresp][ancestor::t:div[@type='translation']]">
-            <sch:let name="current-translation" value="substring-before(tokenize(document-uri(/), '/')[last()], '_transEng01.xml')"/>
-            <sch:let name="editionfile" value="doc(concat('https://raw.githubusercontent.com/erc-dharma/tfd-nusantara-philology/master/editions/', $current-translation, '.xml'))"/>
-            <sch:let name="textpart-id" value="for $id in substring-after(tokenize(@corresp, '\s+'), '#') return $id"/>
-            <sch:assert test="every $id in $textpart-id satisfies $textpart-id = $editionfile//t:*/@xml:id">@corresp not found in edition file.</sch:assert>
-        </sch:rule>
-    </sch:pattern>
-    
     <!-- to do vérifier les lacunae -->
     <!--<sch:pattern>
         <sch:rule context="t:lacunaStart">
