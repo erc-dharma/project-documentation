@@ -1648,7 +1648,7 @@
                     </xsl:if>
                     <xsl:if test="@type='canto' or @type='dyad'">
                         <xsl:variable name="type-div" select="@type"/>
-                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:choose><xsl:when test="@type='canto'"><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/></xsl:when><xsl:otherwise><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:otherwise></xsl:choose>
+                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:choose><xsl:when test="@type='canto'"><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/><!--<xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/>--></xsl:when><xsl:otherwise><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:otherwise></xsl:choose>
                             <xsl:if test="@rend='met'">
                                 <xsl:call-template name="metrical-list">
                                     <xsl:with-param name="metrical" select="$metrical"/>
