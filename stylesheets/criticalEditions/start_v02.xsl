@@ -1648,7 +1648,7 @@
                     </xsl:if>
                     <xsl:if test="@type='canto' or @type='dyad'">
                         <xsl:variable name="type-div" select="@type"/>
-                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:choose><xsl:when test="@type='canto'"><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/><!--<xsl:number count="tei:div[@type=$type-div]" level="multiple" format="1"/>--></xsl:when><xsl:otherwise><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:otherwise></xsl:choose>
+                        <h4 class="ed-heading" id="toc{generate-id(.)}"><xsl:value-of select="concat(upper-case(substring($type-div,1,1)), substring($type-div, 2),' '[not(last())] )"/><xsl:text> </xsl:text><xsl:value-of select="@n"/>
                             <xsl:if test="@rend='met'">
                                 <xsl:call-template name="metrical-list">
                                     <xsl:with-param name="metrical" select="$metrical"/>
@@ -1662,8 +1662,7 @@
                     </xsl:if>
                     
                 </div>
-            </xsl:when>
-            
+            </xsl:when>        
             <!--<xsl:when test="@type='section'">
                 <h4><xsl:if test="@n">
                     <xsl:text> </xsl:text>
@@ -2268,7 +2267,8 @@
                     <xsl:choose><xsl:when test="@type='editions' and ./tei:bibl/text()">
                         <h3 class="ed-heading" id="{generate-id()}">Abbreviations for texts</h3>
                     </xsl:when>
-                        <xsl:when test="@type='bibliography' and ./tei:bibl/node()">
+                        <!-- la règle ne correspond pas tout à fait à la réalité, il faudrait un node(), mais offre trop de conflit avec des appels vides au proxy en conséquence -->
+                        <xsl:when test="@type='bibliography' and ./tei:bibl/text()">
                             <h3 class="ed-heading" id="{generate-id()}">References</h3>
                         </xsl:when>
                         <xsl:otherwise>
@@ -3974,7 +3974,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- contenu de tous les app; printed et modaux; nombreuses conditions sur $display-content pour éviter de répéter plusieurs le contenu -->
+    <!-- contenu de tous les app; printed et modaux; nombreuses conditions sur $display-content pour éviter de répéter plusieurs le contenu mais j'ai quand même encore de nombreuses répétitions et des cas qui ne passe pas correctement -->
     <xsl:template name="appchoice">
         <xsl:param name="apptype" />
        <xsl:param name="child" />
