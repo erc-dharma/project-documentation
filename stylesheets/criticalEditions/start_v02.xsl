@@ -1105,7 +1105,7 @@
                 </li>
                 </xsl:for-each></ul>
             </xsl:when>
-            <xsl:when test="self::tei:bibl">
+            <xsl:when test="self::tei:bibl/tei:ptr">
                 <xsl:call-template name="bibliography">
                     <xsl:with-param name="biblentry" select="substring-after(tei:ptr/@target, 'bib:')"/>
                 </xsl:call-template> 
@@ -2268,7 +2268,7 @@
                         <h3 class="ed-heading" id="{generate-id()}">Abbreviations for texts</h3>
                     </xsl:when>
                         <!-- la règle ne correspond pas tout à fait à la réalité, il faudrait un node(), mais offre trop de conflit avec des appels vides au proxy en conséquence -->
-                        <xsl:when test="@type='bibliography' and ./tei:bibl/text()">
+                        <xsl:when test="@type='bibliography' and ./tei:bibl/tei:ptr">
                             <h3 class="ed-heading" id="{generate-id()}">References</h3>
                         </xsl:when>
                         <xsl:otherwise>
