@@ -2612,6 +2612,11 @@
         <span class="said" id="{@xml:id}">‘<xsl:apply-templates/>’</span>
     </xsl:template>   
 
+    <!-- secl -->
+    <xsl:template match="tei:secl">
+        <span class="interpolation" data-tip="Misplaced segment of text"><xsl:apply-templates/></span>
+    </xsl:template>
+    
     <!--  seg ! -->
     <xsl:template match="tei:seg">
         <xsl:choose>
@@ -2622,7 +2627,7 @@
                 <b><xsl:apply-templates/></b>
             </xsl:when>
             <xsl:when test="@type='interpolation'">
-                <xsl:apply-templates/>
+                <span class="interpolation" data-tip="Segment of text interpolated"><xsl:apply-templates/></span>
             </xsl:when>
             <xsl:when test="@type='aksara'">
                 <xsl:apply-templates/>
@@ -3331,8 +3336,8 @@
                             <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.0"/>
                             <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3"/>
                         <script src="https://dharmalekha.info/base.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
-                        <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>                  -->
-                        <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                        <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>                  
+                        
                         
                     </xsl:when>
                     <xsl:otherwise>
@@ -3366,8 +3371,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-                <!--<script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>-->
-                <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+               
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
