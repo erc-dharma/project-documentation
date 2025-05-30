@@ -716,10 +716,10 @@
                     </xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="tei:gap[@reason='omitted']">
-                            <i>om.</i>
+                            <span style="color:black;"><i>om.</i></span>
                         </xsl:when>
                         <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity|@unit)]">
-                            <i>lac.</i>
+                            <span style="color:black;"><i>lac.</i></span>
                         </xsl:when>
                         <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                     </xsl:choose>
@@ -893,7 +893,7 @@
             <xsl:when test="self::tei:bibl[ancestor-or-self::tei:listBibl[@type='editions']]">
                 <xsl:if test="tei:abbr"><a id="{@xml:id}">
                     <b>[<xsl:apply-templates select="tei:abbr[@type='siglum']"/>]</b>
-                </a>: <xsl:apply-templates select="tei:title"/>
+                </a><xsl:text> </xsl:text> <xsl:apply-templates select="tei:title"/>
                     <xsl:if test="tei:note"><xsl:text> • </xsl:text><xsl:apply-templates select="tei:note"/></xsl:if>
                 <!-- condition pour le apply-templates vague parce que je ne sais pas ce qu'il pourrait contenir -->
                 </xsl:if>
@@ -982,14 +982,13 @@
         <xsl:param name="journal-abb"/>
         <xsl:choose>
             <xsl:when test="$bib-type='book'">
-                <xsl:choose>
-                    <xsl:when test="$bib-content//tei:monogr/tei:author">
+                    <xsl:if test="$bib-content//tei:monogr/tei:author">
                     <xsl:for-each select="$bib-content//tei:monogr/tei:author">
                     <xsl:call-template name="author-list"/>
                 </xsl:for-each>
                     <xsl:text>. </xsl:text>
-                </xsl:when>
-                    <xsl:when test="$bib-content//tei:monogr/tei:editor">
+                </xsl:if>
+                    <xsl:if test="$bib-content//tei:monogr/tei:editor">
                         <xsl:for-each select="$bib-content//tei:monogr/tei:editor">
                             <xsl:call-template name="author-list"/>
                         </xsl:for-each>
@@ -1000,11 +999,10 @@
                                 <xsl:text> (eds.). </xsl:text>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>No name. </xsl:text> 
-                </xsl:otherwise>
-                </xsl:choose>
+                    </xsl:if>
+                <xsl:if test="not($bib-content//tei:monogr/tei:editor or $bib-content//tei:monogr/tei:author)">
+                        <xsl:text>No name. </xsl:text> </xsl:if>
+
                 <xsl:if test="$bib-content//tei:monogr/tei:imprint/tei:date">
                     <xsl:apply-templates select="$bib-content//tei:monogr/tei:imprint/tei:date"/>
                     <xsl:text>. </xsl:text>
@@ -1465,24 +1463,13 @@
                     
                 </div>
             </xsl:when>        
-            <!--<xsl:when test="@type='section'">
-                <h4><xsl:if test="@n">
-                    <xsl:text> </xsl:text>
-                    <xsl:value-of select="@n"/>
-                </xsl:if>
-                <xsl:if test="tei:head">
-                    <xsl:text> </xsl:text>
-                    <xsl:apply-templates select="child::*[1][local-name() = 'head']"/>
-                </xsl:if>
-                </h4>
-            </xsl:when>-->
         </xsl:choose>
         <xsl:apply-templates select="* except tei:head"/>
         <xsl:if test="./following::tei:div[@type='chapter'][1]">
             <xsl:element name="br"/>
         </xsl:if>
-        <xsl:if test="./following-sibling::tei:div[child::tei:ab[@type='colophon']][1]">
-            <xsl:element name="hr"/>
+        <xsl:if test="./following::tei:div[1][child::tei:ab[@type='colophon']]">
+            <hr/>
         </xsl:if>               
     </xsl:template>
 
@@ -2121,7 +2108,7 @@
                 </span>
                 <xsl:choose>
                     <xsl:when test="$display-context='modalapp'">
-                        <xsl:element name="hr"/>
+                        <hr/>
                     </xsl:when>
                     <xsl:otherwise><xsl:text> • </xsl:text></xsl:otherwise>
                 </xsl:choose>
@@ -3009,7 +2996,11 @@
                         </xsl:matching-substring>
                     </xsl:analyze-string>
                 </xsl:when>
-                    <xsl:when test="@rend='plain'  or @type='editorial' or @type='alt' or @type='a'">
+                    <xsl:when test="@rend='plain' or @type='editorial' or @type='alt'">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <!-- to delete any automated display of the Zotero import -->
+                <xsl:when test="@level">
                     <xsl:apply-templates/>
                 </xsl:when>
                 <xsl:otherwise>
@@ -3372,7 +3363,6 @@
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
                 <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
-               
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
@@ -4001,7 +3991,7 @@
     <xsl:choose><xsl:when test="$display-context='printedapp'">
         <b><xsl:text>] </xsl:text></b></xsl:when>
         <xsl:otherwise>
-            <xsl:element name="hr"/>
+            <hr/>
         </xsl:otherwise>
     </xsl:choose>
     <xsl:text>Unmetrical line. The observed pattern is not </xsl:text>
