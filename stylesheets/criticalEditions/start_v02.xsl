@@ -2835,60 +2835,10 @@
     <xsl:template match="tei:span[@type='reformulationStart']" mode="modals">
         <xsl:variable name="apparatus-reformulation">
             <xsl:variable name="reformulation-id" select="self::tei:span[@type='reformulationStart']/@xml:id"/>
-            <span class="mb-1 lemma-line reformulation-line">
-                <span class="fake-lem app-lem">
-                        <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::node()[1]"/>
-                        <xsl:text> &#8230;</xsl:text>
-                        <xsl:if test="self::tei:span[@type='reformulationStart'][not(ancestor::tei:*[1][descendant::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')]])]">
-                            <xsl:text> (</xsl:text>
-                            <b><a href="#{self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/ancestor::tei:div[1]/@xml:id}">
-                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/ancestor::tei:div[1]/@n"/>
-                            <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:*[local-name ()= ('lg', 'ab', 'p')]">
-                                <xsl:text>.</xsl:text>
-                                <xsl:choose>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:lg">
-                                        <xsl:number count="tei:lg" format="1" level="single"/>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:ab">
-                                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:ab/position()"/>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:p">
-                                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:p/position()"/>
-                                    </xsl:when>
-                                </xsl:choose>
-                            </xsl:if>
-                        </a>
-                            </b><xsl:text>)</xsl:text>
-                        </xsl:if>
-                        <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/preceding::node()[1]"/>
-                    </span>
-
-                    <span>
-                        <xsl:text> Thus formulated in </xsl:text>
-                        <b>
-                            <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:lem[@type='retained'][1]/@wit"/>
-                            </xsl:call-template>
-                        </b>
-                    </span>
-                    <hr/>
-                    <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
-                        <span class="reading-line reading">
-                           <!-- <span class="app-rdg">--><xsl:apply-templates/><!--l-->
-                        </span>
-                        <b>
-                            <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="@wit"/>
-                            </xsl:call-template>
-                        </b>
-                    </xsl:for-each>
-                        <hr/>
-                    <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]">
-                        <span class="note-line">
-                            <xsl:apply-templates/>
-                        </span>
-                    </xsl:for-each>
-                </span>
+            <span class="lemma-line reformulation-line"><xsl:call-template name="reformulation-content">
+                <xsl:with-param name="display-context" select="'modalapp'"/>
+            </xsl:call-template>
+            </span>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus-reformulation"/>
@@ -3373,6 +3323,7 @@
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
                 <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
@@ -3979,72 +3930,12 @@
                 </xsl:call-template>
             </xsl:when>
             <xsl:when test="$apptype='reformulation'">
-                <xsl:if test="self::tei:span[@type='reformulationStart']">
-                    <xsl:variable name="reformulation-id" select="@xml:id"/>
-                    <span class="bottom-reformulation">
-                        <xsl:apply-templates select="self::tei:span/following::node()[1]"/>
-                        <xsl:text> &#8230;</xsl:text>
-                        <xsl:if test="self::tei:span[@type='reformulationStart'][not(ancestor::tei:*[1][descendant::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')]])]">
-                            <xsl:text> (</xsl:text>
-                        <b>
-                            
-                            <a href="#{self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/ancestor::tei:div[@type='dyad']/@xml:id}">
-                            <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/ancestor::tei:div[@type='dyad']/@n"/>
-                            <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:*[local-name ()= ('lg', 'ab', 'p')]">
-                                <xsl:text>.</xsl:text>
-                                <xsl:choose>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:lg">
-                                        <xsl:number count="tei:lg" format="1" level="single"/>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:ab">
-                                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:ab/position()"/>
-                                    </xsl:when>
-                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:p">
-                                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:p/position()"/>
-                                    </xsl:when>
-                                </xsl:choose>
-                            </xsl:if>
-                        </a>
-                        </b>
-                            <xsl:text>) </xsl:text>
-                        </xsl:if>
-
-                        <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/preceding::node()[1]"/>
-                        <b><xsl:text>]</xsl:text>
-                        </b>
-                        <xsl:text> Thus formulated in </xsl:text>
-                        <b> <xsl:call-template name="tokenize-witness-list">
-                                <xsl:with-param name="string" select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:lem[@type='retained']/@wit"/>
-                            </xsl:call-template>
-                        </b>
-                        <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg and $display-context='printedapp'">
-                        <xsl:text>, </xsl:text>
-                    </xsl:if>
-
-                        <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
-                            <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
-                                <span class="reading bottom-reading-line">
-                                <xsl:apply-templates/>
-                                </span>
-                                <b><xsl:call-template name="tokenize-witness-list">
-                                    <xsl:with-param name="string" select="./@wit"/>
-                                </xsl:call-template></b>
-                        
-                        </xsl:for-each>
-                    </xsl:if>
-                        <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]"> • </xsl:if>
-                        <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]">
-                            <span class="reading bottom-reading-line">
-                            <xsl:apply-templates/>
-                            </span>
-                    </xsl:for-each>
-                    </span>
-                </xsl:if>
+                <xsl:call-template name="reformulation-content">
+                    <xsl:with-param name="display-context" select="$display-context"/>
+                </xsl:call-template>
             </xsl:when>
             <xsl:when test="$apptype='siccorr'">
-                <!-- **CORR - <xsl:value-of select="$path/t:corr/node()"/>** -->
-                <xsl:apply-templates select="$path/tei:corr/node()"/>
-                <xsl:text> (corr)</xsl:text>
+                <!-- to be done, for the diplomatic editions -->
             </xsl:when>
             <xsl:when test="$apptype='unmetrical'">
                 <xsl:call-template name="unmetrical-verseline">
@@ -4076,6 +3967,98 @@
     <xsl:text>.</xsl:text>
 </xsl:template>
 
+    
+    <xsl:template name="reformulation-content">
+        <xsl:param name="display-context"/>
+        <xsl:if test="self::tei:span[@type='reformulationStart']">
+            <xsl:variable name="reformulation-id" select="@xml:id"/>
+            <xsl:element name="span">
+                <xsl:attribute name="class">
+                    <xsl:choose>
+                        <xsl:when test="$display-context='printedapp'">lem bottom-reformulation</xsl:when>
+                        <xsl:otherwise>lem reading-reformulation</xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <xsl:apply-templates select="self::tei:span/following::node()[1]"/>
+                <xsl:text> &#8230;</xsl:text>
+                <xsl:if test="self::tei:span[@type='reformulationStart'][not(ancestor::tei:*[1][descendant::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')]])]">
+                    <xsl:text> (</xsl:text>
+                    <b>
+                        
+                        <a href="#{self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/ancestor::tei:div[@type='dyad']/@xml:id}">
+                            <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/ancestor::tei:div[@type='dyad']/@n"/>
+                            <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:*[local-name ()= ('lg', 'ab', 'p')]">
+                                <xsl:text>.</xsl:text>
+                                <xsl:choose>
+                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:lg">
+                                        <xsl:number count="tei:lg" format="1" level="single"/>
+                                    </xsl:when>
+                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:ab">
+                                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:ab/position()"/>
+                                    </xsl:when>
+                                    <xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:p">
+                                        <xsl:value-of select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/parent::tei:p/position()"/>
+                                    </xsl:when>
+                                </xsl:choose>
+                            </xsl:if>
+                        </a>
+                    </b>
+                    <xsl:text>) </xsl:text>
+                </xsl:if>
+                
+                <xsl:apply-templates select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/preceding::node()[1]"/>
+                <xsl:choose><xsl:when test="$display-context='printedapp'"><b><xsl:text>]</xsl:text>
+                </b></xsl:when>
+                <xsl:otherwise><hr/></xsl:otherwise></xsl:choose>
+                <xsl:text> Thus formulated in </xsl:text>
+                <b> <xsl:call-template name="tokenize-witness-list">
+                    <xsl:with-param name="string" select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:lem[@type='retained']/@wit"/>
+                </xsl:call-template>
+                </b>
+                <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg and $display-context='printedapp'">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+                    
+                <xsl:if test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
+                    <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
+                        <xsl:choose>
+                            <xsl:when test="$display-context='printedapp'">
+                                <span class="reading bottom-reading-line">
+                            <xsl:apply-templates/>
+                        </span>
+                        <b><xsl:call-template name="tokenize-witness-list">
+                            <xsl:with-param name="string" select="./@wit"/>
+                        </xsl:call-template></b></xsl:when>
+                        <xsl:otherwise>
+                            <span class="reading reading-line">
+                                <xsl:apply-templates/>
+                            </span>
+                            <b><xsl:call-template name="tokenize-witness-list">
+                                <xsl:with-param name="string" select="./@wit"/>
+                            </xsl:call-template></b>
+                        </xsl:otherwise>
+                        </xsl:choose>
+                        
+                    </xsl:for-each>
+                </xsl:if>
+                <xsl:choose><xsl:when test="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')] and $display-context='printedapp'"> • </xsl:when><xsl:otherwise><hr/></xsl:otherwise></xsl:choose>
+                <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:note[not(@type='altLem')]">
+                    
+                    <xsl:choose>
+                        <xsl:when test="$display-context='modalapp'">
+                            <span class="note-line">
+                        <xsl:apply-templates/>
+                    </span>
+                        </xsl:when>
+                    <xsl:otherwise><span class="reading bottom-reading-line">
+                        <xsl:apply-templates/>
+                    </span></xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:element>
+        </xsl:if>
+    </xsl:template>
+    
     <!-- Apparatus: type to display -->
     <xsl:template name="apparatus-type">
         <xsl:param name="type-app"/>
