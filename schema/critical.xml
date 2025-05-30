@@ -881,6 +881,7 @@
                 <valItem ident="colophon"/>
                 <valItem ident="mantra"/>
                 <valItem ident="speaker"/>
+                <valItem ident="interpolation"/>
               </valList>
             </attDef>
             <attDef ident="xml:lang" mode="change">
@@ -1795,6 +1796,11 @@
             <attDef ident="xml:lang" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="n" mode="change"/>
+            <attDef ident="type" mode="change">
+              <valList mode="change" type="closed">
+                <valItem ident="interpolation"/>
+              </valList>
+            </attDef>
             <attDef ident="rend" mode="change">
               <valList type="closed" mode="change">
                 <valItem ident="check"/>
@@ -2044,7 +2050,11 @@
             <attDef ident="source" mode="delete"/>
             <attDef ident="subtype" mode="delete"/>
             <attDef ident="synch" mode="delete"/>
-            <attDef ident="type" mode="delete"/>
+            <attDef ident="type" mode="change">
+              <valList mode="change" type="closed">
+                <valItem ident="interpolation"/>
+              </valList>
+            </attDef>
             <attDef ident="xml:base" mode="delete"/>
             <attDef ident="xml:space" mode="delete"/>
             <attDef ident="rend" mode="change">
@@ -2486,6 +2496,11 @@
               <valList mode="change">
                 <valItem mode="delete" ident="Y"/>
                 <valItem mode="delete" ident="N"/>
+              </valList>
+            </attDef>
+            <attDef ident="type" mode="change">
+              <valList mode="change">
+                <valItem ident="interpolation"/>
               </valList>
             </attDef>
           </attList>
