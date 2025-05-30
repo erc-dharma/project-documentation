@@ -658,7 +658,7 @@
                             <xsl:text>reformulation</xsl:text>
                         </xsl:when>
                         <xsl:when test="self::tei:lacunaStart">
-                            <xsl:text>lost</xsl:text>
+                            <xsl:text>lacuna</xsl:text>
                         </xsl:when>
                         <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
                             <xsl:text>trans</xsl:text>
@@ -667,7 +667,6 @@
                             <xsl:text>unmetrical</xsl:text>
                         </xsl:when>
                         <xsl:when test="descendant::tei:app"> embeddedapp</xsl:when>
-                        <!--<xsl:when test="self::tei:app/tei:lem[@type='note' or @type='reformulated_elsewhere' or @type='omitted_elsewhere' or @type='lost_elsewhere']"> embeddingapp</xsl:when>-->
                     </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="display-context" select="'modalapp'"/>
@@ -686,17 +685,17 @@
         <xsl:element name="span">
             <xsl:choose>
             <xsl:when test="$display-context='modalapp'">
-                <xsl:attribute name="class">reading reading-line<xsl:choose><xsl:when test="descendant-or-self::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
+                <xsl:attribute name="class">reading reading-line<xsl:choose><xsl:when test="child::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
             </xsl:attribute>
             </xsl:when>
                 <xsl:when test="$display-context='printedapp'">
-                    <xsl:attribute name="class">reading bottom-reading-line</xsl:attribute>
+                    <xsl:attribute name="class">reading bottom-reading-line<xsl:choose><xsl:when test="child::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose></xsl:attribute>
                 </xsl:when>
             </xsl:choose>
             <xsl:if test="position()!=1 and $display-context='printedapp'">
                 <xsl:text>, </xsl:text>
             </xsl:if>
-            <span class="app-rdg">
+            <!--<span class="app-rdg">-->
                 <xsl:element name="span">
                     <xsl:attribute name="class">
                         <xsl:if test="@rend='check'">
@@ -799,13 +798,14 @@
                             <xsl:text>)</xsl:text>
                         </xsl:when>
                         <xsl:otherwise>
+                            <!-- cas pour line omission -->
                             <xsl:text> (</xsl:text>
                             <xsl:value-of select="replace(@cause, '_', ' ')"/>
                             <xsl:text>)</xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:if>
-            </span>
+            <!--</span>-->
         </xsl:element>
        <!-- <xsl:if test="$display-context='modalapp' or $display-context='printedapp'">
                 <xsl:element name="span">
@@ -1819,25 +1819,12 @@
     </xsl:template>
 
     <xsl:template match="tei:l[@real][not(child::tei:note=last())]" mode="modals">
+        
         <xsl:variable name="apparatus-unmetrical">
             <xsl:if test="self::tei:l[@real]">
-                    <span class="mb-1 lemma-line">
-                        <span class="fake-lem">
-                          <xsl:call-template name="fake-lem-making"/>
-                        </span>
-                        <xsl:element name="hr"/>
-                        <xsl:text>Unmetrical line. The observed pattern is not </xsl:text>
-                        <i>
-                            <xsl:value-of select="ancestor::tei:*[@met][1]/@met"/>
-                            <xsl:call-template name="metrical-list">
-                                <xsl:with-param name="metrical" select="ancestor::tei:*[@met][1]/@met"/>
-                                <xsl:with-param name="line-context" select="'real'"/>
-                            </xsl:call-template>
-                        </i>
-                        <xsl:text> but </xsl:text>
-                        <span class="prosody"><xsl:value-of select="translate(@real, '-=+', '⏑⏓–')"/></span><xsl:text>.</xsl:text>
-                    </span>
-                
+                <xsl:call-template name="unmetrical-verseline">
+                    <xsl:with-param name="display-context" select="'modalapp'"/>
+                </xsl:call-template>
             </xsl:if>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
@@ -1876,53 +1863,10 @@
     <!-- lacunaEnd & lacunaStart -->
     <!-- span - modals -->
     <xsl:template match="tei:lacunaStart" mode="modals">
-        <xsl:variable name="wit-lost" select="self::tei:lacunaStart/parent::tei:*[1]/@wit"/>
         <xsl:variable name="apparatus-lost">
-            <span class="mb-1 lemma-line modal-omissionStart">
-                <span class="fake-lem">
-                    <xsl:apply-templates select="self::tei:lacunaStart/parent::tei:*[@wit = $wit-lost]/preceding::tei:lem[1]"/>
-                    <xsl:text> &#8230; </xsl:text>
-                    <xsl:if test="self::tei:lacunaStart[not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:lacunaEnd])]">
-                        <xsl:text> (</xsl:text>
-                            <b><xsl:element name="a">
-                                <xsl:attribute name="href">
-                                    <xsl:text>#</xsl:text><xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/ancestor::tei:div[1]/@xml:id"/>
-                                </xsl:attribute>
-                                <xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/ancestor::tei:div[1]/@n"/>
-                                <xsl:if test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:*[1][local-name ()= ('lg', 'ab', 'p')]">
-                                    <xsl:text>.</xsl:text>
-                                    <xsl:choose>
-                                        <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:lg[1]">
-                                            <xsl:number count="tei:lg" format="1" level="multiple"/>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]">
-                                            <xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]/position()"/>
-                                        </xsl:when>
-                                        <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]">
-                                            <xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]/position()"/>
-                                        </xsl:when>
-                                    </xsl:choose>
-                                </xsl:if>
-                            </xsl:element></b>
-                        <xsl:text>) </xsl:text>
-                    </xsl:if>
-                    <xsl:apply-templates select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/preceding::tei:lem[1]"/>
-                </span>
-                <hr/>
-                <span class="note-line">
-                    <!--<xsl:attribute name="style">color:black;</xsl:attribute>-->
-                    <xsl:text>A gap due to loss intervenes in </xsl:text>
-                        <b><xsl:call-template name="tokenize-witness-list">
-                            <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost][1]/@wit"/>
-                        </xsl:call-template></b>
-                    
-                    <xsl:if test="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause">
-                        <xsl:text> caused by </xsl:text>
-                        <xsl:value-of select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
-                    </xsl:if>
-                    <xsl:text>.</xsl:text>
-                </span>
-            </span>
+            <xsl:call-template name="lost-content">
+                <xsl:with-param name="display-context" select="'modalapp'"/>
+            </xsl:call-template>
         </xsl:variable>
         <span class="popover-content d-none" id="{generate-id()}">
             <xsl:copy-of select="$apparatus-lost"/>
@@ -2728,6 +2672,7 @@
     </xsl:template>
 
     <xsl:template name="omission-content">
+        <xsl:param name="display-context"/>
         <xsl:variable name="wit-omission" select="self::tei:span[@type='omissionStart']/parent::tei:*[1]/@wit"/>
         <xsl:if test="self::tei:span[@type='omissionStart']">
                     <xsl:element name="span">
@@ -2765,7 +2710,9 @@
                         <xsl:text>) </xsl:text>
                         </xsl:if>
                         <xsl:apply-templates select="self::tei:span[@type='omissionStart']/following::tei:*[@wit = $wit-omission][child::tei:span[@type='omissionEnd']][1]/preceding::tei:lem[1]"/>
-                        <b>]</b>
+                        <xsl:if test="$display-context='printedapp'">
+                            <b>]</b>
+                        </xsl:if>
                         <xsl:text> A gap due to omission intervenes in </xsl:text>
                         <b><xsl:call-template name="tokenize-witness-list">
                                 <xsl:with-param name="string" select="self::tei:span[@type='omissionStart']/parent::tei:rdg[@wit = $wit-omission][1]/@wit"/>
@@ -2781,6 +2728,7 @@
     </xsl:template>
 
     <xsl:template name="lost-content">
+    <xsl:param name="display-context"/>        
         <xsl:variable name="wit-lost" select="self::tei:lacunaStart/parent::tei:*[1]/@wit"/>
         <xsl:if test="self::tei:lacunaStart">
             <span class="fake-lem">
@@ -2802,6 +2750,8 @@
                                     <xsl:when test="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]">
                                         <xsl:value-of select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][tei:lacunaEnd][1]/ancestor::tei:app/parent::tei:p[1]/position()"/>
                                     </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:text>&#8230;</xsl:text></xsl:otherwise>
                                 </xsl:choose>
                             </xsl:if>
                         </a>
@@ -2809,7 +2759,11 @@
                     <xsl:text>) </xsl:text>
                 </xsl:if>
                 <xsl:apply-templates select="self::tei:lacunaStart/following::tei:*[@wit = $wit-lost][child::tei:lacunaEnd][1]/preceding::tei:lem[1]"/>
-                <b>]</b>
+                <xsl:choose><xsl:when test="$display-context='printedapp'">
+                    <b>]</b>
+                </xsl:when>
+                <xsl:otherwise><hr/></xsl:otherwise>
+                </xsl:choose>
                 <xsl:text> A gap due to loss intervenes in </xsl:text>
                 <b><xsl:call-template name="tokenize-witness-list">
                         <xsl:with-param name="string" select="self::tei:lacunaStart/parent::tei:rdg[@wit = $wit-lost][1]/@wit"/>
@@ -2920,7 +2874,7 @@
                     <hr/>
                     <xsl:for-each select="self::tei:span[@type='reformulationStart']/following::tei:span[@type='reformulationEnd'][$reformulation-id = substring-after(@corresp, '#')][1]/following-sibling::tei:app[1]/tei:rdg">
                         <span class="reading-line reading">
-                            <span class="app-rdg"><xsl:apply-templates/></span>
+                           <!-- <span class="app-rdg">--><xsl:apply-templates/><!--l-->
                         </span>
                         <b>
                             <xsl:call-template name="tokenize-witness-list">
@@ -3418,7 +3372,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-                <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
+               <!-- <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>-->
+                <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
@@ -3461,7 +3416,7 @@
                                             <xsl:text>reformulation</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::tei:lacunaStart">
-                                            <xsl:text>lost</xsl:text>
+                                            <xsl:text>lacuna</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
                                             <xsl:text>trans</xsl:text>
@@ -3484,7 +3439,7 @@
         <xsl:otherwise>
             <!-- condition pour les éditions critiques; seule diff. la présence de subst et choice -->
             <xsl:if
-        test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
+        test=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real] | .//tei:lacunaStart">
       <div class="ed-section">
           <xsl:variable name="apparatus">
               <!-- An entry is created for-each of the following instances
@@ -3495,7 +3450,7 @@
                   *span reformulation start; avoid reformulationEnd
                   * unmetrical verse line 
         -->
-              <xsl:for-each select="( .//tei:app)[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]">
+              <xsl:for-each select="( .//tei:app)[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
                   <app>
                       <xsl:call-template name="dharma-app">
                           <xsl:with-param name="apptype">
@@ -3513,14 +3468,14 @@
                                   <xsl:when test="self::tei:note">
                                       <xsl:text>note</xsl:text>
                                   </xsl:when>
-                                  <xsl:when test="self::tei:span[@type='omissionStart']">
+                                  <xsl:when test="self::tei:app[descendant::tei:span[@type='omissionStart']]">
                                       <xsl:text>omission</xsl:text>
                                   </xsl:when>
-                                  <xsl:when test="self::tei:span[@type='reformulationStart']">
+                                  <xsl:when test="self::tei:app[descendant::tei:span[@type='reformulationStart']]">
                                       <xsl:text>reformulation</xsl:text>
                                   </xsl:when>
                                   <xsl:when test="self::tei:lacunaStart">
-                                      <xsl:text>lost</xsl:text>
+                                      <xsl:text>lacuna</xsl:text>
                                   </xsl:when>
                                   <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
                                       <xsl:text>trans</xsl:text>
@@ -3592,6 +3547,7 @@
         <xsl:if test="$location = 'apparatus'">
             <xsl:element name="a">
                 <xsl:attribute name="class">
+                    <xsl:text>side-app</xsl:text>
                     <xsl:choose>
                         <xsl:when test="$type !=''">
                         <xsl:text> </xsl:text>
@@ -3669,11 +3625,14 @@
                <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app">
                    <xsl:text>embeddedapp</xsl:text>
                </xsl:when>
+               <!--<xsl:when test="descendant::tei:*[local-name()=('lacunaStart')]/tei:app">
+                   <xsl:text>lacuna</xsl:text>
+               </xsl:when>-->
            </xsl:choose>
        </xsl:variable>
         <xsl:choose>
             <xsl:when test="$display-context='modalapp'"/>
-            <xsl:when test="not(ancestor::tei:choice or ancestor::tei:subst) or //tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] and $display-context='printedapp'">
+            <xsl:when test="//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] or //tei:lacunaStart or //tei:span[@type='omissionStart'] or //tei:span[@type='reformulationStart'] and $display-context='printedapp'">
                 <xsl:call-template name="lbrk-app"/>
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'bottom'"/>
@@ -3691,13 +3650,26 @@
                 <xsl:text>:&#x202F;</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
-        <span class="app-entry">
+        <xsl:choose>
+            <xsl:when test="$display-context='printedapp'">
+                <span class="bottomapp">
+                    <span class="app-entry">
+                        <xsl:call-template name="appcontent">
+                            <xsl:with-param name="apptype" select="$apptype"/>
+                            <xsl:with-param name="childtype" select="$childtype"/>
+                            <xsl:with-param name="display-context" select="$display-context"/>
+                        </xsl:call-template>
+                    </span>
+                </span>
+            </xsl:when>
+            <xsl:otherwise><span class="app-entry">
               <xsl:call-template name="appcontent">
                 <xsl:with-param name="apptype" select="$apptype"/>
                 <xsl:with-param name="childtype" select="$childtype"/>
                   <xsl:with-param name="display-context" select="$display-context"/>
             </xsl:call-template>
-        </span>
+        </span></xsl:otherwise></xsl:choose>
+        
     </xsl:template>
 
     <!-- prints the content of apparatus-->
@@ -3720,7 +3692,7 @@
                <xsl:when test="$childtype='embeddedapp'">
                    <xsl:copy-of select="child::*[local-name()=('lem')]/tei:app/child::*"/>
                </xsl:when>
-                <xsl:otherwise>
+               <xsl:otherwise>
                         <xsl:copy-of select="node()"/>
                </xsl:otherwise>
             </xsl:choose>
@@ -3750,7 +3722,6 @@
     </xsl:template>
 
     <!-- contenu de tous les app; printed et modaux; nombreuses conditions sur $display-content pour éviter de répéter plusieurs le contenu mais j'ai quand même encore de nombreuses répétitions et des cas qui ne passe pas correctement -->
-    <!-- commenter afin de ne le déclarer qu'une unique fois! -->
     <xsl:template name="appchoice">
         <xsl:param name="apptype" />
        <xsl:param name="child" />
@@ -4001,10 +3972,15 @@
                 </xsl:for-each>
             </xsl:when>
             <xsl:when test="$apptype='omission'">
-                <xsl:call-template name="omission-content"/>
+                <xsl:call-template name="omission-content">
+                    <xsl:with-param name="display-context" select="$display-context"/>
+                </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$apptype='lost'">
-                <xsl:call-template name="lost-content"/>
+            <xsl:when test="$apptype='lacuna'">
+                <!-- lacuna -->
+                <xsl:call-template name="lost-content">
+                    <xsl:with-param name="display-context" select="$display-context"/>
+                </xsl:call-template>
             </xsl:when>
             <xsl:when test="$apptype='reformulation'">
                 <xsl:if test="self::tei:span[@type='reformulationStart']">
@@ -4075,22 +4051,34 @@
                 <xsl:text> (corr)</xsl:text>
             </xsl:when>
             <xsl:when test="$apptype='unmetrical'">
-                <xsl:call-template name="fake-lem-making"/>
-                <b><xsl:text>] </xsl:text></b>
-                <xsl:text>Unmetrical line. The observed pattern is not </xsl:text>
-                <i>
-                    <xsl:call-template name="metrical-list">
-                        <xsl:with-param name="metrical" select="ancestor::tei:*[@met][1]/@met"/>
-                        <xsl:with-param name="line-context" select="'real'"/>
-                    </xsl:call-template>
-                </i>
-                <xsl:text> but </xsl:text>
-                <span class="prosody" data-tip="&lt;span type=&quot;prosody&quot;&gt;{translate(@real, '-=+', '⏑⏓–')}&lt;/span&gt;"><xsl:value-of select="translate(@real, '-=+', '⏑⏓–')"/></span>
-                <xsl:text>.</xsl:text>
+                <xsl:call-template name="unmetrical-verseline">
+                    <xsl:with-param name="display-context" select="$display-context"/>
+                </xsl:call-template>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-
+    
+    <!-- tpl pour l[@real] dans les app -->
+<xsl:template name="unmetrical-verseline">
+    <xsl:param name="display-context"/>
+    <xsl:call-template name="fake-lem-making"/>
+    <xsl:choose><xsl:when test="$display-context='printedapp'">
+        <b><xsl:text>] </xsl:text></b></xsl:when>
+        <xsl:otherwise>
+            <xsl:element name="hr"/>
+        </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>Unmetrical line. The observed pattern is not </xsl:text>
+    <i>
+        <xsl:call-template name="metrical-list">
+            <xsl:with-param name="metrical" select="ancestor::tei:*[@met][1]/@met"/>
+            <xsl:with-param name="line-context" select="'real'"/>
+        </xsl:call-template>
+    </i>
+    <xsl:text> but </xsl:text>
+    <span class="prosody" data-tip="&lt;span type=&quot;prosody&quot;&gt;{translate(@real, '-=+', '⏑⏓–')}&lt;/span&gt;"><xsl:value-of select="translate(@real, '-=+', '⏑⏓–')"/></span>
+    <xsl:text>.</xsl:text>
+</xsl:template>
 
     <!-- Apparatus: type to display -->
     <xsl:template name="apparatus-type">
