@@ -648,7 +648,7 @@
                         <xsl:when test="self::tei:app">
                             <xsl:text>app</xsl:text>
                         </xsl:when>
-                        <xsl:when test="self::tei:note[ not(ancestor::tei:div[@type='translation'])]">
+                        <xsl:when test="self::tei:note[ not(ancestor::tei:div[@type='translation'])][last()]">
                             <xsl:text>note</xsl:text>
                         </xsl:when>
                         <xsl:when test="self::tei:span[@type='omissionStart']">
@@ -3372,8 +3372,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-               <!-- <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>-->
-                <script src="./loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"/>
+                <script src="https://cdn.jsdelivr.net/gh/erc-dharma/project-documentation@refs/heads/master/stylesheets/criticalEditions/loader_v02.js?v=1a9450aa77c9b125526d71a0e58819c086fa4cab"></script>
             </xsl:when>
             <xsl:otherwise>
         <!-- les  liens pour bootstraps 4 sont à faire pour la version locale-->
@@ -3406,7 +3405,7 @@
                                         <xsl:when test="self::tei:app">
                                             <xsl:text>app</xsl:text>
                                         </xsl:when>
-                                        <xsl:when test="self::tei:note[last()]">
+                                        <xsl:when test="self::tei:note[last()][not(ancestor::tei:div[@type='translation'])]">
                                             <xsl:text>note</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::tei:span[@type='omissionStart']">
@@ -3465,13 +3464,13 @@
                                   <xsl:when test="self::tei:app">
                                       <xsl:text>app</xsl:text>
                                   </xsl:when>
-                                  <xsl:when test="self::tei:note">
+                                  <xsl:when test="self::tei:note[last()][not(ancestor::tei:div[@type='translation'])]">
                                       <xsl:text>note</xsl:text>
                                   </xsl:when>
-                                  <xsl:when test="self::tei:app[descendant::tei:span[@type='omissionStart']]">
+                                  <xsl:when test="self::tei:span[@type='omissionStart']">
                                       <xsl:text>omission</xsl:text>
                                   </xsl:when>
-                                  <xsl:when test="self::tei:app[descendant::tei:span[@type='reformulationStart']]">
+                                  <xsl:when test="self::tei:span[@type='reformulationStart']">
                                       <xsl:text>reformulation</xsl:text>
                                   </xsl:when>
                                   <xsl:when test="self::tei:lacunaStart">
@@ -3625,9 +3624,6 @@
                <xsl:when test="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app">
                    <xsl:text>embeddedapp</xsl:text>
                </xsl:when>
-               <!--<xsl:when test="descendant::tei:*[local-name()=('lacunaStart')]/tei:app">
-                   <xsl:text>lacuna</xsl:text>
-               </xsl:when>-->
            </xsl:choose>
        </xsl:variable>
         <xsl:choose>

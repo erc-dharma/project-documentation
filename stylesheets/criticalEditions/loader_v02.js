@@ -21,7 +21,6 @@ $('.hyphenright, .hyphenaround').append('-');
 $('.circleleft, .circlearound').prepend('°');
 $('.circleright, .circlearound').append('°');
 
-/* Move everything to the right but element displayed on each other */  /*jQuery(".move-to-right").appendTo ('.apparat-col')*/
 
 /* Need to add the move the element to the following-sibling[1] of the ancestor <div> of apparat-col.  */
 
@@ -30,8 +29,9 @@ $(document).ready(function() {
     $('sub').each(function() {
         $(this).prev('a').append(this);
     });
-    /* Highlighting function in JQuery */
-    $('.move-to-right').on({
+
+/* Highlighting function in JQuery */
+    $('.side-app').on({
   mouseenter: function () {
     id = $(this).attr('data-app');
     $('.lem[data-app="'+id+'"]').css({'background-color': 'yellow'});
@@ -89,7 +89,7 @@ $(document).ready(function() {
 /* Code for rendering omissionStart and omissionEnd in lateral apparatus */
 $("span[class*='rdg-omissionStart']" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgOmission =$('<br/><span><i style="color:black;">om. </i>')
+        var newRdgOmission =$('<br/><span><i>om. </i>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
         var siglumOmission = $(this).find(".siglum:first").clone()
         var siglumWit = $(this).find(".siglum:first").attr("href")
@@ -101,35 +101,34 @@ $("span[class*='rdg-omissionStart']" ).each(function() {
 Code only for the lateral tooltip*/
 $("span[class*='rdg-lacunaStart']" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgOmission =$('<br/><i style="color:black;">lac. </i>')
+        var newRdgOmission =$('<br/><i>lac. </i>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
         var siglumOmission = $(this).find(".siglum:first").clone()
         var siglumWit = $(this).find(".siglum:first").attr("href")
         
-    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.popover-content').nextUntil('.popover-content:has(span[class*="rdg-lacunaEnd' + siglumWit + '"])').find('.reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<span class="font-weight-bold "></span>').parent()).append(' (larger gap)');
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.popover-content').nextUntil('.popover-content:has(span[class*="rdg-lacunaEnd' + siglumWit + '"])').find('.reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<b></b>').parent()).append(' (larger gap)');
     });
 
     /* lac. for bottom apparatus */
-    $("span[class*='bottom-lacunaStart']").each(function() {
+$("span[class*='bottom-lacunaStart']" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgOmission =$('<span>, <i style="color:black;">lac. </ia>')
+        var newRdgOmission =$(', <i>lac. </i>')
         /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
         var siglumOmission = $(this).find(".siglum:first").clone()
         var siglumWit = $(this).find(".siglum:first").attr("href")
         
-    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ 
-    $(this).parents('.app-entry').nextUntil('.app-entry:has(span[class*="bottom-lacunaEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<b></b>').parent()).sort().append(' (larger gap)');
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.bottomapp').nextUntil('.bottomapp:has(span[class*="bottom-lacunaEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgOmission, siglumOmission.wrap( '<b></b>').parent()).append(' (larger gap)');
     });
-    
+
     /* omm. for bottom apparatus */
     $( "span[class*='bottom-omissionStart']"  ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
-        var newRdgBottomOmission =$('<span class="translit LatnLatn">, <span class="font-italic" style="color:black;">om. </span></span>')
+        var newRdgBottomOmission =$(', <i>om. </i>')
         /* Cherche le premier element suivant avec la class siglum, récupere son contenu  */
         var siglumBottomOmission = $(this).find(".siglum:first").clone()
         var siglumWit = $(this).find(".siglum:first").attr("href")
         
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
-            $(this).parents('.app-entry').nextUntil('.app-entry:has(span[class*="bottom-omissionEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgBottomOmission, siglumBottomOmission.wrap( '<span class="font-weight-bold "></span>').parent()).append(' (larger gap)');
+            $(this).parents('.bottomapp').nextUntil('.bottomapp:has(span[class*="bottom-omissionEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(newRdgBottomOmission, siglumBottomOmission.wrap( '<b></b>').parent()).append(' (larger gap)');
     });
 });
