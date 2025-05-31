@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-05-30T13:31:07Z. .
+Schema generated from ODD source 2025-05-31T08:33:58Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -7612,9 +7612,26 @@ Sample values include: 1] filler; 2] numeral; 3] symbol</a:documentation>
    </define>
    <define name="tei_model.rdgPart">
       <choice>
+         <ref name="tei_witStart"/>
+         <ref name="tei_witEnd"/>
          <ref name="tei_lacunaStart"/>
          <ref name="tei_lacunaEnd"/>
       </choice>
+   </define>
+   <define name="tei_att.rdgPart.attributes">
+      <ref name="tei_att.rdgPart.attribute.wit"/>
+   </define>
+   <define name="tei_att.rdgPart.attribute.wit">
+      <optional>
+         <attribute name="wit">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(witness or witnesses) contains a space-delimited list of one or more sigla indicating the witnesses to this reading beginning or ending at this point.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="anyURI"/>
+               </oneOrMore>
+            </list>
+         </attribute>
+      </optional>
    </define>
    <define name="tei_att.witnessed.attributes">
       <ref name="tei_att.witnessed.attribute.wit"/>
@@ -8121,6 +8138,24 @@ Sample values include: 1] substantive; 2] orthographic</a:documentation>
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(identifier) provides a unique identifier for the element bearing the attribute.</a:documentation>
             <data type="ID"/>
          </attribute>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_witStart">
+      <element name="witStart">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(fragmented witness start) indicates the beginning, or resumption, of the text of a fragmentary witness. [12.1.5. Fragmentary Witnesses]</a:documentation>
+         <empty/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.rdgPart.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_witEnd">
+      <element name="witEnd">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(fragmented witness end) indicates the end, or suspension, of the text of a fragmentary witness. [12.1.5. Fragmentary Witnesses]</a:documentation>
+         <empty/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.rdgPart.attributes"/>
          <empty/>
       </element>
    </define>

@@ -96,7 +96,7 @@
         <moduleRef key="certainty" except="precision respons"/>
         <moduleRef key="verse" except="caesura metDecl metSym rhyme"/>
         <moduleRef key="gaiji" except="charName charProp glyph glyphName localName localProp mapping unicodeName unicodeProp unihanProp value"/>
-        <moduleRef key="textcrit" except="wit witEnd witStart"/>
+        <moduleRef key="textcrit" except="wit"/>
         <elementSpec ident="authority" module="header" mode="change">
           <attList>
             <attDef ident="cert" mode="delete"/>
