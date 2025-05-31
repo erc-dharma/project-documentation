@@ -109,6 +109,17 @@ $("span[class*='rdg-lacunaStart']" ).each(function() {
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.popover-content').nextUntil('.popover-content:has(span[class*="rdg-lacunaEnd' + siglumWitLacunaS + '"])').find('.reading-line:last').after().append(newRdgLacunaS, siglumLacunaS.wrap( '<b></b>').parent()).append(' (larger gap)');
     });
 
+ /* Trying to add the lac. with WitEnd adn witStart for the lateral tooltip*/
+$("span[class*='rdg-witEnd']" ).each(function() {
+    /* newRDG create the lac. textual content always the same so added as such directly */
+        var newRdgWitE =$('<br/><i>lac. </i>')
+        /* Selectionne lacunaStartSiglum et cherche le premier element suivant avec la class siglum, récupere son contenu */
+        var siglumWitE = $(this).find(".siglum:first").clone()
+        var siglumWitEndHref = $(this).find(".siglum:first").attr("href")
+        
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.popover-content').nextUntil('.popover-content:has(span[class*="rdg-witStart' + siglumWitEndHref + '"])').find('.reading-line:last').after().append(newRdgWitE, siglumWitE.wrap( '<b></b>').parent()).append(' (larger gap  – fragmentary witness)');
+});
+
     /* lac. for bottom apparatus */
 $("span[class*='bottom-lacunaStart']" ).each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
@@ -121,7 +132,7 @@ $("span[class*='bottom-lacunaStart']" ).each(function() {
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */ $(this).parents('.bottomapp').nextUntil('.bottomapp:has(span[class*="bottom-lacunaEnd' + siglumBLacunaS + '"])').find('.bottom-reading-line:last').after().append(comma, newBLacunaS, siglumWitLacunaS.wrap( '<b></b>').parent()).append(' (larger gap)');
     });
 
-    /* omm. for bottom apparatus */
+    /* om. for bottom apparatus */
     $( "span[class*='bottom-omissionStart']").each(function() {
     /* newRDG create the lac. textual content always the same so added as such directly */
         var comma =", "
@@ -133,4 +144,28 @@ $("span[class*='bottom-lacunaStart']" ).each(function() {
     /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
             $(this).parents('.bottomapp').nextUntil('.bottomapp:has(span[class*="bottom-omissionEnd' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(comma,newRdgBottomOmission, siglumBottomOmission.wrap( '<b></b>').parent()).append(' (larger gap)');
     });
+});
+
+  /* lac. with witStart/witEnd for bottom apparatus */
+$( "span[class*='bottom-witEnd']").each(function() {
+/* newRDG create the lac. textual content always the same so added as such directly */
+        var comma =", "
+        var newRdgBottomWitEnd =$(' <i>lac. </i>')
+        /* Cherche le premier element suivant avec la class siglum, récupere son contenu  */
+        var siglumBottomWitEnd = $(this).find(".siglum:first").clone()
+        var siglumWit = $(this).find(".siglum:first").attr("href")    
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
+            $(this).parents('.bottomapp').nextUntil('.bottomapp:has(span[class*="bottom-witStart' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(comma,newRdgBottomWitEnd, siglumBottomWitEnd.wrap( '<b></b>').parent()).append(' (larger gap – fragmentary witness)');
+    });
+  /* lac. with witStart/witEnd for bottom apparatus */
+    $( "span[class*='bottom-witEnd']").each(function() {
+    /* newRDG create the lac. textual content always the same so added as such directly */
+        var comma =", "
+        var newRdgBottomWitEnd =$(' <i>lac. </i>')
+        /* Cherche le premier element suivant avec la class siglum, récupere son contenu  */
+        var siglumBottomWitEnd = $(this).find(".siglum:first").clone()
+        var siglumWit = $(this).find(".siglum:first").attr("href")
+        
+    /* move to the parent span element, then take all the following span elements until one has a descendant with the class lacunaEnd - find class .reading-line and after it add the newRDG and the siglum wrapped in html elements */
+            $(this).parents('.bottomapp').nextUntil('.bottomapp:has(span[class*="bottom-witStart' + siglumWit + '"])').find('.bottom-reading-line:last').after().append(comma,newRdgBottomWitEnd, siglumBottomWitEnd.wrap( '<b></b>').parent()).append(' (larger gap – fragmentary witness)');
 });

@@ -12,7 +12,8 @@
     
     <!-- Still to be done -->
     <!-- récurssion pour les lacunaStart et les lacunaEnd ; actullement le display utilise un jquery assez sale-->
-    <!-- le for-each-group dans tei:ab tpl pour faire des groupes intermédiaires pour les DiplEd et avoir un affichage des notes plus proches de leur bloc d'origine -->
+    <!-- j'ai ajouté les WitStart et WitEnd, mais aucun fichier pour tester; j'ai garder la même solution avec jquery, car ajouter à la dernière minute. Serait donc à reprendre -->
+    <!-- le for-each-group à finir dans tei:ab tpl pour faire des groupes intermédiaires pour les DiplEd et avoir un affichage des notes plus proches de leur bloc d'origine – actuellement en commentaire -->
     <!-- ajouter choice et subst dans l'apparat critique pour les DiplEd -->
     <!-- le XML pour la vew source n'est pas terminé, il a juste était parsé pour assurer un affichage-->
     <!-- citedRange @unit="mixed" n'a pas encore été ajouté pour obtenit un display équivalent aux autres citedRange -->
@@ -234,7 +235,7 @@
                 </div>
                 <div id="modalsapp" class="hidden">
                     <!-- app modals -->
-                    <xsl:apply-templates select=".//tei:app[not(parent::listApp[@type='parallels'] or @rend='hide' or preceding-sibling::span[@type='reformulationEnd'][1])] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real]" mode="modals"/>
+                    <xsl:apply-templates select=".//tei:app[not(parent::listApp[@type='parallels'] or @rend='hide' or preceding-sibling::span[@type='reformulationEnd'][1])] | .//tei:lacunaStart | .//tei:note | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:l[@real] | .//tei:witEnd" mode="modals"/>
                 </div>
             </body>
             <xsl:call-template name="dharma-script"/>
@@ -680,6 +681,9 @@
                         <xsl:when test="self::tei:lacunaStart">
                             <xsl:text>lacuna</xsl:text>
                         </xsl:when>
+                        <xsl:when test="self::tei:witEnd">
+                            <xsl:text>fragmentWit</xsl:text>
+                        </xsl:when>
                         <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
                             <xsl:text>trans</xsl:text>
                         </xsl:when>
@@ -706,11 +710,11 @@
         <xsl:element name="span">
             <xsl:choose>
             <xsl:when test="$display-context='modalapp'">
-                <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="child::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
+                <xsl:attribute name="class">reading-line<xsl:choose><xsl:when test="child::tei:lacunaStart"><xsl:text> rdg-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="child::tei:witEnd"><xsl:text> rdg-witEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> rdg-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> rdg-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:witStart"><xsl:text> rdg-witStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> rdg-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose>
             </xsl:attribute>
             </xsl:when>
                 <xsl:when test="$display-context='printedapp'">
-                    <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="child::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose></xsl:attribute>
+                    <xsl:attribute name="class">bottom-reading-line<xsl:choose><xsl:when test="child::tei:lacunaStart"><xsl:text> bottom-lacunaStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="child::tei:witEnd"><xsl:text> bottom-witEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionStart']"> bottom-omissionStart<xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:lacunaEnd"><xsl:text> bottom-lacunaEnd</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:witStart"><xsl:text> bottom-witStart</xsl:text><xsl:value-of select="@wit"/></xsl:when><xsl:when test="descendant-or-self::tei:span[@type='omissionEnd']"> bottom-omissionEnd<xsl:value-of select="@wit"/></xsl:when></xsl:choose></xsl:attribute>
                 </xsl:when>
             </xsl:choose>
             <xsl:if test="position()!=1 and $display-context='printedapp'">
@@ -734,12 +738,12 @@
                         <xsl:when test="child::tei:gap[@reason='lost'and not(@quantity|@unit)]">
                             <span style="color:black;"><i>lac.</i></span>
                         </xsl:when>
-                        <xsl:when test="child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
+                        <xsl:when test="child::tei:witStart or child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                     </xsl:choose>
                     <!-- print variant -->
                             <xsl:apply-templates/>
                     <xsl:choose>
-                        <xsl:when test="child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
+                        <xsl:when test="child::tei:witEnd or child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
                     </xsl:choose>
                 </xsl:element>
             <xsl:text> </xsl:text>
@@ -859,6 +863,11 @@
                             <xsl:attribute name="class">lostAnchor-start</xsl:attribute>
                         </xsl:element>
                     </xsl:if>
+                    <xsl:if test="descendant::tei:witEnd">
+                        <xsl:element name="span">
+                            <xsl:attribute name="class">fragmentAnchor-end</xsl:attribute>
+                        </xsl:element>
+                    </xsl:if>
                     <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>lem</xsl:text>
@@ -866,6 +875,8 @@
                 <xsl:if test="descendant::tei:span[@type='omissionEnd']"> lem-omissionEnd</xsl:if>
                 <xsl:if test="descendant::tei:lacunaStart"> lem-lostStart</xsl:if>
                 <xsl:if test="descendant::tei:lacunaEnd"> lem-lostEnd</xsl:if>
+                <xsl:if test="descendant::tei:witEnd"> lem-fragmentWitEnd</xsl:if>
+                <xsl:if test="descendant::tei:witStart"> lem-fragmentWitStart</xsl:if>
                 <xsl:if test="@type='transposed_elsewhere'"> transposed</xsl:if>
             </xsl:attribute>
             <xsl:attribute name="data-app">
@@ -2313,7 +2324,7 @@
                         </xsl:call-template>
                     </xsl:for-each>
                 </xsl:when>
-                <xsl:otherwise><xsl:for-each select="descendant-or-self::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] |descendant::tei:span[@type='omissionStart'] | descendant::tei:lacunaStart | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |descendant-or-self::tei:l[@real] | following-sibling::tei:listApp[1][@type='apparatus']/descendant::tei:app | ancestor::tei:app">
+                <xsl:otherwise><xsl:for-each select="descendant-or-self::tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] |descendant::tei:span[@type='omissionStart'] | descendant::tei:lacunaStart | descendant::tei:witEnd | descendant::tei:span[@type='reformulationStart'] | descendant::tei:note[position() = last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l] | descendant::tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |descendant-or-self::tei:l[@real] | following-sibling::tei:listApp[1][@type='apparatus']/descendant::tei:app | ancestor::tei:app">
                 <xsl:call-template name="app-link">
                     <xsl:with-param name="location" select="'apparatus'"/>
                     <xsl:with-param name="type">
@@ -2330,17 +2341,17 @@
                             <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
                                 <xsl:text>lem-lacunaEnd</xsl:text>
                             </xsl:when>
+                            <xsl:when test="self::tei:app/descendant::tei:witEnd">
+                                <xsl:text>lem-fragmentaryWitEnd</xsl:text>
+                            </xsl:when>
+                                <xsl:when test="self::tei:app/descendant::tei:witStart">
+                                    <xsl:text>lem-fragmentaryWitStart</xsl:text>
+                            </xsl:when>
                             <xsl:when test="self::tei:span[@type='reformulationStart']">
                                 <xsl:text>lem-reformulationStart</xsl:text>
                             </xsl:when>
                             <xsl:when test="self::tei:span[@type='reformulationEnd']">
                                 <xsl:text>lem-reformulationEnd</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="self::tei:app/descendant::tei:lacunaStart">
-                                <xsl:text>lem-lacunaStart</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="self::tei:app/descendant::tei:lacunaEnd">
-                                <xsl:text>lem-lacunaEnd</xsl:text>
                             </xsl:when>
                             <xsl:when test="self::tei:note[position() = last()][parent::tei:p] and not(ancestor::tei:div[@type='translation'])">
                                 <xsl:text>last-note</xsl:text>
@@ -3010,6 +3021,71 @@
         </xsl:choose>
     </xsl:template>
     
+    <!-- witEnd & witStart -->
+    <!-- span - modals -->
+    <!-- la logique est inversée par rapport à omissionStart et lacunaStart; on marque la fin du témoin -->
+    <xsl:template match="tei:witEnd" mode="modals">
+        <xsl:variable name="apparatus-fragment">
+            <xsl:call-template name="fragment-content">
+                <xsl:with-param name="display-context" select="'modalapp'"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <span class="popover-content d-none" id="{generate-id()}">
+            <xsl:copy-of select="$apparatus-fragment"/>
+        </span>
+    </xsl:template>
+   
+   <xsl:template name="fragment-content">
+       <xsl:param name="display-context"/>
+       <xsl:variable name="wit-lost" select="self::tei:witEnd/parent::tei:*[1]/@wit"/>
+       <xsl:if test="self::tei:witEnd">
+           <span class="fake-lem">
+               <xsl:apply-templates select="self::tei:witEnd/parent::tei:*[@wit = $wit-lost]/preceding::tei:lem[1]"/>
+               <xsl:text> &#8230;</xsl:text>
+               <xsl:if test="self::tei:witEnd[not(ancestor::tei:app/ancestor::tei:*[1][descendant::tei:witStart])]">
+                   <xsl:text> (</xsl:text>
+                   <b><a href="#{self::tei:witEnd/following::tei:*[@wit = $wit-lost][child::tei:witStart][1]/ancestor::tei:div[1]/@xml:id}">
+                       <xsl:value-of select="self::tei:witEnd/following::tei:*[@wit = $wit-lost][child::tei:witStart][1]/ancestor::tei:div[1]/@n"/>
+                       <xsl:if test="self::tei:witEnd/following::tei:*[@wit = $wit-lost][tei:witStart][1]/ancestor::tei:app/parent::tei:*[1][local-name ()= ('lg', 'ab', 'p')]">
+                           <xsl:text>.</xsl:text>
+                           <xsl:choose>
+                               <xsl:when test="self::tei:witEnd/following::tei:*[@wit = $wit-lost][tei:witStart][1]/ancestor::tei:app/parent::tei:lg[1]">
+                                   <xsl:number count="tei:lg" format="1" level="multiple"/>
+                               </xsl:when>
+                               <xsl:when test="self::tei:witEnd/following::tei:*[@wit = $wit-lost][tei:witStart][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]">
+                                   <xsl:value-of select="self::tei:witEnd/following::tei:*[@wit = $wit-lost][tei:witStart][1]/ancestor::tei:app/parent::tei:ab[1][not(child::tei:supplied)]/position()"/>
+                               </xsl:when>
+                               <xsl:when test="self::tei:witEnd/following::tei:*[@wit = $wit-lost][tei:witStart][1]/ancestor::tei:app/parent::tei:p[1]">
+                                   <xsl:value-of select="self::tei:witEnd/following::tei:*[@wit = $wit-lost][tei:witStart][1]/ancestor::tei:app/parent::tei:p[1]/position()"/>
+                               </xsl:when>
+                               <xsl:otherwise>
+                                   <xsl:text>&#8230;</xsl:text></xsl:otherwise>
+                           </xsl:choose>
+                       </xsl:if>
+                   </a>
+                   </b>
+                   <xsl:text>) </xsl:text>
+               </xsl:if>
+               <xsl:apply-templates select="self::tei:witEnd/following::tei:*[@wit = $wit-lost][child::tei:witStart][1]/preceding::tei:lem[1]"/>
+               <xsl:choose><xsl:when test="$display-context='printedapp'">
+                   <b>]</b>
+               </xsl:when>
+                   <xsl:otherwise><hr/></xsl:otherwise>
+               </xsl:choose>
+               <xsl:text> A gap due to loss intervenes in </xsl:text>
+               <b><xsl:call-template name="tokenize-witness-list">
+                   <xsl:with-param name="string" select="self::tei:witEnd/parent::tei:rdg[@wit = $wit-lost][1]/@wit"/>
+               </xsl:call-template>
+               </b>
+               <xsl:if test="self::tei:witEnd/parent::tei:rdg[@wit = $wit-lost]/@cause">
+                   <xsl:text> caused by </xsl:text>
+                   <xsl:value-of select="self::tei:witEnd/parent::tei:rdg[@wit = $wit-lost]/@cause"/>
+               </xsl:if>
+               <xsl:text> (fragmentary witness). </xsl:text>
+           </span>
+       </xsl:if>
+   </xsl:template> 
+    
     <xsl:template match="tei:witness">
             <li>
                 <a id="{@xml:id}">
@@ -3360,7 +3436,7 @@
 
                     <div class="ed-section">
                         <xsl:for-each
-                            select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
+                            select=".//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][not(@type='parallels' or parent::tei:app or @type='altLem')][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real] | .//tei:witEnd">
                             
                             <xsl:call-template name="dharma-app">
                                 <xsl:with-param name="apptype">
@@ -3380,6 +3456,9 @@
                                         </xsl:when>
                                         <xsl:when test="self::tei:lacunaStart">
                                             <xsl:text>lacuna</xsl:text>
+                                        </xsl:when>
+                                        <xsl:when test="self::tei:witStart">
+                                            <xsl:text>fragmentaryWit</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
                                             <xsl:text>trans</xsl:text>
@@ -3413,7 +3492,7 @@
                   *span reformulation start; avoid reformulationEnd
                   * unmetrical verse line 
         -->
-              <xsl:for-each select=" .//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real]">
+              <xsl:for-each select=" .//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])]| .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart'] | .//tei:lacunaStart | .//tei:l[@real] | .//tei:witEnd">
                   <app>
                       <xsl:call-template name="dharma-app">
                           <xsl:with-param name="apptype">
@@ -3440,6 +3519,9 @@
                                   </xsl:when>
                                   <xsl:when test="self::tei:lacunaStart">
                                       <xsl:text>lacuna</xsl:text>
+                                  </xsl:when>
+                                  <xsl:when test="self::tei:witEnd">
+                                      <xsl:text>fragmentWit</xsl:text>
                                   </xsl:when>
                                   <xsl:when test="self::tei:note[ancestor::tei:div[@type='translation']]">
                                       <xsl:text>trans</xsl:text>
@@ -3522,6 +3604,12 @@
                                 <xsl:when test="self::tei:lacunaEnd">
                                     <xsl:text> lostEndAnchor</xsl:text>
                                 </xsl:when>
+                                <xsl:when test="self::tei:witStart">
+                                <xsl:text> fragmentaryWitStartAnchor</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="self::tei:witEnd">
+                                    <xsl:text> fragmentaryWitEndAnchor</xsl:text>
+                                </xsl:when>
                                 <xsl:when test="self::tei:span[@type='omissionStart']">
                                     <xsl:text> omissionStartAnchor</xsl:text>
                                 </xsl:when>
@@ -3565,7 +3653,7 @@
     
     <!-- count app numbers -->
     <xsl:template name="number-counter">
-        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:note[ancestor::tei:div[@type='translation']] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |  .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart']| .//tei:l[@real] |.//tei:lacunaStart | .//tei:listApp[1][@type='apparatus']/descendant::tei:app "/>
+        <xsl:number level="any" count="//tei:app[not(parent::tei:listApp[@type='parallels'] or @rend='hide' or preceding-sibling::tei:span[@type='reformulationEnd'][1])] | .//tei:note[last()][parent::tei:p or parent::tei:lg or parent::tei:l][not(ancestor::tei:div[@type='translation'])] | .//tei:note[ancestor::tei:div[@type='translation']] | .//tei:note[parent::tei:ab[preceding-sibling::tei:lg][1]] |  .//tei:span[@type='omissionStart'] | .//tei:span[@type='reformulationStart']| .//tei:l[@real] |.//tei:lacunaStart | .//tei:witEnd | .//tei:listApp[1][@type='apparatus']/descendant::tei:app "/>
     </xsl:template>
     
     <xsl:template name="dharma-app">
@@ -3910,6 +3998,12 @@
                 <!-- lacuna -->
                 <xsl:call-template name="lost-content">
                     <xsl:with-param name="display-context" select="$display-context"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$apptype='fragmentWit'">
+                <!-- vérifier le nom du type -->
+                <xsl:call-template name="fragment-content">
+                    <xsl:with-param name="display-context" select="$display-context"/>                    
                 </xsl:call-template>
             </xsl:when>
             <xsl:when test="$apptype='reformulation'">
