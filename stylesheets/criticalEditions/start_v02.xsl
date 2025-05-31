@@ -11,7 +11,8 @@
     <!-- Updated and reworked for DHARMA by Axelle Janiak, starting 2021–2023, then april-mai 2025 -->
     
     <!-- Still to be done -->
-    <!-- récurssion pour les lacunaStart et les lacunaEnd ; actullement le display utilise un jquery assez sale-->
+    <!-- récurssion pour les lacunaStart et les lacunaEnd ; actullement le display utilise un jquery assez sale; même solution pour les span omissionStart et omissionEnd; et les witStart et witEnd-->
+    <!-- en relation avec le précédent point, le display concernant le lien avec la localisation dans le fichier ne fonctionne pas bien; le contenu de la parenthèse est souvent vide ou partielle => j'ai écrit les lignes avec l'existence de @xml:id en tête, or tous les fichiers n'en ont pas encore. Donc résultat aléatoire et surtout à vérifier  -->
     <!-- j'ai ajouté les WitStart et WitEnd, mais aucun fichier pour tester; j'ai garder la même solution avec jquery, car ajouter à la dernière minute. Serait donc à reprendre -->
     <!-- le for-each-group à finir dans tei:ab tpl pour faire des groupes intermédiaires pour les DiplEd et avoir un affichage des notes plus proches de leur bloc d'origine – actuellement en commentaire -->
     <!-- ajouter choice et subst dans l'apparat critique pour les DiplEd -->
@@ -21,6 +22,10 @@
     <!-- Access token n'a pas été résolu pour générer la version, dans l'entête -->
     <!-- Il faudrait déclarer dans une scss une réecriture des couleurs par défaut de bootstrap pour que l'ensemble de la chartre graphique de DHARMA soit respectée -->
     <!-- Sur la plupart des fichiers, la transformation est assez efficace. En revanche, sur le Candrakirana, c'est assez long. Si tu as le temps, il faudrait voir pour rendre les path des apparats plus efficaces.-->
+    <!-- embbeded display par encore pleinement satisfaisant: souci de répétition des rdg de l'app embedding, dans les app emdded; avec len[@type='note'] ne pose pas de problème, mais c'est le cas avec reformulated_elsewhere; omitted_elsewhere; lost_elsewhere; avec parfois des souci de punctuation . En déclarant un apptype et appchild, ça devrait être générable-->
+    <!-- le contenu pour "view source"; n'a pas été affiné; seulement découpage en lignes, numérotation et identification des processing-instructions -->
+    <!-- citedRange[@type='mixed'] n'est pas encore parsé; il s'affiche seulement -->
+    <!-- pour le display de la biblio; auteur et editeur ne sont pas traités dans la même liste + problème de doublons de point lorsqu'il y au une abréviation-->
         
 
     <xsl:character-map name="htmlDoc">
@@ -666,9 +671,7 @@
             <xsl:call-template name="dharma-app">
                 <xsl:with-param name="apptype">
                     <xsl:choose>
-                        <xsl:when test="self::tei:app">
-                            <xsl:text>app</xsl:text>
-                        </xsl:when>
+                        <xsl:when test="self::tei:app[tei:lem[@type='reformulated_elsewhere']]">refomulated_elsewhere</xsl:when>
                         <xsl:when test="self::tei:note[ not(ancestor::tei:div[@type='translation'])][last()]">
                             <xsl:text>note</xsl:text>
                         </xsl:when>
@@ -690,7 +693,9 @@
                         <xsl:when test="self::tei:l[@real][not(child::tei:note=last())]">
                             <xsl:text>unmetrical</xsl:text>
                         </xsl:when>
-                        <xsl:when test="descendant::tei:app"> embeddedapp</xsl:when>
+                        <xsl:when test="self::tei:app[tei:lem[not(@type='reformulated_elsewhere')]]">
+                            <xsl:text>app</xsl:text>
+                        </xsl:when>
                     </xsl:choose>
                 </xsl:with-param>
                 <xsl:with-param name="display-context" select="'modalapp'"/>
@@ -707,6 +712,7 @@
     <xsl:template name="rdg-content">
         <xsl:param name="display-context"/>
         <xsl:param name="apptype"/>
+        <xsl:param name="childtype"/>
         <xsl:element name="span">
             <xsl:choose>
             <xsl:when test="$display-context='modalapp'">
@@ -741,10 +747,8 @@
                         <xsl:when test="child::tei:witStart or child::tei:lacunaEnd or child::tei:span[@type='omissionEnd']">...]</xsl:when>
                     </xsl:choose>
                     <!-- print variant -->
-                            <xsl:apply-templates/>
-                    <xsl:choose>
-                        <xsl:when test="child::tei:witEnd or child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:when>
-                    </xsl:choose>
+                           <xsl:apply-templates/>        
+                        <xsl:if test="child::tei:witEnd or child::tei:lacunaStart or child::tei:span[@type='omissionStart']">[...</xsl:if>
                 </xsl:element>
             <xsl:text> </xsl:text>
         <xsl:if test="@*">
@@ -790,9 +794,6 @@
                     </xsl:when>
                 </xsl:choose>
             </xsl:if>
-            <!-- trick pour éviter de gérer une récurssion
-            dans les contexte d'embedded app, pour ajjouter une virgule the le rdg précédent et non sur le child copier-->
-            
         </xsl:if>
         <xsl:if test="@type='paradosis'">
             <xsl:text> • </xsl:text>
@@ -819,7 +820,7 @@
                             <xsl:variable name="corresp-id" select="@corresp"/>
                             <xsl:text> (</xsl:text>
                             <xsl:value-of select="@cause"/>
-                            <xsl:if test="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/@xml:id"><xsl:text>, see </xsl:text>ading
+                            <xsl:if test="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/@xml:id"><xsl:text>, see </xsl:text>
                             <a href="#{//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/@xml:id}">
                                 <xsl:text>st. </xsl:text>
                                 <xsl:value-of select="//tei:lem[@type='transposition'][@xml:id = substring-after($corresp-id, '#')]/child::tei:lg/@n"/>
@@ -834,9 +835,6 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:if>
-            <xsl:if test="$display-context='printedapp' and $apptype='embeddedapp'">
-                <xsl:text>, </xsl:text>
-            </xsl:if>
         </xsl:element>
     </xsl:template>
 
@@ -3441,10 +3439,7 @@
                             <xsl:call-template name="dharma-app">
                                 <xsl:with-param name="apptype">
                                     <xsl:choose>
-                                        <xsl:when test="self::tei:app">
-                                            <xsl:text>app</xsl:text>
-                                        </xsl:when>
-                                        <!-- reprendre le path? -->
+                                        <xsl:when test="self::tei:app/tei:lem[@type='reformulated_elsewhere']">refomulated_elsewhere</xsl:when>
                                         <xsl:when test="self::tei:note[last()][not(ancestor::tei:div[@type='translation'])]">
                                             <xsl:text>last-note</xsl:text>
                                         </xsl:when>
@@ -3464,8 +3459,8 @@
                                             <xsl:text>trans</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::tei:l[@real]">unmetrical</xsl:when>
-                                        <xsl:when test="self::tei:app[ancestor::tei:*[local-name()=('app')]]">
-                                            <xsl:text>embeddedapp</xsl:text>
+                                        <xsl:when test="self::tei:app">
+                                            <xsl:text>app</xsl:text>
                                         </xsl:when>
                                         <xsl:when test="self::choice">choice</xsl:when>
                                         <xsl:when test="self::subst">subst</xsl:when>
@@ -3497,17 +3492,10 @@
                       <xsl:call-template name="dharma-app">
                           <xsl:with-param name="apptype">
                               <xsl:choose>
-                                  <xsl:when test="self::tei:app[ancestor::tei:*[local-name()=('app')]]">
-                                      <xsl:text>embeddedapp</xsl:text>
-                                      
+                                  <xsl:when test="self::tei:app/tei:lem[@type='reformulated_elsewhere']">
+                                      <xsl:text>reformualted_elsewhere</xsl:text>
                                   </xsl:when>
-                                  <xsl:when test="self::tei:app[descendant::tei:app]">
-                                      <xsl:text>embeddingdapp</xsl:text>
-                                  </xsl:when>
-                                  <xsl:when test="self::tei:app">
-                                      <xsl:text>app</xsl:text>
-                                  </xsl:when>
-                                  <!-- reprendre le path? -->
+                                 
                                   <xsl:when test="self::tei:note[last()][not(ancestor::tei:div[@type='translation'])]">
                                       <xsl:text>last-note</xsl:text>
                                   </xsl:when>
@@ -3527,6 +3515,9 @@
                                       <xsl:text>trans</xsl:text>
                                   </xsl:when>
                                   <xsl:when test="self::tei:l[@real]">unmetrical</xsl:when>
+                                  <xsl:when test="self::tei:app">
+                                      <xsl:text>app</xsl:text>
+                                  </xsl:when>
                               </xsl:choose>
                           </xsl:with-param>
                           <xsl:with-param name="display-context" select="'printedapp'"/>
@@ -3726,14 +3717,11 @@
         <xsl:param name="display-context"/>
         <xsl:variable name="path">
            <xsl:choose>
-                <xsl:when test="$childtype='origreg' or $childtype='siccorr'">
+               <xsl:when test="$childtype='origreg' or $childtype='siccorr' or $childtype='embeddedapp'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:choice/child::*"/>
                 </xsl:when>
                 <xsl:when test="$childtype='subst'">
                     <xsl:copy-of select="child::tei:*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:subst/child::*"/>
-                </xsl:when>
-               <xsl:when test="$childtype='app'">
-                    <xsl:copy-of select="child::*[local-name()=('orig' , 'sic' , 'add' , 'lem')]/tei:app/child::*"/>
                 </xsl:when>
                <xsl:when test="$childtype='embeddedapp'">
                    <xsl:copy-of select="child::*[local-name()=('lem')]/tei:app/child::*"/>
@@ -3949,6 +3937,7 @@
                     <xsl:call-template name="rdg-content">
                         <xsl:with-param name="display-context" select="$display-context"/>
                         <xsl:with-param name="apptype" select="$apptype"/>
+                        <xsl:with-param name="childtype" select="$child"/>
                     </xsl:call-template>
                 </xsl:for-each>
                
@@ -4019,6 +4008,7 @@
                     <xsl:with-param name="display-context" select="$display-context"/>
                 </xsl:call-template>
             </xsl:when>
+            
         </xsl:choose>
     </xsl:template>
     
