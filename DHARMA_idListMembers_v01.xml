@@ -50,6 +50,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#argr" when="2025-06-02">Added Kelsey Martini's ID.</change>
 			<change who="#argr" when="2025-05-26">Added Helen Creese's ID.</change>
 			<change who="#argr" when="2025-04-07">Added Diwakar Acharya's ID.</change>
 			<change who="#argr" when="2025-01-10">Added Dewa Ayu Carma Citrawati's, Ida Bagus Komang Sudarma's, Putu Eka Guna Yasa's and I Gde Agus Darma Putra's IDs.</change>
@@ -233,7 +234,8 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Kelsey</forename>
 						<surname>Martini</surname>
 					</persName>
-					<affiliation></affiliation>
+					<affiliation>Ludwig-Maximalians-Universität, Munich</affiliation>
+					<idno type="ORCID">https://orcid.org/0000-0001-6636-9706</idno>
 				</person>
 				<person xml:id="fufa">
 					<persName>
@@ -581,7 +583,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="VIAF">http://viaf.org/viaf/68558778</idno>
 					<idno type="IdRef">https://www.idref.fr/183697367</idno>
 				</person>
-				<!-- nothing?  -->
+				<!-- nothing?  -->				
 				<person xml:id="nimi">
 					<persName>
 						<forename>Nina</forename>
