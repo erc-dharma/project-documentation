@@ -1301,6 +1301,27 @@
         </item>
         <item>
           <measure unit="syllable">11</measure>
+          <seg type="xml">++++-++--+=</seg>
+          <seg type="prosody">––––⏑––⏑⏑–⏓</seg>
+          <seg type="gana">ma-ra-bha-la-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">455</citedRange>
+              <citedRange unit="item">XI.21</citedRange>
+	      <!-- HW 46 !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">11</measure>
           <name xml:lang="san-Latn">svāgatā</name>
           <seg type="xml">+-+---+--+=</seg>
           <seg type="prosody">–⏑–⏑⏑⏑–⏑⏑–⏓</seg>
@@ -1488,6 +1509,31 @@
             </bibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">470</citedRange>
+              <citedRange unit="item">(11–12).2</citedRange>
+	      <!-- Zoetmulder gives aupacchandasika as an alternative name !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">11/13</measure>
+          <seg type="xml">+------+--=/--+-+---+-+-=</seg>
+          <seg type="prosody">–⏑⏑⏑⏑⏑⏑–⏑⏑⏓/⏑⏑–⏑–⏑⏑⏑–⏑–⏑⏓</seg>
+          <seg type="gana">ra-na-ja-la-ga/sa-ja-sa-ja-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">471</citedRange>
+              <citedRange unit="item">(11–13).1</citedRange>
+	      <!-- Zoetmulder cites HW 8 !-->
             </bibl>
           </listBibl>
         </item>
@@ -3101,7 +3147,6 @@
         <item>
           <measure unit="syllable">22</measure>
           <label type="generic" xml:lang="san-Latn">ākr̥ti</label>
-          <name xml:lang="kaw-Latn">unknown</name>
           <seg type="xml">----+-+---+------+-+-=</seg>
           <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑–⏑⏓</seg>
           <seg type="gana">na-ja-bha-ja-na-sa-ja-ga</seg>
