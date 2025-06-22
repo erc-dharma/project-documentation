@@ -1394,6 +1394,27 @@
         </item>
         <item>
           <measure unit="syllable">11</measure>
+          <seg type="xml">++++--+--+=</seg>
+          <seg type="prosody">––––⏑⏑–⏑⏑–⏓</seg>
+          <seg type="gana">ma-bha-bha-ga-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">454</citedRange>
+              <citedRange unit="item">XI.19</citedRange>
+	      <!-- meter of Krishnayana 56 !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">11</measure>
           <name xml:lang="san-Latn">vr̥ntā</name>
           <name xml:lang="kaw-Latn">madhugulāmr̥tta</name>
           <!-- CK -->
@@ -1588,6 +1609,27 @@
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.18</citedRange>
 	      <!-- Source: Vr̥t 62 (bhujanggaprayāta) !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">12</measure>
+          <seg type="xml">+------+--+=</seg>
+          <seg type="prosody">–⏑⏑⏑⏑⏑⏑–⏑⏑–⏓</seg>
+          <seg type="gana">ra-na-ja-ja</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">456</citedRange>
+              <citedRange unit="item">XII.19</citedRange>
+	      <!-- meter of Krsnayana 36 !-->
             </bibl>
           </listBibl>
         </item>
@@ -2020,18 +2062,16 @@
         </item>
         <item>
           <measure unit="syllable">13</measure>
-          <name xml:lang="san-Latn">rucirā</name>
-          <name xml:lang="kaw-Latn">rucira</name>
-          <name xml:lang="kaw-Latn">śasadana</name> <!-- CK -->
-          <seg type="xml">-+-+||----+-+-=</seg>
-          <seg type="prosody">⏑–⏑–||⏑⏑⏑⏑–⏑–⏑⏓</seg>
-          <seg type="gana">ja-bha-sa-ja-ga</seg>
+          <name xml:lang="san-Latn">praharṣiṇī</name>
+          <seg type="xml">+++||----+-+-+=</seg>
+          <seg type="prosody">–––||⏑⏑⏑⏑–⏑–⏑–⏓</seg>
+          <seg type="gana">ma-na-ja-ra-ga</seg>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
               <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
               <citedRange unit="page">6</citedRange>
-              <citedRange unit="item">I.A.13.6</citedRange>
+              <citedRange unit="item">I.A.13.3</citedRange>
             </bibl>
             <bibl>
               <ptr target="bib:Velankar1949_01"/>
@@ -2040,8 +2080,29 @@
               <ptr target="bib:Zoetmulder1974_01"/>
               <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
               <citedRange unit="page">457</citedRange>
-              <citedRange unit="item">XIII.5</citedRange>
-	      <!-- Sources: Vr̥t 68 (rucirā) !-->
+              <citedRange unit="item">XIII.12</citedRange>
+	      <!-- Sources: Vr̥t 67 (praharṣiṇī) !-->
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">13</measure>
+          <seg type="xml">++++-----+++=</seg>
+          <seg type="prosody">––––⏑⏑⏑⏑⏑–––⏓</seg>
+          <seg type="gana">ma-bha-na-ma-ga</seg>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
+              <citedRange unit="page">457</citedRange>
+              <citedRange unit="item">XIII.13</citedRange>
+	      <!-- meter of Krsnayana 41 !-->
             </bibl>
           </listBibl>
         </item>
