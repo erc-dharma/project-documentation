@@ -356,11 +356,11 @@
             </bibl>
           </listBibl>
         </item>
-        <!--daba 20240415: this needs correction. 
+        <!--daba 20240415: this needs correction.
 	    A: 8/8 and the slash sign in the formulae means that the pattern for odd lines is that before the slash, and the pattern for even lines is that after the slash. I gather that this is not the case here. We cannot show "alternative" prosodic patterns in this way; the only way to do that would be to use ––⏑⏓⏑⏑⏑⏓, i.e. say that the fourth syllable may be either short or long. Or encode these as two separate metres, e.g. śāpāntika1 and śāpāntika2 or whatever.
 	    B: the XML and the prosodic symbol notation for the bit after the slash does not match. Check which is right and correct the other.
 -->
-	<!-- Andrew 20250512: I have corrected the earlier entry, so that we have 2 śāpāntikas, both of which 
+	<!-- Andrew 20250512: I have corrected the earlier entry, so that we have 2 śāpāntikas, both of which
 	     are anuṣṭubh samavr̥ttas. !-->
         <item>
           <measure unit="syllable">8</measure>
@@ -2062,31 +2062,6 @@
         </item>
         <item>
           <measure unit="syllable">13</measure>
-          <name xml:lang="san-Latn">praharṣiṇī</name>
-          <seg type="xml">+++||----+-+-+=</seg>
-          <seg type="prosody">–––||⏑⏑⏑⏑–⏑–⏑–⏓</seg>
-          <seg type="gana">ma-na-ja-ra-ga</seg>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
-              <citedRange unit="page">6</citedRange>
-              <citedRange unit="item">I.A.13.3</citedRange>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
-              <citedRange unit="page">457</citedRange>
-              <citedRange unit="item">XIII.12</citedRange>
-	      <!-- Sources: Vr̥t 67 (praharṣiṇī) !-->
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">13</measure>
           <seg type="xml">++++-----+++=</seg>
           <seg type="prosody">––––⏑⏑⏑⏑⏑–––⏓</seg>
           <seg type="gana">ma-bha-na-ma-ga</seg>
@@ -3204,7 +3179,7 @@
         </item>
         <!-- vikr̥ti class -->
 	<!--the meter with the pattern ++-\-\-\-\-\-+-+-\-\-+-\-\-\-\-\-=, given the
-	     name "vikr̥ti", is actually not recorded anywhere. (andrew, 20250512) -->	
+	     name "vikr̥ti", is actually not recorded anywhere. (andrew, 20250512) -->
         <item>
           <measure unit="syllable">22</measure>
           <label type="generic" xml:lang="san-Latn">ākr̥ti</label>
@@ -4236,7 +4211,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
           </listBibl>
         </item>
-      
+
         <!--<item>
 	<measure unit="syllable">10</measure>
 	<name xml:lang="">tvaritagati</name>
