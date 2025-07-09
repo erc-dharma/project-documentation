@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-04-16T09:11:51Z. . 
+Schema generated from ODD source 2025-07-08T08:53:55Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -2516,6 +2516,23 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   <value>zlm-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay (individual language)</a:documentation>
                </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                       name="rend"
+                       a:defaultValue="italics">
+               <a:documentation>(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>italics</value>
+                        <a:documentation>display in italics</a:documentation>
+                        <value>roman</value>
+                        <a:documentation>display in a Roman typeface</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
             </attribute>
          </optional>
          <empty/>
