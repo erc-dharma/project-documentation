@@ -714,8 +714,8 @@
         <item>
           <measure unit="syllable">8</measure>
           <name xml:lang="san-Latn">ma-vipulā</name>
-          <seg type="xml">=+-++||++=</seg>
-          <seg type="prosody">⏓–⏑––||––⏓</seg>
+          <seg type="xml">=+-+++++=</seg>
+          <seg type="prosody">⏓–⏑–––––⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
           <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
           <listBibl>
