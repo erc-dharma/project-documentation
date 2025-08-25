@@ -1949,7 +1949,11 @@
         <xsl:if test="not(parent::tei:quote[@type='base-text'])">
             <h6 class="ed-heading">
                        <xsl:choose><xsl:when test="@n">
-                            <xsl:number format="1" value="@n"/>.
+                            <xsl:choose><xsl:when test="string(number(myNode)) = 'NaN'">
+                                .</xsl:when>
+                            <xsl:otherwise>
+                                <xsl:number format="1" value="@n"/>.
+                            </xsl:otherwise></xsl:choose>
                         </xsl:when>
                        <xsl:when test="@type='interpolation'">
                            <xsl:if test="preceding::tei:lg[1][@n]"><span class="interpolation" data-tip="Interpolation"><xsl:value-of select="preceding::tei:lg[1]/@n"/>*</span></xsl:if>
