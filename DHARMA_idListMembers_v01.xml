@@ -188,7 +188,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/26501648</idno>
-					<idno type="IdRef">http://www.idref.fr/138003556/id</idno>
+					<idno type="IdRef">http://www.idref.fr/138003556</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-5482-7754</idno>
 				</person>
 				<person xml:id="anac">
@@ -344,7 +344,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/97751164</idno>
-					<idno type="IdRef">http://www.idref.fr/092886981/id</idno>
+					<idno type="IdRef">http://www.idref.fr/092886981</idno>
 				</person>
 				<person xml:id="dapu">
 					<persName>
@@ -583,7 +583,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="VIAF">http://viaf.org/viaf/68558778</idno>
 					<idno type="IdRef">https://www.idref.fr/183697367</idno>
 				</person>
-				<!-- nothing?  -->				
+				<!-- nothing?  -->
 				<person xml:id="nimi">
 					<persName>
 						<forename>Nina</forename>
