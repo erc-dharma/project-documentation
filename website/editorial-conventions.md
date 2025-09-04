@@ -48,13 +48,16 @@ Everything else in this file is kept as is (even HTML tags, if any).
 ###### Verse line
 
 ```
-<l n="a">kāritam idan nr̥patinā</l>
+<lg><l n="a">kāritam idan nr̥patinā</l></lg>
 ```
 
 ###### Word divided across verse lines (enjambement)
 
 ```
-<l n="a" enjamb="yes">tat-sūnus sakalārāti</l><l n="b">-mada-ccheda-karāyudhaḥ</l>
+<lg>
+	<l n="a" enjamb="yes">tat-sūnus sakalārāti</l>
+	<l n="b">-mada-ccheda-karāyudhaḥ</l>
+</lg>
 ```
 
 The hyphen at the beginning of the second line is editorial compound segmentation; that at the end of the first line is the display for enjambement.
@@ -65,7 +68,9 @@ The hyphen at the beginning of the second line is editorial compound segmentatio
 ###### Beginning of inscribed zone
 
 ```
-<milestone type="pagelike" unit="zone" n="A"/>svasti śrī
+<ab>
+	<milestone type="pagelike" unit="zone" n="A"/>svasti śrī
+</ab>
 ```
 
 The auto-generated label is based on the `@unit` and `@n` of the `<milestone>` element.
@@ -74,7 +79,11 @@ The auto-generated label is based on the `@unit` and `@n` of the `<milestone>` e
 ###### Beginning of surface or zone, with editorial label
 
 ```
-<milestone type="pagelike" unit="item" n="N"/><label xml:lang="eng">Northern Doorjamb</label>svasti śrī
+<p>
+	<milestone type="pagelike" unit="item" n="N"/>
+	<label xml:lang="eng">Northern Doorjamb</label>
+	svasti śrī
+</p>
 ```
 
 Editorial labels may be added when the auto-generated label is insufficient.
@@ -83,7 +92,7 @@ Editorial labels may be added when the auto-generated label is insufficient.
 ###### Beginning of page in copperplate inscription
 
 ```
-<pb n="1r"/>svasti śrī
+<ab><pb n="1r"/>svasti śrī</ab>
 ```
 
 Page numbers always consist of an Arabic number for the plate and r(ecto) and v(erso) for its two faces.
@@ -92,7 +101,10 @@ Page numbers always consist of an Arabic number for the plate and r(ecto) and v(
 ###### Beginning of line
 
 ```
-<lb n="1"/>svasti śrī <lb n="2"/>kōpparakēcari
+<ab>
+	<lb n="1"/>svasti śrī
+	<lb n="2"/>kōpparakēcari
+</ab>
 ```
 
 In physical view, line beginnings are shown in new lines.
@@ -101,13 +113,20 @@ In physical view, line beginnings are shown in new lines.
 ###### Beginning of non-hierarchical division (fragment, masonry block, etc.)
 
 ```
-<lb n="1"/><milestone unit="block" n="a"/>svasti śrī <milestone unit="block" n="b"/>kōpparakēcari
+<ab>
+	<lb n="1"/>
+	<milestone unit="block" n="a"/>svasti śrī
+	<milestone unit="block" n="b"/>kōpparakēcari
+</ab>
 ```
 
 ###### Word divided across break
 
 ```
-<lb n="1"/>…dhar<lb n="2" break="no"/>ma…
+<p>
+	<lb n="1"/>…dhar
+	<lb n="2" break="no"/>ma…
+</p>
 ```
 
 Breaks other than line beginnings take the same attribute when they fall inside a word. In physical view, with line beginnings shown in new lines, a hyphen is added at the end of the former line. If the break is between elements of a compound word, the editorial hyphen for compound analysis is at the beginning of the latter line.
