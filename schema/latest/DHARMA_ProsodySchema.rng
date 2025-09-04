@@ -5,9 +5,9 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-07-08T08:54:18Z. . 
-TEI Edition: P5 Version 4.9.0. Last updated on 24th January 2025, revision f73186978 
-TEI Edition Location: https://www.tei-c.org/Vault/P5/4.9.0/ 
+Schema generated from ODD source 2025-09-04T03:04:52Z. . 
+TEI Edition: P5 Version 4.10.1. Last updated on 28th August 2025, revision 3cd82e7a3 
+TEI Edition Location: https://www.tei-c.org/Vault/P5/4.10.1/ 
   
 --><!---->
    <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -2702,7 +2702,7 @@ Measures]</a:documentation>
          </pattern>
          <optional>
             <attribute name="unit">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the unit of information conveyed by the element, e.g. columns, pages, volume, entry.</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the unit of information conveyed by the element.</a:documentation>
                <choice>
                   <value>page</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
@@ -2771,6 +2771,12 @@ Measures]</a:documentation>
                                     element of the bibl</sch:report>
             </sch:rule>
          </pattern>
+         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      is-a="declarable">
+            <sch:param name="tde" value="tei:bibl"/>
+         </sch:pattern>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.canonical.attributes"/>
          <ref name="tei_att.cmc.attributes"/>
@@ -2819,6 +2825,12 @@ Measures]</a:documentation>
                </group>
             </oneOrMore>
          </group>
+         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      is-a="declarable">
+            <sch:param name="tde" value="tei:listBibl"/>
+         </sch:pattern>
          <ref name="tei_att.cmc.attributes"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
@@ -2984,6 +2996,13 @@ Measures]</a:documentation>
                <ref name="tei_model.pLike"/>
             </choice>
          </oneOrMore>
+         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      is-a="declarable">
+            <sch:param name="tde" value="tei:availability"/>
+         </sch:pattern>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declarable.attributes"/>
          <optional>
@@ -3027,6 +3046,13 @@ Measures]</a:documentation>
                </choice>
             </oneOrMore>
          </choice>
+         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      is-a="declarable">
+            <sch:param name="tde" value="tei:sourceDesc"/>
+         </sch:pattern>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
@@ -3051,6 +3077,13 @@ Measures]</a:documentation>
          <oneOrMore>
             <ref name="tei_model.pLike"/>
          </oneOrMore>
+         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      is-a="declarable">
+            <sch:param name="tde" value="tei:projectDesc"/>
+         </sch:pattern>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
@@ -3091,6 +3124,13 @@ Measures]</a:documentation>
                <ref name="tei_language"/>
             </oneOrMore>
          </choice>
+         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      is-a="declarable">
+            <sch:param name="tde" value="tei:langUsage"/>
+         </sch:pattern>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
@@ -3653,7 +3693,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
    <define name="tei_att.global.linking.attribute.next">
       <optional>
          <attribute name="next">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to the next element of a virtual aggregate of which the current element is part.</a:documentation>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(next) points to the next element of a virtual aggregate of which the current element is part.</a:documentation>
             <data type="anyURI">
                <param name="pattern">\S+</param>
             </data>
