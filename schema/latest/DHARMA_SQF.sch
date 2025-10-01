@@ -157,7 +157,7 @@
         <!-- Check if the ST exists in Zotero -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
             <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies document(concat('http://localhost:8023/cmd/count-biblio-short-title?short-title=', encode-for-uri($biblEntry)))/count > 0"/>
+            <sch:let name="test-presence" value="every $biblEntry in $biblEntries satisfies document(concat('https://dharmalekha.info/cmd/count-biblio-short-title?short-title=', encode-for-uri($biblEntry)))/count > 0"/>
             <sch:report test="not($test-presence)">The Short Title doesn't seem to exist in Zotero</sch:report>
         </sch:rule>
     </sch:pattern>
@@ -166,7 +166,7 @@
         <!-- Make sure the ST matches one item and not several -->
         <sch:rule context="t:*/@source[starts-with(., 'bib:')] |t:*/@target[starts-with(., 'bib:')]">
             <sch:let name="biblEntries" value="for $w in tokenize(., '\s+') return substring-after($w,'bib:')"/>
-            <sch:let name="test-count" value="every $biblEntry in $biblEntries satisfies document(concat('http://localhost:8023/cmd/count-biblio-short-title?short-title=', encode-for-uri($biblEntry)))/count = 1"/>
+            <sch:let name="test-count" value="every $biblEntry in $biblEntries satisfies document(concat('https://dharmalekha.info/cmd/count-biblio-short-title?short-title=', encode-for-uri($biblEntry)))/count = 1"/>
             <sch:report test="not($test-count)">Several bibliographic entries bear the same short title</sch:report>
         </sch:rule>
     </sch:pattern>
