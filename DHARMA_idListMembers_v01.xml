@@ -496,7 +496,16 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
 					<idno type="IdHAL">axelle-janiak</idno>
 				</person>
-				<person xml:id="cski">
+			    <person xml:id="paka">
+			        <persName>
+			            <forename>Padma</forename>
+			            <surname>Kaimal</surname>
+			        </persName>
+			        <affiliation></affiliation>
+			        <idno type="VIAF"></idno>
+			        <idno type="IdRef"></idno>
+			    </person>
+			    <person xml:id="cski">
 					<persName>
 						<forename>Csaba</forename>
 						<surname>Kiss</surname>
