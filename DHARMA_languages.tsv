@@ -1,32 +1,32 @@
-Id	Print_Name	Inverted_Name	source
-ara	Arabic	Arabic	
-ban	Modern Balinese	Balinese, Modern	
-bya	Batak	Batak	
-cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)	
-cjm	Modern Cham (of Phanrang)	Cham, Modern (of Phanrang)	
-deu	German	German	false
-eng	English	English	false
-fra	French	French	false
-ind	Indonesian	Indonesian	
-jav	Modern Javanese	Javanese, Modern	
-jpn	Japanese	Japanese	
-kan	Kannada	Kannada	
-kaw	Old Javanese	Javanese, Old	
-khm	Modern Khmer	Khmer, Modern	
-mya	Modern Burmese	Burmese, Modern	
-nld	Dutch	Dutch	false
-obr	Old Burmese	Burmese, Old	
-ocm	Old Cham	Cham, Old	
-okz	Old Khmer	Khmer, Old	
-oldbalinese	Old Balinese	Balinese, Old	
-omx	Old Mon	Mon, Old	
-omy	Old Malay	Malay, Old	
-ori	Oriya	Oriya	
-osn	Old Sundanese	Sundanese, Old	
-pli	Pali	Pali	
-pra	Middle Indo-Aryan	Indo-Aryan, Middle	
-pyx	Pyu	Pyu	
-san	Sanskrit	Sanskrit	
-und	Undetermined	Undetermined	
-xhm	Middle Khmer	Khmer, Middle	
-zlm	Modern Malay (Bahasa Malaysia)	Malay, Modern (Bahasa Malaysia)	
+Id	Print_Name	Inverted_Name	type
+ara	Arabic	Arabic	source
+ban	Modern Balinese	Balinese, Modern	source
+bya	Batak	Batak	source
+cja	Modern Cham (of Cambodia)	Cham, Modern (of Cambodia)	source
+cjm	Modern Cham (of Phanrang)	Cham, Modern (of Phanrang)	source
+deu	German	German	study
+eng	English	English	study
+fra	French	French	study
+ind	Indonesian	Indonesian	source
+jav	Modern Javanese	Javanese, Modern	source
+jpn	Japanese	Japanese	source
+kan	Kannada	Kannada	source
+kaw	Old Javanese	Javanese, Old	source
+khm	Modern Khmer	Khmer, Modern	source
+mya	Modern Burmese	Burmese, Modern	source
+nld	Dutch	Dutch	study
+obr	Old Burmese	Burmese, Old	source
+ocm	Old Cham	Cham, Old	source
+okz	Old Khmer	Khmer, Old	source
+oldbalinese	Old Balinese	Balinese, Old	source
+omx	Old Mon	Mon, Old	source
+omy	Old Malay	Malay, Old	source
+ori	Oriya	Oriya	source
+osn	Old Sundanese	Sundanese, Old	source
+pli	Pali	Pali	source
+pra	Middle Indo-Aryan	Indo-Aryan, Middle	source
+pyx	Pyu	Pyu	source
+san	Sanskrit	Sanskrit	source
+und	Undetermined	Undetermined	source
+xhm	Middle Khmer	Khmer, Middle	source
+zlm	Modern Malay (Bahasa Malaysia)	Malay, Modern (Bahasa Malaysia)	source

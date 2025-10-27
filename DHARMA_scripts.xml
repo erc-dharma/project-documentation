@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<script>
+  <id>any</id>
+  <name>Any</name>
+  <inverted_name>Any</inverted_name>
+  <script>
+    <id>source</id>
+    <name>Source Script</name>
+    <inverted_name>Source Script</inverted_name>
+    <description>Represents any source script.</description>
+    <script>
+      <id>arabic</id>
+      <id>57471</id>
+      <name>Arabic</name>
+      <inverted_name>Arabic</inverted_name>
+      <script>
+        <id>jawi</id>
+        <id>70417</id>
+        <name>Jawi</name>
+        <inverted_name>Jawi</inverted_name>
+      </script>
+    </script>
+    <script>
+      <id>brāhmī</id>
+      <id>83217</id>
+      <name>Brāhmī</name>
+      <inverted_name>Brāhmī</inverted_name>
+      <script>
+        <id>brāhmī_northern</id>
+        <id>83223</id>
+        <name>Northern Brāhmī</name>
+        <inverted_name>Brāhmī, Northern</inverted_name>
+        <script>
+          <id>bhaikṣukī</id>
+          <id>84158</id>
+          <name>Bhaikṣukī</name>
+          <inverted_name>Bhaikṣukī</inverted_name>
+        </script>
+        <script>
+          <id>gauḍī</id>
+          <id>83229</id>
+          <name>Gauḍī</name>
+          <inverted_name>Gauḍī</inverted_name>
+        </script>
+        <script>
+          <id>nāgarī</id>
+          <id>38771</id>
+          <name>Nāgarī</name>
+          <inverted_name>Nāgarī</inverted_name>
+        </script>
+        <script>
+          <id>siddhamātr̥kā</id>
+          <id>38774</id>
+          <name>Siddhamātr̥kā</name>
+          <inverted_name>Siddhamātr̥kā</inverted_name>
+        </script>
+      </script>
+      <script>
+        <id>brāhmī_southeast_asian</id>
+        <id>83227</id>
+        <name>Southeast Asian Brāhmī</name>
+        <inverted_name>Brāhmī, Southeast Asian</inverted_name>
+        <script>
+          <id>balinese</id>
+          <id>83239</id>
+          <name>Balinese</name>
+          <inverted_name>Balinese</inverted_name>
+        </script>
+        <script>
+          <id>batak</id>
+          <id>38767</id>
+          <name>Batak</name>
+          <inverted_name>Batak</inverted_name>
+        </script>
+        <script>
+          <id>cam</id>
+          <id>83233</id>
+          <name>Cam</name>
+          <inverted_name>Cam</inverted_name>
+        </script>
+        <script>
+          <id>kawi</id>
+          <id>38769</id>
+          <name>Kawi</name>
+          <inverted_name>Kawi</inverted_name>
+        </script>
+        <script>
+          <id>khmer</id>
+          <id>83231</id>
+          <name>Khmer</name>
+          <inverted_name>Khmer</inverted_name>
+        </script>
+        <script>
+          <id>mon-burmese</id>
+          <id>83235</id>
+          <name>Mon-Burmese</name>
+          <inverted_name>Mon-Burmese</inverted_name>
+        </script>
+        <script>
+          <id>javanese_old_west</id>
+          <id>83241</id>
+          <name>Old West Javanese</name>
+          <inverted_name>Javanese, Old West</inverted_name>
+        </script>
+        <script>
+          <id>pyu</id>
+          <id>83237</id>
+          <name>Pyu</name>
+          <inverted_name>Pyu</inverted_name>
+        </script>
+        <script>
+          <id>sundanese</id>
+          <id>57470</id>
+          <name>Sundanese</name>
+          <inverted_name>Sundanese</inverted_name>
+        </script>
+      </script>
+      <script>
+        <id>brāhmī_southern</id>
+        <id>83225</id>
+        <name>Southern Brāhmī</name>
+        <inverted_name>Brāhmī, Southern</inverted_name>
+        <script>
+          <id>grantha</id>
+          <id>38768</id>
+          <name>Grantha</name>
+          <inverted_name>Grantha</inverted_name>
+        </script>
+        <script>
+          <id>kannada</id>
+          <id>82857</id>
+          <name>Kannada</name>
+          <inverted_name>Kannada</inverted_name>
+        </script>
+        <script>
+          <id>tamil</id>
+          <id>38776</id>
+          <name>Tamil</name>
+          <inverted_name>Tamil</inverted_name>
+        </script>
+        <script>
+          <id>telugu</id>
+          <id>81340</id>
+          <name>Telugu</name>
+          <inverted_name>Telugu</inverted_name>
+        </script>
+        <script>
+          <id>vaṭṭeḻuttu</id>
+          <id>70420</id>
+          <name>Vaṭṭeḻuttu</name>
+          <inverted_name>Vaṭṭeḻuttu</inverted_name>
+        </script>
+      </script>
+    </script>
+    <script>
+      <id>chinese</id>
+      <id>83221</id>
+      <name>Chinese</name>
+      <inverted_name>Chinese</inverted_name>
+    </script>
+    <script>
+      <id>kharoṣṭhī</id>
+      <id>83219</id>
+      <name>Kharoṣṭhī</name>
+      <inverted_name>Kharoṣṭhī</inverted_name>
+    </script>
+  </script>
+  <script>
+    <id>study</id>
+    <name>Study Script</name>
+    <inverted_name>Study Script</inverted_name>
+    <description>Represents any study script.</description>
+    <script>
+      <id>latin</id>
+      <name>Latin</name>
+      <inverted_name>Latin</inverted_name>
+    </script>
+  </script>
+</script>

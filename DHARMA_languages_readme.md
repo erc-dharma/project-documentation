@@ -18,18 +18,18 @@ Columns are:
 * `Inverted_Name`. Like `Print_Name`, but used when sorting names, in
    particular. Example: "Cham, Old". Note the use of capitals. The value you
    provide here overrides the one from the ISO standard, as for `Print_Name`.
-* `source`. This is a DHARMA-specific field, which should contain a boolean
-   value viz. `true` or `false`. If this column is empty, `true` is assumed.
-   `true` is also assumed for languages that are not enumerated in this table.
-   Languages that have `source` set to `true` are treated as source languages by
-   the DHARMA application, per contrast with translation languages (all the
-   others: English, etc.) Source languages are displayed in texts' metadata and
-   in data aggregations, while the others are not.
+* `type`. This is a DHARMA-specific field, which should contain either `source`
+   or `study`. If this column is empty, `source` is assumed. `source` is also
+   assumed for languages that are not enumerated in this table. Languages that
+   have `source` are treated as source languages (e.g. Sanskrit, etc.) by the
+   DHARMA application, per contrast with `study` languages (all the
+   others: English, etc.). A language cannot be both a `source` language and a
+   `study` language. Only `source` languages are displayed in data aggregations.
 
 ISO language codes that do not appear in the table are still recognized by the
 DHARMA application. It stores a full copy of the standards' tables.
 
-The `source` field is needed because translation languages do appear in our
+The `type` field is needed because translation languages do appear in our
 texts' `div[@type='edition']` (`head` elements are typically in English, for
 instance). Thus, we cannot determine automatically which languages are source
 languages and which are not.
