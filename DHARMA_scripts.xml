@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This enumerates scripts used in the project.
+
+They are arranged in a hierarchy. There is a single root script (named "any"),
+from which descend the categories "source" (for all scripts that are used in
+sources, viz. for scripts indicated with @rendition in the edition division) and
+"study" (for scripts used in the translation and elsewhere; currently, this only
+holds "latin").
+
+The corresponding display is at https://dharmalekha.info/scripts. Note that the
+application adds extra scripts in the hierarchy. Their name ends with "_other",
+as in "arabic_other", "brāhmī_northern_other", etc. These scripts are assigned
+to inscriptions that indicate for @rendition "arabic", "brāhmī_northern", etc.
+In other words, when @rendition indicates a script family that is not a leaf
+node in the hierarchy, we map it to a leaf node under the given script family.
+-->
 <script>
   <id>any</id>
   <name>Any</name>

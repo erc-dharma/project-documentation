@@ -14,17 +14,21 @@ Columns are:
    must not use hyphens, because they have a special meaning in language codes.
 * `Print_Name`. Example: "Old Cham". The name you use here overrides the one
    from the ISO standard. For instance, for the language code `kaw`, we use
-   "Old Javanese" as `Print_Name` instead of the default "Kawi".
+   "Old Javanese" as `Print_Name` instead of the default "Kawi". If not given,
+   the default `Print_Name` defined by the ISO standard is used instead.
 * `Inverted_Name`. Like `Print_Name`, but used when sorting names, in
    particular. Example: "Cham, Old". Note the use of capitals. The value you
    provide here overrides the one from the ISO standard, as for `Print_Name`.
+   If not given, the default `Inverted_Name` defined by the ISO standard is used
+   instead.
 * `type`. This is a DHARMA-specific field, which should contain either `source`
    or `study`. If this column is empty, `source` is assumed. `source` is also
    assumed for languages that are not enumerated in this table. Languages that
    have `source` are treated as source languages (e.g. Sanskrit, etc.) by the
    DHARMA application, per contrast with `study` languages (all the
    others: English, etc.). A language cannot be both a `source` language and a
-   `study` language. Only `source` languages are displayed in data aggregations.
+   `study` language. Only `source` languages are displayed in data aggregations
+   and in an edited text's metadata.
 
 ISO language codes that do not appear in the table are still recognized by the
 DHARMA application. It stores a full copy of the standards' tables.
