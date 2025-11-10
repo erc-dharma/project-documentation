@@ -1,4 +1,4 @@
-names	text	description
+names	text	description	search
 danda dandaPlain	|	plain vertical bar
 dandaSerif	|	vertical bar with a headmark or small horizontal line on top
 dandaHooked	|	vertical bar with a hook on top
@@ -56,8 +56,8 @@ gomutraFinalComplex	⁋	final gomūtra involving a more complex design than the 
 squiggleVertical braceCurlyClose	⌇	a wavy or zigzag vertical line
 indistinct		symbol that is definitely present, but is so damaged (or unclear in the surrogate for a reason other than damage) that it cannot be assigned to any of the primary categories
 unknown		symbol that cannot be assigned to a genus
-spiral	@	
-pc	௳	
-tēti	௳	
-mācam	௴	
-varuṣam	௵	
+spiral	@
+pc	௳
+tēti	௳
+mācam	௴
+varuṣam	௵

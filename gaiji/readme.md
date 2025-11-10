@@ -8,7 +8,7 @@ Otherwise, the symbol name itself is displayed as a placeholder.
 
 If you want to register a new symbol, you first need to edit the file
 `gaiji.tsv`. You can edit it with Microsoft Excel, LibreOffice Calc, or another
-spreadsheet editor. The file contains four fields:
+spreadsheet editor. The file contains the following fields:
 
 1. `names`. This is a list of symbol names, separated with whitespace. The
    provided names are treated as aliases. By "symbol name", we mean the value
@@ -17,6 +17,9 @@ spreadsheet editor. The file contains four fields:
    textual representation of the symbol. This field is optional.
 3. `description`. A description of the symbol. This is displayed in
    tooltips. This field is optional.
+4. `search`. A string to be used for representing the symbol in the search
+   representation. If not given, the value of the `text` field is used. And if
+   the latter is not given, it defaults to a generic string.
 
 Optionally, you can create an image representing the symbol. This image will be
 displayed in tooltips and in the symbols table (not implemented yet!).
