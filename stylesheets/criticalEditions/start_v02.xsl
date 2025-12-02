@@ -1939,6 +1939,7 @@
 
     <xsl:template match="tei:lg[not(ancestor::tei:rdg)]">
         <xsl:variable name="textpart-id" select="@xml:id"/>
+        <xsl:variable name="verse-no" select="@n"/>
         <xsl:variable name="metrical">
             <xsl:choose>
                 <xsl:when test="@rend='met'"><xsl:value-of select="@met"/></xsl:when>
@@ -1947,12 +1948,12 @@
         </xsl:variable>
         <!-- condition pour éviter le bruit généré par les base-text -->
         <xsl:if test="not(parent::tei:quote[@type='base-text'])">
-            <h6 class="ed-heading">
+            <div class="verse-heading">
                        <xsl:choose><xsl:when test="@n">
-                            <xsl:choose><xsl:when test="string(number(myNode)) = 'NaN'">
+                            <xsl:choose><xsl:when test="string(number($verse-no)) = 'NaN'">
                                 .</xsl:when>
                             <xsl:otherwise>
-                                <xsl:number format="1" value="@n"/>.
+                                <xsl:number format="1" value="$verse-no"/>.
                             </xsl:otherwise></xsl:choose>
                         </xsl:when>
                        <xsl:when test="@type='interpolation'">
@@ -1963,7 +1964,7 @@
                         <xsl:with-param name="metrical" select="$metrical"/>
                     </xsl:call-template>
                 </xsl:if>
-        </h6></xsl:if>
+        </div></xsl:if>
         <div class="row">
             <div class="col-10 text-col">
                        <xsl:call-template name="lg-content"/>
