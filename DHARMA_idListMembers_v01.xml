@@ -50,6 +50,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
+			<change who="#argr" when="2025-12-05">Added Hedwi Prihatmoko's ID.</change>
 			<change who="#argr" when="2025-06-02">Added Kelsey Martini's ID.</change>
 			<change who="#argr" when="2025-05-26">Added Helen Creese's ID.</change>
 			<change who="#argr" when="2025-04-07">Added Diwakar Acharya's ID.</change>
@@ -461,6 +462,14 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<surname>Gururaja</surname>
 					</persName>
 					<affiliation></affiliation>
+				</person>
+				<person xml:id="hepr">
+					<persName>
+						<name>Hedwi Prihatmoko</name>
+					</persName>
+					<affiliation>Badan Riset dan Inovasi Nasional</affiliation>
+					<idno type="VIAF"></idno>
+					<idno type="ORCID">https://orcid.org/0009-0005-4654-9327</idno>
 				</person>
 				<person xml:id="chhu">
 					<persName>
