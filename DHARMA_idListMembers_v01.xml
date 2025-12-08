@@ -514,6 +514,15 @@ When adding a new person to this list, the file DHARMA_gitNames
 			        <idno type="VIAF"></idno>
 			        <idno type="IdRef"></idno>
 			    </person>
+			    <person xml:id="daca">
+			        <persName>
+			            <forename>Darline</forename>
+			            <surname>Canabady Moutien</surname>
+			        </persName>
+			        <affiliation></affiliation>
+			        <idno type="VIAF"></idno>
+			        <idno type="IdRef"></idno>
+			    </person>
 			    <person xml:id="cski">
 					<persName>
 						<forename>Csaba</forename>
