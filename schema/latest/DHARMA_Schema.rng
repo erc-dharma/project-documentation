@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-12-17T12:39:33Z. . 
+Schema generated from ODD source 2025-12-17T13:30:19Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -2074,6 +2074,8 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -2404,6 +2406,8 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -2639,6 +2643,8 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3215,6 +3221,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3485,6 +3493,8 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3653,6 +3663,8 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3851,6 +3863,8 @@ attributes @target and @cRef may be supplied on <name/>.</report>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -4718,6 +4732,8 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -5372,6 +5388,8 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -5696,6 +5714,8 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -6670,6 +6690,8 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
                   <value>kxm</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Northern</a:documentation>
+                  <value>mal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>

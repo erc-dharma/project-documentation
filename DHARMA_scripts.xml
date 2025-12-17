@@ -148,6 +148,11 @@ node in the hierarchy, we map it to a leaf node under the given script family.
           <inverted_name>Kannada</inverted_name>
         </script>
         <script>
+          <id>malayalam</id>
+          <name>Malayalam</name>
+          <inverted_name>Malayalam</inverted_name>
+        </script>
+        <script>
           <id>tamil</id>
           <id>38776</id>
           <name>Tamil</name>
