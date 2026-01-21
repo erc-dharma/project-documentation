@@ -17,7 +17,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Pālaiyūr</p></div>
 	<div>Tamil Text</div>
-	<div><p>Land A: line 7-8: nilam nūṟṟu muppattu nāṉkey eṭṭu māviṉ kīḻ muk-kāle mummāvaraiyaraikkāṇi muntirikaikkīḻ nāṉku māvilum Land B: line 8-9: iṟaiili nilam oṉpatey kāṇi araikkāṇi muntirikaikkīḻarai nīk[ki] Land C: line 8-9: iṟai kaṭṭiṉa nilam nūṟṟu iru-pattu aiñcey eḻumāvarai muntirikaikkīḻ eṇmāvarai araikkāṇi muntirikaikkīḻ nāṉku māviṉāl</p></div>
+		<div><p>Land A: line 7-8: nilam nūṟṟu muppattu nāṉkē-y Eṭṭumāviṉ kīḻ mukkālē mummāvarai y-araikkāṇi muntirikai-k kīḻ nāṉkumāvilum Land B: line 8-9: Iṟai-Ili nilam oṉpatē-y kāṇi ⟨9⟩ Araikkāṇi muntirikai-k kīḻ arai nīk(ki) Land C: line 8-9: iṟai kaṭṭiṉa nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</p></div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Land (A) </b>= 134 + 2/5 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
