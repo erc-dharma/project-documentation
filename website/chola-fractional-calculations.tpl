@@ -12,14 +12,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<p class="mb-1">
 		<strong>Authors:</strong> Dávalos, Renato and Vignesh Muralidharan (2025).
 	</p>
-	
-	<p class="mb-2">
-		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a new edition of the two inscriptions (ongoing updates), which are available here:
-		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a>
+	<p class="mb-1">
+		<strong>Info:</strong> This dataset was compiled within the ERC DHARMA project (ERC n° 809994) and provides a structured table of fractional expressions attested in the Chola Thanjavur village grants (SII 2.4–2.5). The underlying texts are newly edited in Dharmalekha and are available here:
+		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0004" target="_blank" rel="noopener">INStfaSIIv02p0i0004</a>
 		and
-		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
+		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0005" target="_blank" rel="noopener">INStfaSIIv02p0i0005</a>.
 	</p>
-	
 	<p class="mb-1">
 		<strong>Suggested citation:</strong>
 	</p>
