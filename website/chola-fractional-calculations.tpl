@@ -30,7 +30,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 
 
 
-<h2>SOUTH INDIAN INSCRIPTIONS VOLUME II INSCRIPTION NO. 4</h2>
+<h2>South Indian Inscriptions Vol. 2 No. 4</h2>
 
 <div class="card-list">
 <div class="card">
@@ -612,7 +612,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 </div>
 </div>
 
-<h2>SOUTH INDIAN INSCRIPTIONS VOLUME II INSCRIPTION NO. 5</h2>
+	<h2>South Indian Inscriptions Vol. 2 No. 5</h2>
 
 </div>
 <div class="card-list">
