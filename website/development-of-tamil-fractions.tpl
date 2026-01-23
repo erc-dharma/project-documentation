@@ -584,7 +584,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 	<div>Description</div>
 	<div><p>Establishment of brahmadeyam</p></div>
 	<div>Text in context (first number = line number)</div>
-	<div><p>69: <b>pattu mā</b>vum</p><p/></div>
+	<div><p>69: <b>pattu mā</b>vum</p></div>
 	<div>Word used for measurement</div>
 	<div><p><i>mā</i> as unit of land</p></div>
 	<div>Notes</div>
@@ -800,7 +800,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 	<div>Description</div>
 	<div><p>Endowment of lands for the merit of queen Sembiyan's son</p></div>
 	<div>Text in context (first number = line number)</div>
-	<div><p>41: ni[la]m <b>{kāl}{vēli?}</b>m </p><p>51: nilam <b>{arai}{mummā}</b>yum</p><p>81-83: teṟk' aṭain=ta <b>{kāl}{vēli?}</b>māvil meṟkk' aṭaiya <b>{mummā}</b>vum</p><p/></div>
+	<div><p>41: ni[la]m <b>{kāl}{vēli?}</b>m </p><p>51: nilam <b>{arai}{mummā}</b>yum</p><p>81-83: teṟk' aṭain=ta <b>{kāl}{vēli?}</b>māvil meṟkk' aṭaiya <b>{mummā}</b>vum</p></div>
 	<div>Word used for measurement</div>
 	<div><p>Notations for fractions</p><p><i>mā</i> as fraction of land</p></div>
 	<div>Notes</div>
@@ -1040,7 +1040,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 	<div>Description</div>
 	<div><p>Big endowment of land by a brahmana for daily feeding of sivayogis and brahmanas</p></div>
 	<div>Text in context (first number = line number)</div>
-	<div><p>3-4: nilamā(ṟu)mā </p><p>5: vaṭakkaṭaiya Irumā nīkki Itaṉōṭum aṭaiya cekkāccey mūṉṟumāvum Iv(vū)r</p><p>6-7: nilam pattu-c ceyyum nīkki niṉṟa (nilam) 4 + {arai} nāṉkaraiyum muṉ cuṭṭappaṭṭa mūṉṟumāvum Āka nilam 4 +{arai} + {muṉṟumā}</p><p/></div>
+	<div><p>3-4: nilamā(ṟu)mā </p><p>5: vaṭakkaṭaiya Irumā nīkki Itaṉōṭum aṭaiya cekkāccey mūṉṟumāvum Iv(vū)r</p><p>6-7: nilam pattu-c ceyyum nīkki niṉṟa (nilam) 4 + {arai} nāṉkaraiyum muṉ cuṭṭappaṭṭa mūṉṟumāvum Āka nilam 4 +{arai} + {muṉṟumā}</p></div>
 	<div>Word used for measurement</div>
 	<div><p><i>mā</i> as fraction of land</p><p>Notations in fractions</p></div>
 	<div>Notes</div>

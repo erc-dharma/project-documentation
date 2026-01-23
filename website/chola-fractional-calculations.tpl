@@ -156,7 +156,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</div>
 	<div>kīḻ series (in order of appearance)</div>
 	<div>
-		<div><p><b>1. </b>1/320 * (1/10 + 1/40 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p><p/></div>
+		<div><p><b>1. </b>1/320 * (1/10 + 1/40 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p>1/320 * (2/20 + 1/40)</p></div>
 		<div><p><b>1. </b>1/320 * 1/160</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
@@ -294,7 +294,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>
 		<div><p><b>1. </b>1/320 * (4/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320) * 4/20</p></div>
 		<div><p>–––––––</p></div>
-		<div><p><b>1. </b>1/320 * 3/80</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p><p/></div>
+		<div><p><b>1. </b>1/320 * 3/80</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 	</div>
 	<div>Registered tax</div>
 	<div><p>… hundred + 26 kalam + 1 tūṇi + 4 nāḻi paddy</p></div>
@@ -327,7 +327,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>kīḻ series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 3/80)</p><p><b>2. </b>1/320 * 3/4 + 1/20)</p></div>
-		<div><p><b>1. </b>1/320 * (6/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p><p/></div>
+		<div><p><b>1. </b>1/320 * (6/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p>1/320 * (1/2 + 1/80)</p></div>
 	</div>
 	<div>Registered tax</div>
@@ -842,7 +842,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>kīḻ series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (4/20 + 3/80 + 1/160)</p><p>2. 1/320 * 8/20</p></div>
-		<div><p>1. 1/320 * (3/4 + 1/20)</p><p/></div>
+		<div><p>1. 1/320 * (3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (8/20 + 3/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
@@ -978,7 +978,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>kīḻ series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (3/4 + 1/20)</p></div>
-		<div><p><b>1. </b>1/320 * (1/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p><p/></div>
+		<div><p><b>1. </b>1/320 * (1/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 		<div><p><b>1.</b> 1/320 * (1/2 + 4/20 + 1/80)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
@@ -1387,7 +1387,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>kīḻ series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (1/2 + 3/20 + 1/160)</p></div>
-		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p><p/></div>
+		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 		<div><p><b>1. </b>1/320 * (9/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p><b>1. </b>1/320 * (3/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 	</div>
