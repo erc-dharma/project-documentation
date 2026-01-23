@@ -6,7 +6,33 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 
 % block body
 
+<h1>Development of Tamil Fractions</h1>
+
+<div class="alert alert-light border rounded" role="alert" style="margin-top: 1rem;">
+	<p class="mb-1">
+		<strong>Author:</strong> Dávalos, Renato (2025).
+	</p>
+	
+	<p class="mb-1">
+		<strong>Info:</strong>
+		A dataset tracing the emergence of a technical fractional vocabulary in Tamil epigraphy, produced through a systematic survey of the forty-two volumes of South Indian Inscriptions. Drawing on records from the eighth to the eleventh centuries, the dataset documents the first appearance of fractional terminology in administrative records, its usage, and the stages of its development. The dataset provides evidence for a distinct local system of fractions in the medieval Tamil country.
+	</p>
+	
+	<p class="mb-1">
+		<strong>Suggested citation:</strong>
+	</p>
+	
+	<p class="mb-0">
+		Dávalos, Renato (2025).
+		<em>Development of Tamil Fractions</em>.
+		DHARMA project ERC n° 809994.
+		Retrieved <span id="retrieval-date"></span> from
+		<a id="page-url" href="#"></a>.
+	</p>
+</div>
+
 <h2>Pandya-Pallava Inscriptions</h2>
+
 
 <div class="card-list">
 <div class="card">
