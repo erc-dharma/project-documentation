@@ -8,6 +8,39 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 
 <h2>SOUTH INDIAN INSCRIPTIONS VOLUME II INSCRIPTION NO. 4</h2>
 
+<div class="alert alert-light border rounded" role="alert" style="margin-top: 1rem;">
+	<p class="mb-1">
+		<strong>Authors:</strong> Renato Dávalos &amp; Vignesh Muralidharan (2025).
+	</p>
+	
+	<p class="mb-1">
+		<strong>Suggested citation:</strong>
+	</p>
+	
+	<p class="mb-0">
+		Dávalos, Renato &amp; Vignesh Muralidharan (2025).
+		<em>Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4–2.5)</em>.
+		DHARMA project ERC n° 809994.
+		Retrieved <span id="retrieval-date"></span> from
+		<a id="page-url" href="#"></a>.
+	</p>
+</div>
+
+<script>
+	(function () {
+	var d = new Date();
+	var options = { year: "numeric", month: "long", day: "numeric" };
+	var lang = document.documentElement.lang || navigator.language || "en-US";
+	var dateEl = document.getElementById("retrieval-date");
+	if (dateEl) dateEl.textContent = d.toLocaleDateString(lang, options);
+	
+	var url = window.location.href;
+	var a = document.getElementById("page-url");
+	if (a) { a.href = url; a.textContent = url; }
+	})();
+</script>
+
+
 <div class="card-list">
 <div class="card">
 <div class="card-body">
