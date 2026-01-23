@@ -14,11 +14,11 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</p>
 	
 	<p class="mb-1">
-		<strong>Info:</strong>
-		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a new edition of the two inscriptions (ongoing updates), which are available here:
-		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a>
-		and
-		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
+		<strong>Summary:</strong>
+		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a revised edition of the two inscriptions , which are available in this database: https://dharmalekha.info/texts/INStfaSIIv02p0i0004 and https://dharmalekha.info/texts/INStfaSIIv02p0i0005
+		
+		
+		
 	</p>
 	
 	<p class="mb-1">
