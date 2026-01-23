@@ -6,18 +6,21 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 
 % block body
 
-<h2>SOUTH INDIAN INSCRIPTIONS VOLUME II INSCRIPTION NO. 4</h2>
+<h1>Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4–2.5)</h1>
 
 <div class="alert alert-light border rounded" role="alert" style="margin-top: 1rem;">
 	<p class="mb-1">
 		<strong>Authors:</strong> Dávalos, Renato and Vignesh Muralidharan (2025).
 	</p>
+	
 	<p class="mb-1">
-		<strong>Info:</strong> This dataset was compiled within the ERC DHARMA project (ERC n° 809994) and provides a structured table of fractional expressions attested in the Chola Thanjavur village grants (SII 2.4–2.5). The underlying texts are newly edited in Dharmalekha and are available here:
-		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0004" target="_blank" rel="noopener">INStfaSIIv02p0i0004</a>
+		<strong>Info:</strong>
+		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a new edition of the two inscriptions (ongoing updates), which are available here:
+		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a>
 		and
-		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0005" target="_blank" rel="noopener">INStfaSIIv02p0i0005</a>.
+		<a href="https://dharmalekha.info/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
 	</p>
+	
 	<p class="mb-1">
 		<strong>Suggested citation:</strong>
 	</p>
@@ -31,19 +34,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</p>
 </div>
 
-<script>
-	(function () {
-	var d = new Date();
-	var options = { year: "numeric", month: "long", day: "numeric" };
-	var lang = document.documentElement.lang || navigator.language || "en-US";
-	var dateEl = document.getElementById("retrieval-date");
-	if (dateEl) dateEl.textContent = d.toLocaleDateString(lang, options);
-	
-	var url = window.location.href;
-	var a = document.getElementById("page-url");
-	if (a) { a.href = url; a.textContent = url; }
-	})();
-</script>
+<h2>SOUTH INDIAN INSCRIPTIONS VOLUME II INSCRIPTION NO. 4</h2>
 
 <div class="card-list">
 <div class="card">
