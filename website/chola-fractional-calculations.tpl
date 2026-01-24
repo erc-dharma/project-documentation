@@ -8,7 +8,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 
 <div class="alert alert-light border rounded" role="alert" style="margin-top: 1rem;">
 	<p class="mb-1">
-		<strong>Authors:</strong> Dávalos, Renato and Vignesh Muralidharan (2025).
+		<strong>Authors:</strong> Dávalos, Renato and Vigneshwaran Muralidaran (2025).
 	</p>
 	
 	<p class="mb-1">
@@ -21,7 +21,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</p>
 	
 	<p class="mb-0">
-		Dávalos, Renato and Vignesh Muralidharan (2025).
+		Dávalos, Renato and Vigneshwaran Muralidaran (2025).
 		<em>Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4–2.5)</em>.
 		DHARMA project ERC n° 809994.
 		Retrieved [date] from https://dharmalekha.info/chola-fractional-calculations.
