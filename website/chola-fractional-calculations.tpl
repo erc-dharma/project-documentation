@@ -6,21 +6,22 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 
 % block body
 
-<div class="alert alert-light border rounded" role="alert" style="margin-top: 1rem;">
-	<p class="mb-1">
-		<strong>Authors:</strong> Dávalos, Renato and Vigneshwaran Muralidaran (2025).
-	</p>
+<div>
 	
-	<p class="mb-1">
+		<strong>Authors:</strong> Dávalos, Renato; Muralidaran, Vigneshwaran (2025).
+	
+	
+	<p>
 		<strong>Summary:</strong>
-		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a revised edition of the two inscriptions, which are available in this database: https://dharmalekha.info/texts/INStfaSIIv02p0i0004 and https://dharmalekha.info/texts/INStfaSIIv02p0i0005
+		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a revised edition of the two inscriptions, which are available in this database: <a href="/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a> and <a href="/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
+		
 	</p>
 	
-	<p class="mb-1">
+	<p>
 		<strong>Suggested citation:</strong>
 	</p>
 	
-	<p class="mb-0">
+	<p>
 		Dávalos, Renato and Vigneshwaran Muralidaran (2025).
 		<em>Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4–2.5)</em>.
 		DHARMA project ERC n° 809994.
@@ -41,26 +42,26 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Pālaiyūr</p></div>
 	<div>Tamil Text</div>
-		<div><p>Land A: line 7-8: nilam nūṟṟu muppattu nāṉkē-y Eṭṭumāviṉ kīḻ mukkālē mummāvarai y-araikkāṇi muntirikai-k kīḻ nāṉkumāvilum Land B: line 8-9: Iṟai-Ili nilam oṉpatē-y kāṇi ⟨9⟩ Araikkāṇi muntirikai-k kīḻ arai nīk(ki) Land C: line 8-9: iṟai kaṭṭiṉa nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</p></div>
+		<div><p><b>`` (lines 7-8):</b> <i>nilam nūṟṟu muppattu nāṉkē-y Eṭṭumāviṉ kīḻ mukkālē mummāvarai y-araikkā⟨8⟩ṇi muntirikai-k kīḻ nāṉkumāvilum</i> <b>Land B (lines 8-9):</b> <i>nilam oṉpatē-y kāṇi ⟨9⟩ Araikkāṇi muntirikai-k kīḻ arai nīk(ki)</i> <b>Land C (lines 8-9):</b> <i>nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Land (A) </b>= 134 + 2/5 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
 		<div><p><b>Tax-free land (B)</b> = 9 + 1/80 + 1/160 + 1/320 + 1/640 = 9 + 2400/102400</p></div>
 		<div><p><b>Taxable land (C = A – B)</b> = 125 + 7/20 + 1/320 + {1/320 * (8/20 + 1/160 + 1/320)} + (1/320 * 4/20) = </p><p>125 + 38923/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+		<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 7/40 + 1/160 + 1/320)</p><p><b>2.</b> (1/320 * 4/20)</p></div>
-		<div><p>1/640</p></div>
+		<div><p><b>3.</b> 1/640</p></div>
 		<div><p><b>1. </b>1/320 * (8/20 + 1/160 + 1/320)</p><p><b>2. </b>(1/320 * 4/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>12530 kalam + 2 tūṇi + 1 kuṟuṇi + 1 nāḻi paddy ≈ 1 kalam per each 10.0025 units of land</p></div>
+		<div><p>12530 <i>kalam</i> + 2 <i>tūṇi</i> + 1 <i>kuṟuṇi</i> + 1 <i>nāḻi</i> paddy ≈ 1 <i>kalam</i> per each 10.0025 units of land</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>125 + 38923/102400 units of land = 12530 kalam + 2 tūṇi + 1 kuṟuṇi + 1 nāḻi paddy</p></div>
-		<div><p>125.3801 units of land = 12530.76 kalam of paddy</p></div>
-		<div><p><b>1: 99.942 (99.942 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>125 + 38923/102400 units of land = 12530 <i>kalam</i> + 2 <i>tūṇi</i> + 1 <i>kuṟuṇi</i> + 1 <i>nāḻi</i> paddy</p></div>
+		<div><p>125.3801 units of land = 12530.76 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.942 (99.942 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>The numerator of Land A is a prime number, as well as Land C.</p></div>
@@ -75,14 +76,14 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Ārappāḻ</p></div>
 	<div>Tamil Text</div>
-	<div><p>Land A: line 3-5: nilam nūṟṟu orupattu oṉṟey aṟumāvarai araikkāṇikkīḻ mukkāle araikkāliṉ kīḻ araiye iraṇṭu māvilum Land B: line 6-7: iṟaiili nilam mūṉṟaraiye nāṉku mā-</p><p> [7.] kkāṇi araikkāṇi nīkki  Land C: line 7-8: iṟai kaṭṭiṉa nilam nūṟṟu eḻaraiye iraṇṭu mākkāṇikkīḻ mukkāle araikkāliṉ kīḻ araiye iraṇṭu māviṉāl</p></div>
+		<div><p><b>Land A (lines 3-5):</b> <i>nilam nūṟṟu Orupattu Oṉ-⟨4⟩ṟē y-Aṟumāvarai Araikkāṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumā⟨5⟩vilum</i> <b>Land B (line 6-7):</b> <i>nilam mūṉṟ’ araiyē nāṉkumā⟨7⟩k kāṇi Araikkāṇi nīkki</i></p> <p>[7.] kkāṇi araikkāṇi nīkki  <b>Land C (line 7-8):</b> nilam nūṟṟu Eḻ’ araiyē Iraṇṭumā-k kā⟨8⟩ṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumāviṉāl</p></div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Land (A)</b> = 111 + 13/40 + 1/160 + {1/320 * (3/4 + 1/8)} + (1/320) * {1/2 + 1/10} = 111 + 4299/12800</p></div>
 		<div><p><b>Tax-free land (B)</b> = 3 + 1/2 + 1/5 + 1/80 + 1/160 = 3 + 9200/12800</p></div>
 		<div><p><b>Taxable land (C)</b> =107 + 1/2 + 1/10 + 1/80 + {1/320 * (3/4 + 1/8)} + {1/320 * (1/2 + 2/20)} = 107 + 7899/12800</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (3/4 + 1/8)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 		<div><p>–––––––</p></div>
@@ -109,29 +110,29 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Kīraṉatevaṉkuṭi</p></div>
 	<div>Tamil Text</div>
-	<div><p>Land A: line 1-2: ••••iraṇṭe mukkāle nāṉku mākkāṇi muntirikaikkīḻ araiye mūṉṟu mā mukkāṇi araikkāṇikkīḻ eṭṭu māvilum Land B: line 3: iṟaiili nilam iraṇṭe orumāvarai araikkāṇi muntirikaikkīḻ nāṉku mā muntiri[?]•••• Land C: line 4: ••••ṉa nilam nāṟpatey mukkāle irumāvarai araikkāṇikkīḻ oṉpatu mā mukkāṇikkīḻ mukkāle orumāviṉāl</p></div>
+		<div><p><b>Land A (lines 1-2):</b> <i>nilam nāṟpattu ⟨2⟩ Iraṇṭē mukkālē nāṉku mākkāṇi muntirikai-k kīḻ Araiyē mūṉṟumā mukkāṇi Araikkāṇi-k kīḻ Eṭṭumāvilum</i> <b>Land B (line 3):</b> <i>nilam Iraṇṭē Orumāvarai Araikkāṇi muntirikai-k kīḻ nāṉkumā muntirikai-k kīḻ Araiyē Iraṇṭumā nīkki</i> <b>Land C (line 4):</b> <i>nilam nāṟpa⟨t⟩tē-y mukkālē Irumāvarai Araikkāṇi-k kīḻ Oṉpatumā mukkāṇi-k kīḻ mukkālē Orumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
-		<div><p><b>Land (A)</b> = ...2 + 3/4 + 1/5 + 1/80 + 1/320 + {1/320 * (1/2 + 3/20 + 3/80 + 1/160)} + (1/320 * 8/20)  = … 2 + 99230/102400</p></div>
+		<div><p><b>Land (A)</b> = 42 + 3/4 + 1/5 + 1/80 + 1/320 + {1/320 * (1/2 + 3/20 + 3/80 + 1/160)} + (1/320 * 8/20)  = … 2 + 99230/102400</p></div>
 		<div><p><b>Tax-free land (B)</b> = 2 + 3/40 + 1/160 + 1/320 + (1/320) * {1/5 +1/320}  = 2 + 8897/102400</p></div>
-		<div><p><b>Taxable land (C)</b> =40 + 3/4 + 1/8 + 1/160 + {1/320 * (9/20 + 3/80)} + {1/320 * (3/4 + 1/20)} = 40 + 22663/25600</p></div>
+		<div><p><b>Taxable land (C)</b> = 40 + 3/4 + 1/20 + 1/40 + 1/160 + {1/320 * (9/20 + 3/80)} + {1/320 * (3/4 + 1/20)} = 40 + 21383/25600</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
-		<div><p>1. 1/320 * (1/2 + 3/20 + 3/80 + 1/160)</p><p><b>2. </b>(1/320 * 8/20)</p></div>
-		<div><p>1/320 * (4/20 + 1/320)</p></div>
+		<div><p><b>1.</b> 1/320 * (1/2 + 3/20 + 3/80 + 1/160)</p><p><b>2. </b>(1/320 * 8/20)</p></div>
+		<div><p><b>1. </b>1/320 * (4/20 + 1/320)</p></div>
 		<div><p><b>1. </b>1/320 * (9/20 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>4070 kalam + 5 kuṟuṇi + 5 nāḻi paddy</p></div>
+	<div><p>4070 <i>kalam</i> + 5 <i>kuṟuṇi</i> + 5 <i>nāḻi</i> paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>40 + 22663/25600 units of land = 4070 kalam + 5 kuṟuṇi + 5 nāḻi paddy</p></div>
-		<div><p>40.86 units of land = 4070.47 kalam of paddy</p></div>
+		<div><p>40 + 22663/25600 units of land = 4070 <i>kalam</i> + 5 <i>kuṟuṇi</i> + 5 <i>nāḻi</i> paddy</p></div>
+		<div><p>40.86 units of land = 4070.47 <i>kalam</i> of paddy</p></div>
 		<div><p><b>1: 99.619 (99.619 kalam of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
-	<div><p>Partial missing values in Land (A)</p></div>
+		<div><p>The numerator of Land C is a prime number.</p></div>
 	</div>
 </div>
 </div>
@@ -150,7 +151,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 3/4 + 1/20 + 1/160 + 1/320 + (1/320) * {2/20 + 1/40} = 82920/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 21 + 3/4 + 1/20 + 1/40 + 1/160 + 1/320 + (1/320 * 1/160) + (1/320 * 8/20) = 21 + 85570/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/10 + 1/40 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p>1/320 * (2/20 + 1/40)</p></div>
@@ -184,7 +185,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 5 + {1/320 * (1/2 + 3/20 + 3/80)} + {1/320* (3/4+1/20)} = 5 + 476/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 115 + 1/4 + 1/160 + 1/320 + {1/320 * (1/2 + 3/20 + 1/320)} + {1/320 * (1/2 + 1/10)} = 115 + 26961/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>–––––––</p></div>
 		<div><p><b>1. </b>1/320 * (1/2 + 3/20 + 3/80)</p><p><b>2. </b>1/320* (3/4 + 1/20)</p></div>
@@ -218,7 +219,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 2 + 7/20 + 1/160 + 1/320 + {1/320 * (3/4 + 1/20 + 1/40 + 1/320)} + {1/320 * (1/2 + 2/20)} =2 + 37321 /102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 34 + 3/20 + 3/80 + 1/160 + 1/320 + {1/320 * (3/4 + 4/20 + 1/40 +1/160 + 1/320} + (1/320) * {4/20} = 34 + 20539/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (3/4 + 1/20 + 1/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
@@ -252,7 +253,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 1 + 3/4 + 3/20 + 3/80 + 1/160 + 1/320 + {1/320 * (5/40 + 1/320)} + {1/320 * (1/2 + 1/10)} = 1 + 97193/102400</p></div>
 		<div><p><b>Taxable land (C) </b>=55 + 1/2 + 3/20 + {1/320 * (1/2 + 1/160)} + (1/320 * 8/20) = 55 + 66884/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (1/2 + 4/20 + 3/80)</p></div>
 		<div><p><b>1. </b>1/320 * (2/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
@@ -286,7 +287,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = … + 1/160 + 1/320 + (1/320) * {3/16 + 1/160} + (1/320) * {8/20} = 1+ X + 190/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 26 + 9/16 + 1/160 + 1/320 + (1/320 * 3/80) + {1/320 * (3/4+1/20)} = 26 + 58828 / 102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (4/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320) * 4/20</p></div>
 		<div><p>–––––––</p></div>
@@ -320,7 +321,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> =1/20 + 3/80 + 1/160 + 1/320 + {1/320 * (6/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 5075/51200</p></div>
 		<div><p><b>Taxable land (C)</b> =6 + 3/4 + 1/20 + {1/320 * (1/2 + 1/80)} = 6 + 20521/25600</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 3/80)</p><p><b>2. </b>1/320 * 3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (6/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
@@ -354,7 +355,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 3/20 + 1/40 + 1/160 + {1/320 * (3/4 + 3/20 + 3/80)} + {1/320 * (3/4 + 1/20)} = 19116/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 5 + 8/20 + 3/80 + 1/160 + 1/320 + {1/320 * (3/4 + 1/10 + 1/160)} + (1/320 * 8/20) = 5 + 46162/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 3/80 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 3/20 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
@@ -388,7 +389,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 6/20 + 1/80 +1/160 + {1/320 * (6/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 16435/51200</p></div>
 		<div><p><b>Taxable land (C) </b>= 23 + 3/4 + 3/20 + 3/80 + (1/320 * 3/20) = 23 + 48024/51200</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (9/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p><b>1.</b> 1/320 * (6/20 + 1/80 + 1/160)</p><p><b>2.</b> 1/320 * 8/20</p></div>
@@ -422,7 +423,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 4 + 1/2 + 3/80 + 1/160 + {1/320 * (3/4 + 1/40+ 1/160 + 1/320)} + (1/320 * 1/5) = 4+ 55995/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 29 + 1/2 + 1/5 + 3/80 + 1/160 + 1/320 + {1/320 * (1/20 + 1/320)} + {1/320 * (3/4 + 3/20)} = 29 + 55995/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 3/80 + 1/320)} </p><p><b>2. </b>1/320 * 2/20</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/40+ 1/160 + 1/320) </p><p><b>2.</b> 1/320 * 4/20</p></div>
@@ -456,7 +457,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 8/20 + 1/80 + (1/320 * 9/20) = 42384/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 6 + 3/4 + 3/20 + 1/320 + {1/320 * (1/2 + 1/20 + 1/80 + 1/320)} + {1/320 * (8/20 + 3/80)} + {1/320 * (3/4 + 1/20)} = 6 + 93057/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/80 + 1/320)</p><p><b>2. </b>1/320 * (8/20 + 3/80)</p></div>
 		<div><p>1/320 * 9/20</p></div>
@@ -490,7 +491,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 4/20 + 1/80 + 1/160 + 1/320 + {1/320 * (1/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 22870/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 5 + 8/20 + 1/80 + 1/160 + {1/320 * (8/20 + 1/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 5 + 43083/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (1/2 + 1/320) </p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 		<div><p>1. 1/320 * (1/20 + 1/80 + 1/160)</p></div>
@@ -524,7 +525,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 1 + 3/4 + 2/20 + 1/80 + 1/320 + {1/320 * (1/2 + 2/20 + 1/80)} + {1/320 * (3/4 + 1/20)} = 1 + 89092/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 49 + 3/4 + 4/20 + {1/320 * 6/20 + 1/80 + 1/320)} + {1/320 * (1/2 + 4/20)} = 49 + 97605/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (3/4 + 3/20 + 1/40 + 1/160)</p><p><b>2.</b> 1/320 * 1/2</p></div>
 		<div><p><b>1. </b>1/320 * (1/2 + 2/20 + 1/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
@@ -558,7 +559,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 1 + 1/2 + 3/20 + 1/40 + 1/160 + {1/320 * (1/2 + 1/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 1 + 70003/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 37 + 7/20 + 1/80 + {1/320 * (3/4 +4/20)} = 37+ 37424/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/2 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
 		<div><p><b>1. </b>1/320 * (1/2 + 1/20 + 1/160 + 1/320)</p><p><b>2.</b> 1/320 * 4/20</p></div>
@@ -592,7 +593,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 3/4 + 2/20 + 1/160 + {1/320 * (1/20 + 1/40 + 1/320)} = 87705/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 29 + 3/4 + 2/20 + 3/80 + {1/320 * (1/2 + 1/20 + 1/80 + 1/160 + 1/320)} = 29 + 91063/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (1/2 + 3/20)</p></div>
 		<div><p>1/320 * (1/20 + 1/40 + 1/320)</p></div>
@@ -631,7 +632,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>–––––––</p></div>
 		<div><p>–––––––</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (1/2 + 1/40 + 1/160 + 1/320)</p></div>
 		<div><p>–––––––</p></div>
@@ -665,7 +666,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>–––––––</p></div>
 		<div><p>–––––––</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (4/20 + 1/80 + 1/160) </p><p><b>2. </b> 1/320 * (1/4 + 1/40)</p></div>
 		<div><p>–––––––</p></div>
@@ -699,7 +700,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = not available in the inscription</p></div>
 		<div><p><b>Taxable land (C)</b> = 39 + 1/2 + 3/20 + 1/80 + 1/160 + {1/320 * (3/4 + 4/20 + 3/80)} + {1/320 * (3/4 + 1/20)} = 39 + 17263/25600</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/20 + 3/80) </p><p><b>2. </b> 1/320 * (3/4 + 1/20)</p></div>
 		<div></div>
@@ -733,7 +734,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 4 + 3/4 + 3/20 + 3/80 + 1/320 + {1/320 * (1/4 + . . .) + {1/320 * (1/2 + 2/20) = 4 + 377/400 + 1/1280 * X</p></div>
 		<div><p><b>Taxable land (C)</b> = 75 + 3/4 + Y + {1/320 * (1/2 + 2/20)} = 75 + 1203/1600 + Y</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/2 + 4/20 + 1/160 + 1/320)</p><p><b>2. </b> 1/320 * 4/20</p></div>
 		<div><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
@@ -767,7 +768,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 2 + 3/4</p></div>
 		<div><p><b>Taxable land (C)</b> = 42 + 3/4 + 1/40 + 1/160 + (1/320 * 1/2) = 42 + 501/640</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 *1/2</p></div>
 		<div></div>
@@ -801,7 +802,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 1 + 1/2 + 2/20 + Y + 1/320 + {1/320 * (1/2 + 1/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 1 + 62003/102400 + Y</p></div>
 		<div><p><b>Taxable land (C) </b>= 40 + 3/4 + 3/80 + 1/320 + {1/320 * (3/4 + 2/20 + 1/40 + 1/320) + {1/320 * (1/2 + 2/20)} = 40 + 81433/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (8/20 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (1/2 + 1/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
@@ -835,7 +836,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 4/20 + 1/80 + 1/160 + {1/320 * (3/4 + 1/20)} = 177/800</p></div>
 		<div><p><b>Taxable land (C)</b> = 18+ 3/4 + 1/20 + 3/80 + {1/320 * (8/20 + 3/80 + 1/160) + (1/320 * 8/20) = 18 + 8603/10240</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (4/20 + 3/80 + 1/160)</p><p>2. 1/320 * 8/20</p></div>
 		<div><p>1. 1/320 * (3/4 + 1/20)</p></div>
@@ -869,7 +870,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 3/20 + 1/40 + 1/320 + {1/320 * (4/20 + 1/160)} + {1/320 * (3/4 + 2/20 + 1/40 + 1/320)} + {1/320) * (1/2 + 2/20)} = 18779/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 4+ 1/2 + 4/20 + 1/160 + 1/320 + {1/320 * (2/20 + 1/40 + 1/320) + {1/320 * (1/4 + 1/40 + 1/320)} + {1/320 * (1/2 + 2/20)} = 4 + 36481/51200</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (6/20 + 3/80)</p><p><b>2. </b>1/320 * (3/20 + 1/160 + 1/320)</p></div>
 		<div><p><b>1. </b>1/320 * (4/20 + 1/160)</p><p><b>2. </b>1/320 * (3/4 + 2/20 + 1/40 + 1/320)</p><p><b>3. </b>1/320) * (1/2 + 2/20)</p></div>
@@ -903,7 +904,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = ¾ + 4/20 + 1/160 + {1/320 * (7/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 98099/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 14+ 1/2 + 1/20 + 1/80 + 1/320 + {1/320 * (6/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 14 + 1163/2048</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1. 1/320 * (1/2 + 3/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 		<div><p><b>1. </b>1/320 * (7/20 + 1/160 + 1/320)</p><p><b>2.  </b>1/320 * 4/20</p></div>
@@ -937,7 +938,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = ¾ + 2/20 + 1/80 + 1/160 + {1/320 * (1/2 + 3/20)} + {1/320 * (3/20 + 1/160 + 1/320)} + (1/320 * 3/80) + {1/320 * (3/4 + 1/20)} = 89487/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 11+ 3/4 + 1/160 + {1/320 * (1/2 + 2/20 + 3/80)} + {1/320 * (1/2 + 2/20 + 3/80)} + {1/320 * (3/4 + 4/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 11 + 78219/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/4 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (1/2 + 3/20)</p><p><b>2. </b>1/320 * 3/80</p><p><b>3. </b>1/320 * (3/4 + 1/20)</p></div>
@@ -971,7 +972,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 2 + 1/4 + 1/80 + {1/320 * (1/20 + 1/40 + 1/160 + 1/320)} + {1/320 * (1/2 + 2/20)} = 2 + 27099/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 48 + 2/20 + {1/320 * (1/2 + 4/20 + 1/80)} + (1/320 * 8/20) = 48 + 10596/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (1/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
@@ -1005,7 +1006,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 9/20 + 3/80 + 1/160 + 1/320 + {1/320 * (9/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 51091/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 23 + 3/20 + 1/160 + {1/320 * (1/2 + 1/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 23 + 16243/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p>1. 1/320 * (9/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
@@ -1039,7 +1040,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 7/20 + 1/80 + {1/320 * (7/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 37299/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 6 + 6/20 + 1/80 + 1/320 + {1/320 * (7/20 + 1/40 + 1/160 + 1/320)} + {1/320 * (3/4 + 1/20)} = 6 + 32699/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (1/2 + 4/20 + 3/80 + 1/160 + 1/320)</p></div>
 		<div><p><b>1. </b>1/320 * (7/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
@@ -1073,7 +1074,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 3 + 1/80 + 1/160 + {1/320 * (3/4 + 2/20 + 3/80 + 1/160 + 1/320)} + {1/320 * (7/20 + 1/160 + 1/320)} + (1/320 * 4/20) = 3 + 2386/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 149 + 1/2 + 4/20 + 3/80 + {1/320 * (3/4 + 1/80 + 1/320)} + {1/320 * (1/2 + 1/20 + 1/40)} + {1/320 * (3/4 + 1/20)} = 149 + 76205/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/2 + 3/20 + 1/80)</p><p><b>2. </b>1/320 * (3/4 + 3/20 + 3/80)</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 2/20 + 3/80 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (7/20 + 1/160 + 1/320)</p><p><b>3. </b>1/320 * 4/20</p></div>
@@ -1107,7 +1108,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 7/20 + 1/40 + 1/160 + 1/320 + {1/320 * (3/4 + 1/40)} + {1/320 * (6/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 39838/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 11 + 1/20 + 1/40 + 1/320 + {1/320 * (1/80 + 1/320)} + {1/320 * (1/4 + 1/40 + 1/320)} + {1/320 * (1/2 + 2/20)} = 11 + 8286/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 3/80 + 1/320)</p><p><b>2. </b>1/320) * (1/2 + 2/20)</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/40)</p><p><b>2. </b>1/320 * (6/20 + 1/80 + 1/160)</p><p><b>3. </b>1/320 * 8/20</p></div>
@@ -1141,7 +1142,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 4 + 1/160 + {1/320 * (2/40 + 1/40)} = 4 + 664/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 17 + 1/2 + {1/320 * (6/20 + 1/80)} + {1/320 * (3/4 + 1/20)} = 17 + 51556/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (8/20 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 		<div><p>1/320 * (2/40 + 1/40)</p></div>
@@ -1175,7 +1176,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 1/2 + 4/20 + 3/80 + 1/320 + {1/320 * (9/20 + 3/80 + 1/320)} = 75997/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 25 + 2/20 + 3/80 + 1/160 + {1/320 * (9/20 + 1/320)} + (1/320 * 1/2) = 25 + 15025/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (3/4 + 3/20 + 3/80 + 1/160)</p><p><b>2. </b>(1/320 * 1/2</p></div>
 		<div><p><b>1. </b>1/320 * (9/20 + 3/80 + 1/320)</p></div>
@@ -1209,7 +1210,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 4/20 + 1/80 + 1/160 + 1/320 + {1/320 * (3/4 + 2/20 + 1/40 + 1/320)} + {1/320 * (1/2 + 2/20)} = 23193/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 3 + 1/2 + 1/20 + {1/320 * (1/2 + 1/80 + 1/160)} + (1/320 * 8/20) = 3 + 56614/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * 8/20</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 2/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
@@ -1243,7 +1244,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>–––––––</p></div>
 		<div><p>–––––––</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (6/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
 		<div><p>–––––––</p></div>
@@ -1277,7 +1278,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B) </b>= 2/20 + 1/160 + 1/320 + (1/320 * 8/20) = 11328/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 6 + 3/4 + 1/320 + {1/320 * (2/20 + 1/40 + 1/320)} + {1/320 * (1/2 + 2/20)} = 6 + 77353/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/2 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/40)</p></div>
 		<div><p>1/320 * 8/20</p></div>
@@ -1311,7 +1312,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 2 + 1/2 + 4/20 + 3/80 + 1/160 + 1/320 + {1/320 * (3/4 + 3/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 2 + 76902/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 7 + 3/4 + 2/20 + 1/80 + 1/160 + {1/320 * (1/2 + 3/20 + 3/80 + 1/160)} + (1/320 * 8/20) = 7 + 89310/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/2 + 2/20 + 1/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 3/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
@@ -1345,7 +1346,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 7 + 3/4 + 1/20 + 1/40 + 1/160 + {1/320 * (8/20 + 1/80 + 1/160 + 1/320)} = 7 + 85381/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 63 + 2/20 + 3/80 + 1/160 + {1/320 * (1/2 + 3/20 + 3/80 + 1/160 + 1/320)} + {1/320 * (3/4 + 3/20)} = 63 + 15231/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (4/20 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 3/20)</p></div>
 		<div><p>1/320 * (8/20 + 1/80 + 1/160 + 1/320)</p></div>
@@ -1380,7 +1381,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land total given in inscription (B2) </b>= 2 + 3/4 + 1/160 + 1/320 + {1/320 * (9/20 + 1/80 + 1/160)} + (1/320 * 8/20) = 2 + 78038/102400</p></div>
 		<div><p><b>Taxable land (C)</b> = 50 + 1/2 + 1/80 + 1/160 + {1/320 * (3/20 + 1/40 + 1/160 + 1/320)} + {1/320 * (1/2 + 2/20)} = 50 + 53371/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p>1/320 * (1/2 + 3/20 + 1/160)</p></div>
 		<div><p><b>1. </b>1/320 * (3/4 + 1/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
@@ -1415,7 +1416,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Tax-free land (B)</b> = 7 + 1/2 + 2/20 + 1/40 + 1/320 + {1/320 * (1/2 + 4/20 + 3/80 + 1/160)} + (1/320 * 8/20) = 7 + 64686/102400</p></div>
 		<div><p><b>Taxable land (C) </b>= 20 + 1/4 + 3/20 + 1/160 + {1/320 * (3/4 + 1/40 + 1/160)} = 20 + 41850/102400</p></div>
 	</div>
-	<div>kīḻ series (in order of appearance)</div>
+	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
 		<div><p><b>1. </b>1/320 * (1/2 + 1/40)</p><p><b>2. </b>1/320 * 8/20</p></div>
 		<div><p><b>1. </b>1/320 * (1/2 + 4/20 + 3/80 + 1/160)</p><p><b>2.</b> (1/320 * 8/20)</p></div>
