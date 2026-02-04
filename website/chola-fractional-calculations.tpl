@@ -13,9 +13,11 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	
 	<p>
 		<strong>Summary:</strong>
-		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a revised edition of the two inscriptions, which are available in this database: <a href="/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a> and <a href="/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
-		
+		This table provides a computation for the renowned Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. It provides a complete conversion of the Tamil text into mathematical expressions, which were used to calculate extremely precise fiscal quantities. The two inscriptions represent one of the largest village endowments granted by Rājarāja I and also provide further evidence regarding the development of quantification in the Tamil-speaking region. Given the significance of the inscriptions, we hope they will also be useful for those specialising in the history of medieval Tamil country. The table is based on a revised edition of the two inscriptions, which are available in this database: <a href="/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a> and <a href="/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.	
 	</p>
+	<p><b>Mathematical expression:</b> Land A is the total land area of the endowed village. Land B denotes the exempted land area. The term "Land C" is used to denote the resulting land liable for taxation.</p>
+	<p><b>kīḻ series:</b> It shows the string of small fractions (smaller than 1/320) in each of the three descriptpions of Land (A, B, and C)</p>
+	<p><b>Registered tax:</b> The quantity of paddy or gold anticipated from Land C, along with its respective rates of conversion. .</p>
 	
 	<p>
 		<strong>Suggested citation:</strong>
@@ -42,18 +44,18 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Pālaiyūr</p></div>
 	<div>Tamil Text</div>
-		<div><p><b>`` (lines 7-8):</b> <i>nilam nūṟṟu muppattu nāṉkē-y Eṭṭumāviṉ kīḻ mukkālē mummāvarai y-araikkā⟨8⟩ṇi muntirikai-k kīḻ nāṉkumāvilum</i> <b>Land B (lines 8-9):</b> <i>nilam oṉpatē-y kāṇi ⟨9⟩ Araikkāṇi muntirikai-k kīḻ arai nīk(ki)</i> <b>Land C (lines 8-9):</b> <i>nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</i></p></div>
+		<div><p><b>Land A (lines 7-8):</b> <i>nilam nūṟṟu muppattu nāṉkē-y Eṭṭumāviṉ kīḻ mukkālē mummāvarai y-araikkā⟨8⟩ṇi muntirikai-k kīḻ nāṉkumāvilum</i> <b>Land B (lines 8-9):</b> <i>nilam oṉpatē-y kāṇi ⟨9⟩ Araikkāṇi muntirikai-k kīḻ arai nīk(ki)</i> <b>Land C (lines 8-9):</b> <i>nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
-		<div><p><b>Land (A) </b>= 134 + 2/5 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
+		<div><p><b>Land (A) </b> = 134 + 2/5 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
 		<div><p><b>Tax-free land (B)</b> = 9 + 1/80 + 1/160 + 1/320 + 1/640 = 9 + 2400/102400</p></div>
 		<div><p><b>Taxable land (C = A – B)</b> = 125 + 7/20 + 1/320 + {1/320 * (8/20 + 1/160 + 1/320)} + (1/320 * 4/20) = </p><p>125 + 38923/102400</p></div>
 	</div>
 		<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
-		<div><p><b>1. </b>1/320 * (3/4 + 7/40 + 1/160 + 1/320)</p><p><b>2.</b> (1/320 * 4/20)</p></div>
-		<div><p><b>3.</b> 1/640</p></div>
-		<div><p><b>1. </b>1/320 * (8/20 + 1/160 + 1/320)</p><p><b>2. </b>(1/320 * 4/20)</p></div>
+		<div><p><b>A1. </b>1/320 * (3/4 + 7/40 + 1/160 + 1/320)</p><p><b>A2.</b> (1/320 * 4/20)</p></div>
+		<div><p><b>B.</b> 1/640</p></div>
+		<div><p><b>C1. </b>1/320 * (8/20 + 1/160 + 1/320)</p><p><b>C2. </b>(1/320 * 4/20)</p></div>
 	</div>
 	<div>Registered tax</div>
 		<div><p>12530 <i>kalam</i> + 2 <i>tūṇi</i> + 1 <i>kuṟuṇi</i> + 1 <i>nāḻi</i> paddy ≈ 1 <i>kalam</i> per each 10.0025 units of land</p></div>
@@ -64,7 +66,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1: 99.942 (99.942 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
-	<div><p>The numerator of Land A is a prime number, as well as Land C.</p></div>
+		<div><p>The numerator of Land A (4299) is a prime number, as well as Land C (7899).</p></div>
 	</div>
 </div>
 </div>
@@ -76,7 +78,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Ārappāḻ</p></div>
 	<div>Tamil Text</div>
-		<div><p><b>Land A (lines 3-5):</b> <i>nilam nūṟṟu Orupattu Oṉ-⟨4⟩ṟē y-Aṟumāvarai Araikkāṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumā⟨5⟩vilum</i> <b>Land B (line 6-7):</b> <i>nilam mūṉṟ’ araiyē nāṉkumā⟨7⟩k kāṇi Araikkāṇi nīkki</i></p> <p>[7.] kkāṇi araikkāṇi nīkki  <b>Land C (line 7-8):</b> nilam nūṟṟu Eḻ’ araiyē Iraṇṭumā-k kā⟨8⟩ṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumāviṉāl</p></div>
+		<div><p><b>Land A (lines 3-5):</b> <i>nilam nūṟṟu Orupattu Oṉ-⟨4⟩ṟē y-Aṟumāvarai Araikkāṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumā⟨5⟩vilum</i> <b>Land B (line 6-7):</b> <i>nilam mūṉṟ’ araiyē nāṉkumā⟨7⟩k kāṇi Araikkāṇi nīkki</i></p> <p>[7.] kkāṇi araikkāṇi nīkki  <b>Land C (line 7-8):</b> <i>nilam nūṟṟu Eḻ’ araiyē Iraṇṭumā-k kā⟨8⟩ṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Land (A)</b> = 111 + 13/40 + 1/160 + {1/320 * (3/4 + 1/8)} + (1/320) * {1/2 + 1/10} = 111 + 4299/12800</p></div>
@@ -85,17 +87,16 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</div>
 	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
-		<div><p>1. 1/320 * (3/4 + 1/8)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
-		<div><p>–––––––</p></div>
-		<div><p><b>1. </b>1/320 * (3/4 + 1/8)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
+		<div><p>A. 1/320 * (3/4 + 1/8)</p><p><b>B. </b>1/320 * (1/2 + 2/20)</p></div>
+		<div><p><b>C1. </b>1/320 * (3/4 + 1/8)</p><p><b>C2. </b>1/320 * (1/2 + 2/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>10745 kalam + 2 tūṇi + 1 patakku + 3 nāḻi paddy</p></div>
+	<div><p>10745 <i>kalam</i> + 2<i>tūṇi</i> + 1 <i>patakku</i> + 3 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>107 + 7899/12800 units of land = 10745 kalam + 2 tūṇi + 1 patakku + 3 nāḻi paddy</p></div>
-		<div><p>107.61 units of land = 10745.53 kalam of paddy</p></div>
-		<div><p><b>1: 99.856 (99.856 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>107 + 7899/12800 units of land = 10745 <i>kalam</i> + 2<i>tūṇi</i> + 1 <i>patakku</i> + 3 nāḻi paddy</p></div>
+		<div><p>107.61 units of land = 10745.53 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.856 (99.856 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div></div>
@@ -119,9 +120,9 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</div>
 	<div><i>kīḻ</i> series (in order of appearance)</div>
 	<div>
-		<div><p><b>1.</b> 1/320 * (1/2 + 3/20 + 3/80 + 1/160)</p><p><b>2. </b>(1/320 * 8/20)</p></div>
-		<div><p><b>1. </b>1/320 * (4/20 + 1/320)</p></div>
-		<div><p><b>1. </b>1/320 * (9/20 + 3/80)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
+		<div><p><b>A1.</b> 1/320 * (1/2 + 3/20 + 3/80 + 1/160)</p><p><b>A2. </b>(1/320 * 8/20)</p></div>
+		<div><p><b>B1. </b>1/320 * (4/20 + 1/320)</p></div>
+		<div><p><b>C1. </b>1/320 * (9/20 + 3/80)</p><p><b>C2. </b>1/320 * (3/4 + 1/20)</p></div>
 	</div>
 	<div>Registered tax</div>
 	<div><p>4070 <i>kalam</i> + 5 <i>kuṟuṇi</i> + 5 <i>nāḻi</i> paddy</p></div>
@@ -129,7 +130,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>
 		<div><p>40 + 22663/25600 units of land = 4070 <i>kalam</i> + 5 <i>kuṟuṇi</i> + 5 <i>nāḻi</i> paddy</p></div>
 		<div><p>40.86 units of land = 4070.47 <i>kalam</i> of paddy</p></div>
-		<div><p><b>1: 99.619 (99.619 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p><b>1: 99.619 (99.619 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 		<div><p>The numerator of Land C is a prime number.</p></div>
@@ -158,12 +159,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * 1/160</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>2183 kalam + 5 kuṟuṇi + 4 nāḻi paddy</p></div>
+	<div><p>2183 <i>kalam</i> + 5 kuṟuṇi + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>21 + 85570/102400 units of land = 2183 kalam + 5 kuṟuṇi + 4 nāḻi paddy</p></div>
-		<div><p>21.84 units of land = 2183.46 kalam of paddy</p></div>
-		<div><p><b>1: 99.975 (99.975 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>21 + 85570/102400 units of land = 2183 <i>kalam</i> + 5 kuṟuṇi + 4 nāḻi paddy</p></div>
+		<div><p>21.84 units of land = 2183.46 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.975 (99.975 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>Partial missing values in Land (B), but supplied by the editor (<i>kīḻ </i>series)</p></div>
@@ -192,12 +193,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (1/2 + 3/20 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>11526 kalam + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
+	<div><p>11526 <i>kalam</i> + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>115 + 26961/102400 units of land = 11526 kalam + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
-		<div><p>115.26 units of land = 11526.16 kalam of paddy</p></div>
-		<div><p><b>1: 100.001 (100.001 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>115 + 26961/102400 units of land = 11526 <i>kalam</i> + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
+		<div><p>115.26 units of land = 11526.16 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 100.001 (100.001 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>Text about the quantity of Land (A) is missing.</p></div>
@@ -226,12 +227,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>–––––––</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>3378 kalam + 1 patakku + 4 nāḻi paddy</p></div>
+	<div><p>3378 <i>kalam</i> + 1 <i>patakku</i> + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>34 + 20539/102400 units of land = 3378 kalam + 1 patakku + 4 nāḻi paddy</p></div>
-		<div><p>34.20 units of land = 3378.21 kalam of paddy</p></div>
-		<div><p><b>1: 98.778 (98.778 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>34 + 20539/102400 units of land = 3378 <i>kalam</i> + 1 <i>patakku</i> + 4 nāḻi paddy</p></div>
+		<div><p>34.20 units of land = 3378.21 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 98.778 (98.778 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>Text about the quantity of Land (C) is missing and it is supplied by the editor. </p><p>C = A-B does not match (with or without the supplied text)</p></div>
@@ -260,12 +261,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (1/2 + 2/20 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>… hundred + 26 kalam + 1 tūṇi + 4 nāḻi paddy</p></div>
+	<div><p>… hundred + 26 <i>kalam</i> + 1<i>tūṇi</i> + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>55 + 66884/102400 units of land = X hundred + 26 kalam + 1 tūṇi + 4 nāḻi paddy</p></div>
-		<div><p>Seeing 1: 100 ratio approximately from other calculations, we may assume X hundred = fifty-five hundred. So 55.65 units of land = 5500 kalam + 26.375 kalam of paddy</p></div>
-		<div><p><b>1: 99.305 (99.305 kalam of paddy may have been taxed for 1 unit of land if our assumption about the missing X hundred is correct)</b></p></div>
+		<div><p>55 + 66884/102400 units of land = X hundred + 26 <i>kalam</i> + 1<i>tūṇi</i> + 4 nāḻi paddy</p></div>
+		<div><p>Seeing 1: 100 ratio approximately from other calculations, we may assume X hundred = fifty-five hundred. So 55.65 units of land = 5500 <i>kalam</i> + 26.375 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.305 (99.305 <i>kalam</i> of paddy may have been taxed for 1 unit of land if our assumption about the missing X hundred is correct)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (does not match: Should get 55 + 66563/102400 in the result)</p><p>Registered tax in paddy measure is missing</p></div>
@@ -294,12 +295,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * 3/80</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>… hundred + 26 kalam + 1 tūṇi + 4 nāḻi paddy</p></div>
+	<div><p>… hundred + 26 <i>kalam</i> + 1<i>tūṇi</i> + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>26 + 58828 / 102400 units of land = X hundred + 26 kalam + 1 tūṇi + 4 nāḻi paddy</p></div>
-		<div><p>Seeing 1: 100 ratio approximately from other calculations, we may assume X hundred = twenty-six hundred. So 26.57 units of land = 2600 kalam + 26.375 kalam of paddy</p></div>
-		<div><p><b>1: 98.847 (98.847 kalam of paddy may have been taxed for 1 unit of land if our assumption about the missing X hundred is correct</b></p></div>
+		<div><p>26 + 58828 / 102400 units of land = X hundred + 26 <i>kalam</i> + 1<i>tūṇi</i> + 4 nāḻi paddy</p></div>
+		<div><p>Seeing 1: 100 ratio approximately from other calculations, we may assume X hundred = twenty-six hundred. So 26.57 units of land = 2600 <i>kalam</i> + 26.375 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 98.847 (98.847 <i>kalam</i> of paddy may have been taxed for 1 unit of land if our assumption about the missing X hundred is correct</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Incomplete information).</p></div>
@@ -328,12 +329,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1/320 * (1/2 + 1/80)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>674 kalam + 2 tūṇi + 2 kuṟuṇi + 4 nāḻi paddy</p></div>
+	<div><p>674 <i>kalam</i> + 2<i>tūṇi</i> + 2 kuṟuṇi + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>6 + 20521/25600 units of land = 674 kalam + 2 tūṇi + 2 kuṟuṇi + 4 nāḻi paddy</p></div>
-		<div><p>6.80 units of land = 674.875 kalam of paddy</p></div>
-		<div><p><b>1: 99.246 (99.246 kalam of paddy taxed for 1 unit of land))</b></p></div>
+		<div><p>6 + 20521/25600 units of land = 674 <i>kalam</i> + 2<i>tūṇi</i> + 2 kuṟuṇi + 4 nāḻi paddy</p></div>
+		<div><p>6.80 units of land = 674.875 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.246 (99.246 <i>kalam</i> of paddy taxed for 1 unit of land))</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Does not add up)</p></div>
@@ -362,12 +363,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (3/4 + 1/10 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>518 kalam + 2 tūṇi + 2 nāḻi paddy</p></div>
+	<div><p>518 <i>kalam</i> + 2<i>tūṇi</i> + 2 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>5 + 46162/102400 units of land = 518 kalam + 2 tūṇi + 2 nāḻi paddy</p></div>
-		<div><p>5.45 units of land = 518.688 kalam of paddy</p></div>
-		<div><p><b>1: 95.172 (95.172 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>5 + 46162/102400 units of land = 518 <i>kalam</i> + 2<i>tūṇi</i> + 2 nāḻi paddy</p></div>
+		<div><p>5.45 units of land = 518.688 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 95.172 (95.172 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Does not add up. Real value should be 45843/102400)</p></div>
@@ -396,12 +397,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * 3/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>2393 kalam + 2 tūṇi + 1 kuṟuṇi + 5 nāḻi paddy</p></div>
+	<div><p>2393 <i>kalam</i> + 2<i>tūṇi</i> + 1 kuṟuṇi + 5 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>23 + 48024/51200 units of land = 2393 kalam + 2 tūṇi + 1 kuṟuṇi + 5 nāḻi paddy</p></div>
-		<div><p>23.94 units of land = 2393.802 kalam of paddy</p></div>
-		<div><p><b>1: 99.991 (99.991 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>23 + 48024/51200 units of land = 2393 <i>kalam</i> + 2<i>tūṇi</i> + 1 kuṟuṇi + 5 nāḻi paddy</p></div>
+		<div><p>23.94 units of land = 2393.802 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.991 (99.991 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Adds up). Numerator of Land A is a prime number.</p></div>
@@ -464,12 +465,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (1/2 + 1/20 + 1/80 + 1/320) </p><p><b>2.</b> 1/320 * (8/20 + 3/80) + {1/320 * (3/4 + 1/20)}</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>656 kalam + 7 kuṟuṇi + 3 nāḻi paddy</p></div>
+	<div><p>656 <i>kalam</i> + 7 kuṟuṇi + 3 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>6 + 93057/102400 units of land = 656 kalam + 7 kuṟuṇi + 3 nāḻi paddy</p></div>
-		<div><p>6.91 units of land = 656.615 kalam of paddy</p></div>
-		<div><p><b>1: 95.024 (95.024 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>6 + 93057/102400 units of land = 656 <i>kalam</i> + 7 kuṟuṇi + 3 nāḻi paddy</p></div>
+		<div><p>6.91 units of land = 656.615 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 95.024 (95.024 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Adds up). Numerator of Land C is a composite number with 3, 31019 as its factors both of which are prime numbers.</p></div>
@@ -498,12 +499,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (8/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b> 1/320 * 4/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>535 kalam + 2 tūṇi + 1 patakku + 4 nāḻi paddy</p></div>
+	<div><p>535 <i>kalam</i> + 2<i>tūṇi</i> + 1 <i>patakku</i> + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>5 + 43083/102400 units of land = 535 kalam + 2 tūṇi + 1 patakku + 4 nāḻi paddy</p></div>
-		<div><p>5.42 units of land = 535.875 kalam of paddy</p></div>
-		<div><p><b>1: 98.869 (98.869 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>5 + 43083/102400 units of land = 535 <i>kalam</i> + 2<i>tūṇi</i> + 1 <i>patakku</i> + 4 nāḻi paddy</p></div>
+		<div><p>5.42 units of land = 535.875 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 98.869 (98.869 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Adds up).</p></div>
@@ -532,12 +533,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (6/20 + 1/80 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 4/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>. .918 kalam + 2 tūṇi + 3 kuṟuṇi + 1 nāḻi paddy</p></div>
+	<div><p>. .918 <i>kalam</i> + 2<i>tūṇi</i> + 3 kuṟuṇi + 1 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>49 + 97605/102400 units of land = X hundred + 918 kalam + 2 tūṇi + 3 kuṟuṇi + 1 nāḻi paddy</p></div>
-		<div><p>Seeing 1: 100 ratio approximately from other calculations, we may assume X hundred = forty hundred. 49.95 units of land = 4000 kalam + 918.927 kalam of paddy</p></div>
-		<div><p><b>1: 98.477 (98.477 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>49 + 97605/102400 units of land = X hundred + 918 <i>kalam</i> + 2<i>tūṇi</i> + 3 kuṟuṇi + 1 nāḻi paddy</p></div>
+		<div><p>Seeing 1: 100 ratio approximately from other calculations, we may assume X hundred = forty hundred. 49.95 units of land = 4000 <i>kalam</i> + 918.927 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 98.477 (98.477 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Does not add up. Expected 97286/102400).</p></div>
@@ -566,12 +567,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1/320 * (3/4 + 4/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>3722 kalam + 5 nāḻi paddy</p></div>
+	<div><p>3722 <i>kalam</i> + 5 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>37 + 37424/102400 units of land = 3722 kalam + 5 nāḻi paddy</p></div>
-		<div><p>37.37 units of land = 3722.052 kalam of paddy</p></div>
-		<div><p><b>1: 99.6 (99.6 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>37 + 37424/102400 units of land = 3722 <i>kalam</i> + 5 nāḻi paddy</p></div>
+		<div><p>37.37 units of land = 3722.052 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.6 (99.6 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Does not add up. Expected 82667/102400).</p></div>
@@ -600,12 +601,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1/320 * (1/2 + 1/20 + 1/80 + 1/160 + 1/320)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>2967 kalam + 2 tūṇi + 1 patakku + 2 nāḻi paddy</p></div>
+	<div><p>2967 <i>kalam</i> + 2<i>tūṇi</i> + 1 <i>patakku</i> + 2 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>29 + 91063/102400 units of land = 2967 kalam + 2 tūṇi + 1 patakku + 2 nāḻi paddy</p></div>
-		<div><p>29.89 units of land = 2967.854 kalam of paddy</p></div>
-		<div><p><b>1: 99.292 (99.292 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>29 + 91063/102400 units of land = 2967 <i>kalam</i> + 2<i>tūṇi</i> + 1 <i>patakku</i> + 2 nāḻi paddy</p></div>
+		<div><p>29.89 units of land = 2967.854 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.292 (99.292 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = A-B (Adds up). Numerator of Land C is a composite number with 7, 13009 as its factors both of which are prime numbers.</p></div>
@@ -639,12 +640,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>–––––––</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>549 kalam +7 kuṟuṇi + 4 nāḻi paddy</p></div>
+	<div><p>549 <i>kalam</i> +7 kuṟuṇi + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>5+ (74267/102400) units of land = 549 kalam +7 kuṟuṇi + 4 nāḻi paddy</p></div>
-		<div><p>5.73 units of land = 549.625 kalam of paddy</p></div>
-		<div><p><b>1: 95.92 (95.92 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>5+ (74267/102400) units of land = 549 <i>kalam</i> +7 kuṟuṇi + 4 nāḻi paddy</p></div>
+		<div><p>5.73 units of land = 549.625 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 95.92 (95.92 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>Land A forms the portion of cultivators after removing all the non-taxable sites</p></div>
@@ -673,12 +674,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>–––––––</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>29.5 kalam +2 tūṇi + 1 nāḻi paddy</p></div>
+	<div><p>29.5 <i>kalam</i> +2<i>tūṇi</i> + 1 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>29 + 14959/51200 units of land = 29..5 kalam +2 tūṇi + 1 nāḻi paddy</p></div>
-		<div><p>29.29 units of land = 29.5.677 kalam of paddy</p></div>
-		<div><p><b>1: 99.886 (99.886 kalam of paddy taxed for 1 unit of land assuming that the missing digit is 2. i.e. Total paddy taxed is 2925.677 kalam)</b></p></div>
+		<div><p>29 + 14959/51200 units of land = 29..5 <i>kalam</i> +2<i>tūṇi</i> + 1 nāḻi paddy</p></div>
+		<div><p>29.29 units of land = 29.5.677 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.886 (99.886 <i>kalam</i> of paddy taxed for 1 unit of land assuming that the missing digit is 2. i.e. Total paddy taxed is 2925.677 <i>kalam</i>)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>Land A forms the portion of cultivators after removing all the non-taxable sites</p><p>Registered tax value measured in paddy is missing a digit</p></div>
@@ -741,7 +742,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1/320 * (1/2 + 2/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>5850 kalam + 2 tūṇi + 1 kuṟuṇi + 1 nāḻi paddy</p></div>
+	<div><p>5850 <i>kalam</i> + 2<i>tūṇi</i> + 1 kuṟuṇi + 1 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
 		<div><p><b>Y value is missing. So it is not possible to calculate the rate of taxation. However, it is clear that for a total of ≈75 units of land, the tax is ≈5850. So the ratio is clearly not close to 1: 100 unlike other calculations</b></p></div>
@@ -775,12 +776,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1/320 * 1/2</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>4278 kalam + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
+	<div><p>4278 <i>kalam</i> + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>42 + (501/640) units of land = 4278 kalam + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
-		<div><p>42.78 units of land = 4278.292 kalam of paddy</p></div>
-		<div><p><b>1: 100.006 (100.006 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>42 + (501/640) units of land = 4278 <i>kalam</i> + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
+		<div><p>42.78 units of land = 4278.292 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 100.006 (100.006 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B. Adds up).</p></div>
@@ -793,7 +794,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village number</div>
 	<div><p>23</p></div>
 	<div>Village</div>
-	<div><p>Paṇamaṅkalam</p></div>
+	<div><p>Paṇamaṅ<i>kalam</i></p></div>
 	<div>Tamil Text</div>
 	<div><p>Land A: line 5: aḷantapaṭi nilam nāṟpattiraṇṭe eṇ[mā]••••• [kkī]ḻ eṭṭu [mā] mukkāṇikkīḻ mukkāle orumāvilum Land B: line 5-6: iṟaiili nīṅku-nilam oṉṟaraiye iraṇṭu mā.• muntirikaikkīḻ araiye orumā araikkāṇi muntirikaikkiḻ nāṉku mā nīkki Land C: line 3: nilam nāṟpate mukkāle mukkāṇi muntirikaikkīḻ mukkāle irumāvarai muntirikaikkīḻ araiye iraṇṭu māvi[ṉā]l</p></div>
 	<div>Mathematical expression</div>
@@ -809,12 +810,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1. 1/320 * (3/4 + 2/20 + 1/40 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20<b>)</b></p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>4072 kalam + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
+	<div><p>4072 <i>kalam</i> + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>40 + (81433/102400) units of land = 4072 kalam + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
-		<div><p>40.80 units of land = 4072.156 kalam of paddy</p></div>
-		<div><p><b>1: 99.807 (99.807 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>40 + (81433/102400) units of land = 4072 <i>kalam</i> + 1 kuṟuṇi + 7 nāḻi paddy</p></div>
+		<div><p>40.80 units of land = 4072.156 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.807 (99.807 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>X and Y fractional values in the calculations are missing.</p></div>
@@ -843,12 +844,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (8/20 + 3/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>1883 kalam + 2 tūṇi+ 3 kuṟuṇi paddy</p></div>
+	<div><p>1883 <i>kalam</i> + 2<i>tūṇi</i>+ 3 kuṟuṇi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>18 + (8603/10240) units of land = 1883 kalam + 2 tūṇi+ 3 kuṟuṇi paddy</p></div>
-		<div><p>18.84 units of land = 1883.917 kalam of paddy</p></div>
-		<div><p><b>1: 99.995 (99.995 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>18 + (8603/10240) units of land = 1883 <i>kalam</i> + 2<i>tūṇi</i>+ 3 kuṟuṇi paddy</p></div>
+		<div><p>18.84 units of land = 1883.917 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.995 (99.995 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B. Adds up).</p></div>
@@ -877,12 +878,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (2/20 + 1/40 + 1/320</p><p><b>2. </b>1/320 * (1/4 + 1/40 + 1/320)</p><p><b>3. </b>1/320 * (1/2 + 2/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>469 kalam + 1 tūṇi + 1 nāḻi paddy</p></div>
+	<div><p>469 <i>kalam</i> + 1<i>tūṇi</i> + 1 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>4 + (36481/51200) units of land = 469 kalam + 1 tūṇi + 1 nāḻi paddy</p></div>
-		<div><p>4.71 units of land = 469.344 kalam of paddy</p></div>
-		<div><p><b>1: 99.648 (99.648 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>4 + (36481/51200) units of land = 469 <i>kalam</i> + 1<i>tūṇi</i> + 1 nāḻi paddy</p></div>
+		<div><p>4.71 units of land = 469.344 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.648 (99.648 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B). Does not add up (The taxable land should be 36162/51200) =&gt; 319 difference</p></div>
@@ -911,12 +912,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1. 1/320 * (6/20 + 1/80 + 1/160)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>1456 kalam + 5 kuṟuṇi + 1 nāḻi paddy</p></div>
+	<div><p>1456 <i>kalam</i> + 5 kuṟuṇi + 1 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>14 + (1163/2048) units of land = 1456 kalam + 5 kuṟuṇi + 1 nāḻi paddy</p></div>
-		<div><p>14.57 units of land = 1456.427 kalam of paddy</p></div>
-		<div><p><b>1: 99.960 (99.960 kalam of paddy for 1 unit of land)</b></p></div>
+		<div><p>14 + (1163/2048) units of land = 1456 <i>kalam</i> + 5 kuṟuṇi + 1 nāḻi paddy</p></div>
+		<div><p>14.57 units of land = 1456.427 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.960 (99.960 <i>kalam</i> of paddy for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B. Adds up).</p></div>
@@ -945,15 +946,15 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (1/2 + 2/20 + 3/80)</p><p><b>2. </b>1/320 * (1/2 + 2/20 + 3/80)</p><p><b>3. </b>1/320 * 4/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>1169 kalam + 2 kuṟuṇi + 2 nāḻi + 1 uri paddy</p></div>
+	<div><p>1169 <i>kalam</i> + 2 kuṟuṇi + 2 nāḻi + 1 uri paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>11 + (78219/102400) units of land = 1169 kalam + 2 kuṟuṇi + 2 nāḻi + 1 uri paddy</p></div>
-		<div><p>11.76 units of land = 1169.192 kalam of paddy</p></div>
-		<div><p><b>1: 99.421 (99.421 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>11 + (78219/102400) units of land = 1169 <i>kalam</i> + 2 kuṟuṇi + 2 nāḻi + 1 uri paddy</p></div>
+		<div><p>11.76 units of land = 1169.192 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.421 (99.421 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
-	<div><p>C = (A-B.Does not match. Expected 77631/102400)</p><p>Interesting usage āyirattu toṇṇūṟṟu aṟupattoṉpatiṉ kalaṉe to mean 969 kalam instead of toḷḷāyiram</p><p>Measurement of paddy goes as low as uri)</p><p>For Land (C), the first and second <i>kīḻ </i>series are the same, possibly duplicated.  </p></div>
+	<div><p>C = (A-B.Does not match. Expected 77631/102400)</p><p>Interesting usage āyirattu toṇṇūṟṟu aṟupattoṉpatiṉ kalaṉe to mean 969 <i>kalam</i> instead of toḷḷāyiram</p><p>Measurement of paddy goes as low as uri)</p><p>For Land (C), the first and second <i>kīḻ </i>series are the same, possibly duplicated.  </p></div>
 	</div>
 </div>
 </div>
@@ -979,12 +980,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1.</b> 1/320 * (1/2 + 4/20 + 1/80)</p><p><b>2. </b>1/320 * 8/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>4784 kalam + 2 tūṇi + 6 nāḻi paddy</p></div>
+	<div><p>4784 <i>kalam</i> + 2<i>tūṇi</i> + 6 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>48 + (10596/102400) units of land = 4784 kalam + 2 tūṇi + 6 nāḻi paddy</p></div>
-		<div><p>48.10 units of land = 4784.729 kalam of paddy</p></div>
-		<div><p><b>1: 99.474 (99.474 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>48 + (10596/102400) units of land = 4784 <i>kalam</i> + 2<i>tūṇi</i> + 6 nāḻi paddy</p></div>
+		<div><p>48.10 units of land = 4784.729 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.474 (99.474 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B) (Does not add up) Expected 10277/102400 (Even with Hultzch’s translation, this doesn’t match)</p></div>
@@ -1013,12 +1014,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1. 1/320 * (1/2 + 1/20 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * 4/20</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>2315 kalam + 1 kuṟuṇi paddy</p></div>
+	<div><p>2315 <i>kalam</i> + 1 kuṟuṇi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>23 + (16243/102400) units of land = 2315 kalam + 1 kuṟuṇi paddy</p></div>
-		<div><p>23.16 units of land = 2315.083 kalam of paddy</p></div>
-		<div><p><b>1: 99.96 (99.96 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>23 + (16243/102400) units of land = 2315 <i>kalam</i> + 1 kuṟuṇi paddy</p></div>
+		<div><p>23.16 units of land = 2315.083 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.96 (99.96 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B) (Adds up)</p></div>
@@ -1047,12 +1048,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p>1. 1/320 * (7/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (3/4 + 1/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>612 kalam + 1 patakku paddy</p></div>
+	<div><p>612 <i>kalam</i> + 1 <i>patakku</i> paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>6 + (32699/102400) units of land = 612 kalam + 1 patakku paddy</p></div>
-		<div><p>6.32 units of land = 612.167 kalam of paddy</p></div>
-		<div><p><b>1: 96.861 (96.861 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>6 + (32699/102400) units of land = 612 <i>kalam</i> + 1 <i>patakku</i> paddy</p></div>
+		<div><p>6.32 units of land = 612.167 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 96.861 (96.861 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B) (Does not add up) =&gt; Expected 6 + (32380/102400)</p></div>
@@ -1081,12 +1082,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (3/4 + 1/80 + 1/320)</p><p><b>2.</b> 1/320 * (1/2 + 1/20 + 1/40)</p><p><b>3. </b>1/320 * (3/4 + 1/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>14888 kalam + 1 tūṇi + 1 patakku + 1 nāḻi paddy</p></div>
+	<div><p>14888 <i>kalam</i> + 1<i>tūṇi</i> + 1 <i>patakku</i> + 1 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>149 + (76205/102400) units of land = 14888 kalam + 1 tūṇi + 1 patakku + 1 nāḻi paddy</p></div>
-		<div><p>149.74 units of land = 14888.51 kalam of paddy</p></div>
-		<div><p><b>1: 99.429 (99.429 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>149 + (76205/102400) units of land = 14888 <i>kalam</i> + 1<i>tūṇi</i> + 1 <i>patakku</i> + 1 nāḻi paddy</p></div>
+		<div><p>149.74 units of land = 14888.51 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 99.429 (99.429 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B) (Does not add up) =&gt; Expected 149 + (75886/102400)</p></div>
@@ -1099,7 +1100,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village number</div>
 	<div><p>32</p></div>
 	<div>Village</div>
-	<div><p>Kārimaṅkalam</p></div>
+	<div><p>Kārimaṅ<i>kalam</i></p></div>
 	<div>Tamil Text</div>
 	<div><p>Land A: line 4: nilaṉ patiṉoṉṟe oṉpatu mākkāṇikkīḻ mukkāle mukkāṇi muntirikaikkīḻ araiye iraṇṭu māvilum Land B: line 4: iṟaiyili nīṅkunilaṉ eḻumāvarai araikkāṇi muntirikaikkīḻ muk-kāle arai māvin kīḻ āṟu mākkāṇi araikkāṇikkīḻ eṭṭu mā nikki Land C: line 4: nilaṉ patiṉoṉṟe orumāvarai muntirikaikkīḻkkāṇi muntirikaikkīḻ kāle arai mā muntirikaikkīḻ araiye iraṇṭu māviṉāl</p></div>
 	<div>Mathematical expression</div>
@@ -1115,12 +1116,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (1/80 + 1/320) </p><p><b>2.</b> 1/320 * (1/4 + 1/40 + 1/320) </p><p><b>3. </b>1/320 * (1/2 + 2/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>1083 kalam + 5 nāḻi paddy</p></div>
+	<div><p>1083 <i>kalam</i> + 5 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>11 + (8286/102400) units of land = 1083 kalam + 5 nāḻi paddy</p></div>
-		<div><p>11.08 units of land = 1083.052 kalam of paddy</p></div>
-		<div><p><b>1: 97.748 (99.748 kalam of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>11 + (8286/102400) units of land = 1083 <i>kalam</i> + 5 nāḻi paddy</p></div>
+		<div><p>11.08 units of land = 1083.052 <i>kalam</i> of paddy</p></div>
+		<div><p><b>1: 97.748 (99.748 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>C = (A-B) (Does not add up. Expected 7967/102400)</p></div>
@@ -1167,7 +1168,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village number</div>
 	<div><p>34</p></div>
 	<div>Village</div>
-	<div><p>Pūtamaṅkalam</p></div>
+	<div><p>Pūtamaṅ<i>kalam</i></p></div>
 	<div>Tamil Text</div>
 	<div><p>Land A: line 5: nilaṉ irupattaiñce mukkāle irumāvarai araikkāṇi muntirikaikkīḻ mukkāle mūṉṟu mā mukkāṇi araikkāṇikkīḻ araiyilum Land B: line 5: iṟaiyili nīṅkunilaṉ araiye nālu mā mukkāṇi muntirikaikkīḻ oṉpatu mā mukkāṇi muntirikai nīkki Land C: line 5: nilaṉ irupattaiñce iraṇṭu mā mukkāṇi araikkāṇik[kī]ḻ oṉpatu mā muntirikaikkīḻ araiyiṉāl</p></div>
 	<div>Mathematical expression</div>
@@ -1337,7 +1338,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village number</div>
 	<div><p>39</p></div>
 	<div>Village</div>
-	<div><p>veṇṇi + pūtamaṅkalam + pūtamaṅkalattuppāl mītuveli + nakarakkārikuṟicci + vaṭatāmarai + veṇṇitiṟappāṉpaḷḷi</p></div>
+	<div><p>veṇṇi + pūtamaṅ<i>kalam</i> + pūtamaṅkalattuppāl mītuveli + nakarakkārikuṟicci + vaṭatāmarai + veṇṇitiṟappāṉpaḷḷi</p></div>
 	<div>Tamil Text</div>
 	<div><p>Land A: line 7: nilaṉ eḻupate mukkāle nāṉmāvarai muntirikaikkīḻ nāṉku mā mukkāṇikkīḻ mukkāle mūṉṟu māvilum Land B: line 7:iṟaiyili nīṅkunilaṉ eḻe mukkāle orumāvarai araikkāṇikkīḻ mukkāle mā kāṇi muntirikai[kkīḻ]i Land C: line 7-8: nilaṉ arupattu mūṉṟe iraṇṭu mā mukkāṇi araikkāṇikkīḻ eṭṭu mākkāṇi araikkāṇi muntirikaikkīḻ mukkāle [mū]ṉṟu māviṉāl</p></div>
 	<div>Mathematical expression</div>
@@ -1371,7 +1372,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village number</div>
 	<div><p>40</p></div>
 	<div>Village</div>
-	<div><p>Koṭimaṅkalam</p></div>
+	<div><p>Koṭimaṅ<i>kalam</i></p></div>
 	<div>Tamil Text</div>
 	<div><p>Land A: line 8: nilaṉ aimpattu mūṉṟe kāle arai mā muntirikaikkīḻ [a]raiye mūṉṟu mā araikkāṇiyilum Land B: line 8:iṟaiyili nīṅkunilaṉ iraṇṭaraiye orumāvarai arai-kkāṇikkīḻ mukkāle o[ru]m[ā]varai muntirikaikkīḻ araiye iraṇṭu māvum•••••iṟaiyili niṅkunilaṉ irumāvarai araikkāṇiyum•••••iṟaiyili nīṅkunilaṉ mukkāṇi araikkāṇikkīḻ araiye iraṇṭu mā mukkāṇīkkīḻ80 mukkāle orumāvum•••••āka iṟaiyili nīṅkunilaṉ iraṇṭe mukkāle araikkāṇi muntirikaikkiḻ oṉpatu [māk]kāṇi araikkāṇikkīḻ eṭṭu mā nīkki Land C: line 8-9: nilaṉ aimpataraiye kāṇi araikkāṇikkiḻ mummāvarai araikkāṇi muntirikaikkīḻ araiye iraṇṭu māviṉāl</p></div>
 	<div>Mathematical expression</div>
@@ -1389,12 +1390,12 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1. </b>1/320 * (3/20 + 1/40 + 1/160 + 1/320)</p><p><b>2. </b>1/320 * (1/2 + 2/20)</p></div>
 	</div>
 	<div>Registered tax</div>
-	<div><p>5051 kalam + 2 tūṇi + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
+	<div><p>5051 <i>kalam</i> + 2<i>tūṇi</i> + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
 	<div>Rate of conversion (Land to Paddy ratio)</div>
 	<div>
-		<div><p>50 + (53371/102400) units of land = 5051 kalam + 2 tūṇi + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
-		<div><p><b>1: 99.999 (99.99 kalam of paddy taxed for 1 unit of land)</b></p></div>
-		<div><p>50.52 units of land = 5051.958 kalam of paddy</p></div>
+		<div><p>50 + (53371/102400) units of land = 5051 <i>kalam</i> + 2<i>tūṇi</i> + 3 kuṟuṇi + 4 nāḻi paddy</p></div>
+		<div><p><b>1: 99.999 (99.99 <i>kalam</i> of paddy taxed for 1 unit of land)</b></p></div>
+		<div><p>50.52 units of land = 5051.958 <i>kalam</i> of paddy</p></div>
 	</div>
 	<div>Notes</div>
 	<div><p>B does not match with B2</p><p>C = (A-B) or (A-B1) (Do not add up.)</p><p>The values for Land (B) are given in two different sets of numbers, which implies that they must be added one to the other. </p></div>
