@@ -850,6 +850,12 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<affiliation></affiliation>
 					<idno type="ORCID">https://orcid.org/0000-0002-1014-4660</idno>
 				</person>
+				<person xml:id="yuxu">
+					<persName>
+						<name>Yunheng Xu</name>
+					</persName>
+					<affiliation></affiliation>
+				</person>
 				<person xml:id="zapa">
 					<persName>
 						<name>Zakariya Pamuji Aminullah</name>
