@@ -2516,12 +2516,12 @@
           <seg type="gana">na-ja-bha-ja-bha-la-ga/ma-ra-ja-sa-ja-sa</seg>
 -->
           <!--daba 20240415: There's something seriously wrong with this one. In Apte's appendix, vilāsinī is a 17-syllable metre with the pattern na-ja-bha-ja-bha-la-ga with a caesura after the 12th syllable, correctly rendered in the first half of the metre shown here. But it is NOT a 17/18 metre with a completely different pattern in the odd lines. The same goes for viśvalalita in Zoetmulder, except that he does not mention the caesura. I find nothing about a 18-syllable odd line for this metre. Commented out the above and wrote the correct details below. Also compare the record for śāpantika, which (as of today) is shown as a 8/8 metre while in fact the encoder probably intended to record two alternative variants for an 8-syllable samavr̥tta. The same may be the case here.-->
-          <measure unit="syllable">17</measure>
+          <measure unit="syllable">17/18</measure>
           <name xml:lang="san-Latn">vilāsinī</name>
           <name xml:lang="kaw-Latn">viśvalalita</name>
-          <seg type="xml">----+-+---+-||+---=</seg>
-          <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓</seg>
-          <seg type="gana">na-ja-bha-ja-bha-la-ga</seg>
+          <seg type="xml">----+-+---+-||+---=/++++-+-+---+-+---=</seg>
+          <seg type="prosody">⏑⏑⏑⏑–⏑–⏑⏑⏑–⏑||–⏑⏑⏑⏓/––––⏑–⏑–⏑⏑⏑–⏑–⏑⏑⏑⏓</seg>
+          <seg type="gana">na-ja-bha-ja-bha-la-ga/ma-ra-ja-sa-ja-sa</seg>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
               <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
