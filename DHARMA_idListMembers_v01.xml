@@ -640,6 +640,12 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="IdRef">https://www.idref.fr/185971202</idno>
 					<idno type="ORCID">https://orcid.org/0000-0002-1617-8554</idno>
 				</person>
+				<person xml:id="mano">
+					<persName>
+						<name>Muhamad Alnoza</name>
+					</persName>
+					<affiliation></affiliation>
+				</person>
 				<person xml:id="nuha">
 					<persName>
 						<name>Nurmalia Habibah</name>
