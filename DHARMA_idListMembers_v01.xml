@@ -216,6 +216,18 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="IdRef">https://www.idref.fr/147009324</idno>
 					<idno type="IdHAL">aditia-gunawan</idno>
 				</person>
+				<person xml:id="mami">
+					<persName>
+						<forename>Marc</forename>
+						<surname>Miyake</surname>
+					</persName>
+				</person>
+				<person xml:id="juwh">
+					<persName>
+						<forename>Julian Karl</forename>
+						<surname>Wheatley</surname>
+					</persName>
+				</person>
 				<person xml:id="agin">
 					<!-- Can't we remove this person? -->
 					<persName>
