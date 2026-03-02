@@ -228,6 +228,12 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<surname>Wheatley</surname>
 					</persName>
 				</person>
+				<person xml:id="dcla">
+					<persName>
+						<forename>D. Christian</forename>
+						<surname>Lammerts</surname>
+					</persName>
+				</person>
 				<person xml:id="agin">
 					<!-- Can't we remove this person? -->
 					<persName>
