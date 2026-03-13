@@ -66,7 +66,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>1: 99.942 (99.942 <i>kalam</i> of paddy taxed per unit of land)</b></p></div>
 	</div>
 	<div>Notes</div>
-		<div><p>The resulting numerators of Land A (41323) is a prime number, as well as Land C (38923).</p></div>
+		<div><p>The resulting numerator of Land C (38923) is a prime number.</p></div>
 	</div>
 </div>
 </div>
