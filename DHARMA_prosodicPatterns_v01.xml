@@ -394,21 +394,8 @@
         </item>
         <item>
           <measure unit="syllable">8</measure>
-          <name xml:lang="kaw-Latn">vitana</name>
-          <seg type="xml">+--+---=</seg>
-          <seg type="prosody">–⏑⏑–⏑⏑⏑⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:zapa">In Vr̥t, the name of this meter is vitāna. The metric pattern is also slightly different in both CK and Vr̥t. In CK, vitana is presented as –⏑⏑|–⏑⏑|⏑⏓, while in Vr̥t vitāna has patterns as –⏑⏑|–⏑⏑|–⏓. But, Zoetmulder records vitānā's pattern as –⏑–|–⏑–|–⏓</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-	      <!-- This is not found in Kalangwan. !-->
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
           <name xml:lang="kaw-Latn">vitāna</name>
+          <name xml:lang="san-Latn">citrapada</name>
           <seg type="xml">+--+--+=</seg>
           <seg type="prosody">–⏑⏑–⏑⏑–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
@@ -420,26 +407,6 @@
               <citedRange unit="page">452</citedRange>
               <citedRange unit="item">VIII.8</citedRange>
 	      <!-- Zoemulder references: Vr̥t 33 (names: witāna) !-->
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="san-Latn">vitānā</name>
-          <name xml:lang="san-Latn">citrapada</name>
-          <!--<name xml:lang="kaw-Latn">viparītapatya</name>!-->
-          <seg type="xml">+-++-++=</seg>
-          <seg type="prosody">–⏑––⏑––⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <listBibl>
-            <!-- zapa20250510: this item is only based on Zoetmulder list and its Sanskrit reference needs to be checked -->
-	    <!-- andrew 20250512: removed viparītapathya, which is an ardhasamacatuṣpadī !-->
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-              <citedRange unit="appendix">III: Kakawin-Metres</citedRange>
-              <citedRange unit="page">452</citedRange>
-              <citedRange unit="item">VIII.14</citedRange>
-	      <!-- no OJ name recorded !-->
             </bibl>
           </listBibl>
         </item>
@@ -810,6 +777,7 @@
           <measure unit="syllable">9</measure>
           <name xml:lang="san-Latn">halamukhī</name>
           <name xml:lang="kaw-Latn">halamukha</name>
+          <name xml:lang="kaw-Latn">hayamukha</name>
 	  <!-- 9.251 !-->
           <seg type="xml">+-+-----=</seg>
           <seg type="prosody">–⏑–⏑⏑⏑⏑⏑⏓</seg>
@@ -3589,8 +3557,8 @@
         <item>
           <measure unit="syllable">26</measure>
           <name xml:lang="kaw-Latn">surakusuma</name> <!-- CK-->
-          <name xml:lang="kaw-Latn">vadaragumuluṅ</name>
-          <!--% ⏑⏑⏑|–⏑⏑|–⏑⏑|⏑⏑⏑|⏑–⏑|⏑–⏑|⏑⏓ (dr Sugriwa) vadaragumuluṅ -->
+          <name xml:lang="kaw-Latn">vadara gumuluṅ</name>
+          <!--% ⏑⏑⏑|–⏑⏑|–⏑⏑|⏑⏑⏑|⏑–⏑|⏑–⏑|⏑⏓ (dr Sugriwa) vadara gumuluṅ -->
           <seg type="xml">------+------+-----------=</seg>
           <seg type="prosody">⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑–⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏑⏓</seg>
           <seg type="gana">na-na-bha-na-ja-na-na-na-la-ga</seg>
