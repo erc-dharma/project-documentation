@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Glyph Taxonomy</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Digitally published.</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Natively digital.</p>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc status="draft">
+            <change status="draft" when="2026-03-24" who="part:mime">Creation of the file</change>
+        </revisionDesc>
+    </teiHeader>
+    <text xml:space="preserve">
+		<body>
+			<div>
+				<list type="record">
+					<label>identifier</label><item>unclassified</item>
+					<label>name</label><item xml:lang="eng">unclassified glyph (default)</item>
+					<label>description</label><item>a glyph that has not been classified, usually because it is indistinct, or because no visual documentation is available</item>
+					<label>mapping</label><item>*</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>danda</item>
+					<label>identifier</label><item>dandaPlain</item>
+					<label>description</label><item>plain vertical bar</item>
+					<label>mapping</label><item>|</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dandaSerif</item>
+					<label>description</label><item>vertical bar with a headmark or small horizontal line on top</item>
+					<label>mapping</label><item>|</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dandaHooked</item>
+					<label>description</label><item>vertical bar with a hook on top</item>
+					<label>mapping</label><item>|</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dandaCross</item>
+					<label>description</label><item>vertical bar crossed by a predominantly horizontal line</item>
+					<label>mapping</label><item>|</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dandaStrokeLeft</item>
+					<label>description</label><item>vertical bar with short horizontal appendix at middle on the left</item>
+					<label>mapping</label><item>|</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dandaOrnate</item>
+					<label>description</label><item>vertical bar with more complex ornamentation</item>
+					<label>mapping</label><item>|</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddanda</item>
+					<label>identifier</label><item>ddandaPlain</item>
+					<label>description</label><item>plain double vertical bar</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaSerif</item>
+					<label>description</label><item>double vertical bar with a headmark or small horizontal line on top</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaHooked</item>
+					<label>description</label><item>double vertical bar with a hook on top of one or both bars</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaCross</item>
+					<label>description</label><item>double vertical bar crossed by by one or more further strokes that meet the vertical lines more or less at right angles</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaStrokeLeft</item>
+					<label>description</label><item>double vertical bar with short horizontal appendix at middle of left bar</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaStrokeRight</item>
+					<label>description</label><item>double vertical bar with short horizontal appendix at middle of right bar</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaDotTriple</item>
+					<label>description</label><item>double vertical bar enclosing three dots</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>ddandaOrnate</item>
+					<label>description</label><item>double vertical bar with more complex ornamentation</item>
+					<label>mapping</label><item>||</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>comma</item>
+					<label>description</label><item>a short, curved vertical stroke at median height</item>
+					<label>mapping</label><item>,</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>commaSmall</item>
+					<label>identifier</label><item>dotCommaMid</item>
+					<label>description</label><item>a very short vertical line at median height</item>
+					<label>mapping</label><item>,</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>commaHigh</item>
+					<label>description</label><item>a short vertical bar raised to head height</item>
+					<label>mapping</label><item>,</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dash</item>
+					<label>description</label><item>short and quite straight horizontal line</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashConcave</item>
+					<label>description</label><item>horizontal line with the middle bulging downward</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashConvex</item>
+					<label>description</label><item>horizontal line with the middle bulging upward</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashHooked</item>
+					<label>description</label><item>horizontal line with a hook at one end or the other</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashWavy</item>
+					<label>description</label><item>prominently sinuous horizontal line</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashLong</item>
+					<label>description</label><item>conspicuously long and quite straight horizontal line</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashDouble</item>
+					<label>description</label><item>two short and quite straight horizontal lines</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashDoubledot</item>
+					<label>description</label><item>a dash with a pair of dots above and below</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dashTriple</item>
+					<label>description</label><item>three predominantly horizontal lines one below the other, including cases where the middle line may be a slightly more complex figure</item>
+					<label>mapping</label><item>~</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dotMid</item>
+					<label>description</label><item>median dot</item>
+					<label>mapping</label><item>°</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dotDouble</item>
+					<label>description</label><item>two dots, one above the other, like a visarga</item>
+					<label>mapping</label><item>°</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>dotTriangle</item>
+					<label>identifier</label><item>dotTriple</item>
+					<label>description</label><item>three dots arranged in a triangle</item>
+					<label>mapping</label><item>°</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleMed</item>
+					<label>identifier</label><item>circle</item>
+					<label>identifier</label><item>circleSmall</item>
+					<label>description</label><item>small circle (noticeably smaller than a typical character body), placed at median height; Cambodian “Chicken egg”</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleLarge</item>
+					<label>description</label><item>large circle (about the size of a typical character body or larger)</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleHigh</item>
+					<label>description</label><item>small circle above median line</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleLow</item>
+					<label>description</label><item>small circle below median line</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleCross</item>
+					<label>description</label><item>circle with cross inside</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleDouble</item>
+					<label>description</label><item>two circles, one above the other, like a visarga</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleFloret</item>
+					<label>identifier</label><item>circleFinial</item>
+					<label>description</label><item>circle with a floret inside</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleHorned</item>
+					<label>identifier</label><item>egg2apo</item>
+					<label>description</label><item>circle topped by a double (or multiple) curved stroke</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleConcentric</item>
+					<label>description</label><item>circle containing one or more concentric circles, Cambodian “Chicken eye”</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleTarget</item>
+					<label>identifier</label><item>eye</item>
+					<label>description</label><item>circle with a concentric dot, Cambodian “Chicken eye”</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleConcentricOval</item>
+					<label>description</label><item>oval containing one or more concentric circles or ovals</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleTriangle</item>
+					<label>description</label><item>three small circles arranged in a triangle</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleWheel</item>
+					<label>description</label><item>a circular shape depicting a wheel with spokes</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>circleCurve</item>
+					<label>identifier</label><item>tennisBall</item>
+					<label>description</label><item>circle with one or more curved lines</item>
+					<label>mapping</label><item>◯</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>spiralR</item>
+					<label>description</label><item>clockwise (right-turning) spiral (like a figure 6 or 9)</item>
+					<label>mapping</label><item>@</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>spiralL</item>
+					<label>description</label><item>counter-clockwise (left-turning) spiral (like a mirrored figure 6 or 9)</item>
+					<label>mapping</label><item>@</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>crossPlus</item>
+					<label>description</label><item>cross in the shape of a + sign</item>
+					<label>mapping</label><item>+</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>crossX</item>
+					<label>description</label><item>cross in the shape of an ×</item>
+					<label>mapping</label><item>×</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>floret</item>
+					<label>description</label><item>flower-shaped design not matching any particular species of floret</item>
+					<label>mapping</label><item>✤</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>floretQuatrefoil</item>
+					<label>identifier</label><item>simpleFinial</item>
+					<label>description</label><item>floret with four petals, potentially with spikes or smaller petals interspersed between the four cardinal petals</item>
+					<label>mapping</label><item>✤</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>floretComplex</item>
+					<label>identifier</label><item>complexFinial</item>
+					<label>description</label><item>floral design with more detail than a centre and petals (including flowers with eight identical petals)</item>
+					<label>mapping</label><item>✤</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>gomutraFinal</item>
+					<label>identifier</label><item>finalGomutra</item>
+					<label>description</label><item>final gomūtra</item>
+					<label>mapping</label><item>⁋</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>gomutraInitial</item>
+					<label>identifier</label><item>initialGomutra</item>
+					<label>description</label><item>initial gomūtra</item>
+					<label>mapping</label><item>¶</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>gomutraFinalBars</item>
+					<label>description</label><item>final gomūtra rendered as a tapering series of vertical bars</item>
+					<label>mapping</label><item>⁋</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>gomutraFinalComplex</item>
+					<label>description</label><item>final gomūtra involving a more complex design than the archetypal rendering</item>
+					<label>mapping</label><item>⁋</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>squiggleVertical</item>
+					<label>identifier</label><item>braceCurlyClose</item>
+					<label>description</label><item>a wavy or zigzag vertical line</item>
+					<label>mapping</label><item>⌇</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>indistinct</item>
+					<label>description</label><item>symbol that is definitely present, but is so damaged (or unclear in the surrogate for a reason other than damage) that it cannot be assigned to any of the primary categories</item>
+					<label>mapping</label><item></item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>unknown</item>
+					<label>description</label><item>symbol that cannot be assigned to a genus</item>
+					<label>mapping</label><item></item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>spiral</item>
+					<label>description</label><item></item>
+					<label>mapping</label><item>@</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>pc</item>
+					<label>description</label><item></item>
+					<label>mapping</label><item>௳</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>tēti</item>
+					<label>description</label><item></item>
+					<label>mapping</label><item>௳</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>mācam</item>
+					<label>description</label><item></item>
+					<label>mapping</label><item>௴</item>
+				</list>
+
+				<list type="record">
+					<label>identifier</label><item>varuṣam</item>
+					<label>description</label><item></item>
+					<label>mapping</label><item>௵</item>
+				</list>
+			</div>
+		</body>
+	</text>
+</TEI>
