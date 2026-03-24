@@ -4079,6 +4079,23 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <note resp="part:daba">Any number of iterations of the foot ⏑⏑–.</note>
         </item>
       </list>
+        
+        <list>
+            <head>Tamil metres</head>
+            <item>
+                <measure unit="syllable"/>
+                <name xml:lang="">veṇpā</name>
+                <seg type="xml"/>
+                <seg type="prosody"/>
+                <seg type="gana"/>
+                <note resp="part:emfr">{BRIEF DESCRIPTION OF CHARACTERISTICS}</note>
+                <listBibl>
+                    <bibl>{ENCODED REFERENCE WHEN APPLICABLE}
+                    </bibl>
+                </listBibl>
+            </item>
+           
+        </list>
       <list>
         <head>Additions in need of processing</head>
         <!-- additions from Zaki's file -->
