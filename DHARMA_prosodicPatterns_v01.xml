@@ -4089,7 +4089,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
                 <seg type="xml"/>
                 <seg type="prosody"/>
                 <seg type="gana"/>
-                <note source="bib:Niklas1988_01">A <hi rend="italic">kuṟaḷ-veṇpā</hi> contains two <hi rend="italic">aṭi</hi> and hence becomes defined also as <hi rend="italic">oraṭimukkāl</hi> (i.e. “one line and three quarters”, the first line being an <hi rend="italic">aḷavaṭi</hi> with four <hi rend="italic">cīr</hi> and the second a <hi rend="italic">cintati</hi> with three <hi rend="italic">cīr</hi> only). It may be <hi rend="italic">oruvikarpa</hi> or <hi rend="italic">iruvikarpa</hi> (cf. 7.5.).</note>
+                <note resp="part:emfr">Made of two <hi rend="italic">aṭi</hi>s, an <hi rend="italic">aḷavaṭi</hi> with four <hi rend="italic">cīr</hi>s and a <hi rend="italic">cintati</hi> with three <hi rend="italic">cīr</hi>s only.</note>
                 <bibl>
                     <ptr target="bib:Niklas1988_01"/>
                     <citedRange unit="page">151</citedRange>
