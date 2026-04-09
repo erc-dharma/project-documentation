@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-02-26T16:39:23Z. . 
+Schema generated from ODD source 2026-04-08T16:13:10Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -6714,24 +6714,22 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
    <define name="g">
       <element name="g">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character or glyph) represents a glyph, or a non-standard character. [5. Characters, Glyphs, and Writing Modes]</a:documentation>
-         <choice>
-            <data type="string">
-               <param name="pattern">([0-9]+)|([0-9]+/[1-9][0-9]*)|(I+)</param>
-            </data>
-            <data type="string">
-               <param name="pattern">\.</param>
-            </data>
-            <data type="string">
-               <param name="pattern">§*</param>
-            </data>
-         </choice>
-         <attribute name="type">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
-            <choice>
-               <value>numeral</value>
-               <text/>
-            </choice>
-         </attribute>
+         <data type="string"/>
+         <optional>
+            <attribute name="type">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.
+Sample values include: 1] alphabetic; 2] connector; 3] ideogram; 4] numeral; 5] symbol; 6] pc</a:documentation>
+               <data type="token">
+                  <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+               </data>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="ref">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the character or glyph intended.</a:documentation>
+               <data type="anyURI"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
