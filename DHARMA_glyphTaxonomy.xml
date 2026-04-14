@@ -42,6 +42,8 @@
 	    <p>This subsection (genus) includes symbols that consist of, or are palaeographically derived from, a single vertical bar that is about as tall as an average character body. There are separate sections with dedicated tokens for <ref target="#doubleBar">double bars</ref> and <ref target="#shortBar">short bars</ref>.</p>
 	    <list>
 	     <label>identifier</label><item>bar</item>
+            <label>identifier</label><item>danda</item>
+            <label>identifier</label><item>dandaPlain</item>
 	     <label>name</label><item>bar</item>
 	     <label>name</label><item xml:lang="san">daṇḍa</item>
 	     <label>description</label><item>a tall, single vertical bar</item>
@@ -56,6 +58,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-broken</item>
+	     <label>identifier</label><item>dandaGap</item>
 	     <label>name</label><item>broken bar</item>
 	     <label>description</label><item>a tall, single vertical bar with a gap in the middle</item>
 	     <label>mapping</label><item>¦</item>
@@ -69,6 +72,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-crossed</item>
+	     <label>identifier</label><item>dandaCross</item>
 	     <label>name</label><item>crossed bar</item>
 	     <label>description</label><item>a tall, single vertical bar crossed by a shorter, predominantly horizontal line</item>
 	     <label>mapping</label><item>†</item>
@@ -82,6 +86,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-hooked</item>
+	     <label>identifier</label><item>dandaHooked</item>
 	     <label>name</label><item>hooked bar</item>
 	     <label>description</label><item>a tall, single vertical bar with a hook or bend on top</item>
 	     <label>mapping</label><item>†</item>
@@ -95,6 +100,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-curly</item>
+	     <label>identifier</label><item>dandaNotch</item>
+	     <label>identifier</label><item>squiggleVertical</item>
 	     <label>name</label><item>notched bar</item>
 	     <label>description</label><item>a curly and/or notched vertical line that may resemble a figure 3 or a { curly bracket</item>
 	     <label>mapping</label><item>|</item>
@@ -108,6 +115,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-ornate</item>
+	     <label>identifier</label><item>dandaOrnate</item>
 	     <label>name</label><item>ornate bar</item>
 	     <label>description</label><item>a tall, single vertical bar with unspecified complex ornamentation</item>
 	     <label>mapping</label><item>/</item>
@@ -121,6 +129,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-serifed</item>
+	     <label>identifier</label><item>dandaSerif</item>
 	     <label>name</label><item>serifed bar</item>
 	     <label>description</label><item>a tall, single vertical bar with a headmark or small horizontal line on top</item>
 	     <label>mapping</label><item>|</item>
@@ -134,6 +143,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-strokeLeft</item>
+	     <label>identifier</label><item>dandaStrokeLeft</item>
 	     <label>name</label><item>bar with stroke on left</item>
 	     <label>description</label><item>a tall, single vertical bar with a shorter, predominantly horizontal line attached on the left</item>
 	     <label>mapping</label><item>†</item>
@@ -155,6 +165,7 @@
 	<list>
 	     <label>identifier</label><item>bullet</item>
 	     <label>name</label><item>bullet</item>
+	     <label>name</label><item>dot</item>
 	     <label>description</label><item>a small symbol resembling a typographic bullet</item>
 	     <label>mapping</label><item>•</item>
 	     <label>extra</label><item>
@@ -167,6 +178,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-double</item>
+	     <label>identifier</label><item>dotDouble</item>
 	     <label>name</label><item>double bullet</item>
 	     <label>description</label><item>a pair of dots or dotlike symbols one below the other</item>
 	     <label>mapping</label><item>⯼</item>
@@ -180,6 +192,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-double-hollow</item>
+	     <label>identifier</label><item>circleDouble</item>
 	     <label>name</label><item>hollow double bullet</item>
 	     <label>description</label><item>a pair of small hollow circles one below the other</item>
 	     <label>mapping</label><item>⯼</item>
@@ -193,6 +206,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-high</item>
+	     <label>identifier</label><item>dotHigh</item>
 	     <label>name</label><item>high bullet</item>
 	     <label>description</label><item>a dot or dotlike symbol positioned high in the line</item>
 	     <label>mapping</label><item>•</item>
@@ -206,6 +220,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-high-hollow</item>
+	     <label>identifier</label><item>circleHigh</item>
 	     <label>name</label><item>hollow high bullet</item>
 	     <label>description</label><item>a small hollow circle positioned high in the line</item>
 	     <label>mapping</label><item>◦</item>
@@ -219,6 +234,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-hollow</item>
+	     <label>identifier</label><item>circleSmall</item>
 	     <label>name</label><item>hollow bullet</item>
 	     <label>description</label><item>a small hollow circle resembling a typographic bullet</item>
 	     <label>mapping</label><item>◦</item>
@@ -232,6 +248,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-low</item>
+	     <label>identifier</label><item>dotLow</item>
 	     <label>name</label><item>low bullet</item>
 	     <label>description</label><item>a dot or dotlike symbol positioned low in the line</item>
 	     <label>mapping</label><item>•</item>
@@ -245,6 +262,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-low-hollow</item>
+	     <label>identifier</label><item>circleLow</item>
 	     <label>name</label><item>hollow low bullet</item>
 	     <label>description</label><item>a small hollow circle positioned low in the line</item>
 	     <label>mapping</label><item>◦</item>
@@ -258,6 +276,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-middle</item>
+	     <label>identifier</label><item>bullet-middle</item>
+	     <label>identifier</label><item>dotMid</item>
+	     <label>identifier</label><item>dotMiddle</item>
 	     <label>name</label><item>middle bullet</item>
 	     <label>description</label><item>a small symbol resembling a typographic bullet, positioned at middle height in the line</item>
 	     <label>mapping</label><item>•</item>
@@ -271,6 +292,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-middle-hollow</item>
+	     <label>identifier</label><item>circleMid</item>
+	     <label>identifier</label><item>circleMed</item>
 	     <label>name</label><item>hollow middle bullet</item>
 	     <label>description</label><item>a small hollow circle positioned at middle height in the line</item>
 	     <label>mapping</label><item>◦</item>
@@ -284,6 +307,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-triple</item>
+	     <label>identifier</label><item>dotTriple</item>
 	     <label>name</label><item>triple bullet</item>
 	     <label>description</label><item>three dots or dotlike symbols in a vertical row</item>
 	     <label>mapping</label><item>⫶</item>
@@ -297,6 +321,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-triple-clustered</item>
+	     <label>identifier</label><item>bulletTriangle</item>
+	     <label>identifier</label><item>dotTriangle</item>
 	     <label>name</label><item>clustered triple bullet</item>
 	     <label>description</label><item>three dots or dotlike symbols in a triangular cluster</item>
 	     <label>mapping</label><item>•</item>
@@ -328,12 +354,15 @@
 	     </item>
 	    </list>
 	    <list>
-	     <label>identifier</label><item>circle-concentric</item>
-	     <label>name</label><item>concentric circle</item>
-	     <label>description</label><item>a target-like symbol consisting of a circle containing one or more smaller circles and/or a dot in the centre</item>
-	     <label>mapping</label><item>⦾</item>
+	     <label>identifier</label><item>circle-bullseye</item>
+	     <label>identifier</label><item>circleTarget</item>
+	     <label>identifier</label><item>eye</item>
+	     <label>identifier</label><item>encircled-dot</item>
+	     <label>name</label><item>circle with a dot in the centre</item>
+	     <label>description</label><item>a single fairly large circle with a dot or filled circle in the centre like a bullseye</item>
+	     <label>mapping</label><item>⦿</item>
 	     <label>extra</label><item>
-	      <p></p>
+	     <p>Distinguish from <ref target="#circle-concentric">concentric circles</ref>, which may have a dot in the centre but involve two or more circles.</p>
 	<!--
 	      <p>Uncomment and edit as needed to add more text and/or images. If you need to refer to an inscription, use the full path of the text on the server, <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.</p>
 	      <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
@@ -342,6 +371,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-bullseyeCross</item>
+	     <label>identifier</label><item>circle-circleCross</item>
 	     <label>name</label><item>circle with an X in the centre</item>
 	     <label>description</label><item>a fairly large circle with an x, + or asterisk in the centre</item>
 	     <label>mapping</label><item>⊛</item>
@@ -354,12 +384,16 @@
 	     </item>
 	    </list>
 	    <list>
-	     <label>identifier</label><item>circle-bullseye</item>
-	     <label>name</label><item>circle with a dot in the centre</item>
-	     <label>description</label><item>a fairly large circle with a dot or filled circle in the centre like a bullseye</item>
-	     <label>mapping</label><item>⦿</item>
+	     <label>identifier</label><item>circle-concentric</item>
+	     <label>identifier</label><item>circleConcentric</item>
+	     <label>identifier</label><item>circle-in-circle</item>
+	     <label>identifier</label><item>encircled-circle</item>
+	     <label>name</label><item>concentric circle</item>
+	     <label>description</label><item>a target-like symbol consisting of a circle containing one or more smaller circles with or without a dot in the centre</item>
+	     <label>mapping</label><item>⦾</item>
 	     <label>extra</label><item>
-	      <p></p>
+	     <p>Distinguish from <ref target="#circle-bullseye">bullseyes</ref>, which only have a dot in the centre, without additional circles.</p>
+
 	<!--
 	      <p>Uncomment and edit as needed to add more text and/or images. If you need to refer to an inscription, use the full path of the text on the server, <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.</p>
 	      <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
@@ -368,6 +402,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-horned</item>
+	     <label>identifier</label><item>circleHorned</item>
 	     <label>name</label><item>horned circle</item>
 	     <label>description</label><item>a circle topped by two or more curved strokes like horns</item>
 	     <label>mapping</label><item>○</item>
@@ -381,6 +416,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-large</item>
+	     <label>identifier</label><item>circleLarge</item>
 	     <label>name</label><item>large circle</item>
 	     <label>description</label><item>a conspicuously large circle, bigger than a typical character body</item>
 	     <label>mapping</label><item>○</item>
@@ -394,6 +430,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-lined</item>
+	     <label>identifier</label><item>circleCurve</item>
+	     <label>identifier</label><item>tennisBall</item>
 	     <label>name</label><item>lined circle</item>
 	     <label>description</label><item>a circle with one or more non-crossing lines inside; the lines may be straight or curved and may resemble diameters or chords</item>
 	     <label>mapping</label><item>⊖</item>
@@ -407,6 +445,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-ornate</item>
+	     <label>identifier</label><item>circleOrnate</item>
 	     <label>name</label><item>ornate circle</item>
 	     <label>description</label><item>a circle with unspecified complex ornamentation</item>
 	     <label>mapping</label><item>○</item>
@@ -419,7 +458,8 @@
 	     </item>
 	    </list>
 	    <list>
-	     <label>identifier</label><item>circle-oval-eye</item>
+	     <label>identifier</label><item>circle-oval-concentric</item>
+	     <label>identifier</label><item>circleConcentricOval</item>
 	     <label>name</label><item>concentric oval</item>
 	     <label>description</label><item>a horizontal oval containing one or more concentric smaller ovals and/or a dot in the centre like an eye</item>
 	     <label>mapping</label><item>⦾</item>
@@ -465,8 +505,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>cross-tilted</item>
+	     <label>identifier</label><item>crossX</item>
 	     <label>name</label><item>tilted cross</item>
-	     <label>description</label><item>a cross with the arms at a tilted angle, resembling a saltire or St. Andrew's cross</item>
+	     <label>description</label><item>a cross with the arms at a tilted angle, resembling an X, a saltire or St. Andrew's cross</item>
 	     <label>mapping</label><item>☓</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -478,6 +519,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>cross-upright</item>
+	     <label>identifier</label><item>crossPlus</item>
 	     <label>name</label><item>upright cross</item>
 	     <label>description</label><item>a cross with the arms close to vertical and horizontal, resembling a + symbol</item>
 	     <label>mapping</label><item>✚</item>
@@ -498,6 +540,7 @@
 	    <p>This subsection (genus) includes symbols that consist of, or are palaeographically derived from, horizontal strokes.</p>
 	    <list>
 	     <label>identifier</label><item>dash</item>
+	     <label>identifier</label><item>dashPlain</item>
 	     <label>name</label><item>dash</item>
 	     <label>description</label><item>a predominantly horizontal line</item>
 	     <label>mapping</label><item>⁓</item>
@@ -511,6 +554,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-concave</item>
+	     <label>identifier</label><item>dashConcave</item>
+	     <label>identifier</label><item>crescentMid</item>
 	     <label>name</label><item>concave dash</item>
 	     <label>description</label><item>an arched horizontal line with the middle bulging downward like a horizontal crescent or a breve</item>
 	     <label>mapping</label><item>⁓</item>
@@ -524,6 +569,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-convex</item>
+	     <label>identifier</label><item>dashConvex</item>
 	     <label>name</label><item>convex dash</item>
 	     <label>description</label><item>an arched horizontal line with the middle bulging upward like an inverted breve</item>
 	     <label>mapping</label><item>⁓</item>
@@ -537,6 +583,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-convex-notched</item>
+	     <label>identifier</label><item>dashDoubleconvex</item>
 	     <label>name</label><item>notched convex dash</item>
 	     <label>description</label><item>an arched horizontal line with the middle bulging upward and a notch in the centre, like a figure 3 rotated 90 degrees to the left</item>
 	     <label>mapping</label><item>⁓</item>
@@ -550,6 +597,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-double</item>
+	     <label>identifier</label><item>dashDouble</item>
+	     <label>identifier</label><item>equalSign</item>
 	     <label>name</label><item>double dash</item>
 	     <label>description</label><item>a parallel pair of predominantly horizontal lines</item>
 	     <label>mapping</label><item>⹀</item>
@@ -563,6 +612,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-hooked</item>
+	     <label>identifier</label><item>dashHooked</item>
+	     <label>identifier</label><item>dashHook</item>
 	     <label>name</label><item>hooked dash</item>
 	     <label>description</label><item>a predominantly horizontal line with a hook at one end</item>
 	     <label>mapping</label><item>⁓</item>
@@ -576,6 +627,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-long</item>
+	     <label>identifier</label><item>dashLong</item>
 	     <label>name</label><item>long dash</item>
 	     <label>description</label><item>a conspicuously large horizontal line</item>
 	     <label>mapping</label><item>⁓</item>
@@ -589,6 +641,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-obelus</item>
+	     <label>identifier</label><item>dashDoubledot</item>
 	     <label>name</label><item>obelus dash</item>
 	     <label>description</label><item>a predominantly horizontal line with dots above and below, like a division symbol or a horizontal obelus</item>
 	     <label>mapping</label><item>÷</item>
@@ -602,6 +655,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-triple</item>
+	     <label>identifier</label><item>dashTriple</item>
 	     <label>name</label><item>triple dash</item>
 	     <label>description</label><item>a parallel triplet of predominantly horizontal lines</item>
 	     <label>mapping</label><item>⹀</item>
@@ -615,6 +669,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-wavy</item>
+	     <label>identifier</label><item>dashWavy</item>
 	     <label>name</label><item>wavy dash</item>
 	     <label>description</label><item>a sinuous horizontal line like a tilde</item>
 	     <label>mapping</label><item>⁓</item>
@@ -634,6 +689,8 @@
 	    <p>This subsection (genus) includes symbols that consist of, or are palaeographically derived from, tall double vertical bars. There are separate sections with dedicated tokens for <ref target="#bar">single bars</ref> and <ref target="#shortBar">short bars</ref>.</p>
 	    <list>
 	     <label>identifier</label><item>doubleBar</item>
+	     <label>identifier</label><item>ddanda</item>
+	     <label>identifier</label><item>ddandaPlain</item>
 	     <label>name</label><item>double bar</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars</item>
 	     <label>mapping</label><item>∥</item>
@@ -647,6 +704,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-crossed</item>
+	     <label>identifier</label><item>ddandaCrossed</item>
+	     <label>identifier</label><item>ddandaCross</item>
 	     <label>name</label><item>crossed double bar</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars crossed by a shorter, predominantly horizontal line</item>
 	     <label>mapping</label><item>╫</item>
@@ -660,6 +719,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-hooked</item>
+	     <label>identifier</label><item>ddandaHooked</item>
+	     <label>identifier</label><item>ddandaHook</item>
 	     <label>name</label><item>hooked double bar</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars with a hook or bend at the top of one or both</item>
 	     <label>mapping</label><item>╫</item>
@@ -673,6 +734,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-ornate</item>
+	     <label>identifier</label><item>ddandaOrnate</item>
 	     <label>name</label><item>ornate double bar</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars with unspecified complex ornamentation</item>
 	     <label>mapping</label><item>⫽</item>
@@ -686,6 +748,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-serifed</item>
+	     <label>identifier</label><item>ddandaSerif</item>
 	     <label>name</label><item>serifed double bar</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars with a headmark or small horizontal line on top</item>
 	     <label>mapping</label><item>∥</item>
@@ -699,6 +762,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-strokeLeft</item>
+	     <label>identifier</label><item>ddanda-StrokeLeft</item>
 	     <label>name</label><item>double bar with stroke on left</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars with a shorter, predominantly horizontal line attached on the left</item>
 	     <label>mapping</label><item>╫</item>
@@ -712,6 +776,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-strokeRight</item>
+	     <label>identifier</label><item>ddanda-StrokeRight</item>
 	     <label>name</label><item>double bar with stroke on right</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars with a shorter, predominantly horizontal line attached on the right</item>
 	     <label>mapping</label><item>╫</item>
@@ -725,6 +790,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-tailRight</item>
+	     <label>identifier</label><item>ddandaTailRight</item>
 	     <label>name</label><item>double bar with tail on right</item>
 	     <label>description</label><item>a parallel pair of tall vertical bars with an appendix near the lower end on the right</item>
 	     <label>mapping</label><item>∥</item>
@@ -744,6 +810,10 @@
 	    <p>This subsection (genus) includes symbols that represent stylised flowers, like typographic florets or fleurons, involving any combination of some or all of the following elements: a central circle or dot, a number of petals, and a number of radial lines.</p>
 	    <list>
 	     <label>identifier</label><item>floret</item>
+	     <label>identifier</label><item>floretQuatrefoil</item>
+	     <label>identifier</label><item>fleuron</item>
+	     <label>identifier</label><item>flower</item>
+	     <label>identifier</label><item>simpleFinial</item>
 	     <label>name</label><item>floret</item>
 	     <label>description</label><item>a stylised flower</item>
 	     <label>mapping</label><item>✤</item>
@@ -757,6 +827,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>floret-complex</item>
+	     <label>identifier</label><item>floretComplex</item>
+	     <label>identifier</label><item>complexFinial</item>
 	     <label>name</label><item>complex floret</item>
 	     <label>description</label><item>a stylised flower with complex detail and/or ornamentation</item>
 	     <label>mapping</label><item>⁜</item>
@@ -774,6 +846,8 @@
 	    <p>This subsection (genus) includes curlicues and abstract ornamental patterns consisting of one or more lines which are often curved. Symbols identified by the emic name gomūtra should be classified as tapering flourishes.</p>
 	    <list>
 	     <label>identifier</label><item>flourish</item>
+	     <label>identifier</label><item>ornament</item>
+	     <label>identifier</label><item>scroll</item>
 	     <label>name</label><item>flourish</item>
 	     <label>description</label><item>an abstract ornamental pattern</item>
 	     <label>mapping</label><item>〰</item>
@@ -786,33 +860,8 @@
 	     </item>
 	    </list>
 	    <list>
-	     <label>identifier</label><item>flourish-bars-taperOut</item>
-	     <label>name</label><item>bars tapering out</item>
-	     <label>description</label><item>an ornamental curlicue consisting of a series of vertical bars tapering to the right, a final gomūtra symbol</item>
-	     <label>mapping</label><item>↝</item>
-	     <label>extra</label><item>
-	      <p></p>
-	<!--
-	      <p>Uncomment and edit as needed to add more text and/or images. If you need to refer to an inscription, use the full path of the text on the server, <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.</p>
-	      <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-	-->
-	     </item>
-	    </list>
-	    <list>
-	     <label>identifier</label><item>flourish-complex-taperOut</item>
-	     <label>name</label><item>complex flourish tapering out</item>
-	     <label>description</label><item>an ornamental curlicue tapering to the right, a complex final gomūtra symbol</item>
-	     <label>mapping</label><item>↝</item>
-	     <label>extra</label><item>
-	      <p></p>
-	<!--
-	      <p>Uncomment and edit as needed to add more text and/or images. If you need to refer to an inscription, use the full path of the text on the server, <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.</p>
-	      <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-	-->
-	     </item>
-	    </list>
-	    <list>
 	     <label>identifier</label><item>flourish-taperBidirectional</item>
+	     <label>identifier</label><item>gomutraDouble</item>
 	     <label>name</label><item>flourish tapering in both directions</item>
 	     <label>description</label><item>an ornamental curlicue or series of bars tapering out in both directions from the centre</item>
 	     <label>mapping</label><item>↭</item>
@@ -826,6 +875,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>flourish-taperIn</item>
+	     <label>identifier</label><item>gomutraInitial</item>
 	     <label>name</label><item>flourish tapering in</item>
 	     <label>description</label><item>an ornamental curlicue tapering to the left, an initial gomūtra symbol</item>
 	     <label>mapping</label><item>↜</item>
@@ -839,8 +889,37 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>flourish-taperOut</item>
+	     <label>identifier</label><item>gomutraFinal</item>
 	     <label>name</label><item>flourish tapering out</item>
 	     <label>description</label><item>an ornamental curlicue tapering to the right, a final gomūtra symbol</item>
+	     <label>mapping</label><item>↝</item>
+	     <label>extra</label><item>
+	      <p></p>
+	<!--
+	      <p>Uncomment and edit as needed to add more text and/or images. If you need to refer to an inscription, use the full path of the text on the server, <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.</p>
+	      <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+	-->
+	     </item>
+	    </list>
+	    <list>
+	     <label>identifier</label><item>flourish-taperOut-bars</item>
+	     <label>identifier</label><item>gomutraFinalBars</item>
+	     <label>name</label><item>bars tapering out</item>
+	     <label>description</label><item>an ornamental curlicue consisting of a series of vertical bars tapering to the right, a final gomūtra symbol</item>
+	     <label>mapping</label><item>↝</item>
+	     <label>extra</label><item>
+	      <p></p>
+	<!--
+	      <p>Uncomment and edit as needed to add more text and/or images. If you need to refer to an inscription, use the full path of the text on the server, <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.</p>
+	      <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+	-->
+	     </item>
+	    </list>
+	    <list>
+	     <label>identifier</label><item>flourish-taperOut-complex</item>
+	     <label>identifier</label><item>gomutraFinalComplex</item>
+	     <label>name</label><item>complex flourish tapering out</item>
+	     <label>description</label><item>an ornamental curlicue tapering to the right, a complex final gomūtra symbol</item>
 	     <label>mapping</label><item>↝</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -858,6 +937,9 @@
 	    <p>This subsection (genus) includes symbols that consist of, or are palaeographically derived from, short vertical bars. Double short bars are included in the present section. There are separate sections with dedicated tokens for full-length <ref target="#bar">single bars</ref> and <ref target="#doubleBar">double bars</ref>.</p>
 	    <list>
 	     <label>identifier</label><item>shortBar</item>
+	     <label>identifier</label><item>comma</item>
+	     <label>identifier</label><item>commaSmall</item>
+	     <label>identifier</label><item>dotCommaMid</item>
 	     <label>name</label><item>short bar</item>
 	     <label>description</label><item>a short, predominantly vertical bar that may be straight or curved</item>
 	     <label>mapping</label><item>⸴</item>
@@ -871,6 +953,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>shortBar-double</item>
+	     <label>identifier</label><item>ddandaSmall</item>
 	     <label>name</label><item>double short bar</item>
 	     <label>description</label><item>a parallel pair of short, predominantly vertical bars that may be straight or curved</item>
 	     <label>mapping</label><item>⸴</item>
@@ -884,6 +967,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>shortBar-high</item>
+	     <label>identifier</label><item>commaHigh</item>
 	     <label>name</label><item>high short bar</item>
 	     <label>description</label><item>a short, predominantly vertical bar that may be straight or curved, positioned high in the line</item>
 	     <label>mapping</label><item>ⸯ</item>
@@ -914,6 +998,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>spiral-left</item>
+	     <label>identifier</label><item>spiralL</item>
 	     <label>name</label><item>counterclockwise spiral</item>
 	     <label>description</label><item>a spiral that turns counterclockwise, i.e. to the left when proceeding from the centre</item>
 	     <label>mapping</label><item></item>
@@ -927,6 +1012,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>spiral-right</item>
+	     <label>identifier</label><item>spiralR</item>
 	     <label>name</label><item>clockwise spiral</item>
 	     <label>description</label><item>a spiral that turns clockwise, i.e. to the right when proceeding from the centre</item>
 	     <label>mapping</label><item></item>
@@ -1037,7 +1123,7 @@
 -->
 
 	<div>
-	    <head>Emic names in Balinese</head><!--CHECK For Arlo and/or Ilham to populate as needed.-->
+	    <head>Symbols with Balinese names</head><!--CHECK For Arlo and/or Ilham to populate as needed.-->
 	    <list>
 	     <label>identifier</label><item>ban-XXX</item>
 	     <label>name</label><item>XXX</item>
@@ -1076,10 +1162,10 @@
 
 
 	<div>
-	    <head>Emic names in Sanskrit</head>
+	    <head>Symbols with Sanskrit names</head>
 	    <list>
 	     <label>identifier</label><item>san-nandyavarta</item>
-	     <label>name</label><item>nandyāvarta</item>
+	     <label>name</label><item xml:lang="san">nandyāvarta</item>
 	     <label>description</label><item>the symbol called nandyāvarta</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
@@ -1092,7 +1178,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-om</item>
-	     <label>name</label><item>oṁ</item>
+	     <label>name</label><item xml:lang="san">oṁ</item>
 	     <label>description</label><item>a symbol representing oṁ</item>
 	     <label>mapping</label><item>ॐ</item>
 	     <label>extra</label><item>
@@ -1105,7 +1191,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-siddham</item>
-	     <label>name</label><item>siddham</item>
+	     <label>name</label><item xml:lang="san">siddham</item>
 	     <label>description</label><item>a symbol representing siddham</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
@@ -1118,7 +1204,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-srivatsa</item>
-	     <label>name</label><item>śrīvatsa</item>
+	     <label>name</label><item xml:lang="san">śrīvatsa</item>
 	     <label>description</label><item>the symbol called śrīvatsa</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
@@ -1131,7 +1217,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-svastika</item>
-	     <label>name</label><item>svastika</item>
+	     <label>name</label><item xml:lang="san">svastika</item>
 	     <label>description</label><item>a svastika symbol</item>
 	     <label>mapping</label><item>卐</item>
 	     <label>extra</label><item>
@@ -1144,7 +1230,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-svastika-left</item>
-	     <label>name</label><item>counterclockwise swastika</item>
+	     <label>name</label><item xml:lang="eng">counterclockwise svastika</item>
+	     <label>name</label><item xml:lang="san">sauvastika</item>
 	     <label>description</label><item>a svastika symbol with the arms counterclockwise</item>
 	     <label>mapping</label><item>卍</item>
 	     <label>extra</label><item>
@@ -1157,7 +1244,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-svastika-right</item>
-	     <label>name</label><item>clockwise swastika</item>
+	     <label>name</label><item>clockwise svastika</item>
+	     <label>name</label><item xml:lang="san">svastika</item>
 	     <label>description</label><item>a svastika symbol with the arms clockwise</item>
 	     <label>mapping</label><item>卐</item>
 	     <label>extra</label><item>
@@ -1170,7 +1258,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>san-triratna</item>
-	     <label>name</label><item>triratna</item>
+	     <label>name</label><item xml:lang="san">triratna</item>
 	     <label>description</label><item>the symbol called triratna or nandipada</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
@@ -1185,10 +1273,10 @@
 
 
 	<div>
-	    <head>Emic names in Tamil</head>
+	    <head>Symbols with Tamil names</head>
 	    <list>
 	     <label>identifier</label><item>tam-arai</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1201,7 +1289,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kacu</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1214,7 +1302,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kalam</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1227,7 +1315,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kalancu</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1240,7 +1328,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kani</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1253,7 +1341,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kannaru</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1266,7 +1354,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kil</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1279,7 +1367,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kilaru</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1292,7 +1380,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kuli</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1305,7 +1393,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kuruni</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1318,7 +1406,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-macam</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1331,7 +1419,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-mukkani</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1344,7 +1432,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-muntiri</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1357,7 +1445,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-muntirikai</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1370,7 +1458,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nali</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1383,7 +1471,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nayaka</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1396,7 +1484,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nel</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1409,7 +1497,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nellu</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1422,7 +1510,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nilam</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1435,7 +1523,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-panam</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1448,7 +1536,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-patakku</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1461,7 +1549,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-pillaiyarCuli</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1474,7 +1562,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-pon</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1487,7 +1575,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-teti</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1500,7 +1588,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-varusam</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1513,7 +1601,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-veli</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1526,7 +1614,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-yanti</item>
-	     <label>name</label><item>CHECK @EMFR</item>
+	     <label>name</label><item xml:lang="tam">CHECK @EMFR</item>
 	     <label>description</label><item>CHECK @EMFR</item>
 	     <label>mapping</label><item>CHECK @EMFR</item>
 	     <label>extra</label><item>
@@ -1932,7 +2020,53 @@
     </list>
    </div>
 
-   <!-- The following div is for testing only. Should be commented out when done, but not deleted. -->
+
+
+   <div>
+    <head>Editing the Glyph Taxonomy</head>
+    <p>Contributors who encode text for DHARMA can and should edit this authority file, but only when there is good reason to do so. Before creating a new symbol entry, make very certain (1) that the entry does not already exist, perhaps by a slightly different name; and (2) that the new entry is a useful addition to the Taxonomy. A new entry can only be useful if the symbol it describes can be objectively distinguished from all other symbols listed in the Taxonomy and this distinction is considered relevant to research. Just because four-petalled florets can be objectively distinguished from eight-petalled florets does not necessarily mean that the distinction is relevant. Even if the strategies of using four-versus eight-petalled florets could arguably be researched, it is not feasible to expect that this distinction will be consistently made in a corpus large enough to study such patterns, so we prefer not to count the petals on our florets.</p>
+
+    <div>
+     <head>Adding new names to existing entries</head>
+     <p>Feel free to add further source-language names to existing entries. Doing so was not a priority when this Taxonomy was created, but if you have the inclination, go ahead. Names are listed as pairs like &lt;label&gt;name&lt;/label&gt;&lt;item&gt;WHATEVER&lt;/item&gt;, where WHATEVER is the name of the symbol. To add a new name, insert such a pair below the last pre-existing name. Enter the desired name. Add @xml:lang to the &lt;item&gt; element, with the three-letter ISO tag for the language of the name, e.g. &lt;item xml:lang=&quot;san&quot;&gt;daṇḍa&lt;/item&gt;. Preferably also add an XML comment with the date and your DHARMA ID or name to note that you've added this name.</p>
+    </div>
+
+    <div>
+     <head>Modifying existing content</head>
+     <p>Content already present in the authority file should normally be edited only by a project PI, Michaël or Dan. Content that was added by others may be edited as needed by the person who added it. In all other cases, consider very carefully if the edit is necessary. If it is, be very sure that it is consistent with the rest of the file and will not lead to unintended consequences.</p>
+    </div>
+
+    <div>
+     <head>Adding new content</head>
+     <p>a &lt;revisionDesc&gt; should be included and &lt;change&gt; elements logged
+new sections will not be created in the lifetime of DHARMA
+although sections for alphabetic and numeric graphemes are envisioned and may be added in the future
+new genera shall be added only when absolutely necessary
+new etic genera should be avoided; anything that cannot be classified into one of the existing genera goes into miscellaneous
+new emic genera will be added for languages as needed
+new species and subspecies should be limited to well-founded cases, i.e. where an encoder is quite positive that they have a symbol which
+doesn’t fit any of the existing species well enough, and
+can be confidently recognised as a member of the proposed new species when it occurs elsewhere
+future additions to the authority file would involve
+copying and pasting the description (&lt;char&gt;) of the parent genus or a related species
+making sure the new item is properly placed in alphabetic order within the section
+making the necessary changes for the new species, i.e.
+giving it a new xml:id in a style concordant with existing id-s
+describing it
+if a unique display is desired, editing or adding mapping and/or the name
+</p>
+    </div>
+
+
+
+
+   </div>
+
+
+
+
+
+<!-- The following div is for testing only. Should be commented out when done, but not deleted. 
    <div>
     <head>Sample section</head>
 
@@ -1991,6 +2125,10 @@
     </div>
 
    </div>
+-->
+
+
+
   </body>
  </text>
 </TEI>
