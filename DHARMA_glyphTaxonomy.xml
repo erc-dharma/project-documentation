@@ -1814,23 +1814,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nayaka</item>
-	     <label>name</label><item xml:lang="tam">nāyaka<!--CHECK @EMFR--></item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
-	     <label>extra</label><item>
-	      <p></p>
-	     </item>
-<!--            <label>images</label><item>
-              <figure>
-                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
-              </figure>
-            </item>
--->
-	    </list>
-	    <list>
-	     <label>identifier</label><item>tam-nel</item>
-	     <label>name</label><item xml:lang="tam">nel<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">nāyaka</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item><!--CHECK @EMFR--></item>
 	     <label>extra</label><item>
@@ -1846,9 +1830,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nellu</item>
-	     <label>name</label><item xml:lang="tam">nellu<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">nellu</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿕</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1859,12 +1843,12 @@
               </figure>
             </item>
 -->
-	    </list>
+	    </list>	   
 	    <list>
 	     <label>identifier</label><item>tam-nilam</item>
-	     <label>name</label><item xml:lang="tam">nilam<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">nilam</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿦</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1878,9 +1862,41 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-panam</item>
-	     <label>name</label><item xml:lang="tam">paṇam<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">paṇam</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿞</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-puncey</item>
+	     <label>name</label><item xml:lang="tam">puṉcey</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿥</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-param</item>
+	     <label>name</label><item xml:lang="tam">pāram</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿡</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1894,7 +1910,23 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-patakku</item>
-	     <label>name</label><item xml:lang="tam">patakku<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">patakku</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿛</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>	    
+	    <list>
+	     <label>identifier</label><item>tam-pillai</item>
+	     <label>name</label><item xml:lang="tam">piḷḷai</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item><!--CHECK @EMFR--></item>
 	     <label>extra</label><item>
@@ -1910,9 +1942,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-pillaiyarCuli</item>
-	     <label>name</label><item xml:lang="tam">piḷḷaiyār cūḻi<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">piḷḷaiyār cūḻi</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>௳</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1926,9 +1958,25 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-pon</item>
-	     <label>name</label><item xml:lang="tam">poṉ<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">poṉ</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿟</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-rupay</item>
+	     <label>name</label><item xml:lang="tam">rūpāy</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>௹</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1942,9 +1990,57 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-teti</item>
-	     <label>name</label><item xml:lang="tam">tēti<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">tēti</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>௳</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-tuni</item>
+	     <label>name</label><item xml:lang="tam">tūṇi</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-ulakku</item>
+	     <label>name</label><item xml:lang="tam">uḻakku</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿘</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-varakan</item>
+	     <label>name</label><item xml:lang="tam">varākaṉ</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿠</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1958,9 +2054,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-varusam</item>
-	     <label>name</label><item xml:lang="tam">varuṣam<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">varuṣam</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>௵</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1974,9 +2070,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-veli</item>
-	     <label>name</label><item xml:lang="tam">vēli<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">vēli</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿣</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1990,7 +2086,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-yantu</item>
-	     <label>name</label><item xml:lang="tam">yāṇṭu<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">yāṇṭu</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item><!--CHECK @EMFR--></item>
 	     <label>extra</label><item>
