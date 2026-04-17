@@ -1829,8 +1829,8 @@
 -->
 	    </list>
 	    <list>
-	     <label>identifier</label><item>tam-nellu</item>
-	     <label>name</label><item xml:lang="tam">nellu</item>
+	     <label>identifier</label><item>tam-nel</item>
+	     <label>name</label><item xml:lang="tam">nel</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item>𑿕</item>
 	     <label>extra</label><item>
@@ -1877,10 +1877,10 @@
 -->
 	    </list>
 	    <list>
-	     <label>identifier</label><item>tam-puncey</item>
-	     <label>name</label><item xml:lang="tam">puṉcey</item>
+	     <label>identifier</label><item>tam-panavitai</item>
+	     <label>name</label><item xml:lang="tam">paṇaviṭai</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item>𑿥</item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1891,7 +1891,7 @@
               </figure>
             </item>
 -->
-	    </list>
+	    </list>	   
 	    <list>
 	     <label>identifier</label><item>tam-param</item>
 	     <label>name</label><item xml:lang="tam">pāram</item>
@@ -1961,6 +1961,22 @@
 	     <label>name</label><item xml:lang="tam">poṉ</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item>𑿟</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-puncey</item>
+	     <label>name</label><item xml:lang="tam">puṉcey</item>
+	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item>𑿥</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
