@@ -32,20 +32,6 @@
     <p>Visual illustrations are available for some of the entries, showing either a schematic illustration of what a symbol of the given class looks like, or actual instances encountered in our practice. These serve to help encoders assign real-life symbols to classes, and to help end-users visualise the symbols in a digital edition.</p>
    </div>
 
-
-   <div>
-    <head>Unclassified</head>
-    <p>This is a fallback value, also understood to apply when @ref is not present on a &lt;g&gt; element.</p>
-<!--Do not add more items to this section.-->
-    <list>
-     <label>identifier</label><item>unclassified</item>
-     <label>name</label><item>unclassified glyph</item>
-     <label>description</label><item>a glyph that has not been classified, usually because it is indistinct, or because no visual documentation is available.</item>
-     <label>mapping</label><item>*</item>
-    </list>
-   </div>
-
-
    <div>
     <head>Etic tokens</head>
     <p>This section contains tokens created using English or international terms referring to simple geometric and iconic shapes, for an objective description of what a symbol looks like.</p>
