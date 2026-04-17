@@ -192,10 +192,10 @@
             </item>
 -->
 	    </list>
-	</div>    
-	
-	
-	
+	</div>
+
+
+
 	<div>
 	    <head>Bullets</head>
 	    <p>This subsection (genus) includes symbols that resemble typographic bullets. A bullet may be a dot, a small filled or hollow circle, a short dash or a small asterisk, as well as a small group of any such symbols.</p>
@@ -1667,7 +1667,7 @@
               </figure>
             </item>
 -->
-	    </list>	   
+	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kuli</item>
 	     <label>name</label><item xml:lang="tam">kuḻi</item>
@@ -1843,7 +1843,7 @@
               </figure>
             </item>
 -->
-	    </list>	   
+	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nilam</item>
 	     <label>name</label><item xml:lang="tam">nilam</item>
@@ -1891,7 +1891,7 @@
               </figure>
             </item>
 -->
-	    </list>	   
+	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-param</item>
 	     <label>name</label><item xml:lang="tam">pāram</item>
@@ -1923,7 +1923,7 @@
               </figure>
             </item>
 -->
-	    </list>	    
+	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-pillai</item>
 	     <label>name</label><item xml:lang="tam">piḷḷai</item>
@@ -2557,14 +2557,14 @@
    </div>
 
 
-<!-- The following div is for testing only. Should be commented out when done, but not deleted. 
+<!-- The following div is for testing only. Should be commented out when done, but not deleted.
    <div>
     <head>Sample section</head>
 
     <p>All divisions must start with a heading.</p>
 
     <p>It is possible to add paragraphs. You can point to a glyph <ref target="#mysymbol">like this</ref>.</p>
- 
+
     <p>If you need to refer to an inscription, use the full path of the text on the server,
     <ref target="/texts/INSPYU00043">like this</ref>. You can also use the full URL, <ref target="https://dharmalekha.info/texts/INSPYU00043">like this</ref>.
     </p>
@@ -2595,6 +2595,42 @@
     <list>
      <label>identifier</label><item>symbolwithmapping</item>
      <label>mapping</label><item>foo</item>
+	 <label>extra</label><item><p>Here is a paragraph.</p></item>
+	 <label>images</label>
+	 <item>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>One</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+		<figure>
+			<graphic url="https://picsum.photos/200/300"/>
+			<head>Two</head>
+		</figure>
+	 </item>
     </list>
 
     <list>
