@@ -50,7 +50,8 @@ When adding a new person to this list, the file DHARMA_gitNames
 			</abstract>
 		</profileDesc>
 		<revisionDesc status="draft">
-			<change who="#argr" when="2026-27-02">Added Muhamda Alnoza's ID.</change>
+			<change who="#argr" when="2026-04-17">Added Made Oka Suryawan Salain's, M. Aftharu Mulya's and Ida Bagus Made Gesram Dwijayana's IDs.</change>
+			<change who="#argr" when="2026-02-27">Added Muhamad Alnoza's ID.</change>
 			<change who="#argr" when="2025-12-05">Added Hedwi Prihatmoko's ID.</change>
 			<change who="#argr" when="2025-06-02">Added Kelsey Martini's ID.</change>
 			<change who="#argr" when="2025-05-26">Added Helen Creese's ID.</change>
@@ -507,6 +508,12 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="VIAF">http://viaf.org/viaf/14319585</idno>
 					<idno type="IdRef">https://www.idref.fr/11251250X</idno>
 				</person>
+				<person xml:id="gedw">
+					<persName>
+						<name>Ida Bagus Made Gesram Dwijayana</name>
+					</persName>
+					<affiliation></affiliation>
+				</person>
 				<person xml:id="shij">
 					<persName>
 						<forename>Shiori</forename>
@@ -619,6 +626,18 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<idno type="VIAF">http://viaf.org/viaf/120435268</idno>
 					<idno type="IdRef">https://www.idref.fr/170559610</idno>
 					<idno type="ORCID">https://orcid.org/0000-0001-8352-5870</idno>
+				</person>
+				<person xml:id="okss">
+					<persName>
+						<name>Made Oka Suryawan Salain</name>
+					</persName>
+					<affiliation></affiliation>
+				</person>
+				<person xml:id="mamu">
+					<persName>
+						<name>M. Aftharu Mulya</name>
+					</persName>
+					<affiliation></affiliation>
 				</person>
 				<person xml:id="inma">
 					<persName>
