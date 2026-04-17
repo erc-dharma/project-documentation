@@ -1592,7 +1592,7 @@
 	     <label>identifier</label><item>tam-kalam</item>
 	     <label>name</label><item xml:lang="tam">kalam</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1608,7 +1608,7 @@
 	     <label>identifier</label><item>tam-kalancu</item>
 	     <label>name</label><item xml:lang="tam">kaḻañcu</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1640,7 +1640,7 @@
 	     <label>identifier</label><item>tam-kannaru</item>
 	     <label>name</label><item xml:lang="tam">kaṇṇāṟu</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1768,7 +1768,7 @@
 	     <label>identifier</label><item>tam-nal</item>
 	     <label>name</label><item xml:lang="tam">nāḷ</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1784,7 +1784,7 @@
 	     <label>identifier</label><item>tam-nali</item>
 	     <label>name</label><item xml:lang="tam">nāḻi<!--CHECK @EMFR--></item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1816,7 +1816,7 @@
 	     <label>identifier</label><item>tam-nayaka</item>
 	     <label>name</label><item xml:lang="tam">nāyaka</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -1928,7 +1928,7 @@
 	     <label>identifier</label><item>tam-pillai</item>
 	     <label>name</label><item xml:lang="tam">piḷḷai</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -2008,7 +2008,7 @@
 	     <label>identifier</label><item>tam-tuni</item>
 	     <label>name</label><item xml:lang="tam">tūṇi</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -2088,7 +2088,7 @@
 	     <label>identifier</label><item>tam-yantu</item>
 	     <label>name</label><item xml:lang="tam">yāṇṭu</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
-	     <label>mapping</label><item><!--CHECK @EMFR--></item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
