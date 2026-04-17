@@ -1623,7 +1623,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-kani</item>
 	     <label>name</label><item xml:lang="tam">kāṇi</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol for kāṇi not used as the the fraction 1/80.</item>
 	     <label>mapping</label><item>𑿂</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1703,7 +1703,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-ma</item>
 	     <label>name</label><item xml:lang="tam">mā</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol for mā not used as fraction 1/20.</item>
 	     <label>mapping</label><item>𑿈</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -2041,6 +2041,22 @@
 	     <label>name</label><item xml:lang="tam">uḻakku</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item>𑿘</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>tam-uppalam</item>
+	     <label>name</label><item xml:lang="tam">uppaḷam</item>
+	     <label>description</label><item>A symbol representing uppaḷam, ‘salt-pan’. See SII 7.485.</item>
+	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
