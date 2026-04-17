@@ -403,7 +403,7 @@
 	     <label>identifier</label><item>circle</item>
 	     <label>name</label><item>circle</item>
 	     <label>description</label><item>a fairly large circle or roughly circular symbol</item>
-	     <label>mapping</label><item>⭘</item><!--CHECK Display ambiguity with binding hole "◯" (U+25EF) Change binding hole display to "◌" (U+25CC) Dotted Circle or to "⍜" (U+235C) APL Functional Symbol Circle Underbar?-->
+	     <label>mapping</label><item>⭘</item><!--CHECK Display ambiguity with binding hole "◯" (U+25EF) Change binding hole display to "◌" (U+25CC) Dotted Circle or to "⍜" (U+235C) APL Functional Symbol Circle Underbar? Or to  Ø (U+00D8) Latin Capital Letter O with Stroke, as suggested by argr in issue #427 -->
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
@@ -986,6 +986,22 @@
 	     <label>name</label><item>complex floret</item>
 	     <label>description</label><item>a stylised flower with complex detail and/or ornamentation</item>
 	     <label>mapping</label><item>⁜</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
+                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
+	     <label>identifier</label><item>floret-petal</item>
+	     <label>name</label><item>petal</item>
+	     <label>description</label><item><!--CHECK argr--></item>
+	     <label>mapping</label><item><!--CHECK argr--></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
