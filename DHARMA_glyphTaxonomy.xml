@@ -1822,13 +1822,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replaplace this text with its description (e.g. source); repeat the figure element to add more images</head>
+                <head><ref target="DHARMA_INSTiruvavatuturai00008.xml">Tiruvāvaṭutuṟai Copper-plate no. 8</ref></head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nel</item>
