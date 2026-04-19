@@ -1641,18 +1641,18 @@
 	    <list>
 	     <label>identifier</label><item>tam-kannaru</item>
 	     <label>name</label><item xml:lang="tam">kaṇṇāṟu</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing kaṇṇāṟṟu, oblique form of kaṇṇāṟu.</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replace this text with its description (e.g. source); repeat the figure element to add more images</head>
+                <graphic url="https://dharmalekha.info/glyphs/kannaru_01.png"/>
+                <head><ref target="https://dharmalekha.info/texts/INSCirkali00052">Cīrkāḻi 52, line 3</ref></head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kil</item>
@@ -1858,13 +1858,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replace this text with its description (e.g. source); repeat the figure element to add more images</head>
+                <graphic url="https://dharmalekha.info/glyphs/nilam_01.png"/>
+                <head><ref target="https://dharmalekha.info/texts/INSCirkali00052">Cīrkāḻi 52, line 2</ref></head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-panam</item>
