@@ -1825,7 +1825,11 @@
             <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/nayaka_01.png"/>
-                <head><ref target="DHARMA_INSTiruvavatuturai00008.xml">Tiruvāvaṭutuṟai Copper-plate no. 8</ref></head>
+                <head><ref target="https://dharmalekha.info/texts/INSTiruvavatuturai00008">Tiruvāvaṭutuṟai 8</ref></head>
+              </figure>
+                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/nayaka_02.png"/>
+                <head><ref target="https://dharmalekha.info/texts/INSTiruvavatuturai00013">Tiruvāvaṭutuṟai 13</ref></head>
               </figure>
             </item>
 
