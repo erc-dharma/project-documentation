@@ -1529,18 +1529,18 @@
 	    <list>
 	     <label>identifier</label><item>tam-aka</item>
 	     <label>name</label><item xml:lang="tam">āka</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing āka (‘total’).</item>
 	     <label>mapping</label><item>𑿭</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replace this text with its description (e.g. source); repeat the figure element to add more images</head>
+                <graphic url="https://dharmalekha.info/glyphs/aka_05.png"/>
+                <head>MS BnF_Indien_442, f10v</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-alakku</item>
@@ -1641,7 +1641,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-kannaru</item>
 	     <label>name</label><item xml:lang="tam">kaṇṇāṟu</item>
-	     <label>description</label><item>A symbol representing kaṇṇāṟṟu, oblique form of kaṇṇāṟu.</item>
+	     <label>description</label><item>A symbol representing kaṇṇāṟu, most often to be taken for its oblique form kaṇṇāṟṟu.</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1721,7 +1721,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-matam</item>
 	     <label>name</label><item xml:lang="tam">mātam</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing mātam (‘month’).</item>
 	     <label>mapping</label><item>௴</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1737,7 +1737,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-merpati</item>
 	     <label>name</label><item xml:lang="tam">mēṟpaṭi</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing mēṟpaṭi (‘as above’).</item>
 	     <label>mapping</label><item>௸</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1753,7 +1753,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-mutal</item>
 	     <label>name</label><item xml:lang="tam">mutal</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing mutal (‘first, beginning’).</item>
 	     <label>mapping</label><item>𑿯</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1769,7 +1769,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nal</item>
 	     <label>name</label><item xml:lang="tam">nāḷ</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing nāl (‘day’).</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1784,7 +1784,7 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nali</item>
-	     <label>name</label><item xml:lang="tam">nāḻi<!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">nāḻi</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
@@ -1801,7 +1801,7 @@
 	     <list>
 	     <label>identifier</label><item>tam-nancey</item>
 	     <label>name</label><item xml:lang="tam">naṉcey</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing naṉcey (‘wet land’).</item>
 	     <label>mapping</label><item>𑿤</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1837,7 +1837,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nel</item>
 	     <label>name</label><item xml:lang="tam">nel</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing nel (‘paddy’).</item>
 	     <label>mapping</label><item>𑿕</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1853,7 +1853,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nilam</item>
 	     <label>name</label><item xml:lang="tam">nilam</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing nilam (‘land’).</item>
 	     <label>mapping</label><item>𑿦</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1948,8 +1948,8 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-pillaiyarCuli</item>
-	     <label>name</label><item xml:lang="tam">piḷḷaiyār cūḻi</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>name</label><item xml:lang="tam">piḷḷaiyār cuḻi</item>
+	     <label>description</label><item>The auspicious symbol named piḷḷaiyār cuḻi.</item>
 	     <label>mapping</label><item>௳</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1965,7 +1965,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-pon</item>
 	     <label>name</label><item xml:lang="tam">poṉ</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing poṉ (‘gold’).</item>
 	     <label>mapping</label><item>𑿟</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1981,18 +1981,18 @@
 	    <list>
 	     <label>identifier</label><item>tam-puncey</item>
 	     <label>name</label><item xml:lang="tam">puṉcey</item>
-	     <label>description</label><item><!--CHECK @EMFR--></item>
+	     <label>description</label><item>A symbol representing puṉcey (‘dry land’).</item>
 	     <label>mapping</label><item>𑿥</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replace this text with its description (e.g. source); repeat the figure element to add more images</head>
+                <graphic url="https://dharmalekha.info/glyphs/puncey_01.png"/>
+                <head>MS BnF Indien 442, f10v</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-rupay</item>
