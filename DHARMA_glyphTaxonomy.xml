@@ -971,13 +971,33 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/token_01.png"/>
-                <head>to add images, uncomment this section, insert the URL of the image above and replace this text with its description (e.g. source); repeat the figure element to add more images</head>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_01.png"/>
+                <head></head>
+              </figure>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_02.png"/>
+                <head>RAS Raffles Java 1</head>
+              </figure>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_03.png"/>
+                <head><ref target="https://dharmalekha.info/texts/INSVengiCalukya00035">Elavaṟṟu grant of Amma II</ref></head>
+              </figure>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_04.png"/>
+                <head>Mpu Mano’s inscription, Java, 14th c.</head>
+              </figure>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_05.png"/>
+                <head></head>
+              </figure>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_06.png"/>
+                <head></head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>floret-complex</item>
@@ -1536,7 +1556,7 @@
 	     </item>
             <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/aka_05.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-aka_01.png"/>
                 <head>MS BnF_Indien_442, f10v</head>
               </figure>
             </item>
@@ -1648,7 +1668,7 @@
 	     </item>
             <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/kannaru_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-kannaru_01.png"/>
                 <head><ref target="https://dharmalekha.info/texts/INSCirkali00052">Cīrkāḻi 52, line 3</ref></head>
               </figure>
             </item>
@@ -1824,11 +1844,11 @@
 	     </item>
             <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/nayaka_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-nayaka_01.png"/>
                 <head><ref target="https://dharmalekha.info/texts/INSTiruvavatuturai00008">Tiruvāvaṭutuṟai 8</ref></head>
               </figure>
                 <figure>
-                <graphic url="https://dharmalekha.info/glyphs/nayaka_02.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-nayaka_02.png"/>
                 <head><ref target="https://dharmalekha.info/texts/INSTiruvavatuturai00013">Tiruvāvaṭutuṟai 13</ref></head>
               </figure>
             </item>
@@ -1860,7 +1880,7 @@
 	     </item>
             <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/nilam_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-nilam_01.png"/>
                 <head><ref target="https://dharmalekha.info/texts/INSCirkali00052">Cīrkāḻi 52, line 2</ref></head>
               </figure>
             </item>
@@ -1988,7 +2008,7 @@
 	     </item>
             <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/puncey_05.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-puncey05.png"/>
                 <head>MS BnF Indien 442, f10v</head>
               </figure>
             </item>
