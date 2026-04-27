@@ -1794,6 +1794,22 @@
 -->
 	    </list>
 	    <list>
+	     <label>identifier</label><item>tam-mukkuruni</item>
+	     <label>name</label><item xml:lang="tam">mukkuṟuṇi</item>
+	     <label>description</label><item>A symbol representing <foreign>mukkuṟuṇi</foreign> (‘three <foreign>kuṟuṇi</foreign>s’).</item>
+	     <label>mapping</label><item>𑿜</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <head>uncomment to add images; see instructions at end of file</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
 	     <label>identifier</label><item>tam-mutal</item>
 	     <label>name</label><item xml:lang="tam">mutal</item>
 	     <label>description</label><item>A symbol representing mutal (‘first, beginning’).</item>
