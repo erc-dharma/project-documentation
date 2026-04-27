@@ -1604,7 +1604,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-aka</item>
 	     <label>name</label><item xml:lang="tam">āka</item>
-	     <label>description</label><item>A symbol representing āka (‘total’).</item>
+	     <label>description</label><item>A symbol representing <foreign>āka</foreign> (‘total’).</item>
 	     <label>mapping</label><item>𑿭</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1700,7 +1700,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-kannaru</item>
 	     <label>name</label><item xml:lang="tam">kaṇṇāṟu</item>
-	     <label>description</label><item>A symbol representing kaṇṇāṟu, most often to be taken for its oblique form kaṇṇāṟṟu.</item>
+	     <label>description</label><item>A symbol representing <foreign>kaṇṇāṟu</foreign>, most often to be taken for its oblique form <foreign>kaṇṇāṟṟu</foreign>.</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1764,7 +1764,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-matam</item>
 	     <label>name</label><item xml:lang="tam">mātam</item>
-	     <label>description</label><item>A symbol representing mātam (‘month’).</item>
+	     <label>description</label><item>A symbol representing <foreign>mātam</foreign> (‘month’).</item>
 	     <label>mapping</label><item>௴</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1780,7 +1780,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-merpati</item>
 	     <label>name</label><item xml:lang="tam">mēṟpaṭi</item>
-	     <label>description</label><item>A symbol representing mēṟpaṭi (‘as above’).</item>
+	     <label>description</label><item>A symbol representing <foreign>mēṟpaṭi</foreign> (‘as above’).</item>
 	     <label>mapping</label><item>௸</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1810,9 +1810,25 @@
 -->
 	    </list>
 	    <list>
+	     <label>identifier</label><item>tam-muvulakku</item>
+	     <label>name</label><item xml:lang="tam">muvuḻakku</item>
+	     <label>description</label><item>A symbol representing <foreign>muvuḻakku</foreign> (‘three <foreign>uḻakku</foreign>s’).</item>
+	     <label>mapping</label><item>𑿜</item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <head>uncomment to add images; see instructions at end of file</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
 	     <label>identifier</label><item>tam-mutal</item>
 	     <label>name</label><item xml:lang="tam">mutal</item>
-	     <label>description</label><item>A symbol representing mutal (‘first, beginning’).</item>
+	     <label>description</label><item>A symbol representing <foreign>mutal</foreign> (‘first, beginning’).</item>
 	     <label>mapping</label><item>𑿯</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1828,7 +1844,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nal</item>
 	     <label>name</label><item xml:lang="tam">nāḷ</item>
-	     <label>description</label><item>A symbol representing nāl (‘day’).</item>
+	     <label>description</label><item>A symbol representing <foreign>nāḷ</foreign> (‘day’).</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1860,7 +1876,7 @@
 	     <list>
 	     <label>identifier</label><item>tam-nancey</item>
 	     <label>name</label><item xml:lang="tam">naṉcey</item>
-	     <label>description</label><item>A symbol representing naṉcey (‘wet land’).</item>
+	     <label>description</label><item>A symbol representing <foreign>naṉcey</foreign> (‘wet land’).</item>
 	     <label>mapping</label><item>𑿤</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1876,7 +1892,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nayaka</item>
 	     <label>name</label><item xml:lang="tam">nāyaka</item>
-	     <label>description</label><item>A symbol representing nāyaka. Abbreviated form of ṉāyaka, ṉāyakka.</item>
+	     <label>description</label><item>A symbol representing <foreign>nāyaka</foreign>. Abbreviated form of the variant <foreign>ṉāyaka</foreign>, <foreign>ṉāyakka</foreign>.</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1896,7 +1912,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nel</item>
 	     <label>name</label><item xml:lang="tam">nel</item>
-	     <label>description</label><item>A symbol representing nel (‘paddy’).</item>
+	     <label>description</label><item>A symbol representing <foreign>nel</foreign> (‘paddy’).</item>
 	     <label>mapping</label><item>𑿕</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1912,7 +1928,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-nilam</item>
 	     <label>name</label><item xml:lang="tam">nilam</item>
-	     <label>description</label><item>A symbol representing nilam (‘land’).</item>
+	     <label>description</label><item>A symbol representing <foreign>nilam</foreign> (‘land’).</item>
 	     <label>mapping</label><item>𑿦</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -2008,7 +2024,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-pillaiyarCuli</item>
 	     <label>name</label><item xml:lang="tam">piḷḷaiyār cuḻi</item>
-	     <label>description</label><item>The auspicious symbol named piḷḷaiyār cuḻi.</item>
+	     <label>description</label><item>The auspicious symbol named <foreign>piḷḷaiyār cuḻi</foreign>.</item>
 	     <label>mapping</label><item>௳</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -2024,7 +2040,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-pon</item>
 	     <label>name</label><item xml:lang="tam">poṉ</item>
-	     <label>description</label><item>A symbol representing poṉ (‘gold’).</item>
+	     <label>description</label><item>A symbol representing <foreign>poṉ</foreign> (‘gold’).</item>
 	     <label>mapping</label><item>𑿟</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -2040,7 +2056,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-puncey</item>
 	     <label>name</label><item xml:lang="tam">puṉcey</item>
-	     <label>description</label><item>A symbol representing puṉcey (‘dry land’).</item>
+	     <label>description</label><item>A symbol representing <foreign>puṉcey</foreign> (‘dry land’).</item>
 	     <label>mapping</label><item>𑿥</item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -2120,7 +2136,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-uppalam</item>
 	     <label>name</label><item xml:lang="tam">uppaḷam</item>
-	     <label>description</label><item>A symbol representing uppaḷam, ‘salt-pan’. See SII 7.485.</item>
+	     <label>description</label><item>A symbol representing <foreign>uppaḷam</foreign> (‘salt-pan’). See SII 7.485.</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
