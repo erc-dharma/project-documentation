@@ -1598,7 +1598,6 @@
 	    </list>
 	</div>
 
-
 	<div>
 	    <head>Symbols with Tamil names</head>
 	    <list>
@@ -1615,7 +1614,6 @@
                 <head>MS BnF Indien 442, f10v</head>
               </figure>
             </item>
-
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-alakku</item>
@@ -1700,7 +1698,7 @@
 	    <list>
 	     <label>identifier</label><item>tam-kannaru</item>
 	     <label>name</label><item xml:lang="tam">kaṇṇāṟu</item>
-	     <label>description</label><item>A symbol representing <foreign>kaṇṇāṟu</foreign>, most often to be taken for its oblique form <foreign>kaṇṇāṟṟu</foreign>.</item>
+	     <label>description</label><item>A symbol representing <foreign>kaṇṇāṟu</foreign> (‘wet-land block’), most often to be taken for its oblique form <foreign>kaṇṇāṟṟu</foreign>.</item>
 	     <label>mapping</label><item></item>
 	     <label>extra</label><item>
 	      <p></p>
@@ -1811,9 +1809,9 @@
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-muvulakku</item>
-	     <label>name</label><item xml:lang="tam">muvuḻakku</item>
-	     <label>description</label><item>A symbol representing <foreign>muvuḻakku</foreign> (‘three <foreign>uḻakku</foreign>s’).</item>
-	     <label>mapping</label><item>𑿜</item>
+	     <label>name</label><item xml:lang="tam">mūvuḻakku</item>
+	     <label>description</label><item>A symbol representing <foreign>mūvuḻakku</foreign> (‘three <foreign>uḻakku</foreign>s’).</item>
+	     <label>mapping</label><item>𑿙</item>
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
