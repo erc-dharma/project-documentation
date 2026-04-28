@@ -1915,13 +1915,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
-                <head>uncomment to add images; see instructions at end of file</head>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-nel_01.png"/>
+                <head><ref target="https://dharmalekha.info/texts/INSCirkali00032">Cīrkāḻi 32, line 11</ref></head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nilam</item>
@@ -2061,7 +2061,7 @@
 	     </item>
             <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-puncey01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-puncey_01.png"/>
                 <head>MS BnF Indien 442, f10v</head>
               </figure>
             </item>
