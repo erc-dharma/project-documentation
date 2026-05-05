@@ -84,7 +84,8 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Emmanuel</forename>
 						<surname>Francis</surname>
 					</persName>
-					<affiliation>Centre for South Asia and India studies (CESAH, EHESS &amp; CNRS)</affiliation>
+				    <affiliation>Centre d’études de l’Inde et de l’Asie du Sud (CEIAS, EHESS &amp; CNRS)</affiliation>
+				    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/156480842</idno>
 					<idno type="IdHAL">emmanuel-francis</idno>
 					<idno type="IdRef">https://www.idref.fr/127901175</idno>
@@ -179,7 +180,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Renato</forename>
 						<surname>Dávalos</surname>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -664,7 +665,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Michaël</forename>
 						<surname>Meyer</surname>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
 					<!-- idno à chercher -->
 				</person>
 				<person xml:id="emmo">
