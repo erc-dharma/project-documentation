@@ -14,6 +14,7 @@
             </sourceDesc>
         </fileDesc>
         <revisionDesc status="draft">
+			<change status="draft" when="2026-05-05" who="part:ilnu">Supplying glyph images</change>
             <change status="draft" when="2026-04-13" who="part:daba">Setting up structure and populating with new tokens</change>
             <change status="draft" when="2026-03-24" who="part:mime">Creation of the file</change>
         </revisionDesc>
@@ -67,13 +68,13 @@
 	     <label>extra</label><item>
 	      <p>Distinguish from <ref target="#bullet-double">double bullets</ref>.</p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-broken_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-crossed</item>
@@ -101,13 +102,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-hooked_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-curly</item>
@@ -119,13 +120,18 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+           <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_02.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_03.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_04.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_05.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_06.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_07.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-ornate</item>
@@ -153,13 +159,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+          <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-serifed_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bar-strokeLeft</item>
@@ -170,16 +175,15 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+        <!--    <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-strokeLeft
+				_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
-	    </list>
+	    </list> -->
 	</div>
-
 
 
 	<div>
@@ -228,13 +232,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+           <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-double-hollow_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-high</item>
