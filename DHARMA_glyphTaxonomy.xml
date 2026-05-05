@@ -177,12 +177,11 @@
 	     </item>
         <!--    <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-strokeLeft
-				_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-strokeLeft_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
-            </item>
-	    </list> -->
+            </item> -->
+	    </list>
 	</div>
 
 
@@ -265,13 +264,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-high-hollow_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-hollow</item>
@@ -316,13 +314,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+         <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-low-hollow_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-middle</item>
@@ -353,13 +350,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+           <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-middle-hollow_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-triple</item>
@@ -370,13 +366,13 @@
 	     <label>extra</label><item>
 	      <p>Distinguish from <ref target="#bullet-triple-cluster">clustered triple bullets</ref>.</p>
 	     </item>
-<!--            <label>images</label><item>
+       <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-triple_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>bullet-triple-clustered</item>
@@ -388,13 +384,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+         <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-triple-clustered_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-triple-clustered_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	</div>
 
@@ -429,13 +425,12 @@
 	     <label>extra</label><item>
 	     <p>Distinguish from <ref target="#circle-concentric">concentric circles</ref>, which may have a dot in the centre but involve two or more circles.</p>
 	     </item>
-<!--            <label>images</label><item>
+   <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcirclebullseye_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-bullseyeCross</item>
@@ -446,13 +441,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+      <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-bullseyeCross_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-concentric</item>
@@ -465,13 +459,13 @@
 	     <label>extra</label><item>
 	     <p>Distinguish from <ref target="#circle-bullseye">bullseyes</ref>, which only have a dot in the centre, without additional circles.</p>
 	</item>
-<!--            <label>images</label><item>
+  <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-concentric_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-concentric_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-horned</item>
@@ -499,13 +493,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+<label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-large_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-lined</item>
@@ -517,13 +510,14 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+ <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-lined_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-lined_02.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-lined_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>circle-ornate</item>
@@ -606,13 +600,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+ 			<label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcross-tilted_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>cross-upright</item>
@@ -647,13 +641,14 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+<label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash_02.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-concave</item>
@@ -682,13 +677,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+			<label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-convex_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-convex-notched</item>
@@ -699,13 +694,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+			<label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-convex-notched_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-double</item>
@@ -717,13 +712,13 @@
 	     <label>extra</label><item>
 	      <p></p>
             </item>
-<!--            <label>images</label><item>
+				<label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-double_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-double_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-hooked</item>
@@ -735,13 +730,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+		 <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-hooked_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-long</item>
@@ -769,13 +763,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-obelus_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-triple</item>
@@ -786,13 +779,12 @@
 	     <label>extra</label><item>
 	      <p></p>
             </item>
-<!--            <label>images</label><item>
+           <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-triple_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>dash-wavy</item>
@@ -845,13 +837,14 @@
 	     <label>extra</label><item>
 	      <p></p>
             </item>
-<!--            <label>images</label><item>
+          <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-crossed_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-crossed_02.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-crossed_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-hooked</item>
@@ -863,13 +856,14 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+           <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-hooked_01.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-hooked_02.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-hooked_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-ornate</item>
@@ -880,13 +874,14 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+          <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-ornate_04.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-ornate_05.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-ornate_06.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-serifed</item>
@@ -897,13 +892,12 @@
 	     <label>extra</label><item>
 	      <p></p>
             </item>
-<!--            <label>images</label><item>
+        <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-serifed_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-strokeLeft</item>
@@ -914,13 +908,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+       <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-strokeLeft_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>doubleBar-strokeRight</item>
@@ -948,13 +941,12 @@
 	     <label>extra</label><item>
 	      <p></p>
             </item>
-<!--            <label>images</label><item>
+	            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-strokeRight_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	</div>
 
@@ -999,6 +991,38 @@
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_06.png"/>
                 <head></head>
               </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_07.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_08.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_09.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_10.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_11.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_12.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_13.png"/>
+                <head></head>
+              </figure>
+			                <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_14.png"/>
+                <head></head>
+              </figure>
             </item>
 
 	    </list>
@@ -1012,13 +1036,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+        <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret-complex_03.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret-complex_04.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>floret-petal</item>
@@ -1103,13 +1127,14 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+          <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_05.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_06.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_08.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>flourish-taperOut-bars</item>
@@ -1120,13 +1145,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+        <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut-bars_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>flourish-taperOut-complex</item>
@@ -1199,13 +1223,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+        <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMshortBar_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>shortBar-double</item>
@@ -1270,13 +1293,15 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+         <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_02.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_03.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_04.png"/>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_05.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>spiral-right</item>
@@ -1287,14 +1312,20 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
-              <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
-                <head>uncomment to add images; see instructions at end of file</head>
-              </figure>
+        <label>images</label>
+			<item>
+				<figure>
+					<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiral-right_01.png"/>
+				</figure>
+				<figure>
+					<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiral-right_02.png"/>
+				</figure>
+				<figure>
+					<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiral-right_03.png"/>
+				</figure>
             </item>
--->
 	    </list>
+
 	    <list>
 	     <label>identifier</label><item>spiral-spoked</item><!--CHECK: whoever created the old token "spokedspiral" should check the description and revise it as needed. -->
 	     <label>name</label><item>spoked spiral</item>
@@ -1389,13 +1420,12 @@
 	     <label>extra</label><item>
 	      <p>Wheels may be distinguished from aniconic <ref target="#circle-spoked">spoked circles</ref>.</p>
 	     </item>
-<!--            <label>images</label><item>
+            <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMx-wheel_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	</div>
    </div>
@@ -1738,13 +1768,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+           <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-kuli_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-kuruni</item>
@@ -1834,13 +1863,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+        <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-mutal_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-nal</item>
@@ -2174,13 +2202,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+          <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-varusam_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	    <list>
 	     <label>identifier</label><item>tam-veli</item>
@@ -2206,13 +2233,12 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+        <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-yantu_01.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
             </item>
--->
 	    </list>
 	</div>
 </div>
