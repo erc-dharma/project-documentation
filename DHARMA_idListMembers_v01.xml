@@ -138,7 +138,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<persName>
 						<name>Vigneshwaran Muralidaran</name>
 					</persName>
-					<affiliation></affiliation>
+					<affiliation>EFEO</affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -159,7 +159,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Margherita</forename>
 						<surname>Trento</surname>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
 					<idno type="VIAF"/>
 					<idno type="IdRef"/>
 					<idno type="ORCID"/>
@@ -324,7 +324,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Nicolas</forename>
 						<surname>Cane</surname>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>INALCO</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/55154196826820112429</idno>
 					<idno type="IdRef">https://www.idref.fr/231188013</idno>
 				</person>
@@ -456,7 +456,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Valérie</forename>
 						<surname>Gillet</surname>
 					</persName>
-					<affiliation></affiliation>
+					<affiliation>EFEO</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/227078529</idno>
 					<idno type="IdRef">https://www.idref.fr/11025029X</idno>
 					<idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
@@ -528,7 +528,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Axelle</forename>
 						<surname>Janiak</surname>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>Centre d’études de l’Inde et de l’Asie du Sud (CEIAS, EHESS &amp; CNRS)</affiliation>
 					<idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
 					<idno type="IdHAL">axelle-janiak</idno>
 				</person>
@@ -546,7 +546,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 			            <forename>Darlini</forename>
 			            <surname>Canabady Moutien</surname>
 			        </persName>
-			        <affiliation></affiliation>
+			        <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
 			        <idno type="VIAF"></idno>
 			        <idno type="IdRef"></idno>
 			    </person>
@@ -583,7 +583,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Coline</forename>
 						<surname>Lefrancq</surname>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>Centre d’études de l’Inde et de l’Asie du Sud (CEIAS, EHESS &amp; CNRS)</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/72161511995670560688</idno>
 					<idno type="IdRef">https://www.idref.fr/253581214</idno>
 					<idno type="IdHAL">coline-lefrancq</idno>
@@ -699,7 +699,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					</persName>
 					<affiliation></affiliation>
 					<!-- VIADF: http://viaf.org/viaf/268496830 TO be confirmed -->
-					<!-- Manu dixit: I confirm that iti is not him -->
+					<!-- Manu dixit: I confirm that it is not him -->
 				</person>
 				<person xml:id="anol">
 					<persName>
@@ -866,7 +866,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 						<forename>Uthaya</forename>
 						<surname>Veluppillai</surname>
 					</persName>
-					<affiliation></affiliation>
+					<affiliation>INALCO</affiliation>
 					<idno type="VIAF">http://viaf.org/viaf/309907661</idno>
 					<idno type="IdRef">https://www.idref.fr/176321616</idno>
 				</person>
@@ -899,7 +899,7 @@ When adding a new person to this list, the file DHARMA_gitNames
 					<persName>
 						<name>Yunheng Xu</name>
 					</persName>
-					<affiliation></affiliation>
+				    <affiliation>University of Heidelberg</affiliation>
 				</person>
 				<person xml:id="zapa">
 					<persName>
