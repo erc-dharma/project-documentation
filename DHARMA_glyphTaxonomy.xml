@@ -123,11 +123,23 @@
            <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_01.png"/>
+			  </figure>
+			  <figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_02.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_03.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_04.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_05.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_06.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbar-curly_07.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -385,11 +397,13 @@
 	      <p></p>
 	     </item>
          <label>images</label><item>
-              <figure>
+            <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-triple-clustered_01.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMbullet-triple-clustered_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
-              </figure>
+             </figure>
             </item>
 	    </list>
 	</div>
@@ -462,6 +476,8 @@
   <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-concentric_01.png"/>
+				</figure>
+				<figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-concentric_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -513,7 +529,11 @@
  <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-lined_01.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-lined_02.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMcircle-lined_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -644,7 +664,11 @@
 <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash_01.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash_02.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -715,6 +739,8 @@
 				<label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-double_01.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdash-double_02.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -840,7 +866,11 @@
           <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-crossed_01.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-crossed_02.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-crossed_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -859,7 +889,11 @@
            <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-hooked_01.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-hooked_02.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-hooked_03.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -877,7 +911,11 @@
           <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-ornate_04.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-ornate_05.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMdoubleBar-ornate_06.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -1039,6 +1077,8 @@
         <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret-complex_03.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret-complex_04.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -1130,7 +1170,11 @@
           <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_05.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_06.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_08.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
@@ -1296,8 +1340,14 @@
          <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_02.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_03.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_04.png"/>
+			</figure>
+			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMspiralLeft_05.png"/>
                 <head>uncomment to add images; see instructions at end of file</head>
               </figure>
