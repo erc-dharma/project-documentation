@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The corresponding display is at https://dharmalekha.info/people
+    When adding a new person to this list, the file DHARMA_gitNames
+    (in this repository) should also be edited.
+-->
+<?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+    schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="eng">
+        <fileDesc>
+            <titleStmt>
+                <title>Contributors to this database</title>
+                <funder>European Research Council</funder>
+                <principal ref="#emfr">Emmanuel Francis</principal>
+                <principal ref="#argr">Arlo Griffiths</principal>
+                <principal ref="#ansc">Annette Schmiedchen</principal>
+                <respStmt>
+                    <name ref="#axja">Axelle Janiak</name>
+                    <resp>XML-TEI Data Manager (2019-2023)</resp>
+                </respStmt>
+            	<respStmt>
+            		<name ref="#mime">Michaël Meyer</name>
+            		<resp>XML-TEI Data Manager (2023-2026)</resp>
+            	</respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>DHARMA Project (ERC 809994): The Domestication of “Hindu” Asceticism and
+                    the Religious Making of South and Southeast Asia (2019–2025).</authority>
+                <date>2019-2025</date>
+                <idno type="filename">DHARMA_idListMembers</idno>
+                <availability>
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">
+                        <p>This work is licenced under the Creative Commons Attribution 2.0 Unported
+                            Licence. To view a copy of the licence, visit
+                            https://creativecommons.org/licenses/by/4.0/ or send a letter to
+                            Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+                            California, 94041, USA.</p>
+                    	<p>Copyright (c) 2019-2026 by Emmanuel Francis, Arlo Griffiths &amp; Annette Schmiedchen.</p>
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Natively Digital</p>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <abstract>
+                <p>List of all the members of the DHARMA project associated with their internal
+                    identifiers and the autority identifiers. The internal identifiers are composed
+                    by taking the first two letters of the first and the last name element of the
+                    person in question.</p>
+            </abstract>
+        </profileDesc>
+        <revisionDesc status="draft">
+        	<change who="#argr" when="2026-05-06">created this file by duplicating DHARMA_IdListMembers_v01.xml, changing the file name, deleting all person entries for people not contributing to dharmalekha.info, and adding information to the entries for some contributors</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <listPerson>
+                <person xml:id="emfr">
+                    <persName>
+                        <forename>Emmanuel</forename>
+                        <surname>Francis</surname>
+                    </persName>
+                    <affiliation>Centre d’études de l’Inde et de l’Asie du Sud (CEIAS, EHESS &amp; CNRS)</affiliation>
+                    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/156480842</idno>
+                    <idno type="IdHAL">emmanuel-francis</idno>
+                    <idno type="IdRef">https://www.idref.fr/127901175</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0001-5405-2269</idno>
+                </person>
+                <person xml:id="argr">
+                    <persName>
+                        <forename>Arlo</forename>
+                        <surname>Griffiths</surname>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/11026260</idno>
+                    <idno type="IdHAL">arlo-griffiths</idno>
+                    <idno type="IdRef">https://www.idref.fr/087383462</idno>
+                    <idno type="ORCID">https://orcid.org/0009-0001-6088-6718</idno>
+                </person>
+                <person xml:id="ansc">
+                    <persName>
+                        <forename>Annette</forename>
+                        <surname>Schmiedchen</surname>
+                    </persName>
+                	<affiliation>Humboldt-Universität zu Berlin</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/22841678</idno>
+                    <idno type="IdRef">https://www.idref.fr/117063657</idno>
+                    <idno type="wikidata">https://www.wikidata.org/wiki/Q19804226</idno>
+                	<idno type="ORCID">https://orcid.org/0009-0000-8864-5644</idno>
+                </person>
+                <person xml:id="flde">
+                    <persName>
+                        <forename>Florinda</forename>
+                        <surname>De Simini</surname>
+                    </persName>
+                	<affiliation>Università degli Studi di Napoli “L'Orientale”</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/306369495</idno>
+                    <idno type="IdRef">https://www.idref.fr/200880365</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0001-9845-1480</idno>
+                </person>
+                <person xml:id="doop">
+                    <persName>
+                        <forename>Dorotea</forename>
+                        <surname>Operato</surname>
+                    </persName>
+                    <affiliation>Centre for South Asian and Himalayan Studies (CESAH, EHESS &amp; CNRS)</affiliation>
+                    <idno type="VIAF"/>
+                    <idno type="IdRef"/>
+                    <idno type="ORCID"/>
+                </person>
+                <person xml:id="vimu">
+                    <persName>
+                        <name>Vigneshwaran Muralidaran</name>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF"/>
+                    <idno type="IdRef"/>
+                    <idno type="ORCID"/>
+                </person>
+                <person xml:id="ants">
+                    <!--"ansa" already used for Anjaneya Sarma-->
+                    <persName>
+                        <forename>Antonella</forename>
+                        <surname>Santoro</surname>
+                    </persName>
+                	<affiliation>Università degli Studi di Napoli “L'Orientale”</affiliation>
+                    <idno type="VIAF"/>
+                    <idno type="IdRef"/>
+                    <idno type="ORCID"/>
+                </person>
+                <person xml:id="dogo">
+                    <persName>
+                        <forename>Dominic</forename>
+                        <surname>Goodall</surname>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/81394618</idno>
+                    <idno type="IdRef">https://www.idref.fr/057684251</idno>
+                	<idno type="ORCID">https://orcid.org/0009-0000-9299-8418</idno>
+                </person>
+                <person xml:id="reda">
+                    <persName>
+                        <forename>Renato</forename>
+                        <surname>Dávalos</surname>
+                    </persName>
+                    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
+                    <idno type="VIAF"/>
+                    <idno type="IdRef"/>
+                	<idno type="ORCID">https://orcid.org/0000-0002-0068-3660</idno>
+                </person>
+                <person xml:id="diac">
+                    <persName>
+                        <forename>Diwakar</forename>
+                        <surname>Acharya</surname>
+                    </persName>
+                    <affiliation>University of Oxford</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/26501648</idno>
+                    <idno type="IdRef">http://www.idref.fr/138003556</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-5482-7754</idno>
+                </person>
+                <person xml:id="anac">
+                    <persName>
+                        <forename>Andrea</forename>
+                        <surname>Acri</surname>
+                    </persName>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/201252222</idno>
+                    <idno type="IdRef">https://www.idref.fr/150577419</idno>
+                    <idno type="wikidata">https://www.wikidata.org/wiki/Q50221197</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0001-9633-829X</idno>
+                    <idno type="IdHAL">andrea-acri</idno>
+                </person>
+                <person xml:id="adgu">
+                    <persName>
+                        <name>Aditia Gunawan</name>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                	<affiliation>Perpustakaan Nasional Republik Indonesia</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/215307091</idno>
+                    <!-- http://viaf.org/viaf/283969266 -->
+                    <!-- EF dixit: So he has 2 VIAF -->
+                    <idno type="IdRef">https://www.idref.fr/147009324</idno>
+                    <idno type="IdHAL">aditia-gunawan</idno>
+                </person>
+                <person xml:id="mami">
+                    <persName>
+                        <forename>Marc</forename>
+                        <surname>Miyake</surname>
+                    </persName>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef">https://www.idref.fr/227446844</idno>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="jukw">
+                    <persName>
+                        <forename>Julian Karl</forename>
+                        <surname>Wheatley</surname>
+                    </persName>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef">https://www.idref.fr/128679204</idno>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="dcla">
+                    <persName>
+                        <forename>D. Christian</forename>
+                        <surname>Lammerts</surname>
+                    </persName>
+					<affiliation>Rutgers University</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"> https://www.idref.fr/074237454</idno>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="kema">
+                    <persName>
+                        <forename>Kelsey</forename>
+                        <surname>Martini</surname>
+                    </persName>
+                    <affiliation>Ludwig-Maximalians-Universität, Munich</affiliation>
+                    <idno type="ORCID">https://orcid.org/0000-0001-6636-9706</idno>
+                </person>
+                <person xml:id="fufa">
+                    <persName>
+                        <forename>Fu</forename>
+                        <surname>Fan</surname>
+                    </persName>
+                	<affiliation>Ludwig-Maximalians-Universität, Munich</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="daba">
+                    <persName>
+                        <forename>Dániel</forename>
+                        <surname>Balogh</surname>
+                    </persName>
+                	<affiliation>Humboldt-Universität zu Berlin</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="nabo">
+                    <persName>
+                        <forename>Natasja</forename>
+                        <surname>Bosma</surname>
+                    </persName>
+					<affiliation>Rijksuniversiteit Groningen</affiliation>
+                	<affiliation>Humboldt-Universität zu Berlin</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/124153651793655782535</idno>
+                    <idno type="IdRef">https://www.idref.fr/22980845X</idno>
+                </person>
+                <person xml:id="nica">
+                    <persName>
+                        <forename>Nicolas</forename>
+                        <surname>Cane</surname>
+                    </persName>
+                    <affiliation>INALCO</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/55154196826820112429</idno>
+                    <idno type="IdRef">https://www.idref.fr/231188013</idno>
+                </person>
+                <person xml:id="kuch">
+                    <persName>
+                        <forename>Kunthea</forename>
+                        <surname>Chhom</surname>
+                    </persName>
+                    <affiliation>APSARA Authority</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/262148704025336930123</idno>
+                    <idno type="IdRef">https://www.idref.fr/197571670</idno>
+                </person>
+                <person xml:id="chch">
+                    <persName>
+                        <forename>Chloé</forename>
+                        <surname>Chollet</surname>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                	<idno type="IdRef">https://www.idref.fr/256574677</idno>
+                </person>
+                <person xml:id="dacc">
+                    <persName>
+                        <name>Dewa Ayu Carma Citrawati</name>
+                    </persName>
+                    <affiliation>Universität Hamburg</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="hecr">
+                    <persName>
+                        <forename>Helen</forename>
+                        <surname>Creese</surname>
+                    </persName>
+                    <affiliation>University of Queensland</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/97751164</idno>
+                    <idno type="IdRef">http://www.idref.fr/092886981</idno>
+                </person>
+                <person xml:id="dapu">
+                    <persName>
+                        <name>I Gde Agus Darma Putra</name>
+                    </persName>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="csde">
+                    <persName>
+                        <forename>Csaba</forename>
+                    	<surname>Dezső</surname>
+                    </persName>
+                	<affiliation>Eötvös Loránd University</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/119084903</idno>
+                    <idno type="IdRef">https://www.idref.fr/119884275</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-3595-0941</idno>
+                </person>
+                <person xml:id="ekba">
+                    <persName>
+                        <name>Eko Bastiawan</name>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                	<idno type="ORCID">https://orcid.org/0009-0008-8347-4477</idno>
+                </person>
+                <person xml:id="jues">
+                    <persName>
+                        <forename>Julia</forename>
+                        <surname>Estève</surname>
+                    </persName>
+                    <affiliation></affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/216403335</idno>
+                    <idno type="IdRef">https://www.idref.fr/151150907</idno>
+                </person>
+                <person xml:id="ryfu">
+                    <persName>
+                        <forename>Ryosuke</forename>
+                        <surname>Furui</surname>
+                    </persName>
+                	<affiliation>Institute for Advanced Studies on Asia, Tokyo University</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/21156495286317560297</idno>
+                	<idno type="IdRef">https://www.idref.fr/275082660</idno>
+                </person>
+                <person xml:id="gege">
+                    <persName>
+                        <forename>Gerdi</forename>
+                        <surname>Gerschheimer</surname>
+                    </persName>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                	<idno type="IdRef">https://www.idref.fr/057443645</idno>
+                </person>
+                <person xml:id="vagi">
+                    <persName>
+                        <forename>Valérie</forename>
+                        <surname>Gillet</surname>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/227078529</idno>
+                    <idno type="IdRef">https://www.idref.fr/11025029X</idno>
+                    <idno type="wikidata">https://www.wikidata.org/wiki/Q42717125</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-8403-3111</idno>
+                </person>
+                <person xml:id="mego">
+                    <persName>
+                        <forename>Mekhola</forename>
+                        <surname>Gomes</surname>
+                    </persName>
+                    <affiliation>Amherst College</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/1587163464178605680008</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-8034-4254</idno>
+                </person>
+                <person xml:id="pegy">
+                    <persName>
+                        <name>Putu Eka Guna Yasa</name>
+                    </persName>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="sagu">
+                    <persName>
+                        <forename>Samana</forename>
+                        <surname>Gururaja</surname>
+                    </persName>
+                	<affiliation>Humboldt-Universität zu Berlin</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="hepr">
+                    <persName>
+                        <name>Hedwi Prihatmoko</name>
+                    </persName>
+                    <affiliation>Badan Riset dan Inovasi Nasional</affiliation>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                    <idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                    <idno type="ORCID">https://orcid.org/0009-0005-4654-9327</idno>
+                </person>
+                <person xml:id="chhu">
+                    <persName>
+                        <forename>Chhunteng</forename>
+                        <surname>Hun</surname>
+                    </persName>
+                	<affiliation>Royal University of Phnom Penh</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="thhu">
+                    <persName>
+                        <forename>Thomas</forename>
+                        <surname>Hunter</surname>
+                    </persName>
+                    <affiliation></affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/14319585</idno>
+                    <idno type="IdRef">https://www.idref.fr/11251250X</idno>
+                </person>
+                <person xml:id="gedw">
+                    <persName>
+                        <name>Ida Bagus Made Gesram Dwijayana</name>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="shij">
+                    <persName>
+                        <forename>Shiori</forename>
+                        <surname>Ijuin</surname>
+                    </persName>
+                    <affiliation>Tokyo University</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+            	<person xml:id="ilnu">
+            		<persName>
+            			<name>Ilham Nurwansah</name>
+            		</persName>
+            		<affiliation>École française d’Extrême-Orient</affiliation> 
+            		<idno type="VIAF"/>
+            		<idno type="IdRef"/>
+            		<idno type="ORCID">https://orcid.org/0000-0002-5455-5656</idno>  
+            	</person>
+                <person xml:id="axja">
+                    <persName>
+                        <forename>Axelle</forename>
+                        <surname>Janiak</surname>
+                    </persName>
+                    <affiliation>Centre d’études de l’Inde et de l’Asie du Sud (CEIAS, EHESS &amp; CNRS)</affiliation>
+                    <idno type="ORCID">https://orcid.org/0000-0001-6984-7363</idno>
+                    <idno type="IdHAL">axelle-janiak</idno>
+                </person>
+                <person xml:id="daca">
+                    <persName>
+                        <forename>Darlini</forename>
+                        <surname>Canabady Moutien</surname>
+                    </persName>
+                    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="cski">
+                    <persName>
+                        <forename>Csaba</forename>
+                        <surname>Kiss</surname>
+                    </persName>
+                	<affiliation>Università degli Studi di Napoli “L'Orientale”</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/163770541</idno>
+                    <idno type="IdRef">https://www.idref.fr/186191634</idno>
+                </person>
+                <person xml:id="kala">
+					<!-- argr: to be kept? -->
+                    <persName>
+                        <forename>Karine</forename>
+                        <surname>Ladrech</surname>
+                    </persName>
+                    <affiliation></affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/12622237</idno>
+                    <idno type="IdRef">https://www.idref.fr/095075704</idno>
+                </person>
+                <person xml:id="adle">
+                    <persName>
+                        <forename>Adeline</forename>
+                        <surname>Levivier</surname>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/131146574008638102599</idno>
+                    <idno type="IdRef">https://www.idref.fr/193202719</idno>
+                    <idno type="IdHAL">adeline-levivier</idno>
+                </person>
+                <person xml:id="nlsy">
+                    <persName>
+                        <forename>Nicholas</forename>
+                        <surname>Lua Swee Yang</surname>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="tilu">
+                    <persName>
+                        <forename>Timothy</forename>
+                        <surname>Lubin</surname>
+                    </persName>
+                    <affiliation>Washington &amp; Lee University</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/120435268</idno>
+                    <idno type="IdRef">https://www.idref.fr/170559610</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0001-8352-5870</idno>
+                </person>
+                <person xml:id="okss">
+                    <persName>
+                        <name>Made Oka Suryawan Salain</name>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="mamu">
+                    <persName>
+                        <name>M. Aftharu Mulya</name>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="inma">
+                    <persName>
+                        <forename>Indra</forename>
+                        <surname>Manuel</surname>
+			<!-- argr: is Manuel really a surname, or is there no patronymic element? -->
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/68558778</idno>
+                    <idno type="IdRef">https://www.idref.fr/183697367</idno>
+                </person>
+                <person xml:id="nimi">
+                    <persName>
+                        <forename>Nina</forename>
+                        <surname>Mirnig</surname>
+                    </persName>
+                    <affiliation>Universität Wien</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/169826577</idno>
+                    <idno type="IdRef">https://www.idref.fr/176193774</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-4944-6535</idno>
+                </person>
+                <person xml:id="mime">
+                    <persName>
+                        <forename>Michaël</forename>
+                        <surname>Meyer</surname>
+                    </persName>
+                    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="mano">
+                    <persName>
+                        <name>Muhamad Alnoza</name>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="nuha">
+                    <persName>
+                        <name>Nurmalia Habibah</name>
+                    </persName>
+                    <affiliation>Universitas Gadjah Mada</affiliation>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="rama">
+                    <persName>
+                        <name>N. Ramaswamy</name>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                	<idno type="IdRef">https://www.idref.fr/284064491</idno>
+                </person>
+                <person xml:id="anol">
+                    <persName>
+                        <forename>Andrew</forename>
+                        <surname>Ollett</surname>
+                    </persName>
+                    <affiliation>University of Chicago</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/372149294434280521495</idno>
+                    <idno type="IdRef">https://www.idref.fr/224232371</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-2425-2806</idno>
+                </person>
+                <person xml:id="sapi">
+                    <persName>
+                        <forename>Salomé</forename>
+                        <surname>Pichon</surname>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef">https://www.idref.fr/275083691</idno>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="prem" role="?">
+                    <!-- Can't we remove this person? -->
+                    <!-- Manu: to be kept provisionally -->
+                    <persName>
+                        <name>Premukumar S.</name>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="rasa">
+                    <persName>
+                        <forename>Rajat</forename>
+                        <surname>Sanyal</surname>
+                    </persName>
+                    <affiliation>University of Calcutta</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/315733752</idno>
+                    <idno type="IdRef">https://www.idref.fr/18506194X</idno>
+                	<idno type="ORCID">https://orcid.org/0000-0003-2106-5471</idno>
+                </person>
+                <person xml:id="ansa">
+                    <persName>
+                        <name>Anjaneya Sarma</name>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/206189621</idno>
+                    <idno type="IdRef">https://www.idref.fr/138870241</idno>
+                </person>
+                <person xml:id="sass">
+                    <persName>
+                        <name>S.A.S. Sarma</name>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/34006731</idno>
+                    <idno type="IdRef">https://www.idref.fr/079236472</idno>
+                </person>
+                <person xml:id="wjsa">
+                    <persName>
+                        <forename>Wayan Jarrah</forename>
+                        <surname>Sastrawan</surname>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                	<affiliation>The Australian National University</affiliation>
+                	<idno type="IdRef"> https://www.idref.fr/293209472</idno>
+                	<idno type="ORCID">https://orcid.org/0000-0002-9541-1907</idno>
+                </person>
+                <person xml:id="sath">
+                    <persName>
+                        <name>R. Sathyanarayanan</name>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/304053379</idno>
+                    <idno type="IdRef">https://www.idref.fr/169903370</idno>
+                </person>
+                <person xml:id="masc">
+                    <persName>
+                        <forename>Marine</forename>
+                        <surname>Schoettel</surname>
+                    </persName>
+                	<affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/237151594453005351072</idno>
+                    <idno type="IdRef">https://www.idref.fr/221601880</idno>
+                </person>
+                <person xml:id="doso">
+                    <persName>
+                        <forename>Dominique</forename>
+                        <surname>Soutif</surname>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/189739901</idno>
+                    <idno type="IdRef">https://www.idref.fr/131352520</idno>
+                	<idno type="ORCID">https://orcid.org/0000-0002-7422-1434</idno>
+                </person>
+                <person xml:id="ibks">
+                    <persName>
+                        <name>Ida Bagus Komang Sudarma</name>
+                    </persName>
+                    <affiliation></affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="ryta">
+                    <persName>
+                        <forename>Ryugen</forename>
+                        <surname>Tanemura</surname>
+                    </persName>
+                    <affiliation>Taisho University</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="jeth">
+                    <persName>
+                        <forename>Jens</forename>
+                        <surname>Thomas</surname>
+                    </persName>
+                	<affiliation>Humboldt-Universität zu Berlin</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="tisn">
+                    <persName>
+                        <name>Titi Surti Nastiti</name>
+                    </persName>
+                    <affiliation>Badan Riset dan Inovasi Nasional</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/72800314</idno>
+                	<idno type="IdRef"> https://www.idref.fr/081050208Copier cet identifiant (PPN)</idno>
+                </person>
+                <person xml:id="vito">
+                    <persName>
+                        <forename>Vincent</forename>
+                        <surname>Tournier</surname>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <affiliation>Ludwig-Maximilians-Universität München</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/308304168</idno>
+                    <idno type="IdRef">https://www.idref.fr/177429623</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
+                    <idno type="IdHAL">vincent-tournier</idno>
+                </person>
+            	<person xml:id="matr">
+            		<persName>
+            			<forename>Margherita</forename>
+            			<surname>Trento</surname>
+            		</persName>
+            		<affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
+            		<idno type="VIAF"/>
+            		<idno type="IdRef"/>
+            		<idno type="ORCID">https://orcid.org/0000-0002-3443-358X</idno>
+            	</person>
+                <person xml:id="tykd">
+                    <persName>
+                        <name>Tyassanti Kusumo Dewanti</name>
+                    </persName>
+                	<affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
+                	<idno type="IdRef">https://www.idref.fr/27335826X</idno>  
+                </person>
+                <person xml:id="utve">
+                    <persName>
+                        <forename>Uthaya</forename>
+                        <surname>Veluppillai</surname>
+                    </persName>
+                    <affiliation>INALCO</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/309907661</idno>
+                    <idno type="IdRef">https://www.idref.fr/176321616</idno>
+                	<idno type="ORCID"></idno>  
+                </person>
+                <person xml:id="vija">
+                    <persName>
+                        <name>G. Vijayavenugopal</name>
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <idno type="VIAF">http://viaf.org/viaf/30722592</idno>
+                    <idno type="IdRef">https://www.idref.fr/106412329</idno>
+                    <idno type="ORCID">https://orcid.org/0000-0001-6061-0140</idno>
+                </person>
+                <person xml:id="amwb">
+                    <persName>
+                        <forename>Amandine</forename>
+                        <surname>Wattelier-Bricout</surname>
+                    </persName>                    
+                    <affiliation>École française d’Extrême-Orient</affiliation>   
+                	<affiliation>Humboldt-Universität zu Berlin</affiliation>                 
+                    <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
+                    <idno type="IdHAL">amandine-wattelier-bricout</idno>
+                	<idno type="ORCID">https://orcid.org/0000-0001-9898-8798</idno>
+                </person>
+                <person xml:id="yuxu">
+                    <persName>
+                        <name>Yunheng Xu</name>
+                    </persName>
+                    <affiliation>University of Heidelberg</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID"/>
+                </person>
+                <person xml:id="zapa">
+                    <persName>
+                        <name>Zakariya Pamuji Aminullah</name>
+                    </persName>
+                    <affiliation>Universität Hamburg</affiliation>
+                	<affiliation>École française d’Extrême-Orient</affiliation>   
+                	<affiliation>Universitas Gadjah Mada</affiliation>
+                	<idno type="VIAF"/>
+                	<idno type="IdRef"/>
+                	<idno type="ORCID">https://orcid.org/0000-0002-8442-8762</idno>  
+                </person>
+            </listPerson>
+        </body>
+    </text>
+</TEI>
