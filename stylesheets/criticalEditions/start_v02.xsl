@@ -139,7 +139,7 @@
     <xsl:variable name="IdListTexts">https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListTexts_v01.xml</xsl:variable>
 
     <!--  variable = vers le ids des participants du projet-->
-    <xsl:variable name="list-members" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/refs/heads/master/DHARMA_idListMembers_v01.xml')//tei:listPerson"/>
+    <xsl:variable name="list-members" select="document('https://raw.githubusercontent.com/erc-dharma/project-documentation/refs/heads/master/DHARMA_idListMembers.xml')//tei:listPerson"/>
 
     <!--  variable= chemin vers les langages utilisés dans le project-->
     <xsl:variable name="list-languages">

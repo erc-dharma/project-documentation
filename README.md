@@ -192,6 +192,6 @@ Templates for dharma produced in the project.
 - licence.txt
 - readme.md
 - build.xml : run the xslt to make the html for prosody - send the output to erc-dharma.github.io repository
-- DHARMA_idListMembers_v01.xml : list with all members of the project to refer to
+- DHARMA_idListMembers.xml : list with all members of the project to refer to
 - DHARMA_idListTexts_v01.xml : list of texts for tfd-nusantara-philology
 - DHARMA_prosodicPatterns_v01 : list for prosody
