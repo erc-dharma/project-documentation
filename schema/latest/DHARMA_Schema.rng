@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-06T10:25:46Z. . 
+Schema generated from ODD source 2026-05-07T06:37:33Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -4230,8 +4230,6 @@ Elements]</a:documentation>
                <a:documentation/>
                <value>item</value>
                <a:documentation>for physically distinct objects such as architectural elements, e.g. when an inscription is engraved on two pillars or doorjambs </a:documentation>
-               <value>segment</value>
-               <a:documentation/>
                <value>zone</value>
                <a:documentation>for visually distinct zones on a single two-dimensional surface </a:documentation>
             </choice>
