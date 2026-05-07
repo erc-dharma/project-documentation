@@ -16,21 +16,20 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<p>
 		The following table provides the computation underlying the well-known Thanjavur grants of Rājarāja I (SII nos. 4–5), which are inscribed in the Bṛhadīśvara Temple (Periya Kōvil) in Thanjavur. Each of the forty-one cases follows the same basic structure. First, the records state the total area of land granted (<b>Land A</b>). Next, they describe the amount of land to be exempted from taxation (<b>Land B</b>). Finally, they record the resulting portion of land that was subject to tax (<b>Land C</b>). Each donation can therefore be expressed as follows: <b>Land A–Land B = Land C</b>. For the resulting land (Land C), a certain amount of paddy or gold was expected, which is also specified in each case.
 	</p>
-
 	<p>The three land values (A, B, and C) recorded for each of the forty-one villages are expressed through a combination of whole numbers and small fractional units, so small that their denominators may reach 102,400. The fractional strings attached to each land description appear as cumulative expressions in which each fraction is added to the preceding one. In order to break down each of these fractional operations, this resource provides the computations for the more than 120 calculations of the Thanjavur inscriptions. Although the operations are embedded in both records, the intermediate steps and the result of the fractional calculations are omitted. The table is based on a revised edition of the two inscriptions, which are available in this database: <a href="/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a> and <a href="/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
 	</p>
-	<p><strong><b>Explanation of terms in the table:</b></strong>
+	<p><strong><b>Explanation of terms in the table:</b></strong></p>
 		
-		<b>Mathematical expression:</b> This field translates the wording of the Tamil inscription (expressed through technical terminology in the original) into modern arithmetical notation. It makes explicit the operation that is implied in the record and allows for land figures to be related to one another. Since the inscriptions combine whole numbers with fractions, the values have been converted to the common denominator of 102,400, i.e., the square of <i>kīḻ</i>. This normalisation makes it possible to compare and verify the calculations involved.</p>
-	
-	<p><b><i>kīḻ</i> series:</b> The term <i>kīḻ</i> describes the basic small fractional unit used in the records, equivalent to 1/320. When the term <i>kīḻ</i> appears, the following values become subordinate fractional expressions: the values are first added together, and then the resulting value is multiplied by 1/320. The result of such an operation is added to the fractional string of the land value. It may be represented as <i>kīḻ</i>*(x + y).</p>
-	
+		<p>
+			<b>Mathematical expression:</b> This field translates the wording of the Tamil inscription (expressed through technical terminology in the original) into modern arithmetical notation. It makes explicit the operation that is implied in the record and allows for land figures to be related to one another. Since the inscriptions combine whole numbers with fractions, the values have been converted to the common denominator of 102,400, that is, the square of <i>kīḻ</i>. This normalisation makes it possible to compare and verify the calculations involved.
+		</p>
+	<p>
+		<b><i>kīḻ</i> series:</b> The term <i>kīḻ</i> describes the basic small fractional unit used in the records, equivalent to 1/320. When the term <i>kīḻ</i> appears, the following values become subordinate fractional expressions: the values are first added together, and then the resulting value is multiplied by 1/320. The result of such an operation is added to the fractional string of the land value. It may be represented as <i>kīḻ</i>*(x + y). In these records, the term <i>kīḻ</i> usually appears more than once.
+	</p>
 	<p><b>Registered tax:</b> It records the quantity of paddy or gold anticipated from Land C, to which we have also added the implied rates of conversion (a certain amount of paddy/gold per unit of land).</p>
-	
 	<p>
 		<strong>Suggested citation:</strong>
 	</p>
-	
 	<p>
 		Dávalos, Renato and Vigneshwaran Muralidaran (2025).
 		<em>Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4–2.5)</em>.
