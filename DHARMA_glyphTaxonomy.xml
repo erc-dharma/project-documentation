@@ -1011,7 +1011,6 @@
               </figure>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_02.png"/>
-                <head>RAS Raffles Java 1</head>
               </figure>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_03.png"/>
@@ -1059,7 +1058,7 @@
               </figure>
 			                <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret_14.png"/>
-                <head></head>
+                <head>RAS Raffles Java 1</head>
               </figure>
             </item>
 
@@ -1077,6 +1076,7 @@
         <label>images</label><item>
               <figure>
                 <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret-complex_03.png"/>
+				<head>Kawali Stone I</head>
 			</figure>
 			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMfloret-complex_04.png"/>
