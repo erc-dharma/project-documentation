@@ -1150,13 +1150,13 @@
 	     <label>extra</label><item>
 	      <p></p>
 	     </item>
-<!--            <label>images</label><item>
+          <label>images</label><item>
               <figure>
-                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
-                <head>uncomment to add images; see instructions at end of file</head>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperIn_01.png"/>
+                <head></head>
               </figure>
             </item>
--->
+
 	    </list>
 	    <list>
 	     <label>identifier</label><item>flourish-taperOut</item>
@@ -1177,7 +1177,10 @@
 			<figure>
 				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_08.png"/>
                 <!--<head>uncomment to add images; see instructions at end of file</head>-->
-              </figure>
+        	</figure>
+			<figure>
+				<graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMflourish-taperOut_09.png"/>
+            </figure>
             </item>
 	    </list>
 	    <list>
