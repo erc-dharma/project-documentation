@@ -37,15 +37,15 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</p>
 	
 	<p>
-		<b>Land A: Total land:</b> It describes the total extent of land recorded for the village before exemptions. 
+		<b>Land A (Total land):</b> It describes the total extent of land recorded for the village before exemptions. 
 	</p>
 	
 	<p>
-		<b>Land B: Tax-exempt land:</b> Part of the grant that was excluded from taxation. 
+		<b>Land B (Tax-exempt land):</b> Part of the grant that was excluded from taxation. 
 	</p>
 	
 	<p>
-		<b>Land C: Taxable land:</b> Land that remained after the exempted portion (Land B) was removed from the total (Land A).  The <b>expected revenue</b> in paddy or gold was calculated from this taxable land.
+		<b>Land C (Taxable land):</b> The land remaining after the exempted exempted portion (Land B) was removed from the total land (Land A). The <b>expected revenue</b> (in paddy or gold) was calculated from this amount.
 	</p>
 	
 	<p>
