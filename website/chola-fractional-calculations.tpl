@@ -33,7 +33,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</p>
 	
 	<p>
-		<b>Inscription and line reference:</b> It gives the location of the passage in the inscription where the text appears as well as the edited text taken from the available online edition.
+		<b>Inscription and line reference:</b> It gives the location of the passage in the inscription as well as the edited text as it appears in the online edition.
 	</p>
 	
 	<p>
@@ -61,8 +61,20 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	</p>
 	
 	<p>
-		<b>Registered tax:</b> It records the amount of paddy or gold that the inscription assigns to Land C. Paddy is usually expressed through units such as <i>kalam</i>, <i>tūṇi</i>, <i>kuṟuṇi</i>, <i>patakku</i>, and <i>nāḻi</i>; gold is expressed through units such as <i>kaḻañcu</i> and <i>mañcāṭi</i>. The field also gives the implied rate of conversion between paddy/gold and land units.
+		<b>Registered tax:</b> It records the amount of paddy or gold that the inscription assigns to Land C. Paddy is usually expressed through units such as <i>kalam</i>, <i>tūṇi</i>, <i>kuṟuṇi</i>, <i>patakku</i>, and <i>nāḻi</i>; gold is expressed through units such as <i>kaḻañcu</i> and <i>mañcāṭi</i>. The field also gives the implied rate of conversion between paddy/gold and land units. For comparison, the weight values are converted into <i>kalam</i> using the following equivalencies:
 	</p>
+	<p><b>Paddy units used:</b></p>
+	<p><i>kalam</i> = 3 <i>tūṇi</i></p>
+	<p><i>tūṇi</i> = 2 <i>patakku</i></p>
+	<p><i>patakku</i> = 2 <i>kuṟuṇi</i></p>
+	<p><i>kuṟuṇi</i> = 8 <i>nāḻi</i></p>
+	<p><i>nāḻi</i> = 2 <i>uri</i></p>
+	
+	<p><b>Gold units used:</b></p>
+	<p><i>kaḻañcu</i> = 20 <i>mañcāṭi</i></p>
+	<p><i>mañcāṭi</i> = 10 <i>mā</i></p>
+	<p><i>mā</i> = 4 <i>kāṇi</i></p>
+	
 	<p>
 		<b>Notes:</b> It states whether the computed and inscribed values match, uncertain readings, or other important details on each of the village grants.
 		
@@ -91,10 +103,10 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Pālaiyūr</p></div>
 	<div>Tamil Text</div>
-		<div><p><b>Land A (lines 7-8):</b> <i>nilam nūṟṟu muppattu nāṉkē-y Eṭṭumāviṉ kīḻ mukkālē mummāvarai y-araikkā⟨8⟩ṇi muntirikai-k kīḻ nāṉkumāvilum</i> <b>Land B (lines 8-9):</b> <i>nilam oṉpatē-y kāṇi ⟨9⟩ Araikkāṇi muntirikai-k kīḻ arai nīk(ki)</i> <b>Land C (lines 8-9):</b> <i>nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</i></p></div>
+		<div><p><b>Land A (lines 7-8):</b> <i>nilam nūṟṟu muppattu nāṉkē-y Eṭṭu-māviṉ kīḻ mukkālē mummā-v-arai y-araikkā⟨A8=8⟩ṇi muntirikai-k kīḻ nāṉkumāvilum</i> <b>Land B (lines 8-9):</b> <i>nilam oṉpatē-y kāṇi ⟨A9=9⟩ Araikkāṇi muntirikai-k kīḻ arai nīkki</i> <b>Land C (lines 8-9):</b> <i>nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai Araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
-		<div><p><b>Land (A) </b> = 134 + 2/5 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
+		<div><p><b>Total Land (A) </b> = 134 + 2/5 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
 		<div><p><b>Tax-free land (B)</b> = 9 + 1/80 + 1/160 + 1/320 + 1/640 = 9 + 2400/102400</p></div>
 		<div><p><b>Taxable land (C = A – B)</b> = 125 + 7/20 + 1/320 + {1/320 * (8/20 + 1/160 + 1/320)} + (1/320 * 4/20) = </p><p>125 + 38923/102400</p></div>
 	</div>
@@ -110,7 +122,7 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>
 		<div><p>125 + 38923/102400 units of land = 12530 <i>kalam</i> + 2 <i>tūṇi</i> + 1 <i>kuṟuṇi</i> + 1 <i>nāḻi</i> paddy</p></div>
 		<div><p>125.3801 units of land = 12530.76 <i>kalam</i> of paddy</p></div>
-		<div><p><b>1: 99.942 (99.942 <i>kalam</i> of paddy taxed per unit of land)</b></p></div>
+		<div><p><b>Rate: </b> 99.942 <i>kalam</i> of paddy taxed per unit of land</p></div>
 	</div>
 	<div>Notes</div>
 		<div><p>The resulting numerator of Land C (38923) is a prime number.</p></div>
