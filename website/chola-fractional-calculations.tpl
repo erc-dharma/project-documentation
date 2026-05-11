@@ -17,7 +17,8 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		This resource reconstructs the Tamil fractional expressions into modern arithmetical notation, verifying the relation between the different land expressions and their expected revenue from the taxable lands. The table is based on a revised edition of the two inscriptions, available in this database: <a href="/texts/INStfaSIIv02p0i0004">INStfaSIIv02p0i0004</a> and <a href="/texts/INStfaSIIv02p0i0005">INStfaSIIv02p0i0005</a>.
 	</p>
 	
-	<strong>How to read this Dataset:</strong>
+	<p><strong>How to read this Dataset</strong></p>
+	
 	<p>
 		The objective of this Dataset of Chola inscriptions is to translate into arithmetical notation this unique system of metrology. Moreover, the dataset provides the computation for the fractional operations and the actual correspondance between what is inscribed on the stone and what is expected from the calculations.
 	</p>
