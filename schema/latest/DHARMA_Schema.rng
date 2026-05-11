@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-07T06:37:33Z. . 
+Schema generated from ODD source 2026-05-11T08:30:38Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -1800,6 +1800,11 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.divBottomPart"/>
       </choice>
    </define>
+   <define name="model.imprintPart">
+      <choice>
+         <ref name="pubPlace"/>
+      </choice>
+   </define>
    <define name="model.addressLike">
       <notAllowed/>
    </define>
@@ -1901,6 +1906,16 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="model.noteLike"/>
          <ref name="model.global.edit"/>
          <ref name="model.global.spoken"/>
+      </choice>
+   </define>
+   <define name="model.biblPart">
+      <choice>
+         <ref name="model.respLike"/>
+         <ref name="model.imprintPart"/>
+         <ref name="citedRange"/>
+         <ref name="bibl"/>
+         <ref name="availability"/>
+         <ref name="msIdentifier"/>
       </choice>
    </define>
    <define name="model.pPart.data">
@@ -4497,19 +4512,19 @@ Elements 7.2.5. Speech Contents]</a:documentation>
    <define name="bibl">
       <element name="bibl">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(bibliographic citation) contains a loosely-structured bibliographic citation of which the sub-components may or may not be explicitly tagged. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements]</a:documentation>
-         <rng:optional xmlns:rng="http://relaxng.org/ns/structure/1.0">
-            <rng:group>
-               <group>
-                  <rng:ref name="ptr"/>
-                  <rng:zeroOrMore>
-                     <rng:ref name="citedRange"/>
-                  </rng:zeroOrMore>
-               </group>
-               <optional>
-                  <rng:ref name="note"/>
-               </optional>
-            </rng:group>
-         </rng:optional>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="model.gLike"/>
+               <ref name="model.highlighted"/>
+               <ref name="model.pPart.data"/>
+               <ref name="model.pPart.edit"/>
+               <ref name="model.segLike"/>
+               <ref name="model.ptrLike"/>
+               <ref name="model.biblPart"/>
+               <ref name="model.global"/>
+            </choice>
+         </zeroOrMore>
          <optional>
             <attribute name="n">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) siglum</a:documentation>
