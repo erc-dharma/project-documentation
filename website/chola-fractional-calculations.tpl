@@ -106,7 +106,8 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 		<div><p><b>Land A (lines 7-8):</b> <i>nilam nūṟṟu muppattu nāṉkē-y Eṭṭu-māviṉ kīḻ mukkālē mummā-v-arai y-araikkā⟨A8=8⟩ṇi muntirikai-k kīḻ nāṉkumāvilum</i> <b>Land B (lines 8-9):</b> <i>nilam oṉpatē-y kāṇi ⟨A9=9⟩ Araikkāṇi muntirikai-k kīḻ arai nīkki</i> <b>Land C (lines 8-9):</b> <i>nilam nūṟṟu Irupattu Aiñcē-y Eḻumāvarai muntirikai-k kīḻ Eṇmāvarai Araikkāṇi muntirikai-k kīḻ nāṉkumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
-		<div><p><b>Total land (A) </b> = 134 + 8/20 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
+		<div>
+			<p><b>Total land (A) </b> = 134 + 8/20 + {1/320 * (3/4 + 7/40 + 1/160 + 1/320)} + (1/320 * 4/20) = 134 + (41323/102400)</p></div>
 		<div><p><b>Tax-free land (B)</b> = 9 + 1/80 + 1/160 + 1/320 + (1/320 * 1/2) = 9 + 2400/102400</p></div>
 		<div><p><b>Taxable land (C = A – B)</b> = 125 + 15/40 + 1/320 + {1/320 * (17/40 + 1/160 + 1/320)} + (1/320 * 4/20) = </p><p>125 + 38923/102400</p></div>
 	</div>
@@ -140,7 +141,11 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Āṟappāḻ</p></div>
 	<div>Tamil Text</div>
-		<div><p><b>Total land A (lines 12-15):</b> <i>nilam nūṟṟu Orupattu Oṉ⟨B4=13⟩ṟē-y Aṟumāvarai Araikkāṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumā⟨B5=14⟩vilum</i> <b>Land B (lines 15-16):</b> <i>nilam mūṉṟ’ araiyē nāṉkumā⟨B7=16⟩-k kāṇi Araikkāṇi nīkki</i> <b>Land C (line 16-17):</b> <i>nilam nūṟṟu Eḻ’ araiyē Iraṇṭu-mā-k kā⟨B8=17⟩ṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumāviṉāl</i></p></div>
+		<div>
+			<p><b>Total land A (lines 12-15):</b> <i>nilam nūṟṟu Orupattu Oṉ⟨B4=13⟩ṟē-y Aṟumāvarai Araikkāṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumā⟨B5=14⟩vilum</i></p>
+			<p><b>Land B (lines 15-16):</b> <i>nilam mūṉṟ’ araiyē nāṉkumā⟨B7=16⟩-k kāṇi Araikkāṇi nīkki</i></p>
+			<p><b>Land C (line 16-17):</b> <i>nilam nūṟṟu Eḻ’ araiyē Iraṇṭu-mā-k kā⟨B8=17⟩ṇi-k kīḻ mukkālē Araikkāliṉ kīḻ Araiyē Iraṇṭumāviṉāl</i></p>
+		</div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Total land (A)</b> = 111 + 13/40 + 1/160 + {1/320 * (3/4 + 1/8)} + (1/320) * {1/2 + 2/20} = 111 + 4299/12800</p></div>
@@ -174,7 +179,10 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village</div>
 	<div><p>Kīraṉatēvaṉkuṭi</p></div>
 	<div>Tamil Text</div>
-		<div><p><b>Land A (lines 19-20):</b> <i>nilam nāṟpattu ⟨C2=20⟩ Iraṇṭē mukkālē nāṉku-mā-k kāṇi muntirikai-k kīḻ Araiyē mūṉṟu-mā mukkāṇi Araikkāṇi-k kīḻ Eṭṭumāvilum</i> <b>Land B (line 21):</b> <i>nilam Iraṇṭē Oru-māvarai Araikkāṇi muntirikai-k kīḻ nāṉkumā muntirikai-k kīḻ Araiyē Iraṇṭumā nīkki</i> <b>Land C (line 22):</b> <i>nilam nāṟpa⟨t⟩tē-y mukkālē Irumāvarai Araikkāṇi-k kīḻ Oṉpatumā mukkāṇi-k kīḻ mukkālē Orumāviṉāl</i></p></div>
+		<div>
+			<p><b>Land A (lines 19-20):</b> <i>nilam nāṟpattu ⟨C2=20⟩ Iraṇṭē mukkālē nāṉku-mā-k kāṇi muntirikai-k kīḻ Araiyē mūṉṟu-mā mukkāṇi Araikkāṇi-k kīḻ Eṭṭumāvilum</i>
+			<p><b>Land B (line 21):</b> <i>nilam Iraṇṭē Oru-māvarai Araikkāṇi muntirikai-k kīḻ nāṉkumā muntirikai-k kīḻ Araiyē Iraṇṭumā nīkki</i></p>
+			<p><b>Land C (line 22):</b> <i>nilam nāṟpa⟨t⟩tē-y mukkālē Irumāvarai Araikkāṇi-k kīḻ Oṉpatumā mukkāṇi-k kīḻ mukkālē Orumāviṉāl</i></p></div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Total land (A)</b> = 42 + 3/4 + 4/20 + 1/80 + 1/320 + {1/320 * (1/2 + 3/20 + 3/80 + 1/160)} + (1/320 * 8/20)  = 42 + 99230/102400</p></div>
@@ -207,9 +215,13 @@ Dataset of Fractions in the Chola Thanjavur Village Grants (SII 2.4-2.5)
 	<div>Village number</div>
 	<div><p>4</p></div>
 	<div>Village</div>
-		<div><p>Nākaṉakakaṉakuṭi</p></div>
+		<div><p>Nākaṉakkaṉkuṭi</p></div>
 	<div>Tamil Text</div>
-		<div><p><b>Land A (line 23-24):</b> <i>nilam Irupattu Iraṇṭ’ arai⟨C6=24⟩yē-y Iraṇṭumā mukkāṇi Araikkāṇi-k kīḻ Irumāvarai Araikkāṇi-k kīḻ Eṭṭumāvilum</i> <b>Land B (line 25):</b> <i>nilam mukkālē Orumā Araikkāṇi muntirikai-k kīḻ Irumāvarai nīkki</i> <b>Land C (line 26):</b> <i>nilam Irupattu Oṉṟē-y mukkālē Orumāvarai Araikkāṇi muntirikai-k kīḻ Araikkāṇi-k kīḻ Eṭṭumāviṉāl</i></p></div>
+		<div>
+			<p><b>Total land A (line 23-24):</b> <i>nilam Irupattu Iraṇṭ’ arai⟨C6=24⟩yē-y Iraṇṭumā mukkāṇi Araikkāṇi-k kīḻ Irumāvarai Araikkāṇi-k kīḻ Eṭṭumāvilum</i></p>
+			<p><b>Land B (line 25):</b> <i>nilam mukkālē Orumā Araikkāṇi muntirikai-k kīḻ Irumāvarai nīkki</i></p>
+			<p><b>Land C (line 26):</b> <i>nilam Irupattu Oṉṟē-y mukkālē Orumāvarai Araikkāṇi muntirikai-k kīḻ Araikkāṇi-k kīḻ Eṭṭumāviṉāl</i></p>
+		</div>
 	<div>Mathematical expression</div>
 	<div>
 		<div><p><b>Land (A)</b> = 22 + 1/2 + 2/20 + 3/80 + 1/160 + {1/320 * (3/40 + 1/160)} + (1/320 * 8/20) = 22 + 66090/102400</p></div>
