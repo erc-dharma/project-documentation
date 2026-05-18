@@ -1450,6 +1450,22 @@
 -->
 	    </list>
 	    <list>
+	     <label>identifier</label><item>x-moon</item>
+	     <label>name</label><item>crescent moon</item>
+	     <label>description</label><item>iconic symbol depicting the crescent moon</item>
+	     <label>mapping</label><item></item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+<!--            <label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtoken_01.png"/>
+                <head>uncomment to add images; see instructions at end of file</head>
+              </figure>
+            </item>
+-->
+	    </list>
+	    <list>
 	     <label>identifier</label><item>x-sun</item>
 	     <label>name</label><item>sun</item>
 	     <label>description</label><item>iconic symbol depicting the sun or a sunburst</item>
