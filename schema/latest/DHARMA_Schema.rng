@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-11T08:30:38Z. . 
+Schema generated from ODD source 2026-05-27T16:10:19Z. . 
 TEI Edition: Version 3.6.0. Last updated on 16th July 2019, revision daa3cc0b9 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.6.0/ 
   
@@ -2354,6 +2354,10 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
@@ -2684,6 +2688,10 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
@@ -4748,6 +4756,10 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
@@ -5195,6 +5207,10 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
@@ -6198,6 +6214,10 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
@@ -7179,6 +7199,10 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
@@ -7377,6 +7401,10 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
                      <value>class:malayalam</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   </choice>
                   <choice>
                      <value>maturity:83207</value>
