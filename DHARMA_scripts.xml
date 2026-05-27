@@ -182,6 +182,11 @@ node in the hierarchy, we map it to a leaf node under the given script family.
     <inverted_name>Kharoṣṭhī</inverted_name>
   </script>
   <script>
+    <id>siṁhala</id>
+    <name>Siṁhala</name>
+    <inverted_name>Siṁhala</inverted_name>
+  </script>
+  <script>
     <id>latin</id>
     <name>Latin</name>
     <inverted_name>Latin</inverted_name>
