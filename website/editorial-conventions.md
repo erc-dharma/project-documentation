@@ -36,13 +36,13 @@ Everything else in this file is kept as is (even HTML tags, if any).
 ###### Stanza in named metre
 
 ```
-<lg n="1" met="āryā"></lg>
+<lg n="1" met="āryā">kāritam idan nr̥patinā</lg>
 ```
 
 ###### Stanza in metre without a known name
 
 ```
-<lg n="2" met="+++++-++-+="></lg>
+<lg n="2" met="+++++-++-+=">kāritam idan nr̥patinā</lg>
 ```
 
 ###### Verse line
