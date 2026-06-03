@@ -150,6 +150,15 @@ NOT Aihole
 
 In most search engines, `NOT` is a binary operator. Thus `foo NOT bar` really means `foo AND NOT bar`, and the query `NOT bar` is treated as invalid. In our system, however, `NOT` is a unary operator, thus `NOT bar` is valid (and returns all documents that do not match `bar`). Furthermore, given that two queries that are not bound by an explicit operator are treated as if they were bound with `AND`, the query `foo NOT bar` is interpreted as `foo AND (NOT bar)`, as in most search engines.
 
+When using boolean operators with fields, you should be aware that the following are not equivalent:
+
+```
+editor:arlo AND editor:eko
+editor:(arlo AND eko)
+```
+
+The first query matches a document if one of the editors of this document has `arlo` in his name and if the same editor or another one has `eko` in his name. Per contrast, the second query matches a document if one of its editors has both the strings `arlo` and `eko` in his name.
+
 There are also two proximity operators, which are both binary: `SEQ` and `NEAR`. The `SEQ` operator matches if both its members match and if they occur in sequence (hence the name `SEQ`) within the target field. The `NEAR` operator behaves in the same way save for the fact that its members can appear in both order. Thus, the query `a NEAR b` is strictly equivalent to `(a SEQ b) OR (b SEQ a)`.
 
 The arguments to both the `SEQ` and `NEAR` operators must necessarily be strings (either a single word like `temple` or a phrase like `"Aihole temple"`). Here are some valid examples:
