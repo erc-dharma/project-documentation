@@ -10,6 +10,8 @@ For searching everywhere in a document:
 temple
 ```
 
+Matching is case-insensitive, does not take diacritics into account, and looks for substrings instead of terms. For instance, the query `edit` matches "edition" or "meditation".
+
 You might also want to look for documents that contain two terms:
 
 ```
