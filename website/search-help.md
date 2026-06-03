@@ -148,8 +148,23 @@ temple NOT Aihole
 NOT Aihole
 ```
 
-In most search engine, `NOT` is a binary operator. Thus `foo NOT bar` really means `foo AND NOT bar`, and the query `NOT bar` is treated as invalid. In our system, however, `NOT` is a unary operator, thus `NOT bar` is valid (and returns all documents that do not match `bar`). Furthermore, given that two queries that are not bound by an explicit operator are treated as if they were bound with `AND`, the query `foo NOT bar` is interpreted as `foo AND (NOT bar)`, as in most search engines.
+In most search engines, `NOT` is a binary operator. Thus `foo NOT bar` really means `foo AND NOT bar`, and the query `NOT bar` is treated as invalid. In our system, however, `NOT` is a unary operator, thus `NOT bar` is valid (and returns all documents that do not match `bar`). Furthermore, given that two queries that are not bound by an explicit operator are treated as if they were bound with `AND`, the query `foo NOT bar` is interpreted as `foo AND (NOT bar)`, as in most search engines.
 
 There are also two proximity operators, which are both binary: `SEQ` and `NEAR`. The `SEQ` operator matches if both its members match and if they occur in sequence (hence the name `SEQ`) within the target field. The `NEAR` operator behaves in the same way save for the fact that its members can appear in both order. Thus, the query `a NEAR b` is strictly equivalent to `(a SEQ b) OR (b SEQ a)`.
+
+The arguments to both the `SEQ` and `NEAR` operators must necessarily be strings (either a single word like `temple` or a phrase like `"Aihole temple"`). Here are some valid examples:
+
+```
+Aihole SEQ temple
+title:(Aihole SEQ temple)
+stone SEQ "Aihole temple"
+```
+
+However, the following are not valid:
+
+```
+title:Aihole SEQ author:temple
+Aihole SEQ (temple AND pillar)
+```
 
 Here are the operators sorted by decreasing precedence: `SEQ` > `NEAR` > `NOT` > `AND` > `OR`. A given operator binds tighter than the ones that follow, which means that, for instance, the query `foo SEQ bar AND baz` is interpreted as `(foo SEQ bar) AND baz`.
