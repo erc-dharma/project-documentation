@@ -53,43 +53,43 @@ Here are the fields you can search into.
 </thead>
 <tbody>
 <tr>
-<td>ident</td>
+<td>`ident`</td>
 <td>File identifier (its name without the `*.xml` extension), e.g. `DHARMA_INSKalyanaCalukya01005`. A file only bears a single identifier.</td>
 </tr>
 <tr>
-<td>repo</td>
+<td>`repo`</td>
 <td>Git repository.</td>
 </tr>
 <tr>
-<td>title</td>
+<td>`title`</td>
 <td>Title assigned to the text. A single file might be assigned several titles.</td>
 </tr>
 <tr>
-<td>editor</td>
+<td>`editor`</td>
 <td>Scientific editors responsible for establishing the text.
 </tr>
 <tr>
-<td>author</td>
+<td>`author`</td>
 <td>Authors of the text.</td>
 </tr>
 <tr>
-<td>summary</td>
+<td>`summary`</td>
 <td>Abstract or analytical description synthesizing the contents of the text.</td>
 </tr>
 <tr>
-<td>hand</td>
+<td>`hand`</td>
 <td>Paleographical or epigraphical analysis describing the scribe's hand, the ductus, or the carving style.</td>
 </tr>
 <tr>
-<td>logical</td>
+<td>`logical`</td>
 <td>The body of the text, derived from its `logical` representation (the text you see when clicking on "Logical" in the display of a text).</td>
 </tr>
 <tr>
-<td>lang</td>
+<td>`lang`</td>
 <td>Languages used in the original text.</td>
 </tr>
 <tr>
-<td>script</td>
+<td>`script`</td>
 <td>Graphic system or alphabet used for noting the text.</td>
 </tr>
 </tbody>
