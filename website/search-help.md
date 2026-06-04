@@ -161,6 +161,13 @@ The first query matches a document if one of the editors of this document has `a
 
 There are also two proximity operators, which are both binary: `SEQ` and `NEAR`. The `SEQ` operator matches if both its members match and if they occur in sequence (hence the name `SEQ`) within the target field. The `NEAR` operator behaves in the same way save for the fact that its members can appear in both order. Thus, the query `a NEAR b` is strictly equivalent to `(a SEQ b) OR (b SEQ a)`.
 
+The `SEQ` and `NEAR` operators take an optional argument, which is the maximum distance between their two members, counting in bytes. More specifically, it is the maximum distance between the end of the first member and the beginning of the second one. The syntax is:
+
+```
+foo SEQ/15 bar
+foo NEAR/20 bar
+```
+
 The arguments to both the `SEQ` and `NEAR` operators must necessarily be strings (either a single word like `temple` or a phrase like `"Aihole temple"`). Here are some valid examples:
 
 ```
