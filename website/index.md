@@ -4,7 +4,7 @@ A database delivered by ERC Synergy Project DHARMA (Grant Agreement 809994), hos
 
 - Centre d'études sud-asiatiques et himalayennes (UMR 8077, CNRS-EHESS)
 - École française d'Extrême-Orient
-- Humboldt-Univsersität zu Berlin
+- Humboldt-Universität zu Berlin
 - Università di Napoli L’Orientale
 
 Our legal notice is [here](/legal-notice).
