@@ -2,7 +2,7 @@
 
 ## Funding
 
-The creation of this platform was made possible by funding for the Synergy Project DHARMA provised by the ERC over the years 2019-2026.
+The creation of this platform was made possible by funding for the Synergy Project DHARMA provided by the ERC over the years 2019-2026.
 
 <!--
 
