@@ -35,6 +35,6 @@ This website is hosted on a server provided for free by [Huma-Num](https://www.h
 
 ## Processing of Personal Data
 
-We do not use cookies nor other user-tracking technologies. HOwever, we do store in our logs the IP addresses of our server's clients, as well as the HTTP headers
+We do not use cookies nor other user-tracking technologies. However, we do store in our logs the IP addresses of our server's clients, as well as the HTTP headers
 they send us. We also use [Google's Search
 Console](https://search.google.com/search-console/about).
