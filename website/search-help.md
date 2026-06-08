@@ -85,6 +85,14 @@ Here are the fields you can search into.
 <td>The body of the text, derived from its `logical` representation (the text you see when clicking on "Logical" in the display of a text).</td>
 </tr>
 <tr>
+<td>`trans`</td>
+<td>The "translation" section of the document.</td>
+</tr>
+<tr>
+<td>`bibl`</td>
+<td>The "bibliography" section of the document.</td>
+</tr>
+<tr>
 <td>`lang`</td>
 <td>Languages used in the original text.</td>
 </tr>
