@@ -1,11 +1,12 @@
-# Digital Sources for the History of the Hindu, Buddhist and Jain Ecumenes of South and Southeast Asia
+# Digital Sources for the History of South and Southeast Asia
 
 <!--
 
-Digital Sources for the History of the Sanskrit Cosmopolis
+to be followed by explanation that we cover almost exlcusively premodern sources in Indic scripts, meaning to the nbearly complete exclusion of sources in Arabic script
 
-Digital Sources for the History of South and Southeast Asia
-	followed by explanation that we cover almost exlcysively premodern sources in Indic scripts, meaning to the nbearly complete exclusion of sources in Arabic script
+Digital Sources for the History of the Hindu, Buddhist and Jain Ecumenes of South and Southeast Asia
+
+Digital Sources for the History of the Sanskrit Cosmopolis
 
 -->
 

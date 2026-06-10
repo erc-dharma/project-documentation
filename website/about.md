@@ -2,6 +2,10 @@
 
 This platform was the principal deliverable of an ERC Synergy Project called DHARMA. Since the end of that project, the platform is being managed by a consortium which retains the same name.
 
+# About the database
+
+This database covers almost exclusively premodern sources in Indic scripts, to the nearly complete exclusion of sources in Arabic, Chinese and other scripts. It is strongly focused on epigraphic texts but does include a number of critical editions of manuscript-transmitted texts, as well as diplomatic editions of specific manuscripts. For the time being, only epigraphic texts can be queried by the search engine. 
+
 # About the ERC Synergy Project DHARMA
 
 The DHARMA project [ERC n°809994](https://doi.org/10.3030/809994) was
