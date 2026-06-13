@@ -2037,6 +2037,22 @@
 
 	    </list>
 	    <list>
+	     <label>identifier</label><item>tam-palam</item>
+	     <label>name</label><item xml:lang="tam">palam</item>
+	     <label>description</label><item>A symbol representing <foreign>palam</foreign> (‘a standard weight’).</item>
+	     <label>mapping</label><item></item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+            <!--<label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-palam_01.png"/>
+                <head></head>
+              </figure>
+            </item>-->
+
+	    </list>
+	    <list>
 	     <label>identifier</label><item>tam-panam</item>
 	     <label>name</label><item xml:lang="tam">paṇam</item>
 	     <label>description</label><item><!--CHECK @EMFR--></item>
