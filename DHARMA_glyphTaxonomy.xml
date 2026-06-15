@@ -2212,6 +2212,23 @@
             </item>
 -->
 	    </list>
+	    
+	    <list>
+	     <label>identifier</label><item>tam-tiyati</item>
+	     <label>name</label><item xml:lang="tam">tiyati</item>
+	     <label>description</label><item>A symbol representing <foreign>tiyati</foreign> (‘date’).</item>
+	     <label>mapping</label><item></item>
+	     <label>extra</label><item>
+	      <p></p>
+	     </item>
+            <!--<label>images</label><item>
+              <figure>
+                <graphic url="https://dharmalekha.info/glyphs/DHARMA_SYMtam-palam_01.png"/>
+                <head></head>
+              </figure>
+            </item>-->
+	    </list>
+	    
 	    <list>
 	     <label>identifier</label><item>tam-tuni</item>
 	     <label>name</label><item xml:lang="tam">tūṇi</item>
