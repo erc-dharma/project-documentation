@@ -1,18 +1,16 @@
 # Search Help
 
-## Basics
-
 The query syntax is similar to most search engine's.
 
-For searching everywhere in a document:
+## Basics
+
+Matching is case-insensitive. It looks for substrings instead of terms. For instance, the query `edit` matches "edition" or "meditation".
 
 ```
 temple
 ```
 
-Matching is case-insensitive, does not take diacritics into account, and looks for substrings instead of terms. For instance, the query `edit` matches "edition" or "meditation".
-
-You might also want to look for documents that contain two terms:
+You might also want to look for documents that contain two substrings:
 
 ```
 temple stone
@@ -31,6 +29,14 @@ Quotation marks are necessary, otherwise the query would be treated as:
 ```
 Aihole AND temple
 ```
+
+Strings can be literals, as in `temple`, but you can also use wildcard characters, namely `?` and `*`. The special character `?` matches exactly one character, thus the query `t?mple` would matche "temple", "tample", etc. The special character `*` matches a sequence of zero or more characters, thus `t*mple` would match "temple", "tmple", "tample", etc.
+
+What constitutes a character depends on the field you are searching into.
+
+For the `logical` field, the default is to treat a phoneme as a character. Thus, if you want to find "dharmalekha", your query could be `dharmale?a`, but _not_ `dharmale??a`, since the character `?` corresponds to a single phoneme.
+
+In all other fields, the character `?` matches a Unicode grapheme cluster. Thus, if you want to find "dharmalekha", your query could be `dharmale??a`, but _not_ `dharmale?a`, since "kh" is not treated as a single unit.
 
 ## Field Search
 
@@ -167,28 +173,4 @@ editor:(arlo AND eko)
 
 The first query matches a document if one of the editors of this document has `arlo` in his name and if the same editor or another one has `eko` in his name. Per contrast, the second query matches a document if one of its editors has both the strings `arlo` and `eko` in his name.
 
-There are also two proximity operators, which are both binary: `SEQ` and `NEAR`. The `SEQ` operator matches if both its members match and if they occur in sequence (hence the name `SEQ`) within the target field. The `NEAR` operator behaves in the same way save for the fact that its members can appear in both order. Thus, the query `a NEAR b` is strictly equivalent to `(a SEQ b) OR (b SEQ a)`.
-
-The `SEQ` and `NEAR` operators take an optional argument, which is the maximum distance between their two members, counting in bytes. More specifically, it is the maximum distance between the end of the first member and the beginning of the second one. The syntax is:
-
-```
-foo SEQ/15 bar
-foo NEAR/20 bar
-```
-
-The arguments to both the `SEQ` and `NEAR` operators must necessarily be strings (either a single word like `temple` or a phrase like `"Aihole temple"`). Here are some valid examples:
-
-```
-Aihole SEQ temple
-title:(Aihole SEQ temple)
-stone SEQ "Aihole temple"
-```
-
-However, the following are not valid:
-
-```
-title:Aihole SEQ author:temple
-Aihole SEQ (temple AND pillar)
-```
-
-Here are the operators sorted by decreasing precedence: `SEQ` > `NEAR` > `NOT` > `AND` > `OR`. A given operator binds tighter than the ones that follow, which means that, for instance, the query `foo SEQ bar AND baz` is interpreted as `(foo SEQ bar) AND baz`.
+Here are the operators sorted by decreasing precedence: `NOT` > `AND` > `OR`. A given operator binds tighter than the ones that follow, which means that, for instance, the query `foo OR bar AND baz` is interpreted as `foo OR (bar AND baz)`.
