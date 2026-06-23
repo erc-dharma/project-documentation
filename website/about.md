@@ -8,7 +8,7 @@ This database covers almost exclusively premodern sources in Indic scripts, to t
 
 # About the ERC Synergy Project DHARMA
 
-<!-- ![](https://erc.europa.eu/sites/default/files/2025-08/LOGO_ERC-FLAG_EU-no%20text.png) -->
+ ![](https://erc.europa.eu/sites/default/files/2025-08/LOGO_ERC-FLAG_EU-no%20text.png)
 
 The DHARMA project [ERC n°809994](https://doi.org/10.3030/809994) was launched on May 1st 2019. It lasted over 90 months project (May 2019 through Octiber 2026) and was funded by an ERC Synergy Grant 2018 through the European Union’s Research and Innovation Programme Horizon 2020. For general information about the project and its goals, head over to [our blog on Hypotheses.org](https://dharma.hypotheses.org). The acronym DHARMA stood for The Domestication of “Hindu” Asceticism and the Religious Making of South and Southeast Asia.
 
