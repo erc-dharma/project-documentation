@@ -2,45 +2,60 @@
 
 The query syntax is similar to most search engine's.
 
-## Basics
+## Matching Modes
 
-Matching is case-insensitive. It looks for substrings instead of terms. For instance, the query `edit` matches "edition" or "meditation".
+The search system looks for substrings instead of terms. Thus, the query `edit`
+matches the word "edit", but also words like "edition" or "meditation".
+Furthermore, matching is case-insensitive, thus searching `Edit` or `edit`
+yields the same results.
+
+The matching behaviour is field-dependent. Take the query `mantra`, for
+instance. When the system looks for this substring within the `title` field, it
+will treat "mantra" or "măntra" as matches. However, when the system looks for
+this substring within the `logical` field (the body of the edition), it will
+also treat "manthra", "mandra" and "mandhra" as matches.
+
+There are thus several *matching modes*, which exhibit different matching
+behaviours. Currently, there are two modes, which we call `forma` and `formb`:
+
+* The `forma` mode is the one used per default for all fields except `logical`. It preserves significant diacritical marks, but treats some of them as equivalent. For instance, "ṃ", "ṁ" and "m̐" are considered as equivalent.
+* The `formb` mode is used per default when searching within the `logical` field. It ignores most diacritical marks. Thus, it treats "a" and "ā" as equivalent. Furthermore, it treats occlusives from the same group as equivalent. Thus "k", "kh", "g" and "gh" are assumed to be the same; likewise for "ṭ", "ṭh", "ḍ", "ḍh", "t", "th", "d" and "dh".
+
+The exact behaviour of matching modes are subject to change.
+
+You typically do not need to specify a matching mode when searching, but you can do it if you want to enforce a given behaviour. Say you want to look for the string "brāhmaṇa", treating diacritical marks as significant. For this to work, you need to choose the `forma` mode. To do so, add a `.forma` suffix to the field you want to search into. Thus, for searching in the `logical` field, you should use the following:
 
 ```
-temple
+logical.forma:brāhmaṇa
 ```
 
-You might also want to look for documents that contain two substrings:
+If you want to search in all fields, but still use the `forma` mode, use the following syntax:
 
 ```
-temple stone
+.forma:brāhmaṇa
 ```
 
-This is equivalent to `temple AND stone`.
+This syntax works because, when you do not explicitly give a field name, it is assumed that you want to look into the field "" (the empty string).
 
-For searching a phrase, surround it with double quotes:
 
-```
-"Aihole temple"
-```
+## Phrases
 
-Quotation marks are necessary, otherwise the query would be treated as:
+When you input several words or substrings, as in the query `temple stone`, these words or substrings are treated as if they were connected with the `AND` (conjunction) operator. Thus, the query `temple stone` is strictly equivalent to the query `temple AND stone`.
 
-```
-Aihole AND temple
-```
+If you want to search for a phrase (a sequence of words), you should surround the phrase with double quotes. For instance, the query `"Aihole temple"` will find documents that contain the substring "Aihole temple". Quotation marks are necessary, otherwise this query would be treated as `Aihole AND temple`, as explained above.
 
-Strings can be literals, as in `temple`, but you can also use wildcard characters, namely `?` and `*`. The special character `?` matches exactly one character, thus the query `t?mple` would matche "temple", "tample", etc. The special character `*` matches a sequence of zero or more characters, thus `t*mple` would match "temple", "tmple", "tample", etc.
+## Wildcard Queries
 
-What constitutes a character depends on the field you are searching into.
+Strings can be literals, as in `temple`, but you can also use wildcard characters, namely `?` and `*`. The special character `?` matches exactly one character, thus the query `t?mple` would match "temple", "tample", etc. The special character `*` matches a sequence of zero or more characters, thus `t*mple` would match "temple", "tmple", "tample", etc.
 
-For the `logical` field, the default is to treat a phoneme as a character. Thus, if you want to find "dharmalekha", your query could be `dharmale?a`, but _not_ `dharmale??a`, since the character `?` corresponds to a single phoneme.
+Now, what constitutes a character depends on the matching mode you are using:
 
-In all other fields, the character `?` matches a Unicode grapheme cluster. Thus, if you want to find "dharmalekha", your query could be `dharmale??a`, but _not_ `dharmale?a`, since "kh" is not treated as a single unit.
+* For the `formb` mode (which is the default for the `logical` field), the default is to treat a phoneme as a character. Thus, if you want to find "dharmalekha", your query could be `dharmale?a`, but _not_ `dharmale??a`, since the character `?` corresponds to a single phoneme.
+* For the `forma` mode, the character `?` matches a character. Thus, if you want to find "dharmalekha", your query could be `dharmale??a`, but _not_ `dharmale?a`, since "kh" is not treated as a single unit.
 
 ## Field Search
 
-When you type a string like `Aihole`, it is searched within all fields of a document: title, editor, summary, etc. It is possible to restrict matching to a single field by prefixing the field name to your query, as in:
+When you type a string like `Aihole`, it is searched within all fields of a document: `title`, `editor`, `summary`, etc. It is possible to restrict matching to a single field by prefixing the field name to your query, as in:
 
 ```
 title:Aihole
