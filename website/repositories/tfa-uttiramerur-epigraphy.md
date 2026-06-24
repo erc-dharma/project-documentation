@@ -1,1 +1,1 @@
-This repository contains the stone inscriptions kengraved on the temples of Uttiramērūr except those dated to the years of Pallava kings which are in the repository [tfa-pallava-epigraphy](https://dharmalekha.info/repositories/tfa-pallava-epigraphy).
+This repository contains the stone inscriptions engraved on the temples of Uttiramērūr except those dated to the years of Pallava kings which are in the repository [tfa-pallava-epigraphy](https://dharmalekha.info/repositories/tfa-pallava-epigraphy).
