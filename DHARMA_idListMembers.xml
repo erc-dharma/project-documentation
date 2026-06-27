@@ -11,7 +11,7 @@
     <teiHeader xml:lang="eng">
         <fileDesc>
             <titleStmt>
-                <title>Contributors to this database</title>
+                <title>Contributors</title>
                 <funder>European Research Council</funder>
                 <principal ref="#emfr">Emmanuel Francis</principal>
                 <principal ref="#argr">Arlo Griffiths</principal>
@@ -54,6 +54,7 @@
             </abstract>
         </profileDesc>
         <revisionDesc status="draft">
+        	<change who="#argr" when="2026-06-27">changed title, hidden two people, made some other small changes</change>
             <change who="#argr" when="2026-05-06">created this file by duplicating DHARMA_IdListMembers_v01.xml, changing the file name, deleting all person entries for people not contributing to dharmalekha.info, and adding information to the entries for some contributors</change>
         </revisionDesc>
     </teiHeader>
@@ -154,7 +155,7 @@
                     <idno type="IdRef"/>
                     <idno type="ORCID">https://orcid.org/0000-0002-0068-3660</idno>
                 </person>
-                <person xml:id="diac">
+                <!--<person xml:id="diac">
                     <persName>
                         <forename>Diwakar</forename>
                         <surname>Acharya</surname>
@@ -163,7 +164,7 @@
                     <idno type="VIAF">http://viaf.org/viaf/26501648</idno>
                     <idno type="IdRef">http://www.idref.fr/138003556</idno>
                     <idno type="ORCID">https://orcid.org/0000-0002-5482-7754</idno>
-                </person>
+                </person>-->
                 <person xml:id="anac">
                     <persName>
                         <forename>Andrea</forename>
@@ -219,7 +220,7 @@
                         <forename>Kelsey</forename>
                         <surname>Martini</surname>
                     </persName>
-                    <affiliation>Ludwig-Maximalians-Universität, Munich</affiliation>
+                	<affiliation>Ludwig-Maximilians-Universität, München</affiliation>
                     <idno type="ORCID">https://orcid.org/0000-0001-6636-9706</idno>
                 </person>
                 <person xml:id="fufa">
@@ -227,7 +228,7 @@
                         <forename>Fu</forename>
                         <surname>Fan</surname>
                     </persName>
-                    <affiliation>Ludwig-Maximalians-Universität, Munich</affiliation>
+                    <affiliation>Ludwig-Maximilians-Universität, München</affiliation>
                     <idno type="VIAF"/>
                     <idno type="IdRef"/>
                     <idno type="ORCID"/>
@@ -407,7 +408,7 @@
                     <idno type="IdRef"/>
                     <idno type="ORCID"/>
                 </person>
-                <person xml:id="thhu">
+                <!--<person xml:id="thhu">
                     <persName>
                         <forename>Thomas</forename>
                         <surname>Hunter</surname>
@@ -415,7 +416,7 @@
                     <affiliation></affiliation>
                     <idno type="VIAF">http://viaf.org/viaf/14319585</idno>
                     <idno type="IdRef">https://www.idref.fr/11251250X</idno>
-                </person>
+                </person>-->
                 <person xml:id="gedw">
                     <persName>
                         <name>Ida Bagus Made Gesram Dwijayana</name>
@@ -657,7 +658,7 @@
                     <idno type="IdRef">https://www.idref.fr/131352520</idno>
                     <idno type="ORCID">https://orcid.org/0000-0002-7422-1434</idno>
                 </person>
-                <person xml:id="ibks">
+               <!-- <person xml:id="ibks">
                     <persName>
                         <name>Ida Bagus Komang Sudarma</name>
                     </persName>
@@ -665,7 +666,7 @@
                     <idno type="VIAF"/>
                     <idno type="IdRef"/>
                     <idno type="ORCID"/>
-                </person>
+                </person>-->
                 <person xml:id="ryta">
                     <persName>
                         <forename>Ryugen</forename>
@@ -692,7 +693,7 @@
                     </persName>
                     <affiliation>Badan Riset dan Inovasi Nasional</affiliation>
                     <idno type="VIAF">http://viaf.org/viaf/72800314</idno>
-                    <idno type="IdRef"> https://www.idref.fr/081050208Copier cet identifiant (PPN)</idno>
+                    <idno type="IdRef">https://www.idref.fr/081050208</idno>
                 </person>
                 <person xml:id="vito">
                     <persName>
@@ -700,7 +701,7 @@
                         <surname>Tournier</surname>
                     </persName>
                     <affiliation>École française d’Extrême-Orient</affiliation>
-                    <affiliation>Ludwig-Maximilians-Universität München</affiliation>
+                    <affiliation>Ludwig-Maximilians-Universität, München</affiliation>
                     <idno type="VIAF">http://viaf.org/viaf/308304168</idno>
                     <idno type="IdRef">https://www.idref.fr/177429623</idno>
                     <idno type="ORCID">https://orcid.org/0000-0002-3028-7116</idno>
