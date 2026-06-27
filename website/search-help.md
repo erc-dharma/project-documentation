@@ -9,17 +9,18 @@ matches the word "edit", but also words like "edition" or "meditation".
 Furthermore, matching is case-insensitive, thus searching `Edit` or `edit`
 yields the same results.
 
-The matching behaviour is field-dependent. Take the query `mantra`, for
+The matching behaviour is field-dependent. Take the query `hala`, for
 instance. When the system looks for this substring within the `title` field, it
-will treat "mantra" or "măntra" as matches. However, when the system looks for
+will treat "phala" as a match. However, when the system looks for
 this substring within the `logical` field (the body of the edition), it will
-also treat "manthra", "mandra" and "mandhra" as matches.
+not (because it treats "ph" as a single unit).
 
 There are thus several *matching modes*, which exhibit different matching
-behaviours. Currently, there are two modes, which we call `forma` and `formb`:
+behaviours. Currently, there are three modes, which we call `forma`, `formb`, and `formc`:
 
-* The `forma` mode is the one used per default for all fields except `logical`. It preserves significant diacritical marks, but treats some of them as equivalent. For instance, "ṃ", "ṁ" and "m̐" are considered as equivalent.
-* The `formb` mode is used per default when searching within the `logical` field. It ignores most diacritical marks. Thus, it treats "a" and "ā" as equivalent. Furthermore, it treats occlusives from the same group as equivalent. Thus "k", "kh", "g" and "gh" are assumed to be the same; likewise for "ṭ", "ṭh", "ḍ", "ḍh", "t", "th", "d" and "dh".
+* The `forma` mode is the one used per default for all fields except `logical`. It is designed to work well with modern (non-Asiatic) languages. It preserves significant diacritical marks, but treats some of them as equivalent. For instance, "ṃ", "ṁ" and "m̐" are considered as equivalent.
+* The `formb` mode is not used per default on any field. It is designed to work well with Asiatic languages. It ignores most diacritical marks. Thus, it treats "a" and "ā" as equivalent. Furthermore, it treats occlusives from the same group as equivalent. Thus "k", "kh", "g" and "gh" are assumed to be the same; likewise for "ṭ", "ṭh", "ḍ", "ḍh", "t", "th", "d" and "dh". It also treats duplicated consonants as equivalent: "dharma" matches "dharmma", "kha" matches "kkha", etc.
+* The `formc` mode is used per default when searching within the `logical` field. It is designed to work well with Asiatic languages. It interprets digraphs as single characters, thus "mala" does not match "malaiḥ" (because "ai" counts as a single character)
 
 The exact behaviour of matching modes are subject to change.
 
