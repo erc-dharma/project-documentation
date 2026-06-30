@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-06-30T13:43:41Z. . 
+Schema generated from ODD source 2026-06-30T14:54:04Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -3092,6 +3092,8 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3102,10 +3104,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -3170,6 +3176,8 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -3182,10 +3190,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -3443,6 +3455,8 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3453,10 +3467,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -3521,6 +3539,8 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -3533,10 +3553,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -3844,6 +3868,8 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -3854,10 +3880,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -3922,6 +3952,8 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -3934,10 +3966,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -4586,6 +4622,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -4596,10 +4634,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -4664,6 +4706,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -4676,10 +4720,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -4879,6 +4927,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -4889,10 +4939,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -4957,6 +5011,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -4969,10 +5025,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -5062,6 +5122,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -5072,10 +5134,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -5140,6 +5206,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -5152,10 +5220,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -5275,6 +5347,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -5285,10 +5359,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -5353,6 +5431,8 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -5365,10 +5445,14 @@ Measures]</a:documentation>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -6215,6 +6299,8 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -6225,10 +6311,14 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -6293,6 +6383,8 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -6305,10 +6397,14 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -6969,6 +7065,8 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -6979,10 +7077,14 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -7047,6 +7149,8 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -7059,10 +7163,14 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -7310,6 +7418,8 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -7320,10 +7430,14 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -7388,6 +7502,8 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -7400,10 +7516,14 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
@@ -8370,6 +8490,8 @@ Sample values include: 1] ignorance; 2] incompleteness; 3] credibility; 4] impre
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
                   <value>mal</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                  <value>mar</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Burmese</a:documentation>
                   <value>nld</value>
@@ -8380,10 +8502,14 @@ Sample values include: 1] ignorance; 2] incompleteness; 3] credibility; 4] impre
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli</value>
@@ -8448,6 +8574,8 @@ Sample values include: 1] ignorance; 2] incompleteness; 3] credibility; 4] impre
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Language B of Sriwijaya</a:documentation>
                   <value>lat-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  <value>mal-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
                   <value>mar-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marathi</a:documentation>
                   <value>mya-Latn</value>
@@ -8460,10 +8588,14 @@ Sample values include: 1] ignorance; 2] incompleteness; 3] credibility; 4] impre
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cham, Old</a:documentation>
                   <value>okz-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer, Old</a:documentation>
+                  <value>oldbalinese-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese, Old</a:documentation>
                   <value>omx-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon, Old</a:documentation>
                   <value>omy-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malay, Old</a:documentation>
+                  <value>ori-Latn</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Oriya</a:documentation>
                   <value>osn-Latn</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese, Old</a:documentation>
                   <value>pli-Latn</value>
