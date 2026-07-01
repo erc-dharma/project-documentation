@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-06-30T14:54:04Z. . 
+Schema generated from ODD source 2026-07-01T12:15:24Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -7558,42 +7558,6 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
             </attribute>
          </optional>
          <optional>
-            <attribute name="rend">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
-               <choice>
-                  <value>bt-rotated</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from bottom to top, with the tops of characters facing left </a:documentation>
-                  <value>tb-rotated</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from top to bottom, with the tops of characters facing right </a:documentation>
-                  <value>bt-upright</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from bottom to top, with the tops of characters facing upward </a:documentation>
-                  <value>tb-upright</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from top to bottom, with the tops of characters facing upward </a:documentation>
-                  <value>rl-upright</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written horizontally from right to left, with characters in their regular orientation </a:documentation>
-                  <value>rl-flipped</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written horizontally from right to left, with characters mirrored around their vertical axis as in true boustrophedon </a:documentation>
-                  <value>rl-rotated</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written horizontally from right to left, with the tops of characters facing downward </a:documentation>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="style">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an expression in some formal style definition language which defines the rendering or presentation used for this element in the source text.</a:documentation>
-               <choice>
-                  <value>text-align: right</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>text-align: center</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>text-align: left</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>text-align: justify</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
                <list>
@@ -7923,20 +7887,6 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
                <list>
                   <oneOrMore>
                      <choice>
-                        <value>bt-rotated</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from bottom to top, with the tops of characters facing left </a:documentation>
-                        <value>tb-rotated</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from top to bottom, with the tops of characters facing right </a:documentation>
-                        <value>bt-upright</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from bottom to top, with the tops of characters facing upward </a:documentation>
-                        <value>tb-upright</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written vertically from top to bottom, with the tops of characters facing upward </a:documentation>
-                        <value>rl-upright</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written horizontally from right to left, with characters in their regular orientation </a:documentation>
-                        <value>rl-flipped</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written horizontally from right to left, with characters mirrored around their vertical axis as in true boustrophedon </a:documentation>
-                        <value>rl-rotated</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">written horizontally from right to left, with the tops of characters facing downward </a:documentation>
                         <value>grantha</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>ornate</value>
@@ -7957,18 +7907,152 @@ Sample values include: 1] book; 2] chapter; 3] entry; 4] poem; 5] letter; 6] lin
             </attribute>
          </optional>
          <optional>
-            <attribute name="style">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an expression in some formal style definition language which defines the rendering or presentation used for this element in the source text.</a:documentation>
-               <choice>
-                  <value>text-align: right</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>text-align: center</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>text-align: left</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>text-align: justify</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <choice>
+                     <value>class:57471</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic</a:documentation>
+                     <value>class:arabic</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Arabic</a:documentation>
+                     <value>class:70417</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi</a:documentation>
+                     <value>class:jawi</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Jawi</a:documentation>
+                     <value>class:83217</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:brāhmī</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Brāhmī and derivatives</a:documentation>
+                     <value>class:83223</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Northern class Brāhmī</a:documentation>
+                     <value>class:brāhmī_northern</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Northern class Brāhmī</a:documentation>
+                     <value>class:84158</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Bhaikṣukī</a:documentation>
+                     <value>class:bhaikṣukī</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Bhaikṣukī</a:documentation>
+                     <value>class:83229</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:gauḍī</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Gauḍī</a:documentation>
+                     <value>class:38771</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:nāgarī</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Nāgarī</a:documentation>
+                     <value>class:38774</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā</a:documentation>
+                     <value>class:siddhamātr̥kā</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siddhamātr̥kā</a:documentation>
+                     <value>class:83227</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Southeast Asian Brāhmī</a:documentation>
+                     <value>class:brāhmī_southeast_asian</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Southeast Asian Brāhmī</a:documentation>
+                     <value>class:83239</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese</a:documentation>
+                     <value>class:balinese</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Balinese</a:documentation>
+                     <value>class:38767</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak</a:documentation>
+                     <value>class:batak</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Batak</a:documentation>
+                     <value>class:83233</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam</a:documentation>
+                     <value>class:cam</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cam</a:documentation>
+                     <value>class:38769</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi</a:documentation>
+                     <value>class:kawi</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kawi</a:documentation>
+                     <value>class:83231</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
+                     <value>class:khmer</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Khmer</a:documentation>
+                     <value>class:83235</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese</a:documentation>
+                     <value>class:mon-burmese</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mon-Burmese</a:documentation>
+                     <value>class:83241</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese</a:documentation>
+                     <value>class:javanese_old_west</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Old West Javanese</a:documentation>
+                     <value>class:83237</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu</a:documentation>
+                     <value>class:pyu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Pyu</a:documentation>
+                     <value>class:57470</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese</a:documentation>
+                     <value>class:sundanese</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Sundanese</a:documentation>
+                     <value>class:83225</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Southern class Brāhmī</a:documentation>
+                     <value>class:brāhmī_southern</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Southern class Brāhmī</a:documentation>
+                     <value>class:38768</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:grantha</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grantha</a:documentation>
+                     <value>class:82857</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kannada</a:documentation>
+                     <value>class:kannada</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kannada</a:documentation>
+                     <value>class:38776</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil</a:documentation>
+                     <value>class:tamil</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tamil</a:documentation>
+                     <value>class:81340</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
+                     <value>class:telugu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Telugu</a:documentation>
+                     <value>class:70420</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:vaṭṭeḻuttu</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vaṭṭeḻuttu</a:documentation>
+                     <value>class:83221</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
+                     <value>class:chinese</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Chinese</a:documentation>
+                     <value>class:83219</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                     <value>class:kharoṣṭhī</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Kharoṣṭhī</a:documentation>
+                     <value>class:00000</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
+                     <value>class:undetermined</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
+                     <value>class:malayalam</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Malayalam</a:documentation>
+                     <value>class:siṁhala</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Siṁhala</a:documentation>
+                     <value>class:latin</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
+                  </choice>
+                  <choice>
+                     <value>maturity:83207</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Early Brāhmī</a:documentation>
+                     <value>maturity:early</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Early Brāhmī</a:documentation>
+                     <value>maturity:83211</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Late Brāhmī</a:documentation>
+                     <value>maturity:late</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Late Brāhmī</a:documentation>
+                     <value>maturity:83209</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Middle Brāhmī</a:documentation>
+                     <value>maturity:middle</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Middle Brāhmī</a:documentation>
+                     <value>maturity:83213</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:regional</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Regional Brāhmī-derived script</a:documentation>
+                     <value>maturity:83215</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vernacular Brāhmī-derived script</a:documentation>
+                     <value>maturity:vernacular</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vernacular Brāhmī-derived script</a:documentation>
+                     <value>maturity:00000</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
+                     <value>maturity:undetermined</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Undetermined</a:documentation>
+                  </choice>
+               </list>
             </attribute>
          </optional>
          <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
