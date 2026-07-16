@@ -3830,6 +3830,7 @@
         <item>
           <measure unit="syllable"/>
           <name xml:lang="">āryāgīti</name>
+          <name xml:lang="kan-Latn">kanda</name>
           <seg type="xml">4|4|4||4|4|4|4|4/4|4|4||4|4|4|4|4</seg>
           <seg type="prosody"></seg>
           <!--daba: moraic verse, can't be properly described with prosodic symbols.-->
