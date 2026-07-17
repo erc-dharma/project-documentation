@@ -87,8 +87,12 @@ Here are the fields you can search into.
 <td>Title assigned to the text. A single file might be assigned several titles.</td>
 </tr>
 <tr>
-<td>`editor`</td>
+<td>`editor` or `creator`</td>
 <td>Scientific editors responsible for establishing the text.
+</tr>
+<tr>
+<td>`contributor`</td>
+<td>Persons who contributed to the edition (per contrast with `editor`).
 </tr>
 <tr>
 <td>`author`</td>
