@@ -13,8 +13,11 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 	
 	<p class="mb-1">
 		<strong>Summary:</strong>
-		A dataset tracing the emergence of a technical fractional vocabulary in Tamil epigraphy, produced through a systematic survey of the forty-two volumes of South Indian Inscriptions. Drawing on records from the eighth to the eleventh centuries, the dataset documents the first appearance of fractional terminology in administrative records, its usage, and the stages of its development. The dataset provides evidence for a distinct local system of fractions in the medieval Tamil country.
-	</p>
+		This historical dataset traces the gradual emergence of a technical vocabulary to refer to fractional values. It is based on a systematic survey of the forty-two volumes of  <i>South Indian Inscriptions</i> while it gathers records from approximately the eighth upto the eleventh century.</p> 
+	
+	<p> The dataset seeks to identify early uses of the terms <i>mā</i> and <i>kāṇi</i> and later technical uses, where the same terms participate in a fixed fractional system. By the time of the Cōḻas, these two terms had increasingly gained stable meanings as fractional values, in symbolic notation, in additive combinations, and even in subordinate expressions introduced by <i>kīḻ</i>. The development that this resource documents is not only lexical, but most importantly as evidence for the formation of a regional system of fractions attested in Tamil epigraphy.</p>
+	
+	<p> The table is meant to complement the Dataset on Tañjāvūr Village Grants of Rājarāja I: <a href="https://dharmalekha.info/chola-fractional-calculations"> Dataset of Chola Fractional Calculations </a>. Whereas that dataset reconstructs the calculations behind a mature and highly elaborate fractional system, this table traces the earlier stages of such lexical and administrative uses of fractions that made such complex calculations possible. </p>
 	
 	<p class="mb-1">
 		<strong>Suggested citation:</strong>
@@ -36,20 +39,20 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>1</p></div>
-	<div>Inscription (SII)</div>
-	<div><p>EI 17.16</p></div>
+	<div>Inscription </div>
+	<div><p>Epigraphia Indica 17.16</p></div>
 	<div>King/Dynasty</div>
 	<div><p>Jaṭilavarman, alias Varaguṇa I </p><p>(Pāṇḍya)</p></div>
 	<div>Regnal year (c. year)</div>
-	<div><p>3rd (770)</p></div>
+	<div><p>3rd (ca. 770)</p></div>
 	<div>Place</div>
-	<div><p>Velvikkudi plates</p></div>
+	<div><p>Velvikkuṭi plates</p></div>
 	<div>Description</div>
 	<div><p>Endowment given to the engraver of royal order</p></div>
-	<div>Text in context (first number = line number)</div>
-	<div><p>154-155: <b>Iraṇṭu mā</b>-c cey[y]um oru puṉcey[y]um</p></div>
+	<div>Text in context (line number)</div>
+	<div><p>154-155: <b>Iraṇṭu mā</b>-c cey(y)um oru puṉcey(y)um</p></div>
 	<div>Word used for measurement</div>
 	<div><p><i>mā</i> as unit of land </p></div>
 	<div>Notes</div>
@@ -60,10 +63,10 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>2</p></div>
 	<div>Inscription (SII)</div>
-	<div><p>14.45</p></div>
+	<div><p> 14.45</p></div>
 	<div>King/Dynasty</div>
 	<div><p>Śrivallabha </p><p>(Pāṇḍya)</p></div>
 	<div>Regnal year (c. year)</div>
@@ -84,7 +87,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>3</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>14.78</p></div>
@@ -108,7 +111,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>4</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>14.17</p></div>
@@ -132,7 +135,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>5</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>14.19</p></div>
@@ -156,7 +159,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>6</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>12.58</p></div>
@@ -180,7 +183,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>7</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>6.446</p></div>
@@ -204,7 +207,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>8</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>7.524</p></div>
@@ -228,7 +231,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>9</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>5.572</p></div>
@@ -252,7 +255,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>10</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>12.80</p></div>
@@ -276,7 +279,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>11</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>4.531</p></div>
@@ -300,7 +303,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>12</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>12.81</p></div>
@@ -324,7 +327,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>13</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>12.84</p></div>
@@ -353,7 +356,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>1</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>14.40</p></div>
@@ -377,7 +380,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>2</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>19.25</p></div>
@@ -401,7 +404,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>3</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>19.190</p></div>
@@ -425,7 +428,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>4</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>5.571</p></div>
@@ -449,7 +452,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>5</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>14.56</p></div>
@@ -473,7 +476,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>6</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>32app.2.2</p></div>
@@ -497,7 +500,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>7</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>23.330</p></div>
@@ -521,7 +524,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>8</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>17.636</p></div>
@@ -545,7 +548,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>9</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>5.547</p></div>
@@ -569,7 +572,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>10</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>IEP 90</p></div>
@@ -593,7 +596,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>11</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>5.711</p></div>
@@ -617,7 +620,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>12</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>24.7</p></div>
@@ -641,7 +644,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>13</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>14.84-85</p></div>
@@ -665,7 +668,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>14</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>24.9</p></div>
@@ -689,7 +692,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>15</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>34.103</p></div>
@@ -713,7 +716,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>16</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>13.141</p></div>
@@ -737,7 +740,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>17</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>32.43</p></div>
@@ -761,7 +764,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>18</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>3.151/151A</p></div>
@@ -785,7 +788,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>19</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>32.app.2.64</p></div>
@@ -809,7 +812,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>20</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>3.139</p></div>
@@ -833,7 +836,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>21</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>19.389</p></div>
@@ -857,7 +860,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>22</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>17.617</p></div>
@@ -881,7 +884,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>23</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>13.170</p></div>
@@ -905,7 +908,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>24</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>41.124</p></div>
@@ -929,7 +932,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>25</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>41.117</p></div>
@@ -953,7 +956,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>26</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>38.255</p></div>
@@ -977,7 +980,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>27</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>36.134</p></div>
@@ -1001,7 +1004,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>28</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>4.547</p></div>
@@ -1025,7 +1028,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>29</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>34.101</p></div>
@@ -1049,7 +1052,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>30</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>8.521</p></div>
@@ -1073,7 +1076,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>31</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>13.183</p></div>
@@ -1097,7 +1100,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>32</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>34.101</p></div>
@@ -1121,7 +1124,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>33</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>4.549</p></div>
@@ -1145,7 +1148,7 @@ Dataset of Early Tamil Epigraphical Evidence for Fractional Terminology in Land 
 <div class="card">
 <div class="card-body">
 	<div class="card-data">
-	<div>No.</div>
+	<div><b>No.</b></div>
 	<div><p>34</p></div>
 	<div>Inscription (SII)</div>
 	<div><p>No. 44 (Cane)</p></div>
