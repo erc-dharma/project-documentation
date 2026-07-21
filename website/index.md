@@ -17,4 +17,6 @@ A database delivered by ERC Synergy Project DHARMA (Grant Agreement 809994), hos
 - Humboldt-Universität zu Berlin
 - Università di Napoli L’Orientale
 
+![](https://dharmalekha.info/logos/CNRS.png)
+
 Our legal notice is [here](/legal-notice).
