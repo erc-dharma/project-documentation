@@ -12,11 +12,17 @@ Digital Sources for the History of the Sanskrit Cosmopolis
 
 A database delivered by ERC Synergy Project DHARMA (Grant Agreement 809994), hosted during the years 2019-2026 by 
 
-- Centre d'études sud-asiatiques et himalayennes (UMR 8077, CNRS-EHESS)
+- Centre d’études sud-asiatiques et himalayennes (UMR 8077, CNRS-EHESS) formerly Centre d’études de l’Inde et de l’Asie du sud (UMR 8564)
 - École française d'Extrême-Orient
 - Humboldt-Universität zu Berlin
 - Università di Napoli L’Orientale
 
+![](https://dharmalekha.info/logos/CEIAS.png)
+![](https://dharmalekha.info/logos/CESAH.png)
 ![](https://dharmalekha.info/logos/CNRS.png)
+![](https://dharmalekha.info/logos/EFEO.png)
+![](https://dharmalekha.info/logos/EHESS.png)
+![](https://dharmalekha.info/logos/HU.png)
+![](https://dharmalekha.info/logos/ORIENTALE.png)
 
 Our legal notice is [here](/legal-notice).
