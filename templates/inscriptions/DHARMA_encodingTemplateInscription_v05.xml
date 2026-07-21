@@ -4,8 +4,7 @@
 <?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_SQF.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- //// PLEASE DO NOT USE THIS TEMPLATE FOR YOUR ENCODING. IT IS SILL AT A PREPARATION STAGE - KEEP USING THE TEMPLATE V03 /// -->
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng" xml:id="ID"><!-- update the @xml:id at the base with the DHARMA ID, see FNC. -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
    <teiHeader>
       <fileDesc>
          <titleStmt>
@@ -14,15 +13,16 @@
             <!-- Add your name in the respStmt matching your involvement -->
             <respStmt>
                <resp key="creator">EpiDoc Encoding</resp>
-               <!-- Work done in the file, creator by default, or contributor -->
+               <!-- Name(s) of the author(s) of the digital edition -->
                <persName ref="part:jodo"><!-- Update the id -->
                   <forename>John</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
                   <surname>Doe</surname>
                </persName>
             </respStmt>
+            <!-- If other people contributed to the edition, add a separate
+            "respStmt" as follows. -->
             <respStmt>
-               <resp>intellectual authorship of edition</resp>
-               <!-- This may be the same as the creator of the file -->
+               <resp key="contributor">intellectual authorship of edition</resp>
                <persName ref="part:jodo"><!-- Update the id -->
                   <forename>John</forename><!-- Fill in the name of the responsible scholar — it possible to use only <name> instead of <foreame> and <surname> -->
                   <surname>Doe</surname>
@@ -30,21 +30,11 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <authority>DHARMA</authority>
+            <authority><ref target="https://dharmalekha.info">DHARMA</ref></authority>
             <pubPlace><!-- Fill in here the place or places where the encoding has been done --></pubPlace>
             <idno type="filename">DHARMA_encodingTemplateInscription_v04</idno>
             <!-- Replace by filename, e.g. Pallava00001 -->
-            <availability>
-               <licence target="https://creativecommons.org/licenses/by/4.0/">
-                  <p>This work is licensed under the Creative Commons Attribution 4.0 Unported
-                     Licence. To view a copy of the licence, visit
-                     https://creativecommons.org/licenses/by/4.0/ or send a letter to
-                     Creative Commons, 444 Castro Street, Suite 900, Mountain View,
-                     California, 94041, USA.</p>
-                  <p>Copyright (c) 2019-2025 by John
-                     Doe.</p><!-- replace year and name, use format "Forename1 Surname1 & Forename2 Surname2" or "Forename1 Surname1, Forename2 Surname2 & Forename3 Surname3"  if necessary — the copyright is that of the encoder(s) -->
-               </licence>
-            </availability>
+            <availability><licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</licence></availability>
             <date from="2019" to="2025">2019-2025</date>
          </publicationStmt>
          <sourceDesc><!-- only the handDesc can be filled in at this stage -->
@@ -70,24 +60,7 @@
          </sourceDesc>
       </fileDesc>
       <encodingDesc>
-         <projectDesc>
-            <p>The project DHARMA has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement no 809994).</p>
-         </projectDesc>
-         <schemaRef type="guide" key="EGDv01" url="https://halshs.archives-ouvertes.fr/halshs-02888186"/><!-- UPDATE the link once the release is made official -->
-         <listPrefixDef>
-            <prefixDef ident="bib" matchPattern="([a-zA-Z0-9\-\_]+)" replacementPattern="https://www.zotero.org/groups/1633743/erc-dharma/items/tag/$1">
-               <p>Public URIs with the prefix bib to point to a Zotero Group Library named ERC-DHARMA whose data are open to the public.</p>
-            </prefixDef>
-            <prefixDef ident="part" matchPattern="([a-z]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/DHARMA_idListMembers.xml#$1">
-               <p>Internal URIs using the part prefix to point to person elements in the <ref>DHARMA_idListMembers.xml</ref> file.</p>
-            </prefixDef>
-            <prefixDef ident="cal" matchPattern="([\w]+)" replacementPattern="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/templates/DHARMA_calendarDesc_v01.xml#$1">
-               <p>Internal URIs using the cal prefix to point to calendar systems in  <ref>DHARMA_calendarDesc_v01.xml</ref> file.</p></prefixDef>
-         </listPrefixDef>
-         <tagsDecl partial="true">
-            <rendition xml:id="classification" scheme="other">Referential with the prefix class for script classification declared inside OpenTheso to be mapped with ARK URIs opened to the public</rendition>
-            <rendition xml:id="maturity" scheme="other">Referential with the prefix maturity for script maturity declared inside OpenTheso to be mapped with ARK URIs opened to the public</rendition>
-         </tagsDecl>
+         <p>Encoded in TEI/EpiDoc according to the <ref target="https://hal.science/halshs-02888186">DHARMA Encoding Guide for Documentary Editions, version 2</ref></p>
       </encodingDesc>
       <revisionDesc>
          <change who="part:axja" when="2022-12-22">Beta version 4: Adding the ref to the calendar system</change>
@@ -105,7 +78,7 @@
    <facsimile>
       <graphic url="filename.jpg" xml:id="photo1"/>
       <!-- graphic should take at least an attribute @url containing either the https where the photo is stored or the filename of the file itself. An @xml:id can be declared if you want to link part of your encoding with a facsimile using the attribute @facs. -->
-      <!-- If you want to provide a description, use the following pattern 
+      <!-- If you want to provide a description, use the following pattern
       <graphic url="filename.jpg" xml:id="photo1">
       <desc>Some description</desc>
       </graphic>-->
