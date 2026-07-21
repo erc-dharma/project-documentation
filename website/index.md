@@ -17,12 +17,17 @@ A database delivered by ERC Synergy Project DHARMA (Grant Agreement 809994), hos
 - Humboldt-Universität zu Berlin
 - Università di Napoli L’Orientale
 
-![](https://dharmalekha.info/logos/CEIAS.png)
+![](https://erc.europa.eu/sites/default/files/2025-08/LOGO_ERC-FLAG_EU-no%20text.png)
+
 ![](https://dharmalekha.info/logos/CESAH.png)
+![](https://dharmalekha.info/logos/CEIAS.jpg)
 ![](https://dharmalekha.info/logos/CNRS.png)
-![](https://dharmalekha.info/logos/EFEO.png)
 ![](https://dharmalekha.info/logos/EHESS.png)
+
+![](https://dharmalekha.info/logos/EFEO.png)
+
 ![](https://dharmalekha.info/logos/HU.png)
+
 ![](https://dharmalekha.info/logos/ORIENTALE.png)
 
 Our legal notice is [here](/legal-notice).
