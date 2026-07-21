@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-07-17T12:12:17Z. . 
+Schema generated from ODD source 2026-07-21T08:02:28Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -43,6 +43,15 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/
             <ref name="tei_model.gLike"/>
             <ref name="tei_model.attributable"/>
             <ref name="tei_model.phrase"/>
+            <ref name="tei_model.global"/>
+         </choice>
+      </zeroOrMore>
+   </define>
+   <define name="tei_macro.phraseSeq.limited">
+      <zeroOrMore>
+         <choice>
+            <text/>
+            <ref name="tei_model.limitedPhrase"/>
             <ref name="tei_model.global"/>
          </choice>
       </zeroOrMore>
@@ -6754,12 +6763,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
    <define name="tei_authority">
       <element name="authority">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(release authority) supplies the name of a person or other agency responsible for making a work available, other than a publisher or distributor. [2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
-         <oneOrMore>
-            <choice>
-               <ref name="tei_note"/>
-               <text/>
-            </choice>
-         </oneOrMore>
+         <ref name="tei_macro.phraseSeq.limited"/>
       </element>
    </define>
    <define name="tei_idno">
@@ -6790,9 +6794,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
    <define name="tei_licence">
       <element name="licence">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains information about a licence or other legal agreement applicable to the text. [2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
-         <oneOrMore>
-            <ref name="tei_p"/>
-         </oneOrMore>
+         <ref name="tei_macro.specialPara"/>
          <ref name="tei_att.pointing.attribute.target"/>
          <empty/>
       </element>
