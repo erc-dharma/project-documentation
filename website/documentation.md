@@ -2,8 +2,8 @@
 
 ## Encoding Guides
 
- ### Encoding Guide for Documentary Editions
- ### Encoding Guide for Critical Editions
+Encoding Guide for Documentary Editions
+Encoding Guide for Critical Editions
 
 ## Transliteration Guide
 
@@ -18,6 +18,7 @@
 [Controlled vocabularies for text](https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textControlledVoc)
 
 [Closed lists for texts](https://erc-dharma.github.io/controlled-vocabularies/DHARMA_mdt_textClosedLists)
+
 ## File Naming Conventions
 
 ## Code underlying dharmalekha.info
