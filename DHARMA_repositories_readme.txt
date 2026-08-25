@@ -11,6 +11,6 @@ application.
 The `textual` column is a boolean that tells the dharma application whether it
 should try to find TEI editions in the corresponding repository. If it is
 `false`, the application will update its clone of the repository, but will not
-to try to find edited texts into it. You should set it to `true` if you are not
+try to find edited texts into it. You should set it to `true` if you are not
 sure about the purpose of the repository. Setting it to `false` is just an
-optimization.
+optimization and should only be done if you are sure the repository will not contain editions.
