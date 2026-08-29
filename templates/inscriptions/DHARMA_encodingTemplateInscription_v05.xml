@@ -66,11 +66,10 @@
           <change who="part:axja" when="2022-12-22">Beta version 4: adding the ref to the calendar system</change>
          <change who="part:axja" when="2021-06-30">Beta version 4: adding facsimile for Chloe's encoding</change>
          <change who="part:axja" when="2021-06-02">Beta version 4 : starting adding elements to handle the resolution for ids linked to thesaurus concepts</change>
-         <change who="part:axja" when="2020-10-12">Version 3.2 : movinng the xml:lang to the root</change>
+         <change who="part:axja" when="2020-10-12">Version 3.2 : moving the xml:lang to the root</change>
          <change who="part:axja" when="2020-07-02">Version 3.1: adding the encodingDesc and linking the template with the DHARMA Schema</change>
          <change who="part:axja" when="2020-03-18">Version 2: addition of handDesc and summary</change>
-         <change who="part:axja" when="2019-12-18" status="draft">Creation of the
-            template</change>
+         <change who="part:axja" when="2019-12-18" status="draft">creation of the template</change>
          <!-- replace this by a line that has you as @who, that has the @date on which you finished the first basic encoding of the file, and that has the following description of what was finished on that date: "Initial encoding of the file." Then add a <change> entry for each significant change to the file. -->
       </revisionDesc>
    </teiHeader>
