@@ -32,17 +32,16 @@
          <publicationStmt>
             <authority><ref target="https://dharmalekha.info">DHARMA</ref></authority>
             <pubPlace><!-- Fill in here the place or places where the encoding has been done --></pubPlace>
-            <idno type="filename">DHARMA_encodingTemplateInscription_v04</idno>
-            <!-- Replace by filename, e.g. Pallava00001 -->
+            <idno type="filename">DHARMA_encodingTemplateInscription_v05.xml</idno>
+            <!-- Replace by filename, e.g. Pallava00001.xml -->
             <availability><licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</licence></availability>
-            <date from="2019" to="2025">2019-2025</date>
+            <date from="2019" to="2026">2019-2026</date>
          </publicationStmt>
          <sourceDesc><!-- only the handDesc can be filled in at this stage -->
             <msDesc><!-- //// NB: the msIdentifier had to be added for validation purposes ///. It will be edited later with the metadata spreadsheet -->
-               <msIdentifier>
-                  <repository>DHARMAbase</repository>
-                  <idno/><!-- don't modify this -->
-               </msIdentifier>
+                <msIdentifier>
+                    <repository>as per external metadata</repository>
+                </msIdentifier>
                <msContents><!-- describe the intellectual content of an inscription -->
                   <summary><!-- //// NOT MANDATORY  ////--></summary> <!-- offers the possibility to give a summary of the inscription's content -->
                </msContents>
@@ -63,7 +62,8 @@
          <p>Encoded in TEI/EpiDoc according to the <ref target="https://hal.science/halshs-02888186">DHARMA Encoding Guide for Documentary Editions, version 2</ref></p>
       </encodingDesc>
       <revisionDesc>
-         <change who="part:axja" when="2022-12-22">Beta version 4: Adding the ref to the calendar system</change>
+          <change who="part:mime" when="2026-07-21">Beta version 5: creation</change>
+          <change who="part:axja" when="2022-12-22">Beta version 4: adding the ref to the calendar system</change>
          <change who="part:axja" when="2021-06-30">Beta version 4: adding facsimile for Chloe's encoding</change>
          <change who="part:axja" when="2021-06-02">Beta version 4 : starting adding elements to handle the resolution for ids linked to thesaurus concepts</change>
          <change who="part:axja" when="2020-10-12">Version 3.2 : movinng the xml:lang to the root</change>
