@@ -27,7 +27,7 @@ with open(path.rstrip("\r\n"), "rb") as f:
 tmp_dir = tempfile.gettempdir()
 output = os.path.join(tmp_dir, "dharma_output.html")
 
-url = "https://dharmalekha.info/convert"
+url = "http://dharmalekha.info/convert"
 if os.getenv("DHARMA_DEBUG"):
 	url = "http://localhost:8023/convert"
 doc = {
