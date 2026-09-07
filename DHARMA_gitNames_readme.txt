@@ -1,7 +1,7 @@
 # DHARMA git user names
 
-The file DHARMA_gitNames.tsv is a mapping between git user names and DHARMA identifiers. By "git
-user names" we mean the output of:
+The file DHARMA_gitNames.tsv is a mapping between git user names and DHARMA identifiers. 
+By "git user names" we mean the output of:
 
 	git log --format=%aN
 
@@ -19,7 +19,8 @@ Most people do not set proper values for user.name and user.email in git. People
 also use several machines or several git setups, so several git user names map
 to the same DHARMA member id.
 
-To add a user, you can create a new record in the column git_name and match it with the user's DHARMA id in the column dh_id.
+To add a user, you can create a new record in the column git_name and match it 
+with the user's DHARMA id in the column dh_id.
 
 As for users, you should ask them to issue the following with the appropriate values:
 
