@@ -75,6 +75,11 @@
   </teiHeader>
   <text>
     <front>
+      <div>
+            <head>About the Prosodic Patterns authority file</head>
+            <p>This is the authority file for the identification of the metres occurring in source-language texts. The file serves both as an aid in identifying the metre of a stanza and as a list of the canonical names that may be used in encoded editions for representing particular prosodic patterns.</p>
+      </div>
+      <div>
       <p>
         <table>
           <head>Prosodic notation in ASCII code (@type="xml") and conventional symbols (@type="prosody")</head>
@@ -125,11 +130,12 @@
           </row>
         </table>
       </p>
+    </div>
     </front>
     <body>
       <div>
         <head>@@@TEST:This is a div head</head>
-        <p>This is a para in the second div.</p>
+        <p>This is a para in the first div.</p>
       <list>
         <head>Syllabo-quantitative metres</head>
         <item>
@@ -4240,6 +4246,52 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
       <div>
         <head>@TEST: This is a second div head</head>
         <p>This is a para in the second div.</p>
+        <list>
+          <head>@TEST: head of a list in a new div</head>
+        <item>
+          <measure unit="syllable">256</measure>
+          <name xml:lang="kaw-Latn">test</name>
+          <seg type="xml">--+--+------=</seg>
+          <seg type="prosody">⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana"/>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        </list>
+        <list>
+          <head>@TEST: head of second a list in a new div</head>
+        <item>
+          <measure unit="syllable">256</measure>
+          <name xml:lang="kaw-Latn">test</name>
+          <seg type="xml">--+--+------=</seg>
+          <seg type="prosody">⏑⏑–⏑⏑–⏑⏑⏑⏑⏑⏑⏓</seg>
+          <seg type="gana"/>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not in Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        </list>
       </div>
     </body>
   </text>
