@@ -57,6 +57,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="draft" when="2026-09-07" who="part:daba">revision to include prosody guide</change>
       <change status="draft" when="2025-05-26" who="part:argr">added visarjita and nāgata</change>
       <change status="draft" when="2024-05-09">Inserted references from Zoetmulder, Sugriwa, and Candrakiraṇa text</change>
       <change status="draft" when="2025-03-22" who="part:anol">Revised references from Zoetmulder up to 10 syllables (leaving out 8 syllables for now)</change>
@@ -76,10 +77,10 @@
     <front>
       <p>
         <table>
-          <head>Prosodic notation in XML code (@type="xml") and conventional symbols (@type="prosody")</head>
+          <head>Prosodic notation in ASCII code (@type="xml") and conventional symbols (@type="prosody")</head>
           <row role="label">
             <cell/>
-            <cell>XML notation</cell>
+            <cell>ASCII code</cell>
             <cell>Prosody</cell>
           </row>
           <row>
@@ -126,6 +127,9 @@
       </p>
     </front>
     <body>
+      <div>
+        <head>@@@TEST:This is a div head</head>
+        <p>This is a para in the second div.</p>
       <list>
         <head>Syllabo-quantitative metres</head>
         <item>
@@ -4232,6 +4236,11 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 	</listBibl>
 </item>-->
       </list>
+    </div>
+      <div>
+        <head>@TEST: This is a second div head</head>
+        <p>This is a para in the second div.</p>
+      </div>
     </body>
   </text>
 </TEI>
