@@ -8,26 +8,18 @@
    <teiHeader>
       <fileDesc>
          <titleStmt>
-            <title>Encoding template for inscription</title>
+            <title>Encoding template for inscriptions</title>
             <!--Change the title of the file, e.g. Raktamālā grant of the time of Budhagupta, year 159-->
-            <!-- Add your name in the respStmt matching your involvement -->
+            <!--<title type="alt">uncomment to add alternative titles</title>-->
             <respStmt>
-               <resp key="creator">EpiDoc Encoding</resp>
-               <!-- Name(s) of the author(s) of the digital edition -->
-               <persName ref="part:jodo"><!-- Update the id -->
-                  <forename>John</forename><!-- Fill in your  names — it is possible to use only <name> instead of <foreame> and <surname> -->
+               <resp key="creator"/>
+               <!-- Insert the ID and name of the creator(s) of the digital edition. If applicable, use only <name> instead of <foreame> and <surname>. Iterate the <persName> element to add more than one creator. -->
+               <persName ref="part:jodo">
+                  <forename>John</forename>
                   <surname>Doe</surname>
                </persName>
             </respStmt>
-            <!-- If other people contributed to the edition, add a separate
-            "respStmt" as follows. -->
-            <respStmt>
-               <resp key="contributor">intellectual authorship of edition</resp>
-               <persName ref="part:jodo"><!-- Update the id -->
-                  <forename>John</forename><!-- Fill in the name of the responsible scholar — it possible to use only <name> instead of <foreame> and <surname> -->
-                  <surname>Doe</surname>
-               </persName>
-            </respStmt>
+            <!--To encode one or more contributors, iterate the entire <respStmt> element above, change the @key on <resp> to "contributor", and edit the ID and name as applicable.-->
          </titleStmt>
          <publicationStmt>
             <authority><ref target="https://dharmalekha.info">DHARMA</ref></authority>
