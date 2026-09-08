@@ -57,6 +57,7 @@
       </abstract>
     </profileDesc>
     <revisionDesc status="draft">
+      <change status="published" when="2026-09-08" who="part:daba">started final revision</change>
       <change status="draft" when="2025-05-26" who="part:argr">added visarjita and nāgata</change>
       <change status="draft" when="2024-05-09">Inserted references from Zoetmulder, Sugriwa, and Candrakiraṇa text</change>
       <change status="draft" when="2025-03-22" who="part:anol">Revised references from Zoetmulder up to 10 syllables (leaving out 8 syllables for now)</change>
@@ -74,9 +75,13 @@
   </teiHeader>
   <text>
     <front>
+      <head>About the Prosodic Patterns authority file</head>
+      <p>This is the authority file for the identification of the metres occurring in source-language texts. The file serves both as an aid in identifying the metre of a stanza and as a list of the canonical names that may be used in encoded editions for representing particular prosodic patterns.</p>
+      <p>The conventional names shown here are associated with specific languages. This does not refer to the language contexts in which a particular metre name may be relevant, but to the language of the traditional treatises on poetry which primarily employ that particular name. For example, names listed as Sanskrit are definitely used by Sanskrit poeticians, but may well be also used by poeticians of another language.</p>
+      <head>Prosodic notation</head>
+      <p>The following table summarises the ASCII characters used for prosodic notation in XML code (@type="xml") and the conventional symbols (@type="prosody").</p>
       <p>
         <table>
-          <head>Prosodic notation in XML code (@type="xml") and conventional symbols (@type="prosody")</head>
           <row role="label">
             <cell/>
             <cell>XML notation</cell>
