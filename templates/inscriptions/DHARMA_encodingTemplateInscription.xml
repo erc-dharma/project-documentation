@@ -68,15 +68,6 @@
          <change who="part:axja" when="2019-12-18" status="draft">Version 1</change>
       </revisionDesc>
    </teiHeader>
-   <!-- Part to be used only, if you want to declare and link some photos with your encoding -->
-   <facsimile>
-      <graphic url="filename.jpg" xml:id="photo1"/>
-      <!-- graphic should take at least an attribute @url containing either the https where the photo is stored or the filename of the file itself. An @xml:id can be declared if you want to link part of your encoding with a facsimile using the attribute @facs. -->
-      <!-- If you want to provide a description, use the following pattern
-      <graphic url="filename.jpg" xml:id="photo1">
-      <desc>Some description</desc>
-      </graphic>-->
-   </facsimile>
    <text xml:space="preserve">
       <body>
          <div type="edition" xml:lang="san-Latn" rendition="class:00000 maturity:00000"><!-- update the values of @xml:lang and @rendition according to the language and source script of your text-->
