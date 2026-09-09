@@ -2868,12 +2868,5 @@
 -->
 
   </body>
-   <back>
-	<head>Hello</head>
-	<p>One</p>
-	<p>Two</p>
-	<head>World</head>
-	<p>Three</p>
-   </back>
  </text>
 </TEI>

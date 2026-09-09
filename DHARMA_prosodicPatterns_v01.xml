@@ -1,4 +1,4 @@
-<?xml-model href="https://raw.githubusercontent.com/erc-dharma/project-documentation/master/schema/latest/DHARMA_ProsodySchema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xml:lang="eng" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -4096,8 +4096,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <note resp="part:daba">Any number of iterations of the foot ⏑⏑–.</note>
         </item>
       </list>
-        
-        
+
+
         <list>
             <head>Tamil metres</head>
             <item>
@@ -4114,8 +4114,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
                 </bibl>
             </item>
         </list>
-        
-        
+
+
       <list>
         <head>Additions in need of processing</head>
         <!-- additions from Zaki's file -->
@@ -4249,5 +4249,12 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
 </item>-->
       </list>
     </body>
+    <back>
+      <head>Hello</head>
+      <p>One</p>
+      <p>Two</p>
+      <head>World</head>
+      <p>Three</p>
+    </back>
   </text>
 </TEI>
