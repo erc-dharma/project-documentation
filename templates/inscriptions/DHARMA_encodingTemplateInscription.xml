@@ -20,6 +20,7 @@
                </persName>
             </respStmt>
             <!--To encode one or more contributors, duplicate the entire <respStmt> element above, change the @key on <resp> to "contributor", and edit the ID and name as applicable.-->
+             <funder>European Research Council (ERC), grant agreement no 809994</funder>
          </titleStmt>
          <publicationStmt>
             <authority><ref target="https://dharmalekha.info">DHARMA</ref></authority>
