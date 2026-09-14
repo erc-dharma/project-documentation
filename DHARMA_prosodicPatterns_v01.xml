@@ -75,8 +75,8 @@
   </teiHeader>
   <text>
     <front>
-      <head>About the Prosodic Patterns authority file</head>
-      <p>This is the authority file for the identification of the metres occurring in source-language texts. The file serves both as an aid in identifying the metre of a stanza and as a list of the canonical names that may be used in encoded editions for representing particular prosodic patterns.</p>
+      <head>About this document</head>
+      <p>This is the Prosodic Patterns authority file for the identification of the metres occurring in source-language texts, for use in DHARMA digital editions. The file serves both as an aid in identifying the metre of a stanza and as a list of the canonical names that may be used in encoded editions for representing particular prosodic patterns, and is also intended to become a starting point for further research on prosody.</p>
       <p>The conventional names shown here are associated with specific languages. This does not refer to the language contexts in which a particular metre name may be relevant, but to the language of the traditional treatises on poetry which primarily employ that particular name. For example, names listed as Sanskrit are definitely used by Sanskrit poeticians, but may well be also used by poeticians of another language.</p>
       <head>Prosodic notation</head>
       <p>The following table summarises prosodic notation with ASCII characters for XML code and the classical notation.</p>
@@ -520,28 +520,6 @@
           </listBibl>
         </item>
         <item>
-          <measure unit="syllable">8/8</measure>
-          <name xml:lang="san-Latn">anuṣṭubh</name>
-          <seg type="ascii">====-++=/====-+-=</seg>
-          <seg type="classical">⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:daba">This metre is often also called śloka or vaktra. The second and third syllables of any quarter must not be both short in anuṣṭubh.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
-              <citedRange unit="page">3</citedRange>
-              <citedRange unit="item">I.A.8.1</citedRange>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
           <measure unit="syllable">8</measure>
           <name xml:lang="kaw-Latn">vaktra</name>
           <seg type="ascii">+-+--++=</seg>
@@ -643,82 +621,6 @@
               <citedRange unit="page">452</citedRange>
               <citedRange unit="item">VIII.12</citedRange>
 	      <!-- Zoemulder references: Vr̥t 29 (names: samani) !-->
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="san-Latn">na-vipulā</name>
-          <seg type="ascii">===+---=</seg>
-          <seg type="classical">⏓⏓⏓–⏑⏑⏑⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="san-Latn">bha-vipulā</name>
-          <seg type="ascii">=+-++--=</seg>
-          <seg type="classical">⏓–⏑––⏑⏑⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="san-Latn">ma-vipulā</name>
-          <seg type="ascii">=+-++||++=</seg>
-          <seg type="classical">⏓–⏑––||––⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">8</measure>
-          <name xml:lang="san-Latn">ra-vipulā</name>
-          <seg type="ascii">===++-+=</seg>
-          <seg type="classical">⏓⏓⏓––⏑–⏓</seg>
-          <seg type="gana"><!--not applicable--></seg>
-          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
             </bibl>
           </listBibl>
         </item>
@@ -3954,27 +3856,6 @@
       <list>
         <head>Syllabic metres with loose constraints</head>
         <item>
-          <measure unit="syllable"/>
-          <name xml:lang="">trimeter</name><!--daba20240516: add eng as the value of @xml:lang? -->
-          <seg type="ascii"/>
-          <seg type="classical"/>
-          <seg type="gana"/>
-          <note resp="part:daba">Vedic trimeter consisting of loosely constrained 11- or 12-syllable lines that do not conform to the fixed patterns of triṣṭubh or jagatī.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
-              <!--not discussed as such by Apte-->
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
           <measure unit="syllable">8</measure>
           <name xml:lang="kaw-Latn">pādānuṣṭubh</name>
           <name xml:lang="eng">free_octosyllabic</name><!--daba20240516: I think this should be deleted. I am not aware of a rule of adding English alternative names. After deleting it, perhaps add a note with the text "Free octosyllabic verse".-->
@@ -3997,6 +3878,128 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
             <bibl>
               <ptr target="bib:Noorduyn+Teeuw2006_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable"/>
+          <name xml:lang="">trimeter</name><!--daba20240516: add eng as the value of @xml:lang? -->
+          <seg type="ascii"/>
+          <seg type="classical"/>
+          <seg type="gana"/>
+          <note resp="part:daba">Vedic trimeter consisting of loosely constrained 11- or 12-syllable lines that do not conform to the fixed patterns of triṣṭubh or jagatī.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not discussed as such by Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+      </list>
+      <list>
+        <head>The anuṣṭubh</head>
+        <item>
+          <measure unit="syllable">8/8</measure>
+          <name xml:lang="san-Latn">anuṣṭubh</name>
+          <seg type="ascii">====-++=/====-+-=</seg>
+          <seg type="classical">⏓⏓⏓⏓⏑––⏓/⏓⏓⏓⏓⏑–⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This metre is often also called śloka or vaktra. The formula given here is the classical pathyā form of the metre. An additional constraint that cannot be expressed in the notation is that the second and third syllables of any quarter must not be both short. The vipulā variants recognised in the Sanskrit tradition for odd lines are listed below, while anuṣṭubh-derived sama metres of the Javanese tradition are included in the list of syllabo-quantitative metres above. The Vedic anuṣṭubh metre is not included in this list as it has not so far occurred in any text edited for DHARMA, but if it needs to be added one day, it should be placed in the section on syllabic metres with loose constraints.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <citedRange unit="page">3</citedRange>
+              <citedRange unit="item">I.A.8.1</citedRange>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">na-vipulā</name>
+          <seg type="ascii">===+---=</seg>
+          <seg type="classical">⏓⏓⏓–⏑⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">bha-vipulā</name>
+          <seg type="ascii">=+-++--=</seg>
+          <seg type="classical">⏓–⏑––⏑⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">ma-vipulā</name>
+          <seg type="ascii">=+-++||++=</seg>
+          <seg type="classical">⏓–⏑––||––⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">ra-vipulā</name>
+          <seg type="ascii">===++-+=</seg>
+          <seg type="classical">⏓⏓⏓––⏑–⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a variation permitted in any odd line of an anuṣṭubh stanza. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
             </bibl>
           </listBibl>
         </item>
@@ -4250,11 +4253,14 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
       </list>
     </body>
     <back>
-      <head>Hello</head>
-      <p>One</p>
-      <p>Two</p>
-      <head>World</head>
-      <p>Three</p>
+      <head>Editing Prosodic Patterns</head>
+      <p>Contributors who encode texts for DHARMA can and should edit this authority file as and when the need arises, namely when they encounter a prosodic pattern which can be associated with a conventional name but is not listed in this file, or when they wish to add a new name to a pattern already listed in this file. In addition to expanding the content as above, additions and corrections to the presently rather scant bibliographic references are welcome.</p>
+      <p>The relevant content of the document is located within the &lt;body&gt; element, divided into several &lt;list&gt; elements, each with a self-explanatory &lt;head&gt;. Within each list, one &lt;item&gt; corresponds to each recorded prosodic pattern.</p>
+      <p>To add a new pattern, it is best to copy a similar pre-existing &lt;item&gt; and to paste it in the appropriate location in the appropriate list. The lists containing syllable-based metres are arranged in an increasing order of the number of syllables per line. After duplicating an existing item, edit its details to correspond to the new pattern you wish to create. Likewise, if correcting or improving an existing item, edit its details according to the following instructions.</p>
+      <p>For syllabic metres, record the number of syllables in &lt;measure unit="syllable"&gt;. For ardhasama metres, use two numbers separated by a slash. For viṣama metres, use as many numbers as applicable, separated by commas and spaces.</p>
+      <p>The metre’s name should be given in the element &lt;name&gt;. Several &lt;name&gt;s can be given to allow for the fact that different traditions may use the same metrical pattern but under different names. Add the attribute @xml:lang to make it clear from which tradition the &lt;name&gt; is taken. If you cannot put a specific name to a pattern, use &lt;label type=&quot;generic&quot;&gt; instead of &lt;name&gt; and specify the class of the metre (based on the number of syllables) in this element. When neither a specific name, nor a class name are applicable, use neither of these elements and encode only the prosodic pattern.</p>
+      <p>Record the prosodic pattern associated with the metre in three different forms using the element &lt;seg&gt; with three different values of @type. For syllable-based metres, record the length of syllables in ASCII and classical notation (as shown at the top of this document), indicating caesuras as applicable and using the notation for anceps at the last syllable of each line. Do not include spaces or other separators in these codes. Also record the pattern using the gaṇa codes of the Sanskrit tradition, using a hyphen between each syllable denoting a gaṇa. As in recording the number of syllables, use slashes to separate the patterns for the lines of ardhasama metres, and spaces and commas to separate the patterns for the lines of viṣama metres. For metres based on moraic feet, use only the ASCII notation to indicate foot boundaries as well as caesurae, and to record the number of morae in each foot. For metres where neither syllabic nor moraic patterns can be expressed by means of such simplistic code, leave the &lt;seg&gt; elements empty. In all complex cases it is recommended that you add a &lt;note&gt; after or instead of the &lt;seg&gt; elements and sign it with your DHARMA identifier in the attribute @resp. Such a note shall contain a brief description of the properties of the pattern.</p>
+      <p>A bibliography at the end of each &lt;item&gt; follows the usual structure comprised of the element &lt;listBibl&gt; as parent containing one &lt;bibl&gt; element for each entry, in which the empty element &lt;ptr&gt; with the attribute @target gives the Zotero short title prefixed by “bib:” as explained in the DHARMA encoding guides. The existing items have been populated with skeleton references to the works most likely to discuss a prosodic pattern (Apte 1890, Velankar 1949 and Zoetmulder 1974), but not all of these references have been supplied for the currently listed metres. Adding citation details is therefore welcome. When creating a new entry, feel free to remove irrelevant references and to cite other publications as applicable. As and when you feel the need, add a &lt;note&gt; after a &lt;bibl&gt; element (and sign it with your DHARMA identifier in the attribute @resp), to provide additional information about a citation. When none of the usual reference works mention a metre, this too may be mentioned in a note.</p>
     </back>
   </text>
 </TEI>
