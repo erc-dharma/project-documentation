@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-08-24T03:51:35Z. . 
+Schema generated from ODD source 2026-09-14T04:54:27Z. . 
 TEI Edition: P5 Version 4.12.0. Last updated on 28th July 2026, revision 113e933e2 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.12.0/ 
   
@@ -2631,6 +2631,7 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
       <choice>
          <ref name="tei_author"/>
          <ref name="tei_respStmt"/>
+         <ref name="tei_funder"/>
       </choice>
    </define>
    <define name="tei_model.divWrapper">
@@ -4601,6 +4602,7 @@ Elements 7.2.6. Speech Contents]</a:documentation>
                <choice>
                   <ref name="tei_idno"/>
                   <ref name="tei_model.ptrLike"/>
+                  <ref name="tei_funder"/>
                   <ref name="tei_respStmt"/>
                </choice>
             </zeroOrMore>
@@ -4680,6 +4682,8 @@ Elements 7.2.6. Speech Contents]</a:documentation>
                <sch:assert test="tei:resp[text() ='author of digital edition']">The content of resp allows the user to declare authorship of the digital edition itself. To declare the authorship of the text, you can use the element author. Other contributions should be declared in the free-text paragraph of the bibliography division</sch:assert>
             </sch:rule>
          </pattern>
+         <ref name="tei_att.canonical.attribute.key"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_title">
@@ -5263,6 +5267,16 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
                <sch:assert test="./tei:title[@type='editorial'][1]">title with @type='editorial' is mandatory and must be the first title given</sch:assert>
             </sch:rule>
          </pattern>
+      </element>
+   </define>
+   <define name="tei_funder">
+      <element name="funder">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(funding body) specifies the name of an individual, institution, or organization responsible for the funding of a project or text. [2.2.1. The Title Statement]</a:documentation>
+         <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.canonical.attributes"/>
+         <ref name="tei_att.datable.attributes"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_editionStmt">
