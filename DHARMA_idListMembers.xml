@@ -61,6 +61,12 @@
     <text>
         <body>
             <listPerson>
+                <person xml:id="jodo">
+                    <persName>
+                        <forename>John</forename>
+                        <surname>Doe</surname>
+                    </persName>
+                </person>
                 <person xml:id="emfr">
                     <persName>
                         <forename>Emmanuel</forename>
@@ -440,10 +446,10 @@
                     <persName>
                         <name>Ilham Nurwansah</name>
                     </persName>
-                    <affiliation>École française d’Extrême-Orient</affiliation> 
+                    <affiliation>École française d’Extrême-Orient</affiliation>
                     <idno type="VIAF"/>
                     <idno type="IdRef"/>
-                    <idno type="ORCID">https://orcid.org/0000-0002-5455-5656</idno>  
+                    <idno type="ORCID">https://orcid.org/0000-0002-5455-5656</idno>
                 </person>
                 <person xml:id="axja">
                     <persName>
@@ -472,7 +478,7 @@
                     <affiliation>Università degli Studi di Napoli “L'Orientale”</affiliation>
                     <idno type="VIAF">http://viaf.org/viaf/163770541</idno>
                     <idno type="IdRef">https://www.idref.fr/186191634</idno>
-                </person>                
+                </person>
                 <person xml:id="adle">
                     <persName>
                         <forename>Adeline</forename>
@@ -594,7 +600,7 @@
                     <idno type="VIAF"/>
                     <idno type="IdRef">https://www.idref.fr/275083691</idno>
                     <idno type="ORCID"/>
-                </person>                
+                </person>
                 <person xml:id="rasa">
                     <persName>
                         <forename>Rajat</forename>
@@ -722,7 +728,7 @@
                         <name>Tyassanti Kusumo Dewanti</name>
                     </persName>
                     <affiliation>École Pratique des Hautes Études - Université PSL</affiliation>
-                    <idno type="IdRef">https://www.idref.fr/27335826X</idno>  
+                    <idno type="IdRef">https://www.idref.fr/27335826X</idno>
                 </person>
                 <person xml:id="utve">
                     <persName>
@@ -732,7 +738,7 @@
                     <affiliation>INALCO</affiliation>
                     <idno type="VIAF">http://viaf.org/viaf/309907661</idno>
                     <idno type="IdRef">https://www.idref.fr/176321616</idno>
-                    <idno type="ORCID"></idno>  
+                    <idno type="ORCID"></idno>
                 </person>
                 <person xml:id="vija">
                     <persName>
@@ -747,9 +753,9 @@
                     <persName>
                         <forename>Amandine</forename>
                         <surname>Wattelier-Bricout</surname>
-                    </persName>                    
-                    <affiliation>École française d’Extrême-Orient</affiliation>   
-                    <affiliation>Humboldt-Universität zu Berlin</affiliation>                 
+                    </persName>
+                    <affiliation>École française d’Extrême-Orient</affiliation>
+                    <affiliation>Humboldt-Universität zu Berlin</affiliation>
                     <affiliation>Centre d’études sud-asiatiques et himalayennes (CESAH, EHESS &amp; CNRS)</affiliation>
                     <idno type="IdHAL">amandine-wattelier-bricout</idno>
                     <idno type="ORCID">https://orcid.org/0000-0001-9898-8798</idno>
@@ -768,11 +774,11 @@
                         <name>Zakariya Pamuji Aminullah</name>
                     </persName>
                     <affiliation>Universität Hamburg</affiliation>
-                    <affiliation>École française d’Extrême-Orient</affiliation>   
+                    <affiliation>École française d’Extrême-Orient</affiliation>
                     <affiliation>Universitas Gadjah Mada</affiliation>
                     <idno type="VIAF"/>
                     <idno type="IdRef"/>
-                    <idno type="ORCID">https://orcid.org/0000-0002-8442-8762</idno>  
+                    <idno type="ORCID">https://orcid.org/0000-0002-8442-8762</idno>
                 </person>
             </listPerson>
         </body>
