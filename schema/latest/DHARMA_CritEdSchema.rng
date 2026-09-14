@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-09-14T04:54:27Z. . 
+Schema generated from ODD source 2026-09-14T08:28:00Z. . 
 TEI Edition: P5 Version 4.12.0. Last updated on 28th July 2026, revision 113e933e2 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.12.0/ 
   
@@ -4673,15 +4673,6 @@ Elements 7.2.6. Speech Contents]</a:documentation>
       <element name="resp">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(responsibility) contains a phrase describing the nature of a person's intellectual responsibility, or an organization's role in the production or distribution of a work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-resp-resp-author-constraint-rule-50">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:respStmt">
-               <sch:assert test="tei:resp[text() ='author of digital edition']">The content of resp allows the user to declare authorship of the digital edition itself. To declare the authorship of the text, you can use the element author. Other contributions should be declared in the free-text paragraph of the bibliography division</sch:assert>
-            </sch:rule>
-         </pattern>
          <ref name="tei_att.canonical.attribute.key"/>
          <empty/>
       </element>
@@ -4692,7 +4683,7 @@ Elements 7.2.6. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-title-title-original-constraint-rule-51">
+                  id="DHARMA_CritEdSchema_v01-title-title-original-constraint-rule-50">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:title[@type='original']">
@@ -4935,7 +4926,7 @@ Suggested values include: 1] bibliography; 2] editions</a:documentation>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-l-verse-line-constraint-rule-52">
+                  id="DHARMA_CritEdSchema_v01-l-verse-line-constraint-rule-51">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l[@corresp]">
@@ -4949,7 +4940,7 @@ Suggested values include: 1] bibliography; 2] editions</a:documentation>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-l-abstractModel-structure-l-in-l-constraint-rule-54">
+                  id="DHARMA_CritEdSchema_v01-l-abstractModel-structure-l-in-l-constraint-rule-53">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l">
@@ -5048,7 +5039,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-lg-lg-supplied-constraint-rule-55">
+                  id="DHARMA_CritEdSchema_v01-lg-lg-supplied-constraint-rule-54">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lg[parent::tei:supplied]">
@@ -5057,7 +5048,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-lg-atleast1oflggapl-constraint-rule-56">
+                  id="DHARMA_CritEdSchema_v01-lg-atleast1oflggapl-constraint-rule-55">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lg">
@@ -5066,7 +5057,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-lg-abstractModel-structure-lg-in-l-constraint-rule-57">
+                  id="DHARMA_CritEdSchema_v01-lg-abstractModel-structure-lg-in-l-constraint-rule-56">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lg">
@@ -5259,7 +5250,7 @@ Sample values include: 1] sumānikā; 2] anuṣṭubh; 3] vegavatī; 4] viyog
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-titleStmt-title-rules-constraint-rule-58">
+                  id="DHARMA_CritEdSchema_v01-titleStmt-title-rules-constraint-rule-57">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5658,7 +5649,7 @@ Sample values include: 1] filename</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-handNote-handNote-script-constraint-rule-59">
+                  id="DHARMA_CritEdSchema_v01-handNote-handNote-script-constraint-rule-58">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5781,7 +5772,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
          <ref name="tei_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-change-responsability-constraint-rule-60">
+                  id="DHARMA_CritEdSchema_v01-change-responsability-constraint-rule-59">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5948,7 +5939,7 @@ Sample values include: 1] class:57471; 2] class:70417; 3] class:83217; 4] class:
          <ref name="tei_macro.abContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-ab-abstractModel-structure-ab-in-l-constraint-rule-61">
+                  id="DHARMA_CritEdSchema_v01-ab-abstractModel-structure-ab-in-l-constraint-rule-60">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6068,7 +6059,7 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-seg-att-type-subtype-constraint-rule-62">
+                  id="DHARMA_CritEdSchema_v01-seg-att-type-subtype-constraint-rule-61">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6170,7 +6161,7 @@ Sample values include: 1] unknown; 2] mya; 3] obr; 4] cjm; 5] ocm; 6] ndl; 7] en
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-join-joinTargets3-constraint-rule-64">
+                  id="DHARMA_CritEdSchema_v01-join-joinTargets3-constraint-rule-63">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6387,7 +6378,7 @@ Suggested values include: 1] eng</a:documentation>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-body-structure-constraint-rule-65">
+                  id="DHARMA_CritEdSchema_v01-body-structure-constraint-rule-64">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:body">
@@ -6449,7 +6440,7 @@ Suggested values include: 1] eng</a:documentation>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-div-division-constraint-rule-66">
+                  id="DHARMA_CritEdSchema_v01-div-division-constraint-rule-65">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:div[child::tei:ab[@type='invocation |colophon']]">
@@ -6475,7 +6466,7 @@ Suggested values include: 1] eng</a:documentation>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-div-in-l-constraint-rule-70">
+                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-div-in-l-constraint-rule-69">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l//tei:div">
@@ -6486,7 +6477,7 @@ Suggested values include: 1] eng</a:documentation>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-71">
+                  id="DHARMA_CritEdSchema_v01-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-70">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:div">
@@ -7094,7 +7085,7 @@ Suggested values include: 1] chapter; 2] canto; 3] dyad; 4] section; 5] group; 6
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-placeName-placeName-constraint-rule-72">
+                  id="DHARMA_CritEdSchema_v01-placeName-placeName-constraint-rule-71">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7499,7 +7490,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-subst-substContents1-constraint-rule-77">
+                  id="DHARMA_CritEdSchema_v01-subst-substContents1-constraint-rule-76">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7518,7 +7509,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-supplied-supplied-translation-constraint-rule-78">
+                  id="DHARMA_CritEdSchema_v01-supplied-supplied-translation-constraint-rule-77">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7703,7 +7694,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-msDesc-one_ms_singleton_max-constraint-rule-79">
+                  id="DHARMA_CritEdSchema_v01-msDesc-one_ms_singleton_max-constraint-rule-78">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7738,7 +7729,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-locus-displacement-constraint-rule-80">
+                  id="DHARMA_CritEdSchema_v01-locus-displacement-constraint-rule-79">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7843,7 +7834,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-msIdentifier-identifier-constraint-rule-82">
+                  id="DHARMA_CritEdSchema_v01-msIdentifier-identifier-constraint-rule-81">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7859,7 +7850,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-msIdentifier-msId_minimal-constraint-rule-84">
+                  id="DHARMA_CritEdSchema_v01-msIdentifier-msId_minimal-constraint-rule-83">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8050,7 +8041,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-physDesc-hands-constraint-rule-85">
+                  id="DHARMA_CritEdSchema_v01-physDesc-hands-constraint-rule-84">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8184,7 +8175,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-handDesc-handDesc-content-constraint-rule-86">
+                  id="DHARMA_CritEdSchema_v01-handDesc-handDesc-content-constraint-rule-85">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8570,7 +8561,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-87">
+                  id="DHARMA_CritEdSchema_v01-app-app-lem-constraint-rule-86">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:app[not(parent::tei:listApp[@type='parallels'])][not(child::tei:rdg[@cause='transposition'])]">
@@ -8692,7 +8683,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-89">
+                  id="DHARMA_CritEdSchema_v01-lem-lem-hand-constraint-rule-88">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem[@hand]">
@@ -8792,7 +8783,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-90">
+                  id="DHARMA_CritEdSchema_v01-rdg-rdg-hand-constraint-rule-89">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg[@hand]">
@@ -8908,7 +8899,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-rdgGrp-only1lem-constraint-rule-92">
+                  id="DHARMA_CritEdSchema_v01-rdgGrp-only1lem-constraint-rule-91">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdgGrp">
@@ -8962,7 +8953,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-93">
+                  id="DHARMA_CritEdSchema_v01-witDetail-wit-witDetail-constraint-rule-92">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:witDetail[preceding-sibling::tei:lem[1] or preceding-sibling::tei:rdg[1]]">
@@ -9046,7 +9037,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-listWit-listWit-family-constraint-rule-94">
+                  id="DHARMA_CritEdSchema_v01-listWit-listWit-family-constraint-rule-93">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:listWit[parent::tei:listWit]">
@@ -9112,7 +9103,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-variantEncoding-variantEncodingLocation-constraint-rule-95">
+                  id="DHARMA_CritEdSchema_v01-variantEncoding-variantEncodingLocation-constraint-rule-94">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:variantEncoding">
@@ -9143,7 +9134,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-96">
+                  id="DHARMA_CritEdSchema_v01-variantEncoding-location-variantEncodingLocation-constraint-rule-95">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:variantEncoding">
@@ -9179,7 +9170,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          <ref name="tei_macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-span-target-from-constraint-rule-97">
+                  id="DHARMA_CritEdSchema_v01-span-target-from-constraint-rule-96">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:span">
@@ -9190,7 +9181,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-span-targetto-constraint-rule-98">
+                  id="DHARMA_CritEdSchema_v01-span-targetto-constraint-rule-97">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:span">
@@ -9201,7 +9192,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-span-tonotfrom-constraint-rule-99">
+                  id="DHARMA_CritEdSchema_v01-span-tonotfrom-constraint-rule-98">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:span">
@@ -9212,7 +9203,7 @@ Sample values include: 1] substantive (substantive); 2] orthographic (orthograph
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="DHARMA_CritEdSchema_v01-span-tofrom-constraint-rule-100">
+                  id="DHARMA_CritEdSchema_v01-span-tofrom-constraint-rule-99">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:span">
