@@ -25,11 +25,10 @@
          <publicationStmt>
             <authority><ref target="https://dharmalekha.info">DHARMA</ref></authority>
             <pubPlace><!-- Fill in here the place or places where the encoding has been done --></pubPlace>
-            <idno type="filename">DHARMA_encodingTemplateInscription.xml</idno>
+            <idno type="filename">DHARMA_INSencodingTemplate.xml</idno>
             <!-- Replace by the filename of your edition, e.g. DHARMA_INSPallava00001.xml-->
             <availability>
-               <licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA
-                  4.0</licence>
+               <licence target="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</licence>
             </availability>
             <date from="2019" to="2026">2019-2026</date>
          </publicationStmt>
@@ -46,8 +45,8 @@
                   <handDesc>
                      <p><!--Enter your palaeographic description here. Feel free to use multiple paragraphs.--></p>
                      <!--To identify scribal hands, wrap <summary> around the <p> or <p>s above, and uncomment the following code, editing the xml:id and the contents as applicable and adding more handNote elements if necessary.-->
-                     <!--<handNote xml:id="Pallava00001_hand1">description of first hand</handNote>
-      						<handNote xml:id="Pallava00001_hand2">description of second hand</handNote>-->
+               <!--<handNote xml:id="hand1">description of first hand</handNote>
+      		<handNote xml:id="hand2">description of second hand</handNote>-->
                   </handDesc>
                </physDesc>
             </msDesc>
@@ -95,7 +94,7 @@
 	        <!--bibliography goes here -->
            <p><!--epigraphic lemma --></p>
         	<listBibl type="primary">
-				<bibl n="siglum"/>
+				<bibl n="siglum"><ptr target="bib:AuthorYear_01"/></bibl>
 			</listBibl>
         <listBibl type="secondary">
            <bibl/>
