@@ -2,8 +2,8 @@
 
 The query syntax is similar to that of most search engines.
 
-The system indeed supports boolean
-expressions[https://en.wikipedia.org/wiki/Boolean_expression]. Here is a quick
+The system indeed supports [boolean
+expressions](https://en.wikipedia.org/wiki/Boolean_expression). Here is a quick
 reminder:
 
 * The expression `x AND y` matches if both `x` and `y` occur in a given
