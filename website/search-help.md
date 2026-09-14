@@ -1,6 +1,23 @@
 # Search Help
 
-The query syntax is similar to most search engine's.
+The query syntax is similar to that of most search engines.
+
+The system indeed supports boolean
+expressions[https://en.wikipedia.org/wiki/Boolean_expression]. Here is a quick
+reminder:
+
+* The expression `x AND y` matches if both `x` and `y` occur in a given
+  document. It does *not* matches documents that contain only `x` or only `y`.
+* The expression `x OR y` matches if either `x` or `y` occurs in a given
+  document. It matches documents that contain `x`, documents that contain
+  `y`, and documents that contain both `x` and `y`.
+* The expression `NOT y` matches documents that do not contain `y`. This
+  operator is typically used in binary expressions like `x NOT y`, which is
+  strictly equivalent to `x AND (NOT y)`.
+
+The system also supports field-specific search. For instance, you can restrict
+search to the title(s) of a document with the expression `title:something`. More
+on this below.
 
 ## Matching Modes
 
@@ -18,9 +35,9 @@ not (because it treats "ph" as a single unit).
 There are thus several *matching modes*, which exhibit different matching
 behaviours. Currently, there are three modes, which we call `forma`, `formb`, and `formc`:
 
-* The `forma` mode is the one used per default for all fields except `logical`. It is designed to work well with modern (non-Asiatic) languages. It preserves significant diacritical marks, but treats some of them as equivalent. For instance, "ṃ", "ṁ" and "m̐" are considered as equivalent.
-* The `formb` mode is not used per default on any field. It is designed to work well with Asiatic languages. It ignores most diacritical marks. Thus, it treats "a" and "ā" as equivalent. Furthermore, it treats occlusives from the same group as equivalent. Thus "k", "kh", "g" and "gh" are assumed to be the same; likewise for "ṭ", "ṭh", "ḍ", "ḍh", "t", "th", "d" and "dh". It also treats duplicated consonants as equivalent: "dharma" matches "dharmma", "kha" matches "kkha", etc.
-* The `formc` mode is used per default when searching within the `logical` field. It is designed to work well with Asiatic languages. It interprets digraphs as single characters, thus "mala" does not match "malaiḥ" (because "ai" counts as a single character)
+* The `forma` mode is the one used by default for all fields except `logical`. It is designed to work well with modern (non-Asiatic) languages. It preserves significant diacritical marks, but treats some of them as equivalent. For instance, "ṃ", "ṁ" and "m̐" are considered as equivalent.
+* The `formb` mode is not used by default on any field. It is designed to work well with Asiatic languages. It ignores most diacritical marks. Thus, it treats "a" and "ā" as equivalent. Furthermore, it treats occlusives from the same group as equivalent. Thus "k", "kh", "g" and "gh" are assumed to be the same; likewise for "ṭ", "ṭh", "ḍ", "ḍh", "t", "th", "d" and "dh". It also treats duplicated consonants as equivalent: "dharma" matches "dharmma", "kha" matches "kkha", etc.
+* The `formc` mode is used by default when searching within the `logical` field. It is designed to work well with Asiatic languages. It interprets digraphs as single characters, thus "mala" does not match "malaiḥ" (because "ai" counts as a single character)
 
 The exact behaviour of matching modes are subject to change.
 
@@ -92,7 +109,7 @@ Here are the fields you can search into.
 </tr>
 <tr>
 <td>`contributor`</td>
-<td>Persons who contributed to the edition (per contrast with `editor`).
+<td>Persons who contributed to the edition (by contrast with `editor`).
 </tr>
 <tr>
 <td>`author`</td>
@@ -191,6 +208,6 @@ editor:arlo AND editor:eko
 editor:(arlo AND eko)
 ```
 
-The first query matches a document if one of the editors of this document has `arlo` in his name and if the same editor or another one has `eko` in his name. Per contrast, the second query matches a document if one of its editors has both the strings `arlo` and `eko` in his name.
+The first query matches a document if one of the editors of this document has `arlo` in his name and if the same editor or another one has `eko` in his name. By contrast, the second query matches a document if one of its editors has both the strings `arlo` and `eko` in his name.
 
 Here are the operators sorted by decreasing precedence: `NOT` > `AND` > `OR`. A given operator binds tighter than the ones that follow, which means that, for instance, the query `foo OR bar AND baz` is interpreted as `foo OR (bar AND baz)`.
