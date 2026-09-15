@@ -6,64 +6,6 @@ When creating a new repository, do not rename its default branch to `main` or to
 
 When creating a file, do not use question marks within its name. Files with question marks in their name are fine on Unix, but prevent pulling a repository in Github Desktop on Windows.
 
-## Corpora repositories
-|Task Force|Corpus Designation|Repository name|
-|--|--|--|
-|Task Force A|Accāḷpuram|tfa-accalpuram-epigraphy|
-|Task Force A|Cempiyaṉ Mahādevī|tfa-cempiyan-mahadevi-epigraphy|
-|Task Force A|Cīrkāḻi|tfa-cirkali-epigraphy|
-|Task Force A|Koṭumpāḷūr|tfa-kotumpalur-epigraphy|
-|Task Force A|Mēlappaḻuvūr & Kīḻappaḻuvūr|tfa-melappaluvur-kilappaluvur-epigraphy|
-|Task Force A|Pallava|tfa-pallava-epigraphy|
-|Task Force A|Pāṇḍya|tfa-pandya-epigraphy|
-|Task Force A|South Indian Inscriptions|tfa-sii-epigraphy|
-|Task Force A|Tamil Nadu (varia)|tfa-tamilnadu-epigraphy|
-|Task Force A|Uttiramērūr|tfa-uttiramerur-epigraphy|
-|Task Force B|Śailodbhava|tfb-sailodbhava-epigraphy|
-|Task Force B|Bhaumakara|tfb-bhaumakara-epigraphy|
-|Task Force B|Eastern Gaṅga|tfb-gangaeast-epigraphy|
-|Task Force B|Bengal Copper plates|tfb-bengalcharters-epigraphy|
-|Task Force B|Bengal Dedication Inscriptions|tfb-bengalded-epigraphy|
-|Task Force B|Arakan|tfb-arakan-epigraphy|
-|Task Force B|Dakṣiṇa Kosala|tfb-daksinakosala-epigraphy|
-|Task Force B|Rāṣṭrakūṭa|tfb-rastrakuta-epigraphy|
-|Task Force B|Bādāmi Cālukya|tfb-badamicalukya-epigraphy|
-|Task Force B|Kalyāṇa Cālukya|tfb-kalyanacalukya-epigraphy|
-|Task Force B|Eastern Cālukya|tfb-vengicalukya-epigraphy|
-|Task Force B|Telugu Inscriptions|tfb-telugu-epigraphy|
-|Task Force B|Early Andhra|tfb-eiad-epigraphy|
-|Task Force B|Satavahana|tfb-satavahana-epigraphy|
-|Task Force B|Somavaṁśin|tfb-somavamsin-epigraphy|
-|Task Force B|Maitraka|tfb-maitraka-epigraphy|
-|Task Force B|Viṣṇukuṇḍin|tfb-visnukundin-epigraphy|
-|Task Force B|Licchavi|tfb-licchavi-epigraphy|
-|Task Force C|Campa|tfc-campa-epigraphy|
-|Task Force C|Khmer|tfc-khmer-epigraphy|
-|Task Force C|Nusantara|tfc-nusantara-epigraphy|
-|Task Force D|Sanskrit|tfd-sanskrit-philology|
-|Task Force D|Nusantara|tfd-nusantara-philology|
-
-## Open repository list
-|Repository name|Corpus Designation|
-|--|--|
-|arie|ARIE edition in open-source - only html|
-|digital-areal| xml-TEI introduction, lessons in French|
-|erc-dharma.github.io|Files for temporary website|
-|mdt-artefacts|all mdt artefacts and conglomerate artefacts|
-|mdt-authorities|all authorities files|
-|mdt-surrogates|all mdt surrogates|
-|mdt-texts|all mdt texts|
-|project-documentation| all docs and scripts of the project|
-
-## Closed repository list
-|Repository name|Corpus Designation|
-|--|--|
-|aditia-phd|Aditia's phd and latex scripts|
-|arie-corpus|All arie's sources files|
-|electronic-text|Project txt files|
-|exchange_aurorachana|repository to share files with Aurorachana|
-|lexica-indices|dictionaries and lexica - side projects|
-
 ## bibliography
 
 CSL stylesheets
