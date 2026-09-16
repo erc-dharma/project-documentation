@@ -61,12 +61,6 @@
     <text>
         <body>
             <listPerson>
-                <person xml:id="jodo">
-                    <persName>
-                        <forename>John</forename>
-                        <surname>Doe</surname>
-                    </persName>
-                </person>
                 <person xml:id="emfr">
                     <persName>
                         <forename>Emmanuel</forename>
