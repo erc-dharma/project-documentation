@@ -984,26 +984,6 @@
         </item>
         <item>
           <measure unit="syllable">11</measure>
-          <name xml:lang="san-Latn">triṣṭubh</name>
-          <seg type="ascii">-+--+--+--=</seg>
-          <seg type="classical">⏑–⏑⏑–⏑⏑–⏑⏑⏓</seg>
-          <note resp="part:daba">There is no simple way to codify or summarise triṣṭubh because of the degree of variation permitted. See EGD Appendix B, "Vedic trimeter".</note>
-          <seg type="gana"/>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <!--not discussed as such by Apte-->
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">11</measure>
           <name xml:lang="san-Latn">indravajrā</name>
           <name xml:lang="kaw-Latn">jayendrabajra</name>
           <!-- CK -->
@@ -1535,26 +1515,6 @@
               <citedRange unit="page">455</citedRange>
               <citedRange unit="item">XII.23</citedRange>
 	      <!-- Zoetmulder says that it is called swandewi in Balinese. !-->
-            </bibl>
-          </listBibl>
-        </item>
-        <item>
-          <measure unit="syllable">12</measure>
-          <name xml:lang="san-Latn">jagatī</name>
-          <seg type="ascii"></seg>
-          <note resp="part:daba">There is no simple way to codify or summarise jagatī because of the degree of variation permitted. See EGD Appendix B, "Vedic trimeter".</note>
-          <seg type="classical"></seg>
-          <seg type="gana"/>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <!--not discussed as such by Apte-->
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
             </bibl>
           </listBibl>
         </item>
@@ -3881,27 +3841,6 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
           </listBibl>
         </item>
-        <item>
-          <measure unit="syllable"/>
-          <name xml:lang="">trimeter</name><!--daba20240516: add eng as the value of @xml:lang? -->
-          <seg type="ascii"/>
-          <seg type="classical"/>
-          <seg type="gana"/>
-          <note resp="part:daba">Vedic trimeter consisting of loosely constrained 11- or 12-syllable lines that do not conform to the fixed patterns of triṣṭubh or jagatī.</note>
-          <listBibl>
-            <bibl>
-              <ptr target="bib:Apte1890_01"/>
-              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
-              <!--not discussed as such by Apte-->
-            </bibl>
-            <bibl>
-              <ptr target="bib:Velankar1949_01"/>
-            </bibl>
-            <bibl>
-              <ptr target="bib:Zoetmulder1974_01"/>
-            </bibl>
-          </listBibl>
-        </item>
       </list>
       <list>
         <head>The anuṣṭubh</head>
@@ -3994,6 +3933,108 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">ta-vipulā</name>
+          <seg type="ascii">=+-+++-=</seg>
+          <seg type="classical">⏓–⏑–––⏑⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a rare variation that may be permitted in any odd line of an anuṣṭubh stanza in some schools of versification, but probably counts as unacceptable in most schools.  In encoding, this metre can only apply to lines, never to stanzas.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">8</measure>
+          <name xml:lang="san-Latn">sa-vipulā</name>
+          <seg type="ascii">===+--+=</seg>
+          <seg type="classical">⏓⏓⏓–⏑⏑–⏓</seg>
+          <seg type="gana"><!--not applicable--></seg>
+          <note resp="part:daba">This is a rare variation that may be permitted in any odd line of an anuṣṭubh stanza in some schools of versification, but probably counts as unacceptable in most schools. In encoding, this metre can only apply to lines, never to stanzas. The second and third syllables of any quarter must not be both short.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+      </list>
+      <list>
+        <head>Pre-classical trimeter</head>
+        <item>
+          <measure unit="syllable"/>
+          <name xml:lang="eng">trimeter</name>
+          <seg type="ascii"/>
+          <seg type="classical"/>
+          <seg type="gana"/>
+          <note resp="part:daba">Classify a stanza as trimeter if it consists of loosely constrained lines of 11±1 or 12±1 syllables that do not conform to the more specific patterns of triṣṭubh or jagatī.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <citedRange unit="appendix">A: Sanskrit Prosody</citedRange>
+              <!--not discussed as such by Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">11</measure>
+          <name xml:lang="san-Latn">triṣṭubh</name>
+          <seg type="ascii">=+=+-=+-+=</seg>
+          <seg type="classical">⏓–⏓–⏓⏑⏓–⏑–⏓</seg>
+          <seg type="gana"/>
+          <note resp="part:daba">Classify a stanza as triṣṭubh if it consists of (predominantly) 11-syllable lines that do not conform to the fully constrained indravajrā or upendravajrā templates. Triṣṭubh lines tend to conform to the pattern ⏓–⏓–||⏑⏑––⏑–⏓ or ⏓–⏓–⏓||⏑⏑–⏑–⏓, but this is far from an absolute requirement.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <!--not discussed as such by Apte-->
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
+        <item>
+          <measure unit="syllable">12</measure>
+          <name xml:lang="san-Latn">jagatī</name>
+          <seg type="ascii">=+=+-=+-+-=</seg>
+          <seg type="classical">⏓–⏓–⏓⏑⏓–⏑–⏑⏓</seg>
+          <seg type="gana"/>
+          <note resp="part:daba">Classify a stanza as jagatī if it consists of (predominantly) 12-syllable lines that do not conform to the fully constrained indravaṁśā or vaṁśastha templates. Jagatī lines tend to conform to the pattern ⏓–⏓–||⏑⏑––⏑–⏓ or ⏓–⏓–⏓||⏑⏑–⏑–⏓, but this is far from an absolute requirement.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+              <!--not discussed as such by Apte-->
             </bibl>
             <bibl>
               <ptr target="bib:Velankar1949_01"/>
