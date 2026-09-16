@@ -29,7 +29,6 @@ tfb-maitraka-epigraphy	true	Maitraka
 tfb-parivrajaka-epigraphy	true	Parivrājaka
 tfb-rastrakuta-epigraphy	true	Rāṣṭrakūṭa
 tfb-sailodbhava-epigraphy	true	Śailodbhava
-tfb-satavahana-epigraphy	true	Sātavāhana
 tfb-somavamsin-epigraphy	true	Somavaṁśin
 tfb-telugu-epigraphy	true	Telugu Inscriptions
 tfb-vengicalukya-epigraphy	true	Eastern Cālukya
@@ -48,3 +47,5 @@ south-indian-inscriptions	true	SII original
 varia-epigraphy	true	Varia Epigraphy
 tfa-pondicherry-epigraphy	true	Pondicherry
 tfa-tiruvannamalai-epigraphy	true	Tiruvaṇṇāmalai
+tfb-earlywesterndeccan-epigraphy	true	Early Inscriptions of the Western Deccan
+tfb-kanaganahalli-epigraphy	true	Kanaganahalli Inscriptions
