@@ -3560,7 +3560,7 @@
         </item>
       </list>
      <list>
-      <head>Uneven Syllabic Meters (Viṣama)</head>
+      <head>Uneven syllabic metres (Viṣama)</head>
       <!-- zapa20250509: it has been added in reference to Zoetmulder, but I am not sure with the structure recorded. Some names can be normalized to their Sanskrit counterparts. -->
         <item>
           <measure unit="syllable" >20, 10, 13</measure>
@@ -4046,13 +4046,14 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
         </item>
       </list>
       <list>
-        <head>The vaitālīya class: metres with a moraic part and a syllabo-quantitative cadence</head>
+        <head>Metres combining moraic and syllabic patterns</head>
         <item>
           <measure unit="syllable"/>
           <name xml:lang="">vaitālīya</name>
           <seg type="ascii">6|+-+-=/8|+-+-=</seg>
           <seg type="classical">⏕⏕⏕–⏑–⏑⏓/⏕⏕⏕⏕–⏑–⏑⏓</seg>
           <seg type="gana"/>
+          <note resp="part:daba">The moraic part must not be all short or all long syllables. Distinguish from the syllabo-quantitative viyoginī and aparavaktra, which also fit this template but are fully constrained.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -4074,6 +4075,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <seg type="ascii">6|+-+-+=/8|+-+-+=</seg>
           <seg type="classical">⏕⏕⏕–⏑–⏑–⏓/⏕⏕⏕⏕–⏑–⏑–⏓</seg>
           <seg type="gana"/>
+          <note resp="part:daba">The moraic part must not be all short or all long syllables. Distinguish from the syllabo-quantitative mālabhāriṇī and puṣpitāgrā, which also fit this template but are fully constrained.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -4095,6 +4097,7 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <seg type="ascii">6|+--+=/8|+--+=</seg>
           <seg type="classical">⏕⏕⏕–⏑⏑–⏓/⏕⏕⏕⏕–⏑⏑–⏓</seg>
           <seg type="gana"/>
+          <note resp="part:daba">The moraic part must not be all short or all long syllables. Distinguish from the syllabo-quantitative vegavatī, which also fits this template but is fully constrained.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Apte1890_01"/>
@@ -4109,15 +4112,34 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
             </bibl>
           </listBibl>
         </item>
+        <item>
+          <measure unit="syllable"/>
+          <name xml:lang="">gītikā</name>
+          <seg type="ascii">2|-+=|2|-+|2|=/2|+-++-+-=</seg>
+          <seg type="classical">⏕⏑–⏓⏕⏑–⏕⏓/⏕–⏑––⏑–⏑⏓</seg>
+          <seg type="gana"/>
+          <note resp="part:daba">A rare metre not mentioned in most treatises on versification but found in some epigraphic texts.</note>
+          <listBibl>
+            <bibl>
+              <ptr target="bib:Apte1890_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Velankar1949_01"/>
+            </bibl>
+            <bibl>
+              <ptr target="bib:Zoetmulder1974_01"/>
+            </bibl>
+          </listBibl>
+        </item>
       </list>
       <list>
-        <head>The daṇḍaka class: metres involving many repetitions of a foot</head><!--daba20240516: I've created this section to house these metres, which were "in need of processing" up to now. Suggestions for an improved title are welcome.-->
+        <head>The daṇḍaka class</head><!--daba20260917: I've replaced the ‖ signs enclosing repetitive sequences with [] square brackets.-->
         <item>
          <!-- additions from Zaki's file -->
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">daṇḍa</name>
-          <seg type="ascii">‖+--‖+-+|⏑⏓</seg>
-          <seg type="classical">‖–⏑⏑‖–⏑–|⏑⏓</seg>
+          <seg type="ascii">[+--]+-+|⏑⏓</seg>
+          <seg type="classical">[–⏑⏑]–⏑–|⏑⏓</seg>
           <seg type="gana"/>
           <note resp="part:daba">Any number of iterations of the foot –⏑⏑, followed by –⏑⏑–⏑–⏑⏓.</note><!--daba20240516: Javanists: please check the pattern for the iterated foot. Before my edit, the XML code for the iterated foot was ‖+-+‖ while the prosodic code was ‖–⏑⏑‖ . Also, I don't know what the third bar is supposed to mean. Is this a caesura between the iterative sequence and the syllabo-quantitative sequence? -->
         </item>
@@ -4125,8 +4147,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
          <!-- additions from Zaki's file -->
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">daṇḍaka</name>
-          <seg type="ascii">---|---‖+-+‖</seg>
-          <seg type="classical">⏑⏑⏑|⏑⏑⏑‖–⏑–‖</seg>
+          <seg type="ascii">---|---[+-+]</seg>
+          <seg type="classical">⏑⏑⏑|⏑⏑⏑[–⏑–]</seg>
           <seg type="gana"/>
           <note resp="part:daba">The sequence ⏑⏑⏑⏑⏑⏑ followed by any number of iterations of the foot –⏑–.</note><!--daba20240516: Javanists: I don't know what the third bar is supposed to mean. Is this a caesura between the iterative sequence and the syllabo-quantitative sequence? -->
         </item>
@@ -4134,8 +4156,8 @@ and the first is preferable from the Sanskrit viewpoint, but the author of CK wo
           <measure unit="syllable"/>
           <name xml:lang="kaw-Latn">malāhati</name>
           <name xml:lang="kaw-Latn">malavati</name>
-          <seg type="ascii">‖--+‖</seg>
-          <seg type="classical">‖⏑⏑–‖</seg>
+          <seg type="ascii">[--+]</seg>
+          <seg type="classical">[⏑⏑–]</seg>
           <seg type="gana"/>
           <note resp="part:daba">Any number of iterations of the foot ⏑⏑–.</note>
         </item>
