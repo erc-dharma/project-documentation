@@ -155,7 +155,7 @@
                     <idno type="IdRef"/>
                     <idno type="ORCID">https://orcid.org/0000-0002-0068-3660</idno>
                 </person>
-                <!--<person xml:id="diac">
+                <<person xml:id="diac">
                     <persName>
                         <forename>Diwakar</forename>
                         <surname>Acharya</surname>
@@ -164,7 +164,7 @@
                     <idno type="VIAF">http://viaf.org/viaf/26501648</idno>
                     <idno type="IdRef">http://www.idref.fr/138003556</idno>
                     <idno type="ORCID">https://orcid.org/0000-0002-5482-7754</idno>
-                </person>-->
+                </person>
                 <person xml:id="anac">
                     <persName>
                         <forename>Andrea</forename>
