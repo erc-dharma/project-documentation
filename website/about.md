@@ -15,7 +15,7 @@ The database covers almost exclusively premodern sources in Indic scripts, to th
 
 All of the source files for the database are accessible via a dedicated [GitHub organization](https://github.com/erc-dharma).
 
-The structuring of our data and the design of the database were led, during the duration of the ERC Project, by Axelle Janiak, Daniel Bálogh and Michaël Meyer. Their work involved, among many other things, the structuring of the GitHub organization, the drafting of guides to document our work, the integration of our XML source files into an SQL database, and the development of a search engine able to query the data.
+The structuring of our data and the design of the database were led, during the duration of the ERC Project, by Axelle Janiak, Dániel Balogh and Michaël Meyer. Their work involved, among many other things, the structuring of the GitHub organization, the drafting of guides to document our work, the integration of our XML source files into an SQL database, and the development of a search engine able to query the data.
 
 <!-- PIs and shadow PIs
 HIs -->
