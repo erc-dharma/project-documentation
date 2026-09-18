@@ -250,7 +250,7 @@
           <measure unit="syllable">6</measure>
           <name xml:lang="kaw-Latn">kusumitagandha</name>
           <name xml:lang="kaw-Latn">kusumitajanma</name>
-          <note resp="part:zapa">The name of this meter in CK is "kusumitagandha", while in Vr̥t is "kusumitajanma".</note>
+          <note resp="part:zapa">The name of this meter is <foreign>kusumitagandha</foreign> in CK , but <foreign>kusumitajanma</foreign> in Vr̥t.</note>
           <seg type="ascii">----+=</seg>
           <seg type="classical">⏑⏑⏑⏑–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
