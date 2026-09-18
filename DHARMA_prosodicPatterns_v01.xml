@@ -250,7 +250,7 @@
           <measure unit="syllable">6</measure>
           <name xml:lang="kaw-Latn">kusumitagandha</name>
           <name xml:lang="kaw-Latn">kusumitajanma</name>
-          <note resp="part:zapa">The name of this meter is <foreign>kusumitagandha</foreign> in CK , but <foreign>kusumitajanma</foreign> in Vr̥t.</note>
+          <note resp="part:zapa">The name of this meter is kusumitagandha in CK , but kusumitajanma in Vr̥t.</note>
           <seg type="ascii">----+=</seg>
           <seg type="classical">⏑⏑⏑⏑–⏓</seg>
           <seg type="gana"><!--not applicable--></seg>
@@ -261,7 +261,7 @@
               <citedRange unit="page">451</citedRange>
               <citedRange unit="item">VI.1</citedRange>
 	      <!-- Zoetmulder reference: Vr̥t 15 (names: kusumitajanma) !-->
-              <note resp="part:zapa">Zoetmulder in Kalangwan (p. 451) incorrectly describes the pattern meter as ⏑⏑⏑|⏑⏓ (less one syllable).</note>
+              <note resp="part:zapa">Zoetmulder in Kalangwan incorrectly describes the pattern of this meter as ⏑⏑⏑|⏑⏓ (short by one syllable).</note>
             </bibl>
           </listBibl>
         </item>
@@ -373,7 +373,7 @@
           <name xml:lang="kaw-Latn">śāpāntika1</name><!-- CK-->
           <seg type="ascii">++-----=</seg>
           <seg type="classical">––⏑⏑⏑⏑⏑⏓</seg>
-          <note resp="part:zapa">The meter pattern of śāpāntika is slightly different in CK and Vr̥t. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t ––⏑|–⏑⏑|⏑⏓.</note>
+          <note resp="part:zapa">The pattern of śāpāntika is different in depending on the source. In CK, śāpāntika is presented as ––⏑|⏑⏑⏑|⏑⏓, while in Vr̥t it is ––⏑|–⏑⏑|⏑⏓.</note>
           <listBibl>
             <bibl>
               <ptr target="bib:Zoetmulder1974_01"/>
