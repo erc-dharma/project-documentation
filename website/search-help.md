@@ -33,7 +33,7 @@ this substring within the `logical` field (the body of the edition), it will
 not (because it treats "ph" as a single unit).
 
 There are thus several *matching modes*, which exhibit different matching
-behaviours. Currently, there are three modes, which we call `forma`, `formb`, and `formc`:
+behaviours. Currently, there are four matching modes:
 
 * The `forma` mode is the one used by default for all fields except `logical`. It is designed to work well with modern (non-Asiatic) languages. It preserves significant diacritical marks, but treats some of them as equivalent. For instance, "ṃ", "ṁ" and "m̐" are considered as equivalent.
 * The `formb` mode is not used by default on any field. It is designed to work well with Asiatic languages. It ignores most diacritical marks. Thus, it treats "a" and "ā" as equivalent. Furthermore, it treats occlusives from the same group as equivalent. Thus "k", "kh", "g" and "gh" are assumed to be the same; likewise for "ṭ", "ṭh", "ḍ", "ḍh", "t", "th", "d" and "dh". It also treats duplicated consonants as equivalent: "dharma" matches "dharmma", "kha" matches "kkha", etc.
