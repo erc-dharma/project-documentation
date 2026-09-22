@@ -7,7 +7,7 @@ expressions](https://en.wikipedia.org/wiki/Boolean_expression). Here is a quick
 reminder:
 
 * The expression `x AND y` matches if both `x` and `y` occur in a given
-  document. It does *not* matches documents that contain only `x` or only `y`.
+  document. It does *not* match documents that contain only `x` or only `y`.
 * The expression `x OR y` matches if either `x` or `y` occurs in a given
   document. It matches documents that contain `x`, documents that contain
   `y`, and documents that contain both `x` and `y`.
