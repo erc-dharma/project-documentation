@@ -42,7 +42,7 @@ Everything else in this file is kept as is (even HTML tags, if any).
 ###### Stanza in metre without a known name
 
 ```
-<lg n="2" met="+++++-++-+=">kāritam idan nr̥patinā</lg>
+<lg n="2" met="+---+---=">kāritam idan nr̥patinā</lg>
 ```
 
 ###### Verse line
@@ -141,29 +141,29 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 <g type="numeral">200</g>
 ```
 
-###### Symbol interpreted as punctuation
+###### Symbol interpreted as a punctuation mark
 
 ```
-<g type="danda">.</g> ... <g type="dash">.</g>
+<g type="punctuation">|</g> ... <g type="punctuation" ref="sym:bar">.</g>
 ```
 
-Display depends on `@type`.
-
-###### Symbol interpreted as space filler
+###### Symbol interpreted as a connector
 
 ```
-<g type="squiggleVertical">§</g>
+<g type="connector">§</g> ... <g type="connector" ref="sym_bar-curly">§</g>
 ```
 
-Display depends on `@type`.
+###### Symbol interpreted as an ideogram
+
+```
+<g type="ideogram" ref="sym:tam-varusam">@</g>
+```
 
 ###### Uninterpreted symbol
 
 ```
-<g type="floretComplex"/> ... <g type="spiralR"/>
+<g ref="sym:floret-complex"/>*</g>
 ```
-
-Display depends on `@type`.
 
 ###### Small space between words
 
