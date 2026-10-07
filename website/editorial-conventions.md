@@ -147,15 +147,11 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 <g type="punctuation">|</g> ... <g type="punctuation" ref="sym:bar">.</g>
 ```
 
-Display depends on `@type`.
-
-###### Symbol interpreted as space filler
+###### Symbol interpreted as a connector
 
 ```
-<g type="squiggleVertical">§</g>
+<g type="connector">§</g> ... <g type="connector" ref="sym_bar-curly">§</g>
 ```
-
-Display depends on `@type`.
 
 ###### Uninterpreted symbol
 
