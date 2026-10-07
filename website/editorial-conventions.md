@@ -150,7 +150,13 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 ###### Symbol interpreted as a connector
 
 ```
-<g type="connector">§</g> ... <g type="connector" ref="sym_bar-curly">§</g>
+<g type="connector">§</g> ... <g type="connector" ref="sym:bar-curly">§</g>
+```
+
+###### Symbol interpreted as an ideogram
+
+```
+<g type="ideogram" ref="sym:tam-varusam">@</g>
 ```
 
 ###### Uninterpreted symbol
