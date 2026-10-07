@@ -42,7 +42,7 @@ Everything else in this file is kept as is (even HTML tags, if any).
 ###### Stanza in metre without a known name
 
 ```
-<lg n="2" met="+---+---=">kāritam idan nr̥patinā</lg>
+<lg n="2" met="+++++-++-+=">kāritam idan nr̥patinā</lg>
 ```
 
 ###### Verse line
@@ -135,16 +135,16 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 ## 3. Palaeographic features
 
 
-###### Single symbol representing a number other than a decimal digit
+###### Single symbol representing a number above 9
 
 ```
 <g type="numeral">200</g>
 ```
 
-###### Symbol interpreted as a punctuation mark
+###### Symbol interpreted as punctuation
 
 ```
-<g type="punctuation">|</g> ... <g type="punctuation" ref="sym:bar">.</g>
+<g type="danda">.</g> ... <g type="dash">.</g>
 ```
 
 Display depends on `@type`.
