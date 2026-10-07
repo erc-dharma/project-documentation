@@ -135,7 +135,7 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 ## 3. Palaeographic features
 
 
-###### Single symbol representing a number above 9
+###### Single symbol representing a number other than a decimal digit
 
 ```
 <g type="numeral">200</g>
