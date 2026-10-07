@@ -162,7 +162,7 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 ###### Uninterpreted symbol
 
 ```
-<g type="symbol" ref="sym:floret-complex"/>*</g>
+<g ref="sym:floret-complex">*</g>
 ```
 
 ###### Small space between words
@@ -486,7 +486,7 @@ Fiftieth <supplied reason="subaudible">year</supplied> of Nantippōttaracar
 ```translation
 <gap reason="ellipsis"/>
 ```
-
+	
 Usually followed by the original segment in `<supplied reason="explanation"><foreign></foreign></supplied>` and optionally also by an explanatory note.
 
 ###### Untranslated segment
