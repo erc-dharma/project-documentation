@@ -162,10 +162,8 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 ###### Uninterpreted symbol
 
 ```
-<g type="floretComplex"/> ... <g type="spiralR"/>
+<g ref="sym:floret-complex"/>*</g>
 ```
-
-Display depends on `@type`.
 
 ###### Small space between words
 
