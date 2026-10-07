@@ -162,7 +162,7 @@ Breaks other than line beginnings take the same attribute when they fall inside 
 ###### Uninterpreted symbol
 
 ```
-<g type="connector" ref="sym:bar-curly">§</g>
+<g type="symbol" ref="sym:floret-complex"/>*</g>
 ```
 
 ###### Small space between words
