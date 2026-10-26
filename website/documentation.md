@@ -10,6 +10,10 @@
 
 [Transliteration Guide](https://hal.science/DHARMA/halshs-02272407v3)
 
+## Versification
+
+[Versification Guide](https://github.com/erc-dharma/project-documentation/blob/master/docs/versification/DHARMA%20VG%20v1.pdf)
+
 ## Zotero
 
 [Zotero Guide](https://github.com/erc-dharma/project-documentation/blob/master/docs/zotero/DHARMA_ZoteroGuide_v1.1.pdf)
