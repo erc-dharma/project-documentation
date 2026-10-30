@@ -2,13 +2,14 @@
 
 ## Encoding
 
-[Encoding Guide for Documentary Editions](https://hal.science/DHARMA/halshs-02888186v1)
+[Encoding Guide for Documentary Editions](https://github.com/erc-dharma/project-documentation/blob/master/docs/encoding-diplomatic/DHARMA%20EGD%20v2.pdf)
 
 [Encoding Guide for Critical Editions](https://hal.science/hal-04085137)
 
 ## Transliteration
 
-[Transliteration Guide](https://hal.science/DHARMA/halshs-02272407v3)
+[Transliteration Guide](https://github.com/erc-dharma/project-documentation/blob/master/docs/transliteration/DHARMA%20TG%20v4.pdf)
+
 
 ## Versification
 
